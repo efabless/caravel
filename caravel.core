@@ -1,0 +1,227 @@
+CAPI=2:
+
+name : efabless:openmpw:caravel:0
+description : Ready-to-use test harness for creating designs with the Google/Skywater 130nm Open PDK
+
+filesets:
+  caravel:
+    files:
+      #picosoc
+      - verilog/rtl/picorv32.v : {is_include_file : true}
+      - verilog/rtl/simpleuart.v : {is_include_file : true}
+      - verilog/rtl/spimemio.v : {is_include_file : true}
+
+      - verilog/rtl/caravel_netlists.v : {is_include_file : true}
+      - verilog/rtl/defines.v : {is_include_file : true}
+      - verilog/rtl/caravan_netlists.v : {is_include_file : true}
+      - verilog/rtl/caravan.v : {is_include_file : true}
+      - verilog/rtl/caravel_clocking.v : {is_include_file : true}
+      - verilog/rtl/caravel.v : {is_include_file : true}
+      - verilog/rtl/chip_io_alt.v : {is_include_file : true}
+      - verilog/rtl/chip_io.v : {is_include_file : true}
+      - verilog/rtl/clock_div.v : {is_include_file : true}
+      - verilog/rtl/convert_gpio_sigs.v : {is_include_file : true}
+      - verilog/rtl/counter_timer_high.v : {is_include_file : true}
+      - verilog/rtl/counter_timer_low.v : {is_include_file : true}
+      - verilog/rtl/DFFRAMBB.v : {is_include_file : true}
+      - verilog/rtl/DFFRAM.v : {is_include_file : true}
+      - verilog/rtl/digital_pll_controller.v : {is_include_file : true}
+      - verilog/rtl/digital_pll.v : {is_include_file : true}
+      - verilog/rtl/gpio_control_block.v : {is_include_file : true}
+      - verilog/rtl/housekeeping_spi.v : {is_include_file : true}
+      - verilog/rtl/la_wb.v : {is_include_file : true}
+      - verilog/rtl/mem_wb.v : {is_include_file : true}
+      - verilog/rtl/mgmt_core.v : {is_include_file : true}
+      - verilog/rtl/mgmt_protect_hv.v : {is_include_file : true}
+      - verilog/rtl/mgmt_protect.v : {is_include_file : true}
+      - verilog/rtl/mgmt_soc.v : {is_include_file : true}
+      - verilog/rtl/mprj2_logic_high.v : {is_include_file : true}
+      - verilog/rtl/mprj_ctrl.v : {is_include_file : true}
+      - verilog/rtl/mprj_io.v : {is_include_file : true}
+      - verilog/rtl/mprj_logic_high.v : {is_include_file : true}
+      - verilog/rtl/pads.v : {is_include_file : true}
+      - verilog/rtl/ring_osc2x13.v : {is_include_file : true}
+      - verilog/rtl/simple_por.v : {is_include_file : true}
+      - verilog/rtl/simple_spi_master.v : {is_include_file : true}
+      - verilog/rtl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v : {is_include_file : true}
+      - verilog/rtl/sram_1rw1r_32_256_8_sky130.v : {is_include_file : true}
+      - verilog/rtl/storage_bridge_wb.v : {is_include_file : true}
+      - verilog/rtl/storage.v : {is_include_file : true}
+      - verilog/rtl/sysctrl.v : {is_include_file : true}
+      - verilog/rtl/__uprj_analog_netlists.v : {is_include_file : true}
+      - verilog/rtl/__uprj_netlists.v : {is_include_file : true}
+      - verilog/rtl/__user_analog_project_wrapper.v : {is_include_file : true}
+      - verilog/rtl/user_id_programming.v : {is_include_file : true}
+      - verilog/rtl/__user_project_wrapper.v : {is_include_file : true}
+      - verilog/rtl/wb_intercon.v : {is_include_file : true}
+    file_type : verilogSource
+    depend : [skywatertechnology:sky130:sky130_fd_sc_hd]
+
+  gpio_wb:
+    files:
+      - verilog/rtl/gpio_wb.v : {is_include_file : true}
+    file_type : verilogSource
+
+  gpio_wb_tb:
+    files:
+      - verilog/dv/wb_utests/gpio_wb/gpio_wb_tb.v : {file_type : verilogSource}
+
+  intercon_wb_tb:
+    files:
+      - verilog/dv/dummy_slave.v : {is_include_file : true}
+      - verilog/dv/wb_utests/intercon_wb/intercon_wb_tb.v
+    file_type : verilogSource
+
+  spiflash:
+    files:
+      - verilog/dv/caravel/spiflash.v : {file_type : verilogSource, is_include_file : true}
+
+  tbuart:
+    files:
+      - verilog/dv/caravel/tbuart.v : {file_type : verilogSource, is_include_file : true}
+
+  caravan_tb   : {files: [verilog/dv/caravel/mgmt_soc/caravan/caravan_tb.v     : {file_type : verilogSource}]}
+  gpio_tb      : {files: [verilog/dv/caravel/mgmt_soc/gpio/gpio_tb.v           : {file_type : verilogSource}]}
+  hkspi_tb     : {files: [verilog/dv/caravel/mgmt_soc/hkspi/hkspi_tb.v         : {file_type : verilogSource}]}
+  mprj_ctrl_tb : {files: [verilog/dv/caravel/mgmt_soc/mprj_ctrl/mprj_ctrl_tb.v : {file_type : verilogSource}]}
+  pll_tb       : {files: [verilog/dv/caravel/mgmt_soc/pll/pll_tb.v             : {file_type : verilogSource}]}
+  perf_tb      : {files: [verilog/dv/caravel/mgmt_soc/perf/perf_tb.v           : {file_type : verilogSource}]}
+
+#- verilog/dv/caravel/mgmt_soc/pass_thru/pass_thru_tb.v
+#- verilog/dv/caravel/mgmt_soc/timer2/timer2_tb.v
+#- verilog/dv/caravel/mgmt_soc/qspi/qspi_tb.v
+#- verilog/dv/caravel/mgmt_soc/sysctrl/sysctrl_tb.v
+#- verilog/dv/caravel/mgmt_soc/uart/uart_tb.v
+#- verilog/dv/caravel/mgmt_soc/timer/timer_tb.v
+#- verilog/dv/caravel/mgmt_soc/storage/storage_tb.v
+#- verilog/dv/caravel/mgmt_soc/mem/mem_tb.v
+
+
+
+#- verilog/dv/wb_utests/chip_io/chip_io_tb.v
+#- verilog/dv/wb_utests/chip_io/chip_io_split.v
+#- verilog/dv/wb_utests/chip_io/ports.v
+#- verilog/dv/wb_utests/la_wb/la_wb_tb.v
+#- verilog/dv/wb_utests/mprj_ctrl/mprj_ctrl_tb.v
+#- verilog/dv/wb_utests/sysctrl_wb/sysctrl_wb_tb.v
+#- verilog/dv/wb_utests/spi_sysctrl_wb/spi_sysctrl_wb_tb.v
+#- verilog/dv/wb_utests/mgmt_protect/mgmt_protect_tb.v
+#- verilog/dv/wb_utests/storage_wb/storage_wb_tb.v
+#- verilog/dv/wb_utests/uart_wb/uart_wb_tb.v
+#- verilog/dv/wb_utests/mem_wb/mem_wb_tb.v
+#- verilog/dv/wb_utests/spimemio_wb/spimemio_wb_tb.v
+
+#- verilog/stubs/sky130_fd_io__top_xres4v2.v
+
+#- verilog/gl/storage.v
+#- verilog/gl/__user_project_wrapper.v
+#- verilog/gl/mprj2_logic_high.v
+#- verilog/gl/user_id_programming.v
+#- verilog/gl/chip_io.v
+#- verilog/gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v
+#- verilog/gl/mgmt_core.v
+#- verilog/gl/mgmt_protect_hv.v
+#- verilog/gl/DFFRAM.v
+#- verilog/gl/gpio_control_block.v
+#- verilog/gl/digital_pll.v
+#- verilog/gl/caravel.v
+#- verilog/gl/mgmt_protect.v
+#- verilog/gl/mprj_logic_high.v
+
+targets:
+  default:
+    filesets :
+      - caravel
+      - gpio_wb
+      - "!tool_openlane? (spiflash)"
+      - "!tool_openlane? (tbuart)"
+    parameters: [FUNCTIONAL, SIM]
+
+  #utests
+
+  gpio_wb_tb:
+    default_tool : icarus
+    description : GPIO WB Test
+    filesets : [gpio_wb, gpio_wb_tb]
+    toplevel : gpio_wb_tb
+
+  intercon_wb_tb:
+    default_tool : icarus
+    description : Wishbone interconnect test
+    filesets : [caravel, gpio_wb, intercon_wb_tb]
+    toplevel : intercon_wb_tb
+
+  caravel_test: &caravel_test
+    default_tool : icarus
+    description : Dummy target. Just used as an anchor for caravel test cases
+    filesets : [caravel, gpio_wb, spiflash]
+    parameters : [FUNCTIONAL=true, SIM=true]
+
+#  caravan_tb:  #Doesn't work
+#    << : *caravel_test
+#    description : Caravan GPIO Test
+#    filesets_append : [caravan_tb]
+#    toplevel : caravan_tb
+
+  gpio_tb:
+    << : *caravel_test
+    description : GPIO Test
+    filesets_append : [gpio_tb]
+    generate: [firmware : {testcase : gpio}]
+    toplevel : gpio_tb
+
+  hkspi_tb:
+    << : *caravel_test
+    description : StriVe housekeeping SPI testbench
+    filesets_append : [tbuart, hkspi_tb]
+    generate: [firmware : {testcase : hkspi}]
+    toplevel : hkspi_tb
+
+  mprj_ctrl_tb:
+    << : *caravel_test
+    description : User Project IO Control Test
+    filesets_append : [mprj_ctrl_tb]
+    generate: [firmware : {testcase : mprj_ctrl}]
+    toplevel : mprj_ctrl_tb
+
+  perf_tb:
+    << : *caravel_test
+    description : Performance Test
+    filesets_append : [perf_tb]
+    generate: [firmware : {testcase : perf}]
+    toplevel : perf_tb
+
+  pll_tb:
+    << : *caravel_test
+    description : PLL Test
+    filesets_append : [pll_tb]
+    generate: [firmware : {testcase : pll}]
+    toplevel : pll_tb
+
+parameters:
+  FUNCTIONAL:
+    datatype: bool
+    paramtype : vlogdefine
+
+  SIM:
+    datatype: bool
+    paramtype : vlogdefine
+
+generate:
+  firmware:
+    generator: caravel_firmware
+    parameters:
+      basedir : verilog/dv/caravel/mgmt_soc
+
+generators:
+  caravel_firmware:
+    command: scripts/caravel_hex_gen.py
+    interpreter: python3
+    description : Caravel test firmware generator
+    usage: |
+      Generate a hex file for the managmenet SoC for testcases that adhere to
+      the Caravel testcase structure
+
+      Parameters:
+        basedir (str): Path leading up the testcase root
+        testcase (str): Testcase to build for
