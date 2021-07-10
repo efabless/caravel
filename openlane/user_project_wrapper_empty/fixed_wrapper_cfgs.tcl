@@ -14,6 +14,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # DON'T TOUCH THE FOLLOWING SECTIONS
+set script_dir [file dirname [file normalize [info script]]]
 
 # This makes sure that the core rings are outside the boundaries
 # of your block.
