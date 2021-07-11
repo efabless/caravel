@@ -1,0 +1,64 @@
+name: Caravel prechecker
+
+on:
+  push:
+  pull_request:
+    types: closed
+    branches:
+      - master
+jobs:
+  linux:
+    name: Get release repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout caravel
+        uses: actions/checkout@v2
+        with:
+          path: caravel
+
+      - name: Checkout open_mpw_precheck repo
+        uses: actions/checkout@master
+        with:
+          repository: efabless/open_mpw_precheck
+          path: open_mpw_precheck
+
+      # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+      # Uncomment this to Ship or merge desings before commit
+      # = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+      # - name: Design modification before prechecker
+      #   uses: ganeshgore/docker-run-action@49cd3a1
+      #   with:
+      #     image: goreganesh/open_mpw_prechecker
+      #     options: >
+      #       -v ${{github.workspace}}/open_mpw_precheck:/usr/local/bin
+      #       -v ${{github.workspace}}:/usr/local/workspace
+      #       --workdir /usr/local/workspace/caravel
+      #     run: |
+      #       make uncompress
+      #       echo "[TODO] pre-check actions goes here"
+      #       for i in {1..30}; do sleep 1m; echo "[Info] Still shipping"; done &
+      #         make ship
+      #       kill %1
+
+      - name: Perform checks with open_mpw_precheck
+        uses: ganeshgore/docker-run-action@49cd3a1
+        with:
+          image: goreganesh/open_mpw_prechecker
+          options: >
+            -v ${{github.workspace}}/open_mpw_precheck:/usr/local/bin
+            -v ${{github.workspace}}:/usr/local/workspace
+            --workdir /usr/local/workspace/caravel
+          run: |
+            python3 /usr/local/bin/open_mpw_prechecker.py --target_path /usr/local/workspace/caravel --pdk_root $PDK_ROOT
+            echo "[Info] Finished MPW prechecker"
+
+      - name: Deploy Changes
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          user_name: "Precheck bot"
+          user_email: "precheck_bot@efabless.com"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./caravel/checks
+          publish_branch: checks
+          disable_nojekyll: true
+          commit_message: '[Checks] ${{ github.event.head_commit.message }}'
