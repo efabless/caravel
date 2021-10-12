@@ -1,0 +1,320 @@
+Definitions:
+	caravel_openframe: Version with one wrapper for user
+			   project only.
+
+	caravel_harness:  Version with wrappers for user project
+			  area and management core.  
+
+	caravel_pico:  PicoRV32, as a drop-in module for caravel_harness
+
+Harness definition:
+	Management SoC and User Project are both wrappers for drop-in
+	modules.
+
+	The harness itself contains the clocking module, DLL, user ID,
+	housekeeping SPI, POR, and GPIO control.
+
+	GPIO handling moved out of management SoC and into SPI.  SPI
+	gets a wishbone interface;  the management SoC talks to the SPI
+	through wishbone, not by taking over the 4-pin SPI interface.
+
+	(Maybe) New block like the ID has the mode at power-up for
+	each GPIO.  Can be configured with a text file.  SPI pins are
+	fixed for operation on startup.
+
+	On power-up, the SPI automatically configures the GPIO.  Manual
+	load is possible from both the SPI and from the wishbone bus.
+
+Openframe definition:
+	There is only one area which is the User Project, with a wrapper
+	to take a drop-in module.
+
+	The openframe module contains clocking, DLL, user ID, housekeeping
+	SPI, POR, and GPIO control.  Operation is essentially the same as
+	the above (harness definition).
+
+MPW-one compatibility:
+	Looks like the harness, but the logic analyzer and management-
+	protect is part of the harness and the user area wrapper matches
+	that for MPW-one.
+
+MPW-two compatibility:
+	Looks like the harness, but the logic analyzer and management-
+	protect is part of the harness and the user area wrapper matches
+	that for MPW-two.
+
+Caravel-pico definition:
+	Caravel-pico is a version of the PicoRV32 Management SoC from
+	MPW-two, but without the GPIO control, clocking control, DLL,
+	housekeeping SPI, and logic analyzer.  It mainly just exports
+	the Wishbone bus interface to the user project area.
+
+Pinouts for Caravel (any version)
+----------------------------------------------
+    Power supplies:
+	vddio, vssio, vdda, vssa, vccd, vssd,
+	vdda1, vdda2, vssa1, vssa2,
+	vccd1, vccd2, vssd1, vssd2
+
+    Management SoC signals:
+	debug (or JTAG, management)
+	gpio
+	clock
+	resetb
+	flash_csb
+	flash_clk
+	flash_io0
+	flash_io1
+
+    User area signals:
+	mprj_io[37:0]
+
+User project area pinout (openframe)
+----------------------------------------------
+    Power supplies:
+	vddio, vssio, vdda, vssa, vccd, vssd,
+	vdda1, vdda2, vssa1, vssa2,
+	vccd1, vccd2, vssd1, vssd2
+
+    Wishbone bus (exported to SPI):
+	wb_clk_i
+	wb_rst_i
+	wbs_stb_i
+	wbs_cyc_i
+	wbs_we_i
+	wbs_sel_i[3:0]
+	wbs_dat_i[31:0]
+	wbs_adr_i[31:0]
+	wbs_ack_o
+	wbs_dat_o[31:0]
+
+    GPIO:
+	io_in[37:0]
+	io_out[37:0]
+	io_oeb[37:0]
+
+    GPIO (single):
+	gpio_out
+	gpio_in
+	gpio_oeb
+	gpio_ieb
+
+    Flash controller:
+	flash_clk
+	flash_clk_oeb
+	flash_csb
+	flash_csb_oeb
+	flash_io0_do
+	flash_io1_do
+	flash_io2_do
+	flash_io3_do
+	flash_io0_di
+	flash_io1_di
+	flash_io2_di
+	flash_io3_di
+	flash_io0_oeb
+	flash_io1_oeb
+	flash_io2_oeb
+	flash_io3_oeb
+	flash_io0_ieb
+	flash_io1_ieb
+	flash_io2_ieb
+	flash_io3_ieb
+
+    Essentials:
+	resetb
+	core_clk
+
+    Miscellaneous:
+	user_clock2
+	user_irq[2:0]
+
+
+User project area pinout (harness)
+----------------------------------------------
+    Power supplies:
+	vdda1, vdda2, vssa1, vssa2,
+	vccd1, vccd2, vssd1, vssd2
+
+    Wishbone bus:
+	wb_clk_i
+	wb_rst_i
+	wbs_stb_i
+	wbs_cyc_i
+	wbs_we_i
+	wbs_sel_i[3:0]
+	wbs_dat_i[31:0]
+	wbs_adr_i[31:0]
+	wbs_ack_o
+	wbs_dat_o[31:0]
+
+    GPIO:
+	io_in[37:0]
+	io_out[37:0]
+	io_oeb[37:0]
+
+    Miscellaneous:
+	user_clock2
+	user_irq[2:0]
+
+Management SoC pinout
+----------------------------------------------
+    GPIO:
+	gpio_out
+	gpio_in
+	gpio_oeb
+	gpio_ieb
+
+    Flash controller:
+	flash_clk
+	flash_csb
+	flash_io0_do
+	flash_io1_do
+	flash_io2_do
+	flash_io3_do
+	flash_io0_di
+	flash_io1_di
+	flash_io2_di
+	flash_io3_di
+	flash_io0_oeb
+	flash_io1_oeb
+	flash_io2_oeb
+	flash_io3_oeb
+
+    Essentials:
+	resetb
+	core_clk
+
+    Wishbone bus:
+	mprj_ack_i
+	mprj_dat_i[31:0]
+	mprj_dat_o[31:0]
+	mprj_cyc_o
+	mprj_stb_o
+	mprj_we_o
+	mprj_sel_o[3:0]
+	mprj_adr_o[31:0]
+
+Interface pinout (standard = pass-through)
+----------------------------------------------
+    Clocking (DLL)
+	clock
+	porb
+	resetb
+	core_clk
+
+    Housekeeping SPI
+	SCK
+	CSB
+	SDI
+	SDO
+	sdo_enb
+
+    Flash pass-through:
+	flash_clk_oeb
+	flash_csb_oeb
+	flash_io0_ieb
+	flash_io1_ieb
+	flash_io2_ieb
+	flash_io3_ieb
+
+	(plus management flash signals in from SoC/out to pads)
+
+    Wishbone bus:
+	mprj_ack_i
+	mprj_dat_i[31:0]
+	mprj_dat_o[31:0]
+	mprj_cyc_o
+	mprj_stb_o
+	mprj_we_o
+	mprj_sel_o[3:0]
+	mprj_adr_o[31:0]
+
+    User ID programming
+	mask_rev[31:0]
+
+Interface pinout (MPW-one compatibility level)
+----------------------------------------------
+    Clocking (DLL)
+	clock
+	porb
+	resetb
+	core_clk
+
+    GPIO controller
+	serial_data
+	serial_clock
+	serial_reset
+
+    Housekeeping SPI
+	SCK
+	CSB
+	SDI
+	SDO
+	sdo_enb
+
+    Flash pass-through:
+	flash_clk_oeb
+	flash_csb_oeb
+	flash_io0_ieb
+	flash_io1_ieb
+	flash_io2_ieb
+	flash_io3_ieb
+
+	(plus management flash signals in from SoC/out to pads)
+
+    Wishbone bus:
+	mprj_ack_i
+	mprj_dat_i[31:0]
+	mprj_dat_o[31:0]
+	mprj_cyc_o
+	mprj_stb_o
+	mprj_we_o
+	mprj_sel_o[3:0]
+	mprj_adr_o[31:0]
+
+    User ID programming
+	mask_rev[31:0]
+
+    Logic Analyzer
+	la_io[127:0]
+	la_oenb[127:0]
+
+Interface pinout (MPW-two compatibility level)
+----------------------------------------------
+    Clocking (DLL)
+	clock
+	porb
+	resetb
+	core_clk
+
+    GPIO controller
+	serial_data
+	serial_clock
+	serial_reset
+
+    Housekeeping SPI
+	SCK
+	CSB
+	SDI
+	SDO
+	sdo_enb
+
+    Wishbone bus:
+	mprj_ack_i
+	mprj_dat_i[31:0]
+	mprj_dat_o[31:0]
+	mprj_cyc_o
+	mprj_stb_o
+	mprj_we_o
+	mprj_sel_o[3:0]
+	mprj_adr_o[31:0]
+
+    User ID programming
+	mask_rev[31:0]
+
+    Logic Analyzer
+	la_input[127:0]
+	la_output[127:0]
+	la_oenb[127:0]
+	la_iena[127:0]
