@@ -1,0 +1,44 @@
+<!---
+# SPDX-FileCopyrightText: 2020 Efabless Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+-->
+------------------------------------------------
+Caravel
+gpio testbench
+------------------------------------------------
+
+This testbench exercises the fundamental use of the Caravel
+management SoC to drive the I/O in the user area as general
+purpose I/O on startup.
+
+On startup, all GPIO are configured as input to the management
+region (so as to be high impedence to the external world) and
+decoupled from the user project area.
+
+To configure any GPIO as output, the appropriate memory-mapped
+location for the I/O must be properly configured.  Since the
+I/O configuration is stored in two places, in the SoC, but
+also locally at each I/O pad, the "transfer" bit must be
+applied, which initiates a transfer of the configuration data
+around the padframe.
+
+The testbench takes 16 pins from the user area and checks
+functionality by applying input values on 8 of these pins from
+the testbench verilog, detecting them in the C program, then
+copying the values to the other 8 pins, and detecting those
+values in the testbench verilog.
+
+If any of that does not work, then the testbench will fail.
