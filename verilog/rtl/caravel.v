@@ -298,6 +298,15 @@ module caravel (
     wire caravel_clk2;
     wire caravel_rstn;
 
+    // Logic analyzer signals
+    wire [127:0] la_data_in_user;  // From CPU to MPRJ
+    wire [127:0] la_data_in_mprj;  // From MPRJ to CPU
+    wire [127:0] la_data_out_mprj; // From CPU to MPRJ
+    wire [127:0] la_data_out_user; // From MPRJ to CPU
+    wire [127:0] la_oenb_user;     // From CPU to MPRJ
+    wire [127:0] la_oenb_mprj;     // From CPU to MPRJ
+    wire [127:0] la_iena_mprj;     // From CPU only
+
     wire [2:0]   user_irq;	  // From MRPJ to CPU
     wire [2:0]   user_irq_core;
     wire [2:0]   user_irq_ena;
@@ -399,15 +408,23 @@ module caravel (
 	.debug_mode(debug_mode),
 
 	// Module I/O (these may or may not be implemented)
+	// UART
 	.ser_tx(ser_tx),
 	.ser_rx(ser_rx),
+	// SPI master
 	.spi_sdi(spi_sdi),
 	.spi_csb(spi_csb),
 	.spi_sck(spi_sck),
 	.spi_sdo(spi_sdo),
+	// Debug
 	.debug_in(debug_in),
 	.debug_out(debug_out),
 	.debug_oeb(debug_oeb),
+	// Logic analyzer
+	.la_input(la_data_in_mprj),
+	.la_output(la_data_out_mprj),
+	.la_oenb(la_oenb_mprj),
+	.la_iena(la_iena_mprj),
 
 	// Trap status
 	.trap(trap)
@@ -442,6 +459,11 @@ module caravel (
 	.mprj_dat_o_core(mprj_dat_o_core),
 	.user_irq_core(user_irq_core),
 	.user_irq_ena(user_irq_ena),
+	.la_data_out_core(la_data_out_user),
+	.la_data_out_mprj(la_data_out_mprj),
+	.la_data_in_core(la_data_in_mprj),
+	.la_oenb_mprj(la_oenb_mprj),
+	.la_iena_mprj(la_iena_mprj),
 
 	.user_clock(mprj_clock),
 	.user_clock2(mprj_clock2),
@@ -493,6 +515,11 @@ module caravel (
     	.io_out(user_io_out),
     	.io_oeb(user_io_oeb),
 	.analog_io(user_analog_io),
+
+	// Logic analyzer
+	.la_data_in(la_data_in_user),
+	.la_data_out(la_data_out_user),
+	.la_oenb(la_oenb_user),
 
 	// Independent clock
 	.user_clock2(mprj_clock2),
