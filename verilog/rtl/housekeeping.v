@@ -56,8 +56,8 @@
 
 module housekeeping #(
     parameter GPIO_BASE_ADR = 32'h2600_0000,
-    parameter SPI_BASE_ADR = 32'h2e00_0000,
-    parameter SYS_BASE_ADR = 32'h2f00_0000,
+    parameter SPI_BASE_ADR = 32'h2610_0000,
+    parameter SYS_BASE_ADR = 32'h2620_0000,
     parameter IO_CTRL_BITS = 13
 ) (
 `ifdef USE_POWER_PINS
