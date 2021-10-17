@@ -697,6 +697,11 @@ module housekeeping #(
     	.pass_thru_user_reset(pass_thru_user_reset)
     );
 
+    // SPI is considered active when the GPIO for CSB is set to input and
+    // CSB is low.
+    wire spi_is_enabled = ~gpio_configure[3][INP_DIS];
+    wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
+
     // GPIO data handling to and from the management SoC
 
     assign mgmt_gpio_out_pre[37] = (qspi_enabled) ? spimemio_flash_io3_do :
@@ -789,7 +794,7 @@ module housekeeping #(
     assign serial_data_2 = serial_data_staging_2[IO_CTRL_BITS-1];
 
     always @(posedge wb_clk_i or negedge porb) begin
-	if (!porb == 1'b0) begin
+	if (porb == 1'b0) begin
 	    xfer_state <= `GPIO_IDLE;
 	    xfer_count <= 4'd0;
             /* NOTE:  This assumes that MPRJ_IO_PADS_1 and MPRJ_IO_PADS_2 are
@@ -882,12 +887,15 @@ module housekeeping #(
     assign prod_id = 8'h11;		// Hard-coded
     assign mask_rev = mask_rev_in;	// Copy in to out.
 
-    // SPI Data transfer protocol
+    // SPI Data transfer protocol.  The wishbone back door may only be
+    // used if the front door is closed (CSB is high or the CSB pin is
+    // not an input).  To do:  Provide an independent way to disable
+    // the SPI.
 
-    assign caddr = iaddr | wbbd_addr;
-    assign csclk = mgmt_gpio_in[4]   | wbbd_sck;
-    assign cdata = idata | wbbd_data;
-    assign cwstb = wrstb | wbbd_write;
+    assign caddr = (spi_is_active) ? iaddr : wbbd_addr;
+    assign csclk = (spi_is_active) ? mgmt_gpio_in[4] : wbbd_sck;
+    assign cdata = (spi_is_active) ? idata : wbbd_data;
+    assign cwstb = (spi_is_active) ? wrstb : wbbd_write;
     assign odata = fdata(caddr);
 
     // Register mapping and I/O to SPI interface module

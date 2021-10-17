@@ -583,7 +583,7 @@ module caravel (
         .ext_reset(ext_reset),  // From housekeeping SPI
         .core_clk(caravel_clk),
         .user_clk(caravel_clk2),
-        .resetb_sync(core_rstn)
+        .resetb_sync(caravel_rstn)
     );
 
     // DCO/Digital Locked Loop
@@ -622,7 +622,7 @@ module caravel (
         .wb_ack_o(hk_ack_i),
         .wb_dat_o(hk_dat_i),
 
-        .porb(porb),
+        .porb(porb_l),
 
         .pll_ena(spi_pll_ena),
         .pll_dco_ena(spi_pll_dco_ena),
@@ -652,10 +652,10 @@ module caravel (
         .irq(irq_spi),
         .reset(ext_reset),
 
-        .serial_clock(gpio_clock),
-        .serial_resetn(gpio_resetn),
-        .serial_data_1(gpio_data_1),
-        .serial_data_2(gpio_data_2),
+        .serial_clock(mprj_io_loader_clock),
+        .serial_resetn(mprj_io_loader_resetn),
+        .serial_data_1(mprj_io_loader_data_1),
+        .serial_data_2(mprj_io_loader_data_2),
 
 	.mgmt_gpio_in(mgmt_io_in),
 	.mgmt_gpio_out({mgmt_io_out[3:2], mgmt_io_in[`MPRJ_IO_PADS-3:2],
