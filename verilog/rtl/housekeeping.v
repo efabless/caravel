@@ -307,16 +307,16 @@ module housekeeping #(
     // made to read 4 bytes from the SPI to fill data on the wishbone bus
     // before sending ACK and letting the processor continue.
 
-    `define WBD_IDLE	4'h0	/* Back door access is idle */
-    `define WBD_SETUP0	4'h1	/* Apply address and data for byte 1 of 4 */
-    `define WBD_RW0	4'h2	/* Latch data for byte 1 of 4 */
-    `define WBD_SETUP1	4'h3	/* Apply address and data for byte 2 of 4 */
-    `define WBD_RW1	4'h4	/* Latch data for byte 2 of 4 */
-    `define WBD_SETUP2	4'h5	/* Apply address and data for byte 3 of 4 */
-    `define WBD_RW2	4'h6	/* Latch data for byte 3 of 4 */
-    `define WBD_SETUP3	4'h7	/* Apply address and data for byte 4 of 4 */
-    `define WBD_RW3	4'h8	/* Latch data for byte 4 of 4 */
-    `define WBD_DONE	4'h9	/* Send ACK back to wishbone */
+    `define WBBD_IDLE	4'h0	/* Back door access is idle */
+    `define WBBD_SETUP0	4'h1	/* Apply address and data for byte 1 of 4 */
+    `define WBBD_RW0	4'h2	/* Latch data for byte 1 of 4 */
+    `define WBBD_SETUP1	4'h3	/* Apply address and data for byte 2 of 4 */
+    `define WBBD_RW1	4'h4	/* Latch data for byte 2 of 4 */
+    `define WBBD_SETUP2	4'h5	/* Apply address and data for byte 3 of 4 */
+    `define WBBD_RW2	4'h6	/* Latch data for byte 3 of 4 */
+    `define WBBD_SETUP3	4'h7	/* Apply address and data for byte 4 of 4 */
+    `define WBBD_RW3	4'h8	/* Latch data for byte 4 of 4 */
+    `define WBBD_DONE	4'h9	/* Send ACK back to wishbone */
 
     assign sys_select = (wb_adr_i[31:8] == SYS_BASE_ADR[31:8]);
     assign gpio_select = (wb_adr_i[31:8] == GPIO_BASE_ADR[31:8]);
@@ -404,7 +404,7 @@ module housekeeping #(
 	    8'h41 : fdata = gpio_configure[26][7:0];
 	    8'h42 : fdata = {3'b000, gpio_configure[27][12:8]};
 	    8'h43 : fdata = gpio_configure[27][7:0];
-	    8'h44 : fdata = {3'b000, gpio_configure[27][12:8]};
+	    8'h44 : fdata = {3'b000, gpio_configure[28][12:8]};
 	    8'h45 : fdata = gpio_configure[28][7:0];
 	    8'h46 : fdata = {3'b000, gpio_configure[29][12:8]};
 	    8'h47 : fdata = gpio_configure[29][7:0];
@@ -436,8 +436,10 @@ module housekeeping #(
 	    8'h5d : fdata = {4'b0000, pwr_ctrl_out};
 
 	    // GPIO Control (bit bang and automatic)
+	    // NOTE: "serial_busy" is the read-back signal occupying the same
+	    // address/bit as "serial_xfer".
 	    8'h5e : fdata = {2'b00, serial_data_2, serial_data_1, serial_bb_clock,
-				serial_bb_resetn, serial_bb_enable, serial_xfer};
+				serial_bb_resetn, serial_bb_enable, serial_busy};
 
 	    /* Clocking control */
 	    8'h5f : fdata = {6'b000000, pll_dco_ena, pll_ena};
@@ -459,110 +461,118 @@ module housekeeping #(
     /* Memory map address to SPI address translation for back door access */
     /* (see doc/memory_map.txt)						  */
 
+    wire [3:0] gpio_adr = GPIO_BASE_ADR[23:20];
+    wire [3:0] sys_adr = SYS_BASE_ADR[23:20];
+    wire [3:0] spi_adr = SPI_BASE_ADR[23:20];
+
     function [7:0] spiaddr(input [31:0] wbaddress);
 	begin
-	case ({wbaddress[27], wbaddress[24], wbaddress[7:0]})
-	    10'h300 : spiaddr = 8'h09;
-	    10'h304 : spiaddr = 8'h0a;
-	    10'h304 : spiaddr = 8'h0b;
-	    10'h025 : spiaddr = 8'h0c;
-	    10'h024 : spiaddr = 8'h0d;
-	    10'h029 : spiaddr = 8'h0e;
-	    10'h028 : spiaddr = 8'h0f;
-	    10'h02d : spiaddr = 8'h10;
-	    10'h02c : spiaddr = 8'h11;
-	    10'h031 : spiaddr = 8'h12;
-	    10'h030 : spiaddr = 8'h13;
-	    10'h035 : spiaddr = 8'h14;
-	    10'h034 : spiaddr = 8'h15;
-	    10'h039 : spiaddr = 8'h16;
-	    10'h038 : spiaddr = 8'h17;
-	    10'h03d : spiaddr = 8'h18;
-	    10'h03c : spiaddr = 8'h19;
-	    10'h041 : spiaddr = 8'h1a;
-	    10'h040 : spiaddr = 8'h1b;
-	    10'h045 : spiaddr = 8'h1c;
-	    10'h044 : spiaddr = 8'h1d;
-	    10'h049 : spiaddr = 8'h1e;
-	    10'h048 : spiaddr = 8'h1f;
-	    10'h04d : spiaddr = 8'h20;
-	    10'h04c : spiaddr = 8'h21;
-	    10'h051 : spiaddr = 8'h22;
-	    10'h050 : spiaddr = 8'h23;
-	    10'h055 : spiaddr = 8'h24;
-	    10'h054 : spiaddr = 8'h25;
-	    10'h059 : spiaddr = 8'h26;
-	    10'h058 : spiaddr = 8'h27;
-	    10'h05d : spiaddr = 8'h28;
-	    10'h05c : spiaddr = 8'h29;
-	    10'h061 : spiaddr = 8'h2a;
-	    10'h060 : spiaddr = 8'h2b;
-	    10'h065 : spiaddr = 8'h2c;
-	    10'h064 : spiaddr = 8'h2d;
-	    10'h069 : spiaddr = 8'h2e;
-	    10'h068 : spiaddr = 8'h2f;
-	    10'h06d : spiaddr = 8'h30;
-	    10'h06c : spiaddr = 8'h31;
-	    10'h071 : spiaddr = 8'h32;
-	    10'h070 : spiaddr = 8'h33;
-	    10'h075 : spiaddr = 8'h34;
-	    10'h074 : spiaddr = 8'h35;
-	    10'h079 : spiaddr = 8'h36;
-	    10'h078 : spiaddr = 8'h37;
-	    10'h07d : spiaddr = 8'h38;
-	    10'h07c : spiaddr = 8'h39;
-	    10'h081 : spiaddr = 8'h3a;
-	    10'h080 : spiaddr = 8'h3b;
-	    10'h085 : spiaddr = 8'h3c;
-	    10'h084 : spiaddr = 8'h3d;
-	    10'h089 : spiaddr = 8'h3e;
-	    10'h088 : spiaddr = 8'h3f;
-	    10'h08d : spiaddr = 8'h40;
-	    10'h08c : spiaddr = 8'h41;
-	    10'h091 : spiaddr = 8'h42;
-	    10'h090 : spiaddr = 8'h43;
-	    10'h095 : spiaddr = 8'h44;
-	    10'h094 : spiaddr = 8'h45;
-	    10'h099 : spiaddr = 8'h46;
-	    10'h098 : spiaddr = 8'h47;
-	    10'h09d : spiaddr = 8'h48;
-	    10'h09c : spiaddr = 8'h49;
-	    10'h0a1 : spiaddr = 8'h4a;
-	    10'h0a0 : spiaddr = 8'h4b;
-	    10'h0a5 : spiaddr = 8'h4c;
-	    10'h0a4 : spiaddr = 8'h4d;
-	    10'h0a9 : spiaddr = 8'h4e;
-	    10'h0a8 : spiaddr = 8'h4f;
-	    10'h0ad : spiaddr = 8'h50;
-	    10'h0ac : spiaddr = 8'h51;
-	    10'h0b1 : spiaddr = 8'h52;
-	    10'h0b0 : spiaddr = 8'h53;
-	    10'h0b5 : spiaddr = 8'h54;
-	    10'h0b4 : spiaddr = 8'h55;
-	    10'h0b9 : spiaddr = 8'h56;
-	    10'h0b8 : spiaddr = 8'h57;
-	    10'h010 : spiaddr = 8'h58;
-	    10'h00f : spiaddr = 8'h59;
-	    10'h00e : spiaddr = 8'h5a;
-	    10'h00d : spiaddr = 8'h5b;
-	    10'h00c : spiaddr = 8'h5c;
-	    10'h000 : spiaddr = 8'h5e;
-	    10'h004 : spiaddr = 8'h5d;
-	    10'h00c : spiaddr = 8'h5c;
-	    10'h00d : spiaddr = 8'h5b;
-	    10'h00e : spiaddr = 8'h5a;
-	    10'h00f : spiaddr = 8'h59;
-	    10'h010 : spiaddr = 8'h58;
-	    10'h20c : spiaddr = 8'h5f;
-	    10'h210 : spiaddr = 8'h60;
-	    10'h214 : spiaddr = 8'h61;
-	    10'h218 : spiaddr = 8'h62;
-	    10'h21f : spiaddr = 8'h63;
-	    10'h21e : spiaddr = 8'h64;
-	    10'h21d : spiaddr = 8'h65;
-	    10'h21c : spiaddr = 8'h66;
-	    10'h220 : spiaddr = 8'h67;
-	    10'h224 : spiaddr = 8'h68;
+	/* Address taken from lower 8 bits and upper 4 bits of the 32-bit */
+	/* wishbone address.						  */
+	case ({wbaddress[23:20], wbaddress[7:0]})
+	    sys_adr  | 12'h000 : spiaddr = 8'h09;
+	    sys_adr  | 12'h004 : spiaddr = 8'h0a;
+	    sys_adr  | 12'h004 : spiaddr = 8'h0b;
+
+	    gpio_adr | 12'h025 : spiaddr = 8'h0c;
+	    gpio_adr | 12'h024 : spiaddr = 8'h0d;
+	    gpio_adr | 12'h029 : spiaddr = 8'h0e;
+	    gpio_adr | 12'h028 : spiaddr = 8'h0f;
+	    gpio_adr | 12'h02d : spiaddr = 8'h10;
+	    gpio_adr | 12'h02c : spiaddr = 8'h11;
+	    gpio_adr | 12'h031 : spiaddr = 8'h12;
+	    gpio_adr | 12'h030 : spiaddr = 8'h13;
+	    gpio_adr | 12'h035 : spiaddr = 8'h14;
+	    gpio_adr | 12'h034 : spiaddr = 8'h15;
+	    gpio_adr | 12'h039 : spiaddr = 8'h16;
+	    gpio_adr | 12'h038 : spiaddr = 8'h17;
+	    gpio_adr | 12'h03d : spiaddr = 8'h18;
+	    gpio_adr | 12'h03c : spiaddr = 8'h19;
+	    gpio_adr | 12'h041 : spiaddr = 8'h1a;
+	    gpio_adr | 12'h040 : spiaddr = 8'h1b;
+	    gpio_adr | 12'h045 : spiaddr = 8'h1c;
+	    gpio_adr | 12'h044 : spiaddr = 8'h1d;
+	    gpio_adr | 12'h049 : spiaddr = 8'h1e;
+	    gpio_adr | 12'h048 : spiaddr = 8'h1f;
+	    gpio_adr | 12'h04d : spiaddr = 8'h20;
+	    gpio_adr | 12'h04c : spiaddr = 8'h21;
+	    gpio_adr | 12'h051 : spiaddr = 8'h22;
+	    gpio_adr | 12'h050 : spiaddr = 8'h23;
+	    gpio_adr | 12'h055 : spiaddr = 8'h24;
+	    gpio_adr | 12'h054 : spiaddr = 8'h25;
+	    gpio_adr | 12'h059 : spiaddr = 8'h26;
+	    gpio_adr | 12'h058 : spiaddr = 8'h27;
+	    gpio_adr | 12'h05d : spiaddr = 8'h28;
+	    gpio_adr | 12'h05c : spiaddr = 8'h29;
+	    gpio_adr | 12'h061 : spiaddr = 8'h2a;
+	    gpio_adr | 12'h060 : spiaddr = 8'h2b;
+	    gpio_adr | 12'h065 : spiaddr = 8'h2c;
+	    gpio_adr | 12'h064 : spiaddr = 8'h2d;
+	    gpio_adr | 12'h069 : spiaddr = 8'h2e;
+	    gpio_adr | 12'h068 : spiaddr = 8'h2f;
+	    gpio_adr | 12'h06d : spiaddr = 8'h30;
+	    gpio_adr | 12'h06c : spiaddr = 8'h31;
+	    gpio_adr | 12'h071 : spiaddr = 8'h32;
+	    gpio_adr | 12'h070 : spiaddr = 8'h33;
+	    gpio_adr | 12'h075 : spiaddr = 8'h34;
+	    gpio_adr | 12'h074 : spiaddr = 8'h35;
+	    gpio_adr | 12'h079 : spiaddr = 8'h36;
+	    gpio_adr | 12'h078 : spiaddr = 8'h37;
+	    gpio_adr | 12'h07d : spiaddr = 8'h38;
+	    gpio_adr | 12'h07c : spiaddr = 8'h39;
+	    gpio_adr | 12'h081 : spiaddr = 8'h3a;
+	    gpio_adr | 12'h080 : spiaddr = 8'h3b;
+	    gpio_adr | 12'h085 : spiaddr = 8'h3c;
+	    gpio_adr | 12'h084 : spiaddr = 8'h3d;
+	    gpio_adr | 12'h089 : spiaddr = 8'h3e;
+	    gpio_adr | 12'h088 : spiaddr = 8'h3f;
+	    gpio_adr | 12'h08d : spiaddr = 8'h40;
+	    gpio_adr | 12'h08c : spiaddr = 8'h41;
+	    gpio_adr | 12'h091 : spiaddr = 8'h42;
+	    gpio_adr | 12'h090 : spiaddr = 8'h43;
+	    gpio_adr | 12'h095 : spiaddr = 8'h44;
+	    gpio_adr | 12'h094 : spiaddr = 8'h45;
+	    gpio_adr | 12'h099 : spiaddr = 8'h46;
+	    gpio_adr | 12'h098 : spiaddr = 8'h47;
+	    gpio_adr | 12'h09d : spiaddr = 8'h48;
+	    gpio_adr | 12'h09c : spiaddr = 8'h49;
+	    gpio_adr | 12'h0a1 : spiaddr = 8'h4a;
+	    gpio_adr | 12'h0a0 : spiaddr = 8'h4b;
+	    gpio_adr | 12'h0a5 : spiaddr = 8'h4c;
+	    gpio_adr | 12'h0a4 : spiaddr = 8'h4d;
+	    gpio_adr | 12'h0a9 : spiaddr = 8'h4e;
+	    gpio_adr | 12'h0a8 : spiaddr = 8'h4f;
+	    gpio_adr | 12'h0ad : spiaddr = 8'h50;
+	    gpio_adr | 12'h0ac : spiaddr = 8'h51;
+	    gpio_adr | 12'h0b1 : spiaddr = 8'h52;
+	    gpio_adr | 12'h0b0 : spiaddr = 8'h53;
+	    gpio_adr | 12'h0b5 : spiaddr = 8'h54;
+	    gpio_adr | 12'h0b4 : spiaddr = 8'h55;
+	    gpio_adr | 12'h0b9 : spiaddr = 8'h56;
+	    gpio_adr | 12'h0b8 : spiaddr = 8'h57;
+	    gpio_adr | 12'h010 : spiaddr = 8'h58;
+	    gpio_adr | 12'h00f : spiaddr = 8'h59;
+	    gpio_adr | 12'h00e : spiaddr = 8'h5a;
+	    gpio_adr | 12'h00d : spiaddr = 8'h5b;
+	    gpio_adr | 12'h00c : spiaddr = 8'h5c;
+	    gpio_adr | 12'h000 : spiaddr = 8'h5e;
+	    gpio_adr | 12'h004 : spiaddr = 8'h5d;
+	    gpio_adr | 12'h00c : spiaddr = 8'h5c;
+	    gpio_adr | 12'h00d : spiaddr = 8'h5b;
+	    gpio_adr | 12'h00e : spiaddr = 8'h5a;
+	    gpio_adr | 12'h00f : spiaddr = 8'h59;
+	    gpio_adr | 12'h010 : spiaddr = 8'h58;
+
+	    spi_adr  | 12'h00c : spiaddr = 8'h5f;
+	    spi_adr  | 12'h010 : spiaddr = 8'h60;
+	    spi_adr  | 12'h014 : spiaddr = 8'h61;
+	    spi_adr  | 12'h018 : spiaddr = 8'h62;
+	    spi_adr  | 12'h01f : spiaddr = 8'h63;
+	    spi_adr  | 12'h01e : spiaddr = 8'h64;
+	    spi_adr  | 12'h01d : spiaddr = 8'h65;
+	    spi_adr  | 12'h01c : spiaddr = 8'h66;
+	    spi_adr  | 12'h020 : spiaddr = 8'h67;
+	    spi_adr  | 12'h024 : spiaddr = 8'h68;
 	    default : spiaddr = 8'h00;
 	endcase
 	end
@@ -577,99 +587,77 @@ module housekeeping #(
 	    wbbd_addr <= 8'd0;
 	    wbbd_data <= 8'd0;
 	    wb_ack_o <= 1'b0;
+	    wbbd_state <= `WBBD_IDLE;
 	end else begin
 	    case (wbbd_state)
-		`WBD_IDLE: begin
-	    	    if ((|wb_sel_i) && wb_cyc_i &&
-				(sys_select | gpio_select | spi_select)) begin
-			wb_ack_o <= 1'b1;
-			wbbd_state <= `WBD_SETUP0;
+		`WBBD_IDLE: begin
+	    	    if (wb_cyc_i && (sys_select | gpio_select | spi_select)) begin
+			wb_ack_o <= 1'b0;
+			wbbd_state <= `WBBD_SETUP0;
 		    end
 		end
-		`WBD_SETUP0: begin
+		`WBBD_SETUP0: begin
 		    wbbd_sck <= 1'b0;
-		    if (sys_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0]);
-		    end else if (gpio_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0]);
-		    end else if (spi_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0]);
-		    end
+		    wbbd_addr <= spiaddr(wb_adr_i);
 		    if (wb_sel_i[0] & wb_we_i) begin
 		    	wbbd_data <= wb_dat_i[7:0];
 		    end
 		    wbbd_write <= wb_sel_i[0] & wb_we_i;
-		    wbbd_state <= `WBD_RW0;
+		    wbbd_state <= `WBBD_RW0;
 		end
-		`WBD_RW0: begin
+		`WBBD_RW0: begin
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[7:0] <= odata;
-		    wbbd_state <= `WBD_SETUP1;
+		    wbbd_state <= `WBBD_SETUP1;
 		end
-		`WBD_SETUP1: begin
+		`WBBD_SETUP1: begin
 		    wbbd_sck <= 1'b0;
-		    if (sys_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 1);
-		    end else if (gpio_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 1);
-		    end else if (spi_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 1);
-		    end
+		    wbbd_addr <= spiaddr(wb_adr_i + 1);
 		    if (wb_sel_i[1] & wb_we_i) begin
 		    	wbbd_data <= wb_dat_i[15:8];
 		    end
 		    wbbd_write <= wb_sel_i[1] & wb_we_i;
-		    wbbd_state <= `WBD_RW1;
+		    wbbd_state <= `WBBD_RW1;
 		end
-		`WBD_RW1: begin
+		`WBBD_RW1: begin
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[15:8] <= odata;
-		    wbbd_state <= `WBD_SETUP2;
+		    wbbd_state <= `WBBD_SETUP2;
 		end
-		`WBD_SETUP2: begin
+		`WBBD_SETUP2: begin
 		    wbbd_sck <= 1'b0;
-		    if (sys_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 2);
-		    end else if (gpio_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 2);
-		    end else if (spi_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 2);
-		    end
+		    wbbd_addr <= spiaddr(wb_adr_i + 2);
 		    if (wb_sel_i[2] & wb_we_i) begin
 		    	wbbd_data <= wb_dat_i[23:16];
 		    end
 		    wbbd_write <= wb_sel_i[2] & wb_we_i;
-		    wbbd_state <= `WBD_RW2;
+		    wbbd_state <= `WBBD_RW2;
 		end
-		`WBD_RW2: begin
+		`WBBD_RW2: begin
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[23:16] <= odata;
-		    wbbd_state <= `WBD_SETUP3;
+		    wbbd_state <= `WBBD_SETUP3;
 		end
-		`WBD_SETUP3: begin
+		`WBBD_SETUP3: begin
 		    wbbd_sck <= 1'b0;
-		    if (sys_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 3);
-		    end else if (gpio_select) begin
-		    	wbbd_addr <= spiaddr(wb_adr_i[7:0] + 3);
-		    end else if (spi_select) begin
-		        wbbd_addr <= spiaddr(wb_adr_i[7:0] + 3);
-		    end
+		    wbbd_addr <= spiaddr(wb_adr_i + 3);
 		    if (wb_sel_i[3] & wb_we_i) begin
 		    	wbbd_data <= wb_dat_i[31:24];
 		    end
 		    wbbd_write <= wb_sel_i[3] & wb_we_i;
-		    wbbd_state <= `WBD_RW3;
+		    wbbd_state <= `WBBD_RW3;
 		end
-		`WBD_RW3: begin
+		`WBBD_RW3: begin
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[31:24] <= odata;
-		    wbbd_state <= `WBD_DONE;
+		    wb_ack_o <= 1'b1;	// Release hold on wishbone bus
+		    wbbd_state <= `WBBD_DONE;
 		end
-		`WBD_DONE: begin
+		`WBBD_DONE: begin
 		    wbbd_sck <= 1'b0;
-		    wb_ack_o <= 1'b0;	// Release hold on wishbone bus
-		    wbbd_state <= `WBD_IDLE;
+		    wb_ack_o <= 1'b0;	// Reset for next access
+		    wbbd_write <= 1'b0;
+		    wbbd_state <= `WBBD_IDLE;
 		end
 	    endcase
 	end
@@ -780,11 +768,12 @@ module housekeeping #(
 
     reg [3:0]	xfer_count;
     reg [4:0]	pad_count_1;
-    reg [4:0]	pad_count_2;
+    reg [5:0]	pad_count_2;
     reg [1:0]	xfer_state;
 
     reg serial_clock;
     reg serial_resetn;
+    reg serial_busy;
     wire serial_data_1;
     wire serial_data_2;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_1;
@@ -807,6 +796,7 @@ module housekeeping #(
 	    serial_clock <= 1'b0;
 	    serial_data_staging_1 <= 0;
 	    serial_data_staging_2 <= 0;
+	    serial_busy <= 1'b0;
 
 	end else begin
 
@@ -818,7 +808,10 @@ module housekeeping #(
                     serial_clock <= 1'b0;
                     if (serial_xfer == 1'b1) begin
                         xfer_state <= `GPIO_START;
-                    end
+	    	    	serial_busy <= 1'b1;
+                    end else begin
+	    	    	serial_busy <= 1'b0;
+		    end
 		end
 		`GPIO_START: begin
                     serial_resetn <= 1'b1;
@@ -860,14 +853,12 @@ module housekeeping #(
                      */
                     if (xfer_count == 4'd0) begin
                         serial_clock <= 1'b1;
-                        serial_resetn <= 1'b1;
+                        serial_resetn <= 1'b0;
                     end else if (xfer_count == 4'd1) begin
                         serial_clock <= 1'b1;
-                        serial_resetn <= 1'b0;
-                    end else if (xfer_count == 4'd2) begin
-                        serial_clock <= 1'b1;
                         serial_resetn <= 1'b1;
-                    end else if (xfer_count == 4'd3) begin
+                    end else if (xfer_count == 4'd2) begin
+	    	    	serial_busy <= 1'b0;
                         serial_resetn <= 1'b1;
                         serial_clock <= 1'b0;
                         xfer_state <= `GPIO_IDLE;
@@ -903,342 +894,357 @@ module housekeeping #(
     integer j;
 
     always @(posedge csclk or negedge porb) begin
-    if (porb == 1'b0) begin
-        // Set trim for PLL at (almost) slowest rate (~90MHz).  However,
-        // pll_trim[12] must be set to zero for proper startup.
-        pll_trim <= 26'b11111111111110111111111111;
-        pll_sel <= 3'b010;	// Default output divider divide-by-2
-        pll90_sel <= 3'b010;	// Default secondary output divider divide-by-2
-        pll_div <= 5'b00100;	// Default feedback divider divide-by-8
-        pll_dco_ena <= 1'b1;	// Default free-running PLL
-        pll_ena <= 1'b0;	// Default PLL turned off
-        pll_bypass <= 1'b1;	// Default bypass mode (don't use PLL)
-        irq_spi <= 1'b0;
-        reset_reg <= 1'b0;
+	if (porb == 1'b0) begin
+            // Set trim for PLL at (almost) slowest rate (~90MHz).  However,
+            // pll_trim[12] must be set to zero for proper startup.
+            pll_trim <= 26'b11111111111110111111111111;
+            pll_sel <= 3'b010;		// Default output divider divide-by-2
+            pll90_sel <= 3'b010;	// Default secondary output divider divide-by-2
+            pll_div <= 5'b00100;	// Default feedback divider divide-by-8
+            pll_dco_ena <= 1'b1;	// Default free-running PLL
+            pll_ena <= 1'b0;		// Default PLL turned off
+            pll_bypass <= 1'b1;		// Default bypass mode (don't use PLL)
+            irq_spi <= 1'b0;
+            reset_reg <= 1'b0;
 
-	// System monitoring signals
-	clk1_output_dest <= 1'b0;
-	clk2_output_dest <= 1'b0;
-	trap_output_dest <= 1'b0;
-	irq_1_inputsrc <= 1'b0;
-	irq_2_inputsrc <= 1'b0;
+	    // System monitoring signals
+	    clk1_output_dest <= 1'b0;
+	    clk2_output_dest <= 1'b0;
+	    trap_output_dest <= 1'b0;
+	    irq_1_inputsrc <= 1'b0;
+	    irq_2_inputsrc <= 1'b0;
 
-	// GPIO Configuration, Data, and Control
-	for (j = 0; j < `MPRJ_IO_PADS; j=j+1) begin
-	    gpio_configure[j] <= 13'd0;
-	end
-	mgmt_gpio_data <= 'd0;
-	serial_bb_enable <= 1'b0;
-	serial_bb_data_1 <= 1'b0;
-	serial_bb_data_2 <= 1'b0;
-	serial_bb_clock <= 1'b0;
-	serial_bb_resetn <= 1'b0;
-	serial_xfer <= 1'b0;
+	    // GPIO Configuration, Data, and Control
+	    // To-do:  Get user project pad defaults from external inputs
+	    // to be configured by user or at project generation time.
+	    // Pads 1 to 4 are the SPI and considered critical startup
+	    // infrastructure, and should not be altered from the defaults
+	    // below.  NOTE:  These are not startup values, but they should
+	    // match the startup values applied to the GPIO, or else the
+	    // GPIO should be always triggered to load at startup.
 
-    end else if (cwstb == 1'b1) begin
-        case (caddr)
-	    /* Register 8'h00 is reserved for future use */
-	    /* Registers 8'h01 to 8'h09 are read-only and cannot be written */
-            8'h0a: begin
-		clk1_output_dest <= cdata[2];
-		clk2_output_dest <= cdata[1];
-		trap_output_dest <= cdata[0];
-	    end
-            8'h0b: begin
-		irq_2_inputsrc <= cdata[1];
-		irq_1_inputsrc <= cdata[0];
-	    end
-            8'h0c: begin
-		gpio_configure[0][12:8] <= cdata[4:0];
-	    end
-            8'h0d: begin
-		gpio_configure[0][7:0] <= cdata;
-	    end
-            8'h0e: begin
-		gpio_configure[1][12:8] <= cdata[4:0];
-	    end
-            8'h0f: begin
-		gpio_configure[1][7:0] <= cdata;
-	    end
-            8'h10: begin
-		gpio_configure[2][12:8] <= cdata[4:0];
-	    end
-            8'h11: begin
-		gpio_configure[2][7:0] <= cdata;
-	    end
-            8'h12: begin
-		gpio_configure[3][12:8] <= cdata[4:0];
-	    end
-            8'h13: begin
-		gpio_configure[3][7:0] <= cdata;
-	    end
-            8'h14: begin
-		gpio_configure[4][12:8] <= cdata[4:0];
-	    end
-            8'h15: begin
-		gpio_configure[4][7:0] <= cdata;
-	    end
-            8'h16: begin
-		gpio_configure[5][12:8] <= cdata[4:0];
-	    end
-            8'h17: begin
-		gpio_configure[5][7:0] <= cdata;
-	    end
-            8'h18: begin
-		gpio_configure[6][12:8] <= cdata[4:0];
-	    end
-            8'h19: begin
-		gpio_configure[6][7:0] <= cdata;
-	    end
-            8'h1a: begin
-		gpio_configure[7][12:8] <= cdata[4:0];
-	    end
-            8'h1b: begin
-		gpio_configure[7][7:0] <= cdata;
-	    end
-            8'h1c: begin
-		gpio_configure[8][12:8] <= cdata[4:0];
-	    end
-            8'h1d: begin
-		gpio_configure[8][7:0] <= cdata;
-	    end
-            8'h1e: begin
-		gpio_configure[9][12:8] <= cdata[4:0];
-	    end
-            8'h1f: begin
-		gpio_configure[9][7:0] <= cdata;
-	    end
-            8'h20: begin
-		gpio_configure[10][12:8] <= cdata[4:0];
-	    end
-            8'h21: begin
-		gpio_configure[10][7:0] <= cdata;
-	    end
-            8'h22: begin
-		gpio_configure[11][12:8] <= cdata[4:0];
-	    end
-            8'h23: begin
-		gpio_configure[11][7:0] <= cdata;
-	    end
-            8'h24: begin
-		gpio_configure[12][12:8] <= cdata[4:0];
-	    end
-            8'h25: begin
-		gpio_configure[12][7:0] <= cdata;
-	    end
-            8'h26: begin
-		gpio_configure[13][12:8] <= cdata[4:0];
-	    end
-            8'h27: begin
-		gpio_configure[13][7:0] <= cdata;
-	    end
-            8'h28: begin
-		gpio_configure[14][12:8] <= cdata[4:0];
-	    end
-            8'h29: begin
-		gpio_configure[14][7:0] <= cdata;
-	    end
-            8'h2a: begin
-		gpio_configure[15][12:8] <= cdata[4:0];
-	    end
-            8'h2b: begin
-		gpio_configure[15][7:0] <= cdata;
-	    end
-            8'h2c: begin
-		gpio_configure[16][12:8] <= cdata[4:0];
-	    end
-            8'h2d: begin
-		gpio_configure[16][7:0] <= cdata;
-	    end
-            8'h2e: begin
-		gpio_configure[17][12:8] <= cdata[4:0];
-	    end
-            8'h2f: begin
-		gpio_configure[17][7:0] <= cdata;
-	    end
-            8'h30: begin
-		gpio_configure[18][12:8] <= cdata[4:0];
-	    end
-            8'h31: begin
-		gpio_configure[18][7:0] <= cdata;
-	    end
-            8'h32: begin
-		gpio_configure[19][12:8] <= cdata[4:0];
-	    end
-            8'h33: begin
-		gpio_configure[19][7:0] <= cdata;
-	    end
-            8'h34: begin
-		gpio_configure[20][12:8] <= cdata[4:0];
-	    end
-            8'h35: begin
-		gpio_configure[20][7:0] <= cdata;
-	    end
-            8'h36: begin
-		gpio_configure[21][12:8] <= cdata[4:0];
-	    end
-            8'h37: begin
-		gpio_configure[21][7:0] <= cdata;
-	    end
-            8'h38: begin
-		gpio_configure[22][12:8] <= cdata[4:0];
-	    end
-            8'h39: begin
-		gpio_configure[22][7:0] <= cdata;
-	    end
-            8'h3a: begin
-		gpio_configure[23][12:8] <= cdata[4:0];
-	    end
-            8'h3b: begin
-		gpio_configure[23][7:0] <= cdata;
-	    end
-            8'h3c: begin
-		gpio_configure[24][12:8] <= cdata[4:0];
-	    end
-            8'h3d: begin
-		gpio_configure[24][7:0] <= cdata;
-	    end
-            8'h3e: begin
-		gpio_configure[25][12:8] <= cdata[4:0];
-	    end
-            8'h3f: begin
-		gpio_configure[25][7:0] <= cdata;
-	    end
-            8'h40: begin
-		gpio_configure[26][12:8] <= cdata[4:0];
-	    end
-            8'h41: begin
-		gpio_configure[26][7:0] <= cdata;
-	    end
-            8'h42: begin
-		gpio_configure[27][12:8] <= cdata[4:0];
-	    end
-            8'h43: begin
-		gpio_configure[27][7:0] <= cdata;
-	    end
-            8'h44: begin
-		gpio_configure[28][12:8] <= cdata[4:0];
-	    end
-            8'h45: begin
-		gpio_configure[28][7:0] <= idata;
-	    end
-            8'h46: begin
-		gpio_configure[29][12:8] <= cdata[4:0];
-	    end
-            8'h47: begin
-		gpio_configure[29][7:0] <= cdata;
-	    end
-            8'h48: begin
-		gpio_configure[30][12:8] <= cdata[4:0];
-	    end
-            8'h49: begin
-		gpio_configure[30][7:0] <= cdata;
-	    end
-            8'h4a: begin
-		gpio_configure[31][12:8] <= cdata[4:0];
-	    end
-            8'h4b: begin
-		gpio_configure[31][7:0] <= cdata;
-	    end
-            8'h4c: begin
-		gpio_configure[32][12:8] <= cdata[4:0];
-	    end
-            8'h4d: begin
-		gpio_configure[32][7:0] <= cdata;
-	    end
-            8'h4e: begin
-		gpio_configure[33][12:8] <= cdata[4:0];
-	    end
-            8'h4f: begin
-		gpio_configure[33][7:0] <= cdata;
-	    end
-            8'h50: begin
-		gpio_configure[34][12:8] <= cdata[4:0];
-	    end
-            8'h51: begin
-		gpio_configure[34][7:0] <= cdata;
-	    end
-            8'h52: begin
-		gpio_configure[35][12:8] <= cdata[4:0];
-	    end
-            8'h53: begin
-		gpio_configure[35][7:0] <= cdata;
-	    end
-            8'h54: begin
-		gpio_configure[36][12:8] <= cdata[4:0];
-	    end
-            8'h55: begin
-		gpio_configure[36][7:0] <= cdata;
-	    end
-            8'h56: begin
-		gpio_configure[37][12:8] <= cdata[4:0];
-	    end
-            8'h57: begin
-		gpio_configure[37][7:0] <= cdata;
-	    end
-	    8'h58: begin
-		mgmt_gpio_data[37:32] <= cdata[5:0];
-	    end
-	    8'h59: begin
-		mgmt_gpio_data[31:24] <= cdata;
-	    end
-	    8'h5a: begin
-		mgmt_gpio_data[23:16] <= cdata;
-	    end
-	    8'h5b: begin
-		mgmt_gpio_data[15:8] <= cdata;
-	    end
-	    8'h5c: begin
-		mgmt_gpio_data[7:0] <= cdata;
-	    end
-	    8'h5d: begin
-		pwr_ctrl_out <= cdata[3:0];
-	    end
-	    8'h5e: begin
-		serial_bb_data_2 <= cdata[5];
-		serial_bb_data_1 <= cdata[4];
-		serial_bb_clock <= cdata[3];
-		serial_bb_resetn <= cdata[2];
-		serial_bb_enable <= cdata[1];
-		serial_xfer <= cdata[0];
-	    end
-            8'h5f: begin
-                pll_ena <= cdata[0];
-                pll_dco_ena <= cdata[1];
-            end
-            8'h60: begin
-                pll_bypass <= cdata[0];
-            end
-            8'h61: begin
-                irq_spi <= cdata[0];
-            end
-            8'h62: begin
-                reset_reg <= cdata[0];
-            end
-            8'h63: begin
-                pll_trim[25:24] <= cdata[1:0];
-            end
-            8'h64: begin
-                pll_trim[23:16] <= cdata;
-            end
-            8'h65: begin
-                pll_trim[15:8] <= cdata;
-            end
-            8'h66: begin
-                pll_trim[7:0] <= cdata;
-            end
-            8'h67: begin
-                pll90_sel <= cdata[5:3];
-                pll_sel <= cdata[2:0];
-            end
-            8'h68: begin
-                pll_div <= cdata[4:0];
-            end
-        endcase	// (caddr)
-    end else begin
-	serial_xfer <= 1'b0;	// Serial transfer is self-resetting
-	irq_spi <= 1'b0;	// IRQ is self-resetting
-    end
+	    for (j = 0; j < `MPRJ_IO_PADS; j=j+1) begin
+		if ((j < 2) || (j >= `MPRJ_IO_PADS - 2)) begin
+		    gpio_configure[j] <= 'h1803;
+                end else begin
+	            gpio_configure[j] <= 'h0403;
+		end
+	    end
+
+	    mgmt_gpio_data <= 'd0;
+	    serial_bb_enable <= 1'b0;
+	    serial_bb_data_1 <= 1'b0;
+	    serial_bb_data_2 <= 1'b0;
+	    serial_bb_clock <= 1'b0;
+	    serial_bb_resetn <= 1'b0;
+	    serial_xfer <= 1'b0;
+
+        end else begin
+	    if (cwstb == 1'b1) begin
+                case (caddr)
+	    	    /* Register 8'h00 is reserved for future use */
+	    	    /* Registers 8'h01 to 8'h09 are read-only and cannot be written */
+            	    8'h0a: begin
+			clk1_output_dest <= cdata[2];
+			clk2_output_dest <= cdata[1];
+			trap_output_dest <= cdata[0];
+	    	    end
+            	    8'h0b: begin
+			irq_2_inputsrc <= cdata[1];
+			irq_1_inputsrc <= cdata[0];
+	    	    end
+            	    8'h0c: begin
+			gpio_configure[0][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h0d: begin
+			gpio_configure[0][7:0] <= cdata;
+	    	    end
+            	    8'h0e: begin
+			gpio_configure[1][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h0f: begin
+			gpio_configure[1][7:0] <= cdata;
+	    	    end
+            	    8'h10: begin
+			gpio_configure[2][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h11: begin
+			gpio_configure[2][7:0] <= cdata;
+	    	    end
+            	    8'h12: begin
+			gpio_configure[3][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h13: begin
+			gpio_configure[3][7:0] <= cdata;
+	    	    end
+            	    8'h14: begin
+			gpio_configure[4][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h15: begin
+			gpio_configure[4][7:0] <= cdata;
+	    	    end
+            	    8'h16: begin
+			gpio_configure[5][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h17: begin
+			gpio_configure[5][7:0] <= cdata;
+	    	    end
+            	    8'h18: begin
+			gpio_configure[6][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h19: begin
+			gpio_configure[6][7:0] <= cdata;
+	    	    end
+            	    8'h1a: begin
+			gpio_configure[7][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h1b: begin
+			gpio_configure[7][7:0] <= cdata;
+	    	    end
+            	    8'h1c: begin
+			gpio_configure[8][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h1d: begin
+			gpio_configure[8][7:0] <= cdata;
+	    	    end
+            	    8'h1e: begin
+			gpio_configure[9][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h1f: begin
+			gpio_configure[9][7:0] <= cdata;
+	    	    end
+            	    8'h20: begin
+			gpio_configure[10][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h21: begin
+			gpio_configure[10][7:0] <= cdata;
+	    	    end
+            	    8'h22: begin
+			gpio_configure[11][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h23: begin
+			gpio_configure[11][7:0] <= cdata;
+	    	    end
+            	    8'h24: begin
+			gpio_configure[12][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h25: begin
+			gpio_configure[12][7:0] <= cdata;
+	    	    end
+            	    8'h26: begin
+			gpio_configure[13][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h27: begin
+			gpio_configure[13][7:0] <= cdata;
+	    	    end
+            	    8'h28: begin
+			gpio_configure[14][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h29: begin
+			gpio_configure[14][7:0] <= cdata;
+	    	    end
+            	    8'h2a: begin
+			gpio_configure[15][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h2b: begin
+			gpio_configure[15][7:0] <= cdata;
+	    	    end
+            	    8'h2c: begin
+			gpio_configure[16][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h2d: begin
+			gpio_configure[16][7:0] <= cdata;
+	    	    end
+            	    8'h2e: begin
+			gpio_configure[17][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h2f: begin
+			gpio_configure[17][7:0] <= cdata;
+	    	    end
+            	    8'h30: begin
+			gpio_configure[18][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h31: begin
+			gpio_configure[18][7:0] <= cdata;
+	    	    end
+            	    8'h32: begin
+			gpio_configure[19][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h33: begin
+			gpio_configure[19][7:0] <= cdata;
+	    	    end
+            	    8'h34: begin
+			gpio_configure[20][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h35: begin
+			gpio_configure[20][7:0] <= cdata;
+	    	    end
+            	    8'h36: begin
+			gpio_configure[21][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h37: begin
+			gpio_configure[21][7:0] <= cdata;
+	    	    end
+            	    8'h38: begin
+			gpio_configure[22][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h39: begin
+			gpio_configure[22][7:0] <= cdata;
+	    	    end
+            	    8'h3a: begin
+			gpio_configure[23][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h3b: begin
+			gpio_configure[23][7:0] <= cdata;
+	    	    end
+            	    8'h3c: begin
+			gpio_configure[24][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h3d: begin
+			gpio_configure[24][7:0] <= cdata;
+	    	    end
+            	    8'h3e: begin
+			gpio_configure[25][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h3f: begin
+			gpio_configure[25][7:0] <= cdata;
+	    	    end
+            	    8'h40: begin
+			gpio_configure[26][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h41: begin
+			gpio_configure[26][7:0] <= cdata;
+	    	    end
+            	    8'h42: begin
+			gpio_configure[27][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h43: begin
+			gpio_configure[27][7:0] <= cdata;
+	    	    end
+            	    8'h44: begin
+			gpio_configure[28][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h45: begin
+			gpio_configure[28][7:0] <= cdata;
+	    	    end
+            	    8'h46: begin
+			gpio_configure[29][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h47: begin
+			gpio_configure[29][7:0] <= cdata;
+	    	    end
+            	    8'h48: begin
+			gpio_configure[30][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h49: begin
+			gpio_configure[30][7:0] <= cdata;
+	    	    end
+            	    8'h4a: begin
+			gpio_configure[31][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h4b: begin
+			gpio_configure[31][7:0] <= cdata;
+	    	    end
+            	    8'h4c: begin
+			gpio_configure[32][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h4d: begin
+			gpio_configure[32][7:0] <= cdata;
+	    	    end
+            	    8'h4e: begin
+			gpio_configure[33][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h4f: begin
+			gpio_configure[33][7:0] <= cdata;
+	    	    end
+            	    8'h50: begin
+			gpio_configure[34][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h51: begin
+			gpio_configure[34][7:0] <= cdata;
+	    	    end
+            	    8'h52: begin
+			gpio_configure[35][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h53: begin
+			gpio_configure[35][7:0] <= cdata;
+	    	    end
+            	    8'h54: begin
+			gpio_configure[36][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h55: begin
+			gpio_configure[36][7:0] <= cdata;
+	    	    end
+            	    8'h56: begin
+			gpio_configure[37][12:8] <= cdata[4:0];
+	    	    end
+            	    8'h57: begin
+			gpio_configure[37][7:0] <= cdata;
+	    	    end
+	    	    8'h58: begin
+			mgmt_gpio_data[37:32] <= cdata[5:0];
+	    	    end
+	    	    8'h59: begin
+			mgmt_gpio_data[31:24] <= cdata;
+	    	    end
+	    	    8'h5a: begin
+			mgmt_gpio_data[23:16] <= cdata;
+	    	    end
+	    	    8'h5b: begin
+			mgmt_gpio_data[15:8] <= cdata;
+	    	    end
+	    	    8'h5c: begin
+			mgmt_gpio_data[7:0] <= cdata;
+	    	    end
+	    	    8'h5d: begin
+			pwr_ctrl_out <= cdata[3:0];
+	    	    end
+	    	    8'h5e: begin
+			serial_bb_data_2 <= cdata[5];
+			serial_bb_data_1 <= cdata[4];
+			serial_bb_clock <= cdata[3];
+			serial_bb_resetn <= cdata[2];
+			serial_bb_enable <= cdata[1];
+			serial_xfer <= cdata[0];
+	    	    end
+            	    8'h5f: begin
+                	pll_ena <= cdata[0];
+                	pll_dco_ena <= cdata[1];
+            	    end
+            	    8'h60: begin
+                	pll_bypass <= cdata[0];
+            	    end
+            	    8'h61: begin
+                	irq_spi <= cdata[0];
+            	    end
+            	    8'h62: begin
+                	reset_reg <= cdata[0];
+            	    end
+            	    8'h63: begin
+                	pll_trim[25:24] <= cdata[1:0];
+            	    end
+            	    8'h64: begin
+                	pll_trim[23:16] <= cdata;
+            	    end
+            	    8'h65: begin
+                	pll_trim[15:8] <= cdata;
+            	    end
+            	    8'h66: begin
+                	pll_trim[7:0] <= cdata;
+            	    end
+            	    8'h67: begin
+                	pll90_sel <= cdata[5:3];
+                	pll_sel <= cdata[2:0];
+            	    end
+            	    8'h68: begin
+                	pll_div <= cdata[4:0];
+            	    end
+        	endcase	// (caddr)
+    	    end else begin
+	    	serial_xfer <= 1'b0;	// Serial transfer is self-resetting
+		irq_spi <= 1'b0;	// IRQ is self-resetting
+    	    end
+    	end
     end
 endmodule	// housekeeping
 
