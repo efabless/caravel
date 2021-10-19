@@ -193,6 +193,7 @@ module housekeeping #(
     reg serial_bb_data_2;
     reg serial_bb_enable;
     reg serial_xfer;
+    reg hkspi_disable;
 
     reg clk1_output_dest;
     reg clk2_output_dest;
@@ -203,6 +204,11 @@ module housekeeping #(
     reg [IO_CTRL_BITS-1:0] gpio_configure [`MPRJ_IO_PADS-1:0];
     reg [`MPRJ_IO_PADS-1:0] mgmt_gpio_data;
     reg [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out;
+
+    /* mgmt_gpio_data_buf holds the lower bits during a back-door
+     * write to GPIO data so that all 32 bits can update at once.
+     */
+    reg [23:0] mgmt_gpio_data_buf;
 
     wire usr1_vcc_pwrgood;
     wire usr2_vcc_pwrgood;
@@ -455,6 +461,9 @@ module housekeeping #(
 	    // Power Control (reserved)
 	    8'h6e : fdata = {4'b0000, pwr_ctrl_out};
 
+	    // Housekeeping SPI system disable
+	    8'h6f : fdata = {7'b0000000, hkspi_disable};
+
 	    default: fdata = 8'h00;
 	endcase
 	end
@@ -472,16 +481,24 @@ module housekeeping #(
 	/* Address taken from lower 8 bits and upper 4 bits of the 32-bit */
 	/* wishbone address.						  */
 	case ({wbaddress[23:20], wbaddress[7:0]})
+	    spi_adr  | 12'h000 : spiaddr = 8'h00;	// SPI status (reserved)
+	    spi_adr  | 12'h004 : spiaddr = 8'h03;	// product ID
+	    spi_adr  | 12'h005 : spiaddr = 8'h02;	// Manufacturer ID (low)
+	    spi_adr  | 12'h006 : spiaddr = 8'h01;	// Manufacturer ID (high)
+	    spi_adr  | 12'h008 : spiaddr = 8'h07;	// User project ID (low)
+	    spi_adr  | 12'h009 : spiaddr = 8'h06;	// User project ID .
+	    spi_adr  | 12'h00a : spiaddr = 8'h05;	// User project ID .
+	    spi_adr  | 12'h00b : spiaddr = 8'h04;	// User project ID (high)
 
 	    spi_adr  | 12'h00c : spiaddr = 8'h08;	// PLL enables
 	    spi_adr  | 12'h010 : spiaddr = 8'h09;	// PLL bypass
 	    spi_adr  | 12'h014 : spiaddr = 8'h0a;	// IRQ
 	    spi_adr  | 12'h018 : spiaddr = 8'h0b;	// Reset
 	    spi_adr  | 12'h028 : spiaddr = 8'h0c;	// CPU trap state
-	    spi_adr  | 12'h01f : spiaddr = 8'h0d;	// PLL trim
-	    spi_adr  | 12'h01e : spiaddr = 8'h0e;	// PLL trim
-	    spi_adr  | 12'h01d : spiaddr = 8'h0f;	// PLL trim
-	    spi_adr  | 12'h01c : spiaddr = 8'h10;	// PLL trim
+	    spi_adr  | 12'h01f : spiaddr = 8'h10;	// PLL trim
+	    spi_adr  | 12'h01e : spiaddr = 8'h0f;	// PLL trim
+	    spi_adr  | 12'h01d : spiaddr = 8'h0e;	// PLL trim
+	    spi_adr  | 12'h01c : spiaddr = 8'h0d;	// PLL trim
 	    spi_adr  | 12'h020 : spiaddr = 8'h11;	// PLL source
 	    spi_adr  | 12'h024 : spiaddr = 8'h12;	// PLL divider
 
@@ -579,6 +596,8 @@ module housekeeping #(
 
 	    gpio_adr | 12'h004 : spiaddr = 8'h6e;	// Power control
 
+	    sys_adr  | 12'h010 : spiaddr = 8'h6f;	// Housekeeping SPI disable
+
 	    default : spiaddr = 8'h00;
 	endcase
 	end
@@ -675,7 +694,7 @@ module housekeeping #(
 	.reset(~porb),
     	.SCK(mgmt_gpio_in[4]),
     	.SDI(mgmt_gpio_in[2]),
-    	.CSB(mgmt_gpio_in[3]),
+    	.CSB((hkspi_disable) ? 1'b1 : mgmt_gpio_in[3]),
     	.SDO(sdo),
     	.sdoenb(sdo_enb),
     	.idata(odata),
@@ -693,7 +712,7 @@ module housekeeping #(
 
     // SPI is considered active when the GPIO for CSB is set to input and
     // CSB is low.
-    wire spi_is_enabled = ~gpio_configure[3][INP_DIS];
+    wire spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
     wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
 
     // GPIO data handling to and from the management SoC
@@ -730,10 +749,11 @@ module housekeeping #(
     // management SoC) to the dedicated SDO pin (GPIO[1])
 
     assign mgmt_gpio_out_pre[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
-		 (pass_thru_user) ? mgmt_gpio_in[11] : sdo;
+		 (pass_thru_user) ? mgmt_gpio_in[11] :
+		 (spi_enabled) ? sdo : mgmt_gpio_data[1];
     assign mgmt_gpio_out_pre[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
 
-    assign mgmt_gpio_oeb[1] = (spi_enabled) ? 1'b1 : sdo_enb;
+    assign mgmt_gpio_oeb[1] = (spi_enabled) ? sdo_enb : ~gpio_configure[0][INP_DIS];
     assign mgmt_gpio_oeb[0] = (debug_mode) ? debug_oeb : ~gpio_configure[0][INP_DIS];
 
     assign ser_rx = (uart_enabled) ? mgmt_gpio_in[5] : 1'b0;
@@ -938,12 +958,14 @@ module housekeeping #(
 	    end
 
 	    mgmt_gpio_data <= 'd0;
+	    mgmt_gpio_data_buf <= 'd0;
 	    serial_bb_enable <= 1'b0;
 	    serial_bb_data_1 <= 1'b0;
 	    serial_bb_data_2 <= 1'b0;
 	    serial_bb_clock <= 1'b0;
 	    serial_bb_resetn <= 1'b0;
 	    serial_xfer <= 1'b0;
+	    hkspi_disable <= 1'b0;
 
         end else begin
 	    if (cwstb == 1'b1) begin
@@ -1239,19 +1261,42 @@ module housekeeping #(
 			mgmt_gpio_data[37:32] <= cdata[5:0];
 	    	    end
 	    	    8'h6a: begin
-			mgmt_gpio_data[31:24] <= cdata;
+			/* NOTE: mgmt_gpio_data updates only on the	*/
+			/* upper byte write when writing through the	*/
+			/* wishbone back-door.  This lets all bits	*/
+			/* update at the same time.			*/
+			if (spi_is_active) begin
+			    mgmt_gpio_data[31:24] <= cdata;
+			end else begin
+			    mgmt_gpio_data[31:0] <= {cdata, mgmt_gpio_data_buf};
+			end
 	    	    end
 	    	    8'h6b: begin
-			mgmt_gpio_data[23:16] <= cdata;
+			if (spi_is_active) begin
+			    mgmt_gpio_data[23:16] <= cdata;
+			end else begin
+			    mgmt_gpio_data_buf[23:16] <= cdata;
+			end
 	    	    end
 	    	    8'h6c: begin
-			mgmt_gpio_data[15:8] <= cdata;
+			if (spi_is_active) begin
+			    mgmt_gpio_data[15:8] <= cdata;
+			end else begin
+			    mgmt_gpio_data_buf[15:8] <= cdata;
+			end
 	    	    end
 	    	    8'h6d: begin
-			mgmt_gpio_data[7:0] <= cdata;
+			if (spi_is_active) begin
+			    mgmt_gpio_data[7:0] <= cdata;
+			end else begin
+			    mgmt_gpio_data_buf[7:0] <= cdata;
+			end
 	    	    end
 	    	    8'h6e: begin
 			pwr_ctrl_out <= cdata[3:0];
+	    	    end
+	    	    8'h6f: begin
+			hkspi_disable <= cdata[0];
 	    	    end
         	endcase	// (caddr)
     	    end else begin

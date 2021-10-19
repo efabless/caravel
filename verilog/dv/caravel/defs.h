@@ -116,6 +116,20 @@ extern uint32_t flashio_worker_end;
 #define reg_mprj_io_36 (*(volatile uint32_t*)0x260000b4)
 #define reg_mprj_io_37 (*(volatile uint32_t*)0x260000b8)
 
+// Housekeeping
+#define reg_hkspi_status      (*(volatile uint32_t*)0x26100000)
+#define reg_hkspi_chip_id     (*(volatile uint32_t*)0x26100004)
+#define reg_hkspi_user_id     (*(volatile uint32_t*)0x26100008)
+#define reg_hkspi_pll_ena     (*(volatile uint32_t*)0x2610000c)
+#define reg_hkspi_pll_bypass  (*(volatile uint32_t*)0x26100010)
+#define reg_hkspi_irq 	      (*(volatile uint32_t*)0x26100014)
+#define reg_hkspi_reset       (*(volatile uint32_t*)0x26100018)
+#define reg_hkspi_trap 	      (*(volatile uint32_t*)0x26100028)
+#define reg_hkspi_pll_trim    (*(volatile uint32_t*)0x2610001c)
+#define reg_hkspi_pll_source  (*(volatile uint32_t*)0x26100020)
+#define reg_hkspi_pll_divider (*(volatile uint32_t*)0x26100024)
+#define reg_hkspi_disable     (*(volatile uint32_t*)0x26200010)
+
 // User Project Slaves (0x3000_0000)
 #define reg_mprj_slave (*(volatile uint32_t*)0x30000000)
 
