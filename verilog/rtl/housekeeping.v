@@ -263,17 +263,17 @@ module housekeeping #(
     // Pass-through mode.  Housekeeping SPI signals get inserted
     // between the management SoC and the flash SPI I/O.
 
-    assign pad_flash_csb = (pass_thru_mgmt) ? mgmt_gpio_in[3] : spimemio_flash_csb;
-    assign pad_flash_csb_oeb = (pass_thru_mgmt) ? 1'b0 : (~porb ? 1'b1 : 1'b0);
+    assign pad_flash_csb = (pass_thru_mgmt_delay) ? mgmt_gpio_in[3] : spimemio_flash_csb;
+    assign pad_flash_csb_oeb = (pass_thru_mgmt_delay) ? 1'b0 : (~porb ? 1'b1 : 1'b0);
     assign pad_flash_clk = (pass_thru_mgmt) ? mgmt_gpio_in[4] : spimemio_flash_clk;
     assign pad_flash_clk_oeb = (pass_thru_mgmt) ? 1'b0 : (~porb ? 1'b1 : 1'b0);
-    assign pad_flash_io0_oeb = (pass_thru_mgmt) ? 1'b0 : spimemio_flash_io0_oeb;
+    assign pad_flash_io0_oeb = (pass_thru_mgmt_delay) ? 1'b0 : spimemio_flash_io0_oeb;
     assign pad_flash_io1_oeb = (pass_thru_mgmt) ? 1'b1 : spimemio_flash_io1_oeb;
-    assign pad_flash_io0_ieb = (pass_thru_mgmt) ? 1'b1 : ~spimemio_flash_io0_oeb;
-    assign pad_flash_io1_ieb = (pass_thru_mgmt) ? 1'b1 : ~spimemio_flash_io1_oeb;
-    assign pad_flash_io0_do = (pass_thru_mgmt) ? mgmt_gpio_in[2] : spimemio_flash_io0_do;
+    assign pad_flash_io0_ieb = (pass_thru_mgmt_delay) ? 1'b1 : ~spimemio_flash_io0_oeb;
+    assign pad_flash_io1_ieb = (pass_thru_mgmt) ? 1'b0 : ~spimemio_flash_io1_oeb;
+    assign pad_flash_io0_do = (pass_thru_mgmt_delay) ? mgmt_gpio_in[2] : spimemio_flash_io0_do;
     assign pad_flash_io1_do = spimemio_flash_io1_do;
-    assign spimemio_flash_io0_di = (pass_thru_mgmt) ? 1'b0 : pad_flash_io0_di;
+    assign spimemio_flash_io0_di = (pass_thru_mgmt_delay) ? 1'b0 : pad_flash_io0_di;
     assign spimemio_flash_io1_di = (pass_thru_mgmt) ? 1'b0 : pad_flash_io1_di;
 
     // Wishbone bus "back door" to SPI registers.  This section of code
@@ -715,7 +715,7 @@ module housekeeping #(
 			: mgmt_gpio_data[10];
     assign mgmt_gpio_out_pre[9] = (pass_thru_user) ? mgmt_gpio_in[4]
 			: mgmt_gpio_data[9];
-    assign mgmt_gpio_out_pre[8] = (pass_thru_user) ? mgmt_gpio_in[3]
+    assign mgmt_gpio_out_pre[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
 			: mgmt_gpio_data[8];
 
     assign mgmt_gpio_out_pre[7] = mgmt_gpio_data[7];
