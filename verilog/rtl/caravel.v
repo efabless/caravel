@@ -347,6 +347,12 @@ module caravel (
     wire	mprj_vdd_pwrgood;
     wire	mprj2_vdd_pwrgood;
 
+    // SRAM read-only access from houskeeping
+    wire 	hkspi_sram_clk;
+    wire 	hkspi_sram_csb;
+    wire [7:0]	hkspi_sram_addr;
+    wire [31:0]	hkspi_sram_rdata;
+
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
 
@@ -425,6 +431,12 @@ module caravel (
 	.la_output(la_data_out_mprj),
 	.la_oenb(la_oenb_mprj),
 	.la_iena(la_iena_mprj),
+
+	// SRAM Read-only access from housekeeping
+	.hkspi_sram_clk(hkspi_sram_clk),
+	.hkspi_sram_csb(hkspi_sram_csb),
+	.hkspi_sram_addr(hkspi_sram_addr),
+	.hkspi_sram_rdata(hkspi_sram_rdata),
 
 	// Trap status
 	.trap(trap)
@@ -698,6 +710,11 @@ module caravel (
 	.pad_flash_io1_do(flash_io1_do),
 	.pad_flash_io0_di(flash_io0_di),
 	.pad_flash_io1_di(flash_io1_di),
+
+	.hkspi_sram_clk(hkspi_sram_clk),
+	.hkspi_sram_csb(hkspi_sram_csb),
+	.hkspi_sram_addr(hkspi_sram_addr),
+	.hkspi_sram_rdata(hkspi_sram_rdata),
 
 	.usr1_vcc_pwrgood(mprj_vcc_pwrgood),
 	.usr2_vcc_pwrgood(mprj2_vcc_pwrgood),

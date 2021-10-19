@@ -24,12 +24,12 @@ SPI register   description     signal			     memory map address
  12	PLL divider	       pll_div[4:0]		     2610_0024
  13	GPIO control	       serial_resetn/clock/data	     2600_0000
 
- 14	SRAM read-only control TBD			     TBD
- 15	SRAM read-only address TBD			     TBD
- 16	SRAM read-only data    TBD			     TBD
- 17	SRAM read-only data    TBD			     TBD
- 18	SRAM read-only data    TBD			     TBD
- 19	SRAM read-only data    TBD			     TBD
+ 14	SRAM read-only control hkspi_sram_clk/csb	     2610_0034
+ 15	SRAM read-only address hkspi_sram_addr		     2610_0030
+ 16	SRAM read-only data    hkspi_sram_data[31:24]	     2610_002f
+ 17	SRAM read-only data    hkspi_sram_data[23:16]	     2610_002e	 
+ 18	SRAM read-only data    hkspi_sram_data[15:8]	     2610_002d 
+ 19	SRAM read-only data    hkspi_sram_data[7:0]	     2610_002c
 
  1a	Power monitor	       usr1/2_vcc/vdd_pwrgood	     2620_0000
  1b	Output redirect	       clk1/clk2/trap_output_dest    2620_0004

@@ -168,6 +168,11 @@ module housekeeping #(
     input pad_flash_io0_di,
     input pad_flash_io1_di,
 
+    output hkspi_sram_clk,
+    output hkspi_sram_csb,
+    output [7:0] hkspi_sram_addr,
+    input [31:0] hkspi_sram_rdata,
+
     // System signal monitoring
     input  usr1_vcc_pwrgood,
     input  usr2_vcc_pwrgood,
@@ -194,6 +199,10 @@ module housekeeping #(
     reg serial_bb_enable;
     reg serial_xfer;
     reg hkspi_disable;
+
+    reg hkspi_sram_clk;
+    reg hkspi_sram_csb;
+    reg [7:0] hkspi_sram_addr;
 
     reg clk1_output_dest;
     reg clk2_output_dest;
@@ -237,6 +246,8 @@ module housekeeping #(
     wire [7:0]	cdata;	// Combination of SPI data and back door data
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
+
+    wire [31:0] hkspi_sram_rdata;
 
     // Housekeeping side 3-wire interface to GPIOs (see below)
     wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out_pre;
@@ -365,6 +376,12 @@ module housekeeping #(
 				serial_bb_resetn, serial_bb_enable, serial_busy};
 
 	    /* To be added:  SRAM read-only port (registers 14 to 19) */
+	    8'h14 : fdata = {6'b000000, hkspi_sram_clk, hkspi_sram_csb};
+	    8'h15 : fdata = hkspi_sram_addr;
+	    8'h16 : fdata = hkspi_sram_rdata[31:24];
+	    8'h17 : fdata = hkspi_sram_rdata[23:16];
+	    8'h18 : fdata = hkspi_sram_rdata[15:8];
+	    8'h19 : fdata = hkspi_sram_rdata[7:0];
 
 	    /* System monitoring */
 	    8'h1a : fdata = {4'b0000, usr1_vcc_pwrgood, usr2_vcc_pwrgood,
@@ -501,6 +518,13 @@ module housekeeping #(
 	    spi_adr  | 12'h01c : spiaddr = 8'h0d;	// PLL trim
 	    spi_adr  | 12'h020 : spiaddr = 8'h11;	// PLL source
 	    spi_adr  | 12'h024 : spiaddr = 8'h12;	// PLL divider
+
+	    spi_adr  | 12'h02c : spiaddr = 8'h19;	// SRAM read-only data
+	    spi_adr  | 12'h02d : spiaddr = 8'h18;	// SRAM read-only data
+	    spi_adr  | 12'h02e : spiaddr = 8'h17;	// SRAM read-only data
+	    spi_adr  | 12'h02f : spiaddr = 8'h16;	// SRAM read-only data
+	    spi_adr  | 12'h030 : spiaddr = 8'h15;	// SRAM read-only address
+	    spi_adr  | 12'h034 : spiaddr = 8'h14;	// SRAM read-only control
 
 	    gpio_adr | 12'h000 : spiaddr = 8'h13;	// GPIO control
 
@@ -797,16 +821,25 @@ module housekeeping #(
     reg [5:0]	pad_count_2;
     reg [1:0]	xfer_state;
 
-    reg serial_clock;
-    reg serial_resetn;
+    reg serial_clock_pre;
+    reg serial_resetn_pre;
     reg serial_busy;
     wire serial_data_1;
     wire serial_data_2;
+    wire serial_clock;
+    wire serial_resetn;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_1;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_2;
 
-    assign serial_data_1 = serial_data_staging_1[IO_CTRL_BITS-1];
-    assign serial_data_2 = serial_data_staging_2[IO_CTRL_BITS-1];
+    assign serial_clock = (serial_bb_enable == 1'b1) ?
+			serial_bb_clock : serial_clock_pre;
+    assign serial_resetn = (serial_bb_enable == 1'b1) ?
+			serial_bb_resetn : serial_resetn_pre;
+
+    assign serial_data_1 = (serial_bb_enable == 1'b1) ?
+			serial_bb_data_1 : serial_data_staging_1[IO_CTRL_BITS-1];
+    assign serial_data_2 = (serial_bb_enable == 1'b1) ?
+			serial_bb_data_2 : serial_data_staging_2[IO_CTRL_BITS-1];
 
     always @(posedge wb_clk_i or negedge porb) begin
 	if (porb == 1'b0) begin
@@ -818,8 +851,8 @@ module housekeeping #(
              */
 	    pad_count_1 <= `MPRJ_IO_PADS_1 - 1;
 	    pad_count_2 <= `MPRJ_IO_PADS_1;
-	    serial_resetn <= 1'b0;
-	    serial_clock <= 1'b0;
+	    serial_resetn_pre <= 1'b0;
+	    serial_clock_pre <= 1'b0;
 	    serial_data_staging_1 <= 0;
 	    serial_data_staging_2 <= 0;
 	    serial_busy <= 1'b0;
@@ -830,8 +863,8 @@ module housekeeping #(
 		`GPIO_IDLE: begin
 		    pad_count_1 <= `MPRJ_IO_PADS_1 - 1;
                     pad_count_2 <= `MPRJ_IO_PADS_1;
-                    serial_resetn <= 1'b1;
-                    serial_clock <= 1'b0;
+                    serial_resetn_pre <= 1'b1;
+                    serial_clock_pre <= 1'b0;
                     if (serial_xfer == 1'b1) begin
                         xfer_state <= `GPIO_START;
 	    	    	serial_busy <= 1'b1;
@@ -840,8 +873,8 @@ module housekeeping #(
 		    end
 		end
 		`GPIO_START: begin
-                    serial_resetn <= 1'b1;
-                    serial_clock <= 1'b0;
+                    serial_resetn_pre <= 1'b1;
+                    serial_clock_pre <= 1'b0;
                     xfer_count <= 6'd0;
                     pad_count_1 <= pad_count_1 - 1;
                     pad_count_2 <= pad_count_2 + 1;
@@ -850,8 +883,8 @@ module housekeeping #(
                     serial_data_staging_2 <= gpio_configure[pad_count_2];
 		end
 		`GPIO_XBYTE: begin
-                    serial_resetn <= 1'b1;
-                    serial_clock <= ~serial_clock;
+                    serial_resetn_pre <= 1'b1;
+                    serial_clock_pre <= ~serial_clock;
                     if (serial_clock == 1'b0) begin
                         if (xfer_count == IO_CTRL_BITS - 1) begin
                             if (pad_count_2 == `MPRJ_IO_PADS) begin
@@ -878,15 +911,15 @@ module housekeeping #(
                      * Return to idle mode.
                      */
                     if (xfer_count == 4'd0) begin
-                        serial_clock <= 1'b1;
-                        serial_resetn <= 1'b0;
+                        serial_clock_pre <= 1'b1;
+                        serial_resetn_pre <= 1'b0;
                     end else if (xfer_count == 4'd1) begin
-                        serial_clock <= 1'b1;
-                        serial_resetn <= 1'b1;
+                        serial_clock_pre <= 1'b1;
+                        serial_resetn_pre <= 1'b1;
                     end else if (xfer_count == 4'd2) begin
 	    	    	serial_busy <= 1'b0;
-                        serial_resetn <= 1'b1;
-                        serial_clock <= 1'b0;
+                        serial_resetn_pre <= 1'b1;
+                        serial_clock_pre <= 1'b0;
                         xfer_state <= `GPIO_IDLE;
 		    end
                 end
@@ -967,6 +1000,10 @@ module housekeeping #(
 	    serial_xfer <= 1'b0;
 	    hkspi_disable <= 1'b0;
 
+	    hkspi_sram_clk <= 1'b0;
+	    hkspi_sram_csb <= 1'b1;
+	    hkspi_sram_addr <= 8'h00;
+
         end else begin
 	    if (cwstb == 1'b1) begin
                 case (caddr)
@@ -1017,6 +1054,15 @@ module housekeeping #(
 	    	    end
 
 		    /* To be done:  Add SRAM read-only interface */
+		    8'h14: begin
+			hkspi_sram_clk <= cdata[1];
+			hkspi_sram_csb <= cdata[0];
+		    end
+		    8'h15: begin
+	    		hkspi_sram_addr <= cdata;
+		    end
+		    
+		    /* Registers 16 to 19 (SRAM data) are read-only */
 
 		    /* Register 1a (power monitor) is read-only */
 
