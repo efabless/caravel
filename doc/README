@@ -1,11 +1,8 @@
 Definitions:
-	caravel_openframe: Version with one wrapper for user
-			   project only.
+	caravel_openframe: Version with two wrappers for user
+			   project area and management core
 
-	caravel_harness:  Version with wrappers for user project
-			  area and management core.  
-
-	caravel_pico:  PicoRV32, as a drop-in module for caravel_harness
+	caravel_pico:  PicoRV32, as a drop-in module for caravel_openframe.
 
 Harness definition:
 	Management SoC and User Project are both wrappers for drop-in
@@ -22,8 +19,24 @@ Harness definition:
 	each GPIO.  Can be configured with a text file.  SPI pins are
 	fixed for operation on startup.
 
-	On power-up, the SPI automatically configures the GPIO.  Manual
-	load is possible from both the SPI and from the wishbone bus.
+	(To be done) On power-up, the SPI automatically configures the
+	GPIO.  Manual load is possible from both the SPI and from the
+	wishbone bus.
+
+	All functions within the harness but outside the management SoC
+	are incorporated into one large module called "housekeeping".
+	This includes a number of registers for all the included
+	functions, with a "front door" SPI interface connected to the
+	padframe through GPIO pins 1 to 4, and a "back door" wishbone
+	interface connected to the management SoC.  The management Soc
+	needs to reserve the memory block at 0x26000000 for the
+	housekeeping module.  The housekeeping module exchanges data
+	with the management SoC via an interface that uses the byte-
+	wide SPI register data.  A small state machine reads four
+	contiguous wishbone addresses and an address decoder determines
+	the corresponding SPI register.  The state machine stalls the
+	SoC until all four bytes have been handled before returning the
+	acknowledge signal.
 
 Openframe definition:
 	There is only one area which is the User Project, with a wrapper
@@ -33,21 +46,25 @@ Openframe definition:
 	SPI, POR, and GPIO control.  Operation is essentially the same as
 	the above (harness definition).
 
+	There is currently no specific module for the open frame by itself.
+	This needs to be defined, with the management SoC wrapper removed
+	and the wrapper pins reworked.
+
 MPW-one compatibility:
-	Looks like the harness, but the logic analyzer and management-
-	protect is part of the harness and the user area wrapper matches
-	that for MPW-one.
+	The same as the harness definition but with a wrapper pin arrangement
+	corresponding to MPW-one.
 
 MPW-two compatibility:
-	Looks like the harness, but the logic analyzer and management-
-	protect is part of the harness and the user area wrapper matches
-	that for MPW-two.
+	The same as the harness definition but with a wrapper pin arrangement
+	corresponding to MPW-two.
 
 Caravel-pico definition:
 	Caravel-pico is a version of the PicoRV32 Management SoC from
 	MPW-two, but without the GPIO control, clocking control, DLL,
-	housekeeping SPI, and logic analyzer.  It mainly just exports
-	the Wishbone bus interface to the user project area.
+	and housekeeping SPI.  It mainly just exports the Wishbone bus
+	interface to the user project area and housekeeping, with
+	housekeeping defined in memory block 0x26000000 and the user
+	project area defined in memory block 0x30000000 (as before).
 
 Pinouts for Caravel (any version)
 ----------------------------------------------
@@ -57,7 +74,6 @@ Pinouts for Caravel (any version)
 	vccd1, vccd2, vssd1, vssd2
 
     Management SoC signals:
-	debug (or JTAG, management)
 	gpio
 	clock
 	resetb
@@ -76,28 +92,30 @@ User project area pinout (openframe)
 	vdda1, vdda2, vssa1, vssa2,
 	vccd1, vccd2, vssd1, vssd2
 
-    Wishbone bus (exported to SPI):
+    Wishbone bus (exported to housekeeping):
 	wb_clk_i
 	wb_rst_i
-	wbs_stb_i
 	wbs_cyc_i
 	wbs_we_i
 	wbs_sel_i[3:0]
-	wbs_dat_i[31:0]
 	wbs_adr_i[31:0]
-	wbs_ack_o
 	wbs_dat_o[31:0]
+	wbs_ack_o
+	wbs_stb_i
+	wbs_dat_i[31:0]
 
-    GPIO:
+    GPIO (3-pin interfaces;  all else handled through housekeeping):
 	io_in[37:0]
 	io_out[37:0]
 	io_oeb[37:0]
 
-    GPIO (single):
+    GPIO (single pin not related to the other GPIO):
 	gpio_out
 	gpio_in
 	gpio_oeb
 	gpio_ieb
+	gpio_mode0
+	gpio_mode1
 
     Flash controller:
 	flash_clk
@@ -121,13 +139,34 @@ User project area pinout (openframe)
 	flash_io2_ieb
 	flash_io3_ieb
 
-    Essentials:
+    Essentials (from power-on-reset and clocking):
 	resetb
 	core_clk
 
-    Miscellaneous:
+    IRQ (input from housekeeping from SPI and routed pins):
+	irq_spi[2:0]
+
+    Miscellaneous (independent clock source from clocking control):
 	user_clock2
-	user_irq[2:0]
+
+    Module status (optional modules with I/O handled through housekeeping)
+	(if not implemented, then these should be tied low)
+	qspi_enabled
+	uart_enabled
+	spi_enabled
+	debug_mode
+
+    Module interfaces (optional modules wth I/O handled though housekeeping)
+	(if not implemented, then inputs should be tied low/high as appropriate)
+	ser_tx		(UART transmit)
+	ser_rx		(UART receive)
+	spi_sdi		(SPI master data in)
+	spi_sdo		(SPI master data out)
+	spi_sck		(SPI master clock out)
+	spi_csb		(SPI master select out)
+	debug_in	(debug pin on gpio 0)
+	debug_out	(debug pin on gpio 0)
+	debug_oeb	(debug pin on gpio 0)
 
 
 User project area pinout (harness)
@@ -152,18 +191,29 @@ User project area pinout (harness)
 	io_in[37:0]
 	io_out[37:0]
 	io_oeb[37:0]
+	analog_io[28:0]
 
     Miscellaneous:
 	user_clock2
 	user_irq[2:0]
 
-Management SoC pinout
+Management SoC pinout (mgmt_core_wrapper)
 ----------------------------------------------
+    Power supply:
+	vccd_core
+	vssd_core
+
+    Essentials:
+	core_rstn
+	core_clk
+
     GPIO:
-	gpio_out
-	gpio_in
-	gpio_oeb
-	gpio_ieb
+	gpio_out_pad
+	gpio_in_pad
+	gpio_mode0_pad
+	gpio_mode1_pad
+	gpio_outenb_pad
+	gpio_inenb_pad
 
     Flash controller:
 	flash_clk
@@ -181,140 +231,60 @@ Management SoC pinout
 	flash_io2_oeb
 	flash_io3_oeb
 
-    Essentials:
-	resetb
-	core_clk
-
     Wishbone bus:
-	mprj_ack_i
-	mprj_dat_i[31:0]
-	mprj_dat_o[31:0]
+	(All peripherals)
 	mprj_cyc_o
-	mprj_stb_o
 	mprj_we_o
 	mprj_sel_o[3:0]
 	mprj_adr_o[31:0]
-
-Interface pinout (standard = pass-through)
-----------------------------------------------
-    Clocking (DLL)
-	clock
-	porb
-	resetb
-	core_clk
-
-    Housekeeping SPI
-	SCK
-	CSB
-	SDI
-	SDO
-	sdo_enb
-
-    Flash pass-through:
-	flash_clk_oeb
-	flash_csb_oeb
-	flash_io0_ieb
-	flash_io1_ieb
-	flash_io2_ieb
-	flash_io3_ieb
-
-	(plus management flash signals in from SoC/out to pads)
-
-    Wishbone bus:
-	mprj_ack_i
-	mprj_dat_i[31:0]
 	mprj_dat_o[31:0]
-	mprj_cyc_o
-	mprj_stb_o
-	mprj_we_o
-	mprj_sel_o[3:0]
-	mprj_adr_o[31:0]
 
-    User ID programming
-	mask_rev[31:0]
-
-Interface pinout (MPW-one compatibility level)
-----------------------------------------------
-    Clocking (DLL)
-	clock
-	porb
-	resetb
-	core_clk
-
-    GPIO controller
-	serial_data
-	serial_clock
-	serial_reset
-
-    Housekeeping SPI
-	SCK
-	CSB
-	SDI
-	SDO
-	sdo_enb
-
-    Flash pass-through:
-	flash_clk_oeb
-	flash_csb_oeb
-	flash_io0_ieb
-	flash_io1_ieb
-	flash_io2_ieb
-	flash_io3_ieb
-
-	(plus management flash signals in from SoC/out to pads)
-
-    Wishbone bus:
+	(User project)
 	mprj_ack_i
-	mprj_dat_i[31:0]
-	mprj_dat_o[31:0]
-	mprj_cyc_o
 	mprj_stb_o
-	mprj_we_o
-	mprj_sel_o[3:0]
-	mprj_adr_o[31:0]
-
-    User ID programming
-	mask_rev[31:0]
-
-    Logic Analyzer
-	la_io[127:0]
-	la_oenb[127:0]
-
-Interface pinout (MPW-two compatibility level)
-----------------------------------------------
-    Clocking (DLL)
-	clock
-	porb
-	resetb
-	core_clk
-
-    GPIO controller
-	serial_data
-	serial_clock
-	serial_reset
-
-    Housekeeping SPI
-	SCK
-	CSB
-	SDI
-	SDO
-	sdo_enb
-
-    Wishbone bus:
-	mprj_ack_i
 	mprj_dat_i[31:0]
-	mprj_dat_o[31:0]
-	mprj_cyc_o
-	mprj_stb_o
-	mprj_we_o
-	mprj_sel_o[3:0]
-	mprj_adr_o[31:0]
 
-    User ID programming
-	mask_rev[31:0]
+	(Housekeeping)
+	hk_ack_i
+	hk_stb_o
+	hk_dat_i[31:0]
 
-    Logic Analyzer
-	la_input[127:0]
-	la_output[127:0]
-	la_oenb[127:0]
-	la_iena[127:0]
+    IRQ
+	irq[5:0]
+
+    Module status
+	qspi_enabled
+	uart_enabled
+	spi_enabled
+	debug_mode
+
+    Module interfaces
+	(UART)
+	ser_tx
+	ser_rx
+
+	(SPI master)
+	spi_sdi
+	spi_csb
+	spi_sck
+	spi_sdo
+
+	(Debug)
+	debug_in
+	debug_out
+	debug_oeb
+
+	(Logic Analyzer)
+	la_input
+	la_output
+	la_oenb
+	la_iena
+
+	(SRAM read-only port)
+	hkspi_sram_clk
+	hkspi_sram_csb
+	hkspi_sram_addr
+	hkspi_sram_rdata
+
+    CPU status
+	trap
