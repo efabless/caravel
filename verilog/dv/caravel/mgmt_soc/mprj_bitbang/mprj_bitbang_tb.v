@@ -136,13 +136,13 @@ module mprj_bitbang_tb;
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h07);
+	        write_byte(8'h07 << 1);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h03);
+	        write_byte(8'h03 << 1);
 	        end_csb();
 	    end
 	endtask
@@ -152,25 +152,25 @@ module mprj_bitbang_tb;
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h07);
+	        write_byte(8'h07 << 1);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h05);
+	        write_byte(8'h05 << 1);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h07);
+	        write_byte(8'h07 << 1);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h03);
+	        write_byte(8'h03 << 1);
 	        end_csb();
 	    end
 	endtask
