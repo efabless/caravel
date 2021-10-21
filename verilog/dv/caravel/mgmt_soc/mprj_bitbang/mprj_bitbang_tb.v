@@ -230,6 +230,16 @@ module mprj_bitbang_tb;
 	    RSTB <= 1'b1;
 	    #2000;
 
+	    // Give 100us for the startup code to complete and the GPIO output
+	    // value set.
+	    #100000;
+
+	    // NOTE:  The SPI takes precedence over the wishbone back-door
+	    // access and the GPIO lines will not get set from the program
+	    // while CSB is held low.  The C program keeps attempting a
+	    // write and should succeed after the following code finishes
+	    // and CSB is raised.
+
 	    start_csb();
 	    write_byte(8'h80);	// Write stream command
 	    write_byte(8'h13);	// Address (register 19 = GPIO bit-bang control)
