@@ -84,8 +84,8 @@ module timer_tb;
 		`endif
 		/* Add checks here */
 		wait(checkbits == 6'h01);
-		$display("   countbits = 0x%x (should be 0xdcba7cf9)", countbits);
-		if(countbits !== 32'hdcba7cf9) begin
+		$display("   countbits = 0x%x (should be 0xdcba7cfb)", countbits);
+		if(countbits !== 32'hdcba7cfb) begin
 		    $display("Monitor: Test Timer Failed");
 		    $finish;
 		end
@@ -96,14 +96,14 @@ module timer_tb;
 		    $finish;
 		end
 		wait(checkbits == 6'h03);
-		$display("   countbits = %x (should be 0x0d)", countbits);
-		if(countbits !== ((32'h0d) | (3'b100))) begin
+		$display("   countbits = %x (should be 0x0f)", countbits);
+		if(countbits !== ((32'h0f) | (3'b100))) begin
 		    $display("Monitor: Test Timer Failed");
 		    $finish;
 		end
 		wait(checkbits == 6'h04);
-		$display("   countbits = %x (should be 0x0d)", countbits);
-		if(countbits !== ((32'h0d) | (3'b100))) begin
+		$display("   countbits = %x (should be 0x0f)", countbits);
+		if(countbits !== ((32'h0f) | (3'b100))) begin
 		    $display("Monitor: Test Timer Failed");
 		    $finish;
 		end

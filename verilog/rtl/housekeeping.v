@@ -104,6 +104,7 @@ module housekeeping #(
     input  spi_csb,
     input  spi_sck,
     input  spi_sdo,
+    input  spi_sdoenb,
 
     // External (originating from SPI and pad) IRQ and reset
     output [2:0] irq,
@@ -258,12 +259,12 @@ module housekeeping #(
     assign reset = (pass_thru_mgmt_reset) ? 1'b1 : reset_reg;
 
     // Handle the management-side control of the GPIO pins.  All but the
-    // first and last two GPIOs (0, 1 and 36, 37) are one-pin interfaces with
+    // first and last three GPIOs (0, 1 and 35 to 37) are one-pin interfaces with
     // a single I/O pin whose direction is determined by the local OEB signal.
-    // The other four are straight-through connections of the 3-wire interface.
+    // The other five are straight-through connections of the 3-wire interface.
 
-    assign mgmt_gpio_out[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-2] =
-			mgmt_gpio_out_pre[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-2];
+    assign mgmt_gpio_out[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3] =
+			mgmt_gpio_out_pre[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3];
     assign mgmt_gpio_out[1:0] = mgmt_gpio_out_pre[1:0];
 
     genvar i;
@@ -272,7 +273,7 @@ module housekeeping #(
     // the first and last two GPIOs so that these pins can be tied together
     // at the top level to create the single-wire interface on those GPIOs.
     generate
-	for (i = 2; i < `MPRJ_IO_PADS-2; i = i + 1) begin
+	for (i = 2; i < `MPRJ_IO_PADS-3; i = i + 1) begin
 	    assign mgmt_gpio_out[i] = mgmt_gpio_oeb[i] ?  1'bz : mgmt_gpio_out_pre[i];
 	end
     endgenerate
@@ -718,7 +719,7 @@ module housekeeping #(
 	.reset(~porb),
     	.SCK(mgmt_gpio_in[4]),
     	.SDI(mgmt_gpio_in[2]),
-    	.CSB((hkspi_disable) ? 1'b1 : mgmt_gpio_in[3]),
+    	.CSB((spi_is_active) ? mgmt_gpio_in[3] : 1'b1),
     	.SDO(sdo),
     	.sdoenb(sdo_enb),
     	.idata(odata),
@@ -750,8 +751,21 @@ module housekeeping #(
 		~gpio_configure[37][INP_DIS];
     assign mgmt_gpio_oeb[36] = (qspi_enabled) ? spimemio_flash_io2_oeb :
 		~gpio_configure[36][INP_DIS];
+    assign mgmt_gpio_oeb[35] = (spi_enabled) ? spi_sdoenb :
+		~gpio_configure[35][INP_DIS];
 
-    assign mgmt_gpio_out_pre[35:16] = mgmt_gpio_data[35:16];
+    // NOTE:  Ignored by spimemio module when QSPI disabled, so they do not
+    // need any exception when qspi_enabled == 1.
+    assign spimemio_flash_io3_di = mgmt_gpio_in[37];
+    assign spimemio_flash_io2_di = mgmt_gpio_in[36];
+
+    // SPI master is assigned to the other 4 bits of the data high word.
+    assign mgmt_gpio_out_pre[32] = (spi_enabled) ? spi_sck : mgmt_gpio_data[32];
+    assign mgmt_gpio_out_pre[33] = (spi_enabled) ? spi_csb : mgmt_gpio_data[33];
+    assign mgmt_gpio_out_pre[34] = mgmt_gpio_data[34];
+    assign mgmt_gpio_out_pre[35] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[35];
+
+    assign mgmt_gpio_out_pre[31:16] = mgmt_gpio_data[31:16];
     assign mgmt_gpio_out_pre[12:11] = mgmt_gpio_data[12:11];
 
     assign mgmt_gpio_out_pre[10] = (pass_thru_user) ? mgmt_gpio_in[2]
@@ -763,30 +777,26 @@ module housekeeping #(
 
     assign mgmt_gpio_out_pre[7] = mgmt_gpio_data[7];
     assign mgmt_gpio_out_pre[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
-    assign mgmt_gpio_out_pre[5] = mgmt_gpio_data[5];
-
-    assign mgmt_gpio_out_pre[4] = (spi_enabled) ? spi_sck : mgmt_gpio_data[4];
-    assign mgmt_gpio_out_pre[3] = (spi_enabled) ? spi_csb : mgmt_gpio_data[3];
-    assign mgmt_gpio_out_pre[2] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[2];
+    assign mgmt_gpio_out_pre[5:2] = mgmt_gpio_data[5:2];
 
     // In pass-through modes, route SDO from the respective flash (user or
     // management SoC) to the dedicated SDO pin (GPIO[1])
 
     assign mgmt_gpio_out_pre[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
 		 (pass_thru_user) ? mgmt_gpio_in[11] :
-		 (spi_enabled) ? sdo : mgmt_gpio_data[1];
+		 (spi_is_active) ? sdo : mgmt_gpio_data[1];
     assign mgmt_gpio_out_pre[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
 
-    assign mgmt_gpio_oeb[1] = (spi_enabled) ? sdo_enb : ~gpio_configure[0][INP_DIS];
+    assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[0][INP_DIS];
     assign mgmt_gpio_oeb[0] = (debug_mode) ? debug_oeb : ~gpio_configure[0][INP_DIS];
 
     assign ser_rx = (uart_enabled) ? mgmt_gpio_in[5] : 1'b0;
-    assign spi_sdi = (spi_enabled) ? mgmt_gpio_in[1] : 1'b0;
+    assign spi_sdi = (spi_enabled) ? mgmt_gpio_in[34] : 1'b0;
     assign debug_in = (debug_mode) ? mgmt_gpio_in[0] : 1'b0;
 
     /* These are disconnected, but apply a meaningful signal anyway */
     generate
-	for (i = 2; i < `MPRJ_IO_PADS-2; i = i + 1) begin
+	for (i = 2; i < `MPRJ_IO_PADS-3; i = i + 1) begin
 	    assign mgmt_gpio_oeb[i] = ~gpio_configure[i][INP_DIS];
 	end
     endgenerate
