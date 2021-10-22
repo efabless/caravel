@@ -169,10 +169,10 @@ module housekeeping #(
     input pad_flash_io0_di,
     input pad_flash_io1_di,
 
-    output hkspi_sram_clk,
-    output hkspi_sram_csb,
-    output [7:0] hkspi_sram_addr,
-    input [31:0] hkspi_sram_rdata,
+    output sram_ro_clk,
+    output sram_ro_csb,
+    output [7:0] sram_ro_addr,
+    input [31:0] sram_ro_data,
 
     // System signal monitoring
     input  usr1_vcc_pwrgood,
@@ -201,9 +201,9 @@ module housekeeping #(
     reg serial_xfer;
     reg hkspi_disable;
 
-    reg hkspi_sram_clk;
-    reg hkspi_sram_csb;
-    reg [7:0] hkspi_sram_addr;
+    reg sram_ro_clk;
+    reg sram_ro_csb;
+    reg [7:0] sram_ro_addr;
 
     reg clk1_output_dest;
     reg clk2_output_dest;
@@ -248,7 +248,7 @@ module housekeeping #(
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
 
-    wire [31:0] hkspi_sram_rdata;
+    wire [31:0] sram_ro_data;
 
     // Housekeeping side 3-wire interface to GPIOs (see below)
     wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out_pre;
@@ -377,12 +377,12 @@ module housekeeping #(
 				serial_bb_resetn, serial_bb_enable, serial_busy};
 
 	    /* To be added:  SRAM read-only port (registers 14 to 19) */
-	    8'h14 : fdata = {6'b000000, hkspi_sram_clk, hkspi_sram_csb};
-	    8'h15 : fdata = hkspi_sram_addr;
-	    8'h16 : fdata = hkspi_sram_rdata[31:24];
-	    8'h17 : fdata = hkspi_sram_rdata[23:16];
-	    8'h18 : fdata = hkspi_sram_rdata[15:8];
-	    8'h19 : fdata = hkspi_sram_rdata[7:0];
+	    8'h14 : fdata = {6'b000000, sram_ro_clk, sram_ro_csb};
+	    8'h15 : fdata = sram_ro_addr;
+	    8'h16 : fdata = sram_ro_data[31:24];
+	    8'h17 : fdata = sram_ro_data[23:16];
+	    8'h18 : fdata = sram_ro_data[15:8];
+	    8'h19 : fdata = sram_ro_data[7:0];
 
 	    /* System monitoring */
 	    8'h1a : fdata = {4'b0000, usr1_vcc_pwrgood, usr2_vcc_pwrgood,
@@ -1010,9 +1010,9 @@ module housekeeping #(
 	    serial_xfer <= 1'b0;
 	    hkspi_disable <= 1'b0;
 
-	    hkspi_sram_clk <= 1'b0;
-	    hkspi_sram_csb <= 1'b1;
-	    hkspi_sram_addr <= 8'h00;
+	    sram_ro_clk <= 1'b0;
+	    sram_ro_csb <= 1'b1;
+	    sram_ro_addr <= 8'h00;
 
         end else begin
 	    if (cwstb == 1'b1) begin
@@ -1065,11 +1065,11 @@ module housekeeping #(
 
 		    /* To be done:  Add SRAM read-only interface */
 		    8'h14: begin
-			hkspi_sram_clk <= cdata[1];
-			hkspi_sram_csb <= cdata[0];
+			sram_ro_clk <= cdata[1];
+			sram_ro_csb <= cdata[0];
 		    end
 		    8'h15: begin
-	    		hkspi_sram_addr <= cdata;
+	    		sram_ro_addr <= cdata;
 		    end
 		    
 		    /* Registers 16 to 19 (SRAM data) are read-only */

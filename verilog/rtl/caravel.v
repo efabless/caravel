@@ -438,10 +438,10 @@ module caravel (
 	.la_iena(la_iena_mprj),
 
 	// SRAM Read-only access from housekeeping
-	.hkspi_sram_clk(hkspi_sram_clk),
-	.hkspi_sram_csb(hkspi_sram_csb),
-	.hkspi_sram_addr(hkspi_sram_addr),
-	.hkspi_sram_rdata(hkspi_sram_rdata),
+	.sram_ro_clk(hkspi_sram_clk),
+	.sram_ro_csb(hkspi_sram_csb),
+	.sram_ro_addr(hkspi_sram_addr),
+	.sram_ro_data(hkspi_sram_rdata),
 
 	// Trap status
 	.trap(trap)
@@ -717,10 +717,10 @@ module caravel (
 	.pad_flash_io0_di(flash_io0_di),
 	.pad_flash_io1_di(flash_io1_di),
 
-	.hkspi_sram_clk(hkspi_sram_clk),
-	.hkspi_sram_csb(hkspi_sram_csb),
-	.hkspi_sram_addr(hkspi_sram_addr),
-	.hkspi_sram_rdata(hkspi_sram_rdata),
+	.sram_ro_clk(hkspi_sram_clk),
+	.sram_ro_csb(hkspi_sram_csb),
+	.sram_ro_addr(hkspi_sram_addr),
+	.sram_ro_data(hkspi_sram_rdata),
 
 	.usr1_vcc_pwrgood(mprj_vcc_pwrgood),
 	.usr2_vcc_pwrgood(mprj2_vcc_pwrgood),
