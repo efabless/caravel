@@ -1,0 +1,949 @@
+%!PS-Adobe-3.0
+%%Title: openframe_pinout.ps
+%%Creator: XCircuit v0.0 rev427483637
+%%CreationDate: Fri Oct 22 11:59:20 2021
+%%Pages: 3
+%%BoundingBox: 0 0 612 792
+%%DocumentNeededResources: font Helvetica Helvetica-Bold Helvetica-Oblique 
+%%+ font Courier 
+%%EndComments
+%%BeginProlog
+%
+%  PostScript prolog for output from xcircuit
+%  Version: 3.9
+%
+%  Electrical circuit (and otherwise general) drawing program
+%
+%  Written by Tim Edwards 8/5/93--4/12/16  (tim@opencircuitdesign.com)
+%  The Johns Hopkins University (1993-2004)
+%  MultiGiG, Inc. (2004-2012)
+%  Open Circuit Design (2012-2016)
+%
+%%BeginResource: procset XCIRCproc 3.9 1
+%
+% supporting definitions --- these are the primary xcircuit types.
+
+/XCIRCsave save def
+/topmat matrix currentmatrix def
+
+/fontslant { /slant exch def [1 0 slant 1 0 0] 
+    exch findfont exch makefont dup length dict /ndict exch def
+    { 1 index /FID ne { ndict 3 1 roll put } { pop pop } ifelse } forall
+    ndict definefont pop} def
+/ul { count 0 gt { dup type /stringtype eq showflag 1 eq and { gsave 
+   currentpoint topmat setmatrix 0 0 moveto 2 index stringwidth pop (_)
+   false charpath flattenpath pathbbox grestore exch pop 1 index
+   sub setlinewidth exch pop currentpoint 3 -1 roll add moveto 0
+   rlineto stroke moveto } if } if } def
+/ol { count 0 gt { dup type /stringtype eq showflag 1 eq and { gsave gsave
+   currentpoint topmat setmatrix 2 index stringwidth pop 3 index
+   true charpath flattenpath pathbbox grestore exch pop
+   exch pop topmat setmatrix (_) true charpath pathbbox grestore
+   exch pop 1 index sub setlinewidth exch pop currentpoint
+   exch 4 1 roll exch sub add moveto pop 0 rlineto stroke
+   moveto } if } if } def
+/stW { gsave currentpoint newpath moveto true charpath flattenpath
+	pathbbox pop exch pop sub grestore } def
+/Ts {mark Tabs aload pop counttomark 1 add array astore /Tabs exch def Tabs
+	0 currentpoint pop put} def
+/Tbn {mark Tabs aload pop counttomark dup 2 add 1 roll cleartomark 1 sub} def
+/Tb { 0 1 Tbn {Tabs exch get dup currentpoint pop lt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/Tf { Tbn -1 0 {Tabs exch get dup currentpoint pop gt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/qS { (aa) stW (a a) stW sub 4 div 0 Kn } def
+/hS { qS qS } def
+/pspc 0 def
+/cf0 { scalefont setfont } bind def
+/Kn { dup kY add /kY exch def rmoveto } bind def
+/ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.33 mul neg Kn} def
+/Ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.67 mul Kn } def
+/ns { 0 kY neg Kn /kY 0 def /fscale 1.0 def xfont0 1.0 cf0 } def
+/MR { /twidth exch def } def
+/CRx { } def
+/CR { ns 0 /Bline Bline fscale0 neg add def Bline moveto CRx } def
+/cf { dup type /realtype ne {1.0} if exch findfont exch kY 0 eq
+	{ 40 mul dup /fscale0 exch def cf0 /xfont0 currentfont def}
+	{fscale0 mul fscale mul cf0} ifelse } def
+/ctmk { counttomark dup 2 add -1 roll pop } bind def
+/label { gsave translate 0 0 moveto dup scale neg
+	/rotval exch def /twidth 100000 def /just exch def just 128 and
+	0 gt {/mshow {pop} def} {/mshow {show} def} ifelse just 16 and 0
+	gt {gsave rotval rotate 0 1 dtransform gsave pagemat setmatrix
+	idtransform exch grestore 1 0 dtransform gsave pagemat setmatrix
+	idtransform exch grestore dup abs 1e-9 lt {pop mul 0 gt} {3 1 roll
+	pop pop 0 lt} ifelse grestore {-1 /rotval rotval neg def /just just
+	dup 3 and 1 ne {3 xor} if def} {1} ifelse exch -1e-9 lt {-1 /rotval
+	rotval neg def /just just dup 12 and 4 ne {12 xor} if def} {1}
+	ifelse scale } if /showflag 0 def /fspc pspc def /Bline 0 def
+	/numlines 0 def /padding 0 array def /Tabs 0 array def
+	/fscale 1.0 def /kY 0 def gsave /CRx { linewid padding
+	aload pop numlines 1 add dup /numlines exch def array astore
+	/padding exch def /linewid 0 def } def dup 1 add copy dup 1 0
+	dtransform exch atan rotate {exch dup type /stringtype eq {gsave dup
+	gsave newpath 0 0 moveto true charpath flattenpath pathbbox pop exch
+	pop exch pop grestore currentpoint pop add dup /linewid exch def twidth
+	ge {grestore CR exch 1 add dup 2 add {CR} exch 1 roll exch} {grestore}
+	ifelse true charpath flattenpath} {dup type /arraytype eq {exec} {12
+	string cvs true charpath flattenpath} ifelse} ifelse} repeat
+	CRx /CRx {padding aload pop just 1280 and 0 gt {blockwid exch sub just
+	1024 and 0 gt {0.5 mul} if} {pop 0} ifelse 0 rmoveto numlines 1 sub
+	dup /numlines exch def array astore /padding exch def} def exch pop
+	pathbbox grestore 4 copy pop exch pop exch sub /blockwid exch def
+	3 -1 roll pop 3 1 roll just 1 and 0 gt {just 2 and
+	0 gt {exch pop neg fspc sub} {exch sub 0.5 mul neg} ifelse} {pop neg
+	fspc add} ifelse exch Bline exch just 4 and 0 gt {just 8 and 0 gt
+	{exch pop neg fspc sub} {add 0.5 mul neg} ifelse} {pop neg fspc add}
+	ifelse rotval rotate Kn currentpoint translate /showflag 1 def /Bline
+	0 def /Tabs 0 array def /fscale 1.0 def /kY 0 def CRx {dup type
+	/stringtype eq {mshow} {dup type /arraytype eq {exec} {12 string cvs
+	mshow} ifelse} ifelse} repeat grestore endclip} def
+/pinlabel { 4 index 32 and 0 ne hlevel 0 eq or { /pspc 10 def label
+	/pspc 0 def } { pop pop pop pop pop {pop} repeat } ifelse } def
+/pinglobal { pinlabel } def
+/infolabel { pinlabel } def
+/graphic { gsave 4 index cvx exec /DataSource get resetfile translate 0 0
+	moveto neg rotate dup scale cvx exec image grestore endclip} def
+
+/scb { setrgbcolor } bind def  /sce { defColor aload pop scb } bind def
+/cRedef {/defColor currentcolor 3 array astore def} def
+/begingate {dup type /dicttype ne {1 dict} if begin	% default params
+	dup type /dicttype ne {1 dict} if begin		% instanced params
+	/hlevel hlevel 1 add def /defColor currentcolor sce 3 array astore
+	def gsave sce dup type /nametype eq { pop } if translate 0 0 moveto
+	neg rotate dup type /nametype eq not { dup abs currentlinewidth exch
+	div setlinewidth } { pop } ifelse dup abs scale clipped 1 and 1 eq
+	{/clipped clipped 1 add def} if} bind def
+/endgate { /hlevel hlevel 1 sub def grestore defColor aload pop cRedef
+	scb end end endclip} bind def
+
+/hlevel 0 def
+/endclip {clipped 1 and 1 eq {grestore /clipped clipped 1 sub def} if} def
+/tmpa [1 0 0 1 0 0] def
+/gar {8 8 true tmpa {<c0 c0 00 00 0c 0c 00 00>} imagemask} bind
+{8 8 true tmpa {<30 70 60 02 03 07 06 20>} imagemask} bind
+{8 8 true tmpa {<0c 1e 1e 0c c0 e1 e1 c0>} imagemask} bind
+{8 8 true tmpa {<0f 0f 0f 0f f0 f0 f0 f0>} imagemask} bind
+{8 8 true tmpa {<3f f3 e1 e1 f3 3f 1e 1e>} imagemask} bind
+{8 8 true tmpa {<df cf 8f 9f fd fc f8 f9>} imagemask} bind
+{8 8 true tmpa {<ff 3f 3f ff ff f3 f3 ff>} imagemask} bind 7 array astore def
+/ppaint { gsave clip tmpa dup setmatrix pathbbox neg exch neg 4 2 roll
+  neg 4 -1 roll 2 copy gt {exch} if 8 div ceiling 8 mul 4 2 roll neg 2 copy
+  gt {exch} if 8 div ceiling 8 mul 3 -1 roll -8 5 -1 roll
+  { 3 index exch 5 exch put dup -8 3 index { 3 index
+  exch 4 exch put 3 index exec } for } for pop pop pop pop grestore } bind def
+/setstyles {
+  currentlinewidth mul setlinewidth /style exch def style 2048 and 0 gt
+  clipped 1 and 0 eq and {clip newpath /clipped clipped 1 add def} {
+  style 1 and 0 gt not {closepath} if
+  style 1024 and 0 gt {2 setlinecap 0 setlinejoin} if
+  style 2 and 0 gt {currentlinewidth 4 mul dup 2 array astore 0 setdash} if
+  style 4 and 0 gt {0.5 currentlinewidth 4 mul 2 array astore 0 setdash} if
+  gsave style 16 and 0 gt { style 224 and -5 bitshift style 256 and 0 gt {
+  7 exch sub 8 div dup 1 exch sub currentrgbcolor 3 array astore
+  {3 copy mul add 4 1 roll pop} forall pop pop setrgbcolor eofill}
+  {dup 7 lt {gar exch get ppaint} {pop eofill} ifelse} ifelse}
+  {style 256 and 0 gt {1 setgray eofill} if} ifelse grestore style 8 and 0 gt 
+  style 512 eq or {newpath} {stroke} ifelse grestore endclip} ifelse} def     
+
+/addtoy {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll add
+	4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtoy1 {1 exch addtoy pop} def
+/addtoy3 {3 exch addtoy pop} def
+/addtoy4 {4 exch addtoy pop} def
+/addtox {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll 3 -1 roll
+	add exch 4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtox1 {1 exch addtox pop} def
+/addtox3 {3 exch addtox pop} def
+/addtox4 {4 exch addtox pop} def
+/polygon { gsave /num exch def moveto num 1 sub {lineto} repeat setstyles } def
+/xcarc   { gsave newpath arc setstyles } def
+/elb { matrix currentmatrix 7 -1 roll 7 -1 roll translate 5 1 roll 4 -1 roll
+	3 index div 1 scale } def
+/ele { 0 4 1 roll 0 4 1 roll } bind def
+/ellipse { gsave elb newpath ele arc setmatrix setstyles } def
+/pellip  { elb ele arc setmatrix } def
+/nellip  { elb ele arcn setmatrix } def
+/spline  { gsave moveto curveto setstyles } def
+/polyc   { {lineto} repeat } bind def
+/beginpath { gsave moveto } bind def
+/endpath { setstyles } bind def
+/bop	 { 1 setlinecap 2 setlinejoin 6 setmiterlimit 0 0 0 scb cRedef
+	/clipped 0 def} def
+/psinsertion {/PSobj save def /showpage {} def /setpagedevice {pop} def bop
+	rotate translate dup scale} def
+/end_insert {PSobj restore} def
+/setpagemat {/pagemat matrix currentmatrix def} def
+/inchscale  {setpagemat 0.375 mul dup scale} def
+/cmscale    {setpagemat 0.35433071 mul dup scale} def
+
+%%EndResource
+%%EndProlog
+% XCircuit output starts here.
+
+%%BeginSetup
+
+/generic::arrowhead {
+% nonetwork
+begingate
+8 -28 beginpath
+3 -18 3 -15 0 0 curveto
+-3 -15 -3 -18 -8 -28 curveto
+-2 -26 2 -26 8 -28 curveto
+249 
+1.000 endpath
+endgate
+} def
+
+
+%%EndSetup
+
+%%Page: management_core_wrapper 1
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.5778 inchscale
+2.6000 setlinewidth 1818 2121 translate
+
+(Caravel open frame pinout) {/Helvetica cf} 2 16 0.000 1.000 -1408 752 label
+0 1.000 -944 -1200 -944 512 16 512 16 -1200 4 polygon
+(Management core wrapper) {/Helvetica cf} 2 16 0.000 1.000 -1408 704 label
+1 1.000 -528 512 -528 544 2 polygon
+1 1.000 -464 512 -464 544 2 polygon
+(VPWR) {/Helvetica cf} 2 20 270.000 1.000 -528 560 label
+(VGND) {/Helvetica cf} 2 20 270.000 1.000 -464 560 label
+1 1.000 -944 448 -976 448 2 polygon
+(core_clk) {/Helvetica cf} 2 23 0.000 1.000 -992 448 label
+(core_rstn) {/Helvetica cf} 2 23 0.000 1.000 -992 400 label
+1 1.000 -976 400 -944 400 2 polygon
+1 1.000 16 464 48 464 2 polygon
+(gpio_out_pad) {/Helvetica cf} 2 20 0.000 1.000 64 464 label
+(gpio_in_pad) {/Helvetica cf} 2 20 0.000 1.000 64 416 label
+(gpio_mode0_pad) {/Helvetica cf} 2 20 0.000 1.000 64 272 label
+(gpio_mode1_pad) {/Helvetica cf} 2 20 0.000 1.000 64 224 label
+(gpio_outenb_pad) {/Helvetica cf} 2 20 0.000 1.000 64 368 label
+(gpio_inenb_pad) {/Helvetica cf} 2 20 0.000 1.000 64 320 label
+(flash_csb) {/Helvetica cf} 2 16 0.000 1.000 64 96 label
+(flash_sck) {/Helvetica cf} 2 16 0.000 1.000 64 48 label
+(flash_io0_oeb) {/Helvetica cf} 2 16 0.000 1.000 64 0 label
+(flash_io0_di) {/Helvetica cf} 2 16 0.000 1.000 64 -48 label
+(flash_io0_do) {/Helvetica cf} 2 16 0.000 1.000 64 -96 label
+(flash_io1_oeb) {/Helvetica cf} 2 16 0.000 1.000 64 -144 label
+(flash_io1_di) {/Helvetica cf} 2 16 0.000 1.000 64 -192 label
+(flash_io1_do) {/Helvetica cf} 2 16 0.000 1.000 64 -240 label
+(flash_io2_oeb) {/Helvetica cf} 2 16 0.000 1.000 64 -288 label
+(flash_io2_di) {/Helvetica cf} 2 16 0.000 1.000 64 -336 label
+(flash_io2_do) {/Helvetica cf} 2 16 0.000 1.000 64 -384 label
+(flash_io3_oeb) {/Helvetica cf} 2 16 0.000 1.000 64 -432 label
+(flash_io3_di) {/Helvetica cf} 2 16 0.000 1.000 64 -480 label
+(flash_io3_do) {/Helvetica cf} 2 16 0.000 1.000 64 -528 label
+1 1.000 16 416 48 416 2 polygon
+1 1.000 16 352 48 352 2 polygon
+1 1.000 16 304 48 304 2 polygon
+1 1.000 16 256 48 256 2 polygon
+1 1.000 16 208 48 208 2 polygon
+1 1.000 16 112 48 112 2 polygon
+1 1.000 16 64 48 64 2 polygon
+1 1.000 16 16 48 16 2 polygon
+1 1.000 16 -32 48 -32 2 polygon
+1 1.000 16 -80 48 -80 2 polygon
+1 1.000 16 -128 48 -128 2 polygon
+1 1.000 16 -176 48 -176 2 polygon
+1 1.000 16 -224 48 -224 2 polygon
+1 1.000 16 -272 48 -272 2 polygon
+1 1.000 16 -320 48 -320 2 polygon
+1 1.000 16 -368 48 -368 2 polygon
+1 1.000 16 -416 48 -416 2 polygon
+1 1.000 16 -464 48 -464 2 polygon
+1 1.000 16 -512 48 -512 2 polygon
+1 1.000 16 -656 48 -656 2 polygon
+(mprj_cyc_o) {/Helvetica cf} 2 20 0.000 1.000 64 -656 label
+1 1.000 16 -704 48 -704 2 polygon
+(mprj_stb_o) {/Helvetica cf} 2 20 0.000 1.000 64 -704 label
+1 1.000 16 -752 48 -752 2 polygon
+(mprj_we_o) {/Helvetica cf} 2 20 0.000 1.000 64 -752 label
+1 1.000 16 -800 48 -800 2 polygon
+(mprj_sel_o) {/Helvetica cf} 2 20 0.000 1.000 64 -800 label
+1 1.000 16 -848 48 -848 2 polygon
+(mprj_adr_o) {/Helvetica cf} 2 20 0.000 1.000 64 -848 label
+1 1.000 16 -896 48 -896 2 polygon
+(mprj_dat_o) {/Helvetica cf} 2 20 0.000 1.000 64 -896 label
+1 1.000 16 -944 48 -944 2 polygon
+(mprj_ack_i) {/Helvetica cf} 2 20 0.000 1.000 64 -944 label
+1 1.000 16 -992 48 -992 2 polygon
+(mprj_dat_i) {/Helvetica cf} 2 20 0.000 1.000 64 -992 label
+1 1.000 16 -1072 48 -1072 2 polygon
+1 1.000 16 -1120 48 -1120 2 polygon
+1 1.000 16 -1168 48 -1168 2 polygon
+(hk_stb_o) {/Helvetica cf} 2 20 0.000 1.000 64 -1072 label
+(hk_dat_i) {/Helvetica cf} 2 20 0.000 1.000 64 -1120 label
+(hk_ack_i) {/Helvetica cf} 2 20 0.000 1.000 64 -1168 label
+1 1.000 -976 288 -944 288 2 polygon
+(irq) {/Helvetica cf} 2 23 0.000 1.000 -992 288 label
+1 1.000 16 -560 48 -560 2 polygon
+1 1.000 -976 176 -944 176 2 polygon
+1 1.000 -976 -48 -944 -48 2 polygon
+1 1.000 -976 -528 -944 -528 2 polygon
+(qspi_enabled) {/Helvetica cf} 2 20 0.000 1.000 64 -560 label
+(uart_enabled) {/Helvetica cf} 2 23 0.000 1.000 -992 176 label
+(spi_enabled) {/Helvetica cf} 2 23 0.000 1.000 -992 -48 label
+(debug_mode) {/Helvetica cf} 2 23 0.000 1.000 -992 -528 label
+1 1.000 -976 128 -944 128 2 polygon
+(ser_tx) {/Helvetica cf} 2 23 0.000 1.000 -992 128 label
+(ser_rx) {/Helvetica cf} 2 23 0.000 1.000 -992 80 label
+1 1.000 -976 80 -944 80 2 polygon
+1 1.000 -976 -96 -944 -96 2 polygon
+(spi_sdi) {/Helvetica cf} 2 23 0.000 1.000 -992 -96 label
+(spi_csb) {/Helvetica cf} 2 23 0.000 1.000 -992 -144 label
+(spi_sck) {/Helvetica cf} 2 23 0.000 1.000 -992 -192 label
+(spi_sdo) {/Helvetica cf} 2 23 0.000 1.000 -992 -240 label
+(spi_sdoenb) {/Helvetica cf} 2 23 0.000 1.000 -992 -288 label
+1 1.000 -976 -144 -944 -144 2 polygon
+1 1.000 -976 -192 -944 -192 2 polygon
+1 1.000 -976 -240 -944 -240 2 polygon
+1 1.000 -976 -288 -944 -288 2 polygon
+1 1.000 -976 -384 -944 -384 2 polygon
+(debug_in) {/Helvetica cf} 2 23 0.000 1.000 -992 -384 label
+(debug_out) {/Helvetica cf} 2 23 0.000 1.000 -992 -432 label
+(debug_oeb) {/Helvetica cf} 2 23 0.000 1.000 -992 -480 label
+1 1.000 -976 -432 -944 -432 2 polygon
+1 1.000 -976 -480 -944 -480 2 polygon
+1 1.000 -976 -608 -944 -608 2 polygon
+(la_input) {/Helvetica cf} 2 23 0.000 1.000 -992 -608 label
+(la_output) {/Helvetica cf} 2 23 0.000 1.000 -992 -656 label
+(la_oenb) {/Helvetica cf} 2 23 0.000 1.000 -992 -704 label
+(la_iena) {/Helvetica cf} 2 23 0.000 1.000 -992 -752 label
+1 1.000 -976 -656 -944 -656 2 polygon
+1 1.000 -976 -704 -944 -704 2 polygon
+1 1.000 -976 -752 -944 -752 2 polygon
+1 1.000 -976 -864 -944 -864 2 polygon
+(sram_ro_clk) {/Helvetica cf} 2 23 0.000 1.000 -992 -864 label
+(sram_ro_csb) {/Helvetica cf} 2 23 0.000 1.000 -992 -912 label
+(sram_ro_addr) {/Helvetica cf} 2 23 0.000 1.000 -992 -960 label
+(sram_ro_data) {/Helvetica cf} 2 23 0.000 1.000 -992 -1008 label
+1 1.000 -976 -912 -944 -912 2 polygon
+1 1.000 -976 -960 -944 -960 2 polygon
+1 1.000 -976 -1008 -944 -1008 2 polygon
+1 1.000 -944 -1120 -976 -1120 2 polygon
+(trap) {/Helvetica cf} 2 23 0.000 1.000 -992 -1120 label
+0 1.000 -352 -1184 -352 -640 -64 -640 -64 -1184 4 polygon
+(wb_intercon) {/Helvetica-Bold cf} 2 21 0.000 1.000 -208 -896 label
+0 1.000 -352 -592 -352 128 -64 128 -64 -592 4 polygon
+(spimemio_wb) {/Helvetica-Bold cf} 2 21 0.000 1.000 -208 -208 label
+0 1.000 -352 192 -352 480 -64 480 -64 192 4 polygon
+(sigs) {CR} (gpio_) {CR} (convert_) {/Helvetica-Bold cf} 6 17 0.000 1.000 -208 
+288 label
+0 1.000 -864 48 -864 224 -544 224 -544 48 4 polygon
+(simpleuart_wb) {/Helvetica-Bold cf} 2 17 0.000 1.000 -720 128 label
+0 1.000 -864 -304 -864 -16 -544 -16 -544 -304 4 polygon
+(master_wb) {CR} (simple_spi_) {/Helvetica-Bold cf} 4 17 0.000 1.000 -720 -192 
+label
+0 1.000 -864 -544 -864 -368 -544 -368 -544 -544 4 polygon
+0 1.000 -864 -768 -864 -592 -544 -592 -544 -768 4 polygon
+0 1.000 -864 -1024 -864 -832 -544 -832 -544 -1024 4 polygon
+(\(unimplemented\)) {/Helvetica cf} 2 21 0.000 1.000 -704 -464 label
+(la_wb) {/Helvetica-Bold cf} 2 21 0.000 1.000 -736 -688 label
+(storage) {/Helvetica-Bold cf} 2 21 0.000 1.000 -720 -928 label
+0 1.000 -512 -1184 -512 480 -384 480 -384 -1184 4 polygon
+(CPU) {/Helvetica-Oblique cf} 2 21 0.000 1.000 -448 -320 label
+1 1.000 -944 -1120 -512 -1120 2 polygon
+1 1.000 -944 288 -512 288 2 polygon
+1 1.000 -944 400 -512 400 2 polygon
+1 1.000 -944 448 -512 448 2 polygon
+1 1.000 -64 464 16 464 2 polygon
+1 1.000 -64 416 16 416 2 polygon
+1 1.000 -64 352 16 352 2 polygon
+1 1.000 -64 304 16 304 2 polygon
+1 1.000 -64 256 16 256 2 polygon
+1 1.000 -64 208 16 208 2 polygon
+1 1.000 -64 112 16 112 2 polygon
+1 1.000 -64 64 16 64 2 polygon
+1 1.000 -64 16 16 16 2 polygon
+1 1.000 -64 -32 16 -32 2 polygon
+1 1.000 -64 -80 16 -80 2 polygon
+1 1.000 -64 -128 16 -128 2 polygon
+1 1.000 -64 -176 16 -176 2 polygon
+1 1.000 -64 -224 16 -224 2 polygon
+1 1.000 -64 -272 16 -272 2 polygon
+1 1.000 -64 -320 16 -320 2 polygon
+1 1.000 -64 -368 16 -368 2 polygon
+1 1.000 -64 -416 16 -416 2 polygon
+1 1.000 -64 -464 16 -464 2 polygon
+1 1.000 -64 -512 16 -512 2 polygon
+1 1.000 -64 -560 16 -560 2 polygon
+1 1.000 -64 -656 16 -656 2 polygon
+1 1.000 -64 -704 16 -704 2 polygon
+1 1.000 -64 -752 16 -752 2 polygon
+1 1.000 -64 -800 16 -800 2 polygon
+1 1.000 -64 -848 16 -848 2 polygon
+1 1.000 -64 -896 16 -896 2 polygon
+1 1.000 -64 -944 16 -944 2 polygon
+1 1.000 -64 -992 16 -992 2 polygon
+1 1.000 -64 -1072 16 -1072 2 polygon
+1 1.000 -64 -1120 16 -1120 2 polygon
+1 1.000 -64 -1168 16 -1168 2 polygon
+1 1.000 -944 176 -864 176 2 polygon
+1 1.000 -944 -48 -864 -48 2 polygon
+1 1.000 -944 -528 -864 -528 2 polygon
+1 1.000 -944 128 -864 128 2 polygon
+1 1.000 -944 80 -864 80 2 polygon
+1 1.000 -944 -96 -864 -96 2 polygon
+1 1.000 -944 -144 -864 -144 2 polygon
+1 1.000 -944 -192 -864 -192 2 polygon
+1 1.000 -944 -240 -864 -240 2 polygon
+1 1.000 -944 -288 -864 -288 2 polygon
+1 1.000 -944 -384 -864 -384 2 polygon
+1 1.000 -944 -432 -864 -432 2 polygon
+1 1.000 -944 -480 -864 -480 2 polygon
+1 1.000 -944 -608 -864 -608 2 polygon
+1 1.000 -944 -656 -864 -656 2 polygon
+1 1.000 -944 -704 -864 -704 2 polygon
+1 1.000 -944 -752 -864 -752 2 polygon
+1 1.000 -944 -864 -864 -864 2 polygon
+1 1.000 -944 -912 -864 -912 2 polygon
+1 1.000 -944 -960 -864 -960 2 polygon
+1 1.000 -944 -1008 -864 -1008 2 polygon
+(picorv32_wb) {/Helvetica-Bold cf} 2 21 270.000 1.000 -448 -576 label
+1.000 90.000 -864 448 generic::arrowhead
+1.000 90.000 -864 400 generic::arrowhead
+1.000 90.000 -864 288 generic::arrowhead
+-1.000 270.000 -896 176 generic::arrowhead
+-1.000 270.000 -896 128 generic::arrowhead
+1.000 90.000 -864 80 generic::arrowhead
+-1.000 270.000 -896 -48 generic::arrowhead
+1.000 90.000 -864 -96 generic::arrowhead
+-1.000 270.000 -896 -144 generic::arrowhead
+-1.000 270.000 -896 -192 generic::arrowhead
+-1.000 270.000 -896 -240 generic::arrowhead
+-1.000 270.000 -896 -288 generic::arrowhead
+1.000 90.000 -864 -384 generic::arrowhead
+-1.000 270.000 -896 -432 generic::arrowhead
+-1.000 270.000 -896 -480 generic::arrowhead
+-1.000 270.000 -896 -528 generic::arrowhead
+1.000 90.000 -864 -608 generic::arrowhead
+-1.000 270.000 -896 -656 generic::arrowhead
+-1.000 270.000 -896 -704 generic::arrowhead
+-1.000 270.000 -896 -752 generic::arrowhead
+-1.000 270.000 -896 -864 generic::arrowhead
+-1.000 270.000 -896 -912 generic::arrowhead
+-1.000 270.000 -896 -960 generic::arrowhead
+-1.000 270.000 -896 -1008 generic::arrowhead
+-1.000 270.000 -896 -1120 generic::arrowhead
+1.000 90.000 -32 464 generic::arrowhead
+-1.000 270.000 -64 416 generic::arrowhead
+1.000 90.000 -32 352 generic::arrowhead
+1.000 90.000 -32 304 generic::arrowhead
+1.000 90.000 -32 256 generic::arrowhead
+1.000 90.000 -32 208 generic::arrowhead
+1.000 90.000 -32 112 generic::arrowhead
+1.000 90.000 -32 64 generic::arrowhead
+1.000 90.000 -32 16 generic::arrowhead
+-1.000 270.000 -64 -32 generic::arrowhead
+1.000 90.000 -32 -80 generic::arrowhead
+1.000 90.000 -32 -128 generic::arrowhead
+-1.000 270.000 -64 -176 generic::arrowhead
+-1.000 270.000 -64 -320 generic::arrowhead
+-1.000 270.000 -64 -464 generic::arrowhead
+1.000 90.000 -32 -224 generic::arrowhead
+1.000 90.000 -32 -272 generic::arrowhead
+1.000 90.000 -32 -368 generic::arrowhead
+1.000 90.000 -32 -416 generic::arrowhead
+1.000 90.000 -32 -512 generic::arrowhead
+1.000 90.000 -32 -560 generic::arrowhead
+1.000 90.000 -32 -656 generic::arrowhead
+1.000 90.000 -32 -704 generic::arrowhead
+1.000 90.000 -32 -752 generic::arrowhead
+1.000 90.000 -32 -800 generic::arrowhead
+1.000 90.000 -32 -848 generic::arrowhead
+1.000 90.000 -32 -896 generic::arrowhead
+1.000 90.000 -32 -1072 generic::arrowhead
+-1.000 270.000 -64 -944 generic::arrowhead
+-1.000 270.000 -64 -992 generic::arrowhead
+-1.000 270.000 -64 -1120 generic::arrowhead
+-1.000 270.000 -64 -1168 generic::arrowhead
+1 1.000 320 -640 336 -656 336 -1008 320 -1024 4 polygon
+(0x3fffffff) {/Courier cf} {CR} (to) {/Helvetica cf} (0x30000000 ) 
+{/Courier cf} {CR} (address map) {CR} (project;) {CR} (to user) {/Helvetica cf} 
+14 16 0.000 1.000 368 -912 label
+1 1.000 320 -1056 336 -1072 336 -1168 320 -1184 4 polygon
+(0x26ffffff) {/Courier cf} {CR} (to) {/Helvetica cf} (0x26000000 ) 
+{/Courier cf} {CR} (address map) {CR} (to housekeeping;) {/Helvetica cf} 12 16 
+0.000 1.000 368 -1184 label
+1 1.000 -1184 -784 -1200 -768 -1200 -608 -1184 -592 4 polygon
+(protect block) {CR} (management) {CR} (through) {CR} (to user project) 
+{/Helvetica cf} 8 23 0.000 1.000 -1232 -688 label
+(All signals connect to the housekeeping subsystem unless otherwise specified.) 
+{/Helvetica cf} 2 16 0.000 1.000 -1152 -1312 label
+( implementation.) {/Helvetica cf} (caravel-pico) {/Helvetica-Bold cf} 
+(Internal block names shown in boldface are for the ) {/Helvetica cf} 6 16 
+0.000 1.000 -1152 -1360 label
+1 1.000 -544 -928 -512 -928 2 polygon
+1 1.000 -544 -672 -512 -672 2 polygon
+1 1.000 -384 -928 -352 -928 2 polygon
+1 1.000 -384 -288 -352 -288 2 polygon
+1 1.000 -384 320 -352 320 2 polygon
+1 1.000 -544 144 -512 144 2 polygon
+1 1.000 -544 -144 -512 -144 2 polygon
+1 1.000 -544 128 -512 128 2 polygon
+1 1.000 -544 112 -512 112 2 polygon
+1 1.000 -544 -160 -512 -160 2 polygon
+1 1.000 -544 -176 -512 -176 2 polygon
+1 1.000 -544 -688 -512 -688 2 polygon
+1 1.000 -544 -704 -512 -704 2 polygon
+1 1.000 -544 -944 -512 -944 2 polygon
+1 1.000 -544 -960 -512 -960 2 polygon
+1 1.000 -384 -944 -352 -944 2 polygon
+1 1.000 -384 -960 -352 -960 2 polygon
+1 1.000 -384 -304 -352 -304 2 polygon
+1 1.000 -384 -320 -352 -320 2 polygon
+1 1.000 -384 304 -352 304 2 polygon
+1 1.000 -384 288 -352 288 2 polygon
+(UART) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -848 176 label
+(SPI master) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -848 -80 label
+(Debug interface) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -848 -416 label
+(Logic analyzer) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -848 -640 label
+(Storage/Memory) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -848 -880 label
+(GPIO \(1-pin\)) {/Helvetica-Oblique cf} 2 16 0.000 1.000 -336 416 label
+(controller) {CR} (SPI flash) {/Helvetica-Oblique cf} 4 16 0.000 1.000 -336 32 
+label
+(interconnect) {CR} (Wishbone) {/Helvetica-Oblique cf} 4 16 0.000 1.000 -336 
+-736 label
+(6) {/Helvetica cf} 2 16 0.000 1.000 -928 304 label
+(128) {/Helvetica cf} 2 16 0.000 1.000 -944 -600 label
+(128) {/Helvetica cf} 2 16 0.000 1.000 -944 -648 label
+(128) {/Helvetica cf} 2 16 0.000 1.000 -944 -696 label
+(128) {/Helvetica cf} 2 16 0.000 1.000 -944 -744 label
+(8) {/Helvetica cf} 2 16 0.000 1.000 -936 -952 label
+(32) {/Helvetica cf} 2 16 0.000 1.000 -936 -1000 label
+(32) {/Helvetica cf} 2 19 0.000 1.000 8 -984 label
+(32) {/Helvetica cf} 2 19 0.000 1.000 8 -1112 label
+(4) {/Helvetica cf} 2 19 0.000 1.000 8 -792 label
+(32) {/Helvetica cf} 2 19 0.000 1.000 8 -888 label
+(32) {/Helvetica cf} 2 19 0.000 1.000 8 -840 label
+pgsave restore showpage
+
+%%Page: user_project_wrapper 2
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.5818 inchscale
+2.6000 setlinewidth 1332 1448 translate
+
+(Caravel open frame pinout) {/Helvetica cf} 2 16 0.000 1.000 -848 848 label
+0 1.000 -336 -144 -336 608 528 608 528 -144 4 polygon
+(User project wrapper) {/Helvetica cf} 2 16 0.000 1.000 -848 800 label
+1 1.000 -224 608 -224 640 2 polygon
+1 1.000 -160 608 -160 640 2 polygon
+(vdda1) {/Helvetica cf} 2 20 270.000 1.000 -224 656 label
+(vdda2) {/Helvetica cf} 2 20 270.000 1.000 -160 656 label
+1 1.000 -336 544 -368 544 2 polygon
+(wb_clk_i) {/Helvetica cf} 2 23 0.000 1.000 -400 544 label
+(wb_rst_i) {/Helvetica cf} 2 23 0.000 1.000 -400 496 label
+1 1.000 -368 496 -336 496 2 polygon
+1 1.000 -368 448 -336 448 2 polygon
+(wbs_cyc_i) {/Helvetica cf} 2 23 0.000 1.000 -400 448 label
+1 1.000 -368 400 -336 400 2 polygon
+(wbs_stb_i) {/Helvetica cf} 2 23 0.000 1.000 -400 400 label
+1 1.000 -368 352 -336 352 2 polygon
+(wbs_we_i) {/Helvetica cf} 2 23 0.000 1.000 -400 352 label
+1 1.000 -368 304 -336 304 2 polygon
+(wbs_sel_i) {/Helvetica cf} 2 23 0.000 1.000 -400 304 label
+1 1.000 -368 256 -336 256 2 polygon
+(wbs_adr_i) {/Helvetica cf} 2 23 0.000 1.000 -400 256 label
+1 1.000 -368 208 -336 208 2 polygon
+(wbs_dat_i) {/Helvetica cf} 2 23 0.000 1.000 -400 208 label
+1 1.000 -368 160 -336 160 2 polygon
+(wbs_ack_o) {/Helvetica cf} 2 23 0.000 1.000 -400 160 label
+1 1.000 -368 112 -336 112 2 polygon
+(wbs_dat_o) {/Helvetica cf} 2 23 0.000 1.000 -400 112 label
+1 1.000 560 -48 528 -48 2 polygon
+(user_irq) {/Helvetica cf} 2 20 0.000 1.000 576 -48 label
+1 1.000 560 160 528 160 2 polygon
+(la_data_in) {/Helvetica cf} 2 20 0.000 1.000 576 160 label
+(la_data_out) {/Helvetica cf} 2 20 0.000 1.000 576 112 label
+(la_oenb) {/Helvetica cf} 2 20 0.000 1.000 576 64 label
+1 1.000 560 112 528 112 2 polygon
+1 1.000 560 64 528 64 2 polygon
+1 1.000 -656 560 -672 544 -672 96 -656 80 4 polygon
+(0x3fffffff) {/Courier cf} {CR} (to) {/Helvetica cf} (0x30000000 ) 
+{/Courier cf} {CR} (address map) {CR} (SoC;) {CR} (to management) 
+{/Helvetica cf} 14 19 0.000 1.000 -704 192 label
+1 1.000 816 -96 832 -80 832 160 816 176 4 polygon
+(protect block) {CR} (management) {CR} (SoC through) {CR} (to management) 
+{/Helvetica cf} 8 20 0.000 1.000 864 48 label
+1 1.000 -96 608 -96 640 2 polygon
+1 1.000 -32 608 -32 640 2 polygon
+(vssa1) {/Helvetica cf} 2 20 270.000 1.000 -96 656 label
+(vssa2) {/Helvetica cf} 2 20 270.000 1.000 -32 656 label
+1 1.000 224 608 224 640 2 polygon
+1 1.000 288 608 288 640 2 polygon
+(vccd1) {/Helvetica cf} 2 20 270.000 1.000 224 656 label
+(vccd2) {/Helvetica cf} 2 20 270.000 1.000 288 656 label
+1 1.000 352 608 352 640 2 polygon
+1 1.000 416 608 416 640 2 polygon
+(vssd1) {/Helvetica cf} 2 20 270.000 1.000 352 656 label
+(vssd2) {/Helvetica cf} 2 20 270.000 1.000 416 656 label
+1 1.000 -256 784 -240 800 -16 800 0 784 4 polygon
+(3.3V domain) {/Helvetica cf} 2 17 0.000 1.000 -128 832 label
+(1.8V domain) {/Helvetica cf} 2 17 0.000 1.000 320 832 label
+1 1.000 192 784 208 800 432 800 448 784 4 polygon
+1 1.000 528 544 560 544 2 polygon
+(io_in) {/Helvetica cf} 2 20 0.000 1.000 576 544 label
+(io_out) {/Helvetica cf} 2 20 0.000 1.000 576 496 label
+(io_oeb) {/Helvetica cf} 2 20 0.000 1.000 576 448 label
+(analog_io) {/Helvetica cf} 2 20 0.000 1.000 576 400 label
+1 1.000 528 496 560 496 2 polygon
+1 1.000 528 448 560 448 2 polygon
+1 1.000 528 400 560 400 2 polygon
+1 1.000 816 560 832 544 832 352 816 336 4 polygon
+(I/O) {CR} (to padframe) {/Helvetica cf} 4 20 0.000 1.000 864 464 label
+1 1.000 -368 -48 -336 -48 2 polygon
+(user_clock2) {/Helvetica cf} 2 23 0.000 1.000 -384 -48 label
+1 1.000 -656 -32 -672 -48 -672 -96 -656 -112 4 polygon
+(control) {CR} (to clocking) {/Helvetica cf} 4 23 0.000 1.000 -720 -64 label
+1.000 90.000 -336 -48 generic::arrowhead
+1.000 90.000 560 -48 generic::arrowhead
+-1.000 270.000 528 160 generic::arrowhead
+-1.000 270.000 528 64 generic::arrowhead
+1.000 90.000 560 112 generic::arrowhead
+-1.000 270.000 528 544 generic::arrowhead
+1.000 90.000 560 496 generic::arrowhead
+1.000 90.000 560 448 generic::arrowhead
+1.000 90.000 -336 544 generic::arrowhead
+1.000 90.000 -336 496 generic::arrowhead
+1.000 90.000 -336 448 generic::arrowhead
+1.000 90.000 -336 400 generic::arrowhead
+1.000 90.000 -336 352 generic::arrowhead
+1.000 90.000 -336 304 generic::arrowhead
+1.000 90.000 -336 256 generic::arrowhead
+1.000 90.000 -336 208 generic::arrowhead
+-1.000 270.000 -368 160 generic::arrowhead
+-1.000 270.000 -368 112 generic::arrowhead
+(4) {/Helvetica cf} 2 20 0.000 1.000 -320 304 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -320 256 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -320 208 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -320 112 label
+(38) {/Helvetica cf} 2 23 0.000 1.000 512 544 label
+(38) {/Helvetica cf} 2 23 0.000 1.000 512 496 label
+(38) {/Helvetica cf} 2 23 0.000 1.000 512 448 label
+(28) {/Helvetica cf} 2 23 0.000 1.000 512 400 label
+(128) {/Helvetica cf} 2 23 0.000 1.000 512 160 label
+(128) {/Helvetica cf} 2 23 0.000 1.000 512 112 label
+(128) {/Helvetica cf} 2 23 0.000 1.000 512 64 label
+(3) {/Helvetica cf} 2 23 0.000 1.000 512 -48 label
+pgsave restore showpage
+
+%%Page: housekeeping 3
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.5466 inchscale
+2.6000 setlinewidth 2004 2393 translate
+
+(Caravel open frame pinout) {/Helvetica cf} 2 16 0.000 1.000 -1648 880 label
+0 1.000 -944 -1744 -944 736 -80 736 -80 -1744 4 polygon
+(Housekeeping subsystem) {/Helvetica cf} 2 16 0.000 1.000 -1648 832 label
+1 1.000 -576 736 -576 768 2 polygon
+1 1.000 -512 736 -512 768 2 polygon
+(vdd) {/Helvetica cf} 2 20 270.000 1.000 -576 784 label
+(vss) {/Helvetica cf} 2 20 270.000 1.000 -512 784 label
+1 1.000 -80 -544 -48 -544 2 polygon
+(pll_ena) {/Helvetica cf} 2 20 0.000 1.000 -32 -544 label
+(pll_dco_ena) {/Helvetica cf} 2 20 0.000 1.000 -32 -592 label
+1 1.000 -48 -592 -80 -592 2 polygon
+(spimemio_flash_csb) {/Helvetica cf} 2 19 0.000 1.000 -992 160 label
+(spimemio_flash_sck) {/Helvetica cf} 2 19 0.000 1.000 -992 112 label
+(spimemio_flash_io0_oeb) {/Helvetica cf} 2 19 0.000 1.000 -992 64 label
+(spimemio_flash_io0_di) {/Helvetica cf} 2 19 0.000 1.000 -992 16 label
+(spimemio_flash_io0_do) {/Helvetica cf} 2 19 0.000 1.000 -992 -32 label
+(spimemio_flash_io1_oeb) {/Helvetica cf} 2 19 0.000 1.000 -992 -80 label
+(spimemio_flash_io1_di) {/Helvetica cf} 2 19 0.000 1.000 -992 -128 label
+(spimemio_flash_io1_do) {/Helvetica cf} 2 19 0.000 1.000 -992 -176 label
+(spimemio_flash_io2_oeb) {/Helvetica cf} 2 19 0.000 1.000 -992 -224 label
+(spimemio_flash_io2_di) {/Helvetica cf} 2 19 0.000 1.000 -992 -272 label
+(spimemio_flash_io2_do) {/Helvetica cf} 2 19 0.000 1.000 -992 -320 label
+(spimemio_flash_io3_oeb) {/Helvetica cf} 2 19 0.000 1.000 -992 -368 label
+(spimemio_flash_io3_di) {/Helvetica cf} 2 19 0.000 1.000 -992 -416 label
+(spimemio_flash_io3_do) {/Helvetica cf} 2 19 0.000 1.000 -992 -464 label
+1 1.000 -944 176 -976 176 2 polygon
+1 1.000 -944 128 -976 128 2 polygon
+1 1.000 -944 80 -976 80 2 polygon
+1 1.000 -944 32 -976 32 2 polygon
+1 1.000 -944 -16 -976 -16 2 polygon
+1 1.000 -944 -64 -976 -64 2 polygon
+1 1.000 -944 -112 -976 -112 2 polygon
+1 1.000 -944 -160 -976 -160 2 polygon
+1 1.000 -944 -208 -976 -208 2 polygon
+1 1.000 -944 -256 -976 -256 2 polygon
+1 1.000 -944 -304 -976 -304 2 polygon
+1 1.000 -944 -352 -976 -352 2 polygon
+1 1.000 -944 -400 -976 -400 2 polygon
+1 1.000 -944 -448 -976 -448 2 polygon
+1 1.000 -944 -704 -976 -704 2 polygon
+(wb_cyc_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -704 label
+1 1.000 -944 -752 -976 -752 2 polygon
+(wb_stb_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -752 label
+1 1.000 -944 -800 -976 -800 2 polygon
+(wb_we_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -800 label
+1 1.000 -944 -848 -976 -848 2 polygon
+(wb_sel_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -848 label
+1 1.000 -944 -896 -976 -896 2 polygon
+(wb_adr_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -896 label
+1 1.000 -944 -944 -976 -944 2 polygon
+(wb_dat_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -944 label
+1 1.000 -944 -992 -976 -992 2 polygon
+(wb_ack_o) {/Helvetica cf} 2 23 0.000 1.000 -992 -992 label
+1 1.000 -944 -1040 -976 -1040 2 polygon
+(wb_dat_o) {/Helvetica cf} 2 23 0.000 1.000 -992 -1040 label
+1 1.000 -48 -944 -80 -944 2 polygon
+(irq) {/Helvetica cf} 2 20 0.000 1.000 -32 -944 label
+1 1.000 -944 -496 -976 -496 2 polygon
+1 1.000 -976 -1152 -944 -1152 2 polygon
+1 1.000 -976 -1376 -944 -1376 2 polygon
+1 1.000 -48 -1248 -80 -1248 2 polygon
+(qspi_enabled) {/Helvetica cf} 2 23 0.000 1.000 -992 -496 label
+(uart_enabled) {/Helvetica cf} 2 23 0.000 1.000 -992 -1152 label
+(spi_enabled) {/Helvetica cf} 2 23 0.000 1.000 -992 -1376 label
+(debug_mode) {/Helvetica cf} 2 20 0.000 1.000 -32 -1248 label
+1 1.000 -976 -1200 -944 -1200 2 polygon
+(ser_tx) {/Helvetica cf} 2 23 0.000 1.000 -992 -1200 label
+(ser_rx) {/Helvetica cf} 2 23 0.000 1.000 -992 -1248 label
+1 1.000 -976 -1248 -944 -1248 2 polygon
+1 1.000 -976 -1424 -944 -1424 2 polygon
+(spi_sdi) {/Helvetica cf} 2 23 0.000 1.000 -992 -1424 label
+(spi_csb) {/Helvetica cf} 2 23 0.000 1.000 -992 -1472 label
+(spi_sck) {/Helvetica cf} 2 23 0.000 1.000 -992 -1520 label
+(spi_sdo) {/Helvetica cf} 2 23 0.000 1.000 -992 -1568 label
+(spi_sdoenb) {/Helvetica cf} 2 23 0.000 1.000 -992 -1616 label
+1 1.000 -976 -1472 -944 -1472 2 polygon
+1 1.000 -976 -1520 -944 -1520 2 polygon
+1 1.000 -976 -1568 -944 -1568 2 polygon
+1 1.000 -976 -1616 -944 -1616 2 polygon
+1 1.000 -48 -1104 -80 -1104 2 polygon
+(debug_in) {/Helvetica cf} 2 20 0.000 1.000 -32 -1104 label
+(debug_out) {/Helvetica cf} 2 20 0.000 1.000 -32 -1152 label
+(debug_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 -1200 label
+1 1.000 -48 -1152 -80 -1152 2 polygon
+1 1.000 -48 -1200 -80 -1200 2 polygon
+1 1.000 -48 -1360 -80 -1360 2 polygon
+(hkspi_sram_clk) {/Helvetica cf} 2 20 0.000 1.000 -32 -1360 label
+(hkspi_sram_csb) {/Helvetica cf} 2 20 0.000 1.000 -32 -1408 label
+(hkspi_sram_addr) {/Helvetica cf} 2 20 0.000 1.000 -32 -1456 label
+(hkspi_sram_rdata) {/Helvetica cf} 2 20 0.000 1.000 -32 -1504 label
+1 1.000 -48 -1408 -80 -1408 2 polygon
+1 1.000 -48 -1456 -80 -1456 2 polygon
+1 1.000 -48 -1504 -80 -1504 2 polygon
+1 1.000 -944 -1696 -976 -1696 2 polygon
+(trap) {/Helvetica cf} 2 23 0.000 1.000 -992 -1696 label
+1 1.000 -1248 -576 -1264 -592 -1264 -1056 -1248 -1072 4 polygon
+(0x26ffffff) {/Courier cf} {CR} (to) {/Helvetica cf} (0x26000000 ) 
+{/Courier cf} {CR} (address map) {CR} (SoC wrapper;) {CR} (to management) 
+{/Helvetica cf} 14 19 0.000 1.000 -1312 -912 label
+1 1.000 -944 -656 -976 -656 2 polygon
+(wb_rst_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -656 label
+1 1.000 -944 -608 -976 -608 2 polygon
+(wb_clk_i) {/Helvetica cf} 2 23 0.000 1.000 -992 -608 label
+1.000 90.000 -944 -608 generic::arrowhead
+1.000 90.000 -944 -656 generic::arrowhead
+1.000 90.000 -944 -704 generic::arrowhead
+1.000 90.000 -944 -752 generic::arrowhead
+1.000 90.000 -944 -800 generic::arrowhead
+1.000 90.000 -944 -848 generic::arrowhead
+1.000 90.000 -944 -896 generic::arrowhead
+1.000 90.000 -944 -944 generic::arrowhead
+-1.000 270.000 -976 -992 generic::arrowhead
+-1.000 270.000 -976 -1040 generic::arrowhead
+(pll_div) {/Helvetica cf} 2 20 0.000 1.000 -32 -640 label
+(pll_sel) {/Helvetica cf} 2 20 0.000 1.000 -32 -688 label
+(pll90_sel) {/Helvetica cf} 2 20 0.000 1.000 -32 -736 label
+(pll_trim) {/Helvetica cf} 2 20 0.000 1.000 -32 -784 label
+(pll_bypass) {/Helvetica cf} 2 20 0.000 1.000 -32 -832 label
+1 1.000 -80 -640 -48 -640 2 polygon
+1 1.000 -48 -688 -80 -688 2 polygon
+1 1.000 -80 -736 -48 -736 2 polygon
+1 1.000 -48 -784 -80 -784 2 polygon
+1 1.000 -80 -832 -48 -832 2 polygon
+1 1.000 -976 512 -944 512 2 polygon
+(porb) {/Helvetica cf} 2 23 0.000 1.000 -992 512 label
+1 1.000 -80 -992 -48 -992 2 polygon
+(reset) {/Helvetica cf} 2 20 0.000 1.000 -32 -992 label
+1 1.000 -944 560 -976 560 2 polygon
+(user_clock) {/Helvetica cf} 2 23 0.000 1.000 -992 560 label
+1 1.000 -976 672 -944 672 2 polygon
+(mask_rev_in) {/Helvetica cf} 2 23 0.000 1.000 -1008 672 label
+(All signals connect to the management SoC wrapper unless otherwise specified.) 
+{/Helvetica cf} 2 16 0.000 1.000 -1184 -1824 label
+1 1.000 -976 432 -944 432 2 polygon
+(usr1_vcc_pwrgood) {/Helvetica cf} 2 23 0.000 1.000 -992 432 label
+(usr2_vcc_pwrgood) {/Helvetica cf} 2 23 0.000 1.000 -992 384 label
+(usr1_vdd_pwrgood) {/Helvetica cf} 2 23 0.000 1.000 -992 336 label
+(usr2_vdd_pwrgood) {/Helvetica cf} 2 23 0.000 1.000 -992 288 label
+1 1.000 -976 384 -944 384 2 polygon
+1 1.000 -976 336 -944 336 2 polygon
+1 1.000 -976 288 -944 288 2 polygon
+1 1.000 -80 576 -48 576 2 polygon
+(serial_clock) {/Helvetica cf} 2 20 0.000 1.000 -32 576 label
+(serial_resetn) {/Helvetica cf} 2 20 0.000 1.000 -32 528 label
+(serial_data_1) {/Helvetica cf} 2 20 0.000 1.000 -32 480 label
+(serial_data_2) {/Helvetica cf} 2 20 0.000 1.000 -32 432 label
+1 1.000 -80 528 -48 528 2 polygon
+1 1.000 -80 480 -48 480 2 polygon
+1 1.000 -80 432 -48 432 2 polygon
+1 1.000 -80 384 -48 384 2 polygon
+1 1.000 -80 336 -48 336 2 polygon
+1 1.000 -80 288 -48 288 2 polygon
+1 1.000 -80 240 -48 240 2 polygon
+(mgmt_gpio_in) {/Helvetica cf} 2 20 0.000 1.000 -32 384 label
+(mgmt_gpio_out) {/Helvetica cf} 2 20 0.000 1.000 -32 336 label
+(mgmt_gpio_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 288 label
+(pwr_ctrl_out) {/Helvetica cf} 2 20 0.000 1.000 -32 240 label
+(\(for future use\)) {/Helvetica cf} 2 16 0.000 1.000 288 224 label
+(pad_flash_csb) {/Helvetica cf} 2 20 0.000 1.000 -32 96 label
+(pad_flash_sck) {/Helvetica cf} 2 20 0.000 1.000 -32 0 label
+(pad_flash_io0_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 -96 label
+(pad_flash_io0_di) {/Helvetica cf} 2 20 0.000 1.000 -32 -192 label
+(pad_flash_io0_do) {/Helvetica cf} 2 20 0.000 1.000 -32 -240 label
+(pad_flash_io1_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 -288 label
+(pad_flash_io1_di) {/Helvetica cf} 2 20 0.000 1.000 -32 -384 label
+(pad_flash_io1_do) {/Helvetica cf} 2 20 0.000 1.000 -32 -432 label
+1 1.000 -48 96 -80 96 2 polygon
+1 1.000 -48 0 -80 0 2 polygon
+1 1.000 -48 -96 -80 -96 2 polygon
+1 1.000 -48 -192 -80 -192 2 polygon
+1 1.000 -48 -240 -80 -240 2 polygon
+1 1.000 -48 -288 -80 -288 2 polygon
+1 1.000 -48 -384 -80 -384 2 polygon
+1 1.000 -48 -432 -80 -432 2 polygon
+(pad_flash_io0_ieb) {/Helvetica cf} 2 20 0.000 1.000 -32 -144 label
+1 1.000 -48 -144 -80 -144 2 polygon
+(pad_flash_io0_ieb) {/Helvetica cf} 2 20 0.000 1.000 -32 -336 label
+1 1.000 -48 -336 -80 -336 2 polygon
+(pad_flash_sck_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 -48 label
+1 1.000 -48 -48 -80 -48 2 polygon
+(pad_flash_csb_oeb) {/Helvetica cf} 2 20 0.000 1.000 -32 48 label
+1 1.000 -48 48 -80 48 2 polygon
+1 1.000 368 112 384 96 384 -432 368 -448 4 polygon
+(pads) {CR} (flash SPI) {CR} (to padframe) {/Helvetica cf} 6 16 0.000 1.000 416 
+-224 label
+1 1.000 288 272 304 288 304 592 288 608 4 polygon
+(routing) {CR} (to GPIO) {/Helvetica cf} 4 16 0.000 1.000 352 416 label
+1 1.000 -1280 624 -1296 640 -1296 688 -1280 704 4 polygon
+(from user ID block) {/Helvetica cf} 2 23 0.000 1.000 -1328 672 label
+1 1.000 -1376 576 -1392 560 -1392 272 -1376 256 4 polygon
+(control) {CR} (clocking) {CR} (from power/) {/Helvetica cf} 6 23 0.000 1.000 
+-1424 416 label
+1 1.000 224 -528 240 -544 240 -848 224 -864 4 polygon
+(control) {CR} (to clocking) {/Helvetica cf} 4 16 0.000 1.000 272 -752 label
+(SoC) {CR} (managment) {CR} (signals from) {CR} (controller) {CR} (SPI flash) 
+{/Helvetica cf} 10 20 0.000 1.000 -880 -112 label
+(GPIO pads) {CR} (routing to) {CR} (UART) {/Helvetica cf} 6 20 0.000 1.000 -880 
+-1200 label
+(GPIO pads) {CR} (routing to) {CR} (SPI master) {/Helvetica cf} 6 20 0.000 
+1.000 -880 -1488 label
+(GPIO pads) {CR} (routing to) {CR} (interface) {CR} (debug) {/Helvetica cf} 8 
+23 0.000 1.000 -144 -1168 label
+(from SRAM) {CR} (2nd port) {CR} (read-only) {/Helvetica cf} 6 23 0.000 1.000 
+-144 -1440 label
+(IRQ and reset) {CR} (SPI-generated) {/Helvetica cf} 4 23 0.000 1.000 -144 -960 
+label
+1.000 90.000 -944 672 generic::arrowhead
+1.000 90.000 -944 560 generic::arrowhead
+(for monitoring) {/Helvetica cf} 2 20 0.000 1.000 -880 560 label
+1.000 90.000 -944 512 generic::arrowhead
+(main power-on-reset) {/Helvetica cf} 2 20 0.000 1.000 -880 512 label
+(monitoring) {CR} (area power) {CR} (user project) {/Helvetica cf} 6 20 0.000 
+1.000 -880 368 label
+1.000 90.000 -944 432 generic::arrowhead
+1.000 90.000 -944 384 generic::arrowhead
+1.000 90.000 -944 336 generic::arrowhead
+1.000 90.000 -944 288 generic::arrowhead
+1.000 90.000 -944 176 generic::arrowhead
+1.000 90.000 -944 128 generic::arrowhead
+1.000 90.000 -944 80 generic::arrowhead
+1.000 90.000 -944 -16 generic::arrowhead
+1.000 90.000 -944 -64 generic::arrowhead
+1.000 90.000 -944 -160 generic::arrowhead
+1.000 90.000 -944 -208 generic::arrowhead
+1.000 90.000 -944 -304 generic::arrowhead
+1.000 90.000 -944 -352 generic::arrowhead
+1.000 90.000 -944 -448 generic::arrowhead
+1.000 90.000 -944 -496 generic::arrowhead
+-1.000 270.000 -976 32 generic::arrowhead
+-1.000 270.000 -976 -112 generic::arrowhead
+-1.000 270.000 -976 -256 generic::arrowhead
+-1.000 270.000 -976 -400 generic::arrowhead
+1.000 90.000 -944 -1152 generic::arrowhead
+1.000 90.000 -944 -1248 generic::arrowhead
+-1.000 270.000 -976 -1200 generic::arrowhead
+1.000 90.000 -944 -1376 generic::arrowhead
+1.000 90.000 -944 -1424 generic::arrowhead
+-1.000 270.000 -976 -1472 generic::arrowhead
+-1.000 270.000 -976 -1520 generic::arrowhead
+-1.000 270.000 -976 -1568 generic::arrowhead
+-1.000 270.000 -976 -1616 generic::arrowhead
+1.000 90.000 -944 -1696 generic::arrowhead
+-1.000 270.000 -80 -1504 generic::arrowhead
+1.000 90.000 -48 -1456 generic::arrowhead
+1.000 90.000 -48 -1408 generic::arrowhead
+1.000 90.000 -48 -1360 generic::arrowhead
+-1.000 270.000 -80 -1248 generic::arrowhead
+1.000 90.000 -48 -1104 generic::arrowhead
+-1.000 270.000 -80 -1152 generic::arrowhead
+-1.000 270.000 -80 -1200 generic::arrowhead
+1.000 90.000 -48 -992 generic::arrowhead
+1.000 90.000 -48 -944 generic::arrowhead
+1.000 90.000 -48 -832 generic::arrowhead
+1.000 90.000 -48 -784 generic::arrowhead
+1.000 90.000 -48 -736 generic::arrowhead
+1.000 90.000 -48 -688 generic::arrowhead
+1.000 90.000 -48 -640 generic::arrowhead
+1.000 90.000 -48 -592 generic::arrowhead
+1.000 90.000 -48 -544 generic::arrowhead
+1.000 90.000 -48 96 generic::arrowhead
+1.000 90.000 -48 48 generic::arrowhead
+1.000 90.000 -48 0 generic::arrowhead
+1.000 90.000 -48 -48 generic::arrowhead
+1.000 90.000 -48 -96 generic::arrowhead
+1.000 90.000 -48 -144 generic::arrowhead
+1.000 90.000 -48 -240 generic::arrowhead
+1.000 90.000 -48 -288 generic::arrowhead
+1.000 90.000 -48 -336 generic::arrowhead
+1.000 90.000 -48 -432 generic::arrowhead
+-1.000 270.000 -80 -384 generic::arrowhead
+-1.000 270.000 -80 -192 generic::arrowhead
+1.000 90.000 -48 240 generic::arrowhead
+1.000 90.000 -48 576 generic::arrowhead
+1.000 90.000 -48 528 generic::arrowhead
+1.000 90.000 -48 480 generic::arrowhead
+1.000 90.000 -48 432 generic::arrowhead
+-1.000 270.000 -80 384 generic::arrowhead
+1.000 90.000 -48 336 generic::arrowhead
+1.000 90.000 -48 288 generic::arrowhead
+(and data) {CR} (configuration) {CR} (GPIO) {/Helvetica cf} 6 23 0.000 1.000 
+-144 432 label
+(options) {CR} (pass-thru) {CR} (qspi and) {CR} (pads with) {CR} (to dedicated) 
+{CR} (routing to) {CR} (controller) {CR} (SPI flash) {/Helvetica cf} 16 23 
+0.000 1.000 -144 -192 label
+(configuration) {CR} (PLL) {/Helvetica cf} 4 23 0.000 1.000 -144 -672 label
+(bus) {CR} (wishbone) {/Helvetica cf} 4 20 0.000 1.000 -880 -800 label
+(status from CPU) {CR} (trap state) {/Helvetica cf} 4 20 0.000 1.000 -880 -1696 
+label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -936 672 label
+(4) {/Helvetica cf} 2 20 0.000 1.000 -936 -848 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -936 -896 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -936 -944 label
+(32) {/Helvetica cf} 2 20 0.000 1.000 -936 -1040 label
+(8) {/Helvetica cf} 2 23 0.000 1.000 -88 -1456 label
+(32) {/Helvetica cf} 2 23 0.000 1.000 -88 -1504 label
+(26) {/Helvetica cf} 2 23 0.000 1.000 -88 -784 label
+(3) {/Helvetica cf} 2 23 0.000 1.000 -88 -736 label
+(3) {/Helvetica cf} 2 23 0.000 1.000 -88 -688 label
+(5) {/Helvetica cf} 2 23 0.000 1.000 -88 -640 label
+(3) {/Helvetica cf} 2 23 0.000 1.000 -88 -944 label
+pgsave restore showpage
+
+%%Trailer
+XCIRCsave restore
+%%EOF
