@@ -355,7 +355,7 @@ module caravel (
     wire 	hkspi_sram_clk;
     wire 	hkspi_sram_csb;
     wire [7:0]	hkspi_sram_addr;
-    wire [31:0]	hkspi_sram_rdata;
+    wire [31:0]	hkspi_sram_data;
 
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
@@ -441,7 +441,7 @@ module caravel (
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
-	.sram_ro_data(hkspi_sram_rdata),
+	.sram_ro_data(hkspi_sram_data),
 
 	// Trap status
 	.trap(trap)
@@ -720,12 +720,369 @@ module caravel (
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
-	.sram_ro_data(hkspi_sram_rdata),
+	.sram_ro_data(hkspi_sram_data),
 
 	.usr1_vcc_pwrgood(mprj_vcc_pwrgood),
 	.usr2_vcc_pwrgood(mprj2_vcc_pwrgood),
 	.usr1_vdd_pwrgood(mprj_vdd_pwrgood),
 	.usr2_vdd_pwrgood(mprj2_vdd_pwrgood)
+    );
+
+    /* GPIO defaults (via programmed) */
+    wire [`MPRJ_IO_PADS*13-1:0] gpio_defaults;
+
+    /* Fixed defaults for the first 5 GPIO pins */
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h1803)
+    ) gpio_01_defaults [1:0] (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[25:0])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0403)
+    ) gpio_234_defaults [2:0] (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[64:26])
+    );
+
+    /* Via-programmable defaults for the rest of the GPIO pins */
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_5_INIT)
+    ) gpio_5_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[77:65])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_6_INIT)
+    ) gpio_6_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[90:78])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_7_INIT)
+    ) gpio_7_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[103:91])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_8_INIT)
+    ) gpio_8_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[116:104])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_9_INIT)
+    ) gpio_9_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[129:117])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_10_INIT)
+    ) gpio_10_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[142:130])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_11_INIT)
+    ) gpio_11_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[155:143])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_12_INIT)
+    ) gpio_12_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[168:156])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_13_INIT)
+    ) gpio_13_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[181:169])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_14_INIT)
+    ) gpio_14_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[194:182])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_15_INIT)
+    ) gpio_15_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[207:195])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_16_INIT)
+    ) gpio_16_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[220:208])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_17_INIT)
+    ) gpio_17_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[233:221])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_18_INIT)
+    ) gpio_18_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[246:234])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_19_INIT)
+    ) gpio_19_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[259:247])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_20_INIT)
+    ) gpio_20_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[272:260])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_21_INIT)
+    ) gpio_21_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[285:273])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_22_INIT)
+    ) gpio_22_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[298:286])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_23_INIT)
+    ) gpio_23_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[311:299])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_24_INIT)
+    ) gpio_24_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[324:312])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_25_INIT)
+    ) gpio_25_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[337:325])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_26_INIT)
+    ) gpio_26_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[350:338])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_27_INIT)
+    ) gpio_27_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[363:351])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_28_INIT)
+    ) gpio_28_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[376:364])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_29_INIT)
+    ) gpio_29_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[389:377])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_30_INIT)
+    ) gpio_30_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[402:390])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_31_INIT)
+    ) gpio_31_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[415:403])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_32_INIT)
+    ) gpio_32_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[428:416])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_33_INIT)
+    ) gpio_33_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[441:429])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_34_INIT)
+    ) gpio_34_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[454:442])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_35_INIT)
+    ) gpio_35_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[467:455])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_36_INIT)
+    ) gpio_36_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[480:468])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_37_INIT)
+    ) gpio_37_defaults (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[493:481])
     );
 
     // Each control block sits next to an I/O pad in the user area.
@@ -743,17 +1100,16 @@ module caravel (
     // of the extra signals those pads need.
 
     /* First two GPIOs (JTAG and SDO) */
-    gpio_control_block #(
-	.MGMT_INIT(1'b1),	// Management-controlled
-	.OENB_INIT(1'b1),	// Output controlled from bidirectional pin
-	.DM_INIT(3'b110)	// Mode is set to ouput, no pullup/pulldown
-    ) gpio_control_bidir_1 [1:0] (
+
+    gpio_control_block gpio_control_bidir_1 [1:0] (
     	`ifdef USE_POWER_PINS
-			.vccd(vccd_core),
-			.vssd(vssd_core),
-			.vccd1(vccd1_core),
-			.vssd1(vssd1_core),
+	    .vccd(vccd_core),
+	    .vssd(vssd_core),
+	    .vccd1(vccd1_core),
+	    .vssd1(vssd1_core),
         `endif
+
+	.gpio_defaults(gpio_defaults[25:0]),
 
     	// Management Soc-facing signals
 
@@ -797,18 +1153,17 @@ module caravel (
     /* Section 1 GPIOs (GPIO 0 to 18) */
     wire [`MPRJ_IO_PADS_1-1:2] one_loop1;
 
-    /* Section 1 GPIOs (GPIO 3 to 7) that start up under management control */
+    /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
-    gpio_control_block #( 
-	.MGMT_INIT(1'b1),	// Management-controlled
-	.OENB_INIT(1'b1)	// Output disabled
-    ) gpio_control_in_1a [5:0] (
-    `ifdef USE_POWER_PINS
-        .vccd(vccd_core),
-		.vssd(vssd_core),
-		.vccd1(vccd1_core),
-		.vssd1(vssd1_core),
-    `endif
+    gpio_control_block gpio_control_in_1a [5:0] (
+        `ifdef USE_POWER_PINS
+            .vccd(vccd_core),
+	    .vssd(vssd_core),
+	    .vccd1(vccd1_core),
+	    .vssd1(vssd1_core),
+        `endif
+
+	.gpio_defaults(gpio_defaults[103:26]),
 
     	// Management Soc-facing signals
 
@@ -852,12 +1207,14 @@ module caravel (
     /* Section 1 GPIOs (GPIO 8 to 18) */
 
     gpio_control_block gpio_control_in_1 [`MPRJ_IO_PADS_1-9:0] (
-    `ifdef USE_POWER_PINS
-        .vccd(vccd_core),
-		.vssd(vssd_core),
-		.vccd1(vccd1_core),
-		.vssd1(vssd1_core),
-    `endif
+        `ifdef USE_POWER_PINS
+            .vccd(vccd_core),
+	    .vssd(vssd_core),
+	    .vccd1(vccd1_core),
+	    .vssd1(vssd1_core),
+        `endif
+
+	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS_1*13-1):104]),
 
     	// Management Soc-facing signals
 
@@ -898,18 +1255,17 @@ module caravel (
     	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS_1-1):8])
     );
 
-
     /* Last three GPIOs (spi_sdo, flash_io2, and flash_io3) */
-    gpio_control_block #(
-	.MGMT_INIT(1'b1),	// Management-controlled
-	.OENB_INIT(1'b1) 	// Output controlled from bidirectional pin
-    ) gpio_control_bidir_2 [2:0] (
+
+    gpio_control_block gpio_control_bidir_2 [2:0] (
     	`ifdef USE_POWER_PINS
-			.vccd(vccd_core),
-			.vssd(vssd_core),
-			.vccd1(vccd1_core),
-			.vssd1(vssd1_core),
+	    .vccd(vccd_core),
+	    .vssd(vssd_core),
+	    .vccd1(vccd1_core),
+	    .vssd1(vssd1_core),
         `endif
+
+	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS*13-1):(`MPRJ_IO_PADS*13-39)]),
 
     	// Management Soc-facing signals
 
@@ -952,13 +1308,16 @@ module caravel (
 
     /* Section 2 GPIOs (GPIO 19 to 34) */
     wire [`MPRJ_IO_PADS_2-4:0] one_loop2;
+
     gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-4:0] (
     	`ifdef USE_POWER_PINS
-        .vccd(vccd_core),
-		.vssd(vssd_core),
-		.vccd1(vccd1_core),
-		.vssd1(vssd1_core),
+            .vccd(vccd_core),
+	    .vssd(vssd_core),
+	    .vccd1(vccd1_core),
+	    .vssd1(vssd1_core),
         `endif
+
+	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS*13-40):(`MPRJ_IO_PADS_1*13)]),
 
     	// Management Soc-facing signals
 

@@ -21,6 +21,7 @@
 `ifdef SIM
 
 `include "defines.v"
+`include "user_defines.v"
 `include "pads.v"
 
 /* NOTE: Need to pass the PDK root directory to iverilog with option -I */
@@ -61,6 +62,7 @@
     `include "gl/mgmt_protect_hv.v"
 	`include "gl/gpio_logic_high.v"
 	`include "gl/gpio_control_block.v"
+	`include "gl/gpio_defaults_block.v"
 	`include "gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
     `include "gl/caravan.v"
 `else
@@ -82,6 +84,7 @@
 	`include "mgmt_protect.v"
     `include "mgmt_protect_hv.v"
 	`include "gpio_control_block.v"
+	`include "gpio_defaults_block.v"
 	`include "gpio_logic_high.v"
     `include "sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
     `include "caravan.v"

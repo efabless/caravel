@@ -14,42 +14,48 @@
 // SPDX-License-Identifier: Apache-2.0
 
 `default_nettype none
-// This module represents an unprogrammed mask revision
-// block that is configured with via programming on the
-// chip top level.  This value is passed to the block as
-// a parameter
 
-module user_id_programming #(
-    parameter USER_PROJECT_ID = 32'h0
+// This module represents an unprogrammed set of GPIO pad default
+// values that is configured with via programming on the chip top
+// level.  This value is passed as a set of parameters (formerly
+// part of gpio_control_block.v).
+
+module gpio_defaults_block #(
+    // Parameterized initial startup state of the pad.  The default
+    // parameters if unspecified is for the pad to be a user input
+    // with no pull-up or pull-down, so that it is disconnected
+    // from the outside world.  See defs.h for configuration word
+    // definitions.
+    parameter GPIO_CONFIG_INIT = 13'h0402
 ) (
 `ifdef USE_POWER_PINS
     inout VPWR,
     inout VGND,
 `endif
-    output [31:0] mask_rev
+    output [12:0] gpio_defaults
 );
-    wire [31:0] mask_rev;
-    wire [31:0] user_proj_id_high;
-    wire [31:0] user_proj_id_low;
+    wire [12:0] gpio_defaults;
+    wire [12:0] gpio_defaults_high;
+    wire [12:0] gpio_defaults_low;
 
     // For the mask revision input, use an array of digital constant logic cells
 
-    sky130_fd_sc_hd__conb_1 mask_rev_value [31:0] (
+    sky130_fd_sc_hd__conb_1 gpio_default_value [12:0] (
 `ifdef USE_POWER_PINS
             .VPWR(VPWR),
             .VPB(VPWR),
             .VNB(VGND),
             .VGND(VGND),
 `endif
-            .HI(user_proj_id_high),
-            .LO(user_proj_id_low)
+            .HI(gpio_defaults_high),
+            .LO(gpio_defaults_low)
     );
 
     genvar i;
     generate
-	for (i = 0; i < 32; i = i+1) begin
-	    assign mask_rev[i] = (USER_PROJECT_ID & (32'h01 << i)) ?
-			user_proj_id_high[i] : user_proj_id_low[i];
+        for (i = 0; i < 13; i = i+1) begin
+    	    assign gpio_defaults[i] = (GPIO_CONFIG_INIT & (13'h0001 << i)) ?
+			gpio_defaults_high[i] : gpio_defaults_low[i];
 	end
     endgenerate
 
