@@ -35,7 +35,7 @@
 // idata --- Data from chip to transmit out, in 8 bits
 // odata --- Input data to chip, in 8 bits
 // addr  --- Decoded address to upstream circuits
-// rdstb --- Read strobe, tells upstream circuit to supply next byte to idata
+// rdstb --- Read strobe, tells upstream circuit that data will be latched.
 // wrstb --- Write strobe, tells upstream circuit to latch odata.
 
 // Data format (general purpose):
@@ -158,6 +158,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
                 end else begin
                     wrstb <= 1'b0;
                 end
+
 	    end else if (state == `MGMTPASS || state == `USERPASS) begin
 		wrstb <= 1'b0;
 		sdoenb <= 1'b0;
@@ -172,7 +173,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         if (csb_reset == 1'b1) begin
             // Default state on reset
             addr <= 8'h00;
-            rdstb <= 1'b0;
+	    rdstb <= 1'b0;
             predata <= 7'b0000000;
             state  <= `COMMAND;
             count  <= 3'b000;
@@ -188,7 +189,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         end else begin
             // After csb_reset low, 1st SCK starts command
             if (state == `COMMAND) begin
-                rdstb <= 1'b0;
+		rdstb <= 1'b0;
                 count <= count + 1;
         	if (count == 3'b000) begin
 	            writemode <= SDI;
@@ -217,13 +218,14 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
 	        count <= count + 1;
 	        addr <= {addr[6:0], SDI};
 	        if (count == 3'b111) begin
-	            if (readmode == 1'b1) begin
-	            	rdstb <= 1'b1;
-	            end
 	            state <= `DATA;
+		    if (readmode == 1'b1) begin
+			rdstb <= 1'b1;
+		    end
 	        end else begin
-	            rdstb <= 1'b0;
-	        end
+		    rdstb <= 1'b0;
+		end
+
             end else if (state == `DATA) begin
 	        predata <= {predata[6:0], SDI};
 	        count <= count + 1;
@@ -236,9 +238,12 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
 	            end else begin	
 	                addr <= addr + 1;	// Auto increment address (streaming)
 	            end
+		    if (readmode == 1'b1) begin
+			rdstb <= 1'b1;
+		    end
 	        end else begin
-	            rdstb <= 1'b0;
-	        end
+		    rdstb <= 1'b0;
+		end
 	    end else if (state == `MGMTPASS) begin
 		pass_thru_mgmt <= 1'b1;
 	    end else if (state == `USERPASS) begin

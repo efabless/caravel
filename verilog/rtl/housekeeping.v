@@ -653,7 +653,12 @@ module housekeeping #(
 		    	wbbd_data <= wb_dat_i[7:0];
 		    end
 		    wbbd_write <= wb_sel_i[0] & wb_we_i;
-		    wbbd_state <= `WBBD_RW0;
+
+		    // If the SPI is being accessed and about to read or
+		    // write a byte, then stall until the SPI is ready.
+		    if (!spi_is_busy) begin
+		        wbbd_state <= `WBBD_RW0;
+		    end
 		end
 		`WBBD_RW0: begin
 		    wbbd_sck <= 1'b1;
@@ -667,7 +672,9 @@ module housekeeping #(
 		    	wbbd_data <= wb_dat_i[15:8];
 		    end
 		    wbbd_write <= wb_sel_i[1] & wb_we_i;
-		    wbbd_state <= `WBBD_RW1;
+		    if (!spi_is_busy) begin
+		        wbbd_state <= `WBBD_RW1;
+		    end
 		end
 		`WBBD_RW1: begin
 		    wbbd_sck <= 1'b1;
@@ -681,7 +688,9 @@ module housekeeping #(
 		    	wbbd_data <= wb_dat_i[23:16];
 		    end
 		    wbbd_write <= wb_sel_i[2] & wb_we_i;
-		    wbbd_state <= `WBBD_RW2;
+		    if (!spi_is_busy) begin
+		        wbbd_state <= `WBBD_RW2;
+		    end
 		end
 		`WBBD_RW2: begin
 		    wbbd_sck <= 1'b1;
@@ -695,7 +704,9 @@ module housekeeping #(
 		    	wbbd_data <= wb_dat_i[31:24];
 		    end
 		    wbbd_write <= wb_sel_i[3] & wb_we_i;
-		    wbbd_state <= `WBBD_RW3;
+		    if (!spi_is_busy) begin
+		        wbbd_state <= `WBBD_RW3;
+		    end
 		end
 		`WBBD_RW3: begin
 		    wbbd_sck <= 1'b1;
@@ -736,9 +747,13 @@ module housekeeping #(
     );
 
     // SPI is considered active when the GPIO for CSB is set to input and
-    // CSB is low.
+    // CSB is low.  SPI is considered "busy" when rdstb or wrstb are high,
+    // indicating that the SPI will read or write a byte on the next SCK
+    // transition.
+
     wire spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
     wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
+    wire spi_is_busy = spi_is_active && (rdstb || wrstb);
 
     // GPIO data handling to and from the management SoC
 
@@ -952,10 +967,10 @@ module housekeeping #(
     // not an input).  To do:  Provide an independent way to disable
     // the SPI.
 
-    assign caddr = (spi_is_active) ? iaddr : wbbd_addr;
-    assign csclk = (spi_is_active) ? mgmt_gpio_in[4] : wbbd_sck;
-    assign cdata = (spi_is_active) ? idata : wbbd_data;
-    assign cwstb = (spi_is_active) ? wrstb : wbbd_write;
+    assign caddr = (spi_is_busy) ? iaddr : wbbd_addr;
+    assign csclk = (spi_is_busy) ? mgmt_gpio_in[4] : wbbd_sck;
+    assign cdata = (spi_is_busy) ? idata : wbbd_data;
+    assign cwstb = (spi_is_busy) ? wrstb : wbbd_write;
     assign odata = fdata(caddr);
 
     // Register mapping and I/O to SPI interface module
