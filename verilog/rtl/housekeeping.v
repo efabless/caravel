@@ -316,6 +316,7 @@ module housekeeping #(
     reg [7:0] 	wbbd_data;	/* SPI data translated from WB */
     reg  	wbbd_sck;	/* wishbone access trigger (back-door clock) */
     reg  	wbbd_write;	/* wishbone write trigger (back-door strobe) */
+    reg		wbbd_busy;	/* Raised during a wishbone read or write */
     reg		wb_ack_o;	/* acknowledge signal back to wishbone bus */
     reg [31:0]	wb_dat_o;	/* data output to wishbone bus */
 
@@ -636,11 +637,13 @@ module housekeeping #(
 	    wbbd_write <= 1'b0;
 	    wbbd_addr <= 8'd0;
 	    wbbd_data <= 8'd0;
+	    wbbd_busy <= 1'b0;
 	    wb_ack_o <= 1'b0;
 	    wbbd_state <= `WBBD_IDLE;
 	end else begin
 	    case (wbbd_state)
 		`WBBD_IDLE: begin
+		    wbbd_busy <= 1'b0;
 	    	    if (wb_cyc_i && (sys_select | gpio_select | spi_select)) begin
 			wb_ack_o <= 1'b0;
 			wbbd_state <= `WBBD_SETUP0;
@@ -653,6 +656,7 @@ module housekeeping #(
 		    	wbbd_data <= wb_dat_i[7:0];
 		    end
 		    wbbd_write <= wb_sel_i[0] & wb_we_i;
+		    wbbd_busy <= 1'b1;
 
 		    // If the SPI is being accessed and about to read or
 		    // write a byte, then stall until the SPI is ready.
@@ -661,11 +665,13 @@ module housekeeping #(
 		    end
 		end
 		`WBBD_RW0: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[7:0] <= odata;
 		    wbbd_state <= `WBBD_SETUP1;
 		end
 		`WBBD_SETUP1: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b0;
 		    wbbd_addr <= spiaddr(wb_adr_i + 1);
 		    if (wb_sel_i[1] & wb_we_i) begin
@@ -677,11 +683,13 @@ module housekeeping #(
 		    end
 		end
 		`WBBD_RW1: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[15:8] <= odata;
 		    wbbd_state <= `WBBD_SETUP2;
 		end
 		`WBBD_SETUP2: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b0;
 		    wbbd_addr <= spiaddr(wb_adr_i + 2);
 		    if (wb_sel_i[2] & wb_we_i) begin
@@ -693,11 +701,13 @@ module housekeeping #(
 		    end
 		end
 		`WBBD_RW2: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[23:16] <= odata;
 		    wbbd_state <= `WBBD_SETUP3;
 		end
 		`WBBD_SETUP3: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b0;
 		    wbbd_addr <= spiaddr(wb_adr_i + 3);
 		    if (wb_sel_i[3] & wb_we_i) begin
@@ -709,12 +719,14 @@ module housekeeping #(
 		    end
 		end
 		`WBBD_RW3: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b1;
 		    wb_dat_o[31:24] <= odata;
 		    wb_ack_o <= 1'b1;	// Release hold on wishbone bus
 		    wbbd_state <= `WBBD_DONE;
 		end
 		`WBBD_DONE: begin
+		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b0;
 		    wb_ack_o <= 1'b0;	// Reset for next access
 		    wbbd_write <= 1'b0;
@@ -964,13 +976,15 @@ module housekeeping #(
 
     // SPI Data transfer protocol.  The wishbone back door may only be
     // used if the front door is closed (CSB is high or the CSB pin is
-    // not an input).  To do:  Provide an independent way to disable
-    // the SPI.
+    // not an input).  The time to apply values for the back door access
+    // is limited to the clock cycle around the read or write from the
+    // wbbd state machine (see below).
 
-    assign caddr = (spi_is_busy) ? iaddr : wbbd_addr;
-    assign csclk = (spi_is_busy) ? mgmt_gpio_in[4] : wbbd_sck;
-    assign cdata = (spi_is_busy) ? idata : wbbd_data;
-    assign cwstb = (spi_is_busy) ? wrstb : wbbd_write;
+    assign caddr = (wbbd_busy) ? wbbd_addr : iaddr;
+    assign csclk = (wbbd_busy) ? wbbd_sck : ((spi_is_active) ? mgmt_gpio_in[4] : 1'b0);
+    assign cdata = (wbbd_busy) ? wbbd_data : idata;
+    assign cwstb = (wbbd_busy) ? wbbd_write : wrstb;
+
     assign odata = fdata(caddr);
 
     // Register mapping and I/O to SPI interface module
