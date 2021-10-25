@@ -19,11 +19,9 @@
 // User GPIO initial configuration parameters
 `define __USER_DEFINE_H
 
-`define USER_CONFIG_GPIO_0_INIT 13'h0403
-`define USER_CONFIG_GPIO_1_INIT 13'h0403
-`define USER_CONFIG_GPIO_2_INIT 13'h0403
-`define USER_CONFIG_GPIO_3_INIT 13'h0403
-`define USER_CONFIG_GPIO_4_INIT 13'h0403
+// The power-on configuration for GPIO 0 to 4 is fixed and cannot be
+// modified (allowing the SPI and debug to always be accessible unless
+// overridden by a flash program).
 `define USER_CONFIG_GPIO_5_INIT 13'h0403
 `define USER_CONFIG_GPIO_6_INIT 13'h0403
 `define USER_CONFIG_GPIO_7_INIT 13'h0403
@@ -34,6 +32,8 @@
 `define USER_CONFIG_GPIO_12_INIT 13'h0403
 `define USER_CONFIG_GPIO_13_INIT 13'h0403
 `define USER_CONFIG_GPIO_14_INIT 13'h0403
+
+// Configurations of GPIO 15 to 25 are used on caravel but not caravan.
 `define USER_CONFIG_GPIO_15_INIT 13'h0403
 `define USER_CONFIG_GPIO_16_INIT 13'h0403
 `define USER_CONFIG_GPIO_17_INIT 13'h0403
@@ -45,6 +45,7 @@
 `define USER_CONFIG_GPIO_23_INIT 13'h0403
 `define USER_CONFIG_GPIO_24_INIT 13'h0403
 `define USER_CONFIG_GPIO_25_INIT 13'h0403
+
 `define USER_CONFIG_GPIO_26_INIT 13'h0403
 `define USER_CONFIG_GPIO_27_INIT 13'h0403
 `define USER_CONFIG_GPIO_28_INIT 13'h0403
@@ -58,4 +59,4 @@
 `define USER_CONFIG_GPIO_36_INIT 13'h0403
 `define USER_CONFIG_GPIO_37_INIT 13'h0403
 
-`endif // __GLOBAL_DEFINE_H
+`endif // __USER_DEFINE_H
