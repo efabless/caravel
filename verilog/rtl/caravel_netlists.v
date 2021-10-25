@@ -20,13 +20,13 @@
 
 `ifdef SIM
 
-`include "defines.v"
-`include "user_defines.v"
-`include "pads.v"
+    `include "defines.v"
+    `include "user_defines.v"
+    `include "pads.v"
 
-/* NOTE: Need to pass the PDK root directory to iverilog with option -I */
+    /* NOTE: Need to pass the PDK root directory to iverilog with option -I */
 
-`ifdef  EF_STYLE 
+    `ifdef  EF_STYLE 
 	`include "libs.ref/verilog/sky130_fd_io/sky130_fd_io.v"
 	`include "libs.ref/verilog/sky130_fd_io/sky130_ef_io.v"
 	`include "libs.ref/verilog/sky130_fd_io/sky130_ef_io__gpiov2_pad_wrapped.v"
@@ -35,7 +35,7 @@
 	`include "libs.ref/verilog/sky130_fd_sc_hd/sky130_fd_sc_hd.v"
 	`include "libs.ref/verilog/sky130_fd_sc_hvl/primitives.v"
 	`include "libs.ref/verilog/sky130_fd_sc_hvl/sky130_fd_sc_hvl.v"
-`else 
+    `else 
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io__gpiov2_pad_wrapped.v"
@@ -44,9 +44,9 @@
 	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/primitives.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
-`endif 
+    `endif 
 
-`ifdef GL
+    `ifdef GL
 	`include "gl/mgmt_core.v"
 	`include "gl/digital_pll.v"
 	`include "gl/DFFRAM.v"
@@ -54,36 +54,35 @@
 	`include "gl/user_id_programming.v"
 	`include "gl/chip_io.v"
 	`include "gl/mprj_logic_high.v"
-    `include "gl/mprj2_logic_high.v"
+	`include "gl/mprj2_logic_high.v"
 	`include "gl/mgmt_protect.v"
-    `include "gl/mgmt_protect_hv.v"
+	`include "gl/mgmt_protect_hv.v"
 	`include "gl/gpio_control_block.v"
 	`include "gl/gpio_defaults_block.v"
 	`include "gl/gpio_logic_high.v"
 	`include "gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
-    `include "gl/caravel.v"
-`else
+	`include "gl/caravel.v"
+    `else
+	`include "digital_pll.v"
+	`include "caravel_clocking.v"
+	`include "user_id_programming.v"
+	`include "clock_div.v"
+	`include "mprj_io.v"
+	`include "chip_io.v"
+	`include "housekeeping_spi.v"
+	`include "housekeeping.v"
+	`include "mprj_logic_high.v"
+	`include "mprj2_logic_high.v"
+	`include "mgmt_protect.v"
+	`include "mgmt_protect_hv.v"
+	`include "gpio_control_block.v"
+	`include "gpio_defaults_block.v"
+	`include "gpio_logic_high.v"
+	`include "sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
+	`include "mgmt_core_wrapper.v"
+	`include "caravel.v"
+    `endif
 
-    `include "digital_pll.v"
-    `include "caravel_clocking.v"
-    `include "user_id_programming.v"
-    `include "clock_div.v"
-    `include "mprj_io.v"
-    `include "chip_io.v"
-    `include "housekeeping_spi.v"
-    `include "housekeeping.v"
-    `include "mprj_logic_high.v"
-    `include "mprj2_logic_high.v"
-    `include "mgmt_protect.v"
-    `include "mgmt_protect_hv.v"
-    `include "gpio_control_block.v"
-    `include "gpio_defaults_block.v"
-    `include "gpio_logic_high.v"
-    `include "sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
-    `include "mgmt_core_wrapper.v"
-    `include "caravel.v"
-`endif
-
-`include "simple_por.v"
+    `include "simple_por.v"
 
 `endif
