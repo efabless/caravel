@@ -82,7 +82,6 @@ module caravan (
 
     inout gpio,			// Used for external LDO control
     inout [`MPRJ_IO_PADS-1:0] mprj_io,
-    output [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out,
     input clock,	    	// CMOS core clock input, not a crystal
     input resetb,
 

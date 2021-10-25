@@ -13,32 +13,54 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
-
 /*--------------------------------------------------------------*/
-/* caravel_openframe, a project harness for the Google/SkyWater	*/
-/* sky130 fabrication process and open source PDK		*/
+/* caravan_openframe, a project harness for the Google/SkyWater	*/
+/* sky130 fabrication process and open source PDK.  caravan is 	*/
+/* an alternative architecture to caravel that has simple	*/
+/* straight through connections replacing the GPIO pads on the	*/
+/* top side of the padframe.  A total of 11 pads are converted	*/
+/* from GPIO to analog, leaving 27 GPIO.			*/
 /*                                                          	*/
-/* Copyright 2020 efabless, Inc.                            	*/
+/* Copyright 2021 efabless, Inc.                            	*/
 /* Written by Tim Edwards, December 2019                    	*/
 /* and Mohamed Shalan, August 2020			    	*/
 /* This file is open source hardware released under the     	*/
 /* Apache 2.0 license.  See file LICENSE.                   	*/
-/*								*/
-/* Updated 10/15/2021:  Revised using the housekeeping module	*/
-/* from housekeeping.v (refactoring a number of functions from	*/
-/* the management SoC).						*/
-/*								*/
-/* Updated 10/25/2021:  Made the open-frame version, which	*/
-/* replaces the managment SoC wrapper, the user project		*/
-/* wrapper, and the management protect circuit with a single	*/
-/* user project wrapper.					*/
 /*                                                          	*/
 /*--------------------------------------------------------------*/
 
-module caravel_openframe (
+/*--------------------------------------------------------------*/
+/* Derived types for the array bounds on the two digital and	*/
+/* two analog pad arrays.  As defined above, the sections have	*/
+/* the number of pads as follows:				*/
+/*								*/
+/*	DIG2 : 13 GPIO pads					*/
+/*	ANA2 : 6  analog pads					*/
+/*	ANA1 : 5  analog pads					*/
+/*	DIG1 : 14 GPIO pads					*/
+/*								*/
+/* This makes a total of 38 pads = `MPRJ_IO_PADS		*/
+/* The pads are still designated as mprj_io[37:0] around the	*/
+/* padframe.  The SoC core remains the same, so the programming	*/
+/* of the digital signals remains the same, but the values for	*/
+/* GPIO 15-25 are not used.					*/
+/*--------------------------------------------------------------*/
 
-    // All top-level I/O are package-facing pins
+`define DIG2_TOP (`MPRJ_IO_PADS - 1)
+`define DIG2_BOT (`MPRJ_IO_PADS_1 + `ANALOG_PADS_2)
+`define ANA2_TOP (`MPRJ_IO_PADS_1 + `ANALOG_PADS_2 - 1)
+`define ANA2_BOT (`MPRJ_IO_PADS_1)
+`define ANA1_TOP (`MPRJ_IO_PADS_1 - 1)
+`define ANA1_BOT (`MPRJ_IO_PADS_1 - `ANALOG_PADS_1)
+`define DIG1_TOP (`MPRJ_IO_PADS_1 - `ANALOG_PADS_1 - 1)
+`define DIG1_BOT (0)
 
+`define MPRJ_DIG_PADS (`MPRJ_IO_PADS - `ANALOG_PADS)
+
+/*--------------------------------------------------------------*/
+/*--------------------------------------------------------------*/
+
+module caravan_openframe (
     inout vddio,	// Common 3.3V padframe/ESD power
     inout vddio_2,	// Common 3.3V padframe/ESD power
     inout vssio,	// Common padframe/ESD ground
@@ -58,15 +80,13 @@ module caravel_openframe (
     inout vssd1,	// User area 1 digital ground
     inout vssd2,	// User area 2 digital ground
 
-    inout gpio,		// Used for external LDO control
+    inout gpio,			// Used for external LDO control
     inout [`MPRJ_IO_PADS-1:0] mprj_io,
-    input clock,    	// CMOS core clock input, not a crystal
-    input resetb,	// Reset input (sense inverted)
+    input clock,	    	// CMOS core clock input, not a crystal
+    input resetb,
 
-    // Note that only two flash data pins are dedicated to the
-    // management SoC wrapper.  The management SoC exports the
-    // quad SPI mode status to make use of the top two mprj_io
-    // pins for io2 and io3.
+    // Note that only two pins are available on the flash so dual and
+    // quad flash modes are not available.
 
     output flash_csb,
     output flash_clk,
@@ -80,8 +100,7 @@ module caravel_openframe (
     parameter USER_PROJECT_ID = 32'h00000000;
 
     /*
-     *--------------------------------------------------------------------
-     *
+     *---------------------------------------------------------------------
      * These pins are overlaid on mprj_io space.  They have the function
      * below when the management processor is in reset, or in the default
      * configuration.  They are assigned to uses in the user space by the
@@ -92,21 +111,21 @@ module caravel_openframe (
      * FTDI chip sets these lines to high impedence (input function) at
      * all times except when holding the chip in reset.
      *
-     * JTAG       = mprj_io[0]		(inout)
-     * SDO 	  = mprj_io[1]		(output)
-     * SDI 	  = mprj_io[2]		(input)
-     * CSB 	  = mprj_io[3]		(input)
-     * SCK	  = mprj_io[4]		(input)
-     * ser_rx     = mprj_io[5]		(input)
-     * ser_tx     = mprj_io[6]		(output)
-     * irq 	  = mprj_io[7]		(input)
+     * JTAG      = mprj_io[0]		(inout)
+     * SDO 	 = mprj_io[1]		(output)
+     * SDI 	 = mprj_io[2]		(input)
+     * CSB 	 = mprj_io[3]		(input)
+     * SCK	 = mprj_io[4]		(input)
+     * ser_rx    = mprj_io[5]		(input)
+     * ser_tx    = mprj_io[6]		(output)
+     * irq 	 = mprj_io[7]		(input)
      *
-     * spi_sck    = mprj_io[32]		(output)
-     * spi_csb    = mprj_io[33]		(output)
-     * spi_sdi    = mprj_io[34]		(input)
-     * spi_sdo    = mprj_io[35]		(output)
-     * flash_io2  = mprj_io[36]		(inout) 
-     * flash_io3  = mprj_io[37]		(inout) 
+     * spi_sck    = mprj_io[32]         (output)
+     * spi_csb    = mprj_io[33]         (output)
+     * spi_sdi    = mprj_io[34]         (input)
+     * spi_sdo    = mprj_io[35]         (output)
+     * flash_io2  = mprj_io[36]         (inout)
+     * flash_io3  = mprj_io[37]         (inout)
      *
      * These pins are reserved for any project that wants to incorporate
      * its own processor and flash controller.  While a user project can
@@ -121,7 +140,7 @@ module caravel_openframe (
      * user_flash_io0 = mprj_io[10]
      * user_flash_io1 = mprj_io[11]
      *
-     *--------------------------------------------------------------------
+     *---------------------------------------------------------------------
      */
 
     // One-bit GPIO dedicated to management SoC (outside of user control)
@@ -132,29 +151,42 @@ module caravel_openframe (
     wire gpio_outenb_core;
     wire gpio_inenb_core;
 
-    // User Project Control (pad-facing)
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_inp_dis;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_oeb;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_ib_mode_sel;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_vtrip_sel;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_slow_sel;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_holdover;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_analog_en;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_analog_sel;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_analog_pol;
-    wire [`MPRJ_IO_PADS*3-1:0] mprj_io_dm;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_in;
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_out;
+    // 27 GPIO pads with full controls
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_inp_dis;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_oeb;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_ib_mode_sel;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_vtrip_sel;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_slow_sel;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_holdover;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_en;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_sel;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_pol;
+    wire [(`MPRJ_IO_PADS-`ANALOG_PADS)*3-1:0] mprj_io_dm;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
 
     // User Project Control (user-facing)
-    wire [`MPRJ_IO_PADS-1:0] user_io_oeb;
-    wire [`MPRJ_IO_PADS-1:0] user_io_in;
-    wire [`MPRJ_IO_PADS-1:0] user_io_out;
-    wire [`MPRJ_IO_PADS-10:0] user_analog_io;
+    // 27 GPIO bidirectional with in/out/oeb and a 3.3V copy of the input
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] user_io_oeb;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] user_io_in;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] user_io_out;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] user_io_in_3v3;
+
+    // 18 direct connections to GPIO for low-frequency, low-voltage analog
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_analog;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd;
+
+    // 3 power supply ESD clamps for user applications
+    wire [2:0] user_clamp_high;
+    wire [2:0] user_clamp_low;
+
+    // 11 core connections to the analog pads
+    wire [`ANALOG_PADS-1:0] user_analog;
 
     /* Padframe control signals */
-    wire [`MPRJ_IO_PADS_1-1:0] gpio_serial_link_1;
-    wire [`MPRJ_IO_PADS_2-1:0] gpio_serial_link_2;
+    wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1:0] gpio_serial_link_1;
+    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:0] gpio_serial_link_2;
     wire mprj_io_loader_resetn;
     wire mprj_io_loader_clock;
     wire mprj_io_loader_data_1;		/* user1 side serial loader */
@@ -176,7 +208,7 @@ module caravel_openframe (
     // irq 	 = mprj_io[7]		(input)
 
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data */
-    wire [`MPRJ_IO_PADS-5:0] mgmt_io_nc;	/* no-connects */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_nc;	/* no-connects */
     wire [4:0] mgmt_io_out;			/* three-pin interface out */
     wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
 
@@ -193,7 +225,7 @@ module caravel_openframe (
     wire rstb_h;
     wire rstb_l;
 
-    // Flash SPI communication (management SoC to housekeeping)
+    // Flash SPI communication (managment SoC to housekeeping)
     wire flash_clk_core,     flash_csb_core;
     wire flash_clk_oeb_core, flash_csb_oeb_core;
     wire flash_clk_ieb_core, flash_csb_ieb_core;
@@ -206,7 +238,7 @@ module caravel_openframe (
     wire flash_io0_di_core,  flash_io1_di_core;
     wire flash_io2_di_core,  flash_io3_di_core;
 
-    // Flash SPI communication (
+    // Flash SPI communication
     wire flash_clk_frame;
     wire flash_csb_frame;
     wire flash_clk_oeb, flash_csb_oeb;
@@ -216,7 +248,10 @@ module caravel_openframe (
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
-    chip_io padframe(
+    chip_io_alt #(
+	.ANALOG_PADS_1(`ANALOG_PADS_1),
+	.ANALOG_PADS_2(`ANALOG_PADS_2)
+    ) padframe (
 	`ifndef TOP_ROUTING
 		// Package Pins
 		.vddio_pad	(vddio),		// Common padframe/ESD supply
@@ -238,6 +273,7 @@ module caravel_openframe (
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
 	`endif
+	
 	// Core Side Pins
 	.vddio	(vddio_core),
 	.vssio	(vssio_core),
@@ -288,6 +324,7 @@ module caravel_openframe (
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
 	.mprj_io_in(mprj_io_in),
+	.mprj_io_in_3v3(mprj_io_in_3v3),
 	.mprj_io_out(mprj_io_out),
 	.mprj_io_oeb(mprj_io_oeb),
 	.mprj_io_inp_dis(mprj_io_inp_dis),
@@ -299,7 +336,11 @@ module caravel_openframe (
 	.mprj_io_analog_sel(mprj_io_analog_sel),
 	.mprj_io_analog_pol(mprj_io_analog_pol),
 	.mprj_io_dm(mprj_io_dm),
-	.mprj_analog_io(user_analog_io)
+	.mprj_gpio_analog(user_gpio_analog),
+	.mprj_gpio_noesd(user_gpio_noesd),
+	.mprj_analog(user_analog),
+	.mprj_clamp_high(user_clamp_high),
+	.mprj_clamp_low(user_clamp_low)
     );
 
     // SoC core
@@ -307,11 +348,11 @@ module caravel_openframe (
     wire caravel_clk2;
     wire caravel_rstn;
 
-    wire [2:0]   user_irq_core;
-    wire [2:0]   user_irq_ena;
-    wire [2:0]	 irq_spi;	  // From SPI and external pins
+    wire [7:0] spi_ro_config_core;
 
-    // Wishbone Bus (housekeeping facing)
+    wire [2:0]	 irq_spi;	   // From SPI and external pins
+
+    // Exported Wishbone Bus (processor facing)
     wire mprj_cyc_o;
     wire mprj_stb_o;
     wire mprj_we_o;
@@ -324,28 +365,31 @@ module caravel_openframe (
     // Mask revision
     wire [31:0] mask_rev;
 
+    // Clock and reset
     wire 	mprj_clock;
     wire 	mprj_clock2;
     wire 	mprj_reset;
 
-    // Power monitoring 
+    // Power monitoring
     wire	mprj_vcc_pwrgood;
     wire	mprj2_vcc_pwrgood;
     wire	mprj_vdd_pwrgood;
     wire	mprj2_vdd_pwrgood;
 
-    // SRAM read-only access from houskeeping
+    // SRAM read-noly access from housekeeping
     wire 	hkspi_sram_clk;
-    wire 	hkspi_sram_csb;
-    wire [7:0]	hkspi_sram_addr;
-    wire [31:0]	hkspi_sram_data;
+    wire	hkspi_sram_csb;
+    wire [7:0]  hkspi_sram_addr;
+    wire [31:0] hkspi_sram_data;
+
+    assign user_io_in_3v3 = mprj_io_in_3v3;
 
     /*--------------------------------------------------*/
     /* Wrapper module around the user project 		*/
     /*--------------------------------------------------*/
 
-    openframe_project_wrapper user_project (
-        `ifdef USE_POWER_PINS
+    mgmt_core_wrapper soc (
+	`ifdef USE_POWER_PINS
 	    .vdda(vdda_core),
 	    .vssa(vssa_core),
 	    .vccd(vccd_core),
@@ -358,25 +402,12 @@ module caravel_openframe (
 	    .vccd2(vccd2_core),		// User area 2 1.8V power
 	    .vssd1(vssd1_core),		// User area 1 digital ground
 	    .vssd2(vssd2_core),		// User area 2 digital ground
-    	`endif
+	`endif
 
-	// Clock and reset
-	.core_clk(caravel_clk),
-	.core_rstn(caravel_rstn),
+	// Clocks and reset
+       	.core_clk(caravel_clk),
+       	.core_rstn(caravel_rstn),
 	.core_clock2(mprj_clock2),
-
-	// IRQ
-	.irq(irq_spi),
-
-	// Exported Wishbone Bus
-	.mprj_cyc_o(mprj_cyc_o),
-	.mprj_stb_o(mprj_stb_o),
-	.mprj_we_o(mprj_we_o),
-	.mprj_sel_o(mprj_sel_o),
-	.mprj_adr_o(mprj_adr_o),
-	.mprj_dat_o(mprj_dat_o),
-	.mprj_ack_i(mprj_ack_i),
-	.mprj_dat_i(mprj_dat_i),
 
 	// GPIO (1 pin)
 	.gpio_out_pad(gpio_out_core),
@@ -388,9 +419,16 @@ module caravel_openframe (
 
 	// GPIO pad 3-pin interface (plus analog)
 	.io_in (user_io_in),
+	.io_in_3v3 (user_io_in_3v3),
     	.io_out(user_io_out),
     	.io_oeb(user_io_oeb),
-	.analog_io(user_analog_io),
+	.gpio_analog(user_gpio_analog),
+	.gpio_noesd(user_gpio_noesd),
+	.io_analog(user_analog),
+
+	// User-accessible power supply clamps
+	.io_clamp_high(user_clamp_high),
+	.io_clamp_low(user_clamp_low),
 
 	// Primary SPI flash controller
 	.flash_csb(flash_csb_core),
@@ -407,6 +445,19 @@ module caravel_openframe (
 	.flash_io3_oeb(flash_io3_oeb_core),
 	.flash_io3_di(flash_io3_di_core),
 	.flash_io3_do(flash_io3_do_core),
+
+	// Exported Wishbone Bus
+	.mprj_cyc_o(mprj_cyc_o),
+	.mprj_stb_o(mprj_stb_o),
+	.mprj_we_o(mprj_we_o),
+	.mprj_sel_o(mprj_sel_o),
+	.mprj_adr_o(mprj_adr_o),
+	.mprj_dat_o(mprj_dat_o),
+	.mprj_ack_i(mprj_ack_i),
+	.mprj_dat_i(mprj_dat_i),
+
+	// IRQ
+	.irq(irq_spi),
 
 	// Module status (these may or may not be implemented)
 	.qspi_enabled(qspi_enabled),
@@ -429,7 +480,7 @@ module caravel_openframe (
 	.debug_out(debug_out),
 	.debug_oeb(debug_oeb),
 
-	// SRAM Read-only access to housekeeping
+	// SRAM Read-only access from housekeeping
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
@@ -439,38 +490,40 @@ module caravel_openframe (
 	.trap(trap)
     );
 
-    /*------------------------------------------*/
-    /* End user project instantiation		*/
-    /*------------------------------------------*/
+    /*--------------------------------------*/
+    /* End user project instantiation	*/
+    /*--------------------------------------*/
 
-    wire [`MPRJ_IO_PADS_1-1:0] gpio_serial_link_1_shifted;
-    wire [`MPRJ_IO_PADS_2-1:0] gpio_serial_link_2_shifted;
+    wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1:0] gpio_serial_link_1_shifted;
+    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:0] gpio_serial_link_2_shifted;
 
-    assign gpio_serial_link_1_shifted = {gpio_serial_link_1[`MPRJ_IO_PADS_1-2:0],
+    assign gpio_serial_link_1_shifted = {gpio_serial_link_1[`MPRJ_IO_PADS_1
+					-`ANALOG_PADS_1-2:0],
 					 mprj_io_loader_data_1};
     // Note that serial_link_2 is backwards compared to serial_link_1, so it
     // shifts in the other direction.
     assign gpio_serial_link_2_shifted = {mprj_io_loader_data_2,
-					 gpio_serial_link_2[`MPRJ_IO_PADS_2-1:1]};
+					 gpio_serial_link_2[`MPRJ_IO_PADS_2
+					-`ANALOG_PADS_2-1:1]};
 
     // Propagating clock and reset to mitigate timing and fanout issues
     wire [`MPRJ_IO_PADS_1-1:0] gpio_clock_1;
     wire [`MPRJ_IO_PADS_2-1:0] gpio_clock_2;
     wire [`MPRJ_IO_PADS_1-1:0] gpio_resetn_1;
     wire [`MPRJ_IO_PADS_2-1:0] gpio_resetn_2;
-    wire [`MPRJ_IO_PADS_1-1:0] gpio_clock_1_shifted;
-    wire [`MPRJ_IO_PADS_2-1:0] gpio_clock_2_shifted;
-    wire [`MPRJ_IO_PADS_1-1:0] gpio_resetn_1_shifted;
-    wire [`MPRJ_IO_PADS_2-1:0] gpio_resetn_2_shifted;
+    wire [`MPRJ_IO_PADS_1-6:0] gpio_clock_1_shifted;
+    wire [`MPRJ_IO_PADS_2-7:0] gpio_clock_2_shifted;
+    wire [`MPRJ_IO_PADS_1-6:0] gpio_resetn_1_shifted;
+    wire [`MPRJ_IO_PADS_2-7:0] gpio_resetn_2_shifted;
 
-    assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-2:0],
-					 mprj_io_loader_clock};
+    assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
+				mprj_io_loader_clock};
     assign gpio_clock_2_shifted = {mprj_io_loader_clock,
-					gpio_clock_2[`MPRJ_IO_PADS_2-1:1]};
-    assign gpio_resetn_1_shifted = {gpio_resetn_1[`MPRJ_IO_PADS_1-2:0],
-					 mprj_io_loader_resetn};
+				gpio_clock_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
+    assign gpio_resetn_1_shifted = {gpio_resetn_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
+				mprj_io_loader_resetn};
     assign gpio_resetn_2_shifted = {mprj_io_loader_resetn,
-					gpio_resetn_2[`MPRJ_IO_PADS_2-1:1]};
+				gpio_resetn_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
 
     wire [2:0] spi_pll_sel;
     wire [2:0] spi_pll90_sel;
@@ -480,68 +533,68 @@ module caravel_openframe (
     // Clocking control
 
     caravel_clocking clocking(
-        `ifdef USE_POWER_PINS
-            .vdd1v8(VPWR),
-            .vss(VGND),
-        `endif
-        .ext_clk_sel(ext_clk_sel),
-        .ext_clk(clock),
-        .pll_clk(pll_clk),
-        .pll_clk90(pll_clk90),
-        .resetb(resetb),
-        .sel(spi_pll_sel),
-        .sel2(spi_pll90_sel),
-        .ext_reset(ext_reset),  // From housekeeping SPI
-        .core_clk(caravel_clk),
-        .user_clk(caravel_clk2),
-        .resetb_sync(caravel_rstn)
+	`ifdef USE_POWER_PINS
+	    .vdd1v8(VPWR),
+	    .vss(VGND),
+	`endif
+	.ext_clk_sel(ext_clk_sel),
+	.ext_clk(clock),
+	.pll_clk(pll_clk),
+	.pll_clk90(pll_clk90),
+	.resetb(resetb),
+	.sel(spi_pll_sel),
+	.sel2(spi_pll90_sel),
+	.ext_reset(ext_reset),  // From housekeeping SPI
+	.core_clk(caravel_clk),
+	.user_clk(caravel_clk2),
+	.resetb_sync(caravel_rstn)
     );
 
     // DCO/Digital Locked Loop
 
     digital_pll pll (
-        `ifdef USE_POWER_PINS
-            .VPWR(VPWR),
-            .VGND(VGND),
-        `endif
-        .resetb(resetb),
-        .enable(spi_pll_ena),
-        .osc(clock),
-        .clockp({pll_clk, pll_clk90}),
-        .div(spi_pll_div),
-        .dco(spi_pll_dco_ena),
-        .ext_trim(spi_pll_trim)
+	`ifdef USE_POWER_PINS
+	    .VPWR(VPWR),
+	    .VGND(VGND),
+	`endif
+	.resetb(resetb),
+	.enable(spi_pll_ena),
+	.osc(clock),
+	.clockp({pll_clk, pll_clk90}),
+	.div(spi_pll_div),
+	.dco(spi_pll_dco_ena),
+	.ext_trim(spi_pll_trim)
     );
 
     // Housekeeping interface
 
     housekeeping housekeeping (
-        `ifdef USE_POWER_PINS
-            .vdd(VPWR),
-            .vss(VGND),
-        `endif
+	`ifdef USE_POWER_PINS
+	    .vdd(VPWR),
+	    .vss(VGND),
+	`endif
 
-        .wb_clk_i(mprj_clock),
-        .wb_rst_i(mprj_reset),
+	.wb_clk_i(mprj_clock),
+	.wb_rst_i(mprj_reset),
 
-        .wb_adr_i(mprj_adr_o),
-        .wb_dat_i(mprj_dat_o),
-        .wb_sel_i(mprj_sel_o),
-        .wb_we_i(mprj_we_o),
-        .wb_cyc_i(mprj_cyc_o),
-        .wb_stb_i(mprj_stb_o),
-        .wb_ack_o(mprj_ack_i),
-        .wb_dat_o(mprj_dat_i),
+	.wb_adr_i(mprj_adr_o),
+	.wb_dat_i(mprj_dat_o),
+	.wb_sel_i(mprj_sel_o),
+	.wb_we_i(mprj_we_o),
+	.wb_cyc_i(mprj_cyc_o),
+	.wb_stb_i(mprj_stb_o),
+	.wb_ack_o(mprj_ack_i),
+	.wb_dat_o(mprj_dat_i),
 
-        .porb(porb_l),
+	.porb(porb_l),
 
-        .pll_ena(spi_pll_ena),
-        .pll_dco_ena(spi_pll_dco_ena),
-        .pll_div(spi_pll_div),
-        .pll_sel(spi_pll_sel),
-        .pll90_sel(spi_pll90_sel),
-        .pll_trim(spi_pll_trim),
-        .pll_bypass(ext_clk_sel),
+	.pll_ena(spi_pll_ena),
+	.pll_dco_ena(spi_pll_dco_ena),
+	.pll_div(spi_pll_div),
+	.pll_sel(spi_pll_sel),
+	.pll90_sel(spi_pll90_sel),
+	.pll_trim(spi_pll_trim),
+	.pll_bypass(ext_clk_sel),
 
 	.qspi_enabled(qspi_enabled),
 	.uart_enabled(uart_enabled),
@@ -561,13 +614,13 @@ module caravel_openframe (
 	.debug_out(debug_out),
 	.debug_oeb(debug_oeb),
 
-        .irq(irq_spi),
-        .reset(ext_reset),
+	.irq(irq_spi),
+	.reset(ext_reset),
 
-        .serial_clock(mprj_io_loader_clock),
-        .serial_resetn(mprj_io_loader_resetn),
-        .serial_data_1(mprj_io_loader_data_1),
-        .serial_data_2(mprj_io_loader_data_2),
+	.serial_clock(mprj_io_loader_clock),
+	.serial_resetn(mprj_io_loader_resetn),
+	.serial_data_1(mprj_io_loader_data_1),
+	.serial_data_2(mprj_io_loader_data_2),
 
 	.mgmt_gpio_in(mgmt_io_in),
 	.mgmt_gpio_out({mgmt_io_out[4:2], mgmt_io_in[`MPRJ_IO_PADS-4:2],
@@ -575,13 +628,13 @@ module caravel_openframe (
 	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
 			mgmt_io_oeb[1:0]}),
 
-	.pwr_ctrl_out(),	/* Not used in this version */
+	.pwr_ctrl_out(),        /* Not used in this version */
 
-        .trap(trap),
+	.trap(trap),
 
 	.user_clock(user_clock),
 
-        .mask_rev_in(mask_rev),
+	.mask_rev_in(mask_rev),
 
 	.spimemio_flash_csb(flash_csb_core),
 	.spimemio_flash_clk(flash_clk_core),
@@ -623,27 +676,27 @@ module caravel_openframe (
     );
 
     /* GPIO defaults (via programmed) */
-    wire [`MPRJ_IO_PADS*13-1:0] gpio_defaults;
+    wire [(`MPRJ_IO_PADS - `ANALOG_PADS)*13-1:0] gpio_defaults;
 
     /* Fixed defaults for the first 5 GPIO pins */
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h1803)
     ) gpio_01_defaults [1:0] (
-    	`ifdef USE_POWER_PINS
+	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
-        `endif
+	`endif
 	.gpio_defaults(gpio_defaults[25:0])
     );
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h0403)
     ) gpio_234_defaults [2:0] (
-    	`ifdef USE_POWER_PINS
+	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
-        `endif
+	`endif
 	.gpio_defaults(gpio_defaults[64:26])
     );
 
@@ -750,123 +803,13 @@ module caravel_openframe (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_15_INIT)
-    ) gpio_15_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[207:195])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_16_INIT)
-    ) gpio_16_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[220:208])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_17_INIT)
-    ) gpio_17_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[233:221])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_18_INIT)
-    ) gpio_18_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[246:234])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_19_INIT)
-    ) gpio_19_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[259:247])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_20_INIT)
-    ) gpio_20_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[272:260])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_21_INIT)
-    ) gpio_21_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[285:273])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_22_INIT)
-    ) gpio_22_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[298:286])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_23_INIT)
-    ) gpio_23_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[311:299])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_24_INIT)
-    ) gpio_24_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[324:312])
-    );
-
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_25_INIT)
-    ) gpio_25_defaults (
-    	`ifdef USE_POWER_PINS
-	    .VPWR(vccd_core),
-	    .VGND(vssd_core),
-        `endif
-	.gpio_defaults(gpio_defaults[337:325])
-    );
-
-    gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_26_INIT)
     ) gpio_26_defaults (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[350:338])
+	.gpio_defaults(gpio_defaults[207:195])
     );
 
     gpio_defaults_block #(
@@ -876,7 +819,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[363:351])
+	.gpio_defaults(gpio_defaults[220:208])
     );
 
     gpio_defaults_block #(
@@ -886,7 +829,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[376:364])
+	.gpio_defaults(gpio_defaults[233:221])
     );
 
     gpio_defaults_block #(
@@ -896,7 +839,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[389:377])
+	.gpio_defaults(gpio_defaults[246:234])
     );
 
     gpio_defaults_block #(
@@ -906,7 +849,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[402:390])
+	.gpio_defaults(gpio_defaults[259:247])
     );
 
     gpio_defaults_block #(
@@ -916,7 +859,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[415:403])
+	.gpio_defaults(gpio_defaults[272:260])
     );
 
     gpio_defaults_block #(
@@ -926,7 +869,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[428:416])
+	.gpio_defaults(gpio_defaults[285:273])
     );
 
     gpio_defaults_block #(
@@ -936,7 +879,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[441:429])
+	.gpio_defaults(gpio_defaults[298:286])
     );
 
     gpio_defaults_block #(
@@ -946,7 +889,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[454:442])
+	.gpio_defaults(gpio_defaults[311:299])
     );
 
     gpio_defaults_block #(
@@ -956,7 +899,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[467:455])
+	.gpio_defaults(gpio_defaults[324:312])
     );
 
     gpio_defaults_block #(
@@ -966,7 +909,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[480:468])
+	.gpio_defaults(gpio_defaults[337:325])
     );
 
     gpio_defaults_block #(
@@ -976,7 +919,7 @@ module caravel_openframe (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[493:481])
+	.gpio_defaults(gpio_defaults[350:338])
     );
 
     // Each control block sits next to an I/O pad in the user area.
@@ -994,28 +937,27 @@ module caravel_openframe (
     // of the extra signals those pads need.
 
     /* First two GPIOs (JTAG and SDO) */
-
     gpio_control_block gpio_control_bidir_1 [1:0] (
-    	`ifdef USE_POWER_PINS
+   	`ifdef USE_POWER_PINS
 	    .vccd(vccd_core),
 	    .vssd(vssd_core),
 	    .vccd1(vccd1_core),
 	    .vssd1(vssd1_core),
-        `endif
+	`endif
 
 	.gpio_defaults(gpio_defaults[25:0]),
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[1:0]),
-    	.serial_clock(gpio_clock_1_shifted[1:0]),
+	.resetn(gpio_resetn_1_shifted[1:0]),
+	.serial_clock(gpio_clock_1_shifted[1:0]),
 
-    	.resetn_out(gpio_resetn_1[1:0]),
-    	.serial_clock_out(gpio_clock_1[1:0]),
+	.resetn_out(gpio_resetn_1[1:0]),
+	.serial_clock_out(gpio_clock_1[1:0]),
 
     	.mgmt_gpio_in(mgmt_io_in[1:0]),
-	.mgmt_gpio_out(mgmt_io_out[1:0]),
-	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
+	.mgmt_gpio_out({sdo_out, jtag_out}),
+	.mgmt_gpio_oeb({sdo_outenb, jtag_outenb}),
 
         .one(),
         .zero(),
@@ -1045,33 +987,33 @@ module caravel_openframe (
     );
 
     /* Section 1 GPIOs (GPIO 0 to 18) */
-    wire [`MPRJ_IO_PADS_1-1:2] one_loop1;
+    wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:0] one_loop1;
 
     /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
     gpio_control_block gpio_control_in_1a [5:0] (
-        `ifdef USE_POWER_PINS
+	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
 	    .vccd1(vccd1_core),
 	    .vssd1(vssd1_core),
-        `endif
+	`endif
 
 	.gpio_defaults(gpio_defaults[103:26]),
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[7:2]),
-    	.serial_clock(gpio_clock_1_shifted[7:2]),
+	.resetn(gpio_resetn_1_shifted[7:2]),
+	.serial_clock(gpio_clock_1_shifted[7:2]),
 
-    	.resetn_out(gpio_resetn_1[7:2]),
-    	.serial_clock_out(gpio_clock_1[7:2]),
+	.resetn_out(gpio_resetn_1[7:2]),
+	.serial_clock_out(gpio_clock_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
 	.mgmt_gpio_out(mgmt_io_in[7:2]),
-	.mgmt_gpio_oeb(one_loop1[7:2]),
+	.mgmt_gpio_oeb(one_loop1[5:0]),
 
-        .one(one_loop1[7:2]),
+        .one(one_loop1[5:0]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1099,57 +1041,56 @@ module caravel_openframe (
     );
 
     /* Section 1 GPIOs (GPIO 8 to 18) */
-
-    gpio_control_block gpio_control_in_1 [`MPRJ_IO_PADS_1-9:0] (
-        `ifdef USE_POWER_PINS
+    gpio_control_block gpio_control_in_1 [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-9:0] (
+	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
 	    .vccd1(vccd1_core),
 	    .vssd1(vssd1_core),
-        `endif
+	`endif
 
-	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS_1*13-1):104]),
+	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13-1):104]),
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_1-1):8]),
-    	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_1-1):8]),
+	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
-    	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_1-1):8]),
-    	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_1-1):8]),
+	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
-	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS_1-1):8]),
-	.mgmt_gpio_out(mgmt_io_in[(`MPRJ_IO_PADS_1-1):8]),
-	.mgmt_gpio_oeb(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
+	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
+	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
+	.mgmt_gpio_oeb(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
 
-        .one(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
+        .one(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
         .zero(),
 
     	// Serial data chain for pad configuration
-    	.serial_data_in(gpio_serial_link_1_shifted[(`MPRJ_IO_PADS_1-1):8]),
-    	.serial_data_out(gpio_serial_link_1[(`MPRJ_IO_PADS_1-1):8]),
+    	.serial_data_in(gpio_serial_link_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.serial_data_out(gpio_serial_link_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
     	// User-facing signals
-    	.user_gpio_out(user_io_out[(`MPRJ_IO_PADS_1-1):8]),
-    	.user_gpio_oeb(user_io_oeb[(`MPRJ_IO_PADS_1-1):8]),
-    	.user_gpio_in(user_io_in[(`MPRJ_IO_PADS_1-1):8]),
+    	.user_gpio_out(user_io_out[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.user_gpio_oeb(user_io_oeb[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.user_gpio_in(user_io_in[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
     	// Pad-facing signals (Pad GPIOv2)
-    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_dm(mprj_io_dm[(`MPRJ_IO_PADS_1*3-1):24]),
-    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_out(mprj_io_out[(`MPRJ_IO_PADS_1-1):8]),
-    	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS_1-1):8])
+    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_dm(mprj_io_dm[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3-1:24]),
+    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_out(mprj_io_out[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+    	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8])
     );
 
-    /* Last three GPIOs (spi_sdo, flash_io2, and flash_io3) */
+    /* Last three GPIOs (spi_sdo, flash_io2 and flash_io3) */
 
     gpio_control_block gpio_control_bidir_2 [2:0] (
     	`ifdef USE_POWER_PINS
@@ -1159,17 +1100,17 @@ module caravel_openframe (
 	    .vssd1(vssd1_core),
         `endif
 
-	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS*13-1):(`MPRJ_IO_PADS*13-39)]),
+	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS)*13-1):((`MPRJ_IO_PADS-`ANALOG_PADS)*13-39)]),
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
-    	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
-    	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
+	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP):(`DIG2_TOP-2)]),
 	.mgmt_gpio_out(mgmt_io_out[4:2]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[4:2]),
 
@@ -1177,79 +1118,79 @@ module caravel_openframe (
         .zero(),
 
     	// Serial data chain for pad configuration
-    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
     	// User-facing signals
-    	.user_gpio_out(user_io_out[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.user_gpio_oeb(user_io_oeb[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.user_gpio_in(user_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
+    	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
 
     	// Pad-facing signals (Pad GPIOv2)
-    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_dm(mprj_io_dm[(`MPRJ_IO_PADS*3-1):(`MPRJ_IO_PADS*3-9)]),
-    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_out(mprj_io_out[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-    	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)])
+    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_dm(mprj_io_dm[(`MPRJ_DIG_PADS*3-1):(`MPRJ_DIG_PADS*3-9)]),
+    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
+    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)])
     );
 
-    /* Section 2 GPIOs (GPIO 19 to 34) */
-    wire [`MPRJ_IO_PADS_2-4:0] one_loop2;
+    /* Section 2 GPIOs (GPIO 19 to 37) */
+    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] one_loop2;
 
-    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-4:0] (
-    	`ifdef USE_POWER_PINS
+    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] (
+	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
 	    .vccd1(vccd1_core),
 	    .vssd1(vssd1_core),
-        `endif
+	`endif
 
-	.gpio_defaults(gpio_defaults[(`MPRJ_IO_PADS*13-40):(`MPRJ_IO_PADS_1*13)]),
+	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS-2)*13-1):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13)]),
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-4):0]),
+	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 
-    	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-4):0]),
+	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 
-	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-	.mgmt_gpio_out(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
+	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
+	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
 	.mgmt_gpio_oeb(one_loop2),
 
         .one(one_loop2),
         .zero(),
 
     	// Serial data chain for pad configuration
-    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-4):0]),
+    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 
     	// User-facing signals
-    	.user_gpio_out(user_io_out[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.user_gpio_oeb(user_io_oeb[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.user_gpio_in(user_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
+    	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
 
     	// Pad-facing signals (Pad GPIOv2)
-    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_dm(mprj_io_dm[(`MPRJ_IO_PADS*3-10):(`MPRJ_IO_PADS_1*3)]),
-    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_out(mprj_io_out[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-    	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)])
+    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_dm(mprj_io_dm[((`MPRJ_DIG_PADS)*3-7):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3)]),
+    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)])
     );
 
     user_id_programming #(
