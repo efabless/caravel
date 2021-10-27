@@ -317,6 +317,7 @@ module caravel (
     wire [2:0]	 irq_spi;	  // From SPI and external pins
 
     // Exported Wishbone Bus (processor facing)
+    wire mprj_iena_wb;
     wire mprj_cyc_o_core;
     wire mprj_stb_o_core;
     wire mprj_we_o_core;
@@ -337,6 +338,8 @@ module caravel (
     wire [3:0]  mprj_sel_o_user;
     wire [31:0] mprj_adr_o_user;
     wire [31:0] mprj_dat_o_user;
+    wire [31:0] mprj_dat_i_user;
+    wire	mprj_ack_i_user;
 
     // Mask revision
     wire [31:0] mask_rev;
@@ -395,6 +398,7 @@ module caravel (
 	.flash_io3_do(flash_io3_do_core),
 
 	// Exported Wishbone Bus
+	.mprj_wb_iena(mprj_iena_wb),
 	.mprj_cyc_o(mprj_cyc_o_core),
 	.mprj_stb_o(mprj_stb_o_core),
 	.mprj_we_o(mprj_we_o_core),
@@ -410,6 +414,7 @@ module caravel (
 
 	// IRQ
 	.irq({irq_spi, user_irq}),
+	.user_irq_ena(user_irq_ena),
 
 	// Module status (these may or may not be implemented)
 	.qspi_enabled(qspi_enabled),
@@ -468,12 +473,15 @@ module caravel (
 	.caravel_clk(caravel_clk),
 	.caravel_clk2(caravel_clk2),
 	.caravel_rstn(caravel_rstn),
+	.mprj_iena_wb(mprj_iena_wb),
 	.mprj_cyc_o_core(mprj_cyc_o_core),
 	.mprj_stb_o_core(mprj_stb_o_core),
 	.mprj_we_o_core(mprj_we_o_core),
 	.mprj_sel_o_core(mprj_sel_o_core),
 	.mprj_adr_o_core(mprj_adr_o_core),
 	.mprj_dat_o_core(mprj_dat_o_core),
+	.mprj_ack_i_core(mprj_ack_i_core),
+	.mprj_dat_i_core(mprj_dat_i_core),
 	.user_irq_core(user_irq_core),
 	.user_irq_ena(user_irq_ena),
 	.la_data_out_core(la_data_out_user),
@@ -491,6 +499,8 @@ module caravel (
 	.mprj_sel_o_user(mprj_sel_o_user),
 	.mprj_adr_o_user(mprj_adr_o_user),
 	.mprj_dat_o_user(mprj_dat_o_user),
+	.mprj_dat_i_user(mprj_dat_i_user),
+	.mprj_ack_i_user(mprj_ack_i_user),
 	.user_irq(user_irq),
 	.user1_vcc_powergood(mprj_vcc_pwrgood),
 	.user2_vcc_powergood(mprj2_vcc_pwrgood),
@@ -524,8 +534,8 @@ module caravel (
 	.wbs_sel_i(mprj_sel_o_user),
 	.wbs_adr_i(mprj_adr_o_user),
 	.wbs_dat_i(mprj_dat_o_user),
-	.wbs_ack_o(mprj_ack_i_core),
-	.wbs_dat_o(mprj_dat_i_core),
+	.wbs_ack_o(mprj_ack_i_user),
+	.wbs_dat_o(mprj_dat_i_user),
 
 	// GPIO pad 3-pin interface (plus analog)
 	.io_in (user_io_in),

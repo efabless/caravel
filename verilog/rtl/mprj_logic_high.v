@@ -18,9 +18,9 @@ module mprj_logic_high (
     inout	   vccd1,
     inout	   vssd1,
 `endif
-    output [461:0] HI
+    output [462:0] HI
 );
-sky130_fd_sc_hd__conb_1 insts [461:0] (
+sky130_fd_sc_hd__conb_1 insts [462:0] (
 `ifdef USE_POWER_PINS
                 .VPWR(vccd1),
                 .VGND(vssd1),

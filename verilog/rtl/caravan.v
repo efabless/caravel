@@ -371,7 +371,7 @@ module caravan (
     wire [3:0] mprj_sel_o_core;
     wire [31:0] mprj_adr_o_core;
     wire [31:0] mprj_dat_o_core;
-    wire mprj_ack_i_core;
+    wire 	mprj_ack_i_core;
     wire [31:0] mprj_dat_i_core;
 
     wire [31:0] hk_dat_i;
@@ -385,6 +385,8 @@ module caravan (
     wire [3:0]  mprj_sel_o_user;
     wire [31:0] mprj_adr_o_user;
     wire [31:0] mprj_dat_o_user;
+    wire 	mprj_ack_i_user;
+    wire [31:0]	mprj_dat_i_user;
 
     // Mask revision
     wire [31:0] mask_rev;
@@ -516,12 +518,15 @@ module caravan (
 	.caravel_clk(caravel_clk),
 	.caravel_clk2(caravel_clk2),
 	.caravel_rstn(caravel_rstn),
+	.mprj_iena_wb(mprj_iena_wb),
 	.mprj_cyc_o_core(mprj_cyc_o_core),
 	.mprj_stb_o_core(mprj_stb_o_core),
 	.mprj_we_o_core(mprj_we_o_core),
 	.mprj_sel_o_core(mprj_sel_o_core),
 	.mprj_adr_o_core(mprj_adr_o_core),
 	.mprj_dat_o_core(mprj_dat_o_core),
+	.mprj_dat_i_core(mprj_dat_i_core),
+	.mprj_ack_i_core(mprj_ack_i_core),
 	.user_irq_core(user_irq_core),
 	.la_data_out_core(la_data_out_user),
 	.la_data_out_mprj(la_data_out_mprj),
@@ -541,6 +546,8 @@ module caravan (
 	.mprj_sel_o_user(mprj_sel_o_user),
 	.mprj_adr_o_user(mprj_adr_o_user),
 	.mprj_dat_o_user(mprj_dat_o_user),
+	.mprj_dat_i_user(mprj_dat_i_user),
+	.mprj_ack_i_user(mprj_ack_i_user),
 	.user_irq(user_irq),
 	.user1_vcc_powergood(mprj_vcc_pwrgood),
 	.user2_vcc_powergood(mprj2_vcc_pwrgood),
@@ -577,8 +584,8 @@ module caravan (
 	.wbs_sel_i(mprj_sel_o_user),
 	.wbs_adr_i(mprj_adr_o_user),
 	.wbs_dat_i(mprj_dat_o_user),
-	.wbs_ack_o(mprj_ack_i_core),
-	.wbs_dat_o(mprj_dat_i_core),
+	.wbs_ack_o(mprj_ack_i_user),
+	.wbs_dat_o(mprj_dat_i_user),
 
 	// GPIO pad 3-pin interface (plus analog)
 	.io_in (user_io_in),

@@ -54,6 +54,11 @@ module mgmt_protect (
     input [31:0]  mprj_dat_o_core,
     input [2:0]	  user_irq_core,
 
+    output [31:0] mprj_dat_i_core,
+    output	  mprj_ack_i_core,
+
+    input  	  mprj_iena_wb,		// Enable wishbone from user project
+
     // All signal in/out directions are the reverse of the signal
     // names at the buffer intrface.
 
@@ -77,6 +82,8 @@ module mgmt_protect (
     output [3:0]  mprj_sel_o_user,
     output [31:0] mprj_adr_o_user,
     output [31:0] mprj_dat_o_user,
+    input  [31:0] mprj_dat_i_user,
+    input	  mprj_ack_i_user,
     output [2:0]  user_irq,
     output	  user1_vcc_powergood,
     output	  user2_vcc_powergood,
@@ -84,7 +91,7 @@ module mgmt_protect (
     output	  user2_vdd_powergood
 );
 
-	wire [461:0] mprj_logic1;
+	wire [462:0] mprj_logic1;
 	wire	     mprj2_logic1;
 
 	wire mprj_vdd_logic1_h;
@@ -103,6 +110,10 @@ module mgmt_protect (
 	wire [127:0] la_data_in_enable;
 	wire [127:0] la_data_out_enable;
 	wire [2:0] user_irq_enable;
+	wire 	   wb_in_enable;
+
+	wire [31:0] mprj_dat_i_core_bar;
+	wire 	    mprj_ack_i_core_bar;
 
         mprj_logic_high mprj_logic_high_inst (
 `ifdef USE_POWER_PINS
@@ -213,6 +224,67 @@ module mgmt_protect (
 `endif
 		.Y(user_irq),
 		.A(user_irq_bar)
+	);
+
+	// Protection, similar to the above, for the return
+	// signals from user area to managment on the wishbone bus
+
+	sky130_fd_sc_hd__and2_1 user_to_mprj_wb_ena_buf (
+`ifdef USE_POWER_PINS
+                .VPWR(vccd),
+                .VGND(vssd),
+                .VPB(vccd),
+                .VNB(vssd),
+`endif
+		.X(wb_in_enable),
+		.A(mprj_iena_wb),
+		.B(mprj_logic1[462])
+	);
+
+	sky130_fd_sc_hd__nand2_4 user_wb_dat_gates [31:0] (
+`ifdef USE_POWER_PINS
+                .VPWR(vccd),
+                .VGND(vssd),
+                .VPB(vccd),
+                .VNB(vssd),
+`endif
+		.Y(mprj_dat_i_core_bar),
+		.A(mprj_dat_i_user),
+		.B(wb_in_enable)
+	);
+
+	sky130_fd_sc_hd__inv_8 user_wb_dat_buffers [31:0] (
+`ifdef USE_POWER_PINS
+                .VPWR(vccd),
+                .VGND(vssd),
+                .VPB(vccd),
+                .VNB(vssd),
+`endif
+		.Y(mprj_dat_i_core),
+		.A(mprj_dat_i_core_bar)
+	);
+
+	sky130_fd_sc_hd__nand2_4 user_wb_ack_gate (
+`ifdef USE_POWER_PINS
+                .VPWR(vccd),
+                .VGND(vssd),
+                .VPB(vccd),
+                .VNB(vssd),
+`endif
+		.Y(mprj_ack_i_core_bar),
+		.A(mprj_ack_i_user),
+		.B(wb_in_enable)
+	);
+
+	sky130_fd_sc_hd__inv_8 user_wb_ack_buffer (
+`ifdef USE_POWER_PINS
+                .VPWR(vccd),
+                .VGND(vssd),
+                .VPB(vccd),
+                .VNB(vssd),
+`endif
+		.Y(mprj_ack_i_core),
+		.A(mprj_ack_i_core_bar)
 	);
 
 	// The remaining circuitry guards against the management
