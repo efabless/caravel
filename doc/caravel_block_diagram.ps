@@ -1,10 +1,10 @@
 %!PS-Adobe-3.0
 %%Title: caravel_block_diagram.ps
-%%Creator: XCircuit v0.0 rev2062057973
-%%CreationDate: Thu Oct 21 22:39:16 2021
+%%Creator: XCircuit v0.0 rev791876117
+%%CreationDate: Thu Oct 28 10:06:12 2021
 %%Pages: 1
 %%BoundingBox: 0 0 612 792
-%%DocumentNeededResources: font Times-Roman Helvetica 
+%%DocumentNeededResources: font Helvetica Times-Roman 
 %%EndComments
 %%BeginProlog
 %
@@ -212,27 +212,27 @@ endgate
 %%PageOrientation: Landscape
 %%PageBoundingBox: 0 0 612 792
 /pgsave save def bop
-90 rotate 52 -664 translate
+90 rotate 60 -672 translate
 0.7189 inchscale
-2.6000 setlinewidth 1371 1020 translate
+2.6000 setlinewidth 1339 1084 translate
 
 (Caravel Harness Chip) {/Helvetica cf} 2 16 0.000 1.000 -1088 1120 label
-1024 4.000 352 -560 352 256 912 256 912 -560 4 polygon
-(User project wrapper) {/Helvetica cf} 2 21 0.000 1.000 624 -512 label
-1024 4.000 -1104 -560 -1104 192 192 192 192 -560 4 polygon
-(Management SoC wrapper) {/Helvetica cf} 2 21 0.000 1.000 -80 -512 label
+1024 4.000 352 -624 352 256 912 256 912 -624 4 polygon
+(User project wrapper) {/Helvetica cf} 2 21 0.000 1.000 624 -576 label
+1024 4.000 -1104 -624 -1104 192 192 192 192 -624 4 polygon
+(Management SoC wrapper) {/Helvetica cf} 2 21 0.000 1.000 -80 -576 label
 1024 2.000 -1104 272 -1104 544 112 544 112 272 4 polygon
-0 2.000 -1008 -320 -1008 128 160 128 160 -320 4 polygon
+0 2.000 -1008 -384 -1008 128 160 128 160 -384 4 polygon
 (SoC core) {/Helvetica cf} 2 16 0.000 1.000 -976 64 label
-0 2.000 -1072 -544 -1072 -368 -384 -368 -384 -544 4 polygon
-(Storage \(memory\)) {/Helvetica cf} 2 16 0.000 1.000 -992 -432 label
-0 1.000 -976 -272 -976 32 -640 32 -640 -272 4 polygon
+0 2.000 -1072 -608 -1072 -432 -384 -432 -384 -608 4 polygon
+(Storage \(memory\)) {/Helvetica cf} 2 16 0.000 1.000 -992 -496 label
+0 1.000 -976 -352 -976 32 -640 32 -640 -352 4 polygon
 (CPU) {/Helvetica cf} 2 21 0.000 1.000 -848 -112 label
 (SPI master) {/Helvetica cf} 2 16 0.000 1.000 -336 -176 label
 (UART) {/Helvetica cf} 2 16 0.000 1.000 -336 -96 label
 (Flash controller) {/Helvetica cf} 2 16 0.000 1.000 -336 -16 label
 (1-bit GPIO) {/Helvetica cf} 2 16 0.000 1.000 -336 64 label
-0 1.000 -608 -272 -608 112 -400 112 -400 -272 4 polygon
+0 1.000 -608 -352 -608 112 -400 112 -400 -352 4 polygon
 (bus) {CR} (Wishbone) {/Helvetica cf} 4 21 0.000 1.000 -496 -96 label
 1 1.000 -640 -96 -608 -96 2 polygon
 0 1.000 -352 48 -352 112 -128 112 -128 48 4 polygon
@@ -255,19 +255,19 @@ endgate
 0 1.000 -640 400 -640 528 -384 528 -384 400 4 polygon
 (control) {CR} (System) {/Helvetica cf} 4 1040 0.000 1.000 -576 432 label
 1 1.000 128 -240 224 -240 2 polygon
-0 1.000 224 -368 224 256 304 256 304 -368 4 polygon
+0 1.000 224 -432 224 256 304 256 304 -432 4 polygon
 1 1.000 304 160 352 160 2 polygon
 1 1.000 304 -240 352 -240 2 polygon
-(Management Protect) {/Helvetica cf} 2 21 270.000 1.000 272 -64 label
+(Management Protect) {/Helvetica cf} 2 21 270.000 1.000 272 -80 label
 1 1.000 80 400 384 400 2 polygon
-1 1.000 -1040 -368 -1040 384 2 polygon
-1 1.000 -512 -272 -512 -368 2 polygon
+1 1.000 -1040 -432 -1040 384 2 polygon
+1 1.000 -512 -352 -512 -432 2 polygon
 1 1.000 624 304 624 256 2 polygon
 1 1.000 -496 336 -960 336 -960 384 3 polygon
 1.000 0.000 -496 336 generic::dot
-1 1.000 304 -336 352 -336 2 polygon
-1 1.000 224 -336 -720 -336 -720 -272 3 polygon
-(IRQ) {/Helvetica cf} 2 20 0.000 1.000 368 -336 label
+1 1.000 304 -400 352 -400 2 polygon
+1 1.000 224 -400 -720 -400 -720 -352 3 polygon
+(IRQ) {/Helvetica cf} 2 20 0.000 1.000 368 -400 label
 (wishbone) {/Helvetica cf} 2 20 0.000 1.000 368 160 label
 (logic analyzer) {/Helvetica cf} 2 20 0.000 1.000 368 -240 label
 0 1.000 384 304 384 480 912 480 912 304 4 polygon
@@ -301,7 +301,7 @@ endgate
 (flash_clk) {/Helvetica cf} 2 20 270.000 1.000 -208 944 label
 (flash_io0) {/Helvetica cf} 2 20 270.000 1.000 -160 944 label
 (flash_io1) {/Helvetica cf} 2 20 270.000 1.000 -112 944 label
-(read-only port) {/Helvetica cf} 2 16 270.000 1.000 -1056 -320 label
+(read-only port) {/Helvetica cf} 2 16 270.000 1.000 -1056 -384 label
 1 1.000 -496 352 -496 400 2 polygon
 1 1.000 -688 640 -688 32 2 polygon
 1 1.000 -672 640 -672 224 224 224 3 polygon
@@ -345,12 +345,16 @@ endgate
 1.000 90.000 368 400 generic::arrowhead
 -1.000 270.000 304 400 generic::arrowhead
 1.000 90.000 352 224 generic::arrowhead
--1.000 270.000 304 -336 generic::arrowhead
--1.000 360.000 -720 -272 generic::arrowhead
+-1.000 270.000 304 -400 generic::arrowhead
+-1.000 360.000 -720 -352 generic::arrowhead
 1.000 180.000 -688 32 generic::arrowhead
 1.000 180.000 -720 32 generic::arrowhead
 -1.000 180.000 -1008 512 generic::arrowhead
 1 1.000 -464 112 -464 160 224 160 3 polygon
+0 1.000 -352 -352 -352 -288 128 -288 128 -352 4 polygon
+1 1.000 -352 -320 -400 -320 2 polygon
+1 1.000 128 -320 224 -320 2 polygon
+(User input enables) {/Helvetica cf} 2 16 0.000 1.000 -336 -336 label
 pgsave restore showpage
 
 %%Trailer

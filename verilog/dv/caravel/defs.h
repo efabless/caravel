@@ -183,6 +183,10 @@ extern uint32_t flashio_worker_end;
 #define reg_trap_out_dest (*(volatile uint32_t*)0x26200004)
 #define reg_irq_source    (*(volatile uint32_t*)0x2620000C)
 
+// Management protection (0x2f00_0000)
+#define reg_irq_enable	  (*(volatile uint32_t*)0x2f000000)
+#define reg_wb_enable	  (*(volatile uint32_t*)0x2f000004)
+
 // Bit fields for reg_power_good
 #define USER1_VCCD_POWER_GOOD 0x01
 #define USER2_VCCD_POWER_GOOD 0x02
