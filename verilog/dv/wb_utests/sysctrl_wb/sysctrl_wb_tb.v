@@ -34,6 +34,8 @@ module sysctrl_wb_tb;
     reg [31:0] wb_dat_i;
     reg [31:0] wb_adr_i;
 
+    reg porb;
+
     wire wb_ack_o;
     wire [31:0] wb_dat_o;
     
@@ -65,46 +67,43 @@ module sysctrl_wb_tb;
     integer i;
     
     // System Control Default Register Addresses 
-    wire [31:0] clk_out_adr  = uut.SYS_BASE_ADR | 8'h1b;
-    wire [31:0] trap_out_adr  = uut.SYS_BASE_ADR | 8'h1b;
-    wire [31:0] irq_src_adr  = uut.SYS_BASE_ADR | 8'h1c;
+    wire [31:0] clk_out_adr  = uut.SYS_BASE_ADR | 8'h04;
+    wire [31:0] irq_src_adr  = uut.SYS_BASE_ADR | 8'h0c;
 
-    reg clk1_output_dest;
-    reg clk2_output_dest;
-    reg trap_output_dest;
-    reg irq_7_inputsrc;
-    reg irq_8_inputsrc;
+    reg       clk1_output_dest;
+    reg [1:0] clk2_output_dest;
+    reg [2:0] trap_output_dest;
+    reg       irq_7_inputsrc;
+    reg [1:0] irq_8_inputsrc;
    
     initial begin
         // Reset Operation
+	porb = 0;
         wb_rst_i = 1;
+	#2;
+	porb = 1;
         #2;
         wb_rst_i = 0;
         #2;
         
         clk1_output_dest   = 1'b1;
-        clk2_output_dest   = 1'b1;
-        trap_output_dest  = 1'b1;
+        clk2_output_dest   = 2'b10;
+        trap_output_dest  = 3'b100;
         irq_7_inputsrc    = 1'b1;
-        irq_8_inputsrc    = 1'b1;
+        irq_8_inputsrc    = 2'b10;
 
         // Write to System Control Registers
-        write(clk_out_adr, clk1_output_dest);
-        write(trap_out_adr, trap_output_dest);
+        write(clk_out_adr, clk2_output_dest);
+        #20;
         write(irq_src_adr,  irq_7_inputsrc);
-        #2;
+        #20;
         read(clk_out_adr);
-        if (wb_dat_o !== clk1_output_dest) begin
+        if (wb_dat_o !== clk2_output_dest) begin
             $display("Error reading CLK1 output destination register.");
             $finish;
         end
 
-        read(trap_out_adr);
-        if (wb_dat_o !== trap_output_dest) begin
-            $display("Error reading trap output destination register.");
-            $finish;
-        end
-
+        #20;
         read(irq_src_adr);
         if (wb_dat_o !== irq_7_inputsrc) begin
             $display("Error reading IRQ7 input source register.");
@@ -158,16 +157,17 @@ module sysctrl_wb_tb;
     endtask
 
     housekeeping uut(
+	.porb(porb),
         .wb_clk_i(wb_clk_i),
-	    .wb_rst_i(wb_rst_i),
+	.wb_rst_i(wb_rst_i),
         .wb_stb_i(wb_stb_i),
-	    .wb_cyc_i(wb_cyc_i),
-	    .wb_sel_i(wb_sel_i),
-	    .wb_we_i(wb_we_i),
-	    .wb_dat_i(wb_dat_i),
-	    .wb_adr_i(wb_adr_i), 
+	.wb_cyc_i(wb_cyc_i),
+	.wb_sel_i(wb_sel_i),
+	.wb_we_i(wb_we_i),
+	.wb_dat_i(wb_dat_i),
+	.wb_adr_i(wb_adr_i), 
         .wb_ack_o(wb_ack_o),
-	    .wb_dat_o(wb_dat_o)
+	.wb_dat_o(wb_dat_o)
     );
     
 endmodule

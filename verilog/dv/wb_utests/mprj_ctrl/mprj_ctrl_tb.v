@@ -25,17 +25,19 @@
 module mprj_ctrl_tb;
 
     reg wb_clk_i;
-	reg wb_rst_i;
+    reg wb_rst_i;
 
     reg wb_stb_i;
     reg wb_cyc_i;
-	reg wb_we_i;
-	reg [3:0] wb_sel_i;
-	reg [31:0] wb_dat_i;
-	reg [31:0] wb_adr_i;
+    reg wb_we_i;
+    reg [3:0] wb_sel_i;
+    reg [31:0] wb_dat_i;
+    reg [31:0] wb_adr_i;
 
-	wire wb_ack_o;
-	wire [31:0] wb_dat_o;
+    reg porb;
+
+    wire wb_ack_o;
+    wire [31:0] wb_dat_o;
 
     initial begin
         wb_clk_i = 0; 
@@ -51,8 +53,8 @@ module mprj_ctrl_tb;
     always #1 wb_clk_i = ~wb_clk_i;
 
     // Mega Project Control Registers 
-    wire [31:0] mprj_ctrl = uut.GPIO_BASE_ADR | 8'h6a;
-    wire [31:0] pwr_ctrl  = uut.GPIO_BASE_ADR | 8'h6e;
+    wire [31:0] mprj_ctrl = uut.GPIO_BASE_ADR | 8'h24;
+    wire [31:0] pwr_ctrl  = uut.GPIO_BASE_ADR | 8'h04;
 
     initial begin
         $dumpfile("mprj_ctrl_tb.vcd");
@@ -72,16 +74,20 @@ module mprj_ctrl_tb;
 
     initial begin   
         // Reset Operation
+	porb = 0;
         wb_rst_i = 1;
         #2;
+	porb = 1;
+	#2;
         wb_rst_i = 0;
         #2;
 
         for (i=0; i<`MPRJ_IO_PADS; i=i+1) begin
             data = $urandom_range(0, 2**(7));
             write(mprj_ctrl+i*4, data);
-            #2;
+            #20;
             read(mprj_ctrl+i*4);
+            #20;
             if (wb_dat_o !== data) begin
                 $display("Monitor: R/W from IO-CTRL Failed.");
                 $finish;
@@ -90,8 +96,9 @@ module mprj_ctrl_tb;
 
         data = $urandom_range(0, 2**(`MPRJ_PWR_PADS-2));
         write(pwr_ctrl, data);
-        #2;
+        #20;
         read(pwr_ctrl);
+        #20;
         if (wb_dat_o !== data) begin
             $display("Monitor: R/W from POWER-CTRL Failed.");
             $finish;
@@ -145,16 +152,17 @@ module mprj_ctrl_tb;
     endtask
 
     housekeeping uut(
+	.porb(porb),
         .wb_clk_i(wb_clk_i),
-	    .wb_rst_i(wb_rst_i),
+	.wb_rst_i(wb_rst_i),
         .wb_stb_i(wb_stb_i),
-	    .wb_cyc_i(wb_cyc_i),
-	    .wb_sel_i(wb_sel_i),
-	    .wb_we_i(wb_we_i),
-	    .wb_dat_i(wb_dat_i),
-	    .wb_adr_i(wb_adr_i), 
+	.wb_cyc_i(wb_cyc_i),
+	.wb_sel_i(wb_sel_i),
+	.wb_we_i(wb_we_i),
+	.wb_dat_i(wb_dat_i),
+	.wb_adr_i(wb_adr_i), 
         .wb_ack_o(wb_ack_o),
-	    .wb_dat_o(wb_dat_o)
+	.wb_dat_o(wb_dat_o)
     );
 
 endmodule
