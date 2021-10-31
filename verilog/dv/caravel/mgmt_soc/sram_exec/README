@@ -1,3 +1,4 @@
+<!---
 # SPDX-FileCopyrightText: 2020 Efabless Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,23 +14,11 @@
 # limitations under the License.
 #
 # SPDX-License-Identifier: Apache-2.0
+-->
+------------------------------------------------
+Caravel
+sram_exec testbench
+------------------------------------------------
 
-# ---- Test patterns for project striVe ----
-
-.SUFFIXES:
-.SILENT: clean all
-
-PATTERNS = gpio_mgmt gpio mem uart perf hkspi sysctrl mprj_ctrl mprj_bitbang pass_thru timer timer2 pll storage qspi caravan irq user_pass_thru spi_master sram_exec
-
-all:  ${PATTERNS}
-	for i in ${PATTERNS}; do \
-		( cd $$i && SIM=RTL make -f Makefile $${i}.vcd &> verify.log && grep Monitor verify.log) ; \
-		( cd $$i && SIM=GL make -f Makefile $${i}.vcd &> verify.log && grep Monitor verify.log) ; \
-	done
-
-clean:  ${PATTERNS}
-	for i in ${PATTERNS}; do \
-		( cd $$i && make clean ) ; \
-	done
-
-.PHONY: clean all
+This testbench demonstrates how to copy a portion of a program from
+flash memory into SRAM and to run it from there.
