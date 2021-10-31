@@ -33,8 +33,6 @@ void test_function()
 
 void main()
 {
-    // uint32_t func[&test_routine_end - &test_routine_begin];
-    // uint32_t *src_ptr;
     uint16_t func[&main - &test_function];
     uint16_t *src_ptr;
     uint16_t *dst_ptr;
@@ -58,11 +56,9 @@ void main()
     reg_mprj_datah = 0x5;	// Signal start of test
     reg_mprj_datal = 0;
 
-    // src_ptr = &test_routine_begin;
     src_ptr = &test_function;
     dst_ptr = func;
 
-    // while (src_ptr != &test_routine_end)
     while (src_ptr != &main)
 	*(dst_ptr++) = *(src_ptr++);
 
