@@ -13,7 +13,12 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-module sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped (
+// Module xres_buf is a level-shift buffer between the xres pad (used for
+// digital reset) and the caravel chip core.  The xres pad output is in
+// the 3.3V domain while the signal goes to the digital circuitry in the
+// 1.8V domain.
+
+module xres_buf (
 	X    ,
 	A    ,
 `ifdef USE_POWER_PINS

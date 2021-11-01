@@ -64,7 +64,7 @@
 	`include "gl/gpio_control_block.v"
 	`include "gl/gpio_defaults_block.v"
 	`include "gl/gpio_logic_high.v"
-	`include "gl/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
+	`include "gl/xres_buf.v"
 	`include "gl/caravan.v"
     `else
 	`include "digital_pll.v"
@@ -82,7 +82,7 @@
 	`include "gpio_control_block.v"
 	`include "gpio_defaults_block.v"
 	`include "gpio_logic_high.v"
-	`include "sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.v"
+	`include "xres_buf.v"
 	`include "mgmt_core_wrapper.v"
 	`include "caravan.v"
     `endif

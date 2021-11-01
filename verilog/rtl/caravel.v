@@ -1391,7 +1391,7 @@ module caravel (
     );
 
     // XRES (chip input pin reset) reset level converter
-    sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped rstb_level (
+    xres_buf rstb_level (
 	`ifdef USE_POWER_PINS
 		.VPWR(vddio_core),
 		.LVPWR(vccd_core),
