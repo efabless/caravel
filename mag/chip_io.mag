@@ -6297,7 +6297,7 @@ use sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um  bus_tie_24
 timestamp 1624649926
 transform -1 0 233800 0 -1 39593
 box 0 0 4000 39593
-use sky130_ef_io__vssd_lvc_clamped_pad  mgmt_vssd_lvclmap_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
+use sky130_ef_io__vssd_lvc_clamped_pad  mgmt_vssd_lvclamp_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
 timestamp 1624649926
 transform -1 0 256200 0 -1 39593
 box 0 -2107 17239 39593
@@ -6925,7 +6925,7 @@ use sky130_ef_io__disconnect_vdda_slice_5um  disconnect_vdda_1 $PDKPATH/libs.ref
 timestamp 1624649926
 transform 0 1 678007 -1 0 70000
 box 0 0 1000 39593
-use sky130_ef_io__disconnect_vccd_slice_5um  disconnect_vccd_1 $PDKPATH/libs.ref/sky130_fd_io/maglef
+use sky130_ef_io__com_bus_slice_5um  FILLER_SB1
 timestamp 1624649926
 transform 0 1 678007 -1 0 71000
 box 0 0 1000 39593
@@ -7057,7 +7057,7 @@ use sky130_ef_io__disconnect_vdda_slice_5um  disconnect_vdda_2
 timestamp 1624649926
 transform 0 -1 39593 1 0 152400
 box 0 0 1000 39593
-use sky130_ef_io__disconnect_vccd_slice_5um  disconnect_vccd_2
+use sky130_ef_io__com_bus_slice_5um  FILLER_SB2
 timestamp 1624649926
 transform 0 -1 39593 1 0 153400
 box 0 0 1000 39593
@@ -7585,7 +7585,7 @@ use sky130_ef_io__com_bus_slice_1um  FILLER_473
 timestamp 1624649926
 transform 0 -1 39593 1 0 440600
 box 0 0 200 39593
-use sky130_ef_io__vssd_lvc_clamped2_pad  user2_vssd_lvclmap_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
+use sky130_fd_io__top_ground_lvc_wpad  user2_vssd_lvclamp_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
 timestamp 1624649926
 transform 0 -1 39593 1 0 440800
 box -2195 -2184 17228 39593
@@ -7637,7 +7637,7 @@ use sky130_ef_io__com_bus_slice_1um  FILLER_698
 timestamp 1624649926
 transform 0 1 678007 -1 0 459800
 box 0 0 200 39593
-use sky130_ef_io__vssd_lvc_clamped2_pad  user1_vssd_lvclmap_pad
+use sky130_fd_io__top_ground_lvc_wpad  user1_vssd_lvclamp_pad
 timestamp 1624649926
 transform 0 1 678007 -1 0 474800
 box -2195 -2184 17228 39593
@@ -8409,7 +8409,7 @@ use sky130_ef_io__com_bus_slice_1um  FILLER_583
 timestamp 1624649926
 transform 0 -1 39593 1 0 911800
 box 0 0 200 39593
-use sky130_ef_io__vccd_lvc_clamped2_pad  user2_vccd_lvclamp_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
+use sky130_fd_io__top_power_lvc_wpad  user2_vccd_lvclamp_pad $PDKPATH/libs.ref/sky130_fd_io/maglef
 timestamp 1624649926
 transform 0 -1 39593 1 0 912000
 box -2195 -2184 17228 39593
@@ -8437,7 +8437,7 @@ use sky130_ef_io__com_bus_slice_20um  FILLER_786
 timestamp 1624907698
 transform 0 1 678007 -1 0 890400
 box 0 0 4000 39593
-use sky130_ef_io__vccd_lvc_clamped2_pad  user1_vccd_lvclamp_pad
+use sky130_fd_io__top_power_lvc_wpad  user1_vccd_lvclamp_pad
 timestamp 1624649926
 transform 0 1 678007 -1 0 922600
 box -2195 -2184 17228 39593
@@ -8889,7 +8889,7 @@ use sky130_ef_io__disconnect_vdda_slice_5um  disconnect_vdda_0
 timestamp 1624649926
 transform 1 0 348400 0 1 998007
 box 0 0 1000 39593
-use sky130_ef_io__disconnect_vccd_slice_5um  disconnect_vccd_0
+use sky130_ef_io__com_bus_slice_5um  FILLER_SB3
 timestamp 1624649926
 transform 1 0 349400 0 1 998007
 box 0 0 1000 39593
