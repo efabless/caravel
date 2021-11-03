@@ -637,8 +637,8 @@ module caravel (
             .vss(VGND),
         `endif
 
-        .wb_clk_i(mprj_clock),
-        .wb_rst_i(mprj_reset),
+        .wb_clk_i(caravel_clk),
+        .wb_rst_i(caravel_rstn),
 
         .wb_adr_i(mprj_adr_o_core),
         .wb_dat_i(mprj_dat_o_core),
