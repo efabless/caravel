@@ -38,10 +38,6 @@ module mprj_io #(
     inout vdda2,
     inout vssa1,
     inout vssa2,
-    inout vccd1,
-    inout vccd2,
-    inout vssd1,
-    inout vssd2,
 
     input vddio_q,
     input vssio_q,

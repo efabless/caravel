@@ -188,7 +188,7 @@ module chip_io(
 `endif
     	);
 
-    	sky130_ef_io__vssd_lvc_clamped_pad mgmt_vssd_lvclmap_pad (
+    	sky130_ef_io__vssd_lvc_clamped_pad mgmt_vssd_lvclamp_pad (
 		`MGMT_ABUTMENT_PINS
 `ifdef TOP_ROUTING
 		.VSSD(vssd)
@@ -218,6 +218,21 @@ module chip_io(
 `endif
     	);
 
+	// VCCD1/VSSD1 must be routed to clamps from outside
+	sky130_fd_io__top_power_lvc_wpad user1_vccd_lvclamp_pad (
+		`USER1_ABUTMENT_PINS
+		,.P_PAD(vccd1_pad),
+		.P_CORE(vccd1),
+		.SRC_BDY_LVC1(vssd1),
+		.SRC_BDY_LVC2(vssd1),
+		.DRN_LVC1(vccd1),
+		.DRN_LVC2(vccd1),
+		.BDY2_B2B(vssio),
+		.OGC_LVC()
+	);
+
+/*
+	//----Replaced with base pad (see above)----//
     	sky130_ef_io__vccd_lvc_clamped2_pad user1_vccd_lvclamp_pad (
 		`USER1_ABUTMENT_PINS
 `ifdef TOP_ROUTING
@@ -226,6 +241,7 @@ module chip_io(
 		,.VCCD_PAD(vccd1_pad)
 `endif
     	);
+*/
 
     	sky130_ef_io__vssa_hvc_clamped_pad \user1_vssa_hvclamp_pad[0] (
 		`USER1_ABUTMENT_PINS
@@ -246,7 +262,22 @@ module chip_io(
 `endif
     	);
 
-    	sky130_ef_io__vssd_lvc_clamped2_pad user1_vssd_lvclmap_pad (
+	// VCCD1/VSSD1 must be routed to clamps from outside
+	sky130_fd_io__top_ground_lvc_wpad user1_vssd_lvclamp_pad (
+		`USER1_ABUTMENT_PINS
+		,.G_PAD(vssd1_pad),
+		.G_CORE(vssd1),
+		.SRC_BDY_LVC1(vssd1),
+		.SRC_BDY_LVC2(vssd1),
+		.DRN_LVC1(vccd1),
+		.DRN_LVC2(vccd1),
+		.BDY2_B2B(vssio),
+		.OGC_LVC()
+	);
+
+/*
+	//----Replaced with base pad (see above)----//
+    	sky130_ef_io__vssd_lvc_clamped2_pad user1_vssd_lvclamp_pad (
 		`USER1_ABUTMENT_PINS
 `ifdef TOP_ROUTING
 		.VSSD(vssd1)
@@ -254,6 +285,7 @@ module chip_io(
 		,.VSSD_PAD(vssd1_pad)
 `endif
     	);
+*/
 
 	// Instantiate power and ground pads for user 2 domain
 	// 8 pads:  vdda, vssa, vccd, vssd;  One each HV and LV clamp.
@@ -267,6 +299,21 @@ module chip_io(
 `endif
     	);
 
+	// VCCD2/VSSD2 must be routed to clamps from outside
+	sky130_fd_io__top_power_lvc_wpad user2_vccd_lvclamp_pad (
+		`USER2_ABUTMENT_PINS
+		,.P_PAD(vccd2_pad),
+		.P_CORE(vccd2),
+		.SRC_BDY_LVC1(vssd2),
+		.SRC_BDY_LVC2(vssd2),
+		.DRN_LVC1(vccd2),
+		.DRN_LVC2(vccd2),
+		.BDY2_B2B(vssio),
+		.OGC_LVC()
+	);
+
+/*
+	//----Replaced with base pad (see above)----//
     	sky130_ef_io__vccd_lvc_clamped2_pad user2_vccd_lvclamp_pad (
 		`USER2_ABUTMENT_PINS
 `ifdef TOP_ROUTING
@@ -275,6 +322,7 @@ module chip_io(
 		,.VCCD_PAD(vccd2_pad)
 `endif
     	);
+*/
 
     	sky130_ef_io__vssa_hvc_clamped_pad user2_vssa_hvclamp_pad (
 		`USER2_ABUTMENT_PINS
@@ -285,7 +333,22 @@ module chip_io(
 `endif
     	);
 
-    	sky130_ef_io__vssd_lvc_clamped2_pad user2_vssd_lvclmap_pad (
+	// VCCD2/VSSD2 must be routed to clamps from outside
+	sky130_fd_io__top_ground_lvc_wpad user2_vssd_lvclamp_pad (
+		`USER2_ABUTMENT_PINS
+		,.G_PAD(vssd2_pad),
+		.G_CORE(vssd2),
+		.SRC_BDY_LVC1(vssd2),
+		.SRC_BDY_LVC2(vssd2),
+		.DRN_LVC1(vccd2),
+		.DRN_LVC2(vccd2),
+		.BDY2_B2B(vssio),
+		.OGC_LVC()
+	);
+
+/*
+	//----Replaced with base pad (see above)----//
+    	sky130_ef_io__vssd_lvc_clamped2_pad user2_vssd_lvclamp_pad (
 		`USER2_ABUTMENT_PINS
 `ifdef TOP_ROUTING
 		.VSSD(vssd2)
@@ -293,6 +356,7 @@ module chip_io(
 		,.VSSD_PAD(vssd2_pad)
 `endif
     	);
+*/
 
 	wire [2:0] dm_all =
     		{gpio_mode1_core, gpio_mode1_core, gpio_mode0_core};
@@ -379,7 +443,7 @@ module chip_io(
 		.VSSA(vssa1),
 		.VSWITCH(vddio),
 		.VDDA(vdda1),
-		.VCCD(vccd1),
+		.VCCD(vccd),
 		.VCCHIB(vccd)
 `else
 		.VCCHIB()
@@ -413,10 +477,6 @@ module chip_io(
 		.vdda2(vdda2),
 		.vssa1(vssa1),
 		.vssa2(vssa2),
-		.vccd1(vccd1),
-		.vccd2(vccd2),
-		.vssd1(vssd1),
-		.vssd2(vssd2),
 		.vddio_q(vddio_q),
 		.vssio_q(vssio_q),
 		.analog_a(analog_a),

@@ -24,9 +24,9 @@
 	.VDDIO_Q(vddio_q),\
 	.VCCHIB(vccd),\
 	.VDDIO(vddio),\
-	.VCCD(vccd1),\
+	.VCCD(vccd),\
 	.VSSIO(vssio),\
-	.VSSD(vssd1),\
+	.VSSD(vssd),\
 	.VSSIO_Q(vssio_q)
 
 	`define USER2_ABUTMENT_PINS \
@@ -38,9 +38,9 @@
 	.VDDIO_Q(vddio_q),\
 	.VCCHIB(vccd),\
 	.VDDIO(vddio),\
-	.VCCD(vccd2),\
+	.VCCD(vccd),\
 	.VSSIO(vssio),\
-	.VSSD(vssd2),\
+	.VSSD(vssd),\
 	.VSSIO_Q(vssio_q)
 
 	`define MGMT_ABUTMENT_PINS \
