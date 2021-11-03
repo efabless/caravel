@@ -19,7 +19,7 @@
 .SUFFIXES:
 .SILENT: clean all
 
-PATTERNS = gpio_mgmt gpio mem uart perf hkspi sysctrl mprj_ctrl mprj_bitbang pass_thru timer timer2 pll storage qspi caravan irq user_pass_thru spi_master sram_exec
+PATTERNS = gpio_mgmt gpio mem uart perf hkspi sysctrl mprj_ctrl mprj_bitbang pass_thru timer timer2 pll storage qspi caravan irq user_pass_thru spi_master sram_exec hkspi_power
 
 all:  ${PATTERNS}
 	for i in ${PATTERNS}; do \
