@@ -72,7 +72,7 @@ set ::env(FP_PDN_CORE_RING_VOFFSET) 2
 set ::env(FP_PDN_CORE_RING_HOFFSET) 2
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.898
+set ::env(PL_TARGET_DENSITY) 0.91
 # for some reason resizer is leaving a floating net after running repair_tie_fanout command
 set ::env(PL_RESZIER_REPIAR_TIE_FANOUT) 0
 
