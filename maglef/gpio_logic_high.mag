@@ -1,0 +1,47 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1636033646
+<< nwell >>
+rect -38 2437 1418 2758
+rect -38 1349 1418 1915
+rect -38 261 1418 827
+<< pwell >>
+rect 29 -17 63 17
+rect 305 -17 339 17
+rect 672 -11 696 11
+rect 857 -17 891 17
+rect 1317 -17 1351 17
+<< obsli1 >>
+rect 0 -17 1380 2737
+<< obsm1 >>
+rect 0 -48 1380 2768
+<< obsm2 >>
+rect 78 0 1062 2768
+rect 818 -48 1062 0
+<< metal3 >>
+rect 600 1640 1400 1760
+<< obsm3 >>
+rect 60 1840 1080 2753
+rect 60 1560 520 1840
+rect 60 0 1080 1560
+rect 800 -33 1080 0
+<< metal4 >>
+rect 60 -48 340 2768
+rect 800 -48 1080 2768
+<< labels >>
+rlabel metal3 s 600 1640 1400 1760 6 gpio_logic1
+port 1 nsew signal output
+rlabel metal4 s 60 -48 340 2768 6 vccd1
+port 2 nsew power input
+rlabel metal4 s 800 -48 1080 2768 6 vssd1
+port 3 nsew ground input
+<< properties >>
+string LEFclass BLOCK
+string FIXED_BBOX 0 0 1400 3200
+string LEFview TRUE
+string GDS_FILE ../gds/gpio_logic_high.gds
+string GDS_END 27138
+string GDS_START 18568
+<< end >>
+
