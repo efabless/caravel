@@ -60,6 +60,8 @@ module gpio_control_block #(
     output       resetn_out,
     input  	 serial_clock,		// Global clock, locally propatated
     output  	 serial_clock_out,
+    input	 serial_load,		// Register load strobe
+    output	 serial_load_out,
 
     output       mgmt_gpio_in,		// Management from pad (input only)
     input        mgmt_gpio_out,		// Management to pad (output only)
@@ -139,26 +141,25 @@ module gpio_control_block #(
     wire user_gpio_in;
     wire gpio_in_unbuf;
     wire gpio_logic1;
+    wire serial_data_pre;
 
     /* Serial shift for the above (latched) values */
     reg [PAD_CTRL_BITS-1:0] shift_register;
 
-    /* Utilize reset and clock to encode a load operation */
-    wire load_data;
-    wire int_reset;
-
     /* Create internal reset and load signals from input reset and clock */
-    assign serial_data_out = shift_register[PAD_CTRL_BITS-1]; 
-    assign int_reset = (~resetn) & (~serial_clock);
-    assign load_data = (~resetn) & serial_clock;
+    assign serial_data_pre = shift_register[PAD_CTRL_BITS-1]; 
 
     /* Propagate the clock and reset signals so that they aren't wired	*/
     /* all over the chip, but are just wired between the blocks.	*/
     assign serial_clock_out = serial_clock;
     assign resetn_out = resetn;
+    assign serial_load_out = serial_load;
 
-    always @(posedge serial_clock or posedge int_reset) begin
-	if (int_reset == 1'b1) begin
+    /* Serial data should be buffered again to avoid hold violations */
+    assign serial_data_out = serial_data_pre & one;
+
+    always @(posedge serial_clock or negedge resetn) begin
+	if (resetn == 1'b0) begin
 	    /* Clear shift register */
 	    shift_register <= 'd0;
 	end else begin
@@ -167,8 +168,8 @@ module gpio_control_block #(
 	end
     end
 
-    always @(posedge load_data or posedge int_reset) begin
-	if (int_reset == 1'b1) begin
+    always @(posedge serial_load or negedge resetn) begin
+	if (resetn == 1'b0) begin
 	    /* Initial state on reset depends on applied defaults */
 	    mgmt_ena <= gpio_defaults[MGMT_EN];
 	    gpio_holdover <= gpio_defaults[HLDH];

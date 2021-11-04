@@ -189,6 +189,7 @@ module caravan (
     wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:0] gpio_serial_link_2;
     wire mprj_io_loader_resetn;
     wire mprj_io_loader_clock;
+    wire mprj_io_loader_strobe;
     wire mprj_io_loader_data_1;		/* user1 side serial loader */
     wire mprj_io_loader_data_2;		/* user2 side serial loader */
 
@@ -633,10 +634,14 @@ module caravan (
     wire [`MPRJ_IO_PADS_2-1:0] gpio_clock_2;
     wire [`MPRJ_IO_PADS_1-1:0] gpio_resetn_1;
     wire [`MPRJ_IO_PADS_2-1:0] gpio_resetn_2;
+    wire [`MPRJ_IO_PADS_1-1:0] gpio_load_1;
+    wire [`MPRJ_IO_PADS_2-1:0] gpio_load_2;
     wire [`MPRJ_IO_PADS_1-6:0] gpio_clock_1_shifted;
     wire [`MPRJ_IO_PADS_2-7:0] gpio_clock_2_shifted;
     wire [`MPRJ_IO_PADS_1-6:0] gpio_resetn_1_shifted;
     wire [`MPRJ_IO_PADS_2-7:0] gpio_resetn_2_shifted;
+    wire [`MPRJ_IO_PADS_1-6:0] gpio_load_1_shifted;
+    wire [`MPRJ_IO_PADS_2-7:0] gpio_load_2_shifted;
 
     assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
 				mprj_io_loader_clock};
@@ -646,6 +651,10 @@ module caravan (
 				mprj_io_loader_resetn};
     assign gpio_resetn_2_shifted = {mprj_io_loader_resetn,
 				gpio_resetn_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
+    assign gpio_load_1_shifted = {gpio_load_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
+				mprj_io_loader_strobe};
+    assign gpio_load_2_shifted = {mprj_io_loader_strobe,
+				gpio_load_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
 
     wire [2:0] spi_pll_sel;
     wire [2:0] spi_pll90_sel;
@@ -740,6 +749,7 @@ module caravan (
 	.reset(ext_reset),
 
 	.serial_clock(mprj_io_loader_clock),
+	.serial_load(mprj_io_loader_strobe),
 	.serial_resetn(mprj_io_loader_resetn),
 	.serial_data_1(mprj_io_loader_data_1),
 	.serial_data_2(mprj_io_loader_data_2),
@@ -1073,9 +1083,11 @@ module caravan (
 
 	.resetn(gpio_resetn_1_shifted[1:0]),
 	.serial_clock(gpio_clock_1_shifted[1:0]),
+	.serial_load(gpio_load_1_shifted[1:0]),
 
 	.resetn_out(gpio_resetn_1[1:0]),
 	.serial_clock_out(gpio_clock_1[1:0]),
+	.serial_load_out(gpio_load_1[1:0]),
 
     	.mgmt_gpio_in(mgmt_io_in[1:0]),
 	.mgmt_gpio_out({sdo_out, jtag_out}),
@@ -1127,9 +1139,11 @@ module caravan (
 
 	.resetn(gpio_resetn_1_shifted[7:2]),
 	.serial_clock(gpio_clock_1_shifted[7:2]),
+	.serial_load(gpio_load_1_shifted[7:2]),
 
 	.resetn_out(gpio_resetn_1[7:2]),
 	.serial_clock_out(gpio_clock_1[7:2]),
+	.serial_load_out(gpio_load_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
 	.mgmt_gpio_out(mgmt_io_in[7:2]),
@@ -1177,9 +1191,11 @@ module caravan (
 
 	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
 	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
@@ -1228,9 +1244,11 @@ module caravan (
 
 	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
 	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP):(`DIG2_TOP-2)]),
 	.mgmt_gpio_out(mgmt_io_out[4:2]),
@@ -1280,9 +1298,11 @@ module caravan (
 
 	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 
 	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
 	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
