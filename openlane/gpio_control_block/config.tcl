@@ -23,10 +23,14 @@ set ::env(VERILOG_FILES) "\
 
 
 set ::env(CLOCK_PORT) "serial_clock"
-set ::env(CLOCK_PERIOD) "25"
+
+# This needs to be half the mgmt_core clock frequency
+set ::env(CLOCK_PERIOD) "50"
 
 set ::env(VDD_NETS) "vccd vccd1"
 set ::env(GND_NETS) "vssd vssd1"
+
+set ::env(BASE_SDC_FILE) $script_dir/base.sdc
 
 ## Synthesis
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
