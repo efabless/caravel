@@ -31,7 +31,7 @@ set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 
 ## Floorplan
-set ::env(DIE_AREA) "0 0 25 11"
+set ::env(DIE_AREA) "0 0 30 11"
 set ::env(FP_SIZING) absolute
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
