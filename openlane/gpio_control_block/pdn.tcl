@@ -29,6 +29,7 @@ set_voltage_domain -name CORE -power $::env(VDD_NET) -ground $::env(GND_NET)
 if { $::env(VDD_NET) == "vccd1" } {
 	# Used if the design is the core of the chip
     define_pdn_grid -name stdcell_grid -starts_with POWER -voltage_domain CORE -pins [subst {$::env(FP_PDN_LOWER_LAYER) $::env(FP_PDN_UPPER_LAYER)}]
+    add_pdn_stripe -grid stdcell_grid -layer $::env(FP_PDN_LOWER_LAYER) -width $::env(FP_PDN_VWIDTH) -pitch $::env(FP_PDN_VPITCH) -offset $::env(FP_PDN_VOFFSET) -starts_with POWER
     add_pdn_stripe -grid stdcell_grid -layer $::env(FP_PDN_UPPER_LAYER) -width $::env(FP_PDN_HWIDTH) -pitch $::env(FP_PDN_HPITCH) -offset $::env(FP_PDN_HOFFSET) -starts_with POWER
     add_pdn_connect -grid stdcell_grid -layers [subst {$::env(FP_PDN_LOWER_LAYER) $::env(FP_PDN_UPPER_LAYER)}]
 } else {
@@ -59,10 +60,21 @@ if { $::env(VDD_NET) == "vccd1" } {
 		orient {R0 R180 MX MY R90 R270 MXR90 MYR90}
 		power_pins "vccd1"
 		ground_pins "vssd1"
-		blockages $::env(MACRO_BLOCKAGES_LAYER)
+		blockages "met1 met2 met3 met4 met5"
 		straps {
 		}
 		connect {{$::env(FP_PDN_LOWER_LAYER)_PIN_ver $::env(FP_PDN_UPPER_LAYER)}}
+	}
+	set ::halo [list $::env(FP_HORIZONTAL_HALO) $::env(FP_VERTICAL_HALO)]
+    pdngen::specify_grid macro [subst $macro]
+} else {
+	set macro {
+		orient {R0 R180 MX MY R90 R270 MXR90 MYR90}
+		power_pins "vccd1"
+		ground_pins "vssd1"
+		blockages "met1 met2 met3 met4 met5"
+		straps {
+		}
 	}
 	set ::halo [list $::env(FP_HORIZONTAL_HALO) $::env(FP_VERTICAL_HALO)]
     pdngen::specify_grid macro [subst $macro]
