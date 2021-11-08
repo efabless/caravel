@@ -91,7 +91,7 @@ if __name__ == '__main__':
     arguments = []
 
     debugmode = False
-    reportmode = False
+    testmode = False
 
     for option in sys.argv[1:]:
         if option.find('-', 0) == 0:
@@ -106,8 +106,8 @@ if __name__ == '__main__':
 
     if '-debug' in optionlist:
         debugmode = True
-    if '-report' in optionlist:
-        reportmode = True
+    if '-test' in optionlist:
+        testmode = True
 
     user_project_path = None
 
@@ -184,6 +184,8 @@ if __name__ == '__main__':
     # Create new cells for each unique type
     print('Step 1:  Create new cells for new GPIO default vectors.')
 
+    cellsused = [None] * 38
+
     for i in range(5, 38):
         config_name = '`USER_CONFIG_GPIO_' + str(i) + '_INIT'
         try:
@@ -201,6 +203,7 @@ if __name__ == '__main__':
 
         cell_name = 'gpio_defaults_block_' + default_str
         mag_file = magpath + '/' + cell_name + '.mag'
+        cellsused[i] = cell_name
 
         if not os.path.isfile(mag_file):
             # A cell with this set of defaults doesn't exist, so make it
@@ -228,15 +231,77 @@ if __name__ == '__main__':
                         outlines.append(magline)
 
             print('Creating new layout file ' + mag_file)
-            with open(mag_file, 'w') as ofile:
-                for outline in outlines:
-                    print(outline, file=ofile)
+            if testmode:
+                print('(Test only)')
+            else:
+                with open(mag_file, 'w') as ofile:
+                    for outline in outlines:
+                        print(outline, file=ofile)
         else:
             print('Layout file ' + mag_file + ' already exists and does not need to be generated.')
 
     print('Step 2:  Modify top-level layouts to use the specified defaults.')
 
-    # WIP
+    # Create a backup of the caravan and caravel layouts
+    if not testmode:
+        shutil.copy(magpath + '/caravel.mag', magpath + '/caravel.mag.bak')
+        shutil.copy(magpath + '/caravan.mag', magpath + '/caravan.mag.bak')
+
+    if testmode:
+        print('Test only:  Caravel layout:')
+    with open(magpath + '/caravel.mag', 'r') as ifile:
+        maglines = ifile.read().splitlines()
+        outlines = []
+        for magline in maglines:
+            if magline.startswith('use '):
+                tokens = magline.split()
+                instname = tokens[2]
+                if instname.startswith('gpio_defaults_block_'):
+                    gpioidx = instname[20:]
+                    cellname = cellsused[int(gpioidx)]
+                    if cellname:
+                        tokens[1] = cellname
+                    outlines.append(' '.join(tokens))
+                    if testmode:
+                        print('Replacing line: ' + magline)
+                        print('With: ' + ' '.join(tokens))
+                else:
+                    outlines.append(magline)
+            else:
+                outlines.append(magline)
+
+    if not testmode:
+        with open(magpath + '/caravel.mag', 'w') as ofile:
+            for outline in outlines:
+                print(outline, file=ofile)
+
+    if testmode:
+        print('Test only:  Caravan layout:')
+    with open(magpath + '/caravan.mag', 'r') as ifile:
+        maglines = ifile.read().splitlines()
+        outlines = []
+        for magline in maglines:
+            if magline.startswith('use '):
+                tokens = magline.split()
+                instname = tokens[2]
+                if instname.startswith('gpio_defaults_block_'):
+                    gpioidx = instname[20:]
+                    cellname = cellsused[int(gpioidx)]
+                    if cellname:
+                        tokens[1] = cellname
+                    outlines.append(' '.join(tokens))
+                    if testmode:
+                        print('Replacing line: ' + magline)
+                        print('With: ' + ' '.join(tokens))
+                else:
+                    outlines.append(magline)
+            else:
+                outlines.append(magline)
+
+    if not testmode:
+        with open(magpath + '/caravan.mag', 'w') as ofile:
+            for outline in outlines:
+                print(outline, file=ofile)
 
     print('Done.')
     sys.exit(0)
