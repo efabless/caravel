@@ -313,7 +313,9 @@ LVS_GDS_BLOCKS = $(foreach block, $(BLOCKS), lvs-gds-$(block))
 $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 	echo "Extracting $*"
 	mkdir -p ./gds/tmp
-	echo "gds read ./$*.gds;\
+	echo "	gds flatglob \"*_example_*\";\
+		gds flatten true;\
+		gds read ./$*.gds;\
 		load $* -dereference;\
 		select top cell;\
 		extract no all;\
