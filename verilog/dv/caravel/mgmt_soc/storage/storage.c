@@ -69,15 +69,15 @@ void main()
 	
     reg_mprj_datal = 0xAB410000;
 	
-    // Test Management R/W block1
+    // Test Management R/W block0 > 1K address
     reg_mprj_datal = 0xA0200000;
-    for (i=0; i<10; i++){
-        ram_addr = &reg_rw_block1 + i;
+    for (i=256; i<10; i++){
+        ram_addr = &reg_rw_block0 + i;
         *ram_addr = i*5000 + 10000;
     }
 	
-    for (i=0; i<10; i++){
-        ram_addr = &reg_rw_block1 + i;
+    for (i=256; i<10; i++){
+        ram_addr = &reg_rw_block0 + i;
         if ((i*5000+10000) != *ram_addr) 
 	    reg_mprj_datal = 0xAB200000;
     }

@@ -31,7 +31,6 @@ extern uint32_t flashio_worker_end;
 
 // Storage area (MGMT: 0x0100_0000, User: 0x0200_0000)
 #define reg_rw_block0  (*(volatile uint32_t*)0x01000000)
-#define reg_rw_block1  (*(volatile uint32_t*)0x01100000)
 #define reg_ro_block0  (*(volatile uint32_t*)0x02000000)
 
 // UART (0x2000_0000)

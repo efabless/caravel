@@ -50,7 +50,7 @@
 
 // not really parameterized but just to easily keep track of the number
 // of ram_block across different modules
-`define RAM_BLOCKS 2
+`define RAM_BLOCKS 1
 
 // Clock divisor default value
 `define CLK_DIV 3'b010
