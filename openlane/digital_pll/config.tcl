@@ -29,6 +29,8 @@ set ::env(SYNTH_MAX_FANOUT) 6
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_SIZING) 0
 
+set ::env(BASE_SDC_FILE) $script_dir/base.sdc 
+
 ## Floorplan
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
@@ -56,5 +58,3 @@ set ::env(GLB_RT_ADJUSTMENT) 0
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) "4"
-
-set ::env(QUIT_ON_TIMING_VIOLATIONS) "0"
