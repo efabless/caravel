@@ -1,0 +1,85 @@
+*---------------------------------------------------------------------------
+* SPDX-FileCopyrightText: 2020 Efabless Corporation
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+*---------------------------------------------------------------------------
+* Simple POR circuit for Caravel current mirror test
+*-------------------------------------------------------------------
+
+.lib /home/tim/projects/efabless/tech/SW/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+
+* Note: 20 resistors of length 25um connected in series
+Xres1 vdda vin vss sky130_fd_pr__res_xhigh_po_0p69 l=500
+Xres2 vin vss vss sky130_fd_pr__res_xhigh_po_0p69 l=149
+
+* voltage sources at 0V for measuring current in each branch
+
+Vm1 vssm1 vss   DC=0
+Vm2 vdda  vddm2 DC=0
+Vm3 vdda  vddm3 DC=0
+Vm4 vssm4 vss   DC=0
+Vm5 vssm5 vss   DC=0
+Vm6 vdda  vddm6 DC=0
+Vm7 vdda  vddm7 DC=0
+
+*   D     G     S     B
+Xm1 casc1 vin   vssm1 vss  sky130_fd_pr__nfet_g5v0d10v5 w=2 l=0.8 m=1
+Xc1 mir1  casc1 casc1 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+Xm2 mir1  mir1  vddm2 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=8
+Xm3 mir2  mir1  vddm3 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+Xc2 casc2 casc1 mir2  vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+Xm4 casc2 casc2 vssm4 vss  sky130_fd_pr__nfet_g5v0d10v5 w=2 l=0.8 m=7
+Xm5 casc3 casc2 vssm5 vss  sky130_fd_pr__nfet_g5v0d10v5 w=2 l=0.8 m=1
+Xc3 mir3  casc3 casc3 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+Xm6 mir3  mir3  vddm6 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=7
+Xm7 mir4  mir3  vddm7 vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+Xc4 vcap  casc3 mir4  vdda sky130_fd_pr__pfet_g5v0d10v5 w=2 l=0.8 m=1
+
+* Check branch currents in each mirror branch.
+* 1st branch should be 240nA
+* 2nd branch should be  30nA
+* 3rd branch should be   4.3nA
+* 4th branch should be 612pA
+*
+* Result:  vin sits at 0.7590 (close to 0.7575 target)
+* I(Vm1/2) = 202.80 nA
+* I(Vm3/4) =  26.10 nA	(should be /8) actually /7.77
+* I(Vm5/6) =   4.58 nA	(should be /7) actually /5.70
+* I(Vm7)   =   0.67 pA	(should be /7) actually /6.80
+
+*----------------------------
+* Testbench circuit
+*----------------------------
+Vpwr vdda vss DC=3.3
+Rgnd vss 0 0.01
+Rload vcap vss 1MEG
+*----------------------------
+
+*----------------------------
+* Testbench control
+*----------------------------
+.control
+op
+print V(vin)
+print I(Vm1)
+print I(Vm2)
+print I(Vm3)
+print I(Vm4)
+print I(Vm5)
+print I(Vm6)
+print I(Vm7)
+.endc
+
+.end
+

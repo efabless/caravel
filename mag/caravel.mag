@@ -1,7 +1,11 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1636750907
+timestamp 1636990093
+<< checkpaint >>
+rect -1260 98548 718860 1038860
+rect -1260 -1260 724069 98548
+rect 661502 -14162 724069 -1260
 << metal5 >>
 rect 78440 1018512 90960 1031002
 rect 129840 1018512 142360 1031002
@@ -66,18 +70,6 @@ rect 460640 6598 473160 19088
 rect 515440 6598 527960 19088
 rect 570422 6811 582590 18975
 rect 624222 6811 636390 18975
-use gpio_control_block  gpio_control_bidir_1\[0\]
-timestamp 1636750907
-transform -1 0 710203 0 1 121000
-box 750 416 34000 13000
-use gpio_defaults_block_1803  gpio_defaults_block_0
-timestamp 1636750907
-transform -1 0 709467 0 1 133600
-box -38 0 6018 2224
-use mgmt_core_wrapper  mgmt_core_wrapper_0
-timestamp 1636737078
-transform 1 0 56746 0 1 42404
-box 386 0 540000 164000
 use caravel_logo  caravel_logo_0
 timestamp 1636495793
 transform 1 0 270386 0 1 5116
@@ -86,7 +78,7 @@ use copyright_block  copyright_block_0
 timestamp 1636248654
 transform 1 0 149582 0 1 16298
 box -262 -9464 35048 2764
-use open_source  open_source_0 hexdigits
+use open_source  open_source_0
 timestamp 1635801696
 transform 1 0 205230 0 1 2174
 box 752 5164 29030 16242
@@ -94,433 +86,473 @@ use user_id_textblock  user_id_textblock_0
 timestamp 1608324878
 transform 1 0 96272 0 1 6890
 box -656 1508 33720 10344
+use simple_por  simple_por_0
+timestamp 1606688983
+transform 1 0 624040 0 1 45166
+box 0 0 11344 8338
+use xres_buf  xres_buf_0
+timestamp 1608587411
+transform 1 0 608050 0 1 79488
+box 414 -400 3522 3800
+use user_id_programming  user_id_programming_0
+timestamp 1606755340
+transform 1 0 635116 0 1 79088
+box 0 0 7109 7077
+use caravel_clocking  caravel_clocking_0
+timestamp 1636983106
+transform 1 0 649886 0 1 70896
+box 0 0 16000 16000
+use housekeeping  housekeeping_0
+timestamp 1636934786
+transform 1 0 606468 0 1 95484
+box 0 0 60047 110190
+use gpio_control_block  gpio_control_bidir_1\[0\]
+timestamp 1636130125
+transform -1 0 710203 0 1 121000
+box 750 416 34000 13000
+use gpio_defaults_block_1803  gpio_defaults_block_0
+timestamp 1636219436
+transform -1 0 709467 0 1 133600
+box -38 0 6018 2224
+use mgmt_core_wrapper  mgmt_core_wrapper_0
+timestamp 1636737078
+transform 1 0 56746 0 1 42404
+box 386 0 540000 164000
 use gpio_control_block  gpio_control_bidir_2\[1\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 202600
 box 750 416 34000 13000
-use gpio_control_block  gpio_control_bidir_2\[0\]
-timestamp 1636750907
-transform 1 0 7631 0 1 245800
-box 750 416 34000 13000
-use gpio_control_block  gpio_control_in_2\[16\]
-timestamp 1636750907
-transform 1 0 7631 0 1 289000
-box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_37
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 215200
 box -38 0 6018 2224
-use gpio_defaults_block_0402  gpio_defaults_block_36
-timestamp 1636750907
-transform -1 0 14347 0 1 258400
-box -38 0 6018 2224
-use gpio_defaults_block_0402  gpio_defaults_block_35
-timestamp 1636750907
-transform -1 0 14347 0 1 301600
-box -38 0 6018 2224
-use gpio_control_block  gpio_control_bidir_1\[1\]
-timestamp 1636750907
-transform -1 0 710203 0 1 166200
-box 750 416 34000 13000
-use gpio_control_block  gpio_control_in_1\[1\]
-timestamp 1636750907
-transform -1 0 710203 0 1 256400
-box 750 416 34000 13000
-use gpio_control_block  gpio_control_in_1\[0\]
-timestamp 1636750907
-transform -1 0 710203 0 1 211200
-box 750 416 34000 13000
-use gpio_control_block  gpio_control_in_1\[2\]
-timestamp 1636750907
-transform -1 0 710203 0 1 301400
-box 750 416 34000 13000
 use gpio_defaults_block_1803  gpio_defaults_block_1
-timestamp 1636750907
+timestamp 1636219436
 transform -1 0 709467 0 1 178800
 box -38 0 6018 2224
+use gpio_control_block  gpio_control_bidir_1\[1\]
+timestamp 1636130125
+transform -1 0 710203 0 1 166200
+box 750 416 34000 13000
+use gpio_control_block  gpio_control_in_1\[0\]
+timestamp 1636130125
+transform -1 0 710203 0 1 211200
+box 750 416 34000 13000
+use mgmt_protect  mgmt_protect_0
+timestamp 1636974897
+transform 1 0 206090 0 1 227796
+box -400 -400 220400 24400
+use gpio_control_block  gpio_control_bidir_2\[0\]
+timestamp 1636130125
+transform 1 0 7631 0 1 245800
+box 750 416 34000 13000
+use gpio_defaults_block_0402  gpio_defaults_block_36
+timestamp 1636217749
+transform -1 0 14347 0 1 258400
+box -38 0 6018 2224
+use gpio_control_block  gpio_control_in_1\[1\]
+timestamp 1636130125
+transform -1 0 710203 0 1 256400
+box 750 416 34000 13000
 use gpio_defaults_block_1403  gpio_defaults_block_3
-timestamp 1636750907
+timestamp 1636219293
 transform -1 0 709467 0 1 269000
 box -38 0 6018 2224
 use gpio_defaults_block_1403  gpio_defaults_block_2
-timestamp 1636750907
+timestamp 1636219293
 transform -1 0 709467 0 1 223800
 box -38 0 6018 2224
+use gpio_control_block  gpio_control_in_2\[16\]
+timestamp 1636130125
+transform 1 0 7631 0 1 289000
+box 750 416 34000 13000
+use gpio_defaults_block_0402  gpio_defaults_block_35
+timestamp 1636217749
+transform -1 0 14347 0 1 301600
+box -38 0 6018 2224
+use gpio_control_block  gpio_control_in_1\[2\]
+timestamp 1636130125
+transform -1 0 710203 0 1 301400
+box 750 416 34000 13000
 use gpio_defaults_block_1403  gpio_defaults_block_4
-timestamp 1636750907
+timestamp 1636219293
 transform -1 0 709467 0 1 314000
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[15\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 332200
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[14\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 375400
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[13\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 418600
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_34
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 344800
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_33
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 388000
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_32
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 431200
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[3\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 346400
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[4\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 391600
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[5\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 479800
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_6
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 404200
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_5
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 359000
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_7
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 492400
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[11\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 589400
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[12\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 546200
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_31
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 558800
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_30
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 602000
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[6\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 523800
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[7\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 568800
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_9
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 581400
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_8
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 536400
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[10\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 632600
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[9\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 675800
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_29
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 645200
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_28
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 688400
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[8\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 614000
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[9\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 659000
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_10
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 626600
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_11
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 671600
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[7\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 762200
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[8\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 719000
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_27
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 731600
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_26
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 774800
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[10\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 704200
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[11\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 749200
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_13
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 761800
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_12
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 716800
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[6\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 805400
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_25
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 14347 0 1 818000
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[5\]
-timestamp 1636750907
+timestamp 1636130125
 transform 1 0 7631 0 1 931224
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_24
-timestamp 1636750907
+timestamp 1636217749
 transform 1 0 8367 0 1 943824
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[12\]
-timestamp 1636750907
+timestamp 1636130125
 transform -1 0 710203 0 1 927600
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_14
-timestamp 1636750907
+timestamp 1636217749
 transform -1 0 709467 0 1 940200
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[4\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 97200 -1 0 1030077
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[3\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 148600 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_23
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 109800 -1 0 1029341
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_22
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 161200 -1 0 1029341
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[2\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 200000 -1 0 1030077
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_2\[1\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 251400 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_21
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 212600 -1 0 1029341
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_20
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 264000 -1 0 1029341
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_2\[0\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 303000 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_19
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 315600 -1 0 1029341
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[16\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 353400 -1 0 1030077
 box 750 416 34000 13000
 use gpio_control_block  gpio_control_in_1\[15\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 420800 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_18
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 366000 -1 0 1029341
 box -38 0 6018 2224
 use gpio_defaults_block_0402  gpio_defaults_block_17
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 433400 -1 0 1029341
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[14\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 497800 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_16
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 510400 -1 0 1029341
 box -38 0 6018 2224
 use gpio_control_block  gpio_control_in_1\[13\]
-timestamp 1636750907
+timestamp 1636130125
 transform 0 1 549200 -1 0 1030077
 box 750 416 34000 13000
 use gpio_defaults_block_0402  gpio_defaults_block_15
-timestamp 1636750907
+timestamp 1636217749
 transform 0 1 561800 -1 0 1029341
 box -38 0 6018 2224
+use user_project_wrapper  user_project_wrapper_0
+timestamp 1631201220
+transform 1 0 62340 0 1 272020
+box -8726 -7654 592650 711590
 use chip_io  padframe
 timestamp 1636750907
 transform 1 0 0 0 1 0
 box 0 0 717600 1037600
 << labels >>
-flabel metal5 s 187640 6598 200180 19088 0 FreeSans 16000 0 0 0 clock
-port 0 nsew signal input
-flabel metal5 s 351040 6598 363580 19088 0 FreeSans 16000 0 0 0 flash_clk
-port 1 nsew signal tristate
-flabel metal5 s 296240 6598 308780 19088 0 FreeSans 16000 0 0 0 flash_csb
-port 2 nsew signal tristate
-flabel metal5 s 405840 6598 418380 19088 0 FreeSans 16000 0 0 0 flash_io0
-port 3 nsew signal tristate
-flabel metal5 s 460640 6598 473180 19088 0 FreeSans 16000 0 0 0 flash_io1
-port 4 nsew signal tristate
-flabel metal5 s 515440 6598 527980 19088 0 FreeSans 16000 0 0 0 gpio
-port 5 nsew signal bidirectional
-flabel metal5 s 698512 101240 711002 113780 0 FreeSans 16000 0 0 0 mprj_io[0]
-port 6 nsew signal bidirectional
-flabel metal5 s 698512 684440 711002 696980 0 FreeSans 16000 0 0 0 mprj_io[10]
-port 7 nsew signal bidirectional
-flabel metal5 s 698512 729440 711002 741980 0 FreeSans 16000 0 0 0 mprj_io[11]
-port 8 nsew signal bidirectional
-flabel metal5 s 698512 774440 711002 786980 0 FreeSans 16000 0 0 0 mprj_io[12]
-port 9 nsew signal bidirectional
-flabel metal5 s 698512 863640 711002 876180 0 FreeSans 16000 0 0 0 mprj_io[13]
-port 10 nsew signal bidirectional
-flabel metal5 s 698512 952840 711002 965380 0 FreeSans 16000 0 0 0 mprj_io[14]
-port 11 nsew signal bidirectional
-flabel metal5 s 628220 1018512 640760 1031002 0 FreeSans 16000 0 0 0 mprj_io[15]
-port 12 nsew signal bidirectional
-flabel metal5 s 526420 1018512 538960 1031002 0 FreeSans 16000 0 0 0 mprj_io[16]
-port 13 nsew signal bidirectional
-flabel metal5 s 475020 1018512 487560 1031002 0 FreeSans 16000 0 0 0 mprj_io[17]
-port 14 nsew signal bidirectional
-flabel metal5 s 386020 1018512 398560 1031002 0 FreeSans 16000 0 0 0 mprj_io[18]
-port 15 nsew signal bidirectional
-flabel metal5 s 284220 1018512 296760 1031002 0 FreeSans 16000 0 0 0 mprj_io[19]
-port 16 nsew signal bidirectional
-flabel metal5 s 698512 146440 711002 158980 0 FreeSans 16000 0 0 0 mprj_io[1]
-port 17 nsew signal bidirectional
-flabel metal5 s 232620 1018512 245160 1031002 0 FreeSans 16000 0 0 0 mprj_io[20]
-port 18 nsew signal bidirectional
-flabel metal5 s 181220 1018512 193760 1031002 0 FreeSans 16000 0 0 0 mprj_io[21]
-port 19 nsew signal bidirectional
-flabel metal5 s 129820 1018512 142360 1031002 0 FreeSans 16000 0 0 0 mprj_io[22]
-port 20 nsew signal bidirectional
-flabel metal5 s 78420 1018512 90960 1031002 0 FreeSans 16000 0 0 0 mprj_io[23]
-port 21 nsew signal bidirectional
-flabel metal5 s 6598 956420 19088 968960 0 FreeSans 16000 0 0 0 mprj_io[24]
-port 22 nsew signal bidirectional
-flabel metal5 s 6598 786620 19088 799160 0 FreeSans 16000 0 0 0 mprj_io[25]
-port 23 nsew signal bidirectional
-flabel metal5 s 6598 743420 19088 755960 0 FreeSans 16000 0 0 0 mprj_io[26]
-port 24 nsew signal bidirectional
-flabel metal5 s 6598 700220 19088 712760 0 FreeSans 16000 0 0 0 mprj_io[27]
-port 25 nsew signal bidirectional
-flabel metal5 s 6598 657020 19088 669560 0 FreeSans 16000 0 0 0 mprj_io[28]
-port 26 nsew signal bidirectional
-flabel metal5 s 6598 613820 19088 626360 0 FreeSans 16000 0 0 0 mprj_io[29]
-port 27 nsew signal bidirectional
-flabel metal5 s 698512 191440 711002 203980 0 FreeSans 16000 0 0 0 mprj_io[2]
-port 28 nsew signal bidirectional
-flabel metal5 s 6598 570620 19088 583160 0 FreeSans 16000 0 0 0 mprj_io[30]
-port 29 nsew signal bidirectional
-flabel metal5 s 6598 527420 19088 539960 0 FreeSans 16000 0 0 0 mprj_io[31]
-port 30 nsew signal bidirectional
-flabel metal5 s 6598 399820 19088 412360 0 FreeSans 16000 0 0 0 mprj_io[32]
-port 31 nsew signal bidirectional
-flabel metal5 s 6598 356620 19088 369160 0 FreeSans 16000 0 0 0 mprj_io[33]
-port 32 nsew signal bidirectional
-flabel metal5 s 6598 313420 19088 325960 0 FreeSans 16000 0 0 0 mprj_io[34]
-port 33 nsew signal bidirectional
-flabel metal5 s 6598 270220 19088 282760 0 FreeSans 16000 0 0 0 mprj_io[35]
-port 34 nsew signal bidirectional
-flabel metal5 s 6598 227020 19088 239560 0 FreeSans 16000 0 0 0 mprj_io[36]
-port 35 nsew signal bidirectional
-flabel metal5 s 6598 183820 19088 196360 0 FreeSans 16000 0 0 0 mprj_io[37]
-port 36 nsew signal bidirectional
-flabel metal5 s 698512 236640 711002 249180 0 FreeSans 16000 0 0 0 mprj_io[3]
-port 37 nsew signal bidirectional
-flabel metal5 s 698512 281640 711002 294180 0 FreeSans 16000 0 0 0 mprj_io[4]
-port 38 nsew signal bidirectional
-flabel metal5 s 698512 326640 711002 339180 0 FreeSans 16000 0 0 0 mprj_io[5]
-port 39 nsew signal bidirectional
-flabel metal5 s 698512 371840 711002 384380 0 FreeSans 16000 0 0 0 mprj_io[6]
-port 40 nsew signal bidirectional
-flabel metal5 s 698512 549040 711002 561580 0 FreeSans 16000 0 0 0 mprj_io[7]
-port 41 nsew signal bidirectional
-flabel metal5 s 698512 594240 711002 606780 0 FreeSans 16000 0 0 0 mprj_io[8]
-port 42 nsew signal bidirectional
-flabel metal5 s 698512 639240 711002 651780 0 FreeSans 16000 0 0 0 mprj_io[9]
-port 43 nsew signal bidirectional
-flabel metal5 s 136713 7143 144149 18309 0 FreeSans 16000 0 0 0 resetb
-port 44 nsew signal input
-flabel metal5 s 6167 70054 19619 80934 0 FreeSans 16000 0 0 0 vccd
-port 45 nsew signal bidirectional
-flabel metal5 s 697980 909666 711432 920546 0 FreeSans 16000 0 0 0 vccd1
-port 46 nsew signal bidirectional
-flabel metal5 s 6167 914054 19619 924934 0 FreeSans 16000 0 0 0 vccd2
-port 47 nsew signal bidirectional
-flabel metal5 s 624222 6811 636390 18975 0 FreeSans 16000 0 0 0 vdda
-port 48 nsew signal bidirectional
-flabel metal5 s 698624 819822 710788 831990 0 FreeSans 16000 0 0 0 vdda1
-port 49 nsew signal bidirectional
-flabel metal5 s 698624 505222 710788 517390 0 FreeSans 16000 0 0 0 vdda1_2
-port 50 nsew signal bidirectional
-flabel metal5 s 6811 484410 18975 496578 0 FreeSans 16000 0 0 0 vdda2
-port 51 nsew signal bidirectional
-flabel metal5 s 6811 111610 18975 123778 0 FreeSans 16000 0 0 0 vddio
-port 52 nsew signal bidirectional
-flabel metal5 s 6811 871210 18975 883378 0 FreeSans 16000 0 0 0 vddio_2
-port 53 nsew signal bidirectional
-flabel metal5 s 80222 6811 92390 18975 0 FreeSans 16000 0 0 0 vssa
-port 54 nsew signal bidirectional
-flabel metal5 s 577010 1018624 589178 1030788 0 FreeSans 16000 0 0 0 vssa1
-port 55 nsew signal bidirectional
-flabel metal5 s 698624 417022 710788 429190 0 FreeSans 16000 0 0 0 vssa1_2
-port 56 nsew signal bidirectional
-flabel metal5 s 6811 829010 18975 841178 0 FreeSans 16000 0 0 0 vssa2
-port 57 nsew signal bidirectional
-flabel metal5 s 243266 6167 254146 19619 0 FreeSans 16000 0 0 0 vssd
-port 58 nsew signal bidirectional
-flabel metal5 s 697980 461866 711432 472746 0 FreeSans 16000 0 0 0 vssd1
-port 59 nsew signal bidirectional
-flabel metal5 s 6167 442854 19619 453734 0 FreeSans 16000 0 0 0 vssd2
-port 60 nsew signal bidirectional
-flabel metal5 s 570422 6811 582590 18975 0 FreeSans 16000 0 0 0 vssio
-port 61 nsew signal bidirectional
 flabel metal5 s 334810 1018624 346978 1030788 0 FreeSans 16000 0 0 0 vssio_2
 port 62 nsew signal bidirectional
+flabel metal5 s 570422 6811 582590 18975 0 FreeSans 16000 0 0 0 vssio
+port 61 nsew signal bidirectional
+flabel metal5 s 6167 442854 19619 453734 0 FreeSans 16000 0 0 0 vssd2
+port 60 nsew signal bidirectional
+flabel metal5 s 697980 461866 711432 472746 0 FreeSans 16000 0 0 0 vssd1
+port 59 nsew signal bidirectional
+flabel metal5 s 243266 6167 254146 19619 0 FreeSans 16000 0 0 0 vssd
+port 58 nsew signal bidirectional
+flabel metal5 s 6811 829010 18975 841178 0 FreeSans 16000 0 0 0 vssa2
+port 57 nsew signal bidirectional
+flabel metal5 s 698624 417022 710788 429190 0 FreeSans 16000 0 0 0 vssa1_2
+port 56 nsew signal bidirectional
+flabel metal5 s 577010 1018624 589178 1030788 0 FreeSans 16000 0 0 0 vssa1
+port 55 nsew signal bidirectional
+flabel metal5 s 80222 6811 92390 18975 0 FreeSans 16000 0 0 0 vssa
+port 54 nsew signal bidirectional
+flabel metal5 s 6811 871210 18975 883378 0 FreeSans 16000 0 0 0 vddio_2
+port 53 nsew signal bidirectional
+flabel metal5 s 6811 111610 18975 123778 0 FreeSans 16000 0 0 0 vddio
+port 52 nsew signal bidirectional
+flabel metal5 s 6811 484410 18975 496578 0 FreeSans 16000 0 0 0 vdda2
+port 51 nsew signal bidirectional
+flabel metal5 s 698624 505222 710788 517390 0 FreeSans 16000 0 0 0 vdda1_2
+port 50 nsew signal bidirectional
+flabel metal5 s 698624 819822 710788 831990 0 FreeSans 16000 0 0 0 vdda1
+port 49 nsew signal bidirectional
+flabel metal5 s 624222 6811 636390 18975 0 FreeSans 16000 0 0 0 vdda
+port 48 nsew signal bidirectional
+flabel metal5 s 6167 914054 19619 924934 0 FreeSans 16000 0 0 0 vccd2
+port 47 nsew signal bidirectional
+flabel metal5 s 697980 909666 711432 920546 0 FreeSans 16000 0 0 0 vccd1
+port 46 nsew signal bidirectional
+flabel metal5 s 6167 70054 19619 80934 0 FreeSans 16000 0 0 0 vccd
+port 45 nsew signal bidirectional
+flabel metal5 s 136713 7143 144149 18309 0 FreeSans 16000 0 0 0 resetb
+port 44 nsew signal input
+flabel metal5 s 698512 639240 711002 651780 0 FreeSans 16000 0 0 0 mprj_io[9]
+port 43 nsew signal bidirectional
+flabel metal5 s 698512 594240 711002 606780 0 FreeSans 16000 0 0 0 mprj_io[8]
+port 42 nsew signal bidirectional
+flabel metal5 s 698512 549040 711002 561580 0 FreeSans 16000 0 0 0 mprj_io[7]
+port 41 nsew signal bidirectional
+flabel metal5 s 698512 371840 711002 384380 0 FreeSans 16000 0 0 0 mprj_io[6]
+port 40 nsew signal bidirectional
+flabel metal5 s 698512 326640 711002 339180 0 FreeSans 16000 0 0 0 mprj_io[5]
+port 39 nsew signal bidirectional
+flabel metal5 s 698512 281640 711002 294180 0 FreeSans 16000 0 0 0 mprj_io[4]
+port 38 nsew signal bidirectional
+flabel metal5 s 698512 236640 711002 249180 0 FreeSans 16000 0 0 0 mprj_io[3]
+port 37 nsew signal bidirectional
+flabel metal5 s 6598 183820 19088 196360 0 FreeSans 16000 0 0 0 mprj_io[37]
+port 36 nsew signal bidirectional
+flabel metal5 s 6598 227020 19088 239560 0 FreeSans 16000 0 0 0 mprj_io[36]
+port 35 nsew signal bidirectional
+flabel metal5 s 6598 270220 19088 282760 0 FreeSans 16000 0 0 0 mprj_io[35]
+port 34 nsew signal bidirectional
+flabel metal5 s 6598 313420 19088 325960 0 FreeSans 16000 0 0 0 mprj_io[34]
+port 33 nsew signal bidirectional
+flabel metal5 s 6598 356620 19088 369160 0 FreeSans 16000 0 0 0 mprj_io[33]
+port 32 nsew signal bidirectional
+flabel metal5 s 6598 399820 19088 412360 0 FreeSans 16000 0 0 0 mprj_io[32]
+port 31 nsew signal bidirectional
+flabel metal5 s 6598 527420 19088 539960 0 FreeSans 16000 0 0 0 mprj_io[31]
+port 30 nsew signal bidirectional
+flabel metal5 s 6598 570620 19088 583160 0 FreeSans 16000 0 0 0 mprj_io[30]
+port 29 nsew signal bidirectional
+flabel metal5 s 698512 191440 711002 203980 0 FreeSans 16000 0 0 0 mprj_io[2]
+port 28 nsew signal bidirectional
+flabel metal5 s 6598 613820 19088 626360 0 FreeSans 16000 0 0 0 mprj_io[29]
+port 27 nsew signal bidirectional
+flabel metal5 s 6598 657020 19088 669560 0 FreeSans 16000 0 0 0 mprj_io[28]
+port 26 nsew signal bidirectional
+flabel metal5 s 6598 700220 19088 712760 0 FreeSans 16000 0 0 0 mprj_io[27]
+port 25 nsew signal bidirectional
+flabel metal5 s 6598 743420 19088 755960 0 FreeSans 16000 0 0 0 mprj_io[26]
+port 24 nsew signal bidirectional
+flabel metal5 s 6598 786620 19088 799160 0 FreeSans 16000 0 0 0 mprj_io[25]
+port 23 nsew signal bidirectional
+flabel metal5 s 6598 956420 19088 968960 0 FreeSans 16000 0 0 0 mprj_io[24]
+port 22 nsew signal bidirectional
+flabel metal5 s 78420 1018512 90960 1031002 0 FreeSans 16000 0 0 0 mprj_io[23]
+port 21 nsew signal bidirectional
+flabel metal5 s 129820 1018512 142360 1031002 0 FreeSans 16000 0 0 0 mprj_io[22]
+port 20 nsew signal bidirectional
+flabel metal5 s 181220 1018512 193760 1031002 0 FreeSans 16000 0 0 0 mprj_io[21]
+port 19 nsew signal bidirectional
+flabel metal5 s 232620 1018512 245160 1031002 0 FreeSans 16000 0 0 0 mprj_io[20]
+port 18 nsew signal bidirectional
+flabel metal5 s 698512 146440 711002 158980 0 FreeSans 16000 0 0 0 mprj_io[1]
+port 17 nsew signal bidirectional
+flabel metal5 s 284220 1018512 296760 1031002 0 FreeSans 16000 0 0 0 mprj_io[19]
+port 16 nsew signal bidirectional
+flabel metal5 s 386020 1018512 398560 1031002 0 FreeSans 16000 0 0 0 mprj_io[18]
+port 15 nsew signal bidirectional
+flabel metal5 s 475020 1018512 487560 1031002 0 FreeSans 16000 0 0 0 mprj_io[17]
+port 14 nsew signal bidirectional
+flabel metal5 s 526420 1018512 538960 1031002 0 FreeSans 16000 0 0 0 mprj_io[16]
+port 13 nsew signal bidirectional
+flabel metal5 s 628220 1018512 640760 1031002 0 FreeSans 16000 0 0 0 mprj_io[15]
+port 12 nsew signal bidirectional
+flabel metal5 s 698512 952840 711002 965380 0 FreeSans 16000 0 0 0 mprj_io[14]
+port 11 nsew signal bidirectional
+flabel metal5 s 698512 863640 711002 876180 0 FreeSans 16000 0 0 0 mprj_io[13]
+port 10 nsew signal bidirectional
+flabel metal5 s 698512 774440 711002 786980 0 FreeSans 16000 0 0 0 mprj_io[12]
+port 9 nsew signal bidirectional
+flabel metal5 s 698512 729440 711002 741980 0 FreeSans 16000 0 0 0 mprj_io[11]
+port 8 nsew signal bidirectional
+flabel metal5 s 698512 684440 711002 696980 0 FreeSans 16000 0 0 0 mprj_io[10]
+port 7 nsew signal bidirectional
+flabel metal5 s 698512 101240 711002 113780 0 FreeSans 16000 0 0 0 mprj_io[0]
+port 6 nsew signal bidirectional
+flabel metal5 s 515440 6598 527980 19088 0 FreeSans 16000 0 0 0 gpio
+port 5 nsew signal bidirectional
+flabel metal5 s 460640 6598 473180 19088 0 FreeSans 16000 0 0 0 flash_io1
+port 4 nsew signal tristate
+flabel metal5 s 405840 6598 418380 19088 0 FreeSans 16000 0 0 0 flash_io0
+port 3 nsew signal tristate
+flabel metal5 s 296240 6598 308780 19088 0 FreeSans 16000 0 0 0 flash_csb
+port 2 nsew signal tristate
+flabel metal5 s 351040 6598 363580 19088 0 FreeSans 16000 0 0 0 flash_clk
+port 1 nsew signal tristate
+flabel metal5 s 187640 6598 200180 19088 0 FreeSans 16000 0 0 0 clock
+port 0 nsew signal input
 << properties >>
 string FIXED_BBOX 0 0 717600 1037600
 << end >>
