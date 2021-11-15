@@ -1,0 +1,45 @@
+* NGSPICE file created from xres_buf.ext - technology: sky130A
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__decap_4 abstract view
+.subckt sky130_fd_sc_hvl__decap_4 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__decap_8 abstract view
+.subckt sky130_fd_sc_hvl__decap_8 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__fill_2 abstract view
+.subckt sky130_fd_sc_hvl__fill_2 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__fill_1 abstract view
+.subckt sky130_fd_sc_hvl__fill_1 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__diode_2 abstract view
+.subckt sky130_fd_sc_hvl__diode_2 DIODE VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hvl__lsbufhv2lv_1 abstract view
+.subckt sky130_fd_sc_hvl__lsbufhv2lv_1 A LVPWR VGND VNB VPB VPWR X
+.ends
+
+.subckt xres_buf A X VPWR VGND LVPWR LVGND
+XFILLER_0_24 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_4
+XFILLER_1_0 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_8
+XFILLER_0_28 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_2
+XFILLER_0_16 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_8
+XFILLER_1_30 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_1
+XFILLER_1_8 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_4
+XFILLER_1_12 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_1
+XANTENNA_lvlshiftdown_A A VGND VGND VPWR VPWR sky130_fd_sc_hvl__diode_2
+XFILLER_2_0 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_8
+XFILLER_2_30 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_1
+XFILLER_2_10 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_1
+XFILLER_0_0 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_8
+XFILLER_2_8 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_2
+Xlvlshiftdown A LVPWR VGND VGND VPWR VPWR X sky130_fd_sc_hvl__lsbufhv2lv_1
+XFILLER_0_8 VGND VGND VPWR VPWR sky130_fd_sc_hvl__decap_8
+XFILLER_0_30 VGND VGND VPWR VPWR sky130_fd_sc_hvl__fill_1
+.ends
+
