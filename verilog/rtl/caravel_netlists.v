@@ -29,7 +29,6 @@
     `ifdef  EF_STYLE 
 	`include "libs.ref/verilog/sky130_fd_io/sky130_fd_io.v"
 	`include "libs.ref/verilog/sky130_fd_io/sky130_ef_io.v"
-	`include "libs.ref/verilog/sky130_fd_io/sky130_ef_io__gpiov2_pad_wrapped.v"
 
 	`include "libs.ref/verilog/sky130_fd_sc_hd/primitives.v"
 	`include "libs.ref/verilog/sky130_fd_sc_hd/sky130_fd_sc_hd.v"
@@ -39,7 +38,6 @@
     `else 
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
-	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io__gpiov2_pad_wrapped.v"
 
 	`include "libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
 	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
