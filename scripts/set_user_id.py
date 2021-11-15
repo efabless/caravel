@@ -72,6 +72,7 @@
 import os
 import sys
 import re
+import subprocess
 
 def usage():
     print("Usage:")
@@ -205,6 +206,26 @@ if __name__ == '__main__':
     viarec = "00 06 0d 02 00 43 00 06 0e 02 00 2c 00 2c 10 03 "
     viabytes = bytes.fromhex(viarec)
 
+    # Check for either GDS file being gzipped
+    gdsbakgz = gdspath + '/user_id_prog_zero.gds.gz'
+    gdsfilegz = gdspath + '/user_id_programming.gds.gz'
+
+    if os.path.isfile(gdsbakgz):
+        subprocess.run(['gunzip', gdsbakgz],
+		stdout = subprocess.DEVNULL,
+		stderr = subprocess.DEVNULL)
+        zero_zipped = True
+    else:
+        zero_zipped = False
+
+    if os.path.isfile(gdsfilegz):
+        subprocess.run(['gunzip', gdsfilegz],
+		stdout = subprocess.DEVNULL,
+		stderr = subprocess.DEVNULL)
+        file_zipped = True
+    else:
+        file_zipped = False
+
     # Read the GDS file.  If a backup was made of the zero-value
     # program, then use it.
 
@@ -284,10 +305,17 @@ if __name__ == '__main__':
     if errors == 0:
         # Keep a copy of the original 
         if not os.path.isfile(gdsbak):
-            os.rename(gdsfile, gdsbak)
+            if file_zipped:
+                os.rename(gdsfilegz, gdsbakgz)
+            else:
+                os.rename(gdsfile, gdsbak)
 
         with open(gdsfile, 'wb') as ofile:
             ofile.write(gdsdata)
+            if file_zipped:
+                subprocess.run(['gzip', gdsdata, '-n', '--best'],
+			stdout = subprocess.DEVNULL,
+			stderr = subprocess.DEVNULL)
 
         print('Done!')
             
