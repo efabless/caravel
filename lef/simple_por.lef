@@ -1,0 +1,72 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO simple_por
+  CLASS BLOCK ;
+  FOREIGN simple_por ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 56.720 BY 41.690 ;
+  PIN vdd3v3
+    PORT
+      LAYER met4 ;
+        RECT 0.190 39.825 0.365 41.415 ;
+    END
+  END vdd3v3
+  PIN vdd1v8
+    PORT
+      LAYER met4 ;
+        RECT 54.010 39.810 55.900 41.455 ;
+    END
+  END vdd1v8
+  PIN vss
+    PORT
+      LAYER met4 ;
+        RECT 0.190 36.275 21.750 38.275 ;
+    END
+  END vss
+  PIN porb_h
+    PORT
+      LAYER met3 ;
+        RECT 54.545 33.825 56.710 34.170 ;
+    END
+  END porb_h
+  PIN por_l
+    PORT
+      LAYER met3 ;
+        RECT 53.960 37.455 56.720 37.755 ;
+    END
+  END por_l
+  PIN porb_l
+    PORT
+      LAYER met3 ;
+        RECT 51.855 39.280 56.715 39.580 ;
+    END
+  END porb_l
+  OBS
+      LAYER li1 ;
+        RECT 0.175 0.180 54.300 41.440 ;
+      LAYER met1 ;
+        RECT 0.125 0.055 54.575 41.430 ;
+      LAYER met2 ;
+        RECT 0.190 30.880 54.590 41.435 ;
+      LAYER met3 ;
+        RECT 0.190 39.980 54.590 41.415 ;
+        RECT 0.190 38.880 51.455 39.980 ;
+        RECT 0.190 38.155 54.590 38.880 ;
+        RECT 0.190 37.055 53.560 38.155 ;
+        RECT 0.190 34.570 54.590 37.055 ;
+        RECT 0.190 33.425 54.145 34.570 ;
+        RECT 0.190 0.255 54.590 33.425 ;
+      LAYER met4 ;
+        RECT 0.765 39.425 53.610 41.455 ;
+        RECT 0.365 39.410 53.610 39.425 ;
+        RECT 0.365 38.675 55.890 39.410 ;
+        RECT 22.150 35.875 55.890 38.675 ;
+        RECT 0.365 0.255 55.890 35.875 ;
+      LAYER met5 ;
+        RECT 21.565 0.250 55.855 38.895 ;
+  END
+END simple_por
+END LIBRARY
+
