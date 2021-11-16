@@ -61,13 +61,13 @@ module housekeeping #(
     parameter IO_CTRL_BITS = 13
 ) (
 `ifdef USE_POWER_PINS
-    inout vdd,
-    inout vss, 
+    inout VPWR,
+    inout VGND, 
 `endif
 
     // Wishbone interface to management SoC
     input wb_clk_i,
-    input wb_rst_i,
+    input wb_rstn_i,
     input [31:0] wb_adr_i,
     input [31:0] wb_dat_i,
     input [3:0] wb_sel_i,
@@ -260,6 +260,10 @@ module housekeeping #(
 
     assign reset = (pass_thru_mgmt_reset) ? 1'b1 : reset_reg;
 
+	// Invert wb_rstn_i
+	wire wb_rst_i;
+	assign wb_rst_i = ~wb_rstn_i;
+	
     // Handle the management-side control of the GPIO pins.  All but the
     // first and last three GPIOs (0, 1 and 35 to 37) are one-pin interfaces with
     // a single I/O pin whose direction is determined by the local OEB signal.

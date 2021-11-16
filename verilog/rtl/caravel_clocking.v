@@ -18,8 +18,8 @@
 
 module caravel_clocking(
 `ifdef USE_POWER_PINS
-    input vdd1v8,
-    input vss,
+    input VPWR,
+    input VGND,
 `endif
     input resetb, 	// Master (negative sense) reset
     input ext_clk_sel,	// 0=use PLL clock, 1=use external (pad) clock

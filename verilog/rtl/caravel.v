@@ -605,12 +605,12 @@ module caravel (
     // Clocking control
 
     caravel_clocking clocking(
-        `ifdef USE_POWER_PINS
-            .vdd1v8(VPWR),
-            .vss(VGND),
-        `endif
+    `ifdef USE_POWER_PINS
+		.VPWR(VPWR),
+		.VGND(VGND),
+    `endif
         .ext_clk_sel(ext_clk_sel),
-        .ext_clk(clock),
+        .ext_clk(clock_core),
         .pll_clk(pll_clk),
         .pll_clk90(pll_clk90),
         .resetb(resetb),
@@ -631,7 +631,7 @@ module caravel (
         `endif
         .resetb(resetb),
         .enable(spi_pll_ena),
-        .osc(clock),
+        .osc(clock_core),
         .clockp({pll_clk, pll_clk90}),
         .div(spi_pll_div),
         .dco(spi_pll_dco_ena),
@@ -641,13 +641,13 @@ module caravel (
     // Housekeeping interface
 
     housekeeping housekeeping (
-        `ifdef USE_POWER_PINS
-            .vdd(VPWR),
-            .vss(VGND),
-        `endif
+    `ifdef USE_POWER_PINS
+		.VPWR(VPWR),
+		.VGND(VGND),
+    `endif
 
         .wb_clk_i(caravel_clk),
-        .wb_rst_i(~caravel_rstn),
+        .wb_rstn_i(caravel_rstn),
 
         .wb_adr_i(mprj_adr_o_core),
         .wb_dat_i(mprj_dat_o_core),
