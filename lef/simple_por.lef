@@ -8,18 +8,21 @@ MACRO simple_por
   ORIGIN 0.000 0.000 ;
   SIZE 56.720 BY 41.690 ;
   PIN vdd3v3
+    USE POWER ;
     PORT
       LAYER met4 ;
         RECT 0.190 39.825 0.365 41.415 ;
     END
   END vdd3v3
   PIN vdd1v8
+    USE POWER ;
     PORT
       LAYER met4 ;
         RECT 54.010 39.810 55.900 41.455 ;
     END
   END vdd1v8
   PIN vss
+    USE GROUND ;
     PORT
       LAYER met4 ;
         RECT 0.190 36.275 21.750 38.275 ;
