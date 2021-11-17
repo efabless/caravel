@@ -665,11 +665,11 @@ module caravan (
 
     caravel_clocking clocking(
 	`ifdef USE_POWER_PINS
-	    .vdd1v8(VPWR),
-	    .vss(VGND),
+	    .vdd1v8(vccd_core),
+	    .vss(vssd_core),
 	`endif
 	.ext_clk_sel(ext_clk_sel),
-	.ext_clk(clock),
+	.ext_clk(clock_core),
 	.pll_clk(pll_clk),
 	.pll_clk90(pll_clk90),
 	.resetb(resetb),
@@ -685,8 +685,8 @@ module caravan (
 
     digital_pll pll (
 	`ifdef USE_POWER_PINS
-	    .VPWR(VPWR),
-	    .VGND(VGND),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
 	.resetb(resetb),
 	.enable(spi_pll_ena),
@@ -701,8 +701,8 @@ module caravan (
 
     housekeeping housekeeping (
 	`ifdef USE_POWER_PINS
-	    .vdd(VPWR),
-	    .vss(VGND),
+	    .vdd(vccd_core),
+	    .vss(vssd_core),
 	`endif
 
 	.wb_clk_i(caravel_clk),
