@@ -396,7 +396,7 @@ module chip_io(
 		.VSSA(vssa2),
 		.VSWITCH(vddio),
 		.VDDA(vdda2),
-		.VCCD(vccd2),
+		.VCCD(vccd),
 		.VCCHIB(vccd)
 `else
 		.VCCHIB()
