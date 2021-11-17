@@ -453,11 +453,11 @@ module chip_io_alt #(
 		.VSSIO_Q(vssio_q),
 		.AMUXBUS_A(analog_a),
 		.AMUXBUS_B(analog_b),
-		.VSSD(vssd1),
+		.VSSD(vssd),
 		.VSSA(vssa1),
 		.VSWITCH(vddio),
 		.VDDA(vdda1),
-		.VCCD(vccd1),
+		.VCCD(vccd),
 		.VCCHIB(vccd)
 `else
 		.VCCHIB()
@@ -471,11 +471,11 @@ module chip_io_alt #(
 		.VSSIO_Q(vssio_q),
 		.AMUXBUS_A(analog_a),
 		.AMUXBUS_B(analog_b),
-		.VSSD(vssd2),
+		.VSSD(vssd),
 		.VSSA(vssa2),
 		.VSWITCH(vddio),
 		.VDDA(vdda2),
-		.VCCD(vccd2),
+		.VCCD(vccd),
 		.VCCHIB(vccd)
 `else
 		.VCCHIB()

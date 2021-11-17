@@ -487,7 +487,8 @@ module caravel (
 	.user_irq_ena(user_irq_ena),
 	.la_data_out_core(la_data_out_user),
 	.la_data_out_mprj(la_data_out_mprj),
-	.la_data_in_core(la_data_in_mprj),
+	.la_data_in_core(la_data_in_user),
+	.la_data_in_mprj(la_data_in_mprj),
 	.la_oenb_mprj(la_oenb_mprj),
 	.la_iena_mprj(la_iena_mprj),
 
