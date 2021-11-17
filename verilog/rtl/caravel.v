@@ -606,14 +606,14 @@ module caravel (
 
     caravel_clocking clocking(
     `ifdef USE_POWER_PINS
-		.VPWR(VPWR),
-		.VGND(VGND),
+		.VPWR(vccd_core),
+		.VGND(vssd_core),
     `endif
         .ext_clk_sel(ext_clk_sel),
         .ext_clk(clock_core),
         .pll_clk(pll_clk),
         .pll_clk90(pll_clk90),
-        .resetb(resetb),
+        .resetb(rstb_h),
         .sel(spi_pll_sel),
         .sel2(spi_pll90_sel),
         .ext_reset(ext_reset),  // From housekeeping SPI
@@ -625,11 +625,11 @@ module caravel (
     // DCO/Digital Locked Loop
 
     digital_pll pll (
-        `ifdef USE_POWER_PINS
-            .VPWR(VPWR),
-            .VGND(VGND),
-        `endif
-        .resetb(resetb),
+    `ifdef USE_POWER_PINS
+		.VPWR(vccd_core),
+		.VGND(vssd_core),
+    `endif
+        .resetb(rstb_h),
         .enable(spi_pll_ena),
         .osc(clock_core),
         .clockp({pll_clk, pll_clk90}),
@@ -642,8 +642,8 @@ module caravel (
 
     housekeeping housekeeping (
     `ifdef USE_POWER_PINS
-		.VPWR(VPWR),
-		.VGND(VGND),
+		.VPWR(vccd_core),
+		.VGND(vssd_core),
     `endif
 
         .wb_clk_i(caravel_clk),
