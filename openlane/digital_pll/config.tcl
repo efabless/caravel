@@ -53,8 +53,10 @@ set ::env(PL_TARGET_DENSITY) 0.82
 
 ## Routing 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
-
 set ::env(GLB_RT_ADJUSTMENT) 0
 
+set ::env(GLB_RT_MINLAYER) 2
+set ::env(GLB_RT_MAXLAYER) 6
+
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) "4"
+set ::env(DIODE_INSERTION_STRATEGY) "3"
