@@ -40,8 +40,8 @@ set ::env(DIE_AREA) "0 0 1100 120"
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
-set ::env(FP_VERTICAL_HALO) 14
-set ::env(FP_HORIZONTAL_HALO) 14
+set ::env(FP_VERTICAL_HALO) 10
+set ::env(FP_HORIZONTAL_HALO) 10
 
 set ::env(FP_IO_MIN_DISTANCE) 5 
 
