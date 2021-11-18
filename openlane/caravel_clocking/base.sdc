@@ -38,8 +38,9 @@ set_input_delay $ext_clk_input_delay_value  -clock [get_clocks {ext_clk}] -add_d
 set_input_delay $ext_clk_input_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {sel[0]}]
 set_input_delay $ext_clk_input_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {sel[1]}]
 set_input_delay $ext_clk_input_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {sel[2]}]
-#set_output_delay $output_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {core_clk}]
+
 set_output_delay $ext_clk_output_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {resetb_sync}]
+#set_output_delay $output_delay_value  -clock [get_clocks {ext_clk}] -add_delay [get_ports {core_clk}]
 #set_output_delay $output_delay_value -clock [get_clocks {ext_clk}] -add_delay [get_ports {user_clk}]
 
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]

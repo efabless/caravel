@@ -6,33 +6,53 @@ MACRO caravel_clocking
   CLASS BLOCK ;
   FOREIGN caravel_clocking ;
   ORIGIN 0.000 0.000 ;
-  SIZE 80.000 BY 80.000 ;
+  SIZE 100.000 BY 60.000 ;
   PIN VGND
     DIRECTION INPUT ;
     USE GROUND ;
     PORT
-      LAYER met4 ;
-        RECT 27.705 10.640 29.305 68.240 ;
+      LAYER met5 ;
+        RECT 0.000 15.330 94.300 16.930 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 0.000 31.705 94.300 33.305 ;
     END
     PORT
       LAYER met4 ;
-        RECT 50.690 10.640 52.290 68.240 ;
+        RECT 30.690 -0.240 32.290 49.200 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 62.185 -0.240 63.785 49.200 ;
     END
   END VGND
   PIN VPWR
     DIRECTION INPUT ;
     USE POWER ;
     PORT
-      LAYER met4 ;
-        RECT 16.215 10.640 17.815 68.240 ;
+      LAYER met5 ;
+        RECT 0.000 7.145 94.300 8.745 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 0.000 23.520 94.300 25.120 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 0.000 39.890 94.300 41.490 ;
     END
     PORT
       LAYER met4 ;
-        RECT 39.200 10.640 40.800 68.240 ;
+        RECT 14.945 -0.240 16.545 49.200 ;
     END
     PORT
       LAYER met4 ;
-        RECT 62.185 10.640 63.785 68.240 ;
+        RECT 46.435 -0.240 48.035 49.200 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 77.930 -0.240 79.530 49.200 ;
     END
   END VPWR
   PIN core_clk
@@ -40,7 +60,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 13.430 76.000 13.710 80.000 ;
+        RECT 35.510 56.000 35.790 60.000 ;
     END
   END core_clk
   PIN ext_clk
@@ -48,7 +68,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 59.890 0.000 60.170 4.000 ;
+        RECT 21.250 56.000 21.530 60.000 ;
     END
   END ext_clk
   PIN ext_clk_sel
@@ -56,7 +76,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 4.800 80.000 5.400 ;
+        RECT 96.000 3.440 100.000 4.040 ;
     END
   END ext_clk_sel
   PIN ext_reset
@@ -64,23 +84,23 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 74.840 80.000 75.440 ;
+        RECT 96.000 55.800 100.000 56.400 ;
     END
   END ext_reset
   PIN pll_clk
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 19.760 4.000 20.360 ;
+      LAYER met2 ;
+        RECT 78.290 56.000 78.570 60.000 ;
     END
   END pll_clk
   PIN pll_clk90
     DIRECTION INPUT ;
     USE SIGNAL ;
     PORT
-      LAYER met3 ;
-        RECT 0.000 59.880 4.000 60.480 ;
+      LAYER met2 ;
+        RECT 92.550 56.000 92.830 60.000 ;
     END
   END pll_clk90
   PIN resetb
@@ -88,7 +108,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 19.870 0.000 20.150 4.000 ;
+        RECT 6.990 56.000 7.270 60.000 ;
     END
   END resetb
   PIN resetb_sync
@@ -96,7 +116,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 66.790 76.000 67.070 80.000 ;
+        RECT 64.030 56.000 64.310 60.000 ;
     END
   END resetb_sync
   PIN sel2[0]
@@ -104,7 +124,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 44.920 80.000 45.520 ;
+        RECT 96.000 33.360 100.000 33.960 ;
     END
   END sel2[0]
   PIN sel2[1]
@@ -112,7 +132,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 54.440 80.000 55.040 ;
+        RECT 96.000 40.840 100.000 41.440 ;
     END
   END sel2[1]
   PIN sel2[2]
@@ -120,7 +140,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 64.640 80.000 65.240 ;
+        RECT 96.000 48.320 100.000 48.920 ;
     END
   END sel2[2]
   PIN sel[0]
@@ -128,7 +148,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 14.320 80.000 14.920 ;
+        RECT 96.000 10.920 100.000 11.520 ;
     END
   END sel[0]
   PIN sel[1]
@@ -136,7 +156,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 24.520 80.000 25.120 ;
+        RECT 96.000 18.400 100.000 19.000 ;
     END
   END sel[1]
   PIN sel[2]
@@ -144,7 +164,7 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met3 ;
-        RECT 76.000 34.720 80.000 35.320 ;
+        RECT 96.000 25.880 100.000 26.480 ;
     END
   END sel[2]
   PIN user_clk
@@ -152,43 +172,94 @@ MACRO caravel_clocking
     USE SIGNAL ;
     PORT
       LAYER met2 ;
-        RECT 40.110 76.000 40.390 80.000 ;
+        RECT 49.770 56.000 50.050 60.000 ;
     END
   END user_clk
   OBS
+      LAYER nwell ;
+        RECT -0.190 44.825 94.490 47.655 ;
+        RECT -0.190 39.385 94.490 42.215 ;
+        RECT -0.190 33.945 94.490 36.775 ;
+        RECT -0.190 28.505 94.490 31.335 ;
+        RECT -0.190 23.065 94.490 25.895 ;
+        RECT -0.190 17.625 94.490 20.455 ;
+        RECT -0.190 12.185 94.490 15.015 ;
+        RECT -0.190 6.745 94.490 9.575 ;
+        RECT -0.190 1.305 94.490 4.135 ;
+      LAYER pwell ;
+        RECT 0.145 -0.085 0.315 0.085 ;
+        RECT 1.525 -0.085 1.695 0.085 ;
+        RECT 7.045 -0.085 7.215 0.085 ;
+        RECT 12.560 -0.055 12.680 0.055 ;
+        RECT 13.485 -0.085 13.655 0.085 ;
+        RECT 19.005 -0.085 19.175 0.085 ;
+        RECT 24.525 -0.085 24.695 0.085 ;
+        RECT 26.365 -0.085 26.535 0.085 ;
+        RECT 31.885 -0.085 32.055 0.085 ;
+        RECT 35.575 -0.050 35.735 0.060 ;
+        RECT 37.405 -0.085 37.575 0.085 ;
+        RECT 37.875 -0.050 38.035 0.060 ;
+        RECT 39.245 -0.085 39.415 0.085 ;
+        RECT 42.005 -0.085 42.175 0.085 ;
+        RECT 51.200 -0.055 51.320 0.055 ;
+        RECT 52.125 -0.085 52.295 0.085 ;
+        RECT 55.350 -0.085 55.520 0.085 ;
+        RECT 56.725 -0.085 56.895 0.085 ;
+        RECT 62.245 -0.085 62.415 0.085 ;
+        RECT 64.080 -0.055 64.200 0.055 ;
+        RECT 65.005 -0.085 65.175 0.085 ;
+        RECT 70.525 -0.085 70.695 0.085 ;
+        RECT 76.045 -0.085 76.215 0.085 ;
+        RECT 77.885 -0.085 78.055 0.085 ;
+        RECT 83.405 -0.085 83.575 0.085 ;
+        RECT 84.785 -0.085 84.955 0.085 ;
+        RECT 88.005 -0.085 88.175 0.085 ;
+        RECT 89.840 -0.055 89.960 0.055 ;
+        RECT 90.775 -0.050 90.935 0.060 ;
+        RECT 92.605 -0.085 92.775 0.085 ;
+        RECT 93.985 -0.085 94.155 0.085 ;
       LAYER li1 ;
-        RECT 5.520 5.185 77.135 75.055 ;
+        RECT 0.000 0.085 95.075 49.045 ;
+      LAYER li1 ;
+        RECT 0.000 -0.085 94.300 0.085 ;
+      LAYER li1 ;
+        RECT 94.300 0.000 95.075 0.085 ;
       LAYER met1 ;
-        RECT 5.520 5.140 77.195 75.100 ;
+        RECT 0.000 0.000 95.135 49.200 ;
+        RECT 0.000 -0.240 94.300 0.000 ;
       LAYER met2 ;
-        RECT 7.000 75.720 13.150 76.000 ;
-        RECT 13.990 75.720 39.830 76.000 ;
-        RECT 40.670 75.720 66.510 76.000 ;
-        RECT 67.350 75.720 75.350 76.000 ;
-        RECT 7.000 4.280 75.350 75.720 ;
-        RECT 7.000 4.000 19.590 4.280 ;
-        RECT 20.430 4.000 59.610 4.280 ;
-        RECT 60.450 4.000 75.350 4.280 ;
+        RECT 1.940 55.720 6.710 56.285 ;
+        RECT 7.550 55.720 20.970 56.285 ;
+        RECT 21.810 55.720 35.230 56.285 ;
+        RECT 36.070 55.720 49.490 56.285 ;
+        RECT 50.330 55.720 63.750 56.285 ;
+        RECT 64.590 55.720 78.010 56.285 ;
+        RECT 78.850 55.720 92.270 56.285 ;
+        RECT 93.110 55.720 93.290 56.285 ;
+        RECT 1.940 0.000 93.290 55.720 ;
+        RECT 30.720 -0.240 32.260 0.000 ;
+        RECT 62.215 -0.240 63.755 0.000 ;
       LAYER met3 ;
-        RECT 4.000 74.440 75.600 75.305 ;
-        RECT 4.000 65.640 76.000 74.440 ;
-        RECT 4.000 64.240 75.600 65.640 ;
-        RECT 4.000 60.880 76.000 64.240 ;
-        RECT 4.400 59.480 76.000 60.880 ;
-        RECT 4.000 55.440 76.000 59.480 ;
-        RECT 4.000 54.040 75.600 55.440 ;
-        RECT 4.000 45.920 76.000 54.040 ;
-        RECT 4.000 44.520 75.600 45.920 ;
-        RECT 4.000 35.720 76.000 44.520 ;
-        RECT 4.000 34.320 75.600 35.720 ;
-        RECT 4.000 25.520 76.000 34.320 ;
-        RECT 4.000 24.120 75.600 25.520 ;
-        RECT 4.000 20.760 76.000 24.120 ;
-        RECT 4.400 19.360 76.000 20.760 ;
-        RECT 4.000 15.320 76.000 19.360 ;
-        RECT 4.000 13.920 75.600 15.320 ;
-        RECT 4.000 5.800 76.000 13.920 ;
-        RECT 4.000 4.935 75.600 5.800 ;
+        RECT 14.945 55.400 95.600 56.265 ;
+        RECT 14.945 49.320 96.000 55.400 ;
+        RECT 14.945 47.920 95.600 49.320 ;
+        RECT 14.945 41.840 96.000 47.920 ;
+        RECT 14.945 40.440 95.600 41.840 ;
+        RECT 14.945 34.360 96.000 40.440 ;
+        RECT 14.945 32.960 95.600 34.360 ;
+        RECT 14.945 26.880 96.000 32.960 ;
+        RECT 14.945 25.480 95.600 26.880 ;
+        RECT 14.945 19.400 96.000 25.480 ;
+        RECT 14.945 18.000 95.600 19.400 ;
+        RECT 14.945 11.920 96.000 18.000 ;
+        RECT 14.945 10.520 95.600 11.920 ;
+        RECT 14.945 4.440 96.000 10.520 ;
+        RECT 14.945 3.040 95.600 4.440 ;
+        RECT 14.945 0.000 96.000 3.040 ;
+        RECT 30.690 -0.165 32.290 0.000 ;
+        RECT 62.185 -0.165 63.785 0.000 ;
+      LAYER met4 ;
+        RECT 48.035 -0.240 48.040 49.200 ;
   END
 END caravel_clocking
 END LIBRARY

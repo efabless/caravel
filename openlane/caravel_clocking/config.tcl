@@ -16,7 +16,7 @@
 set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) caravel_clocking
-set ::env(DESIGN_IS_CORE) 0
+set ::env(DESIGN_IS_CORE) 1
 
 set ::env(VERILOG_FILES) "\
 	$script_dir/../../verilog/rtl/defines.v\
@@ -39,9 +39,12 @@ set ::env(NO_SYNTH_CELL_LIST) $script_dir/no_synth.list
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 80 80"
+set ::env(DIE_AREA) "0 0 100 60"
 
 set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
+
+set ::env(LEFT_MARGIN_MULT) 0
+set ::env(BOTTOM_MARGIN_MULT) 0
 
 set ::env(CELL_PAD) 0
 
@@ -53,12 +56,14 @@ set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 
 ## Routing
 set ::env(GLB_RT_ADJUSTMENT) 0
-set ::env(GLB_RT_MAXLAYER) 5
+
+set ::env(GLB_RT_MINLAYER) 2
+set ::env(GLB_RT_MAXLAYER) 6
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) 4
+set ::env(DIODE_INSERTION_STRATEGY) 3
 
 ## 
 set ::env(QUIT_ON_TIMING_VIOLATIONS) 0
