@@ -25,14 +25,14 @@ set ::env(VERILOG_FILES) "\
     $script_dir/../../verilog/rtl/housekeeping.v"
 
 set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_NET) {$::env(CLOCK_PORT) csclk mgmt_gpio_in\[4\]}
+set ::env(CLOCK_NET) {wb_clk_i csclk mgmt_gpio_in[4]}
 
 set ::env(BASE_SDC_FILE) $script_dir/base.sdc
 
 ## Synthesis 
 set ::env(NO_SYNTH_CELL_LIST) $script_dir/no_synth.list 
 
-set ::env(SYNTH_MAX_FANOUT) 5
+set ::env(SYNTH_MAX_FANOUT) 10
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
@@ -48,13 +48,17 @@ set ::env(CELL_PAD) 0
 set ::env(GLB_RT_ADJUSTMENT) 0.05 
 set ::env(GLB_RT_OVERFLOW_ITERS) 100
 
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.17
+
 ## Placement
 set ::env(PL_TARGET_DENSITY) 0.384
 
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) .17
 set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) "3"
+set ::env(GLB_RT_ANT_ITERS) "7"
 
 # Disbale timing checks for now till the issue with the clock gating path is fixed 
 # The timing reports show only one violating path from the mgmt_gpio_ 

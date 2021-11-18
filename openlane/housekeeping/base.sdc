@@ -1,14 +1,26 @@
-create_clock [get_ports {"wb_clk_i"} ] -name "wb_clk_i"  -period 25
-create_clock [get_pins {"_09582_/X"} ] -name "csclk"  -period 100
-create_clock [get_ports {"mgmt_gpio_in[4]"} ] -name "mgmt_gpio_in"  -period 100
+set ::env(WB_CLK_PERIOD) 25 
+set ::env(SCK_CLK_PERIOD) 100
 
-set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
-set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
+create_clock [get_ports {"wb_clk_i"} ] -name "wb_clk_i"  -period $::env(WB_CLK_PERIOD)
+create_clock [get_ports {"mgmt_gpio_in[4]"} ] -name "mgmt_gpio_in"  -period $::env(SCK_CLK_PERIOD)
+
+# change the csclk pin whenever the synthesis receipe changes 
+create_generated_clock -name "csclk" -source [get_ports {"mgmt_gpio_in[4]"} ] -divide_by 1 [get_pins {"_8889_/X"} ] 
+
+set input_delay_value [expr $::env(WB_CLK_PERIOD) * $::env(IO_PCT)]
+set output_delay_value [expr $::env(WB_CLK_PERIOD) * $::env(IO_PCT)]
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
 
+
+set sck_clk_indx [lsearch [all_inputs] [get_port "mgmt_gpio_in[4]"]]
+#set rst_indx [lsearch [all_inputs] [get_port resetn]]
+set all_inputs_wo_clk [lreplace [all_inputs] $sck_clk_indx $sck_clk_indx]
+#set all_inputs_wo_clk_rst [lreplace $all_inputs_wo_clk $rst_indx $rst_indx]
+set all_inputs_wo_clk_rst $all_inputs_wo_clk
+
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
-set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_inputs]
+set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] $all_inputs_wo_clk
 set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
 
 # TODO set this as parameter
