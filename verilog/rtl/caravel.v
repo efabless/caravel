@@ -490,6 +490,7 @@ module caravel (
 	.la_data_in_core(la_data_in_user),
 	.la_data_in_mprj(la_data_in_mprj),
 	.la_oenb_mprj(la_oenb_mprj),
+	.la_oenb_core(la_oenb_user),
 	.la_iena_mprj(la_iena_mprj),
 
 	.user_clock(mprj_clock),
