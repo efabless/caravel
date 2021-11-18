@@ -1,0 +1,2158 @@
+* NGSPICE file created from chip_io.ext - technology: sky130A
+
+* Black-box entry subcircuit for sky130_ef_io__com_bus_slice_5um abstract view
+.subckt sky130_ef_io__com_bus_slice_5um AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q
++ VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__com_bus_slice_10um abstract view
+.subckt sky130_ef_io__com_bus_slice_10um AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q
++ VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__com_bus_slice_20um abstract view
+.subckt sky130_ef_io__com_bus_slice_20um AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q
++ VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__gpiov2_pad_wrapped abstract view
+.subckt sky130_ef_io__gpiov2_pad_wrapped IN_H PAD_A_NOESD_H PAD_A_ESD_0_H PAD_A_ESD_1_H
++ PAD DM[2] DM[1] DM[0] HLD_H_N IN INP_DIS IB_MODE_SEL ENABLE_H ENABLE_VDDA_H ENABLE_INP_H
++ OE_N TIE_HI_ESD TIE_LO_ESD SLOW VTRIP_SEL HLD_OVR ANALOG_EN ANALOG_SEL ENABLE_VDDIO
++ ENABLE_VSWITCH_H ANALOG_POL OUT AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q VCCHIB
++ VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__com_bus_slice_1um abstract view
+.subckt sky130_ef_io__com_bus_slice_1um AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q
++ VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vccd_lvc_clamped_pad abstract view
+.subckt sky130_ef_io__vccd_lvc_clamped_pad AMUXBUS_A AMUXBUS_B VCCD_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__disconnect_vdda_slice_5um abstract view
+.subckt sky130_ef_io__disconnect_vdda_slice_5um AMUXBUS_A AMUXBUS_B VSWITCH VDDIO_Q
++ VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__corner_pad abstract view
+.subckt sky130_ef_io__corner_pad AMUXBUS_A AMUXBUS_B VSSA VDDA VSWITCH VDDIO_Q VCCHIB
++ VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vddio_hvc_clamped_pad abstract view
+.subckt sky130_ef_io__vddio_hvc_clamped_pad AMUXBUS_A AMUXBUS_B VDDIO_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vssio_hvc_clamped_pad abstract view
+.subckt sky130_ef_io__vssio_hvc_clamped_pad AMUXBUS_A AMUXBUS_B VSSIO_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um abstract view
+.subckt sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um AMUXBUS_A AMUXBUS_B
++ VSSA VDDA VDDIO_Q VDDIO VCCD VSSIO VSSD VSSIO_Q VSWITCH VCCHIB
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vdda_hvc_clamped_pad abstract view
+.subckt sky130_ef_io__vdda_hvc_clamped_pad AMUXBUS_A AMUXBUS_B VDDA_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vssd_lvc_clamped3_pad abstract view
+.subckt sky130_ef_io__vssd_lvc_clamped3_pad AMUXBUS_A AMUXBUS_B VSSD_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VDDIO VCCD VSSIO VSSD VSSIO_Q VCCD1 VSSD1
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vssd_lvc_clamped_pad abstract view
+.subckt sky130_ef_io__vssd_lvc_clamped_pad AMUXBUS_A AMUXBUS_B VSSD_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vccd_lvc_clamped3_pad abstract view
+.subckt sky130_ef_io__vccd_lvc_clamped3_pad AMUXBUS_A AMUXBUS_B VCCD_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VDDIO VCCD VSSIO VSSD VSSIO_Q VCCD1 VSSD1
+.ends
+
+* Black-box entry subcircuit for sky130_ef_io__vssa_hvc_clamped_pad abstract view
+.subckt sky130_ef_io__vssa_hvc_clamped_pad AMUXBUS_A AMUXBUS_B VSSA_PAD VSSA VDDA
++ VSWITCH VDDIO_Q VCCHIB VDDIO VCCD VSSIO VSSD VSSIO_Q
+.ends
+
+* Black-box entry subcircuit for sky130_fd_io__top_xres4v2 abstract view
+.subckt sky130_fd_io__top_xres4v2 PAD_A_ESD_H XRES_H_N FILT_IN_H ENABLE_VDDIO TIE_WEAK_HI_H
++ ENABLE_H PULLUP_H EN_VDDIO_SIG_H TIE_LO_ESD TIE_HI_ESD DISABLE_PULLUP_H INP_SEL_H
++ VSSIO VSSA VSSD AMUXBUS_B AMUXBUS_A VDDIO_Q VDDIO VSWITCH VDDA VCCD VCCHIB VSSIO_Q
++ PAD
+.ends
+
+.subckt chip_io clock clock_core por flash_clk flash_clk_core flash_clk_ieb_core flash_clk_oeb_core
++ flash_csb flash_csb_core flash_csb_ieb_core flash_csb_oeb_core flash_io0 flash_io0_di_core
++ flash_io0_do_core flash_io0_ieb_core flash_io0_oeb_core flash_io1 flash_io1_di_core
++ flash_io1_do_core flash_io1_ieb_core flash_io1_oeb_core gpio gpio_in_core gpio_inenb_core
++ gpio_mode0_core gpio_mode1_core gpio_out_core gpio_outenb_core vccd_pad vdda_pad
++ vddio_pad vddio_pad2 vssa_pad vssd_pad vssio_pad vssio_pad2 mprj_io[0] mprj_io_analog_en[0]
++ mprj_io_analog_pol[0] mprj_io_analog_sel[0] mprj_io_dm[0] mprj_io_dm[1] mprj_io_dm[2]
++ mprj_io_holdover[0] mprj_io_ib_mode_sel[0] mprj_io_inp_dis[0] mprj_io_oeb[0] mprj_io_out[0]
++ mprj_io_slow_sel[0] mprj_io_vtrip_sel[0] mprj_io_in[0] mprj_analog_io[3] mprj_io[10]
++ mprj_io_analog_en[10] mprj_io_analog_pol[10] mprj_io_analog_sel[10] mprj_io_dm[30]
++ mprj_io_dm[31] mprj_io_dm[32] mprj_io_holdover[10] mprj_io_ib_mode_sel[10] mprj_io_inp_dis[10]
++ mprj_io_oeb[10] mprj_io_out[10] mprj_io_slow_sel[10] mprj_io_vtrip_sel[10] mprj_io_in[10]
++ mprj_analog_io[4] mprj_io[11] mprj_io_analog_en[11] mprj_io_analog_pol[11] mprj_io_analog_sel[11]
++ mprj_io_dm[33] mprj_io_dm[34] mprj_io_dm[35] mprj_io_holdover[11] mprj_io_ib_mode_sel[11]
++ mprj_io_inp_dis[11] mprj_io_oeb[11] mprj_io_out[11] mprj_io_slow_sel[11] mprj_io_vtrip_sel[11]
++ mprj_io_in[11] mprj_analog_io[5] mprj_io[12] mprj_io_analog_en[12] mprj_io_analog_pol[12]
++ mprj_io_analog_sel[12] mprj_io_dm[36] mprj_io_dm[37] mprj_io_dm[38] mprj_io_holdover[12]
++ mprj_io_ib_mode_sel[12] mprj_io_inp_dis[12] mprj_io_oeb[12] mprj_io_out[12] mprj_io_slow_sel[12]
++ mprj_io_vtrip_sel[12] mprj_io_in[12] mprj_analog_io[6] mprj_io[13] mprj_io_analog_en[13]
++ mprj_io_analog_pol[13] mprj_io_analog_sel[13] mprj_io_dm[39] mprj_io_dm[40] mprj_io_dm[41]
++ mprj_io_holdover[13] mprj_io_ib_mode_sel[13] mprj_io_inp_dis[13] mprj_io_oeb[13]
++ mprj_io_out[13] mprj_io_slow_sel[13] mprj_io_vtrip_sel[13] mprj_io_in[13] mprj_analog_io[7]
++ mprj_io[14] mprj_io_analog_en[14] mprj_io_analog_pol[14] mprj_io_analog_sel[14]
++ mprj_io_dm[42] mprj_io_dm[43] mprj_io_dm[44] mprj_io_holdover[14] mprj_io_ib_mode_sel[14]
++ mprj_io_inp_dis[14] mprj_io_oeb[14] mprj_io_out[14] mprj_io_slow_sel[14] mprj_io_vtrip_sel[14]
++ mprj_io_in[14] mprj_analog_io[8] mprj_io[15] mprj_io_analog_en[15] mprj_io_analog_pol[15]
++ mprj_io_analog_sel[15] mprj_io_dm[45] mprj_io_dm[46] mprj_io_dm[47] mprj_io_holdover[15]
++ mprj_io_ib_mode_sel[15] mprj_io_inp_dis[15] mprj_io_oeb[15] mprj_io_out[15] mprj_io_slow_sel[15]
++ mprj_io_vtrip_sel[15] mprj_io_in[15] mprj_analog_io[9] mprj_io[16] mprj_io_analog_en[16]
++ mprj_io_analog_pol[16] mprj_io_analog_sel[16] mprj_io_dm[48] mprj_io_dm[49] mprj_io_dm[50]
++ mprj_io_holdover[16] mprj_io_ib_mode_sel[16] mprj_io_inp_dis[16] mprj_io_oeb[16]
++ mprj_io_out[16] mprj_io_slow_sel[16] mprj_io_vtrip_sel[16] mprj_io_in[16] mprj_analog_io[10]
++ mprj_io[17] mprj_io_analog_en[17] mprj_io_analog_pol[17] mprj_io_analog_sel[17]
++ mprj_io_dm[51] mprj_io_dm[52] mprj_io_dm[53] mprj_io_holdover[17] mprj_io_ib_mode_sel[17]
++ mprj_io_inp_dis[17] mprj_io_oeb[17] mprj_io_out[17] mprj_io_slow_sel[17] mprj_io_vtrip_sel[17]
++ mprj_io_in[17] mprj_analog_io[11] mprj_io[18] mprj_io_analog_en[18] mprj_io_analog_pol[18]
++ mprj_io_analog_sel[18] mprj_io_dm[54] mprj_io_dm[55] mprj_io_dm[56] mprj_io_holdover[18]
++ mprj_io_ib_mode_sel[18] mprj_io_inp_dis[18] mprj_io_oeb[18] mprj_io_out[18] mprj_io_slow_sel[18]
++ mprj_io_vtrip_sel[18] mprj_io_in[18] mprj_io[1] mprj_io_analog_en[1] mprj_io_analog_pol[1]
++ mprj_io_analog_sel[1] mprj_io_dm[3] mprj_io_dm[4] mprj_io_dm[5] mprj_io_holdover[1]
++ mprj_io_ib_mode_sel[1] mprj_io_inp_dis[1] mprj_io_oeb[1] mprj_io_out[1] mprj_io_slow_sel[1]
++ mprj_io_vtrip_sel[1] mprj_io_in[1] mprj_io[2] mprj_io_analog_en[2] mprj_io_analog_pol[2]
++ mprj_io_analog_sel[2] mprj_io_dm[6] mprj_io_dm[7] mprj_io_dm[8] mprj_io_holdover[2]
++ mprj_io_ib_mode_sel[2] mprj_io_inp_dis[2] mprj_io_oeb[2] mprj_io_out[2] mprj_io_slow_sel[2]
++ mprj_io_vtrip_sel[2] mprj_io_in[2] mprj_io[3] mprj_io_analog_en[3] mprj_io_analog_pol[3]
++ mprj_io_analog_sel[3] mprj_io_dm[10] mprj_io_dm[11] mprj_io_dm[9] mprj_io_holdover[3]
++ mprj_io_ib_mode_sel[3] mprj_io_inp_dis[3] mprj_io_oeb[3] mprj_io_out[3] mprj_io_slow_sel[3]
++ mprj_io_vtrip_sel[3] mprj_io_in[3] mprj_io[4] mprj_io_analog_en[4] mprj_io_analog_pol[4]
++ mprj_io_analog_sel[4] mprj_io_dm[12] mprj_io_dm[13] mprj_io_dm[14] mprj_io_holdover[4]
++ mprj_io_ib_mode_sel[4] mprj_io_inp_dis[4] mprj_io_oeb[4] mprj_io_out[4] mprj_io_slow_sel[4]
++ mprj_io_vtrip_sel[4] mprj_io_in[4] mprj_io[5] mprj_io_analog_en[5] mprj_io_analog_pol[5]
++ mprj_io_analog_sel[5] mprj_io_dm[15] mprj_io_dm[16] mprj_io_dm[17] mprj_io_holdover[5]
++ mprj_io_ib_mode_sel[5] mprj_io_inp_dis[5] mprj_io_oeb[5] mprj_io_out[5] mprj_io_slow_sel[5]
++ mprj_io_vtrip_sel[5] mprj_io_in[5] mprj_io[6] mprj_io_analog_en[6] mprj_io_analog_pol[6]
++ mprj_io_analog_sel[6] mprj_io_dm[18] mprj_io_dm[19] mprj_io_dm[20] mprj_io_holdover[6]
++ mprj_io_ib_mode_sel[6] mprj_io_inp_dis[6] mprj_io_oeb[6] mprj_io_out[6] mprj_io_slow_sel[6]
++ mprj_io_vtrip_sel[6] mprj_io_in[6] mprj_analog_io[0] mprj_io[7] mprj_io_analog_en[7]
++ mprj_io_analog_pol[7] mprj_io_analog_sel[7] mprj_io_dm[21] mprj_io_dm[22] mprj_io_dm[23]
++ mprj_io_holdover[7] mprj_io_ib_mode_sel[7] mprj_io_inp_dis[7] mprj_io_oeb[7] mprj_io_out[7]
++ mprj_io_slow_sel[7] mprj_io_vtrip_sel[7] mprj_io_in[7] mprj_analog_io[1] mprj_io[8]
++ mprj_io_analog_en[8] mprj_io_analog_pol[8] mprj_io_analog_sel[8] mprj_io_dm[24]
++ mprj_io_dm[25] mprj_io_dm[26] mprj_io_holdover[8] mprj_io_ib_mode_sel[8] mprj_io_inp_dis[8]
++ mprj_io_oeb[8] mprj_io_out[8] mprj_io_slow_sel[8] mprj_io_vtrip_sel[8] mprj_io_in[8]
++ mprj_analog_io[2] mprj_io[9] mprj_io_analog_en[9] mprj_io_analog_pol[9] mprj_io_analog_sel[9]
++ mprj_io_dm[27] mprj_io_dm[28] mprj_io_dm[29] mprj_io_holdover[9] mprj_io_ib_mode_sel[9]
++ mprj_io_inp_dis[9] mprj_io_oeb[9] mprj_io_out[9] mprj_io_slow_sel[9] mprj_io_vtrip_sel[9]
++ mprj_io_in[9] mprj_analog_io[12] mprj_io[19] mprj_io_analog_en[19] mprj_io_analog_pol[19]
++ mprj_io_analog_sel[19] mprj_io_dm[57] mprj_io_dm[58] mprj_io_dm[59] mprj_io_holdover[19]
++ mprj_io_ib_mode_sel[19] mprj_io_inp_dis[19] mprj_io_oeb[19] mprj_io_out[19] mprj_io_slow_sel[19]
++ mprj_io_vtrip_sel[19] mprj_io_in[19] mprj_analog_io[22] mprj_io[29] mprj_io_analog_en[29]
++ mprj_io_analog_pol[29] mprj_io_analog_sel[29] mprj_io_dm[87] mprj_io_dm[88] mprj_io_dm[89]
++ mprj_io_holdover[29] mprj_io_ib_mode_sel[29] mprj_io_inp_dis[29] mprj_io_oeb[29]
++ mprj_io_out[29] mprj_io_slow_sel[29] mprj_io_vtrip_sel[29] mprj_io_in[29] mprj_analog_io[23]
++ mprj_io[30] mprj_io_analog_en[30] mprj_io_analog_pol[30] mprj_io_analog_sel[30]
++ mprj_io_dm[90] mprj_io_dm[91] mprj_io_dm[92] mprj_io_holdover[30] mprj_io_ib_mode_sel[30]
++ mprj_io_inp_dis[30] mprj_io_oeb[30] mprj_io_out[30] mprj_io_slow_sel[30] mprj_io_vtrip_sel[30]
++ mprj_io_in[30] mprj_analog_io[24] mprj_io[31] mprj_io_analog_en[31] mprj_io_analog_pol[31]
++ mprj_io_analog_sel[31] mprj_io_dm[93] mprj_io_dm[94] mprj_io_dm[95] mprj_io_holdover[31]
++ mprj_io_ib_mode_sel[31] mprj_io_inp_dis[31] mprj_io_oeb[31] mprj_io_out[31] mprj_io_slow_sel[31]
++ mprj_io_vtrip_sel[31] mprj_io_in[31] mprj_analog_io[25] mprj_io[32] mprj_io_analog_en[32]
++ mprj_io_analog_pol[32] mprj_io_analog_sel[32] mprj_io_dm[96] mprj_io_dm[97] mprj_io_dm[98]
++ mprj_io_holdover[32] mprj_io_ib_mode_sel[32] mprj_io_inp_dis[32] mprj_io_oeb[32]
++ mprj_io_out[32] mprj_io_slow_sel[32] mprj_io_vtrip_sel[32] mprj_io_in[32] mprj_analog_io[26]
++ mprj_io[33] mprj_io_analog_en[33] mprj_io_analog_pol[33] mprj_io_analog_sel[33]
++ mprj_io_dm[100] mprj_io_dm[101] mprj_io_dm[99] mprj_io_holdover[33] mprj_io_ib_mode_sel[33]
++ mprj_io_inp_dis[33] mprj_io_oeb[33] mprj_io_out[33] mprj_io_slow_sel[33] mprj_io_vtrip_sel[33]
++ mprj_io_in[33] mprj_analog_io[27] mprj_io[34] mprj_io_analog_en[34] mprj_io_analog_pol[34]
++ mprj_io_analog_sel[34] mprj_io_dm[102] mprj_io_dm[103] mprj_io_dm[104] mprj_io_holdover[34]
++ mprj_io_ib_mode_sel[34] mprj_io_inp_dis[34] mprj_io_oeb[34] mprj_io_out[34] mprj_io_slow_sel[34]
++ mprj_io_vtrip_sel[34] mprj_io_in[34] mprj_analog_io[28] mprj_io[35] mprj_io_analog_en[35]
++ mprj_io_analog_pol[35] mprj_io_analog_sel[35] mprj_io_dm[105] mprj_io_dm[106] mprj_io_dm[107]
++ mprj_io_holdover[35] mprj_io_ib_mode_sel[35] mprj_io_inp_dis[35] mprj_io_oeb[35]
++ mprj_io_out[35] mprj_io_slow_sel[35] mprj_io_vtrip_sel[35] mprj_io_in[35] mprj_io[36]
++ mprj_io_analog_en[36] mprj_io_analog_pol[36] mprj_io_analog_sel[36] mprj_io_dm[108]
++ mprj_io_dm[109] mprj_io_dm[110] mprj_io_holdover[36] mprj_io_ib_mode_sel[36] mprj_io_inp_dis[36]
++ mprj_io_oeb[36] mprj_io_out[36] mprj_io_slow_sel[36] mprj_io_vtrip_sel[36] mprj_io_in[36]
++ mprj_io[37] mprj_io_analog_en[37] mprj_io_analog_pol[37] mprj_io_analog_sel[37]
++ mprj_io_dm[111] mprj_io_dm[112] mprj_io_dm[113] mprj_io_holdover[37] mprj_io_ib_mode_sel[37]
++ mprj_io_inp_dis[37] mprj_io_oeb[37] mprj_io_out[37] mprj_io_slow_sel[37] mprj_io_vtrip_sel[37]
++ mprj_io_in[37] mprj_analog_io[13] mprj_io[20] mprj_io_analog_en[20] mprj_io_analog_pol[20]
++ mprj_io_analog_sel[20] mprj_io_dm[60] mprj_io_dm[61] mprj_io_dm[62] mprj_io_holdover[20]
++ mprj_io_ib_mode_sel[20] mprj_io_inp_dis[20] mprj_io_oeb[20] mprj_io_out[20] mprj_io_slow_sel[20]
++ mprj_io_vtrip_sel[20] mprj_io_in[20] mprj_analog_io[14] mprj_io[21] mprj_io_analog_en[21]
++ mprj_io_analog_pol[21] mprj_io_analog_sel[21] mprj_io_dm[63] mprj_io_dm[64] mprj_io_dm[65]
++ mprj_io_holdover[21] mprj_io_ib_mode_sel[21] mprj_io_inp_dis[21] mprj_io_oeb[21]
++ mprj_io_out[21] mprj_io_slow_sel[21] mprj_io_vtrip_sel[21] mprj_io_in[21] mprj_analog_io[15]
++ mprj_io[22] mprj_io_analog_en[22] mprj_io_analog_pol[22] mprj_io_analog_sel[22]
++ mprj_io_dm[66] mprj_io_dm[67] mprj_io_dm[68] mprj_io_holdover[22] mprj_io_ib_mode_sel[22]
++ mprj_io_inp_dis[22] mprj_io_oeb[22] mprj_io_out[22] mprj_io_slow_sel[22] mprj_io_vtrip_sel[22]
++ mprj_io_in[22] mprj_analog_io[16] mprj_io[23] mprj_io_analog_en[23] mprj_io_analog_pol[23]
++ mprj_io_analog_sel[23] mprj_io_dm[69] mprj_io_dm[70] mprj_io_dm[71] mprj_io_holdover[23]
++ mprj_io_ib_mode_sel[23] mprj_io_inp_dis[23] mprj_io_oeb[23] mprj_io_out[23] mprj_io_slow_sel[23]
++ mprj_io_vtrip_sel[23] mprj_io_in[23] mprj_analog_io[17] mprj_io[24] mprj_io_analog_en[24]
++ mprj_io_analog_pol[24] mprj_io_analog_sel[24] mprj_io_dm[72] mprj_io_dm[73] mprj_io_dm[74]
++ mprj_io_holdover[24] mprj_io_ib_mode_sel[24] mprj_io_inp_dis[24] mprj_io_oeb[24]
++ mprj_io_out[24] mprj_io_slow_sel[24] mprj_io_vtrip_sel[24] mprj_io_in[24] mprj_analog_io[18]
++ mprj_io[25] mprj_io_analog_en[25] mprj_io_analog_pol[25] mprj_io_analog_sel[25]
++ mprj_io_dm[75] mprj_io_dm[76] mprj_io_dm[77] mprj_io_holdover[25] mprj_io_ib_mode_sel[25]
++ mprj_io_inp_dis[25] mprj_io_oeb[25] mprj_io_out[25] mprj_io_slow_sel[25] mprj_io_vtrip_sel[25]
++ mprj_io_in[25] mprj_analog_io[19] mprj_io[26] mprj_io_analog_en[26] mprj_io_analog_pol[26]
++ mprj_io_analog_sel[26] mprj_io_dm[78] mprj_io_dm[79] mprj_io_dm[80] mprj_io_holdover[26]
++ mprj_io_ib_mode_sel[26] mprj_io_inp_dis[26] mprj_io_oeb[26] mprj_io_out[26] mprj_io_slow_sel[26]
++ mprj_io_vtrip_sel[26] mprj_io_in[26] mprj_analog_io[20] mprj_io[27] mprj_io_analog_en[27]
++ mprj_io_analog_pol[27] mprj_io_analog_sel[27] mprj_io_dm[81] mprj_io_dm[82] mprj_io_dm[83]
++ mprj_io_holdover[27] mprj_io_ib_mode_sel[27] mprj_io_inp_dis[27] mprj_io_oeb[27]
++ mprj_io_out[27] mprj_io_slow_sel[27] mprj_io_vtrip_sel[27] mprj_io_in[27] mprj_analog_io[21]
++ mprj_io[28] mprj_io_analog_en[28] mprj_io_analog_pol[28] mprj_io_analog_sel[28]
++ mprj_io_dm[84] mprj_io_dm[85] mprj_io_dm[86] mprj_io_holdover[28] mprj_io_ib_mode_sel[28]
++ mprj_io_inp_dis[28] mprj_io_oeb[28] mprj_io_out[28] mprj_io_slow_sel[28] mprj_io_vtrip_sel[28]
++ mprj_io_in[28] resetb resetb_core_h vdda vssa vssd vccd1_pad vdda1_pad vdda1_pad2
++ vssa1_pad vssa1_pad2 vccd1 vdda1 vssa1 vssd1 vssd1_pad vccd2_pad vdda2_pad vssa2_pad
++ vccd vccd2 vdda2 vddio vssa2 vssd2 vssd2_pad vssio
+XFILLER_592 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_581 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_570 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xclock_pad clock_pad/IN_H clock_pad/PAD_A_NOESD_H clock_pad/PAD_A_ESD_0_H clock_pad/PAD_A_ESD_1_H
++ clock vssd vssd gpio_pad/VCCD vddio clock_core por vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H
++ clock_pad/TIE_LO_ESD gpio_pad/VCCD clock_pad/TIE_HI_ESD clock_pad/TIE_LO_ESD vssd
++ vssd vssd vssd vssd gpio_pad/VCCD vssa vssd vssd gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+Xmprj_pads.area2_io_pad\[17\] mprj_pads.area2_io_pad\[17\]/IN_H mprj_pads.area2_io_pad\[17\]/PAD_A_NOESD_H
++ mprj_pads.area2_io_pad\[17\]/PAD_A_ESD_0_H mprj_pads.area2_io_pad\[17\]/PAD_A_ESD_1_H
++ mprj_io[36] mprj_io_dm[110] mprj_io_dm[109] mprj_io_dm[108] vddio mprj_io_in[36]
++ mprj_io_inp_dis[36] mprj_io_ib_mode_sel[36] gpio_pad/ENABLE_H gpio_pad/ENABLE_H
++ mprj_pads.area2_io_pad\[17\]/TIE_LO_ESD mprj_io_oeb[36] mprj_pads.area2_io_pad\[17\]/TIE_HI_ESD
++ mprj_pads.area2_io_pad\[17\]/TIE_LO_ESD mprj_io_slow_sel[36] mprj_io_vtrip_sel[36]
++ mprj_io_holdover[36] mprj_io_analog_en[36] mprj_io_analog_sel[36] gpio_pad/VCCD
++ vssio mprj_io_analog_pol[36] mprj_io_out[36] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_25 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_14 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_69 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_58 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_47 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_36 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_vccd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vccd_pad vssa vdda vddio
++ gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vccd_lvc_clamped_pad
+Xmprj_pads.area2_io_pad\[7\] mprj_pads.area2_io_pad\[7\]/IN_H mprj_pads.area2_io_pad\[7\]/PAD_A_NOESD_H
++ mprj_analog_io[19] mprj_pads.area2_io_pad\[7\]/PAD_A_ESD_1_H mprj_io[26] mprj_io_dm[80]
++ mprj_io_dm[79] mprj_io_dm[78] vddio mprj_io_in[26] mprj_io_inp_dis[26] mprj_io_ib_mode_sel[26]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[7\]/TIE_LO_ESD mprj_io_oeb[26]
++ mprj_pads.area2_io_pad\[7\]/TIE_HI_ESD mprj_pads.area2_io_pad\[7\]/TIE_LO_ESD mprj_io_slow_sel[26]
++ mprj_io_vtrip_sel[26] mprj_io_holdover[26] mprj_io_analog_en[26] mprj_io_analog_sel[26]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[26] mprj_io_out[26] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_218 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_207 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_796 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_785 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_763 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_752 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_741 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_730 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_593 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_582 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_571 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_560 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_390 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xmprj_pads.area1_io_pad\[7\] mprj_pads.area1_io_pad\[7\]/IN_H mprj_pads.area1_io_pad\[7\]/PAD_A_NOESD_H
++ mprj_analog_io[0] mprj_pads.area1_io_pad\[7\]/PAD_A_ESD_1_H mprj_io[7] mprj_io_dm[23]
++ mprj_io_dm[22] mprj_io_dm[21] vddio mprj_io_in[7] mprj_io_inp_dis[7] mprj_io_ib_mode_sel[7]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[7\]/TIE_LO_ESD mprj_io_oeb[7]
++ mprj_pads.area1_io_pad\[7\]/TIE_HI_ESD mprj_pads.area1_io_pad\[7\]/TIE_LO_ESD mprj_io_slow_sel[7]
++ mprj_io_vtrip_sel[7] mprj_io_holdover[7] mprj_io_analog_en[7] mprj_io_analog_sel[7]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[7] mprj_io_out[7] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_59 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_48 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_37 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_26 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_15 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_219 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_208 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_797 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_786 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_775 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_753 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_742 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_731 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_720 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_583 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_572 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_561 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_550 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_380 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_391 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xmprj_pads.area1_io_pad\[11\] mprj_pads.area1_io_pad\[11\]/IN_H mprj_pads.area1_io_pad\[11\]/PAD_A_NOESD_H
++ mprj_analog_io[4] mprj_pads.area1_io_pad\[11\]/PAD_A_ESD_1_H mprj_io[11] mprj_io_dm[35]
++ mprj_io_dm[34] mprj_io_dm[33] vddio mprj_io_in[11] mprj_io_inp_dis[11] mprj_io_ib_mode_sel[11]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[11\]/TIE_LO_ESD mprj_io_oeb[11]
++ mprj_pads.area1_io_pad\[11\]/TIE_HI_ESD mprj_pads.area1_io_pad\[11\]/TIE_LO_ESD
++ mprj_io_slow_sel[11] mprj_io_vtrip_sel[11] mprj_io_holdover[11] mprj_io_analog_en[11]
++ mprj_io_analog_sel[11] gpio_pad/VCCD vssio mprj_io_analog_pol[11] mprj_io_out[11]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_49 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_38 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_27 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_16 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_798 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_787 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_776 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_765 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_754 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_743 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_732 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_721 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_710 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_595 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_573 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_562 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_551 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_540 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_370 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_381 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_392 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area2_io_pad\[15\] mprj_pads.area2_io_pad\[15\]/IN_H mprj_pads.area2_io_pad\[15\]/PAD_A_NOESD_H
++ mprj_analog_io[27] mprj_pads.area2_io_pad\[15\]/PAD_A_ESD_1_H mprj_io[34] mprj_io_dm[104]
++ mprj_io_dm[103] mprj_io_dm[102] vddio mprj_io_in[34] mprj_io_inp_dis[34] mprj_io_ib_mode_sel[34]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[15\]/TIE_LO_ESD mprj_io_oeb[34]
++ mprj_pads.area2_io_pad\[15\]/TIE_HI_ESD mprj_pads.area2_io_pad\[15\]/TIE_LO_ESD
++ mprj_io_slow_sel[34] mprj_io_vtrip_sel[34] mprj_io_holdover[34] mprj_io_analog_en[34]
++ mprj_io_analog_sel[34] gpio_pad/VCCD vssio mprj_io_analog_pol[34] mprj_io_out[34]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_39 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_28 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area2_io_pad\[5\] mprj_pads.area2_io_pad\[5\]/IN_H mprj_pads.area2_io_pad\[5\]/PAD_A_NOESD_H
++ mprj_analog_io[17] mprj_pads.area2_io_pad\[5\]/PAD_A_ESD_1_H mprj_io[24] mprj_io_dm[74]
++ mprj_io_dm[73] mprj_io_dm[72] vddio mprj_io_in[24] mprj_io_inp_dis[24] mprj_io_ib_mode_sel[24]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[5\]/TIE_LO_ESD mprj_io_oeb[24]
++ mprj_pads.area2_io_pad\[5\]/TIE_HI_ESD mprj_pads.area2_io_pad\[5\]/TIE_LO_ESD mprj_io_slow_sel[24]
++ mprj_io_vtrip_sel[24] mprj_io_holdover[24] mprj_io_analog_en[24] mprj_io_analog_sel[24]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[24] mprj_io_out[24] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_799 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_788 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_777 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_766 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_744 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_733 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_722 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_711 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_700 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_596 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_585 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_563 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_552 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_541 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_530 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_360 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_371 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_382 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_190 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_29 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_18 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area1_io_pad\[5\] mprj_pads.area1_io_pad\[5\]/IN_H mprj_pads.area1_io_pad\[5\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[5\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[5\]/PAD_A_ESD_1_H
++ mprj_io[5] mprj_io_dm[17] mprj_io_dm[16] mprj_io_dm[15] vddio mprj_io_in[5] mprj_io_inp_dis[5]
++ mprj_io_ib_mode_sel[5] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[5\]/TIE_LO_ESD
++ mprj_io_oeb[5] mprj_pads.area1_io_pad\[5\]/TIE_HI_ESD mprj_pads.area1_io_pad\[5\]/TIE_LO_ESD
++ mprj_io_slow_sel[5] mprj_io_vtrip_sel[5] mprj_io_holdover[5] mprj_io_analog_en[5]
++ mprj_io_analog_sel[5] gpio_pad/VCCD vssio mprj_io_analog_pol[5] mprj_io_out[5] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xdisconnect_vdda_0 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__disconnect_vdda_slice_5um
+XFILLER_734 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_723 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_712 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_701 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_789 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_778 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_767 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_756 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_745 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_597 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_586 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_575 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_553 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_542 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_531 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_520 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_361 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_372 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_394 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_19 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_191 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xdisconnect_vdda_1 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__disconnect_vdda_slice_5um
+XFILLER_779 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_768 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_757 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_735 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_724 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_713 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_702 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_598 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_587 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_576 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_565 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_543 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_532 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_521 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_510 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xuser2_corner gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__corner_pad
+Xmgmt_vddio_hvclamp_pad\[0\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vddio_pad vssa
++ vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vddio_hvc_clamped_pad
+XFILLER_340 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_351 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_373 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_384 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_395 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_181 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_170 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xdisconnect_vdda_2 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__disconnect_vdda_slice_5um
+Xmprj_pads.area2_io_pad\[13\] mprj_pads.area2_io_pad\[13\]/IN_H mprj_pads.area2_io_pad\[13\]/PAD_A_NOESD_H
++ mprj_analog_io[25] mprj_pads.area2_io_pad\[13\]/PAD_A_ESD_1_H mprj_io[32] mprj_io_dm[98]
++ mprj_io_dm[97] mprj_io_dm[96] vddio mprj_io_in[32] mprj_io_inp_dis[32] mprj_io_ib_mode_sel[32]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[13\]/TIE_LO_ESD mprj_io_oeb[32]
++ mprj_pads.area2_io_pad\[13\]/TIE_HI_ESD mprj_pads.area2_io_pad\[13\]/TIE_LO_ESD
++ mprj_io_slow_sel[32] mprj_io_vtrip_sel[32] mprj_io_holdover[32] mprj_io_analog_en[32]
++ mprj_io_analog_sel[32] gpio_pad/VCCD vssio mprj_io_analog_pol[32] mprj_io_out[32]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xmgmt_vssio_hvclamp_pad\[1\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssio_pad2 vssa2
++ vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vssio_hvc_clamped_pad
+XFILLER_769 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_758 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_747 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_725 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_714 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_703 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[3\] mprj_pads.area2_io_pad\[3\]/IN_H mprj_pads.area2_io_pad\[3\]/PAD_A_NOESD_H
++ mprj_analog_io[15] mprj_pads.area2_io_pad\[3\]/PAD_A_ESD_1_H mprj_io[22] mprj_io_dm[68]
++ mprj_io_dm[67] mprj_io_dm[66] vddio mprj_io_in[22] mprj_io_inp_dis[22] mprj_io_ib_mode_sel[22]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[3\]/TIE_LO_ESD mprj_io_oeb[22]
++ mprj_pads.area2_io_pad\[3\]/TIE_HI_ESD mprj_pads.area2_io_pad\[3\]/TIE_LO_ESD mprj_io_slow_sel[22]
++ mprj_io_vtrip_sel[22] mprj_io_holdover[22] mprj_io_analog_en[22] mprj_io_analog_sel[22]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[22] mprj_io_out[22] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_500 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_599 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_588 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_577 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_566 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_555 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_533 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_522 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_511 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_374 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_341 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_352 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_385 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_396 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_160 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_182 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_171 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xbus_tie_1 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area1_io_pad\[3\] mprj_pads.area1_io_pad\[3\]/IN_H mprj_pads.area1_io_pad\[3\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[3\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[3\]/PAD_A_ESD_1_H
++ mprj_io[3] mprj_io_dm[11] mprj_io_dm[10] mprj_io_dm[9] vddio mprj_io_in[3] mprj_io_inp_dis[3]
++ mprj_io_ib_mode_sel[3] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[3\]/TIE_LO_ESD
++ mprj_io_oeb[3] mprj_pads.area1_io_pad\[3\]/TIE_HI_ESD mprj_pads.area1_io_pad\[3\]/TIE_LO_ESD
++ mprj_io_slow_sel[3] mprj_io_vtrip_sel[3] mprj_io_holdover[3] mprj_io_analog_en[3]
++ mprj_io_analog_sel[3] gpio_pad/VCCD vssio mprj_io_analog_pol[3] mprj_io_out[3] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_759 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_748 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_737 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_726 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_715 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_704 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_589 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_578 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_567 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_556 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_545 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_523 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_512 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_501 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_320 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_342 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_353 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_375 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_386 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_397 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_161 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_150 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_183 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_172 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xbus_tie_2 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_749 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_738 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_716 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_705 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xuser2_vdda_hvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vdda2_pad vssa2 vdda2
++ vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vdda_hvc_clamped_pad
+XFILLER_579 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_568 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_557 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_546 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_535 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_513 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_502 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xmprj_pads.area1_io_pad\[18\] mprj_pads.area1_io_pad\[18\]/IN_H mprj_pads.area1_io_pad\[18\]/PAD_A_NOESD_H
++ mprj_analog_io[11] mprj_pads.area1_io_pad\[18\]/PAD_A_ESD_1_H mprj_io[18] mprj_io_dm[56]
++ mprj_io_dm[55] mprj_io_dm[54] vddio mprj_io_in[18] mprj_io_inp_dis[18] mprj_io_ib_mode_sel[18]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[18\]/TIE_LO_ESD mprj_io_oeb[18]
++ mprj_pads.area1_io_pad\[18\]/TIE_HI_ESD mprj_pads.area1_io_pad\[18\]/TIE_LO_ESD
++ mprj_io_slow_sel[18] mprj_io_vtrip_sel[18] mprj_io_holdover[18] mprj_io_analog_en[18]
++ mprj_io_analog_sel[18] gpio_pad/VCCD vssio mprj_io_analog_pol[18] mprj_io_out[18]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_310 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_321 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_343 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_354 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_376 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_387 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_398 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_162 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_151 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_140 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_184 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_173 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xbus_tie_70 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area2_io_pad\[11\] mprj_pads.area2_io_pad\[11\]/IN_H mprj_pads.area2_io_pad\[11\]/PAD_A_NOESD_H
++ mprj_analog_io[23] mprj_pads.area2_io_pad\[11\]/PAD_A_ESD_1_H mprj_io[30] mprj_io_dm[92]
++ mprj_io_dm[91] mprj_io_dm[90] vddio mprj_io_in[30] mprj_io_inp_dis[30] mprj_io_ib_mode_sel[30]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[11\]/TIE_LO_ESD mprj_io_oeb[30]
++ mprj_pads.area2_io_pad\[11\]/TIE_HI_ESD mprj_pads.area2_io_pad\[11\]/TIE_LO_ESD
++ mprj_io_slow_sel[30] mprj_io_vtrip_sel[30] mprj_io_holdover[30] mprj_io_analog_en[30]
++ mprj_io_analog_sel[30] gpio_pad/VCCD vssio mprj_io_analog_pol[30] mprj_io_out[30]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xbus_tie_3 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_739 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_728 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_706 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_569 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_558 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_547 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_536 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_525 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_503 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area2_io_pad\[1\] mprj_pads.area2_io_pad\[1\]/IN_H mprj_pads.area2_io_pad\[1\]/PAD_A_NOESD_H
++ mprj_analog_io[13] mprj_pads.area2_io_pad\[1\]/PAD_A_ESD_1_H mprj_io[20] mprj_io_dm[62]
++ mprj_io_dm[61] mprj_io_dm[60] vddio mprj_io_in[20] mprj_io_inp_dis[20] mprj_io_ib_mode_sel[20]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[1\]/TIE_LO_ESD mprj_io_oeb[20]
++ mprj_pads.area2_io_pad\[1\]/TIE_HI_ESD mprj_pads.area2_io_pad\[1\]/TIE_LO_ESD mprj_io_slow_sel[20]
++ mprj_io_vtrip_sel[20] mprj_io_holdover[20] mprj_io_analog_en[20] mprj_io_analog_sel[20]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[20] mprj_io_out[20] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_300 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_344 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_355 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_377 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_388 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_399 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_141 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_163 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_152 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_185 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_174 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xbus_tie_4 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_60 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_71 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_729 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_718 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_707 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xmprj_pads.area1_io_pad\[1\] mprj_pads.area1_io_pad\[1\]/IN_H mprj_pads.area1_io_pad\[1\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[1\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[1\]/PAD_A_ESD_1_H
++ mprj_io[1] mprj_io_dm[5] mprj_io_dm[4] mprj_io_dm[3] vddio mprj_io_in[1] mprj_io_inp_dis[1]
++ mprj_io_ib_mode_sel[1] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[1\]/TIE_LO_ESD
++ mprj_io_oeb[1] mprj_pads.area1_io_pad\[1\]/TIE_HI_ESD mprj_pads.area1_io_pad\[1\]/TIE_LO_ESD
++ mprj_io_slow_sel[1] mprj_io_vtrip_sel[1] mprj_io_holdover[1] mprj_io_analog_en[1]
++ mprj_io_analog_sel[1] gpio_pad/VCCD vssio mprj_io_analog_pol[1] mprj_io_out[1] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_559 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_548 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_537 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_526 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_515 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_301 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_323 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_334 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_378 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_389 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_164 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_153 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_142 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_131 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_120 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xuser1_vssd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssd1_pad vssa1 vdda1
++ vddio gpio_pad/VDDIO_Q vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vccd1 vssd1
++ sky130_ef_io__vssd_lvc_clamped3_pad
+Xgpio_pad gpio_pad/IN_H gpio_pad/PAD_A_NOESD_H gpio_pad/PAD_A_ESD_0_H gpio_pad/PAD_A_ESD_1_H
++ gpio gpio_mode1_core gpio_mode1_core gpio_mode0_core vddio gpio_in_core gpio_inenb_core
++ vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H gpio_pad/TIE_LO_ESD gpio_outenb_core gpio_pad/TIE_HI_ESD
++ gpio_pad/TIE_LO_ESD vssd vssd vssd vssd vssd gpio_pad/VCCD vssa vssd gpio_out_core
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xbus_tie_5 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_50 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_61 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_72 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_719 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_516 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_505 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_549 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_538 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_527 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_302 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_324 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_335 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_357 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_368 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_379 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_165 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_154 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_132 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area1_io_pad\[16\] mprj_pads.area1_io_pad\[16\]/IN_H mprj_pads.area1_io_pad\[16\]/PAD_A_NOESD_H
++ mprj_analog_io[9] mprj_pads.area1_io_pad\[16\]/PAD_A_ESD_1_H mprj_io[16] mprj_io_dm[50]
++ mprj_io_dm[49] mprj_io_dm[48] vddio mprj_io_in[16] mprj_io_inp_dis[16] mprj_io_ib_mode_sel[16]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[16\]/TIE_LO_ESD mprj_io_oeb[16]
++ mprj_pads.area1_io_pad\[16\]/TIE_HI_ESD mprj_pads.area1_io_pad\[16\]/TIE_LO_ESD
++ mprj_io_slow_sel[16] mprj_io_vtrip_sel[16] mprj_io_holdover[16] mprj_io_analog_en[16]
++ mprj_io_analog_sel[16] gpio_pad/VCCD vssio mprj_io_analog_pol[16] mprj_io_out[16]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_121 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_110 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_198 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_187 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xuser1_vdda_hvclamp_pad\[0\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vdda1_pad vssa1
++ vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vdda_hvc_clamped_pad
+Xbus_tie_6 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_40 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_51 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_62 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_709 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_vssd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssd_pad vssa vdda vddio
++ gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vssd_lvc_clamped_pad
+XFILLER_539 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_528 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_517 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_506 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_303 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_325 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_336 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_358 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_369 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_166 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_155 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_144 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_133 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_122 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_111 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_100 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_199 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_188 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xuser2_vccd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vccd2_pad vssa2 vdda2
++ vddio gpio_pad/VDDIO_Q vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vccd2 vssd2
++ sky130_ef_io__vccd_lvc_clamped3_pad
+Xbus_tie_30 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_41 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_52 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_63 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_7 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_529 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_518 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_507 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_304 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_326 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_337 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_359 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xmgmt_vssa_hvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa_pad vssa vdda vddio
++ gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vssa_hvc_clamped_pad
+XFILLER_167 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_145 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_134 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_123 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_112 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_101 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_189 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_SB1 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_690 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_corner\[1\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__corner_pad
+Xuser1_vssa_hvclamp_pad\[1\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1_pad2 vssa1
++ vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vssa_hvc_clamped_pad
+Xbus_tie_31 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_20 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_42 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_53 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_64 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_8 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_519 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_508 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_327 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_338 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_157 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_146 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_135 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_124 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_113 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_102 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_SB2 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_168 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_691 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area1_io_pad\[14\] mprj_pads.area1_io_pad\[14\]/IN_H mprj_pads.area1_io_pad\[14\]/PAD_A_NOESD_H
++ mprj_analog_io[7] mprj_pads.area1_io_pad\[14\]/PAD_A_ESD_1_H mprj_io[14] mprj_io_dm[44]
++ mprj_io_dm[43] mprj_io_dm[42] vddio mprj_io_in[14] mprj_io_inp_dis[14] mprj_io_ib_mode_sel[14]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[14\]/TIE_LO_ESD mprj_io_oeb[14]
++ mprj_pads.area1_io_pad\[14\]/TIE_HI_ESD mprj_pads.area1_io_pad\[14\]/TIE_LO_ESD
++ mprj_io_slow_sel[14] mprj_io_vtrip_sel[14] mprj_io_holdover[14] mprj_io_analog_en[14]
++ mprj_io_analog_sel[14] gpio_pad/VCCD vssio mprj_io_analog_pol[14] mprj_io_out[14]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xbus_tie_32 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_21 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_10 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_9 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_43 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_54 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_65 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_509 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_306 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_317 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_SB3 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_169 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_158 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_147 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_136 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_125 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_114 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_103 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_692 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_681 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[18\] mprj_pads.area2_io_pad\[18\]/IN_H mprj_pads.area2_io_pad\[18\]/PAD_A_NOESD_H
++ mprj_pads.area2_io_pad\[18\]/PAD_A_ESD_0_H mprj_pads.area2_io_pad\[18\]/PAD_A_ESD_1_H
++ mprj_io[37] mprj_io_dm[113] mprj_io_dm[112] mprj_io_dm[111] vddio mprj_io_in[37]
++ mprj_io_inp_dis[37] mprj_io_ib_mode_sel[37] gpio_pad/ENABLE_H gpio_pad/ENABLE_H
++ mprj_pads.area2_io_pad\[18\]/TIE_LO_ESD mprj_io_oeb[37] mprj_pads.area2_io_pad\[18\]/TIE_HI_ESD
++ mprj_pads.area2_io_pad\[18\]/TIE_LO_ESD mprj_io_slow_sel[37] mprj_io_vtrip_sel[37]
++ mprj_io_holdover[37] mprj_io_analog_en[37] mprj_io_analog_sel[37] gpio_pad/VCCD
++ vssio mprj_io_analog_pol[37] mprj_io_out[37] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xbus_tie_33 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_22 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_11 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_44 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_55 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_66 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area2_io_pad\[8\] mprj_pads.area2_io_pad\[8\]/IN_H mprj_pads.area2_io_pad\[8\]/PAD_A_NOESD_H
++ mprj_analog_io[20] mprj_pads.area2_io_pad\[8\]/PAD_A_ESD_1_H mprj_io[27] mprj_io_dm[83]
++ mprj_io_dm[82] mprj_io_dm[81] vddio mprj_io_in[27] mprj_io_inp_dis[27] mprj_io_ib_mode_sel[27]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[8\]/TIE_LO_ESD mprj_io_oeb[27]
++ mprj_pads.area2_io_pad\[8\]/TIE_HI_ESD mprj_pads.area2_io_pad\[8\]/TIE_LO_ESD mprj_io_slow_sel[27]
++ mprj_io_vtrip_sel[27] mprj_io_holdover[27] mprj_io_analog_en[27] mprj_io_analog_sel[27]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[27] mprj_io_out[27] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_307 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_318 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_159 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_148 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_137 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_126 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_115 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_104 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_693 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_660 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_671 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_682 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_490 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_34 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_23 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_12 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_45 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_56 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_67 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area1_io_pad\[8\] mprj_pads.area1_io_pad\[8\]/IN_H mprj_pads.area1_io_pad\[8\]/PAD_A_NOESD_H
++ mprj_analog_io[1] mprj_pads.area1_io_pad\[8\]/PAD_A_ESD_1_H mprj_io[8] mprj_io_dm[26]
++ mprj_io_dm[25] mprj_io_dm[24] vddio mprj_io_in[8] mprj_io_inp_dis[8] mprj_io_ib_mode_sel[8]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[8\]/TIE_LO_ESD mprj_io_oeb[8]
++ mprj_pads.area1_io_pad\[8\]/TIE_HI_ESD mprj_pads.area1_io_pad\[8\]/TIE_LO_ESD mprj_io_slow_sel[8]
++ mprj_io_vtrip_sel[8] mprj_io_holdover[8] mprj_io_analog_en[8] mprj_io_analog_sel[8]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[8] mprj_io_out[8] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xresetb_pad resetb_pad/PAD_A_ESD_H resetb_core_h vssio gpio_pad/VCCD resetb_pad/PAD_A_ESD_H
++ gpio_pad/ENABLE_H vssio vssio resetb_pad/TIE_LO_ESD resetb_pad/TIE_HI_ESD vssio
++ vssio vssio vssa vssd gpio_pad/AMUXBUS_B gpio_pad/AMUXBUS_A gpio_pad/VDDIO_Q vddio
++ vddio vdda gpio_pad/VCCD gpio_pad/VCCD gpio_pad/VSSIO_Q resetb sky130_fd_io__top_xres4v2
+XFILLER_308 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_319 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_149 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_138 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_127 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_116 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_105 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_694 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_650 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_672 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_683 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_491 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_480 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_24 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_13 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_35 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_46 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_57 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_68 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area1_io_pad\[12\] mprj_pads.area1_io_pad\[12\]/IN_H mprj_pads.area1_io_pad\[12\]/PAD_A_NOESD_H
++ mprj_analog_io[5] mprj_pads.area1_io_pad\[12\]/PAD_A_ESD_1_H mprj_io[12] mprj_io_dm[38]
++ mprj_io_dm[37] mprj_io_dm[36] vddio mprj_io_in[12] mprj_io_inp_dis[12] mprj_io_ib_mode_sel[12]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[12\]/TIE_LO_ESD mprj_io_oeb[12]
++ mprj_pads.area1_io_pad\[12\]/TIE_HI_ESD mprj_pads.area1_io_pad\[12\]/TIE_LO_ESD
++ mprj_io_slow_sel[12] mprj_io_vtrip_sel[12] mprj_io_holdover[12] mprj_io_analog_en[12]
++ mprj_io_analog_sel[12] gpio_pad/VCCD vssio mprj_io_analog_pol[12] mprj_io_out[12]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_810 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_309 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_139 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_128 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_106 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_695 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_640 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_651 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_662 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_673 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_684 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_492 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_481 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_470 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_25 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_14 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_36 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_47 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_58 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_69 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xmprj_pads.area2_io_pad\[16\] mprj_pads.area2_io_pad\[16\]/IN_H mprj_pads.area2_io_pad\[16\]/PAD_A_NOESD_H
++ mprj_analog_io[28] mprj_pads.area2_io_pad\[16\]/PAD_A_ESD_1_H mprj_io[35] mprj_io_dm[107]
++ mprj_io_dm[106] mprj_io_dm[105] vddio mprj_io_in[35] mprj_io_inp_dis[35] mprj_io_ib_mode_sel[35]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[16\]/TIE_LO_ESD mprj_io_oeb[35]
++ mprj_pads.area2_io_pad\[16\]/TIE_HI_ESD mprj_pads.area2_io_pad\[16\]/TIE_LO_ESD
++ mprj_io_slow_sel[35] mprj_io_vtrip_sel[35] mprj_io_holdover[35] mprj_io_analog_en[35]
++ mprj_io_analog_sel[35] gpio_pad/VCCD vssio mprj_io_analog_pol[35] mprj_io_out[35]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xmprj_pads.area2_io_pad\[6\] mprj_pads.area2_io_pad\[6\]/IN_H mprj_pads.area2_io_pad\[6\]/PAD_A_NOESD_H
++ mprj_analog_io[18] mprj_pads.area2_io_pad\[6\]/PAD_A_ESD_1_H mprj_io[25] mprj_io_dm[77]
++ mprj_io_dm[76] mprj_io_dm[75] vddio mprj_io_in[25] mprj_io_inp_dis[25] mprj_io_ib_mode_sel[25]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[6\]/TIE_LO_ESD mprj_io_oeb[25]
++ mprj_pads.area2_io_pad\[6\]/TIE_HI_ESD mprj_pads.area2_io_pad\[6\]/TIE_LO_ESD mprj_io_slow_sel[25]
++ mprj_io_vtrip_sel[25] mprj_io_holdover[25] mprj_io_analog_en[25] mprj_io_analog_sel[25]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[25] mprj_io_out[25] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_811 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_800 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xflash_csb_pad flash_csb_pad/IN_H flash_csb_pad/PAD_A_NOESD_H flash_csb_pad/PAD_A_ESD_0_H
++ flash_csb_pad/PAD_A_ESD_1_H flash_csb gpio_pad/VCCD gpio_pad/VCCD vssd vddio flash_csb_pad/IN
++ flash_csb_ieb_core vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H flash_csb_pad/TIE_LO_ESD
++ flash_csb_oeb_core flash_csb_pad/TIE_HI_ESD flash_csb_pad/TIE_LO_ESD vssd vssd vssd
++ vssd vssd gpio_pad/VCCD vssa vssd flash_csb_core gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_129 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_118 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_107 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_696 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_630 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_641 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_663 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_674 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_685 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_493 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_482 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_471 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_460 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_26 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_15 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_37 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_48 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_59 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_290 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xmprj_pads.area1_io_pad\[6\] mprj_pads.area1_io_pad\[6\]/IN_H mprj_pads.area1_io_pad\[6\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[6\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[6\]/PAD_A_ESD_1_H
++ mprj_io[6] mprj_io_dm[20] mprj_io_dm[19] mprj_io_dm[18] vddio mprj_io_in[6] mprj_io_inp_dis[6]
++ mprj_io_ib_mode_sel[6] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[6\]/TIE_LO_ESD
++ mprj_io_oeb[6] mprj_pads.area1_io_pad\[6\]/TIE_HI_ESD mprj_pads.area1_io_pad\[6\]/TIE_LO_ESD
++ mprj_io_slow_sel[6] mprj_io_vtrip_sel[6] mprj_io_holdover[6] mprj_io_analog_en[6]
++ mprj_io_analog_sel[6] gpio_pad/VCCD vssio mprj_io_analog_pol[6] mprj_io_out[6] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_801 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_119 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_108 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_697 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_620 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_631 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_653 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_664 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_675 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_686 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_483 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_472 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_450 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_461 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xbus_tie_27 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_16 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_38 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_49 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_291 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xmprj_pads.area1_io_pad\[10\] mprj_pads.area1_io_pad\[10\]/IN_H mprj_pads.area1_io_pad\[10\]/PAD_A_NOESD_H
++ mprj_analog_io[3] mprj_pads.area1_io_pad\[10\]/PAD_A_ESD_1_H mprj_io[10] mprj_io_dm[32]
++ mprj_io_dm[31] mprj_io_dm[30] vddio mprj_io_in[10] mprj_io_inp_dis[10] mprj_io_ib_mode_sel[10]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[10\]/TIE_LO_ESD mprj_io_oeb[10]
++ mprj_pads.area1_io_pad\[10\]/TIE_HI_ESD mprj_pads.area1_io_pad\[10\]/TIE_LO_ESD
++ mprj_io_slow_sel[10] mprj_io_vtrip_sel[10] mprj_io_holdover[10] mprj_io_analog_en[10]
++ mprj_io_analog_sel[10] gpio_pad/VCCD vssio mprj_io_analog_pol[10] mprj_io_out[10]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xflash_io1_pad flash_io1_pad/IN_H flash_io1_pad/PAD_A_NOESD_H flash_io1_pad/PAD_A_ESD_0_H
++ flash_io1_pad/PAD_A_ESD_1_H flash_io1 flash_io1_ieb_core flash_io1_ieb_core flash_io1_oeb_core
++ vddio flash_io1_di_core flash_io1_ieb_core vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H
++ flash_io1_pad/TIE_LO_ESD flash_io1_oeb_core flash_io1_pad/TIE_HI_ESD flash_io1_pad/TIE_LO_ESD
++ vssd vssd vssd vssd vssd gpio_pad/VCCD vssa vssd flash_io1_do_core gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_109 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_698 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_610 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_621 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_632 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_643 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_654 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_665 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_676 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_687 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_vddio_hvclamp_pad\[1\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vddio_pad2 vssa2
++ vdda2 vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vddio_hvc_clamped_pad
+XFILLER_495 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_473 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_440 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_451 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_462 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+Xbus_tie_28 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_17 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_39 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_270 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_292 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area2_io_pad\[14\] mprj_pads.area2_io_pad\[14\]/IN_H mprj_pads.area2_io_pad\[14\]/PAD_A_NOESD_H
++ mprj_analog_io[26] mprj_pads.area2_io_pad\[14\]/PAD_A_ESD_1_H mprj_io[33] mprj_io_dm[101]
++ mprj_io_dm[100] mprj_io_dm[99] vddio mprj_io_in[33] mprj_io_inp_dis[33] mprj_io_ib_mode_sel[33]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[14\]/TIE_LO_ESD mprj_io_oeb[33]
++ mprj_pads.area2_io_pad\[14\]/TIE_HI_ESD mprj_pads.area2_io_pad\[14\]/TIE_LO_ESD
++ mprj_io_slow_sel[33] mprj_io_vtrip_sel[33] mprj_io_holdover[33] mprj_io_analog_en[33]
++ mprj_io_analog_sel[33] gpio_pad/VCCD vssio mprj_io_analog_pol[33] mprj_io_out[33]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_803 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[4\] mprj_pads.area2_io_pad\[4\]/IN_H mprj_pads.area2_io_pad\[4\]/PAD_A_NOESD_H
++ mprj_analog_io[16] mprj_pads.area2_io_pad\[4\]/PAD_A_ESD_1_H mprj_io[23] mprj_io_dm[71]
++ mprj_io_dm[70] mprj_io_dm[69] vddio mprj_io_in[23] mprj_io_inp_dis[23] mprj_io_ib_mode_sel[23]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[4\]/TIE_LO_ESD mprj_io_oeb[23]
++ mprj_pads.area2_io_pad\[4\]/TIE_HI_ESD mprj_pads.area2_io_pad\[4\]/TIE_LO_ESD mprj_io_slow_sel[23]
++ mprj_io_vtrip_sel[23] mprj_io_holdover[23] mprj_io_analog_en[23] mprj_io_analog_sel[23]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[23] mprj_io_out[23] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_600 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_688 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_611 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_622 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_644 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_655 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_666 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_677 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_496 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_485 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_29 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+Xbus_tie_18 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_430 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_441 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_452 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_463 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_293 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area1_io_pad\[4\] mprj_pads.area1_io_pad\[4\]/IN_H mprj_pads.area1_io_pad\[4\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[4\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[4\]/PAD_A_ESD_1_H
++ mprj_io[4] mprj_io_dm[14] mprj_io_dm[13] mprj_io_dm[12] vddio mprj_io_in[4] mprj_io_inp_dis[4]
++ mprj_io_ib_mode_sel[4] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[4\]/TIE_LO_ESD
++ mprj_io_oeb[4] mprj_pads.area1_io_pad\[4\]/TIE_HI_ESD mprj_pads.area1_io_pad\[4\]/TIE_LO_ESD
++ mprj_io_slow_sel[4] mprj_io_vtrip_sel[4] mprj_io_holdover[4] mprj_io_analog_en[4]
++ mprj_io_analog_sel[4] gpio_pad/VCCD vssio mprj_io_analog_pol[4] mprj_io_out[4] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_804 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_601 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_612 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_634 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_645 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_656 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_667 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_678 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_90 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_497 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_486 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_475 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xbus_tie_19 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda gpio_pad/VDDIO_Q vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vddio gpio_pad/VCCD sky130_ef_io__connect_vcchib_vccd_and_vswitch_vddio_slice_20um
+XFILLER_420 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_431 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_442 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_453 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_250 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_272 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_283 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_805 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_602 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_624 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_635 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_646 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_657 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_668 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_679 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_91 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_80 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_498 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_487 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_476 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_410 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_421 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_432 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_443 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_465 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_251 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_240 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_273 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_284 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xuser2_vssd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssd2_pad vssa2 vdda2
++ vddio gpio_pad/VDDIO_Q vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vccd2 vssd2
++ sky130_ef_io__vssd_lvc_clamped3_pad
+Xmprj_pads.area2_io_pad\[12\] mprj_pads.area2_io_pad\[12\]/IN_H mprj_pads.area2_io_pad\[12\]/PAD_A_NOESD_H
++ mprj_analog_io[24] mprj_pads.area2_io_pad\[12\]/PAD_A_ESD_1_H mprj_io[31] mprj_io_dm[95]
++ mprj_io_dm[94] mprj_io_dm[93] vddio mprj_io_in[31] mprj_io_inp_dis[31] mprj_io_ib_mode_sel[31]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[12\]/TIE_LO_ESD mprj_io_oeb[31]
++ mprj_pads.area2_io_pad\[12\]/TIE_HI_ESD mprj_pads.area2_io_pad\[12\]/TIE_LO_ESD
++ mprj_io_slow_sel[31] mprj_io_vtrip_sel[31] mprj_io_holdover[31] mprj_io_analog_en[31]
++ mprj_io_analog_sel[31] gpio_pad/VCCD vssio mprj_io_analog_pol[31] mprj_io_out[31]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_806 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_vssio_hvclamp_pad\[0\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssio_pad vssa
++ vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vssio_hvc_clamped_pad
+XFILLER_603 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_625 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_636 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_647 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_658 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_669 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_92 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_81 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area2_io_pad\[2\] mprj_pads.area2_io_pad\[2\]/IN_H mprj_pads.area2_io_pad\[2\]/PAD_A_NOESD_H
++ mprj_analog_io[14] mprj_pads.area2_io_pad\[2\]/PAD_A_ESD_1_H mprj_io[21] mprj_io_dm[65]
++ mprj_io_dm[64] mprj_io_dm[63] vddio mprj_io_in[21] mprj_io_inp_dis[21] mprj_io_ib_mode_sel[21]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[2\]/TIE_LO_ESD mprj_io_oeb[21]
++ mprj_pads.area2_io_pad\[2\]/TIE_HI_ESD mprj_pads.area2_io_pad\[2\]/TIE_LO_ESD mprj_io_slow_sel[21]
++ mprj_io_vtrip_sel[21] mprj_io_holdover[21] mprj_io_analog_en[21] mprj_io_analog_sel[21]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[21] mprj_io_out[21] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_499 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_488 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_477 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_400 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_411 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_422 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_433 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_455 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_466 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_252 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_241 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_274 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_285 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_807 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xuser2_vssa_hvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2_pad vssa2 vdda2
++ vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vssa_hvc_clamped_pad
+Xmprj_pads.area1_io_pad\[2\] mprj_pads.area1_io_pad\[2\]/IN_H mprj_pads.area1_io_pad\[2\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[2\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[2\]/PAD_A_ESD_1_H
++ mprj_io[2] mprj_io_dm[8] mprj_io_dm[7] mprj_io_dm[6] vddio mprj_io_in[2] mprj_io_inp_dis[2]
++ mprj_io_ib_mode_sel[2] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[2\]/TIE_LO_ESD
++ mprj_io_oeb[2] mprj_pads.area1_io_pad\[2\]/TIE_HI_ESD mprj_pads.area1_io_pad\[2\]/TIE_LO_ESD
++ mprj_io_slow_sel[2] mprj_io_vtrip_sel[2] mprj_io_holdover[2] mprj_io_analog_en[2]
++ mprj_io_analog_sel[2] gpio_pad/VCCD vssio mprj_io_analog_pol[2] mprj_io_out[2] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_5 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_604 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_615 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_626 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_637 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_648 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_659 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_93 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_82 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_71 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_60 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_489 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_478 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_401 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_412 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_423 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_445 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_456 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_467 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_253 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_242 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_275 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_286 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_808 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_6 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_605 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_616 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_627 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_638 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_649 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_94 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_72 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_61 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_50 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_479 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_468 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_402 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_413 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_435 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_446 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_457 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_232 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_221 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_276 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_287 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area1_io_pad\[17\] mprj_pads.area1_io_pad\[17\]/IN_H mprj_pads.area1_io_pad\[17\]/PAD_A_NOESD_H
++ mprj_analog_io[10] mprj_pads.area1_io_pad\[17\]/PAD_A_ESD_1_H mprj_io[17] mprj_io_dm[53]
++ mprj_io_dm[52] mprj_io_dm[51] vddio mprj_io_in[17] mprj_io_inp_dis[17] mprj_io_ib_mode_sel[17]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[17\]/TIE_LO_ESD mprj_io_oeb[17]
++ mprj_pads.area1_io_pad\[17\]/TIE_HI_ESD mprj_pads.area1_io_pad\[17\]/TIE_LO_ESD
++ mprj_io_slow_sel[17] mprj_io_vtrip_sel[17] mprj_io_holdover[17] mprj_io_analog_en[17]
++ mprj_io_analog_sel[17] gpio_pad/VCCD vssio mprj_io_analog_pol[17] mprj_io_out[17]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+Xuser1_vdda_hvclamp_pad\[1\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vdda1_pad2 vssa1
++ vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vdda_hvc_clamped_pad
+XFILLER_809 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[10\] mprj_pads.area2_io_pad\[10\]/IN_H mprj_pads.area2_io_pad\[10\]/PAD_A_NOESD_H
++ mprj_analog_io[22] mprj_pads.area2_io_pad\[10\]/PAD_A_ESD_1_H mprj_io[29] mprj_io_dm[89]
++ mprj_io_dm[88] mprj_io_dm[87] vddio mprj_io_in[29] mprj_io_inp_dis[29] mprj_io_ib_mode_sel[29]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[10\]/TIE_LO_ESD mprj_io_oeb[29]
++ mprj_pads.area2_io_pad\[10\]/TIE_HI_ESD mprj_pads.area2_io_pad\[10\]/TIE_LO_ESD
++ mprj_io_slow_sel[29] mprj_io_vtrip_sel[29] mprj_io_holdover[29] mprj_io_analog_en[29]
++ mprj_io_analog_sel[29] gpio_pad/VCCD vssio mprj_io_analog_pol[29] mprj_io_out[29]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio
++ gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_7 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_606 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_617 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_628 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_639 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_95 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_73 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_62 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_51 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_40 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_469 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_425 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_436 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_447 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_458 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[0\] mprj_pads.area2_io_pad\[0\]/IN_H mprj_pads.area2_io_pad\[0\]/PAD_A_NOESD_H
++ mprj_analog_io[12] mprj_pads.area2_io_pad\[0\]/PAD_A_ESD_1_H mprj_io[19] mprj_io_dm[59]
++ mprj_io_dm[58] mprj_io_dm[57] vddio mprj_io_in[19] mprj_io_inp_dis[19] mprj_io_ib_mode_sel[19]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[0\]/TIE_LO_ESD mprj_io_oeb[19]
++ mprj_pads.area2_io_pad\[0\]/TIE_HI_ESD mprj_pads.area2_io_pad\[0\]/TIE_LO_ESD mprj_io_slow_sel[19]
++ mprj_io_vtrip_sel[19] mprj_io_holdover[19] mprj_io_analog_en[19] mprj_io_analog_sel[19]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[19] mprj_io_out[19] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_255 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_233 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_222 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_200 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_266 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_8 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_607 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_618 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_629 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_96 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_74 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_63 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_52 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_41 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+Xmprj_pads.area1_io_pad\[0\] mprj_pads.area1_io_pad\[0\]/IN_H mprj_pads.area1_io_pad\[0\]/PAD_A_NOESD_H
++ mprj_pads.area1_io_pad\[0\]/PAD_A_ESD_0_H mprj_pads.area1_io_pad\[0\]/PAD_A_ESD_1_H
++ mprj_io[0] mprj_io_dm[2] mprj_io_dm[1] mprj_io_dm[0] vddio mprj_io_in[0] mprj_io_inp_dis[0]
++ mprj_io_ib_mode_sel[0] gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[0\]/TIE_LO_ESD
++ mprj_io_oeb[0] mprj_pads.area1_io_pad\[0\]/TIE_HI_ESD mprj_pads.area1_io_pad\[0\]/TIE_LO_ESD
++ mprj_io_slow_sel[0] mprj_io_vtrip_sel[0] mprj_io_holdover[0] mprj_io_analog_en[0]
++ mprj_io_analog_sel[0] gpio_pad/VCCD vssio mprj_io_analog_pol[0] mprj_io_out[0] gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_415 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_426 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_437 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_448 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_459 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_256 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_234 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_223 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_201 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_267 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_289 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_790 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_9 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_608 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_619 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_86 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_75 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_64 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_53 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_42 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_31 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_20 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_405 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_416 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_427 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_438 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_449 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_257 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_235 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_224 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_202 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_268 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_791 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_780 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_vdda_hvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vdda_pad vssa vdda vddio
++ gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__vdda_hvc_clamped_pad
+Xmprj_pads.area1_io_pad\[15\] mprj_pads.area1_io_pad\[15\]/IN_H mprj_pads.area1_io_pad\[15\]/PAD_A_NOESD_H
++ mprj_analog_io[8] mprj_pads.area1_io_pad\[15\]/PAD_A_ESD_1_H mprj_io[15] mprj_io_dm[47]
++ mprj_io_dm[46] mprj_io_dm[45] vddio mprj_io_in[15] mprj_io_inp_dis[15] mprj_io_ib_mode_sel[15]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[15\]/TIE_LO_ESD mprj_io_oeb[15]
++ mprj_pads.area1_io_pad\[15\]/TIE_HI_ESD mprj_pads.area1_io_pad\[15\]/TIE_LO_ESD
++ mprj_io_slow_sel[15] mprj_io_vtrip_sel[15] mprj_io_holdover[15] mprj_io_analog_en[15]
++ mprj_io_analog_sel[15] gpio_pad/VCCD vssio mprj_io_analog_pol[15] mprj_io_out[15]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_609 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_98 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_87 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_76 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_65 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_54 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_32 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_21 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_10 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_406 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_417 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_428 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_439 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_258 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_236 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_225 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_269 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_792 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_781 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_770 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area2_io_pad\[9\] mprj_pads.area2_io_pad\[9\]/IN_H mprj_pads.area2_io_pad\[9\]/PAD_A_NOESD_H
++ mprj_analog_io[21] mprj_pads.area2_io_pad\[9\]/PAD_A_ESD_1_H mprj_io[28] mprj_io_dm[86]
++ mprj_io_dm[85] mprj_io_dm[84] vddio mprj_io_in[28] mprj_io_inp_dis[28] mprj_io_ib_mode_sel[28]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area2_io_pad\[9\]/TIE_LO_ESD mprj_io_oeb[28]
++ mprj_pads.area2_io_pad\[9\]/TIE_HI_ESD mprj_pads.area2_io_pad\[9\]/TIE_LO_ESD mprj_io_slow_sel[28]
++ mprj_io_vtrip_sel[28] mprj_io_holdover[28] mprj_io_analog_en[28] mprj_io_analog_sel[28]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[28] mprj_io_out[28] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa2 vdda2 vddio gpio_pad/VDDIO_Q vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+Xflash_io0_pad flash_io0_pad/IN_H flash_io0_pad/PAD_A_NOESD_H flash_io0_pad/PAD_A_ESD_0_H
++ flash_io0_pad/PAD_A_ESD_1_H flash_io0 flash_io0_ieb_core flash_io0_ieb_core flash_io0_oeb_core
++ vddio flash_io0_di_core flash_io0_ieb_core vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H
++ flash_io0_pad/TIE_LO_ESD flash_io0_oeb_core flash_io0_pad/TIE_HI_ESD flash_io0_pad/TIE_LO_ESD
++ vssd vssd vssd vssd vssd gpio_pad/VCCD vssa vssd flash_io0_do_core gpio_pad/AMUXBUS_A
++ gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD
++ vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_99 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_88 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_77 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_66 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_55 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_44 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_33 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_22 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_11 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_407 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_418 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_429 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_259 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_215 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_204 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_782 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_771 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_760 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_590 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmgmt_corner\[0\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__corner_pad
+Xuser1_vssa_hvclamp_pad\[0\] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1_pad vssa1
++ vdda1 vddio gpio_pad/VDDIO_Q FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__vssa_hvc_clamped_pad
+Xmprj_pads.area1_io_pad\[9\] mprj_pads.area1_io_pad\[9\]/IN_H mprj_pads.area1_io_pad\[9\]/PAD_A_NOESD_H
++ mprj_analog_io[2] mprj_pads.area1_io_pad\[9\]/PAD_A_ESD_1_H mprj_io[9] mprj_io_dm[29]
++ mprj_io_dm[28] mprj_io_dm[27] vddio mprj_io_in[9] mprj_io_inp_dis[9] mprj_io_ib_mode_sel[9]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[9\]/TIE_LO_ESD mprj_io_oeb[9]
++ mprj_pads.area1_io_pad\[9\]/TIE_HI_ESD mprj_pads.area1_io_pad\[9\]/TIE_LO_ESD mprj_io_slow_sel[9]
++ mprj_io_vtrip_sel[9] mprj_io_holdover[9] mprj_io_analog_en[9] mprj_io_analog_sel[9]
++ gpio_pad/VCCD vssio mprj_io_analog_pol[9] mprj_io_out[9] gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd
++ gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_89 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_78 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_67 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_45 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_34 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_23 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_12 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xflash_clk_pad flash_clk_pad/IN_H flash_clk_pad/PAD_A_NOESD_H flash_clk_pad/PAD_A_ESD_0_H
++ flash_clk_pad/PAD_A_ESD_1_H flash_clk gpio_pad/VCCD gpio_pad/VCCD vssd vddio flash_clk_pad/IN
++ flash_clk_ieb_core vssd gpio_pad/ENABLE_H gpio_pad/ENABLE_H flash_clk_pad/TIE_LO_ESD
++ flash_clk_oeb_core flash_clk_pad/TIE_HI_ESD flash_clk_pad/TIE_LO_ESD vssd vssd vssd
++ vssd vssd gpio_pad/VCCD vssa vssd flash_clk_core gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B
++ vssa vdda vddio gpio_pad/VDDIO_Q gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q
++ sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_408 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_419 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_249 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_238 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_216 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_205 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_794 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_772 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_761 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_750 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_591 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xuser1_vccd_lvclamp_pad gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vccd1_pad vssa1 vdda1
++ vddio gpio_pad/VDDIO_Q vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q vccd1 vssd1
++ sky130_ef_io__vccd_lvc_clamped3_pad
+XFILLER_580 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ vccd vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+Xmprj_pads.area1_io_pad\[13\] mprj_pads.area1_io_pad\[13\]/IN_H mprj_pads.area1_io_pad\[13\]/PAD_A_NOESD_H
++ mprj_analog_io[6] mprj_pads.area1_io_pad\[13\]/PAD_A_ESD_1_H mprj_io[13] mprj_io_dm[41]
++ mprj_io_dm[40] mprj_io_dm[39] vddio mprj_io_in[13] mprj_io_inp_dis[13] mprj_io_ib_mode_sel[13]
++ gpio_pad/ENABLE_H gpio_pad/ENABLE_H mprj_pads.area1_io_pad\[13\]/TIE_LO_ESD mprj_io_oeb[13]
++ mprj_pads.area1_io_pad\[13\]/TIE_HI_ESD mprj_pads.area1_io_pad\[13\]/TIE_LO_ESD
++ mprj_io_slow_sel[13] mprj_io_vtrip_sel[13] mprj_io_holdover[13] mprj_io_analog_en[13]
++ mprj_io_analog_sel[13] gpio_pad/VCCD vssio mprj_io_analog_pol[13] mprj_io_out[13]
++ gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q FILLER_792/VCCHIB
++ vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__gpiov2_pad_wrapped
+XFILLER_79 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_68 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_57 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_46 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_35 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_24 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_13 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+Xuser1_corner gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__corner_pad
+XFILLER_409 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa2 vdda2 vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_239 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_10um
+XFILLER_217 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_206 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa vdda vddio gpio_pad/VDDIO_Q
++ gpio_pad/VCCD vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_5um
+XFILLER_795 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_9/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_784 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_773 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_1um
+XFILLER_762 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_751 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+XFILLER_740 gpio_pad/AMUXBUS_A gpio_pad/AMUXBUS_B vssa1 vdda1 vddio gpio_pad/VDDIO_Q
++ FILLER_792/VCCHIB vddio gpio_pad/VCCD vssio vssd gpio_pad/VSSIO_Q sky130_ef_io__com_bus_slice_20um
+.ends
+
