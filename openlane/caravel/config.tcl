@@ -131,5 +131,3 @@ set ::env(LVS_INSERT_POWER_PINS) 0
 set ::env(MAGIC_GENERATE_LEF) 0
 
 set ::env(QUIT_ON_ILLEGAL_OVERLAPS) 0
-
-set ::env(QUIT_ON_TR_DRC) 0

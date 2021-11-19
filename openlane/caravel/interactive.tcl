@@ -48,7 +48,7 @@ add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
 add_macro_placement housekeeping 3032.170 500.010 N
 add_macro_placement mprj $mprj_x $mprj_y N
-add_macro_placement mgmt_buffers 960.900 1200.180 N
+add_macro_placement mgmt_buffers 960.900 1160.180 N
 # add_macro_placement mgmt_buffers 1060.850 1234.090 N
 add_macro_placement rstb_level 708.550 235.440 S
 add_macro_placement user_id_value 3283.120 440.630 N
