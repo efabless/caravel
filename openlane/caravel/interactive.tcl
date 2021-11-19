@@ -52,7 +52,7 @@ add_macro_placement mgmt_buffers 960.900 1160.180 N
 # add_macro_placement mgmt_buffers 1060.850 1234.090 N
 add_macro_placement rstb_level 708.550 235.440 S
 add_macro_placement user_id_value 3283.120 440.630 N
-add_macro_placement por 3150.730 214.721 MX
+add_macro_placement por 3250.730 234.721 MX
 add_macro_placement pll 3140.730 404.721 N
 
 add_macro_placement clocking 1028.730 27.440 N
