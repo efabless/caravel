@@ -36,7 +36,7 @@ set ::env(CLOCK_TREE_SYNTH) 0
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 1100 120"
+set ::env(DIE_AREA) "0 0 1100 160"
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
@@ -94,10 +94,11 @@ set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 25
 ## Routing 
 set ::env(GLB_RT_MINLAYER) 2
 set ::env(GLB_RT_MAXLAYER) 5
-set ::env(GLB_RT_ADJUSTMENT) 0.00
+set ::env(GLB_RT_ADJUSTMENT) 0.05
 set ::env(GLB_RT_OVERFLOW_ITERS) 250
-set ::env(GLB_RT_ALLOW_CONGESTION) 1
+set ::env(GLB_RT_ALLOW_CONGESTION) 0
 
+set ::env(GLB_RT_OBS) "li1 $::env(DIE_AREA)"
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 
 ## Diode Insertion 
