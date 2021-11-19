@@ -63,8 +63,8 @@ set_io_pin_constraint -pin_names {pad_gpio_ana_pol} -region right:14-16
 set_io_pin_constraint -pin_names {pad_gpio_ana_en} -region right:12-14
 set_io_pin_constraint -pin_names {mgmt_gpio_out} -region right:10-12
 set_io_pin_constraint -pin_names {mgmt_gpio_oeb} -region right:8-10
-set_io_pin_constraint -pin_names {mgmt_gpio_in} -region right:6-8
-set_io_pin_constraint -pin_names {one} -region right:4-6
+set_io_pin_constraint -pin_names {one} -region right:6-8
+set_io_pin_constraint -pin_names {mgmt_gpio_in} -region right:4-6
 set_io_pin_constraint -pin_names {zero} -region right:2-4
 
 # North pins
