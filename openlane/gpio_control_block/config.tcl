@@ -66,7 +66,7 @@ set ::env(FP_PDN_HOFFSET) 1.5
 set ::env(FP_PDN_VOFFSET) 9.0
 
 set ::env(FP_PDN_HPITCH) 16.9
-set ::env(FP_PDN_VPITCH) 15.5
+set ::env(FP_PDN_VPITCH) 25
 
 set ::env(FP_PDN_VSPACING) 3.4
 set ::env(FP_PDN_HSPACING) 3.4
@@ -86,13 +86,18 @@ set ::env(GLB_RT_ADJUSTMENT) 0.05
 
 # Add obstructions on the areas that will lie underneath the padframe 
 set ::env(GLB_RT_OBS) "\ 
+	li1 0 0 16.79500 30.02500,
+	li1 0 29.96500 4.26500 65.07000,
+	li1 4.21500 57.40500 49.81500 64.93000,
+	li1 16.83000 0 49.41000 5.24000,
+	li1 49.000 0 169.81000 64.84500,
 	met5 67 0 170 65,
 	met4 67 0 170 65,
 	met2 120 0 170 65,
 	met1 120 0 170 65"
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) "4"
+set ::env(DIODE_INSERTION_STRATEGY) "3"
 
 ## Internal macros
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro_placement.cfg

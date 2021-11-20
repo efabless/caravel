@@ -252,138 +252,42 @@ module gpio_control_block (mgmt_gpio_in,
  wire \shift_register[8] ;
  wire \shift_register[9] ;
 
- sky130_fd_sc_hd__diode_2 ANTENNA__106__1_A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_0 (.DIODE(one),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__106__2_A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_1 (.DIODE(one),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__106__3_A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_2 (.DIODE(pad_gpio_in),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__106__4_A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_3 (.DIODE(serial_data_in),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__106__5_A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_4 (.DIODE(user_gpio_oeb),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__192__A (.DIODE(serial_load),
+ sky130_fd_sc_hd__diode_2 ANTENNA_5 (.DIODE(mgmt_gpio_out),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_clkbuf_0_serial_clock_A (.DIODE(serial_clock),
+ sky130_fd_sc_hd__diode_2 ANTENNA_6 (.DIODE(user_gpio_out),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input10_A (.DIODE(gpio_defaults[6]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input11_A (.DIODE(gpio_defaults[7]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input12_A (.DIODE(gpio_defaults[8]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input13_A (.DIODE(gpio_defaults[9]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input14_A (.DIODE(mgmt_gpio_oeb),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input15_A (.DIODE(mgmt_gpio_out),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input16_A (.DIODE(pad_gpio_in),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input17_A (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input18_A (.DIODE(serial_data_in),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input19_A (.DIODE(user_gpio_oeb),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input1_A (.DIODE(gpio_defaults[0]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input20_A (.DIODE(user_gpio_out),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input2_A (.DIODE(gpio_defaults[10]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input3_A (.DIODE(gpio_defaults[11]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input4_A (.DIODE(gpio_defaults[12]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input5_A (.DIODE(gpio_defaults[1]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input6_A (.DIODE(gpio_defaults[2]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input7_A (.DIODE(gpio_defaults[3]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input8_A (.DIODE(gpio_defaults[4]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA_input9_A (.DIODE(gpio_defaults[5]),
-    .VGND(vssd),
+ sky130_fd_sc_hd__decap_12 FILLER_0_29 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -399,7 +303,11 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__decap_12 FILLER_0_64 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_8 FILLER_0_64 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_1 FILLER_0_72 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -407,7 +315,19 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_0_83 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_0_90 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_10_3 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_11_16 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -423,6 +343,10 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_12_3 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_12_93 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
@@ -435,11 +359,19 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_14_29 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_14_3 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_14_93 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_15_3 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -455,11 +387,19 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_16_82 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_17_3 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_17_30 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_17_45 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -491,19 +431,39 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__decap_12 FILLER_1_50 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_2 FILLER_18_92 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__decap_8 FILLER_1_62 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_12 FILLER_1_47 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_1_70 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_6 FILLER_1_59 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_1 FILLER_1_65 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_1_69 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_1 FILLER_1_73 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_1_80 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__decap_3 FILLER_2_26 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_1 FILLER_2_31 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -515,7 +475,19 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_2 FILLER_2_61 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_2_61 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_2_68 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_1 FILLER_3_26 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_3_35 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -528,6 +500,10 @@ module gpio_control_block (mgmt_gpio_in,
     .VPB(vccd),
     .VPWR(vccd));
  sky130_fd_sc_hd__fill_1 FILLER_3_93 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_4_32 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -560,6 +536,10 @@ module gpio_control_block (mgmt_gpio_in,
     .VPB(vccd),
     .VPWR(vccd));
  sky130_fd_sc_hd__fill_2 FILLER_7_46 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__fill_2 FILLER_7_92 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
