@@ -50,6 +50,13 @@ set ::env(GLB_RT_OVERFLOW_ITERS) 100
 
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.17
 
+# prevent signal routing on li1 
+set ::env(GLB_RT_OBS) "\
+    li1 0 0 5.94500 550.950,\
+    li1 0 0 300.23000 10.97000,\
+    li1 294.23500 0 300.22000 550.95000,\
+    li1 0 538.84500 300.2300 550.95000"
+
 ## Placement
 set ::env(PL_TARGET_DENSITY) 0.384
 
