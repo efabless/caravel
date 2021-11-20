@@ -154,6 +154,17 @@ if __name__ == '__main__':
         print('Error:  No user_defines.v file found.')
         sys.exit(1)
 
+    # Set additional dictionary entries for the fixed-configuration
+    # GPIOs 0 to 4.  This allows the layout to have the default
+    # gpio_defaults_block layout, and this script will change it as
+    # needed.
+
+    kvpairs["`USER_CONFIG_GPIO_0_INIT"] = "13'h1803"
+    kvpairs["`USER_CONFIG_GPIO_1_INIT"] = "13'h1803"
+    kvpairs["`USER_CONFIG_GPIO_2_INIT"] = "13'h0403"
+    kvpairs["`USER_CONFIG_GPIO_3_INIT"] = "13'h0403"
+    kvpairs["`USER_CONFIG_GPIO_4_INIT"] = "13'h0403"
+
     # Generate zero and one coordinates for each via
     llx_zero = []
     lly_zero = []
@@ -216,7 +227,7 @@ if __name__ == '__main__':
                 if binval[12 - j] == '1':
                     bitflips.append(j)
                 
-            with open(magpath + '/gpio_defaults_block_0000.mag', 'r') as ifile:
+            with open(magpath + '/gpio_defaults_block.mag', 'r') as ifile:
                 maglines = ifile.read().splitlines()
                 outlines = []
                 for magline in maglines:
