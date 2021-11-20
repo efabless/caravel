@@ -69,15 +69,16 @@ set ::env(EXTRA_LEFS) "\
 
 set ::env(EXTRA_GDS_FILES) "\
 	$gds_root/chip_io.gds \
-	$gds_root/user_project_wrapper_empty.gds \
+	$gds_root/user_project_wrapper.gds \
 	$gds_root/mgmt_protect.gds \
 	$gds_root/gpio_control_block.gds \
+	$gds_root/gpio_defaults_block.gds \
 	$gds_root/user_id_programming.gds \
 	$gds_root/housekeeping.gds \
 	$gds_root/digital_pll.gds \
 	$gds_root/caravel_clocking.gds \
 	$gds_root/simple_por.gds\
-	$gds_root/sky130_fd_sc_hvl__lsbufhv2lv_1_wrapped.gds\
+	$gds_root/xres_buf.gds\
 	$mgmt_area_gds_root/mgmt_core_wrapper.gds \
 	"
 

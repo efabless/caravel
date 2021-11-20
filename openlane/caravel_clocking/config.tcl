@@ -66,7 +66,9 @@ set ::env(GLB_RT_MINLAYER) 2
 set ::env(GLB_RT_MAXLAYER) 6
 
 # prevent signal routing on li1
-set ::env(GLB_RT_OBS) "li1 94.38500 0.09500 97.39500 55.21000"
+set ::env(GLB_RT_OBS) "\
+	li1 0 54.64000 100.0 60,\
+	li1 94.29500 0 100 60"
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
