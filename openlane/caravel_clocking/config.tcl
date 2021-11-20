@@ -45,11 +45,16 @@ set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
 
 set ::env(LEFT_MARGIN_MULT) 0
 set ::env(BOTTOM_MARGIN_MULT) 0
+set ::env(TOP_MARGIN_MULT) "2"
 
 set ::env(CELL_PAD) 0
 
+## PDN
+set ::env(FP_PDN_HPITCH) 16.9
+set ::env(FP_PDN_VPITCH) 15.5
+
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.94
+set ::env(PL_TARGET_DENSITY) 0.7
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
@@ -59,6 +64,9 @@ set ::env(GLB_RT_ADJUSTMENT) 0
 
 set ::env(GLB_RT_MINLAYER) 2
 set ::env(GLB_RT_MAXLAYER) 6
+
+# prevent signal routing on li1
+set ::env(GLB_RT_OBS) "li1 94.38500 0.09500 97.39500 55.21000"
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
