@@ -1351,7 +1351,8 @@ module caravan (
 	`ifdef USE_POWER_PINS
 		.vdd3v3(vddio_core),
 		.vdd1v8(vccd_core),
-		.vss(vssio_core),
+		.vss3v3(vssio_core),
+		.vss1v8(vssd_core),
 	`endif
 		.porb_h(porb_h),
 		.porb_l(porb_l),

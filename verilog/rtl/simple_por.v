@@ -20,7 +20,8 @@ module simple_por(
 `ifdef USE_POWER_PINS
     inout vdd3v3,
     inout vdd1v8,
-    inout vss,
+    inout vss3v3,
+    inout vss1v8,
 `endif
     output porb_h,
     output porb_l,
@@ -54,9 +55,9 @@ module simple_por(
     sky130_fd_sc_hvl__schmittbuf_1 hystbuf1 (
 `ifdef USE_POWER_PINS
 	.VPWR(vdd3v3),
-	.VGND(vss),
+	.VGND(vss3v3),
 	.VPB(vdd3v3),
-	.VNB(vss),
+	.VNB(vss3v3),
 `endif
 	.A(inode),
 	.X(mid)
@@ -65,9 +66,9 @@ module simple_por(
     sky130_fd_sc_hvl__schmittbuf_1 hystbuf2 (
 `ifdef USE_POWER_PINS
 	.VPWR(vdd3v3),
-	.VGND(vss),
+	.VGND(vss3v3),
 	.VPB(vdd3v3),
-	.VNB(vss),
+	.VNB(vss3v3),
 `endif
 	.A(mid),
 	.X(porb_h)
@@ -78,8 +79,8 @@ module simple_por(
 	.VPWR(vdd3v3),
 	.VPB(vdd3v3),
 	.LVPWR(vdd1v8),
-	.VNB(vss),
-	.VGND(vss),
+	.VNB(vss3v3),
+	.VGND(vss3v3),
 `endif
 	.A(porb_h),
 	.X(porb_l)
