@@ -212,6 +212,7 @@ module caravan (
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_nc;	/* no-connects */
     wire [4:0] mgmt_io_out;			/* three-pin interface out */
     wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
+    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
     wire clock_core;
 
@@ -760,7 +761,7 @@ module caravan (
 	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
 			mgmt_io_oeb[1:0]}),
 
-	.pwr_ctrl_out(),        /* Not used in this version */
+	.pwr_ctrl_out(pwr_ctrl_nc),        /* Not used in this version */
 
 	.trap(trap),
 
