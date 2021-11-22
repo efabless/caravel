@@ -33,7 +33,7 @@
 	`include "libs.ref/verilog/sky130_fd_sc_hd/sky130_fd_sc_hd.v"
 	`include "libs.ref/verilog/sky130_fd_sc_hvl/primitives.v"
 	`include "libs.ref/verilog/sky130_fd_sc_hvl/sky130_fd_sc_hvl.v"
-	`include "libs.ref/verilog/sky130_sram_macros/sky130_sram_1kbyte_1rw1r_32x256_8.v"
+	`include "libs.ref/verilog/sky130_sram_macros/sky130_sram_2kbyte_1rw1r_32x512_8.v"
     `else 
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
@@ -42,7 +42,7 @@
 	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/primitives.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
-	`include "libs.ref/sky130_sram_macros/verilog/sky130_sram_1kbyte_1rw1r_32x256_8.v"
+	`include "libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v"
     `endif 
 
     `ifdef GL

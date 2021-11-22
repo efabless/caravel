@@ -666,8 +666,8 @@ module caravan (
 
     caravel_clocking clocking(
 	`ifdef USE_POWER_PINS
-	    .vdd1v8(vccd_core),
-	    .vss(vssd_core),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
 	.ext_clk_sel(ext_clk_sel),
 	.ext_clk(clock_core),
@@ -702,12 +702,12 @@ module caravan (
 
     housekeeping housekeeping (
 	`ifdef USE_POWER_PINS
-	    .vdd(vccd_core),
-	    .vss(vssd_core),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
 
 	.wb_clk_i(caravel_clk),
-	.wb_rst_i(caravel_rstn),
+	.wb_rstn_i(caravel_rstn),
 
 	.wb_adr_i(mprj_adr_o_core),
 	.wb_dat_i(mprj_dat_o_core),
@@ -1283,9 +1283,9 @@ module caravan (
     );
 
     /* Section 2 GPIOs (GPIO 19 to 37) */
-    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] one_loop2;
+    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] one_loop2;
 
-    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] (
+    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] (
 	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1293,47 +1293,47 @@ module caravan (
 	    .vssd1(vssd1_core),
 	`endif
 
-	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS-2)*13-1):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13)]),
+ 	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS-3)*13-1):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13)]),
 
     	// Management Soc-facing signals
 
-	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
-	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
+ 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
+ 	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
 	.mgmt_gpio_oeb(one_loop2),
 
         .one(one_loop2),
         .zero(),
 
     	// Serial data chain for pad configuration
-    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
     	// User-facing signals
-    	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+   	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+   	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+  	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
 
     	// Pad-facing signals (Pad GPIOv2)
-    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_dm(mprj_io_dm[((`MPRJ_DIG_PADS)*3-7):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3)]),
-    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)])
+    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_dm(mprj_io_dm[((`MPRJ_DIG_PADS)*3-10):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3)]),
+    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)])
     );
 
     user_id_programming #(
