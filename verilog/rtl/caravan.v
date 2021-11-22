@@ -673,7 +673,7 @@ module caravan (
 	.ext_clk(clock_core),
 	.pll_clk(pll_clk),
 	.pll_clk90(pll_clk90),
-	.resetb(resetb),
+	.resetb(rstb_l),
 	.sel(spi_pll_sel),
 	.sel2(spi_pll90_sel),
 	.ext_reset(ext_reset),  // From housekeeping SPI
@@ -689,9 +689,9 @@ module caravan (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.resetb(resetb),
+	.resetb(rstb_l),
 	.enable(spi_pll_ena),
-	.osc(clock),
+	.osc(clock_core),
 	.clockp({pll_clk, pll_clk90}),
 	.div(spi_pll_div),
 	.dco(spi_pll_dco_ena),

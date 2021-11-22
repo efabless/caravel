@@ -616,7 +616,7 @@ module caravel (
         .ext_clk(clock_core),
         .pll_clk(pll_clk),
         .pll_clk90(pll_clk90),
-        .resetb(rstb_h),
+        .resetb(rstb_l),
         .sel(spi_pll_sel),
         .sel2(spi_pll90_sel),
         .ext_reset(ext_reset),  // From housekeeping SPI
@@ -632,7 +632,7 @@ module caravel (
 		.VPWR(vccd_core),
 		.VGND(vssd_core),
     `endif
-        .resetb(rstb_h),
+        .resetb(rstb_l),
         .enable(spi_pll_ena),
         .osc(clock_core),
         .clockp({pll_clk, pll_clk90}),
