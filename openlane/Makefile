@@ -20,8 +20,8 @@ CLEAN = $(foreach block,$(BLOCKS), clean-$(block))
 
 OPENLANE_TAG ?= v0.20
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
-OPENLANE_BASIC_COMMAND = "cd /project/openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
-OPENLANE_INTERACTIVE_COMMAND = "cd /project/openlane && flow.tcl -it -file ./$*/interactive.tcl"
+OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
+OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
 
 all: $(BLOCKS)
 
@@ -42,10 +42,11 @@ endif
 	@sleep 1
 
 	@if [ -f ./$*/interactive.tcl ]; then\
-		docker run -it -v $(OPENLANE_ROOT):/openLane \
+		docker run -it -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:/project \
+		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
@@ -53,8 +54,9 @@ endif
 	else\
 		docker run -it -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:/project \
+		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
