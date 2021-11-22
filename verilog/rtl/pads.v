@@ -137,6 +137,38 @@
 		.TIE_HI_ESD(), \
 		.TIE_LO_ESD(loop_``X)) 
 
+`define OUTPUT_NO_INP_DIS_PAD(X,Y,OUT_EN_N) \
+	wire loop_``X; \
+	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \
+	`MGMT_ABUTMENT_PINS \
+	`ifndef	TOP_ROUTING \
+		,.PAD(X), \
+	`endif \
+		.OUT(Y), \
+		.OE_N(OUT_EN_N), \
+		.HLD_H_N(vddio), \
+		.ENABLE_H(porb_h),	\
+		.ENABLE_INP_H(loop_``X), \
+		.ENABLE_VDDA_H(porb_h), \
+		.ENABLE_VSWITCH_H(vssa), \
+		.ENABLE_VDDIO(vccd), \
+		.INP_DIS(loop_``X), \
+		.IB_MODE_SEL(vssd), \
+		.VTRIP_SEL(vssd), \
+		.SLOW(vssd),	\
+		.HLD_OVR(vssd), \
+		.ANALOG_EN(vssd), \
+		.ANALOG_SEL(vssd), \
+		.ANALOG_POL(vssd), \
+		.DM({vccd, vccd, vssd}),	\
+		.PAD_A_NOESD_H(), \
+		.PAD_A_ESD_0_H(), \
+		.PAD_A_ESD_1_H(), \
+		.IN(), \
+		.IN_H(), \
+		.TIE_HI_ESD(), \
+		.TIE_LO_ESD(loop_``X)) 
+
 `define INOUT_PAD(X,Y,Y_OUT,INPUT_DIS,OUT_EN_N,MODE) \
 	wire loop_``X; \
 	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \

@@ -2985,7 +2985,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .ext_reset(ext_reset),
     .pll_clk(pll_clk),
     .pll_clk90(pll_clk90),
-    .resetb(rstb_h),
+    .resetb(rstb_l),
     .resetb_sync(caravel_rstn),
     .sel({ \spi_pll_sel[2] , \spi_pll_sel[1] , \spi_pll_sel[0]  }),
     .sel2({ \spi_pll90_sel[2] , \spi_pll90_sel[1] , \spi_pll90_sel[0]  }),
@@ -4761,7 +4761,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .enable(spi_pll_ena),
     .ext_trim({ \spi_pll_trim[25] , \spi_pll_trim[24] , \spi_pll_trim[23] , \spi_pll_trim[22] , \spi_pll_trim[21] , \spi_pll_trim[20] , \spi_pll_trim[19] , \spi_pll_trim[18] , \spi_pll_trim[17] , \spi_pll_trim[16] , \spi_pll_trim[15] , \spi_pll_trim[14] , \spi_pll_trim[13] , \spi_pll_trim[12] , \spi_pll_trim[11] , \spi_pll_trim[10] , \spi_pll_trim[9] , \spi_pll_trim[8] , \spi_pll_trim[7] , \spi_pll_trim[6] , \spi_pll_trim[5] , \spi_pll_trim[4] , \spi_pll_trim[3] , \spi_pll_trim[2] , \spi_pll_trim[1] , \spi_pll_trim[0]  }),
     .osc(clock_core),
-    .resetb(rstb_h)
+    .resetb(rstb_l)
   );
   simple_por por (
     .por_l(por_l),

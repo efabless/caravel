@@ -395,8 +395,8 @@ module chip_io_alt #(
 		flash_io1, flash_io1_di_core, flash_io1_do_core,
 		flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
 
-	`OUTPUT_PAD(flash_csb, flash_csb_core, flash_csb_ieb_core, flash_csb_oeb_core);
-	`OUTPUT_PAD(flash_clk, flash_clk_core, flash_clk_ieb_core, flash_clk_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, flash_csb_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, flash_clk_oeb_core);
 
 	// NOTE:  The analog_out pad from the raven chip has been replaced by
     	// the digital reset input resetb on caravel due to the lack of an on-board
