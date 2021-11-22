@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1637553020
+timestamp 1637596979
 << metal1 >>
 rect 284662 995256 284668 995308
 rect 284720 995296 284726 995308
@@ -10738,6 +10738,11 @@ rlabel metal5 s 6167 442854 19619 453734 6 vssd2_pad
 port 660 nsew signal bidirectional
 rlabel metal4 s 7 455645 4843 456093 6 vssio
 port 661 nsew signal bidirectional
+rlabel metal4 s 132580 30762 132848 31674 6 vssd
+port 640 nsew signal bidirectional
+flabel metal2 141667 39934 141813 40000 0 FreeSans 320 0 0 0 resetb_core_h
+port 637 nsew signal tristate
+rlabel metal2 527455 41713 527511 42193 0 porb_h
 flabel metal5 41130 179416 43498 180132 0 FreeSans 3200 0 0 0 vssd2
 port 659 nsew signal bidirectional
 flabel metal5 44242 179326 46748 180098 0 FreeSans 3200 0 0 0 vccd2
@@ -10746,11 +10751,6 @@ flabel metal5 670926 95262 673290 96090 0 FreeSans 3200 180 0 0 vssd1
 port 649 nsew signal bidirectional
 flabel metal5 674122 95266 676502 96062 0 FreeSans 3200 180 0 0 vccd1
 port 646 nsew signal bidirectional
-rlabel metal4 s 132580 30762 132848 31674 6 vssd
-port 640 nsew signal bidirectional
-flabel metal2 141667 39934 141813 40000 0 FreeSans 320 0 0 0 resetb_core_h
-port 637 nsew signal tristate
-rlabel metal2 527455 41713 527511 42193 0 porb_h
 << properties >>
 string FIXED_BBOX 0 0 717600 1037600
 << end >>
