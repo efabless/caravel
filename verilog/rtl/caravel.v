@@ -1298,13 +1298,13 @@ module caravel (
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.resetn(gpio_resetn_2_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.serial_clock(gpio_clock_2_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.serial_load(gpio_load_2_shifted[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
 
-    	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
-    	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.resetn_out(gpio_resetn_2[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.serial_clock_out(gpio_clock_2[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
+    	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
 
     	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
 	.mgmt_gpio_out(mgmt_io_out[4:2]),
@@ -1352,13 +1352,13 @@ module caravel (
 
     	// Management Soc-facing signals
 
-    	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_2-4):0]),
+    	.resetn(gpio_resetn_2_shifted[(`MPRJ_IO_PADS_2-4):0]),
+    	.serial_clock(gpio_clock_2_shifted[(`MPRJ_IO_PADS_2-4):0]),
+    	.serial_load(gpio_load_2_shifted[(`MPRJ_IO_PADS_2-4):0]),
 
-    	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-4):0]),
-    	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_2-4):0]),
+    	.resetn_out(gpio_resetn_2[(`MPRJ_IO_PADS_2-4):0]),
+    	.serial_clock_out(gpio_clock_2[(`MPRJ_IO_PADS_2-4):0]),
+    	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-4):0]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
 	.mgmt_gpio_out(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
