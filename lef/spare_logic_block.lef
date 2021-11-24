@@ -1,0 +1,440 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO spare_logic_block
+  CLASS BLOCK ;
+  FOREIGN spare_logic_block ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 45.000 BY 45.000 ;
+  PIN spare_xfq[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 10.240 4.000 10.840 ;
+    END
+  END spare_xfq[0]
+  PIN spare_xfq[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 32.290 0.000 32.570 4.000 ;
+    END
+  END spare_xfq[1]
+  PIN spare_xfqn[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 22.630 41.000 22.910 45.000 ;
+    END
+  END spare_xfqn[0]
+  PIN spare_xfqn[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 34.040 4.000 34.640 ;
+    END
+  END spare_xfqn[1]
+  PIN spare_xi[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 41.950 0.000 42.230 4.000 ;
+    END
+  END spare_xi[0]
+  PIN spare_xi[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 0.040 45.000 0.640 ;
+    END
+  END spare_xi[1]
+  PIN spare_xi[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 27.240 45.000 27.840 ;
+    END
+  END spare_xi[2]
+  PIN spare_xi[3]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 0.090 41.000 0.370 45.000 ;
+    END
+  END spare_xi[3]
+  PIN spare_xib
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 37.440 4.000 38.040 ;
+    END
+  END spare_xib
+  PIN spare_xmx[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 35.510 41.000 35.790 45.000 ;
+    END
+  END spare_xmx[0]
+  PIN spare_xmx[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 25.850 0.000 26.130 4.000 ;
+    END
+  END spare_xmx[1]
+  PIN spare_xna[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 34.040 45.000 34.640 ;
+    END
+  END spare_xna[0]
+  PIN spare_xna[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 6.840 45.000 7.440 ;
+    END
+  END spare_xna[1]
+  PIN spare_xno[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 6.530 0.000 6.810 4.000 ;
+    END
+  END spare_xno[0]
+  PIN spare_xno[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 30.640 4.000 31.240 ;
+    END
+  END spare_xno[1]
+  PIN spare_xz[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 20.440 4.000 21.040 ;
+    END
+  END spare_xz[0]
+  PIN spare_xz[10]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 25.850 41.000 26.130 45.000 ;
+    END
+  END spare_xz[10]
+  PIN spare_xz[11]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 38.730 41.000 39.010 45.000 ;
+    END
+  END spare_xz[11]
+  PIN spare_xz[12]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 23.840 4.000 24.440 ;
+    END
+  END spare_xz[12]
+  PIN spare_xz[13]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 37.440 45.000 38.040 ;
+    END
+  END spare_xz[13]
+  PIN spare_xz[14]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 9.750 41.000 10.030 45.000 ;
+    END
+  END spare_xz[14]
+  PIN spare_xz[15]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 0.090 0.000 0.370 4.000 ;
+    END
+  END spare_xz[15]
+  PIN spare_xz[16]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 6.840 4.000 7.440 ;
+    END
+  END spare_xz[16]
+  PIN spare_xz[17]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 23.840 45.000 24.440 ;
+    END
+  END spare_xz[17]
+  PIN spare_xz[18]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 3.310 41.000 3.590 45.000 ;
+    END
+  END spare_xz[18]
+  PIN spare_xz[19]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 3.440 4.000 4.040 ;
+    END
+  END spare_xz[19]
+  PIN spare_xz[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 38.730 0.000 39.010 4.000 ;
+    END
+  END spare_xz[1]
+  PIN spare_xz[20]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 29.070 41.000 29.350 45.000 ;
+    END
+  END spare_xz[20]
+  PIN spare_xz[21]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 10.240 45.000 10.840 ;
+    END
+  END spare_xz[21]
+  PIN spare_xz[22]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 3.310 0.000 3.590 4.000 ;
+    END
+  END spare_xz[22]
+  PIN spare_xz[23]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 12.970 0.000 13.250 4.000 ;
+    END
+  END spare_xz[23]
+  PIN spare_xz[24]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 16.190 0.000 16.470 4.000 ;
+    END
+  END spare_xz[24]
+  PIN spare_xz[25]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 13.640 45.000 14.240 ;
+    END
+  END spare_xz[25]
+  PIN spare_xz[26]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 19.410 0.000 19.690 4.000 ;
+    END
+  END spare_xz[26]
+  PIN spare_xz[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 40.840 45.000 41.440 ;
+    END
+  END spare_xz[2]
+  PIN spare_xz[3]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 41.950 41.000 42.230 45.000 ;
+    END
+  END spare_xz[3]
+  PIN spare_xz[4]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 12.970 41.000 13.250 45.000 ;
+    END
+  END spare_xz[4]
+  PIN spare_xz[5]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 16.190 41.000 16.470 45.000 ;
+    END
+  END spare_xz[5]
+  PIN spare_xz[6]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met2 ;
+        RECT 29.070 0.000 29.350 4.000 ;
+    END
+  END spare_xz[6]
+  PIN spare_xz[7]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 17.040 4.000 17.640 ;
+    END
+  END spare_xz[7]
+  PIN spare_xz[8]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 44.240 4.000 44.840 ;
+    END
+  END spare_xz[8]
+  PIN spare_xz[9]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 41.000 20.440 45.000 21.040 ;
+    END
+  END spare_xz[9]
+  PIN vccd
+    DIRECTION INPUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 6.400 39.100 8.000 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 5.520 26.400 39.100 28.000 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 5.720 5.200 7.320 38.320 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 25.720 5.200 27.320 38.320 ;
+    END
+  END vccd
+  PIN vssd
+    DIRECTION INPUT ;
+    USE GROUND ;
+    PORT
+      LAYER met5 ;
+        RECT 5.520 16.400 39.100 18.000 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 15.720 5.200 17.320 38.320 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 35.720 5.200 37.320 38.320 ;
+    END
+  END vssd
+  OBS
+      LAYER li1 ;
+        RECT 5.520 0.425 39.875 41.055 ;
+      LAYER met1 ;
+        RECT 0.070 0.380 42.250 41.100 ;
+      LAYER met2 ;
+        RECT 0.650 40.720 3.030 44.725 ;
+        RECT 3.870 40.720 9.470 44.725 ;
+        RECT 10.310 40.720 12.690 44.725 ;
+        RECT 13.530 40.720 15.910 44.725 ;
+        RECT 16.750 40.720 22.350 44.725 ;
+        RECT 23.190 40.720 25.570 44.725 ;
+        RECT 26.410 40.720 28.790 44.725 ;
+        RECT 29.630 40.720 35.230 44.725 ;
+        RECT 36.070 40.720 38.450 44.725 ;
+        RECT 39.290 40.720 41.670 44.725 ;
+        RECT 0.100 4.280 42.220 40.720 ;
+        RECT 0.650 0.155 3.030 4.280 ;
+        RECT 3.870 0.155 6.250 4.280 ;
+        RECT 7.090 0.155 12.690 4.280 ;
+        RECT 13.530 0.155 15.910 4.280 ;
+        RECT 16.750 0.155 19.130 4.280 ;
+        RECT 19.970 0.155 25.570 4.280 ;
+        RECT 26.410 0.155 28.790 4.280 ;
+        RECT 29.630 0.155 32.010 4.280 ;
+        RECT 32.850 0.155 38.450 4.280 ;
+        RECT 39.290 0.155 41.670 4.280 ;
+      LAYER met3 ;
+        RECT 4.400 43.840 41.000 44.705 ;
+        RECT 4.000 41.840 41.000 43.840 ;
+        RECT 4.000 40.440 40.600 41.840 ;
+        RECT 4.000 38.440 41.000 40.440 ;
+        RECT 4.400 37.040 40.600 38.440 ;
+        RECT 4.000 35.040 41.000 37.040 ;
+        RECT 4.400 33.640 40.600 35.040 ;
+        RECT 4.000 31.640 41.000 33.640 ;
+        RECT 4.400 30.240 41.000 31.640 ;
+        RECT 4.000 28.240 41.000 30.240 ;
+        RECT 4.000 26.840 40.600 28.240 ;
+        RECT 4.000 24.840 41.000 26.840 ;
+        RECT 4.400 23.440 40.600 24.840 ;
+        RECT 4.000 21.440 41.000 23.440 ;
+        RECT 4.400 20.040 40.600 21.440 ;
+        RECT 4.000 18.040 41.000 20.040 ;
+        RECT 4.400 16.640 41.000 18.040 ;
+        RECT 4.000 14.640 41.000 16.640 ;
+        RECT 4.000 13.240 40.600 14.640 ;
+        RECT 4.000 11.240 41.000 13.240 ;
+        RECT 4.400 9.840 40.600 11.240 ;
+        RECT 4.000 7.840 41.000 9.840 ;
+        RECT 4.400 6.440 40.600 7.840 ;
+        RECT 4.000 4.440 41.000 6.440 ;
+        RECT 4.400 3.040 41.000 4.440 ;
+        RECT 4.000 1.040 41.000 3.040 ;
+        RECT 4.000 0.175 40.600 1.040 ;
+  END
+END spare_logic_block
+END LIBRARY
+
