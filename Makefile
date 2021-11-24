@@ -42,6 +42,25 @@ LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
 LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
+MCW_ROOT?=$(PWD)/mgmt_core_wrapper
+MCW ?=LITEX_VEXRISCV
+
+# Install lite version of caravel, (1): caravel-lite, (0): caravel
+MCW_LITE?=1
+
+ifeq ($(MCW),LITEX_VEXRISCV)
+	MCW_NAME := mcw-litex-vexriscv
+	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
+	MCW_BRANCH := main
+else
+	MCW_NAME := mcw-pico
+	MCW_REPO := https://github.com/efabless/caravel_pico
+	MCW_BRANCH := main
+endif
+
+# Install caravel as submodule, (1): submodule, (0): clone
+SUBMODULE?=0
+
 # Caravel Root (Default: pwd)
 # Need to be overwritten if running the makefile from UPRJ_ROOT,
 # If caravel is sub-moduled in the user project, run export CARAVEL_ROOT=$(pwd)/caravel
@@ -575,6 +594,53 @@ update_caravel:
 	cd caravel/ && \
 		git checkout master && \
 		git pull
+
+###########################################################################
+
+# Install Mgmt Core Wrapper
+.PHONY: install_mcw
+install_mcw:
+ifeq ($(SUBMODULE),1)
+	@echo "Installing $(MCW_NAME) as a submodule.."
+# Convert MCW_ROOT to relative path because .gitmodules doesn't accept '/'
+	$(eval MCW_PATH := $(shell realpath --relative-to=$(shell pwd) $(MCW_ROOT)))
+	@if [ ! -d $(MCW_ROOT) ]; then git submodule add --name $(MCW_NAME) $(MCW_REPO) $(MCW_PATH); fi
+	@git submodule update --init
+	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
+	$(MAKE) simlink
+else
+	@echo "Installing $(MCW_NAME).."
+	@git clone $(MCW_REPO) $(MCW_ROOT)
+	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
+endif
+
+# Update Mgmt Core Wrapper
+.PHONY: update_mcw
+update_mcw: check-mcw
+ifeq ($(SUBMODULE),1)
+	@git submodule update --init --recursive
+	cd $(MCW_ROOT) && \
+	git checkout $(MCW_BRANCH) && \
+	git pull
+else
+	cd $(MCW_ROOT)/ && \
+		git checkout $(MCW_BRANCH) && \
+		git pull
+endif
+
+# Uninstall Mgmt Core Wrapper
+.PHONY: uninstall_mcw
+uninstall_mcw:
+ifeq ($(SUBMODULE),1)
+	git config -f .gitmodules --remove-section "submodule.$(MCW_NAME)"
+	git add .gitmodules
+	git submodule deinit -f $(MCW_ROOT)
+	git rm --cached $(MCW_ROOT)
+	rm -rf .git/modules/$(MCW_NAME)
+	rm -rf $(MCW_ROOT)
+else
+	rm -rf $(MCW_ROOT)/*
+endif
 
 ###########################################################################
 .PHONY: pdk
