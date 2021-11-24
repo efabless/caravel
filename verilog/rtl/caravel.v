@@ -1426,5 +1426,28 @@ module caravel (
 		.X(rstb_l)
     );
 
+    // Spare logic for metal mask fixes
+    wire [15:0] spare_xi_nc;
+    wire [3:0] spare_xib_nc;
+    wire [7:0] spare_xna_nc;
+    wire [7:0] spare_xno_nc;
+    wire [7:0] spare_xmx_nc;
+    wire [7:0] spare_xfq_nc;
+    wire [7:0] spare_xfqn_nc;
+
+    spare_logic_block spare_logic [3:0] (
+	`ifdef USE_POWER_PINS
+		.vccd(vccd_core),
+		.vssd(vssd_core),
+	`endif
+		.spare_xi(spare_xi_nc),
+		.spare_xib(spare_xib_nc),
+		.spare_xna(spare_xna_nc),
+		.spare_xno(spare_xno_nc),
+		.spare_xmx(spare_xmx_nc),
+		.spare_xfq(spare_xfq_nc),
+		.spare_xfqn(spare_xfqn_nc)
+    );
+
 endmodule
 // `default_nettype wire

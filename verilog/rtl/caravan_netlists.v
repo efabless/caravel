@@ -63,6 +63,8 @@
 	`include "gl/gpio_defaults_block.v"
 	`include "gl/gpio_logic_high.v"
 	`include "gl/xres_buf.v"
+	`include "gl/spare_logic_block.v"
+	`include "gl/mgmt_core_wrapper.v"
 	`include "gl/caravan.v"
     `else
 	`include "digital_pll.v"
@@ -81,6 +83,7 @@
 	`include "gpio_defaults_block.v"
 	`include "gpio_logic_high.v"
 	`include "xres_buf.v"
+	`include "spare_logic_block.v"
 	`include "mgmt_core_wrapper.v"
 	`include "caravan.v"
     `endif
