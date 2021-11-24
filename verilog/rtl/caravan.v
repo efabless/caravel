@@ -1372,6 +1372,7 @@ module caravan (
     );
 
     // Spare logic for metal mask fixes
+    wire [107:0] spare_xz_nc;
     wire [15:0] spare_xi_nc;
     wire [3:0] spare_xib_nc;
     wire [7:0] spare_xna_nc;
@@ -1385,6 +1386,7 @@ module caravan (
 		.vccd(vccd_core),
 		.vssd(vssd_core),
 	`endif
+		.spare_xz(spare_xz_nc),
 		.spare_xi(spare_xi_nc),
 		.spare_xib(spare_xib_nc),
 		.spare_xna(spare_xna_nc),
