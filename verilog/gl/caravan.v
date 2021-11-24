@@ -4118,6 +4118,55 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .mask_rev({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  })
   );
+  spare_logic_block \spare_logic[0]  (
+    .vssd(vssd_core),
+    .vccd(vccd_core),
+    .spare_xz(),
+    .spare_xi(),
+    .spare_xib(),
+    .spare_xna(),
+    .spare_xno(),
+    .spare_xmx(),
+    .spare_xfq(),
+    .spare_xfqn()
+  );
+  spare_logic_block \spare_logic[1]  (
+    .vssd(vssd_core),
+    .vccd(vccd_core),
+    .spare_xz(),
+    .spare_xi(),
+    .spare_xib(),
+    .spare_xna(),
+    .spare_xno(),
+    .spare_xmx(),
+    .spare_xfq(),
+    .spare_xfqn()
+  );
+  spare_logic_block \spare_logic[2]  (
+    .vssd(vssd_core),
+    .vccd(vccd_core),
+    .spare_xz(),
+    .spare_xi(),
+    .spare_xib(),
+    .spare_xna(),
+    .spare_xno(),
+    .spare_xmx(),
+    .spare_xfq(),
+    .spare_xfqn()
+  );
+  spare_logic_block \spare_logic[3]  (
+    .vssd(vssd_core),
+    .vccd(vccd_core),
+    .spare_xz(),
+    .spare_xi(),
+    .spare_xib(),
+    .spare_xna(),
+    .spare_xno(),
+    .spare_xmx(),
+    .spare_xfq(),
+    .spare_xfqn()
+  );
+
   assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
   assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
   assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
