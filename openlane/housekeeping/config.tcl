@@ -13,6 +13,7 @@
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
 
+# OR COMMIT: 182e733faa149c80f36cfd2198a83dcdeb7853ea
 set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) "housekeeping"
@@ -25,14 +26,15 @@ set ::env(VERILOG_FILES) "\
     $script_dir/../../verilog/rtl/housekeeping.v"
 
 set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_NET) {wb_clk_i csclk mgmt_gpio_in[4]}
+set ::env(CLOCK_NET) "$::env(CLOCK_PORT) csclk mgmt_gpio_in\[4\]"
 
 set ::env(BASE_SDC_FILE) $script_dir/base.sdc
 
 ## Synthesis 
 set ::env(NO_SYNTH_CELL_LIST) $script_dir/no_synth.list 
+set ::env(SYNTH_STRATEGY) "AREA 0"
 
-set ::env(SYNTH_MAX_FANOUT) 10
+set ::env(SYNTH_MAX_FANOUT) 20
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
@@ -45,7 +47,7 @@ set ::env(FP_IO_MIN_DISTANCE) 2
 set ::env(CELL_PAD) 0
 
 ## Routing 
-set ::env(GLB_RT_ADJUSTMENT) 0.05 
+set ::env(GLB_RT_ADJUSTMENT) 0.06 
 set ::env(GLB_RT_OVERFLOW_ITERS) 100
 
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.17
@@ -58,7 +60,7 @@ set ::env(GLB_RT_OBS) "\
     li1 0 538.84500 300.2300 550.95000"
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.384
+set ::env(PL_TARGET_DENSITY) 0.378
 
 set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) .17
 set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
@@ -66,7 +68,3 @@ set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) "3"
 set ::env(GLB_RT_ANT_ITERS) "7"
-
-# Disbale timing checks for now till the issue with the clock gating path is fixed 
-# The timing reports show only one violating path from the mgmt_gpio_ 
-set ::env(QUIT_ON_TIMING_VIOLATIONS) 0

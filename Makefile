@@ -464,7 +464,7 @@ help:
 # RCX Extraction
 BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
 RCX_BLOCKS = $(foreach block, $(BLOCKS), rcx-$(block))
-OPENLANE_IMAGE_NAME=efabless/openlane:2021.09.16_03.28.21
+OPENLANE_IMAGE_NAME=efabless/openlane:2021.11.23_01.42.34
 $(RCX_BLOCKS): rcx-% : ./def/%.def 
 	echo "Running RC Extraction on $*"
 	mkdir -p ./def/tmp 
@@ -520,8 +520,7 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		};\
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_verilog ./verilog/gl/$*.v;\
-		link_design $*;\
+		read_def ./def/$*.def;\
 		read_spef ./def/tmp/$*.spef;\
 		read_sdc -echo ./openlane/$*/base.sdc;\
 		write_sdf $*.sdf;\
