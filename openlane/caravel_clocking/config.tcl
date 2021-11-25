@@ -74,6 +74,3 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) 3
-
-## 
-set ::env(QUIT_ON_TIMING_VIOLATIONS) 0
