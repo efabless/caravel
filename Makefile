@@ -69,6 +69,9 @@ CARAVEL_ROOT ?= $(shell pwd)
 # User project root
 UPRJ_ROOT ?= $(shell pwd)
 
+# MANAGEMENT AREA ROOT
+MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper 
+
 # Build tasks such as make ship, make generate_fill, make set_user_id, make final run in the foreground (1) or background (0)
 FOREGROUND ?= 1
 
@@ -464,7 +467,7 @@ help:
 # RCX Extraction
 BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
 RCX_BLOCKS = $(foreach block, $(BLOCKS), rcx-$(block))
-OPENLANE_IMAGE_NAME=efabless/openlane:2021.09.16_03.28.21
+OPENLANE_IMAGE_NAME=efabless/openlane:2021.11.23_01.42.34
 $(RCX_BLOCKS): rcx-% : ./def/%.def 
 	echo "Running RC Extraction on $*"
 	mkdir -p ./def/tmp 
@@ -474,6 +477,7 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
 		set std_cell_lef ./def/tmp/merged.lef;\
+		set mgmt_area_lef $(MGMT_AREA_ROOT)/lef/mgmt_core_wrapper.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
@@ -483,6 +487,10 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
     			puts stderr \$$errmsg;\
     			exit 1;\
 			}\
+		};\
+		if {[catch {read_lef \$$mgmt_area_lef} errmsg]} {\
+    			puts stderr \$$errmsg;\
+    			exit 1;\
 		};\
 		if {[catch {read_def -order_wires ./def/$*.def} errmsg]} {\
 			puts stderr \$$errmsg;\
@@ -503,11 +511,12 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		extract_parasitics -ext_model_file ${PDK_ROOT}/sky130A/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
 		write_spef ./def/tmp/$*.spef" > ./def/tmp/or_rcx_$*.tcl
 ## Generate Spef file
-	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
 	sh -c " cd /caravel; openroad -exit ./def/tmp/or_rcx_$*.tcl |& tee ./def/tmp/or_rcx_$*.log" 
 ## Run OpenSTA
 	echo "\
 		set std_cell_lef ./def/tmp/merged.lef;\
+		set mgmt_area_lef $(MGMT_AREA_ROOT)/lef/mgmt_core_wrapper.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
@@ -518,17 +527,20 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
     			exit 1;\
 			}\
 		};\
+		if {[catch {read_lef \$$mgmt_area_lef} errmsg]} {\
+			puts stderr \$$errmsg;\
+			exit 1;\
+		};\
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_verilog ./verilog/gl/$*.v;\
-		link_design $*;\
+		read_def ./def/$*.def;\
 		read_spef ./def/tmp/$*.spef;\
 		read_sdc -echo ./openlane/$*/base.sdc;\
 		write_sdf $*.sdf;\
 		report_checks -fields {capacitance slew input_pins nets fanout} -path_delay min_max -group_count 1000;\
 		report_check_types -max_slew -max_capacitance -max_fanout -violators;\
 		" > ./def/tmp/or_sta_$*.tcl 
-	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
 	sh -c "cd /caravel; openroad -exit ./def/tmp/or_sta_$*.tcl |& tee ./def/tmp/or_sta_$*.log" 
 
 ###########################################################################
