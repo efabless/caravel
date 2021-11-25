@@ -738,6 +738,12 @@ else
 	@echo PROJECT is set to $(PROJECT)
 endif
 
+check-mcw:
+	@if [ ! -d "$(MCW_ROOT)" ]; then \
+		echo "MCW Root: "$(MCW_ROOT)" doesn't exists, please export the correct path before running make. "; \
+		exit 1; \
+	fi
+
 # Make README.rst
 README.rst: README.src.rst docs/source/getting-started.rst docs/source/tool-versioning.rst openlane/README.src.rst docs/source/caravel-with-openlane.rst Makefile
 	pip -q install rst_include && \
