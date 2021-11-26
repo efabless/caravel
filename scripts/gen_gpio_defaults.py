@@ -232,7 +232,7 @@ if __name__ == '__main__':
                 if binval[12 - j] == '1':
                     bitflips.append(j)
                 
-            with open(caravel_path + 'mag/gpio_defaults_block.mag', 'r') as ifile:
+            with open(caravel_path + '/mag/gpio_defaults_block.mag', 'r') as ifile:
                 maglines = ifile.read().splitlines()
                 outlines = []
                 for magline in maglines:
