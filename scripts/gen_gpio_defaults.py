@@ -142,7 +142,7 @@ if __name__ == '__main__':
     kvpairs = {}
     user_defines_path = vpath + '/rtl/user_defines.v'
     if not os.path.isfile(user_defines_path):
-        user_defines_path = caravel_path + 'verilog/rtl/user_defines.v'
+        user_defines_path = caravel_path + '/verilog/rtl/user_defines.v'
 
     if os.path.isfile(user_defines_path):
         with open(user_defines_path, 'r') as ifile:
