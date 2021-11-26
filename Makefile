@@ -83,7 +83,7 @@ IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
 OPEN_PDKS_COMMIT ?= 14db32aa8ba330e88632ff3ad2ff52f4f4dae1ad
-INSTALL_SRAM ?= disabled
+INSTALL_SRAM ?= no   #   = yes to enable
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...

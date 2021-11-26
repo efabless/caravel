@@ -265,7 +265,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravel layout:')
-    with open(caravel_path + 'mag/caravel.mag', 'r') as ifile:
+    with open(caravel_path + '/mag/caravel.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
