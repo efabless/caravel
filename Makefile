@@ -496,7 +496,7 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 			puts stderr \$$errmsg;\
 			exit 1;\
 		};\
-		read_sdc ./openlane/$*/base.sdc;\
+		read_sdc ./spef/$*.sdc;\
 		set_propagated_clock [all_clocks];\
 		set rc_values \"mcon 9.249146E-3,via 4.5E-3,via2 3.368786E-3,via3 0.376635E-3,via4 0.00580E-3\";\
 		set vias_rc [split \$$rc_values ","];\
@@ -509,10 +509,10 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		set_wire_rc -clock -layer met5;\
 		define_process_corner -ext_model_index 0 X;\
 		extract_parasitics -ext_model_file ${PDK_ROOT}/sky130A/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
-		write_spef ./def/tmp/$*.spef" > ./def/tmp/or_rcx_$*.tcl
+		write_spef ./spef/$*.spef" > ./def/tmp/rcx_$*.tcl
 ## Generate Spef file
 	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	sh -c " cd /caravel; openroad -exit ./def/tmp/or_rcx_$*.tcl |& tee ./def/tmp/or_rcx_$*.log" 
+	sh -c " cd /caravel; openroad -exit ./def/tmp/rcx_$*.tcl |& tee ./def/tmp/rcx_$*.log" 
 ## Run OpenSTA
 	echo "\
 		set std_cell_lef ./def/tmp/merged.lef;\
@@ -534,11 +534,13 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
 		read_def ./def/$*.def;\
-		read_spef ./def/tmp/$*.spef;\
-		read_sdc -echo ./openlane/$*/base.sdc;\
-		write_sdf $*.sdf;\
+		read_spef ./spef/$*.spef;\
+		read_sdc -echo ./spef/$*.sdc;\
+		write_sdf ./sdf/$*.sdf;\
 		report_checks -fields {capacitance slew input_pins nets fanout} -path_delay min_max -group_count 1000;\
 		report_check_types -max_slew -max_capacitance -max_fanout -violators;\
+		report_checks -to [all_outputs] -group_count 1000;\
+		report_checks -to [all_outputs] -unconstrained -group_count 1000;\
 		" > ./def/tmp/or_sta_$*.tcl 
 	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
 	sh -c "cd /caravel; openroad -exit ./def/tmp/or_sta_$*.tcl |& tee ./def/tmp/or_sta_$*.log" 
