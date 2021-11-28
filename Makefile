@@ -83,7 +83,7 @@ IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
 OPEN_PDKS_COMMIT ?= 14db32aa8ba330e88632ff3ad2ff52f4f4dae1ad
-INSTALL_SRAM ?= disabled
+INSTALL_SRAM ?= no   #   = yes to enable
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -108,6 +108,7 @@ __ship:
 	@echo "\
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
+		addpath hexdigits; \
 		crashbackups stop; \
 		gds readonly true; \
 		gds rescale false; \
@@ -124,7 +125,7 @@ __ship:
 		exit;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
 truck: check-env uncompress uncompress-caravel
@@ -151,6 +152,7 @@ __truck:
 	@echo "\
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
+		addpath hexdigits; \
 		crashbackups stop; \
 		gds readonly true; \
 		gds rescale false; \
@@ -167,7 +169,7 @@ __truck:
 		exit;" > $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
 .PHONY: clean
@@ -751,6 +753,12 @@ ifndef PROJECT
 else
 	@echo PROJECT is set to $(PROJECT)
 endif
+
+check-mcw:
+	@if [ ! -d "$(MCW_ROOT)" ]; then \
+		echo "MCW Root: "$(MCW_ROOT)" doesn't exists, please export the correct path before running make. "; \
+		exit 1; \
+	fi
 
 # Make README.rst
 README.rst: README.src.rst docs/source/getting-started.rst docs/source/tool-versioning.rst openlane/README.src.rst docs/source/caravel-with-openlane.rst Makefile

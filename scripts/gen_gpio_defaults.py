@@ -123,6 +123,7 @@ if __name__ == '__main__':
     magpath = user_project_path + '/mag'
     gdspath = user_project_path + '/gds'
     vpath = user_project_path + '/verilog'
+    caravel_path = os.environ['CARAVEL_ROOT']
 
     # Check paths
     if not os.path.isdir(gdspath):
@@ -139,8 +140,12 @@ if __name__ == '__main__':
 
     # Parse the user defines verilog file
     kvpairs = {}
-    if os.path.isfile(vpath + '/rtl/user_defines.v'):
-        with open(vpath + '/rtl/user_defines.v', 'r') as ifile:
+    user_defines_path = vpath + '/rtl/user_defines.v'
+    if not os.path.isfile(user_defines_path):
+        user_defines_path = caravel_path + '/verilog/rtl/user_defines.v'
+
+    if os.path.isfile(user_defines_path):
+        with open(user_defines_path, 'r') as ifile:
             infolines = ifile.read().splitlines()
             for line in infolines:
                 tokens = line.split()
@@ -227,7 +232,7 @@ if __name__ == '__main__':
                 if binval[12 - j] == '1':
                     bitflips.append(j)
                 
-            with open(magpath + '/gpio_defaults_block.mag', 'r') as ifile:
+            with open(caravel_path + '/mag/gpio_defaults_block.mag', 'r') as ifile:
                 maglines = ifile.read().splitlines()
                 outlines = []
                 for magline in maglines:
@@ -254,13 +259,13 @@ if __name__ == '__main__':
     print('Step 2:  Modify top-level layouts to use the specified defaults.')
 
     # Create a backup of the caravan and caravel layouts
-    if not testmode:
-        shutil.copy(magpath + '/caravel.mag', magpath + '/caravel.mag.bak')
-        shutil.copy(magpath + '/caravan.mag', magpath + '/caravan.mag.bak')
+    # if not testmode:
+    #     shutil.copy(magpath + '/caravel.mag', magpath + '/caravel.mag.bak')
+    #     shutil.copy(magpath + '/caravan.mag', magpath + '/caravan.mag.bak')
 
     if testmode:
         print('Test only:  Caravel layout:')
-    with open(magpath + '/caravel.mag', 'r') as ifile:
+    with open(caravel_path + '/mag/caravel.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
@@ -288,7 +293,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravan layout:')
-    with open(magpath + '/caravan.mag', 'r') as ifile:
+    with open(caravel_path + '/mag/caravan.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
