@@ -108,26 +108,29 @@ __ship:
 	@echo "\
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
-		addpath hexdigits; \
 		crashbackups stop; \
-		gds readonly true; \
-		gds rescale false; \
+		addpath hexdigits; \
+		load user_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
+		property GDS_START 0; \
+		load mgmt_core_wrapper; \
+		property LEFview true; \
+		property GDS_FILE ../mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load ../maglef/simple_por; \
+		load caravel -dereference; \
+		select top cell; \
+		expand; \
 		cif *hier write disable; \
 		cif *array write disable; \
-		gds read $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
-		load caravel;\
-		cellname list filepath user_id_programming $(UPRJ_ROOT)/mag;\
-		cellname list filepath user_id_textblock $(UPRJ_ROOT)/mag;\
-		cellname list filepath mgmt_core_wrapper $(CARAVEL_ROOT)/mgmt_core_wrapper/mag;\
-		flush mgmt_core_wrapper;\
-		flush user_id_programming;\
-		flush user_id_textblock;\
-		select top cell;\
 		gds write $(UPRJ_ROOT)/gds/caravel.gds; \
-		exit;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
 truck: check-env uncompress uncompress-caravel
@@ -154,26 +157,29 @@ __truck:
 	@echo "\
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
-		addpath hexdigits; \
 		crashbackups stop; \
-		gds readonly true; \
-		gds rescale false; \
+		addpath hexdigits; \
+		load user_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
+		property GDS_START 0; \
+		load mgmt_core_wrapper; \
+		property LEFview true; \
+		property GDS_FILE ../mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load ../maglef/simple_por; \
+		load caravan -dereference; \
+		select top cell; \
+		expand; \
 		cif *hier write disable; \
 		cif *array write disable; \
-		gds read $(UPRJ_ROOT)/gds/user_analog_project_wrapper.gds; \
-		load caravan;\
-		cellname list filepath mgmt_core_wrapper $(CARAVEL_ROOT)/mgmt_core_wrapper/mag;\
-		flush mgmt_core_wrapper;\
-		cellname list filepath user_id_programming $(UPRJ_ROOT)/mag;\
-		cellname list filepath user_id_textblock $(UPRJ_ROOT)/mag;\
-		flush user_id_programming;\
-		flush user_id_textblock;\
-		select top cell;\
 		gds write $(UPRJ_ROOT)/gds/caravan.gds; \
-		exit;" > $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
 .PHONY: clean
