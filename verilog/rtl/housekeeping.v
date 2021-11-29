@@ -651,7 +651,8 @@ module housekeeping #(
 	    case (wbbd_state)
 		`WBBD_IDLE: begin
 		    wbbd_busy <= 1'b0;
-	    	    if (wb_cyc_i && (sys_select | gpio_select | spi_select)) begin
+		    if ((sys_select | gpio_select | spi_select) &&
+	    	    		 wb_cyc_i && wb_stb_i) begin
 			wb_ack_o <= 1'b0;
 			wbbd_state <= `WBBD_SETUP0;
 		    end

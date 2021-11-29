@@ -332,6 +332,7 @@ module caravel (
     wire [31:0] hk_dat_i;
     wire hk_ack_i;
     wire hk_stb_o;
+    wire hk_cyc_o;
 
     // Exported Wishbone Bus (user area facing)
     wire 	mprj_cyc_o_user;
@@ -411,6 +412,7 @@ module caravel (
 	.mprj_dat_i(mprj_dat_i_core),
 
 	.hk_stb_o(hk_stb_o),
+	.hk_cyc_o(hk_cyc_o),
 	.hk_dat_i(hk_dat_i),
 	.hk_ack_i(hk_ack_i),
 
@@ -656,7 +658,7 @@ module caravel (
         .wb_dat_i(mprj_dat_o_core),
         .wb_sel_i(mprj_sel_o_core),
         .wb_we_i(mprj_we_o_core),
-        .wb_cyc_i(mprj_cyc_o_core),
+        .wb_cyc_i(hk_cyc_o),
         .wb_stb_i(hk_stb_o),
         .wb_ack_o(hk_ack_i),
         .wb_dat_o(hk_dat_i),
