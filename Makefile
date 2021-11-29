@@ -115,9 +115,11 @@ __ship:
 		cif *hier write disable; \
 		cif *array write disable; \
 		gds read $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
-		load caravel -dereference;\
+		load caravel\
 		cellname list filepath user_id_programming $(UPRJ_ROOT)/mag;\
 		cellname list filepath user_id_textblock $(UPRJ_ROOT)/mag;\
+		cellname list filepath mgmt_core_wrapper $(CARAVEL_ROOT)/mgmt_core_wrapper/mag;\
+		flush mgmt_core_wrapper;\
 		flush user_id_programming;\
 		flush user_id_textblock;\
 		select top cell;\
@@ -159,7 +161,9 @@ __truck:
 		cif *hier write disable; \
 		cif *array write disable; \
 		gds read $(UPRJ_ROOT)/gds/user_analog_project_wrapper.gds; \
-		load caravan -dereference;\
+		load caravan;\
+		cellname list filepath mgmt_core_wrapper $(CARAVEL_ROOT)/mgmt_core_wrapper/mag;\
+		flush mgmt_core_wrapper;\
 		cellname list filepath user_id_programming $(UPRJ_ROOT)/mag;\
 		cellname list filepath user_id_textblock $(UPRJ_ROOT)/mag;\
 		flush user_id_programming;\
