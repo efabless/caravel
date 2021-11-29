@@ -115,7 +115,7 @@ __ship:
 		cif *hier write disable; \
 		cif *array write disable; \
 		gds read $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
-		load caravel\
+		load caravel;\
 		cellname list filepath user_id_programming $(UPRJ_ROOT)/mag;\
 		cellname list filepath user_id_textblock $(UPRJ_ROOT)/mag;\
 		cellname list filepath mgmt_core_wrapper $(CARAVEL_ROOT)/mgmt_core_wrapper/mag;\
