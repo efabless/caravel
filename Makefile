@@ -121,7 +121,7 @@ __ship:
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load ../maglef/simple_por; \
-		load caravel -dereference; \
+		load $(UPRJ_ROOT)/mag/caravel -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
@@ -170,7 +170,7 @@ __truck:
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load ../maglef/simple_por; \
-		load caravan -dereference; \
+		load $(UPRJ_ROOT)/mag/caravan -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
