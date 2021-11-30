@@ -710,7 +710,7 @@ module caravel (
 
         .trap(trap),
 
-	.user_clock(user_clock),
+	.user_clock(mprj_clock2),
 
         .mask_rev_in(mask_rev),
 
