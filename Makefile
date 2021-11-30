@@ -110,6 +110,8 @@ __ship:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
+		addpath $(CARAVEL_ROOT)/mag; \
+		addpath $(UPRJ_ROOT)/mag; \
 		load user_project_wrapper; \
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
@@ -159,6 +161,8 @@ __truck:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
+		addpath $(CARAVEL_ROOT)/mag; \
+		addpath $(UPRJ_ROOT)/mag; \
 		load user_project_wrapper; \
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
@@ -614,6 +618,21 @@ __set_user_id:
 	cp $(CARAVEL_ROOT)/mag/user_id_textblock.mag ./mag/user_id_textblock.mag
 	cp $(CARAVEL_ROOT)/verilog/rtl/caravel.v ./verilog/rtl/caravel.v
 	python3 $(CARAVEL_ROOT)/scripts/set_user_id.py $(USER_ID) $(shell pwd) 2>&1 | tee ./signoff/build/set_user_id.out
+
+.PHONY: gpio_defaults
+gpio_defaults: check-env uncompress uncompress-caravel
+ifeq ($(FOREGROUND),1)
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __gpio_defaults
+	@echo "GPIO defaults completed." 2>&1 | tee -a ./signoff/build/__gpio_defaults.out
+else
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __gpio_defaults >/dev/null 2>&1 &
+	tail -f signoff/build/gpio_defaults.out
+	@echo "GPIO defaults completed." 2>&1 | tee -a ./signoff/build/__gpio_defaults.out
+endif
+
+__gpio_defaults:
+	mkdir -p ./signoff/build
+	python3 $(CARAVEL_ROOT)/scripts/gen_gpio_defaults.py $(shell pwd) 2>&1 | tee ./signoff/build/gpio_defaults.out
 
 .PHONY: update_caravel
 update_caravel:
