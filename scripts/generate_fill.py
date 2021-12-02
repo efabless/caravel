@@ -153,7 +153,8 @@ if __name__ == '__main__':
         distmode = True
 
     magpath = user_project_path + '/mag'
-    rcfile = magpath + '/.magicrc'
+    # rcfile = magpath + '/.magicrc'
+    rcfile = os.getenv("PDK_ROOT") + '/sky130A/libs.tech/magic/sky130A.magicrc'
 
     if not os.path.isfile(rcfile):
         rcfile = None
