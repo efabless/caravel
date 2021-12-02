@@ -306,14 +306,20 @@ if __name__ == '__main__':
         # Keep a copy of the original 
         if not os.path.isfile(gdsbak):
             if file_zipped:
-                os.rename(gdsfilegz, gdsbakgz)
+                if os.path.isfile(gdsfilegz):
+                    os.rename(gdsfilegz, gdsbakgz)
+                else:
+                    os.rename(gdsfile, gdsbak)
+                    subprocess.run(['gzip', gdsbak, '-n', '--best'],
+				stdout = subprocess.DEVNULL,
+				stderr = subprocess.DEVNULL)
             else:
                 os.rename(gdsfile, gdsbak)
 
         with open(gdsfile, 'wb') as ofile:
             ofile.write(gdsdata)
-            if file_zipped:
-                subprocess.run(['gzip', gdsdata, '-n', '--best'],
+        if file_zipped:
+            subprocess.run(['gzip', gdsfile, '-n', '--best'],
 			stdout = subprocess.DEVNULL,
 			stderr = subprocess.DEVNULL)
 
@@ -354,11 +360,17 @@ if __name__ == '__main__':
         maglines = ifile.read().splitlines()
         outlines = []
         digit = 0
+        wasseen = {}
         for line in maglines:
             if 'alphaX_' in line:
-                dchar = user_id_value[digit].upper()
+                dchar = user_id_value[7 - digit].upper()
                 oline = re.sub('alpha_[0-9A-F]', 'alpha_' + dchar, line)
+                # Add path reference if cell was not previously found in the file
+                if dchar not in wasseen:
+                    if 'hexdigits' not in oline:
+                        oline += ' hexdigits'
                 outlines.append(oline)
+                wasseen[dchar] = True
                 digit += 1
             else:
                 outlines.append(line)
