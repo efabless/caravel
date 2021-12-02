@@ -59,4 +59,4 @@ set ::env(GLB_RT_MINLAYER) 2
 set ::env(GLB_RT_MAXLAYER) 6
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) "3"
+set ::env(DIODE_INSERTION_STRATEGY) "4"

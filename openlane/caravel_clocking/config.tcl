@@ -43,7 +43,9 @@ set ::env(DIE_AREA) "0 0 100 60"
 
 set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
 
-set ::env(LEFT_MARGIN_MULT) 0
+set ::env(FP_TAPCELL_DIST) 6
+
+set ::env(LEFT_MARGIN_MULT) 4
 set ::env(BOTTOM_MARGIN_MULT) 0
 set ::env(TOP_MARGIN_MULT) "2"
 
@@ -54,7 +56,7 @@ set ::env(FP_PDN_HPITCH) 16.9
 set ::env(FP_PDN_VPITCH) 15.5
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.7
+set ::env(PL_TARGET_DENSITY) 0.71
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
@@ -73,4 +75,4 @@ set ::env(GLB_RT_OBS) "\
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(DIODE_INSERTION_STRATEGY) 4
