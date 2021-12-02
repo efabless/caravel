@@ -69,7 +69,7 @@ import re
 
 def usage():
     print('Usage:')
-    print('gen_gpio_defaults.py [<path_to_project>]')
+    print('gen_gpio_defaults.py [<path_to_project>] [-test]')
     print('')
     print('where:')
     print('    <path_to_project> is the path to the project top level directory.')
@@ -123,7 +123,13 @@ if __name__ == '__main__':
     magpath = user_project_path + '/mag'
     gdspath = user_project_path + '/gds'
     vpath = user_project_path + '/verilog'
-    caravel_path = os.environ['CARAVEL_ROOT']
+    glpath = vpath + '/gl'
+
+    try:
+        caravel_path = os.environ['CARAVEL_ROOT']
+    except:
+        print('Warning:  CARAVEL_ROOT not set;  assuming the cwd.')
+        caravel_path = os.getcwd()
 
     # Check paths
     if not os.path.isdir(gdspath):
@@ -132,6 +138,10 @@ if __name__ == '__main__':
 
     if not os.path.isdir(vpath):
         print('No directory ' + vpath + ' found (path to verilog).')
+        sys.exit(1)
+
+    if not os.path.isdir(glpath):
+        print('No directory ' + glpath + ' found (path to gate-level verilog).')
         sys.exit(1)
 
     if not os.path.isdir(magpath):
@@ -221,17 +231,17 @@ if __name__ == '__main__':
         mag_file = magpath + '/' + cell_name + '.mag'
         cellsused[i] = cell_name
 
+        # Record which bits need to be set for this binval
+        bitflips = []
+        for j in range(0, 13):
+            if binval[12 - j] == '1':
+                bitflips.append(j)
+
         if not os.path.isfile(mag_file):
             # A cell with this set of defaults doesn't exist, so make it
             # First read the 0000 cell, then write to mag_path while
             # changing the position of vias on the "1" bits
 
-            # Record which bits need to be set
-            bitflips = []
-            for j in range(0, 13):
-                if binval[12 - j] == '1':
-                    bitflips.append(j)
-                
             with open(caravel_path + '/mag/gpio_defaults_block.mag', 'r') as ifile:
                 maglines = ifile.read().splitlines()
                 outlines = []
@@ -255,6 +265,42 @@ if __name__ == '__main__':
                         print(outline, file=ofile)
         else:
             print('Layout file ' + mag_file + ' already exists and does not need to be generated.')
+
+        gl_file = glpath + '/' + cell_name + '.v'
+
+        defrex = re.compile('[ \t]*assign[ \t]+gpio_defaults\[([0-9]+)\]')
+
+        if not os.path.isfile(gl_file):
+            # A cell with this set of defaults doesn't exist, so make it
+            # First read the default cell, then write to gl_path while
+            # changing the assignment statements at the bottom of each file.
+
+            with open(caravel_path + '/verilog/gl/gpio_defaults_block.v', 'r') as ifile:
+                vlines = ifile.read().splitlines()
+                outlines = []
+                for vline in vlines:
+                    is_flipped = False
+                    dmatch = defrex.match(vline)
+                    if dmatch:
+                        bitidx = int(dmatch.group(1))
+                        if bitidx in bitflips:
+                            is_flipped = True
+                    if is_flipped:
+                        outlines.append(re.sub('_low', '_high', vline))
+                    elif 'gpio_defaults_block' in vline:
+                        outlines.append(re.sub('gpio_defaults_block', cell_name, vline))
+                    else:
+                        outlines.append(vline)
+
+            print('Creating new gate-level verilog file ' + gl_file)
+            if testmode:
+                print('(Test only)')
+            else:
+                with open(gl_file, 'w') as ofile:
+                    for outline in outlines:
+                        print(outline, file=ofile)
+        else:
+            print('Gate-level verilog file ' + gl_file + ' already exists and does not need to be generated.')
 
     print('Step 2:  Modify top-level layouts to use the specified defaults.')
 
@@ -291,6 +337,36 @@ if __name__ == '__main__':
             for outline in outlines:
                 print(outline, file=ofile)
 
+    # Do the same to the top gate-level verilog
+
+    instrex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+gpio_defaults_block_([0-9]+)')
+
+    if testmode:
+        print('Test only:  Caravel top gate-level verilog:')
+    with open(caravel_path + '/verilog/gl/caravel.v', 'r') as ifile:
+        vlines = ifile.read().splitlines()
+        outlines = []
+        for vline in vlines:
+            imatch = instrex.match(vline)
+            if imatch:
+                gpioname = imatch.group(1)
+                gpioidx = int(imatch.group(2))
+                cellname = cellsused[int(gpioidx)]
+                if cellname:
+                    outlines.append(re.sub(gpioname, cellname, vline, 1))
+                    if testmode:
+                        print('Replacing line: ' + vline)
+                        print('With: ' + outlines[-1])
+                else:
+                    outlines.append(vline)
+            else:
+                outlines.append(vline)
+
+    if not testmode:
+        with open(glpath + '/caravel.v', 'w') as ofile:
+            for outline in outlines:
+                print(outline, file=ofile)
+
     if testmode:
         print('Test only:  Caravan layout:')
     with open(caravel_path + '/mag/caravan.mag', 'r') as ifile:
@@ -315,7 +391,35 @@ if __name__ == '__main__':
                 outlines.append(magline)
 
     if not testmode:
-        with open(magpath + '/caravan.mag', 'w') as ofile:
+        with open(glpath + '/caravan.v', 'w') as ofile:
+            for outline in outlines:
+                print(outline, file=ofile)
+
+    # Do the same to the top gate-level verilog
+
+    if testmode:
+        print('Test only:  Caravan top gate-level verilog:')
+    with open(caravel_path + '/verilog/gl/caravan.v', 'r') as ifile:
+        vlines = ifile.read().splitlines()
+        outlines = []
+        for vline in vlines:
+            imatch = instrex.match(vline)
+            if imatch:
+                gpioname = imatch.group(1)
+                gpioidx = int(imatch.group(2))
+                cellname = cellsused[int(gpioidx)]
+                if cellname:
+                    outlines.append(re.sub(gpioname, cellname, vline, 1))
+                    if testmode:
+                        print('Replacing line: ' + vline)
+                        print('With: ' + outlines[-1])
+                else:
+                    outlines.append(vline)
+            else:
+                outlines.append(vline)
+
+    if not testmode:
+        with open(glpath + '/caravan.v', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
