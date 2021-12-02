@@ -148,7 +148,8 @@ if __name__ == '__main__':
 
     magpath = mag_dir_path
     # rcfile = magpath + '/.magicrc'
-    rcfile = os.getenv("PDK_ROOT") + '/sky130A/libs.tech/magic/sky130A.magicrc'
+    pdk_root = os.getenv("PDK_ROOT")
+    rcfile = pdk_root + '/sky130A/libs.tech/magic/sky130A.magicrc'
 
     gdspath = gds_dir_path
 
@@ -217,7 +218,7 @@ if __name__ == '__main__':
 
     print('Building final GDS file ' + project_with_id + '.gds', flush=True)
 
-    mproc = subprocess.run(['magic', '-dnull', '-noconsole',
+    mproc = subprocess.run(['PDKPATH='+pdk_root+'/sky130A', 'magic', '-dnull', '-noconsole',
 		'-rcfile', rcfile, user_project_path + '/mag/compose_final.tcl'],
 		stdin = subprocess.DEVNULL,
 		stdout = subprocess.PIPE,

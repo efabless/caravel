@@ -54,7 +54,7 @@ def makegds(file):
     myenv = os.environ.copy()
     myenv['MAGTYPE'] = 'mag'
 
-    mproc = subprocess.run(['magic', '-dnull', '-noconsole',
+    mproc = subprocess.run(['PDKPATH='+pdk_root+'/sky130A','magic', '-dnull', '-noconsole',
 		'-rcfile', rcfile, magpath + '/generate_fill_dist.tcl',
 		filename],
 		stdin = subprocess.DEVNULL,
@@ -154,7 +154,8 @@ if __name__ == '__main__':
 
     magpath = user_project_path + '/mag'
     # rcfile = magpath + '/.magicrc'
-    rcfile = os.getenv("PDK_ROOT") + '/sky130A/libs.tech/magic/sky130A.magicrc'
+    pdk_root = os.getenv("PDK_ROOT")
+    rcfile = pdk_root + '/sky130A/libs.tech/magic/sky130A.magicrc'
 
     if not os.path.isfile(rcfile):
         rcfile = None
@@ -342,7 +343,7 @@ if __name__ == '__main__':
         # print('This script will generate file ' + project_with_id + '_fill_pattern.gds')
         print('This script will generate files ' + project_with_id + '_fill_pattern_x_y.gds')
         print('Now generating fill patterns.  This may take. . . quite. . . a while.', flush=True)
-        mproc = subprocess.run(['magic', '-dnull', '-noconsole',
+        mproc = subprocess.run(['PDKPATH='+pdk_root+'/sky130A','magic', '-dnull', '-noconsole',
 		'-rcfile', rcfile, magpath + '/generate_fill.tcl'],
 		stdin = subprocess.DEVNULL,
 		stdout = subprocess.PIPE,
@@ -376,7 +377,7 @@ if __name__ == '__main__':
             for file in magfiles:
                 os.remove(file)
 
-            mproc = subprocess.run(['magic', '-dnull', '-noconsole',
+            mproc = subprocess.run(['PDKPATH='+pdk_root+'/sky130A','magic', '-dnull', '-noconsole',
 			'-rcfile', rcfile, magpath + '/generate_fill_final.tcl'],
 			stdin = subprocess.DEVNULL,
 			stdout = subprocess.PIPE,
