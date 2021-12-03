@@ -19,9 +19,6 @@ VERILOG_PATH = ../../../..
 RTL_PATH = $(VERILOG_PATH)/rtl
 BEHAVIOURAL_MODELS = ../../ 
 
-# Temporary:  Path to management SoC wrapper repository
-MGMT_WRAPPER_PATH = ~/gits/caravel_pico/verilog/rtl
-
 FIRMWARE_PATH = ../..
 GCC_PATH?=/ef/apps/bin
 GCC_PREFIX?=riscv32-unknown-elf
@@ -29,6 +26,14 @@ GCC_PREFIX?=riscv32-unknown-elf
 SIM_DEFINES = -DFUNCTIONAL -DSIM
 
 SIM?=RTL
+
+# Path to management SoC wrapper repository
+MGMT_CORE_PATH ?= ~/gits/caravel_pico
+ifeq ($(SIM),RTL)
+	MGMT_WRAPPER_PATH = $(MGMT_CORE_PATH)/verilog/rtl
+else
+	MGMT_WRAPPER_PATH = $(MGMT_CORE_PATH)/verilog
+endif
 
 .SUFFIXES:
 
@@ -45,7 +50,7 @@ ifeq ($(SIM),RTL)
 	$< -o $@ 
 else  
 	iverilog -Ttyp $(SIM_DEFINES) -DGL -I $(BEHAVIOURAL_MODELS) \
-	-I $(PDK_PATH) -I $(VERILOG_PATH) -I $(RTL_PATH) \
+	-I $(PDK_PATH) -I $(VERILOG_PATH) -I $(RTL_PATH) -I $(MGMT_WRAPPER_PATH) \
 	$< -o $@ 
 endif
 

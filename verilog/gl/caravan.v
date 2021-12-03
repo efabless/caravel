@@ -4041,7 +4041,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .porb_l(porb_l),
     .vdd1v8(vccd_core),
     .vdd3v3(vddio_core),
-    .vss3v3(vssio_core)
+    .vss3v3(vssio_core),
     .vss1v8(vssd_core)
   );
   xres_buf rstb_level (

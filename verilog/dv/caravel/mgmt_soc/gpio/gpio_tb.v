@@ -28,10 +28,6 @@
 `include "caravel_netlists.v"
 `include "spiflash.v"
 
-// NOTE:  Temporary location of management SoC wrapper is a symbolic link
-// to the caravel_pico repository verilog/rtl/mgmt_core_wrapper.v
-`include "mgmt_core_wrapper.v"
-
 module gpio_tb;
 
 	reg clock;
