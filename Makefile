@@ -796,6 +796,7 @@ endif
 
 __gpio_defaults:
 	mkdir -p ./signoff/build
+	mkdir -p ./verilog/gl
 	python3 $(CARAVEL_ROOT)/scripts/gen_gpio_defaults.py $(shell pwd) 2>&1 | tee ./signoff/build/gpio_defaults.out
 
 .PHONY: update_caravel
