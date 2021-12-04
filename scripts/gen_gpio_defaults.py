@@ -391,7 +391,7 @@ if __name__ == '__main__':
                 outlines.append(magline)
 
     if not testmode:
-        with open(glpath + '/caravan.v', 'w') as ofile:
+        with open(magpath + '/caravan.mag', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
