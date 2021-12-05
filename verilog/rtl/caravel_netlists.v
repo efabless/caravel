@@ -47,18 +47,19 @@
     `endif 
 
     `ifdef GL
-	`include "gl/mgmt_core.v"
 	`include "gl/digital_pll.v"
-	`include "gl/DFFRAM.v"
-	`include "gl/storage.v"
+	`include "gl/caravel_clocking.v"
 	`include "gl/user_id_programming.v"
 	`include "gl/chip_io.v"
+	`include "gl/housekeeping.v"
 	`include "gl/mprj_logic_high.v"
 	`include "gl/mprj2_logic_high.v"
 	`include "gl/mgmt_protect.v"
 	`include "gl/mgmt_protect_hv.v"
 	`include "gl/gpio_control_block.v"
 	`include "gl/gpio_defaults_block.v"
+	`include "gl/gpio_defaults_block_0403.v"
+	`include "gl/gpio_defaults_block_1803.v"
 	`include "gl/gpio_logic_high.v"
 	`include "gl/xres_buf.v"
 	`include "gl/spare_logic_block.v"

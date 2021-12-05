@@ -136,41 +136,29 @@ module mprj_bitbang_tb;
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h07 << 1);
+	        write_byte(8'h16);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h03 << 1);
+	        write_byte(8'h06);
 	        end_csb();
 	    end
 	endtask
 
-	task bitbang_one_clock_and_reset;
+	task bitbang_load;
 	    begin
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h07 << 1);
+	        write_byte(8'h0e);
 	        end_csb();
 
 	        start_csb();
 	        write_byte(8'h80);
 	        write_byte(8'h13);
-	        write_byte(8'h05 << 1);
-	        end_csb();
-
-	        start_csb();
-	        write_byte(8'h80);
-	        write_byte(8'h13);
-	        write_byte(8'h07 << 1);
-	        end_csb();
-
-	        start_csb();
-	        write_byte(8'h80);
-	        write_byte(8'h13);
-	        write_byte(8'h03 << 1);
+	        write_byte(8'h06);
 	        end_csb();
 	    end
 	endtask
@@ -193,24 +181,6 @@ module mprj_bitbang_tb;
 	    end
 	endtask
 
-	task bitbang_thirteen_clocks_and_reset;
-	    begin
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock();
-		bitbang_one_clock_and_reset();
-	    end
-	endtask
-	
 	integer i;
 
     // Now drive the digital signals on the housekeeping SPI
@@ -243,7 +213,7 @@ module mprj_bitbang_tb;
 	    start_csb();
 	    write_byte(8'h80);	// Write stream command
 	    write_byte(8'h13);	// Address (register 19 = GPIO bit-bang control)
-	    write_byte(8'h1b << 1);	// Data = 0x01 (enable bit-bang mode)
+	    write_byte(8'h66);	// Data = 0x01 (enable bit-bang mode)
 	    end_csb();
 
 	    // Clock 12 times.  Set data when clock is zero.
@@ -252,9 +222,10 @@ module mprj_bitbang_tb;
 	    // Bits: (0 = serial xfer)
 	    //	      1 = bit-bang enable
 	    //	      2 = bit-bang resetn
-	    //	      3 = bit-bang clock
-	    //	      4 = bit-bang data user 1
-	    //	      5 = bit-bang data user 2
+	    //	      3 = bit-bang load
+	    //	      4 = bit-bang clock
+	    //	      5 = bit-bang data user 1
+	    //	      6 = bit-bang data user 2
 
 	    // Apply data 0x1809 (management standard output) to
 	    // first block of user 1 and user 2 (GPIO 0 and 37)
@@ -263,164 +234,165 @@ module mprj_bitbang_tb;
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1f << 1);	// bit 0
+	    write_byte(8'h76);	// bit 0
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1b << 1);
+	    write_byte(8'h66);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1f << 1);	// bit 1
+	    write_byte(8'h76);	// bit 1
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 2
+	    write_byte(8'h16);	// bit 2
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 3
+	    write_byte(8'h16);	// bit 3
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 4
+	    write_byte(8'h16);	// bit 4
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 5
+	    write_byte(8'h16);	// bit 5
 	    end_csb();
 		
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 6
+	    write_byte(8'h16);	// bit 6
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 7
+	    write_byte(8'h16);	// bit 7
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 8
+	    write_byte(8'h16);	// bit 8
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1b << 1);
+	    write_byte(8'h66);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1f << 1);	// bit 9
+	    write_byte(8'h76);	// bit 9
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 10
+	    write_byte(8'h16);	// bit 10
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h07 << 1);	// bit 11
+	    write_byte(8'h16);	// bit 11
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1b << 1);
+	    write_byte(8'h66);
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h1f << 1);	// bit 12
+	    write_byte(8'h76);	// bit 12
 	    end_csb();
 
 	    start_csb();
 	    write_byte(8'h80);
 	    write_byte(8'h13);
-	    write_byte(8'h03 << 1);
+	    write_byte(8'h06);
 	    end_csb();
 
 
 	    // Toggle GPIO external control enable and clock forward 2 registers
 	    // This moves ahead of the bidirectional registers at the front.
 	    bitbang_thirteen_clocks();
-	    bitbang_thirteen_clocks_and_reset();
+	    bitbang_thirteen_clocks();
+	    bitbang_load();
 
 	    // There is no point in resetting bit bang mode because at
 	    // this point the SPI pins just got disabled by loading zeros.
