@@ -1,15 +1,13 @@
 set ::env(IO_PCT) "0.2"
-set ::env(SYNTH_DRIVING_CELL) "sky130_fd_sc_hd__inv_1"
-set ::env(SYNTH_DRIVING_CELL_PIN) "Y"
 set ::env(SYNTH_MAX_FANOUT) "5"
-set ::env(SYNTH_CAP_LOAD) "33.442"
+set ::env(SYNTH_CAP_LOAD) "1"
 set ::env(SYNTH_TIMING_DERATE) 0.05
 set ::env(SYNTH_CLOCK_UNCERTAINITY) 0.25
 set ::env(SYNTH_CLOCK_TRANSITION) 0.15
 
 ## MASTER CLOCKS
 create_clock [get_ports {"clock"} ] -name "clock"  -period 25
-create_clock -name __VIRTUAL_CLK__ -period 25
+set_propagated_clock [get_clocks {"clock"}]
 
 ## INPUT/OUTPUT DELAYS
 set input_delay_value 1
@@ -57,7 +55,6 @@ set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_
 set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {mprj_io[36]}]
 set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {mprj_io[37]}]
 
-
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_csb}]
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_clk}]
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_io0}]
@@ -65,8 +62,16 @@ set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [ge
 
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
+## Set system monitoring mux select to zero so that the clock/user_clk monitoring is disabled 
+set_case_analysis 0 [get_pins housekeeping/_4449_/S]
+set_case_analysis 0 [get_pins housekeeping/_4450_/S]
+
+## FALSE PATHS (ASYNCHRONOUS INPUTS)
+set_false_path -from [get_ports {resetb}]
+set_false_path -from [get_ports mprj_io[*]]
+set_false_path -from [get_ports gpio]
+
 # TODO set this as parameter
-set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
 set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
 puts "\[INFO\]: Setting load to: $cap_load"
 set_load  $cap_load [all_outputs]
