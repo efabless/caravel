@@ -5,20 +5,20 @@ create_clock [get_ports {"pll_clk90"} ] -name "pll_clk90"  -period 6.66666666666
 
 ## GENERATED CLOCKS
 # divided PLL clocks
-create_generated_clock -name pll_clk_divided -source [get_ports pll_clk] -divide_by 2 [get_pins _357_/Y] 
-create_generated_clock -name pll_clk90_divided -source [get_ports pll_clk90] -divide_by 2 [get_pins _360_/Y] 
+create_generated_clock -name pll_clk_divided -source [get_ports pll_clk] -divide_by 2 [get_pins _351_/Y] 
+create_generated_clock -name pll_clk90_divided -source [get_ports pll_clk90] -divide_by 2 [get_pins _354_/Y] 
 
 #  assign core_ext_clk = (use_pll_first) ? ext_clk_syncd : ext_clk;
-create_generated_clock -name core_ext_clk -source [get_ports ext_clk] -divide_by 1 [get_pins _418_/X] 
-create_generated_clock -name core_ext_clk_syncd -source [get_pins _432_/Q] -divide_by 1 [get_pins _418_/X] 
+create_generated_clock -name core_ext_clk -source [get_ports ext_clk] -divide_by 1 [get_pins _343_/X] 
+create_generated_clock -name core_ext_clk_syncd -source [get_pins _420_/Q] -divide_by 1 [get_pins _343_/X] 
 
 # assign core_clk = (use_pll_second) ? pll_clk_divided : core_ext_clk;
-create_generated_clock -name core_clk -source [get_pins _418_/X]  -divide_by 1 [get_pins _399_/X] 
-create_generated_clock -name core_clk_pll -source [get_pins _357_/Y]   -divide_by 1 [get_pins _399_/X] 
+create_generated_clock -name core_clk -source [get_pins _343_/X]  -divide_by 1 [get_ports core_clk] 
+create_generated_clock -name core_clk_pll -source [get_pins _351_/Y]   -divide_by 1 [get_ports core_clk] 
 
 # assign user_clk = (use_pll_second) ? pll_clk90_divided : core_ext_clk;
-create_generated_clock -name user_clk -source [get_pins _418_/X]  -divide_by 1 [get_pins _400_/X] 
-create_generated_clock -name user_clk_pll -source [get_pins _360_/Y]   -divide_by 1 [get_pins _400_/X] 
+create_generated_clock -name user_clk -source [get_pins _343_/X]  -divide_by 1 [get_ports user_clk] 
+create_generated_clock -name user_clk_pll -source [get_pins _354_/Y]   -divide_by 1 [get_ports user_clk]  
 
 # logically exclusive clocks, the generated pll clocks and the ext core clk
 set_clock_groups -logically_exclusive -group core_ext_clk -group core_ext_clk_syncd

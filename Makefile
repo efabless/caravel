@@ -720,6 +720,7 @@ caravel_timing: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check
 		report_checks -path_delay max -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
 		report_worst_slack -max ;\
 		report_worst_slack -min ;\
+		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -slack_max 0.18 -group_count 10;\
 		" > ./def/tmp/caravel_timing.tcl 
 	sta -exit ./def/tmp/caravel_timing.tcl | tee ./signoff/caravel/caravel_timing.log 
 
