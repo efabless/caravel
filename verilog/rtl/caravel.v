@@ -1,4 +1,6 @@
-// `default_nettype none
+ `ifdef SIM
+ `default_nettype wire
+ `endif
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
