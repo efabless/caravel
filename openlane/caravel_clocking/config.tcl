@@ -56,7 +56,7 @@ set ::env(FP_PDN_HPITCH) 16.9
 set ::env(FP_PDN_VPITCH) 15.5
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.715
+set ::env(PL_TARGET_DENSITY) 0.74
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1

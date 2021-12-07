@@ -102,9 +102,10 @@ module odd #(
     end
  
     reg [SIZE-1:0] initial_begin;	// this is used to offset the negative edge counter
-    // wire [SIZE:0] interm_3;		// from the positive edge counter in order to
-    // assign interm_3 = {1'b0,N} + 2'b11;	// guarante 50% duty cycle.
-    localparam [SIZE:0] interm_3 = {1'b0,`CLK_DIV} + 2'b11;
+    wire [SIZE:0] interm_3;		// from the positive edge counter in order to
+    assign interm_3 = {1'b0, N} + 2'b11;	// guarantee 50% duty cycle.
+
+    localparam [SIZE:0] interm_init = {1'b0,`CLK_DIV} + 2'b11;
 
     // Counter driven by negative edge of clock.
 
@@ -112,7 +113,7 @@ module odd #(
 	if (resetb == 1'b0) begin
 	    // reset the counter at system reset
 	    counter2 <= `CLK_DIV;
-	    initial_begin <= interm_3[SIZE:1];
+	    initial_begin <= interm_init[SIZE:1];
 	    out_counter2 <= 1;
 	end else if (rst_pulse) begin
 	    // reset the counter at change of N.

@@ -71,7 +71,7 @@ module mprj_io #(
     sky130_ef_io__gpiov2_pad_wrapped  area1_io_pad [AREA1PADS - 1:0] (
 	`USER1_ABUTMENT_PINS
 	`ifndef	TOP_ROUTING
-	    ,.PAD(io[AREA1PADS - 1:0]),
+	    .PAD(io[AREA1PADS - 1:0]),
 	`endif
 	    .OUT(io_out[AREA1PADS - 1:0]),
 	    .OE_N(oeb[AREA1PADS - 1:0]),
@@ -102,7 +102,7 @@ module mprj_io #(
     sky130_ef_io__gpiov2_pad_wrapped area2_io_pad [TOTAL_PADS - AREA1PADS - 1:0] (
 	`USER2_ABUTMENT_PINS
 	`ifndef	TOP_ROUTING
-	    ,.PAD(io[TOTAL_PADS - 1:AREA1PADS]),
+	    .PAD(io[TOTAL_PADS - 1:AREA1PADS]),
 	`endif
 	    .OUT(io_out[TOTAL_PADS - 1:AREA1PADS]),
 	    .OE_N(oeb[TOTAL_PADS - 1:AREA1PADS]),
