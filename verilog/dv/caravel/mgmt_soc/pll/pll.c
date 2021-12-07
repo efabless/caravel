@@ -60,7 +60,6 @@ void main()
     while (reg_mprj_xfer == 1);
 
     // Start test
-    reg_mprj_datal = 0xA0400000;
 
     /*
      *-------------------------------------------------------------
@@ -88,12 +87,14 @@ void main()
      *-------------------------------------------------------------
      */
 
-    // Write checkpoint for clock counting (PLL bypassed)
-    reg_mprj_datal = 0xA0410000;
-
-
     // Monitor the core clock and user clock on mprj_io[14] and mprj_io[15]
+    // reg_clk_out_dest = 0x6 to turn on, 0x0 to turn off
+
+    // Write checkpoint for clock counting (PLL bypassed)
+    reg_mprj_datal = 0xA0400000;
     reg_clk_out_dest = 0x6;
+    reg_clk_out_dest = 0x0;
+    reg_mprj_datal = 0xA0410000;
 
     // Set PLL enable, no DCO mode
     reg_hkspi_pll_ena = 0x1; 
@@ -103,6 +104,8 @@ void main()
 
     // Write checkpoint for clock counting (PLL bypassed)
     reg_mprj_datal = 0xA0420000;
+    reg_clk_out_dest = 0x6;
+    reg_clk_out_dest = 0x0;
     reg_mprj_datal = 0xA0430000;
 
     // Disable PLL bypass
@@ -110,6 +113,8 @@ void main()
 
     // Write checkpoint for clock counting
     reg_mprj_datal = 0xA0440000;
+    reg_clk_out_dest = 0x6;
+    reg_clk_out_dest = 0x0;
     reg_mprj_datal = 0xA0450000;
 
     // Write 0x03 to feedback divider (was 0x04)
@@ -117,6 +122,8 @@ void main()
 
     // Write checkpoint
     reg_mprj_datal = 0xA0460000;
+    reg_clk_out_dest = 0x6;
+    reg_clk_out_dest = 0x0;
     reg_mprj_datal = 0xA0470000;
 
     // Write 0x04 to PLL output divider
@@ -124,6 +131,8 @@ void main()
 
     // Write checkpoint
     reg_mprj_datal = 0xA0480000;
+    reg_clk_out_dest = 0x6;
+    reg_clk_out_dest = 0x0;
     reg_mprj_datal = 0xA0490000;
 
     // End test

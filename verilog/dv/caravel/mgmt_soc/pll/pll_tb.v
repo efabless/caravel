@@ -84,6 +84,10 @@ module pll_tb;
 	    ccount = 0;
 	    wait(checkbits == 16'hA041);
 	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+            if (ucount !== 129 || ccount != 129) begin
+                $display("Monitor: Test PLL Failed");
+                $finish;
+            end
 		
 	    wait(checkbits == 16'hA042);
 	    $display("Monitor: Test 2 PLL (RTL) Started");
@@ -91,6 +95,10 @@ module pll_tb;
 	    ccount = 0;
 	    wait(checkbits == 16'hA043);
 	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+            if (ucount !== 193 || ccount != 193) begin
+                $display("Monitor: Test PLL Failed");
+                $finish;
+            end
 
 	    wait(checkbits == 16'hA044);
 	    $display("Monitor: Test 3 PLL (RTL) Started");
@@ -98,6 +106,10 @@ module pll_tb;
 	    ccount = 0;
 	    wait(checkbits == 16'hA045);
 	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+            if (ucount !== 385 || ccount != 129) begin
+                $display("Monitor: Test PLL Failed");
+                $finish;
+            end
 
 	    wait(checkbits == 16'hA046);
 	    $display("Monitor: Test 4 PLL (RTL) Started");
@@ -105,6 +117,10 @@ module pll_tb;
 	    ccount = 0;
 	    wait(checkbits == 16'hA047);
 	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+            if (ucount !== 385 || ccount != 129) begin
+                $display("Monitor: Test PLL Failed");
+                $finish;
+            end
 
 	    wait(checkbits == 16'hA048);
 	    $display("Monitor: Test 5 PLL (RTL) Started");
@@ -112,11 +128,15 @@ module pll_tb;
 	    ccount = 0;
 	    wait(checkbits == 16'hA049);
 	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+            if (ucount !== 513 || ccount != 129) begin
+                $display("Monitor: Test PLL Failed");
+                $finish;
+            end
 
 	    wait(checkbits == 16'hA090);
 
-		$display("Monitor: Test PLL (RTL) Passed");
-		$finish;
+	    $display("Monitor: Test PLL (RTL) Passed");
+	    $finish;
 	end
 
 	initial begin
