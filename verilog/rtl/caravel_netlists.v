@@ -48,8 +48,6 @@
 
     `ifdef GL
 	`include "gl/digital_pll.v"
-	`include "gl/digital_pll_controller.v"
-	`include "gl/ring_osc2x13.v"
 	`include "gl/caravel_clocking.v"
 	`include "gl/user_id_programming.v"
 	`include "gl/chip_io.v"

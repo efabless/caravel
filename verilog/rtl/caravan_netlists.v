@@ -69,6 +69,8 @@
 	`include "gl/caravan.v"
     `else
 	`include "digital_pll.v"
+	`include "digital_pll_controller.v"
+	`include "ring_osc2x13.v"
 	`include "caravel_clocking.v"
 	`include "user_id_programming.v"
 	`include "clock_div.v"
