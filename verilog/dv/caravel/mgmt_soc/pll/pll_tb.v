@@ -37,6 +37,9 @@ module pll_tb;
 	wire flash_io1;
 	wire SDO;
 
+	integer ccount;
+	integer ucount;
+
 	assign checkbits = mprj_io[31:16];
 	assign spivalue  = mprj_io[15:8];
 
@@ -45,6 +48,16 @@ module pll_tb;
 	// would be the fast clock.
 
 	always #10 clock <= (clock === 1'b0);
+
+	// User clock monitoring
+	always @(posedge mprj_io[15]) begin
+	    ucount = ucount + 1;
+	end
+
+	// Core clock monitoring
+	always @(posedge mprj_io[14]) begin
+	    ccount = ccount + 1;
+	end
 
 	initial begin
 		clock = 0;
@@ -66,21 +79,39 @@ module pll_tb;
 	// Monitor
 	initial begin
 	    wait(checkbits == 16'hA040);
-		
-		$display("Monitor: Test PLL (RTL) Started");
-		
+	    $display("Monitor: Test 1 PLL (RTL) Started");
+	    ucount = 0;
+	    ccount = 0;
 	    wait(checkbits == 16'hA041);
-            // $display("   SPI value = 0x%x (should be 0x04)", spivalue);
-            // if(spivalue !== 32'h04) begin
-            //     $display("Monitor: Test PLL (RTL) Failed");
-            //     $finish;
-            // end
+	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+		
 	    wait(checkbits == 16'hA042);
-            // $display("   SPI value = 0x%x (should be 0x56)", spivalue);
-            // if(spivalue !== 32'h56) begin
-            //     $display("Monitor: Test PLL (RTL) Failed");
-            //     $finish;
-            // end
+	    $display("Monitor: Test 2 PLL (RTL) Started");
+	    ucount = 0;
+	    ccount = 0;
+	    wait(checkbits == 16'hA043);
+	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+
+	    wait(checkbits == 16'hA044);
+	    $display("Monitor: Test 3 PLL (RTL) Started");
+	    ucount = 0;
+	    ccount = 0;
+	    wait(checkbits == 16'hA045);
+	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+
+	    wait(checkbits == 16'hA046);
+	    $display("Monitor: Test 4 PLL (RTL) Started");
+	    ucount = 0;
+	    ccount = 0;
+	    wait(checkbits == 16'hA047);
+	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
+
+	    wait(checkbits == 16'hA048);
+	    $display("Monitor: Test 5 PLL (RTL) Started");
+	    ucount = 0;
+	    ccount = 0;
+	    wait(checkbits == 16'hA049);
+	    $display("Monitor: ucount = %d ccount = %d", ucount, ccount);
 
 	    wait(checkbits == 16'hA090);
 

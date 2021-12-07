@@ -767,7 +767,7 @@ module caravan (
 
 	.trap(trap),
 
-	.user_clock(mprj_clock2),
+	.user_clock(caravel_clk2),
 
 	.mask_rev_in(mask_rev),
 

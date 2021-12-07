@@ -21,12 +21,9 @@
 
 /*
  *	PLL Test (self-switching)
- *	- Enables SPI master
- *	- Uses SPI master to internally access the housekeeping SPI
- *      - Switches PLL bypass
- *	- Changes PLL divider
+ *      - Switches PLL bypass in housekeeping
+ *	- Changes PLL divider in housekeeping
  *
- * 	Tesbench mostly copied from sysctrl
  */
 void main()
 {
@@ -54,6 +51,10 @@ void main()
     reg_mprj_io_17 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_16 = GPIO_MODE_MGMT_STD_OUTPUT;
 
+    /* Monitor pins must be set to output */
+    reg_mprj_io_15 = GPIO_MODE_MGMT_STD_OUTPUT;
+    reg_mprj_io_14 = GPIO_MODE_MGMT_STD_OUTPUT;
+
     /* Apply configuration */
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
@@ -61,60 +62,69 @@ void main()
     // Start test
     reg_mprj_datal = 0xA0400000;
 
-    // Enable SPI master
-    // SPI master configuration bits:
-    // bits 7-0:	Clock prescaler value (default 2)
-    // bit  8:		MSB/LSB first (0 = MSB first, 1 = LSB first)
-    // bit  9:		CSB sense (0 = inverted, 1 = noninverted)
-    // bit 10:		SCK sense (0 = noninverted, 1 = inverted)
-    // bit 11:		mode (0 = read/write opposite edges, 1 = same edges)
-    // bit 12:		stream (1 = CSB ends transmission)
-    // bit 13:		enable (1 = enabled)
-    // bit 14:		IRQ enable (1 = enabled)
-    // bit 15:		Connect to housekeeping SPI (1 = connected)
+    /*
+     *-------------------------------------------------------------
+     * Register 2610_000c	reg_hkspi_pll_ena
+     * SPI address 0x08 = PLL enables
+     * bit 0 = PLL enable, bit 1 = DCO enable
+     *
+     * Register 2610_0010	reg_hkspi_pll_bypass
+     * SPI address 0x09 = PLL bypass
+     * bit 0 = PLL bypass
+     *
+     * Register 2610_0020	reg_hkspi_pll_source
+     * SPI address 0x11 = PLL source
+     * bits 0-2 = phase 0 divider, bits 3-5 = phase 90 divider
+     *
+     * Register 2610_0024	reg_hkspi_pll_divider
+     * SPI address 0x12 = PLL divider
+     * bits 0-4 = feedback divider
+     *
+     * Register 2620_0004	reg_clk_out_dest
+     * SPI address 0x1b = Output redirect
+     * bit 0 = trap to mprj_io[13]
+     * bit 1 = clk  to mprj_io[14]
+     * bit 2 = clk2 to mprj_io[15]
+     *-------------------------------------------------------------
+     */
 
-    reg_spimaster_config = 0xa002;	// Enable, prescaler = 2,
-					// connect to housekeeping SPI
-
-    // Apply stream read (0x40 + 0x03) and read back one byte 
-
-    reg_spimaster_config = 0xb002;	// Apply stream mode
-    reg_spimaster_data = 0x80;		// Write 0x80 (write mode)
-    reg_spimaster_data = 0x08;		// Write 0x18 (start address)
-    reg_spimaster_data = 0x01;		// Write 0x01 to PLL enable, no DCO mode
-    reg_spimaster_config = 0xa102;	// Release CSB (ends stream mode)
-
-    reg_spimaster_config = 0xb002;	// Apply stream mode
-    reg_spimaster_data = 0x80;		// Write 0x80 (write mode)
-    reg_spimaster_data = 0x11;		// Write 0x11 (start address)
-    reg_spimaster_data = 0x03;		// Write 0x03 to PLL output divider
-    reg_spimaster_config = 0xa102;	// Release CSB (ends stream mode)
-
-    reg_spimaster_config = 0xb002;	// Apply stream mode
-    reg_spimaster_data = 0x80;		// Write 0x80 (write mode)
-    reg_spimaster_data = 0x09;		// Write 0x09 (start address)
-    reg_spimaster_data = 0x00;		// Write 0x00 to clock from PLL (no bypass)
-    reg_spimaster_config = 0xa102;	// Release CSB (ends stream mode)
-
-    // Write checkpoint
+    // Write checkpoint for clock counting (PLL bypassed)
     reg_mprj_datal = 0xA0410000;
 
-    reg_spimaster_config = 0xb002;	// Apply stream mode
-    reg_spimaster_data = 0x80;		// Write 0x80 (write mode)
-    reg_spimaster_data = 0x12;		// Write 0x12 (start address)
-    reg_spimaster_data = 0x03;		// Write 0x03 to feedback divider (was 0x04)
-    reg_spimaster_config = 0xa102;	// Release CSB (ends stream mode)
+
+    // Monitor the core clock and user clock on mprj_io[14] and mprj_io[15]
+    reg_clk_out_dest = 0x6;
+
+    // Set PLL enable, no DCO mode
+    reg_hkspi_pll_ena = 0x1; 
+
+    // Set PLL output divider to 0x03
+    reg_hkspi_pll_source = 0x3;
+
+    // Write checkpoint for clock counting (PLL bypassed)
+    reg_mprj_datal = 0xA0420000;
+    reg_mprj_datal = 0xA0430000;
+
+    // Disable PLL bypass
+    reg_hkspi_pll_bypass = 0x0;
+
+    // Write checkpoint for clock counting
+    reg_mprj_datal = 0xA0440000;
+    reg_mprj_datal = 0xA0450000;
+
+    // Write 0x03 to feedback divider (was 0x04)
+    reg_hkspi_pll_divider = 0x3;
 
     // Write checkpoint
-    reg_mprj_datal = 0xA0420000;
+    reg_mprj_datal = 0xA0460000;
+    reg_mprj_datal = 0xA0470000;
 
-    reg_spimaster_config = 0xb002;	// Apply stream mode
-    reg_spimaster_data = 0x80;		// Write 0x80 (write mode)
-    reg_spimaster_data = 0x11;		// Write 0x11 (start address)
-    reg_spimaster_data = 0x04;		// Write 0x04 to PLL output divider
-    reg_spimaster_config = 0xa102;	// Release CSB (ends stream mode)
+    // Write 0x04 to PLL output divider
+    reg_hkspi_pll_source = 0x4;
 
-    reg_spimaster_config = 0x2102;	// Release housekeeping SPI
+    // Write checkpoint
+    reg_mprj_datal = 0xA0480000;
+    reg_mprj_datal = 0xA0490000;
 
     // End test
     reg_mprj_datal = 0xA0900000;
