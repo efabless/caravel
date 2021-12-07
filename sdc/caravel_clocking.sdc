@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Sun Dec  5 00:06:34 2021
+# Tue Dec  7 11:29:52 2021
 ###############################################################################
 current_design caravel_clocking
 ###############################################################################
@@ -18,15 +18,15 @@ create_clock -name pll_clk90 -period 6.6667 [get_ports {pll_clk90}]
 set_clock_transition 0.1500 [get_clocks {pll_clk90}]
 set_clock_uncertainty 0.2500 pll_clk90
 set_propagated_clock [get_clocks {pll_clk90}]
-create_generated_clock -name pll_clk_divided -source [get_ports {pll_clk}] -divide_by 2 [get_pins {_351_/Y}]
+create_generated_clock -name pll_clk_divided -source [get_ports {pll_clk}] -divide_by 2 [get_pins {_355_/Y}]
 set_propagated_clock [get_clocks {pll_clk_divided}]
-create_generated_clock -name pll_clk90_divided -source [get_ports {pll_clk90}] -divide_by 2 [get_pins {_354_/Y}]
+create_generated_clock -name pll_clk90_divided -source [get_ports {pll_clk90}] -divide_by 2 [get_pins {_357_/Y}]
 set_propagated_clock [get_clocks {pll_clk90_divided}]
-create_generated_clock -name core_ext_clk_syncd -source [get_pins {_420_/Q}] -divide_by 1 [get_pins {_343_/X}]
+create_generated_clock -name core_ext_clk_syncd -source [get_pins {_444_/Q}] -divide_by 1 [get_pins {_347_/X}]
 set_propagated_clock [get_clocks {core_ext_clk_syncd}]
-create_generated_clock -name core_clk_pll -source [get_pins {_351_/Y}] -divide_by 1 [get_ports {core_clk}]
+create_generated_clock -name core_clk_pll -source [get_pins {_355_/Y}] -divide_by 1 [get_ports {core_clk}]
 set_propagated_clock [get_clocks {core_clk_pll}]
-create_generated_clock -name user_clk_pll -source [get_pins {_354_/Y}] -divide_by 1 [get_ports {user_clk}]
+create_generated_clock -name user_clk_pll -source [get_pins {_357_/Y}] -divide_by 1 [get_ports {user_clk}]
 set_propagated_clock [get_clocks {user_clk_pll}]
 set_clock_groups -name group1 -logically_exclusive \
  -group [get_clocks {core_ext_clk_syncd}]
