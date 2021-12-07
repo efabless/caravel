@@ -1,7 +1,9 @@
 #!/bin/bassh
 #
+PDK_ROOT ?= /usr/share/pdk
+
 if [ ! -f caravan.spice ]; then
-magic -dnull -noconsole -rcfile /usr/share/pdk/sky130A/libs.tech/magic/sky130A.magicrc << EOF
+magic -dnull -noconsole -rcfile $PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc << EOF
 drc off
 crashbackups stop
 load caravan
