@@ -1,5 +1,6 @@
-#!/bin/sh
+#!/bin/bassh
 #
+if [ ! -f caravan.spice ]; then
 magic -dnull -noconsole -rcfile /usr/share/pdk/sky130A/libs.tech/magic/sky130A.magicrc << EOF
 drc off
 crashbackups stop
@@ -11,6 +12,7 @@ extract all
 ext2spice lvs
 ext2spice
 EOF
+fi
 
 rm *.ext
 

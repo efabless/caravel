@@ -14,7 +14,5 @@ ext2spice
 EOF
 fi
 
-rm *.ext
-
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" ./sky130A_setup.tcl comp.out
+netgen -batch lvs "caravel.spice chip_io" "../verilog/gl/chip_io.v chip_io" ./sky130A_setup.tcl comp.out
