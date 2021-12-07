@@ -629,7 +629,7 @@ caravel_timing: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check
 		read_verilog ./verilog/gl/chip_io.v;\
 		read_verilog ./verilog/gl/caravel.v;\
 		link_design caravel;\
-		read_spef -path soc/DFFRAM $(MCW_ROOT)/spef/DFFRAM.spef;\
+		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
 		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
 		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
 		read_spef -path padframe ./spef/chip_io.spef;\
