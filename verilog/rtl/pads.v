@@ -27,7 +27,7 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q)
+	.VSSIO_Q(vssio_q),
 
 	`define USER2_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
@@ -41,7 +41,7 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q)
+	.VSSIO_Q(vssio_q),
 
 	`define MGMT_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
@@ -55,7 +55,7 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q)
+	.VSSIO_Q(vssio_q),
 `else 
 	`define USER1_ABUTMENT_PINS 
 	`define USER2_ABUTMENT_PINS 
@@ -78,7 +78,7 @@
 	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \
 	`MGMT_ABUTMENT_PINS \
 	`ifndef	TOP_ROUTING \
-		,.PAD(X), \
+		.PAD(X), \
 	`endif	\
 		.OUT(vssd), \
 		.OE_N(vccd), \
@@ -110,7 +110,7 @@
 	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \
 	`MGMT_ABUTMENT_PINS \
 	`ifndef	TOP_ROUTING \
-		,.PAD(X), \
+		.PAD(X), \
 	`endif \
 		.OUT(Y), \
 		.OE_N(OUT_EN_N), \
@@ -142,7 +142,7 @@
 	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \
 	`MGMT_ABUTMENT_PINS \
 	`ifndef	TOP_ROUTING \
-		,.PAD(X), \
+		.PAD(X), \
 	`endif \
 		.OUT(Y), \
 		.OE_N(OUT_EN_N), \
@@ -174,7 +174,7 @@
 	sky130_ef_io__gpiov2_pad_wrapped X``_pad ( \
 	`MGMT_ABUTMENT_PINS \
 	`ifndef	TOP_ROUTING \
-		,.PAD(X), \
+		.PAD(X), \
 	`endif	\
 		.OUT(Y_OUT),	\
 		.OE_N(OUT_EN_N), \

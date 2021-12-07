@@ -1,4 +1,6 @@
-// `default_nettype none
+ `ifdef SIM
+ `default_nettype wire
+ `endif
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -710,7 +712,7 @@ module caravel (
 
         .trap(trap),
 
-	.user_clock(mprj_clock2),
+	.user_clock(caravel_clk2),
 
         .mask_rev_in(mask_rev),
 

@@ -20,38 +20,22 @@
 // --------------------------------------------------------
 
 /*
- *	System Control Test
- *	- Enables SPI master
- *	- Uses SPI master to internally access the housekeeping SPI
- *      - Reads default value of SPI-Controlled registers
- *      - Flags failure/success using mprj_io
+ *	System control test
+ *      - Sets GPIO to monitor the core and user clocks
+ *
+ *	This test is basically just the first part of the
+ *	PLL test, with the PLL bypassed.  Unlike the PLL
+ *	test, it can be run on a gate-level netlist.
+ *
  */
 void main()
 {
     int i;
-    uint32_t value;
-
-    // Force housekeeping SPI into a disabled state so that the CSB
-    // pin can be used as an output without the system failing
-
-    reg_hkspi_disable = 1;
 
     reg_mprj_datal = 0;
 
-    // Configure upper 6 bits of user GPIO for generating testbench
+    // Configure upper 16 bits of user GPIO for generating testbench
     // checkpoints.
-
-    reg_mprj_io_37 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_35 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_34 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_33 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_32 = GPIO_MODE_MGMT_STD_OUTPUT;
-
-    // Configure all lower 32 bits for writing the SPI value read on GPIO
-    // NOTE:  Converting reg_mprj_io_3 (CSB) to output will disable the
-    // SPI.  But that should not disable the back-door access to the SPI
-    // register values!
 
     reg_mprj_io_31 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_30 = GPIO_MODE_MGMT_STD_OUTPUT;
@@ -70,71 +54,48 @@ void main()
     reg_mprj_io_17 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_16 = GPIO_MODE_MGMT_STD_OUTPUT;
 
+    /* Monitor pins must be set to output */
     reg_mprj_io_15 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_14 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_13 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_12 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_11 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_10 = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_9  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_8  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_7  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_6  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_5  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_4  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_3  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_2  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_1  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_0  = GPIO_MODE_MGMT_STD_OUTPUT;
 
     /* Apply configuration */
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
 
     // Start test
-    reg_mprj_datah = 0x04;
 
-    // Read manufacturer and product ID
-    value = reg_hkspi_chip_id;
-    reg_mprj_datal = value;	// Mfgr + product ID
-    reg_mprj_datah = 0x05;
+    /*
+     *-------------------------------------------------------------
+     * Register 2620_0004	reg_clk_out_dest
+     * SPI address 0x1b = Output redirect
+     * bit 0 = trap to mprj_io[13]
+     * bit 1 = clk  to mprj_io[14]
+     * bit 2 = clk2 to mprj_io[15]
+     *-------------------------------------------------------------
+     */
 
-    // Read user ID
-    value = reg_hkspi_user_id;
-    reg_mprj_datal = value;	// User ID
-    reg_mprj_datah = 0x06;
+    // Monitor the core clock and user clock on mprj_io[14] and mprj_io[15]
+    // reg_clk_out_dest = 0x6 to turn on, 0x0 to turn off
 
-    // Read PLL enables
-    value = reg_hkspi_pll_ena;
-    reg_mprj_datal = value;	// DLL enables
-    reg_mprj_datah = 0x07;
+    // Write checkpoint for making sure nothing is counted when monitoring is off
+    reg_mprj_datal = 0xA0400000;
+    reg_clk_out_dest = 0x0;
+    reg_clk_out_dest = 0x0;
+    reg_mprj_datal = 0xA0410000;
 
-    // Read PLL bypass state
-    value = reg_hkspi_pll_bypass;
-    reg_mprj_datal = value;	// DLL bypass state
-    reg_mprj_datah = 0x08;
+    // Write checkpoint for core clock counting (PLL bypassed)
+    reg_mprj_datal = 0xA0420000;
+    reg_clk_out_dest = 0x2;
+    reg_clk_out_dest = 0x0;
+    reg_mprj_datal = 0xA0430000;
 
-    // Read PLL trim
-    value = reg_hkspi_pll_trim;
-    reg_mprj_datal = value;	// DLL trim
-    reg_mprj_datah = 0x09;
-
-    // Read PLL source
-    value = reg_hkspi_pll_source;
-    reg_mprj_datal = value;	// DLL source
-    reg_mprj_datah = 0x0a;
-
-    // Read PLL divider
-    value = reg_hkspi_pll_divider;
-    reg_mprj_datal = value;	// DLL divider
-    reg_mprj_datah = 0x0b;
-
-    // Read a GPIO configuration word
-    value = reg_mprj_io_6;
-    reg_mprj_datal = value;	// DLL divider
-    reg_mprj_datah = 0x0c;
+    // Write checkpoint for user clock counting (PLL bypassed)
+    reg_mprj_datal = 0xA0440000;
+    reg_clk_out_dest = 0x4;
+    reg_clk_out_dest = 0x0;
+    reg_mprj_datal = 0xA0450000;
 
     // End test
-    reg_mprj_datah = 0x0d;
+    reg_mprj_datal = 0xA0900000;
 }
 

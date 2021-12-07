@@ -3841,7 +3841,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .sram_ro_data({ \hkspi_sram_data[31] , \hkspi_sram_data[30] , \hkspi_sram_data[29] , \hkspi_sram_data[28] , \hkspi_sram_data[27] , \hkspi_sram_data[26] , \hkspi_sram_data[25] , \hkspi_sram_data[24] , \hkspi_sram_data[23] , \hkspi_sram_data[22] , \hkspi_sram_data[21] , \hkspi_sram_data[20] , \hkspi_sram_data[19] , \hkspi_sram_data[18] , \hkspi_sram_data[17] , \hkspi_sram_data[16] , \hkspi_sram_data[15] , \hkspi_sram_data[14] , \hkspi_sram_data[13] , \hkspi_sram_data[12] , \hkspi_sram_data[11] , \hkspi_sram_data[10] , \hkspi_sram_data[9] , \hkspi_sram_data[8] , \hkspi_sram_data[7] , \hkspi_sram_data[6] , \hkspi_sram_data[5] , \hkspi_sram_data[4] , \hkspi_sram_data[3] , \hkspi_sram_data[2] , \hkspi_sram_data[1] , \hkspi_sram_data[0]  }),
     .trap(trap),
     .uart_enabled(uart_enabled),
-    .user_clock(mprj_clock2),
+    .user_clock(caravel_clk2),
     .usr1_vcc_pwrgood(mprj_vcc_pwrgood),
     .usr1_vdd_pwrgood(mprj_vdd_pwrgood),
     .usr2_vcc_pwrgood(mprj2_vcc_pwrgood),
