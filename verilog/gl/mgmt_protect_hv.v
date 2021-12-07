@@ -27,8 +27,8 @@ module mgmt_protect_hv(mprj2_vdd_logic1, mprj_vdd_logic1, vccd, vssd, vdda1, vss
   input vssd;
   sky130_fd_sc_hvl__conb_1 mprj2_logic_high_hvl (
     .HI(mprj2_vdd_logic1_h),
-    .VGND(vssd),
-    .VNB(vssd),
+    .VGND(vssa2),
+    .VNB(vssa2),
     .VPB(vdda2),
     .VPWR(vdda2)
   );
@@ -43,8 +43,8 @@ module mgmt_protect_hv(mprj2_vdd_logic1, mprj_vdd_logic1, vccd, vssd, vdda1, vss
   );
   sky130_fd_sc_hvl__conb_1 mprj_logic_high_hvl (
     .HI(mprj_vdd_logic1_h),
-    .VGND(vssd),
-    .VNB(vssd),
+    .VGND(vssa1),
+    .VNB(vssa1),
     .VPB(vdda1),
     .VPWR(vdda1)
   );
@@ -57,6 +57,4 @@ module mgmt_protect_hv(mprj2_vdd_logic1, mprj_vdd_logic1, vccd, vssd, vdda1, vss
     .VPWR(vdda1),
     .X(mprj_vdd_logic1)
   );
-  assign vssd = vssa2;
-  assign vssa1 = vssa2;
 endmodule
