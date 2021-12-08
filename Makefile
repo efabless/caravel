@@ -360,7 +360,6 @@ $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 		select top cell;\
 		extract no all;\
 		extract do local;\
-		extract unique;\
 		extract;\
 		ext2spice lvs;\
 		ext2spice $*.ext;\
