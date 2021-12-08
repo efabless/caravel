@@ -14,9 +14,8 @@ extract all
 ext2spice lvs
 ext2spice
 EOF
+rm -f *.ext
 fi
 
-rm *.ext
-
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" ./sky130A_setup.tcl comp.out
+netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl comp.out
