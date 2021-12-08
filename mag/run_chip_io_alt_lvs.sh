@@ -18,4 +18,4 @@ rm -f *.ext
 fi
 
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravan.spice chip_io_alt" "../verilog/gl/chip_io_alt.v chip_io_alt" $PDK_ROOT/sky130A/libs.tech/magic/sky130A_setup.tcl comp.out
+netgen -batch lvs "caravan.spice chip_io_alt" "../verilog/gl/chip_io_alt.v chip_io_alt" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl comp.out
