@@ -1,4 +1,4 @@
-#!/bin/bassh
+#!/bin/bash
 #
 PDK_ROOT ?= /usr/share/pdk
 
@@ -14,9 +14,8 @@ extract all
 ext2spice lvs
 ext2spice
 EOF
+rm -f *.ext
 fi
 
-rm *.ext
-
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravan.spice caravan" "../verilog/gl/caravan.v caravan" ./sky130A_setup.tcl comp.out
+netgen -batch lvs "caravan.spice caravan" "../verilog/gl/caravan.v caravan" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl comp.out
