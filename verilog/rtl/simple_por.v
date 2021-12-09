@@ -28,7 +28,7 @@ module simple_por(
     output por_l
 );
 
-    wire mid, porb_h;
+    wire mid;
     reg inode;
 
     // This is a behavioral model!  Actual circuit is a resitor dumping
