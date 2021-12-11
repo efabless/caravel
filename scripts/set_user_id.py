@@ -241,7 +241,7 @@ if __name__ == '__main__':
 
     for i in range(0,32):
         # Ignore any zero bits.
-        if user_id_bits[i] == '0':
+        if user_id_bits[31 - i] == '0':
             continue
 
         coords = mask_rev[i]
