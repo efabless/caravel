@@ -1,6 +1,6 @@
 set ::env(IO_PCT) "0.2"
 set ::env(SYNTH_MAX_FANOUT) "5"
-set ::env(SYNTH_CAP_LOAD) "1"
+set ::env(SYNTH_CAP_LOAD) "33"
 set ::env(SYNTH_TIMING_DERATE) 0.05
 set ::env(SYNTH_CLOCK_UNCERTAINITY) 0.25
 set ::env(SYNTH_CLOCK_TRANSITION) 0.15

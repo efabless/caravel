@@ -310,6 +310,8 @@ $(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
 	echo "Extracting $*"
 	mkdir -p ./mag/tmp
 	echo "addpath $(CARAVEL_ROOT)/mag/hexdigits;\
+		addpath $(CARAVEL_ROOT)/mag/primitives;\
+		addpath $(MCW_ROOT)/mag;\
 		addpath $(CARAVEL_ROOT)/subcells/simple_por/mag;\
 		addpath \$$PDKPATH/libs.ref/sky130_ml_xx_hd/mag;\
 		load $* -dereference;\
@@ -360,7 +362,6 @@ $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 		select top cell;\
 		extract no all;\
 		extract do local;\
-		extract unique;\
 		extract;\
 		ext2spice lvs;\
 		ext2spice $*.ext;\
@@ -501,23 +502,37 @@ help:
 # RCX Extraction
 BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
 RCX_BLOCKS = $(foreach block, $(BLOCKS), rcx-$(block))
-OPENLANE_IMAGE_NAME=efabless/openlane:2021.11.23_01.42.34
-$(RCX_BLOCKS): rcx-% : ./def/%.def check-mcw
+OPENLANE_IMAGE_NAME=efabless/openlane:2021.11.25_01.26.14
+$(RCX_BLOCKS): rcx-% : ./def/%.def 
 	echo "Running RC Extraction on $*"
 	mkdir -p ./def/tmp 
 	# merge techlef and standard cell lef files
-	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef \
-		$(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef \
-		$(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(PRIMITIVES_LIBRARY)/lef/*.lef \
-		-o ./def/tmp/merged.lef
-	
+	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lef/*.lef -o ./def/tmp/merged.lef
 	echo "\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
 		set std_cell_lef ./def/tmp/merged.lef;\
-		set mgmt_area_lef $(MCW_ROOT)/lef/mgmt_core_wrapper.lef;\
+		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
+    			puts stderr \$$errmsg;\
+    			exit 1;\
+		};\
+		if {[catch {read_lef \$$sram_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
 		};\
@@ -527,17 +542,21 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def check-mcw
     			exit 1;\
 			}\
 		};\
-		if {[catch {read_lef \$$mgmt_area_lef} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-		};\
 		if {[catch {read_def -order_wires ./def/$*.def} errmsg]} {\
 			puts stderr \$$errmsg;\
 			exit 1;\
 		};\
-		read_sdc ./sdc/$*.sdc;\
+		read_sdc -echo ./sdc/$*.sdc;\
 		set_propagated_clock [all_clocks];\
 		set rc_values \"mcon 9.249146E-3,via 4.5E-3,via2 3.368786E-3,via3 0.376635E-3,via4 0.00580E-3\";\
+		set l_rc \"li1 1.499e-04 7.176e-02,met1 1.449e-04 8.929e-04,met2 1.331e-04 8.929e-04,met3 1.464e-04 1.567e-04,met4 1.297e-04 1.567e-04,met5 1.501e-04 1.781e-05\";\
+		set layers_rc [split \$$l_rc ","];\
+		foreach layer_rc \$$layers_rc {\
+			set layer_name [lindex \$$layer_rc 0];\
+			set capacitance [lindex \$$layer_rc 1];\
+			set resistance [lindex \$$layer_rc 2];\
+			set_layer_rc -layer \$$layer_name -capacitance \$$capacitance -resistance \$$resistance;\
+		};\
 		set vias_rc [split \$$rc_values ","];\
     	foreach via_rc \$$vias_rc {\
         		set layer_name [lindex \$$via_rc 0];\
@@ -550,13 +569,17 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def check-mcw
 		extract_parasitics -ext_model_file ${PDK_ROOT}/sky130A/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
 		write_spef ./spef/$*.spef" > ./def/tmp/rcx_$*.tcl
 ## Generate Spef file
-	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MCW_ROOT):$(MCW_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
 	sh -c " cd /caravel; openroad -exit ./def/tmp/rcx_$*.tcl |& tee ./def/tmp/rcx_$*.log" 
 ## Run OpenSTA
 	echo "\
 		set std_cell_lef ./def/tmp/merged.lef;\
-		set mgmt_area_lef $(MCW_ROOT)/lef/mgmt_core_wrapper.lef;\
+		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
+    			puts stderr \$$errmsg;\
+    			exit 1;\
+		};\
+		if {[catch {read_lef \$$sram_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
 		};\
@@ -566,25 +589,35 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def check-mcw
     			exit 1;\
 			}\
 		};\
-		if {[catch {read_lef \$$mgmt_area_lef} errmsg]} {\
-			puts stderr \$$errmsg;\
-			exit 1;\
-		};\
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
-		read_def ./def/$*.def;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
+		read_verilog ./verilog/gl/$*.v;\
+		link_design $*;\
 		read_spef ./spef/$*.spef;\
 		read_sdc -echo ./sdc/$*.sdc;\
-		write_sdf ./sdf/$*.sdf;\
-		report_checks -fields {capacitance slew input_pins nets fanout} -path_delay min_max -group_count 1000;\
+		write_sdf ./sdf/$*.sdf -divider . -include_typ;\
+		report_checks -fields {capacitance slew input_pins nets fanout} -path_delay min_max -group_count 5;\
 		report_check_types -max_slew -max_capacitance -max_fanout -violators;\
 		report_checks -to [all_outputs] -group_count 1000;\
-		report_checks -to [all_outputs] -unconstrained -group_count 1000;\
-		" > ./def/tmp/or_sta_$*.tcl 
-	docker run -it -v $(OPENLANE_ROOT):/openLANE_flow -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v $(MCW_ROOT):$(MCW_ROOT) -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	sh -c "cd /caravel; openroad -exit ./def/tmp/or_sta_$*.tcl |& tee ./def/tmp/or_sta_$*.log" 
+		" > ./def/tmp/sta_$*.tcl 
+	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	sh -c "cd /caravel; openroad -exit ./def/tmp/sta_$*.tcl |& tee ./def/tmp/sta_$*.log" 
 
 
 caravel_timing: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
