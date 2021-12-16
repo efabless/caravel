@@ -52,6 +52,6 @@ jobs:
           git pull parent main
           git fetch --all --tags
           git filter-repo --path openlane/user_project_wrapper_empty --path openlane/user_analog_project_wrapper_empty --path openlane/Makefile --path gds/user_project_wrapper_empty.gds.gz --path gds/user_analog_project_wrapper_empty.gds.gz --path mag/user_project_wrapper_empty.mag --path mag/user_analog_project_wrapper_empty.mag --path lef/user_project_wrapper_empty.lef --path lef/user_analog_project_wrapper_empty.lef --path verilog/ --path info.yaml --path Makefile --path scripts/ --path utils/ --path LICENSE --path manifest --path spi/lvs/run_lvs.sh --path gds/gds2mag-all.sh --path gds/drc_on_gds.tcl --path gds/antenna_on_gds.tcl --path spi/lvs/caravel.spice --path spi/lvs/caravan.spice --force
-          git remote add caravel_lite https://x-access-token:${{ secrets.EFSTAFF_TOKEN }}@github.com/caravel_openframe-lite
+          git remote add caravel_lite https://x-access-token:${{ secrets.EFSTAFF_TOKEN }}@github.com/efabless/caravel_openframe-lite
           git push --force caravel_lite main
           git push -f --tags caravel_lite main
