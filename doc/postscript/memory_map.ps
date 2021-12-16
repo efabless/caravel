@@ -1,0 +1,615 @@
+%!PS-Adobe-3.0
+%%Title: memory_map.ps
+%%Creator: XCircuit v0.0 rev-1793920491
+%%CreationDate: Thu Dec 16 16:53:48 2021
+%%Pages: 3
+%%BoundingBox: 0 0 612 792
+%%DocumentNeededResources: font Helvetica Helvetica-Bold Helvetica-Oblique 
+%%+ font Courier Courier-Bold 
+%%EndComments
+%%BeginProlog
+%
+%  PostScript prolog for output from xcircuit
+%  Version: 3.9
+%
+%  Electrical circuit (and otherwise general) drawing program
+%
+%  Written by Tim Edwards 8/5/93--4/12/16  (tim@opencircuitdesign.com)
+%  The Johns Hopkins University (1993-2004)
+%  MultiGiG, Inc. (2004-2012)
+%  Open Circuit Design (2012-2016)
+%
+%%BeginResource: procset XCIRCproc 3.9 1
+%
+% supporting definitions --- these are the primary xcircuit types.
+
+/XCIRCsave save def
+/topmat matrix currentmatrix def
+
+/fontslant { /slant exch def [1 0 slant 1 0 0] 
+    exch findfont exch makefont dup length dict /ndict exch def
+    { 1 index /FID ne { ndict 3 1 roll put } { pop pop } ifelse } forall
+    ndict definefont pop} def
+/ul { count 0 gt { dup type /stringtype eq showflag 1 eq and { gsave 
+   currentpoint topmat setmatrix 0 0 moveto 2 index stringwidth pop (_)
+   false charpath flattenpath pathbbox grestore exch pop 1 index
+   sub setlinewidth exch pop currentpoint 3 -1 roll add moveto 0
+   rlineto stroke moveto } if } if } def
+/ol { count 0 gt { dup type /stringtype eq showflag 1 eq and { gsave gsave
+   currentpoint topmat setmatrix 2 index stringwidth pop 3 index
+   true charpath flattenpath pathbbox grestore exch pop
+   exch pop topmat setmatrix (_) true charpath pathbbox grestore
+   exch pop 1 index sub setlinewidth exch pop currentpoint
+   exch 4 1 roll exch sub add moveto pop 0 rlineto stroke
+   moveto } if } if } def
+/stW { gsave currentpoint newpath moveto true charpath flattenpath
+	pathbbox pop exch pop sub grestore } def
+/Ts {mark Tabs aload pop counttomark 1 add array astore /Tabs exch def Tabs
+	0 currentpoint pop put} def
+/Tbn {mark Tabs aload pop counttomark dup 2 add 1 roll cleartomark 1 sub} def
+/Tb { 0 1 Tbn {Tabs exch get dup currentpoint pop lt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/Tf { Tbn -1 0 {Tabs exch get dup currentpoint pop gt
+	{currentpoint exch pop moveto exit} {pop} ifelse } for } def
+/qS { (aa) stW (a a) stW sub 4 div 0 Kn } def
+/hS { qS qS } def
+/pspc 0 def
+/cf0 { scalefont setfont } bind def
+/Kn { dup kY add /kY exch def rmoveto } bind def
+/ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.33 mul neg Kn} def
+/Ss { /fscale fscale 0.67 mul def currentfont 0.67 cf0 0 fscale0 fscale mul
+	0.67 mul Kn } def
+/ns { 0 kY neg Kn /kY 0 def /fscale 1.0 def xfont0 1.0 cf0 } def
+/MR { /twidth exch def } def
+/CRx { } def
+/CR { ns 0 /Bline Bline fscale0 neg add def Bline moveto CRx } def
+/cf { dup type /realtype ne {1.0} if exch findfont exch kY 0 eq
+	{ 40 mul dup /fscale0 exch def cf0 /xfont0 currentfont def}
+	{fscale0 mul fscale mul cf0} ifelse } def
+/ctmk { counttomark dup 2 add -1 roll pop } bind def
+/label { gsave translate 0 0 moveto dup scale neg
+	/rotval exch def /twidth 100000 def /just exch def just 128 and
+	0 gt {/mshow {pop} def} {/mshow {show} def} ifelse just 16 and 0
+	gt {gsave rotval rotate 0 1 dtransform gsave pagemat setmatrix
+	idtransform exch grestore 1 0 dtransform gsave pagemat setmatrix
+	idtransform exch grestore dup abs 1e-9 lt {pop mul 0 gt} {3 1 roll
+	pop pop 0 lt} ifelse grestore {-1 /rotval rotval neg def /just just
+	dup 3 and 1 ne {3 xor} if def} {1} ifelse exch -1e-9 lt {-1 /rotval
+	rotval neg def /just just dup 12 and 4 ne {12 xor} if def} {1}
+	ifelse scale } if /showflag 0 def /fspc pspc def /Bline 0 def
+	/numlines 0 def /padding 0 array def /Tabs 0 array def
+	/fscale 1.0 def /kY 0 def gsave /CRx { linewid padding
+	aload pop numlines 1 add dup /numlines exch def array astore
+	/padding exch def /linewid 0 def } def dup 1 add copy dup 1 0
+	dtransform exch atan rotate {exch dup type /stringtype eq {gsave dup
+	gsave newpath 0 0 moveto true charpath flattenpath pathbbox pop exch
+	pop exch pop grestore currentpoint pop add dup /linewid exch def twidth
+	ge {grestore CR exch 1 add dup 2 add {CR} exch 1 roll exch} {grestore}
+	ifelse true charpath flattenpath} {dup type /arraytype eq {exec} {12
+	string cvs true charpath flattenpath} ifelse} ifelse} repeat
+	CRx /CRx {padding aload pop just 1280 and 0 gt {blockwid exch sub just
+	1024 and 0 gt {0.5 mul} if} {pop 0} ifelse 0 rmoveto numlines 1 sub
+	dup /numlines exch def array astore /padding exch def} def exch pop
+	pathbbox grestore 4 copy pop exch pop exch sub /blockwid exch def
+	3 -1 roll pop 3 1 roll just 1 and 0 gt {just 2 and
+	0 gt {exch pop neg fspc sub} {exch sub 0.5 mul neg} ifelse} {pop neg
+	fspc add} ifelse exch Bline exch just 4 and 0 gt {just 8 and 0 gt
+	{exch pop neg fspc sub} {add 0.5 mul neg} ifelse} {pop neg fspc add}
+	ifelse rotval rotate Kn currentpoint translate /showflag 1 def /Bline
+	0 def /Tabs 0 array def /fscale 1.0 def /kY 0 def CRx {dup type
+	/stringtype eq {mshow} {dup type /arraytype eq {exec} {12 string cvs
+	mshow} ifelse} ifelse} repeat grestore endclip} def
+/pinlabel { 4 index 32 and 0 ne hlevel 0 eq or { /pspc 10 def label
+	/pspc 0 def } { pop pop pop pop pop {pop} repeat } ifelse } def
+/pinglobal { pinlabel } def
+/infolabel { pinlabel } def
+/graphic { gsave 4 index cvx exec /DataSource get resetfile translate 0 0
+	moveto neg rotate dup scale cvx exec image grestore endclip} def
+
+/scb { setrgbcolor } bind def  /sce { defColor aload pop scb } bind def
+/cRedef {/defColor currentcolor 3 array astore def} def
+/begingate {dup type /dicttype ne {1 dict} if begin	% default params
+	dup type /dicttype ne {1 dict} if begin		% instanced params
+	/hlevel hlevel 1 add def /defColor currentcolor sce 3 array astore
+	def gsave sce dup type /nametype eq { pop } if translate 0 0 moveto
+	neg rotate dup type /nametype eq not { dup abs currentlinewidth exch
+	div setlinewidth } { pop } ifelse dup abs scale clipped 1 and 1 eq
+	{/clipped clipped 1 add def} if} bind def
+/endgate { /hlevel hlevel 1 sub def grestore defColor aload pop cRedef
+	scb end end endclip} bind def
+
+/hlevel 0 def
+/endclip {clipped 1 and 1 eq {grestore /clipped clipped 1 sub def} if} def
+/tmpa [1 0 0 1 0 0] def
+/gar {8 8 true tmpa {<c0 c0 00 00 0c 0c 00 00>} imagemask} bind
+{8 8 true tmpa {<30 70 60 02 03 07 06 20>} imagemask} bind
+{8 8 true tmpa {<0c 1e 1e 0c c0 e1 e1 c0>} imagemask} bind
+{8 8 true tmpa {<0f 0f 0f 0f f0 f0 f0 f0>} imagemask} bind
+{8 8 true tmpa {<3f f3 e1 e1 f3 3f 1e 1e>} imagemask} bind
+{8 8 true tmpa {<df cf 8f 9f fd fc f8 f9>} imagemask} bind
+{8 8 true tmpa {<ff 3f 3f ff ff f3 f3 ff>} imagemask} bind 7 array astore def
+/ppaint { gsave clip tmpa dup setmatrix pathbbox neg exch neg 4 2 roll
+  neg 4 -1 roll 2 copy gt {exch} if 8 div ceiling 8 mul 4 2 roll neg 2 copy
+  gt {exch} if 8 div ceiling 8 mul 3 -1 roll -8 5 -1 roll
+  { 3 index exch 5 exch put dup -8 3 index { 3 index
+  exch 4 exch put 3 index exec } for } for pop pop pop pop grestore } bind def
+/setstyles {
+  currentlinewidth mul setlinewidth /style exch def style 2048 and 0 gt
+  clipped 1 and 0 eq and {clip newpath /clipped clipped 1 add def} {
+  style 1 and 0 gt not {closepath} if
+  style 1024 and 0 gt {2 setlinecap 0 setlinejoin} if
+  style 2 and 0 gt {currentlinewidth 4 mul dup 2 array astore 0 setdash} if
+  style 4 and 0 gt {0.5 currentlinewidth 4 mul 2 array astore 0 setdash} if
+  gsave style 16 and 0 gt { style 224 and -5 bitshift style 256 and 0 gt {
+  7 exch sub 8 div dup 1 exch sub currentrgbcolor 3 array astore
+  {3 copy mul add 4 1 roll pop} forall pop pop setrgbcolor eofill}
+  {dup 7 lt {gar exch get ppaint} {pop eofill} ifelse} ifelse}
+  {style 256 and 0 gt {1 setgray eofill} if} ifelse grestore style 8 and 0 gt 
+  style 512 eq or {newpath} {stroke} ifelse grestore endclip} ifelse} def     
+
+/addtoy {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll add
+	4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtoy1 {1 exch addtoy pop} def
+/addtoy3 {3 exch addtoy pop} def
+/addtoy4 {4 exch addtoy pop} def
+/addtox {exch dup dup 2 mul 3 add 1 roll -1 1 { 4 1 roll dup 4 1 roll 3 -1 roll
+	add exch 4 -1 roll 2 mul 1 add index 2 mul 2 add 2 roll} for pop} def
+/addtox1 {1 exch addtox pop} def
+/addtox3 {3 exch addtox pop} def
+/addtox4 {4 exch addtox pop} def
+/polygon { gsave /num exch def moveto num 1 sub {lineto} repeat setstyles } def
+/xcarc   { gsave newpath arc setstyles } def
+/elb { matrix currentmatrix 7 -1 roll 7 -1 roll translate 5 1 roll 4 -1 roll
+	3 index div 1 scale } def
+/ele { 0 4 1 roll 0 4 1 roll } bind def
+/ellipse { gsave elb newpath ele arc setmatrix setstyles } def
+/pellip  { elb ele arc setmatrix } def
+/nellip  { elb ele arcn setmatrix } def
+/spline  { gsave moveto curveto setstyles } def
+/polyc   { {lineto} repeat } bind def
+/beginpath { gsave moveto } bind def
+/endpath { setstyles } bind def
+/bop	 { 1 setlinecap 2 setlinejoin 6 setmiterlimit 0 0 0 scb cRedef
+	/clipped 0 def} def
+/psinsertion {/PSobj save def /showpage {} def /setpagedevice {pop} def bop
+	rotate translate dup scale} def
+/end_insert {PSobj restore} def
+/setpagemat {/pagemat matrix currentmatrix def} def
+/inchscale  {setpagemat 0.375 mul dup scale} def
+/cmscale    {setpagemat 0.35433071 mul dup scale} def
+
+%%EndResource
+%%EndProlog
+% XCircuit output starts here.
+
+%%BeginSetup
+
+
+%%EndSetup
+
+%%Page: memmap1 1
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.8571 inchscale
+2.6000 setlinewidth 1288 1456 translate
+
+0.678 1.000 0.184 scb
+512 1.000 -1056 784 -1056 -1232 384 -1232 384 784 4 polygon
+sce
+1 1.000 -1056 736 384 736 2 polygon
+(Memory Mapped I/O summary by address) {/Helvetica-Bold cf} 2 16 0.000 0.700 
+-1056 704 label
+1 1.000 -816 672 -816 -1232 2 polygon
+(Address \(bytes\)) {/Helvetica cf} 2 16 360.000 0.700 -1056 656 label
+1 1.000 -1056 640 384 640 2 polygon
+(Function) {/Helvetica cf} 2 16 0.000 0.700 -800 656 label
+(0x00 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 608 label
+(Flash SPI / overlaid DFFRAM \(1k words\)  start of memory block) 
+{/Helvetica cf} 2 16 0.000 0.700 -800 608 label
+(0x10 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 448 label
+(Flash SPI start of program block) {/Helvetica cf} 2 16 0.000 0.700 -800 448 
+label
+(0x21 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 160 label
+(GPIO input/output \(bit 16/bit 0\)) {/Helvetica cf} 2 16 0.000 0.700 -800 160 
+label
+(0x21 00 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 128 label
+(GPIO output enable \(1 = output, 0 = input\)) {/Helvetica cf} 2 16 360.000 
+0.700 -800 128 label
+(0x21 00 00 08) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 96 label
+(GPIO pullup enable \(1 = pullup, 0 = none\)) {/Helvetica cf} 2 16 0.000 0.700 
+-800 96 label
+(0x21 00 00 0c) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 64 label
+(GPIO pulldown enable \(1 = pulldown, 0 = none\)) {/Helvetica cf} 2 16 360.000 
+0.700 -800 64 label
+(Program to run starts here on reset.) {/Helvetica cf} 2 16 0.000 0.700 -144 
+448 label
+(1 general-purpose digital, management area only) {/Helvetica cf} 2 16 0.000 
+0.700 -240 160 label
+(Efabless Caravel SoC and user project harness) {/Helvetica cf} 2 28 0.000 
+1.000 -1056 784 label
+(0x00 00 0f ff) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 576 label
+(End of SRAM) {/Helvetica cf} 2 16 0.000 0.700 -800 576 label
+(0x1f ff ff ff) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 384 label
+(MB\) with 4-byte addressing) {qS} (Maximum SPI flash addressable space \(32) 
+{/Helvetica cf} 4 16 0.000 0.700 -800 384 label
+(0x10 ff ff ff) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 416 label
+(MB\) with QSPI 3-byte addressing) {qS} 
+(Maximum SPI flash addressable space \(16) {/Helvetica cf} 4 16 0.000 0.700 
+-800 416 label
+(UART clock divider select \(system clock freq. / baud rate\)) {/Helvetica cf} 
+2 16 0.000 0.700 -800 304 label
+(0x20 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 304 label
+(if receiver buffer is empty\)) {/Helvetica cf} (0xffffffff ) {/Courier cf} 
+(UART data \(returns ) {/Helvetica cf} 6 16 360.000 0.700 -800 272 label
+(0x20 00 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 272 label
+(UART enable) {/Helvetica cf} 2 16 360.000 0.700 -800 240 label
+(0x20 00 00 08) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 240 label
+(0x22 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -16 label
+(Counter/Timer 0 configuration register \(lower 4 bits\)) {/Helvetica cf} 2 16 
+0.000 0.700 -800 -16 label
+(0x22 00 00 04) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -208 label
+(Counter/Timer 0 current value) {/Helvetica cf} 2 16 0.000 0.700 -800 -208 
+label
+(0x22 00 00 08) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -288 label
+(Counter/Timer 0 reset value) {/Helvetica cf} 2 16 0.000 0.700 -800 -288 label
+(bit 0 = enable \(0 = hold,  1 = count\)) {/Helvetica cf} 2 16 0.000 0.700 -736 
+-64 label
+(Set or read the 32-bit current value.) {/Helvetica cf} 2 16 0.000 0.700 -736 
+-240 label
+(Set or read the 32-bit reset \(down-count\) or compare \(up-count\) value.) 
+{/Helvetica cf} 2 16 0.000 0.700 -752 -320 label
+(bit 1 = oneshot \(0 = continuous count,  1 = one-shot count\)) {/Helvetica cf} 
+2 16 0.000 0.700 -736 -96 label
+(bit 2 = updown \(0 = count down,  1 = count up\)) {/Helvetica cf} 2 16 0.000 
+0.700 -736 -128 label
+(bit 3 = irq enable \(0 = disabled,  1 = trigger IRQ channel 10 on timeout\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -736 -160 label
+(0x23 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -368 label
+(Counter/Timer 1 configuration register \(lower 4 bits\)) {/Helvetica cf} 2 16 
+0.000 0.700 -800 -368 label
+(0x23 00 00 04) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -560 label
+(Counter/Timer 1 current value) {/Helvetica cf} 2 16 0.000 0.700 -800 -560 
+label
+(0x23 00 00 08) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -640 label
+(Counter/Timer 1 reset value) {/Helvetica cf} 2 16 0.000 0.700 -800 -640 label
+(bit 0 = enable \(0 = hold,  1 = count\)) {/Helvetica cf} 2 16 0.000 0.700 -736 
+-416 label
+(Set or read the 32-bit current value.) {/Helvetica cf} 2 16 0.000 0.700 -736 
+-592 label
+(Set or read the 32-bit reset \(down-count\) or compare \(up-count\) value.) 
+{/Helvetica cf} 2 16 0.000 0.700 -752 -672 label
+(bit 1 = oneshot \(0 = continuous count,  1 = one-shot count\)) {/Helvetica cf} 
+2 16 0.000 0.700 -736 -448 label
+(bit 2 = updown \(0 = count down,  1 = count up\)) {/Helvetica cf} 2 16 0.000 
+0.700 -736 -480 label
+(bit 3 = irq enable \(0 = disabled,  1 = trigger IRQ channel 11 on timeout\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -736 -512 label
+(0x24 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -720 label
+(SPI master configuration register) {/Helvetica cf} 2 16 0.000 0.700 -800 -720 
+label
+(0x24 00 00 04) {/Courier-Bold cf} 2 16 360.000 0.700 -1056 -1072 label
+(SPI master data register \(low 8 bits\)) {/Helvetica cf} 2 16 0.000 0.700 -800 
+-1072 label
+
+(bits 0\2617 = prescaler \(core clock / \(prescaler + 1\) = SPI clock rate / 2\) \(default 2\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -768 label
+(bit 8 = mlb \(0 = msb first,  1 = lsb first\) \(default 0\)) {/Helvetica cf} 2 
+16 0.000 0.700 -720 -800 label
+(bit 9 = invcsb \(0 = csb active low,  1 = csb active high\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -832 label
+(bit 10 = invsck \(0 = normal sck, 1 = inverted sck\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -864 label
+
+(bit 11 = mode \(0 = read/write on opposite sck edge, 1 = same edge\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -896 label
+
+(bit 12 = stream \(0 = raise csb after each byte, 1 = keep csb low until stream bit cleared\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -928 label
+(bit 13 = enable \(0 = SPI master disabled, 1 = SPI master enabled\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -960 label
+
+(bit 14 = irq enable \(0 = disabled, 1 = SPI read valid triggers interrupt channel 9\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -992 label
+(Write data to send to low byte or read received data from low byte.) 
+{/Helvetica cf} 2 16 0.000 0.700 -720 -1120 label
+(bit 15 = housekeeping \(0 = disconnected, 1 = connected\)) {/Helvetica cf} 2 
+16 0.000 0.700 -720 -1024 label
+(0x01 00 07 ff) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 512 label
+(End of SRAM) {/Helvetica cf} 2 16 0.000 0.700 -800 512 label
+(0x01 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -1056 544 label
+(Flash SPI / overlaid SRAM \(512 words\)  start of memory block) 
+{/Helvetica cf} 2 16 0.000 0.700 -800 544 label
+pgsave restore showpage
+
+%%Page: memmap2 2
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.8571 inchscale
+2.6000 setlinewidth 1160 1344 translate
+
+0.678 1.000 0.184 scb
+512 1.000 -928 896 -928 -1120 512 -1120 512 896 4 polygon
+sce
+1 1.000 -688 784 -688 -1120 2 polygon
+(Address \(bytes\)) {/Helvetica cf} 2 16 360.000 0.700 -928 768 label
+(Function) {/Helvetica cf} 2 16 0.000 0.700 -672 768 label
+1 1.000 -928 752 512 752 2 polygon
+(\(continued\)) {/Helvetica-Oblique cf} (Memory Mapped I/O summary by address ) 
+{/Helvetica-Bold cf} 4 16 0.000 0.700 -928 816 label
+1 1.000 -928 848 512 848 2 polygon
+(Efabless Caravel SoC and user project harness) {/Helvetica cf} 2 28 0.000 
+1.000 -928 896 label
+(0x25 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -928 704 label
+(Logic Analyzer Data 0 \(bits 31 to 0\)) {/Helvetica cf} 2 16 0.000 0.700 -672 
+704 label
+(0x25 00 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -928 672 label
+(Logic Analyzer Data 1 \(bits 63 to 32\)) {/Helvetica cf} 2 16 0.000 0.700 -672 
+672 label
+(0x25 00 00 08) {/Courier-Bold cf} 2 16 0.000 0.700 -928 640 label
+(Logic Analyzer Data 2 \(bits 91 to 64\)) {/Helvetica cf} 2 16 0.000 0.700 -672 
+640 label
+(0x25 00 00 0c) {/Courier-Bold cf} 2 16 0.000 0.700 -928 608 label
+(Logic Analyzer Data 3 \(bits 127 to 92\)) {/Helvetica cf} 2 16 0.000 0.700 
+-672 608 label
+(0x25 00 00 10) {/Courier-Bold cf} 2 16 0.000 0.700 -928 560 label
+(Logic Analyzer Output Enable 0 \(sense inverted\320OEB\)) {/Helvetica cf} 2 16 
+0.000 0.700 -672 560 label
+(0x25 00 00 14) {/Courier-Bold cf} 2 16 0.000 0.700 -928 528 label
+(Logic Analyzer Output Enable 1 \(sense inverted\320OEB\)) {/Helvetica cf} 2 16 
+0.000 0.700 -672 528 label
+(0x25 00 00 18) {/Courier-Bold cf} 2 16 0.000 0.700 -928 496 label
+(Logic Analyzer Output Enable 2 \(sense inverted\320OEB\)) {/Helvetica cf} 2 16 
+0.000 0.700 -672 496 label
+(0x25 00 00 1c) {/Courier-Bold cf} 2 16 0.000 0.700 -928 464 label
+(Logic Analyzer Output Enable 3 \(sense inverted\320OEB\)) {/Helvetica cf} 2 16 
+0.000 0.700 -672 464 label
+(0x26 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -928 224 label
+(User project area GPIO data \(L\) \(GPIO 31 to 0\)) {/Helvetica cf} 2 16 0.000 
+0.700 -672 128 label
+(0x26 00 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -928 192 label
+(User project area GPIO data \(H\) \(GPIO 37 to 32, upper bits unused\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -672 96 label
+(0x26 00 00 0c) {/Courier-Bold cf} 2 16 0.000 0.700 -928 128 label
+(User project area GPIO data transfer \(bit 0, auto-zeroing\)) {/Helvetica cf} 
+2 16 0.000 0.700 -672 224 label
+(0x26 00 00 24) {/Courier-Bold cf} 2 16 0.000 0.700 -928 32 label
+(0x26 00 00 b8) {/Courier-Bold cf} 2 16 0.000 0.700 -928 -48 label
+(. . .) {/Helvetica cf} 2 21 90.000 0.700 -816 0 label
+(User project area GPIO mprj_io[0] configure) {/Helvetica cf} 2 16 0.000 0.700 
+-672 32 label
+(User project area GPIO mprj_io[37] configure) {/Helvetica cf} 2 16 0.000 0.700 
+-672 -48 label
+
+(bits 10\26112 = digital mode \(see below\) \(default set in file user_defines.v\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -448 label
+
+(bit 0 = management control enable \(0 = user control,  1 = management control\) \(default 1\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -128 label
+
+(bit 1 = output disable \(0 = output enabled,  1 = output disabled\) \(default 1\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -160 label
+(bit 2 = hold override value \(value = value during hold mode\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -192 label
+(bit 3 = input disable \(0 = input enabled, 1 = input disabled\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -224 label
+(bit 4 = IB mode select \(0 = , 1 = \)) {/Helvetica cf} 2 16 0.000 0.700 -608 
+-256 label
+(bit 5 = analog bus enable \(0 = disabled, 1 = enabled\)) {/Helvetica cf} 2 16 
+0.000 0.700 -608 -288 label
+(bit 6 = analog bus select \(0 = , 1 = \)) {/Helvetica cf} 2 16 0.000 0.700 
+-608 -320 label
+(bit 7 = analog bus polarity \(0 = , 1 = \)) {/Helvetica cf} 2 16 0.000 0.700 
+-608 -352 label
+(bit 8 = slow slew \(0 = fast slew, 1 = slow slew\) \(default 0\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -608 -384 label
+(bit 9 = input voltage trip point select \(0 = , 1 = \)) {/Helvetica cf} 2 16 
+0.000 0.700 -608 -416 label
+(Digital mode bits) {/Helvetica cf} 2 16 0.000 0.700 -672 -512 label
+(Digital mode description) {/Helvetica cf} 2 16 0.000 0.700 -352 -512 label
+(bit 12 11 10) {/Helvetica cf} 2 16 0.000 0.700 -640 -560 label
+(0 0 0) {/Courier cf} 2 16 0.000 0.700 -576 -592 label
+(0 0 1) {/Courier cf} 2 16 0.000 0.700 -576 -624 label
+(0 1 0) {/Courier cf} 2 16 0.000 0.700 -576 -656 label
+(0 1 1) {/Courier cf} 2 16 0.000 0.700 -576 -688 label
+(1 0 0) {/Courier cf} 2 16 0.000 0.700 -576 -720 label
+(1 0 1) {/Courier cf} 2 16 0.000 0.700 -576 -752 label
+(1 1 0) {/Courier cf} 2 16 0.000 0.700 -576 -784 label
+(1 1 1) {/Courier cf} 2 16 0.000 0.700 -576 -816 label
+(0x25 00 00 20) {/Courier-Bold cf} 2 16 0.000 0.700 -928 416 label
+(Logic Analyzer Input Enable 0) {/Helvetica cf} 2 16 0.000 0.700 -672 416 label
+(0x25 00 00 24) {/Courier-Bold cf} 2 16 0.000 0.700 -928 384 label
+(Logic Analyzer Input Enable 1) {/Helvetica cf} 2 16 0.000 0.700 -672 384 label
+(0x25 00 00 28) {/Courier-Bold cf} 2 16 0.000 0.700 -928 352 label
+(Logic Analyzer Input Enable 2) {/Helvetica cf} 2 16 0.000 0.700 -672 352 label
+(0x25 00 00 2c) {/Courier-Bold cf} 2 16 0.000 0.700 -928 320 label
+(Logic Analyzer Input Enable 3) {/Helvetica cf} 2 16 0.000 0.700 -672 320 label
+(0x25 00 00 30) {/Courier-Bold cf} 2 16 0.000 0.700 -928 272 label
+(Logic Analyzer Sample) {/Helvetica cf} 2 16 0.000 0.700 -672 272 label
+(User project area GPIO power[0] configure) {/Helvetica cf} 2 16 0.000 0.700 
+-672 192 label
+(0x26 00 00 10) {/Courier-Bold cf} 2 16 0.000 0.700 -928 96 label
+(\(These are currently undefined/unused.\)) {/Helvetica cf} 2 16 0.000 0.700 
+-64 192 label
+(analog function \(all digital buffers disabled\)) {/Helvetica cf} 2 16 0.000 
+0.700 -352 -592 label
+(input \(output disabled\), no pullup or pulldown) {/Helvetica cf} 2 16 0.000 
+0.700 -352 -624 label
+(input \(output disabled\), with pulldown) {/Helvetica cf} 2 16 0.000 0.700 
+-352 -688 label
+(input \(output disabled\), with pullup) {/Helvetica cf} 2 16 0.000 0.700 -352 
+-656 label
+(output enabled) {/Helvetica cf} 2 16 0.000 0.700 -352 -784 label
+(open drain \(to power\) output) {/Helvetica cf} 2 16 0.000 0.700 -352 -720 
+label
+(open drain \(to ground\) output) {/Helvetica cf} 2 16 0.000 0.700 -352 -752 
+label
+(weak output \(through 5k resistor\)) {/Helvetica cf} 2 16 0.000 0.700 -352 
+-816 label
+(Mirrors housekeeping register 0x13) {/Helvetica cf} 2 19 0.000 0.700 512 224 
+label
+(Housekeeping register 0x6e) {/Helvetica cf} 2 19 0.000 0.700 512 160 label
+(Housekeeping registers 0x6a\3200x6d) {/Helvetica cf} 2 19 0.000 0.700 512 128 
+label
+(Housekeeping register 0x69) {/Helvetica cf} 2 19 0.000 0.700 512 64 label
+(Housekeeping registers 0x1d, 0x1e\320) {/Helvetica cf} 2 19 0.000 0.700 512 32 
+label
+(Housekeeping registers \3200x67, 0x68) {/Helvetica cf} 2 19 0.000 0.700 512 
+-48 label
+(. . .) {/Helvetica cf} 2 21 90.000 0.700 416 0 label
+pgsave restore showpage
+
+%%Page: memmap3 3
+%%PageOrientation: Portrait
+%%PageBoundingBox: 0 0 612 792
+/pgsave save def bop
+0.8571 inchscale
+2.6000 setlinewidth 1096 1328 translate
+
+0.678 1.000 0.184 scb
+512 1.000 -864 912 -864 -1104 576 -1104 576 912 4 polygon
+sce
+1 1.000 -608 800 -608 -1104 2 polygon
+(Address \(bytes\)) {/Helvetica cf} 2 16 360.000 0.700 -864 784 label
+(Function) {/Helvetica cf} 2 16 0.000 0.700 -592 784 label
+1 1.000 -864 768 576 768 2 polygon
+1 1.000 -864 864 576 864 2 polygon
+(Efabless Caravel SoC and user project harness) {/Helvetica cf} 2 28 0.000 
+1.000 -864 912 label
+(\(continued\)) {/Helvetica-Oblique cf} (Memory Mapped I/O summary by address ) 
+{/Helvetica-Bold cf} 4 16 0.000 0.700 -864 832 label
+(0x26 20 00 04) {/Courier-Bold cf} 2 16 360.000 0.700 -864 128 label
+(Output monitoring \(low 3 bits\)) {/Helvetica cf} 2 16 0.000 0.700 -592 128 
+label
+(bit 0 =) {/Helvetica cf} 2 16 0.000 0.700 -464 96 label
+(bit 1 =) {/Helvetica cf} 2 16 0.000 0.700 -464 64 label
+(0x26 20 00 0c) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -208 label
+(IRQ input source \(low 2 bits\)) {/Helvetica cf} 2 16 0.000 0.700 -592 -208 
+label
+(core clock monitor) {/Helvetica cf} 2 16 0.000 0.700 -352 96 label
+(user clock monitor) {/Helvetica cf} 2 16 0.000 0.700 -352 64 label
+(toggle the GPIO at full swing, but is detectable.) {CR} 
+(full-speed \(100MHz\) clock will be able to) {CR} 
+(for PLL clock output.  It is unlikely that a) {CR} 
+(be used as general-purpose I/O when selected) {CR} 
+(the GPIO pin.  The GPIO pin cannot) {CR} 
+(multiplied up by PLL\) can be viewed on) {CR} 
+(The PLL clock \(crystal oscillator clock) {/Helvetica cf} 14 28 0.000 0.700 
+-16 144 label
+(trap state externally.) {CR} (the GPIO pin as a way to monitor the CPU) {CR} 
+(The CPU fault state \(trap\) can be viewed at) {/Helvetica cf} 6 28 0.000 
+0.700 -16 -64 label
+(the GPIO pin must be configured as an input.) {CR} 
+(channel 7.  When used as an IRQ source,) {CR} 
+(source and passed to the CPU through IRQ) {CR} 
+(The GPIO input can be used as an IRQ event) {/Helvetica cf} 8 28 0.000 0.700 
+-16 -192 label
+(0x30 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -832 label
+(User area base) {/Helvetica cf} 2 16 0.000 0.700 -592 -832 label
+(at this address.) {CR} 
+(A user project may define additional wishbone slave modules starting) 
+{/Helvetica cf} 4 28 0.000 0.700 -336 -816 label
+(0x2d 00 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -864 -496 label
+(QSPI controller config) {/Helvetica cf} 2 16 0.000 0.700 -592 -496 label
+(bits 3-0 Data bits \(bit bang mode\)) {CR} 
+(bit  4  Serial clock line \(bit bang mode\)) {CR} 
+(bit  5  Chip select line \(bit bang mode\)) {CR} 
+(bits  11-8   I/O output enable bits \(bit bang mode\)) {CR} 
+(bits 19-16  Read latency cycles) {CR} (bit  20  CRM enable) {CR} 
+(bit  21  QSPI enable) {CR} (bit  22  DDR enable) {CR} 
+(bit  31  MEMIO enable \(reset = 1\)  0 = bit-bang mode) {/Helvetica cf} 18 16 
+0.000 0.700 -560 -768 label
+1 1.000 96 -560 112 -576 112 -624 96 -640 4 polygon
+(output.*) {CR} (configured for management) {CR} (GPIO pins 36 and 37 are) {CR} 
+(Note:  These can only be used if) {/Helvetica cf} 8 16 0.000 0.700 160 -656 
+label
+(0x2f 00 00 00) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -416 label
+(User IRQ enables \(low 3 bits\)) {/Helvetica cf} 2 16 0.000 0.700 -592 -416 
+label
+(0x26 10 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -864 720 label
+(0x26 10 00 04) {/Courier-Bold cf} 2 16 0.000 0.700 -864 688 label
+(0x26 10 00 08) {/Courier-Bold cf} 2 16 0.000 0.700 -864 656 label
+(0x26 10 00 0c) {/Courier-Bold cf} 2 16 0.000 0.700 -864 624 label
+(0x26 10 00 10) {/Courier-Bold cf} 2 16 0.000 0.700 -864 592 label
+(0x26 10 00 14) {/Courier-Bold cf} 2 16 0.000 0.700 -864 560 label
+(0x26 10 00 18) {/Courier-Bold cf} 2 16 0.000 0.700 -864 528 label
+(0x26 10 00 1c) {/Courier-Bold cf} 2 16 0.000 0.700 -864 464 label
+(0x26 10 00 20) {/Courier-Bold cf} 2 16 0.000 0.700 -864 432 label
+(0x26 10 00 24) {/Courier-Bold cf} 2 16 0.000 0.700 -864 400 label
+(0x26 20 00 00) {/Courier-Bold cf} 2 16 0.000 0.700 -864 160 label
+(Power good \(4 bits:  User 1/2 vccd, user 1/2 vdda\)) {/Helvetica cf} 2 16 
+0.000 0.700 -592 160 label
+(bit 2 =) {/Helvetica cf} 2 16 0.000 0.700 -464 -80 label
+(CPU trap monitor) {/Helvetica cf} 2 16 0.000 0.700 -352 -80 label
+(bit 0 =) {/Helvetica cf} 2 16 0.000 0.700 -464 -240 label
+(bit 1 =) {/Helvetica cf} 2 16 0.000 0.700 -464 -272 label
+(IRQ 7 source) {/Helvetica cf} 2 16 0.000 0.700 -352 -240 label
+(IRQ 8 source) {/Helvetica cf} 2 16 0.000 0.700 -352 -272 label
+(0x26 20 00 10) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -368 label
+(Housekeeping SPI disable \(low bit\)) {/Helvetica cf} 2 16 0.000 0.700 -592 
+-368 label
+(0x2f 00 00 04) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -448 label
+(User wishbone input enable \(low bit\)) {/Helvetica cf} 2 16 0.000 0.700 -592 
+-448 label
+(Housekeeping SPI status \(undefined/unused\)) {/Helvetica cf} 2 16 0.000 0.700 
+-592 720 label
+(Chip ID \(20 bits, vendor and chip identifiers\)) {/Helvetica cf} 2 16 0.000 
+0.700 -592 688 label
+(User ID \(32 bits, user project and MPW run identifiers\)) {/Helvetica cf} 2 
+16 0.000 0.700 -592 656 label
+(DLL enables) {/Helvetica cf} 2 16 0.000 0.700 -592 624 label
+(DLL bypass) {/Helvetica cf} 2 16 0.000 0.700 -592 592 label
+(Manual interrupt) {/Helvetica cf} 2 16 0.000 0.700 -592 560 label
+
+(Manual reset \(note:  this will reset the CPU, not recommended to be called from software.\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -592 528 label
+(0x26 10 00 28) {/Courier-Bold cf} 2 16 0.000 0.700 -864 368 label
+
+(Trap state \(note:  when read from the CPU, this value can only be zero by definition.\)) 
+{/Helvetica cf} 2 16 0.000 0.700 -592 368 label
+(DLL feedback divider) {/Helvetica cf} 2 16 0.000 0.700 -592 400 label
+(DLL output dividers \(3 bits each\)) {/Helvetica cf} 2 16 0.000 0.700 -592 432 
+label
+(DLL manual trim for DCO mode \(28 bits\)) {/Helvetica cf} 2 16 0.000 0.700 
+-592 464 label
+(Mirrors housekeeping SPI register 0x00) {/Helvetica cf} 2 19 0.000 0.700 576 
+720 label
+(Housekeeping registers 0x01\3200x03) {/Helvetica cf} 2 19 0.000 0.700 576 688 
+label
+(Housekeeping registers 0x04\3200x07) {/Helvetica cf} 2 19 0.000 0.700 576 656 
+label
+(Housekeeping register 0x08) {/Helvetica cf} 2 19 0.000 0.700 576 624 label
+(Housekeeping register 0x09) {/Helvetica cf} 2 19 0.000 0.700 576 592 label
+(Housekeeping register 0x0a) {/Helvetica cf} 2 19 0.000 0.700 576 560 label
+(Housekeeping registers 0x0d\3200x10) {/Helvetica cf} 2 19 0.000 0.700 576 464 
+label
+(Housekeeping register 0x11) {/Helvetica cf} 2 19 0.000 0.700 576 432 label
+(Housekeeping register 0x12) {/Helvetica cf} 2 19 0.000 0.700 576 400 label
+(Housekeeping register 0x0b) {/Helvetica cf} 2 19 0.000 0.700 576 496 label
+(Housekeeping register 0x0c) {/Helvetica cf} 2 19 0.000 0.700 576 336 label
+(0x26 10 00 2c) {/Courier-Bold cf} 2 16 0.000 0.700 -864 304 label
+(0x26 10 00 30) {/Courier-Bold cf} 2 16 0.000 0.700 -864 272 label
+(0x26 10 00 34) {/Courier-Bold cf} 2 16 0.000 0.700 -864 240 label
+(SRAM read-only port data) {/Helvetica cf} 2 16 0.000 0.700 -592 304 label
+(SRAM read-only port address) {/Helvetica cf} 2 16 0.000 0.700 -592 272 label
+(SRAM read-only control) {/Helvetica cf} 2 16 0.000 0.700 -592 240 label
+(Housekeeping registers 0x16\3200x19) {/Helvetica cf} 2 19 0.000 0.700 576 304 
+label
+(Housekeeping register 0x15) {/Helvetica cf} 2 19 0.000 0.700 576 272 label
+(Housekeeping register 0x14) {/Helvetica cf} 2 19 0.000 0.700 576 240 label
+(Housekeeping register 0x1a) {/Helvetica cf} 2 19 0.000 0.700 576 160 label
+(Housekeeping register 0x1b) {/Helvetica cf} 2 19 0.000 0.700 576 -176 label
+(Housekeeping register 0x1c) {/Helvetica cf} 2 19 0.000 0.700 576 -336 label
+(Housekeeping register 0x6f) {/Helvetica cf} 2 19 0.000 0.700 576 -368 label
+(0x3f ff ff ff) {/Courier-Bold cf} 2 16 360.000 0.700 -864 -896 label
+(User area top) {/Helvetica cf} 2 16 0.000 0.700 -592 -896 label
+(  type of management core SoC implemented.) {CR} 
+(* The availability of the QSPI function is dependent on whether or not it is supported by the) 
+{/Helvetica cf} 4 16 0.000 0.700 -592 -1056 label
+pgsave restore showpage
+
+%%Trailer
+XCIRCsave restore
+%%EOF
