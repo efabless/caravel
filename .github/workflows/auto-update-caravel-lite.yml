@@ -35,14 +35,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
-      - name: Install SSH key
-        uses: shimataro/ssh-key-action@v2
-        with:
-            key: ${{ secrets.SSH_PRIVATE_KEY }}
-            name: id_rsa # optional
-            known_hosts: ${{ secrets.KNOWN_HOSTS }}
-            
+           
       - name: Install git-filter-repo
         run: pip install git-filter-repo
         
@@ -50,12 +43,14 @@ jobs:
         run: |
           mkdir -p caravel-lite
           cd caravel-lite
+          git config --global user.name 'EF Staff'
+          git config --global user.email 'github@efabless.com'
           git init
           git checkout -b main
-          git remote add parent https://github.com/efabless/caravel
+          git remote set-url parent https://github.com/efabless/caravel
           git pull parent master
           git fetch --all --tags
           git filter-repo --path openlane/user_project_wrapper_empty --path openlane/user_analog_project_wrapper_empty --path openlane/Makefile --path gds/user_project_wrapper_empty.gds.gz --path gds/user_analog_project_wrapper_empty.gds.gz --path mag/user_project_wrapper_empty.mag --path mag/user_analog_project_wrapper_empty.mag --path lef/user_project_wrapper_empty.lef --path lef/user_analog_project_wrapper_empty.lef --path verilog/ --path info.yaml --path Makefile --path scripts/ --path utils/ --path LICENSE --path manifest --path spi/lvs/run_lvs.sh --path gds/gds2mag-all.sh --path gds/drc_on_gds.tcl --path gds/antenna_on_gds.tcl --path spi/lvs/caravel.spice --path spi/lvs/caravan.spice --force
-          git remote add caravel_lite git@github.com:efabless/caravel_openframe-lite.git
+          git remote add caravel_lite https://x-access-token:${{ secrets.EFSTAFF_TOKEN }}@github.com/caravel_openframe-lite
           git push --force caravel_lite main
           git push -f --tags caravel_lite main
