@@ -507,9 +507,11 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 	echo "Running RC Extraction on $*"
 	mkdir -p ./def/tmp 
 	# merge techlef and standard cell lef files
-	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef -o ./def/tmp/merged.lef
+	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef  -o ./def/tmp/merged.lef
 	echo "\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
 		set std_cell_lef ./def/tmp/merged.lef;\
 		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
@@ -576,6 +578,8 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		};\
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
+		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib;\
 		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
 		read_verilog ./verilog/gl/$*.v;\
 		link_design $*;\
