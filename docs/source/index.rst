@@ -37,7 +37,6 @@ Efabless Caravel "harness" SoC
    :hidden:
    :maxdepth: 1
 
-   description
    getting-started
    tool-versioning
    quick-start

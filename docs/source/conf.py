@@ -33,9 +33,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'CIIC Harness'
-copyright = '2020, efabless'
-author = 'efabless'
+project = 'Caravel Harness'
+copyright = '2021, Efabless'
+author = 'Efabless'
 
 
 # -- General configuration ---------------------------------------------------

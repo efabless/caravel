@@ -26,25 +26,14 @@ This section provides basic description of the Efabless Caravel "harness" SoC.
 Core
 ----
 
-The processor core is the PicoRV32 design.
-See GitHub `cliffordwolf/picorv32 repository <https://github.com/cliffordwolf/picorv32>`_ for the core implementation and description.
-The hardware implementation is the "large" variant, incorporating options ``IRQ``, ``MUL``, ``DIV``, ``BARREL_SHIFTER``, and ``COMPRESSED_ISA`` (16-bit instructions).
-
-Core clock rate: (TBD) MHz maximum over all PVT conditions (likely around 50MHz guaranteed).
+TO BE UPDATED
 
 Features
 --------
 
 Functions/features of the SoC include:
 
-* 1 SPI flash controller,
-* 1 UART,
-* 1 SPI controller,
-* 2 counter-timers,
-* 1 dedicated GPIO channel,
-* 27 shared GPIO channels,
-* 8k word (32768 bytes x 8 bits) on-board SRAM,
-* All-digital frequency-locked loop clock multiplier 128bit logic analyzer.
+TO BE UPDATED
 
 License
 -------

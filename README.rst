@@ -39,13 +39,16 @@ Table of contents
 Overview
 ========
 
-Caravel is a template SoC for Google SKY130 free shuttles. The
+Caravel is a template SoC for Efabless Open MPW and chipIgnite shuttles based on the Sky130 node from SkyWater Technologies. The
 current SoC architecture is given below.
+
+.. image:: docs/jpg/caravel_block_diagram.jpg
+    :align: center
 
 .. raw:: html
 
    <p align="center">
-   <img src="/docs/source/_static/caravel_harness.png" width="50%" height="50%">
+   <img src="docs/source/_static/caravel_harness.png" width="50%" height="50%">
    </p>
 
 Datasheet and detailed documentation exist `here <https://caravel-harness.readthedocs.io/>`__
