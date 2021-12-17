@@ -1,0 +1,2060 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 8167
+>>
+stream
+0.361 0.675 0.933 RG
+1 J 2 j 0.975 w 6 M []0 d
+/GS1 gs
+1 i 
+342 459 m
+342 531 l
+345 459 m
+345 531 l
+150 462 m
+150 525 l
+S
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 71.16 708 Tm
+0 0 0 rg
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+540 702 m
+72 702 l
+S
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 71.16 684 Tm
+(Housekeeping SPI)Tj
+/TT6 1 Tf
+17.7482 0 TD
+(SDI \(pin F9\), CSB \(pin E8\), SCK \(pin F8\), and SDO \(pin E9\))Tj
+/TT2 1 Tf
+-17.7139 -6.8571 TD
+(SPI protocol definition)Tj
+ET
+540 204 m
+72 204 l
+S
+BT
+/TT8 1 Tf
+10.5 0 0 10.5 119.4 192 Tm
+(00000000)Tj
+/TT6 1 Tf
+10.2629 0 TD
+(No operation)Tj
+/TT8 1 Tf
+-10.3086 -1.1429 TD
+(10000000)Tj
+0.0457 -1.1429 TD
+(01000000)Tj
+/TT6 1 Tf
+10.32 1.1429 TD
+(Write in streaming mode)Tj
+-0.0686 -1.1429 TD
+(Read in streaming mode)Tj
+0.0454 -1.1429 TD
+(Simultaneous Read/Write in streaming mode)Tj
+/TT8 1 Tf
+-10.3425 0 TD
+(11000000)Tj
+0 -3.4286 TD
+(10nnn000)Tj
+ET
+540 90 m
+72 90 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 71.88 594 Tm
+(All input is in groups of 8 bits.  Each byte is input msb first.)Tj
+0 -34.2857 TD
+(The first transferred byte is the command word, interpreted according to Table 8 below.)Tj
+0 8.4171 TD
+(CSB pin must be low to enable an SPI transmission.  Data are clocked by pin SCK, with data valid)Tj
+0 -1 TD
+(on the rising edge of SCK.  Output data are received on the SDO line.  SDO is held high-impedance)Tj
+T*
+(when CSB is high and at all times other than the transfer of data bits on a read command.  SDO)Tj
+T*
+(outputs become active on the falling edge of SCK, such that data are written and read on the same)Tj
+T*
+(SCK rising edge.)Tj
+0 -2.2857 TD
+(After CSB is set low, the SPI is always in the "command" state, awaiting a new command.)Tj
+0 13.7143 TD
+(Addresses are read in sequence from lower values to higher values.)Tj
+0 -1.7143 TD
+(Therefore groups of bits larger than 8 should be grouped such that the lowest bits are at the)Tj
+0 -1 TD
+(highest address.  Any bits additional to an 8-bit boundary should be at the lowest address.)Tj
+-0.0457 -1.8571 TD
+(Data are captured from the register map in bytes on the falling edge of the last SCK before a data)Tj
+0 -1 TD
+(byte transfer.  Multi-byte transfers should ensure that data do not change between byte reads. )Tj
+/TT8 1 Tf
+4.5714 -22.2743 TD
+(01nnn000)Tj
+-0.0457 -1.1429 TD
+(11nnn000)Tj
+/TT6 1 Tf
+10.3657 2.2857 TD
+(Write in n-byte mode \(up to 7 bytes\).)Tj
+-0.0686 -1.1429 TD
+(Read in n-byte mode \(up to 7 bytes\).)Tj
+0.0454 -1.1429 TD
+(Simultaneous Read/Write in n-byte mode \(up to 7 bytes\).)Tj
+-14.8339 45.56 TD
+(Every command sequence requires one command word \(8 bits\) followed by one address word)Tj
+0 -1 TD
+(\(8 bits\) followed by one or more data words \(8 bits each\), according to the data transfer modes)Tj
+T*
+(defined below.)Tj
+0.0114 10.5714 TD
+(The ìhousekeepingî SPI is an SPI slave that can be accessed from a remote host through a)Tj
+0 -1 TD
+(standard 4-pin serial interface.  The SPI implementation is mode 0, with new data on SDI captured)Tj
+T*
+(on the SCK rising edge, and output data presented on the falling edge of SCK \(to be sampled on)Tj
+T*
+(the next SCK rising edge\).  The SPI pins are shared with user area general-purpose I/O.)Tj
+0.7405 -10.9229 TD
+(CSB)Tj
+-0.0223 -1.7143 TD
+(SCK)Tj
+0.2329 -1.7143 TD
+(SDI)Tj
+-0.2662 -1.7143 TD
+(SDO)Tj
+ET
+456 516 m
+138 516 l
+138 528 l
+120 528 l
+252 498 m
+240 498 l
+240 510 l
+234 510 l
+234 498 l
+228 498 l
+228 510 l
+222 510 l
+222 498 l
+216 498 l
+216 510 l
+210 510 l
+210 498 l
+204 498 l
+204 510 l
+198 510 l
+198 498 l
+192 498 l
+192 510 l
+186 510 l
+186 498 l
+180 498 l
+180 510 l
+174 510 l
+174 498 l
+168 498 l
+168 510 l
+162 510 l
+162 498 l
+156 498 l
+156 510 l
+150 510 l
+150 498 l
+354 498 m
+342 498 l
+342 510 l
+336 510 l
+336 498 l
+330 498 l
+330 510 l
+324 510 l
+324 498 l
+318 498 l
+318 510 l
+312 510 l
+312 498 l
+306 498 l
+306 510 l
+300 510 l
+300 498 l
+294 498 l
+294 510 l
+288 510 l
+288 498 l
+282 498 l
+282 510 l
+276 510 l
+276 498 l
+270 498 l
+270 510 l
+264 510 l
+264 498 l
+258 498 l
+258 510 l
+252 510 l
+252 498 l
+456 498 m
+444 498 l
+444 510 l
+438 510 l
+438 498 l
+432 498 l
+432 510 l
+426 510 l
+426 498 l
+420 498 l
+420 510 l
+414 510 l
+414 498 l
+408 498 l
+408 510 l
+402 510 l
+402 498 l
+396 498 l
+396 510 l
+390 510 l
+390 498 l
+384 498 l
+384 510 l
+378 510 l
+378 498 l
+372 498 l
+372 510 l
+366 510 l
+366 498 l
+360 498 l
+360 510 l
+354 510 l
+354 498 l
+120 498 m
+150 498 l
+456 480 m
+447 480 l
+444 492 l
+351 492 l
+348 480 l
+243 480 l
+240 492 l
+147 492 l
+144 480 l
+120 480 l
+159 492 m
+156 480 l
+144 480 l
+171 492 m
+168 480 l
+156 480 l
+183 492 m
+180 480 l
+168 480 l
+195 492 m
+192 480 l
+180 480 l
+207 492 m
+204 480 l
+192 480 l
+S
+219 492 m
+216 480 l
+204 480 l
+231 492 m
+228 480 l
+216 480 l
+243 480 m
+228 480 l
+159 480 m
+156 492 l
+171 480 m
+168 492 l
+183 480 m
+180 492 l
+195 480 m
+192 492 l
+207 480 m
+204 492 l
+219 480 m
+216 492 l
+231 480 m
+228 492 l
+345 480 m
+342 492 l
+249 492 l
+246 480 l
+261 480 m
+258 492 l
+258 480 m
+261 492 l
+270 480 m
+273 492 l
+273 480 m
+270 492 l
+282 480 m
+285 492 l
+285 480 m
+282 492 l
+294 480 m
+297 492 l
+297 480 m
+294 492 l
+306 480 m
+309 492 l
+309 480 m
+306 492 l
+318 480 m
+321 492 l
+321 480 m
+318 492 l
+330 480 m
+333 492 l
+333 480 m
+330 492 l
+360 480 m
+363 492 l
+363 480 m
+360 492 l
+372 480 m
+375 492 l
+375 480 m
+372 492 l
+384 480 m
+387 492 l
+387 480 m
+384 492 l
+396 480 m
+399 492 l
+399 480 m
+396 492 l
+408 480 m
+411 492 l
+411 480 m
+408 492 l
+420 480 m
+423 492 l
+423 480 m
+420 492 l
+432 480 m
+435 492 l
+435 480 m
+432 492 l
+447 480 m
+348 480 l
+456 474 m
+447 474 l
+444 462 l
+444 462 m
+456 462 l
+345 462 m
+432 462 l
+S
+0.6 0.6 0.6 RG
+456 456 m
+456 534 l
+462 456 m
+462 534 l
+S
+0 0 0 RG
+510 498 m
+462 498 l
+510 480 m
+462 480 l
+468 474 m
+462 474 l
+468 462 m
+462 462 l
+469.5 468 m
+468 474 l
+468 462 m
+469.5 468 l
+510 468 m
+469.5 468 l
+345 462 m
+343.5 468 l
+435 462 m
+432 474 l
+345 474 l
+343.5 468 l
+120 468 m
+343.5 468 l
+363 462 m
+360 474 l
+363 474 m
+360 462 l
+375 462 m
+372 474 l
+375 474 m
+372 462 l
+387 462 m
+384 474 l
+387 474 m
+384 462 l
+399 462 m
+396 474 l
+399 474 m
+396 462 l
+411 462 m
+408 474 l
+411 474 m
+408 462 l
+423 462 m
+420 474 l
+423 474 m
+420 462 l
+435 474 m
+432 462 l
+447 474 m
+432 474 l
+444 462 m
+432 462 l
+447 462 m
+444 474 l
+S
+BT
+10.5 0 0 10.5 71.88 78 Tm
+(All other words are reserved and act as no-operation if not defined by the SPI slave module.)Tj
+ET
+510 528 m
+468 528 l
+468 516 l
+462 516 l
+S
+BT
+7.5 0 0 7.5 461.76 441.66 Tm
+(additional data bytes)Tj
+ET
+0.78 w 
+459 456.75 m
+459 445.5 l
+S
+460.5 455.25 m
+459.562 457.125 459.562 457.688 459 460.5 c
+458.437 457.688 458.437 457.125 457.5 455.25 c
+458.625 455.625 459.375 455.625 460.5 455.25 c
+f*
+0.975 w 
+243 456 m
+240 453 l
+147 453 l
+144 456 l
+S
+BT
+7.5 0 0 7.5 172.8619 444.66 Tm
+(command)Tj
+ET
+348 456 m
+345 453 l
+249 453 l
+246 456 l
+S
+BT
+7.5 0 0 7.5 280.9219 444.66 Tm
+(address)Tj
+ET
+456 453 m
+354 453 l
+351 456 l
+474 456 m
+471 453 l
+462 453 l
+S
+BT
+7.5 0 0 7.5 394.9247 444.66 Tm
+(data)Tj
+-36.1091 5.556 TD
+(msb)Tj
+26.8 -2.044 TD
+[(msb)-17499.3(lsb)]TJ
+-23.3908 1.66 TD
+(7)Tj
+1.6035 -0.008 TD
+(6)Tj
+1.599 0.008 TD
+(5)Tj
+1.592 -0.008 TD
+1.0474 Tc
+[(432)-109.1(1)115.7(0)]TJ
+8.8055 0.008 TD
+0 Tc
+(7)Tj
+1.6035 -0.008 TD
+(6)Tj
+1.599 0.008 TD
+(5)Tj
+1.592 -0.008 TD
+1.0474 Tc
+[(432)-109.1(1)115.7(0)]TJ
+8.8055 0.008 TD
+0 Tc
+(7)Tj
+1.6035 -0.008 TD
+(6)Tj
+1.599 0.008 TD
+(5)Tj
+1.592 -0.008 TD
+1.0474 Tc
+[(432)-109.1(1)115.7(0)]TJ
+-4.7945 -2.392 TD
+0 Tc
+(7)Tj
+1.6035 -0.008 TD
+(6)Tj
+1.599 0.008 TD
+(5)Tj
+1.592 -0.008 TD
+1.0474 Tc
+[(432)-109.1(1)115.7(0)]TJ
+8.0055 0.008 TD
+0 Tc
+(7)Tj
+-39.6207 0.74 TD
+(high impedence)Tj
+-0.368 7.6 TD
+[(data must be valid on SCK rising edge)-9390.2(data valid on SCK falling edge)]TJ
+ET
+0.361 0.675 0.933 RG
+354 432 m
+354 495 l
+S
+BT
+7.5 0 0 7.5 356.76 432 Tm
+(capture data on SCK rising edge)Tj
+/TT4 1 Tf
+10.5 0 0 10.5 70.44 210 Tm
+(Table 8)Tj
+/TT6 1 Tf
+5.2114 0 TD
+(Housekeeping SPI command word definition)Tj
+/TT4 1 Tf
+-4.5714 20.5714 TD
+(Figure 2.  Housekeeping SPI signaling)Tj
+ET
+0.8 0.8 0.8 RG
+72 420 468 120 re
+S
+BT
+/TT8 1 Tf
+10.5 0 0 10.5 118.92 144 Tm
+(11000100)Tj
+/TT6 1 Tf
+10.3086 0 TD
+(Pass-through \(management\) Read/Write in streaming mode)Tj
+/TT8 1 Tf
+-10.3086 -1.1429 TD
+(11000110)Tj
+/TT6 1 Tf
+10.3086 0 TD
+(Pass-through \(user\) Read/Write in streaming mode)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+/TT8 7 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+11 0 obj
+<<
+/Length 4277
+>>
+stream
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 70.77 708 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+1 J 2 j 0.975 w 6 M []0 d
+1 i 
+539.625 702 m
+71.625 702 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 71.49 664.38 Tm
+(The two basic modes of operation are "streaming mode" and "n-byte mode".  In "streaming mode")Tj
+0 -1 TD
+(operation, data are sent or received continuously, one byte at a time, with the internal address)Tj
+T*
+(incrementing for each byte.  Streaming mode operation continues until CSB is raised to end the)Tj
+T*
+(transfer. )Tj
+-0.0229 -2.1429 TD
+(In "n-byte mode" operation, the number of bytes to be read and/or written is encoded in the)Tj
+0 -1 TD
+(command word, and may have a value from 1 to 7 \(note that a value of zero implies streaming)Tj
+T*
+(mode\).  After n bytes have been read and/or written, the SPI returns to waiting for the next)Tj
+T*
+(command.  No toggling of CSB is required to end the command or to initiate the following)Tj
+T*
+(command.)Tj
+/TT2 1 Tf
+-0.0114 11.0114 TD
+(SPI protocol definition )Tj
+/TT4 1 Tf
+10.9438 0 TD
+(\(continued\))Tj
+/TT6 1 Tf
+-10.9324 -41.8686 TD
+(Under normal working conditions, the SPI should not need to be accessed unless it is to adjust the)Tj
+0 -1 TD
+(clock speed of the CPU.  All other functions are purely for test and debug.)Tj
+/TT2 1 Tf
+-0.0229 -6.8457 TD
+(manufacturer_ID)Tj
+/TT6 1 Tf
+2.3314 -1.1429 TD
+(The 12-bit manufacturer ID for efabless is 0x456)Tj
+/TT2 1 Tf
+-2.3543 16.5714 TD
+(Housekeeping SPI registers)Tj
+/TT6 1 Tf
+12.0114 -15.4286 TD
+(register address 0x01 low 4 bits and register address 0x02)Tj
+/TT2 1 Tf
+-12.0114 36.5714 TD
+(Pass-thru mode)Tj
+/TT6 1 Tf
+0.0686 -1.8686 TD
+(The pass-thru mode puts the CPU into immediate reset, then sets FLASH_CSB low to initiate a data)Tj
+0 -1 TD
+(transfer to the QSPI flash.  After the pass-thru command byte has been issued, all subsequent SPI)Tj
+T*
+(signaling on SDI and SCK are applied directly to the QSPI flash \(pins FLASH_IO0 and FLASH_CLK,)Tj
+T*
+(respectively\), and the QSPI flash data output \(pin FLASH_IO1\) is applied directly to SDO, until the)Tj
+T*
+(CSB pin is raised.  When CSB is raised, the FLASH_CSB is also raised, terminating the data)Tj
+T*
+(transfer to the QSPI flash.  The CPU is brought out of reset, and starts executing instructions at the)Tj
+T*
+(program start address. )Tj
+0 -2 TD
+(This mode allows the QSPI flash to be programmed from the same SPI communication channel as)Tj
+0 -1 TD
+(the housekeeping SPI, without the need for additional wiring to the QSPI flash chip.)Tj
+0 -1.8571 TD
+(There are two pass-thru modes.  The first one corresponds to the primary SPI flash used by the)Tj
+0 -1 TD
+(management SoC.  The second one corresponds to a secondary optional SPI flash that can be)Tj
+T*
+(defined in the user project.  The pass-thru mode allows a communications chip external to the)Tj
+T*
+(Caravel chip program either SPI flash chip from a host computer without requiring separate)Tj
+T*
+(external access to the SPI flash.  Both pass-thru modes only connect to I/O pins 0 and 1 of the SPI)Tj
+T*
+(flash chips, and so must operate only in the 4-pin SPI mode.  The user project may elect to operate)Tj
+T*
+(the SPI flash in quad mode using a 6-pin interface.)Tj
+0 -4.2857 TD
+(The purpose of the housekeeping SPI is to give access to certain system values and controls)Tj
+0 -1 TD
+(independently of the CPU.  The housekeeping SPI can be accessed even when the CPU is in full)Tj
+T*
+(reset.  Some control registers in the housekeeping SPI affect the behavior of the CPU in a way that)Tj
+T*
+(potentially can be detrimental to the CPU operation, such as adjusting the trim value of the digital)Tj
+T*
+(frequency-locked loop generating the CPU core clock.)Tj
+0 -4.5714 TD
+(The housekeeping SPI can be accessed by the CPU from a running program by enabling the SPI)Tj
+0 -1 TD
+(master, and enabling the bit that connects the internal SPI master directly to the housekeeping SPI.)Tj
+T*
+(This configuration then allows a program to read, for example, the user project ID of the chip.  See)Tj
+T*
+(the SPI master description for details.)Tj
+/TT2 1 Tf
+-0.0457 -5.4171 TD
+(product_ID)Tj
+/TT6 1 Tf
+2.3314 -1.1429 TD
+(The product ID for the Caravel harness chip is 0x10)Tj
+9.6571 1.1429 TD
+(register address 0x03)Tj
+ET
+endstream
+endobj
+12 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+14 0 obj
+<<
+/Length 4204
+>>
+stream
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 71.16 708 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+1 J 2 j 0.975 w 6 M []0 d
+1 i 
+540 702 m
+72 702 l
+S
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 71.16 684 Tm
+(Housekeeping SPI registers )Tj
+/TT4 1 Tf
+13.5049 0 TD
+(\(continued\))Tj
+/TT2 1 Tf
+-13.4706 -26.8571 TD
+(CPU reset)Tj
+0 -4 TD
+(CPU trap)Tj
+/TT6 1 Tf
+2.32 2.7029 TD
+(The CPU reset bit puts the entire CPU into a reset state.  This bit is not self-resetting and)Tj
+0 -1 TD
+(must be set back to zero manually to clear the reset state.)Tj
+0 -3 TD
+(If the CPU has stopped after encountering an error, it will raise the trap signal.  The trap signal)Tj
+0 -1 TD
+(can be configured to be read from a GPIO pin, but as the GPIO state is potentially unknowable,)Tj
+T*
+(the housekeeping SPI can be used to determine the true trap state.)Tj
+/TT2 1 Tf
+-2.32 12.44 TD
+(CPU IRQ)Tj
+/TT6 1 Tf
+2.32 -1.4286 TD
+(This is a dedicated manual interrupt driving the CPU IRQ channel 6.  The bit is not self-)Tj
+0 -1 TD
+(resetting, so while the rising edge will trigger an interrupt, the signal must be manually set to)Tj
+T*
+(zero before it can trigger another interrupt.)Tj
+/TT2 1 Tf
+-2.3543 8.5714 TD
+(PLL bypass)Tj
+/TT6 1 Tf
+2.3543 -1.2971 TD
+(When enabled, the PLL bypass switches the clock source of the CPU from the PLL output to)Tj
+0 -1 TD
+(the external CMOS clock \(pin C9\).  The default value is 0x1 \(CPU clock source is the external)Tj
+T*
+(CMOS clock\).)Tj
+9.6571 3.5829 TD
+(register address 0x09  bit 0)Tj
+0 -5.1429 TD
+(register address 0x0A  bit 0)Tj
+T*
+(register address 0x0B  bit 0)Tj
+0 -4 TD
+(register address 0x0C  bit 0)Tj
+/TT2 1 Tf
+-12.0114 19.1429 TD
+(PLL DCO enable)Tj
+0 5.1429 TD
+(PLL enable)Tj
+0 -29.4286 TD
+(PLL trim)Tj
+/TT6 1 Tf
+2.3543 -1.8686 TD
+(The 26-bit trim value can adjust the DCO frequency over a factor of about two from the slowest)Tj
+0 -1 TD
+(\(trim value 0x3ffffff\) to the fastest \(trim value 0x0\).  Default value is 0x3ffefff \(slow trim, -1\).)Tj
+T*
+(Note that this is a thermometer-code trim, where each bit provides an additional)Tj
+T*
+[(\(approximately\) 250)-137.1(ps delay \(on top of a fixed delay of 4.67)-140(ns\).  The fastest output frequency)]TJ
+T*
+[(is approximately 215)-137.1(MHz while the slowest output frequency is approximately 90)-137.1(MHz.)]TJ
+9.6571 30.1543 TD
+(register address 0x08  bit 1)Tj
+0 5.1429 TD
+(register address 0x08  bit 0)Tj
+0 -29.4286 TD
+(register addresses 0x0D \(all bits\) to 0x10  \(lower 2 bits\))Tj
+-9.6571 32.1314 TD
+(The 4-byte \(32 bit\) user project ID is metal-mask programmed on each project before tapeout,)Tj
+0 -1 TD
+(with a unique number given to each user project.)Tj
+9.6571 2.2971 TD
+(register addresses 0x04 to 0x07)Tj
+/TT2 1 Tf
+-11.9886 0 TD
+(user project ID)Tj
+-0.0229 -48 TD
+(PLL output divider \(2\))Tj
+/TT6 1 Tf
+12.0114 0 TD
+(register address 0x11  bit 5ñ3)Tj
+-9.6571 42.7029 TD
+(This bit enables the digital frequency-locked-loop clock multiplier.  The enable should be)Tj
+0 -1 TD
+(applied prior to turning off the PLL bypass to allow the PLL time to stabilize before using it to)Tj
+T*
+(drive the CPU clock.)Tj
+0 -3.1429 TD
+(The PLL can be run in DCO mode, in which the feedback loop to the driving clock is removed,)Tj
+0 -1 TD
+(and the system operates in free-running mode, driven by the ring oscillator which can be tuned)Tj
+T*
+(between approximately 90 to 200 MHz by setting the trim bits \(see below\).)Tj
+/TT2 1 Tf
+-2.3543 -28.7029 TD
+(PLL output divider)Tj
+/TT6 1 Tf
+12.0114 0 TD
+(register address 0x11  bits 2ñ0)Tj
+-9.6571 -1.8686 TD
+(The PLL output can be divided down by an integer divider to provide the core clock frequency.)Tj
+0 -1 TD
+(This 3-bit divider can generate a clock divided by 2 to 7.  Values 0 and 1 both pass the)Tj
+T*
+(undivided PLL clock directly to the core \(and should not be used, as the processor does not)Tj
+T*
+(operate at these frequencies\). )Tj
+0 -3.2743 TD
+(The PLL 90-degree phase output is passed through an independent 3-bit integer clock divider)Tj
+0 -1 TD
+(and provided to the user project space as a secondary clock.  Values 0 and 1 both pass the)Tj
+T*
+(undivided PLL clock, while values 2 to 7 pass the clock divided by 2 to 7, respectively.)Tj
+ET
+endstream
+endobj
+15 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+17 0 obj
+<<
+/Length 1136
+>>
+stream
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 68.16 711 Tm
+0 0 0 rg
+/GS1 gs
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+1 J 2 j 0.975 w 6 M []0 d
+1 i 
+543 705 m
+69 705 l
+S
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 68.16 687 Tm
+(Housekeeping SPI registers )Tj
+/TT4 1 Tf
+13.5049 0 TD
+(\(continued\))Tj
+/TT2 1 Tf
+-13.5049 -2.2857 TD
+(PLL feedback divider)Tj
+/TT6 1 Tf
+12.0114 0 TD
+(register address 0x12  bits 4ñ0)Tj
+-9.6571 -1.2971 TD
+(The PLL operates by comparing the input clock \(pin C9\) rate to the rate of the PLL clock)Tj
+0 -1 TD
+(divided by the feedback divider value \(when running in PLL mode, not DCO mode\).  The)Tj
+T*
+(feedback divider must be set such that the external clock rate multiplied by the feedback)Tj
+T*
+(divider value falls between 90 and 214 MHz \(preferably centered on this range, or)Tj
+T*
+[(approximately 150)-137.1(MHz\).  For example, when using an 8)-137.1(MHz external clock, the divider should)]TJ
+T*
+(be set to 19 \(19 * 8 = 152\).  The DCO range and the number of bits of the feedback divider)Tj
+T*
+[(implies that the external clock should be no slower than around 4 to 5)-137.1(MHz. )]TJ
+ET
+endstream
+endobj
+18 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+20 0 obj
+<<
+/Length 4438
+>>
+stream
+0.898 0.898 0.898 rg
+0.898 0.898 0.898 RG
+1 J 2 j 0.975 w 6 M []0 d
+/GS1 gs
+1 i 
+117 159 42 36 re
+B*
+117 195 150 36 re
+B*
+117 591 180 36 re
+B*
+117 231 84 36 re
+B*
+117 447 264 36 re
+B*
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 68.16 711 Tm
+0 0 0 rg
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+543 705 m
+69 705 l
+S
+0.898 0.898 0.898 rg
+0.898 0.898 0.898 RG
+117 303 312 144 re
+B*
+0 0 0 RG
+543 627 m
+69 627 l
+S
+BT
+10.5 0 0 10.5 125.2228 681 Tm
+0 0 0 rg
+[(msb)-28133.7(lsb)]TJ
+/TT6 1 Tf
+9.7429 -10.6486 TD
+(manufacturer_ID[7:0] \(= 0x56\))Tj
+ET
+543 555 m
+69 555 l
+69 159 m
+69 681 l
+S
+BT
+/TT4 1 Tf
+10.5 0 0 10.5 72.9525 679.5 Tm
+(Register)Tj
+0 -1 TD
+(Address)Tj
+ET
+543 663 m
+69 663 l
+543 519 m
+69 519 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 257.1028 533.1901 Tm
+(product_ID \(= 0x11\))Tj
+-16.6758 10.0771 TD
+(0x00)Tj
+0.0836 -3.4286 TD
+(0x01)Tj
+ET
+543 411 m
+69 411 l
+159 663 m
+159 675 l
+207 663 m
+207 675 l
+255 663 m
+255 675 l
+297 663 m
+297 675 l
+339 663 m
+339 675 l
+381 663 m
+381 675 l
+429 663 m
+429 675 l
+471 159 m
+471 681 l
+S
+BT
+10.5 0 0 10.5 134.64 669 Tm
+3.4438 Tc
+[(76)-571.5(5)-582.9(4)0(3)11.4(2)57.1(1)-628.6(0)]TJ
+/TT4 1 Tf
+32.5985 0 TD
+0 Tc
+(comments)Tj
+ET
+543 375 m
+69 375 l
+543 339 m
+69 339 l
+543 447 m
+69 447 l
+543 483 m
+69 483 l
+543 591 m
+69 591 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 82.0022 573 Tm
+(0x02)Tj
+ET
+297 591 m
+297 627 l
+S
+BT
+10.5 0 0 10.5 311.5228 605.1901 Tm
+(manufacturer_ID[11:8] \(= 0x4\))Tj
+-21.8561 -6.4943 TD
+(0x03)Tj
+-0.0016 -7.4286 TD
+(0x08)Tj
+0.004 -3.4286 TD
+(0x09)Tj
+-0.0724 -3.4286 TD
+(0x0A)Tj
+0.0149 -3.4286 TD
+(0x0B)Tj
+-0.0301 -3.4286 TD
+(0x0C)Tj
+0.0821 -10.2857 TD
+(0x12)Tj
+16.2094 41.3514 TD
+(SPI status and control)Tj
+22.2219 -2.8514 TD
+(read-only)Tj
+0 -3.4286 TD
+(read-only)Tj
+T*
+(read-only)Tj
+-0.3176 10.2143 TD
+(unused/)Tj
+-0.3722 -1 TD
+(undefined)Tj
+ET
+117 159 m
+117 681 l
+S
+BT
+10.5 0 0 10.5 485.5303 317.25 Tm
+(read-only)Tj
+-22.387 0 TD
+(unused)Tj
+ET
+429 447 m
+429 483 l
+381 447 m
+381 483 l
+S
+BT
+10.5 0 0 10.5 395.4431 471.75 Tm
+(DLL)Tj
+-0.1765 -1 TD
+(DCO)Tj
+-0.3921 -1 TD
+(enable)Tj
+8.4999 0.9943 TD
+(default 0x02)Tj
+ET
+429 411 m
+429 447 l
+S
+BT
+10.5 0 0 10.5 440.4431 430.5 Tm
+(DLL)Tj
+-0.6543 -1 TD
+(bypass)Tj
+4.3839 0.4943 TD
+(default 0x01)Tj
+ET
+429 375 m
+429 411 l
+429 339 m
+429 375 l
+429 303 m
+429 339 l
+S
+BT
+10.5 0 0 10.5 436.2938 394.44 Tm
+(CPU)Tj
+0.1501 -1 TD
+(IRQ)Tj
+-0.1501 -2.4286 TD
+(CPU)Tj
+-0.0791 -1 TD
+(reset)Tj
+0.0791 -2.4286 TD
+(CPU)Tj
+0.178 -1 TD
+(trap)Tj
+-17.8758 3.9343 TD
+(unused)Tj
+0 3.4286 TD
+(unused)Tj
+T*
+(unused)Tj
+21.739 -3.4343 TD
+(default 0x00)Tj
+0 -3.4286 TD
+(default 0x00)Tj
+/TT2 1 Tf
+-25.9587 31.7914 TD
+(Housekeeping SPI register map)Tj
+ET
+543 303 m
+69 303 l
+543 267 m
+69 267 l
+543 195 m
+69 195 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 77.9991 286.5 Tm
+(0x0Dñ)Tj
+0 -1 TD
+(0x10)Tj
+0.4653 -3.1429 TD
+(0x11)Tj
+12.8174 20.7857 TD
+(unused)Tj
+21.2358 0.5 TD
+(DLL)Tj
+-0.5686 -1 TD
+(enable)Tj
+ET
+201 231 m
+201 267 l
+S
+BT
+10.5 0 0 10.5 142.4672 245.25 Tm
+(unused)Tj
+32.0243 -0.0057 TD
+(default 0x12)Tj
+1.2058 3.9286 TD
+(default)Tj
+-0.2821 -1 TD
+(0x3ffefff)Tj
+ET
+543 159 m
+543 681 l
+543 231 m
+69 231 l
+S
+BT
+10.5 0 0 10.5 78.8391 502.62 Tm
+(0x04ñ)Tj
+T*
+(0x07)Tj
+10.0598 10.56 TD
+(unused)Tj
+0.872 -10.0771 TD
+(user_project_ID \(unique value per project\))Tj
+27.8007 0.0057 TD
+(read-only)Tj
+-28.1013 -27.4286 TD
+(unused)Tj
+ET
+267 195 m
+267 231 l
+339 231 m
+339 267 l
+S
+BT
+10.5 0 0 10.5 478.7072 209.19 Tm
+(default 0x04)Tj
+-15.0726 0 TD
+(PLL feedback divider)Tj
+4.0686 3.4343 TD
+(PLL output divider)Tj
+-12.9774 0 TD
+(PLL output divider 2)Tj
+0.042 3.4229 TD
+(DCO trim \(26 bits\) \(= 0x3ffefff\))Tj
+ET
+543 159 m
+69 159 l
+S
+BT
+10.5 0 0 10.5 82.0341 171 Tm
+(0x13)Tj
+ET
+159 159 m
+159 195 l
+207 159 m
+207 195 l
+255 159 m
+255 195 l
+297 159 m
+297 195 l
+339 159 m
+339 195 l
+381 159 m
+381 195 l
+429 159 m
+429 195 l
+S
+BT
+10.5 0 0 10.5 168.7022 178.5 Tm
+(serial)Tj
+0 -1 TD
+(data 2)Tj
+4.6554 1 TD
+(serial)Tj
+0 -1 TD
+(data 1)Tj
+4.1309 1 TD
+(serial)Tj
+0 -1 TD
+(clock)Tj
+4 1 TD
+(serial)Tj
+0 -1 TD
+(load)Tj
+4 1 TD
+(serial)Tj
+ET
+0.518 w 
+344.959 176.33 m
+368.302 176.33 l
+S
+BT
+10.5 0 0 10.5 344.9587 168 Tm
+(reset)Tj
+4.2566 1 TD
+(serial)Tj
+0 -1 TD
+(enable)Tj
+4.2335 1.5 TD
+(serial)Tj
+0 -1 TD
+(xfer/)Tj
+T*
+(busy*)Tj
+-34.2347 -3.9286 TD
+(* Bit is write-only for serial transfer, read-only for serial busy.  During transfer, the busy bit is one.)Tj
+0 -1 TD
+(  Transfer is complete when the busy bit returns to zero.)Tj
+38.5594 6.9286 TD
+(bits 6 to 1)Tj
+0 -1 TD
+(are bit-bang)Tj
+T*
+(control.)Tj
+ET
+endstream
+endobj
+21 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+23 0 obj
+<<
+/Length 4685
+>>
+stream
+0.898 0.898 0.898 rg
+0.898 0.898 0.898 RG
+1 J 2 j 0.975 w 6 M []0 d
+/GS1 gs
+1 i 
+117 261 306 36 re
+B*
+117 297 174 36 re
+B*
+117 369 90 36 re
+B*
+117 441 264 36 re
+B*
+117 477 216 36 re
+B*
+117 513 174 36 re
+B*
+117 621 264 36 re
+B*
+117 147 138 36 re
+B*
+BT
+/TT2 1 Tf
+10.5 0 0 10.5 68.16 711 Tm
+0 0 0 rg
+0 Tc
+0 Tw
+(Functional Description )Tj
+/TT4 1 Tf
+11.1118 0 TD
+(\(cont.\))Tj
+ET
+0 0 0 RG
+543 705 m
+69 705 l
+543 621 m
+69 621 l
+S
+BT
+10.5 0 0 10.5 125.2228 675 Tm
+[(msb)-28133.7(lsb)]TJ
+ET
+543 549 m
+69 549 l
+69 261 m
+69 675 l
+S
+BT
+10.5 0 0 10.5 72.9525 673.5 Tm
+(Register)Tj
+0 -1 TD
+(Address)Tj
+ET
+543 657 m
+69 657 l
+543 513 m
+69 513 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 81.9872 633 Tm
+(0x14)Tj
+0.0023 -2.8571 TD
+(0x15)Tj
+ET
+543 405 m
+69 405 l
+159 657 m
+159 669 l
+207 657 m
+207 669 l
+255 657 m
+255 669 l
+297 657 m
+297 669 l
+339 657 m
+339 669 l
+381 657 m
+381 669 l
+429 657 m
+429 669 l
+471 261 m
+471 675 l
+S
+BT
+10.5 0 0 10.5 134.64 663 Tm
+3.4438 Tc
+[(76)-571.5(5)-582.9(4)0(3)11.4(2)57.1(1)-628.6(0)]TJ
+/TT4 1 Tf
+32.5985 0 TD
+0 Tc
+(comments)Tj
+ET
+543 369 m
+69 369 l
+543 333 m
+69 333 l
+543 441 m
+69 441 l
+543 477 m
+69 477 l
+543 585 m
+69 585 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 81.9431 531 Tm
+(0x1a)Tj
+38.4369 3.0714 TD
+(read-only)Tj
+-0.3176 -23.5 TD
+(unused/)Tj
+-0.3722 -1 TD
+(undefined)Tj
+ET
+117 261 m
+117 675 l
+S
+BT
+10.5 0 0 10.5 478.7269 383.19 Tm
+(default 0x00)Tj
+/TT2 1 Tf
+-26.5302 28.9343 TD
+(Housekeeping SPI register map, continued)Tj
+ET
+543 297 m
+69 297 l
+543 261 m
+69 261 l
+543 261 m
+543 675 l
+S
+BT
+/TT6 1 Tf
+10.5 0 0 10.5 78.8391 571.6201 Tm
+(0x16ñ)Tj
+0 -1 TD
+(0x19)Tj
+0.3013 -6.8686 TD
+(0x1b)Tj
+0.0177 -3.4286 TD
+(0x1c)Tj
+-0.319 -3 TD
+(0x1dñ)Tj
+0 -1 TD
+(0x68)Tj
+0.3067 -2.8571 TD
+(0x69)Tj
+-0.3067 -2.9886 TD
+(0x6añ)Tj
+0 -1 TD
+(0x6d)Tj
+0.3042 -2.8686 TD
+(0x6e)Tj
+0.1264 -3.4286 TD
+(0x6f)Tj
+ET
+69 183 474 -72 re
+543 147 m
+69 147 l
+471 111 m
+471 183 l
+117 111 m
+117 183 l
+S
+BT
+10.5 0 0 10.5 82.1672 161.25 Tm
+(0x1d)Tj
+-0.0128 -3.4171 TD
+(0x1e)Tj
+-1.287 6.6314 TD
+(GPIO configuration bits \(2 bytes per GPIO, using GPIO mprj_io[0] as an example\))Tj
+9.3283 -3.2143 TD
+(unused)Tj
+ET
+255 111 m
+255 147 l
+339 111 m
+339 147 l
+297 111 m
+297 147 l
+381 111 m
+381 147 l
+429 111 m
+429 147 l
+297 147 m
+297 183 l
+339 147 m
+339 183 l
+381 147 m
+381 183 l
+429 147 m
+429 183 l
+255 147 m
+255 183 l
+213 111 m
+213 147 l
+165 111 m
+165 147 l
+S
+BT
+10.5 0 0 10.5 259.7756 161.25 Tm
+[(DM[2])-1904.4(DM[1])-1333(DM[0])]TJ
+13.0521 0.5 TD
+(trip)Tj
+0 -1 TD
+(point)Tj
+3.8028 1 TD
+(slow)Tj
+0 -1 TD
+(slew)Tj
+-29.7545 -2.4286 TD
+(analog)Tj
+0 -1 TD
+(polarity)Tj
+4.707 1 TD
+(analog)Tj
+0 -1 TD
+(select)Tj
+3.9904 1 TD
+(analog)Tj
+0 -1 TD
+(enable)Tj
+4.1857 1.5 TD
+(IB)Tj
+0 -1 TD
+(mode)Tj
+T*
+(select)Tj
+3.7229 1.5 TD
+(input)Tj
+0 -1 TD
+(disable)Tj
+4.3771 1 TD
+(hold)Tj
+0 -1 TD
+(value)Tj
+4.2857 1.0229 TD
+(output)Tj
+ET
+0.518 w 
+389.653 129.105 m
+421.184 129.105 l
+S
+BT
+10.5 0 0 10.5 389.6531 120.24 Tm
+(enable)Tj
+4 1 TD
+(mgmt)Tj
+0 -1 TD
+(enable)Tj
+ET
+0.975 w 
+381 621 m
+381 657 l
+S
+BT
+10.5 0 0 10.5 238.4672 635.25 Tm
+(unused)Tj
+ET
+429 621 m
+429 657 l
+S
+BT
+10.5 0 0 10.5 385.7513 640.4401 Tm
+(SRAM)Tj
+T*
+(r/o clock)Tj
+4.9466 1 TD
+(SRAM)Tj
+0 -1 TD
+(r/o csb)Tj
+-21.232 -2.9286 TD
+(SRAM read-only address)Tj
+-1.121 -3.4286 TD
+(SRAM read-only data \(32 bits\))Tj
+26.2612 3.4286 TD
+(default 0x00)Tj
+T*
+(default 0x00)Tj
+ET
+291 513 m
+291 549 l
+333 477 m
+333 513 l
+381 441 m
+381 477 l
+333 513 m
+333 549 l
+381 513 m
+381 549 l
+381 477 m
+381 513 l
+429 513 m
+429 549 l
+429 477 m
+429 513 l
+429 441 m
+429 477 l
+S
+BT
+10.5 0 0 10.5 296.9644 537.8701 Tm
+(user1)Tj
+0 -1 TD
+(vccd)Tj
+T*
+(good)Tj
+4.4874 2 TD
+(user2)Tj
+0 -1 TD
+(vccd)Tj
+T*
+(good)Tj
+4.6554 2 TD
+(user1)Tj
+0 -1 TD
+(vdda)Tj
+T*
+(good)Tj
+4.4874 2 TD
+(user2)Tj
+0 -1 TD
+(vdda)Tj
+T*
+(good)Tj
+4.3284 0.9886 TD
+(read-only)Tj
+-13.8881 -2.3371 TD
+(core)Tj
+0 -1 TD
+(clock)Tj
+T*
+(monitor)Tj
+4.5714 2 TD
+(user)Tj
+0 -1 TD
+(clock)Tj
+T*
+(monitor)Tj
+4.56 1.9314 TD
+(trap)Tj
+0 -1 TD
+(state)Tj
+T*
+(monitor)Tj
+-4.3745 -1.9514 TD
+(irq 2)Tj
+0 -1 TD
+(source)Tj
+4.5714 1 TD
+(irq 1)Tj
+0 -1 TD
+(source)Tj
+-26.8924 -2.9343 TD
+(GPIO configuration data staging \(see table at bottom\))Tj
+30.8042 6.8571 TD
+(default 0x00)Tj
+0 -3.4286 TD
+(default 0x00)Tj
+-27.4533 6.8629 TD
+(unused)Tj
+1.7143 -3.4286 TD
+(unused)Tj
+1.7143 -3.4286 TD
+(unused)Tj
+-7.4286 -6.8571 TD
+(unused)Tj
+ET
+207 369 m
+207 405 l
+S
+BT
+10.5 0 0 10.5 254.4956 383.19 Tm
+(GPIO data for mprj_io[37:32])Tj
+21.3554 -3.4286 TD
+(default 0x00)Tj
+-23.3668 0 TD
+(GPIO data for mprj_io[31:0])Tj
+ET
+291 333 m
+291 297 l
+S
+BT
+10.5 0 0 10.5 190.4672 311.25 Tm
+[(unused)-7889.9(user domain power control)]TJ
+ET
+423 261 m
+423 297 l
+S
+BT
+10.5 0 0 10.5 244.4672 275.25 Tm
+(unused)Tj
+17.5796 1 TD
+(house-)Tj
+0 -1 TD
+(keeping)Tj
+T*
+(disable)Tj
+4.7308 0.9943 TD
+(default 0x00)Tj
+ET
+endstream
+endobj
+24 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 6 0 R
+>>
+/ExtGState <<
+/GS1 8 0 R
+>>
+>>
+endobj
+8 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+25 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 262176
+/FontBBox [-170 -228 1003 962]
+/FontName /Helvetica-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 532
+/StemH 140
+>>
+endobj
+26 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 96
+/FontBBox [-170 -225 1116 931]
+/FontName /Helvetica-Oblique
+/ItalicAngle -15
+/StemV 88
+/XHeight 523
+/StemH 88
+>>
+endobj
+27 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 770
+/CapHeight 718
+/Descent -229
+/Flags 32
+/FontBBox [-166 -225 1000 931]
+/FontName /Helvetica
+/ItalicAngle 0
+/StemV 88
+/XHeight 523
+/StemH 88
+>>
+endobj
+28 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 753
+/CapHeight 562
+/Descent -246
+/Flags 262179
+/FontBBox [-113 -250 749 801]
+/FontName /Courier-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 439
+/StemH 84
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 121
+/Widths [278 0 0 0 0 0 0 0 333 333 0 0 278 333 0 0 
+0 0 556 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 722 722 0 611 0 722 278 0 0 611 0 0 778 
+667 778 722 667 0 722 0 0 0 0 0 0 0 0 0 556 
+0 556 611 556 611 556 333 611 611 278 278 556 278 889 611 611 
+611 0 389 556 333 611 556 0 0 556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Bold
+/FontDescriptor 25 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 117
+/Widths [278 0 0 0 0 0 0 0 333 333 0 0 0 0 278 0 
+0 0 556 0 0 0 0 0 556 0 0 0 0 0 0 0 
+0 667 0 0 0 0 611 0 722 278 0 0 0 0 0 0 
+667 0 722 667 611 0 0 0 0 0 0 0 0 0 0 0 
+0 556 556 500 556 556 0 556 0 222 0 500 222 833 556 556 
+556 0 333 500 278 556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica-Oblique
+/FontDescriptor 26 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 150
+/Widths [278 0 355 0 0 0 0 0 333 333 389 0 278 333 278 278 
+556 556 556 556 556 556 556 556 556 556 278 0 0 584 0 0 
+0 667 667 722 722 667 611 778 722 278 0 667 556 833 722 778 
+667 778 722 667 611 722 667 944 0 0 0 278 0 278 0 556 
+0 556 556 500 556 556 278 556 556 222 222 500 222 833 556 556 
+556 556 333 500 278 556 500 722 500 500 500 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 333 333 0 556 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Helvetica
+/FontDescriptor 27 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 48
+/LastChar 110
+/Widths [600 600 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 600 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Courier-Bold
+/FontDescriptor 28 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+10 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 12 0 R
+/Contents 11 0 R
+>>
+endobj
+13 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 15 0 R
+/Contents 14 0 R
+>>
+endobj
+16 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 18 0 R
+/Contents 17 0 R
+>>
+endobj
+19 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 21 0 R
+/Contents 20 0 R
+>>
+endobj
+22 0 obj
+<<
+/Type /Page
+/Parent 9 0 R
+/Resources 24 0 R
+/Contents 23 0 R
+>>
+endobj
+29 0 obj
+<<
+/S /D
+>>
+endobj
+30 0 obj
+<<
+/Nums [0 29 0 R ]
+>>
+endobj
+9 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 10 0 R 13 0 R 16 0 R 19 0 R 22 0 R]
+/Count 6
+/MediaBox [0 0 612 792]
+>>
+endobj
+31 0 obj
+<<
+/CreationDate (D:20211216153745-08'00')
+/ModDate (D:20211216153745-08'00')
+/Producer (PSNormalizer.framework)
+>>
+endobj
+32 0 obj
+<<
+/Type /Catalog
+/Pages 9 0 R
+/PageLabels 30 0 R
+>>
+endobj
+xref
+0 33
+0000000000 65535 f 
+0000030606 00000 n 
+0000000016 00000 n 
+0000008235 00000 n 
+0000028906 00000 n 
+0000029340 00000 n 
+0000029749 00000 n 
+0000030306 00000 n 
+0000027958 00000 n 
+0000031169 00000 n 
+0000030686 00000 n 
+0000008363 00000 n 
+0000012693 00000 n 
+0000030769 00000 n 
+0000012811 00000 n 
+0000017068 00000 n 
+0000030852 00000 n 
+0000017186 00000 n 
+0000018375 00000 n 
+0000030935 00000 n 
+0000018493 00000 n 
+0000022984 00000 n 
+0000031018 00000 n 
+0000023102 00000 n 
+0000027840 00000 n 
+0000028098 00000 n 
+0000028304 00000 n 
+0000028509 00000 n 
+0000028704 00000 n 
+0000031101 00000 n 
+0000031129 00000 n 
+0000031285 00000 n 
+0000031417 00000 n 
+trailer
+<<
+/Size 33
+/Root 32 0 R
+/Info 31 0 R
+/ID [<632f8673ade4cd4dd365331bd25c0f05><632f8673ade4cd4dd365331bd25c0f05>]
+>>
+startxref
+31486
+%%EOF
+1 0 obj
+<< /Resources 3 0 R /Type /Page /Contents 2 0 R /Rotate 0 /Parent 9 0 R >>
+endobj
+10 0 obj
+<< /Resources 12 0 R /Type /Page /Contents 11 0 R /Rotate 0 /Parent 9 0 R
+>>
+endobj
+13 0 obj
+<< /Resources 15 0 R /Type /Page /Contents 14 0 R /Rotate 0 /Parent 9 0 R
+>>
+endobj
+16 0 obj
+<< /Resources 18 0 R /Type /Page /Contents 17 0 R /Rotate 0 /Parent 9 0 R
+>>
+endobj
+19 0 obj
+<< /Resources 21 0 R /Type /Page /Contents 20 0 R /Rotate 0 /Parent 9 0 R
+>>
+endobj
+22 0 obj
+<< /Resources 24 0 R /Type /Page /Contents 23 0 R /Rotate 0 /Parent 9 0 R
+>>
+endobj
+31 0 obj
+<< /ModDate (D:20211216234047Z00'00') /Producer (macOS Version 11.5.2 \(Build 20G95\) Quartz PDFContext, AppendMode 1.1)
+/CreationDate (D:20211216153745-08'00') >>
+endobj
+xref
+0 2
+0000000000 65535 f 
+0000032302 00000 n 
+10 1
+0000032392 00000 n 
+13 1
+0000032485 00000 n 
+16 1
+0000032578 00000 n 
+19 1
+0000032671 00000 n 
+22 1
+0000032764 00000 n 
+31 1
+0000032857 00000 n 
+trailer
+<< /ID [<632F8673ADE4CD4DD365331BD25C0F05><C927667CF016949F399EA4E05D4744FD> ] /Root 32 0 R /Size 33 /Prev 31486 /Info 31 0 R >> 
+startxref
+33037
+%%EOF
