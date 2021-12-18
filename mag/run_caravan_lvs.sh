@@ -1,6 +1,6 @@
 #!/bin/bassh
 #
-PDK_ROOT ?= /usr/share/pdk
+echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
 
 if [ ! -f caravan.spice ]; then
 magic -dnull -noconsole -rcfile $PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc << EOF
