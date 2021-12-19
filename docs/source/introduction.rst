@@ -25,7 +25,7 @@ The Efabless Caravel chip is a ready-to-use test harness for creating designs wi
 The Caravel harness comprises of base functions supporting IO, power and configuration as well as drop-in modules for a
 management soc core, and an approximately 2.8mm x 2.8mm open project area for the placement of user IP blocks.
 
-.. figure:: docs/source/_static/caravel_floorplan.jpg
+.. figure:: _static/caravel_floorplan.jpg
       :name: caravel_floorplan
       :alt: Caravel Floorplan
       :align: center
