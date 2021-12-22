@@ -42,6 +42,11 @@ New overlay types created:
 5. sky130_ef_io__vccd_lvc_clamped_pad:	sky130_ef_io__vccd_lvc_pad  + overlay (3)
 6. sky130_ef_io__vssd_lvc_clamped_pad:	sky130_ef_io__vssd_lvc_pad  + overlay (3)
 7. sky130_ef_io__vccd_lvc_clamped2_pad:	sky130_ef_io__vccd_lvc_pad  + overlay (4)
-7. sky130_ef_io__vssd_lvc_clamped2_pad:	sky130_ef_io__vssd_lvc_pad  + overlay (4)
+8. sky130_ef_io__vssd_lvc_clamped2_pad:	sky130_ef_io__vssd_lvc_pad  + overlay (4)
+9. sky130_ef_io__vccd_lvc_clamped3_pad:	sky130_ef_io__vccd_lvc_pad  + overlay (4)
+10. sky130_ef_io__vssd_lvc_clamped3_pad: sky130_ef_io__vssd_lvc_pad + overlay (4)
 
-
+NOTE:  The "clamped3" pads correspond to a change in the Caravel design for MPW-2,
+in which the vccd/vssd domain has continuous supply rings around the chip
+periphery.  The pad connection of these two pads does not connect to the padframe
+power rings, but connects to a separate set of power rails in the chip core.
