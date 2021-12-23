@@ -17,7 +17,7 @@
    #
    # SPDX-License-Identifier: Apache-2.0
    -->
-   
+
 ===========================
 Caravel digital locked loop
 ===========================
@@ -34,7 +34,7 @@ architecture is present, but is generally in the range of around 50MHz.
 
 The DLL comprises an on-chip tunable ring oscillator and a feedback
 controller for locking to a known input clock.  It can operate in either
-free-running (DCO) or locked (DLL) modes.  The Caravel system can run
+free-running ``DCO`` or locked ``DLL`` modes.  The Caravel system can run
 directly off of the external clock (bypass mode), the free-running DCO,
 or the DLL locked to the external clock.
 
@@ -87,7 +87,7 @@ The DLL controls are memory-mapped to the housekeeping space, and are as follows
 - Register name = ``reg_hkspi_pll_ena``
 - Memory location = ``0x2610000c``
 - Housekeeping SPI location = ``0x08``
-    
+ 
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 |      |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
@@ -96,35 +96,38 @@ The DLL controls are memory-mapped to the housekeeping space, and are as follows
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
           
 
-bit 1:  DCO enable
+    bit 1:  DCO enable
 	    value 0 = DCO disabled.  DLL runs in active locking mode
 	    value 1 = DCO enabled.   DLL runs in DCO mode.
 
-bit 0:  DLL enable
+    bit 0:  DLL enable
 	    value 0 = DLL disabled. DLL is disabled and the clock is stopped.
 	    value 1 = DLL enabled.  DLL is enabled and outputs a clock.
 
+=============================================================================
 
-Register name = reg_hkspi_pll_bypass
-Memory location = 0x26100010
-Housekeeping SPI location = 0x09
+- Register name = ``reg_hkspi_pll_bypass``
+- Memory location = ``0x26100010``
+- Housekeeping SPI location = ``0x09``
 
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 |      |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
-| 0x09 |       |       |       |       |       |       |       |  DLL  |
+| 0x09 |       |       |       |       |       |       |       | DLL   |
 |      |       |       |       |       |       |       |       | bypass|
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 
     bit 0:  DLL bypass
 	    value 0 = DLL active.  Core clock is derived from the DLL output.
-	    value 1 = DLL bypassed.  Core clock is derived from the external
-			clock source.
+	    value 1 = DLL bypassed.  Core clock is derived from the external clock source.
 
---------------------------------------------------------------------------
-Register name = reg_hkspi_pll_trim
-Memory location = 0x2610001c to 0x261001f
-Housekeeping SPI location = 0x0d to 0x10
+=============================================================================
+
+
+- Register name = ``reg_hkspi_pll_trim``
+- Memory location = ``0x2610001c to 0x261001f``
+- Housekeeping SPI location = ``0x0d to 0x10``
+
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 |      |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
@@ -137,20 +140,26 @@ Housekeeping SPI location = 0x0d to 0x10
 | 0x0d | trim7 | trim6 | trim5 | trim4 | trim3 | trim2 | trim1 | trim0 |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 
-    all bits:  DLL manual trim value.  This 26-bit value is applied to
-	    the DLL when in DCO mode and directly controls the frequency
-	    of the ring oscillator.  Each '1' bit turns on one delay
-	    stage in the oscillator.
+**All bits:**
 
-    NOTE:  The phase relationship between the DLL outputs (for the core
+    DLL manual trim value.  This 26-bit value is applied to
+    the DLL when in DCO mode and directly controls the frequency
+    of the ring oscillator.  Each '1' bit turns on one delay
+    stage in the oscillator.
+
+**NOTE:**
+
+    The phase relationship between the DLL outputs (for the core
     clock and the user clock) is nominally 90 degrees when the trim
     stages are balanced along the length of the oscillator, but this
     phase can be altered with non-uniform delays.
 
---------------------------------------------------------------------------
-Register name = reg_hkspi_pll_divider
-Memory location = 0x26100024
-Housekeeping SPI location = 0x12
+=============================================================================
+
+- Register name = ``reg_hkspi_pll_divider``
+- Memory location = ``0x26100024``
+- Housekeeping SPI location = ``0x12``
+
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 |      |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
@@ -168,10 +177,12 @@ Housekeeping SPI location = 0x12
     value) must always be within the DLL's trimmable range, or else the
     DLL will saturate.
 
---------------------------------------------------------------------------
-Register name = reg_hkspi_pll_source
-Memory location = 0x26100020
-Housekeeping SPI location = 0x11
+=============================================================================
+
+- Register name = ``reg_hkspi_pll_source``
+- Memory location = ``0x26100020``
+- Housekeeping SPI location = ``0x11``
+
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
 |      |   7   |   6   |   5   |   4   |   3   |   2   |   1   |   0   |
 +------+-------+-------+-------+-------+-------+-------+-------+-------+
@@ -189,5 +200,4 @@ Housekeeping SPI location = 0x11
 	    is derived from the 90-degree-phase ring oscillator output
 	    divided down by this amount.  The values range from 1 (divide
 	    by 1) to 7 (divide by 7).
-
 
