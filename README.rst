@@ -152,7 +152,7 @@ Quick Start for User Projects
 Your area is the full user space, so feel free to add your
 project there or create a different macro and harden it separately then
 insert it into the ``user_project_wrapper`` for digital projects or insert it
-into ``user_project_analog_wrapper`` for analog projects.
+into ``user_analog_project_wrapper`` for analog projects.
 
 .. _digital-user-project:
 
