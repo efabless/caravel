@@ -479,10 +479,7 @@
 + mprj_stb_o_user mprj_we_o_core mprj_we_o_user user1_vcc_powergood user1_vdd_powergood
 + user2_vcc_powergood user2_vdd_powergood user_clock user_clock2 user_irq[0] user_irq[1]
 + user_irq[2] user_irq_core[0] user_irq_core[1] user_irq_core[2] user_irq_ena[0] user_irq_ena[1]
-+ user_irq_ena[2] user_reset vccd vccd1 vccd2 vdda1 vdda2 vssd vssd1 vssd2 vccd2_uq0
-+ vccd2_uq1 vccd2_uq2 vccd2_uq3 vccd2_uq4 vccd2_uq5 vccd2_uq6 vccd1_uq0 vccd1_uq1
-+ vccd1_uq2 vccd1_uq3 vccd1_uq4 vccd1_uq5 vssd2_uq0 vssd2_uq1 vssd2_uq2 vssd2_uq3
-+ vssd2_uq4 vssd2_uq5 vssd1_uq0 vssd1_uq1 vssd1_uq2 vssd1_uq4 vdda1_uq0 vdda2_uq0
++ user_irq_ena[2] user_reset vccd vccd1 vccd2 vdda1 vdda2 vssa1 vssa2 vssd vssd1 vssd2
 XFILLER_45_1385 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XTAP_177 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_188 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
@@ -11276,7 +11273,7 @@ XANTENNA__646__A _646_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XFILLER_0_1454 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
 XFILLER_34_981 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XFILLER_25_469 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
-Xmprj2_logic_high_inst mprj2_pwrgood/A vccd2_uq6 vssd2_uq5 mprj2_logic_high
+Xmprj2_logic_high_inst mprj2_pwrgood/A vccd2 vssd2 mprj2_logic_high
 XANTENNA_mprj_adr_buf\[6\]_A _406_/Y vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XFILLER_32_15 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XFILLER_20_141 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
@@ -11500,7 +11497,7 @@ Xmprj_logic_high_inst mprj_rstn_buf/TE la_buf_enable\[26\]/B la_buf_enable\[27\]
 + la_buf_enable\[14\]/B la_buf_enable\[15\]/B mprj_sel_buf\[2\]/TE la_buf_enable\[16\]/B
 + la_buf_enable\[17\]/B la_buf_enable\[18\]/B la_buf_enable\[19\]/B la_buf_enable\[20\]/B
 + la_buf_enable\[21\]/B la_buf_enable\[22\]/B la_buf_enable\[23\]/B la_buf_enable\[24\]/B
-+ la_buf_enable\[25\]/B mprj_sel_buf\[3\]/TE vccd1_uq5 vssd1_uq4 mprj_logic_high
++ la_buf_enable\[25\]/B mprj_sel_buf\[3\]/TE vccd1 vssd1 mprj_logic_high
 XFILLER_26_1591 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XFILLER_38_561 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XFILLER_26_701 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
@@ -11945,7 +11942,7 @@ XFILLER_46_253 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XFILLER_37_2003 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
 XFILLER_34_415 vssd vssd vccd vccd sky130_fd_sc_hd__decap_4
 XFILLER_19_489 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-Xpowergood_check vccd vssd vdda1 vssd vdda2 vssd mprj2_vdd_pwrgood/A mprj_vdd_pwrgood/A
+Xpowergood_check vccd vssd vdda1 vssa1 vdda2 vssa2 mprj2_vdd_pwrgood/A mprj_vdd_pwrgood/A
 + mgmt_protect_hv
 XTAP_2050 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_2061 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
