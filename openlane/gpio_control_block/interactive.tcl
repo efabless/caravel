@@ -23,11 +23,11 @@ run_synthesis
 
 init_floorplan
 
-set ::env(SAVE_DEF) [index_file $::env(ioPlacer_tmp_file_tag).def]
-try_catch openroad -exit $script_dir/io_place.tcl |& tee $::env(TERMINAL_OUTPUT) [index_file $::env(ioPlacer_log_file_tag).log 0]
+set ::env(SAVE_DEF) [index_file $::env(floorplan_tmpfiles)/gpio_control_block.io.def]
+try_catch openroad -exit $script_dir/io_place.tcl |& tee $::env(TERMINAL_OUTPUT) [index_file $::env(floorplan_logs)/io.log 0]
 set_def $::env(SAVE_DEF)
 
-file copy -force $::env(MACRO_PLACEMENT_CFG) $::env(TMP_DIR)/macro_placement.cfg
+file copy -force $::env(MACRO_PLACEMENT_CFG) $::env(TMP_DIR)/placement/macro_placement.cfg
 manual_macro_placement f
 
 tap_decap_or
@@ -50,25 +50,35 @@ run_magic
 
 run_magic_spice_export
 
-write_powered_verilog
-set_netlist $::env(lvs_result_file_tag).powered.v
+set powered_netlist_name [index_file $::env(finishing_tmpfiles)/powered_netlist.v]
+set powered_def_name [index_file $::env(finishing_tmpfiles)/powered_def.def]
+write_powered_verilog\
+-output_verilog $powered_netlist_name\
+-output_def $powered_def_name\
+-log $::env(finishing_logs)/write_verilog.log\
+-def_log $::env(finishing_logs)/write_powered_def.log
 
+set_netlist $powered_netlist_name
+            
 run_magic_drc
 
-run_lvs $::env(magic_result_file_tag).spice $::env(CURRENT_NETLIST)
+run_lvs 
 
 run_antenna_check
 
 run_lef_cvc
 
-save_views -lef_path $::env(magic_result_file_tag).lef \
-        -def_path $::env(tritonRoute_result_file_tag).def \
-        -gds_path $::env(magic_result_file_tag).gds \
-        -mag_path $::env(magic_result_file_tag).mag \
+save_views -save_path $save_path \
+        -def_path $::env(CURRENT_DEF) \
+        -lef_path $::env(finishing_results)/$::env(DESIGN_NAME).lef \
+        -gds_path $::env(finishing_results)/$::env(DESIGN_NAME).gds \
+        -mag_path $::env(finishing_results)/$::env(DESIGN_NAME).mag \
+        -maglef_path $::env(finishing_results)/$::env(DESIGN_NAME).lef.mag \
+        -spice_path $::env(finishing_results)/$::env(DESIGN_NAME).spice \
         -verilog_path $::env(CURRENT_NETLIST) \
-        -spice_path $::env(magic_result_file_tag).spice \
-        -save_path $save_path \
-        -tag $::env(RUN_TAG)
+        -spef_path $::env(SPEF_TYPICAL) \
+        -sdf_path $::env(CURRENT_SDF) \
+        -sdc_path $::env(CURRENT_SDC)
 
 calc_total_runtime
 save_state
