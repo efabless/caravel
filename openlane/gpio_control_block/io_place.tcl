@@ -32,8 +32,8 @@ ppl::set_ver_thick_multiplier $::env(FP_IO_VTHICKNESS_MULT)
 ppl::set_hor_thick_multiplier $::env(FP_IO_HTHICKNESS_MULT)
 
 set tech [[ord::get_db] getTech]
-set HMETAL [[$tech findRoutingLayer $::env(FP_IO_HMETAL)] getName]
-set VMETAL [[$tech findRoutingLayer $::env(FP_IO_VMETAL)] getName]
+set HMETAL $::env(FP_IO_HLAYER)
+set VMETAL $::env(FP_IO_VLAYER)
 
 # East pins
 set_io_pin_constraint -pin_names {user_gpio_out} -region right:60-62

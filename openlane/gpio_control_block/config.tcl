@@ -74,10 +74,10 @@ set ::env(FP_PDN_HSPACING) 3.4
 ## Placement 
 set ::env(PL_TARGET_DENSITY) 0.91
 # for some reason resizer is leaving a floating net after running repair_tie_fanout command
-set ::env(PL_RESZIER_REPIAR_TIE_FANOUT) 0
+set ::env(PL_RESIZER_REPAIR_TIE_FANOUT) 0
 
 # mgmt_gpio_in is driven by a tristate cell
-set ::env(DONT_BUFFER_PORTS) "mgmt_gpio_in"
+# set ::env(DONT_BUFFER_PORTS) "mgmt_gpio_in"
 
 ## Routing
 set ::env(GLB_RT_MINLAYER) 2
