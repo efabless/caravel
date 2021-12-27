@@ -22,30 +22,28 @@
 Clamp List
 =========================
 
-============================ =========================== =================================
+============================ =========================== ====== ====== ====== ====== =====
 Pad                          Instance                    Clamp connections
-			DRN1         SRC1       DRN2           SRC2                B2B
-==========================================================================================
-sky130_ef_io__vddio_hvc_pad  \mgmt_vddio_hvclamp_pad[0]  vddio, vssio
-sky130_ef_io__vddio_hvc_pad  \mgmt_vddio_hvclamp_pad[1]  vddio, vssio
-sky130_ef_io__vssio_hvc_pad  \mgmt_vssio_hvclamp_pad[0]  vddio, vssio
-sky130_ef_io__vssio_hvc_pad  \mgmt_vssio_hvclamp_pad[1]  vddio, vssio
-
-sky130_ef_io__vdda_hvc_pad   mgmt_vdda_hvclamp_pad       vdda,  vssa
-sky130_ef_io__vssa_hvc_pad   mgmt_vssa_hvclamp_pad       vdda,  vssa
-sky130_ef_io__vdda_hvc_pad   user1_vdda_hvclamp_pad      vdda1, vssa1
-sky130_ef_io__vssa_hvc_pad   user1_vssa_hvclamp_pad      vdda1, vssa1
-sky130_ef_io__vdda_hvc_pad   user2_vdda_hvclamp_pad      vdda2, vssa2
-sky130_ef_io__vssa_hvc_pad   user2_vssa_hvclamp_pad      vdda2, vssa2
-
-sky130_ef_io__vccd_lvc_pad    mgmt_vccd_lvclamp_pad      vccd,  vssio, vccd,  vssd, vssa
-sky130_ef_io__vssd_lvc_pad    mgmt_vssd_lvclmap_pad      vccd,  vssio, vccd,  vssd, vssa
-
-sky130_ef_io__vccd_lvc_pad   user1_vccd_lvclamp_pad      vccd1, vssd1, vccd1, vssd, vssio
-sky130_ef_io__vssd_lvc_pad   user1_vssd_lvclmap_pad      vccd1, vssd1, vccd1, vssd, vssio
-sky130_ef_io__vccd_lvc_pad   user2_vccd_lvclamp_pad      vccd2, vssd2, vccd2, vssd, vssio
-sky130_ef_io__vssd_lvc_pad   user2_vssd_lvclmap_pad      vccd2, vssd2, vccd2, vssd, vssio
-============================ =========================== =================================
+---------------------------- --------------------------- ---------------------------------
+--                           --                          DRN1   SRC1   DRN2   SRC2   B2B
+============================ =========================== ====== ====== ====== ====== =====
+sky130_ef_io__vddio_hvc_pad  \mgmt_vddio_hvclamp_pad[0]  vddio  vssio
+sky130_ef_io__vddio_hvc_pad  \mgmt_vddio_hvclamp_pad[1]  vddio  vssio
+sky130_ef_io__vssio_hvc_pad  \mgmt_vssio_hvclamp_pad[0]  vddio  vssio
+sky130_ef_io__vssio_hvc_pad  \mgmt_vssio_hvclamp_pad[1]  vddio  vssio
+sky130_ef_io__vdda_hvc_pad   mgmt_vdda_hvclamp_pad       vdda   vssa
+sky130_ef_io__vssa_hvc_pad   mgmt_vssa_hvclamp_pad       vdda   vssa
+sky130_ef_io__vdda_hvc_pad   user1_vdda_hvclamp_pad      vdda1  vssa1
+sky130_ef_io__vssa_hvc_pad   user1_vssa_hvclamp_pad      vdda1  vssa1
+sky130_ef_io__vdda_hvc_pad   user2_vdda_hvclamp_pad      vdda2  vssa2
+sky130_ef_io__vssa_hvc_pad   user2_vssa_hvclamp_pad      vdda2  vssa2
+sky130_ef_io__vccd_lvc_pad   mgmt_vccd_lvclamp_pad       vccd   vssio  vccd   vssd   vssa
+sky130_ef_io__vssd_lvc_pad   mgmt_vssd_lvclmap_pad       vccd   vssio  vccd   vssd   vssa
+sky130_ef_io__vccd_lvc_pad   user1_vccd_lvclamp_pad      vccd1  vssd1  vccd1  vssd   vssio
+sky130_ef_io__vssd_lvc_pad   user1_vssd_lvclmap_pad      vccd1  vssd1  vccd1  vssd   vssio
+sky130_ef_io__vccd_lvc_pad   user2_vccd_lvclamp_pad      vccd2  vssd2  vccd2  vssd   vssio
+sky130_ef_io__vssd_lvc_pad   user2_vssd_lvclmap_pad      vccd2  vssd2  vccd2  vssd   vssio
+============================ =========================== ====== ====== ====== ====== =====
 
 Overlay types used:
 ===================
