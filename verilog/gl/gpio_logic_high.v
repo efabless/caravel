@@ -101,6 +101,7 @@ module gpio_logic_high (gpio_logic1,
  sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_12 (.VGND(vssd1),
     .VPWR(vccd1));
  sky130_fd_sc_hd__conb_1 gpio_logic_high (.HI(gpio_logic1),
+    .LO(no_connect6),
     .VGND(vssd1),
     .VNB(vssd1),
     .VPB(vccd1),

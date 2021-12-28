@@ -59,7 +59,7 @@ module mgmt_protect_hv (
         .VNB(vssa1),
 `endif
         .HI(mprj_vdd_logic1_h),
-        .LO()
+    	.LO(no_connect4)
     );
 
     sky130_fd_sc_hvl__conb_1 mprj2_logic_high_hvl (
@@ -70,7 +70,7 @@ module mgmt_protect_hv (
         .VNB(vssa2),
 `endif
         .HI(mprj2_vdd_logic1_h),
-        .LO()
+	.LO(no_connect5)
     );
 
     // Level shift the logic high signals into the 1.8V domain

@@ -3593,6 +3593,7 @@ module caravel_clocking (VGND,
     .VPB(VPWR),
     .VPWR(VPWR));
  sky130_fd_sc_hd__conb_1 _396__13 (.LO(net13),
+    .HI(no_connect3)
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
