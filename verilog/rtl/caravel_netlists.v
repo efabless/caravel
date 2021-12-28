@@ -63,6 +63,7 @@
 	`include "gl/gpio_logic_high.v"
 	`include "gl/xres_buf.v"
 	`include "gl/spare_logic_block.v"
+	`include "gl/mgmt_defines.v"
 	`include "gl/mgmt_core_wrapper.v"
 	`include "gl/caravel.v"
     `else

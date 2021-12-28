@@ -18,6 +18,7 @@ PDK_PATH = $(PDK_ROOT)/sky130A
 VERILOG_PATH = ../../../..
 RTL_PATH = $(VERILOG_PATH)/rtl
 BEHAVIOURAL_MODELS = ../../ 
+RISCV_TYPE ?= rv32imc
 
 FIRMWARE_PATH = ../..
 GCC_PATH?=/ef/apps/bin
@@ -58,7 +59,7 @@ endif
 	vvp $<
 
 %.elf: %.c sections.lds start.S check-env
-	${GCC_PATH}/${GCC_PREFIX}-gcc -march=rv32imc -mabi=ilp32 -Wl,-Bstatic,-T,sections.lds,--strip-debug -ffreestanding -nostdlib -o $@ start.S $<
+	${GCC_PATH}/${GCC_PREFIX}-gcc -march=$(RISCV_TYPE) -mabi=ilp32 -Wl,-Bstatic,-T,sections.lds,--strip-debug -ffreestanding -nostdlib -o $@ start.S $<
 
 %.hex: %.elf
 	${GCC_PATH}/${GCC_PREFIX}-objcopy -O verilog $< $@ 
