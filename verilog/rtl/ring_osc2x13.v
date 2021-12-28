@@ -123,7 +123,7 @@ module start_stage(in, trim, reset, out);
 
     sky130_fd_sc_hd__conb_1 const1 (
 	.HI(one),
-	.LO()
+	.LO(no_connect_1)
     );
 
 endmodule

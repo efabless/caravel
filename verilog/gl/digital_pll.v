@@ -3792,6 +3792,7 @@ module digital_pll (VGND,
     .VPB(VPWR),
     .VPWR(VPWR));
  sky130_fd_sc_hd__conb_1 \ringosc.iss.const1  (.HI(\ringosc.iss.one ),
+    .LO(no_connect_1),
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),

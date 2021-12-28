@@ -15,7 +15,7 @@ module gpio_logic_high(
             .VNB(vssd1),
 `endif
             .HI(gpio_logic1),
-            .LO()
+            .LO(no_connect)
     );
 
 endmodule

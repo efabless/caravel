@@ -90201,6 +90201,7 @@ module housekeeping (VGND,
     .VPB(VPWR),
     .VPWR(VPWR));
  sky130_fd_sc_hd__conb_1 _8815__378 (.HI(net378),
+    .LO(no_connect_2),
     .VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),

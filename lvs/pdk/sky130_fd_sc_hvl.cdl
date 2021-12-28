@@ -1,0 +1,3288 @@
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__a21o_1 A1 A2 B1 VGND VNB VPB VPWR X
+*.PININFO A1:I A2:I B1:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMPA0 pndA A1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 pndA A2 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 y B1 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIPX X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 y A1 sndA1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 sndA1 A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 y B1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMINX X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__a21o_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__a21oi_1 A1 A2 B1 VGND VNB VPB VPWR Y
+*.PININFO A1:I A2:I B1:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMPA0 pndA A1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 pndA A2 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 Y B1 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 Y A1 sndA1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 sndA1 A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 Y B1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__a21oi_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__a22o_1 A1 A2 B1 B2 VGND VNB VPB VPWR X
+*.PININFO A1:I A2:I B1:I B2:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMPA0 pndA A1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 pndA A2 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 y B1 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB1 y B2 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIPX X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 y A1 sndA1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 sndA1 A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 y B1 sndB1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB1 sndB1 B2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMINX X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__a22o_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__a22oi_1 A1 A2 B1 B2 VGND VNB VPB VPWR Y
+*.PININFO A1:I A2:I B1:I B2:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMPA0 pndA A1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 pndA A2 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 Y B1 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB1 Y B2 pndA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 Y A1 sndA1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 sndA1 A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 Y B1 sndB1 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB1 sndB1 B2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__a22oi_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__and2_1 A B VGND VNB VPB VPWR X
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMP0 y A VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 y B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP0 X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 y A sndA VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN0 X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__and2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__and3_1 A B C VGND VNB VPB VPWR X
+*.PININFO A:I B:I C:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMP0 y A VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 y B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP2 y C VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP0 X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 y A sndA VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA B sndB VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN2 sndB C VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN0 X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__and3_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_1 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_2 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=2 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_2
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_4 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=4 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=4 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_4
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_8 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=3 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=8 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=3 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=8 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_16 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=6 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=16 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=6 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=16 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_16
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__buf_32 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=10 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=32 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=10 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab VPWR VPB pfet_g5v0d10v5 m=32 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__buf_32
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__conb_1 VGND VNB VPB VPWR HI LO
+*.PININFO VGND:I VNB:I VPB:I VPWR:I HI:O LO:O
+rI12 VGND LO res_generic_po
+rI11 HI VPWR res_generic_po
+.ENDS sky130_fd_sc_hvl__conb_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__decap_4 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+MI1 VGND VPWR VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=1.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI2 VPWR VGND VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=1.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__decap_4
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__decap_8 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+MI1 VGND VPWR VGND VNB nfet_g5v0d10v5 m=2 w=0.75 l=1.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI2 VPWR VGND VPWR VPB pfet_g5v0d10v5 m=2 w=1.0 l=1.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__decap_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfrbp_1 CLK D RESET_B VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I RESET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O Q_N:O
+MI651 Q_N s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net062 s0 net052 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net052 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net51 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI4 M0 clkpos net43 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 net43 M1 net51 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 s0 clkneg net061 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net069 s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net061 net062 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI39 db D net098 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 net098 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 M1 clkpos s0 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net089 net062 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 net062 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 s0 clkpos net089 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net062 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net54 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 M0 clkneg net54 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 M0 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net069 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net069 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N s0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI41 db RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI40 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 M1 clkneg s0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfrbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfrtp_1 CLK D RESET_B VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I RESET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net062 s0 net052 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net052 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net51 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI4 M0 clkpos net43 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 net43 M1 net51 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 s0 clkneg net061 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net069 s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net061 net062 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI39 db D net098 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 net098 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 M1 clkpos s0 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net089 net062 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 net062 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 s0 clkpos net089 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net062 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net54 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 M0 clkneg net54 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 M0 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net069 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net069 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI41 db RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI40 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 M1 clkneg s0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfrtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfsbp_1 CLK D SET_B VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I SET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O Q_N:O
+MI36 net060 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI39 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 M1 M0 net0107 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net0104 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 S0 clkpos net060 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 net52 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 S0 clkneg net44 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 net44 S1 net52 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 M0 clkpos net0104 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net0107 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 Q_N S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net072 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net072 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI40 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 S0 clkneg net0127 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI37 net0127 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M1 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net0172 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 M0 clkneg net0172 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 net55 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI5 S0 clkpos net55 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 S0 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net072 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net072 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfsbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfstp_1 CLK D SET_B VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I SET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI36 net060 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI39 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 M1 M0 net0107 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net0104 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 S0 clkpos net060 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 net52 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 S0 clkneg net44 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 net44 S1 net52 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 M0 clkpos net0104 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net0107 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net072 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net072 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI40 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 S0 clkneg net0127 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI37 net0127 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M1 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net0172 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 M0 clkneg net0172 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 net55 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI5 S0 clkpos net55 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 S0 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net072 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net072 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfstp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfxbp_1 CLK D VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I VGND:I VNB:I VPB:I VPWR:I Q:O Q_N:O
+MI657 M0 clkpos net72 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net72 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI646 Q S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net116 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI642 S0 clkneg net48 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI641 net48 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N net116 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M1 clkpos S0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI635 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M0 clkneg net100 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q_N net116 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI644 S0 clkpos net119 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 net116 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI639 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI643 net119 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net100 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI645 Q S1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 M1 clkneg S0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfxbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dfxtp_1 CLK D VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI657 M0 clkpos net72 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net72 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI646 Q S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI642 S0 clkneg net48 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI641 net48 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M1 clkpos S0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI635 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M0 clkneg net100 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI644 S0 clkpos net119 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI639 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI643 net119 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net100 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI645 Q S1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 M1 clkneg S0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dfxtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__diode_2 DIODE VGND VNB VPB VPWR
+*.PININFO DIODE:I VGND:I VNB:I VPB:I VPWR:I
+* Notes: Tap diode is not represented here.
+.ENDS sky130_fd_sc_hvl__diode_2
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dlclkp_1 CLK GATE VGND VNB VPB VPWR GCLK
+*.PININFO CLK:I GATE:I VGND:I VNB:I VPB:I VPWR:I GCLK:O
+MI635 clkneg clkpos VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 net048 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 net048 CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 GCLK net048 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI633 clkpos CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 net59 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 M0 clkpos net59 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 net043 GATE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 M0 clkneg net043 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 clkpos CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 GCLK net048 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 net084 CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M0 clkneg net102 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net102 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 net076 GATE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkneg clkpos VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 M0 clkpos net076 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net048 M1 net084 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI23 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dlclkp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dlrtp_1 D GATE RESET_B VGND VNB VPB VPWR Q
+*.PININFO D:I GATE:I RESET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI635 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 M0 clkpos net79 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 net76 clkneg M0 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 Q net96 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI633 clkneg GATE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 VPWR db net76 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 net96 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 net79 net96 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 net96 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 clkneg GATE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 Q net96 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net116 net96 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 net99 clkpos M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 VGND db net99 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net96 M0 net95 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 net95 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI23 M0 clkneg net116 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dlrtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__dlxtp_1 D GATE VGND VNB VPB VPWR Q
+*.PININFO D:I GATE:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI635 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 net069 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 db clkneg M0 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 Q M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI633 clkneg GATE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 net59 net069 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 M0 clkpos net59 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 db D VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 clkneg GATE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 Q M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M0 clkneg net102 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net102 net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 db clkpos M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 db D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI23 net069 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__dlxtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__einvn_1 A TE_B VGND VNB VPB VPWR Z
+*.PININFO A:I TE_B:I VGND:I VNB:I VPB:I VPWR:I Z:O
+MMN0 Z A sndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA TE VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 TE TE_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP0 VPWR TE_B sndTEB VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndTEB A Z VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 TE TE_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__einvn_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__einvp_1 A TE VGND VNB VPB VPWR Z
+*.PININFO A:I TE:I VGND:I VNB:I VPB:I VPWR:I Z:O
+MMN0 Z A sndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA TE VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 TEB TE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP0 VPWR TEB sndTEB VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndTEB A Z VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 TEB TE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__einvp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__fill_1 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+* Notes: Cell contains no devices
+.ENDS sky130_fd_sc_hvl__fill_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__fill_2 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+* Notes: Cell contains no devices
+.ENDS sky130_fd_sc_hvl__fill_2
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__fill_4 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+* Notes: Cell contains no devices
+.ENDS sky130_fd_sc_hvl__fill_4
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__fill_8 VGND VNB VPB VPWR
+*.PININFO VGND:I VNB:I VPB:I VPWR:I
+* Notes: Cell contains no devices
+.ENDS sky130_fd_sc_hvl__fill_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__inv_1 A VGND VNB VPB VPWR Y
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMIP1 Y A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Y A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__inv_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__inv_2 A VGND VNB VPB VPWR Y
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMIP1 Y A VPWR VPB pfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Y A VGND VNB nfet_g5v0d10v5 m=2 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__inv_2
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__inv_4 A VGND VNB VPB VPWR Y
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMIP1 Y A VPWR VPB pfet_g5v0d10v5 m=4 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Y A VGND VNB nfet_g5v0d10v5 m=4 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__inv_4
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__inv_8 A VGND VNB VPB VPWR Y
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMIP1 Y A VPWR VPB pfet_g5v0d10v5 m=8 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Y A VGND VNB nfet_g5v0d10v5 m=8 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__inv_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__inv_16 A VGND VNB VPB VPWR Y
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMIP1 Y A VPWR VPB pfet_g5v0d10v5 m=16 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Y A VGND VNB nfet_g5v0d10v5 m=16 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__inv_16
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbufhv2hv_hl_1 A LOWHVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LOWHVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A LOWHVPWR LOWHVPWR pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab LOWHVPWR LOWHVPWR pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbufhv2hv_hl_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbufhv2hv_lh_1 A LOWHVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LOWHVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MI18 cross2 cross1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI7 Abb Ab LOWHVPWR LOWHVPWR pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 X cross2 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI19 cross1 cross2 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 Ab A LOWHVPWR LOWHVPWR pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI8 Abb Ab VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI16 X cross2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI21 cross2 Abb VGND VNB nfet_g5v0d10v5 m=4 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 cross1 Ab VGND VNB nfet_g5v0d10v5 m=4 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbufhv2hv_lh_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbufhv2lv_1 A LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MI7 Abb Ab VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI35 cross1 cross2 LVPWR LVPWR pfet_01v8_hvt m=1 w=1.12 l=0.15 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI36 cross2 cross1 LVPWR LVPWR pfet_01v8_hvt m=1 w=1.12 l=0.15 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 X cross2 LVPWR LVPWR pfet_01v8_hvt m=1 w=1.12 l=0.15 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 Ab A VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI8 Abb Ab VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI21 cross2 Abb VGND VNB nfet_g5v0d10v5 m=4 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 cross1 Ab VGND VNB nfet_g5v0d10v5 m=4 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 X cross2 VGND VNB nfet_01v8 m=1 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbufhv2lv_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbufhv2lv_simple_1 A LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X Ab VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A LVPWR LVPWR pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X Ab LVPWR LVPWR pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbufhv2lv_simple_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbuflv2hv_1 A LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MI18 net81 cross1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI7 Abb Ab LVPWR LVPWR pfet_01v8_hvt m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net65 cross1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 X net65 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI19 cross1 net81 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 Ab A LVPWR LVPWR pfet_01v8_hvt m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI8 Abb Ab VGND VNB nfet_01v8 m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI16 X net65 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI21 net81 Abb VGND VNB nfet_g5v0d10v5 m=5 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 cross1 Ab VGND VNB nfet_g5v0d10v5 m=5 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 Ab A VGND VNB nfet_01v8 m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 net65 cross1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbuflv2hv_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3 A SLEEP_B LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I SLEEP_B:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MM9 t1 isolate_ahv VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 t2 VGND VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI16 t2 t3 VGND VNB nfet_05v0_nvt m=4 w=1.0 l=0.9 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 net065 A VGND VNB nfet_01v8 m=2 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 X t8 VGND VNB nfet_g5v0d10v5 m=3 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI63 t4 t3 VGND VNB nfet_01v8 m=4 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 t1 t4 VGND VNB nfet_05v0_nvt m=4 w=1.0 l=0.9 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI35 isolate_ahv SLEEP_B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5
++ mult=1 sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063
++ perim=1.14
+MI45 t8 t1 VGND VNB nfet_g5v0d10v5 m=2 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI58 t3 net065 VGND VNB nfet_01v8 m=4 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM3 t1 t2 net128 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM4 t2 t1 net128 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI53 net128 isolate_ahv VPWR VPB pfet_g5v0d10v5 m=4 w=3.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 t8 t1 VPWR VPB pfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 net065 A LVPWR LVPWR pfet_01v8_hvt m=2 w=1.12 l=0.15 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI36 isolate_ahv SLEEP_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5
++ mult=1 sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063
++ perim=1.14
+MI64 t4 t3 LVPWR LVPWR pfet_01v8_hvt m=4 w=1.12 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI57 t3 net065 LVPWR LVPWR pfet_01v8_hvt m=4 w=1.12 l=0.15 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI48 X t8 VPWR VPB pfet_g5v0d10v5 m=3 w=3.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbuflv2hv_clkiso_hlkg_3
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1 A SLEEP_B LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I SLEEP_B:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MM8 X t1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM3 t1 t2 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=2.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI7 isolate_ahv SLEEP_B VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 t4 t3 LVPWR LVPWR pfet_01v8_hvt m=1 w=1.12 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 t3 A LVPWR LVPWR pfet_01v8_hvt m=1 w=1.12 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM4 t2 t1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=2.0 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM9 t2 isolate_ahv VGND VNB nfet_g5v0d10v5 m=1 w=1.0 l=0.8 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 t4 t3 VGND VNB nfet_01v8 m=1 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MM7 X t1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI16 t2 t3 net54 VNB nfet_g5v0d10v5 m=2 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 t1 t4 net54 VNB nfet_g5v0d10v5 m=2 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 t3 A VGND VNB nfet_01v8 m=1 w=0.74 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 isolate_ahv SLEEP_B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5
++ mult=1 sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063
++ perim=1.14
+MI23 net54 SLEEP_B VGND VNB nfet_g5v0d10v5 m=2 w=5.0 l=0.6 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbuflv2hv_isosrchvaon_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1 A LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+MI33 cross2 X_n VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 cross1 X_n VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI18 cross2 cross1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=1.0 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI7 Abb Ab LVPWR LVPWR pfet_01v8_hvt m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 X_n cross1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 X X_n VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI19 cross1 cross2 VPWR VPB pfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 Ab A LVPWR LVPWR pfet_01v8_hvt m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI8 Abb Ab VGND VNB nfet_01v8 m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI16 X X_n VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI21 net81 Abb VGND VNB nfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 cross1 Ab VGND VNB nfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 cross2 X_n net81 VNB nfet_g5v0d10v5 m=2 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 Ab A VGND VNB nfet_01v8 m=1 w=0.84 l=0.15 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 X_n cross1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__lsbuflv2hv_symmetric_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__mux2_1 A0 A1 S VGND VNB VPB VPWR X
+*.PININFO A0:I A1:I S:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMNA00 xb A0 smdNA0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA01 smdNA0 Sb VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA10 xb A1 sndNA1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA11 sndNA1 S VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 Sb S VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X xb VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA00 VPWR S sndPS VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA01 sndPS A0 xb VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA10 VPWR Sb sndPSb VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA11 sndPSb A1 xb VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Sb S VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X xb VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__mux2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__mux4_1 A0 A1 A2 A3 S0 S1 VGND VNB VPB VPWR X
+*.PININFO A0:I A1:I A2:I A3:I S0:I S1:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMNA00 sndNS0ba0 S0b xlowb VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA01 VGND A0 sndNS0ba0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA10 sndNS0a1 S0 xlowb VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA11 VGND A1 sndNS0a1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA20 sndNS0ba2 S0b xhib VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA21 VGND A2 sndNS0ba2 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA30 sndNS0a3 S0 xhib VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNA31 VGND A3 sndNS0a3 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNs1o xb S1b xlowb VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMNs2o xb S1 xhib VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIN1 VGND S1 S1b VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIN2 VGND S0 S0b VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIN4 VGND xb X VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA00 sndPA0a0 A0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA01 xlowb S0 sndPA0a0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA10 sndPA1a1 A1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA11 xlowb S0b sndPA1a1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA20 sndPA2a2 A2 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA21 xhib S0 sndPA2a2 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA30 sndPA3a3 A3 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPA31 xhib S0b sndPA3a3 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPs1o xb S1 xlowb VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMPs2o xb S1b xhib VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIP1 VPWR S1 S1b VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIP2 VPWR S0 S0b VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+MMIP4 VPWR xb X VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.028 perim=0.76
+.ENDS sky130_fd_sc_hvl__mux4_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__nand2_1 A B VGND VNB VPB VPWR Y
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMP0 Y A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 Y B VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 Y A sndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__nand2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__nand3_1 A B C VGND VNB VPB VPWR Y
+*.PININFO A:I B:I C:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMP0 Y A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 Y B VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP2 Y C VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 Y A sndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 sndA B sndB VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN2 sndB C VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__nand3_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__nor2_1 A B VGND VNB VPB VPWR Y
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMP0 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndPA B Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 Y A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 Y B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__nor2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__nor3_1 A B C VGND VNB VPB VPWR Y
+*.PININFO A:I B:I C:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMP0 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndPA B sndPB VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP2 sndPB C Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 Y A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 Y B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN2 Y C VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__nor3_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__o21a_1 A1 A2 B1 VGND VNB VPB VPWR X
+*.PININFO A1:I A2:I B1:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMPA0 VPWR A1 sndA1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 sndA1 A2 y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 VPWR B1 y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIPX X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 pndA A1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 pndA A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 y B1 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMINX X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__o21a_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__o21ai_1 A1 A2 B1 VGND VNB VPB VPWR Y
+*.PININFO A1:I A2:I B1:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMPA0 VPWR A1 sndA1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 sndA1 A2 Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 VPWR B1 Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 pndA A1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 pndA A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 Y B1 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__o21ai_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__o22a_1 A1 A2 B1 B2 VGND VNB VPB VPWR X
+*.PININFO A1:I A2:I B1:I B2:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMPA0 VPWR A1 sndA1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 sndA1 A2 y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 VPWR B1 sndB1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB1 sndB1 B2 y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIPX X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 pndA A1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 pndA A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 y B1 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB1 y B2 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMINX X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__o22a_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__o22ai_1 A1 A2 B1 B2 VGND VNB VPB VPWR Y
+*.PININFO A1:I A2:I B1:I B2:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMPA0 VPWR A1 sndA1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPA1 sndA1 A2 Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB0 VPWR B1 sndB1 VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPB1 sndB1 B2 Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA0 pndA A1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNA1 pndA A2 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB0 Y B1 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNB1 Y B2 pndA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__o22ai_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__or2_1 A B VGND VNB VPB VPWR X
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMP0 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndPA B y VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 y A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 y B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__or2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__or3_1 A B C VGND VNB VPB VPWR X
+*.PININFO A:I B:I C:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMP0 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 sndPA B sndPB VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP2 sndPB C y VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP3 X y VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 y A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 y B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN2 y C VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN3 X y VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__or3_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__probe_p_8 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+rI112 net23 X short
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=3 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 net23 Ab VGND VNB nfet_g5v0d10v5 m=8 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=3 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 net23 Ab VPWR VPB pfet_g5v0d10v5 m=8 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__probe_p_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__probec_p_8 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+rI112 net34 X short
+MMIN1 Ab A VGND VNB nfet_g5v0d10v5 m=3 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN2 net34 Ab VGND VNB nfet_g5v0d10v5 m=8 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 Ab A VPWR VPB pfet_g5v0d10v5 m=3 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP2 net34 Ab VPWR VPB pfet_g5v0d10v5 m=8 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__probec_p_8
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__schmittbuf_1 A VGND VNB VPB VPWR X
+*.PININFO A:I VGND:I VNB:I VPB:I VPWR:I X:O
+rI39 net069 VGND sky130_fd_pr__res_generic_nd__hv m=1 w=0.29 l=1.355 isHV=TRUE
+rI38 VPWR net32 sky130_fd_pr__res_generic_pd__hv m=1 w=0.29 l=3.11 isHV=TRUE
+MI5 net32 net36 net40 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN0 net36 A net40 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMN1 net40 A VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIN1 X net36 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 net069 net36 net56 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP0 VPWR A net56 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMP1 net56 A net36 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMIP1 X net36 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__schmittbuf_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfrbp_1 CLK D RESET_B SCD SCE VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I RESET_B:I SCD:I SCE:I VGND:I VNB:I VPB:I VPWR:I
+*.PININFO Q:O Q_N:O
+MI98 n0 D net076 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI14 net076 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD net076 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI651 Q_N s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net062 s0 net052 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net052 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net51 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI4 M0 clkpos net43 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 net43 M1 net51 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 s0 clkneg net061 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net069 s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net061 net062 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 M1 clkpos s0 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 db RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net089 net062 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 net062 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 s0 clkpos net089 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net062 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net54 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 M0 clkneg net54 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 M0 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net069 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net069 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N s0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 M1 clkneg s0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfrbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfrtp_1 CLK D RESET_B SCD SCE VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I RESET_B:I SCD:I SCE:I VGND:I VNB:I VPB:I VPWR:I
+*.PININFO Q:O
+MI98 n0 D net076 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI14 net076 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD net076 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net062 s0 net052 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net052 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net51 RESET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI4 M0 clkpos net43 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 net43 M1 net51 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 s0 clkneg net061 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net069 s0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net061 net062 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 M1 clkpos s0 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI15 db RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net089 net062 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 net062 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 s0 clkpos net089 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net062 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net54 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 M0 clkneg net54 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 M0 RESET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net069 s0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net069 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 M1 clkneg s0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfrtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfsbp_1 CLK D SCD SCE SET_B VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I SCD:I SCE:I SET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O
+*.PININFO Q_N:O
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI98 n0 D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI36 net125 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 M1 M0 net136 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net141 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 S0 clkpos net125 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 net153 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 S0 clkneg net161 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 net161 S1 net153 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 M0 clkpos net141 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net136 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 Q_N S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net265 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net265 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 S0 clkneg net212 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI37 net212 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M1 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net237 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 M0 clkneg net237 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 net248 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI5 S0 clkpos net248 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 S0 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net265 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net265 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfsbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfstp_1 CLK D SCD SCE SET_B VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I SCD:I SCE:I SET_B:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI98 n0 D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI36 net125 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI42 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI44 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 M1 M0 net136 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net141 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI34 S0 clkpos net125 VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI46 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 net153 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 S0 clkneg net161 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 net161 S1 net153 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI655 M0 clkpos net141 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI657 net136 SET_B VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 net265 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 Q net265 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI38 S0 clkneg net212 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI37 net212 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI43 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI45 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI47 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M1 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net237 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI664 M0 clkneg net237 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI6 net248 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI5 S0 clkpos net248 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 S0 SET_B VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI663 net265 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q net265 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfstp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfxbp_1 CLK D SCD SCE VGND VNB VPB VPWR Q Q_N
+*.PININFO CLK:I D:I SCD:I SCE:I VGND:I VNB:I VPB:I VPWR:I Q:O Q_N:O
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI98 n0 D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI657 M0 clkpos net72 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net72 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI646 Q S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI662 net116 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI642 S0 clkneg net48 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI641 net48 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI661 Q_N net116 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M1 clkpos S0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI635 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M0 clkneg net100 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI660 Q_N net116 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI644 S0 clkpos net119 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI647 net116 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI639 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI643 net119 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net100 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI645 Q S1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 M1 clkneg S0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfxbp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdfxtp_1 CLK D SCD SCE VGND VNB VPB VPWR Q
+*.PININFO CLK:I D:I SCD:I SCE:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI103 n1 SCD VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI98 n0 D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI657 M0 clkpos net72 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI656 net72 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI646 Q S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI648 db clkneg M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI642 S0 clkneg net48 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI641 net48 S1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M1 clkpos S0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 S1 S0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI635 clkneg CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI659 M0 clkneg net100 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 S1 S0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI644 S0 clkpos net119 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI639 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI643 net119 S1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 clkneg CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI658 net100 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI645 Q S1 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 db clkpos M0 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 M1 clkneg S0 VPB pfet_g5v0d10v5 m=1 w=1.0 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdfxtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdlclkp_1 CLK GATE SCE VGND VNB VPB VPWR GCLK
+*.PININFO CLK:I GATE:I SCE:I VGND:I VNB:I VPB:I VPWR:I GCLK:O
+MI635 clkneg clkpos VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 M1 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI29 net048 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI28 net048 CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 GCLK net048 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI633 clkpos CLK VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 net59 M1 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 M0 clkpos net59 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI638 net043 GATE net037 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI27 M0 clkneg net043 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI33 net037 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI634 clkpos CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 GCLK net048 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI31 net084 CLK VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M0 clkneg net102 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net102 M1 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI32 net043 GATE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI26 net043 SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkneg clkpos VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI637 net043 clkpos M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI30 net048 M1 net084 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI23 M1 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdlclkp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__sdlxtp_1 D GATE SCD SCE VGND VNB VPB VPWR Q
+*.PININFO D:I GATE:I SCD:I SCE:I VGND:I VNB:I VPB:I VPWR:I Q:O
+MI108 p1 SCD VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI107 p0 SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI101 db sceb p1 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI94 db D p0 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI635 clkpos clkneg VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI22 net069 M0 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI25 db clkneg M0 VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI650 Q M0 VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI633 clkneg GATE VPWR VPB pfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI653 net59 net069 VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI651 M0 clkpos net59 VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI50 sceb SCE VPWR VPB pfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI103 n1 SCD VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI120 db SCE n1 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI104 db sceb n0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI98 n0 D VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.525 perim=3.1
+MI634 clkneg GATE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI649 Q M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI652 M0 clkneg net102 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI654 net102 net069 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI24 db clkpos M0 VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI636 clkpos clkneg VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI23 net069 M0 VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MI49 sceb SCE VGND VNB nfet_g5v0d10v5 m=1 w=0.42 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__sdlxtp_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__xnor2_1 A B VGND VNB VPB VPWR Y
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I Y:O
+MMNnand0 VGND A sndNA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNnand1 sndNA B inand VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi10 nmid A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi11 nmid B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi20 Y inand nmid VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPnand0 inand A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPnand1 inand B VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi10 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi11 sndPA B Y VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi20 Y inand VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__xnor2_1
+
+
+******* EOF
+
+* Copyright 2020 The SkyWater PDK Authors
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_sc_hvl__xor2_1 A B VGND VNB VPB VPWR X
+*.PININFO A:I B:I VGND:I VNB:I VPB:I VPWR:I X:O
+MMNnor0 inor A VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNnor1 inor B VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi10 VGND A sndNA VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi11 sndNA B X VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1 sa=0.265
++ sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMNaoi20 X inor VGND VNB nfet_g5v0d10v5 m=1 w=0.75 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPnor0 VPWR A sndPA VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPnor1 sndPA B inor VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi10 pmid A VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi11 pmid B VPWR VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+MMPaoi20 X inor pmid VPB pfet_g5v0d10v5 m=1 w=1.5 l=0.5 mult=1
++ sa=0.265 sb=0.265 sd=0.28 topography=normal area=0.063 perim=1.14
+.ENDS sky130_fd_sc_hvl__xor2_1
+
+
+******* EOF
+

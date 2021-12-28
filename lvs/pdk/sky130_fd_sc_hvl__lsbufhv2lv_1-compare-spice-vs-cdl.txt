@@ -1,0 +1,79 @@
+
+.subckt sky130_fd_sc_hvl__lsbufhv2lv_1 A LVPWR VGND VNB VPB VPWR X
+
+
+3	X10 VPWR       		A          	a_30_1337#Ab 	VPB 	sky130_fd_pr__pfet_g5v0d10v5  w=420000u l=500000u
+4	X11 a_30_1337#Ab 	A 		VGND 		VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=420000u l=500000u
+------
+2	X1 (a_30_443#)PWR	a_30_1337#Ab 	a_30_207#Abb	VPB 	sky130_fd_pr__pfet_g5v0d10v5  w=420000u l=500000u
+1	X0  a_30_207#Abb 	a_30_1337#Ab   (a_187_207#)GND 	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=420000u l=500000u
+------
+6	X4  a_389_1337#c1	a_30_1337#Ab	VGND 		VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+11	X14 VGND 		a_30_1337#Ab 	a_389_1337#c1 	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+12	X15 VGND 		a_30_1337#Ab 	a_389_1337#c1 	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+5	X3  a_389_1337#c1	a_30_1337#Ab 	VGND 		VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+------
+7	X7 (a_187_207#)GND 	a_30_207#Abb 	a_389_141#c2 	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+8	X13 a_389_141#c2 	a_30_207#Abb   (a_187_207#)GND	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+9	X8  a_389_141#c2 	a_30_207#Abb   (a_187_207#)GND	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+10	X9  a_389_141#c2	a_30_207#Abb   (a_187_207#)GND	VNB 	sky130_fd_pr__nfet_g5v0d10v5  w=750000u l=500000u
+------
+15	X12 LVPWR 		a_389_141#c2 	a_389_1337#c1 	LVPWR 	sky130_fd_pr__pfet_01v8_hvt w=1.12e+06u l=150000u
+14	X6  a_389_141#c2 	a_389_1337#c1 	LVPWR 		LVPWR 	sky130_fd_pr__pfet_01v8_hvt w=1.12e+06u l=150000u
+------
+13	X5  X 			a_389_141#c2 	LVPWR 		LVPWR 	sky130_fd_pr__pfet_01v8_hvt w=1.12e+06u l=150000u
+16 	X2  X 			a_389_141#c2   (a_187_207#)GND 	VNB 	sky130_fd_pr__nfet_01v8       w=740000u   l=150000u
+
+.ends
+
+
+.SUBCKT sky130_fd_sc_hvl__lsbufhv2lv_1 A LVPWR VGND VNB VPB VPWR X
+*.PININFO A:I LVPWR:I VGND:I VNB:I VPB:I VPWR:I X:O
+
+3	MI27 	Ab 		A 		VPWR 	 	 VPB	 pfet_g5v0d10v5  m=1 w=0.42 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+4	MI28 	Ab		A 		VGND 	 	 VNB	 nfet_g5v0d10v5  m=1 w=0.42 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+------
+2	MI7 	Abb 		Ab 		VPWR 	 	 VPB	 pfet_g5v0d10v5  m=1 w=0.42 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+1	MI8 	Abb 		Ab 		VGND 	 	 VNB	 nfet_g5v0d10v5  m=1 w=0.42 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+------
+561112	MI22 	cross1 		Ab 		VGND 	 	 VNB	 nfet_g5v0d10v5  m=4 w=0.75 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+-------
+78910	MI21 	cross2 		Abb 		VGND 	 	 VNB	 nfet_g5v0d10v5  m=4 w=0.75 l=0.5  mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+-------	
+15	MI35 	cross1		cross2 		LVPWR 	 	 LVPWR   pfet_01v8_hvt   m=1 w=1.12 l=0.15 mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+14	MI36 	cross2		cross1 		LVPWR 	 	 LVPWR   pfet_01v8_hvt   m=1 w=1.12 l=0.15 mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+------
+13	MI34 	X 		cross2 		LVPWR 	 	 LVPWR   pfet_01v8_hvt   m=1 w=1.12 l=0.15 mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+16	MI29 	X 		cross2 		VGND 	 	 VNB	 nfet_01v8	 m=1 w=0.74 l=0.15 mult=1 sa=0.265 sb=0.265 sd=0.28 area=0.063 perim=1.14
+
+.ENDS sky130_fd_sc_hvl__lsbufhv2lv_1
+
+
+
+
+subckt sky130_fd_sc_hvl__lsbufhv2lv_1 A VGND VPWR X VNB VPB LVPWR
+
+
+3	X0  a_30_1337#Ab 	A 		VPWR 		VPB sky130_fd_pr__pfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=420000u l=500000u
+4	X6  VGND 		A 		a_30_1337#Ab 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=420000u l=500000u
+-----
+1?	X1  VGND 		a_30_1337#Ab    (a_187_207#)GND 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=420000u l=500000u
+2?	X14 a_30_207#Abb 	a_30_1337#Ab 	VPWR 		VPB sky130_fd_pr__pfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=420000u l=500000u
+-----
+11	X7  VGND 		a_30_1337#Ab 	a_389_1337#c1 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+12	X9  VGND 		a_30_1337#Ab 	a_389_1337#c1 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+5	X12 a_389_1337#c1 	a_30_1337#Ab 	VGND 		VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+6	X4  a_389_1337#c1 	a_30_1337#Ab 	VGND 		VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+-----
+7?	X8  a_389_141#c2 	a_30_207#Abb 	VGND 		VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+8?	X2  VGND 		a_30_207#Abb 	a_389_141#c2 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+9?	X3  VGND 		a_30_207#Abb 	a_389_141#c2 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+10? 	X5  VGND 		a_30_207#Abb 	a_389_141#c2 	VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u  w=750000u l=500000u
+-----
+14	X13 LVPWR 		a_389_1337#c1 	a_389_141#c2 	LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+15	X15 a_389_1337#c1 	a_389_141#c2	LVPWR 		LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+-----
+16?	X11 VGND		a_389_141#c2 	X 		VNB sky130_fd_pr__nfet_01v8       ad=0p pd=0u as=0p ps=0u w=740000u   l=150000u
+13	X10 LVPWR 		a_389_141#c2 	X 		LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+
+.ends
