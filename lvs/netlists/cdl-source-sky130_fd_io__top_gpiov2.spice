@@ -1,0 +1,50 @@
+* You may obtain a copy of the License at
+*
+*     https://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*
+* SPDX-License-Identifier: Apache-2.0
+
+.SUBCKT sky130_fd_io__top_gpiov2 AMUXBUS_A AMUXBUS_B ANALOG_EN ANALOG_POL
++ ANALOG_SEL DM[2] DM[1] DM[0] ENABLE_H ENABLE_INP_H ENABLE_VDDA_H ENABLE_VDDIO
++ ENABLE_VSWITCH_H HLD_H_N HLD_OVR IB_MODE_SEL IN IN_H INP_DIS OE_N OUT PAD
++ PAD_A_ESD_0_H PAD_A_ESD_1_H PAD_A_NOESD_H SLOW TIE_HI_ESD TIE_LO_ESD VCCD VCCHIB
++ VDDA VDDIO VDDIO_Q VSSA VSSD VSSIO VSSIO_Q VSWITCH VTRIP_SEL
+*.PININFO AMUXBUS_A:B AMUXBUS_B:B ANALOG_EN:I ANALOG_POL:I
+*.PININFO ANALOG_SEL:I DM[2]:I DM[1]:I DM[0]:I ENABLE_H:I
+*.PININFO ENABLE_INP_H:I ENABLE_VDDA_H:I ENABLE_VDDIO:I
+*.PININFO ENABLE_VSWITCH_H:I HLD_H_N:I HLD_OVR:I IB_MODE_SEL:I IN:O
+*.PININFO IN_H:O INP_DIS:I OE_N:I OUT:I PAD:B PAD_A_ESD_0_H:B
+*.PININFO PAD_A_ESD_1_H:B PAD_A_NOESD_H:B SLOW:I TIE_HI_ESD:O
+*.PININFO TIE_LO_ESD:O VCCD:B VCCHIB:B VDDA:B VDDIO:B VDDIO_Q:B VSSA:B
+*.PININFO VSSD:B VSSIO:B VSSIO_Q:B VSWITCH:B VTRIP_SEL:I
+Xamux_q0 AMUXBUS_A AMUXBUS_B ANALOG_EN ANALOG_POL ANALOG_SEL ENABLE_VDDA_H
++ ENABLE_VSWITCH_H hld_i_h hld_i_h_n OUT PAD VCCD VDDA VDDIO_Q VSSA VSSD VSSIO_Q
++ VSWITCH sky130_fd_io__gpiov2_amux
+Xopath_q0 dm_h<2> dm_h<1> dm_h<0> dm_h_n<2> dm_h_n<1> dm_h_n<0> hld_i_h_n
++ hld_i_ovr_h od_i_h OE_N OUT PAD SLOW TIE_HI_ESD TIE_LO_ESD VDDIO VSSD VSSIO VCCD
++ VCCHIB sky130_fd_io__gpiov2_opath
+Xctrl_q0 DM[2] DM[1] DM[0] dm_h<2> dm_h<1> dm_h<0> dm_h_n<2> dm_h_n<1> dm_h_n<0>
++ ENABLE_H ENABLE_INP_H HLD_H_N hld_i_h hld_i_h_n hld_i_ovr_h HLD_OVR IB_MODE_SEL
++ ib_mode_sel_h ib_mode_sel_h_n INP_DIS inp_dis_h_n od_i_h VDDIO_Q VSSD VCCD
++ VTRIP_SEL vtrip_sel_h vtrip_sel_h_n sky130_fd_io__gpiov2_ctl
+Xipath_q0 dm_h_n<2> dm_h_n<1> dm_h_n<0> ENABLE_VDDIO ib_mode_sel_h
++ ib_mode_sel_h_n inp_dis_h_n IN IN_H PAD VCCHIB VDDIO_Q VSSD vtrip_sel_h_n
++ sky130_fd_io__gpiov2_ipath
+Xresd3_q0 PAD_A_ESD_1_H net210 sky130_fd_io__res75only_small
+Xresd1_q0 net204 PAD sky130_fd_io__res75only_small
+Xresd4_q0 net210 PAD sky130_fd_io__res75only_small
+Xresd2_q0 PAD_A_ESD_0_H net204 sky130_fd_io__res75only_small
+* RS0<2> PAD PAD_A_NOESD_H short
+* RS0<1> PAD PAD_A_NOESD_H short
+* RS0<0> PAD PAD_A_NOESD_H short
+RS0<2> PAD PAD_A_NOESD_H sky130_fd_pr__res_generic_m4
+RS0<1> PAD PAD_A_NOESD_H sky130_fd_pr__res_generic_m3
+RS0<0> PAD PAD_A_NOESD_H sky130_fd_pr__res_generic_m3
+.ENDS sky130_fd_io__top_gpiov2
+

@@ -1,0 +1,38 @@
+* NGSPICE file created from mgmt_protect_hv.ext - technology: sky130A
+
+.subckt sky130_fd_sc_hvl__conb_1 VGND VNB VPWR VPB LO HI
+R0 VGND LO sky130_fd_pr__res_generic_po w=510000u l=45000u
+R1 HI VPWR sky130_fd_pr__res_generic_po w=510000u l=45000u
+.ends
+
+.subckt sky130_fd_sc_hvl__lsbufhv2lv_1 X A VPWR VGND VNB VPB LVPWR
+X0 a_30_1337# A VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=420000u l=500000u
+X1 VGND a_30_1337# a_30_207# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=420000u l=500000u
+X2 VGND a_30_207# a_389_141# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X3 VGND a_30_207# a_389_141# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X4 a_389_1337# a_30_1337# VGND VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X5 VGND a_30_207# a_389_141# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X6 VGND A a_30_1337# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=420000u l=500000u
+X7 VGND a_30_1337# a_389_1337# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X8 a_389_141# a_30_207# VGND VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X9 VGND a_30_1337# a_389_1337# VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X10 LVPWR a_389_141# X LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+X11 VGND a_389_141# X VNB sky130_fd_pr__nfet_01v8 ad=0p pd=0u as=0p ps=0u w=740000u l=150000u
+X12 a_389_1337# a_30_1337# VGND VNB sky130_fd_pr__nfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=750000u l=500000u
+X13 LVPWR a_389_1337# a_389_141# LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+X14 a_30_207# a_30_1337# VPWR VPB sky130_fd_pr__pfet_g5v0d10v5 ad=0p pd=0u as=0p ps=0u w=420000u l=500000u
+X15 a_389_1337# a_389_141# LVPWR LVPWR sky130_fd_pr__pfet_01v8_hvt ad=0p pd=0u as=0p ps=0u w=1.12e+06u l=150000u
+.ends
+
+.subckt mgmt_protect_hv mprj2_vdd_logic1 mprj_vdd_logic1 vccd vssd vdda1 vssa1 vdda2
++ vssa2
+Xmprj2_logic_high_hvl vssa2 vssa2 vdda2 vdda2 mprj2_logic_high_hvl/LO mprj2_logic_high_lv/A
++ sky130_fd_sc_hvl__conb_1
+Xmprj_logic_high_hvl vssa1 vssa1 vdda1 vdda1 mprj_logic_high_hvl/LO mprj_logic_high_lv/A
++ sky130_fd_sc_hvl__conb_1
+Xmprj_logic_high_lv mprj_vdd_logic1 mprj_logic_high_lv/A vdda1 vssd vssd vdda1 vccd
++ sky130_fd_sc_hvl__lsbufhv2lv_1
+Xmprj2_logic_high_lv mprj2_vdd_logic1 mprj2_logic_high_lv/A vdda2 vssd vssd vdda2
++ vccd sky130_fd_sc_hvl__lsbufhv2lv_1
+.ends
+
