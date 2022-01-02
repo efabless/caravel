@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 
-if [ -f  ./reports/gds-vs-spice-${1%.gds}.out ]; then
-\mv ./reports/gds-vs-spice-${1%.gds}.out ./reports/gds-vs-spice-${1%.gds}.out.last
+if [ -f  ./reports/gds-vs-cdl-${1%.gds}.out ]; then
+\mv ./reports/gds-vs-cdl-${1%.gds}.out ./reports/gds-vs-cdl-${1%.gds}.out.last
 fi
 if [ -f  ./netlists/${1%.gds}-source.spice ]; then
 \mv ./netlists/cdl-source-${1%.mag}.spice ./netlists/cdl-source-${1%.mag}.spice.last
@@ -24,7 +24,7 @@ export MAGTYPE=mag
 
 MAGTYPE=$MAGTYPE $MAGIC -dnull -noconsole -rcfile $PDKPATH/libs.tech/magic/sky130A.magicrc  << EOF
 
-path search [concat "../$MAGTYPE" [path search]]
+path search [concat "../${MAGTYPE}" [path search]]
 crashbackups stop
 drc off
 gds readonly true
@@ -44,18 +44,15 @@ ext2spice lvs
 ext2spice -o ./netlists/gds-extracted-${1%.gds}.spice
 EOF
 
-\rm ./*.ext
-
-#cat ./sky130_fd_pr__base.spice >> ./${1%.gds}-gds-extracted.spice
+\rm ../${MAGTYPE}/*.ext
 
 ########################################################
 ####### convert vlog to gate-level and include 
 ########################################################
 
-./utils/vlog2Spice ../verilog/gl/${1%.gds}.v -o ./netlists/cdl-source-${1%.gds}.spice \
--l ./pdk/sky130_fd_sc_hd.spice  -l ./pdk/sky130_fd_sc_hd.spice -i 
-
-### -l ./sky130_fd_pr__base.spice
+./utils/vlog2Spice ../verilog/gl/${1%.gds}.v -o 	 	./netlists/cdl-source-${1%.gds}.spice \
+-l ./pdk/sky130_fd_sc_hd.spice   -l ./pdk/sky130_fd_sc_hvl.spice \
+-l ./pdk/sky130_ef_io.spice      -l ./pdk/sky130_ef_io.spice  -i 
 
 ########################################################
 ####### convert lines starting with +into a single line 
@@ -63,11 +60,11 @@ EOF
 ####### starting with +)
 ########################################################
 
-./utils/unfold ./netlists/cdl-source-${1%.gds}.spice > 	./netlists/cdl-source-${1%.gds}.spice.unfolded
-\mv ./netlists/cdl-source-${1%.gds}.spice 		./netlists/cdl-source-${1%.gds}.spice.folded
-\mv ./netlists/cdl-source-${1%.gds}.spice.unfolded 	./netlists/cdl-source-${1%.gds}.spice
+./utils/unfold ./netlists/cdl-source-${1%.gds}.spice >         	./netlists/cdl-source-${1%.gds}.spice.unfolded
+\mv ./netlists/cdl-source-${1%.gds}.spice	       		./netlists/cdl-source-${1%.gds}.spice.folded
+\mv ./netlists/cdl-source-${1%.gds}.spice.unfolded     		./netlists/cdl-source-${1%.gds}.spice
 \rm ./netlists/cdl-source-${1%.gds}.spice.folded 
-#
+
 ########################################################
 ####### running netgen
 ########################################################
@@ -79,7 +76,7 @@ netgen -batch lvs \
         "./netlists/gds-extracted-${1%.gds}.spice ${1%.gds}" \
 		"./netlists/cdl-source-${1%.gds}.spice ${1%.gds}" \
 			     ./pdk/sky130A_setup.tcl \
-			         ./reports/gds-vs-spice-${1%.gds}.out
+			         ./reports/gds-vs-cdl-${1%.gds}.out
 				 
 ########################################################
 
@@ -87,5 +84,5 @@ netgen -batch lvs \
 ####### create another file with .cdl extention for Cal runs (netgen doesn't like .cdl input file ext)
 ########################################################
 
-\cp ./netlists/cdl-source-${1%.gds}.spice ./netlists/${1%.gds}.cdl
+ \cp ./netlists/cdl-source-${1%.gds}.spice ./netlists/${1%.gds}.cdl
 
