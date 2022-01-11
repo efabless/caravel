@@ -189,6 +189,7 @@ module caravan_openframe (
     wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:0] gpio_serial_link_2;
     wire mprj_io_loader_resetn;
     wire mprj_io_loader_clock;
+    wire mprj_io_loader_strobe;
     wire mprj_io_loader_data_1;		/* user1 side serial loader */
     wire mprj_io_loader_data_2;		/* user2 side serial loader */
 
@@ -211,6 +212,7 @@ module caravan_openframe (
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_nc;	/* no-connects */
     wire [4:0] mgmt_io_out;			/* three-pin interface out */
     wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
+    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
     wire clock_core;
 
@@ -353,22 +355,19 @@ module caravan_openframe (
     wire [2:0]	 irq_spi;	   // From SPI and external pins
 
     // Exported Wishbone Bus (processor facing)
-    wire mprj_cyc_o;
-    wire mprj_stb_o;
-    wire mprj_we_o;
-    wire [3:0] mprj_sel_o;
-    wire [31:0] mprj_adr_o;
-    wire [31:0] mprj_dat_o;
-    wire mprj_ack_i;
-    wire [31:0] mprj_dat_i;
+    wire hk_clk_o;
+    wire hk_rst_o;
+    wire hk_cyc_o;
+    wire hk_stb_o;
+    wire hk_we_o;
+    wire [3:0] hk_sel_o;
+    wire [31:0] hk_adr_o;
+    wire [31:0] hk_dat_o;
+    wire hk_ack_i;
+    wire [31:0] hk_dat_i;
 
     // Mask revision
     wire [31:0] mask_rev;
-
-    // Clock and reset
-    wire 	mprj_clock;
-    wire 	mprj_clock2;
-    wire 	mprj_reset;
 
     // Power monitoring
     wire	mprj_vcc_pwrgood;
@@ -388,7 +387,7 @@ module caravan_openframe (
     /* Wrapper module around the user project 		*/
     /*--------------------------------------------------*/
 
-    mgmt_core_wrapper soc (
+    openframe_analog_project_wrapper user_analog_project (
 	`ifdef USE_POWER_PINS
 	    .vdda(vdda_core),
 	    .vssa(vssa_core),
@@ -407,7 +406,7 @@ module caravan_openframe (
 	// Clocks and reset
        	.core_clk(caravel_clk),
        	.core_rstn(caravel_rstn),
-	.core_clock2(mprj_clock2),
+	.core_clock2(caravel_clk2),
 
 	// GPIO (1 pin)
 	.gpio_out_pad(gpio_out_core),
@@ -447,14 +446,16 @@ module caravan_openframe (
 	.flash_io3_do(flash_io3_do_core),
 
 	// Exported Wishbone Bus
-	.mprj_cyc_o(mprj_cyc_o),
-	.mprj_stb_o(mprj_stb_o),
-	.mprj_we_o(mprj_we_o),
-	.mprj_sel_o(mprj_sel_o),
-	.mprj_adr_o(mprj_adr_o),
-	.mprj_dat_o(mprj_dat_o),
-	.mprj_ack_i(mprj_ack_i),
-	.mprj_dat_i(mprj_dat_i),
+	.hk_clk_o(hk_clk_o),
+	.hk_rst_o(hk_rst_o),
+	.hk_cyc_o(hk_cyc_o),
+	.hk_stb_o(hk_stb_o),
+	.hk_we_o(hk_we_o),
+	.hk_sel_o(hk_sel_o),
+	.hk_adr_o(hk_adr_o),
+	.hk_dat_o(hk_dat_o),
+	.hk_ack_i(hk_ack_i),
+	.hk_dat_i(hk_dat_i),
 
 	// IRQ
 	.irq(irq_spi),
@@ -511,10 +512,14 @@ module caravan_openframe (
     wire [`MPRJ_IO_PADS_2-1:0] gpio_clock_2;
     wire [`MPRJ_IO_PADS_1-1:0] gpio_resetn_1;
     wire [`MPRJ_IO_PADS_2-1:0] gpio_resetn_2;
+    wire [`MPRJ_IO_PADS_1-1:0] gpio_load_1;
+    wire [`MPRJ_IO_PADS_2-1:0] gpio_load_2;
     wire [`MPRJ_IO_PADS_1-6:0] gpio_clock_1_shifted;
     wire [`MPRJ_IO_PADS_2-7:0] gpio_clock_2_shifted;
     wire [`MPRJ_IO_PADS_1-6:0] gpio_resetn_1_shifted;
     wire [`MPRJ_IO_PADS_2-7:0] gpio_resetn_2_shifted;
+    wire [`MPRJ_IO_PADS_1-6:0] gpio_load_1_shifted;
+    wire [`MPRJ_IO_PADS_2-7:0] gpio_load_2_shifted;
 
     assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
 				mprj_io_loader_clock};
@@ -524,6 +529,10 @@ module caravan_openframe (
 				mprj_io_loader_resetn};
     assign gpio_resetn_2_shifted = {mprj_io_loader_resetn,
 				gpio_resetn_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
+    assign gpio_load_1_shifted = {gpio_load_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
+				mprj_io_loader_strobe};
+    assign gpio_load_2_shifted = {mprj_io_loader_strobe,
+				gpio_load_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
 
     wire [2:0] spi_pll_sel;
     wire [2:0] spi_pll90_sel;
@@ -534,14 +543,14 @@ module caravan_openframe (
 
     caravel_clocking clocking(
 	`ifdef USE_POWER_PINS
-	    .vdd1v8(VPWR),
-	    .vss(VGND),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
 	.ext_clk_sel(ext_clk_sel),
-	.ext_clk(clock),
+	.ext_clk(clock_core),
 	.pll_clk(pll_clk),
 	.pll_clk90(pll_clk90),
-	.resetb(resetb),
+	.resetb(rstb_l),
 	.sel(spi_pll_sel),
 	.sel2(spi_pll90_sel),
 	.ext_reset(ext_reset),  // From housekeeping SPI
@@ -554,12 +563,12 @@ module caravan_openframe (
 
     digital_pll pll (
 	`ifdef USE_POWER_PINS
-	    .VPWR(VPWR),
-	    .VGND(VGND),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
-	.resetb(resetb),
+	.resetb(rstb_l),
 	.enable(spi_pll_ena),
-	.osc(clock),
+	.osc(clock_core),
 	.clockp({pll_clk, pll_clk90}),
 	.div(spi_pll_div),
 	.dco(spi_pll_dco_ena),
@@ -570,21 +579,20 @@ module caravan_openframe (
 
     housekeeping housekeeping (
 	`ifdef USE_POWER_PINS
-	    .vdd(VPWR),
-	    .vss(VGND),
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
 	`endif
 
-	.wb_clk_i(mprj_clock),
-	.wb_rst_i(mprj_reset),
-
-	.wb_adr_i(mprj_adr_o),
-	.wb_dat_i(mprj_dat_o),
-	.wb_sel_i(mprj_sel_o),
-	.wb_we_i(mprj_we_o),
-	.wb_cyc_i(mprj_cyc_o),
-	.wb_stb_i(mprj_stb_o),
-	.wb_ack_o(mprj_ack_i),
-	.wb_dat_o(mprj_dat_i),
+	.wb_clk_i(hk_clk_o),
+	.wb_rst_i(hk_rst_o),
+	.wb_adr_i(hk_adr_o),
+	.wb_dat_i(hk_dat_o),
+	.wb_sel_i(hk_sel_o),
+	.wb_we_i(hk_we_o),
+	.wb_cyc_i(hk_cyc_o),
+	.wb_stb_i(hk_stb_o),
+	.wb_ack_o(hk_ack_i),
+	.wb_dat_o(hk_dat_i),
 
 	.porb(porb_l),
 
@@ -618,6 +626,7 @@ module caravan_openframe (
 	.reset(ext_reset),
 
 	.serial_clock(mprj_io_loader_clock),
+	.serial_load(mprj_io_loader_strobe),
 	.serial_resetn(mprj_io_loader_resetn),
 	.serial_data_1(mprj_io_loader_data_1),
 	.serial_data_2(mprj_io_loader_data_2),
@@ -628,11 +637,11 @@ module caravan_openframe (
 	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
 			mgmt_io_oeb[1:0]}),
 
-	.pwr_ctrl_out(),        /* Not used in this version */
+	.pwr_ctrl_out(pwr_ctrl_nc),        /* Not used in this version */
 
 	.trap(trap),
 
-	.user_clock(user_clock),
+	.user_clock(caravel_clk2),
 
 	.mask_rev_in(mask_rev),
 
@@ -682,7 +691,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_01_defaults [1:0] (
+    ) gpio_defaults_block_0 [1:0] (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -692,7 +701,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_234_defaults [2:0] (
+    ) gpio_defaults_block_2 [2:0] (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -704,7 +713,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_5_INIT)
-    ) gpio_5_defaults (
+    ) gpio_defaults_block_5 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -714,7 +723,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_6_INIT)
-    ) gpio_6_defaults (
+    ) gpio_defaults_block_6 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -724,7 +733,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_7_INIT)
-    ) gpio_7_defaults (
+    ) gpio_defaults_block_7 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -734,7 +743,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_8_INIT)
-    ) gpio_8_defaults (
+    ) gpio_defaults_block_8 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -744,7 +753,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_9_INIT)
-    ) gpio_9_defaults (
+    ) gpio_defaults_block_9 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -754,7 +763,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_10_INIT)
-    ) gpio_10_defaults (
+    ) gpio_defaults_block_10 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -764,7 +773,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_11_INIT)
-    ) gpio_11_defaults (
+    ) gpio_defaults_block_11 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -774,7 +783,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_12_INIT)
-    ) gpio_12_defaults (
+    ) gpio_defaults_block_12 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -784,7 +793,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_13_INIT)
-    ) gpio_13_defaults (
+    ) gpio_defaults_block_13 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -794,7 +803,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_14_INIT)
-    ) gpio_14_defaults (
+    ) gpio_defaults_block_14 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -804,7 +813,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_26_INIT)
-    ) gpio_26_defaults (
+    ) gpio_defaults_block_26 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -814,7 +823,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_27_INIT)
-    ) gpio_27_defaults (
+    ) gpio_defaults_block_27 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -824,7 +833,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_28_INIT)
-    ) gpio_28_defaults (
+    ) gpio_defaults_block_28 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -834,7 +843,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_29_INIT)
-    ) gpio_29_defaults (
+    ) gpio_defaults_block_29 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -844,7 +853,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_30_INIT)
-    ) gpio_30_defaults (
+    ) gpio_defaults_block_30 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -854,7 +863,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_31_INIT)
-    ) gpio_31_defaults (
+    ) gpio_defaults_block_31 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -864,7 +873,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_32_INIT)
-    ) gpio_32_defaults (
+    ) gpio_defaults_block_32 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -874,7 +883,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_33_INIT)
-    ) gpio_33_defaults (
+    ) gpio_defaults_block_33 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -884,7 +893,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_34_INIT)
-    ) gpio_34_defaults (
+    ) gpio_defaults_block_34 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -894,7 +903,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_35_INIT)
-    ) gpio_35_defaults (
+    ) gpio_defaults_block_35 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -904,7 +913,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_36_INIT)
-    ) gpio_36_defaults (
+    ) gpio_defaults_block_36 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -914,7 +923,7 @@ module caravan_openframe (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_37_INIT)
-    ) gpio_37_defaults (
+    ) gpio_defaults_block_37 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -951,9 +960,11 @@ module caravan_openframe (
 
 	.resetn(gpio_resetn_1_shifted[1:0]),
 	.serial_clock(gpio_clock_1_shifted[1:0]),
+	.serial_load(gpio_load_1_shifted[1:0]),
 
 	.resetn_out(gpio_resetn_1[1:0]),
 	.serial_clock_out(gpio_clock_1[1:0]),
+	.serial_load_out(gpio_load_1[1:0]),
 
     	.mgmt_gpio_in(mgmt_io_in[1:0]),
 	.mgmt_gpio_out({sdo_out, jtag_out}),
@@ -1005,9 +1016,11 @@ module caravan_openframe (
 
 	.resetn(gpio_resetn_1_shifted[7:2]),
 	.serial_clock(gpio_clock_1_shifted[7:2]),
+	.serial_load(gpio_load_1_shifted[7:2]),
 
 	.resetn_out(gpio_resetn_1[7:2]),
 	.serial_clock_out(gpio_clock_1[7:2]),
+	.serial_load_out(gpio_load_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
 	.mgmt_gpio_out(mgmt_io_in[7:2]),
@@ -1055,9 +1068,11 @@ module caravan_openframe (
 
 	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_load(gpio_load_1_shifted[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
 	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
@@ -1104,11 +1119,13 @@ module caravan_openframe (
 
     	// Management Soc-facing signals
 
-	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
-	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.resetn(gpio_resetn_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_clock(gpio_clock_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_load(gpio_load_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
-	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
-	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.resetn_out(gpio_resetn_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_clock_out(gpio_clock_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
+	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP):(`DIG2_TOP-2)]),
 	.mgmt_gpio_out(mgmt_io_out[4:2]),
@@ -1142,9 +1159,9 @@ module caravan_openframe (
     );
 
     /* Section 2 GPIOs (GPIO 19 to 37) */
-    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] one_loop2;
+    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] one_loop2;
 
-    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3:0] (
+    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] (
 	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1152,45 +1169,47 @@ module caravan_openframe (
 	    .vssd1(vssd1_core),
 	`endif
 
-	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS-2)*13-1):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13)]),
+	.gpio_defaults(gpio_defaults[((`MPRJ_IO_PADS-`ANALOG_PADS-3)*13-1):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*13)]),
 
     	// Management Soc-facing signals
 
-	.resetn(gpio_resetn_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_clock(gpio_clock_1_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.resetn(gpio_resetn_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_clock(gpio_clock_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_load(gpio_load_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-	.resetn_out(gpio_resetn_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-	.serial_clock_out(gpio_clock_1[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+	.resetn_out(gpio_resetn_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_clock_out(gpio_clock_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
-	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-2):`DIG2_BOT]),
+	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
+	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
 	.mgmt_gpio_oeb(one_loop2),
 
         .one(one_loop2),
         .zero(),
 
     	// Serial data chain for pad configuration
-    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
-    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3):0]),
+    	.serial_data_in(gpio_serial_link_2_shifted[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+    	.serial_data_out(gpio_serial_link_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
     	// User-facing signals
-    	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.user_gpio_out(user_io_out[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.user_gpio_oeb(user_io_oeb[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.user_gpio_in(user_io_in[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
 
     	// Pad-facing signals (Pad GPIOv2)
-    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_dm(mprj_io_dm[((`MPRJ_DIG_PADS)*3-7):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3)]),
-    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
-    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-3):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)])
+    	.pad_gpio_inenb(mprj_io_inp_dis[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ib_mode_sel(mprj_io_ib_mode_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_vtrip_sel(mprj_io_vtrip_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_slow_sel(mprj_io_slow_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_holdover(mprj_io_holdover[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_en(mprj_io_analog_en[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_sel(mprj_io_analog_sel[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_ana_pol(mprj_io_analog_pol[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_dm(mprj_io_dm[((`MPRJ_DIG_PADS)*3-10):((`MPRJ_IO_PADS_1-`ANALOG_PADS_1)*3)]),
+    	.pad_gpio_outenb(mprj_io_oeb[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_out(mprj_io_out[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+    	.pad_gpio_in(mprj_io_in[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)])
     );
 
     user_id_programming #(
@@ -1208,7 +1227,8 @@ module caravan_openframe (
 	`ifdef USE_POWER_PINS
 		.vdd3v3(vddio_core),
 		.vdd1v8(vccd_core),
-		.vss(vssio_core),
+		.vss3v3(vssio_core),
+		.vss1v8(vssd_core),
 	`endif
 		.porb_h(porb_h),
 		.porb_l(porb_l),
@@ -1225,6 +1245,31 @@ module caravan_openframe (
 	`endif
 		.A(rstb_h),
 		.X(rstb_l)
+    );
+
+    // Spare logic for metal mask fixes
+    wire [26:0] spare_xz_nc;
+    wire [3:0] spare_xi_nc;
+    wire       spare_xib_nc;
+    wire [1:0] spare_xna_nc;
+    wire [1:0] spare_xno_nc;
+    wire [1:0] spare_xmx_nc;
+    wire [1:0] spare_xfq_nc;
+    wire [1:0] spare_xfqn_nc;
+
+    spare_logic_block spare_logic [3:0] (
+	`ifdef USE_POWER_PINS
+		.vccd(vccd_core),
+		.vssd(vssd_core),
+	`endif
+		.spare_xz(spare_xz_nc),
+		.spare_xi(spare_xi_nc),
+		.spare_xib(spare_xib_nc),
+		.spare_xna(spare_xna_nc),
+		.spare_xno(spare_xno_nc),
+		.spare_xmx(spare_xmx_nc),
+		.spare_xfq(spare_xfq_nc),
+		.spare_xfqn(spare_xfqn_nc)
     );
 
 endmodule
