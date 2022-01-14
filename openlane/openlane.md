@@ -2,7 +2,7 @@
 
 - Caravel top level signal routing is done by openlane. This is done through an interactive script that runs the openlane flow. 
 
-<img src="../docs/_static/caravel_top_level.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/caravel_top_level.png" style="height: 540px; width:400px;"/>
 
 - One prerequisite to hardening caravel with openlane is that the pad side pins have to be guarded with `ifndef TOP_ROUTING` macro. For example, the pad side power pins on the padframe are guarded as such:  
 
@@ -57,9 +57,14 @@ init_floorplan
    - metal 4 metal 5 obstructions are placed on the user project area including the core ring. 
    - metal 4 and metal 5 obstructions are placed on the managent area. 
 
-<img src="../docs/_static/caravel_top_level.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/caravel_ob.png" style="height: 540px; width:400px;"/>
 
-- NOTE: This run is expected to end with LVS errors because none of the blocks are connected to power routing yet. The power routing is done manually after the signal routing is done with magic. 
+
+---
+**NOTE**
+
+- This run is expected to end with LVS errors because none of the blocks are connected to power routing yet. The power routing is done manually after the signal routing is done with magic. 
+---
 
 # Caravan 
 
@@ -69,15 +74,13 @@ The same strategy used for hardening caravel applies to caravel. The only differ
 
 - The gpio control block controls the padframe cells. Each gpio pad has its own gpio control block. In total, there are `38` gpio control block instances in caravel. These instances are placed inside the padframe next to their respective pad. 
 
-<img src="../docs/_static/caravel_gpio_control_blocks.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/caravel_gpio_control_blocks.png" style="height: 500px; width:900px;"/>
 
 - The block has two power domains `vccd/vssd` `vccd1/vssd1`. To make it easier for openlane to power plan, the cells that connect to the same power domain are isolated in a submacro. For this block, we only have one cell (`gpio_logic_high`) that connects to `vccd1/vssd1` and the remaining logic connects to `vccd/vssd`.  The `gpio_logic_high` cell is isolated in a submacro `gpio_logic_high` while the remaining logic exists at the top level of the `gpio_control_block`. 
 
-<img src="../docs/_static/gpio_control_block_fp.png" style="height: 400px; width:400px;"/>
+- The gpio_control_block pins are placed on the east and north edges. The east edge pins connect to the padframe and the north edge pins connect to the gpio defaults block. 
 
-- Pin Placement: The gpio_control_block pins are placed on the east and north edges. The east edge pins connect to the padframe and the north edge pins connect to the gpio defaults block. 
-
-<img src="../docs/_static/gpio_control_block_pin.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/gpio_control_block_pin.png" style="height: 200px; width:440px;"/>
 
 - Each gpio_control_block has a `gpio_defaults_block` placed beside it. This block connects to the north pins of the `gpio_control_block`. 
 
@@ -89,7 +92,7 @@ The same strategy used for hardening caravel applies to caravel. The only differ
 
 - The block pins are placed in the south edge. The pins also have the same pitch as the `gpio_control_block` pins so that in the top level these pins connect by abutment with no routing in between. 
 
-<img src="../docs/_static/gpio_default_block_pins.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/gpio_defaults_block_pins.png" style="height: 350px; width:350px;"/>
 
 # Mgmt Protect
 
@@ -103,16 +106,26 @@ The same strategy used for hardening caravel applies to caravel. The only differ
     - `mprj2_logic_high` : `vccd2/vssd2`
     - `mgmt_protect_hv` : `vccd/vssd` `vdda1/vssa1` `vdda2/vssa2`
 
-<img src="../docs/_static/mgmt_protect_fp.png" style="height: 400px; width:400px;"/>
+<img src="../docs/_static/mgmt_protect_fp.png" style="height: 110px; width:620px;"/>
 
 - The standard cells at the top level of the `mgmt_protect` are connected to `vccd/vssd`.
 
-NOTE: The openlane run for this block is expected to fail LVS with four net mismatches. These LVS errors are true errors and are happening because of a change of behavoir in the pdngen code that causes all the power domains to be shorted. (https://github.com/The-OpenROAD-Project/OpenROAD/issues/1505). For the mpw-3/mpw-4 iteration, this issue was fixed manually by removing the vias that cause the power short with magic. 
+---
+**NOTE**
+
+The openlane run for this block is expected to fail LVS with four net mismatches. These LVS errors are true errors and are happening because of a change of behavoir in the pdngen code that causes all the power domains to be shorted. (https://github.com/The-OpenROAD-Project/OpenROAD/issues/1505). For the mpw-3/mpw-4 iteration, this issue was fixed manually by removing the vias that cause the power short with magic. 
+
+---
 
 
-NOTE: The block was also hand-edited to add the iso-substrate layer around the different ground. This is to make it isolate the different grounds to prevent the extraction tool from shorting the grounds together. 
+---
+**NOTE**
 
-<img src="../docs/_static/mgmt_protect_iso.png" style="height: 400px; width:400px;"/>
+The block was also hand-edited to add the iso-substrate layer around the different ground. This is to make it isolate the different grounds to prevent the extraction tool from shorting the grounds together. 
+
+<img src="../docs/_static/mgmt_protect_iso.png" style="height: 110px; width:620px;"/>
+
+---
 
 ## mprj_logic_high
 
@@ -286,11 +299,24 @@ SPACE 0 ;
 
 - Before detailed routing, obstructions on most of the core are placed to prevent having signal routing in the middle because this space will be occupied by the managent area, user project area, and remaining caravel blocks. 
 
+<img src="../docs/_static/chip_io_obs.png" style="height: 540px; width:400px;"/>
+
 # Chip IO ALT
 
 The `chip_io_alt` is the padframe for caravan. It follows the same strategy used to the `chip_io` module.  
 
-Note: The position of the pad cells in `chip_io_alt` must match the positions of the pad cells in `chip_io`. 
+# Final Timing Signoff 
+
+- The final timing signoff is done with the following three top level makefile targets.
+
+```
+# Run at the typical corner
+make caravel_timing_typ
+# Run at the slowest corner
+make caravel_timing_slow
+# Run at the fastest corner
+make caravel_timing_fast
+```
 
 # Improvements/Suggestions
 
