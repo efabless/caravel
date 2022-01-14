@@ -318,6 +318,19 @@ make caravel_timing_slow
 make caravel_timing_fast
 ```
 
+# Final Timing Signoff 
+
+- The final timing signoff is done with the following three top level makefile targets.
+
+```
+# Run at the typical corner
+make caravel_timing_typ
+# Run at the slowest corner
+make caravel_timing_slow
+# Run at the fastest corner
+make caravel_timing_fast
+```
+
 # Improvements/Suggestions
 
 - Re-consider the clock pin location in the user project wrapper. Placing it in the middle of the south edge of the wrapper will reduce the clock skew and will help users achieve timing closure. 
