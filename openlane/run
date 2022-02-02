@@ -1,0 +1,39 @@
+#!/bin/sh
+set -e
+set -x
+
+if [ "$OPENLANE_ROOT" = "" ]; then
+    echo "OPENLANE_ROOT not set." > /dev/stderr
+    exit 1
+fi
+
+if [ "$PDK_ROOT" = "" ]; then
+    echo "PDK_ROOT not set." > /dev/stderr
+    exit 1
+fi
+
+export OPENLANE_ROOT=$(realpath $OPENLANE_ROOT)
+export PDK_ROOT=$(realpath $PDK_ROOT)
+export CARAVEL_ROOT=$(realpath $CARAVEL_ROOT)
+export MGMT_AREA_ROOT=$(realpath $MGMT_AREA_ROOT)
+export PARENT_FOLDER=$(realpath $PARENT_FOLDER)
+
+OPENLANE_BASIC_COMMAND="cd $PARENT_FOLDER/openlane && /openlane/flow.tcl -design ./$1 -save_path $PARENT_FOLDER -save -tag $1 -overwrite"
+OPENLANE_INTERACTIVE_COMMAND="cd $PARENT_FOLDER/openlane && /openlane/flow.tcl -it -file ./$1/interactive.tcl"
+
+COMMAND="$OPENLANE_BASIC_COMMAND"
+if [ -f ./$1/interactive.tcl ]; then
+    COMMAND="$OPENLANE_INTERACTIVE_COMMAND"
+fi
+
+docker run -it\
+    -v $OPENLANE_ROOT:/openlane \
+    -v $CARAVEL_ROOT:$CARAVEL_ROOT \
+    -v $PDK_ROOT:$PDK_ROOT \
+    -v $PARENT_FOLDER:$PARENT_FOLDER \
+    -v $MGMT_AREA_ROOT:$MGMT_AREA_ROOT \
+    -e PDK_ROOT=$PDK_ROOT \
+    -e CARAVEL_ROOT=$CARAVEL_ROOT \
+    -u $(id -u $USER):$(id -g $USER) \
+    $OPENLANE_IMAGE_NAME sh -c "$COMMAND" \
+    ;

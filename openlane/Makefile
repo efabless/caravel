@@ -18,10 +18,34 @@ BLOCKS = $(shell find * -maxdepth 0 -type d)
 CONFIG = $(foreach block,$(BLOCKS), ./$(block)/config.tcl)
 CLEAN = $(foreach block,$(BLOCKS), clean-$(block))
 
+# OpenLane Image
 OPENLANE_TAG ?= 2021.11.23_01.42.34
-OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
-OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
-OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
+export OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
+
+# OpenLane Root
+export OPENLANE_ROOT ?=
+
+# PDK Root
+export PDK_ROOT ?=
+
+# Caravel Root
+export CARAVEL_ROOT ?= $(shell pwd)
+
+# Management Area Root
+export MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper 
+
+# Parent Folder
+export PARENT_FOLDER = $(shell realpath $(PWD)/..)
+
+# PDK setup configs
+export THREADS ?= $(shell nproc)
+export STD_CELL_LIBRARY ?= sky130_fd_sc_hd
+export SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
+export IO_LIBRARY ?= sky130_fd_io
+export PRIMITIVES_LIBRARY ?= sky130_fd_pr
+export SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
+export OPEN_PDKS_COMMIT ?= 27ecf1c16911f7dd4428ffab96f62c1fb876ea70
+export INSTALL_SRAM ?= enabled
 
 all: $(BLOCKS)
 
@@ -30,38 +54,11 @@ $(CONFIG) :
 	@exit 1
 
 $(BLOCKS) : % : ./%/config.tcl FORCE
-ifeq ($(OPENLANE_ROOT),)
-	@echo "Please export OPENLANE_ROOT"
-	@exit 1
-endif
-ifeq ($(PDK_ROOT),)
-	@echo "Please export PDK_ROOT"
-	@exit 1
-endif
 	@echo "###############################################"
 	@sleep 1
 
-	@if [ -f ./$*/interactive.tcl ]; then\
-		docker run -it -v $(OPENLANE_ROOT):/openlane \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
-		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
-		-e PDK_ROOT=$(PDK_ROOT) \
-		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
-	else\
-		docker run -it -v $(OPENLANE_ROOT):/openlane \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
-		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
-		-e PDK_ROOT=$(PDK_ROOT) \
-		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_BASIC_COMMAND);\
-	fi
+	@./run $*
+
 	mkdir -p ../signoff/$*/
 	cp $*/runs/$*/OPENLANE_VERSION ../signoff/$*/
 	cp $*/runs/$*/PDK_SOURCES ../signoff/$*/
@@ -69,19 +66,27 @@ endif
 
 .PHONY: openlane
 openlane:
-ifeq ($(OPENLANE_ROOT),)
-	@echo "Please export OPENLANE_ROOT"
-	@exit 1
-endif
-	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
+	ifeq ($(OPENLANE_ROOT),)
+		@echo "OPENLANE_ROOT not set."
+		@exit 1
+	endif
+	rm -rf "$(OPENLANE_ROOT)" &&\
+		git clone https://github.com/The-OpenROAD-Project/OpenLane \
+			--branch=$(OPENLANE_TAG) \
+			--depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
 		export IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
-		make openlane
+		$(MAKE) pull-openlane
+
+###########################################################################
+.PHONY: pdk
+pdk:
+	cd $(OPENLANE_ROOT) && $(MAKE) pdk
 
 FORCE:
 
 clean:
-	@echo "Use clean_all to clean everything :)"
+	@echo "Use clean_all to clean everything."
 
 clean_all: $(CLEAN)
 

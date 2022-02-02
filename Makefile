@@ -61,29 +61,22 @@ endif
 # Install caravel as submodule, (1): submodule, (0): clone
 SUBMODULE?=0
 
+# PDK Root
+export PDK_ROOT ?=
+
 # Caravel Root (Default: pwd)
 # Need to be overwritten if running the makefile from UPRJ_ROOT,
 # If caravel is sub-moduled in the user project, run export CARAVEL_ROOT=$(pwd)/caravel
-CARAVEL_ROOT ?= $(shell pwd)
+export CARAVEL_ROOT ?= $(shell pwd)
 
-# User project root
-UPRJ_ROOT ?= $(shell pwd)
+# User Project Root
+export UPRJ_ROOT ?= $(shell pwd)
 
-# MANAGEMENT AREA ROOT
-MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper 
+# Management Area Root
+export MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper
 
 # Build tasks such as make ship, make generate_fill, make set_user_id, make final run in the foreground (1) or background (0)
 FOREGROUND ?= 1
-
-# PDK setup configs
-THREADS ?= $(shell nproc)
-STD_CELL_LIBRARY ?= sky130_fd_sc_hd
-SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
-IO_LIBRARY ?= sky130_fd_io
-PRIMITIVES_LIBRARY ?= sky130_fd_pr
-SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 1.0.264
-INSTALL_SRAM ?= no   #   = yes to enable
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -1207,61 +1200,10 @@ else
 	rm -rf $(MCW_ROOT)/*
 endif
 
-###########################################################################
+# PDK
 .PHONY: pdk
-pdk: skywater-pdk skywater-library skywater-timing open_pdks build-pdk gen-sources
-
-$(PDK_ROOT)/skywater-pdk:
-	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
-
-.PHONY: skywater-pdk
-skywater-pdk: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
-		git checkout main && git pull && \
-		git checkout -qf $(SKYWATER_COMMIT)
-
-.PHONY: skywater-library
-skywater-library: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
-		git submodule update --init libraries/$(STD_CELL_LIBRARY)/latest && \
-		git submodule update --init libraries/$(IO_LIBRARY)/latest && \
-		git submodule update --init libraries/$(SPECIAL_VOLTAGE_LIBRARY)/latest && \
-		git submodule update --init libraries/$(PRIMITIVES_LIBRARY)/latest
-
-gen-sources: $(PDK_ROOT)/sky130A
-	touch $(PDK_ROOT)/sky130A/SOURCES
-	echo -ne "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	echo -ne "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-
-skywater-timing: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
-		$(MAKE) timing
-### OPEN_PDKS
-$(PDK_ROOT)/open_pdks:
-	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
-
-.PHONY: open_pdks
-open_pdks: check-env $(PDK_ROOT)/open_pdks
-	cd $(PDK_ROOT)/open_pdks && \
-		git checkout master && git pull && \
-		git checkout -qf $(OPEN_PDKS_COMMIT)
-
-.PHONY: build-pdk
-build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
-	[ -d $(PDK_ROOT)/sky130A ] && \
-		(echo "Warning: A sky130A build already exists under $(PDK_ROOT). It will be deleted first!" && \
-		sleep 5 && \
-		rm -rf $(PDK_ROOT)/sky130A) || \
-		true
-	cd $(PDK_ROOT)/open_pdks && \
-		./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=$(INSTALL_SRAM) && \
-		cd sky130 && \
-		$(MAKE) veryclean && \
-		$(MAKE) && \
-		make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
-		$(MAKE) clean
+pdk:
+	cd openlane && $(MAKE) pdk
 
 .RECIPE: manifest
 manifest: mag/ maglef/ verilog/rtl/ Makefile
