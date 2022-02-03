@@ -1208,6 +1208,8 @@ else
 endif
 
 ###########################################################################
+pdk-with-sram: INSTALL_SRAM=yes
+pdk-with-sram: pdk
 .PHONY: pdk
 pdk: skywater-pdk skywater-library skywater-timing open_pdks build-pdk gen-sources
 
