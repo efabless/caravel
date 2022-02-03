@@ -58,9 +58,6 @@ else
 	MCW_BRANCH := main
 endif
 
-# Install caravel as submodule, (1): submodule, (0): clone
-SUBMODULE?=0
-
 # PDK Root
 export PDK_ROOT ?=
 
@@ -1158,47 +1155,16 @@ update_caravel:
 # Install Mgmt Core Wrapper
 .PHONY: install_mcw
 install_mcw:
-ifeq ($(SUBMODULE),1)
-	@echo "Installing $(MCW_NAME) as a submodule.."
-# Convert MCW_ROOT to relative path because .gitmodules doesn't accept '/'
-	$(eval MCW_PATH := $(shell realpath --relative-to=$(shell pwd) $(MCW_ROOT)))
-	@if [ ! -d $(MCW_ROOT) ]; then git submodule add --name $(MCW_NAME) $(MCW_REPO) $(MCW_PATH); fi
-	@git submodule update --init
-	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
-	$(MAKE) simlink
-else
-	@echo "Installing $(MCW_NAME).."
-	@git clone $(MCW_REPO) $(MCW_ROOT)
-	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
-endif
-
-# Update Mgmt Core Wrapper
-.PHONY: update_mcw
-update_mcw: check-mcw
-ifeq ($(SUBMODULE),1)
-	@git submodule update --init --recursive
-	cd $(MCW_ROOT) && \
-	git checkout $(MCW_BRANCH) && \
-	git pull
-else
-	cd $(MCW_ROOT)/ && \
-		git checkout $(MCW_BRANCH) && \
-		git pull
-endif
+	@echo "Installing $(MCW_NAME)..."
+	@rm -rf $(MCW_ROOT)
+	@mkdir -p $(MCW_ROOT)
+	@curl -L $(MCW_REPO)/tarball/$(MCW_BRANCH)\
+		| tar -xzC $(MCW_ROOT) --strip-components=1
 
 # Uninstall Mgmt Core Wrapper
 .PHONY: uninstall_mcw
 uninstall_mcw:
-ifeq ($(SUBMODULE),1)
-	git config -f .gitmodules --remove-section "submodule.$(MCW_NAME)"
-	git add .gitmodules
-	git submodule deinit -f $(MCW_ROOT)
-	git rm --cached $(MCW_ROOT)
-	rm -rf .git/modules/$(MCW_NAME)
-	rm -rf $(MCW_ROOT)
-else
-	rm -rf $(MCW_ROOT)/*
-endif
+	@rm -rf $(MCW_ROOT)
 
 # PDK
 .PHONY: pdk
