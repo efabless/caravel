@@ -66,10 +66,10 @@ $(BLOCKS) : % : ./%/config.tcl FORCE
 
 .PHONY: openlane
 openlane:
-	ifeq ($(OPENLANE_ROOT),)
-		@echo "OPENLANE_ROOT not set."
-		@exit 1
-	endif
+ifeq ($(OPENLANE_ROOT),)
+	@echo "OPENLANE_ROOT not set."
+	@exit 1
+endif
 	rm -rf "$(OPENLANE_ROOT)" &&\
 		git clone https://github.com/The-OpenROAD-Project/OpenLane \
 			--branch=$(OPENLANE_TAG) \
