@@ -81,6 +81,10 @@ endif
 ###########################################################################
 .PHONY: pdk
 pdk:
+ifeq ($(OPENLANE_ROOT),)
+	@echo "OPENLANE_ROOT not set."
+	@exit 1
+endif
 	cd $(OPENLANE_ROOT) && $(MAKE) pdk
 
 FORCE:
