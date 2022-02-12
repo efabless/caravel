@@ -39,11 +39,11 @@ run_magic
 run_magic_drc
 
 save_views       -lef_path $::env(magic_result_file_tag).lef \
-                 -def_path $::env(CURRENT_DEF) \
-                 -gds_path $::env(magic_result_file_tag).gds \
-                 -mag_path $::env(magic_result_file_tag).mag \
-                 -save_path $save_path \
-                 -tag $::env(RUN_TAG)
+    -def_path $::env(CURRENT_DEF) \
+    -gds_path $::env(magic_result_file_tag).gds \
+    -mag_path $::env(magic_result_file_tag).mag \
+    -save_path $save_path \
+    -tag $::env(RUN_TAG)
 
 # make pin labels visible in the magview
 exec /bin/bash $script_dir/../../utils/export_pin_labels.sh $script_dir/../../mag/$::env(RUN_TAG).mag 0 3498 2920 3520 0 -20 2920 4 >@stdout 2>@stderr
@@ -57,9 +57,9 @@ set llx [expr [lindex $::env(DIE_AREA) 0]-$gap]
 set lly [expr [lindex $::env(DIE_AREA) 1]-$gap]
 set urx [expr [lindex $::env(DIE_AREA) 2]+$gap]
 set ury [expr [lindex $::env(DIE_AREA) 3]+$gap]
-exec python3 $::env(OPENLANE_ROOT)/scripts/rectify.py $llx $lly $urx $ury \
-	< $::env(magic_result_file_tag).lef \
-	| python3 $::env(OPENLANE_ROOT)/scripts/obs.py {*}$::env(DIE_AREA) li1 met1 met2 met3 \
-	| python3 $::env(OPENLANE_ROOT)/scripts/obs.py -42.88 -37.53 2962.50 3557.21 met4 met5 \
-	> $::env(magic_result_file_tag).obstructed.lef
+exec python3 $script_dir/rectify.py $llx $lly $urx $ury \
+    < $::env(magic_result_file_tag).lef \
+    | python3 $::env(OPENLANE_ROOT)/scripts/obs.py {*}$::env(DIE_AREA) li1 met1 met2 met3 \
+    | python3 $::env(OPENLANE_ROOT)/scripts/obs.py -42.88 -37.53 2962.50 3557.21 met4 met5 \
+    > $::env(magic_result_file_tag).obstructed.lef
 file copy -force $::env(magic_result_file_tag).obstructed.lef $save_path/lef

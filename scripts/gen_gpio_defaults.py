@@ -233,9 +233,12 @@ if __name__ == '__main__':
 
         # Record which bits need to be set for this binval
         bitflips = []
+        notflipped = []
         for j in range(0, 13):
             if binval[12 - j] == '1':
                 bitflips.append(j)
+            else:
+                notflipped.append(j)
 
         if not os.path.isfile(mag_file):
             # A cell with this set of defaults doesn't exist, so make it
@@ -247,12 +250,21 @@ if __name__ == '__main__':
                 outlines = []
                 for magline in maglines:
                     is_flipped = False
+                    reverse_flipped = False
                     for bitflip in bitflips:
                         if magline == zero_string[bitflip]:
                             is_flipped = True
                             break
+                    if not is_flipped:
+                        for bitflip in notflipped:
+                            if magline == one_string[bitflip]:
+                                reverse_flipped = True
+                                break
+
                     if is_flipped:
                         outlines.append(one_string[bitflip])
+                    elif reverse_flipped:
+                        outlines.append(zero_string[bitflip])
                     else:
                         outlines.append(magline)
 
@@ -280,13 +292,18 @@ if __name__ == '__main__':
                 outlines = []
                 for vline in vlines:
                     is_flipped = False
+                    is_reversed = False
                     dmatch = defrex.match(vline)
                     if dmatch:
                         bitidx = int(dmatch.group(1))
                         if bitidx in bitflips:
                             is_flipped = True
+                        else:
+                            is_reversed = True
                     if is_flipped:
                         outlines.append(re.sub('_low', '_high', vline))
+                    elif is_reversed:
+                        outlines.append(re.sub('_high', '_low', vline))
                     elif 'gpio_defaults_block' in vline:
                         outlines.append(re.sub('gpio_defaults_block', cell_name, vline))
                     else:
