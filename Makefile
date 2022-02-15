@@ -82,8 +82,8 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 1.0.264
-INSTALL_SRAM ?= no   #   = yes to enable
+OPEN_PDKS_COMMIT ?= 27ecf1c16911f7dd4428ffab96f62c1fb876ea70
+PDK_MAGIC_COMMIT ?= 0bb6ac1fa98b5371c73156b6e876925397fb7cbc
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -1208,7 +1208,6 @@ else
 endif
 
 ###########################################################################
-pdk-with-sram: INSTALL_SRAM=yes
 pdk-with-sram: pdk
 .PHONY: pdk
 pdk: skywater-pdk skywater-library skywater-timing open_pdks build-pdk gen-sources
@@ -1232,10 +1231,12 @@ skywater-library: check-env $(PDK_ROOT)/skywater-pdk
 
 gen-sources: $(PDK_ROOT)/sky130A
 	touch $(PDK_ROOT)/sky130A/SOURCES
-	echo -ne "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
+	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	echo -ne "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
+	printf "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
+	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130A/SOURCES
+
 
 skywater-timing: check-env $(PDK_ROOT)/skywater-pdk
 	cd $(PDK_ROOT)/skywater-pdk && \
@@ -1257,13 +1258,19 @@ build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 		sleep 5 && \
 		rm -rf $(PDK_ROOT)/sky130A) || \
 		true
-	cd $(PDK_ROOT)/open_pdks && \
-		./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=$(INSTALL_SRAM) && \
-		cd sky130 && \
-		$(MAKE) veryclean && \
-		$(MAKE) && \
-		make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
-		$(MAKE) clean
+	docker run --rm\
+		-v $(PDK_ROOT):$(PDK_ROOT)\
+		-e $(PDK_ROOT)\
+		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
+		sh -c "\
+			cd $(PDK_ROOT)/open_pdks && \
+			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=yes && \
+			cd sky130 && \
+			make veryclean && \
+			make && \
+			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
+			make clean \
+		"
 
 .RECIPE: manifest
 manifest: mag/ maglef/ verilog/rtl/ Makefile
