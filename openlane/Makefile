@@ -29,7 +29,8 @@ $(CONFIG) :
 	@echo "Missing $@. Please create a configuration for that design"
 	@exit 1
 
-$(BLOCKS) : % : ./%/config.tcl FORCE
+.PHONY: $(BLOCKS)
+$(BLOCKS) : % : ./%/config.tcl
 ifeq ($(OPENLANE_ROOT),)
 	@echo "Please export OPENLANE_ROOT"
 	@exit 1
@@ -68,15 +69,20 @@ endif
 	cp $*/runs/$*/reports/final_summary_report.csv ../signoff/$*/
 
 .PHONY: openlane
-openlane:
-ifeq ($(OPENLANE_ROOT),)
-	@echo "Please export OPENLANE_ROOT"
-	@exit 1
-endif
+openlane: check-openlane-env $(OPENLANE_ROOT)
+
+$(OPENLANE_ROOT):
 	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
 		export IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
 		$(MAKE) pull-openlane
+
+.PHONY: check-openlane-env
+check-openlane-env:
+ifeq ($(OPENLANE_ROOT),)
+	@echo "Please export OPENLANE_ROOT"
+	@exit 1
+endif
 
 FORCE:
 

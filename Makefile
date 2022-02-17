@@ -1163,8 +1163,7 @@ update_caravel:
 ###########################################################################
 
 # Install Mgmt Core Wrapper
-.PHONY: install_mcw
-install_mcw:
+$(MCW_ROOT):
 ifeq ($(SUBMODULE),1)
 	@echo "Installing $(MCW_NAME) as a submodule.."
 # Convert MCW_ROOT to relative path because .gitmodules doesn't accept '/'
@@ -1178,6 +1177,9 @@ else
 	@git clone $(MCW_REPO) $(MCW_ROOT)
 	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
 endif
+
+.PHONY: install_mcw
+install_mcw: $(MCW_ROOT)
 
 # Update Mgmt Core Wrapper
 .PHONY: update_mcw
@@ -1210,60 +1212,35 @@ endif
 ###########################################################################
 pdk-with-sram: pdk
 .PHONY: pdk
-pdk: skywater-pdk skywater-library skywater-timing open_pdks build-pdk gen-sources
+pdk: check-env $(PDK_ROOT)/sky130A
 
 $(PDK_ROOT)/skywater-pdk:
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
-
-.PHONY: skywater-pdk
-skywater-pdk: check-env $(PDK_ROOT)/skywater-pdk
 	cd $(PDK_ROOT)/skywater-pdk && \
 		git checkout main && git pull && \
-		git checkout -qf $(SKYWATER_COMMIT)
-
-.PHONY: skywater-library
-skywater-library: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
+		git checkout -qf $(SKYWATER_COMMIT) && \
 		git submodule update --init libraries/$(STD_CELL_LIBRARY)/latest && \
 		git submodule update --init libraries/$(IO_LIBRARY)/latest && \
 		git submodule update --init libraries/$(SPECIAL_VOLTAGE_LIBRARY)/latest && \
-		git submodule update --init libraries/$(PRIMITIVES_LIBRARY)/latest
-
-gen-sources: $(PDK_ROOT)/sky130A
-	touch $(PDK_ROOT)/sky130A/SOURCES
-	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	printf "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130A/SOURCES
-
-
-skywater-timing: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
+		git submodule update --init libraries/$(PRIMITIVES_LIBRARY)/latest && \
 		$(MAKE) timing
+
 ### OPEN_PDKS
 $(PDK_ROOT)/open_pdks:
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
-
-.PHONY: open_pdks
-open_pdks: check-env $(PDK_ROOT)/open_pdks
 	cd $(PDK_ROOT)/open_pdks && \
 		git checkout master && git pull && \
 		git checkout -qf $(OPEN_PDKS_COMMIT)
 
-.PHONY: build-pdk
-build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
-	[ -d $(PDK_ROOT)/sky130A ] && \
-		(echo "Warning: A sky130A build already exists under $(PDK_ROOT). It will be deleted first!" && \
-		sleep 5 && \
-		rm -rf $(PDK_ROOT)/sky130A) || \
-		true
+$(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
-		-e $(PDK_ROOT)\
+		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
+			export PATH=$$PATH:/build/bin &&\
 			cd $(PDK_ROOT)/open_pdks && \
+			ls . -al && \
 			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=yes && \
 			cd sky130 && \
 			make veryclean && \
@@ -1271,6 +1248,12 @@ build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
 			make clean \
 		"
+	touch $(PDK_ROOT)/sky130A/SOURCES
+	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
+	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
+	printf "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
+	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
+	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130A/SOURCES
 
 .RECIPE: manifest
 manifest: mag/ maglef/ verilog/rtl/ Makefile
@@ -1293,6 +1276,7 @@ master_manifest:
 	find spi/lvs/*.spice -type f -exec shasum {} \; >> master_manifest && \
 	find gds/*.gds -type f -exec shasum {} \; >> master_manifest 
 	
+.PHONY: check-env
 check-env:
 ifndef PDK_ROOT
 	$(error PDK_ROOT is undefined, please export it before running make)
