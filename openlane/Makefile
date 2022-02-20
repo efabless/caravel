@@ -22,6 +22,7 @@ OPENLANE_TAG ?= 2021.11.23_01.42.34
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
 OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
+OG_DESKTOP := $(shell test -d /ef; echo $$?)
 
 all: $(BLOCKS)
 
@@ -30,6 +31,9 @@ $(CONFIG) :
 	@exit 1
 
 $(BLOCKS) : % : ./%/config.tcl FORCE
+
+ifneq ($(OG_DESKTOP),0)
+
 ifeq ($(OPENLANE_ROOT),)
 	@echo "Please export OPENLANE_ROOT"
 	@exit 1
@@ -66,6 +70,14 @@ endif
 	cp $*/runs/$*/OPENLANE_VERSION ../signoff/$*/
 	cp $*/runs/$*/PDK_SOURCES ../signoff/$*/
 	cp $*/runs/$*/reports/final_summary_report.csv ../signoff/$*/
+else
+	@echo submitting openlane background job
+	openlane-cli run -d $* -rt $*
+	@echo "waiting for job to start (about 5-6 min)"
+	@sleep 2
+	@until [ -f $*/openlane/runs/$*/logs/flow_summary.log ]; do sleep 2; done
+	@tail -f $*/openlane/runs/$*/logs/flow_summary.log
+endif
 
 .PHONY: openlane
 openlane:
