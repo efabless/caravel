@@ -1260,7 +1260,9 @@ build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 		true
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
-		-e $(PDK_ROOT)\
+		-e GIT_COMMITTER_NAME="caravel"\
+		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
+		-u $$(id -u $(USER)):$$(id -g $(USER)) \
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
 			cd $(PDK_ROOT)/open_pdks && \
