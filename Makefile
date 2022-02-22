@@ -82,8 +82,8 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 27ecf1c16911f7dd4428ffab96f62c1fb876ea70
-PDK_MAGIC_COMMIT ?= 0bb6ac1fa98b5371c73156b6e876925397fb7cbc
+OPEN_PDKS_COMMIT ?= e52981fc0b5876a44a7f680b84aed5298a26028d
+PDK_MAGIC_COMMIT ?= 7d601628e4e05fd17fcb80c3552dacb64e9f6e7b
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -1212,7 +1212,11 @@ endif
 ###########################################################################
 pdk-with-sram: pdk
 .PHONY: pdk
-pdk: check-env $(PDK_ROOT)/sky130A
+pdk: check-env gen-sources
+
+.PHONY: clean-pdk
+clean-pdk:
+	rm -rf $(PDK_ROOT)
 
 $(PDK_ROOT)/skywater-pdk:
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
@@ -1236,6 +1240,8 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+		-e GIT_COMMITTER_NAME="caravel"\
+		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
 			export PATH=$$PATH:/build/bin &&\
@@ -1248,6 +1254,10 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
 			make clean \
 		"
+.PHONY: gen-sources
+gen-sources: $(PDK_ROOT)/sky130A/SOURCES
+
+$(PDK_ROOT)/sky130A/SOURCES: $(PDK_ROOT)/sky130A
 	touch $(PDK_ROOT)/sky130A/SOURCES
 	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
