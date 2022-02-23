@@ -18,7 +18,7 @@ BLOCKS = $(shell find * -maxdepth 0 -type d)
 CONFIG = $(foreach block,$(BLOCKS), ./$(block)/config.tcl)
 CLEAN = $(foreach block,$(BLOCKS), clean-$(block))
 
-OPENLANE_TAG ?= 2021.11.23_01.42.34
+OPENLANE_TAG ?= 2022.02.23_02.50.41
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
 OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
@@ -74,7 +74,7 @@ openlane: check-openlane-env $(OPENLANE_ROOT)
 $(OPENLANE_ROOT):
 	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
-		export IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
+		export OPENLANE_IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
 		$(MAKE) pull-openlane
 
 .PHONY: check-openlane-env

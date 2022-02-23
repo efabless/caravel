@@ -82,7 +82,7 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= e52981fc0b5876a44a7f680b84aed5298a26028d
+OPEN_PDKS_COMMIT ?= 7519dfb04400f224f140749cda44ee7de6f5e095
 PDK_MAGIC_COMMIT ?= 7d601628e4e05fd17fcb80c3552dacb64e9f6e7b
 
 .DEFAULT_GOAL := ship
@@ -1240,6 +1240,7 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+		-e PDK_ROOT=$(PDK_ROOT)\
 		-e GIT_COMMITTER_NAME="caravel"\
 		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
@@ -1247,9 +1248,10 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 			export PATH=$$PATH:/build/bin &&\
 			cd $(PDK_ROOT)/open_pdks && \
 			ls . -al && \
-			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=yes && \
+			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --enable-sram-sky130 && \
 			cd sky130 && \
 			make veryclean && \
+			make prerequisites && \
 			make && \
 			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
 			make clean \
@@ -1331,3 +1333,8 @@ README.rst: README.src.rst docs/source/getting-started.rst docs/source/tool-vers
 				-e's@.. note::@**NOTE:**@g' \
 				-e's@.. warning::@**WARNING:**@g' \
 				> openlane/README.rst
+
+.PHONY: clean-openlane
+clean-openlane:
+	rm -rf $(OPENLANE_ROOT)
+
