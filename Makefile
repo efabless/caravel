@@ -51,7 +51,7 @@ MCW_LITE?=1
 ifeq ($(MCW),LITEX_VEXRISCV)
 	MCW_NAME := mcw-litex-vexriscv
 	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
-	MCW_BRANCH := main
+	MCW_BRANCH := mpw-5c
 else
 	MCW_NAME := mcw-pico
 	MCW_REPO := https://github.com/efabless/caravel_pico
@@ -1163,7 +1163,11 @@ update_caravel:
 ###########################################################################
 
 # Install Mgmt Core Wrapper
-$(MCW_ROOT):
+.PHONY: install_mcw
+install_mcw:
+	[ -d "$(MCW_ROOT)" ] && \
+		echo "Deleting exisiting $(MCW_ROOT)" && \
+		rm -rf $(MCW_ROOT) && sleep 2
 ifeq ($(SUBMODULE),1)
 	@echo "Installing $(MCW_NAME) as a submodule.."
 # Convert MCW_ROOT to relative path because .gitmodules doesn't accept '/'
@@ -1174,12 +1178,9 @@ ifeq ($(SUBMODULE),1)
 	$(MAKE) simlink
 else
 	@echo "Installing $(MCW_NAME).."
-	@git clone $(MCW_REPO) $(MCW_ROOT)
-	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
+	@git clone $(MCW_REPO) $(MCW_ROOT) --branch=$(MCW_BRANCH) --depth=1
 endif
 
-.PHONY: install_mcw
-install_mcw: $(MCW_ROOT)
 
 # Update Mgmt Core Wrapper
 .PHONY: update_mcw
