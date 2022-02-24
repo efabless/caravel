@@ -1212,13 +1212,17 @@ endif
 ###########################################################################
 pdk-with-sram: pdk
 .PHONY: pdk
-pdk: check-env gen-sources
+pdk: check-env skywater-pdk open-pdks sky130 gen-sources
 
 .PHONY: clean-pdk
 clean-pdk:
 	rm -rf $(PDK_ROOT)
 
-$(PDK_ROOT)/skywater-pdk:
+.PHONY: skywater-pdk
+skywater-pdk:
+	[ -d "$(PDK_ROOT)/skywater-pdk" ] && \
+		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
+		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
 	cd $(PDK_ROOT)/skywater-pdk && \
 		git checkout main && git pull && \
@@ -1230,13 +1234,21 @@ $(PDK_ROOT)/skywater-pdk:
 		$(MAKE) timing
 
 ### OPEN_PDKS
-$(PDK_ROOT)/open_pdks:
+.PHONY: open-pdks
+open-pdks:
+	[ -d "$(PDK_ROOT)/open_pdks" ] && \
+		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
+		rm -rf $(PDK_ROOT)/open_pdks && sleep 2
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
 	cd $(PDK_ROOT)/open_pdks && \
 		git checkout master && git pull && \
 		git checkout -qf $(OPEN_PDKS_COMMIT)
 
-$(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
+.PHONY: sky130:
+sky130:
+	[ -d "$(PDK_ROOT)/sky130A" ] && \
+		echo "Deleting exisiting $(PDK_ROOT)/sky130A" && \
+		rm -rf $(PDK_ROOT)/sky130A && sleep 2
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
@@ -1257,17 +1269,7 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 			make clean \
 		"
 .PHONY: gen-sources
-gen-sources: $(PDK_ROOT)/sky130A/SOURCES $(PDK_ROOT)/sky130B/SOURCES
-
-$(PDK_ROOT)/sky130B/SOURCES: $(PDK_ROOT)/sky130B
-	touch $(PDK_ROOT)/sky130B/SOURCES
-	printf "skywater-pdk " >> $(PDK_ROOT)/sky130B/SOURCES
-	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130B/SOURCES
-	printf "open_pdks " >> $(PDK_ROOT)/sky130B/SOURCES
-	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130B/SOURCES
-	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130B/SOURCES
-
-$(PDK_ROOT)/sky130A/SOURCES: $(PDK_ROOT)/sky130A
+gen-sources:
 	touch $(PDK_ROOT)/sky130A/SOURCES
 	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES

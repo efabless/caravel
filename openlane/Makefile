@@ -43,7 +43,7 @@ endif
 	@sleep 1
 
 	@if [ -f ./$*/interactive.tcl ]; then\
-		docker run -it -v $(OPENLANE_ROOT):/openlane \
+		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
@@ -53,7 +53,7 @@ endif
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
-		docker run -it -v $(OPENLANE_ROOT):/openlane \
+		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
@@ -69,9 +69,10 @@ endif
 	cp $*/runs/$*/reports/final_summary_report.csv ../signoff/$*/
 
 .PHONY: openlane
-openlane: check-openlane-env $(OPENLANE_ROOT)
-
-$(OPENLANE_ROOT):
+openlane: check-openlane-env
+	[ -d "$(OPENLANE_ROOT)" ] && \
+		echo "Deleting exisiting $(OPENLANE_ROOT)" && \
+		rm -rf $(OPENLANE_ROOT) && sleep 2
 	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
 		export OPENLANE_IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
