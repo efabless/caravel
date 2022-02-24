@@ -1165,7 +1165,7 @@ update_caravel:
 # Install Mgmt Core Wrapper
 .PHONY: install_mcw
 install_mcw:
-	if [ -d "$(MCW_ROOT)" ]; then 
+	if [ -d "$(MCW_ROOT)" ]; then \
 		echo "Deleting exisiting $(MCW_ROOT)" && \
 		rm -rf $(MCW_ROOT) && sleep 2;\
 	fi
