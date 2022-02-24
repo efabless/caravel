@@ -1257,7 +1257,15 @@ $(PDK_ROOT)/sky130A: $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
 			make clean \
 		"
 .PHONY: gen-sources
-gen-sources: $(PDK_ROOT)/sky130A/SOURCES
+gen-sources: $(PDK_ROOT)/sky130A/SOURCES $(PDK_ROOT)/sky130B/SOURCES
+
+$(PDK_ROOT)/sky130B/SOURCES: $(PDK_ROOT)/sky130B
+	touch $(PDK_ROOT)/sky130B/SOURCES
+	printf "skywater-pdk " >> $(PDK_ROOT)/sky130B/SOURCES
+	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130B/SOURCES
+	printf "open_pdks " >> $(PDK_ROOT)/sky130B/SOURCES
+	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130B/SOURCES
+	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130B/SOURCES
 
 $(PDK_ROOT)/sky130A/SOURCES: $(PDK_ROOT)/sky130A
 	touch $(PDK_ROOT)/sky130A/SOURCES
