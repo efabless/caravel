@@ -1245,7 +1245,7 @@ open-pdks:
 		git checkout master && git pull && \
 		git checkout -qf $(OPEN_PDKS_COMMIT)
 
-.PHONY: sky130:
+.PHONY: sky130
 sky130:
 	[ -d "$(PDK_ROOT)/sky130A" ] && \
 		echo "Deleting exisiting $(PDK_ROOT)/sky130A" && \
