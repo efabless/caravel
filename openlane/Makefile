@@ -1,6 +1,5 @@
 # SPDX-FileCopyrightText: 2020 Efabless Corporation
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
+# # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -70,9 +69,10 @@ endif
 
 .PHONY: openlane
 openlane: check-openlane-env
-	[ -d "$(OPENLANE_ROOT)" ] && \
+	if [ -d "$(OPENLANE_ROOT)" ]; then\
 		echo "Deleting exisiting $(OPENLANE_ROOT)" && \
-		rm -rf $(OPENLANE_ROOT) && sleep 2
+		rm -rf $(OPENLANE_ROOT) && sleep 2; \
+	fi
 	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
 		export OPENLANE_IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
