@@ -1258,9 +1258,7 @@ sky130:
 		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
-			export PATH=$$PATH:/build/bin &&\
 			cd $(PDK_ROOT)/open_pdks && \
-			ls . -al && \
 			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --enable-sram-sky130 && \
 			cd sky130 && \
 			make veryclean && \
