@@ -76,7 +76,7 @@ openlane: check-openlane-env
 	git clone https://github.com/The-OpenROAD-Project/OpenLane --branch=$(OPENLANE_TAG) --depth=1 $(OPENLANE_ROOT) && \
 		cd $(OPENLANE_ROOT) && \
 		export OPENLANE_IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
--		export IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
+		export IMAGE_NAME=efabless/openlane:$(OPENLANE_TAG) && \
 		$(MAKE) pull-openlane
 
 .PHONY: check-openlane-env
