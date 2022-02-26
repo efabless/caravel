@@ -51,7 +51,7 @@ MCW_LITE?=1
 ifeq ($(MCW),LITEX_VEXRISCV)
 	MCW_NAME := mcw-litex-vexriscv
 	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
-	MCW_BRANCH := main
+	MCW_BRANCH := mpw-5c
 else
 	MCW_NAME := mcw-pico
 	MCW_REPO := https://github.com/efabless/caravel_pico
@@ -1165,6 +1165,10 @@ update_caravel:
 # Install Mgmt Core Wrapper
 .PHONY: install_mcw
 install_mcw:
+	if [ -d "$(MCW_ROOT)" ]; then \
+		echo "Deleting exisiting $(MCW_ROOT)" && \
+		rm -rf $(MCW_ROOT) && sleep 2;\
+	fi
 ifeq ($(SUBMODULE),1)
 	@echo "Installing $(MCW_NAME) as a submodule.."
 # Convert MCW_ROOT to relative path because .gitmodules doesn't accept '/'
@@ -1175,9 +1179,9 @@ ifeq ($(SUBMODULE),1)
 	$(MAKE) simlink
 else
 	@echo "Installing $(MCW_NAME).."
-	@git clone $(MCW_REPO) $(MCW_ROOT)
-	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
+	@git clone $(MCW_REPO) $(MCW_ROOT) --branch=$(MCW_BRANCH) --depth=1
 endif
+
 
 # Update Mgmt Core Wrapper
 .PHONY: update_mcw
@@ -1210,70 +1214,71 @@ endif
 ###########################################################################
 pdk-with-sram: pdk
 .PHONY: pdk
-pdk: skywater-pdk skywater-library skywater-timing open_pdks build-pdk gen-sources
+pdk: check-env skywater-pdk open-pdks sky130 gen-sources
 
-$(PDK_ROOT)/skywater-pdk:
-	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
+.PHONY: clean-pdk
+clean-pdk:
+	rm -rf $(PDK_ROOT)
 
 .PHONY: skywater-pdk
-skywater-pdk: check-env $(PDK_ROOT)/skywater-pdk
+skywater-pdk:
+	if [ -d "$(PDK_ROOT)/skywater-pdk" ]; then\
+		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
+		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2;\
+	fi
+	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
 	cd $(PDK_ROOT)/skywater-pdk && \
 		git checkout main && git pull && \
-		git checkout -qf $(SKYWATER_COMMIT)
-
-.PHONY: skywater-library
-skywater-library: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
+		git checkout -qf $(SKYWATER_COMMIT) && \
 		git submodule update --init libraries/$(STD_CELL_LIBRARY)/latest && \
 		git submodule update --init libraries/$(IO_LIBRARY)/latest && \
 		git submodule update --init libraries/$(SPECIAL_VOLTAGE_LIBRARY)/latest && \
-		git submodule update --init libraries/$(PRIMITIVES_LIBRARY)/latest
+		git submodule update --init libraries/$(PRIMITIVES_LIBRARY)/latest && \
+		$(MAKE) timing
 
-gen-sources: $(PDK_ROOT)/sky130A
+### OPEN_PDKS
+.PHONY: open-pdks
+open-pdks:
+	if [ -d "$(PDK_ROOT)/open_pdks" ]; then \
+		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
+		rm -rf $(PDK_ROOT)/open_pdks && sleep 2; \
+	fi
+	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
+	cd $(PDK_ROOT)/open_pdks && \
+		git checkout master && git pull && \
+		git checkout -qf $(OPEN_PDKS_COMMIT)
+
+.PHONY: sky130
+sky130:
+	if [ -d "$(PDK_ROOT)/sky130A" ]; then \
+		echo "Deleting exisiting $(PDK_ROOT)/sky130A" && \
+		rm -rf $(PDK_ROOT)/sky130A && sleep 2;\
+	fi
+	docker run --rm\
+		-v $(PDK_ROOT):$(PDK_ROOT)\
+		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+		-e PDK_ROOT=$(PDK_ROOT)\
+		-e GIT_COMMITTER_NAME="caravel"\
+		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
+		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
+		sh -c "\
+			cd $(PDK_ROOT)/open_pdks && \
+			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --enable-sram-sky130 && \
+			cd sky130 && \
+			make veryclean && \
+			make prerequisites && \
+			make && \
+			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
+			make clean \
+		"
+.PHONY: gen-sources
+gen-sources:
 	touch $(PDK_ROOT)/sky130A/SOURCES
 	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
 	printf "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
 	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
 	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130A/SOURCES
-
-
-skywater-timing: check-env $(PDK_ROOT)/skywater-pdk
-	cd $(PDK_ROOT)/skywater-pdk && \
-		$(MAKE) timing
-### OPEN_PDKS
-$(PDK_ROOT)/open_pdks:
-	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
-
-.PHONY: open_pdks
-open_pdks: check-env $(PDK_ROOT)/open_pdks
-	cd $(PDK_ROOT)/open_pdks && \
-		git checkout master && git pull && \
-		git checkout -qf $(OPEN_PDKS_COMMIT)
-
-.PHONY: build-pdk
-build-pdk: check-env $(PDK_ROOT)/open_pdks $(PDK_ROOT)/skywater-pdk
-	[ -d $(PDK_ROOT)/sky130A ] && \
-		(echo "Warning: A sky130A build already exists under $(PDK_ROOT). It will be deleted first!" && \
-		sleep 5 && \
-		rm -rf $(PDK_ROOT)/sky130A) || \
-		true
-	docker run --rm\
-		-v $(PDK_ROOT):$(PDK_ROOT)\
-		-e PDK_ROOT=$(PDK_ROOT)\
-		-e GIT_COMMITTER_NAME="caravel"\
-		-e GIT_COMMITTER_EMAIL="caravel@caravel.caravel"\
-		-u $$(id -u $(USER)):$$(id -g $(USER)) \
-		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
-		sh -c "\
-			cd $(PDK_ROOT)/open_pdks && \
-			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --with-sky130-local-path=$(PDK_ROOT) --enable-sram-sky130=yes && \
-			cd sky130 && \
-			make veryclean && \
-			make && \
-			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
-			make clean \
-		"
 
 .RECIPE: manifest
 manifest: mag/ maglef/ verilog/rtl/ Makefile
@@ -1296,6 +1301,7 @@ master_manifest:
 	find spi/lvs/*.spice -type f -exec shasum {} \; >> master_manifest && \
 	find gds/*.gds -type f -exec shasum {} \; >> master_manifest 
 	
+.PHONY: check-env
 check-env:
 ifndef PDK_ROOT
 	$(error PDK_ROOT is undefined, please export it before running make)
@@ -1340,3 +1346,8 @@ README.rst: README.src.rst docs/source/getting-started.rst docs/source/tool-vers
 				-e's@.. note::@**NOTE:**@g' \
 				-e's@.. warning::@**WARNING:**@g' \
 				> openlane/README.rst
+
+.PHONY: clean-openlane
+clean-openlane:
+	rm -rf $(OPENLANE_ROOT)
+
