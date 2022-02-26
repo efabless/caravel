@@ -44,6 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
+MPW_TAG ?= mpw-5c
 
 # Install lite version of caravel, (1): caravel-lite, (0): caravel
 MCW_LITE?=1
@@ -51,11 +52,11 @@ MCW_LITE?=1
 ifeq ($(MCW),LITEX_VEXRISCV)
 	MCW_NAME := mcw-litex-vexriscv
 	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
-	MCW_BRANCH := mpw-5c
+	MCW_TAG := $(MPW_TAG)
 else
 	MCW_NAME := mcw-pico
 	MCW_REPO := https://github.com/efabless/caravel_pico
-	MCW_BRANCH := main
+	MCW_TAG := $(MPW_TAG)
 endif
 
 # Install caravel as submodule, (1): submodule, (0): clone
@@ -1175,11 +1176,11 @@ ifeq ($(SUBMODULE),1)
 	$(eval MCW_PATH := $(shell realpath --relative-to=$(shell pwd) $(MCW_ROOT)))
 	@if [ ! -d $(MCW_ROOT) ]; then git submodule add --name $(MCW_NAME) $(MCW_REPO) $(MCW_PATH); fi
 	@git submodule update --init
-	@cd $(MCW_ROOT); git checkout $(MCW_BRANCH)
+	@cd $(MCW_ROOT); git checkout $(MCW_TAG)
 	$(MAKE) simlink
 else
 	@echo "Installing $(MCW_NAME).."
-	@git clone $(MCW_REPO) $(MCW_ROOT) --branch=$(MCW_BRANCH) --depth=1
+	@git clone -b $(MCW_TAG) $(MCW_REPO) $(MCW_ROOT) --depth=1
 endif
 
 
@@ -1189,11 +1190,11 @@ update_mcw: check-mcw
 ifeq ($(SUBMODULE),1)
 	@git submodule update --init --recursive
 	cd $(MCW_ROOT) && \
-	git checkout $(MCW_BRANCH) && \
+	git checkout $(MCW_TAG) && \
 	git pull
 else
 	cd $(MCW_ROOT)/ && \
-		git checkout $(MCW_BRANCH) && \
+		git checkout $(MCW_TAG) && \
 		git pull
 endif
 
