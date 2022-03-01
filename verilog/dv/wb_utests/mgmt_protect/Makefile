@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-PDK_PATH?=$(PDK_ROOT)/sky130A 
+PDK_PATH?=$(PDK_ROOT)/$(PDK_VARIENT) 
 VERILOG_PATH = ../../../
 RTL_PATH = $(VERILOG_PATH)/rtl
 

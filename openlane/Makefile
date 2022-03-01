@@ -46,9 +46,9 @@ endif
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e PDK_VARIENT=$(PDK_VARIENT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
@@ -56,7 +56,7 @@ endif
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
+		-e PDK_VARIENT=$(PDK_VARIENT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \

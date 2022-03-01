@@ -46,6 +46,9 @@ MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
 MPW_TAG ?= mpw-5c
 
+# PDK switch varient
+export PDK_VARIENT?=sky130B
+
 # Install lite version of caravel, (1): caravel-lite, (0): caravel
 MCW_LITE?=1
 
@@ -133,8 +136,8 @@ __ship:
 		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
+	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK_VARIENT) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK_VARIENT) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
 truck: check-env uncompress uncompress-caravel
@@ -185,8 +188,8 @@ __truck:
 		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/sky130A MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
+	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK_VARIENT) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK_VARIENT) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
 .PHONY: clean
@@ -274,7 +277,7 @@ xor-wrapper: uncompress uncompress-caravel
 		-o signoff/user_project_wrapper_xor/total.txt
 ### screenshot the result for convenience
 	sh $(CARAVEL_ROOT)/utils/scrotLayout.sh \
-		$(PDK_ROOT)/sky130A/libs.tech/klayout/sky130A.lyt \
+		$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/klayout/$(PDK_VARIENT).lyt \
 		signoff/user_project_wrapper_xor/user_project_wrapper.xor.gds
 	@cat signoff/user_project_wrapper_xor/total.txt
 
@@ -300,7 +303,7 @@ xor-analog-wrapper: uncompress uncompress-caravel
 		-o signoff/user_analog_project_wrapper_xor/total.txt
 ### screenshot the result for convenience
 	sh $(CARAVEL_ROOT)/utils/scrotLayout.sh \
-		$(PDK_ROOT)/sky130A/libs.tech/klayout/sky130A.lyt \
+		$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/klayout/$(PDK_VARIENT).lyt \
 		signoff/user_analog_project_wrapper_xor/user_analog_project_wrapper.xor.gds
 	@cat signoff/user_analog_project_wrapper_xor/total.txt
 
@@ -333,7 +336,7 @@ $(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
 		exit;" > ./mag/extract_$*.tcl
 	cd mag && \
 		export MAGTYPE=maglef; \
-		magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull extract_$*.tcl < /dev/null
+		magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull extract_$*.tcl < /dev/null
 	mv ./mag/$*.spice ./spi/lvs
 	rm ./mag/*.ext
 	mv -f ./mag/extract_$*.tcl ./mag/tmp
@@ -369,7 +372,7 @@ $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 		feedback save extract_$*.log;\
 		exit;" > ./gds/extract_$*.tcl
 	cd gds && \
-		magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull extract_$*.tcl < /dev/null
+		magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull extract_$*.tcl < /dev/null
 	mv ./gds/$*.spice ./spi/lvs
 	rm ./gds/*.ext
 	mv -f ./gds/extract_$*.tcl ./gds/tmp
@@ -432,7 +435,7 @@ DRC_BLOCKS = $(foreach block, $(BLOCKS), drc-$(block))
 $(DRC_BLOCKS): drc-% : ./gds/%.gds
 	echo "Running DRC on $*"
 	mkdir -p ./gds/tmp
-	cd gds && export DESIGN_IN_DRC=$* && export MAGTYPE=mag; magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull $(CARAVEL_ROOT)/gds/drc_on_gds.tcl < /dev/null
+	cd gds && export DESIGN_IN_DRC=$* && export MAGTYPE=mag; magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull $(CARAVEL_ROOT)/gds/drc_on_gds.tcl < /dev/null
 	@echo "DRC result: ./gds/tmp/$*.drc"
 
 # Antenna
@@ -441,7 +444,7 @@ ANTENNA_BLOCKS = $(foreach block, $(BLOCKS), antenna-$(block))
 $(ANTENNA_BLOCKS): antenna-% : ./gds/%.gds
 	echo "Running Antenna Checks on $*"
 	mkdir -p ./gds/tmp
-	cd gds && export DESIGN_IN_ANTENNA=$* && export MAGTYPE=mag; magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull $(CARAVEL_ROOT)/gds/antenna_on_gds.tcl < /dev/null 2>&1 | tee ./tmp/$*.antenna
+	cd gds && export DESIGN_IN_ANTENNA=$* && export MAGTYPE=mag; magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull $(CARAVEL_ROOT)/gds/antenna_on_gds.tcl < /dev/null 2>&1 | tee ./tmp/$*.antenna
 	mv -f ./gds/*.ext ./gds/tmp/
 	@echo "Antenna result: ./gds/tmp/$*.antenna"
 
@@ -460,7 +463,7 @@ $(MAG_BLOCKS): mag2gds-% : ./mag/%.mag uncompress
 		expand;\
 		gds write $*.gds;\
 		exit;" > ./mag/mag2gds_$*.tcl
-	cd ./mag && magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull mag2gds_$*.tcl < /dev/null
+	cd ./mag && magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull mag2gds_$*.tcl < /dev/null
 	rm ./mag/mag2gds_$*.tcl
 	mv -f ./mag/$*.gds ./gds/
 
@@ -476,7 +479,7 @@ $(MAG_BLOCKS): mag2lef-% : ./mag/%.mag uncompress
 		load $*;\
 		lef write $*.lef;\
 		exit;" > ./mag/mag2lef_$*.tcl
-	cd ./mag && magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull mag2lef_$*.tcl < /dev/null
+	cd ./mag && magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull mag2lef_$*.tcl < /dev/null
 	rm ./mag/mag2lef_$*.tcl
 	mv -f ./mag/$*.lef ./lef/
 
@@ -492,7 +495,7 @@ $(MAG_BLOCKS): mag2lef-% : ./mag/%.mag uncompress
 # 		load $*;\
 # 		lef write $*.lef;\
 # 		exit;" > ./mag/mag2lef_$*.tcl
-# 	cd ./mag && magic -rcfile ${PDK_ROOT}/sky130A/libs.tech/magic/sky130A.magicrc -noc -dnull mag2lef_$*.tcl < /dev/null
+# 	cd ./mag && magic -rcfile ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/magic/$(PDK_VARIENT).magicrc -noc -dnull mag2lef_$*.tcl < /dev/null
 # 	rm ./mag/mag2lef_$*.tcl
 # 	mv -f ./mag/$*.lef ./lef/
 
@@ -508,27 +511,27 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 	echo "Running RC Extraction on $*"
 	mkdir -p ./def/tmp 
 	# merge techlef and standard cell lef files
-	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lef/*.lef -o ./def/tmp/merged.lef
+	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lef/*.lef -o ./def/tmp/merged.lef
 	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
 		set std_cell_lef ./def/tmp/merged.lef;\
-		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
+		set sram_lef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
@@ -567,7 +570,7 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 		set_wire_rc -signal -layer met2;\
 		set_wire_rc -clock -layer met5;\
 		define_process_corner -ext_model_index 0 X;\
-		extract_parasitics -ext_model_file ${PDK_ROOT}/sky130A/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
+		extract_parasitics -ext_model_file ${PDK_ROOT}/$(PDK_VARIENT)/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
 		write_spef ./spef/$*.spef" > ./def/tmp/rcx_$*.tcl
 ## Generate Spef file
 	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
@@ -575,7 +578,7 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 ## Run OpenSTA
 	echo "\
 		set std_cell_lef ./def/tmp/merged.lef;\
-		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
+		set sram_lef $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
 		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
     			puts stderr \$$errmsg;\
     			exit 1;\
@@ -591,23 +594,23 @@ $(RCX_BLOCKS): rcx-% : ./def/%.def
 			}\
 		};\
 		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
 		read_verilog ./verilog/gl/$*.v;\
 		link_design $*;\
 		read_spef ./spef/$*.spef;\
@@ -625,23 +628,23 @@ caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v c
 	mkdir -p ./def/tmp
 ## Run OpenSTA
 	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
@@ -781,22 +784,22 @@ caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 	mkdir -p ./def/tmp
 ## Run OpenSTA
 	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ss_100C_1v60.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65_lv1v40.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ss_100C_1v60.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65_lv1v40.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v40_1v65.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v40_1v65.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v40_1v65.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v40_1v65.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
@@ -933,23 +936,23 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 	mkdir -p ./def/tmp
 ## Run OpenSTA
 	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ff_n40C_1v95.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_4v40_lv1v95.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ff_n40C_1v95.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_4v40_lv1v95.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib;\
+		read_liberty $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
 		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
@@ -1251,9 +1254,9 @@ open-pdks:
 
 .PHONY: sky130
 sky130:
-	if [ -d "$(PDK_ROOT)/sky130A" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/sky130A" && \
-		rm -rf $(PDK_ROOT)/sky130A && sleep 2;\
+	if [ -d "$(PDK_ROOT)/$(PDK_VARIENT)" ]; then \
+		echo "Deleting exisiting $(PDK_ROOT)/$(PDK_VARIENT)" && \
+		rm -rf $(PDK_ROOT)/$(PDK_VARIENT) && sleep 2;\
 	fi
 	docker run --rm\
 		-v $(PDK_ROOT):$(PDK_ROOT)\
@@ -1274,12 +1277,12 @@ sky130:
 		"
 .PHONY: gen-sources
 gen-sources:
-	touch $(PDK_ROOT)/sky130A/SOURCES
-	printf "skywater-pdk " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	printf "open_pdks " >> $(PDK_ROOT)/sky130A/SOURCES
-	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/sky130A/SOURCES
-	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/sky130A/SOURCES
+	touch $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
+	printf "skywater-pdk " >> $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
+	cd $(PDK_ROOT)/skywater-pdk && git rev-parse HEAD >> $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
+	printf "open_pdks " >> $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
+	cd $(PDK_ROOT)/open_pdks && git rev-parse HEAD >> $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
+	printf "magic $(PDK_MAGIC_COMMIT)" >> $(PDK_ROOT)/$(PDK_VARIENT)/SOURCES
 
 .RECIPE: manifest
 manifest: mag/ maglef/ verilog/rtl/ Makefile
