@@ -78,10 +78,11 @@ FOREGROUND ?= 1
 
 # PDK setup configs
 THREADS ?= $(shell nproc)
-STD_CELL_LIBRARY ?= sky130_fd_sc_hd
-SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
-IO_LIBRARY ?= sky130_fd_io
-PRIMITIVES_LIBRARY ?= sky130_fd_pr
+export STD_CELL_LIBRARY ?= sky130_fd_sc_hd
+export SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
+export IO_LIBRARY ?= sky130_fd_io
+export PRIMITIVES_LIBRARY ?= sky130_fd_pr
+
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
 OPEN_PDKS_COMMIT ?= 27ecf1c16911f7dd4428ffab96f62c1fb876ea70
 PDK_MAGIC_COMMIT ?= 0bb6ac1fa98b5371c73156b6e876925397fb7cbc
@@ -501,281 +502,53 @@ help:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
 
 # RCX Extraction
-BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
-RCX_BLOCKS = $(foreach block, $(BLOCKS), rcx-$(block))
-OPENLANE_IMAGE_NAME=efabless/openlane:2021.11.25_01.26.14
-$(RCX_BLOCKS): rcx-% : ./def/%.def 
+export TECH_LEF=$(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef
+export STD_CELL_LEF=$(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef
+
+blocks=$(shell cd openlane && find * -maxdepth 0 -type d)
+rcx-blocks=$(blocks:%=rcx-%-)
+rcx-blocks=$(foreach block, $(BLOCKS), rcx-$(block))
+
+OPENLANE_TAG ?= 2021.11.23_01.42.34
+OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
+
+.PHONY: list-rcx
+list-rcx:
+	#$(rcx-blocks)
+
+.PHONY: $(rcx-blocks)
+$(rcx-blocks): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
+$(rcx-blocks): rcx-% : 
 	echo "Running RC Extraction on $*"
-	mkdir -p ./def/tmp 
-	# merge techlef and standard cell lef files
-	python3 $(OPENLANE_ROOT)/scripts/mergeLef.py -i $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/techlef/$(SPECIAL_VOLTAGE_LIBRARY).tlef $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lef/*.lef $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lef/*.lef -o ./def/tmp/merged.lef
-	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
-		set std_cell_lef ./def/tmp/merged.lef;\
-		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
-		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-		};\
-		if {[catch {read_lef \$$sram_lef} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-		};\
-		foreach lef_file [glob ./lef/*.lef] {\
-			if {[catch {read_lef \$$lef_file} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-			}\
-		};\
-		if {[catch {read_def -order_wires ./def/$*.def} errmsg]} {\
-			puts stderr \$$errmsg;\
-			exit 1;\
-		};\
-		read_sdc -echo ./sdc/$*.sdc;\
-		set_propagated_clock [all_clocks];\
-		set rc_values \"mcon 9.249146E-3,via 4.5E-3,via2 3.368786E-3,via3 0.376635E-3,via4 0.00580E-3\";\
-		set l_rc \"li1 1.499e-04 7.176e-02,met1 1.449e-04 8.929e-04,met2 1.331e-04 8.929e-04,met3 1.464e-04 1.567e-04,met4 1.297e-04 1.567e-04,met5 1.501e-04 1.781e-05\";\
-		set layers_rc [split \$$l_rc ","];\
-		foreach layer_rc \$$layers_rc {\
-			set layer_name [lindex \$$layer_rc 0];\
-			set capacitance [lindex \$$layer_rc 1];\
-			set resistance [lindex \$$layer_rc 2];\
-			set_layer_rc -layer \$$layer_name -capacitance \$$capacitance -resistance \$$resistance;\
-		};\
-		set vias_rc [split \$$rc_values ","];\
-    	foreach via_rc \$$vias_rc {\
-        		set layer_name [lindex \$$via_rc 0];\
-        		set resistance [lindex \$$via_rc 1];\
-       			set_layer_rc -via \$$layer_name -resistance \$$resistance;\
-    	};\
-		set_wire_rc -signal -layer met2;\
-		set_wire_rc -clock -layer met5;\
-		define_process_corner -ext_model_index 0 X;\
-		extract_parasitics -ext_model_file ${PDK_ROOT}/sky130A/libs.tech/openlane/rcx_rules.info -corner_cnt 1 -max_res 50 -coupling_threshold 0.1 -cc_model 10 -context_depth 5;\
-		write_spef ./spef/$*.spef" > ./def/tmp/rcx_$*.tcl
-## Generate Spef file
-	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	sh -c " cd /caravel; openroad -exit ./def/tmp/rcx_$*.tcl |& tee ./def/tmp/rcx_$*.log" 
-## Run OpenSTA
-	echo "\
-		set std_cell_lef ./def/tmp/merged.lef;\
-		set sram_lef $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef;\
-		if {[catch {read_lef \$$std_cell_lef} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-		};\
-		if {[catch {read_lef \$$sram_lef} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-		};\
-		foreach lef_file [glob ./lef/*.lef] {\
-			if {[catch {read_lef \$$lef_file} errmsg]} {\
-    			puts stderr \$$errmsg;\
-    			exit 1;\
-			}\
-		};\
-		set_cmd_units -time ns -capacitance pF -current mA -voltage V -resistance kOhm -distance um;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/sky130_fd_sc_hvl__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
-		read_verilog ./verilog/gl/$*.v;\
-		link_design $*;\
-		read_spef ./spef/$*.spef;\
-		read_sdc -echo ./sdc/$*.sdc;\
-		write_sdf ./sdf/$*.sdf -divider . -include_typ;\
-		report_checks -fields {capacitance slew input_pins nets fanout} -path_delay min_max -group_count 5;\
-		report_check_types -max_slew -max_capacitance -max_fanout -violators;\
-		report_checks -to [all_outputs] -group_count 1000;\
-		" > ./def/tmp/sta_$*.tcl 
-	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	sh -c "cd /caravel; openroad -exit ./def/tmp/sta_$*.tcl |& tee ./def/tmp/sta_$*.log" 
+	docker run --rm \
+		-v $(PDK_ROOT):$(PDK_ROOT) \
+		-v $(PWD):$(PWD) \
+		-e PDK_ROOT=$(PDK_ROOT) \
+		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
+		-e BLOCK=$* \
+		-e MCW_ROOT=$(MCW_ROOT) \
+		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+		$(OPENLANE_IMAGE_NAME) \
+		bash -c "openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl |& tee $(CARAVEL_ROOT)/logs/$*-rcx.log"
+	# logged to $(CARAVEL_ROOT)/logs/$*-rcx-log
 
 
+.PHONY: caravel_timing_typ
+caravel_timing_typ: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
 caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
-	mkdir -p ./def/tmp
-## Run OpenSTA
-	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__tt_025C_1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__tt_025C_3v30_lv1v80.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_tt_100C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
-		read_verilog ./verilog/gl/caravel_clocking.v;\
-		read_verilog ./verilog/gl/digital_pll.v;\
-		read_verilog ./verilog/gl/housekeeping.v;\
-		read_verilog ./verilog/gl/gpio_logic_high.v;\
-		read_verilog ./verilog/gl/gpio_control_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_0403.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_1803.v;\
-		read_verilog ./verilog/gl/mgmt_protect_hv.v;\
-		read_verilog ./verilog/gl/mprj_logic_high.v;\
-		read_verilog ./verilog/gl/mprj2_logic_high.v;\
-		read_verilog ./verilog/gl/mgmt_protect.v;\
-		read_verilog ./verilog/gl/user_id_programming.v;\
-		read_verilog ./verilog/gl/xres_buf.v;\
-		read_verilog ./verilog/gl/spare_logic_block.v;\
-		read_verilog ./verilog/gl/chip_io.v;\
-		read_verilog ./verilog/gl/caravel.v;\
-		link_design caravel;\
-		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
-		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
-		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
-		read_spef -path padframe ./spef/chip_io.spef;\
-		read_spef -path rstb_level ./spef/xres_buf.spef;\
-		read_spef -path pll ./spef/digital_pll.spef;\
-		read_spef -path housekeeping ./spef/housekeeping.spef;\
-		read_spef -path mgmt_buffers/powergood_check ./spef/mgmt_protect_hv.spef;\
-		read_spef -path mgmt_buffers/mprj_logic_high_inst ./spef/mprj_logic_high.spef;\
-		read_spef -path mgmt_buffers/mprj2_logic_high_inst ./spef/mprj2_logic_high.spef;\
-		read_spef -path mgmt_buffers ./spef/mgmt_protect.spef;\
-		read_spef -path \gpio_control_bidir_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[9] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[11] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[12] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[13] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[14] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[15] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[9] ./spef/gpio_control_block.spef;\
-		read_spef -path gpio_defaults_block_0 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_1 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_2 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_3 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_4 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_5 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_6 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_7 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_8 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_9 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_10 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_11 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_12 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_13 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_14 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_15 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_16 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_17 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_18 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_19 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_20 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_21 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_22 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_23 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_24 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_25 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_26 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_27 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_28 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_29 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_30 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_31 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_32 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_33 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_34 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
-		read_spef ./spef/caravel.spef;\
-		read_sdc -echo ./sdc/caravel.sdc;\
-		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_checks -path_delay max -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_worst_slack -max ;\
-		report_worst_slack -min ;\
-		echo \" Management Area Interface \";\
-		report_checks -to soc/core_clk -unconstrained -group_count 1;\
-		echo \" User project Interface \";\
-		report_checks -to mprj/wb_clk_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wb_rst_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_cyc_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_stb_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_we_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_sel_i[*] -unconstrained -group_count 4;\
-		report_checks -to mprj/wbs_adr_i[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/io_in[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/user_clock2 -unconstrained -group_count 32;\
-		report_checks -to mprj/user_irq[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
-		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
-		echo \" Flash output Interface \";\
-		report_checks -to flash_clk -group_count 1;\
-		report_checks -to flash_csb -group_count 1;\
-		report_checks -to flash_io0 -group_count 1;\
-		" > ./def/tmp/caravel_timing_typ.tcl 
-	sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log 
+	docker run --rm \
+		-v $(PDK_ROOT):$(PDK_ROOT) \
+		-v $(PWD):$(PWD) \
+		-e PDK_ROOT=$(PDK_ROOT) \
+		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
+		-e BLOCK=caravel \
+		-e MCW_ROOT=$(MCW_ROOT) \
+		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+		$(OPENLANE_IMAGE_NAME) \
+		bash -c "sta -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee $(CARAVEL_ROOT)/logs/$@.log"
+	# logged to $(CARAVEL_ROOT)/logs/$@.log
 
 caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
 	mkdir -p ./def/tmp
@@ -1180,7 +953,7 @@ ifeq ($(SUBMODULE),1)
 	$(MAKE) simlink
 else
 	@echo "Installing $(MCW_NAME).."
-	@git clone -b $(MCW_TAG) $(MCW_REPO) $(MCW_ROOT) --depth=1
+	git clone -b $(MCW_TAG) $(MCW_REPO) $(MCW_ROOT) --depth=1
 endif
 
 

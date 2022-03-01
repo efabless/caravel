@@ -1,0 +1,47 @@
+source $::env(CARAVEL_ROOT)/env/common.tcl
+source $::env(CORNER_ENV_FILE)
+
+set libs [split [regexp -all -inline {\S+} $libs]]
+set extra_lefs [split [regexp -all -inline {\S+} $extra_lefs]]
+
+foreach liberty $libs {
+    read_liberty $liberty
+}
+
+exec python3 /openlane/scripts/mergeLef.py \
+    --inputLef $tech_lef $cells_lef \
+    --outputLef $merged_lef
+
+if {[catch {read_lef $merged_lef} errmsg]} {
+    puts stderr $errmsg
+    exit 1
+}
+if {[catch {read_lef $sram_lef} errmsg]} {
+    puts stderr $errmsg
+    exit 1
+}
+foreach lef_file $extra_lefs {		
+    if {[catch {read_lef $lef_file} errmsg]} {
+        puts stderr $errmsg
+        exit 1
+    }	
+}
+if {[catch {read_def -order_wires $def} errmsg]} {
+    puts stderr $errmsg
+    exit 1
+}
+read_sdc -echo $sdc
+set_propagated_clock [all_clocks]
+
+set_wire_rc -signal -layer $signal_layer
+set_wire_rc -clock -layer $clock_layer
+define_process_corner -ext_model_index 0 X
+extract_parasitics -ext_model_file $rcx_rules_file \
+    -corner_cnt 1 \
+    -max_res 50 \
+    -coupling_threshold 0.1 \
+    -cc_model 10 \
+    -context_depth 5
+
+write_spef $spef
+
