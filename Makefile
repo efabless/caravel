@@ -512,22 +512,28 @@ rcx-blocks=$(foreach block, $(BLOCKS), rcx-$(block))
 OPENLANE_TAG ?= 2021.11.23_01.42.34
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 
+export PDK_VARIENT=sky130A
+
+./tmp ./logs: % :
+	mkdir -p $*
+
 .PHONY: list-rcx
 list-rcx:
 	#$(rcx-blocks)
 
 .PHONY: $(rcx-blocks)
 $(rcx-blocks): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
-$(rcx-blocks): rcx-% : 
+$(rcx-blocks): rcx-% : ./tmp ./logs
 	echo "Running RC Extraction on $*"
 	docker run --rm \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD):$(PWD) \
-		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
 		-e BLOCK=$* \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
+		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) \
 		bash -c "openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl |& tee $(CARAVEL_ROOT)/logs/$*-rcx.log"
@@ -536,323 +542,29 @@ $(rcx-blocks): rcx-% :
 
 .PHONY: caravel_timing_typ
 caravel_timing_typ: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
-caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
+caravel_timing_typ: caravel_timing
+
+caravel_timing_slow: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ss.tcl
+caravel_timing_slow: caravel_timing
+
+caravel_timing_fast: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ff.tcl
+caravel_timing_fast: caravel_timing
+
+caravel_timing: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw ./tmp ./logs
 	docker run --rm \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD):$(PWD) \
-		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
 		-e BLOCK=caravel \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
+		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) \
-		bash -c "sta -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee $(CARAVEL_ROOT)/logs/$@.log"
-	# logged to $(CARAVEL_ROOT)/logs/$@.log
-
-caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
-	mkdir -p ./def/tmp
-## Run OpenSTA
-	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ss_100C_1v60.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ss_100C_1v65_lv1v40.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ss_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v40_1v65.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
-		read_verilog ./verilog/gl/caravel_clocking.v;\
-		read_verilog ./verilog/gl/digital_pll.v;\
-		read_verilog ./verilog/gl/housekeeping.v;\
-		read_verilog ./verilog/gl/gpio_logic_high.v;\
-		read_verilog ./verilog/gl/gpio_control_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_0403.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_1803.v;\
-		read_verilog ./verilog/gl/mgmt_protect_hv.v;\
-		read_verilog ./verilog/gl/mprj_logic_high.v;\
-		read_verilog ./verilog/gl/mprj2_logic_high.v;\
-		read_verilog ./verilog/gl/mgmt_protect.v;\
-		read_verilog ./verilog/gl/user_id_programming.v;\
-		read_verilog ./verilog/gl/xres_buf.v;\
-		read_verilog ./verilog/gl/spare_logic_block.v;\
-		read_verilog ./verilog/gl/chip_io.v;\
-		read_verilog ./verilog/gl/caravel.v;\
-		link_design caravel;\
-		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
-		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
-		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
-		read_spef -path padframe ./spef/chip_io.spef;\
-		read_spef -path rstb_level ./spef/xres_buf.spef;\
-		read_spef -path pll ./spef/digital_pll.spef;\
-		read_spef -path housekeeping ./spef/housekeeping.spef;\
-		read_spef -path mgmt_buffers/powergood_check ./spef/mgmt_protect_hv.spef;\
-		read_spef -path mgmt_buffers/mprj_logic_high_inst ./spef/mprj_logic_high.spef;\
-		read_spef -path mgmt_buffers/mprj2_logic_high_inst ./spef/mprj2_logic_high.spef;\
-		read_spef -path mgmt_buffers ./spef/mgmt_protect.spef;\
-		read_spef -path \gpio_control_bidir_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[9] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[11] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[12] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[13] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[14] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[15] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[9] ./spef/gpio_control_block.spef;\
-		read_spef -path gpio_defaults_block_0 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_1 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_2 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_3 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_4 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_5 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_6 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_7 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_8 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_9 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_10 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_11 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_12 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_13 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_14 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_15 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_16 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_17 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_18 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_19 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_20 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_21 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_22 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_23 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_24 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_25 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_26 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_27 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_28 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_29 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_30 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_31 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_32 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_33 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_34 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
-		read_spef ./spef/caravel.spef;\
-		read_sdc -echo ./sdc/caravel.sdc;\
-		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_checks -path_delay max -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_worst_slack -max ;\
-		report_worst_slack -min ;\
-		echo \" Management Area Interface \";\
-		report_checks -to soc/core_clk -unconstrained -group_count 1;\
-		echo \" User project Interface \";\
-		report_checks -to mprj/wb_clk_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wb_rst_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_cyc_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_stb_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_we_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_sel_i[*] -unconstrained -group_count 4;\
-		report_checks -to mprj/wbs_adr_i[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/io_in[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/user_clock2 -unconstrained -group_count 32;\
-		report_checks -to mprj/user_irq[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
-		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
-		" > ./def/tmp/caravel_timing_slow.tcl 
-	sta -exit ./def/tmp/caravel_timing_slow.tcl | tee ./signoff/caravel/caravel_timing_slow.log 
-
-
-caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
-	mkdir -p ./def/tmp
-## Run OpenSTA
-	echo "\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lib/$(STD_CELL_LIBRARY)__ff_n40C_1v95.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lib/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(SPECIAL_VOLTAGE_LIBRARY)/lib/$(SPECIAL_VOLTAGE_LIBRARY)__ff_n40C_4v40_lv1v95.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_gpiov2_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_hvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_ground_lvc_wpad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_power_lvc_wpad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib;\
-		read_liberty $(PDK_ROOT)/sky130A/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
-		read_verilog ./verilog/gl/caravel_clocking.v;\
-		read_verilog ./verilog/gl/digital_pll.v;\
-		read_verilog ./verilog/gl/housekeeping.v;\
-		read_verilog ./verilog/gl/gpio_logic_high.v;\
-		read_verilog ./verilog/gl/gpio_control_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_0403.v;\
-		read_verilog ./verilog/gl/gpio_defaults_block_1803.v;\
-		read_verilog ./verilog/gl/mgmt_protect_hv.v;\
-		read_verilog ./verilog/gl/mprj_logic_high.v;\
-		read_verilog ./verilog/gl/mprj2_logic_high.v;\
-		read_verilog ./verilog/gl/mgmt_protect.v;\
-		read_verilog ./verilog/gl/user_id_programming.v;\
-		read_verilog ./verilog/gl/xres_buf.v;\
-		read_verilog ./verilog/gl/spare_logic_block.v;\
-		read_verilog ./verilog/gl/chip_io.v;\
-		read_verilog ./verilog/gl/caravel.v;\
-		link_design caravel;\
-		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
-		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
-		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
-		read_spef -path padframe ./spef/chip_io.spef;\
-		read_spef -path rstb_level ./spef/xres_buf.spef;\
-		read_spef -path pll ./spef/digital_pll.spef;\
-		read_spef -path housekeeping ./spef/housekeeping.spef;\
-		read_spef -path mgmt_buffers/powergood_check ./spef/mgmt_protect_hv.spef;\
-		read_spef -path mgmt_buffers/mprj_logic_high_inst ./spef/mprj_logic_high.spef;\
-		read_spef -path mgmt_buffers/mprj2_logic_high_inst ./spef/mprj2_logic_high.spef;\
-		read_spef -path mgmt_buffers ./spef/mgmt_protect.spef;\
-		read_spef -path \gpio_control_bidir_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_bidir_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1[9] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_1a[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[0] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[10] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[11] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[12] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[13] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[14] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[15] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[1] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[2] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[3] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[4] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[5] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[6] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[7] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[8] ./spef/gpio_control_block.spef;\
-		read_spef -path \gpio_control_in_2[9] ./spef/gpio_control_block.spef;\
-		read_spef -path gpio_defaults_block_0 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_1 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_2 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_3 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_4 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_5 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_6 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_7 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_8 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_9 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_10 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_11 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_12 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_13 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_14 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_15 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_16 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_17 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_18 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_19 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_20 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_21 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_22 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_23 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_24 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_25 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_26 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_27 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_28 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_29 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_30 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_31 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_32 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_33 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_34 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
-		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
-		read_spef ./spef/caravel.spef;\
-		read_sdc -echo ./sdc/caravel.sdc;\
-		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_checks -path_delay max -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
-		report_worst_slack -max ;\
-		report_worst_slack -min ;\
-		echo \" Management Area Interface \";\
-		report_checks -to soc/core_clk -unconstrained -group_count 1;\
-		echo \" User project Interface \";\
-		report_checks -to mprj/wb_clk_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wb_rst_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_cyc_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_stb_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_we_i -unconstrained -group_count 1;\
-		report_checks -to mprj/wbs_sel_i[*] -unconstrained -group_count 4;\
-		report_checks -to mprj/wbs_adr_i[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/io_in[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/user_clock2 -unconstrained -group_count 32;\
-		report_checks -to mprj/user_irq[*] -unconstrained -group_count 32;\
-		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
-		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
-		" > ./def/tmp/caravel_timing_fast.tcl 
-	sta -exit ./def/tmp/caravel_timing_fast.tcl | tee ./signoff/caravel/caravel_timing_fast.log 
+		bash -c "sta -no_splash -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee \
+			$(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE)).log"
+	@echo "logged to $(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE)).log"
 
 ###########################################################################
 .PHONY: generate_fill

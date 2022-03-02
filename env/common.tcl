@@ -7,16 +7,16 @@ set signal_layer            "met2"
 set clock_layer             "met5"
 
 set extra_lefs "[glob $::env(CARAVEL_ROOT)/lef/*.lef]"
-set tech_lef $::env(PDK_ROOT)/sky130A/libs.ref/$std_cell_library/techlef/$std_cell_library.tlef
-set cells_lef $::env(PDK_ROOT)/sky130A/libs.ref/$std_cell_library/lef/$std_cell_library.lef
+set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/$std_cell_library.tlef
+set cells_lef $::env(PDK_REF_PATH)/$std_cell_library/lef/$std_cell_library.lef
 
 set def $::env(CARAVEL_ROOT)/def/$::env(BLOCK).def
 set spef $::env(CARAVEL_ROOT)/spef/$::env(BLOCK).spef
 set sdc $::env(CARAVEL_ROOT)/sdc/$::env(BLOCK).sdc
-set rcx_rules_file $::env(PDK_ROOT)/sky130A/libs.tech/openlane/rcx_rules.info
+set rcx_rules_file $::env(PDK_TECH_PATH)/openlane/rcx_rules.info
 set merged_lef $::env(CARAVEL_ROOT)/tmp/merged_lef.lef
 
-set sram_lef $::env(PDK_ROOT)/sky130A/libs.ref/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
+set sram_lef $::env(PDK_REF_PATH)/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
 
 # order matter
 set verilogs "

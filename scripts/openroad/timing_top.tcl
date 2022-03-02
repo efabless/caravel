@@ -25,8 +25,6 @@ read_sdc -echo $sdc
 
 report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50
 report_checks -path_delay max -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50
-report_worst_slack -max 
-report_worst_slack -min 
 puts "Management Area Interface"
 report_checks -to soc/core_clk -unconstrained -group_count 1
 puts "User project Interface"
@@ -46,3 +44,6 @@ puts "Flash output Interface"
 report_checks -to flash_clk -group_count 1
 report_checks -to flash_csb -group_count 1
 report_checks -to flash_io0 -group_count 1
+
+report_worst_slack -max 
+report_worst_slack -min 
