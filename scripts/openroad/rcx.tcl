@@ -36,12 +36,10 @@ set_propagated_clock [all_clocks]
 set_wire_rc -signal -layer $signal_layer
 set_wire_rc -clock -layer $clock_layer
 define_process_corner -ext_model_index 0 X
-extract_parasitics -ext_model_file $rcx_rules_file \
+extract_parasitics \
+    -ext_model_file $rcx_rules_file \
     -corner_cnt 1 \
-    -max_res 50 \
-    -coupling_threshold 0.1 \
-    -cc_model 10 \
-    -context_depth 5
+    -lef_res
 
 write_spef $spef
 
