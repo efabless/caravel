@@ -21,7 +21,7 @@
 namespace path {::tcl::mathop ::tcl::mathfunc}
 
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "$::env(PDK_ROOT)/$::env(PDK_VARIENT)"
+    set PDKPATH "$::env(PDK_ROOT)/$::env(PDK)"
 }
 
 source $PDKPATH/libs.tech/magic/current/bump_bond_generator/bump_bond.tcl

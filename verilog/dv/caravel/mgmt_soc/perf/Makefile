@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-PDK_PATH = $(PDK_ROOT)/$(PDK_VARIENT)
+PDK_PATH = $(PDK_ROOT)/$(PDK)
 VERILOG_PATH = ../../../..
 RTL_PATH = $(VERILOG_PATH)/rtl
 BEHAVIOURAL_MODELS = ../../ 
@@ -72,14 +72,14 @@ check-env:
 ifndef PDK_ROOT
 	$(error PDK_ROOT is undefined, please export it before running make)
 endif
-ifeq (,$(wildcard $(PDK_ROOT)/$(PDK_VARIENT)))
-	$(error $(PDK_ROOT)/$(PDK_VARIENT) not found, please install pdk before running make)
+ifeq (,$(wildcard $(PDK_ROOT)/$(PDK)))
+	$(error $(PDK_ROOT)/$(PDK) not found, please install pdk before running make)
 endif
 ifeq (,$(wildcard $(GCC_PATH)/$(GCC_PREFIX)-gcc ))
 	$(error $(GCC_PATH)/$(GCC_PREFIX)-gcc is not found, please export GCC_PATH and GCC_PREFIX before running make)
 endif
 # check for efabless style installation
-ifeq (,$(wildcard $(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/*/verilog))
+ifeq (,$(wildcard $(PDK_ROOT)/$(PDK)/libs.ref/*/verilog))
 SIM_DEFINES := ${SIM_DEFINES} -DEF_STYLE
 endif
 # ---- Clean ----

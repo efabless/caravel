@@ -48,7 +48,7 @@ endif
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-e PDK_VARIENT=$(PDK_VARIENT) \
+		-e PDK=$(PDK) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
@@ -56,7 +56,7 @@ endif
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-e PDK_VARIENT=$(PDK_VARIENT) \
+		-e PDK=$(PDK) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
