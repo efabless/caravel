@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020 Efabless Corporation
+# SPDX-FileCopyrightText: 2020 Efabless Corporation.32
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -83,9 +83,11 @@ export SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 export IO_LIBRARY ?= sky130_fd_io
 export PRIMITIVES_LIBRARY ?= sky130_fd_pr
 
-SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 27ecf1c16911f7dd4428ffab96f62c1fb876ea70
-PDK_MAGIC_COMMIT ?= 0bb6ac1fa98b5371c73156b6e876925397fb7cbc
+SKYWATER_COMMIT ?= f70d8ca46961ff92719d8870a18a076370b85f6c
+OPEN_PDKS_COMMIT ?= 8e80d782bad327749923f21908c67928c116db72
+PDK_MAGIC_COMMIT ?= 47df9da0d3dfe551b5b67e69cd346b040e7e079f
+
+include timing.mk
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -500,71 +502,6 @@ $(MAG_BLOCKS): mag2lef-% : ./mag/%.mag uncompress
 .PHONY: help
 help:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
-
-# RCX Extraction
-export TECH_LEF=$(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/techlef/$(STD_CELL_LIBRARY).tlef
-export STD_CELL_LEF=$(PDK_ROOT)/sky130A/libs.ref/$(STD_CELL_LIBRARY)/lef/*.lef
-
-blocks=$(shell cd openlane && find * -maxdepth 0 -type d)
-rcx-blocks=$(blocks:%=rcx-%-)
-rcx-blocks=$(foreach block, $(BLOCKS), rcx-$(block))
-
-OPENLANE_TAG ?= 2021.11.23_01.42.34
-OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
-
-export PDK_VARIENT=sky130A
-
-./tmp ./logs: % :
-	mkdir -p $*
-
-.PHONY: list-rcx
-list-rcx:
-	#$(rcx-blocks)
-
-.PHONY: $(rcx-blocks)
-$(rcx-blocks): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
-$(rcx-blocks): rcx-% : ./tmp ./logs
-	echo "Running RC Extraction on $*"
-	docker run --rm \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD):$(PWD) \
-		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
-		-e BLOCK=$* \
-		-e MCW_ROOT=$(MCW_ROOT) \
-		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
-		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
-		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) \
-		bash -c "openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl |& tee $(CARAVEL_ROOT)/logs/$*-rcx.log"
-	# logged to $(CARAVEL_ROOT)/logs/$*-rcx-log
-
-
-.PHONY: caravel_timing_typ
-caravel_timing_typ: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
-caravel_timing_typ: caravel_timing
-
-caravel_timing_slow: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ss.tcl
-caravel_timing_slow: caravel_timing
-
-caravel_timing_fast: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ff.tcl
-caravel_timing_fast: caravel_timing
-
-caravel_timing: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw ./tmp ./logs
-	docker run --rm \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD):$(PWD) \
-		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
-		-e BLOCK=caravel \
-		-e MCW_ROOT=$(MCW_ROOT) \
-		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
-		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
-		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) \
-		bash -c "sta -no_splash -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee \
-			$(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE)).log"
-	@echo "logged to $(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE)).log"
 
 ###########################################################################
 .PHONY: generate_fill

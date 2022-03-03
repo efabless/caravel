@@ -20,6 +20,7 @@ if {[catch {read_lef $sram_lef} errmsg]} {
     puts stderr $errmsg
     exit 1
 }
+
 foreach lef_file $extra_lefs {		
     if {[catch {read_lef $lef_file} errmsg]} {
         puts stderr $errmsg
@@ -30,7 +31,7 @@ if {[catch {read_def -order_wires $def} errmsg]} {
     puts stderr $errmsg
     exit 1
 }
-read_sdc -echo $sdc
+read_sdc $sdc
 set_propagated_clock [all_clocks]
 
 set_wire_rc -signal -layer $signal_layer
