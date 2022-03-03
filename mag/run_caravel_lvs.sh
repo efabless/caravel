@@ -18,4 +18,4 @@ rm -f *.ext
 fi
 
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" $PDK_ROOT/$PDK/libs.tech/netgen/$PDK_VARIENT_setup.tcl comp.out
+netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" $PDK_ROOT/$PDK/libs.tech/netgen/${PDK}_setup.tcl comp.out
