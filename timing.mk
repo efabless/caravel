@@ -1,4 +1,44 @@
 blocks=$(shell cd openlane && find * -maxdepth 0 -type d)
+# we don't have user_id_programming.def)
+# mgmt_protect_hvl use hvl library which we don't handle yet
+blocks:=$(subst mgmt_protect_hvl,,$(blocks))
+blocks:=$(subst chip_io_alt,,$(blocks))
+blocks:=$(subst user_id_programming,,$(blocks))
+blocks:=$(subst user_project_wrapper,,$(blocks))
+blocks:=$(subst user_analog_project_wrapper,,$(blocks))
+
+rcx-requirements=$(CARAVEL_ROOT)/def/%.def 
+rcx-requirements +=$(CARAVEL_ROOT)/lef/%.lef 
+rcx-requirements +=$(CARAVEL_ROOT)/sdc/%.sdc
+rcx-requirements +=$(CARAVEL_ROOT)/verilog/gl/%.v
+
+exceptions=$(MCW_ROOT)/lef/caravel.lef
+exceptions +=$(MCW_ROOT)/lef/caravan.lef
+# lets ignore these for now
+exceptions +=$(MCW_ROOT)/sdc/user_analog_project_wrapper.sdc
+exceptions +=$(MCW_ROOT)/sdc/user_project_wrapper.sdc
+exceptions +=$(MCW_ROOT)/verilog/gl/user_analog_project_wrapper.v
+exceptions +=$(MCW_ROOT)/verilog/gl/user_project_wrapper.v
+
+$(exceptions):
+	$(warning we don't need lefs for $@ but take note anyway)
+
+$(CARAVEL_ROOT)/def/%.def: $(MCW_ROOT)/def/%.def ;
+$(MCW_ROOT)/def/%.def: 
+	$(error if you are here it probably means that $@.def is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/lef/%.lef: $(MCW_ROOT)/lef/%.lef ;
+$(MCW_ROOT)/lef/%.lef: 
+	$(error if you are here it probably means that $@.lef is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/sdc/%.sdc: $(MCW_ROOT)/sdc/%.sdc ;
+$(MCW_ROOT)/sdc/%.sdc: 
+	$(error if you are here it probably means that $@.sdc is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/verilog/gl/%.v: $(MCW_ROOT)/verilog/gl/%.v ;
+$(MCW_ROOT)/verilog/gl/%.v: 
+	$(error if you are here it probably means that gl/$@.v is missing from mcw and caravel)
+
 rcx-blocks=$(blocks:%=rcx-%)
 rcx-blocks-all=$(blocks:%=rcx-%-all)
 rcx-blocks-nom=$(blocks:%=rcx-%-nom)
@@ -12,8 +52,8 @@ OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 
 export PDK_VARIENT=sky130A
 
-./tmp ./logs: % :
-	mkdir -p $*
+./tmp ./logs:
+	mkdir -p $@
 
 .PHONY: list-rcx
 list-rcx:
@@ -40,7 +80,7 @@ define run_docker_rcx
 endef
 
 .PHONY: $(rcx-blocks-all)
-$(rcx-blocks-all): rcx-%-all: rcx-%-nom rcx-%-max rcx-%-min
+$(rcx-blocks-all): rcx-%-all: $(rcx-requirements) rcx-%-nom rcx-%-max rcx-%-min
 
 .PHONY: $(rcx-blocks-nom)
 $(rcx-blocks-nom): export SPEF_CORNER=nom
