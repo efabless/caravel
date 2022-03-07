@@ -1,43 +1,13 @@
-blocks=$(shell cd openlane && find * -maxdepth 0 -type d)
+blocks=$(shell cd $(CARAVEL_ROOT)/openlane && find * -maxdepth 0 -type d)
+blocks:=$(subst user_project_wrapper,,$(blocks))
+blocks +=$(shell cd $(MCW_ROOT)/openlane && find * -maxdepth 0 -type d)
+blocks +=$(shell cd $(CUP_ROOT)/openlane && find * -maxdepth 0 -type d)
+
 # we don't have user_id_programming.def)
 # mgmt_protect_hvl use hvl library which we don't handle yet
 blocks:=$(subst mgmt_protect_hvl,,$(blocks))
 blocks:=$(subst chip_io_alt,,$(blocks))
 blocks:=$(subst user_id_programming,,$(blocks))
-blocks:=$(subst user_project_wrapper,,$(blocks))
-blocks:=$(subst user_analog_project_wrapper,,$(blocks))
-
-rcx-requirements=$(CARAVEL_ROOT)/def/%.def 
-rcx-requirements +=$(CARAVEL_ROOT)/lef/%.lef 
-rcx-requirements +=$(CARAVEL_ROOT)/sdc/%.sdc
-rcx-requirements +=$(CARAVEL_ROOT)/verilog/gl/%.v
-
-exceptions=$(MCW_ROOT)/lef/caravel.lef
-exceptions +=$(MCW_ROOT)/lef/caravan.lef
-# lets ignore these for now
-exceptions +=$(MCW_ROOT)/sdc/user_analog_project_wrapper.sdc
-exceptions +=$(MCW_ROOT)/sdc/user_project_wrapper.sdc
-exceptions +=$(MCW_ROOT)/verilog/gl/user_analog_project_wrapper.v
-exceptions +=$(MCW_ROOT)/verilog/gl/user_project_wrapper.v
-
-$(exceptions):
-	$(warning we don't need lefs for $@ but take note anyway)
-
-$(CARAVEL_ROOT)/def/%.def: $(MCW_ROOT)/def/%.def ;
-$(MCW_ROOT)/def/%.def: 
-	$(error if you are here it probably means that $@.def is missing from mcw and caravel)
-
-$(CARAVEL_ROOT)/lef/%.lef: $(MCW_ROOT)/lef/%.lef ;
-$(MCW_ROOT)/lef/%.lef: 
-	$(error if you are here it probably means that $@.lef is missing from mcw and caravel)
-
-$(CARAVEL_ROOT)/sdc/%.sdc: $(MCW_ROOT)/sdc/%.sdc ;
-$(MCW_ROOT)/sdc/%.sdc: 
-	$(error if you are here it probably means that $@.sdc is missing from mcw and caravel)
-
-$(CARAVEL_ROOT)/verilog/gl/%.v: $(MCW_ROOT)/verilog/gl/%.v ;
-$(MCW_ROOT)/verilog/gl/%.v: 
-	$(error if you are here it probably means that gl/$@.v is missing from mcw and caravel)
 
 rcx-blocks=$(blocks:%=rcx-%)
 rcx-blocks-all=$(blocks:%=rcx-%-all)
@@ -69,6 +39,7 @@ define run_docker_rcx
 		-e BLOCK=$* \
 		-e SPEF_CORNER=$(SPEF_CORNER) \
 		-e MCW_ROOT=$(MCW_ROOT) \
+		-e CUP_ROOT=$(CUP_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
 		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
@@ -108,6 +79,7 @@ define docker_run_caravel_timing
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
 		-e SPEF_CORNER=$(SPEF_CORNER) \
 		-e BLOCK=caravel \
+		-e CUP_ROOT=$(CUP_ROOT) \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
@@ -177,3 +149,42 @@ caravel-timing-fast-max: export SPEF_CORNER=max
 caravel-timing-fast-max:
 	$(call docker_run_caravel_timing)
 
+
+# some useful dev double checking
+#
+
+rcx-requirements=$(CARAVEL_ROOT)/def/%.def
+rcx-requirements +=$(CARAVEL_ROOT)/lef/%.lef
+rcx-requirements +=$(CARAVEL_ROOT)/sdc/%.sdc
+rcx-requirements +=$(CARAVEL_ROOT)/verilog/gl/%.v
+
+exceptions=$(MCW_ROOT)/lef/caravel.lef
+exceptions +=$(MCW_ROOT)/lef/caravan.lef
+# lets ignore these for now
+exceptions +=$(MCW_ROOT)/sdc/user_analog_project_wrapper.sdc
+exceptions +=$(MCW_ROOT)/sdc/user_project_wrapper.sdc
+exceptions +=$(MCW_ROOT)/verilog/gl/user_analog_project_wrapper.v
+exceptions +=$(MCW_ROOT)/verilog/gl/user_project_wrapper.v
+
+$(exceptions):
+	$(warning we don't need lefs for $@ but take note anyway)
+
+$(CARAVEL_ROOT)/def/%.def: $(MCW_ROOT)/def/%.def ;
+$(MCW_ROOT)/def/%.def: $(CUP_ROOT)/def/%.def ;
+$(CUP_ROOT)/def/%.def:
+	$(error error if you are here it probably means that $@.def is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/lef/%.lef: $(MCW_ROOT)/lef/%.lef ;
+$(MCW_ROOT)/lef/%.lef: $(CUP_ROOT)/lef/%.lef ;
+$(CUP_ROOT)/lef/%.lef:
+	$(error error if you are here it probably means that $@.lef is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/sdc/%.sdc: $(MCW_ROOT)/sdc/%.sdc ;
+$(MCW_ROOT)/sdc/%.sdc: $(CUP_ROOT)/sdc/%.sdc ;
+$(CUP_ROOT)/sdc/%.sdc:
+	$(error error if you are here it probably means that $@.sdc is missing from mcw and caravel)
+
+$(CARAVEL_ROOT)/verilog/gl/%.v: $(MCW_ROOT)/verilog/gl/%.v ;
+$(MCW_ROOT)/verilog/gl/%.v: $(CUP_ROOT)/verilog/gl/%.v ;
+$(CUP_ROOT)/verilog/gl/%.v:
+	$(error error if you are here it probably means that gl/$@.v is missing from mcw and caravel)

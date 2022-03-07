@@ -10,43 +10,59 @@ set extra_lefs "[glob $::env(CARAVEL_ROOT)/lef/*.lef] [glob $::env(MCW_ROOT)/lef
 set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/$std_cell_library.$::env(SPEF_CORNER).tlef
 set cells_lef $::env(PDK_REF_PATH)/$std_cell_library/lef/$std_cell_library.lef
 
-set def $::env(CARAVEL_ROOT)/def/$::env(BLOCK).def
-set spef $::env(CARAVEL_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
-set sdc $::env(CARAVEL_ROOT)/sdc/$::env(BLOCK).sdc
-set sdf $::env(CARAVEL_ROOT)/sdf/$::env(BLOCK).sdf
+
+# search order:
+# cup -> mcw -> caravel
+set def $::env(CUP_ROOT)/def/$::env(BLOCK).def
+set spef $::env(CUP_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
+if { ![file exists $def] } {
+    set def $::env(MCW_ROOT)/def/$::env(BLOCK).def
+    set spef $::env(MCW_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
+}
+if { ![file exists $def] } {
+    set def $::env(CARAVEL_ROOT)/def/$::env(BLOCK).def
+    set spef $::env(CARAVEL_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
+}
+
+set sdc $::env(CUP_ROOT)/sdc/$::env(BLOCK).sdc
+if { ![file exists $sdc] } {
+    set sdc $::env(MCW_ROOT)/sdc/$::env(BLOCK).sdc
+}
+if { ![file exists $sdc] } {
+    set sdc $::env(CARAVEL_ROOT)/sdc/$::env(BLOCK).sdc
+}
+
+
+# not sure why we need sdf yet
+set sdf $::env(CUP_ROOT)/sdf/$::env(BLOCK).sdf
+if { ![file exists $sdf] } {
+    set sdf $::env(MCW_ROOT)/sdf/$::env(BLOCK).sdf
+}
+if { ![file exists $sdf] } {
+    set sdf $::env(CARAVEL_ROOT)/sdf/$::env(BLOCK).sdf
+}
+
 set block $::env(BLOCK)
 set rcx_rules_file $::env(PDK_TECH_PATH)/openlane/rules.openrcx.sky130A.$::env(SPEF_CORNER).magic
 set merged_lef $::env(CARAVEL_ROOT)/tmp/merged_lef-$::env(SPEF_CORNER).lef
 
 set sram_lef $::env(PDK_REF_PATH)/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
 
+
 # order matter
 set verilogs "
-    $::env(MCW_ROOT)/verilog/gl/mgmt_core.v
-    $::env(MCW_ROOT)/verilog/gl/DFFRAM.v
-    $::env(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v
-    $::env(CARAVEL_ROOT)/verilog/gl/caravel_clocking.v
-    $::env(CARAVEL_ROOT)/verilog/gl/digital_pll.v
-    $::env(CARAVEL_ROOT)/verilog/gl/housekeeping.v
-    $::env(CARAVEL_ROOT)/verilog/gl/gpio_logic_high.v
-    $::env(CARAVEL_ROOT)/verilog/gl/gpio_control_block.v
-    $::env(CARAVEL_ROOT)/verilog/gl/gpio_defaults_block.v
-    $::env(CARAVEL_ROOT)/verilog/gl/gpio_defaults_block_0403.v
-    $::env(CARAVEL_ROOT)/verilog/gl/gpio_defaults_block_1803.v
-    $::env(CARAVEL_ROOT)/verilog/gl/mgmt_protect_hv.v
-    $::env(CARAVEL_ROOT)/verilog/gl/mprj_logic_high.v
-    $::env(CARAVEL_ROOT)/verilog/gl/mprj2_logic_high.v
-    $::env(CARAVEL_ROOT)/verilog/gl/mgmt_protect.v
-    $::env(CARAVEL_ROOT)/verilog/gl/user_id_programming.v
-    $::env(CARAVEL_ROOT)/verilog/gl/xres_buf.v
-    $::env(CARAVEL_ROOT)/verilog/gl/spare_logic_block.v
-    $::env(CARAVEL_ROOT)/verilog/gl/chip_io.v
-    $::env(CARAVEL_ROOT)/verilog/gl/caravel.v
+    [glob $::env(MCW_ROOT)/verilog/gl/*]
+    [glob $::env(CARAVEL_ROOT)/verilog/gl/*]
 "
 
-set spef_mapping(soc/DFFRAM_0)                       $::env(MCW_ROOT)/spef/DFFRAM.spef
-set spef_mapping(soc/core)                           $::env(MCW_ROOT)/spef/mgmt_core.spef
-set spef_mapping(soc)                                $::env(MCW_ROOT)/spef/mgmt_core_wrapper.spef
+set verilog_exceptions {}
+lappend verilog_exceptions "$::env(CARAVEL_ROOT)/verilog/gl/__user_analog_project_wrapper.v"
+lappend verilog_exceptions "$::env(CARAVEL_ROOT)/verilog/gl/__user_project_wrapper.v"
+
+foreach verilog_exception $verilog_exceptions {
+    set verilogs [regsub "$verilog_exception" "$verilogs" ""]
+}
+
 set spef_mapping(gpio_defaults_block_0)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_1803.spef
 set spef_mapping(gpio_defaults_block_1)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_1803.spef
 set spef_mapping(gpio_defaults_block_2)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_0403.spef
@@ -54,6 +70,9 @@ set spef_mapping(gpio_defaults_block_3)              $::env(CARAVEL_ROOT)/spef/g
 set spef_mapping(gpio_defaults_block_4)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_0403.spef
 set spef_mapping(rstb_level)                         $::env(CARAVEL_ROOT)/spef/xres_buf.spef
 set spef_mapping(mgmt_buffers/powergood_check)       $::env(CARAVEL_ROOT)/spef/mgmt_protect_hv.spef
+set spef_mapping(soc/DFFRAM_0)                       $::env(MCW_ROOT)/spef/DFFRAM_$::env(SPEF_CORNER).spef
+set spef_mapping(soc/core)                           $::env(MCW_ROOT)/spef/mgmt_core_$::env(SPEF_CORNER).spef
+set spef_mapping(soc)                                $::env(MCW_ROOT)/spef/mgmt_core_wrapper_$::env(SPEF_CORNER).spef
 set spef_mapping(padframe)                           $::env(CARAVEL_ROOT)/spef/chip_io_$::env(SPEF_CORNER).spef
 set spef_mapping(pll)                                $::env(CARAVEL_ROOT)/spef/digital_pll_$::env(SPEF_CORNER).spef
 set spef_mapping(housekeeping)                       $::env(CARAVEL_ROOT)/spef/housekeeping_$::env(SPEF_CORNER).spef

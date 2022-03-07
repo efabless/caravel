@@ -27,6 +27,7 @@ foreach lef_file $extra_lefs {
         exit 1
     }	
 }
+
 if {[catch {read_def -order_wires $def} errmsg]} {
     puts stderr $errmsg
     exit 1
@@ -43,4 +44,7 @@ extract_parasitics \
     -lef_res
 
 write_spef $spef
+
+puts "spef: $spef"
+puts "def: $def"
 
