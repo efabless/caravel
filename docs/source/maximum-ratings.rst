@@ -35,3 +35,7 @@ Absolute maximum ratings
     :math:`V_{OL}` ; ; ; 0.4 ; V
     Management area power ; ; TBD ; ; mW
     Storage area power ; ; TBD ; ; mW
+    GPIO voltage ; 0 ; ; VDDIO ; V
+    GPIO frequency ; 0 ; ; 50 ; MHz
+    Management clock ; 0 ; ; 40 ; MHz
+  
