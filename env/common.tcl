@@ -6,10 +6,12 @@ set primitives_library      "sky130_fd_pr"
 set signal_layer            "met2"
 set clock_layer             "met5"
 
-set extra_lefs "[glob $::env(CARAVEL_ROOT)/lef/*.lef] [glob $::env(MCW_ROOT)/lef/*.lef]"
+set extra_lefs "
+    [glob $::env(CARAVEL_ROOT)/lef/*.lef]
+    [glob $::env(MCW_ROOT)/lef/*.lef]
+    [glob $::env(CUP_ROOT)/lef/*.lef]"
 set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/$std_cell_library.$::env(SPEF_CORNER).tlef
 set cells_lef $::env(PDK_REF_PATH)/$std_cell_library/lef/$std_cell_library.lef
-
 
 # search order:
 # cup -> mcw -> caravel
@@ -32,7 +34,6 @@ if { ![file exists $sdc] } {
     set sdc $::env(CARAVEL_ROOT)/sdc/$::env(BLOCK).sdc
 }
 
-
 # not sure why we need sdf yet
 set sdf $::env(CUP_ROOT)/sdf/$::env(BLOCK).sdf
 if { ![file exists $sdf] } {
@@ -48,11 +49,11 @@ set merged_lef $::env(CARAVEL_ROOT)/tmp/merged_lef-$::env(SPEF_CORNER).lef
 
 set sram_lef $::env(PDK_REF_PATH)/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef
 
-
 # order matter
 set verilogs "
     [glob $::env(MCW_ROOT)/verilog/gl/*]
     [glob $::env(CARAVEL_ROOT)/verilog/gl/*]
+    [glob $::env(CUP_ROOT)/verilog/gl/*]
 "
 
 set verilog_exceptions {}

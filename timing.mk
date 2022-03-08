@@ -1,26 +1,24 @@
-blocks=$(shell cd $(CARAVEL_ROOT)/openlane && find * -maxdepth 0 -type d)
-blocks:=$(subst user_project_wrapper,,$(blocks))
-blocks +=$(shell cd $(MCW_ROOT)/openlane && find * -maxdepth 0 -type d)
-blocks +=$(shell cd $(CUP_ROOT)/openlane && find * -maxdepth 0 -type d)
+OPENLANE_TAG ?=  2022.02.23_02.50.41
+OPENLANE_IMAGE_NAME ?=  efabless/openlane:$(OPENLANE_TAG)
+
+blocks  = $(shell cd $(CARAVEL_ROOT)/openlane && find * -maxdepth 0 -type d)
+blocks := $(subst user_project_wrapper,,$(blocks))
+blocks += $(shell cd $(MCW_ROOT)/openlane && find * -maxdepth 0 -type d)
+blocks += $(shell cd $(CUP_ROOT)/openlane && find * -maxdepth 0 -type d)
 
 # we don't have user_id_programming.def)
 # mgmt_protect_hvl use hvl library which we don't handle yet
-blocks:=$(subst mgmt_protect_hvl,,$(blocks))
-blocks:=$(subst chip_io_alt,,$(blocks))
-blocks:=$(subst user_id_programming,,$(blocks))
+blocks := $(subst mgmt_protect_hvl,,$(blocks))
+blocks := $(subst chip_io_alt,,$(blocks))
+blocks := $(subst user_id_programming,,$(blocks))
 
-rcx-blocks=$(blocks:%=rcx-%)
-rcx-blocks-all=$(blocks:%=rcx-%-all)
-rcx-blocks-nom=$(blocks:%=rcx-%-nom)
-rcx-blocks-max=$(blocks:%=rcx-%-max)
-rcx-blocks-min=$(blocks:%=rcx-%-min)
+rcx-blocks     = $(blocks:%=rcx-%)
+rcx-blocks-all = $(blocks:%=rcx-%-all)
+rcx-blocks-nom = $(blocks:%=rcx-%-nom)
+rcx-blocks-max = $(blocks:%=rcx-%-max)
+rcx-blocks-min = $(blocks:%=rcx-%-min)
 
-sta-blocks=$(blocks:%=sta-%)
-
-OPENLANE_TAG ?= 2022.02.23_02.50.41
-OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
-
-export PDK_VARIENT=sky130A
+export PDK_VARIENT = sky130A
 
 ./tmp ./logs:
 	mkdir -p $@
@@ -32,7 +30,8 @@ list-sta:
 	#$(sta-blocks)
 
 define run_docker_rcx
-	docker run --rm \
+	docker run \
+		--rm \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD):$(PWD) \
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
@@ -54,26 +53,27 @@ endef
 $(rcx-blocks-all): rcx-%-all: $(rcx-requirements) rcx-%-nom rcx-%-max rcx-%-min
 
 .PHONY: $(rcx-blocks-nom)
-$(rcx-blocks-nom): export SPEF_CORNER=nom
-$(rcx-blocks-nom): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
+$(rcx-blocks-nom): export SPEF_CORNER = nom
+$(rcx-blocks-nom): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-nom): rcx-%-nom:
 	$(call run_docker_rcx)
 
 .PHONY: $(rcx-blocks-max)
-$(rcx-blocks-max): export SPEF_CORNER=max
-$(rcx-blocks-max): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
+$(rcx-blocks-max): export SPEF_CORNER = max
+$(rcx-blocks-max): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-max): rcx-%-max:
 	$(call run_docker_rcx)
 
 .PHONY: $(rcx-blocks-min)
-$(rcx-blocks-min): export SPEF_CORNER=min
-$(rcx-blocks-min): export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
+$(rcx-blocks-min): export SPEF_CORNER = min
+$(rcx-blocks-min): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-min): rcx-%-min:
 	$(call run_docker_rcx)
 
 
 define docker_run_caravel_timing
-	docker run --rm \
+	docker run \
+		--rm \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD):$(PWD) \
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
@@ -92,79 +92,74 @@ define docker_run_caravel_timing
 endef
 
 
+caravel-timing-typ-targets  = caravel-timing-typ-nom
+caravel-timing-typ-targets += caravel-timing-typ-min
+caravel-timing-typ-targets += caravel-timing-typ-max
+
+caravel-timing-slow-targets  = caravel-timing-slow-nom
+caravel-timing-slow-targets += caravel-timing-slow-min
+caravel-timing-slow-targets += caravel-timing-slow-max
+
+caravel-timing-fast-targets  = caravel-timing-fast-nom
+caravel-timing-fast-targets += caravel-timing-fast-min
+caravel-timing-fast-targets += caravel-timing-fast-max
+
+caravel-timing-targets  = $(caravel-timing-slow-targets)
+caravel-timing-targets += $(caravel-timing-fast-targets)
+caravel-timing-targets += $(caravel-timing-typ-targets)
+
 .PHONY: caravel-timing-typ
-caravel-timing-typ: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/tt.tcl
+$(caravel-timing-typ-targets): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 caravel-timing-typ: caravel-timing-typ-nom caravel-timing-typ-min caravel-timing-typ-max
 
 .PHONY: caravel-timing-typ-nom
-caravel-timing-typ-nom: export SPEF_CORNER=nom
-caravel-timing-typ-nom:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-typ-nom: export SPEF_CORNER = nom
 .PHONY: caravel-timing-typ-min
-caravel-timing-typ-min: export SPEF_CORNER=min
-caravel-timing-typ-min:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-typ-min: export SPEF_CORNER = min
 .PHONY: caravel-timing-typ-max
-caravel-timing-typ-max: export SPEF_CORNER=max
-caravel-timing-typ-max:
-	$(call docker_run_caravel_timing)
+caravel-timing-typ-max: export SPEF_CORNER = max
+.PHONY: caravel-timing-typ-max
 
 .PHONY: caravel-timing-slow
-caravel-timing-slow: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ss.tcl
+$(caravel-timing-slow-targets): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/ss.tcl
 caravel-timing-slow: caravel-timing-slow-nom caravel-timing-slow-min caravel-timing-slow-max
 
 .PHONY: caravel-timing-slow-nom
-caravel-timing-slow-nom: export SPEF_CORNER=nom
-caravel-timing-slow-nom:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-slow-nom: export SPEF_CORNER = nom
 .PHONY: caravel-timing-slow-min
-caravel-timing-slow-min: export SPEF_CORNER=min
-caravel-timing-slow-min:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-slow-min: export SPEF_CORNER = min
 .PHONY: caravel-timing-slow-max
-caravel-timing-slow-max: export SPEF_CORNER=max
-caravel-timing-slow-max:
-	$(call docker_run_caravel_timing)
+caravel-timing-slow-max: export SPEF_CORNER = max
 
 .PHONY: caravel-timing-fast
-caravel-timing-fast: export CORNER_ENV_FILE=$(CARAVEL_ROOT)/env/ff.tcl
+$(caravel-timing-fast-targets): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/ff.tcl
 caravel-timing-fast: caravel-timing-fast-nom caravel-timing-fast-min caravel-timing-fast-max
 
 .PHONY: caravel-timing-fast-nom
-caravel-timing-fast-nom: export SPEF_CORNER=nom
-caravel-timing-fast-nom:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-fast-nom: export SPEF_CORNER = nom
 .PHONY: caravel-timing-fast-min
-caravel-timing-fast-min: export SPEF_CORNER=min
-caravel-timing-fast-min:
-	$(call docker_run_caravel_timing)
-
+caravel-timing-fast-min: export SPEF_CORNER = min
 .PHONY: caravel-timing-fast-max
-caravel-timing-fast-max: export SPEF_CORNER=max
-caravel-timing-fast-max:
+caravel-timing-fast-max: export SPEF_CORNER = max
+
+$(caravel-timing-targets):
 	$(call docker_run_caravel_timing)
 
 
 # some useful dev double checking
 #
+rcx-requirements  = $(CARAVEL_ROOT)/def/%.def
+rcx-requirements += $(CARAVEL_ROOT)/lef/%.lef
+rcx-requirements += $(CARAVEL_ROOT)/sdc/%.sdc
+rcx-requirements += $(CARAVEL_ROOT)/verilog/gl/%.v
 
-rcx-requirements=$(CARAVEL_ROOT)/def/%.def
-rcx-requirements +=$(CARAVEL_ROOT)/lef/%.lef
-rcx-requirements +=$(CARAVEL_ROOT)/sdc/%.sdc
-rcx-requirements +=$(CARAVEL_ROOT)/verilog/gl/%.v
-
-exceptions=$(MCW_ROOT)/lef/caravel.lef
-exceptions +=$(MCW_ROOT)/lef/caravan.lef
+exceptions  = $(MCW_ROOT)/lef/caravel.lef
+exceptions += $(MCW_ROOT)/lef/caravan.lef
 # lets ignore these for now
-exceptions +=$(MCW_ROOT)/sdc/user_analog_project_wrapper.sdc
-exceptions +=$(MCW_ROOT)/sdc/user_project_wrapper.sdc
-exceptions +=$(MCW_ROOT)/verilog/gl/user_analog_project_wrapper.v
-exceptions +=$(MCW_ROOT)/verilog/gl/user_project_wrapper.v
+exceptions += $(MCW_ROOT)/sdc/user_analog_project_wrapper.sdc
+exceptions += $(MCW_ROOT)/sdc/user_project_wrapper.sdc
+exceptions += $(MCW_ROOT)/verilog/gl/user_analog_project_wrapper.v
+exceptions += $(MCW_ROOT)/verilog/gl/user_project_wrapper.v
 
 $(exceptions):
 	$(warning we don't need lefs for $@ but take note anyway)

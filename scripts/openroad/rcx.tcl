@@ -47,4 +47,5 @@ write_spef $spef
 
 puts "spef: $spef"
 puts "def: $def"
+puts "rcx: $rcx_rules_file"
 
