@@ -44,7 +44,7 @@ if { ![file exists $sdf] } {
 }
 
 set block $::env(BLOCK)
-set rcx_rules_file $::env(PDK_TECH_PATH)/openlane/rules.openrcx.sky130A.$::env(SPEF_CORNER).magic
+set rcx_rules_file $::env(PDK_TECH_PATH)/openlane/rules.openrcx.sky130A.$::env(SPEF_CORNER).spef_extractor
 set merged_lef $::env(CARAVEL_ROOT)/tmp/merged_lef-$::env(SPEF_CORNER).lef
 
 set sram_lef $::env(PDK_REF_PATH)/sky130_sram_macros/lef/sky130_sram_2kbyte_1rw1r_32x512_8.lef

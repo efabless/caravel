@@ -10,7 +10,7 @@ create_clock [get_ports {"clock"} ] -name "clock"  -period 25
 set_propagated_clock [get_clocks {"clock"}]
 
 ## INPUT/OUTPUT DELAYS
-set input_delay_value 1
+set input_delay_value 2.5
 set output_delay_value [expr 25 * $::env(IO_PCT)]
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
