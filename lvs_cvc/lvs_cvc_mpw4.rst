@@ -59,84 +59,29 @@ From within docker, the following ``run_lvs`` script may be used::
 
 For example, in the ``openlane`` directory, ``run_lvs chip_io`` will run LVS on the `chip_io` circuit.
 
-Hierarchy
-=========
-
-``caravel`` hierarchy::
- 
- caravel
-  caravel_clocking
-  chip_io
-  digital_pll
-  gpio_control_block
-   gpio_logic_high
-  gpio_defaults_block
-  gpio_defaults_block_0403
-  gpio_defaults_block_1803
-  housekeeping
-  mgmt_core_wrapper
-   mgmt_core
-   DFFRAM
-  mgmt_protect
-   mgmt_protect_hv
-   mprj2_logic_high
-   mprj_logic_high
-  simple_por
-  spare_logic_block
-  user_id_programming
-  user_project_wrapper
-  xres_buf
 
 Results
 =======
 
-+--------------------------+-----+-----+-----+------+-----------------------+
-| Block                    | Ext | LVS | CVC |Usable|Comment                |
-+==========================+=====+=====+=====+======+=======================+
-| caravel                  |     |     |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| caravel_clocking         | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| chip_io                  |     |     |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| digital_pll              | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| gpio_control_block       | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| gpio_logic_high          | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| gpio_defaults_block      |     |     |     |      | no gds                |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| gpio_defaults_block_0403 |     |     |     |      | no config             |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| gpio_defaults_block_1803 |     |     |     |      | no config             |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| housekeeping             | OK? | OK  |     |      | offgrid               |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mgmt_core_wrapper        | OK  | NG  |     |      | DFFRAM                |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mgmt_core                | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| DFFRAM                   | OK  | NG  |     |      | met1 short            |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mgmt_protect             | OK  | OK  |     |      | disconnected mismatch |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mgmt_protect_hv          |     |     |     |      | no config             |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mprj2_logic_high         | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| mprj_logic_high          | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| simple_por               |     |     |     |      | no config, no netlist |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| spare_logic_block        | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| user_id_programming      | OK  | OK  |     |      |                       |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| user_project_wrapper     |     |     |     |      | no netlist            |
-+--------------------------+-----+-----+-----+------+-----------------------+
-| xres_buf                 |     |     |     |      | no config             |
-+--------------------------+-----+-----+-----+------+-----------------------+
+The following error 
+```
+Device pdiodec does not have a compatible substrate node!
+```
+occurs in these cells.
+``K0_sky130_ef_io__vccd_lvc_clamped3_pad``
+``K0_sky130_ef_io__vssd_lvc_clamped3_pad``
+``K0_sky130_ef_io__vssd_lvc_clamped_pad``
+``K0_sky130_ef_io__vccd_lvc_clamped_pad``
+It can be fixed by changing the DIODE recognition layer ``81/23`` from
+
+to
+
+These cells have pins that need to be separated.
+Extracting K0_sky130_ef_io__vssio_hvc_clamped_pad into K0_sky130_ef_io__vssio_hvc_clamped_pad.ext:
+Warning:  Ports "VSSIO" and "VSSIO_Q" are electrically shorted.
+Extracting K0_sky130_ef_io__vddio_hvc_clamped_pad into K0_sky130_ef_io__vddio_hvc_clamped_pad.ext:
+Warning:  Ports "VDDIO" and "VDDIO_Q" are electrically shorted.
+
 
 Everything after this line applies to the original mpw-one caravel. Update is pending.
 
