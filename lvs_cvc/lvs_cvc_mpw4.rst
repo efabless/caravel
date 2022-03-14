@@ -82,6 +82,17 @@ Warning:  Ports "VSSIO" and "VSSIO_Q" are electrically shorted.
 Extracting K0_sky130_ef_io__vddio_hvc_clamped_pad into K0_sky130_ef_io__vddio_hvc_clamped_pad.ext:
 Warning:  Ports "VDDIO" and "VDDIO_Q" are electrically shorted.
 
+``gpio_defaults_block``
+``gpio_defaults_block_34`` should be converted from ``gpio_defaults_block`` to ``gpio_defaults_block_34`` in verilog. It is not because the `mag` file instance name is ``gpio_defaults_defaults_block_34`` instead of ````gpio_defaults_block_34``.
+Modified ``caravel.v`` to match.
+
+Layout has substrate short between ``vssd_core`` and ``vssd1_core``.
+Shorted via ``assign`` in ``caravel.v`` to compensate.
+
+simple_por in layout has only ``vss`` terminal. verilog has ``vss3v3`` and ``vss1v8``
+Change verilog ``.vss1v8(vssd_core)`` to ``.vss(vssio_core)``
+
+
 
 Everything after this line applies to the original mpw-one caravel. Update is pending.
 
