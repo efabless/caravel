@@ -1,5 +1,6 @@
 OPENLANE_TAG ?=  2022.02.23_02.50.41
 OPENLANE_IMAGE_NAME ?=  efabless/openlane:$(OPENLANE_TAG)
+export PDK_VARIENT = sky130A
 
 blocks  = $(shell cd $(CARAVEL_ROOT)/openlane && find * -maxdepth 0 -type d)
 blocks := $(subst user_project_wrapper,,$(blocks))
@@ -18,32 +19,55 @@ rcx-blocks-nom = $(blocks:%=rcx-%-nom)
 rcx-blocks-max = $(blocks:%=rcx-%-max)
 rcx-blocks-min = $(blocks:%=rcx-%-min)
 
-export PDK_VARIENT = sky130A
-
 ./tmp ./logs:
 	mkdir -p $@
 
 .PHONY: list-rcx
 list-rcx:
 	@echo $(rcx-blocks-all)
+
+.PHONY: list-rcx-nom
+list-rcx-nom:
+	@echo $(rcx-blocks-nom)
+
 list-sta:
 	#$(sta-blocks)
 
-define run_docker_rcx
+define docker_run_base
 	docker run \
 		--rm \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD):$(PWD) \
+		-e BLOCK=$1 \
 		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
-		-e BLOCK=$* \
 		-e SPEF_CORNER=$(SPEF_CORNER) \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-e CUP_ROOT=$(CUP_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
 		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
+		-v $(PDK_ROOT):$(PDK_ROOT) \
+		-v $(CUP_ROOT):$(CUP_ROOT) \
+		-v $(MCW_ROOT):$(MCW_ROOT) \
+		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) \
+		$(OPENLANE_IMAGE_NAME)
+endef
+
+sta-blocks = $(blocks:%=sta-%)
+
+define docker_run_sta
+	$(call docker_run_base,$1) \
+		bash -c "sta -exit $(CARAVEL_ROOT)/scripts/openroad/sta.tcl \
+			|& tee $(CARAVEL_ROOT)/logs/$*-sta.log"
+	@echo "logged to $(CARAVEL_ROOT)/logs/$*-sta.log"
+endef
+
+.PHONY: $(sta-blocks)
+$(sta-blocks): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
+$(sta-blocks): sta-%:
+	$(call docker_run_sta,$*)
+
+define docker_run_rcx
+	$(call docker_run_base,$1) \
 		bash -c "openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl \
 			|& tee $(CARAVEL_ROOT)/logs/$*-rcx-$(SPEF_CORNER).log"
 	@echo "logged to $(CARAVEL_ROOT)/logs/$*-rcx-$(SPEF_CORNER).log"
@@ -56,36 +80,23 @@ $(rcx-blocks-all): rcx-%-all: $(rcx-requirements) rcx-%-nom rcx-%-max rcx-%-min
 $(rcx-blocks-nom): export SPEF_CORNER = nom
 $(rcx-blocks-nom): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-nom): rcx-%-nom:
-	$(call run_docker_rcx)
+	$(call docker_run_rcx,$*)
 
 .PHONY: $(rcx-blocks-max)
 $(rcx-blocks-max): export SPEF_CORNER = max
 $(rcx-blocks-max): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-max): rcx-%-max:
-	$(call run_docker_rcx)
+	$(call docker_run_rcx,$*)
 
 .PHONY: $(rcx-blocks-min)
 $(rcx-blocks-min): export SPEF_CORNER = min
 $(rcx-blocks-min): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
 $(rcx-blocks-min): rcx-%-min:
-	$(call run_docker_rcx)
+	$(call docker_run_rcx,$*)
 
 
 define docker_run_caravel_timing
-	docker run \
-		--rm \
-		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD):$(PWD) \
-		-e CORNER_ENV_FILE=$(CORNER_ENV_FILE) \
-		-e SPEF_CORNER=$(SPEF_CORNER) \
-		-e BLOCK=caravel \
-		-e CUP_ROOT=$(CUP_ROOT) \
-		-e MCW_ROOT=$(MCW_ROOT) \
-		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
-		-e PDK_REF_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.ref/ \
-		-e PDK_TECH_PATH=$(PDK_ROOT)/$(PDK_VARIENT)/libs.tech/ \
-		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
-		$(OPENLANE_IMAGE_NAME) \
+	$(call docker_run_base,caravel) \
 		bash -c "sta -no_splash -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee \
 			$(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE))-$(SPEF_CORNER).log"
 	@echo "logged to $(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE))-$(SPEF_CORNER).log"
