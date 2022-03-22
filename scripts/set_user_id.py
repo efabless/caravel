@@ -184,13 +184,8 @@ if __name__ == '__main__':
     print('Setting project user ID to: ' + user_id_value)
 
     magpath = user_project_path + '/mag'
-    gdspath = user_project_path + '/gds'
     vpath = user_project_path + '/verilog'
     errors = 0 
-
-    if not os.path.isdir(gdspath):
-        print('No directory ' + gdspath + ' found (path to GDS).')
-        sys.exit(1)
 
     if not os.path.isdir(vpath):
         print('No directory ' + vpath + ' found (path to verilog).')
@@ -200,44 +195,24 @@ if __name__ == '__main__':
         print('No directory ' + magpath + ' found (path to magic databases).')
         sys.exit(1)
 
-    print('Step 1:  Modify GDS of the user_id_programming subcell')
+    print('Step 1:  Modify layout of the user_id_programming subcell')
 
     # Bytes leading up to via position are:
     viarec = "00 06 0d 02 00 43 00 06 0e 02 00 2c 00 2c 10 03 "
     viabytes = bytes.fromhex(viarec)
 
-    # Check for either GDS file being gzipped
-    gdsbakgz = gdspath + '/user_id_prog_zero.gds.gz'
-    gdsfilegz = gdspath + '/user_id_programming.gds.gz'
+    # Read the ID programming layout.  If a backup was made of the
+    # zero-value program, then use it.
 
-    if os.path.isfile(gdsbakgz):
-        subprocess.run(['gunzip', gdsbakgz],
-		stdout = subprocess.DEVNULL,
-		stderr = subprocess.DEVNULL)
-        zero_zipped = True
+    magbak = magpath + '/user_id_prog_zero.mag'
+    magfile = magpath + '/user_id_programming.mag'
+
+    if os.path.isfile(magbak):
+        with open(magbak, 'r') as ifile:
+            magdata = ifile.read()
     else:
-        zero_zipped = False
-
-    if os.path.isfile(gdsfilegz):
-        subprocess.run(['gunzip', gdsfilegz],
-		stdout = subprocess.DEVNULL,
-		stderr = subprocess.DEVNULL)
-        file_zipped = True
-    else:
-        file_zipped = False
-
-    # Read the GDS file.  If a backup was made of the zero-value
-    # program, then use it.
-
-    gdsbak = gdspath + '/user_id_prog_zero.gds'
-    gdsfile = gdspath + '/user_id_programming.gds'
-
-    if os.path.isfile(gdsbak):
-        with open(gdsbak, 'rb') as ifile:
-            gdsdata = ifile.read()
-    else:
-        with open(gdsfile, 'rb') as ifile:
-            gdsdata = ifile.read()
+        with open(magfile, 'r') as ifile:
+            magdata = ifile.read()
 
     for i in range(0,32):
         # Ignore any zero bits.
@@ -256,72 +231,45 @@ if __name__ == '__main__':
         xurum = xum + 0.085
         yurum = yum + 0.085
  
-        # Get the 4-byte hex values for the corner coordinates
-        xllnm = round(xllum * 1000)
-        yllnm = round(yllum * 1000)
-        xllhex = '{0:08x}'.format(xllnm)
-        yllhex = '{0:08x}'.format(yllnm)
-        xurnm = round(xurum * 1000)
-        yurnm = round(yurum * 1000)
-        xurhex = '{0:08x}'.format(xurnm)
-        yurhex = '{0:08x}'.format(yurnm)
+        # Get the values for the corner coordinates in magic internal units
+        xlli = int(round(xllum * 200))
+        ylli = int(round(yllum * 200))
+        xuri = int(round(xurum * 200))
+        yuri = int(round(yurum * 200))
 
-        # Magic's GDS output for vias always starts at the lower left
-        # corner and goes counterclockwise, repeating the first point.
-        viaoldposdata = viarec + xllhex + yllhex + xurhex + yllhex
-        viaoldposdata += xurhex + yurhex + xllhex + yurhex + xllhex + yllhex
-            
+        viaoldposdata = 'rect ' + xlli + ' ' + ylli + ' ' + xuri + ' ' + yuri
+
         # For "one" bits, the X position is moved 0.92 microns to the left
         newxllum = xllum - 0.92
         newxurum = xurum - 0.92
 
-        # Get the 4-byte hex values for the new corner coordinates
-        newxllnm = round(newxllum * 1000)
-        newxllhex = '{0:08x}'.format(newxllnm)
-        newxurnm = round(newxurum * 1000)
-        newxurhex = '{0:08x}'.format(newxurnm)
+        # Get the values for the new corner coordinates in magic internal units
+        newxlli = int(round(newxllum * 200))
+        newxuri = int(round(newxurum * 200))
 
-        vianewposdata = viarec + newxllhex + yllhex + newxurhex + yllhex
-        vianewposdata += newxurhex + yurhex + newxllhex + yurhex + newxllhex + yllhex
+        vianewposdata = 'rect ' + newxlli + ' ' + ylli + ' ' + newxuri + ' ' + yuri
 
         # Diagnostic
         if debugmode:
             print('Bit ' + str(i) + ':')
             print('Via position ({0:3.2f}, {1:3.2f}) to ({2:3.2f}, {3:3.2f})'.format(xllum, yllum, xurum, yurum))
-            print('Old hex string = ' + viaoldposdata)
-            print('New hex string = ' + vianewposdata)
-
-        # Convert hex strings to byte arrays
-        viaoldbytedata = bytearray.fromhex(viaoldposdata)
-        vianewbytedata = bytearray.fromhex(vianewposdata)
+            print('Old string = "' + viaoldposdata + '"')
+            print('New string = "' + vianewposdata + '"')
 
         # Replace the old data with the new
-        if viaoldbytedata not in gdsdata:
+        if viaoldposdata not in gdsdata:
             print('Error: via not found for bit position ' + str(i))
             errors += 1 
         else:
-            gdsdata = gdsdata.replace(viaoldbytedata, vianewbytedata)
+            magdata == magdata.replace(viaoldposdata, vianewposdata)
 
     if errors == 0:
         # Keep a copy of the original 
-        if not os.path.isfile(gdsbak):
-            if file_zipped:
-                if os.path.isfile(gdsfilegz):
-                    os.rename(gdsfilegz, gdsbakgz)
-                else:
-                    os.rename(gdsfile, gdsbak)
-                    subprocess.run(['gzip', gdsbak, '-n', '--best'],
-				stdout = subprocess.DEVNULL,
-				stderr = subprocess.DEVNULL)
-            else:
-                os.rename(gdsfile, gdsbak)
+        if not os.path.isfile(magbak):
+            os.rename(magfile, magbak)
 
-        with open(gdsfile, 'wb') as ofile:
-            ofile.write(gdsdata)
-        if file_zipped:
-            subprocess.run(['gzip', gdsfile, '-n', '--best'],
-			stdout = subprocess.DEVNULL,
-			stderr = subprocess.DEVNULL)
+        with open(magfile, 'w') as ofile:
+            ofile.write(magdata)
 
         print('Done!')
             
@@ -330,7 +278,7 @@ if __name__ == '__main__':
         print('Ending process.')
         sys.exit(1)
 
-    print('Step 2:  Add user project ID parameter to verilog.')
+    print('Step 2:  Add user project ID parameter to source verilog.')
 
     changed = False
     with open(vpath + '/rtl/caravel.v', 'r') as ifile:
@@ -354,7 +302,34 @@ if __name__ == '__main__':
         print('Ending process.')
         sys.exit(1)
 
-    print('Step 3:  Add user project ID text to top level layout.')
+    print('Step 3:  Add user project ID parameter to gate-level verilog.')
+
+    changed = False
+    with open(vpath + '/gl/user_id_programming.v', 'r') as ifile:
+        vdata = ifile.read()
+
+    for i in range(0,32):
+        # Ignore any zero bits.
+        if user_id_bits[i] == '0':
+            continue
+
+        outdata = vdata.replace('high[' + str(i) + ']', 'XXXX')
+        outdata = outdata.replace('low[' + str(i) + ']', 'high[' + str(i) + ']')
+        outdata = outdata.replace('XXXX', 'low[' + str(i) + ']')
+        outdata = outdata.replace('LO(mask_rev[' + str(i) + ']',
+				  'HI(mask_rev[' + str(i) + ']')
+        outdata = outdata.replace('HI(\\user_proj_id_low', 'LO(\\user_proj_id_low')
+
+    if changed:
+        with open(vpath + '/gl/user_id_programming.v', 'w') as ofile:
+            ofile.write(outdata)
+            print('Done!')
+    else:
+        print('Error:  No substitutions done on verilog/gl/user_id_programming.v.')
+        print('Ending process.')
+        sys.exit(1)
+
+    print('Step 4:  Add user project ID text to top level layout.')
 
     with open(magpath + '/user_id_textblock.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
