@@ -162,7 +162,7 @@ module gpio_control_block #(
     /* add a final logic gate after that.  The logic gate is		*/
     /* synthesized and will be sized appropriately for an output buffer	*/
 
-    sky130_fd_sc_hd__dlygate4sd2 data_delay_1 (
+    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_1 (
 `ifdef USE_POWER_PINS
             .VPWR(vccd),
             .VGND(vssd),
@@ -173,7 +173,7 @@ module gpio_control_block #(
             .A(serial_data_pre),
     );
 
-    sky130_fd_sc_hd__dlygate4sd2 data_delay_2 (
+    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (
 `ifdef USE_POWER_PINS
             .VPWR(vccd),
             .VGND(vssd),
