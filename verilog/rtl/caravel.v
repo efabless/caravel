@@ -236,7 +236,6 @@ module caravel (
 		.vccd2_pad	(vccd2),		// User area 2 1.8V supply
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
-	`endif
 	// Core Side Pins
 	.vddio	(vddio_core),
 	.vssio	(vssio_core),
@@ -252,6 +251,7 @@ module caravel (
 	.vccd2	(vccd2_core),
 	.vssd1	(vssd1_core),
 	.vssd2	(vssd2_core),
+	`endif
 
 	.gpio(gpio),
 	.mprj_io(mprj_io),
@@ -1410,8 +1410,7 @@ module caravel (
 	`ifdef USE_POWER_PINS
 		.vdd3v3(vddio_core),
 		.vdd1v8(vccd_core),
-		.vss3v3(vssio_core),
-		.vss1v8(vssd_core),
+		.vss(vssio_core),
 	`endif
 		.porb_h(porb_h),
 		.porb_l(porb_l),
