@@ -168,10 +168,10 @@ Digital user projects should adhere the following requirements:
 - Top module is named ``user_project_wrapper``
 
 
-- The ``user_project_wrapper`` adheres to the pin order defined at `Digital Wrapper Pin Order <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/pin_order.cfg>`__.
+- The ``user_project_wrapper`` adheres to the pin order defined at `Digital Wrapper Pin Order <https://github.com/efabless/caravel/blob/main/openlane/user_project_wrapper/pin_order.cfg>`__.
 
 
-- The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/master/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl>`__.
+- The ``user_project_wrapper`` adheres to the fixed design configurations at `Digital Wrapper Fixed Configuration <https://github.com/efabless/caravel/blob/main/openlane/user_project_wrapper/fixed_wrapper_cfgs.tcl>`__.
 
 
 - The user project repository adheres to the `Required Directory Structure <#required-directory-structure>`__.
