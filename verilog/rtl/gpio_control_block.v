@@ -142,6 +142,8 @@ module gpio_control_block #(
     wire gpio_in_unbuf;
     wire gpio_logic1;
     wire serial_data_pre;
+    wire serial_data_post_1;
+    wire serial_data_post_2;
 
     /* Serial shift for the above (latched) values */
     reg [PAD_CTRL_BITS-1:0] shift_register;
@@ -155,8 +157,34 @@ module gpio_control_block #(
     assign resetn_out = resetn;
     assign serial_load_out = serial_load;
 
-    /* Serial data should be buffered again to avoid hold violations */
-    assign serial_data_out = serial_data_pre & one;
+    /* Serial data should be buffered again to avoid hold violations	*/
+    /* Do this in two ways:  (1) Add internal delay cells, and (2)	*/
+    /* add a final logic gate after that.  The logic gate is		*/
+    /* synthesized and will be sized appropriately for an output buffer	*/
+
+    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_1 (
+`ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+`endif
+            .X(serial_data_post_1),
+            .A(serial_data_pre),
+    );
+
+    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (
+`ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+`endif
+            .X(serial_data_post_2),
+            .A(serial_data_post_1),
+    );
+
+    assign serial_data_out = serial_data_post_2 & one;
 
     always @(posedge serial_clock or negedge resetn) begin
 	if (resetn == 1'b0) begin
