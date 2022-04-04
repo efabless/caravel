@@ -128,3 +128,8 @@ set ::env(EXTRA_GDS_FILES) "\
 
 ## LVS
 set ::env(QUIT_ON_LVS_ERROR) 0
+
+# mprj_dat_i_user
+# mprj_ack_i_user
+# user_irq_core
+set ::env(DONT_TOUCH_PORTS) "la_data_out_core\[*\] mprj_ack_i_user mprj_dat_i_user\[*\] user_irq_core\[*\]"
