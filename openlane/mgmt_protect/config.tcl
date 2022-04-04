@@ -106,7 +106,7 @@ set ::env(GLB_RT_OBS) "\
 	met4 990.00000 5.17000 1022.000 153.39500"
 	
 ## Diode Insertion 
-set ::env(DIODE_INSERTION_STRATEGY) 1
+set ::env(DIODE_INSERTION_STRATEGY) 4
 
 ## Internal Macros 
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro_placement.cfg
