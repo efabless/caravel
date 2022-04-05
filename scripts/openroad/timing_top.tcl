@@ -19,6 +19,7 @@ foreach key [array names spef_mapping] {
     read_spef -path $key $spef_mapping($key)
 }
 
+puts "read_spef $spef"
 read_spef $spef
 
 read_sdc -echo $sdc

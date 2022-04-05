@@ -2,6 +2,7 @@ set std_cell_library        "sky130_fd_sc_hd"
 set special_voltage_library "sky130_fd_sc_hvl"
 set io_library              "sky130_fd_io"
 set primitives_library      "sky130_fd_pr"
+set ef_io_library           "sky130_ef_io"
 
 set signal_layer            "met2"
 set clock_layer             "met5"
@@ -10,8 +11,10 @@ set extra_lefs "
     [glob $::env(CARAVEL_ROOT)/lef/*.lef]
     [glob $::env(MCW_ROOT)/lef/*.lef]
     [glob $::env(CUP_ROOT)/lef/*.lef]"
-set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/$std_cell_library.$::env(SPEF_CORNER).tlef
+set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/${std_cell_library}__$::env(SPEF_CORNER).tlef
 set cells_lef $::env(PDK_REF_PATH)/$std_cell_library/lef/$std_cell_library.lef
+set io_lef $::env(PDK_REF_PATH)/$io_library/lef/$io_library.lef
+set ef_io_lef $::env(PDK_REF_PATH)/$io_library/lef/$ef_io_library.lef
 
 # search order:
 # cup -> mcw -> caravel
@@ -59,16 +62,18 @@ set verilogs "
 set verilog_exceptions {}
 lappend verilog_exceptions "$::env(CARAVEL_ROOT)/verilog/gl/__user_analog_project_wrapper.v"
 lappend verilog_exceptions "$::env(CARAVEL_ROOT)/verilog/gl/__user_project_wrapper.v"
+lappend verilog_exceptions "$::env(CUP_ROOT)/verilog/gl/__user_analog_project_wrapper.v"
+lappend verilog_exceptions "$::env(CUP_ROOT)/verilog/gl/__user_project_wrapper.v"
 
 foreach verilog_exception $verilog_exceptions {
     set verilogs [regsub "$verilog_exception" "$verilogs" ""]
 }
 
-set spef_mapping(gpio_defaults_block_0)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_1803.spef
-set spef_mapping(gpio_defaults_block_1)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_1803.spef
-set spef_mapping(gpio_defaults_block_2)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_0403.spef
-set spef_mapping(gpio_defaults_block_3)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_0403.spef
-set spef_mapping(gpio_defaults_block_4)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_0403.spef
+set spef_mapping(gpio_defaults_block_0[0])           $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_$::env(SPEF_CORNER).spef
+set spef_mapping(gpio_defaults_block_0[1])           $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_$::env(SPEF_CORNER).spef
+#set spef_mapping(gpio_defaults_block_1)              $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_1803.spef
+set spef_mapping(gpio_defaults_block_2[0])           $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_$::env(SPEF_CORNER).spef
+set spef_mapping(gpio_defaults_block_2[1])           $::env(CARAVEL_ROOT)/spef/gpio_defaults_block_$::env(SPEF_CORNER).spef
 set spef_mapping(rstb_level)                         $::env(CARAVEL_ROOT)/spef/xres_buf.spef
 set spef_mapping(mgmt_buffers/powergood_check)       $::env(CARAVEL_ROOT)/spef/mgmt_protect_hv.spef
 set spef_mapping(soc/DFFRAM_0)                       $::env(MCW_ROOT)/spef/DFFRAM_$::env(SPEF_CORNER).spef

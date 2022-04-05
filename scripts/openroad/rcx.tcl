@@ -7,9 +7,14 @@ set extra_lefs [split [regexp -all -inline {\S+} $extra_lefs]]
 foreach liberty $libs {
     read_liberty $liberty
 }
+puts "
+exec python3 /openlane/scripts/mergeLef.py \
+    --inputLef $tech_lef $cells_lef $io_lef $ef_io_lef \
+    --outputLef $merged_lef
+"
 
 exec python3 /openlane/scripts/mergeLef.py \
-    --inputLef $tech_lef $cells_lef \
+    --inputLef $tech_lef $cells_lef $io_lef $ef_io_lef \
     --outputLef $merged_lef
 
 if {[catch {read_lef $merged_lef} errmsg]} {
