@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Fri Dec 24 16:09:28 2021
+# Tue Apr  5 11:53:33 2022
 ###############################################################################
 current_design gpio_control_block
 ###############################################################################
@@ -30,9 +30,7 @@ set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_oeb}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_out}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_in}]
-set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {resetn}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_data_in}]
-set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_load}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_oeb}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_out}]
 set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_in}]
