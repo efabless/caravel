@@ -1216,16 +1216,19 @@ endif
 ###########################################################################
 
 .PHONY: pdk-with-volare
-pdk-with-volare: check-python install-volare
+pdk-with-volare: check-python install-volare $(OPENLANE_ROOT)/dependencies/tool_metadata.yml
 	@volare enable -f $(OPENLANE_ROOT)/dependencies/tool_metadata.yml
 
 check-python:
 ifeq ($(shell which python3),)
-	@echo "Please install python 3.6+"
+$(error Please install python 3.6+)
 endif
 
 install-volare:
 	python3 -m pip install --upgrade volare
+
+$(OPENLANE_ROOT)/dependencies/tool_metadata.yml:
+	$(error either openlane is missing or OPENLANE_ROOT is not exported)
 
 
 ###########################################################################
