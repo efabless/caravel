@@ -1225,9 +1225,7 @@ ifeq ($(shell which python3),)
 endif
 
 install-volare:
-ifeq ($(shell which volare),)
-	@python3 -m pip install volare
-endif
+	python3 -m pip install --upgrade volare
 
 
 ###########################################################################
