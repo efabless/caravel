@@ -1217,7 +1217,7 @@ endif
 
 .PHONY: pdk-with-volare
 pdk-with-volare: check-python install-volare $(OPENLANE_ROOT)/dependencies/tool_metadata.yml
-	@volare enable -f $(OPENLANE_ROOT)/dependencies/tool_metadata.yml
+	@volare enable ${OPEN_PDKS_COMMIT}
 
 check-python:
 ifeq ($(shell which python3),)
