@@ -1216,7 +1216,7 @@ endif
 ###########################################################################
 
 .PHONY: pdk-with-volare
-pdk-with-volare: check-python install-volare $(OPENLANE_ROOT)/dependencies/tool_metadata.yml
+pdk-with-volare: check-python install-volare 
 	@volare enable ${OPEN_PDKS_COMMIT}
 
 check-python:
@@ -1226,9 +1226,6 @@ endif
 
 install-volare:
 	python3 -m pip install --upgrade volare
-
-$(OPENLANE_ROOT)/dependencies/tool_metadata.yml:
-	$(error either openlane is missing or OPENLANE_ROOT is not exported)
 
 
 ###########################################################################
