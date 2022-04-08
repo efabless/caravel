@@ -170,7 +170,7 @@ module gpio_control_block #(
             .VNB(vssd),
 `endif
             .X(serial_data_post_1),
-            .A(serial_data_pre),
+            .A(serial_data_pre)
     );
 
     sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (
@@ -181,7 +181,7 @@ module gpio_control_block #(
             .VNB(vssd),
 `endif
             .X(serial_data_post_2),
-            .A(serial_data_post_1),
+            .A(serial_data_post_1)
     );
 
     assign serial_data_out = serial_data_post_2 & one;
