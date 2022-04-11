@@ -8,11 +8,11 @@ current_design gpio_control_block
 ###############################################################################
 create_clock -name serial_clock -period 50.0000 [get_ports {serial_clock}]
 set_clock_transition 0.1500 [get_clocks {serial_clock}]
-set_clock_uncertainty 0.2500 serial_clock
+set_clock_uncertainty 0.4000 serial_clock
 set_propagated_clock [get_clocks {serial_clock}]
 create_clock -name serial_load -period 50.0000 [get_ports {serial_load}]
 set_clock_transition 0.1500 [get_clocks {serial_load}]
-set_clock_uncertainty 0.2500 serial_load
+set_clock_uncertainty 0.4000 serial_load
 set_propagated_clock [get_clocks {serial_load}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[0]}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[10]}]
