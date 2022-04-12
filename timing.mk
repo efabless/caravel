@@ -56,7 +56,7 @@ sta-blocks = $(blocks:%=sta-%)
 
 define docker_run_sta
 	$(call docker_run_base,$1) \
-		bash -c "sta -exit $(CARAVEL_ROOT)/scripts/openroad/sta.tcl \
+		bash -c "set -eo pipefail && sta -exit $(CARAVEL_ROOT)/scripts/openroad/sta.tcl \
 			|& tee $(CARAVEL_ROOT)/logs/$*-sta.log"
 	@echo "logged to $(CARAVEL_ROOT)/logs/$*-sta.log"
 endef
@@ -68,7 +68,7 @@ $(sta-blocks): sta-%:
 
 define docker_run_rcx
 	$(call docker_run_base,$1) \
-		bash -c "openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl \
+		bash -c "set -eo pipefail && openroad -exit $(CARAVEL_ROOT)/scripts/openroad/rcx.tcl \
 			|& tee $(CARAVEL_ROOT)/logs/$*-rcx-$(SPEF_CORNER).log"
 	@echo "logged to $(CARAVEL_ROOT)/logs/$*-rcx-$(SPEF_CORNER).log"
 endef
@@ -97,7 +97,7 @@ $(rcx-blocks-min): rcx-%-min:
 
 define docker_run_caravel_timing
 	$(call docker_run_base,caravel) \
-		bash -c "sta -no_splash -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee \
+		bash -c "set -eo pipefail && sta -no_splash -exit $(CARAVEL_ROOT)/scripts/openroad/timing_top.tcl |& tee \
 			$(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE))-$(SPEF_CORNER).log"
 	@echo "logged to $(CARAVEL_ROOT)/logs/caravel-timing-$$(basename $(CORNER_ENV_FILE))-$(SPEF_CORNER).log"
 endef
