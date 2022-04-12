@@ -10,7 +10,7 @@ set extra_lefs "
     [glob $::env(CARAVEL_ROOT)/lef/*.lef]
     [glob $::env(MCW_ROOT)/lef/*.lef]
     [glob $::env(CUP_ROOT)/lef/*.lef]"
-set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/$std_cell_library.$::env(SPEF_CORNER).tlef
+set tech_lef $::env(PDK_REF_PATH)/$std_cell_library/techlef/${std_cell_library}__$::env(SPEF_CORNER).tlef
 set cells_lef $::env(PDK_REF_PATH)/$std_cell_library/lef/$std_cell_library.lef
 
 # search order:
