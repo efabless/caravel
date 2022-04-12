@@ -8,14 +8,13 @@ foreach liberty $libs {
     read_liberty $liberty
 }
 
-exec python3 /openlane/scripts/mergeLef.py \
-    --inputLef $tech_lef $cells_lef \
-    --outputLef $merged_lef
-
-if {[catch {read_lef $merged_lef} errmsg]} {
-    puts stderr $errmsg
-    exit 1
+foreach lef $lefs {
+    if {[catch {read_lef $lef} errmsg]} {
+        puts stderr $errmsg
+        exit 1
+    }
 }
+
 if {[catch {read_lef $sram_lef} errmsg]} {
     puts stderr $errmsg
     exit 1
@@ -32,7 +31,8 @@ if {[catch {read_def -order_wires $def} errmsg]} {
     puts stderr $errmsg
     exit 1
 }
-read_sdc $sdc
+# don't think we need to read sdc
+#read_sdc $sdc
 set_propagated_clock [all_clocks]
 
 set_wire_rc -signal -layer $signal_layer

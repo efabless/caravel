@@ -1,4 +1,9 @@
 source $::env(CARAVEL_ROOT)/env/common.tcl
+
+if { [file exists $::env(CUP_ROOT)/env/spef_mapping.tcl] } {
+    source $::env(CUP_ROOT)/env/spef_mapping.tcl
+}
+
 source $::env(CORNER_ENV_FILE)
 
 set libs [split [regexp -all -inline {\S+} $libs]]

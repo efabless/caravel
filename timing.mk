@@ -30,8 +30,12 @@ list-rcx:
 list-rcx-nom:
 	@echo $(rcx-blocks-nom)
 
+.PHONY: list-sta
 list-sta:
-	#$(sta-blocks)
+	@echo $(sta-blocks)
+
+.PHONY: rcx-all
+rcx-all: $(rcx-blocks-all)
 
 define docker_run_base
 	docker run \
@@ -194,3 +198,17 @@ $(CARAVEL_ROOT)/verilog/gl/%.v: $(MCW_ROOT)/verilog/gl/%.v ;
 $(MCW_ROOT)/verilog/gl/%.v: $(CUP_ROOT)/verilog/gl/%.v ;
 $(CUP_ROOT)/verilog/gl/%.v:
 	$(error error if you are here it probably means that gl/$@.v is missing from mcw and caravel)
+
+check_defined = \
+    $(strip $(foreach 1,$1, \
+        $(call __check_defined,$1,$(strip $(value 2)))))
+__check_defined = \
+    $(if $(value $1),, \
+      $(error Undefined $1$(if $2, ($2))))
+
+$(call check_defined, \
+	MCW_ROOT \
+	CUP_ROOT \
+	PDK_ROOT \
+	CARAVEL_ROOT \
+)
