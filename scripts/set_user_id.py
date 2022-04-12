@@ -257,7 +257,7 @@ if __name__ == '__main__':
             print('New string = "' + vianewposdata + '"')
 
         # Replace the old data with the new
-        if viaoldposdata not in gdsdata:
+        if viaoldposdata not in magdata:
             print('Error: via not found for bit position ' + str(i))
             errors += 1 
         else:
@@ -319,6 +319,7 @@ if __name__ == '__main__':
         outdata = outdata.replace('LO(mask_rev[' + str(i) + ']',
 				  'HI(mask_rev[' + str(i) + ']')
         outdata = outdata.replace('HI(\\user_proj_id_low', 'LO(\\user_proj_id_low')
+        changed = True
 
     if changed:
         with open(vpath + '/gl/user_id_programming.v', 'w') as ofile:
