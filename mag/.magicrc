@@ -14,7 +14,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-puts stdout "Sourcing design .magicrc for technology sky130A ..."
+puts stdout "Sourcing design .magicrc for technology $::env(PDK) ..."
 
 # Put grid on 0.005 pitch.  This is important, as some commands don't
 # rescale the grid automatically (such as lef read?).
@@ -29,17 +29,17 @@ drc euclidean on
 
 # Allow override of PDK path from environment variable PDKPATH
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "$::env(PDK_ROOT)/sky130A"
+    set PDKPATH "$::env(PDK_ROOT)/$::env(PDK)"
 }
 
 # loading technology
-tech load $PDKPATH/libs.tech/magic/sky130A.tech
+tech load $PDKPATH/libs.tech/magic/$::env(PDK).tech
 
 # load device generator
-source $PDKPATH/libs.tech/magic/sky130A.tcl
+source $PDKPATH/libs.tech/magic/$::env(PDK).tcl
 
 # load bind keys (optional)
-# source $PDKPATH/libs.tech/magic/sky130A-BindKeys
+# source $PDKPATH/libs.tech/magic/$::env(PDK)-BindKeys
 
 # set units to lambda grid 
 snap lambda

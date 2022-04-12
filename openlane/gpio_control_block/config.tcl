@@ -35,6 +35,7 @@ set ::env(BASE_SDC_FILE) $script_dir/base.sdc
 ## Synthesis
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
+set ::env(SYNTH_STRATEGY) "DELAY 0"
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
@@ -59,8 +60,8 @@ set ::env(FP_PDN_AUTO_ADJUST) 0
 set ::env(FP_PDN_VWIDTH) 1.6
 set ::env(FP_PDN_HWIDTH) 1.6
 
-set ::env(FP_HORIZONTAL_HALO) 2
-set ::env(FP_VERTICAL_HALO) 2
+set ::env(FP_PDN_HORIZONTAL_HALO) 2
+set ::env(FP_PDN_VERTICAL_HALO) 2
 
 set ::env(FP_PDN_HOFFSET) 1.5
 set ::env(FP_PDN_VOFFSET) 9.0
@@ -72,7 +73,7 @@ set ::env(FP_PDN_VSPACING) 3.4
 set ::env(FP_PDN_HSPACING) 3.4
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.91
+set ::env(PL_TARGET_DENSITY) 0.7
 # for some reason resizer is leaving a floating net after running repair_tie_fanout command
 set ::env(PL_RESIZER_REPAIR_TIE_FANOUT) 0
 
@@ -97,7 +98,10 @@ set ::env(GLB_RT_OBS) "\
 	met1 120 0 170 65"
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) "3"
+set ::env(DIODE_INSERTION_STRATEGY) 4
+
+set ::env(FP_TAP_HORIZONTAL_HALO) {2}                                                                                                                                                                  
+set ::env(FP_TAP_VERTICAL_HALO) {2}
 
 ## Internal macros
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro_placement.cfg
@@ -110,3 +114,18 @@ set ::env(EXTRA_LEFS) "\
 
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/gpio_logic_high.gds"
+
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
+# 0.07 ns 70 ps
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.05
+set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
+#set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 2
+
+set ::env(QUIT_ON_MAGIC_DRC) 0
+set ::env(QUIT_ON_LVS_ERROR) 0
+
+set ::env(SYNTH_EXTRA_MAPPING_FILE) $script_dir/yosys_mapping.v

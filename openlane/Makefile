@@ -17,7 +17,7 @@ BLOCKS = $(shell find * -maxdepth 0 -type d)
 CONFIG = $(foreach block,$(BLOCKS), ./$(block)/config.tcl)
 CLEAN = $(foreach block,$(BLOCKS), clean-$(block))
 
-OPENLANE_TAG ?= 2021.11.23_01.42.34
+OPENLANE_TAG ?= 7891c2c8859e8c800226920c181fa039ad298e79
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
 OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
@@ -46,9 +46,10 @@ endif
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e PDK=$(PDK) \
+		-e TEST_MISMATCHES=tools \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
@@ -56,16 +57,17 @@ endif
 		-v $(PDK_ROOT):$(PDK_ROOT) \
 		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-		-v $(MGMT_AREA_ROOT):$(MGMT_AREA_ROOT) \
+		-e PDK=$(PDK) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e TEST_MISMATCHES=tools \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_BASIC_COMMAND);\
 	fi
 	mkdir -p ../signoff/$*/
 	cp $*/runs/$*/OPENLANE_VERSION ../signoff/$*/
 	cp $*/runs/$*/PDK_SOURCES ../signoff/$*/
-	cp $*/runs/$*/reports/final_summary_report.csv ../signoff/$*/
+	cp $*/runs/$*/reports/metrics.csv ../signoff/$*/
 
 .PHONY: openlane
 openlane: check-openlane-env

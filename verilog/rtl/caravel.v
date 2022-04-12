@@ -611,7 +611,7 @@ module caravel (
 
     // Clocking control
 
-    caravel_clocking clocking(
+    caravel_clocking clock_ctrl (
     `ifdef USE_POWER_PINS
 		.VPWR(vccd_core),
 		.VGND(vssd_core),
