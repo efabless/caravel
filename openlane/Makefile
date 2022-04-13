@@ -44,8 +44,9 @@ endif
 	@if [ -f ./$*/interactive.tcl ]; then\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
+		-v $(MCW_ROOT):$(MCW_ROOT) \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-e MCW_ROOT=$(MCW_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK=$(PDK) \
@@ -55,8 +56,9 @@ endif
 	else\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-v $(MCW_ROOT):$(MCW_ROOT) \
+		-e MCW_ROOT=$(MCW_ROOT) \
 		-e PDK=$(PDK) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
@@ -65,9 +67,9 @@ endif
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_BASIC_COMMAND);\
 	fi
 	mkdir -p ../signoff/$*/
-	cp $*/runs/$*/OPENLANE_VERSION ../signoff/$*/
-	cp $*/runs/$*/PDK_SOURCES ../signoff/$*/
-	cp $*/runs/$*/reports/metrics.csv ../signoff/$*/
+	cp $*/runs/final/OPENLANE_VERSION ../signoff/$*/
+	cp $*/runs/final/PDK_SOURCES ../signoff/$*/
+	cp $*/runs/final/reports/metrics.csv ../signoff/$*/
 
 .PHONY: openlane
 openlane: check-openlane-env
