@@ -17,7 +17,7 @@ BLOCKS = $(shell find * -maxdepth 0 -type d)
 CONFIG = $(foreach block,$(BLOCKS), ./$(block)/config.tcl)
 CLEAN = $(foreach block,$(BLOCKS), clean-$(block))
 
-OPENLANE_TAG ?= 7891c2c8859e8c800226920c181fa039ad298e79
+OPENLANE_TAG ?= 2021.11.23_01.42.34
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 OPENLANE_BASIC_COMMAND = "cd $(PWD)/../openlane && flow.tcl -design ./$* -save_path .. -save -tag $* -overwrite"
 OPENLANE_INTERACTIVE_COMMAND = "cd $(PWD)/../openlane && flow.tcl -it -file ./$*/interactive.tcl"
@@ -51,6 +51,7 @@ endif
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK=$(PDK) \
 		-e TEST_MISMATCHES=tools \
+		-e MISMATCHES_OK=1 \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
@@ -63,13 +64,14 @@ endif
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e TEST_MISMATCHES=tools \
+		-e MISMATCHES_OK=1 \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_BASIC_COMMAND);\
 	fi
 	mkdir -p ../signoff/$*/
-	cp $*/runs/final/OPENLANE_VERSION ../signoff/$*/
-	cp $*/runs/final/PDK_SOURCES ../signoff/$*/
-	cp $*/runs/final/reports/metrics.csv ../signoff/$*/
+	cp $*/runs/$*/OPENLANE_VERSION ../signoff/$*/
+	cp $*/runs/$*/PDK_SOURCES ../signoff/$*/
+	cp $*/runs/$*/reports/final_summary_report.csv ../signoff/$*/
 
 .PHONY: openlane
 openlane: check-openlane-env
