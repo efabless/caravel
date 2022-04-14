@@ -2861,8 +2861,6 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .sel2({ \spi_pll90_sel[2] , \spi_pll90_sel[1] , \spi_pll90_sel[0]  }),
     .user_clk(caravel_clk2)
   );
-  caravan_power_routing fake_caravan_power_routing (
-  );
   gpio_control_block \gpio_control_bidir_1[0]  (
     .gpio_defaults({ \gpio_defaults[12] , \gpio_defaults[11] , \gpio_defaults[10] , \gpio_defaults[9] , \gpio_defaults[8] , \gpio_defaults[7] , \gpio_defaults[6] , \gpio_defaults[5] , \gpio_defaults[4] , \gpio_defaults[3] , \gpio_defaults[2] , \gpio_defaults[1] , \gpio_defaults[0]  }),
     .mgmt_gpio_in(\mgmt_io_in[0] ),
