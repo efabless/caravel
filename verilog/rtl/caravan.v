@@ -1398,5 +1398,7 @@ module caravan (
 		.spare_xfqn(spare_xfqn_nc)
     );
 
+    caravan_power_routing fake_caravan_power_routing ();
+
 endmodule
 // `default_nettype wire
