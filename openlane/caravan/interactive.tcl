@@ -50,6 +50,7 @@ set mprj_y 1393.590
 set soc_x 260.170
 set soc_y 265.010
 
+add_macro_placement fake_caravan_power_routing 0 0 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
 add_macro_placement housekeeping 3032.170 500.010 N
