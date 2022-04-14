@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
     cellsused = [None] * 38
 
-    for i in range(5, 38):
+    for i in range(0, 38):
         config_name = '`USER_CONFIG_GPIO_' + str(i) + '_INIT'
         try:
             config_value = kvpairs[config_name]
@@ -326,6 +326,9 @@ if __name__ == '__main__':
     #     shutil.copy(magpath + '/caravel.mag', magpath + '/caravel.mag.bak')
     #     shutil.copy(magpath + '/caravan.mag', magpath + '/caravan.mag.bak')
 
+    idx1rex = re.compile('gpio_defaults_block_([0-9]+)..([0-9]+)')
+    idx2rex = re.compile('gpio_defaults_block_([0-9]+)')
+
     if testmode:
         print('Test only:  Caravel layout:')
     with open(caravel_path + '/mag/caravel.mag', 'r') as ifile:
@@ -336,8 +339,16 @@ if __name__ == '__main__':
                 tokens = magline.split()
                 instname = tokens[2]
                 if instname.startswith('gpio_defaults_block_'):
-                    gpioidx = instname[20:]
-                    cellname = cellsused[int(gpioidx)]
+                    imatch = idx1rex.match(instname)
+                    if imatch:
+                        gpioidx = int(imatch.group(1)) + int(imatch.group(2))
+                    else:
+                        imatch = idx2rex.match(instname)
+                        if imatch:
+                            gpioidx = int(imatch.group(1))
+                        else:
+                            print('Error: instance ' + instname + ' not a defaults block?')
+                    cellname = cellsused[gpioidx]
                     if cellname:
                         tokens[1] = cellname
                     outlines.append(' '.join(tokens))
@@ -368,7 +379,7 @@ if __name__ == '__main__':
             if imatch:
                 gpioname = imatch.group(1)
                 gpioidx = int(imatch.group(2))
-                cellname = cellsused[int(gpioidx)]
+                cellname = cellsused[gpioidx]
                 if cellname:
                     outlines.append(re.sub(gpioname, cellname, vline, 1))
                     if testmode:
@@ -394,8 +405,16 @@ if __name__ == '__main__':
                 tokens = magline.split()
                 instname = tokens[2]
                 if instname.startswith('gpio_defaults_block_'):
-                    gpioidx = instname[20:]
-                    cellname = cellsused[int(gpioidx)]
+                    imatch = idx1rex.match(instname)
+                    if imatch:
+                        gpioidx = int(imatch.group(1)) + int(imatch.group(2))
+                    else:
+                        imatch = idx2rex.match(instname)
+                        if imatch:
+                            gpioidx = int(imatch.group(1))
+                        else:
+                            print('Error: instance ' + instname + ' not a defaults block?')
+                    cellname = cellsused[gpioidx]
                     if cellname:
                         tokens[1] = cellname
                     outlines.append(' '.join(tokens))
@@ -424,7 +443,7 @@ if __name__ == '__main__':
             if imatch:
                 gpioname = imatch.group(1)
                 gpioidx = int(imatch.group(2))
-                cellname = cellsused[int(gpioidx)]
+                cellname = cellsused[gpioidx]
                 if cellname:
                     outlines.append(re.sub(gpioname, cellname, vline, 1))
                     if testmode:
