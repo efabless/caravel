@@ -27,29 +27,18 @@ set lefs [list \
 # cup -> mcw -> caravel
 set def $::env(CUP_ROOT)/def/$::env(BLOCK).def
 set spef $::env(CUP_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
+set sdc $::env(CUP_ROOT)/sdc/$::env(BLOCK).sdc
+set sdf $::env(CUP_ROOT)/sdf/$::env(BLOCK).sdf
 if { ![file exists $def] } {
     set def $::env(MCW_ROOT)/def/$::env(BLOCK).def
     set spef $::env(MCW_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
+    set sdc $::env(MCW_ROOT)/sdc/$::env(BLOCK).sdc
+    set sdf $::env(MCW_ROOT)/sdf/$::env(BLOCK).sdf
 }
 if { ![file exists $def] } {
     set def $::env(CARAVEL_ROOT)/def/$::env(BLOCK).def
     set spef $::env(CARAVEL_ROOT)/spef/$::env(BLOCK)_$::env(SPEF_CORNER).spef
-}
-
-set sdc $::env(CUP_ROOT)/sdc/$::env(BLOCK).sdc
-if { ![file exists $sdc] } {
-    set sdc $::env(MCW_ROOT)/sdc/$::env(BLOCK).sdc
-}
-if { ![file exists $sdc] } {
     set sdc $::env(CARAVEL_ROOT)/sdc/$::env(BLOCK).sdc
-}
-
-# not sure why we need sdf yet
-set sdf $::env(CUP_ROOT)/sdf/$::env(BLOCK).sdf
-if { ![file exists $sdf] } {
-    set sdf $::env(MCW_ROOT)/sdf/$::env(BLOCK).sdf
-}
-if { ![file exists $sdf] } {
     set sdf $::env(CARAVEL_ROOT)/sdf/$::env(BLOCK).sdf
 }
 
