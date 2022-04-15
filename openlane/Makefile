@@ -44,21 +44,27 @@ endif
 	@if [ -f ./$*/interactive.tcl ]; then\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
+		-v $(MCW_ROOT):$(MCW_ROOT) \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-e MCW_ROOT=$(MCW_ROOT) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
 		-e PDK=$(PDK) \
+		-e TEST_MISMATCHES=tools \
+		-e MISMATCHES_OK=1 \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_INTERACTIVE_COMMAND);\
 	else\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
-		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
+		-v $(MCW_ROOT):$(MCW_ROOT) \
+		-e MCW_ROOT=$(MCW_ROOT) \
 		-e PDK=$(PDK) \
 		-e PDK_ROOT=$(PDK_ROOT) \
 		-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
+		-e TEST_MISMATCHES=tools \
+		-e MISMATCHES_OK=1 \
 		-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(OPENLANE_BASIC_COMMAND);\
 	fi
