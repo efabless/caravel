@@ -24,9 +24,9 @@ set verilog_root $script_dir/../../verilog/
 set lef_root $script_dir/../../lef/
 set gds_root $script_dir/../../gds/
 
-set mgmt_area_verilog_root $script_dir/../../../caravel_pico/verilog/
-set mgmt_area_lef_root $script_dir/../../../caravel_pico/lef/
-set mgmt_area_gds_root $script_dir/../../../caravel_pico/gds/
+set mgmt_area_verilog_root $::env(MCW_ROOT)/verilog/
+set mgmt_area_lef_root $::env(MCW_ROOT)/lef/
+set mgmt_area_gds_root $::env(MCW_ROOT)/gds/
 
 # Change if needed
 set ::env(VERILOG_FILES) "\
@@ -48,6 +48,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/digital_pll.v \
 	$verilog_root/rtl/caravel_clocking.v \
 	$verilog_root/rtl/simple_por.v\
+	$verilog_root/rtl/spare_logic_block.v\
 	$verilog_root/rtl/xres_buf.v \
 	$mgmt_area_verilog_root/rtl/mgmt_core_wrapper.v \
 	"
@@ -64,6 +65,7 @@ set ::env(EXTRA_LEFS) "\
 	$lef_root/caravel_clocking.lef \
 	$lef_root/simple_por.lef\
 	$lef_root/xres_buf.lef\
+	$lef_root/spare_logic_block.lef\
 	$mgmt_area_lef_root/mgmt_core_wrapper.lef \
 	"
 
@@ -112,6 +114,8 @@ set ::env(GLB_RT_OVERFLOW_ITERS) 50
 set ::env(GLB_RT_TILES) 30
 set ::env(GLB_RT_MINLAYER) 2
 set ::env(GLB_RT_MAXLAYER) 6
+#set ::env(RT_MIN_LAYER) met1
+#set ::env(RT_MAX_LAYER) met5
 
 set ::env(GLB_RT_ADJUSTMENT) "0"
 set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
@@ -120,6 +124,18 @@ set ::env(GLB_RT_L3_ADJUSTMENT) "0.15"
 set ::env(GLB_RT_L4_ADJUSTMENT) "0.15"
 set ::env(GLB_RT_L5_ADJUSTMENT) "0.15"
 set ::env(GLB_RT_L6_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
+#set ::env(GLB_RT_L2_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L3_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L4_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L5_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L6_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L1_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L2_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L3_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L4_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L5_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L6_ADJUSTMENT) "0"
 
 # set ::env(ROUTING_OPT_ITERS) 7
 # set ::env(GLB_RT_UNIDIRECTIONAL) 0
@@ -132,3 +148,8 @@ set ::env(LVS_INSERT_POWER_PINS) 0
 set ::env(MAGIC_GENERATE_LEF) 0
 
 set ::env(QUIT_ON_ILLEGAL_OVERLAPS) 0
+set ::env(QUIT_ON_TR_DRC) 0
+set ::env(QUIT_ON_LVS_ERROR) 0
+
+#set ::env(TRACKS_INFO_FILE) $script_dir/tracks.info
+#

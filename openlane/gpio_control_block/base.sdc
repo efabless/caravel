@@ -1,31 +1,110 @@
-create_clock [get_ports {"serial_clock"} ] -name "serial_clock"  -period $::env(CLOCK_PERIOD)
-create_clock [get_ports {"serial_load"} ] -name "serial_load"  -period $::env(CLOCK_PERIOD)
-
+###############################################################################
+# Created by write_sdc
+# Thu Mar 17 11:21:00 2022
+###############################################################################
+current_design gpio_control_block
+###############################################################################
+# Timing Constraints
+###############################################################################
+create_clock -name serial_clock -period 50.0000 [get_ports {serial_clock}]
+set_clock_transition 0.1500 [get_clocks {serial_clock}]
+set_clock_uncertainty 0.4000 serial_clock
+set_propagated_clock [get_clocks {serial_clock}]
+create_clock -name serial_load -period 50.0000 [get_ports {serial_load}]
+set_clock_transition 0.1500 [get_clocks {serial_load}]
+set_clock_uncertainty 0.4000 serial_load
 set_propagated_clock [get_clocks {serial_load}]
-
-set input_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
-set output_delay_value [expr $::env(CLOCK_PERIOD) * $::env(IO_PCT)]
-puts "\[INFO\]: Setting output delay to: $output_delay_value"
-puts "\[INFO\]: Setting input delay to: $input_delay_value"
-
-set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
-set_input_delay $input_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_inputs]
-set_output_delay $output_delay_value  -clock [get_clocks $::env(CLOCK_PORT)] [all_outputs]
-
-# TODO set this as parameter
-set_driving_cell -lib_cell $::env(SYNTH_DRIVING_CELL) -pin $::env(SYNTH_DRIVING_CELL_PIN) [all_inputs]
-set cap_load [expr $::env(SYNTH_CAP_LOAD) / 1000.0]
-puts "\[INFO\]: Setting load to: $cap_load"
-set_load  $cap_load [all_outputs]
-
-puts "\[INFO\]: Setting timing derate to: [expr {$::env(SYNTH_TIMING_DERATE) * 10}] %"
-set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
-set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
-
-puts "\[INFO\]: Setting clock uncertainity to: $::env(SYNTH_CLOCK_UNCERTAINITY)"
-set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINITY) [get_clocks {serial_clock}]
-set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINITY) [get_clocks {serial_load}]
-
-puts "\[INFO\]: Setting clock transition to: $::env(SYNTH_CLOCK_TRANSITION)"
-set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks {serial_clock}]
-set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks {serial_load}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[0]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[10]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[11]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[12]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[1]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[2]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[3]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[4]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[5]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[6]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[7]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[8]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[9]}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_oeb}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_out}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_in}]
+#set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {resetn}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_data_in}]
+#set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_load}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_oeb}]
+set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_in}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {one}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_ana_en}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_ana_pol}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_ana_sel}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_dm[0]}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_dm[1]}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_dm[2]}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_holdover}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_ib_mode_sel}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_inenb}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_outenb}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_slow_sel}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_vtrip_sel}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {resetn_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_clock_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_data_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_load_out}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_in}]
+set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {zero}]
+###############################################################################
+# Environment
+###############################################################################
+set_load -pin_load 0.0334 [get_ports {mgmt_gpio_in}]
+set_load -pin_load 0.0334 [get_ports {one}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_ana_en}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_ana_pol}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_ana_sel}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_holdover}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_ib_mode_sel}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_inenb}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_out}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_outenb}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_slow_sel}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_vtrip_sel}]
+set_load -pin_load 0.0334 [get_ports {resetn_out}]
+set_load -pin_load 0.0334 [get_ports {serial_clock_out}]
+set_load -pin_load 0.0334 [get_ports {serial_data_out}]
+set_load -pin_load 0.0334 [get_ports {serial_load_out}]
+set_load -pin_load 0.0334 [get_ports {user_gpio_in}]
+set_load -pin_load 0.0334 [get_ports {zero}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_dm[2]}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_dm[1]}]
+set_load -pin_load 0.0334 [get_ports {pad_gpio_dm[0]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {mgmt_gpio_oeb}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {mgmt_gpio_out}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {pad_gpio_in}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {resetn}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {serial_clock}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {serial_data_in}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {serial_load}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {user_gpio_oeb}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {user_gpio_out}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[12]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[11]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[10]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[9]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[8]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[7]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[6]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[5]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[4]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[3]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[2]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[1]}]
+set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_rise 0.0000 -input_transition_fall 0.0000 [get_ports {gpio_defaults[0]}]
+set_timing_derate -early 0.9500
+set_timing_derate -late 1.0500
+###############################################################################
+# Design Rules
+###############################################################################
+set_max_fanout 5.0000 [current_design]

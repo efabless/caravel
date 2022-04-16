@@ -347,17 +347,11 @@ module chip_io_alt #(
 	`INPUT_PAD(clock, clock_core);
 
     	// Management GPIO pad
-	`INOUT_PAD(
-		gpio, gpio_in_core, gpio_out_core,
-		gpio_inenb_core, gpio_outenb_core, dm_all);
+	`INOUT_PAD(gpio, gpio_in_core, gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
 
 	// Management Flash SPI pads
-	`INOUT_PAD(
-		flash_io0, flash_io0_di_core, flash_io0_do_core,
-		flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
-	`INOUT_PAD(
-		flash_io1, flash_io1_di_core, flash_io1_do_core,
-		flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
+	`INOUT_PAD(flash_io0, flash_io0_di_core, flash_io0_do_core, flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
+	`INOUT_PAD(flash_io1, flash_io1_di_core, flash_io1_do_core, flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
 
 	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, flash_csb_oeb_core);
 	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, flash_clk_oeb_core);

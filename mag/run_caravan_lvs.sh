@@ -1,9 +1,10 @@
-#!/bin/bassh
+#!/bin/bash
 #
 echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
+echo ${PDK:=sky130A} > /dev/null
 
 if [ ! -f caravan.spice ]; then
-magic -dnull -noconsole -rcfile $PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc << EOF
+magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc << EOF
 drc off
 crashbackups stop
 load caravan
@@ -18,4 +19,4 @@ rm -f *.ext
 fi
 
 export NETGEN_COLUMNS=60
-netgen -batch lvs "caravan.spice caravan" "../verilog/gl/caravan.v caravan" $PDK_ROOT/sky130A/libs.tech/netgen/sky130A_setup.tcl comp.out
+netgen -batch lvs "caravan.spice caravan" "../verilog/gl/caravan.v caravan" $PDK_ROOT/$PDK/libs.tech/netgen/${PDK}_setup.tcl comp.out

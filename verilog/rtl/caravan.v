@@ -666,7 +666,7 @@ module caravan (
 
     // Clocking control
 
-    caravel_clocking clocking(
+    caravel_clocking clock_ctrl (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
@@ -1397,6 +1397,8 @@ module caravan (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
+
+    caravan_power_routing fake_caravan_power_routing ();
 
 endmodule
 // `default_nettype wire

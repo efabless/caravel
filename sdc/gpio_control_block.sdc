@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Fri Dec 24 16:09:28 2021
+# Mon Apr 11 14:40:34 2022
 ###############################################################################
 current_design gpio_control_block
 ###############################################################################
@@ -8,11 +8,11 @@ current_design gpio_control_block
 ###############################################################################
 create_clock -name serial_clock -period 50.0000 [get_ports {serial_clock}]
 set_clock_transition 0.1500 [get_clocks {serial_clock}]
-set_clock_uncertainty 0.2500 serial_clock
+set_clock_uncertainty 0.4000 serial_clock
 set_propagated_clock [get_clocks {serial_clock}]
 create_clock -name serial_load -period 50.0000 [get_ports {serial_load}]
 set_clock_transition 0.1500 [get_clocks {serial_load}]
-set_clock_uncertainty 0.2500 serial_load
+set_clock_uncertainty 0.4000 serial_load
 set_propagated_clock [get_clocks {serial_load}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[0]}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {gpio_defaults[10]}]
@@ -30,9 +30,7 @@ set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_oeb}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_out}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {pad_gpio_in}]
-set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {resetn}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_data_in}]
-set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {serial_load}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_oeb}]
 set_input_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {user_gpio_out}]
 set_output_delay 10.0000 -clock [get_clocks {serial_clock}] -add_delay [get_ports {mgmt_gpio_in}]

@@ -31,13 +31,13 @@ set XSCHEM_LIBRARY_PATH {}
 append XSCHEM_LIBRARY_PATH ${XSCHEM_SHAREDIR}/xschem_library
 #### include skywater libraries. Here i use [pwd]. This works if i start xschem from here.
 append XSCHEM_LIBRARY_PATH :$env(PWD)
-append XSCHEM_LIBRARY_PATH :/usr/share/pdk/sky130A/libs.tech/xschem
-# append XSCHEM_LIBRARY_PATH :/mnt/sda7/home/schippes/pdks/sky130A/libs.tech/xschem
+append XSCHEM_LIBRARY_PATH :/usr/share/pdk/$env(PDK)/libs.tech/xschem
+# append XSCHEM_LIBRARY_PATH :/mnt/sda7/home/schippes/pdks/$env(PDK)/libs.tech/xschem
 #### add ~/.xschem/xschem_library (USER_CONF_DIR is normally ~/.xschem)
 append XSCHEM_LIBRARY_PATH :$USER_CONF_DIR/xschem_library 
 
 if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/usr/local/share/pdk/sky130A"
+    set PDKPATH "/usr/local/share/pdk/$env(PDK)"
 }
 
 ###########################################################################
