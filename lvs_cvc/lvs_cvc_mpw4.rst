@@ -26,9 +26,12 @@
    # SPDX-License-Identifier: Apache-2.0
    -->
 
-Device level LVS instructions for mpw4 caravel using slot-002
-=====================================================
-These instructions use the ``verilog/gl/*.v`` (except caravel.v and gpio_default_0403.v) files from the caravel repo, ``jobs/tapeout/*/outputs/gds/caravel_*.gds.gz.*.split`` from the mpw-4/slot-002 repo, 
+Device level LVS instructions for mpw4 caravel using slot-002 data
+==================================================================
+These instructions use the gds files ``gds/caravel_*.gds.gz.*.split`` 
+and the verilog files ``verilog/gl/caravel.v``, ``verilog/gl/gpio_default_0403.v`` from the 
+``jobs/tapeout/*/outputs/`` directory and verilog files from ``verilog/gl/*.v`` of the mpw-4/slot-002 repo, 
+other verilog files ``verilog/gl/*.v`` from the caravel repo,
 and the ``STD_CELL_LIBRARY`` spice from the PDK by default. 
 Additional verilog and spice files may be included using the ``LVS_EXTRA_GATE_LEVEL_VERILOG`` or ``LVS_EXTRA_SPICE``/``LVS_EXTRA_STD_CELL_LIBRARY`` 
 environment variables, respectively, in each circuit's ``config.tcl``.
