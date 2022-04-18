@@ -212,7 +212,7 @@ if __name__ == '__main__':
 
     cellsused = [None] * 38
 
-    for i in range(0, 38):
+    for i in range(5, 38):
         config_name = '`USER_CONFIG_GPIO_' + str(i) + '_INIT'
         try:
             config_value = kvpairs[config_name]
