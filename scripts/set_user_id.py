@@ -18,7 +18,7 @@
 #
 # set_user_id.py ---
 #
-# Manipulate the magic database, GDS, and verilog source files for the
+# Manipulate the magic database and verilog source files for the
 # user_id_programming block to set the user ID number.
 #
 # The user ID number is a 32-bit value that is passed to this routine
@@ -197,10 +197,6 @@ if __name__ == '__main__':
 
     print('Step 1:  Modify layout of the user_id_programming subcell')
 
-    # Bytes leading up to via position are:
-    viarec = "00 06 0d 02 00 43 00 06 0e 02 00 2c 00 2c 10 03 "
-    viabytes = bytes.fromhex(viarec)
-
     # Read the ID programming layout.  If a backup was made of the
     # zero-value program, then use it.
 
@@ -237,7 +233,7 @@ if __name__ == '__main__':
         xuri = int(round(xurum * 200))
         yuri = int(round(yurum * 200))
 
-        viaoldposdata = 'rect ' + xlli + ' ' + ylli + ' ' + xuri + ' ' + yuri
+        viaoldposdata = f"rect {xlli} {ylli} {xuri} {yuri}"
 
         # For "one" bits, the X position is moved 0.92 microns to the left
         newxllum = xllum - 0.92
@@ -247,7 +243,7 @@ if __name__ == '__main__':
         newxlli = int(round(newxllum * 200))
         newxuri = int(round(newxurum * 200))
 
-        vianewposdata = 'rect ' + newxlli + ' ' + ylli + ' ' + newxuri + ' ' + yuri
+        vianewposdata = f"rect {newxlli} {ylli} {newxuri} {yuri}"
 
         # Diagnostic
         if debugmode:
@@ -261,7 +257,7 @@ if __name__ == '__main__':
             print('Error: via not found for bit position ' + str(i))
             errors += 1 
         else:
-            magdata == magdata.replace(viaoldposdata, vianewposdata)
+            magdata = magdata.replace(viaoldposdata, vianewposdata)
 
     if errors == 0:
         # Keep a copy of the original 
@@ -313,17 +309,17 @@ if __name__ == '__main__':
         if user_id_bits[i] == '0':
             continue
 
-        outdata = vdata.replace('high[' + str(i) + ']', 'XXXX')
-        outdata = outdata.replace('low[' + str(i) + ']', 'high[' + str(i) + ']')
-        outdata = outdata.replace('XXXX', 'low[' + str(i) + ']')
-        outdata = outdata.replace('LO(mask_rev[' + str(i) + ']',
+        vdata = vdata.replace('high[' + str(i) + ']', 'XXXX')
+        vdata = vdata.replace('low[' + str(i) + ']', 'high[' + str(i) + ']')
+        vdata = vdata.replace('XXXX', 'low[' + str(i) + ']')
+        vdata = vdata.replace('LO(mask_rev[' + str(i) + ']',
 				  'HI(mask_rev[' + str(i) + ']')
-        outdata = outdata.replace('HI(\\user_proj_id_low', 'LO(\\user_proj_id_low')
+        vdata = vdata.replace('HI(\\user_proj_id_low', 'LO(\\user_proj_id_low')
         changed = True
 
     if changed:
         with open(vpath + '/gl/user_id_programming.v', 'w') as ofile:
-            ofile.write(outdata)
+            ofile.write(vdata)
             print('Done!')
     else:
         print('Error:  No substitutions done on verilog/gl/user_id_programming.v.')
