@@ -18,8 +18,8 @@
 #
 # gen_gpio_defaults.py ---
 #
-# Manipulate the magic database and GDS to create and apply defaults
-# to the GPIO control blocks based on the user's specification in the
+# Manipulate the magic database to create and apply defaults to
+# the GPIO control blocks based on the user's specification in the
 # user_defines.v file.
 #
 # The GPIO defaults block contains 13 bits that set the state of the
@@ -121,7 +121,6 @@ if __name__ == '__main__':
         sys.exit(1)
 
     magpath = user_project_path + '/mag'
-    gdspath = user_project_path + '/gds'
     vpath = user_project_path + '/verilog'
     glpath = vpath + '/gl'
 
@@ -132,10 +131,6 @@ if __name__ == '__main__':
         caravel_path = os.getcwd()
 
     # Check paths
-    if not os.path.isdir(gdspath):
-        print('No directory ' + gdspath + ' found (path to GDS).')
-        sys.exit(1)
-
     if not os.path.isdir(vpath):
         print('No directory ' + vpath + ' found (path to verilog).')
         sys.exit(1)

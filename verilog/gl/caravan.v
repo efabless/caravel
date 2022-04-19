@@ -4265,6 +4265,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .mprj_dat_o({ \mprj_dat_o_core[31] , \mprj_dat_o_core[30] , \mprj_dat_o_core[29] , \mprj_dat_o_core[28] , \mprj_dat_o_core[27] , \mprj_dat_o_core[26] , \mprj_dat_o_core[25] , \mprj_dat_o_core[24] , \mprj_dat_o_core[23] , \mprj_dat_o_core[22] , \mprj_dat_o_core[21] , \mprj_dat_o_core[20] , \mprj_dat_o_core[19] , \mprj_dat_o_core[18] , \mprj_dat_o_core[17] , \mprj_dat_o_core[16] , \mprj_dat_o_core[15] , \mprj_dat_o_core[14] , \mprj_dat_o_core[13] , \mprj_dat_o_core[12] , \mprj_dat_o_core[11] , \mprj_dat_o_core[10] , \mprj_dat_o_core[9] , \mprj_dat_o_core[8] , \mprj_dat_o_core[7] , \mprj_dat_o_core[6] , \mprj_dat_o_core[5] , \mprj_dat_o_core[4] , \mprj_dat_o_core[3] , \mprj_dat_o_core[2] , \mprj_dat_o_core[1] , \mprj_dat_o_core[0]  }),
     .mprj_sel_o({ \mprj_sel_o_core[3] , \mprj_sel_o_core[2] , \mprj_sel_o_core[1] , \mprj_sel_o_core[0]  }),
     .mprj_stb_o(mprj_stb_o_core),
+    .mprj_wb_iena(mprj_iena_wb),
     .mprj_we_o(mprj_we_o_core),
     .qspi_enabled(qspi_enabled),
     .ser_rx(ser_rx),
@@ -4280,7 +4281,8 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .sram_ro_csb(hkspi_sram_csb),
     .sram_ro_data({ \hkspi_sram_data[31] , \hkspi_sram_data[30] , \hkspi_sram_data[29] , \hkspi_sram_data[28] , \hkspi_sram_data[27] , \hkspi_sram_data[26] , \hkspi_sram_data[25] , \hkspi_sram_data[24] , \hkspi_sram_data[23] , \hkspi_sram_data[22] , \hkspi_sram_data[21] , \hkspi_sram_data[20] , \hkspi_sram_data[19] , \hkspi_sram_data[18] , \hkspi_sram_data[17] , \hkspi_sram_data[16] , \hkspi_sram_data[15] , \hkspi_sram_data[14] , \hkspi_sram_data[13] , \hkspi_sram_data[12] , \hkspi_sram_data[11] , \hkspi_sram_data[10] , \hkspi_sram_data[9] , \hkspi_sram_data[8] , \hkspi_sram_data[7] , \hkspi_sram_data[6] , \hkspi_sram_data[5] , \hkspi_sram_data[4] , \hkspi_sram_data[3] , \hkspi_sram_data[2] , \hkspi_sram_data[1] , \hkspi_sram_data[0]  }),
     .trap(trap),
-    .uart_enabled(uart_enabled)
+    .uart_enabled(uart_enabled),
+    .user_irq_ena({ \user_irq_ena[2] , \user_irq_ena[1] , \user_irq_ena[0]  })
   );
   spare_logic_block \spare_logic[0]  (
     .spare_xfq({ \spare_xfq_nc[1] , \spare_xfq_nc[0]  }),

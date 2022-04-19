@@ -18,7 +18,7 @@
 #
 # set_user_id.py ---
 #
-# Manipulate the magic database, GDS, and verilog source files for the
+# Manipulate the magic database and verilog source files for the
 # user_id_programming block to set the user ID number.
 #
 # The user ID number is a 32-bit value that is passed to this routine
@@ -196,10 +196,6 @@ if __name__ == '__main__':
         sys.exit(1)
 
     print('Step 1:  Modify layout of the user_id_programming subcell')
-
-    # Bytes leading up to via position are:
-    viarec = "00 06 0d 02 00 43 00 06 0e 02 00 2c 00 2c 10 03 "
-    viabytes = bytes.fromhex(viarec)
 
     # Read the ID programming layout.  If a backup was made of the
     # zero-value program, then use it.

@@ -14,7 +14,24 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-puts stdout "Sourcing design .magicrc for technology $::env(PDK) ..."
+# Allow override of PDK path from environment variable PDKPATH.  Failing
+# that, fall back on definitions of PDK_ROOT and PDK.  If either of those
+# fails, substitute a default.  If PDKPATH has been specified, then get
+# PDK_VARIANT from the tail of PDKPATH.
+
+if {[catch {set PDKPATH $env(PDKPATH)}]} {
+    if {[catch {set PDK_ROOT $env(PDK_ROOT)}]} {
+	set PDK_ROOT /usr/share/pdk
+    }
+    if {[catch {set PDK_VARIANT $env(PDK)}]} {
+	set PDK_VARIANT sky130A
+    }
+    set PDKPATH ${PDK_ROOT}/${PDK_VARIANT}
+} else {
+    set PDK_VARIANT [file tail ${PDKPATH}]
+}
+
+puts stdout "Sourcing design .magicrc for technology $PDK_VARIANT ..."
 
 # Put grid on 0.005 pitch.  This is important, as some commands don't
 # rescale the grid automatically (such as lef read?).
@@ -27,19 +44,14 @@ if {[lindex $scalefac 1] < 2} {
 drc off
 drc euclidean on
 
-# Allow override of PDK path from environment variable PDKPATH
-if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "$::env(PDK_ROOT)/$::env(PDK)"
-}
-
 # loading technology
-tech load $PDKPATH/libs.tech/magic/$::env(PDK).tech
+tech load $PDKPATH/libs.tech/magic/${PDK_VARIANT}.tech
 
 # load device generator
-source $PDKPATH/libs.tech/magic/$::env(PDK).tcl
+source $PDKPATH/libs.tech/magic/${PDK_VARIANT}.tcl
 
 # load bind keys (optional)
-# source $PDKPATH/libs.tech/magic/$::env(PDK)-BindKeys
+# source $PDKPATH/libs.tech/magic/${PDK_VARIANT}-BindKeys
 
 # set units to lambda grid 
 snap lambda
