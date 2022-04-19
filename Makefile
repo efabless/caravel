@@ -122,7 +122,7 @@ __ship:
 		property GDS_START 0; \
 		load mgmt_core_wrapper; \
 		property LEFview true; \
-		property GDS_FILE $(UPRJ_ROOT)/mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
+		property GDS_FILE $(MCW_ROOT)/mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
 		property GDS_START 0; \
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
@@ -174,7 +174,7 @@ __truck:
 		property GDS_START 0; \
 		load mgmt_core_wrapper; \
 		property LEFview true; \
-		property GDS_FILE $(UPRJ_ROOT)/mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
+		property GDS_FILE $(MCW_ROOT)/mgmt_core_wrapper/gds/mgmt_core_wrapper.gds; \
 		property GDS_START 0; \
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
