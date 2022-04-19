@@ -257,7 +257,8 @@ if __name__ == '__main__':
             print('Error: via not found for bit position ' + str(i))
             errors += 1 
         else:
-            magdata = magdata.replace(viaoldposdata, vianewposdata)
+            magdata = magdata.replace(viaoldposdata, vianewposdata, 1)
+            magdata = magdata.replace("<< metal1 >>", "<< metal1 >>\n" + viaoldposdata)
 
     if errors == 0:
         # Keep a copy of the original 
