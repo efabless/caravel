@@ -448,6 +448,7 @@ module caravan (
 	.flash_io3_do(flash_io3_do_core),
 
 	// Exported Wishbone Bus
+	.mrpj_wb_iena(mprj_iena_wb),
 	.mprj_cyc_o(mprj_cyc_o_core),
 	.mprj_stb_o(mprj_stb_o_core),
 	.mprj_we_o(mprj_we_o_core),
@@ -464,6 +465,7 @@ module caravan (
 
 	// IRQ
 	.irq({irq_spi, user_irq}),
+	.user_irq_ena(user_irq_ena),
 
 	// Module status (these may or may not be implemented)
 	.qspi_enabled(qspi_enabled),
