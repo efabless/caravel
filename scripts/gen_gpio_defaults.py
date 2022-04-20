@@ -335,8 +335,9 @@ if __name__ == '__main__':
             if magline.startswith('use '):
                 tokens = magline.split()
                 instname = tokens[2]
-                if instname.startswith('gpio_defaults_block_'):
-                    gpioidx = instname[20:]
+                m = re.match('gpio_defaults_block_(\d+)', instname)
+                if m:
+                    gpioidx = m.group(1)
                     cellname = cellsused[int(gpioidx)]
                     if cellname:
                         tokens[1] = cellname
@@ -393,8 +394,9 @@ if __name__ == '__main__':
             if magline.startswith('use '):
                 tokens = magline.split()
                 instname = tokens[2]
-                if instname.startswith('gpio_defaults_block_'):
-                    gpioidx = instname[20:]
+                m = re.match('gpio_defaults_block_(\d+)', instname)
+                if m:
+                    gpioidx = m.group(1)
                     cellname = cellsused[int(gpioidx)]
                     if cellname:
                         tokens[1] = cellname
