@@ -44,6 +44,7 @@ endif
 	@if [ -f ./$*/interactive.tcl ]; then\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
+		-v $(PWD)/..:$(PWD)/.. \
 		-v $(MCW_ROOT):$(MCW_ROOT) \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 		-e MCW_ROOT=$(MCW_ROOT) \
@@ -57,6 +58,7 @@ endif
 	else\
 		docker run --rm -v $(OPENLANE_ROOT):/openlane \
 		-v $(PDK_ROOT):$(PDK_ROOT) \
+		-v $(PWD)/..:$(PWD)/.. \
 		-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 		-v $(MCW_ROOT):$(MCW_ROOT) \
 		-e MCW_ROOT=$(MCW_ROOT) \
