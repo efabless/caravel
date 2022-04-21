@@ -67,6 +67,7 @@ endef
 
 .PHONY: $(sta-blocks)
 $(sta-blocks): export CORNER_ENV_FILE = $(CARAVEL_ROOT)/env/tt.tcl
+$(sta-blocks): export SPEF_CORNER = nom
 $(sta-blocks): sta-%:
 	$(call docker_run_sta,$*)
 
