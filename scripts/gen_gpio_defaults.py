@@ -362,7 +362,8 @@ if __name__ == '__main__':
 
     # Do the same to the top gate-level verilog
 
-    instrex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+gpio_defaults_block_([0-9]+)')
+    inst1rex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+.?gpio_defaults_block_([0-9]+).([0-9]+)')
+    inst2rex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+gpio_defaults_block_([0-9]+)')
 
     if testmode:
         print('Test only:  Caravel top gate-level verilog:')
@@ -370,10 +371,15 @@ if __name__ == '__main__':
         vlines = ifile.read().splitlines()
         outlines = []
         for vline in vlines:
-            imatch = instrex.match(vline)
+            imatch = inst1rex.match(vline)
+            if imatch:
+                gpioidx = int(imatch.group(2)) + int(imatch.group(3))
+            else:
+                imatch = inst2rex.match(vline)
+                if imatch:
+                    gpioidx = int(imatch.group(2))
             if imatch:
                 gpioname = imatch.group(1)
-                gpioidx = int(imatch.group(2))
                 cellname = cellsused[gpioidx]
                 if cellname:
                     outlines.append(re.sub(gpioname, cellname, vline, 1))
@@ -434,10 +440,15 @@ if __name__ == '__main__':
         vlines = ifile.read().splitlines()
         outlines = []
         for vline in vlines:
-            imatch = instrex.match(vline)
+            imatch = inst1rex.match(vline)
+            if imatch:
+                gpioidx = int(imatch.group(2)) + int(imatch.group(3))
+            else:
+                imatch = inst2rex.match(vline)
+                if imatch:
+                    gpioidx = int(imatch.group(2))
             if imatch:
                 gpioname = imatch.group(1)
-                gpioidx = int(imatch.group(2))
                 cellname = cellsused[gpioidx]
                 if cellname:
                     outlines.append(re.sub(gpioname, cellname, vline, 1))
