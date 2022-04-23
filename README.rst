@@ -188,9 +188,9 @@ Analog user projects should adhere the following requirements:
 
 - Top module is named ``user_analog_project_wrapper``
 
-- The ``user_analog_project_wrapper`` uses the `empty analog wrapper <https://github.com/efabless/caravel_user_project_analog/blob/main/mag/user_analog_project_wrapper_empty.mag>`__.
+- The ``user_analog_project_wrapper`` uses the `empty analog wrapper <https://github.com/efabless/caravel/blob/master/mag/user_analog_project_wrapper_empty.mag>`__.
 
-- The ``user_analog_project_wrapper`` adheres to the same pin order and placement of the `empty analog wrapper <https://github.com/efabless/caravel_user_project_analog/blob/main/mag/user_analog_project_wrapper_empty.mag>`__.
+- The ``user_analog_project_wrapper`` adheres to the same pin order and placement of the `empty analog wrapper <https://github.com/efabless/caravel/blob/master/mag/user_analog_project_wrapper_empty.mag>`__.
 
 ------
 

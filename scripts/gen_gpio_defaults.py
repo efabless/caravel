@@ -189,8 +189,8 @@ if __name__ == '__main__':
     one_string = []
 
     for i in range(0, 13):
-        llx_zero = int(via_pos[i][0] * 200)
-        lly_zero = int(via_pos[i][1] * 200)
+        llx_zero = round(via_pos[i][0] * 200)
+        lly_zero = round(via_pos[i][1] * 200)
         urx_zero = llx_zero + 34
         ury_zero = lly_zero + 34
 
