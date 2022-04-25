@@ -739,8 +739,6 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   wire \irq_spi[0] ;
   wire \irq_spi[1] ;
   wire \irq_spi[2] ;
-  wire jtag_out;
-  wire jtag_outenb;
   wire \la_data_in_mprj[0] ;
   wire \la_data_in_mprj[100] ;
   wire \la_data_in_mprj[101] ;
@@ -2417,8 +2415,6 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   input resetb;
   wire rstb_h;
   wire rstb_l;
-  wire sdo_out;
-  wire sdo_outenb;
   wire ser_rx;
   wire ser_tx;
   wire \spare_xfq_nc[0] ;
@@ -2864,8 +2860,8 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_bidir_1[0]  (
     .gpio_defaults({ \gpio_defaults[12] , \gpio_defaults[11] , \gpio_defaults[10] , \gpio_defaults[9] , \gpio_defaults[8] , \gpio_defaults[7] , \gpio_defaults[6] , \gpio_defaults[5] , \gpio_defaults[4] , \gpio_defaults[3] , \gpio_defaults[2] , \gpio_defaults[1] , \gpio_defaults[0]  }),
     .mgmt_gpio_in(\mgmt_io_in[0] ),
-    .mgmt_gpio_oeb(jtag_outenb),
-    .mgmt_gpio_out(jtag_out),
+    .mgmt_gpio_oeb(\mgmt_io_oeb[0] ),
+    .mgmt_gpio_out(\mgmt_io_out[0] ),
     .one(),
     .pad_gpio_ana_en(\mprj_io_analog_en[0] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[0] ),
@@ -2899,8 +2895,8 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_bidir_1[1]  (
     .gpio_defaults({ \gpio_defaults[25] , \gpio_defaults[24] , \gpio_defaults[23] , \gpio_defaults[22] , \gpio_defaults[21] , \gpio_defaults[20] , \gpio_defaults[19] , \gpio_defaults[18] , \gpio_defaults[17] , \gpio_defaults[16] , \gpio_defaults[15] , \gpio_defaults[14] , \gpio_defaults[13]  }),
     .mgmt_gpio_in(\mgmt_io_in[1] ),
-    .mgmt_gpio_oeb(sdo_outenb),
-    .mgmt_gpio_out(sdo_out),
+    .mgmt_gpio_oeb(\mgmt_io_oeb[1] ),
+    .mgmt_gpio_out(\mgmt_io_out[1] ),
     .one(),
     .pad_gpio_ana_en(\mprj_io_analog_en[1] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[1] ),
