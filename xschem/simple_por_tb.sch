@@ -27,6 +27,7 @@ N -490 -130 -280 -130 { lab=vdd1v8}
 N -490 60 -330 60 { lab=GND}
 N -330 60 -280 60 { lab=GND}
 N -330 -110 -210 -110 { lab=vdd3v3}
+N -10 60 20 60 {}
 C {simple_por.sym} -10 -20 0 0 {name=x1}
 C {devices/gnd.sym} -100 60 0 0 {name=l1 lab=GND}
 C {devices/vsource.sym} -330 -30 0 0 {name=V1 value="PWL(0.0 0 100u 0 5m 3.3)"}
