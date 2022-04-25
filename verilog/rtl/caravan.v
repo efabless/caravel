@@ -367,6 +367,7 @@ module caravan (
     wire [2:0]	 irq_spi;	   // From SPI and external pins
 
     // Exported Wishbone Bus (processor facing)
+    wire mprj_iena_wb;
     wire mprj_cyc_o_core;
     wire mprj_stb_o_core;
     wire mprj_we_o_core;
@@ -448,7 +449,7 @@ module caravan (
 	.flash_io3_do(flash_io3_do_core),
 
 	// Exported Wishbone Bus
-	.mrpj_wb_iena(mprj_iena_wb),
+	.mprj_wb_iena(mprj_iena_wb),
 	.mprj_cyc_o(mprj_cyc_o_core),
 	.mprj_stb_o(mprj_stb_o_core),
 	.mprj_we_o(mprj_we_o_core),
@@ -1095,8 +1096,8 @@ module caravan (
 	.serial_load_out(gpio_load_1[1:0]),
 
     	.mgmt_gpio_in(mgmt_io_in[1:0]),
-	.mgmt_gpio_out({sdo_out, jtag_out}),
-	.mgmt_gpio_oeb({sdo_outenb, jtag_outenb}),
+	.mgmt_gpio_out(mgmt_io_out[1:0]),
+	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
 
         .one(),
         .zero(),
@@ -1399,8 +1400,6 @@ module caravan (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
-
-    caravan_power_routing fake_caravan_power_routing ();
 
 endmodule
 // `default_nettype wire
