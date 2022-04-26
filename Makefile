@@ -94,7 +94,7 @@ PDK_MAGIC_COMMIT ?= fe2eb6d3906ed15ade0e7a51daea80dd4e3846e2
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
 .PHONY: ship
-ship: check-env uncompress uncompress-caravel
+ship: check-env check-uid uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
 	@echo "Running make ship in the foreground..."
 	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __ship
@@ -112,7 +112,7 @@ __ship:
 	@sleep 1
 #### Runs from the CARAVEL_ROOT mag directory 
 	@echo "\
-		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
+		random seed $(shell printf "%d" 0x$(USER_ID)); \
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
@@ -142,7 +142,7 @@ __ship:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
-truck: check-env uncompress uncompress-caravel
+truck: check-env check-uid uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
 	@echo "Running make truck in the foreground..."
 	mkdir -p ./signoff
@@ -164,7 +164,7 @@ __truck:
 	@sleep 1
 #### Runs from the CARAVEL_ROOT mag directory 
 	@echo "\
-		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
+		random seed $(shell printf "%d" 0x$(USER_ID)); \
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
@@ -1331,7 +1331,7 @@ endif
 
 check-uid:
 ifndef USER_ID
-	$(error USER_ID is undefined, please export it before running make set_user_id)
+	$(error USER_ID is undefined, please export it)
 else 
 	@echo USER_ID is set to $(USER_ID)
 endif
