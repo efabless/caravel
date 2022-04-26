@@ -24,7 +24,9 @@
 # The user ID number is a 32-bit value that is passed to this routine
 # as an 8-digit hex number.  If not given as an option, then the script
 # will look for the value of the key "project_id" in the info.yaml file
-# in the project top level directory
+# in the project top level directory.  If in "-report" mode, it will
+# check the RTL top-level verilog to see if set_user_id.py has already
+# been applied, and pull the value from there.
 #
 # user_id_programming layout map:
 # Positions marked (in microns) for value = 0.  For value = 1, move
@@ -173,6 +175,30 @@ if __name__ == '__main__':
                 print('Error:  Cannot parse user ID "' + user_id_value + '" as an 8-digit hex number.')
                 sys.exit(1)
 
+        elif reportmode:
+            found = False
+            idrex = re.compile("parameter USER_PROJECT_ID = 32'h([0-9A-F]+);")
+
+            # Check if USER_PROJECT_ID has a non-zero value in caravel.v
+            rtl_top_path = user_project_path + '/verilog/rtl/caravel.v'
+            if os.path.isfile(rtl_top_path):
+                with open(rtl_top_path, 'r') as ifile:
+                    vlines = ifile.read().splitlines()
+                    outlines = []
+                    for line in vlines:
+                        imatch = idrex.search(line)
+                        if imatch:
+                            user_id_int = int('0x' + imatch.group(1), 0)
+                            found = True
+                            break
+            else:
+                print('Error:  Cannot find top-level RTL ' + rtl_top_path + '.  Is this script being run in the project directory?')
+            if not found:
+                if reportmode:
+                    user_id_int = 0
+                else:
+                    print('Error:  No USER_PROJECT_ID found in caravel top level verilog.')
+                    sys.exit(1)
         else:
             print('Error:  No info.yaml file and no user ID argument given.')
             sys.exit(1)
@@ -180,6 +206,10 @@ if __name__ == '__main__':
     if reportmode:
         print(str(user_id_int))
         sys.exit(0)
+
+    if user_id_int == 0:
+        print('Value zero is an invalide user ID.  Exiting.')
+        sys.exit(1)
 
     print('Setting project user ID to: ' + user_id_value)
 
