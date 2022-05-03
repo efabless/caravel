@@ -4493,192 +4493,192 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vssd1(vssd1_core),
     .zero()
   );
-  gpio_defaults_block \gpio_defaults_block_0[0]  (
+  gpio_defaults_block_1803 \gpio_defaults_block_0[0]  (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[12] , \gpio_defaults[11] , \gpio_defaults[10] , \gpio_defaults[9] , \gpio_defaults[8] , \gpio_defaults[7] , \gpio_defaults[6] , \gpio_defaults[5] , \gpio_defaults[4] , \gpio_defaults[3] , \gpio_defaults[2] , \gpio_defaults[1] , \gpio_defaults[0]  })
   );
-  gpio_defaults_block \gpio_defaults_block_0[1]  (
+  gpio_defaults_block_1803 \gpio_defaults_block_0[1]  (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[25] , \gpio_defaults[24] , \gpio_defaults[23] , \gpio_defaults[22] , \gpio_defaults[21] , \gpio_defaults[20] , \gpio_defaults[19] , \gpio_defaults[18] , \gpio_defaults[17] , \gpio_defaults[16] , \gpio_defaults[15] , \gpio_defaults[14] , \gpio_defaults[13]  })
   );
-  gpio_defaults_block gpio_defaults_block_10 (
+  gpio_defaults_block_0403 gpio_defaults_block_10 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[142] , \gpio_defaults[141] , \gpio_defaults[140] , \gpio_defaults[139] , \gpio_defaults[138] , \gpio_defaults[137] , \gpio_defaults[136] , \gpio_defaults[135] , \gpio_defaults[134] , \gpio_defaults[133] , \gpio_defaults[132] , \gpio_defaults[131] , \gpio_defaults[130]  })
   );
-  gpio_defaults_block gpio_defaults_block_11 (
+  gpio_defaults_block_0403 gpio_defaults_block_11 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[155] , \gpio_defaults[154] , \gpio_defaults[153] , \gpio_defaults[152] , \gpio_defaults[151] , \gpio_defaults[150] , \gpio_defaults[149] , \gpio_defaults[148] , \gpio_defaults[147] , \gpio_defaults[146] , \gpio_defaults[145] , \gpio_defaults[144] , \gpio_defaults[143]  })
   );
-  gpio_defaults_block gpio_defaults_block_12 (
+  gpio_defaults_block_0403 gpio_defaults_block_12 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[168] , \gpio_defaults[167] , \gpio_defaults[166] , \gpio_defaults[165] , \gpio_defaults[164] , \gpio_defaults[163] , \gpio_defaults[162] , \gpio_defaults[161] , \gpio_defaults[160] , \gpio_defaults[159] , \gpio_defaults[158] , \gpio_defaults[157] , \gpio_defaults[156]  })
   );
-  gpio_defaults_block gpio_defaults_block_13 (
+  gpio_defaults_block_0403 gpio_defaults_block_13 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[181] , \gpio_defaults[180] , \gpio_defaults[179] , \gpio_defaults[178] , \gpio_defaults[177] , \gpio_defaults[176] , \gpio_defaults[175] , \gpio_defaults[174] , \gpio_defaults[173] , \gpio_defaults[172] , \gpio_defaults[171] , \gpio_defaults[170] , \gpio_defaults[169]  })
   );
-  gpio_defaults_block gpio_defaults_block_14 (
+  gpio_defaults_block_0403 gpio_defaults_block_14 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[194] , \gpio_defaults[193] , \gpio_defaults[192] , \gpio_defaults[191] , \gpio_defaults[190] , \gpio_defaults[189] , \gpio_defaults[188] , \gpio_defaults[187] , \gpio_defaults[186] , \gpio_defaults[185] , \gpio_defaults[184] , \gpio_defaults[183] , \gpio_defaults[182]  })
   );
-  gpio_defaults_block gpio_defaults_block_15 (
+  gpio_defaults_block_0403 gpio_defaults_block_15 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[207] , \gpio_defaults[206] , \gpio_defaults[205] , \gpio_defaults[204] , \gpio_defaults[203] , \gpio_defaults[202] , \gpio_defaults[201] , \gpio_defaults[200] , \gpio_defaults[199] , \gpio_defaults[198] , \gpio_defaults[197] , \gpio_defaults[196] , \gpio_defaults[195]  })
   );
-  gpio_defaults_block gpio_defaults_block_16 (
+  gpio_defaults_block_0403 gpio_defaults_block_16 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[220] , \gpio_defaults[219] , \gpio_defaults[218] , \gpio_defaults[217] , \gpio_defaults[216] , \gpio_defaults[215] , \gpio_defaults[214] , \gpio_defaults[213] , \gpio_defaults[212] , \gpio_defaults[211] , \gpio_defaults[210] , \gpio_defaults[209] , \gpio_defaults[208]  })
   );
-  gpio_defaults_block gpio_defaults_block_17 (
+  gpio_defaults_block_0403 gpio_defaults_block_17 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[233] , \gpio_defaults[232] , \gpio_defaults[231] , \gpio_defaults[230] , \gpio_defaults[229] , \gpio_defaults[228] , \gpio_defaults[227] , \gpio_defaults[226] , \gpio_defaults[225] , \gpio_defaults[224] , \gpio_defaults[223] , \gpio_defaults[222] , \gpio_defaults[221]  })
   );
-  gpio_defaults_block gpio_defaults_block_18 (
+  gpio_defaults_block_0403 gpio_defaults_block_18 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[246] , \gpio_defaults[245] , \gpio_defaults[244] , \gpio_defaults[243] , \gpio_defaults[242] , \gpio_defaults[241] , \gpio_defaults[240] , \gpio_defaults[239] , \gpio_defaults[238] , \gpio_defaults[237] , \gpio_defaults[236] , \gpio_defaults[235] , \gpio_defaults[234]  })
   );
-  gpio_defaults_block gpio_defaults_block_19 (
+  gpio_defaults_block_0403 gpio_defaults_block_19 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[259] , \gpio_defaults[258] , \gpio_defaults[257] , \gpio_defaults[256] , \gpio_defaults[255] , \gpio_defaults[254] , \gpio_defaults[253] , \gpio_defaults[252] , \gpio_defaults[251] , \gpio_defaults[250] , \gpio_defaults[249] , \gpio_defaults[248] , \gpio_defaults[247]  })
   );
-  gpio_defaults_block gpio_defaults_block_20 (
+  gpio_defaults_block_0403 gpio_defaults_block_20 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[272] , \gpio_defaults[271] , \gpio_defaults[270] , \gpio_defaults[269] , \gpio_defaults[268] , \gpio_defaults[267] , \gpio_defaults[266] , \gpio_defaults[265] , \gpio_defaults[264] , \gpio_defaults[263] , \gpio_defaults[262] , \gpio_defaults[261] , \gpio_defaults[260]  })
   );
-  gpio_defaults_block gpio_defaults_block_21 (
+  gpio_defaults_block_0403 gpio_defaults_block_21 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[285] , \gpio_defaults[284] , \gpio_defaults[283] , \gpio_defaults[282] , \gpio_defaults[281] , \gpio_defaults[280] , \gpio_defaults[279] , \gpio_defaults[278] , \gpio_defaults[277] , \gpio_defaults[276] , \gpio_defaults[275] , \gpio_defaults[274] , \gpio_defaults[273]  })
   );
-  gpio_defaults_block gpio_defaults_block_22 (
+  gpio_defaults_block_0403 gpio_defaults_block_22 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[298] , \gpio_defaults[297] , \gpio_defaults[296] , \gpio_defaults[295] , \gpio_defaults[294] , \gpio_defaults[293] , \gpio_defaults[292] , \gpio_defaults[291] , \gpio_defaults[290] , \gpio_defaults[289] , \gpio_defaults[288] , \gpio_defaults[287] , \gpio_defaults[286]  })
   );
-  gpio_defaults_block gpio_defaults_block_23 (
+  gpio_defaults_block_0403 gpio_defaults_block_23 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[311] , \gpio_defaults[310] , \gpio_defaults[309] , \gpio_defaults[308] , \gpio_defaults[307] , \gpio_defaults[306] , \gpio_defaults[305] , \gpio_defaults[304] , \gpio_defaults[303] , \gpio_defaults[302] , \gpio_defaults[301] , \gpio_defaults[300] , \gpio_defaults[299]  })
   );
-  gpio_defaults_block gpio_defaults_block_24 (
+  gpio_defaults_block_0403 gpio_defaults_block_24 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[324] , \gpio_defaults[323] , \gpio_defaults[322] , \gpio_defaults[321] , \gpio_defaults[320] , \gpio_defaults[319] , \gpio_defaults[318] , \gpio_defaults[317] , \gpio_defaults[316] , \gpio_defaults[315] , \gpio_defaults[314] , \gpio_defaults[313] , \gpio_defaults[312]  })
   );
-  gpio_defaults_block gpio_defaults_block_25 (
+  gpio_defaults_block_0403 gpio_defaults_block_25 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[337] , \gpio_defaults[336] , \gpio_defaults[335] , \gpio_defaults[334] , \gpio_defaults[333] , \gpio_defaults[332] , \gpio_defaults[331] , \gpio_defaults[330] , \gpio_defaults[329] , \gpio_defaults[328] , \gpio_defaults[327] , \gpio_defaults[326] , \gpio_defaults[325]  })
   );
-  gpio_defaults_block gpio_defaults_block_26 (
+  gpio_defaults_block_0403 gpio_defaults_block_26 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[350] , \gpio_defaults[349] , \gpio_defaults[348] , \gpio_defaults[347] , \gpio_defaults[346] , \gpio_defaults[345] , \gpio_defaults[344] , \gpio_defaults[343] , \gpio_defaults[342] , \gpio_defaults[341] , \gpio_defaults[340] , \gpio_defaults[339] , \gpio_defaults[338]  })
   );
-  gpio_defaults_block gpio_defaults_block_27 (
+  gpio_defaults_block_0403 gpio_defaults_block_27 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[363] , \gpio_defaults[362] , \gpio_defaults[361] , \gpio_defaults[360] , \gpio_defaults[359] , \gpio_defaults[358] , \gpio_defaults[357] , \gpio_defaults[356] , \gpio_defaults[355] , \gpio_defaults[354] , \gpio_defaults[353] , \gpio_defaults[352] , \gpio_defaults[351]  })
   );
-  gpio_defaults_block gpio_defaults_block_28 (
+  gpio_defaults_block_0403 gpio_defaults_block_28 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[376] , \gpio_defaults[375] , \gpio_defaults[374] , \gpio_defaults[373] , \gpio_defaults[372] , \gpio_defaults[371] , \gpio_defaults[370] , \gpio_defaults[369] , \gpio_defaults[368] , \gpio_defaults[367] , \gpio_defaults[366] , \gpio_defaults[365] , \gpio_defaults[364]  })
   );
-  gpio_defaults_block gpio_defaults_block_29 (
+  gpio_defaults_block_0403 gpio_defaults_block_29 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[389] , \gpio_defaults[388] , \gpio_defaults[387] , \gpio_defaults[386] , \gpio_defaults[385] , \gpio_defaults[384] , \gpio_defaults[383] , \gpio_defaults[382] , \gpio_defaults[381] , \gpio_defaults[380] , \gpio_defaults[379] , \gpio_defaults[378] , \gpio_defaults[377]  })
   );
-  gpio_defaults_block \gpio_defaults_block_2[0]  (
+  gpio_defaults_block_0403 \gpio_defaults_block_2[0]  (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[38] , \gpio_defaults[37] , \gpio_defaults[36] , \gpio_defaults[35] , \gpio_defaults[34] , \gpio_defaults[33] , \gpio_defaults[32] , \gpio_defaults[31] , \gpio_defaults[30] , \gpio_defaults[29] , \gpio_defaults[28] , \gpio_defaults[27] , \gpio_defaults[26]  })
   );
-  gpio_defaults_block \gpio_defaults_block_2[1]  (
+  gpio_defaults_block_0403 \gpio_defaults_block_2[1]  (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[51] , \gpio_defaults[50] , \gpio_defaults[49] , \gpio_defaults[48] , \gpio_defaults[47] , \gpio_defaults[46] , \gpio_defaults[45] , \gpio_defaults[44] , \gpio_defaults[43] , \gpio_defaults[42] , \gpio_defaults[41] , \gpio_defaults[40] , \gpio_defaults[39]  })
   );
-  gpio_defaults_block \gpio_defaults_block_2[2]  (
+  gpio_defaults_block_0403 \gpio_defaults_block_2[2]  (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[64] , \gpio_defaults[63] , \gpio_defaults[62] , \gpio_defaults[61] , \gpio_defaults[60] , \gpio_defaults[59] , \gpio_defaults[58] , \gpio_defaults[57] , \gpio_defaults[56] , \gpio_defaults[55] , \gpio_defaults[54] , \gpio_defaults[53] , \gpio_defaults[52]  })
   );
-  gpio_defaults_block gpio_defaults_block_30 (
+  gpio_defaults_block_0403 gpio_defaults_block_30 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[402] , \gpio_defaults[401] , \gpio_defaults[400] , \gpio_defaults[399] , \gpio_defaults[398] , \gpio_defaults[397] , \gpio_defaults[396] , \gpio_defaults[395] , \gpio_defaults[394] , \gpio_defaults[393] , \gpio_defaults[392] , \gpio_defaults[391] , \gpio_defaults[390]  })
   );
-  gpio_defaults_block gpio_defaults_block_31 (
+  gpio_defaults_block_0403 gpio_defaults_block_31 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[415] , \gpio_defaults[414] , \gpio_defaults[413] , \gpio_defaults[412] , \gpio_defaults[411] , \gpio_defaults[410] , \gpio_defaults[409] , \gpio_defaults[408] , \gpio_defaults[407] , \gpio_defaults[406] , \gpio_defaults[405] , \gpio_defaults[404] , \gpio_defaults[403]  })
   );
-  gpio_defaults_block gpio_defaults_block_32 (
+  gpio_defaults_block_0403 gpio_defaults_block_32 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[428] , \gpio_defaults[427] , \gpio_defaults[426] , \gpio_defaults[425] , \gpio_defaults[424] , \gpio_defaults[423] , \gpio_defaults[422] , \gpio_defaults[421] , \gpio_defaults[420] , \gpio_defaults[419] , \gpio_defaults[418] , \gpio_defaults[417] , \gpio_defaults[416]  })
   );
-  gpio_defaults_block gpio_defaults_block_33 (
+  gpio_defaults_block_0403 gpio_defaults_block_33 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[441] , \gpio_defaults[440] , \gpio_defaults[439] , \gpio_defaults[438] , \gpio_defaults[437] , \gpio_defaults[436] , \gpio_defaults[435] , \gpio_defaults[434] , \gpio_defaults[433] , \gpio_defaults[432] , \gpio_defaults[431] , \gpio_defaults[430] , \gpio_defaults[429]  })
   );
-  gpio_defaults_block gpio_defaults_block_34 (
+  gpio_defaults_block_0403 gpio_defaults_block_34 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[454] , \gpio_defaults[453] , \gpio_defaults[452] , \gpio_defaults[451] , \gpio_defaults[450] , \gpio_defaults[449] , \gpio_defaults[448] , \gpio_defaults[447] , \gpio_defaults[446] , \gpio_defaults[445] , \gpio_defaults[444] , \gpio_defaults[443] , \gpio_defaults[442]  })
   );
-  gpio_defaults_block gpio_defaults_block_35 (
+  gpio_defaults_block_0403 gpio_defaults_block_35 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[467] , \gpio_defaults[466] , \gpio_defaults[465] , \gpio_defaults[464] , \gpio_defaults[463] , \gpio_defaults[462] , \gpio_defaults[461] , \gpio_defaults[460] , \gpio_defaults[459] , \gpio_defaults[458] , \gpio_defaults[457] , \gpio_defaults[456] , \gpio_defaults[455]  })
   );
-  gpio_defaults_block gpio_defaults_block_36 (
+  gpio_defaults_block_0403 gpio_defaults_block_36 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[480] , \gpio_defaults[479] , \gpio_defaults[478] , \gpio_defaults[477] , \gpio_defaults[476] , \gpio_defaults[475] , \gpio_defaults[474] , \gpio_defaults[473] , \gpio_defaults[472] , \gpio_defaults[471] , \gpio_defaults[470] , \gpio_defaults[469] , \gpio_defaults[468]  })
   );
-  gpio_defaults_block gpio_defaults_block_37 (
+  gpio_defaults_block_0403 gpio_defaults_block_37 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[493] , \gpio_defaults[492] , \gpio_defaults[491] , \gpio_defaults[490] , \gpio_defaults[489] , \gpio_defaults[488] , \gpio_defaults[487] , \gpio_defaults[486] , \gpio_defaults[485] , \gpio_defaults[484] , \gpio_defaults[483] , \gpio_defaults[482] , \gpio_defaults[481]  })
   );
-  gpio_defaults_block gpio_defaults_block_5 (
+  gpio_defaults_block_0403 gpio_defaults_block_5 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[77] , \gpio_defaults[76] , \gpio_defaults[75] , \gpio_defaults[74] , \gpio_defaults[73] , \gpio_defaults[72] , \gpio_defaults[71] , \gpio_defaults[70] , \gpio_defaults[69] , \gpio_defaults[68] , \gpio_defaults[67] , \gpio_defaults[66] , \gpio_defaults[65]  })
   );
-  gpio_defaults_block gpio_defaults_block_6 (
+  gpio_defaults_block_0403 gpio_defaults_block_6 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[90] , \gpio_defaults[89] , \gpio_defaults[88] , \gpio_defaults[87] , \gpio_defaults[86] , \gpio_defaults[85] , \gpio_defaults[84] , \gpio_defaults[83] , \gpio_defaults[82] , \gpio_defaults[81] , \gpio_defaults[80] , \gpio_defaults[79] , \gpio_defaults[78]  })
   );
-  gpio_defaults_block gpio_defaults_block_7 (
+  gpio_defaults_block_0403 gpio_defaults_block_7 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[103] , \gpio_defaults[102] , \gpio_defaults[101] , \gpio_defaults[100] , \gpio_defaults[99] , \gpio_defaults[98] , \gpio_defaults[97] , \gpio_defaults[96] , \gpio_defaults[95] , \gpio_defaults[94] , \gpio_defaults[93] , \gpio_defaults[92] , \gpio_defaults[91]  })
   );
-  gpio_defaults_block gpio_defaults_block_8 (
+  gpio_defaults_block_0403 gpio_defaults_block_8 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[116] , \gpio_defaults[115] , \gpio_defaults[114] , \gpio_defaults[113] , \gpio_defaults[112] , \gpio_defaults[111] , \gpio_defaults[110] , \gpio_defaults[109] , \gpio_defaults[108] , \gpio_defaults[107] , \gpio_defaults[106] , \gpio_defaults[105] , \gpio_defaults[104]  })
   );
-  gpio_defaults_block gpio_defaults_block_9 (
+  gpio_defaults_block_0403 gpio_defaults_block_9 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[129] , \gpio_defaults[128] , \gpio_defaults[127] , \gpio_defaults[126] , \gpio_defaults[125] , \gpio_defaults[124] , \gpio_defaults[123] , \gpio_defaults[122] , \gpio_defaults[121] , \gpio_defaults[120] , \gpio_defaults[119] , \gpio_defaults[118] , \gpio_defaults[117]  })
