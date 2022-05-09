@@ -362,8 +362,8 @@ if __name__ == '__main__':
 
     # Do the same to the top gate-level verilog
 
-    inst1rex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+.?gpio_defaults_block_([0-9]+).([0-9]+)')
-    inst2rex = re.compile('[ \t]*(gpio_defaults_block_?[0-9]*)[ \t]+gpio_defaults_block_([0-9]+)')
+    inst1rex = re.compile('[ \t]*(gpio_defaults_block_?[0-1]?[0-9A-Fa-f]*)[ \t]+.?gpio_defaults_block_([0-9]+).([0-9]+)')
+    inst2rex = re.compile('[ \t]*(gpio_defaults_block_?[0-1]?[0-9A-Fa-f]*)[ \t]+gpio_defaults_block_([0-9]+)')
 
     if testmode:
         print('Test only:  Caravel top gate-level verilog:')
