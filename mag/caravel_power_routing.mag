@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1638492834
+timestamp 1650914956
 << error_p >>
 rect 111554 1006757 112632 1006758
 rect 111554 1006005 111555 1006757
@@ -929,8 +929,10 @@ rect 648166 46660 649608 47124
 << metal2 >>
 rect 648104 47124 649670 47188
 rect 648104 46660 648166 47124
-rect 649608 46660 649670 47124
-rect 648104 46590 649670 46660
+rect 649608 46738 649670 47124
+rect 649608 46660 650160 46738
+rect 648104 46598 650160 46660
+rect 648104 46590 649670 46598
 << via2 >>
 rect 648166 46660 649608 47124
 << metal3 >>
@@ -1400,8 +1402,10 @@ rect 251300 46630 255702 46686
 rect 251300 42856 251392 46630
 rect 255638 42856 255702 46630
 rect 648104 46660 648166 47124
-rect 649608 46660 649670 47124
-rect 648104 46590 649670 46660
+rect 649608 46844 649670 47124
+rect 649608 46660 650158 46844
+rect 648104 46598 650158 46660
+rect 648104 46590 649670 46598
 rect 653462 45026 656910 45156
 rect 251300 39426 255702 42856
 rect 641954 43988 643694 44026
@@ -3258,18 +3262,6 @@ use gpio_control_power_routing  gpio_control_power_routing_1
 timestamp 1637447660
 transform 1 0 -10 0 1 43200
 box 6032 203748 55470 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_14
-timestamp 1637595202
-transform -1 0 717846 0 1 -81600
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_13
-timestamp 1637595202
-transform -1 0 717846 0 1 -36400
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_12
-timestamp 1637595202
-transform -1 0 717846 0 1 8600
-box 6032 203748 46226 221470
 use gpio_control_power_routing  gpio_control_power_routing_2
 timestamp 1637447660
 transform 1 0 -10 0 1 86400
@@ -3282,30 +3274,10 @@ use gpio_control_power_routing  gpio_control_power_routing_4
 timestamp 1637447660
 transform 1 0 -10 0 1 172800
 box 6032 203748 55470 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_11
-timestamp 1637595202
-transform -1 0 717846 0 1 53800
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_10
-timestamp 1637595202
-transform -1 0 717846 0 1 98800
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_9
-timestamp 1637595202
-transform -1 0 717846 0 1 143800
-box 6032 203748 46226 221470
 use gpio_control_power_routing  gpio_control_power_routing_5
 timestamp 1637447660
 transform 1 0 -10 0 1 216000
 box 6032 203748 55470 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_8
-timestamp 1637595202
-transform -1 0 717846 0 1 189000
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_7
-timestamp 1637595202
-transform -1 0 717846 0 1 277200
-box 6032 203748 46226 221470
 use gpio_control_power_routing  gpio_control_power_routing_6
 timestamp 1637447660
 transform 1 0 -10 0 1 343600
@@ -3318,42 +3290,18 @@ use gpio_control_power_routing  gpio_control_power_routing_8
 timestamp 1637447660
 transform 1 0 -10 0 1 430000
 box 6032 203748 55470 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_6
-timestamp 1637595202
-transform -1 0 717846 0 1 321200
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_5
-timestamp 1637595202
-transform -1 0 717846 0 1 366200
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_4
-timestamp 1637595202
-transform -1 0 717846 0 1 411400
-box 6032 203748 46226 221470
 use gpio_control_power_routing  gpio_control_power_routing_9
 timestamp 1637447660
 transform 1 0 -10 0 1 473200
-box 6032 203748 55470 221470
-use gpio_control_power_routing  gpio_control_power_routing_11
-timestamp 1637447660
-transform 1 0 -10 0 1 559600
 box 6032 203748 55470 221470
 use gpio_control_power_routing  gpio_control_power_routing_10
 timestamp 1637447660
 transform 1 0 -10 0 1 516400
 box 6032 203748 55470 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_3
-timestamp 1637595202
-transform -1 0 717846 0 1 456400
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_2
-timestamp 1637595202
-transform -1 0 717846 0 1 501600
-box 6032 203748 46226 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_1
-timestamp 1637595202
-transform -1 0 717846 0 1 546600
-box 6032 203748 46226 221470
+use gpio_control_power_routing  gpio_control_power_routing_11
+timestamp 1637447660
+transform 1 0 -10 0 1 559600
+box 6032 203748 55470 221470
 use gpio_control_power_routing  gpio_control_power_routing_12
 timestamp 1637447660
 transform 1 0 -10 0 1 602800
@@ -3362,6 +3310,66 @@ use gpio_control_power_routing  gpio_control_power_routing_13
 timestamp 1637447660
 transform 1 0 -10 0 1 728600
 box 6032 203748 55470 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_0
+timestamp 1637595202
+transform -1 0 717836 0 1 725000
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_1
+timestamp 1637595202
+transform -1 0 717846 0 1 546600
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_2
+timestamp 1637595202
+transform -1 0 717846 0 1 501600
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_3
+timestamp 1637595202
+transform -1 0 717846 0 1 456400
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_4
+timestamp 1637595202
+transform -1 0 717846 0 1 411400
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_5
+timestamp 1637595202
+transform -1 0 717846 0 1 366200
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_6
+timestamp 1637595202
+transform -1 0 717846 0 1 321200
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_7
+timestamp 1637595202
+transform -1 0 717846 0 1 277200
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_8
+timestamp 1637595202
+transform -1 0 717846 0 1 189000
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_9
+timestamp 1637595202
+transform -1 0 717846 0 1 143800
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_10
+timestamp 1637595202
+transform -1 0 717846 0 1 98800
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_11
+timestamp 1637595202
+transform -1 0 717846 0 1 53800
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_12
+timestamp 1637595202
+transform -1 0 717846 0 1 8600
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_13
+timestamp 1637595202
+transform -1 0 717846 0 1 -36400
+box 6032 203748 46226 221470
+use gpio_control_power_routing_right  gpio_control_power_routing_right_14
+timestamp 1637595202
+transform -1 0 717846 0 1 -81600
+box 6032 203748 46226 221470
 use gpio_control_power_routing_top  gpio_control_power_routing_top_0
 timestamp 1637524495
 transform 0 1 -105400 -1 0 1037728
@@ -3370,13 +3378,13 @@ use gpio_control_power_routing_top  gpio_control_power_routing_top_1
 timestamp 1637524495
 transform 0 1 -54000 -1 0 1037728
 box 6032 203748 43870 221470
-use gpio_control_power_routing_top  gpio_control_power_routing_top_3
-timestamp 1637524495
-transform 0 1 48800 -1 0 1037728
-box 6032 203748 43870 221470
 use gpio_control_power_routing_top  gpio_control_power_routing_top_2
 timestamp 1637524495
 transform 0 1 -2600 -1 0 1037728
+box 6032 203748 43870 221470
+use gpio_control_power_routing_top  gpio_control_power_routing_top_3
+timestamp 1637524495
+transform 0 1 48800 -1 0 1037728
 box 6032 203748 43870 221470
 use gpio_control_power_routing_top  gpio_control_power_routing_top_4
 timestamp 1637524495
@@ -3398,10 +3406,6 @@ use gpio_control_power_routing_top  gpio_control_power_routing_top_8
 timestamp 1637524495
 transform 0 1 346600 -1 0 1037728
 box 6032 203748 43870 221470
-use gpio_control_power_routing_right  gpio_control_power_routing_right_0
-timestamp 1637595202
-transform -1 0 717836 0 1 725000
-box 6032 203748 46226 221470
 << labels >>
 flabel metal5 54316 219436 55324 219998 0 FreeSans 1600 0 0 0 vccd1_core
 flabel metal5 52692 217826 53700 218388 0 FreeSans 1600 0 0 0 vssd1_core
