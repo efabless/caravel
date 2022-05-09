@@ -23,7 +23,7 @@ Introduction
 
 The Efabless Caravel chip is a ready-to-use test harness for creating designs with the Google/Skywater 130nm Open PDK.
 The Caravel harness comprises of base functions supporting IO, power and configuration as well as drop-in modules for a
-management soc core, and an approximately 2.8mm x 2.8mm open project area for the placement of user IP blocks.
+management SoC core, and an approximately 3000um x 3600um open project area for the placement of user IP blocks.
 
 .. figure:: _static/caravel_floorplan.jpg
       :name: caravel_floorplan
@@ -32,9 +32,10 @@ management soc core, and an approximately 2.8mm x 2.8mm open project area for th
 
       Caravel floorplan
 
-|
+This documentation focuses on the IO, protection and housekeeping blocks. 
+The management core SoC has its own [documentation here](https://caravel-mgmt-soc-litex.readthedocs.io/en/latest/)
 
-The Github Repo could be found here: https://github.com/efabless/caravel/
+The Caravel Github repository can be found here: https://github.com/efabless/caravel/
 
 The documentation contains the following chapters:
 
@@ -51,7 +52,7 @@ The documentation contains the following chapters:
 * :doc:`uart` describes the UART interface,
 * :doc:`spi` describes the SPI configuration,
 * :doc:`counter-timers` describes two counter/timers blocks,
-* :doc:`irq` describes the interrups,
+* :doc:`irq` describes the interrupts,
 * :doc:`sram` describes management and storage area SRAM,
 * :doc:`programming` shows how to get started with programming on Caravel chip,
 * :doc:`memory-mapped-io-summary` lists the memory mapped I/O registers by address,
