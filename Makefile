@@ -110,8 +110,8 @@ __ship:
 	@echo "###############################################"
 	@echo "Generating Caravel GDS (sources are in the 'gds' directory)"
 	@sleep 1
-#### Runs from the CARAVEL_ROOT mag directory 
-	@echo "\
+#### Runs from the CARAVEL_ROOT directory (required for set_user_id.py)
+	@cd $(CARAVEL_ROOT) && echo "\
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
 		crashbackups stop; \
@@ -136,8 +136,8 @@ __ship:
 		cif *array write disable; \
 		gds write $(UPRJ_ROOT)/gds/caravel.gds; \
 		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
-### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
+#### Runs from the CARAVEL_ROOT mag directory
 	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
