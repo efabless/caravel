@@ -667,6 +667,8 @@ caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v c
 		read_verilog ./verilog/gl/spare_logic_block.v;\
 		read_verilog ./verilog/gl/chip_io.v;\
 		read_verilog ./verilog/gl/caravel.v;\
+		read_verilog ../verilog/gl/user_proj_example.v;\
+		read_verilog ../verilog/gl/user_project_wrapper.v;\
 		link_design caravel;\
 		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
 		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
@@ -754,6 +756,8 @@ caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v c
 		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
+		read_spef -path mprj ../spef/user_project_wrapper.spef;\
+		read_spef -path mprj/mprj ../spef/user_proj_example.spef;\
 		read_spef ./spef/caravel.spef;\
 		read_sdc -echo ./sdc/caravel.sdc;\
 		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
