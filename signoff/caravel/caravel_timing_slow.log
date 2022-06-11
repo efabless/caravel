@@ -2356,7 +2356,7 @@ set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_
 set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {mprj_io[35]}]
 set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {mprj_io[36]}]
 set_input_delay $input_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {mprj_io[37]}]
-set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_csb}]
+set_output_delay 4.5 -clock [get_clocks {clock}] -add_delay [get_ports {flash_csb}]
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_clk}]
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_io0}]
 set_output_delay $output_delay_value  -clock [get_clocks {clock}] -add_delay [get_ports {flash_io1}]
@@ -16205,13 +16205,13 @@ Fanout     Cap    Slew   Delay    Time   Description
                           0.00   25.00   clock network delay (propagated)
                          -0.25   24.75   clock uncertainty
                           0.00   24.75   clock reconvergence pessimism
-                         -5.00   19.75   output external delay
-                                 19.75   data required time
+                         -4.50   20.25   output external delay
+                                 20.25   data required time
 -----------------------------------------------------------------------------
-                                 19.75   data required time
+                                 20.25   data required time
                                -143.87   data arrival time
 -----------------------------------------------------------------------------
-                               -124.12   slack (VIOLATED)
+                               -123.62   slack (VIOLATED)
 
 
 Startpoint: soc/core/_38355_ (rising edge-triggered flip-flop clocked by clock)
