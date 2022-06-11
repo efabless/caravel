@@ -826,6 +826,8 @@ caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_verilog ./verilog/gl/spare_logic_block.v;\
 		read_verilog ./verilog/gl/chip_io.v;\
 		read_verilog ./verilog/gl/caravel.v;\
+		read_verilog ../verilog/gl/user_proj_example.v;\
+		read_verilog ../verilog/gl/user_project_wrapper.v;\
 		link_design caravel;\
 		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
 		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
@@ -875,11 +877,11 @@ caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_spef -path \gpio_control_in_2[7] ./spef/gpio_control_block.spef;\
 		read_spef -path \gpio_control_in_2[8] ./spef/gpio_control_block.spef;\
 		read_spef -path \gpio_control_in_2[9] ./spef/gpio_control_block.spef;\
-		read_spef -path gpio_defaults_block_0 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_1 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_2 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_3 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_4 ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_0[0] ./spef/gpio_defaults_block_1803.spef;\
+		read_spef -path gpio_defaults_block_0[1] ./spef/gpio_defaults_block_1803.spef;\
+		read_spef -path gpio_defaults_block_2[0] ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_2[1] ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_2[2] ./spef/gpio_defaults_block_0403.spef;\
 		read_spef -path gpio_defaults_block_5 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_6 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_7 ./spef/gpio_defaults_block.spef;\
@@ -913,6 +915,8 @@ caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
+		read_spef -path mprj ../spef/user_project_wrapper.spef;\
+		read_spef -path mprj/mprj ../spef/user_proj_example.spef;\
 		read_spef ./spef/caravel.spef;\
 		read_sdc -echo ./sdc/caravel.sdc;\
 		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
@@ -979,6 +983,8 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_verilog ./verilog/gl/spare_logic_block.v;\
 		read_verilog ./verilog/gl/chip_io.v;\
 		read_verilog ./verilog/gl/caravel.v;\
+		read_verilog ../verilog/gl/user_proj_example.v;\
+		read_verilog ../verilog/gl/user_project_wrapper.v;\
 		link_design caravel;\
 		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
 		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
@@ -1028,11 +1034,11 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_spef -path \gpio_control_in_2[7] ./spef/gpio_control_block.spef;\
 		read_spef -path \gpio_control_in_2[8] ./spef/gpio_control_block.spef;\
 		read_spef -path \gpio_control_in_2[9] ./spef/gpio_control_block.spef;\
-		read_spef -path gpio_defaults_block_0 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_1 ./spef/gpio_defaults_block_1803.spef;\
-		read_spef -path gpio_defaults_block_2 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_3 ./spef/gpio_defaults_block_0403.spef;\
-		read_spef -path gpio_defaults_block_4 ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_0[0] ./spef/gpio_defaults_block_1803.spef;\
+		read_spef -path gpio_defaults_block_0[1] ./spef/gpio_defaults_block_1803.spef;\
+		read_spef -path gpio_defaults_block_2[0] ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_2[1] ./spef/gpio_defaults_block_0403.spef;\
+		read_spef -path gpio_defaults_block_2[2] ./spef/gpio_defaults_block_0403.spef;\
 		read_spef -path gpio_defaults_block_5 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_6 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_7 ./spef/gpio_defaults_block.spef;\
@@ -1066,6 +1072,8 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_spef -path gpio_defaults_block_35 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_36 ./spef/gpio_defaults_block.spef;\
 		read_spef -path gpio_defaults_block_37 ./spef/gpio_defaults_block.spef;\
+		read_spef -path mprj ../spef/user_project_wrapper.spef;\
+		read_spef -path mprj/mprj ../spef/user_proj_example.spef;\
 		read_spef ./spef/caravel.spef;\
 		read_sdc -echo ./sdc/caravel.sdc;\
 		report_checks -path_delay min -fields {slew cap input nets fanout} -format full_clock_expanded -group_count 50;\
