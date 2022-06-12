@@ -963,9 +963,9 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib;\
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib;\
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib;\
-		read_verilog ../mgmt_core_wrapper/verilog/gl/mgmt_core.v;\
-		read_verilog ../mgmt_core_wrapper/verilog/gl/DFFRAM.v;\
-		read_verilog ../mgmt_core_wrapper/verilog/gl/mgmt_core_wrapper.v;\
+		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
+		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
+		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
 		read_verilog ./verilog/gl/caravel_clocking.v;\
 		read_verilog ./verilog/gl/digital_pll.v;\
 		read_verilog ./verilog/gl/housekeeping.v;\
@@ -986,9 +986,9 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_verilog ../verilog/gl/user_proj_example.v;\
 		read_verilog ../verilog/gl/user_project_wrapper.v;\
 		link_design caravel;\
-		read_spef -path soc/DFFRAM_0 ../mgmt_core_wrapper/spef/DFFRAM.spef;\
-		read_spef -path soc/core ../mgmt_core_wrapper/spef/mgmt_core.spef;\
-		read_spef -path soc ../mgmt_core_wrapper/spef/mgmt_core_wrapper.spef;\
+		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
+		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
+		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
 		read_spef -path padframe ./spef/chip_io.spef;\
 		read_spef -path rstb_level ./spef/xres_buf.spef;\
 		read_spef -path pll ./spef/digital_pll.spef;\
@@ -1096,8 +1096,8 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
 		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
 		" > ./def/tmp/caravel_timing_fast.tcl 
-	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD)/..:/project -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	bash -c "cd /project/caravel; sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log"
+	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD)/..:$(PWD)/.. -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	bash -c "cd $(PWD); sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log"
 
 ###########################################################################
 .PHONY: generate_fill
