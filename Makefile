@@ -1096,7 +1096,6 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
 		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
 		" > ./def/tmp/caravel_timing_fast.tcl 
-	#sta -exit ./def/tmp/caravel_timing_fast.tcl | tee ./signoff/caravel/caravel_timing_fast.log
 	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD):/caravel -v -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) bash -c "cd caravel/; sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log"
 
 ###########################################################################
