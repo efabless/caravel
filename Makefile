@@ -784,7 +784,8 @@ caravel_timing_typ: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v c
 		report_checks -to flash_csb -group_count 1;\
 		report_checks -to flash_io0 -group_count 1;\
 		" > ./def/tmp/caravel_timing_typ.tcl 
-	sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log 
+	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD)/..:$(PWD)/.. -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	bash -c "cd $(PWD); sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log"
 
 caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
 	mkdir -p ./def/tmp
@@ -939,7 +940,8 @@ caravel_timing_slow: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		report_checks -to mprj/la_data_in[*] -unconstrained -group_count 128;\
 		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
 		" > ./def/tmp/caravel_timing_slow.tcl 
-	sta -exit ./def/tmp/caravel_timing_slow.tcl | tee ./signoff/caravel/caravel_timing_slow.log 
+	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD)/..:$(PWD)/.. -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
+	bash -c "cd $(PWD); sta -exit ./def/tmp/caravel_timing_slow.tcl | tee ./signoff/caravel/caravel_timing_slow.log"
 
 
 caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v check-mcw
@@ -1097,7 +1099,7 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		report_checks -to mprj/la_oenb[*] -unconstrained -group_count 128;\
 		" > ./def/tmp/caravel_timing_fast.tcl 
 	docker run -it -v $(OPENLANE_ROOT):/openlane -v $(PDK_ROOT):$(PDK_ROOT) -v $(PWD)/..:$(PWD)/.. -e PDK_ROOT=$(PDK_ROOT) -u $(shell id -u $(USER)):$(shell id -g $(USER)) $(OPENLANE_IMAGE_NAME) \
-	bash -c "cd $(PWD); sta -exit ./def/tmp/caravel_timing_typ.tcl | tee ./signoff/caravel/caravel_timing_typ.log"
+	bash -c "cd $(PWD); sta -exit ./def/tmp/caravel_timing_fast.tcl | tee ./signoff/caravel/caravel_timing_fast.log"
 
 ###########################################################################
 .PHONY: generate_fill
