@@ -42,8 +42,7 @@ LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
 LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
-#MCW_ROOT?=$(PWD)/mgmt_core_wrapper
-MCW_ROOT?=./mgmt_core_wrapper
+MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
 MPW_TAG ?= mpw-5e
 
@@ -964,9 +963,9 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib;\
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib;\
 		read_liberty $(PDK_ROOT)/$(PDK)/libs.ref/$(IO_LIBRARY)/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/DFFRAM.v;\
-		read_verilog $(MCW_ROOT)/verilog/gl/mgmt_core_wrapper.v;\
+		read_verilog ../mgmt_core_wrapper/verilog/gl/mgmt_core.v;\
+		read_verilog ../mgmt_core_wrapper/verilog/gl/DFFRAM.v;\
+		read_verilog ../mgmt_core_wrapper/verilog/gl/mgmt_core_wrapper.v;\
 		read_verilog ./verilog/gl/caravel_clocking.v;\
 		read_verilog ./verilog/gl/digital_pll.v;\
 		read_verilog ./verilog/gl/housekeeping.v;\
@@ -987,9 +986,9 @@ caravel_timing_fast: ./def/caravel.def ./sdc/caravel.sdc ./verilog/gl/caravel.v 
 		read_verilog ../verilog/gl/user_proj_example.v;\
 		read_verilog ../verilog/gl/user_project_wrapper.v;\
 		link_design caravel;\
-		read_spef -path soc/DFFRAM_0 $(MCW_ROOT)/spef/DFFRAM.spef;\
-		read_spef -path soc/core $(MCW_ROOT)/spef/mgmt_core.spef;\
-		read_spef -path soc $(MCW_ROOT)/spef/mgmt_core_wrapper.spef;\
+		read_spef -path soc/DFFRAM_0 ../mgmt_core_wrapper/spef/DFFRAM.spef;\
+		read_spef -path soc/core ../mgmt_core_wrapper/spef/mgmt_core.spef;\
+		read_spef -path soc ../mgmt_core_wrapper/spef/mgmt_core_wrapper.spef;\
 		read_spef -path padframe ./spef/chip_io.spef;\
 		read_spef -path rstb_level ./spef/xres_buf.spef;\
 		read_spef -path pll ./spef/digital_pll.spef;\
