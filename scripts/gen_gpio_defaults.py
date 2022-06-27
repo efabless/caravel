@@ -66,6 +66,7 @@
 import os
 import sys
 import re
+import glob
 
 def usage():
     print('Usage:')
@@ -206,6 +207,12 @@ if __name__ == '__main__':
     print('Step 1:  Create new cells for new GPIO default vectors.')
 
     cellsused = [None] * 38
+
+    # Remove pre-existing versions of mag and verilog files because they may be out-of-date.
+    for old_mag_file in glob.glob(magpath + '/gpio_defaults_block*.mag'):
+        os.remove(old_mag_file)
+    for old_verilog_file in glob.glob(glpath + '/gpio_defaults_block*.v'):
+        os.remove(old_verilog_file)
 
     for i in range(0, 38):
         config_name = '`USER_CONFIG_GPIO_' + str(i) + '_INIT'
