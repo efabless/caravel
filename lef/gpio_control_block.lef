@@ -344,91 +344,71 @@ MACRO gpio_control_block
     END
   END user_gpio_out
   PIN vccd
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE POWER ;
     PORT
-      LAYER met5 ;
-        RECT 4.600 5.900 49.220 7.500 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 22.800 49.220 24.400 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 39.700 49.220 41.300 ;
-    END
-    PORT
       LAYER met4 ;
-        RECT 12.800 5.440 14.400 57.360 ;
+        RECT 12.800 26.400 14.400 57.360 ;
     END
     PORT
       LAYER met4 ;
         RECT 37.800 5.200 39.400 57.360 ;
     END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 6.140 49.460 7.740 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 39.940 49.460 41.540 ;
+    END
   END vccd
   PIN vccd1
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE POWER ;
-    PORT
-      LAYER met5 ;
-        RECT 4.600 11.140 49.220 12.740 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 28.040 49.220 29.640 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 44.940 49.220 46.540 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 17.800 5.440 19.400 57.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 42.800 5.440 44.400 57.120 ;
-    END
-  END vccd1
-  PIN vssd
-    DIRECTION INPUT ;
-    USE GROUND ;
-    PORT
-      LAYER met5 ;
-        RECT 4.600 14.350 49.220 15.950 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 31.250 49.220 32.850 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 48.150 49.220 49.750 ;
-    END
     PORT
       LAYER met4 ;
         RECT 25.300 5.200 26.900 57.360 ;
     END
-  END vssd
-  PIN vssd1
-    DIRECTION INPUT ;
+    PORT
+      LAYER met5 ;
+        RECT 4.360 14.590 49.460 16.190 ;
+    END
+  END vccd1
+  PIN vssd
+    DIRECTION INOUT ;
     USE GROUND ;
     PORT
-      LAYER met5 ;
-        RECT 4.600 19.590 49.220 21.190 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 36.490 49.220 38.090 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 4.600 53.390 49.220 54.990 ;
+      LAYER met4 ;
+        RECT 19.050 5.200 20.650 57.360 ;
     END
     PORT
       LAYER met4 ;
-        RECT 30.300 5.440 31.900 57.120 ;
+        RECT 44.050 5.200 45.650 57.360 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 10.365 49.460 11.965 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 27.265 49.460 28.865 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 44.165 49.460 45.765 ;
+    END
+  END vssd
+  PIN vssd1
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 31.550 5.200 33.150 57.360 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 18.815 49.460 20.415 ;
     END
   END vssd1
   PIN zero
@@ -440,32 +420,280 @@ MACRO gpio_control_block
     END
   END zero
   OBS
-      LAYER nwell ;
-        RECT 4.410 55.705 49.410 57.310 ;
-        RECT 4.410 50.265 49.410 53.095 ;
-        RECT 4.410 44.825 49.410 47.655 ;
-        RECT 4.410 39.385 49.410 42.215 ;
-        RECT 4.410 33.945 49.410 36.775 ;
-        RECT 4.410 28.505 49.410 31.335 ;
       LAYER li1 ;
-        RECT 4.600 5.355 49.220 57.205 ;
+        RECT 0.000 64.930 4.265 65.070 ;
+      LAYER li1 ;
+        RECT 4.265 64.930 169.810 65.000 ;
+      LAYER li1 ;
+        RECT 0.000 64.845 49.815 64.930 ;
+      LAYER li1 ;
+        RECT 49.815 64.845 169.810 64.930 ;
+      LAYER li1 ;
+        RECT 0.000 57.405 169.810 64.845 ;
+        RECT 0.000 30.025 4.265 57.405 ;
+      LAYER li1 ;
+        RECT 4.265 30.025 169.810 57.405 ;
+      LAYER li1 ;
+        RECT 0.000 30.005 16.795 30.025 ;
+      LAYER li1 ;
+        RECT 16.795 30.005 169.810 30.025 ;
+      LAYER li1 ;
+        RECT 0.000 29.835 4.745 30.005 ;
+      LAYER li1 ;
+        RECT 4.745 29.835 169.810 30.005 ;
+      LAYER li1 ;
+        RECT 0.000 29.665 16.795 29.835 ;
+      LAYER li1 ;
+        RECT 16.795 29.665 169.810 29.835 ;
+      LAYER li1 ;
+        RECT 0.000 27.455 6.985 29.665 ;
+      LAYER li1 ;
+        RECT 6.985 27.455 169.810 29.665 ;
+      LAYER li1 ;
+        RECT 0.000 27.285 16.795 27.455 ;
+      LAYER li1 ;
+        RECT 16.795 27.285 169.810 27.455 ;
+      LAYER li1 ;
+        RECT 0.000 27.115 4.745 27.285 ;
+      LAYER li1 ;
+        RECT 4.745 27.115 169.810 27.285 ;
+      LAYER li1 ;
+        RECT 0.000 26.855 16.795 27.115 ;
+      LAYER li1 ;
+        RECT 16.795 26.855 169.810 27.115 ;
+      LAYER li1 ;
+        RECT 0.000 26.565 16.905 26.855 ;
+      LAYER li1 ;
+        RECT 16.905 26.565 169.810 26.855 ;
+      LAYER li1 ;
+        RECT 0.000 26.395 17.400 26.565 ;
+      LAYER li1 ;
+        RECT 17.400 26.395 169.810 26.565 ;
+      LAYER li1 ;
+        RECT 0.000 26.225 16.795 26.395 ;
+      LAYER li1 ;
+        RECT 16.795 26.225 169.810 26.395 ;
+      LAYER li1 ;
+        RECT 0.000 25.575 16.650 26.225 ;
+      LAYER li1 ;
+        RECT 16.650 25.575 169.810 26.225 ;
+      LAYER li1 ;
+        RECT 0.000 25.405 16.795 25.575 ;
+      LAYER li1 ;
+        RECT 16.795 25.405 169.810 25.575 ;
+      LAYER li1 ;
+        RECT 0.000 25.235 17.400 25.405 ;
+      LAYER li1 ;
+        RECT 17.400 25.235 169.810 25.405 ;
+      LAYER li1 ;
+        RECT 0.000 24.735 16.905 25.235 ;
+      LAYER li1 ;
+        RECT 16.905 24.735 169.810 25.235 ;
+      LAYER li1 ;
+        RECT 0.000 24.565 16.795 24.735 ;
+      LAYER li1 ;
+        RECT 16.795 24.565 169.810 24.735 ;
+      LAYER li1 ;
+        RECT 0.000 24.395 15.325 24.565 ;
+      LAYER li1 ;
+        RECT 15.325 24.395 169.810 24.565 ;
+      LAYER li1 ;
+        RECT 0.000 24.225 16.795 24.395 ;
+      LAYER li1 ;
+        RECT 16.795 24.225 169.810 24.395 ;
+      LAYER li1 ;
+        RECT 0.000 23.725 16.905 24.225 ;
+      LAYER li1 ;
+        RECT 16.905 23.725 169.810 24.225 ;
+      LAYER li1 ;
+        RECT 0.000 23.555 17.400 23.725 ;
+      LAYER li1 ;
+        RECT 17.400 23.555 169.810 23.725 ;
+      LAYER li1 ;
+        RECT 0.000 23.385 16.795 23.555 ;
+      LAYER li1 ;
+        RECT 16.795 23.385 169.810 23.555 ;
+      LAYER li1 ;
+        RECT 0.000 22.735 16.650 23.385 ;
+      LAYER li1 ;
+        RECT 16.650 22.735 169.810 23.385 ;
+      LAYER li1 ;
+        RECT 0.000 22.565 16.795 22.735 ;
+      LAYER li1 ;
+        RECT 16.795 22.565 169.810 22.735 ;
+      LAYER li1 ;
+        RECT 0.000 22.395 17.400 22.565 ;
+      LAYER li1 ;
+        RECT 17.400 22.395 169.810 22.565 ;
+      LAYER li1 ;
+        RECT 0.000 22.105 16.905 22.395 ;
+      LAYER li1 ;
+        RECT 16.905 22.105 169.810 22.395 ;
+      LAYER li1 ;
+        RECT 0.000 21.845 16.795 22.105 ;
+      LAYER li1 ;
+        RECT 16.795 21.845 169.810 22.105 ;
+      LAYER li1 ;
+        RECT 0.000 21.675 15.325 21.845 ;
+      LAYER li1 ;
+        RECT 15.325 21.675 169.810 21.845 ;
+      LAYER li1 ;
+        RECT 0.000 21.505 16.795 21.675 ;
+      LAYER li1 ;
+        RECT 16.795 21.505 169.810 21.675 ;
+      LAYER li1 ;
+        RECT 0.000 19.295 16.645 21.505 ;
+      LAYER li1 ;
+        RECT 16.645 19.295 169.810 21.505 ;
+      LAYER li1 ;
+        RECT 0.000 19.125 16.795 19.295 ;
+      LAYER li1 ;
+        RECT 16.795 19.125 169.810 19.295 ;
+      LAYER li1 ;
+        RECT 0.000 18.955 15.325 19.125 ;
+      LAYER li1 ;
+        RECT 15.325 18.955 169.810 19.125 ;
+      LAYER li1 ;
+        RECT 0.000 18.210 17.005 18.955 ;
+      LAYER li1 ;
+        RECT 17.005 18.210 169.810 18.955 ;
+      LAYER li1 ;
+        RECT 0.000 18.040 16.795 18.210 ;
+      LAYER li1 ;
+        RECT 16.795 18.040 169.810 18.210 ;
+      LAYER li1 ;
+        RECT 0.000 17.055 16.735 18.040 ;
+      LAYER li1 ;
+        RECT 16.735 17.055 169.810 18.040 ;
+      LAYER li1 ;
+        RECT 0.000 16.885 16.795 17.055 ;
+      LAYER li1 ;
+        RECT 16.795 16.885 169.810 17.055 ;
+      LAYER li1 ;
+        RECT 0.000 16.405 17.035 16.885 ;
+      LAYER li1 ;
+        RECT 17.035 16.405 169.810 16.885 ;
+      LAYER li1 ;
+        RECT 0.000 16.235 15.325 16.405 ;
+      LAYER li1 ;
+        RECT 15.325 16.235 169.810 16.405 ;
+      LAYER li1 ;
+        RECT 0.000 16.065 16.795 16.235 ;
+      LAYER li1 ;
+        RECT 16.795 16.065 169.810 16.235 ;
+      LAYER li1 ;
+        RECT 0.000 13.855 16.645 16.065 ;
+      LAYER li1 ;
+        RECT 16.645 13.855 169.810 16.065 ;
+      LAYER li1 ;
+        RECT 0.000 13.685 16.795 13.855 ;
+      LAYER li1 ;
+        RECT 16.795 13.685 169.810 13.855 ;
+      LAYER li1 ;
+        RECT 0.000 13.515 15.325 13.685 ;
+      LAYER li1 ;
+        RECT 15.325 13.515 169.810 13.685 ;
+      LAYER li1 ;
+        RECT 0.000 13.345 16.795 13.515 ;
+      LAYER li1 ;
+        RECT 16.795 13.345 169.810 13.515 ;
+      LAYER li1 ;
+        RECT 0.000 11.135 16.645 13.345 ;
+      LAYER li1 ;
+        RECT 16.645 11.135 169.810 13.345 ;
+      LAYER li1 ;
+        RECT 0.000 10.965 16.795 11.135 ;
+      LAYER li1 ;
+        RECT 16.795 10.965 169.810 11.135 ;
+      LAYER li1 ;
+        RECT 0.000 10.795 15.325 10.965 ;
+      LAYER li1 ;
+        RECT 15.325 10.795 169.810 10.965 ;
+      LAYER li1 ;
+        RECT 0.000 10.535 16.795 10.795 ;
+      LAYER li1 ;
+        RECT 16.795 10.535 169.810 10.795 ;
+      LAYER li1 ;
+        RECT 0.000 10.245 16.905 10.535 ;
+      LAYER li1 ;
+        RECT 16.905 10.245 169.810 10.535 ;
+      LAYER li1 ;
+        RECT 0.000 10.075 17.400 10.245 ;
+      LAYER li1 ;
+        RECT 17.400 10.075 169.810 10.245 ;
+      LAYER li1 ;
+        RECT 0.000 9.905 16.795 10.075 ;
+      LAYER li1 ;
+        RECT 16.795 9.905 169.810 10.075 ;
+      LAYER li1 ;
+        RECT 0.000 9.255 16.645 9.905 ;
+      LAYER li1 ;
+        RECT 16.645 9.255 169.810 9.905 ;
+      LAYER li1 ;
+        RECT 0.000 9.085 16.795 9.255 ;
+      LAYER li1 ;
+        RECT 16.795 9.085 169.810 9.255 ;
+      LAYER li1 ;
+        RECT 0.000 8.915 17.400 9.085 ;
+      LAYER li1 ;
+        RECT 17.400 8.915 169.810 9.085 ;
+      LAYER li1 ;
+        RECT 0.000 8.415 16.905 8.915 ;
+      LAYER li1 ;
+        RECT 16.905 8.415 169.810 8.915 ;
+      LAYER li1 ;
+        RECT 0.000 8.245 16.795 8.415 ;
+      LAYER li1 ;
+        RECT 16.795 8.245 169.810 8.415 ;
+      LAYER li1 ;
+        RECT 0.000 8.075 15.325 8.245 ;
+      LAYER li1 ;
+        RECT 15.325 8.075 169.810 8.245 ;
+      LAYER li1 ;
+        RECT 0.000 7.330 17.005 8.075 ;
+      LAYER li1 ;
+        RECT 17.005 7.330 169.810 8.075 ;
+      LAYER li1 ;
+        RECT 0.000 7.160 16.795 7.330 ;
+      LAYER li1 ;
+        RECT 16.795 7.160 169.810 7.330 ;
+      LAYER li1 ;
+        RECT 0.000 6.175 16.735 7.160 ;
+      LAYER li1 ;
+        RECT 16.735 6.175 169.810 7.160 ;
+      LAYER li1 ;
+        RECT 0.000 6.005 16.795 6.175 ;
+      LAYER li1 ;
+        RECT 16.795 6.005 169.810 6.175 ;
+      LAYER li1 ;
+        RECT 0.000 5.525 17.035 6.005 ;
+      LAYER li1 ;
+        RECT 17.035 5.525 169.810 6.005 ;
+      LAYER li1 ;
+        RECT 0.000 5.355 15.325 5.525 ;
+      LAYER li1 ;
+        RECT 15.325 5.355 169.810 5.525 ;
+      LAYER li1 ;
+        RECT 0.000 0.000 16.795 5.355 ;
+      LAYER li1 ;
+        RECT 16.795 0.000 169.810 5.355 ;
       LAYER met1 ;
-        RECT 4.600 4.800 83.190 57.360 ;
+        RECT 4.600 0.000 170.000 65.000 ;
       LAYER met2 ;
-        RECT 5.250 60.720 6.710 61.725 ;
-        RECT 7.550 60.720 9.010 61.725 ;
-        RECT 9.850 60.720 11.310 61.725 ;
-        RECT 12.150 60.720 13.610 61.725 ;
-        RECT 14.450 60.720 15.910 61.725 ;
-        RECT 16.750 60.720 18.210 61.725 ;
-        RECT 19.050 60.720 20.510 61.725 ;
-        RECT 21.350 60.720 22.810 61.725 ;
-        RECT 23.650 60.720 25.110 61.725 ;
-        RECT 25.950 60.720 27.410 61.725 ;
-        RECT 28.250 60.720 29.710 61.725 ;
-        RECT 30.550 60.720 32.010 61.725 ;
-        RECT 32.850 60.720 83.170 61.725 ;
-        RECT 4.970 2.195 83.170 60.720 ;
+        RECT 5.250 60.720 6.710 65.000 ;
+        RECT 7.550 60.720 9.010 65.000 ;
+        RECT 9.850 60.720 11.310 65.000 ;
+        RECT 12.150 60.720 13.610 65.000 ;
+        RECT 14.450 60.720 15.910 65.000 ;
+        RECT 16.750 60.720 18.210 65.000 ;
+        RECT 19.050 60.720 20.510 65.000 ;
+        RECT 21.350 60.720 22.810 65.000 ;
+        RECT 23.650 60.720 25.110 65.000 ;
+        RECT 25.950 60.720 27.410 65.000 ;
+        RECT 28.250 60.720 29.710 65.000 ;
+        RECT 30.550 60.720 32.010 65.000 ;
+        RECT 32.850 60.720 170.000 65.000 ;
+        RECT 4.700 0.000 170.000 60.720 ;
       LAYER met3 ;
         RECT 6.280 60.840 69.600 61.705 ;
         RECT 6.280 60.200 70.000 60.840 ;
@@ -527,7 +755,18 @@ MACRO gpio_control_block
         RECT 6.280 3.080 70.000 3.720 ;
         RECT 6.280 2.215 69.600 3.080 ;
       LAYER met4 ;
-        RECT 6.280 8.160 11.380 22.240 ;
+        RECT 6.280 57.760 170.000 65.000 ;
+        RECT 6.280 26.000 12.400 57.760 ;
+        RECT 14.800 26.000 18.650 57.760 ;
+        RECT 6.280 4.800 18.650 26.000 ;
+        RECT 21.050 4.800 24.900 57.760 ;
+        RECT 27.300 4.800 31.150 57.760 ;
+        RECT 33.550 4.800 37.400 57.760 ;
+        RECT 39.800 4.800 43.650 57.760 ;
+        RECT 46.050 4.800 170.000 57.760 ;
+        RECT 6.280 0.000 170.000 4.800 ;
+      LAYER met5 ;
+        RECT 67.000 0.000 170.000 65.000 ;
   END
 END gpio_control_block
 END LIBRARY
