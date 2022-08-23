@@ -8,6 +8,7 @@ The modified eco'ed netlist can be found in `verilog/gl/caravel_eco-nopwr.v`
 We removed the power ports from the original caravel netlist and can be found in `verilog/gl/caravel-nopwr.v`
 
 ## LVS
+we ran netlist VS netlist LVS to make sure that the eco'ed netlist matches the original one
 ### To run LVS:
 
 ```
