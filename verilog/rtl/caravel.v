@@ -30,6 +30,9 @@
 /* from housekeeping.v (refactoring a number of functions from	*/
 /* the management SoC).						*/
 /*                                                          	*/
+/* Modified 08/31/2022 by Tim Edwards to incorporate the metal2	*/
+/* fix.  To revert back, simply remove "_m2fix" from		*/
+/* "gpio_control_block_m2fix" 					*/
 /*--------------------------------------------------------------*/
 
 module caravel (
@@ -1128,7 +1131,7 @@ module caravel (
 
     /* First two GPIOs (JTAG and SDO) */
 
-    gpio_control_block gpio_control_bidir_1 [1:0] (
+    gpio_control_block_m2fix gpio_control_bidir_1 [1:0] (
     	`ifdef USE_POWER_PINS
 	    .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1184,7 +1187,7 @@ module caravel (
 
     /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
-    gpio_control_block gpio_control_in_1a [5:0] (
+    gpio_control_block_m2fix gpio_control_in_1a [5:0] (
         `ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1237,7 +1240,7 @@ module caravel (
 
     /* Section 1 GPIOs (GPIO 8 to 18) */
 
-    gpio_control_block gpio_control_in_1 [`MPRJ_IO_PADS_1-9:0] (
+    gpio_control_block_m2fix gpio_control_in_1 [`MPRJ_IO_PADS_1-9:0] (
         `ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1290,7 +1293,7 @@ module caravel (
 
     /* Last three GPIOs (spi_sdo, flash_io2, and flash_io3) */
 
-    gpio_control_block gpio_control_bidir_2 [2:0] (
+    gpio_control_block_m2fix gpio_control_bidir_2 [2:0] (
     	`ifdef USE_POWER_PINS
 	    .vccd(vccd_core),
 	    .vssd(vssd_core),
@@ -1344,7 +1347,7 @@ module caravel (
     /* Section 2 GPIOs (GPIO 19 to 34) */
     wire [`MPRJ_IO_PADS_2-4:0] one_loop2;
 
-    gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-4:0] (
+    gpio_control_block_m2fix gpio_control_in_2 [`MPRJ_IO_PADS_2-4:0] (
     	`ifdef USE_POWER_PINS
             .vccd(vccd_core),
 	    .vssd(vssd_core),
