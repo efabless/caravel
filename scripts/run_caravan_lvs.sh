@@ -13,6 +13,7 @@ crashbackups stop
 load caravan
 select top cell
 expand
+extract no all      ;# <-- large speed-up
 extract do local
 extract all
 ext2spice lvs
@@ -24,6 +25,7 @@ export NETGEN_COLUMNS=60
 netgen -batch lvs "caravan.spice caravan" "../verilog/gl/caravan.v caravan" \
 	$PDK_ROOT/$PDK/libs.tech/netgen/${PDK}_setup.tcl caravan_comp.out
 
-mv caravan.spice ../spi/lvs/caravan_lvs.spice
+# mv caravan.spice ../spi/lvs/caravan_lvs.spice
+mv caravan.spice ../spi/lvs/caravan.spice
 mv caravan_comp.out ../signoff/
 exit 0
