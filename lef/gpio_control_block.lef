@@ -348,7 +348,7 @@ MACRO gpio_control_block
     USE POWER ;
     PORT
       LAYER met4 ;
-        RECT 12.800 26.400 14.400 57.360 ;
+        RECT 12.800 5.200 14.400 57.360 ;
     END
     PORT
       LAYER met4 ;
@@ -356,11 +356,15 @@ MACRO gpio_control_block
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 6.140 49.460 7.740 ;
+        RECT 4.360 5.900 49.460 7.500 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 39.940 49.460 41.540 ;
+        RECT 4.360 22.800 49.460 24.400 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 39.700 49.460 41.300 ;
     END
   END vccd
   PIN vccd1
@@ -368,11 +372,23 @@ MACRO gpio_control_block
     USE POWER ;
     PORT
       LAYER met4 ;
-        RECT 25.300 5.200 26.900 57.360 ;
+        RECT 17.800 5.200 19.400 57.360 ;
+    END
+    PORT
+      LAYER met4 ;
+        RECT 42.800 5.200 44.400 57.360 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 14.590 49.460 16.190 ;
+        RECT 4.360 11.140 49.460 12.740 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 28.040 49.460 29.640 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 44.940 49.460 46.540 ;
     END
   END vccd1
   PIN vssd
@@ -380,23 +396,19 @@ MACRO gpio_control_block
     USE GROUND ;
     PORT
       LAYER met4 ;
-        RECT 19.050 5.200 20.650 57.360 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 44.050 5.200 45.650 57.360 ;
+        RECT 25.300 5.200 26.900 57.360 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 10.365 49.460 11.965 ;
+        RECT 4.360 14.350 49.460 15.950 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 27.265 49.460 28.865 ;
+        RECT 4.360 31.250 49.460 32.850 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 44.165 49.460 45.765 ;
+        RECT 4.360 48.150 49.460 49.750 ;
     END
   END vssd
   PIN vssd1
@@ -404,11 +416,19 @@ MACRO gpio_control_block
     USE GROUND ;
     PORT
       LAYER met4 ;
-        RECT 31.550 5.200 33.150 57.360 ;
+        RECT 30.300 5.200 31.900 57.360 ;
     END
     PORT
       LAYER met5 ;
-        RECT 4.360 18.815 49.460 20.415 ;
+        RECT 4.360 19.590 49.460 21.190 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 36.490 49.460 38.090 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 4.360 53.390 49.460 54.990 ;
     END
   END vssd1
   PIN zero
@@ -693,7 +713,7 @@ MACRO gpio_control_block
         RECT 28.250 60.720 29.710 65.000 ;
         RECT 30.550 60.720 32.010 65.000 ;
         RECT 32.850 60.720 170.000 65.000 ;
-        RECT 4.700 0.000 170.000 60.720 ;
+        RECT 4.970 0.000 170.000 60.720 ;
       LAYER met3 ;
         RECT 6.280 60.840 69.600 61.705 ;
         RECT 6.280 60.200 70.000 60.840 ;
@@ -756,14 +776,13 @@ MACRO gpio_control_block
         RECT 6.280 2.215 69.600 3.080 ;
       LAYER met4 ;
         RECT 6.280 57.760 170.000 65.000 ;
-        RECT 6.280 26.000 12.400 57.760 ;
-        RECT 14.800 26.000 18.650 57.760 ;
-        RECT 6.280 4.800 18.650 26.000 ;
-        RECT 21.050 4.800 24.900 57.760 ;
-        RECT 27.300 4.800 31.150 57.760 ;
-        RECT 33.550 4.800 37.400 57.760 ;
-        RECT 39.800 4.800 43.650 57.760 ;
-        RECT 46.050 4.800 170.000 57.760 ;
+        RECT 6.280 4.800 12.400 57.760 ;
+        RECT 14.800 4.800 17.400 57.760 ;
+        RECT 19.800 4.800 24.900 57.760 ;
+        RECT 27.300 4.800 29.900 57.760 ;
+        RECT 32.300 4.800 37.400 57.760 ;
+        RECT 39.800 4.800 42.400 57.760 ;
+        RECT 44.800 4.800 170.000 57.760 ;
         RECT 6.280 0.000 170.000 4.800 ;
       LAYER met5 ;
         RECT 67.000 0.000 170.000 65.000 ;

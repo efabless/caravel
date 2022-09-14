@@ -42,11 +42,6 @@ set ::env(SYNTH_STRATEGY) "AREA 0"
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 170 65"
 
-set ::env(FP_IO_VEXTEND) 0
-set ::env(FP_IO_HEXTEND) 0
-set ::env(FP_IO_HLENGTH) 100
-set ::env(FP_IO_VLENGTH) 4
-
 set ::env(RIGHT_MARGIN_MULT) 262
 set ::env(LEFT_MARGIN_MULT) 10
 set ::env(TOP_MARGIN_MULT) 2
@@ -58,19 +53,23 @@ set ::env(DPL_CELL_PADDING) 0
 set ::env(FP_PDN_MACRO_HOOKS) "\
 	gpio_logic_high vccd1 vssd1 vccd1 vssd1"
 
-#set ::env(PDN_CFG) $::env(DESIGN_DIR)/pdn.tcl 
+set ::env(PDN_CFG) $::env(DESIGN_DIR)/pdn.tcl
 set ::env(FP_PDN_AUTO_ADJUST) 0
 
 set ::env(FP_PDN_VWIDTH) 1.6
 set ::env(FP_PDN_HWIDTH) 1.6
 
-set ::env(FP_PDN_HORIZONTAL_HALO) 2
-set ::env(FP_PDN_VERTICAL_HALO) 2
+set ::env(FP_PDN_HORIZONTAL_HALO) 0
+set ::env(FP_PDN_VERTICAL_HALO) 0
 
+set ::env(FP_PDN_CHECK_NODES) 0
+
+# these PDN vars are mostly hard coded in the custom ./pdn.tcl file
+# keeping them in case openlane depends on the variable definition
 set ::env(FP_PDN_HOFFSET) 1.5
 set ::env(FP_PDN_VOFFSET) 9.0
 
-set ::env(FP_PDN_HPITCH) 16.9
+set ::env(FP_PDN_HPITCH) 20
 set ::env(FP_PDN_VPITCH) 25
 
 set ::env(FP_PDN_VSPACING) 3.4
@@ -129,6 +128,7 @@ set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 0
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
 set ::env(CLOCK_TREE_SYNTH) 1
+set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/gpio_control_block.def
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_SIZING) 0
 # 0.07 ns 70 ps
@@ -136,8 +136,8 @@ set ::env(SYNTH_SIZING) 0
 # set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
 # set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 2
 
-set ::env(QUIT_ON_MAGIC_DRC) 0
-set ::env(QUIT_ON_LVS_ERROR) 0
+set ::env(QUIT_ON_MAGIC_DRC) 1
+set ::env(QUIT_ON_LVS_ERROR) 1
 
 set ::env(SYNTH_EXTRA_MAPPING_FILE) $::env(DESIGN_DIR)/yosys_mapping.v
 
