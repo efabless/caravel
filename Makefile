@@ -44,7 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-5e
+MPW_TAG ?= caravel_stanford
 
 # PDK switch varient
 export PDK?=sky130A
@@ -201,15 +201,82 @@ clean:
 	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
 		$(MAKE) -j$(THREADS) clean
 
+#########
+## Verify
+
+
+#.PHONY: verify
+#verify:
+#	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
+#		$(MAKE) -j$(THREADS) all
+#	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
+#		$(MAKE) -j$(THREADS) all
+
+.PHONY: simenv
+simenv:
+	docker pull efabless/dv:latest
+
+dv_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-caravel && find * -maxdepth 0 -type d)
+dv-targets-rtl=$(dv_patterns:%=verify-%-rtl)
+dv-targets-gl=$(dv_patterns:%=verify-%-gl)
+dv-targets-gl-sdf=$(dv_patterns:%=verify-%-gl-sdf)
+
+TARGET_PATH=$(shell pwd)
+verify_command="source ~/.bashrc && cd ${TARGET_PATH}/mgmt_core_wrapper/verilog/dv/tests-caravel/$* && export SIM=${SIM} && make"
+dv_base_dependencies=simenv
+docker_run_verify=\
+	docker run -v ${TARGET_PATH}:${TARGET_PATH} -v ${PDK_ROOT}:${PDK_ROOT} \
+		-v ${CARAVEL_ROOT}:${CARAVEL_ROOT} \
+		-e TARGET_PATH=${TARGET_PATH} -e PDK_ROOT=${PDK_ROOT} \
+		-e CARAVEL_ROOT=${CARAVEL_ROOT} \
+		-e TOOLS=/foss/tools/riscv-gnu-toolchain-rv32i/217e7f3debe424d61374d31e33a091a630535937 \
+		-e DESIGNS=$(TARGET_PATH) \
+		-e PDK=$(PDK) \
+		-e CORE_VERILOG_PATH=$(TARGET_PATH)/mgmt_core_wrapper/verilog \
+		-e MCW_ROOT=$(MCW_ROOT) \
+		-u $$(id -u $$USER):$$(id -g $$USER) efabless/dv:latest \
+		sh -c $(verify_command)
+
+.PHONY: harden
+harden: $(blocks)
 
 .PHONY: verify
-verify:
-	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
-		$(MAKE) -j$(THREADS) all
-	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
-		$(MAKE) -j$(THREADS) all
+verify: $(dv-targets-rtl)
 
+.PHONY: verify-all-rtl
+verify-all-rtl: $(dv-targets-rtl)
 
+.PHONY: verify-all-gl
+verify-all-gl: $(dv-targets-gl)
+
+.PHONY: verify-all-gl-sdf
+verify-all-gl-sdf: $(dv-targets-gl-sdf)
+
+$(dv-targets-rtl): SIM=RTL
+$(dv-targets-rtl): verify-%-rtl: $(dv_base_dependencies)
+	$(docker_run_verify)
+
+$(dv-targets-gl): SIM=GL
+$(dv-targets-gl): verify-%-gl: $(dv_base_dependencies)
+	$(docker_run_verify)
+
+$(dv-targets-gl-sdf): SIM=GL_SDF
+$(dv-targets-gl-sdf): verify-%-gl-sdf: $(dv_base_dependencies)
+	$(docker_run_verify)
+
+clean-targets=$(blocks:%=clean-%)
+.PHONY: $(clean-targets)
+$(clean-targets): clean-% :
+	rm -f ./verilog/gl/$*.v
+	rm -f ./spef/$*.spef
+	rm -f ./sdc/$*.sdc
+	rm -f ./sdf/$*.sdf
+	rm -f ./gds/$*.gds
+	rm -f ./mag/$*.mag
+	rm -f ./lef/$*.lef
+	rm -f ./maglef/*.maglef
+
+###############
 
 #####
 $(LARGE_FILES_GZ): %.$(ARCHIVE_EXT): %
