@@ -218,12 +218,12 @@ simenv:
 
 dv_caravel_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-caravel && find * -maxdepth 0 -type d)
 dv_standalone_patterns+=$(shell cd mgmt_core_wrapper/verilog/dv/tests-standalone && find * -maxdepth 0 -type d)
-dv-caravel-targets-rtl=$(dv_caravel_patterns:%=verify-%-rtl)
-dv-standalone-targets-rtl=$(dv_standalone_patterns:%=verify-%-rtl)
-dv-caravel-targets-gl=$(dv_caravel_patterns:%=verify-%-gl)
-dv-standalone-targets-gl=$(dv_standalone_patterns:%=verify-%-gl)
-dv-caravel-targets-gl-sdf=$(dv_caravel_patterns:%=verify-%-gl-sdf)
-dv-standalone-targets-gl-sdf=$(dv_standalone_patterns:%=verify-%-gl-sdf)
+dv-caravel-targets-rtl=$(dv_caravel_patterns:%=verify-caravel-%-rtl)
+dv-standalone-targets-rtl=$(dv_standalone_patterns:%=verify-standalone-%-rtl)
+dv-caravel-targets-gl=$(dv_caravel_patterns:%=verify-caravel-%-gl)
+dv-standalone-targets-gl=$(dv_standalone_patterns:%=verify-standalone-%-gl)
+dv-caravel-targets-gl-sdf=$(dv_caravel_patterns:%=verify-caravel-%-gl-sdf)
+dv-standalone-targets-gl-sdf=$(dv_standalone_patterns:%=verify-standalone-%-gl-sdf)
 
 TARGET_PATH=$(shell pwd)
 verify_command="source ~/.bashrc && cd ${TARGET_PATH}/mgmt_core_wrapper/verilog/dv/tests-${CONFIG}/$* && export SIM=${SIM} && make"
@@ -261,32 +261,32 @@ verify-standalone-all-gl-sdf: $(dv-targets-gl-sdf)
 
 $(dv-caravel-targets-rtl): SIM=RTL
 $(dv-caravel-targets-rtl): CONFIG=caravel
-$(dv-caravel-targets-rtl): verify-%-rtl: $(dv_base_dependencies)
+$(dv-caravel-targets-rtl): verify-caravel-%-rtl: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 $(dv-caravel-targets-gl): SIM=GL
 $(dv-caravel-targets-gl): CONFIG=caravel
-$(dv-caravel-targets-gl): verify-%-gl: $(dv_base_dependencies)
+$(dv-caravel-targets-gl): verify-caravel-%-gl: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 $(dv-caravel-targets-gl-sdf): SIM=GL_SDF
 $(dv-caravel-targets-gl-sdf): CONFIG=caravel
-$(dv-caravel-targets-gl-sdf): verify-%-gl-sdf: $(dv_base_dependencies)
+$(dv-caravel-targets-gl-sdf): verify-caravel-%-gl-sdf: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 $(dv-standalone-targets-rtl): SIM=RTL
 $(dv-standalone-targets-rtl): CONFIG=standalone
-$(dv-standalone-targets-rtl): verify-%-rtl: $(dv_base_dependencies)
+$(dv-standalone-targets-rtl): verify-standalone-%-rtl: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 $(dv-standalone-targets-gl): SIM=GL
 $(dv-standalone-targets-gl): CONFIG=standalone
-$(dv-standalone-targets-gl): verify-%-gl: $(dv_base_dependencies)
+$(dv-standalone-targets-gl): verify-standalone-%-gl: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 $(dv-standalone-targets-gl-sdf): SIM=GL_SDF
 $(dv-standalone-targets-gl-sdf): CONFIG=standalone
-$(dv-standalone-targets-gl-sdf): verify-%-gl-sdf: $(dv_base_dependencies)
+$(dv-standalone-targets-gl-sdf): verify-standalone-%-gl-sdf: $(dv_base_dependencies)
 	$(docker_run_verify)
 
 clean-targets=$(blocks:%=clean-%)
