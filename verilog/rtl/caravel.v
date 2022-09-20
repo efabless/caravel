@@ -1430,6 +1430,7 @@ module caravel (
 		.X(rstb_l)
     );
 
+    `ifdef USE_SPARE_LOGIC
     // Spare logic for metal mask fixes
     wire [107:0] spare_xz_nc;
     wire [15:0] spare_xi_nc;
@@ -1454,6 +1455,7 @@ module caravel (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
+    `endif
 
 endmodule
 // `default_nettype wire
