@@ -116,6 +116,7 @@ module chip_io_alt #(
 	input [(`MPRJ_IO_PADS-ANALOG_PADS_1-ANALOG_PADS_2)*3-1:0] mprj_io_dm,
 	output [`MPRJ_IO_PADS-ANALOG_PADS_1-ANALOG_PADS_2-1:0] mprj_io_in,
 	output [`MPRJ_IO_PADS-ANALOG_PADS_1-ANALOG_PADS_2-1:0] mprj_io_in_3v3,
+ 	input [`MPRJ_IO_PADS-ANALOG_PADS_1-ANALOG_PADS_2-1:0] mprj_io_one,
 
 	// User project direct access to gpio pad connections for analog
 	// "analog" connects to the "esd_0" pin of the GPIO pad, and
@@ -344,17 +345,17 @@ module chip_io_alt #(
 		{flash_io1_ieb_core, flash_io1_ieb_core, flash_io1_oeb_core};
 
 	// Management clock input pad
-	`INPUT_PAD(clock, clock_core);
+	`INPUT_PAD(clock, clock_core, vccd_const_one);
 
     	// Management GPIO pad
-	`INOUT_PAD(gpio, gpio_in_core, gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
+	`INOUT_PAD(gpio, gpio_in_core, vccd_const_one, gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
 
 	// Management Flash SPI pads
-	`INOUT_PAD(flash_io0, flash_io0_di_core, flash_io0_do_core, flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
-	`INOUT_PAD(flash_io1, flash_io1_di_core, flash_io1_do_core, flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
+	`INOUT_PAD(flash_io0, flash_io0_di_core, vccd_const_one, flash_io0_do_core, flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
+	`INOUT_PAD(flash_io1, flash_io1_di_core, vccd_const_one, flash_io1_do_core, flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
 
-	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, flash_csb_oeb_core);
-	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, flash_clk_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, vccd_const_one, flash_csb_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, vccd_const_one, flash_clk_oeb_core);
 
 	// NOTE:  The analog_out pad from the raven chip has been replaced by
     	// the digital reset input resetb on caravel due to the lack of an on-board
@@ -362,6 +363,7 @@ module chip_io_alt #(
     	// free reset.
 
 	wire xresloop;
+	wire xres_zero_loop
 	sky130_fd_io__top_xres4v2 resetb_pad (
 		`MGMT_ABUTMENT_PINS
 		`ifndef	TOP_ROUTING
@@ -369,16 +371,16 @@ module chip_io_alt #(
 		`endif
 		.TIE_WEAK_HI_H(xresloop),   // Loop-back connection to pad through pad_a_esd_h
 		.TIE_HI_ESD(),
-		.TIE_LO_ESD(),
+		.TIE_LO_ESD(xres_zero_loop),
 		.PAD_A_ESD_H(xresloop),
 		.XRES_H_N(resetb_core_h),
-		.DISABLE_PULLUP_H(vssio),    // 0 = enable pull-up on reset pad
-		.ENABLE_H(porb_h),	    // Power-on-reset
-		.EN_VDDIO_SIG_H(vssio),	    // No idea.
-		.INP_SEL_H(vssio),	    // 1 = use filt_in_h else filter the pad input
-		.FILT_IN_H(vssio),	    // Alternate input for glitch filter
-		.PULLUP_H(vssio),	    // Pullup connection for alternate filter input
-		.ENABLE_VDDIO(vccd)
+		.DISABLE_PULLUP_H(xres_zero_loop),  // 0 = enable pull-up on reset pad
+		.ENABLE_H(porb_h),	    	    // Power-on-reset
+		.EN_VDDIO_SIG_H(xres_zero_loop),    // No idea.
+		.INP_SEL_H(xres_zero_loop),	    // 1 = use filt_in_h else filter the pad input
+		.FILT_IN_H(xres_zero_loop),	    // Alternate input for glitch filter
+		.PULLUP_H(xres_zero_loop),	    // Pullup connection for alternate filter input
+		.ENABLE_VDDIO(vccd_const_one)
     	);
 
 	// Corner cells (These are overlay cells;  it is not clear what is normally
@@ -451,6 +453,7 @@ module chip_io_alt #(
 		.analog_a(analog_a),
 		.analog_b(analog_b),
 		.porb_h(porb_h),
+		.vccd_conb(mprj_io_one),
 
 		.io({mprj_io[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS_1+ANALOG_PADS_2],
 			     mprj_io[`MPRJ_IO_PADS_1-ANALOG_PADS_1-1:0]}),
