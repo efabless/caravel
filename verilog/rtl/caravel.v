@@ -253,8 +253,6 @@ module caravel (
 	.vccd2	(vccd2_core),
 	.vssd1	(vssd1_core),
 	.vssd2	(vssd2_core),
-	// Connect 1.8V constant one to nearest GPIO control block
-	.vccd_const_one(mprj_io_one[`MPRJ_IO_PADS-1]),
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),

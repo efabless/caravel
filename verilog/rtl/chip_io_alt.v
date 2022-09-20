@@ -344,18 +344,28 @@ module chip_io_alt #(
 	wire[2:0] flash_io1_mode =
 		{flash_io1_ieb_core, flash_io1_ieb_core, flash_io1_oeb_core};
 
+	wire [6:0] vccd_const_one;  // Constant value for management pins
+	wire [6:0] vssd_const_zero; // Constant value for management pins
+
+	constant_block constant_value_inst [6:0] (
+            .vccd(vccd),
+            .vssd(vssd),
+            .one(vccd_const_one),
+            .zero(vssd_const_zero)
+	);
+
 	// Management clock input pad
-	`INPUT_PAD(clock, clock_core, vccd_const_one);
+	`INPUT_PAD(clock, clock_core, vccd_const_one[0], vssd_const_zero[0]);
 
     	// Management GPIO pad
-	`INOUT_PAD(gpio, gpio_in_core, vccd_const_one, gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
+	`INOUT_PAD(gpio, gpio_in_core, vccd_const_one[1], vssd_const_zero[1], gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
 
 	// Management Flash SPI pads
-	`INOUT_PAD(flash_io0, flash_io0_di_core, vccd_const_one, flash_io0_do_core, flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
-	`INOUT_PAD(flash_io1, flash_io1_di_core, vccd_const_one, flash_io1_do_core, flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
+	`INOUT_PAD(flash_io0, flash_io0_di_core, vccd_const_one[2], vssd_const_zero[2], flash_io0_do_core, flash_io0_ieb_core, flash_io0_oeb_core, flash_io0_mode);
+	`INOUT_PAD(flash_io1, flash_io1_di_core, vccd_const_one[3], vssd_const_zero[3], flash_io1_do_core, flash_io1_ieb_core, flash_io1_oeb_core, flash_io1_mode);
 
-	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, vccd_const_one, flash_csb_oeb_core);
-	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, vccd_const_one, flash_clk_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_csb, flash_csb_core, vccd_const_one[4], vssd_const_zero[4], flash_csb_oeb_core);
+	`OUTPUT_NO_INP_DIS_PAD(flash_clk, flash_clk_core, vccd_const_one[5], vssd_const_zero[5], flash_clk_oeb_core);
 
 	// NOTE:  The analog_out pad from the raven chip has been replaced by
     	// the digital reset input resetb on caravel due to the lack of an on-board
@@ -380,7 +390,7 @@ module chip_io_alt #(
 		.INP_SEL_H(xres_zero_loop),	    // 1 = use filt_in_h else filter the pad input
 		.FILT_IN_H(xres_zero_loop),	    // Alternate input for glitch filter
 		.PULLUP_H(xres_zero_loop),	    // Pullup connection for alternate filter input
-		.ENABLE_VDDIO(vccd_const_one)
+		.ENABLE_VDDIO(vccd_const_one[6])
     	);
 
 	// Corner cells (These are overlay cells;  it is not clear what is normally
