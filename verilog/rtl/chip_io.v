@@ -275,9 +275,6 @@ module chip_io(
 	wire[2:0] flash_io1_mode =
 		{flash_io1_ieb_core, flash_io1_ieb_core, flash_io1_oeb_core};
 
-	// Management clock input pad
-	`INPUT_PAD(clock, clock_core, vccd_const_one[0], vssd_const_zero[0]);
-
     wire [6:0] vccd_const_one;	// Constant value for management pins
     wire [6:0] vssd_const_zero;	// Constant value for management pins
 
@@ -287,6 +284,9 @@ module chip_io(
 	.one(vccd_const_one),
 	.zero(vssd_const_zero)
     );
+
+	// Management clock input pad
+	`INPUT_PAD(clock, clock_core, vccd_const_one[0], vssd_const_zero[0]);
 
     // Management GPIO pad
 	`INOUT_PAD(gpio, gpio_in_core, vccd_const_one[1], vssd_const_zero[1], gpio_out_core, gpio_inenb_core, gpio_outenb_core, dm_all);
