@@ -165,6 +165,7 @@ module caravan (
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_one;
 
     // User Project Control (user-facing)
     // 27 GPIO bidirectional with in/out/oeb and a 3.3V copy of the input
@@ -291,7 +292,6 @@ module caravan (
 	.vccd2	(vccd2_core),
 	.vssd1	(vssd1_core),
 	.vssd2	(vssd2_core),
-
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -325,6 +325,7 @@ module caravan (
 	.flash_io1_do_core(flash_io1_do),
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
+	.mprj_io_one(mprj_io_one),
 	.mprj_io_in(mprj_io_in),
 	.mprj_io_in_3v3(mprj_io_in_3v3),
 	.mprj_io_out(mprj_io_out),
@@ -1099,7 +1100,7 @@ module caravan (
 	.mgmt_gpio_out(mgmt_io_out[1:0]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
 
-        .one(),
+        .one(mprj_io_one[1:0]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1127,7 +1128,6 @@ module caravan (
     );
 
     /* Section 1 GPIOs (GPIO 0 to 18) */
-    wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:0] one_loop1;
 
     /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
@@ -1153,9 +1153,9 @@ module caravan (
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
 	.mgmt_gpio_out(mgmt_io_in[7:2]),
-	.mgmt_gpio_oeb(one_loop1[5:0]),
+	.mgmt_gpio_oeb(mprj_io_one[7:2]),
 
-        .one(one_loop1[5:0]),
+        .one(mprj_io_one[7:2]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1205,9 +1205,9 @@ module caravan (
 
 	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
 	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
-	.mgmt_gpio_oeb(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
-        .one(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
+        .one(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1260,7 +1260,7 @@ module caravan (
 	.mgmt_gpio_out(mgmt_io_out[4:2]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[4:2]),
 
-        .one(),
+        .one(mprj_io_one[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1288,7 +1288,6 @@ module caravan (
     );
 
     /* Section 2 GPIOs (GPIO 19 to 37) */
-    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] one_loop2;
 
     gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] (
 	`ifdef USE_POWER_PINS
@@ -1312,9 +1311,9 @@ module caravan (
 
  	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
  	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
-	.mgmt_gpio_oeb(one_loop2),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-        .one(one_loop2),
+        .one(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
         .zero(),
 
     	// Serial data chain for pad configuration
