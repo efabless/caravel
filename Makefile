@@ -47,7 +47,7 @@ MCW ?=LITEX_VEXRISCV
 MPW_TAG ?= caravel_stanford
 
 # PDK switch varient
-export PDK?=sky130A
+export PDK?=sky130B
 
 # Install lite version of caravel, (1): caravel-lite, (0): caravel
 MCW_LITE?=1
