@@ -217,7 +217,7 @@ simenv:
 	docker pull efabless/dv:latest
 
 dv_caravel_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-caravel && find * -maxdepth 0 -type d)
-dv_standalone_patterns+=$(shell cd mgmt_core_wrapper/verilog/dv/tests-standalone && find * -maxdepth 0 -type d)
+dv_standalone_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-standalone && find * -maxdepth 0 -type d)
 dv-caravel-targets-rtl=$(dv_caravel_patterns:%=verify-caravel-%-rtl)
 dv-standalone-targets-rtl=$(dv_standalone_patterns:%=verify-standalone-%-rtl)
 dv-caravel-targets-gl=$(dv_caravel_patterns:%=verify-caravel-%-gl)
@@ -226,7 +226,6 @@ dv-caravel-targets-gl-sdf=$(dv_caravel_patterns:%=verify-caravel-%-gl-sdf)
 dv-standalone-targets-gl-sdf=$(dv_standalone_patterns:%=verify-standalone-%-gl-sdf)
 
 VERIFY_LOG = "verify-${CONFIG}-${SIM}.log"
-
 TARGET_PATH=$(shell pwd)
 verify_command="source ~/.bashrc && cd ${TARGET_PATH}/mgmt_core_wrapper/verilog/dv/tests-${CONFIG}/$* && export SIM=${SIM} && make"
 dv_base_dependencies=simenv
@@ -241,7 +240,7 @@ docker_run_verify=\
 		-e CORE_VERILOG_PATH=$(TARGET_PATH)/mgmt_core_wrapper/verilog \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-u $$(id -u $$USER):$$(id -g $$USER) efabless/dv:latest \
-		sh -c $(verify_command) | tee ${VERIFY_LOG}
+		sh -c $(verify_command) | tee -a ${VERIFY_LOG}
 
 .PHONY: harden
 harden: $(blocks)
@@ -249,9 +248,10 @@ harden: $(blocks)
 .PHONY: verify
 verify: $(dv-caravel-targets-rtl)
 
+.PHONY: verify_log_header
 verify_log_header:
 	@echo "*************************************************************************" > ${VERIFY_LOG}
-	@echo "Verification Log: `date`  ${CONFIG}  ${SIM}" >> ${VERIFY_LOG}
+	@echo "Verification Log: `date`  Configuration: ${CONFIG}  ${SIM}" >> ${VERIFY_LOG}
 	@echo "*************************************************************************" >> ${VERIFY_LOG}
 
 .PHONY: verify-caravel-all-rtl verify-standalone-all-rtl
