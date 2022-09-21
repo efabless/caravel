@@ -268,17 +268,17 @@ verify-standalone-all-gl-sdf: $(dv-targets-gl-sdf)
 
 $(dv-caravel-targets-rtl): SIM=RTL
 $(dv-caravel-targets-rtl): CONFIG=caravel
-$(dv-caravel-targets-rtl): verify-caravel-%-rtl: $(dv_base_dependencies)
+$(dv-caravel-targets-rtl): verify-caravel-%-rtl: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 $(dv-caravel-targets-gl): SIM=GL
 $(dv-caravel-targets-gl): CONFIG=caravel
-$(dv-caravel-targets-gl): verify-caravel-%-gl: $(dv_base_dependencies)
+$(dv-caravel-targets-gl): verify-caravel-%-gl: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 $(dv-caravel-targets-gl-sdf): SIM=GL_SDF
 $(dv-caravel-targets-gl-sdf): CONFIG=caravel
-$(dv-caravel-targets-gl-sdf): verify-caravel-%-gl-sdf: $(dv_base_dependencies)
+$(dv-caravel-targets-gl-sdf): verify-caravel-%-gl-sdf: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 $(dv-standalone-targets-rtl): SIM=RTL
@@ -288,12 +288,12 @@ $(dv-standalone-targets-rtl): verify-standalone-%-rtl: $(dv_base_dependencies) v
 
 $(dv-standalone-targets-gl): SIM=GL
 $(dv-standalone-targets-gl): CONFIG=standalone
-$(dv-standalone-targets-gl): verify-standalone-%-gl: $(dv_base_dependencies)
+$(dv-standalone-targets-gl): verify-standalone-%-gl: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 $(dv-standalone-targets-gl-sdf): SIM=GL_SDF
 $(dv-standalone-targets-gl-sdf): CONFIG=standalone
-$(dv-standalone-targets-gl-sdf): verify-standalone-%-gl-sdf: $(dv_base_dependencies)
+$(dv-standalone-targets-gl-sdf): verify-standalone-%-gl-sdf: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 clean-targets=$(blocks:%=clean-%)
