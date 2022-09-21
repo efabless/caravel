@@ -225,6 +225,8 @@ dv-standalone-targets-gl=$(dv_standalone_patterns:%=verify-standalone-%-gl)
 dv-caravel-targets-gl-sdf=$(dv_caravel_patterns:%=verify-caravel-%-gl-sdf)
 dv-standalone-targets-gl-sdf=$(dv_standalone_patterns:%=verify-standalone-%-gl-sdf)
 
+VERIFY_LOG = "verify-${CONFIG}-${SIM}.log"
+
 TARGET_PATH=$(shell pwd)
 verify_command="source ~/.bashrc && cd ${TARGET_PATH}/mgmt_core_wrapper/verilog/dv/tests-${CONFIG}/$* && export SIM=${SIM} && make"
 dv_base_dependencies=simenv
@@ -239,13 +241,18 @@ docker_run_verify=\
 		-e CORE_VERILOG_PATH=$(TARGET_PATH)/mgmt_core_wrapper/verilog \
 		-e MCW_ROOT=$(MCW_ROOT) \
 		-u $$(id -u $$USER):$$(id -g $$USER) efabless/dv:latest \
-		sh -c $(verify_command)
+		sh -c $(verify_command) | tee ${VERIFY_LOG}
 
 .PHONY: harden
 harden: $(blocks)
 
 .PHONY: verify
 verify: $(dv-caravel-targets-rtl)
+
+verify_log_header:
+	@echo "*************************************************************************" > ${VERIFY_LOG}
+	@echo "Verification Log: `date`  ${CONFIG}  ${SIM}" >> ${VERIFY_LOG}
+	@echo "*************************************************************************" >> ${VERIFY_LOG}
 
 .PHONY: verify-caravel-all-rtl verify-standalone-all-rtl
 verify-caravel-all-rtl: $(dv-caravel-targets-rtl)
@@ -276,7 +283,7 @@ $(dv-caravel-targets-gl-sdf): verify-caravel-%-gl-sdf: $(dv_base_dependencies)
 
 $(dv-standalone-targets-rtl): SIM=RTL
 $(dv-standalone-targets-rtl): CONFIG=standalone
-$(dv-standalone-targets-rtl): verify-standalone-%-rtl: $(dv_base_dependencies)
+$(dv-standalone-targets-rtl): verify-standalone-%-rtl: $(dv_base_dependencies) verify_log_header
 	$(docker_run_verify)
 
 $(dv-standalone-targets-gl): SIM=GL
