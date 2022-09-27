@@ -1,31 +1,19 @@
 * NGSPICE file created from gpio_control_block.ext - technology: sky130A
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__dfrtp_2 abstract view
-.subckt sky130_fd_sc_hd__dfrtp_2 CLK D RESET_B VGND VNB VPB VPWR Q
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__and2b_2 abstract view
-.subckt sky130_fd_sc_hd__and2b_2 A_N B VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__diode_2 abstract view
-.subckt sky130_fd_sc_hd__diode_2 DIODE VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__dfbbn_2 abstract view
-.subckt sky130_fd_sc_hd__dfbbn_2 CLK_N D RESET_B SET_B VGND VNB VPB VPWR Q Q_N
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_3 abstract view
-.subckt sky130_fd_sc_hd__decap_3 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__dfrtp_4 abstract view
+.subckt sky130_fd_sc_hd__dfrtp_4 CLK D RESET_B VGND VNB VPB VPWR Q
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__fill_1 abstract view
 .subckt sky130_fd_sc_hd__fill_1 VGND VNB VPB VPWR
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__nand2b_2 abstract view
-.subckt sky130_fd_sc_hd__nand2b_2 A_N B VGND VNB VPB VPWR Y
+* Black-box entry subcircuit for sky130_fd_sc_hd__dfbbn_2 abstract view
+.subckt sky130_fd_sc_hd__dfbbn_2 CLK_N D RESET_B SET_B VGND VNB VPB VPWR Q Q_N
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__buf_16 abstract view
+.subckt sky130_fd_sc_hd__buf_16 A VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_16 abstract view
@@ -36,32 +24,32 @@
 .subckt sky130_fd_sc_hd__inv_2 A VGND VNB VPB VPWR Y
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__fill_2 abstract view
-.subckt sky130_fd_sc_hd__fill_2 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__diode_2 abstract view
+.subckt sky130_fd_sc_hd__diode_2 DIODE VGND VNB VPB VPWR
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__dlygate4sd3_1 abstract view
 .subckt sky130_fd_sc_hd__dlygate4sd3_1 A VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_12 abstract view
-.subckt sky130_fd_sc_hd__decap_12 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_4 abstract view
-.subckt sky130_fd_sc_hd__decap_4 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_6 abstract view
-.subckt sky130_fd_sc_hd__decap_6 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_3 abstract view
+.subckt sky130_fd_sc_hd__decap_3 VGND VNB VPB VPWR
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__conb_1 abstract view
 .subckt sky130_fd_sc_hd__conb_1 VGND VNB VPB VPWR HI LO
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__or2_2 abstract view
-.subckt sky130_fd_sc_hd__or2_2 A B VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__nand2b_2 abstract view
+.subckt sky130_fd_sc_hd__nand2b_2 A_N B VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__or2_0 abstract view
+.subckt sky130_fd_sc_hd__or2_0 A B VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__buf_2 abstract view
+.subckt sky130_fd_sc_hd__buf_2 A VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__einvp_8 abstract view
@@ -72,32 +60,44 @@
 .subckt sky130_fd_sc_hd__tapvpwrvgnd_1 VGND VPWR
 .ends
 
+* Black-box entry subcircuit for sky130_fd_sc_hd__o21ai_4 abstract view
+.subckt sky130_fd_sc_hd__o21ai_4 A1 A2 B1 VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_6 abstract view
+.subckt sky130_fd_sc_hd__decap_6 VGND VNB VPB VPWR
+.ends
+
 * Black-box entry subcircuit for gpio_logic_high abstract view
 .subckt gpio_logic_high gpio_logic1 vccd1 vssd1
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_8 abstract view
-.subckt sky130_fd_sc_hd__decap_8 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__ebufn_8 abstract view
+.subckt sky130_fd_sc_hd__ebufn_8 A TE_B VGND VNB VPB VPWR Z
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__mux2_1 abstract view
-.subckt sky130_fd_sc_hd__mux2_1 A0 A1 S VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__o21ai_2 abstract view
+.subckt sky130_fd_sc_hd__o21ai_2 A1 A2 B1 VGND VNB VPB VPWR Y
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__ebufn_2 abstract view
-.subckt sky130_fd_sc_hd__ebufn_2 A TE_B VGND VNB VPB VPWR Z
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__buf_2 abstract view
-.subckt sky130_fd_sc_hd__buf_2 A VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__and2b_2 abstract view
+.subckt sky130_fd_sc_hd__and2b_2 A_N B VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__and3b_2 abstract view
 .subckt sky130_fd_sc_hd__and3b_2 A_N B C VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__a31o_2 abstract view
-.subckt sky130_fd_sc_hd__a31o_2 A1 A2 A3 B1 VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__dfrtp_2 abstract view
+.subckt sky130_fd_sc_hd__dfrtp_2 CLK D RESET_B VGND VNB VPB VPWR Q
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__mux2_4 abstract view
+.subckt sky130_fd_sc_hd__mux2_4 A0 A1 S VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__and2_0 abstract view
+.subckt sky130_fd_sc_hd__and2_0 A B VGND VNB VPB VPWR X
 .ends
 
 .subckt gpio_control_block gpio_defaults[0] gpio_defaults[10] gpio_defaults[11] gpio_defaults[12]
@@ -108,318 +108,277 @@
 + pad_gpio_in pad_gpio_inenb pad_gpio_out pad_gpio_outenb pad_gpio_slow_sel pad_gpio_vtrip_sel
 + resetn resetn_out serial_clock serial_clock_out serial_data_in serial_data_out serial_load
 + serial_load_out user_gpio_in user_gpio_oeb user_gpio_out vccd vccd1 vssd vssd1 zero
-X_131_ _131_/CLK hold1/A resetn vssd vssd vccd vccd serial_data_out sky130_fd_sc_hd__dfrtp_2
-X_062_ _105_/Q user_gpio_oeb vssd vssd vccd vccd _062_/X sky130_fd_sc_hd__and2b_2
-XANTENNA__132__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_114_ _101__10/Y hold1/X _085_/X _086_/Y vssd vssd vccd vccd pad_gpio_dm[2] _114_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-XFILLER_13_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_15_65 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_130_ _133_/A _130_/D resetn vssd vssd vccd vccd hold1/A sky130_fd_sc_hd__dfrtp_2
-X_061_ pad_gpio_inenb _111_/Q vssd vssd vccd vccd _061_/Y sky130_fd_sc_hd__nand2b_2
-X_113_ _100__9/Y _130_/D _083_/X _084_/Y vssd vssd vccd vccd pad_gpio_dm[1] _113_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-Xclkbuf_1_0__f_serial_load clkbuf_0_serial_load/X vssd vssd vccd vccd _100__9/A sky130_fd_sc_hd__clkbuf_16
-XANTENNA__135__A pad_gpio_in vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_104__13 _100__9/A vssd vssd vccd vccd _104__13/Y sky130_fd_sc_hd__inv_2
-X_094__3 _134_/A vssd vssd vccd vccd _094__3/Y sky130_fd_sc_hd__inv_2
-XFILLER_18_66 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_18_44 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
-Xhold10 _124_/Q vssd vssd vccd vccd _125_/D sky130_fd_sc_hd__dlygate4sd3_1
-XANTENNA__122__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_112_ _099__8/Y hold8/X _081_/X _082_/Y vssd vssd vccd vccd pad_gpio_dm[0] _065_/A1
-+ sky130_fd_sc_hd__dfbbn_2
-XANTENNA__065__A0 mgmt_gpio_out vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__061__A_N pad_gpio_inenb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__084__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_111_ _098__7/Y hold5/X _079_/X _080_/Y vssd vssd vccd vccd _111_/Q _111_/Q_N sky130_fd_sc_hd__dfbbn_2
-XANTENNA__067__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-Xhold11 _125_/Q vssd vssd vccd vccd _126_/D sky130_fd_sc_hd__dlygate4sd3_1
-XFILLER_11_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-XANTENNA__075__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_79 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__131__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_24 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
-XANTENNA__072__B gpio_defaults[8] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__074__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_110_ _097__6/Y hold9/X _077_/X _078_/Y vssd vssd vccd vccd pad_gpio_ib_mode_sel
-+ _110_/Q_N sky130_fd_sc_hd__dfbbn_2
-Xhold12 _123_/Q vssd vssd vccd vccd _124_/D sky130_fd_sc_hd__dlygate4sd3_1
-XFILLER_1_71 vssd vssd vccd vccd sky130_fd_sc_hd__decap_4
-XFILLER_1_82 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__067__B gpio_defaults[0] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__083__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__080__B gpio_defaults[1] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_12_15 vssd vssd vccd vccd sky130_fd_sc_hd__decap_4
-XFILLER_3_39 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__064__C mgmt_gpio_oeb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__075__B gpio_defaults[3] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__091__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-Xhold13 _129_/Q vssd vssd vccd vccd _130_/D sky130_fd_sc_hd__dlygate4sd3_1
-X_097__6 _100__9/A vssd vssd vccd vccd _097__6/Y sky130_fd_sc_hd__inv_2
-XANTENNA__083__B gpio_defaults[11] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__078__B gpio_defaults[4] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_7_93 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_131_ _134_/CLK _131_/D _085_/A vssd vssd vccd vccd hold1/A sky130_fd_sc_hd__dfrtp_4
+XFILLER_0_57 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XFILLER_20_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_114_ _101__6/Y _127_/D _081_/X _082_/Y vssd vssd vccd vccd _114_/Q _114_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xoutput20 _135_/Q vssd vssd vccd vccd serial_data_out sky130_fd_sc_hd__buf_16
+Xoutput7 _121_/Q vssd vssd vccd vccd pad_gpio_ana_pol sky130_fd_sc_hd__buf_16
+X_130_ _130_/CLK hold8/X _095_/A vssd vssd vccd vccd _130_/Q sky130_fd_sc_hd__dfrtp_4
+X_113_ _100__5/Y hold6/X _079_/X _080_/Y vssd vssd vccd vccd _113_/Q _113_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xclkbuf_1_0__f_serial_load clkbuf_0_serial_load/X vssd vssd vccd vccd _103__8/A sky130_fd_sc_hd__clkbuf_16
+X_097__2 _104__9/A vssd vssd vccd vccd _097__2/Y sky130_fd_sc_hd__inv_2
+Xoutput8 _120_/Q vssd vssd vccd vccd pad_gpio_ana_sel sky130_fd_sc_hd__buf_16
+Xoutput10 _117_/Q vssd vssd vccd vccd pad_gpio_dm[1] sky130_fd_sc_hd__buf_16
+X_060_ _139_/A vssd vssd vccd vccd _060_/Y sky130_fd_sc_hd__inv_2
+X_112_ _099__4/Y hold1/X _077_/X _078_/Y vssd vssd vccd vccd _112_/Q _112_/Q_N sky130_fd_sc_hd__dfbbn_2
+XANTENNA__065__A0 user_gpio_oeb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xhold10 _132_/Q vssd vssd vccd vccd _133_/D sky130_fd_sc_hd__dlygate4sd3_1
+Xoutput9 _116_/Q vssd vssd vccd vccd pad_gpio_dm[0] sky130_fd_sc_hd__buf_16
+Xoutput11 _118_/Q vssd vssd vccd vccd pad_gpio_dm[2] sky130_fd_sc_hd__buf_16
+XANTENNA__084__A_N _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XFILLER_3_48 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_111_ _098__3/Y _131_/D _075_/X _076_/Y vssd vssd vccd vccd _111_/Q _111_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xhold11 _127_/Q vssd vssd vccd vccd _128_/D sky130_fd_sc_hd__dlygate4sd3_1
+X_107__12 _103__8/A vssd vssd vccd vccd _107__12/Y sky130_fd_sc_hd__inv_2
+Xoutput12 _110_/Q vssd vssd vccd vccd pad_gpio_holdover sky130_fd_sc_hd__buf_16
+X_110_ _097__2/Y hold4/X _073_/X _074_/Y vssd vssd vccd vccd _110_/Q _110_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xhold12 _130_/Q vssd vssd vccd vccd _131_/D sky130_fd_sc_hd__dlygate4sd3_1
+XANTENNA__072__B gpio_defaults[0] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__074__A_N _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xoutput13 _114_/Q vssd vssd vccd vccd pad_gpio_ib_mode_sel sky130_fd_sc_hd__buf_16
+XANTENNA__083__A _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__080__B gpio_defaults[3] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__075__B gpio_defaults[8] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xhold13 _126_/Q vssd vssd vccd vccd _127_/D sky130_fd_sc_hd__dlygate4sd3_1
+XANTENNA__083__B gpio_defaults[1] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_0 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__064__A_N pad_gpio_dm[2] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__089__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__125__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__091__B gpio_defaults[7] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__086__B gpio_defaults[12] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_48 vssd vssd vccd vccd sky130_fd_sc_hd__decap_4
-XFILLER_18_15 vssd vssd vccd vccd sky130_fd_sc_hd__decap_6
+XANTENNA__078__B gpio_defaults[9] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xoutput14 _113_/Q vssd vssd vccd vccd pad_gpio_inenb sky130_fd_sc_hd__buf_16
+XANTENNA__125__RESET_B _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__091__B gpio_defaults[5] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__086__B gpio_defaults[10] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xoutput15 _070_/Y vssd vssd vccd vccd pad_gpio_out sky130_fd_sc_hd__buf_16
 XPHY_1 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__089__B gpio_defaults[6] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-Xconst_source vssd vssd vccd vccd one zero sky130_fd_sc_hd__conb_1
-XANTENNA__119__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__094__B gpio_defaults[6] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__089__B gpio_defaults[12] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_100__5 _104__9/A vssd vssd vccd vccd _100__5/Y sky130_fd_sc_hd__inv_2
+Xconst_source vssd vssd vccd vccd one_buffer/A zero_buffer/A sky130_fd_sc_hd__conb_1
+XFILLER_19_70 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+Xoutput16 _065_/X vssd vssd vccd vccd pad_gpio_outenb sky130_fd_sc_hd__buf_16
 XPHY_2 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_1_75 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+Xoutput17 _111_/Q vssd vssd vccd vccd pad_gpio_slow_sel sky130_fd_sc_hd__buf_16
 XPHY_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_079_ resetn gpio_defaults[1] vssd vssd vccd vccd _079_/X sky130_fd_sc_hd__or2_2
-XANTENNA__128__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XFILLER_10_85 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_096_ _095_/A gpio_defaults[7] vssd vssd vccd vccd _096_/Y sky130_fd_sc_hd__nand2b_2
+XFILLER_1_32 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+XFILLER_1_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_079_ _083_/A gpio_defaults[3] vssd vssd vccd vccd _079_/X sky130_fd_sc_hd__or2_0
+Xoutput18 _112_/Q vssd vssd vccd vccd pad_gpio_vtrip_sel sky130_fd_sc_hd__buf_16
 XPHY_4 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__090__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-X_078_ resetn gpio_defaults[4] vssd vssd vccd vccd _078_/Y sky130_fd_sc_hd__nand2b_2
-XFILLER_7_76 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_095_ _095_/A gpio_defaults[7] vssd vssd vccd vccd _095_/X sky130_fd_sc_hd__or2_0
+XANTENNA_input4_A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_078_ _085_/A gpio_defaults[9] vssd vssd vccd vccd _078_/Y sky130_fd_sc_hd__nand2b_2
+Xoutput19 _136_/X vssd vssd vccd vccd resetn_out sky130_fd_sc_hd__buf_16
+XFILLER_7_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_103__8 _103__8/A vssd vssd vccd vccd _103__8/Y sky130_fd_sc_hd__inv_2
 XPHY_5 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__080__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_10_76 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_1_56 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-XFILLER_1_78 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_100__9 _100__9/A vssd vssd vccd vccd _100__9/Y sky130_fd_sc_hd__inv_2
-X_077_ resetn gpio_defaults[4] vssd vssd vccd vccd _077_/X sky130_fd_sc_hd__or2_2
-X_129_ _133_/A hold8/X resetn vssd vssd vccd vccd _129_/Q sky130_fd_sc_hd__dfrtp_2
-X_103__12 _100__9/A vssd vssd vccd vccd _103__12/Y sky130_fd_sc_hd__inv_2
+Xfanout21 _095_/A vssd vssd vccd vccd _091_/A sky130_fd_sc_hd__buf_2
+XANTENNA__080__A_N _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_094_ _091_/A gpio_defaults[6] vssd vssd vccd vccd _094_/Y sky130_fd_sc_hd__nand2b_2
+X_077_ _089_/A gpio_defaults[9] vssd vssd vccd vccd _077_/X sky130_fd_sc_hd__or2_0
+X_129_ _130_/CLK hold9/X _095_/A vssd vssd vccd vccd hold8/A sky130_fd_sc_hd__dfrtp_4
 XPHY_6 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_8_3 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
-X_076_ resetn gpio_defaults[3] vssd vssd vccd vccd _076_/Y sky130_fd_sc_hd__nand2b_2
-XFILLER_10_44 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_1_68 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__070__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_128_ _133_/A hold2/X resetn vssd vssd vccd vccd hold8/A sky130_fd_sc_hd__dfrtp_2
+Xfanout22 fanout28/X vssd vssd vccd vccd _095_/A sky130_fd_sc_hd__buf_2
+X_093_ _095_/A gpio_defaults[6] vssd vssd vccd vccd _093_/X sky130_fd_sc_hd__or2_0
+X_076_ _085_/A gpio_defaults[8] vssd vssd vccd vccd _076_/Y sky130_fd_sc_hd__nand2b_2
+Xinput1 mgmt_gpio_oeb vssd vssd vccd vccd _067_/C sky130_fd_sc_hd__buf_2
+X_128_ _130_/CLK _128_/D _095_/A vssd vssd vccd vccd hold9/A sky130_fd_sc_hd__dfrtp_4
 XPHY_7 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__121__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_092_ resetn gpio_defaults[7] vssd vssd vccd vccd _092_/Y sky130_fd_sc_hd__nand2b_2
-Xgpio_in_buf _058_/Y gpio_in_buf/TE vssd vssd vccd vccd user_gpio_in sky130_fd_sc_hd__einvp_8
-XFILLER_16_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_4
-X_075_ resetn gpio_defaults[3] vssd vssd vccd vccd _075_/X sky130_fd_sc_hd__or2_2
-X_058_ pad_gpio_in vssd vssd vccd vccd _058_/Y sky130_fd_sc_hd__inv_2
+Xfanout23 _072_/A_N vssd vssd vccd vccd _083_/A sky130_fd_sc_hd__buf_2
+X_092_ _091_/A gpio_defaults[5] vssd vssd vccd vccd _092_/Y sky130_fd_sc_hd__nand2b_2
+Xgpio_in_buf _060_/Y gpio_in_buf/TE vssd vssd vccd vccd user_gpio_in sky130_fd_sc_hd__einvp_8
+XANTENNA_input2_A mgmt_gpio_out vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xinput2 mgmt_gpio_out vssd vssd vccd vccd input2/X sky130_fd_sc_hd__buf_2
+X_075_ _085_/A gpio_defaults[8] vssd vssd vccd vccd _075_/X sky130_fd_sc_hd__or2_0
+X_127_ _130_/CLK _127_/D _091_/A vssd vssd vccd vccd _127_/Q sky130_fd_sc_hd__dfrtp_4
 XANTENNA_clkbuf_0_serial_load_A serial_load vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_127_ _133_/A hold7/X resetn vssd vssd vccd vccd hold2/A sky130_fd_sc_hd__dfrtp_2
 XPHY_8 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_074_ resetn gpio_defaults[9] vssd vssd vccd vccd _074_/Y sky130_fd_sc_hd__nand2b_2
-X_091_ resetn gpio_defaults[7] vssd vssd vccd vccd _091_/X sky130_fd_sc_hd__or2_2
-X_126_ _126_/CLK _126_/D resetn vssd vssd vccd vccd hold7/A sky130_fd_sc_hd__dfrtp_2
+X_106__11 _103__8/A vssd vssd vccd vccd _106__11/Y sky130_fd_sc_hd__inv_2
+Xfanout24 fanout28/X vssd vssd vccd vccd _072_/A_N sky130_fd_sc_hd__buf_2
+XFILLER_19_55 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XTAP_70 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+Xinput3 pad_gpio_in vssd vssd vccd vccd _139_/A sky130_fd_sc_hd__buf_2
+X_091_ _091_/A gpio_defaults[5] vssd vssd vccd vccd _091_/X sky130_fd_sc_hd__or2_0
+X_074_ _083_/A gpio_defaults[2] vssd vssd vccd vccd _074_/Y sky130_fd_sc_hd__nand2b_2
+X_126_ _130_/CLK hold6/X _091_/A vssd vssd vccd vccd _126_/Q sky130_fd_sc_hd__dfrtp_4
+X_098__3 _103__8/A vssd vssd vccd vccd _098__3/Y sky130_fd_sc_hd__inv_2
 XPHY_9 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_095__4 _134_/A vssd vssd vccd vccd _095__4/Y sky130_fd_sc_hd__inv_2
-XFILLER_13_35 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_109_ _096__5/Y hold4/X _075_/X _076_/Y vssd vssd vccd vccd pad_gpio_inenb _109_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-XANTENNA__130__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_109_ _061__1/Y hold3/X _071_/X _072_/Y vssd vssd vccd vccd _109_/Q _109_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xfanout25 fanout28/X vssd vssd vccd vccd _089_/A sky130_fd_sc_hd__buf_2
+XTAP_71 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_60 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_090_ resetn gpio_defaults[6] vssd vssd vccd vccd _090_/Y sky130_fd_sc_hd__nand2b_2
-XANTENNA__073__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__062__B user_gpio_oeb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_073_ resetn gpio_defaults[9] vssd vssd vccd vccd _073_/X sky130_fd_sc_hd__or2_2
-XFILLER_2_70 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_125_ _126_/CLK _125_/D resetn vssd vssd vccd vccd _125_/Q sky130_fd_sc_hd__dfrtp_2
-XANTENNA__070__B gpio_defaults[2] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_108_ _095__4/Y hold2/X _073_/X _074_/Y vssd vssd vccd vccd pad_gpio_vtrip_sel _108_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-XANTENNA__081__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xinput4 resetn vssd vssd vccd vccd input4/X sky130_fd_sc_hd__buf_2
+X_090_ _136_/A gpio_defaults[12] vssd vssd vccd vccd _090_/Y sky130_fd_sc_hd__nand2b_2
+X_073_ _083_/A gpio_defaults[2] vssd vssd vccd vccd _073_/X sky130_fd_sc_hd__or2_0
+X_125_ _130_/CLK hold4/X _083_/A vssd vssd vccd vccd hold6/A sky130_fd_sc_hd__dfrtp_4
+XANTENNA__073__A _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xfanout26 fanout28/X vssd vssd vccd vccd _136_/A sky130_fd_sc_hd__buf_2
+XTAP_72 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_61 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_072_ resetn gpio_defaults[8] vssd vssd vccd vccd _072_/Y sky130_fd_sc_hd__nand2b_2
+X_072_ _072_/A_N gpio_defaults[0] vssd vssd vccd vccd _072_/Y sky130_fd_sc_hd__nand2b_2
 XTAP_50 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__086__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__068__B gpio_defaults[0] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__073__B gpio_defaults[9] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_124_ _126_/CLK _124_/D resetn vssd vssd vccd vccd _124_/Q sky130_fd_sc_hd__dfrtp_2
-XANTENNA__079__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_14_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-X_107_ _094__3/Y hold7/X _071_/X _072_/Y vssd vssd vccd vccd pad_gpio_slow_sel _107_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-XANTENNA__124__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_060__14 _133_/A vssd vssd vccd vccd _131_/CLK sky130_fd_sc_hd__inv_2
-XANTENNA__076__B gpio_defaults[3] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__081__B gpio_defaults[10] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xinput5 serial_data_in vssd vssd vccd vccd _122_/D sky130_fd_sc_hd__buf_2
+X_124_ _130_/CLK hold5/X _072_/A_N vssd vssd vccd vccd hold4/A sky130_fd_sc_hd__dfrtp_4
+XANTENNA__073__B gpio_defaults[2] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xfanout27 fanout28/X vssd vssd vccd vccd _085_/A sky130_fd_sc_hd__buf_2
+XANTENNA__079__A _083_/A vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__076__B gpio_defaults[8] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__081__B gpio_defaults[4] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XTAP_73 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+X_071_ _089_/A gpio_defaults[0] vssd vssd vccd vccd _071_/X sky130_fd_sc_hd__or2_0
 XTAP_62 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_071_ resetn gpio_defaults[8] vssd vssd vccd vccd _071_/X sky130_fd_sc_hd__or2_2
-XFILLER_10_27 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XTAP_51 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__087__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XTAP_40 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_2_83 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_106_ _093__2/Y hold3/X _069_/X _070_/Y vssd vssd vccd vccd pad_gpio_holdover _106_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
-X_123_ _126_/CLK hold9/X resetn vssd vssd vccd vccd _123_/Q sky130_fd_sc_hd__dfrtp_2
-XANTENNA__084__B gpio_defaults[11] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__079__B gpio_defaults[1] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__076__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_070_ resetn gpio_defaults[2] vssd vssd vccd vccd _070_/Y sky130_fd_sc_hd__nand2b_2
+X_123_ _130_/CLK hold3/X _072_/A_N vssd vssd vccd vccd hold5/A sky130_fd_sc_hd__dfrtp_4
+XANTENNA__084__B gpio_defaults[1] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xfanout28 input4/X vssd vssd vccd vccd fanout28/X sky130_fd_sc_hd__buf_2
+XANTENNA__079__B gpio_defaults[3] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XTAP_63 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__118__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_070_ _068_/X _069_/Y _066_/Y vssd vssd vccd vccd _070_/Y sky130_fd_sc_hd__o21ai_4
 XTAP_52 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__092__B gpio_defaults[7] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__087__B gpio_defaults[5] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XTAP_41 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_098__7 _134_/A vssd vssd vccd vccd _098__7/Y sky130_fd_sc_hd__inv_2
-X_122_ _126_/CLK hold4/X resetn vssd vssd vccd vccd hold9/A sky130_fd_sc_hd__dfrtp_2
-XFILLER_2_40 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_105_ _059__1/Y hold6/X _067_/X _068_/Y vssd vssd vccd vccd _105_/Q _105_/Q_N sky130_fd_sc_hd__dfbbn_2
+XANTENNA__092__B gpio_defaults[5] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__087__B gpio_defaults[11] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_122_ _134_/CLK _122_/D _072_/A_N vssd vssd vccd vccd hold3/A sky130_fd_sc_hd__dfrtp_4
+XANTENNA__095__B gpio_defaults[7] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xserial_clock_out_buffer _134_/CLK vssd vssd vccd vccd serial_clock_out sky130_fd_sc_hd__clkbuf_16
 XTAP_64 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_53 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_42 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_121_ _126_/CLK hold3/X resetn vssd vssd vccd vccd hold4/A sky130_fd_sc_hd__dfrtp_2
-XFILLER_12_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
+XFILLER_2_52 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_121_ _108__13/Y hold8/X _095_/X _096_/Y vssd vssd vccd vccd _121_/Q _121_/Q_N sky130_fd_sc_hd__dfbbn_2
 XTAP_65 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_14_83 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XTAP_54 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+X_101__6 _103__8/A vssd vssd vccd vccd _101__6/Y sky130_fd_sc_hd__inv_2
 XTAP_43 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_120_ _126_/CLK hold5/X resetn vssd vssd vccd vccd hold3/A sky130_fd_sc_hd__dfrtp_2
-XANTENNA__127__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_17_72 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_120_ _107__12/Y hold9/X _093_/X _094_/Y vssd vssd vccd vccd _120_/Q _120_/Q_N sky130_fd_sc_hd__dfbbn_2
+XFILLER_2_42 vssd vssd vccd vccd sky130_fd_sc_hd__decap_6
+XFILLER_8_52 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 Xhold1 hold1/A vssd vssd vccd vccd hold1/X sky130_fd_sc_hd__dlygate4sd3_1
+XTAP_66 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_55 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_44 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_102__11 _100__9/A vssd vssd vccd vccd _102__11/Y sky130_fd_sc_hd__inv_2
 Xhold2 hold2/A vssd vssd vccd vccd hold2/X sky130_fd_sc_hd__dlygate4sd3_1
 Xclkbuf_0_serial_load serial_load vssd vssd vccd vccd clkbuf_0_serial_load/X sky130_fd_sc_hd__clkbuf_16
-Xclkbuf_1_0__f_serial_clock clkbuf_0_serial_clock/X vssd vssd vccd vccd _126_/CLK
+Xclkbuf_1_0__f_serial_clock clkbuf_0_serial_clock/X vssd vssd vccd vccd _130_/CLK
 + sky130_fd_sc_hd__clkbuf_16
-XFILLER_14_85 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XTAP_67 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_56 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XTAP_45 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 Xgpio_logic_high gpio_in_buf/TE vccd1 vssd1 gpio_logic_high
-XFILLER_2_44 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XTAP_45 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_5_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XPHY_40 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+Xone_buffer one_buffer/A vssd vssd vccd vccd one sky130_fd_sc_hd__buf_16
+XFILLER_8_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 Xhold3 hold3/A vssd vssd vccd vccd hold3/X sky130_fd_sc_hd__dlygate4sd3_1
-XFILLER_10_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XTAP_57 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+XPHY_41 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+XTAP_68 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XPHY_30 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+XTAP_57 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_46 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__120__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_105__10 _104__9/A vssd vssd vccd vccd _105__10/Y sky130_fd_sc_hd__inv_2
 Xhold4 hold4/A vssd vssd vccd vccd hold4/X sky130_fd_sc_hd__dlygate4sd3_1
-XANTENNA__092__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_104__9 _104__9/A vssd vssd vccd vccd _104__9/Y sky130_fd_sc_hd__inv_2
+XTAP_69 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_14_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XTAP_58 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_5_56 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XTAP_47 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-X_093__2 _134_/A vssd vssd vccd vccd _093__2/Y sky130_fd_sc_hd__inv_2
 XPHY_31 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_20 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+XFILLER_0_3 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XFILLER_17_98 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 Xhold5 hold5/A vssd vssd vccd vccd hold5/X sky130_fd_sc_hd__dlygate4sd3_1
-XANTENNA__082__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_32 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XTAP_59 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XPHY_21 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XTAP_48 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
 XPHY_10 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_17_11 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XTAP_48 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
+X_089_ _089_/A gpio_defaults[12] vssd vssd vccd vccd _089_/X sky130_fd_sc_hd__or2_0
 Xhold6 hold6/A vssd vssd vccd vccd hold6/X sky130_fd_sc_hd__dlygate4sd3_1
-X_089_ resetn gpio_defaults[6] vssd vssd vccd vccd _089_/X sky130_fd_sc_hd__or2_2
+Xzero_buffer zero_buffer/A vssd vssd vccd vccd zero sky130_fd_sc_hd__buf_16
 XTAP_49 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XTAP_38 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_0_80 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
+XFILLER_0_91 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XPHY_33 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__072__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 Xclkbuf_0_serial_clock serial_clock vssd vssd vccd vccd clkbuf_0_serial_clock/X sky130_fd_sc_hd__clkbuf_16
 XPHY_22 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__063__A2 mgmt_gpio_oeb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA_input5_A serial_data_in vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XFILLER_2_48 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
 XPHY_11 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__118__D serial_data_in vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_088_ resetn gpio_defaults[5] vssd vssd vccd vccd _088_/Y sky130_fd_sc_hd__nand2b_2
-XANTENNA__058__A pad_gpio_in vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XFILLER_3_80 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+X_088_ _089_/A gpio_defaults[11] vssd vssd vccd vccd _088_/Y sky130_fd_sc_hd__nand2b_2
 Xhold7 hold7/A vssd vssd vccd vccd hold7/X sky130_fd_sc_hd__dlygate4sd3_1
-XANTENNA__071__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XTAP_39 vssd vccd sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__066__A0 user_gpio_out vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_12 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_34 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_23 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__123__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-Xclkbuf_1_1__f_serial_load clkbuf_0_serial_load/X vssd vssd vccd vccd _134_/A sky130_fd_sc_hd__clkbuf_16
-XANTENNA__069__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_087_ resetn gpio_defaults[5] vssd vssd vccd vccd _087_/X sky130_fd_sc_hd__or2_2
+X_087_ _089_/A gpio_defaults[11] vssd vssd vccd vccd _087_/X sky130_fd_sc_hd__or2_0
+X_099__4 _104__9/A vssd vssd vccd vccd _099__4/Y sky130_fd_sc_hd__inv_2
 Xhold8 hold8/A vssd vssd vccd vccd hold8/X sky130_fd_sc_hd__dlygate4sd3_1
-X_096__5 _134_/A vssd vssd vccd vccd _096__5/Y sky130_fd_sc_hd__inv_2
-XANTENNA__071__B gpio_defaults[8] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+Xclkbuf_1_1__f_serial_load clkbuf_0_serial_load/X vssd vssd vccd vccd _104__9/A sky130_fd_sc_hd__clkbuf_16
+XANTENNA__071__B gpio_defaults[0] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_139_ _139_/A _063_/Y vssd vssd vccd vccd mgmt_gpio_in sky130_fd_sc_hd__ebufn_8
+XANTENNA__066__B user_gpio_out vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_35 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_24 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_13 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_9_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_8
-XANTENNA__077__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_086_ resetn gpio_defaults[12] vssd vssd vccd vccd _086_/Y sky130_fd_sc_hd__nand2b_2
-XANTENNA__074__B gpio_defaults[9] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-Xclkbuf_1_1__f_serial_clock clkbuf_0_serial_clock/X vssd vssd vccd vccd _133_/A sky130_fd_sc_hd__clkbuf_16
-XFILLER_11_48 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_11_15 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_3_93 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__085__A resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_069_ resetn gpio_defaults[2] vssd vssd vccd vccd _069_/X sky130_fd_sc_hd__or2_2
-XANTENNA__069__B gpio_defaults[2] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_086_ _085_/A gpio_defaults[10] vssd vssd vccd vccd _086_/Y sky130_fd_sc_hd__nand2b_2
+Xclkbuf_1_1__f_serial_clock clkbuf_0_serial_clock/X vssd vssd vccd vccd _134_/CLK
++ sky130_fd_sc_hd__clkbuf_16
+XANTENNA__074__B gpio_defaults[2] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 Xhold9 hold9/A vssd vssd vccd vccd hold9/X sky130_fd_sc_hd__dlygate4sd3_1
-XFILLER_0_50 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_6_60 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__082__B gpio_defaults[10] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_069_ input2/X _068_/B _109_/Q vssd vssd vccd vccd _069_/Y sky130_fd_sc_hd__o21ai_2
+X_108__13 _103__8/A vssd vssd vccd vccd _108__13/Y sky130_fd_sc_hd__inv_2
+XANTENNA__082__B gpio_defaults[4] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_36 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+XANTENNA__077__B gpio_defaults[9] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_25 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__077__B gpio_defaults[4] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_14 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__085__B gpio_defaults[12] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_085_ resetn gpio_defaults[12] vssd vssd vccd vccd _085_/X sky130_fd_sc_hd__or2_2
-XANTENNA__090__B gpio_defaults[6] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_068_ resetn gpio_defaults[0] vssd vssd vccd vccd _068_/Y sky130_fd_sc_hd__nand2b_2
-XFILLER_17_3 vssd vssd vccd vccd sky130_fd_sc_hd__decap_8
+XANTENNA_input3_A pad_gpio_in vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__090__B gpio_defaults[12] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+XANTENNA__085__B gpio_defaults[10] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_085_ _085_/A gpio_defaults[10] vssd vssd vccd vccd _085_/X sky130_fd_sc_hd__or2_0
+X_068_ _116_/Q_N _068_/B vssd vssd vccd vccd _068_/X sky130_fd_sc_hd__and2b_2
 XPHY_37 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_14_38 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XANTENNA__093__B gpio_defaults[6] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
 XPHY_26 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_15 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XFILLER_6_50 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XANTENNA__088__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XANTENNA__088__B gpio_defaults[5] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_067_ resetn gpio_defaults[0] vssd vssd vccd vccd _067_/X sky130_fd_sc_hd__or2_2
-XFILLER_8_29 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_0_52 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
-X_084_ resetn gpio_defaults[11] vssd vssd vccd vccd _084_/Y sky130_fd_sc_hd__nand2b_2
-X_119_ _126_/CLK hold6/X resetn vssd vssd vccd vccd hold5/A sky130_fd_sc_hd__dfrtp_2
-XANTENNA__126__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_101__10 _134_/A vssd vssd vccd vccd _101__10/Y sky130_fd_sc_hd__inv_2
+XANTENNA__088__B gpio_defaults[11] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_067_ _118_/Q _117_/Q _067_/C vssd vssd vccd vccd _068_/B sky130_fd_sc_hd__and3b_2
+X_136_ _136_/A vssd vssd vccd vccd _136_/X sky130_fd_sc_hd__buf_2
+X_084_ _083_/A gpio_defaults[1] vssd vssd vccd vccd _084_/Y sky130_fd_sc_hd__nand2b_2
+XANTENNA__096__B gpio_defaults[7] vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_119_ _106__11/Y _128_/D _091_/X _092_/Y vssd vssd vccd vccd _119_/Q _119_/Q_N sky130_fd_sc_hd__dfbbn_2
+X_062__14 _130_/CLK vssd vssd vccd vccd _135_/CLK sky130_fd_sc_hd__inv_2
+XPHY_38 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_27 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_16 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-XANTENNA__078__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_083_ resetn gpio_defaults[11] vssd vssd vccd vccd _083_/X sky130_fd_sc_hd__or2_2
-X_099__8 _100__9/A vssd vssd vccd vccd _099__8/Y sky130_fd_sc_hd__inv_2
-XFILLER_18_71 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_118_ _133_/A serial_data_in resetn vssd vssd vccd vccd hold6/A sky130_fd_sc_hd__dfrtp_2
-X_066_ user_gpio_out _065_/X _105_/Q vssd vssd vccd vccd pad_gpio_out sky130_fd_sc_hd__mux2_1
-X_135_ pad_gpio_in _061_/Y vssd vssd vccd vccd mgmt_gpio_in sky130_fd_sc_hd__ebufn_2
-XFILLER_0_64 vssd vssd vccd vccd sky130_fd_sc_hd__decap_12
+X_083_ _083_/A gpio_defaults[1] vssd vssd vccd vccd _083_/X sky130_fd_sc_hd__or2_0
+X_118_ _105__10/Y hold7/X _089_/X _090_/Y vssd vssd vccd vccd _118_/Q _118_/Q_N sky130_fd_sc_hd__dfbbn_2
+X_135_ _135_/CLK hold7/A _136_/A vssd vssd vccd vccd _135_/Q sky130_fd_sc_hd__dfrtp_2
+X_061__1 _104__9/A vssd vssd vccd vccd _061__1/Y sky130_fd_sc_hd__inv_2
+X_066_ _109_/Q user_gpio_out vssd vssd vccd vccd _066_/Y sky130_fd_sc_hd__nand2b_2
+XFILLER_0_31 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
+XPHY_39 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_28 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
 XPHY_17 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_134_ _134_/A vssd vssd vccd vccd serial_load_out sky130_fd_sc_hd__buf_2
-X_059__1 _134_/A vssd vssd vccd vccd _059__1/Y sky130_fd_sc_hd__inv_2
-XFILLER_0_76 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_082_ resetn gpio_defaults[10] vssd vssd vccd vccd _082_/Y sky130_fd_sc_hd__nand2b_2
-X_065_ mgmt_gpio_out _065_/A1 _065_/S vssd vssd vccd vccd _065_/X sky130_fd_sc_hd__mux2_1
-XANTENNA__068__A_N resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_61 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_15_3 vssd vssd vccd vccd sky130_fd_sc_hd__fill_2
-X_117_ _104__13/Y _126_/D _091_/X _092_/Y vssd vssd vccd vccd pad_gpio_ana_pol _117_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
+X_134_ _134_/CLK hold2/X _089_/A vssd vssd vccd vccd hold7/A sky130_fd_sc_hd__dfrtp_4
+X_065_ user_gpio_oeb _064_/X _109_/Q vssd vssd vccd vccd _065_/X sky130_fd_sc_hd__mux2_4
+X_082_ _091_/A gpio_defaults[4] vssd vssd vccd vccd _082_/Y sky130_fd_sc_hd__nand2b_2
+Xserial_load_out_buffer _104__9/A vssd vssd vccd vccd serial_load_out sky130_fd_sc_hd__clkbuf_16
+XANTENNA_input1_A mgmt_gpio_oeb vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
+X_117_ _104__9/Y hold2/X _087_/X _088_/Y vssd vssd vccd vccd _117_/Q _117_/Q_N sky130_fd_sc_hd__dfbbn_2
 XPHY_29 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
+X_102__7 _104__9/A vssd vssd vccd vccd _102__7/Y sky130_fd_sc_hd__inv_2
 XPHY_18 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_081_ resetn gpio_defaults[10] vssd vssd vccd vccd _081_/X sky130_fd_sc_hd__or2_2
-X_133_ _133_/A vssd vssd vccd vccd serial_clock_out sky130_fd_sc_hd__buf_2
-X_064_ pad_gpio_dm[2] pad_gpio_dm[1] mgmt_gpio_oeb vssd vssd vccd vccd _065_/S sky130_fd_sc_hd__and3b_2
+X_081_ _091_/A gpio_defaults[4] vssd vssd vccd vccd _081_/X sky130_fd_sc_hd__or2_0
+X_133_ _134_/CLK _133_/D _089_/A vssd vssd vccd vccd hold2/A sky130_fd_sc_hd__dfrtp_4
+X_064_ _115_/Q _067_/C vssd vssd vccd vccd _064_/X sky130_fd_sc_hd__and2_0
 XPHY_19 vssd vssd vccd vccd sky130_fd_sc_hd__decap_3
-X_116_ _103__12/Y _125_/D _089_/X _090_/Y vssd vssd vccd vccd pad_gpio_ana_sel _116_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
+X_116_ _103__8/Y _133_/D _085_/X _086_/Y vssd vssd vccd vccd _116_/Q _116_/Q_N sky130_fd_sc_hd__dfbbn_2
 XANTENNA_clkbuf_0_serial_clock_A serial_clock vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-X_080_ resetn gpio_defaults[1] vssd vssd vccd vccd _080_/Y sky130_fd_sc_hd__nand2b_2
-X_132_ resetn vssd vssd vccd vccd resetn_out sky130_fd_sc_hd__buf_2
-X_063_ _111_/Q mgmt_gpio_oeb _105_/Q _062_/X vssd vssd vccd vccd pad_gpio_outenb sky130_fd_sc_hd__a31o_2
-XANTENNA__129__RESET_B resetn vssd vssd vccd vccd sky130_fd_sc_hd__diode_2
-XFILLER_18_85 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-XFILLER_18_52 vssd vssd vccd vccd sky130_fd_sc_hd__fill_1
-X_115_ _102__11/Y _124_/D _087_/X _088_/Y vssd vssd vccd vccd pad_gpio_ana_en _115_/Q_N
-+ sky130_fd_sc_hd__dfbbn_2
+X_063_ _113_/Q _115_/Q vssd vssd vccd vccd _063_/Y sky130_fd_sc_hd__nand2b_2
+X_132_ _134_/CLK hold1/X _085_/A vssd vssd vccd vccd _132_/Q sky130_fd_sc_hd__dfrtp_4
+X_080_ _083_/A gpio_defaults[3] vssd vssd vccd vccd _080_/Y sky130_fd_sc_hd__nand2b_2
+X_115_ _102__7/Y hold5/X _083_/X _084_/Y vssd vssd vccd vccd _115_/Q _115_/Q_N sky130_fd_sc_hd__dfbbn_2
+Xoutput6 _119_/Q vssd vssd vccd vccd pad_gpio_ana_en sky130_fd_sc_hd__buf_16
 .ends
 

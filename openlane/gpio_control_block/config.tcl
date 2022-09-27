@@ -21,6 +21,7 @@ set ::env(VERILOG_FILES) "\
 	$::env(DESIGN_DIR)/../../verilog/rtl/gpio_control_block.v"
 
 
+set ::env(PL_TARGET_DENSITY) 0.8
 set ::env(CLOCK_PORT) "serial_clock"
 
 set ::env(FP_DEF_TEMPLATE) "$::env(DESIGN_DIR)/template/gpio_control_block.def"
@@ -42,12 +43,13 @@ set ::env(SYNTH_STRATEGY) "AREA 0"
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 170 65"
 
-set ::env(RIGHT_MARGIN_MULT) 262
+set ::env(RIGHT_MARGIN_MULT) 257
 set ::env(LEFT_MARGIN_MULT) 10
-set ::env(TOP_MARGIN_MULT) 2
-set ::env(BOTTOM_MARGIN_MULT) 2
+set ::env(TOP_MARGIN_MULT) 1
+set ::env(BOTTOM_MARGIN_MULT) 1
 
 set ::env(DPL_CELL_PADDING) 0
+set ::env(GPL_CELL_PADDING) 0
 
 ## PDN
 set ::env(FP_PDN_MACRO_HOOKS) "\
@@ -76,7 +78,7 @@ set ::env(FP_PDN_VSPACING) 3.4
 set ::env(FP_PDN_HSPACING) 3.4
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.7
+set ::env(PL_TARGET_DENSITY) 0.9
 # for some reason resizer is leaving a floating net after running repair_tie_fanout command
 set ::env(PL_RESIZER_REPAIR_TIE_FANOUT) 0
 
@@ -96,7 +98,7 @@ set ::env(GRT_OBS) "\
 	li1 16.83000 0 49.41000 5.24000,
 	li1 49.000 0 169.81000 64.84500,
 	met5 67 0 170 65,
-	met4 67 0 170 65,
+	met4 49 0 170 65,
 	met2 120 0 170 65,
 	met1 120 0 170 65"
 
@@ -120,18 +122,24 @@ set ::env(EXTRA_GDS_FILES) "\
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
-set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+#Placement
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 
+#Post cts
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 
-set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 0
-set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
+set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 1
+set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 1
+
+set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 1
+set ::env(PL_RESIZER_MAX_CAP_MARGIN) 1
 
 set ::env(CLOCK_TREE_SYNTH) 1
 set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/gpio_control_block.def
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_SIZING) 0
 # 0.07 ns 70 ps
+
 # set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.07
 # set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
 # set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 2
@@ -142,3 +150,6 @@ set ::env(QUIT_ON_LVS_ERROR) 1
 set ::env(SYNTH_EXTRA_MAPPING_FILE) $::env(DESIGN_DIR)/yosys_mapping.v
 
 set ::env(DECAP_CELL) {sky130_fd_sc_hd__decap_12 sky130_fd_sc_hd__decap_8 sky130_fd_sc_hd__decap_6 sky130_fd_sc_hd__decap_4 sky130_fd_sc_hd__decap_3}
+set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/drc_exclude_list.txt
+set ::env(DRC_EXCLUDE_CELL_LIST_OPT) $::env(DESIGN_DIR)/drc_exclude_list.txt
+set ::env(RSZ_DONT_TOUCH) "user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*"

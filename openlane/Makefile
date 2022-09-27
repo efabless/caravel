@@ -35,6 +35,7 @@ docker_mounts = \
 	-v $(PDK_ROOT):$(PDK_ROOT) \
 	-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 	-v $(PWD):$(PWD) \
+	-v $(HOME):$(HOME)
 
 docker_env = \
 	-e PDK_ROOT=$(PDK_ROOT) \
@@ -60,23 +61,22 @@ list:
 	@echo $(designs)
 
 .PHONY: $(designs)
-$(designs) : export current_design=$@
 $(designs) : % : ./%/config.tcl
-ifeq (,$(wildcard ./$(current_design)/interactive.tcl))
-	# $(current_design)
+ifneq (,$(wildcard ./$(MAKECMDGOALS)/interactive.tcl)))
+	$(docker_run) \
+		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd_interactive)
+else
+	# $(MAKECMDGOALS)
 	mkdir -p ./$*/runs/$(OPENLANE_RUN_TAG) 
 	rm -rf ./$*/runs/$*
 	ln -s $$(realpath ./$*/runs/$(OPENLANE_RUN_TAG)) ./$*/runs/$*
 	$(docker_run) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd)
-else
-	$(docker_run) \
-		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd_interactive)
 endif
 	@mkdir -p ../signoff/$*/
-	@cp ./$*/runs/$*/OPENLANE_VERSION ../signoff/$*/
-	@cp ./$*/runs/$*/PDK_SOURCES ../signoff/$*/
-	@cp ./$*/runs/$*/reports/*.csv ../signoff/$*/
+	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/OPENLANE_VERSION ../signoff/$*/
+	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/PDK_SOURCES ../signoff/$*/
+	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/reports/*.csv ../signoff/$*/
 
 .PHONY: openlane
 openlane: check-openlane-env

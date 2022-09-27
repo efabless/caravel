@@ -111,7 +111,7 @@ add_pdn_stripe \
     -layer $::env(FP_PDN_UPPER_LAYER) \
     -width $::env(FP_PDN_HWIDTH) \
     -pitch 16.9 \
-    -offset 6.5 \
+    -offset 9.22 \
     -spacing 6.85 \
     -nets "vccd1 vssd1"\
     -starts_with POWER -extend_to_core_ring
@@ -121,7 +121,7 @@ add_pdn_stripe \
     -layer $::env(FP_PDN_UPPER_LAYER) \
     -width $::env(FP_PDN_HWIDTH) \
     -pitch 16.9 \
-    -offset 1.26 \
+    -offset 3.98 \
     -spacing 6.85 \
     -nets "vccd vssd"\
     -starts_with POWER -extend_to_core_ring
