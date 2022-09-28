@@ -135,7 +135,7 @@ set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 1
 set ::env(PL_RESIZER_MAX_CAP_MARGIN) 1
 
 set ::env(CLOCK_TREE_SYNTH) 1
-set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/gpio_control_block.def
+set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/gpio_control_block.def
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_SIZING) 0
 # 0.07 ns 70 ps
@@ -153,3 +153,4 @@ set ::env(DECAP_CELL) {sky130_fd_sc_hd__decap_12 sky130_fd_sc_hd__decap_8 sky130
 set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/drc_exclude_list.txt
 set ::env(DRC_EXCLUDE_CELL_LIST_OPT) $::env(DESIGN_DIR)/drc_exclude_list.txt
 set ::env(RSZ_DONT_TOUCH) "user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*"
+set ::env(FP_PDN_SKIPTRIM) 1
