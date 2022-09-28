@@ -762,22 +762,53 @@ module caravel (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_defaults_block_0 [1:0] (
+    ) gpio_defaults_block_0 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[25:0])
+	.gpio_defaults(gpio_defaults[12:0])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h1803)
+    ) gpio_defaults_block_1 (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[25:13])
     );
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_defaults_block_2 [2:0] (
+    ) gpio_defaults_block_2 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
         `endif
-	.gpio_defaults(gpio_defaults[64:26])
+	.gpio_defaults(gpio_defaults[38:26])
+    );
+
+    // CSB pin is set as an internal pull-up
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0c01)
+    ) gpio_defaults_block_3 (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[51:39])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0403)
+    ) gpio_defaults_block_4 (
+    	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+        `endif
+	.gpio_defaults(gpio_defaults[64:52])
     );
 
     /* Via-programmable defaults for the rest of the GPIO pins */

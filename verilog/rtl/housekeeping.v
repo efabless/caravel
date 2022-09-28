@@ -1039,7 +1039,12 @@ module housekeeping #(
 		if ((j < 2) || (j >= `MPRJ_IO_PADS - 2)) begin
 		    gpio_configure[j] <= 'h1803;
                 end else begin
-	            gpio_configure[j] <= 'h0403;
+		    if (j == 3) begin
+			// j == 3 corresponds to CSB, which is a weak pull-up
+	                gpio_configure[j] <= 'h0c01;
+		    end else begin
+	                gpio_configure[j] <= 'h0403;
+		    end
 		end
 	    end
 

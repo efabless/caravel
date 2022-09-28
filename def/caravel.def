@@ -1957,8 +1957,8 @@ COMPONENTS 90 ;
     - gpio_control_in_2\[7\] gpio_control_block + FIXED ( 38155 3811000 ) N ;
     - gpio_control_in_2\[8\] gpio_control_block + FIXED ( 38155 3595000 ) N ;
     - gpio_control_in_2\[9\] gpio_control_block + FIXED ( 38155 3379000 ) N ;
-    - gpio_defaults_block_0\[0\] gpio_defaults_block + FIXED ( 3517335 670000 ) FN ;
-    - gpio_defaults_block_0\[1\] gpio_defaults_block + FIXED ( 3517335 896000 ) FN ;
+    - gpio_defaults_block_0 gpio_defaults_block + FIXED ( 3517335 670000 ) FN ;
+    - gpio_defaults_block_1 gpio_defaults_block + FIXED ( 3517335 896000 ) FN ;
     - gpio_defaults_block_10 gpio_defaults_block + FIXED ( 3517335 3135000 ) FN ;
     - gpio_defaults_block_11 gpio_defaults_block + FIXED ( 3517335 3360000 ) FN ;
     - gpio_defaults_block_12 gpio_defaults_block + FIXED ( 3517335 3586000 ) FN ;
@@ -1979,9 +1979,9 @@ COMPONENTS 90 ;
     - gpio_defaults_block_27 gpio_defaults_block + FIXED ( 41835 3660000 ) N ;
     - gpio_defaults_block_28 gpio_defaults_block + FIXED ( 41835 3444000 ) N ;
     - gpio_defaults_block_29 gpio_defaults_block + FIXED ( 41835 3228000 ) N ;
-    - gpio_defaults_block_2\[0\] gpio_defaults_block + FIXED ( 3517335 1121000 ) FN ;
-    - gpio_defaults_block_2\[1\] gpio_defaults_block + FIXED ( 3517335 1347000 ) FN ;
-    - gpio_defaults_block_2\[2\] gpio_defaults_block + FIXED ( 3517335 1572000 ) FN ;
+    - gpio_defaults_block_2 gpio_defaults_block + FIXED ( 3517335 1121000 ) FN ;
+    - gpio_defaults_block_3 gpio_defaults_block + FIXED ( 3517335 1347000 ) FN ;
+    - gpio_defaults_block_4 gpio_defaults_block + FIXED ( 3517335 1572000 ) FN ;
     - gpio_defaults_block_30 gpio_defaults_block + FIXED ( 41835 3012000 ) N ;
     - gpio_defaults_block_31 gpio_defaults_block + FIXED ( 41835 2796000 ) N ;
     - gpio_defaults_block_32 gpio_defaults_block + FIXED ( 41835 2158000 ) N ;
@@ -3460,7 +3460,7 @@ NETS 2794 ;
       NEW met4 ( 201020 3427540 ) ( * 3639020 )
       NEW met3 ( 201020 3427540 ) M3M4_PR_M
       NEW met3 ( 201020 3639020 ) M3M4_PR_M ;
-    - gpio_defaults\[0\] ( gpio_defaults_block_0\[0\] gpio_defaults[0] ) ( gpio_control_bidir_1\[0\] gpio_defaults[0] ) + USE SIGNAL
+    - gpio_defaults\[0\] ( gpio_defaults_block_0 gpio_defaults[0] ) ( gpio_control_bidir_1\[0\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[100\] ( gpio_defaults_block_7 gpio_defaults[9] ) ( gpio_control_in_1a\[5\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 2463980 0 ) ( * 2464320 0 ) ;
@@ -3482,7 +3482,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3536940 2683620 0 ) ( * 2684300 0 ) ;
     - gpio_defaults\[109\] ( gpio_defaults_block_8 gpio_defaults[5] ) ( gpio_control_in_1\[0\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 2683620 0 ) ( * 2684300 0 ) ;
-    - gpio_defaults\[10\] ( gpio_defaults_block_0\[0\] gpio_defaults[10] ) ( gpio_control_bidir_1\[0\] gpio_defaults[10] ) + USE SIGNAL
+    - gpio_defaults\[10\] ( gpio_defaults_block_0 gpio_defaults[10] ) ( gpio_control_bidir_1\[0\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[110\] ( gpio_defaults_block_8 gpio_defaults[6] ) ( gpio_control_in_1\[0\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 2683620 0 ) ( * 2684300 0 ) ;
@@ -3504,7 +3504,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3543840 2908700 0 ) ( * 2909380 0 ) ;
     - gpio_defaults\[119\] ( gpio_defaults_block_9 gpio_defaults[2] ) ( gpio_control_in_1\[1\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 2908700 0 ) ( * 2909380 0 ) ;
-    - gpio_defaults\[11\] ( gpio_defaults_block_0\[0\] gpio_defaults[11] ) ( gpio_control_bidir_1\[0\] gpio_defaults[11] ) + USE SIGNAL
+    - gpio_defaults\[11\] ( gpio_defaults_block_0 gpio_defaults[11] ) ( gpio_control_bidir_1\[0\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[120\] ( gpio_defaults_block_9 gpio_defaults[3] ) ( gpio_control_in_1\[1\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 2908700 0 ) ( * 2909380 0 ) ;
@@ -3526,7 +3526,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3520840 2908700 0 ) ( * 2909380 0 ) ;
     - gpio_defaults\[129\] ( gpio_defaults_block_9 gpio_defaults[12] ) ( gpio_control_in_1\[1\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 2908700 0 ) ( * 2909380 0 ) ;
-    - gpio_defaults\[12\] ( gpio_defaults_block_0\[0\] gpio_defaults[12] ) ( gpio_control_bidir_1\[0\] gpio_defaults[12] ) + USE SIGNAL
+    - gpio_defaults\[12\] ( gpio_defaults_block_0 gpio_defaults[12] ) ( gpio_control_bidir_1\[0\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[130\] ( gpio_defaults_block_10 gpio_defaults[0] ) ( gpio_control_in_1\[2\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 3134460 0 ) ( * 3135140 0 ) ;
@@ -3548,7 +3548,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3527740 3134460 0 ) ( * 3135140 0 ) ;
     - gpio_defaults\[139\] ( gpio_defaults_block_10 gpio_defaults[9] ) ( gpio_control_in_1\[2\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 3134460 0 ) ( * 3135140 0 ) ;
-    - gpio_defaults\[13\] ( gpio_defaults_block_0\[1\] gpio_defaults[0] ) ( gpio_control_bidir_1\[1\] gpio_defaults[0] ) + USE SIGNAL
+    - gpio_defaults\[13\] ( gpio_defaults_block_1 gpio_defaults[0] ) ( gpio_control_bidir_1\[1\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[140\] ( gpio_defaults_block_10 gpio_defaults[10] ) ( gpio_control_in_1\[2\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 3134460 0 ) ( * 3135140 0 ) ;
@@ -3570,7 +3570,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3534640 3359540 0 ) ( * 3360220 0 ) ;
     - gpio_defaults\[149\] ( gpio_defaults_block_11 gpio_defaults[6] ) ( gpio_control_in_1\[3\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 3359540 0 ) ( * 3360220 0 ) ;
-    - gpio_defaults\[14\] ( gpio_defaults_block_0\[1\] gpio_defaults[1] ) ( gpio_control_bidir_1\[1\] gpio_defaults[1] ) + USE SIGNAL
+    - gpio_defaults\[14\] ( gpio_defaults_block_1 gpio_defaults[1] ) ( gpio_control_bidir_1\[1\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[150\] ( gpio_defaults_block_11 gpio_defaults[7] ) ( gpio_control_in_1\[3\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 3359540 0 ) ( * 3360220 0 ) ;
@@ -3592,7 +3592,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3541540 3585980 0 ) ( * 3586320 0 ) ;
     - gpio_defaults\[159\] ( gpio_defaults_block_12 gpio_defaults[3] ) ( gpio_control_in_1\[4\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 3585980 0 ) ( * 3586320 0 ) ;
-    - gpio_defaults\[15\] ( gpio_defaults_block_0\[1\] gpio_defaults[2] ) ( gpio_control_bidir_1\[1\] gpio_defaults[2] ) + USE SIGNAL
+    - gpio_defaults\[15\] ( gpio_defaults_block_1 gpio_defaults[2] ) ( gpio_control_bidir_1\[1\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[160\] ( gpio_defaults_block_12 gpio_defaults[4] ) ( gpio_control_in_1\[4\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 3585980 0 ) ( * 3586320 0 ) ;
@@ -3614,7 +3614,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3518540 3585980 0 ) ( * 3586320 0 ) ;
     - gpio_defaults\[169\] ( gpio_defaults_block_13 gpio_defaults[0] ) ( gpio_control_in_1\[5\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 3810380 0 ) ( * 3811060 0 ) ;
-    - gpio_defaults\[16\] ( gpio_defaults_block_0\[1\] gpio_defaults[3] ) ( gpio_control_bidir_1\[1\] gpio_defaults[3] ) + USE SIGNAL
+    - gpio_defaults\[16\] ( gpio_defaults_block_1 gpio_defaults[3] ) ( gpio_control_bidir_1\[1\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[170\] ( gpio_defaults_block_13 gpio_defaults[1] ) ( gpio_control_in_1\[5\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 3810380 0 ) ( * 3811060 0 ) ;
@@ -3636,7 +3636,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3525440 3810380 0 ) ( * 3811060 0 ) ;
     - gpio_defaults\[179\] ( gpio_defaults_block_13 gpio_defaults[10] ) ( gpio_control_in_1\[5\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 3810380 0 ) ( * 3811060 0 ) ;
-    - gpio_defaults\[17\] ( gpio_defaults_block_0\[1\] gpio_defaults[4] ) ( gpio_control_bidir_1\[1\] gpio_defaults[4] ) + USE SIGNAL
+    - gpio_defaults\[17\] ( gpio_defaults_block_1 gpio_defaults[4] ) ( gpio_control_bidir_1\[1\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[180\] ( gpio_defaults_block_13 gpio_defaults[11] ) ( gpio_control_in_1\[5\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 3810380 0 ) ( * 3811060 0 ) ;
@@ -3658,7 +3658,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3532340 4702540 0 ) ( * 4703220 0 ) ;
     - gpio_defaults\[189\] ( gpio_defaults_block_14 gpio_defaults[7] ) ( gpio_control_in_1\[6\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 4702540 0 ) ( * 4703220 0 ) ;
-    - gpio_defaults\[18\] ( gpio_defaults_block_0\[1\] gpio_defaults[5] ) ( gpio_control_bidir_1\[1\] gpio_defaults[5] ) + USE SIGNAL
+    - gpio_defaults\[18\] ( gpio_defaults_block_1 gpio_defaults[5] ) ( gpio_control_bidir_1\[1\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[190\] ( gpio_defaults_block_14 gpio_defaults[8] ) ( gpio_control_in_1\[6\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 4702540 0 ) ( * 4703220 0 ) ;
@@ -3680,9 +3680,9 @@ NETS 2794 ;
       + ROUTED met2 ( 2810830 5138760 0 ) ( 2811290 * 0 ) ;
     - gpio_defaults\[199\] ( gpio_defaults_block_15 gpio_defaults[4] ) ( gpio_control_in_1\[7\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 2810830 5136380 0 ) ( 2811290 * 0 ) ;
-    - gpio_defaults\[19\] ( gpio_defaults_block_0\[1\] gpio_defaults[6] ) ( gpio_control_bidir_1\[1\] gpio_defaults[6] ) + USE SIGNAL
+    - gpio_defaults\[19\] ( gpio_defaults_block_1 gpio_defaults[6] ) ( gpio_control_bidir_1\[1\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 895900 0 ) ( * 896580 0 ) ;
-    - gpio_defaults\[1\] ( gpio_defaults_block_0\[0\] gpio_defaults[1] ) ( gpio_control_bidir_1\[0\] gpio_defaults[1] ) + USE SIGNAL
+    - gpio_defaults\[1\] ( gpio_defaults_block_0 gpio_defaults[1] ) ( gpio_control_bidir_1\[0\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[200\] ( gpio_defaults_block_15 gpio_defaults[5] ) ( gpio_control_in_1\[7\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 2810830 5134000 0 ) ( 2811290 * 0 ) ;
@@ -3704,7 +3704,7 @@ NETS 2794 ;
       + ROUTED met2 ( 2553690 5145560 0 ) ( 2554150 * 0 ) ;
     - gpio_defaults\[209\] ( gpio_defaults_block_16 gpio_defaults[1] ) ( gpio_control_in_1\[8\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 2553690 5143180 0 ) ( 2554150 * 0 ) ;
-    - gpio_defaults\[20\] ( gpio_defaults_block_0\[1\] gpio_defaults[7] ) ( gpio_control_bidir_1\[1\] gpio_defaults[7] ) + USE SIGNAL
+    - gpio_defaults\[20\] ( gpio_defaults_block_1 gpio_defaults[7] ) ( gpio_control_bidir_1\[1\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[210\] ( gpio_defaults_block_16 gpio_defaults[2] ) ( gpio_control_in_1\[8\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 2553690 5140955 0 ) ( 2554150 * 0 ) ;
@@ -3726,7 +3726,7 @@ NETS 2794 ;
       + ROUTED met2 ( 2553690 5122440 0 ) ( 2554150 * 0 ) ;
     - gpio_defaults\[219\] ( gpio_defaults_block_16 gpio_defaults[11] ) ( gpio_control_in_1\[8\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 2553690 5120255 0 ) ( 2554150 * 0 ) ;
-    - gpio_defaults\[21\] ( gpio_defaults_block_0\[1\] gpio_defaults[8] ) ( gpio_control_bidir_1\[1\] gpio_defaults[8] ) + USE SIGNAL
+    - gpio_defaults\[21\] ( gpio_defaults_block_1 gpio_defaults[8] ) ( gpio_control_bidir_1\[1\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[220\] ( gpio_defaults_block_16 gpio_defaults[12] ) ( gpio_control_in_1\[8\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 2553690 5118020 0 ) ( 2554150 * 0 ) ;
@@ -3748,7 +3748,7 @@ NETS 2794 ;
       + ROUTED met2 ( 2168670 5129580 0 ) ( 2169130 * 0 ) ;
     - gpio_defaults\[229\] ( gpio_defaults_block_17 gpio_defaults[8] ) ( gpio_control_in_1\[9\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 2168670 5127200 0 ) ( 2169130 * 0 ) ;
-    - gpio_defaults\[22\] ( gpio_defaults_block_0\[1\] gpio_defaults[9] ) ( gpio_control_bidir_1\[1\] gpio_defaults[9] ) + USE SIGNAL
+    - gpio_defaults\[22\] ( gpio_defaults_block_1 gpio_defaults[9] ) ( gpio_control_bidir_1\[1\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[230\] ( gpio_defaults_block_17 gpio_defaults[9] ) ( gpio_control_in_1\[9\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 2168670 5124820 0 ) ( 2169130 * 0 ) ;
@@ -3772,7 +3772,7 @@ NETS 2794 ;
       + ROUTED met2 ( 1831950 5136380 0 ) ( 1832410 * 0 ) ;
     - gpio_defaults\[239\] ( gpio_defaults_block_18 gpio_defaults[5] ) ( gpio_control_in_1\[10\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 1831950 5134000 0 ) ( 1832410 * 0 ) ;
-    - gpio_defaults\[23\] ( gpio_defaults_block_0\[1\] gpio_defaults[10] ) ( gpio_control_bidir_1\[1\] gpio_defaults[10] ) + USE SIGNAL
+    - gpio_defaults\[23\] ( gpio_defaults_block_1 gpio_defaults[10] ) ( gpio_control_bidir_1\[1\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[240\] ( gpio_defaults_block_18 gpio_defaults[6] ) ( gpio_control_in_1\[10\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 1831490 5130940 ) ( * 5131620 0 )
@@ -3803,7 +3803,7 @@ NETS 2794 ;
     - gpio_defaults\[249\] ( gpio_defaults_block_19 gpio_defaults[2] ) ( gpio_control_in_2\[0\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 1579870 5140955 0 ) ( 1580100 * )
       NEW met2 ( 1580100 5140955 ) ( 1580330 * 0 ) ;
-    - gpio_defaults\[24\] ( gpio_defaults_block_0\[1\] gpio_defaults[11] ) ( gpio_control_bidir_1\[1\] gpio_defaults[11] ) + USE SIGNAL
+    - gpio_defaults\[24\] ( gpio_defaults_block_1 gpio_defaults[11] ) ( gpio_control_bidir_1\[1\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[250\] ( gpio_defaults_block_19 gpio_defaults[3] ) ( gpio_control_in_2\[0\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 1579870 5138760 0 ) ( 1580100 * )
@@ -3835,7 +3835,7 @@ NETS 2794 ;
     - gpio_defaults\[259\] ( gpio_defaults_block_19 gpio_defaults[12] ) ( gpio_control_in_2\[0\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 1579870 5118020 0 ) ( 1580100 * )
       NEW met2 ( 1580100 5118020 ) ( 1580330 * 0 ) ;
-    - gpio_defaults\[25\] ( gpio_defaults_block_0\[1\] gpio_defaults[12] ) ( gpio_control_bidir_1\[1\] gpio_defaults[12] ) + USE SIGNAL
+    - gpio_defaults\[25\] ( gpio_defaults_block_1 gpio_defaults[12] ) ( gpio_control_bidir_1\[1\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 895900 0 ) ( * 896580 0 ) ;
     - gpio_defaults\[260\] ( gpio_defaults_block_20 gpio_defaults[0] ) ( gpio_control_in_2\[1\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 1321810 5145560 0 ) ( 1322270 * 0 ) ;
@@ -3857,7 +3857,7 @@ NETS 2794 ;
       + ROUTED met2 ( 1321810 5127200 0 ) ( 1322270 * 0 ) ;
     - gpio_defaults\[269\] ( gpio_defaults_block_20 gpio_defaults[9] ) ( gpio_control_in_2\[1\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 1321810 5124820 0 ) ( 1322270 * 0 ) ;
-    - gpio_defaults\[26\] ( gpio_defaults_block_2\[0\] gpio_defaults[0] ) ( gpio_control_in_1a\[0\] gpio_defaults[0] ) + USE SIGNAL
+    - gpio_defaults\[26\] ( gpio_defaults_block_2 gpio_defaults[0] ) ( gpio_control_in_1a\[0\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[270\] ( gpio_defaults_block_20 gpio_defaults[10] ) ( gpio_control_in_2\[1\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 1321810 5122440 0 ) ( 1322270 * 0 ) ;
@@ -3879,7 +3879,7 @@ NETS 2794 ;
       + ROUTED met2 ( 1064670 5134000 0 ) ( 1065130 * 0 ) ;
     - gpio_defaults\[279\] ( gpio_defaults_block_21 gpio_defaults[6] ) ( gpio_control_in_2\[2\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 1064670 5131620 0 ) ( 1065130 * 0 ) ;
-    - gpio_defaults\[27\] ( gpio_defaults_block_2\[0\] gpio_defaults[1] ) ( gpio_control_in_1a\[0\] gpio_defaults[1] ) + USE SIGNAL
+    - gpio_defaults\[27\] ( gpio_defaults_block_2 gpio_defaults[1] ) ( gpio_control_in_1a\[0\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[280\] ( gpio_defaults_block_21 gpio_defaults[7] ) ( gpio_control_in_2\[2\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 1064670 5129580 0 ) ( 1065130 * 0 ) ;
@@ -3897,7 +3897,7 @@ NETS 2794 ;
     - gpio_defaults\[287\] ( gpio_defaults_block_22 gpio_defaults[1] ) ( gpio_control_in_2\[3\] gpio_defaults[1] ) + USE SIGNAL ;
     - gpio_defaults\[288\] ( gpio_defaults_block_22 gpio_defaults[2] ) ( gpio_control_in_2\[3\] gpio_defaults[2] ) + USE SIGNAL ;
     - gpio_defaults\[289\] ( gpio_defaults_block_22 gpio_defaults[3] ) ( gpio_control_in_2\[3\] gpio_defaults[3] ) + USE SIGNAL ;
-    - gpio_defaults\[28\] ( gpio_defaults_block_2\[0\] gpio_defaults[2] ) ( gpio_control_in_1a\[0\] gpio_defaults[2] ) + USE SIGNAL
+    - gpio_defaults\[28\] ( gpio_defaults_block_2 gpio_defaults[2] ) ( gpio_control_in_1a\[0\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[290\] ( gpio_defaults_block_22 gpio_defaults[4] ) ( gpio_control_in_2\[3\] gpio_defaults[4] ) + USE SIGNAL ;
     - gpio_defaults\[291\] ( gpio_defaults_block_22 gpio_defaults[5] ) ( gpio_control_in_2\[3\] gpio_defaults[5] ) + USE SIGNAL ;
@@ -3910,9 +3910,9 @@ NETS 2794 ;
     - gpio_defaults\[298\] ( gpio_defaults_block_22 gpio_defaults[12] ) ( gpio_control_in_2\[3\] gpio_defaults[12] ) + USE SIGNAL ;
     - gpio_defaults\[299\] ( gpio_defaults_block_23 gpio_defaults[0] ) ( gpio_control_in_2\[4\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 550850 5145560 0 ) ( 551310 * 0 ) ;
-    - gpio_defaults\[29\] ( gpio_defaults_block_2\[0\] gpio_defaults[3] ) ( gpio_control_in_1a\[0\] gpio_defaults[3] ) + USE SIGNAL
+    - gpio_defaults\[29\] ( gpio_defaults_block_2 gpio_defaults[3] ) ( gpio_control_in_1a\[0\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 1120980 0 ) ( * 1121320 0 ) ;
-    - gpio_defaults\[2\] ( gpio_defaults_block_0\[0\] gpio_defaults[2] ) ( gpio_control_bidir_1\[0\] gpio_defaults[2] ) + USE SIGNAL
+    - gpio_defaults\[2\] ( gpio_defaults_block_0 gpio_defaults[2] ) ( gpio_control_bidir_1\[0\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[300\] ( gpio_defaults_block_23 gpio_defaults[1] ) ( gpio_control_in_2\[4\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 550850 5143180 0 ) ( 551310 * 0 ) ;
@@ -3934,7 +3934,7 @@ NETS 2794 ;
       + ROUTED met2 ( 550850 5124820 0 ) ( 551310 * 0 ) ;
     - gpio_defaults\[309\] ( gpio_defaults_block_23 gpio_defaults[10] ) ( gpio_control_in_2\[4\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 550850 5122440 0 ) ( 551310 * 0 ) ;
-    - gpio_defaults\[30\] ( gpio_defaults_block_2\[0\] gpio_defaults[4] ) ( gpio_control_in_1a\[0\] gpio_defaults[4] ) + USE SIGNAL
+    - gpio_defaults\[30\] ( gpio_defaults_block_2 gpio_defaults[4] ) ( gpio_control_in_1a\[0\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[310\] ( gpio_defaults_block_23 gpio_defaults[11] ) ( gpio_control_in_2\[4\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 550850 5120255 0 ) ( 551310 * 0 ) ;
@@ -3956,7 +3956,7 @@ NETS 2794 ;
       + ROUTED met2 ( 56810 4720900 0 ) ( * 4721580 0 ) ;
     - gpio_defaults\[319\] ( gpio_defaults_block_24 gpio_defaults[7] ) ( gpio_control_in_2\[5\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 59110 4720900 0 ) ( * 4721580 0 ) ;
-    - gpio_defaults\[31\] ( gpio_defaults_block_2\[0\] gpio_defaults[5] ) ( gpio_control_in_1a\[0\] gpio_defaults[5] ) + USE SIGNAL
+    - gpio_defaults\[31\] ( gpio_defaults_block_2 gpio_defaults[5] ) ( gpio_control_in_1a\[0\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[320\] ( gpio_defaults_block_24 gpio_defaults[8] ) ( gpio_control_in_2\[5\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 61410 4720900 0 ) ( * 4721580 0 ) ;
@@ -3978,7 +3978,7 @@ NETS 2794 ;
       + ROUTED met2 ( 49910 4091900 0 ) ( * 4092580 0 ) ;
     - gpio_defaults\[329\] ( gpio_defaults_block_25 gpio_defaults[4] ) ( gpio_control_in_2\[6\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 52210 4091900 0 ) ( * 4092580 0 ) ;
-    - gpio_defaults\[32\] ( gpio_defaults_block_2\[0\] gpio_defaults[6] ) ( gpio_control_in_1a\[0\] gpio_defaults[6] ) + USE SIGNAL
+    - gpio_defaults\[32\] ( gpio_defaults_block_2 gpio_defaults[6] ) ( gpio_control_in_1a\[0\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[330\] ( gpio_defaults_block_25 gpio_defaults[5] ) ( gpio_control_in_2\[6\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 54510 4091900 0 ) ( * 4092580 0 ) ;
@@ -4000,7 +4000,7 @@ NETS 2794 ;
       + ROUTED met2 ( 43010 3875660 0 ) ( * 3876340 0 ) ;
     - gpio_defaults\[339\] ( gpio_defaults_block_26 gpio_defaults[1] ) ( gpio_control_in_2\[7\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 45310 3875660 0 ) ( * 3876340 0 ) ;
-    - gpio_defaults\[33\] ( gpio_defaults_block_2\[0\] gpio_defaults[7] ) ( gpio_control_in_1a\[0\] gpio_defaults[7] ) + USE SIGNAL
+    - gpio_defaults\[33\] ( gpio_defaults_block_2 gpio_defaults[7] ) ( gpio_control_in_1a\[0\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[340\] ( gpio_defaults_block_26 gpio_defaults[2] ) ( gpio_control_in_2\[7\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 47610 3875660 0 ) ( * 3876340 0 ) ;
@@ -4022,7 +4022,7 @@ NETS 2794 ;
       + ROUTED met2 ( 66010 3875660 0 ) ( * 3876340 0 ) ;
     - gpio_defaults\[349\] ( gpio_defaults_block_26 gpio_defaults[11] ) ( gpio_control_in_2\[7\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 68310 3875660 0 ) ( * 3876340 0 ) ;
-    - gpio_defaults\[34\] ( gpio_defaults_block_2\[0\] gpio_defaults[8] ) ( gpio_control_in_1a\[0\] gpio_defaults[8] ) + USE SIGNAL
+    - gpio_defaults\[34\] ( gpio_defaults_block_2 gpio_defaults[8] ) ( gpio_control_in_1a\[0\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[350\] ( gpio_defaults_block_26 gpio_defaults[12] ) ( gpio_control_in_2\[7\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 70610 3875660 0 ) ( * 3876340 0 ) ;
@@ -4044,7 +4044,7 @@ NETS 2794 ;
       + ROUTED met2 ( 59110 3659420 0 ) ( * 3660100 0 ) ;
     - gpio_defaults\[359\] ( gpio_defaults_block_27 gpio_defaults[8] ) ( gpio_control_in_2\[8\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 61410 3659420 0 ) ( * 3660100 0 ) ;
-    - gpio_defaults\[35\] ( gpio_defaults_block_2\[0\] gpio_defaults[9] ) ( gpio_control_in_1a\[0\] gpio_defaults[9] ) + USE SIGNAL
+    - gpio_defaults\[35\] ( gpio_defaults_block_2 gpio_defaults[9] ) ( gpio_control_in_1a\[0\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[360\] ( gpio_defaults_block_27 gpio_defaults[9] ) ( gpio_control_in_2\[8\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 63710 3659420 0 ) ( * 3660100 0 ) ;
@@ -4066,7 +4066,7 @@ NETS 2794 ;
       + ROUTED met2 ( 52210 3443860 0 ) ( * 3444540 0 ) ;
     - gpio_defaults\[369\] ( gpio_defaults_block_28 gpio_defaults[5] ) ( gpio_control_in_2\[9\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 54510 3443860 0 ) ( * 3444540 0 ) ;
-    - gpio_defaults\[36\] ( gpio_defaults_block_2\[0\] gpio_defaults[10] ) ( gpio_control_in_1a\[0\] gpio_defaults[10] ) + USE SIGNAL
+    - gpio_defaults\[36\] ( gpio_defaults_block_2 gpio_defaults[10] ) ( gpio_control_in_1a\[0\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[370\] ( gpio_defaults_block_28 gpio_defaults[6] ) ( gpio_control_in_2\[9\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 56810 3443860 0 ) ( * 3444540 0 ) ;
@@ -4088,7 +4088,7 @@ NETS 2794 ;
       + ROUTED met2 ( 45310 3227620 0 ) ( * 3228300 0 ) ;
     - gpio_defaults\[379\] ( gpio_defaults_block_29 gpio_defaults[2] ) ( gpio_control_in_2\[10\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 47610 3227620 0 ) ( * 3228300 0 ) ;
-    - gpio_defaults\[37\] ( gpio_defaults_block_2\[0\] gpio_defaults[11] ) ( gpio_control_in_1a\[0\] gpio_defaults[11] ) + USE SIGNAL
+    - gpio_defaults\[37\] ( gpio_defaults_block_2 gpio_defaults[11] ) ( gpio_control_in_1a\[0\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[380\] ( gpio_defaults_block_29 gpio_defaults[3] ) ( gpio_control_in_2\[10\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 49910 3227620 0 ) ( * 3228300 0 ) ;
@@ -4110,7 +4110,7 @@ NETS 2794 ;
       + ROUTED met2 ( 68310 3227620 0 ) ( * 3228300 0 ) ;
     - gpio_defaults\[389\] ( gpio_defaults_block_29 gpio_defaults[12] ) ( gpio_control_in_2\[10\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 70610 3227620 0 ) ( * 3228300 0 ) ;
-    - gpio_defaults\[38\] ( gpio_defaults_block_2\[0\] gpio_defaults[12] ) ( gpio_control_in_1a\[0\] gpio_defaults[12] ) + USE SIGNAL
+    - gpio_defaults\[38\] ( gpio_defaults_block_2 gpio_defaults[12] ) ( gpio_control_in_1a\[0\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 1120980 0 ) ( * 1121320 0 ) ;
     - gpio_defaults\[390\] ( gpio_defaults_block_30 gpio_defaults[0] ) ( gpio_control_in_2\[11\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 43010 3011380 0 ) ( * 3012060 0 ) ;
@@ -4132,9 +4132,9 @@ NETS 2794 ;
       + ROUTED met2 ( 61410 3011380 0 ) ( * 3012060 0 ) ;
     - gpio_defaults\[399\] ( gpio_defaults_block_30 gpio_defaults[9] ) ( gpio_control_in_2\[11\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 63710 3011380 0 ) ( * 3012060 0 ) ;
-    - gpio_defaults\[39\] ( gpio_defaults_block_2\[1\] gpio_defaults[0] ) ( gpio_control_in_1a\[1\] gpio_defaults[0] ) + USE SIGNAL
+    - gpio_defaults\[39\] ( gpio_defaults_block_3 gpio_defaults[0] ) ( gpio_control_in_1a\[1\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 1346740 0 ) ( * 1347420 0 ) ;
-    - gpio_defaults\[3\] ( gpio_defaults_block_0\[0\] gpio_defaults[3] ) ( gpio_control_bidir_1\[0\] gpio_defaults[3] ) + USE SIGNAL
+    - gpio_defaults\[3\] ( gpio_defaults_block_0 gpio_defaults[3] ) ( gpio_control_bidir_1\[0\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[400\] ( gpio_defaults_block_30 gpio_defaults[10] ) ( gpio_control_in_2\[11\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 66010 3011380 0 ) ( * 3012060 0 ) ;
@@ -4156,7 +4156,7 @@ NETS 2794 ;
       + ROUTED met2 ( 54510 2795820 0 ) ( * 2796500 0 ) ;
     - gpio_defaults\[409\] ( gpio_defaults_block_31 gpio_defaults[6] ) ( gpio_control_in_2\[12\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 56810 2795820 0 ) ( * 2796500 0 ) ;
-    - gpio_defaults\[40\] ( gpio_defaults_block_2\[1\] gpio_defaults[1] ) ( gpio_control_in_1a\[1\] gpio_defaults[1] ) + USE SIGNAL
+    - gpio_defaults\[40\] ( gpio_defaults_block_3 gpio_defaults[1] ) ( gpio_control_in_1a\[1\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[410\] ( gpio_defaults_block_31 gpio_defaults[7] ) ( gpio_control_in_2\[12\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 59110 2795820 0 ) ( * 2796500 0 ) ;
@@ -4178,7 +4178,7 @@ NETS 2794 ;
       + ROUTED met2 ( 47610 2157980 0 ) ( * 2158320 0 ) ;
     - gpio_defaults\[419\] ( gpio_defaults_block_32 gpio_defaults[3] ) ( gpio_control_in_2\[13\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 49910 2157980 0 ) ( * 2158320 0 ) ;
-    - gpio_defaults\[41\] ( gpio_defaults_block_2\[1\] gpio_defaults[2] ) ( gpio_control_in_1a\[1\] gpio_defaults[2] ) + USE SIGNAL
+    - gpio_defaults\[41\] ( gpio_defaults_block_3 gpio_defaults[2] ) ( gpio_control_in_1a\[1\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[420\] ( gpio_defaults_block_32 gpio_defaults[4] ) ( gpio_control_in_2\[13\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 52210 2157980 0 ) ( * 2158320 0 ) ;
@@ -4200,7 +4200,7 @@ NETS 2794 ;
       + ROUTED met2 ( 70610 2157980 0 ) ( * 2158320 0 ) ;
     - gpio_defaults\[429\] ( gpio_defaults_block_33 gpio_defaults[0] ) ( gpio_control_in_2\[14\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 43010 1941740 0 ) ( * 1942420 0 ) ;
-    - gpio_defaults\[42\] ( gpio_defaults_block_2\[1\] gpio_defaults[3] ) ( gpio_control_in_1a\[1\] gpio_defaults[3] ) + USE SIGNAL
+    - gpio_defaults\[42\] ( gpio_defaults_block_3 gpio_defaults[3] ) ( gpio_control_in_1a\[1\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[430\] ( gpio_defaults_block_33 gpio_defaults[1] ) ( gpio_control_in_2\[14\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 45310 1941740 0 ) ( * 1942420 0 ) ;
@@ -4222,7 +4222,7 @@ NETS 2794 ;
       + ROUTED met2 ( 63710 1941740 0 ) ( * 1942420 0 ) ;
     - gpio_defaults\[439\] ( gpio_defaults_block_33 gpio_defaults[10] ) ( gpio_control_in_2\[14\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 66010 1941740 0 ) ( * 1942420 0 ) ;
-    - gpio_defaults\[43\] ( gpio_defaults_block_2\[1\] gpio_defaults[4] ) ( gpio_control_in_1a\[1\] gpio_defaults[4] ) + USE SIGNAL
+    - gpio_defaults\[43\] ( gpio_defaults_block_3 gpio_defaults[4] ) ( gpio_control_in_1a\[1\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[440\] ( gpio_defaults_block_33 gpio_defaults[11] ) ( gpio_control_in_2\[14\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 68310 1941740 0 ) ( * 1942420 0 ) ;
@@ -4244,7 +4244,7 @@ NETS 2794 ;
       + ROUTED met2 ( 56810 1725500 0 ) ( * 1726180 0 ) ;
     - gpio_defaults\[449\] ( gpio_defaults_block_34 gpio_defaults[7] ) ( gpio_control_in_2\[15\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 59110 1725500 0 ) ( * 1726180 0 ) ;
-    - gpio_defaults\[44\] ( gpio_defaults_block_2\[1\] gpio_defaults[5] ) ( gpio_control_in_1a\[1\] gpio_defaults[5] ) + USE SIGNAL
+    - gpio_defaults\[44\] ( gpio_defaults_block_3 gpio_defaults[5] ) ( gpio_control_in_1a\[1\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[450\] ( gpio_defaults_block_34 gpio_defaults[8] ) ( gpio_control_in_2\[15\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 61410 1725500 0 ) ( * 1726180 0 ) ;
@@ -4266,7 +4266,7 @@ NETS 2794 ;
       + ROUTED met2 ( 49910 1509940 0 ) ( * 1510620 0 ) ;
     - gpio_defaults\[459\] ( gpio_defaults_block_35 gpio_defaults[4] ) ( gpio_control_bidir_2\[0\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 52210 1509940 0 ) ( * 1510620 0 ) ;
-    - gpio_defaults\[45\] ( gpio_defaults_block_2\[1\] gpio_defaults[6] ) ( gpio_control_in_1a\[1\] gpio_defaults[6] ) + USE SIGNAL
+    - gpio_defaults\[45\] ( gpio_defaults_block_3 gpio_defaults[6] ) ( gpio_control_in_1a\[1\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[460\] ( gpio_defaults_block_35 gpio_defaults[5] ) ( gpio_control_bidir_2\[0\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 54510 1509940 0 ) ( * 1510620 0 ) ;
@@ -4288,7 +4288,7 @@ NETS 2794 ;
       + ROUTED met2 ( 43010 1293700 0 ) ( * 1294380 0 ) ;
     - gpio_defaults\[469\] ( gpio_defaults_block_36 gpio_defaults[1] ) ( gpio_control_bidir_2\[1\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 45310 1293700 0 ) ( * 1294380 0 ) ;
-    - gpio_defaults\[46\] ( gpio_defaults_block_2\[1\] gpio_defaults[7] ) ( gpio_control_in_1a\[1\] gpio_defaults[7] ) + USE SIGNAL
+    - gpio_defaults\[46\] ( gpio_defaults_block_3 gpio_defaults[7] ) ( gpio_control_in_1a\[1\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[470\] ( gpio_defaults_block_36 gpio_defaults[2] ) ( gpio_control_bidir_2\[1\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 47610 1293700 0 ) ( * 1294380 0 ) ;
@@ -4310,7 +4310,7 @@ NETS 2794 ;
       + ROUTED met2 ( 66010 1293700 0 ) ( * 1294380 0 ) ;
     - gpio_defaults\[479\] ( gpio_defaults_block_36 gpio_defaults[11] ) ( gpio_control_bidir_2\[1\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 68310 1293700 0 ) ( * 1294380 0 ) ;
-    - gpio_defaults\[47\] ( gpio_defaults_block_2\[1\] gpio_defaults[8] ) ( gpio_control_in_1a\[1\] gpio_defaults[8] ) + USE SIGNAL
+    - gpio_defaults\[47\] ( gpio_defaults_block_3 gpio_defaults[8] ) ( gpio_control_in_1a\[1\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[480\] ( gpio_defaults_block_36 gpio_defaults[12] ) ( gpio_control_bidir_2\[1\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 70610 1293700 0 ) ( * 1294380 0 ) ;
@@ -4332,7 +4332,7 @@ NETS 2794 ;
       + ROUTED met2 ( 59110 1077460 0 ) ( * 1078140 0 ) ;
     - gpio_defaults\[489\] ( gpio_defaults_block_37 gpio_defaults[8] ) ( gpio_control_bidir_2\[2\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 61410 1077460 0 ) ( * 1078140 0 ) ;
-    - gpio_defaults\[48\] ( gpio_defaults_block_2\[1\] gpio_defaults[9] ) ( gpio_control_in_1a\[1\] gpio_defaults[9] ) + USE SIGNAL
+    - gpio_defaults\[48\] ( gpio_defaults_block_3 gpio_defaults[9] ) ( gpio_control_in_1a\[1\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 1346740 0 ) ( * 1347420 0 ) ;
     - gpio_defaults\[490\] ( gpio_defaults_block_37 gpio_defaults[9] ) ( gpio_control_bidir_2\[2\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 63710 1077460 0 ) ( * 1078140 0 ) ;
@@ -4342,41 +4342,41 @@ NETS 2794 ;
       + ROUTED met2 ( 68310 1077460 0 ) ( * 1078140 0 ) ;
     - gpio_defaults\[493\] ( gpio_defaults_block_37 gpio_defaults[12] ) ( gpio_control_bidir_2\[2\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 70610 1077460 0 ) ( * 1078140 0 ) ;
-    - gpio_defaults\[49\] ( gpio_defaults_block_2\[1\] gpio_defaults[10] ) ( gpio_control_in_1a\[1\] gpio_defaults[10] ) + USE SIGNAL
+    - gpio_defaults\[49\] ( gpio_defaults_block_3 gpio_defaults[10] ) ( gpio_control_in_1a\[1\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 1346740 0 ) ( * 1347420 0 ) ;
-    - gpio_defaults\[4\] ( gpio_defaults_block_0\[0\] gpio_defaults[4] ) ( gpio_control_bidir_1\[0\] gpio_defaults[4] ) + USE SIGNAL
+    - gpio_defaults\[4\] ( gpio_defaults_block_0 gpio_defaults[4] ) ( gpio_control_bidir_1\[0\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 669460 0 ) ( * 670140 0 ) ;
-    - gpio_defaults\[50\] ( gpio_defaults_block_2\[1\] gpio_defaults[11] ) ( gpio_control_in_1a\[1\] gpio_defaults[11] ) + USE SIGNAL
+    - gpio_defaults\[50\] ( gpio_defaults_block_3 gpio_defaults[11] ) ( gpio_control_in_1a\[1\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 1346740 0 ) ( * 1347420 0 ) ;
-    - gpio_defaults\[51\] ( gpio_defaults_block_2\[1\] gpio_defaults[12] ) ( gpio_control_in_1a\[1\] gpio_defaults[12] ) + USE SIGNAL
+    - gpio_defaults\[51\] ( gpio_defaults_block_3 gpio_defaults[12] ) ( gpio_control_in_1a\[1\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 1346740 0 ) ( * 1347420 0 ) ;
-    - gpio_defaults\[52\] ( gpio_defaults_block_2\[2\] gpio_defaults[0] ) ( gpio_control_in_1a\[2\] gpio_defaults[0] ) + USE SIGNAL
+    - gpio_defaults\[52\] ( gpio_defaults_block_4 gpio_defaults[0] ) ( gpio_control_in_1a\[2\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[53\] ( gpio_defaults_block_2\[2\] gpio_defaults[1] ) ( gpio_control_in_1a\[2\] gpio_defaults[1] ) + USE SIGNAL
+    - gpio_defaults\[53\] ( gpio_defaults_block_4 gpio_defaults[1] ) ( gpio_control_in_1a\[2\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[54\] ( gpio_defaults_block_2\[2\] gpio_defaults[2] ) ( gpio_control_in_1a\[2\] gpio_defaults[2] ) + USE SIGNAL
+    - gpio_defaults\[54\] ( gpio_defaults_block_4 gpio_defaults[2] ) ( gpio_control_in_1a\[2\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[55\] ( gpio_defaults_block_2\[2\] gpio_defaults[3] ) ( gpio_control_in_1a\[2\] gpio_defaults[3] ) + USE SIGNAL
+    - gpio_defaults\[55\] ( gpio_defaults_block_4 gpio_defaults[3] ) ( gpio_control_in_1a\[2\] gpio_defaults[3] ) + USE SIGNAL
       + ROUTED met2 ( 3539240 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[56\] ( gpio_defaults_block_2\[2\] gpio_defaults[4] ) ( gpio_control_in_1a\[2\] gpio_defaults[4] ) + USE SIGNAL
+    - gpio_defaults\[56\] ( gpio_defaults_block_4 gpio_defaults[4] ) ( gpio_control_in_1a\[2\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[57\] ( gpio_defaults_block_2\[2\] gpio_defaults[5] ) ( gpio_control_in_1a\[2\] gpio_defaults[5] ) + USE SIGNAL
+    - gpio_defaults\[57\] ( gpio_defaults_block_4 gpio_defaults[5] ) ( gpio_control_in_1a\[2\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[58\] ( gpio_defaults_block_2\[2\] gpio_defaults[6] ) ( gpio_control_in_1a\[2\] gpio_defaults[6] ) + USE SIGNAL
+    - gpio_defaults\[58\] ( gpio_defaults_block_4 gpio_defaults[6] ) ( gpio_control_in_1a\[2\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[59\] ( gpio_defaults_block_2\[2\] gpio_defaults[7] ) ( gpio_control_in_1a\[2\] gpio_defaults[7] ) + USE SIGNAL
+    - gpio_defaults\[59\] ( gpio_defaults_block_4 gpio_defaults[7] ) ( gpio_control_in_1a\[2\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[5\] ( gpio_defaults_block_0\[0\] gpio_defaults[5] ) ( gpio_control_bidir_1\[0\] gpio_defaults[5] ) + USE SIGNAL
+    - gpio_defaults\[5\] ( gpio_defaults_block_0 gpio_defaults[5] ) ( gpio_control_bidir_1\[0\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 669460 0 ) ( * 670140 0 ) ;
-    - gpio_defaults\[60\] ( gpio_defaults_block_2\[2\] gpio_defaults[8] ) ( gpio_control_in_1a\[2\] gpio_defaults[8] ) + USE SIGNAL
+    - gpio_defaults\[60\] ( gpio_defaults_block_4 gpio_defaults[8] ) ( gpio_control_in_1a\[2\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[61\] ( gpio_defaults_block_2\[2\] gpio_defaults[9] ) ( gpio_control_in_1a\[2\] gpio_defaults[9] ) + USE SIGNAL
+    - gpio_defaults\[61\] ( gpio_defaults_block_4 gpio_defaults[9] ) ( gpio_control_in_1a\[2\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[62\] ( gpio_defaults_block_2\[2\] gpio_defaults[10] ) ( gpio_control_in_1a\[2\] gpio_defaults[10] ) + USE SIGNAL
+    - gpio_defaults\[62\] ( gpio_defaults_block_4 gpio_defaults[10] ) ( gpio_control_in_1a\[2\] gpio_defaults[10] ) + USE SIGNAL
       + ROUTED met2 ( 3523140 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[63\] ( gpio_defaults_block_2\[2\] gpio_defaults[11] ) ( gpio_control_in_1a\[2\] gpio_defaults[11] ) + USE SIGNAL
+    - gpio_defaults\[63\] ( gpio_defaults_block_4 gpio_defaults[11] ) ( gpio_control_in_1a\[2\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 1571820 0 ) ( * 1572500 0 ) ;
-    - gpio_defaults\[64\] ( gpio_defaults_block_2\[2\] gpio_defaults[12] ) ( gpio_control_in_1a\[2\] gpio_defaults[12] ) + USE SIGNAL
+    - gpio_defaults\[64\] ( gpio_defaults_block_4 gpio_defaults[12] ) ( gpio_control_in_1a\[2\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 1571820 0 ) ( * 1572500 0 ) ;
     - gpio_defaults\[65\] ( gpio_defaults_block_5 gpio_defaults[0] ) ( gpio_control_in_1a\[3\] gpio_defaults[0] ) + USE SIGNAL
       + ROUTED met2 ( 3546140 1796900 0 ) ( * 1797580 0 ) ;
@@ -4388,7 +4388,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3539240 1796900 0 ) ( * 1797580 0 ) ;
     - gpio_defaults\[69\] ( gpio_defaults_block_5 gpio_defaults[4] ) ( gpio_control_in_1a\[3\] gpio_defaults[4] ) + USE SIGNAL
       + ROUTED met2 ( 3536940 1796900 0 ) ( * 1797580 0 ) ;
-    - gpio_defaults\[6\] ( gpio_defaults_block_0\[0\] gpio_defaults[6] ) ( gpio_control_bidir_1\[0\] gpio_defaults[6] ) + USE SIGNAL
+    - gpio_defaults\[6\] ( gpio_defaults_block_0 gpio_defaults[6] ) ( gpio_control_bidir_1\[0\] gpio_defaults[6] ) + USE SIGNAL
       + ROUTED met2 ( 3532340 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[70\] ( gpio_defaults_block_5 gpio_defaults[5] ) ( gpio_control_in_1a\[3\] gpio_defaults[5] ) + USE SIGNAL
       + ROUTED met2 ( 3534640 1796900 0 ) ( * 1797580 0 ) ;
@@ -4410,7 +4410,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3546140 2022660 0 ) ( * 2023340 0 ) ;
     - gpio_defaults\[79\] ( gpio_defaults_block_6 gpio_defaults[1] ) ( gpio_control_in_1a\[4\] gpio_defaults[1] ) + USE SIGNAL
       + ROUTED met2 ( 3543840 2022660 0 ) ( * 2023340 0 ) ;
-    - gpio_defaults\[7\] ( gpio_defaults_block_0\[0\] gpio_defaults[7] ) ( gpio_control_bidir_1\[0\] gpio_defaults[7] ) + USE SIGNAL
+    - gpio_defaults\[7\] ( gpio_defaults_block_0 gpio_defaults[7] ) ( gpio_control_bidir_1\[0\] gpio_defaults[7] ) + USE SIGNAL
       + ROUTED met2 ( 3530040 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[80\] ( gpio_defaults_block_6 gpio_defaults[2] ) ( gpio_control_in_1a\[4\] gpio_defaults[2] ) + USE SIGNAL
       + ROUTED met2 ( 3541540 2022660 0 ) ( * 2023340 0 ) ;
@@ -4432,7 +4432,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3523140 2022660 0 ) ( * 2023340 0 ) ;
     - gpio_defaults\[89\] ( gpio_defaults_block_6 gpio_defaults[11] ) ( gpio_control_in_1a\[4\] gpio_defaults[11] ) + USE SIGNAL
       + ROUTED met2 ( 3520840 2022660 0 ) ( * 2023340 0 ) ;
-    - gpio_defaults\[8\] ( gpio_defaults_block_0\[0\] gpio_defaults[8] ) ( gpio_control_bidir_1\[0\] gpio_defaults[8] ) + USE SIGNAL
+    - gpio_defaults\[8\] ( gpio_defaults_block_0 gpio_defaults[8] ) ( gpio_control_bidir_1\[0\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 669460 0 ) ( * 670140 0 ) ;
     - gpio_defaults\[90\] ( gpio_defaults_block_6 gpio_defaults[12] ) ( gpio_control_in_1a\[4\] gpio_defaults[12] ) + USE SIGNAL
       + ROUTED met2 ( 3518540 2022660 0 ) ( * 2023340 0 ) ;
@@ -4454,7 +4454,7 @@ NETS 2794 ;
       + ROUTED met2 ( 3530040 2463980 0 ) ( * 2464320 0 ) ;
     - gpio_defaults\[99\] ( gpio_defaults_block_7 gpio_defaults[8] ) ( gpio_control_in_1a\[5\] gpio_defaults[8] ) + USE SIGNAL
       + ROUTED met2 ( 3527740 2463980 0 ) ( * 2464320 0 ) ;
-    - gpio_defaults\[9\] ( gpio_defaults_block_0\[0\] gpio_defaults[9] ) ( gpio_control_bidir_1\[0\] gpio_defaults[9] ) + USE SIGNAL
+    - gpio_defaults\[9\] ( gpio_defaults_block_0 gpio_defaults[9] ) ( gpio_control_bidir_1\[0\] gpio_defaults[9] ) + USE SIGNAL
       + ROUTED met2 ( 3525440 669460 0 ) ( * 670140 0 ) ;
     - gpio_in_core ( soc gpio_in_pad ) ( padframe gpio_in_core ) + USE SIGNAL
       + ROUTED met2 ( 2574390 210460 ) ( 2575770 * 0 )
