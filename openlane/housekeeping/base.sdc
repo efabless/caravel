@@ -36,10 +36,10 @@ puts "\[INFO\]: Setting input delay to: $input_delay_value"
 ## Filter clocks from the all inputs
 set sck_clk_indx [lsearch [all_inputs] [get_port "mgmt_gpio_in[4]"]]
 set all_inputs_wo_sckclk [lreplace [all_inputs] $sck_clk_indx $sck_clk_indx]
-set wb_clk_indx [lsearch all_inputs_wo_sckclk [get_port "wb_clk_i"]]
-set all_inputs_wo_2clks [lreplace all_inputs_wo_sckclk $wb_clk_indx $wb_clk_indx]
-set usr_clk_indx [lsearch all_inputs_wo_2clks [get_port "user_clock"]]
-set all_inputs_wo_clk [lreplace all_inputs_wo_2clks $usr_clk_indx $usr_clk_indx]
+set wb_clk_indx [lsearch $all_inputs_wo_sckclk [get_port "wb_clk_i"]]
+set all_inputs_wo_2clks [lreplace $all_inputs_wo_sckclk $wb_clk_indx $wb_clk_indx]
+set usr_clk_indx [lsearch $all_inputs_wo_2clks [get_port "user_clock"]]
+set all_inputs_wo_clk [lreplace $all_inputs_wo_2clks $usr_clk_indx $usr_clk_indx]
 
 set_input_delay $input_delay_value -clock [get_clocks wb_clk_i] $all_inputs_wo_clk
 
