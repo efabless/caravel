@@ -803,7 +803,7 @@ module housekeeping #(
     assign mgmt_gpio_out_pre[31:16] = mgmt_gpio_data[31:16];
     assign mgmt_gpio_out_pre[12:11] = mgmt_gpio_data[12:11];
 
-    assign mgmt_gpio_out_pre[10] = (pass_thru_user) ? mgmt_gpio_in[2]
+    assign mgmt_gpio_out_pre[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
 			: mgmt_gpio_data[10];
     assign mgmt_gpio_out_pre[9] = (pass_thru_user) ? mgmt_gpio_in[4]
 			: mgmt_gpio_data[9];
