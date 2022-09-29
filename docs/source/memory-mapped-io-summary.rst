@@ -112,7 +112,7 @@ Memory Mapped I/O summary
       - Trap output destination (:ref:`reg_trap_out_dest`)
     * - `0x 2f 00 00 08`
       - IRQ 7 input source (:ref:`reg_irq7_source`)
-    * - `0x 30 00 00 0`
+    * - `0x 30 00 00 00`
       - User area base.
         A user project may define additional Wishbone responder modules starting at this address.
     * - `0x 80 00 00 00`
