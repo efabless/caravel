@@ -314,7 +314,11 @@ BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
 LVS_BLOCKS = $(foreach block, $(BLOCKS), lvs-$(block))
 $(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
 	echo "Extracting $*"
+	# Clear result directories 
+	rm -rf ./mag/tmp
 	mkdir -p ./mag/tmp
+	rm -rf ./spi/lvs/tmp
+	mkdir -p ./spi/lvs/tmp
 	echo "addpath $(CARAVEL_ROOT)/mag/hexdigits;\
 		addpath $(CARAVEL_ROOT)/mag/primitives;\
 		addpath $(MCW_ROOT)/mag;\
@@ -344,7 +348,6 @@ $(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
 	mv -f ./mag/extract_$*.tcl ./mag/tmp
 	mv -f ./mag/extract_$*.log ./mag/tmp
 	####
-	mkdir -p ./spi/lvs/tmp
 	sh $(CARAVEL_ROOT)/spi/lvs/run_lvs.sh ./spi/lvs/$*.spice ./verilog/gl/$*.v $*
 	@echo ""
 	python3 $(CARAVEL_ROOT)/scripts/count_lvs.py -f ./verilog/gl/$*.v_comp.json | tee ./spi/lvs/tmp/$*.lvs.summary.log
@@ -360,7 +363,11 @@ $(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
 LVS_GDS_BLOCKS = $(foreach block, $(BLOCKS), lvs-gds-$(block))
 $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 	echo "Extracting $*"
+	# Clear result directories 
+	rm -rf ./gds/tmp
 	mkdir -p ./gds/tmp
+	rm -rf ./spi/lvs/tmp
+	mkdir -p ./spi/lvs/tmp
 	echo "	gds flatglob \"*_example_*\";\
 		gds flatten true;\
 		gds read ./$*.gds;\
@@ -380,7 +387,6 @@ $(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
 	mv -f ./gds/extract_$*.tcl ./gds/tmp
 	mv -f ./gds/extract_$*.log ./gds/tmp
 	####
-	mkdir -p ./spi/lvs/tmp
 	MAGIC_EXT_USE_GDS=1 sh $(CARAVEL_ROOT)/spi/lvs/run_lvs.sh ./spi/lvs/$*.spice ./verilog/gl/$*.v $*
 	@echo ""
 	python3 $(CARAVEL_ROOT)/scripts/count_lvs.py -f ./verilog/gl/$*.v_comp.json | tee ./spi/lvs/tmp/$*.lvs.summary.log
