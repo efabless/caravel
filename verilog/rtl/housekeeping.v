@@ -300,6 +300,13 @@ module housekeeping #(
     assign spimemio_flash_io0_di = (pass_thru_mgmt_delay) ? 1'b0 : pad_flash_io0_di;
     assign spimemio_flash_io1_di = (pass_thru_mgmt) ? 1'b0 : pad_flash_io1_di;
 
+
+    wire [11:0] mfgr_id;
+    wire [7:0]  prod_id;
+    wire [31:0] mask_rev;
+
+    reg serial_busy;
+
     // Wishbone bus "back door" to SPI registers.  This section of code
     // (1) Maps SPI byte addresses to memory map 32-bit addresses
     // (2) Applies signals to the housekeeping SPI to mux in the SPI address,
@@ -635,6 +642,15 @@ module housekeeping #(
 	endcase
 	end
     endfunction
+	
+    // SPI is considered active when the GPIO for CSB is set to input and
+    // CSB is low.  SPI is considered "busy" when rdstb or wrstb are high,
+    // indicating that the SPI will read or write a byte on the next SCK
+    // transition.
+
+    wire spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
+    wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
+    wire spi_is_busy = spi_is_active && (rdstb || wrstb);
 
     /* Wishbone back-door state machine and address translation */
 
@@ -766,14 +782,7 @@ module housekeeping #(
     	.pass_thru_user_reset(pass_thru_user_reset)
     );
 
-    // SPI is considered active when the GPIO for CSB is set to input and
-    // CSB is low.  SPI is considered "busy" when rdstb or wrstb are high,
-    // indicating that the SPI will read or write a byte on the next SCK
-    // transition.
 
-    wire spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
-    wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
-    wire spi_is_busy = spi_is_active && (rdstb || wrstb);
 
     // GPIO data handling to and from the management SoC
 
@@ -869,7 +878,6 @@ module housekeeping #(
     reg serial_clock_pre;
     reg serial_resetn_pre;
     reg serial_load_pre;
-    reg serial_busy;
     wire serial_data_1;
     wire serial_data_2;
     wire serial_clock;
@@ -979,10 +987,6 @@ module housekeeping #(
     end
 
     // SPI Identification
-
-    wire [11:0] mfgr_id;
-    wire [7:0]  prod_id;
-    wire [31:0] mask_rev;
 
     assign mfgr_id = 12'h456;		// Hard-coded
     assign prod_id = 8'h11;		// Hard-coded
