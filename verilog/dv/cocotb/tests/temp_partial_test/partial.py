@@ -14,7 +14,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def temp_partial(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=70000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=70000)
     # Apply data 0x1809 (management standard output) to first block of 
     # user 1 and user 2 (GPIO 0 and 37) bits 0, 1, 9, and 12 are "1" (data go in backwards)
     cpu = RiskV(dut)

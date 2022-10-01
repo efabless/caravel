@@ -18,7 +18,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=237,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=237,num_error=INFINITY)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
@@ -69,7 +69,7 @@ async def hk_regs_wr_wb(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_spi(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)
@@ -116,7 +116,7 @@ async def hk_regs_wr_spi(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_rst_spi(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)
