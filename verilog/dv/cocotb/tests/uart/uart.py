@@ -10,24 +10,25 @@ from tests.common_functions.test_functions import *
 from tests.bitbang.bitbang_functions import *
 from caravel import GPIO_MODE
 
-baud_rate = 9600
-number_of_bits = 8
-bit_rate_ns = round((10**9)/(baud_rate*number_of_bits) )
-clk = 12.5
-bit_time = 10**5 * clk / (96)
+
+bit_time_ns = 0
 reg = Regs()
 
 
 @cocotb.test()
 @repot_test
 async def uart_tx(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=18613481)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=18613481)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     cocotb.log.info(f"[TEST] Start uart test")  
     expected_msg = "Monitor: Test UART (RTL) passed"
-
+    # calculate bit time
+    clk = clock.period/1000
+    global bit_time_ns
+    bit_time_ns = round(10**5 * clk / (96))
+    # wait for start of sending
     await wait_reg1(cpu,caravelEnv,0XAA) 
         
     cocotb.log.info (f"[TEST] start receiving from uart")
@@ -46,27 +47,31 @@ async def uart_tx(dut):
         # if temp != caravelEnv.monitor_gpio((6,6))
         char = caravelEnv.monitor_gpio((6,6)).binstr + char
         cocotb.log.debug (f"[TEST] bit[{counter}] = {caravelEnv.monitor_gpio((6,6))} data out = {char} ")
-        await Timer(bit_rate_ns, units='ns')  
+        await Timer(bit_time_ns, units='ns')  
         counter +=1
     
 async def start_of_tx(caravelEnv):
     while (True): # wait for the start of the transimission it 1 then 0
         if (caravelEnv.monitor_gpio((6,6)).integer == 0):
             break
-        await Timer(bit_rate_ns, units='ns')
-    await Timer(bit_rate_ns, units='ns')
+        await Timer(bit_time_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
 
 
 @cocotb.test()
 @repot_test
 async def uart_rx(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=95844)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=95844)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     cocotb.log.info(f"[TEST] Start uart test")  
     caravelEnv.drive_gpio_in((5,5),1)
-
+    # calculate bit time
+    clk = clock.period/1000
+    global bit_time_ns
+    bit_time_ns = round(10**5 * clk / (96))
+    print (clk)
     # send first char
     await wait_reg1(cpu,caravelEnv,0XAA)  
     await uart_send_char(caravelEnv,"B")
@@ -76,9 +81,7 @@ async def uart_rx(dut):
     await uart_send_char(caravelEnv,"M")
     await uart_check_char_recieved(caravelEnv,cpu)
     # send third char  
-    cocotb.log.info(f"[TEST] here") 
     await wait_reg1(cpu,caravelEnv,0XCC)  
-    cocotb.log.info(f"[TEST] here") 
     await uart_send_char(caravelEnv,"A")
     await uart_check_char_recieved(caravelEnv,cpu)
 
@@ -89,21 +92,21 @@ async def uart_send_char(caravelEnv,char):
     cocotb.log.info (f"[TEST] start sending on uart {char}")
     #send start bit
     caravelEnv.drive_gpio_in((5,5),0)
-    await Timer(bit_rate_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
     #send bits 
     for i in range(8):
         caravelEnv.drive_gpio_in((5,5),char_bits[i])
-        await Timer(bit_rate_ns, units='ns')
+        await Timer(bit_time_ns, units='ns')
 
     # stop of frame
     caravelEnv.drive_gpio_in((5,5),1)
-    await Timer(bit_rate_ns, units='ns')
-    await Timer(bit_rate_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
     # insert 4 bit delay just for debugging
-    await Timer(bit_rate_ns, units='ns')
-    await Timer(bit_rate_ns, units='ns')
-    await Timer(bit_rate_ns, units='ns')
-    await Timer(bit_rate_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
+    await Timer(bit_time_ns, units='ns')
 
         
 async def uart_check_char_recieved(caravelEnv,cpu):
