@@ -14,7 +14,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def bitbang_no_cpu_all_o(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=10000)
+    caravelEnv = await test_configure(dut,timeout_cycles=10206)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     await cpu.drive_data2address(reg.get_addr('reg_mprj_io_37'),GPIO_MODE.GPIO_MODE_MGMT_STD_OUTPUT.value) 
@@ -128,7 +128,7 @@ async def bitbang_no_cpu_all_o(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_no_cpu_all_i(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=10000)
+    caravelEnv = await test_configure(dut,timeout_cycles=8005)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     await cpu.drive_data2address(reg.get_addr('reg_mprj_io_37'),GPIO_MODE.GPIO_MODE_MGMT_STD_INPUT.value) 
@@ -261,7 +261,7 @@ async def io_ports(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_spi(dut):
-    caravelEnv = await test_configure(dut)
+    caravelEnv = await test_configure(dut,timeout_cycles=18910)
     # Apply data 0x1809 (management standard output) to first block of 
     # user 1 and user 2 (GPIO 0 and 37) bits 0, 1, 9, and 12 are "1" (data go in backwards)
     cpu = RiskV(dut)

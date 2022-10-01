@@ -40,11 +40,6 @@ void main(){
     reg_mprj_io_6 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_5 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
 
-    // Set clock to 64 kbaud and enable the UART.  It is important to do this
-    // before applying the configuration, or else the Tx line initializes as
-    // zero, which indicates the start of a byte to the receiver.
-
-
     // Now, apply the configuration
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
