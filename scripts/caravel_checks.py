@@ -28,19 +28,19 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
         "python3",
         "klayout_drc.py", 
         "-g",
-        f"{caravel_root}/gds/digital_pll.gds",
+        f"{caravel_root}/gds/caravel.gds",
         "-l",
         f"{log_dir}",
         "-s",
         f"{signoff_dir}",
         "-d",
-        "digital_pll"
+        "caravel"
     ]
     mag_drc_cmd = [
         "python3",
         "magic_drc.py", 
         "-g",
-        f"{caravel_root}/gds/digital_pll.gds",
+        f"{caravel_root}/gds/caravel.gds",
         "-l",
         f"{log_dir}",
         "-s",
@@ -48,7 +48,7 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
         "-p",
         f"{pdk_root}/sky130A",
         "-d",
-        "digital_pll"
+        "caravel"
     ]
     p1 = subprocess.Popen(klayout_drc_cmd)
     p2 = subprocess.Popen(mag_drc_cmd)
