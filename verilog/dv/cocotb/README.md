@@ -13,6 +13,13 @@ Prerequisites
 - Docker: [Linux](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux&utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) ||  [Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) || [Mac with Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) || [Mac with M1 Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header)
 - Python 3.6+ with PIP
 - cocotb 
+```
+  apt update && apt install python3 python3-pip
+  pip3 install cocotb
+  pip3 install cocotb_coverage
+  pip3 install coverage
+  pip3 install cocotb-bus
+```
 - iverilog or vcs 
 
 run a test  
@@ -63,6 +70,7 @@ Directories names fixed for now
 >>>>cocotb
 
 cocotb directory tree
+===============
 ```
 ├── caravel.py -> contains driving and mentoring functions for caravel interface
 ├── caravel_top.sv -> testbench top level 
