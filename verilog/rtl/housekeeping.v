@@ -1057,6 +1057,7 @@ module housekeeping #(
 	    serial_bb_resetn <= 1'b0;
 	    serial_xfer <= 1'b0;
 	    hkspi_disable <= 1'b0;
+	    pwr_ctrl_out <= 'd0;
 
 	    sram_ro_clk <= 1'b0;
 	    sram_ro_csb <= 1'b1;
