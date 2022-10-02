@@ -11,6 +11,10 @@ from datetime import datetime
 import random
 from pathlib import Path
 
+
+iverilog = True
+vcs = False
+
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -48,15 +52,19 @@ class RunTest:
         test_log=f"{self.sim_path}/{self.test_name}.log"
         self.full_terminal = open(test_log, "w")
         
-    # iverilog function
-    # def runTest(self):
-    #     print(f"Start running test: {self.sim_type}-{self.test_name}")
-    #     os.system(f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} ")
-    #     self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
-    #     Path(f'{self.sim_path}/{self.passed}').touch()
- 
-        # vcs function      
     def runTest(self):
+        if (iverilog):return self.runTest_iverilog()
+        elif(vcs): return self.runTest_vcs()
+
+    # iverilog function
+    def runTest_iverilog(self):
+        print(f"Start running test: {self.sim_type}-{self.test_name}")
+        os.system(f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} ")
+        self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
+        Path(f'{self.sim_path}/{self.passed}').touch()
+ 
+    # vcs function      
+    def runTest_vcs(self):
         print(f"Start running test: {self.sim_type}-{self.test_name}")
         dirs = f'+incdir+\\\"{go_up(self.cocotb_path,4)}\\\" '
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS'
@@ -82,6 +90,7 @@ class RunTest:
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         os.system("rm AN.DB/ cm.log results.xml ucli.key  -r")
+
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
             if name in files:
@@ -100,6 +109,8 @@ class RunTest:
         #open docker 
         test_path =self.test_path()
         self.cd_make()
+        if not os.path.exists(f"{self.cocotb_path}/hex_files"):
+            os.makedirs(f"{self.cocotb_path}/hex_files") # Create a new hex_files directory because it does not exist 
         elf_out = f"{self.cocotb_path}/hex_files/{self.test_name}.elf"
         c_file = f"{test_path}/{self.test_name}.c"
         hex_file = f"{self.cocotb_path}/hex_files/{self.test_name}.hex"
@@ -293,7 +304,11 @@ parser.add_argument('-sim', nargs='+' ,help='Simulation type to be run RTL,GL&GL
 parser.add_argument('-testlist','-tl', help='path of testlist to be run ')
 parser.add_argument('-tag', help='provide tag of the run default would be regression name and if no regression is provided would be run_<random float>_<timestamp>_')
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
+parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
 args = parser.parse_args()
+if (args.vcs) : 
+    iverilog = False
+    vcs = True
 if args.sim == None: 
     args.sim= ["RTL"]
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
