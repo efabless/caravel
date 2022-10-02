@@ -79,12 +79,12 @@ def magic_gds_drc_check(gds_ut_path, design_name, pdk_path, logs_directory, sign
         logging.error(f"No {design_magic_drc_file_path} file produced by the drc check")
         return False
 
-    drc_violations_count = process.returncode
-    if drc_violations_count != 0:
-        drc_violations_count = (drc_violations_count + 3) / 4  # TODO(ahmad.nofal@efabless.com): Check validity
-    magic_drc_total_file_path = logs_directory / f'{design_name}_magic_drc.total'
-    with open(magic_drc_total_file_path, 'w') as magic_drc_total:
-        magic_drc_total.write(str(drc_violations_count))
+    # drc_violations_count = process.returncode
+    # if drc_violations_count != 0:
+    #     drc_violations_count = (drc_violations_count + 3) / 4  # TODO(ahmad.nofal@efabless.com): Check validity
+    # magic_drc_total_file_path = logs_directory / f'{design_name}_magic_drc.total'
+    # with open(magic_drc_total_file_path, 'w') as magic_drc_total:
+    #     magic_drc_total.write(str(drc_violations_count))
 
     # Write all different formats for drc violations reports using converters
     try:
@@ -119,6 +119,9 @@ def magic_gds_drc_check(gds_ut_path, design_name, pdk_path, logs_directory, sign
     else:
         count = violations_count(drc_content)
         logging.info(f"{count} DRC violations") if count == 0 else logging.error(f"{count} DRC violations")
+        magic_drc_total_file_path = logs_directory / f'{design_name}_magic_drc.total'
+        with open(magic_drc_total_file_path, 'w') as magic_drc_total:
+            magic_drc_total.write(str(count))
         return True if count == 0 else False
 
 

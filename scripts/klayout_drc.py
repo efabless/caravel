@@ -21,7 +21,7 @@ def klayout_gds_drc_check(design_name, drc_script_path, gds_input_file_path, sig
     with open(report_file_path) as klayout_xml_report:
         drc_content = klayout_xml_report.read()
         drc_count = drc_content.count('<item>')
-        total_file_path = logs_directory / f'{design_name}_drc_check.total'
+        total_file_path = logs_directory / f'{design_name}_klayout_drc.total'
         with open(total_file_path, 'w') as drc_total:
             drc_total.write(f"{drc_count}")
         if drc_count == 0:
