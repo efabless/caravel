@@ -28,7 +28,6 @@ run a test
  Use script verify_cocotb.py
 
 ```
-  
   -h, --help            show this help message and exit
   
   -regression REGRESSION, -r REGRESSION
@@ -50,6 +49,8 @@ run a test
                         
   -maxerr MAXERR        max number of errors for every test before simulation
                         breaks default = 3
+                        
+  -vcs, -v              use vcs as compiler if not used iverilog would be used
                         
 ```
 
