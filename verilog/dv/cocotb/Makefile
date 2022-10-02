@@ -46,7 +46,7 @@ cocotb:
 	iverilog -Ttyp -DFUNCTIONAL -DSIM -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
 	-DTESTNAME=\"$(TestName)\" -DTAG=\"$(RUNTAG)\" -DSIM=\"$(SIM)\" \
 	-f$(VERILOG_PATH)/includes/includes.rtl.caravel \
-	-o sim_build/sim.vvp caravel_top.sv
+	-o sim_build/sim.vvp $(CARAVEL_PATH)/rtl/__user_project_wrapper.v $(CARAVEL_PATH)/rtl/debug_regs.v caravel_top.sv
 	#GL
 	# iverilog -Ttyp -DFUNCTIONAL -DGL -DUSE_POWER_PINS -DUNIT_DELAY=#1 \
 	# -DTESTNAME=\"$(TestName)\" -DRUNTAG=\"$(RUNTAG)\" -DSIM=\"$(SIM)\" \
