@@ -200,7 +200,7 @@ async def bitbang_cpu_all_i(dut):
 
 
 
-"""Testbench of GPIO configuration through bit-bang method using the housekeeping SPI."""
+"""Testbench of GPIO configuration through bit-bang method using the housekeeping SPI configure all gpio as output."""
 @cocotb.test()
 @repot_test
 async def bitbang_spi_o(dut):
@@ -263,3 +263,55 @@ async def bitbang_spi_o(dut):
 
 
     await ClockCycles(caravelEnv.clk, 10)
+
+
+"""Testbench of GPIO configuration through bit-bang method using the housekeeping SPI configure all gpio as input."""
+@cocotb.test()
+@repot_test
+async def bitbang_spi_i(dut):
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=56703)
+    cpu = RiskV(dut)
+    cpu.cpu_force_reset()
+    cpu.cpu_release_reset()
+
+    await wait_reg1(cpu,caravelEnv,0xFF) # wait for housekeeping registers configured
+    #Configure all as output except reg_mprj_io_3
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 18	and 19	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 17	and 20	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 16	and 21	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 15	and 22	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 14	and 23	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 13	and 24	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 12	and 25	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 11	and 26	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 10	and 27	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 9	and 28	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 8	and 29	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 7	and 30	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 6	and 31	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 5	and 32	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 4	and 33	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 3	and 34	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 2	and 35	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 1	and 36	
+    await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 0	and 37	
+    await load_spi(caravelEnv)		                         # load
+
+    await wait_reg1(cpu,caravelEnv,0xAA)
+    cocotb.log.info("[TEST] finish configuring using bitbang")
+    data_in = 0x8F66FD7B
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    caravelEnv.drive_gpio_in((31,0),data_in)
+    await wait_reg1(cpu,caravelEnv,0xBB)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[0:32]")
+    data_in = 0xFFA88C5A
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    caravelEnv.drive_gpio_in((31,0),data_in)
+    await wait_reg1(cpu,caravelEnv,0xCC)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[0:32]")
+    data_in = 0xC9536346
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    caravelEnv.drive_gpio_in((31,0),data_in)
+
+    await wait_reg2(cpu,caravelEnv,0xFF) 
+    cocotb.log.info(f"[TEST] finish")
