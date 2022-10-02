@@ -2,7 +2,9 @@ Overview
 ========
 Cocotb environment (CTN) is a dynamic simulation testing environment. It's purpose is to speed testing simulation time and get coverage data. The environment is developed using cocotb, an open source coroutine-based co simulation testbench environment for verifying VHDL and SystemVerilog RTL using Python. CTN has 2 main layers: tests and  whitebox models. Tests layer contain multiple tests and sequences that can communicate with the caravel (dut)  through drivers shown in read at fig 1. Whitebox models layer contain multiple models that should mimic the behavior of each main block inside caravel see fig1. Model is supposed to check if the model is working as expected, if its registers contain the expected values all the time and report coverage of features provided by this block if it’s tested or not. 
 
-.. image::docs/CTN.png
+
+ <img src="doc/CTN.png" alt="Alt text" title="fig1. caravel testbench environment (read lines are drivers )">
+
 fig1. caravel testbench environment (read lines are drivers )
 
 Prerequisites
