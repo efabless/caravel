@@ -52,3 +52,30 @@ Tests
 
 Refer to [tests.json](tests.json) for tests list
 
+Directories names fixed for now
+===============
+>repo
+>>caravel_mgmt_soc_litex/
+
+>>caravel
+>>>verilog
+>>>>dv
+>>>>cocotb
+
+cocotb directory tree
+```
+├── caravel.py -> contains driving and mentoring functions for caravel interface
+├── caravel_top.sv -> testbench top level 
+├── cpu.py -> contains driving and mentoring functions for wishbone when disable the cpu 
+├── hex_files -> folder that contains hex files 
+├── verify_cocotb.py -> script that run tests and regressions 
+├── sim ->  directory get generate when run a test
+│   └── <tag> -> tag of the run  
+│       ├── <sim type>-<test name> -> test result directory contain all logs and wave related to the test
+│       ├── command.log -> command use for this run 
+│       └── runs.log -> contains status of the run fails and passes tests 
+├── tests -> directory contains all the tests 
+├── tests.json -> test list have all the tests, regressions and contain small description about every test 
+└── wb_models -> contains checkers and models for some caravel blocks 
+
+```
