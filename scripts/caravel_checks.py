@@ -55,11 +55,13 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     p2 = subprocess.Popen(mag_drc_cmd)
     return p1, p2
 
-def run_lvs(caravel_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env):
+def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env):
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
     os.environ["LVS_ROOT"] = lvs_root
     os.environ["LOG_ROOT"] = log_dir
+    os.environ["CARAVEL_ROOT"] = caravel_root
+    os.environ["MCW_ROOT"] = mcw_root
     os.environ["SIGNOFF_ROOT"] = os.path.join(signoff_dir,"reports")
     lvs_cmd = [
         "bash",
@@ -130,13 +132,15 @@ if __name__ == "__main__":
     if not os.path.exists(f"{signoff_dir}/reports"):
         os.makedirs(f"{signoff_dir}/reports")
 
+    logging.info("Building caravel...")
+
     build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
 
     if drc:
         drc_p1, drc_p2 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
         logging.info("Running klayout and magic DRC on caravel")
     if lvs:
-        lvs_p1 = run_lvs(caravel_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env)
+        lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env)
         logging.info("Running LVS on caravel")
 
     if lvs and drc:
