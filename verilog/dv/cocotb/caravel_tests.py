@@ -36,6 +36,7 @@ from tests.gpio.gpio import *
 from tests.mgmt_gpio.mgmt_gpio import *
 from tests.timer.timer import *
 from tests.uart.uart import *
+from tests.spi_master.spi_master import *
 
 
 

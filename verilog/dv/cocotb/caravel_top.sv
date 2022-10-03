@@ -104,7 +104,7 @@ caravel uut (
 
 
 	// make speical variables for the mprj input to assign the input without writing to the output gpios
-	// cocotb limitation  #2587
+	// cocotb limitation  #2587: iverilog deal with array as 1 object not multiple of objects so can't write to only 1 element
 	wire bin0;
 	wire bin0_en;	
 	wire bin1;
@@ -228,6 +228,87 @@ caravel uut (
 	assign mprj_io_tb[35] = (bin35_en) ? bin35 : 1'bz;
 	assign mprj_io_tb[36] = (bin36_en) ? bin36 : 1'bz;
 	assign mprj_io_tb[37] = (bin37_en) ? bin37 : 1'bz;
+
+
+
+	// to read from mprj array with iverilog  
+	wire bin0_monitor;
+	wire bin1_monitor;
+	wire bin2_monitor;
+	wire bin3_monitor;
+	wire bin4_monitor;
+	wire bin5_monitor;
+	wire bin6_monitor;
+	wire bin7_monitor;
+	wire bin8_monitor;
+	wire bin9_monitor;
+	wire bin10_monitor;
+	wire bin11_monitor;
+	wire bin12_monitor;
+	wire bin13_monitor;
+	wire bin14_monitor;
+	wire bin15_monitor;
+	wire bin16_monitor;
+	wire bin17_monitor;
+	wire bin18_monitor;
+	wire bin19_monitor;
+	wire bin20_monitor;
+	wire bin21_monitor;
+	wire bin22_monitor;
+	wire bin23_monitor;
+	wire bin24_monitor;
+	wire bin25_monitor;
+	wire bin26_monitor;
+	wire bin27_monitor;
+	wire bin28_monitor;
+	wire bin29_monitor;
+	wire bin30_monitor;
+	wire bin31_monitor;
+	wire bin32_monitor;
+	wire bin33_monitor;
+	wire bin34_monitor;
+	wire bin35_monitor;
+	wire bin36_monitor;
+	wire bin37_monitor;
+
+	assign bin0_monitor = mprj_io_tb[0];
+	assign bin1_monitor = mprj_io_tb[1];
+	assign bin2_monitor = mprj_io_tb[2];
+	assign bin3_monitor = mprj_io_tb[3];
+	assign bin4_monitor = mprj_io_tb[4];
+	assign bin5_monitor = mprj_io_tb[5];
+	assign bin6_monitor = mprj_io_tb[6];
+	assign bin7_monitor = mprj_io_tb[7];
+	assign bin8_monitor = mprj_io_tb[8];
+	assign bin9_monitor = mprj_io_tb[9];
+	assign bin10_monitor = mprj_io_tb[10];
+	assign bin11_monitor = mprj_io_tb[11];
+	assign bin12_monitor = mprj_io_tb[12];
+	assign bin13_monitor = mprj_io_tb[13];
+	assign bin14_monitor = mprj_io_tb[14];
+	assign bin15_monitor = mprj_io_tb[15];
+	assign bin16_monitor = mprj_io_tb[16];
+	assign bin17_monitor = mprj_io_tb[17];
+	assign bin18_monitor = mprj_io_tb[18];
+	assign bin19_monitor = mprj_io_tb[19];
+	assign bin20_monitor = mprj_io_tb[20];
+	assign bin21_monitor = mprj_io_tb[21];
+	assign bin22_monitor = mprj_io_tb[22];
+	assign bin23_monitor = mprj_io_tb[23];
+	assign bin24_monitor = mprj_io_tb[24];
+	assign bin25_monitor = mprj_io_tb[25];
+	assign bin26_monitor = mprj_io_tb[26];
+	assign bin27_monitor = mprj_io_tb[27];
+	assign bin28_monitor = mprj_io_tb[28];
+	assign bin29_monitor = mprj_io_tb[29];
+	assign bin30_monitor = mprj_io_tb[30];
+	assign bin31_monitor = mprj_io_tb[31];
+	assign bin32_monitor = mprj_io_tb[32];
+	assign bin33_monitor = mprj_io_tb[33];
+	assign bin34_monitor = mprj_io_tb[34];
+	assign bin35_monitor = mprj_io_tb[35];
+	assign bin36_monitor = mprj_io_tb[36];
+	assign bin37_monitor = mprj_io_tb[37];
 
 endmodule
 
