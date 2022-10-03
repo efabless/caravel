@@ -55,10 +55,11 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     p2 = subprocess.Popen(mag_drc_cmd)
     return p1, p2
 
-def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env):
+def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env):
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
     os.environ["LVS_ROOT"] = lvs_root
+    os.environ["WORK_ROOT"] = work_root
     os.environ["LOG_ROOT"] = log_dir
     os.environ["CARAVEL_ROOT"] = caravel_root
     os.environ["MCW_ROOT"] = mcw_root
@@ -73,6 +74,7 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pd
     ]
     p1 = subprocess.Popen(lvs_cmd)
     return p1
+
 
 def check_errors(log_dir, signoff_dir, drc, lvs):
     drc_count_mag = os.path.join(log_dir, "caravel_magic_drc.total")
@@ -130,6 +132,7 @@ if __name__ == "__main__":
     log_dir = os.path.join(caravel_root,"scripts/logs")
     signoff_dir = os.path.join(caravel_root,"signoff")
     lvs_root = os.path.join(caravel_root, "scripts/extra_be_checks")
+    work_root = os.path.join(caravel_root, "scripts/tech-files")
     drc = args.drc_check
     lvs = args.lvs_check
 
@@ -146,7 +149,7 @@ if __name__ == "__main__":
         drc_p1, drc_p2 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
         logging.info("Running klayout and magic DRC on caravel")
     if lvs:
-        lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env)
+        lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env)
         logging.info("Running LVS on caravel")
 
     if lvs and drc:
