@@ -116,7 +116,7 @@ if __name__ == "__main__":
          )
     args = parser.parse_args()
     
-    caravel_redesign_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    caravel_redesign_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     caravel_root = os.path.join(caravel_redesign_root, "caravel")
     mcw_root = os.path.join(caravel_redesign_root, "mgmt_core_wrapper")
     pdk_root = os.getenv("PDK_ROOT")
