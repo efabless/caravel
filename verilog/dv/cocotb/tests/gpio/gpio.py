@@ -14,7 +14,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def gpio_all_o(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=10000000000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=264012)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -55,7 +55,7 @@ async def gpio_all_o(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=10000000000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=45464)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

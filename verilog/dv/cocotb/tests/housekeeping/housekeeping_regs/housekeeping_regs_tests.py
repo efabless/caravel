@@ -18,7 +18,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=700,num_error=INFINITY)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
@@ -58,18 +58,19 @@ async def hk_regs_wr_wb(dut):
                                 break
                 if not bit_exist:
                     data_exp += '0'
+        await ClockCycles(caravelEnv.clk,10) 
 
         cocotb.log.info(f"[TEST] expected data calculated = {data_exp}")    
         data_out = await cpu.read_address(address) 
         cocotb.log.info(f"[TEST] Read {bin(data_out)} from {regs[mem][key][0][0]} address {hex(address)} through wishbone")
         if data_out != int(data_exp,2): cocotb.log.error(f"[TEST] wrong read from {regs[mem][key][0][0]} address {hex(address)} retuned val= {bin(data_out)[2:].zfill(bits_num)} expected = {data_exp}")
-        else:                           cocotb.log.debug(f"[TEST] read the right value {hex(data_out)}  from {regs[mem][key][0][0]} address {address} ")
+        else:                           cocotb.log.info(f"[TEST] read the right value {hex(data_out)}  from {regs[mem][key][0][0]} address {hex(address)} ")
 
 '''randomly write then read housekeeping regs through SPI'''
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_spi(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)
@@ -81,12 +82,16 @@ async def hk_regs_wr_spi(dut):
         if key == 'base_addr':
             continue
         address = regs[mem][key][0][7]
+        if address in [111,36]: # 111 is for Housekeeping SPI disable, writing 1 to this address will disable the SPI and 36 is for mprj_io[03] changing bit 3 of this register would disable the spi by deassert spi_is_enabled
+            continue
+        # address = int(key,16)
         if  address in [0x69,0x6A,0x6B,0x6C]: # skip testing reg_mprj_datal and reg_mprj_datah because when reading them it's getting the gpio input value
             continue
         data_in = random.getrandbits(bits_num)
         cocotb.log.info(f"[TEST] Writing {bin(data_in)} to reg [{regs[mem][key][0][0]}] address {hex(address)} through SPI")
         await write_reg_spi(caravelEnv,address=address,data=data_in)
         #calculate the expected value for each bit
+        is_unknown = False
         data_exp = ''
         for i in range(bits_num): 
             bit_exist = False
@@ -103,20 +108,28 @@ async def hk_regs_wr_spi(dut):
                         break
                     else : # read only get the value from reset 
                         data_exp += bin(reset_val)[2:].zfill(bits_num)[i]
+                        bit_exist = True
+                        break
+                if field_access == "NA": # that mean the value is unknown as the register value can change by hardware mostly the reg value is input to the housekeeping from other blocks 
+                    is_unknown = True
+                    break
             if not bit_exist:
                 data_exp += '0'
+        if is_unknown:# that mean the value is unknown as the register value can change by hardware mostly the reg value is input to the housekeeping from other blocks 
+            continue
 
+        await ClockCycles(caravelEnv.clk,10) 
         cocotb.log.info(f"[TEST] expected data calculated = {data_exp}")    
         data_out = await read_reg_spi(caravelEnv,address=address) 
         cocotb.log.info(f"[TEST] Read {bin(data_out)} from [{regs[mem][key][0][0]}] address {hex(address)} through SPI")
         if data_out != int(data_exp,2): cocotb.log.error(f"[TEST] wrong read from [{regs[mem][key][0][0]}] address {hex(address)} retuned val= {bin(data_out)[2:].zfill(bits_num)} expected = {data_exp}")
-        else:                           cocotb.log.debug(f"[TEST] read the right value {hex(data_out)}  from [{regs[mem][key][0][0]}] address {address} ")
+        else:                           cocotb.log.info(f"[TEST] read the right value {hex(data_out)}  from [{regs[mem][key][0][0]}] address {address} ")
 
 '''check reset value of house keeping register'''
 @cocotb.test()
 @repot_test
 async def hk_regs_rst_spi(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)

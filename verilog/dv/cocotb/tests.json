@@ -64,12 +64,12 @@
             "GL_SDF":["weekly","tape_out"],
             "description":" configure gpio[0:37] as mgmt input using bitbang and check them"}
 
-        ,"bitbang_spi" :{"level":0, 
+        ,"bitbang_spi_o" :{"level":0, 
             "RTL":["setup","push","push_gl","nightly","weekly","tape_out"],
             "GL":["push_gl","nightly","weekly","tape_out"],
             "GL_SDF":["weekly","tape_out"],
-            "SW":false,
-            "description":"Same as bitbang_no_cpu_all but configure the gpio using the SPI not the firmware"}
+            "SW":true,
+            "description":"Same as bitbang_cpu_all but configure the gpio using the SPI not the firmware"}
 
         ,"hk_regs_wr_wb" :{"level":0, 
             "SW":false,
@@ -156,5 +156,11 @@
             "GL":["nightly","weekly","tape_out"],
             "GL_SDF":["weekly","tape_out"],
             "description":"test uart transmit"}
+        ,"uart_rx" :{"level":0, 
+            "SW":true,
+            "RTL":["setup","nightly","weekly","tape_out"],
+            "GL":["nightly","weekly","tape_out"],
+            "GL_SDF":["weekly","tape_out"],
+            "description":"test uart reception"}
     }
 }

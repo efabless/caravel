@@ -191,6 +191,12 @@ class RiskV:
         return self.debug_hdl.debug_reg_1.value.integer
     def read_debug_reg2(self):
         return self.debug_hdl.debug_reg_2.value.integer
+
+    # writing debug registers using backdoor because in GL cpu can't be disabled for now because of different netlist names
+    def write_debug_reg1_backdoor(self,data):
+        self.debug_hdl.debug_reg_1.value = data
+    def write_debug_reg2_backdoor(self,data):
+        self.debug_hdl.debug_reg_2.value = data
     
     async def force_reset_fun(self):
         first_time_force = True

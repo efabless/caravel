@@ -51,14 +51,16 @@ class Caravel_env:
     """start carvel by insert power then reset"""
     async def start_up(self):
         await self.power_up()
+        await self.disable_csb()
         await self.reset()
         await self.disable_bins()
-        await self.disable_csb()
         common.fill_macros(self.dut.macros) # get macros value
 
     async def disable_bins(self):
         for i in range(38):
-         common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
+            if i == 3:
+                continue
+            common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
 
     """setup the vdd and vcc power bins"""
     async def power_up(self):
@@ -313,16 +315,16 @@ class Caravel_env:
         data_bits = []
         is_list  = isinstance(bits, (list,tuple)) 
         if is_list : 
-            cocotb.log.info(f'[caravel] [drive_gpio_in] start bits[1] = {bits[1]} bits[0]= {bits[0]}')
+            cocotb.log.debug(f'[caravel] [drive_gpio_in] start bits[1] = {bits[1]} bits[0]= {bits[0]}')
             data_bits = BinaryValue(value = data, n_bits =bits[0]-bits[1]+1 ,bigEndian=(bits[0]<bits[1]))
             for i,bits2 in enumerate(range(bits[1],bits[0]+1)):
                 self.dut._id(f"bin{bits2}",False).value = data_bits[i]
                 self.dut._id(f"bin{bits2}_en",False).value = 1
-                cocotb.log.info(f'[caravel] [drive_gpio_in] drive bin{bits2} with {data_bits[i]} and bin{bits2}_en with 1')
+                cocotb.log.debug(f'[caravel] [drive_gpio_in] drive bin{bits2} with {data_bits[i]} and bin{bits2}_en with 1')
         else:
             self.dut._id(f'bin{bits}',False).value = data
             self.dut._id(f'bin{bits}_en',False).value = 1
-            cocotb.log.info(f'[caravel] [drive_gpio_in] drive bin{bits} with {data} and bin{bits}_en with 1')
+            cocotb.log.debug(f'[caravel] [drive_gpio_in] drive bin{bits} with {data} and bin{bits}_en with 1')
 
     """drive the value of  gpio management"""
     def drive_mgmt_gpio(self,data):

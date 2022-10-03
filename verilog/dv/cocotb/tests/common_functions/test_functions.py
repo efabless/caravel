@@ -22,7 +22,7 @@ from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
    start up the test connecting power vdd to the design then reset and disable the CSB bit 
    return the caravel environmnet with clock and start up
 """
-async def test_configure(dut,timeout_cycles=1000000,clk=12.5,timeout_precision=0.2,num_error=3):
+async def test_configure(dut,timeout_cycles=1000000,clk=25,timeout_precision=0.2,num_error=3):
     caravelEnv = caravel.Caravel_env(dut)
     Timeout(caravelEnv.clk,timeout_cycles,timeout_precision)
     if os.getenv('ERRORMAX') != 'None': 
@@ -33,7 +33,7 @@ async def test_configure(dut,timeout_cycles=1000000,clk=12.5,timeout_precision=0
     await caravelEnv.start_up()
     await ClockCycles(caravelEnv.clk, 10)
     # HK_whiteBox(dut)
-    return caravelEnv
+    return caravelEnv,clock
     
 class CallCounted:
     """Decorator to determine number of calls for a method"""

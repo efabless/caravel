@@ -16,14 +16,14 @@
                 "0x10":            [["PLL bypass","pll_bypass",0,1,"RW",1,1,9]],
                 "0x14":            [["CPU IRQ","irq_spi",0,1,"RW",0,0,10]],
                 "0x18":            [["CPU reset","reset_reg",0,1,"RW",0,0,11]],
-                "0x28":            [["CPU trap","trap",0,1,"RW",0,0,12]],
+                "0x28":            [["CPU trap","trap",0,1,"NA",0,0,12]],
                 "0x1c":            [["DCO trim",["pll_trim",7,0],0,8,"RW",255,255,13]],
                 "0x1d":            [["DCO trim",["pll_trim",15,8],0,8,"RW",239,239,14]],
                 "0x1e":            [["DCO trim",["pll_trim",23,16],0,8,"RW",255,255,15]],
                 "0x1f":            [["DCO trim",["pll_trim",25,24],0,2,"RW",3,3,16]],
                 "0x20":            [["PLL output divider","pll_sel",0,3,"RW",2,2,17],["PLL output divider 2","pll90_sel",3,3,"RW",2,2,17]],
                 "0x24":            [["PLL feedback divider","pll_div",0,5,"RW",4,4,18]],
-                "0x34":            [["SRAM read-only control","sram_ro_csb",0,1,"RW",1,1,20],["SRAM read-only control","sram_ro_clk",0,1,"RW",0,0,20]],
+                "0x34":            [["SRAM read-only control","sram_ro_csb",0,1,"RW",1,1,20],["SRAM read-only control","sram_ro_clk",1,1,"RW",0,0,20]],
                 "0x30":            [["SRAM read-only address","sram_ro_addr",0,8,"RW",0,0,21]]
             },
 
@@ -117,7 +117,7 @@
             },
             
     "sys":{     "base_addr":       ["SYS_BASE_ADR",639631360],
-                "0x00":            [["user2 vdd good","usr2_vdd_pwrgood",0,1,"RO",0,0,26],["user1 vdd good","usr1_vdd_pwrgood",1,1,"RO",0,0,26],
+                "0x00":            [["user2 vdd good","usr2_vdd_pwrgood",0,1,"NA",0,0,26],["user1 vdd good","usr1_vdd_pwrgood",1,1,"NA",0,0,26],
                                     ["user2 vcc good","usr2_vcc_pwrgood",2,1,"RO",0,0,26],["user1 vcc good","usr1_vcc_pwrgood",3,1,"RO",0,0,26]],
                 "0x04":            [["Trap output redirect","trap_output_dest",0,1,"RW",0,0,27],
                                     ["clock2 output redirect","clk2_output_dest",1,1,"RW",0,0,27],
