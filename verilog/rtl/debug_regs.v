@@ -34,7 +34,7 @@ module debug_regs (
             debug_reg_2[31:24]  <= (wbs_adr_i[2] && wbs_sel_i[3])?  wbs_dat_i[31:24] :debug_reg_2[31:24];
             wbs_ack_o <= 1;
         end else if (wbs_cyc_i && wbs_stb_i && !wbs_we_i && !wbs_ack_o) begin // read 
-            wbs_dat_o <= (wbs_adr_i[3]) ? debug_reg_2 : debug_reg_1; 
+            wbs_dat_o <= (wbs_adr_i[2]) ? debug_reg_2 : debug_reg_1; 
             wbs_ack_o <= 1;
         end else begin 
             wbs_ack_o <= 0;
