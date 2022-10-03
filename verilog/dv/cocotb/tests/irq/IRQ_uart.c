@@ -28,7 +28,7 @@
 extern uint16_t flag;
 
 void main(){
-
+    flag = 0;
     reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
     reg_debug_1  = 0x0;
     reg_debug_2  = 0x0;
@@ -47,7 +47,6 @@ void main(){
 
 
 	irq_setmask(irq_getmask() | (1 << UART_INTERRUPT));
-    flag = 0;
 
     reg_debug_2 = 0xAA; //start sending data through the uart
     print("M");
