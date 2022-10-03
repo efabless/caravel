@@ -27,7 +27,7 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
 def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     klayout_drc_cmd = [
         "python3",
-        "klayout_drc.py", 
+        "klayout_drc.py",
         "-g",
         f"{caravel_root}/gds/caravel.gds",
         "-l",
@@ -39,7 +39,7 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     ]
     mag_drc_cmd = [
         "python3",
-        "magic_drc.py", 
+        "magic_drc.py",
         "-g",
         f"{caravel_root}/gds/caravel.gds",
         "-l",
@@ -93,7 +93,7 @@ def check_errors(log_dir, signoff_dir, drc, lvs):
             if "Netlists do not match" in rep.read():
                 logging.error("LVS failed")
                 count = count + 1
-    
+
     if count > 0:
         return False
     return True
@@ -115,15 +115,15 @@ if __name__ == "__main__":
              action="store_true",
          )
     args = parser.parse_args()
-    
+
     caravel_redesign_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     caravel_root = os.path.join(caravel_redesign_root, "caravel")
-    mcw_root = os.path.join(caravel_redesign_root, "mgmt_core_wrapper")
+    mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
     pdk_root = os.getenv("PDK_ROOT")
     pdk_env = os.getenv("PDK")
-    log_dir = os.path.join(caravel_redesign_root,"scripts/logs")
-    signoff_dir = os.path.join(caravel_redesign_root,"signoff")
-    lvs_root = os.path.join(caravel_redesign_root, "scripts/extra_be_checks")
+    log_dir = os.path.join(caravel_root,"scripts/logs")
+    signoff_dir = os.path.join(caravel_root,"signoff")
+    lvs_root = os.path.join(caravel_root, "scripts/extra_be_checks")
     drc = args.drc_check
     lvs = args.lvs_check
 
@@ -156,5 +156,5 @@ if __name__ == "__main__":
     if not check_errors(log_dir, signoff_dir, drc, lvs):
         exit(1)
 
-    
+
 
