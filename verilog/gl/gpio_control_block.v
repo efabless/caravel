@@ -93,7 +93,6 @@ module gpio_control_block (mgmt_gpio_in,
  wire _025_;
  wire _026_;
  wire _027_;
- wire _041_;
  wire _042_;
  wire _043_;
  wire _044_;
@@ -112,54 +111,10 @@ module gpio_control_block (mgmt_gpio_in,
  wire _057_;
  wire _058_;
  wire _059_;
- wire _060_;
- wire _061_;
- wire _062_;
- wire _063_;
- wire _064_;
- wire _065_;
- wire _066_;
- wire _067_;
- wire _068_;
- wire _069_;
- wire _070_;
- wire _071_;
- wire _072_;
- wire _073_;
- wire _074_;
- wire _075_;
- wire _076_;
- wire _077_;
- wire _078_;
- wire _079_;
- wire _080_;
- wire _081_;
- wire _082_;
- wire _083_;
- wire _084_;
- wire _085_;
- wire _086_;
- wire _087_;
- wire _088_;
- wire _089_;
- wire _090_;
- wire _091_;
- wire _092_;
- wire _093_;
- wire _094_;
- wire _095_;
- wire clknet_0__049_;
- wire clknet_0__077_;
  wire clknet_0_serial_clock;
  wire clknet_0_serial_load;
- wire clknet_1_0_0__049_;
- wire clknet_1_0_0__077_;
- wire clknet_1_0_0_serial_clock;
- wire clknet_1_0_0_serial_load;
- wire clknet_1_1_0__049_;
- wire clknet_1_1_0__077_;
- wire clknet_1_1_0_serial_clock;
- wire clknet_1_1_0_serial_load;
+ wire clknet_1_0__leaf_serial_clock;
+ wire clknet_1_0__leaf_serial_load;
  wire gpio_logic1;
  wire gpio_outenb;
  wire mgmt_ena;
@@ -193,18 +148,38 @@ module gpio_control_block (mgmt_gpio_in,
  wire net34;
  wire net35;
  wire net36;
+ wire net37;
+ wire net38;
+ wire net39;
  wire net4;
+ wire net40;
+ wire net41;
+ wire net42;
+ wire net43;
+ wire net44;
+ wire net45;
+ wire net46;
+ wire net47;
+ wire net48;
+ wire net49;
  wire net5;
+ wire net50;
+ wire net51;
+ wire net52;
+ wire net53;
+ wire net54;
+ wire net55;
  wire net6;
  wire net7;
  wire net8;
  wire net9;
- wire serial_data_post_1;
- wire serial_data_post_2;
- wire serial_data_pre;
+ wire one_buffered;
+ wire serial_clock_out_buffered;
+ wire serial_load_out_buffered;
  wire \shift_register[0] ;
  wire \shift_register[10] ;
  wire \shift_register[11] ;
+ wire \shift_register[12] ;
  wire \shift_register[1] ;
  wire \shift_register[2] ;
  wire \shift_register[3] ;
@@ -214,258 +189,179 @@ module gpio_control_block (mgmt_gpio_in,
  wire \shift_register[7] ;
  wire \shift_register[8] ;
  wire \shift_register[9] ;
+ wire zero_buffered;
 
- sky130_fd_sc_hd__diode_2 ANTENNA__096__A (.DIODE(pad_gpio_inenb),
+ sky130_fd_sc_hd__diode_2 ANTENNA__065__A0 (.DIODE(user_gpio_oeb),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__098__B (.DIODE(user_gpio_oeb),
+ sky130_fd_sc_hd__diode_2 ANTENNA__066__B (.DIODE(user_gpio_out),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__099__A2 (.DIODE(mgmt_gpio_oeb),
+ sky130_fd_sc_hd__diode_2 ANTENNA__071__B (.DIODE(gpio_defaults[0]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__100__A (.DIODE(user_gpio_out),
+ sky130_fd_sc_hd__diode_2 ANTENNA__072__B (.DIODE(gpio_defaults[0]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__101__A (.DIODE(mgmt_gpio_oeb),
+ sky130_fd_sc_hd__diode_2 ANTENNA__073__A (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__102__A (.DIODE(mgmt_gpio_out),
+ sky130_fd_sc_hd__diode_2 ANTENNA__073__B (.DIODE(gpio_defaults[2]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__106__A (.DIODE(pad_gpio_in),
+ sky130_fd_sc_hd__diode_2 ANTENNA__074__A_N (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__109__A (.DIODE(resetn),
+ sky130_fd_sc_hd__diode_2 ANTENNA__074__B (.DIODE(gpio_defaults[2]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__110__B (.DIODE(gpio_defaults[0]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__075__B (.DIODE(gpio_defaults[8]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__114__A (.DIODE(resetn),
+ sky130_fd_sc_hd__diode_2 ANTENNA__076__B (.DIODE(gpio_defaults[8]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__116__B_N (.DIODE(gpio_defaults[0]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__077__B (.DIODE(gpio_defaults[9]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__118__B (.DIODE(gpio_defaults[2]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__078__B (.DIODE(gpio_defaults[9]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__121__B_N (.DIODE(gpio_defaults[2]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__079__A (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__124__B (.DIODE(gpio_defaults[8]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__079__B (.DIODE(gpio_defaults[3]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__127__B_N (.DIODE(gpio_defaults[8]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__080__A_N (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__129__B (.DIODE(gpio_defaults[9]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__080__B (.DIODE(gpio_defaults[3]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__132__B_N (.DIODE(gpio_defaults[9]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__081__B (.DIODE(gpio_defaults[4]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__134__B (.DIODE(gpio_defaults[3]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__082__B (.DIODE(gpio_defaults[4]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__137__B_N (.DIODE(gpio_defaults[3]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__083__A (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__139__B (.DIODE(gpio_defaults[4]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__083__B (.DIODE(gpio_defaults[1]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__144__B_N (.DIODE(gpio_defaults[4]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__084__A_N (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__146__B (.DIODE(gpio_defaults[1]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__084__B (.DIODE(gpio_defaults[1]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__149__B_N (.DIODE(gpio_defaults[1]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__085__B (.DIODE(gpio_defaults[10]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__152__B (.DIODE(gpio_defaults[10]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__086__B (.DIODE(gpio_defaults[10]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__155__B_N (.DIODE(gpio_defaults[10]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__087__B (.DIODE(gpio_defaults[11]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__157__B (.DIODE(gpio_defaults[11]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__088__B (.DIODE(gpio_defaults[11]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__160__B_N (.DIODE(gpio_defaults[11]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__089__B (.DIODE(gpio_defaults[12]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__162__B (.DIODE(gpio_defaults[12]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__090__B (.DIODE(gpio_defaults[12]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__165__B_N (.DIODE(gpio_defaults[12]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__091__B (.DIODE(gpio_defaults[5]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__167__B (.DIODE(gpio_defaults[5]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__092__B (.DIODE(gpio_defaults[5]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__170__B_N (.DIODE(gpio_defaults[5]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__093__B (.DIODE(gpio_defaults[6]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__172__B (.DIODE(gpio_defaults[6]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__094__B (.DIODE(gpio_defaults[6]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__175__B_N (.DIODE(gpio_defaults[6]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__095__B (.DIODE(gpio_defaults[7]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__177__B (.DIODE(gpio_defaults[7]),
+ sky130_fd_sc_hd__diode_2 ANTENNA__096__B (.DIODE(gpio_defaults[7]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__180__B_N (.DIODE(gpio_defaults[7]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__195__D (.DIODE(serial_data_in),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__195__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__196__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__197__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__198__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__199__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__200__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__201__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__202__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__203__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__204__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__205__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__206__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__207__RESET_B (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__208__A (.DIODE(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__diode_2 ANTENNA__211__A (.DIODE(pad_gpio_in),
+ sky130_fd_sc_hd__diode_2 ANTENNA__125__RESET_B (.DIODE(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
@@ -480,163 +376,116 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_0_47 (.VGND(vssd),
+ sky130_fd_sc_hd__diode_2 ANTENNA_input1_A (.DIODE(mgmt_gpio_oeb),
+    .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_0_84 (.VGND(vssd),
+ sky130_fd_sc_hd__diode_2 ANTENNA_input2_A (.DIODE(mgmt_gpio_out),
+    .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_0_93 (.VGND(vssd),
+ sky130_fd_sc_hd__diode_2 ANTENNA_input3_A (.DIODE(pad_gpio_in),
+    .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_10_27 (.VGND(vssd),
+ sky130_fd_sc_hd__diode_2 ANTENNA_input4_A (.DIODE(resetn),
+    .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_10_3 (.VGND(vssd),
+ sky130_fd_sc_hd__diode_2 ANTENNA_input5_A (.DIODE(serial_data_in),
+    .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_11_24 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_0_3 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_11_60 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_0_31 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_12_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_0_57 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_12_83 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_0_91 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_12_93 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_10_85 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_13_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_14_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_13_69 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_17_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_14_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_19_55 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_14_42 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_19_70 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_14_93 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_3 FILLER_1_32 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_15_24 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_1_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_15_93 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_20_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_16_27 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_6 FILLER_2_42 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_16_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_2_48 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_16_93 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_2_52 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_17_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_3_48 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_17_45 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_3_80 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_17_48 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_5_56 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_18_27 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_5_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__decap_4 FILLER_18_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_7_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_18_31 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_8_52 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_2 FILLER_18_63 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_18_83 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__decap_8 FILLER_1_26 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_1_78 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_2_47 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_3_26 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_3_57 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_3_83 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_3_93 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_5_26 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_5_32 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_6_29 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_7_34 (.VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 FILLER_9_3 (.VGND(vssd),
+ sky130_fd_sc_hd__fill_1 FILLER_8_98 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -696,7 +545,7 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
- sky130_fd_sc_hd__fill_1 PHY_21 (.VGND(vssd),
+ sky130_fd_sc_hd__decap_3 PHY_21 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -768,7 +617,23 @@ module gpio_control_block (mgmt_gpio_in,
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
+ sky130_fd_sc_hd__decap_3 PHY_38 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__decap_3 PHY_39 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
  sky130_fd_sc_hd__decap_3 PHY_4 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__decap_3 PHY_40 (.VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__decap_3 PHY_41 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd));
@@ -791,14 +656,6 @@ module gpio_control_block (mgmt_gpio_in,
  sky130_fd_sc_hd__decap_3 PHY_9 (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_38 (.VGND(vssd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_39 (.VGND(vssd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_40 (.VGND(vssd),
-    .VPWR(vccd));
- sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_41 (.VGND(vssd),
     .VPWR(vccd));
  sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_42 (.VGND(vssd),
     .VPWR(vccd));
@@ -848,565 +705,356 @@ module gpio_control_block (mgmt_gpio_in,
     .VPWR(vccd));
  sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_65 (.VGND(vssd),
     .VPWR(vccd));
- sky130_fd_sc_hd__or2b_2 _096_ (.A(pad_gpio_inenb),
-    .B_N(gpio_outenb),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_067_));
- sky130_fd_sc_hd__buf_1 _097_ (.A(_067_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_083_));
- sky130_fd_sc_hd__and2b_2 _098_ (.A_N(mgmt_ena),
-    .B(user_gpio_oeb),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_068_));
- sky130_fd_sc_hd__a31o_2 _099_ (.A1(gpio_outenb),
-    .A2(mgmt_gpio_oeb),
-    .A3(mgmt_ena),
-    .B1(_068_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(pad_gpio_outenb));
- sky130_fd_sc_hd__inv_2 _100_ (.A(mgmt_ena),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(_069_));
- sky130_fd_sc_hd__nand2_2 _101_ (.A(mgmt_gpio_oeb),
-    .B(pad_gpio_dm[1]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(_070_));
- sky130_fd_sc_hd__inv_2 _102_ (.A(mgmt_gpio_out),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(_071_));
- sky130_fd_sc_hd__o21a_2 _103_ (.A1(pad_gpio_dm[2]),
-    .A2(_070_),
-    .B1(_071_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_072_));
- sky130_fd_sc_hd__o31ai_2 _104_ (.A1(pad_gpio_dm[2]),
-    .A2(_000_),
-    .A3(_070_),
-    .B1(mgmt_ena),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(_073_));
- sky130_fd_sc_hd__o2bb2ai_2 _105_ (.A1_N(user_gpio_out),
-    .A2_N(_069_),
-    .B1(_072_),
-    .B2(_073_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(pad_gpio_out));
- sky130_fd_sc_hd__inv_2 _106_ (.A(pad_gpio_in),
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_66 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_67 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_68 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_69 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_70 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_71 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_72 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__tapvpwrvgnd_1 TAP_73 (.VGND(vssd),
+    .VPWR(vccd));
+ sky130_fd_sc_hd__inv_2 _060_ (.A(net3),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Y(_001_));
- sky130_fd_sc_hd__and2_2 _107_ (.A(one),
-    .B(serial_data_post_2),
+ sky130_fd_sc_hd__inv_2 _061__1 (.A(serial_load_out_buffered),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_074_));
- sky130_fd_sc_hd__buf_1 _108_ (.A(_074_),
+    .Y(net29));
+ sky130_fd_sc_hd__inv_2 _062__14 (.A(clknet_1_0__leaf_serial_clock),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(serial_data_out));
- sky130_fd_sc_hd__buf_1 _109_ (.A(resetn),
+    .Y(net42));
+ sky130_fd_sc_hd__nand2b_2 _063_ (.A_N(net14),
+    .B(gpio_outenb),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_075_));
- sky130_fd_sc_hd__or2_2 _110_ (.A(_075_),
-    .B(gpio_defaults[0]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_076_));
- sky130_fd_sc_hd__buf_1 _111_ (.A(_076_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_002_));
- sky130_fd_sc_hd__buf_1 _112_ (.A(clknet_1_1_0_serial_load),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_077_));
- sky130_fd_sc_hd__inv_2 _113__4 (.A(clknet_1_0_0__077_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(net4));
- sky130_fd_sc_hd__buf_1 _114_ (.A(resetn),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_078_));
- sky130_fd_sc_hd__buf_1 _115_ (.A(_078_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_079_));
- sky130_fd_sc_hd__or2b_2 _116_ (.A(_079_),
-    .B_N(gpio_defaults[0]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_080_));
- sky130_fd_sc_hd__buf_1 _117_ (.A(_080_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_003_));
- sky130_fd_sc_hd__or2_2 _118_ (.A(_075_),
-    .B(gpio_defaults[2]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_081_));
- sky130_fd_sc_hd__buf_1 _119_ (.A(_081_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_004_));
- sky130_fd_sc_hd__inv_2 _120__5 (.A(clknet_1_0_0__077_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(net5));
- sky130_fd_sc_hd__or2b_2 _121_ (.A(_079_),
-    .B_N(gpio_defaults[2]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_082_));
- sky130_fd_sc_hd__buf_1 _122_ (.A(_082_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_005_));
- sky130_fd_sc_hd__buf_1 _123_ (.A(_078_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_041_));
- sky130_fd_sc_hd__or2_2 _124_ (.A(_041_),
-    .B(gpio_defaults[8]),
+    .Y(_047_));
+ sky130_fd_sc_hd__and2_0 _064_ (.A(gpio_outenb),
+    .B(net1),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .X(_042_));
- sky130_fd_sc_hd__buf_1 _125_ (.A(_042_),
+ sky130_fd_sc_hd__mux2_4 _065_ (.A0(user_gpio_oeb),
+    .A1(_042_),
+    .S(mgmt_ena),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_006_));
- sky130_fd_sc_hd__inv_2 _126__6 (.A(clknet_1_1_0__077_),
+    .X(net16));
+ sky130_fd_sc_hd__nand2b_2 _066_ (.A_N(mgmt_ena),
+    .B(user_gpio_out),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net6));
- sky130_fd_sc_hd__or2b_2 _127_ (.A(_079_),
-    .B_N(gpio_defaults[8]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_043_));
- sky130_fd_sc_hd__buf_1 _128_ (.A(_043_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_007_));
- sky130_fd_sc_hd__or2_2 _129_ (.A(_041_),
-    .B(gpio_defaults[9]),
+    .Y(_043_));
+ sky130_fd_sc_hd__and3b_2 _067_ (.A_N(net11),
+    .B(net10),
+    .C(net1),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .X(_044_));
- sky130_fd_sc_hd__buf_1 _130_ (.A(_044_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_008_));
- sky130_fd_sc_hd__inv_2 _131__7 (.A(clknet_1_1_0__077_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(net7));
- sky130_fd_sc_hd__or2b_2 _132_ (.A(_079_),
-    .B_N(gpio_defaults[9]),
+ sky130_fd_sc_hd__and2b_2 _068_ (.A_N(_000_),
+    .B(_044_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .X(_045_));
- sky130_fd_sc_hd__buf_1 _133_ (.A(_045_),
+ sky130_fd_sc_hd__o21ai_2 _069_ (.A1(net2),
+    .A2(_044_),
+    .B1(mgmt_ena),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_009_));
- sky130_fd_sc_hd__or2_2 _134_ (.A(_041_),
+    .Y(_046_));
+ sky130_fd_sc_hd__o21ai_4 _070_ (.A1(_045_),
+    .A2(_046_),
+    .B1(_043_),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net15));
+ sky130_fd_sc_hd__or2_0 _071_ (.A(net25),
+    .B(gpio_defaults[0]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(_002_));
+ sky130_fd_sc_hd__nand2b_2 _072_ (.A_N(net24),
+    .B(gpio_defaults[0]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(_003_));
+ sky130_fd_sc_hd__or2_0 _073_ (.A(net23),
+    .B(gpio_defaults[2]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(_004_));
+ sky130_fd_sc_hd__nand2b_2 _074_ (.A_N(net23),
+    .B(gpio_defaults[2]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(_005_));
+ sky130_fd_sc_hd__or2_0 _075_ (.A(net27),
+    .B(gpio_defaults[8]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(_006_));
+ sky130_fd_sc_hd__nand2b_2 _076_ (.A_N(net27),
+    .B(gpio_defaults[8]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(_007_));
+ sky130_fd_sc_hd__or2_0 _077_ (.A(net25),
+    .B(gpio_defaults[9]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(_008_));
+ sky130_fd_sc_hd__nand2b_2 _078_ (.A_N(net27),
+    .B(gpio_defaults[9]),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(_009_));
+ sky130_fd_sc_hd__or2_0 _079_ (.A(net23),
     .B(gpio_defaults[3]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_046_));
- sky130_fd_sc_hd__buf_1 _135_ (.A(_046_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_010_));
- sky130_fd_sc_hd__inv_2 _136__8 (.A(clknet_1_0_0__077_),
+ sky130_fd_sc_hd__nand2b_2 _080_ (.A_N(net23),
+    .B(gpio_defaults[3]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net8));
- sky130_fd_sc_hd__or2b_2 _137_ (.A(_079_),
-    .B_N(gpio_defaults[3]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_047_));
- sky130_fd_sc_hd__buf_1 _138_ (.A(_047_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_011_));
- sky130_fd_sc_hd__or2_2 _139_ (.A(_041_),
+    .Y(_011_));
+ sky130_fd_sc_hd__or2_0 _081_ (.A(net21),
     .B(gpio_defaults[4]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_048_));
- sky130_fd_sc_hd__buf_1 _140_ (.A(_048_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_012_));
- sky130_fd_sc_hd__buf_1 _141_ (.A(clknet_1_1_0_serial_load),
+ sky130_fd_sc_hd__nand2b_2 _082_ (.A_N(net21),
+    .B(gpio_defaults[4]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_049_));
- sky130_fd_sc_hd__inv_2 _142__9 (.A(clknet_1_1_0__049_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .Y(net9));
- sky130_fd_sc_hd__buf_1 _143_ (.A(_078_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_050_));
- sky130_fd_sc_hd__or2b_2 _144_ (.A(_050_),
-    .B_N(gpio_defaults[4]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_051_));
- sky130_fd_sc_hd__buf_1 _145_ (.A(_051_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_013_));
- sky130_fd_sc_hd__or2_2 _146_ (.A(_041_),
+    .Y(_013_));
+ sky130_fd_sc_hd__or2_0 _083_ (.A(net23),
     .B(gpio_defaults[1]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_052_));
- sky130_fd_sc_hd__buf_1 _147_ (.A(_052_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_014_));
- sky130_fd_sc_hd__inv_2 _148__10 (.A(clknet_1_1_0__049_),
+ sky130_fd_sc_hd__nand2b_2 _084_ (.A_N(net23),
+    .B(gpio_defaults[1]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net10));
- sky130_fd_sc_hd__or2b_2 _149_ (.A(_050_),
-    .B_N(gpio_defaults[1]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_053_));
- sky130_fd_sc_hd__buf_1 _150_ (.A(_053_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_015_));
- sky130_fd_sc_hd__buf_1 _151_ (.A(_078_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_054_));
- sky130_fd_sc_hd__or2_2 _152_ (.A(_054_),
+    .Y(_015_));
+ sky130_fd_sc_hd__or2_0 _085_ (.A(net27),
     .B(gpio_defaults[10]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_055_));
- sky130_fd_sc_hd__buf_1 _153_ (.A(_055_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_016_));
- sky130_fd_sc_hd__inv_2 _154__11 (.A(clknet_1_1_0__049_),
+ sky130_fd_sc_hd__nand2b_2 _086_ (.A_N(net27),
+    .B(gpio_defaults[10]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net11));
- sky130_fd_sc_hd__or2b_2 _155_ (.A(_050_),
-    .B_N(gpio_defaults[10]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_056_));
- sky130_fd_sc_hd__buf_1 _156_ (.A(_056_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_017_));
- sky130_fd_sc_hd__or2_2 _157_ (.A(_054_),
+    .Y(_017_));
+ sky130_fd_sc_hd__or2_0 _087_ (.A(net25),
     .B(gpio_defaults[11]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_057_));
- sky130_fd_sc_hd__buf_1 _158_ (.A(_057_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_018_));
- sky130_fd_sc_hd__inv_2 _159__12 (.A(clknet_1_0_0__049_),
+ sky130_fd_sc_hd__nand2b_2 _088_ (.A_N(net25),
+    .B(gpio_defaults[11]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net12));
- sky130_fd_sc_hd__or2b_2 _160_ (.A(_050_),
-    .B_N(gpio_defaults[11]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_058_));
- sky130_fd_sc_hd__buf_1 _161_ (.A(_058_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_019_));
- sky130_fd_sc_hd__or2_2 _162_ (.A(_054_),
+    .Y(_019_));
+ sky130_fd_sc_hd__or2_0 _089_ (.A(net25),
     .B(gpio_defaults[12]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_059_));
- sky130_fd_sc_hd__buf_1 _163_ (.A(_059_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_020_));
- sky130_fd_sc_hd__inv_2 _164__13 (.A(clknet_1_0_0__049_),
+ sky130_fd_sc_hd__nand2b_2 _090_ (.A_N(net26),
+    .B(gpio_defaults[12]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net13));
- sky130_fd_sc_hd__or2b_2 _165_ (.A(_050_),
-    .B_N(gpio_defaults[12]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_060_));
- sky130_fd_sc_hd__buf_1 _166_ (.A(_060_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_021_));
- sky130_fd_sc_hd__or2_2 _167_ (.A(_054_),
+    .Y(_021_));
+ sky130_fd_sc_hd__or2_0 _091_ (.A(net21),
     .B(gpio_defaults[5]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_061_));
- sky130_fd_sc_hd__buf_1 _168_ (.A(_061_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_022_));
- sky130_fd_sc_hd__inv_2 _169__1 (.A(clknet_1_0_0_serial_load),
+ sky130_fd_sc_hd__nand2b_2 _092_ (.A_N(net21),
+    .B(gpio_defaults[5]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net1));
- sky130_fd_sc_hd__or2b_2 _170_ (.A(_075_),
-    .B_N(gpio_defaults[5]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_062_));
- sky130_fd_sc_hd__buf_1 _171_ (.A(_062_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_023_));
- sky130_fd_sc_hd__or2_2 _172_ (.A(_054_),
+    .Y(_023_));
+ sky130_fd_sc_hd__or2_0 _093_ (.A(net22),
     .B(gpio_defaults[6]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_063_));
- sky130_fd_sc_hd__buf_1 _173_ (.A(_063_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_024_));
- sky130_fd_sc_hd__inv_2 _174__2 (.A(clknet_1_0_0_serial_load),
+ sky130_fd_sc_hd__nand2b_2 _094_ (.A_N(net21),
+    .B(gpio_defaults[6]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net2));
- sky130_fd_sc_hd__or2b_2 _175_ (.A(_075_),
-    .B_N(gpio_defaults[6]),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_064_));
- sky130_fd_sc_hd__buf_1 _176_ (.A(_064_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(_025_));
- sky130_fd_sc_hd__or2_2 _177_ (.A(_078_),
+    .Y(_025_));
+ sky130_fd_sc_hd__or2_0 _095_ (.A(net22),
     .B(gpio_defaults[7]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_065_));
- sky130_fd_sc_hd__buf_1 _178_ (.A(_065_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
     .X(_026_));
- sky130_fd_sc_hd__inv_2 _179__3 (.A(clknet_1_0_0_serial_load),
+ sky130_fd_sc_hd__nand2b_2 _096_ (.A_N(net22),
+    .B(gpio_defaults[7]),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Y(net3));
- sky130_fd_sc_hd__or2b_2 _180_ (.A(_075_),
-    .B_N(gpio_defaults[7]),
+    .Y(_027_));
+ sky130_fd_sc_hd__inv_2 _097__2 (.A(serial_load_out_buffered),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_066_));
- sky130_fd_sc_hd__buf_1 _181_ (.A(_066_),
+    .Y(net30));
+ sky130_fd_sc_hd__inv_2 _098__3 (.A(clknet_1_0__leaf_serial_load),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(_027_));
- sky130_fd_sc_hd__dfbbn_2 _182_ (.CLK_N(net4),
-    .D(net24),
+    .Y(net31));
+ sky130_fd_sc_hd__inv_2 _099__4 (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net32));
+ sky130_fd_sc_hd__inv_2 _100__5 (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net33));
+ sky130_fd_sc_hd__inv_2 _101__6 (.A(clknet_1_0__leaf_serial_load),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net34));
+ sky130_fd_sc_hd__inv_2 _102__7 (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net35));
+ sky130_fd_sc_hd__inv_2 _103__8 (.A(clknet_1_0__leaf_serial_load),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net36));
+ sky130_fd_sc_hd__inv_2 _104__9 (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net37));
+ sky130_fd_sc_hd__inv_2 _105__10 (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net38));
+ sky130_fd_sc_hd__inv_2 _106__11 (.A(clknet_1_0__leaf_serial_load),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net39));
+ sky130_fd_sc_hd__inv_2 _107__12 (.A(clknet_1_0__leaf_serial_load),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net40));
+ sky130_fd_sc_hd__inv_2 _108__13 (.A(clknet_1_0__leaf_serial_load),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .Y(net41));
+ sky130_fd_sc_hd__dfbbn_2 _109_ (.CLK_N(net29),
+    .D(net45),
     .RESET_B(_002_),
     .SET_B(_003_),
     .VGND(vssd),
@@ -1414,59 +1062,59 @@ module gpio_control_block (mgmt_gpio_in,
     .VPB(vccd),
     .VPWR(vccd),
     .Q(mgmt_ena),
-    .Q_N(_094_));
- sky130_fd_sc_hd__dfbbn_2 _183_ (.CLK_N(net5),
-    .D(net22),
+    .Q_N(_058_));
+ sky130_fd_sc_hd__dfbbn_2 _110_ (.CLK_N(net30),
+    .D(net46),
     .RESET_B(_004_),
     .SET_B(_005_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_holdover),
-    .Q_N(_093_));
- sky130_fd_sc_hd__dfbbn_2 _184_ (.CLK_N(net6),
-    .D(net28),
+    .Q(net12),
+    .Q_N(_057_));
+ sky130_fd_sc_hd__dfbbn_2 _111_ (.CLK_N(net31),
+    .D(net54),
     .RESET_B(_006_),
     .SET_B(_007_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_slow_sel),
-    .Q_N(_092_));
- sky130_fd_sc_hd__dfbbn_2 _185_ (.CLK_N(net7),
-    .D(net35),
+    .Q(net17),
+    .Q_N(_056_));
+ sky130_fd_sc_hd__dfbbn_2 _112_ (.CLK_N(net32),
+    .D(net43),
     .RESET_B(_008_),
     .SET_B(_009_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_vtrip_sel),
-    .Q_N(_091_));
- sky130_fd_sc_hd__dfbbn_2 _186_ (.CLK_N(net8),
-    .D(net26),
+    .Q(net18),
+    .Q_N(_055_));
+ sky130_fd_sc_hd__dfbbn_2 _113_ (.CLK_N(net33),
+    .D(net48),
     .RESET_B(_010_),
     .SET_B(_011_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_inenb),
-    .Q_N(_090_));
- sky130_fd_sc_hd__dfbbn_2 _187_ (.CLK_N(net9),
-    .D(net14),
+    .Q(net14),
+    .Q_N(_054_));
+ sky130_fd_sc_hd__dfbbn_2 _114_ (.CLK_N(net34),
+    .D(net55),
     .RESET_B(_012_),
     .SET_B(_013_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_ib_mode_sel),
-    .Q_N(_089_));
- sky130_fd_sc_hd__dfbbn_2 _188_ (.CLK_N(net10),
-    .D(net20),
+    .Q(net13),
+    .Q_N(_053_));
+ sky130_fd_sc_hd__dfbbn_2 _115_ (.CLK_N(net35),
+    .D(net47),
     .RESET_B(_014_),
     .SET_B(_015_),
     .VGND(vssd),
@@ -1474,208 +1122,192 @@ module gpio_control_block (mgmt_gpio_in,
     .VPB(vccd),
     .VPWR(vccd),
     .Q(gpio_outenb),
-    .Q_N(_088_));
- sky130_fd_sc_hd__dfbbn_2 _189_ (.CLK_N(net11),
-    .D(net18),
+    .Q_N(_052_));
+ sky130_fd_sc_hd__dfbbn_2 _116_ (.CLK_N(net36),
+    .D(net52),
     .RESET_B(_016_),
     .SET_B(_017_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_dm[0]),
+    .Q(net9),
     .Q_N(_000_));
- sky130_fd_sc_hd__dfbbn_2 _190_ (.CLK_N(net12),
-    .D(net36),
+ sky130_fd_sc_hd__dfbbn_2 _117_ (.CLK_N(net37),
+    .D(net44),
     .RESET_B(_018_),
     .SET_B(_019_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_dm[1]),
-    .Q_N(_087_));
- sky130_fd_sc_hd__dfbbn_2 _191_ (.CLK_N(net13),
-    .D(net16),
+    .Q(net10),
+    .Q_N(_051_));
+ sky130_fd_sc_hd__dfbbn_2 _118_ (.CLK_N(net38),
+    .D(net49),
     .RESET_B(_020_),
     .SET_B(_021_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_dm[2]),
-    .Q_N(_086_));
- sky130_fd_sc_hd__dfbbn_2 _192_ (.CLK_N(net1),
-    .D(net34),
+    .Q(net11),
+    .Q_N(_050_));
+ sky130_fd_sc_hd__dfbbn_2 _119_ (.CLK_N(net39),
+    .D(net53),
     .RESET_B(_022_),
     .SET_B(_023_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_ana_en),
-    .Q_N(_085_));
- sky130_fd_sc_hd__dfbbn_2 _193_ (.CLK_N(net2),
-    .D(net33),
+    .Q(net6),
+    .Q_N(_049_));
+ sky130_fd_sc_hd__dfbbn_2 _120_ (.CLK_N(net40),
+    .D(net51),
     .RESET_B(_024_),
     .SET_B(_025_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_ana_sel),
-    .Q_N(_084_));
- sky130_fd_sc_hd__dfbbn_2 _194_ (.CLK_N(net3),
-    .D(net32),
+    .Q(net8),
+    .Q_N(_048_));
+ sky130_fd_sc_hd__dfbbn_2 _121_ (.CLK_N(net41),
+    .D(net50),
     .RESET_B(_026_),
     .SET_B(_027_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(pad_gpio_ana_pol),
-    .Q_N(_095_));
- sky130_fd_sc_hd__dfrtp_2 _195_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(serial_data_in),
-    .RESET_B(resetn),
+    .Q(net7),
+    .Q_N(_059_));
+ sky130_fd_sc_hd__dfrtp_4 _122_ (.CLK(serial_clock_out_buffered),
+    .D(net5),
+    .RESET_B(net24),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[0] ));
- sky130_fd_sc_hd__dfrtp_2 _196_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net24),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _123_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net45),
+    .RESET_B(net24),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[1] ));
- sky130_fd_sc_hd__dfrtp_2 _197_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net20),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _124_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net47),
+    .RESET_B(net24),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[2] ));
- sky130_fd_sc_hd__dfrtp_2 _198_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net22),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _125_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net46),
+    .RESET_B(net23),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[3] ));
- sky130_fd_sc_hd__dfrtp_2 _199_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net26),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _126_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net48),
+    .RESET_B(net21),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[4] ));
- sky130_fd_sc_hd__dfrtp_2 _200_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net14),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _127_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net55),
+    .RESET_B(net21),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[5] ));
- sky130_fd_sc_hd__dfrtp_2 _201_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net34),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _128_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net53),
+    .RESET_B(net22),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[6] ));
- sky130_fd_sc_hd__dfrtp_2 _202_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net33),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _129_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net51),
+    .RESET_B(net22),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[7] ));
- sky130_fd_sc_hd__dfrtp_2 _203_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net32),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _130_ (.CLK(clknet_1_0__leaf_serial_clock),
+    .D(net50),
+    .RESET_B(net22),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[8] ));
- sky130_fd_sc_hd__dfrtp_2 _204_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net28),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _131_ (.CLK(serial_clock_out_buffered),
+    .D(net54),
+    .RESET_B(net27),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[9] ));
- sky130_fd_sc_hd__dfrtp_2 _205_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net30),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _132_ (.CLK(serial_clock_out_buffered),
+    .D(net43),
+    .RESET_B(net27),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[10] ));
- sky130_fd_sc_hd__dfrtp_2 _206_ (.CLK(clknet_1_1_0_serial_clock),
-    .D(net18),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _133_ (.CLK(serial_clock_out_buffered),
+    .D(net52),
+    .RESET_B(net25),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Q(\shift_register[11] ));
- sky130_fd_sc_hd__dfrtp_2 _207_ (.CLK(clknet_1_0_0_serial_clock),
-    .D(net31),
-    .RESET_B(resetn),
+ sky130_fd_sc_hd__dfrtp_4 _134_ (.CLK(serial_clock_out_buffered),
+    .D(net44),
+    .RESET_B(net25),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .Q(serial_data_pre));
- sky130_fd_sc_hd__buf_2 _208_ (.A(resetn),
+    .Q(\shift_register[12] ));
+ sky130_fd_sc_hd__dfrtp_2 _135_ (.CLK(net42),
+    .D(\shift_register[12] ),
+    .RESET_B(net26),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(resetn_out));
- sky130_fd_sc_hd__buf_2 _209_ (.A(clknet_1_1_0_serial_clock),
+    .Q(net20));
+ sky130_fd_sc_hd__buf_2 _136_ (.A(net26),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(serial_clock_out));
- sky130_fd_sc_hd__buf_2 _210_ (.A(clknet_1_1_0_serial_load),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(serial_load_out));
- sky130_fd_sc_hd__ebufn_2 _211_ (.A(pad_gpio_in),
-    .TE_B(_083_),
+    .X(net19));
+ sky130_fd_sc_hd__ebufn_8 _139_ (.A(net3),
+    .TE_B(_047_),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
     .Z(mgmt_gpio_in));
- sky130_fd_sc_hd__clkbuf_16 clkbuf_0__049_ (.A(_049_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_0__049_));
- sky130_fd_sc_hd__clkbuf_16 clkbuf_0__077_ (.A(_077_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_0__077_));
  sky130_fd_sc_hd__clkbuf_16 clkbuf_0_serial_clock (.A(serial_clock),
     .VGND(vssd),
     .VNB(vssd),
@@ -1688,72 +1320,84 @@ module gpio_control_block (mgmt_gpio_in,
     .VPB(vccd),
     .VPWR(vccd),
     .X(clknet_0_serial_load));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_0_0__049_ (.A(clknet_0__049_),
+ sky130_fd_sc_hd__clkbuf_16 clkbuf_1_0__f_serial_clock (.A(clknet_0_serial_clock),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(clknet_1_0_0__049_));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_0_0__077_ (.A(clknet_0__077_),
+    .X(clknet_1_0__leaf_serial_clock));
+ sky130_fd_sc_hd__clkbuf_16 clkbuf_1_0__f_serial_load (.A(clknet_0_serial_load),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(clknet_1_0_0__077_));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_0_0_serial_clock (.A(clknet_0_serial_clock),
+    .X(clknet_1_0__leaf_serial_load));
+ sky130_fd_sc_hd__clkbuf_16 clkbuf_1_1__f_serial_clock (.A(clknet_0_serial_clock),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(clknet_1_0_0_serial_clock));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_0_0_serial_load (.A(clknet_0_serial_load),
+    .X(serial_clock_out_buffered));
+ sky130_fd_sc_hd__clkbuf_16 clkbuf_1_1__f_serial_load (.A(clknet_0_serial_load),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(clknet_1_0_0_serial_load));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_1_0__049_ (.A(clknet_0__049_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_1_1_0__049_));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_1_0__077_ (.A(clknet_0__077_),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_1_1_0__077_));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_1_0_serial_clock (.A(clknet_0_serial_clock),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_1_1_0_serial_clock));
- sky130_fd_sc_hd__clkbuf_2 clkbuf_1_1_0_serial_load (.A(clknet_0_serial_load),
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd),
-    .X(clknet_1_1_0_serial_load));
+    .X(serial_load_out_buffered));
  sky130_fd_sc_hd__conb_1 const_source (.VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .HI(one),
-    .LO(zero));
- sky130_fd_sc_hd__dlygate4sd2_1 data_delay_1 (.A(serial_data_pre),
+    .HI(one_buffered),
+    .LO(zero_buffered));
+ sky130_fd_sc_hd__buf_2 fanout21 (.A(net22),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(serial_data_post_1));
- sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (.A(serial_data_post_1),
+    .X(net21));
+ sky130_fd_sc_hd__buf_2 fanout22 (.A(net28),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(serial_data_post_2));
+    .X(net22));
+ sky130_fd_sc_hd__buf_2 fanout23 (.A(net24),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net23));
+ sky130_fd_sc_hd__buf_2 fanout24 (.A(net28),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net24));
+ sky130_fd_sc_hd__buf_2 fanout25 (.A(net28),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net25));
+ sky130_fd_sc_hd__buf_2 fanout26 (.A(net28),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net26));
+ sky130_fd_sc_hd__buf_2 fanout27 (.A(net28),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net27));
+ sky130_fd_sc_hd__buf_2 fanout28 (.A(net4),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(net28));
  sky130_fd_sc_hd__einvp_8 gpio_in_buf (.A(_001_),
     .TE(gpio_logic1),
     .VGND(vssd),
@@ -1764,142 +1408,226 @@ module gpio_control_block (mgmt_gpio_in,
  gpio_logic_high gpio_logic_high (.gpio_logic1(gpio_logic1),
     .vccd1(vccd1),
     .vssd1(vssd1));
- sky130_fd_sc_hd__dlygate4sd3_1 hold1 (.A(\shift_register[4] ),
+ sky130_fd_sc_hd__dlygate4sd3_1 hold1 (.A(\shift_register[9] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net15));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold10 (.A(net23),
+    .X(net43));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold10 (.A(\shift_register[10] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net22));
- sky130_fd_sc_hd__dlygate4sd3_1 hold11 (.A(\shift_register[0] ),
+    .X(net52));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold11 (.A(\shift_register[5] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net25));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold12 (.A(net25),
+    .X(net53));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold12 (.A(\shift_register[8] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net24));
- sky130_fd_sc_hd__dlygate4sd3_1 hold13 (.A(\shift_register[3] ),
+    .X(net54));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold13 (.A(\shift_register[4] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net27));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold14 (.A(net27),
+    .X(net55));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold2 (.A(\shift_register[11] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net26));
- sky130_fd_sc_hd__dlygate4sd3_1 hold15 (.A(\shift_register[8] ),
+    .X(net44));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold3 (.A(\shift_register[0] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net29));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold16 (.A(net29),
+    .X(net45));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold4 (.A(\shift_register[2] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net28));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold17 (.A(\shift_register[9] ),
+    .X(net46));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold5 (.A(\shift_register[1] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net30));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold18 (.A(\shift_register[11] ),
+    .X(net47));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold6 (.A(\shift_register[3] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net31));
- sky130_fd_sc_hd__clkdlybuf4s25_1 hold19 (.A(\shift_register[7] ),
+    .X(net48));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold7 (.A(\shift_register[12] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net32));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold2 (.A(net15),
+    .X(net49));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold8 (.A(\shift_register[7] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net14));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold20 (.A(\shift_register[6] ),
+    .X(net50));
+ sky130_fd_sc_hd__dlygate4sd3_1 hold9 (.A(\shift_register[6] ),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net33));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold21 (.A(\shift_register[5] ),
+    .X(net51));
+ sky130_fd_sc_hd__buf_2 input1 (.A(mgmt_gpio_oeb),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net34));
- sky130_fd_sc_hd__clkdlybuf4s25_1 hold22 (.A(net30),
+    .X(net1));
+ sky130_fd_sc_hd__buf_2 input2 (.A(mgmt_gpio_out),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net35));
- sky130_fd_sc_hd__clkdlybuf4s25_1 hold23 (.A(net31),
+    .X(net2));
+ sky130_fd_sc_hd__buf_2 input3 (.A(pad_gpio_in),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net36));
- sky130_fd_sc_hd__dlygate4sd3_1 hold3 (.A(serial_data_pre),
+    .X(net3));
+ sky130_fd_sc_hd__buf_2 input4 (.A(resetn),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net17));
- sky130_fd_sc_hd__clkdlybuf4s25_1 hold4 (.A(net17),
+    .X(net4));
+ sky130_fd_sc_hd__buf_2 input5 (.A(serial_data_in),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net16));
- sky130_fd_sc_hd__dlygate4sd3_1 hold5 (.A(\shift_register[10] ),
+    .X(net5));
+ sky130_fd_sc_hd__buf_16 one_buffer (.A(one_buffered),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net19));
- sky130_fd_sc_hd__clkdlybuf4s50_1 hold6 (.A(net19),
+    .X(one));
+ sky130_fd_sc_hd__buf_16 output10 (.A(net10),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net18));
- sky130_fd_sc_hd__dlygate4sd3_1 hold7 (.A(\shift_register[1] ),
+    .X(pad_gpio_dm[1]));
+ sky130_fd_sc_hd__buf_16 output11 (.A(net11),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net21));
- sky130_fd_sc_hd__clkdlybuf4s25_1 hold8 (.A(net21),
+    .X(pad_gpio_dm[2]));
+ sky130_fd_sc_hd__buf_16 output12 (.A(net12),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net20));
- sky130_fd_sc_hd__dlygate4sd3_1 hold9 (.A(\shift_register[2] ),
+    .X(pad_gpio_holdover));
+ sky130_fd_sc_hd__buf_16 output13 (.A(net13),
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
     .VPWR(vccd),
-    .X(net23));
+    .X(pad_gpio_ib_mode_sel));
+ sky130_fd_sc_hd__buf_16 output14 (.A(net14),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_inenb));
+ sky130_fd_sc_hd__buf_16 output15 (.A(net15),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_out));
+ sky130_fd_sc_hd__buf_16 output16 (.A(net16),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_outenb));
+ sky130_fd_sc_hd__buf_16 output17 (.A(net17),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_slow_sel));
+ sky130_fd_sc_hd__buf_16 output18 (.A(net18),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_vtrip_sel));
+ sky130_fd_sc_hd__buf_16 output19 (.A(net19),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(resetn_out));
+ sky130_fd_sc_hd__buf_16 output20 (.A(net20),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(serial_data_out));
+ sky130_fd_sc_hd__buf_16 output6 (.A(net6),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_ana_en));
+ sky130_fd_sc_hd__buf_16 output7 (.A(net7),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_ana_pol));
+ sky130_fd_sc_hd__buf_16 output8 (.A(net8),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_ana_sel));
+ sky130_fd_sc_hd__buf_16 output9 (.A(net9),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(pad_gpio_dm[0]));
+ sky130_fd_sc_hd__clkbuf_16 serial_clock_out_buffer (.A(serial_clock_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(serial_clock_out));
+ sky130_fd_sc_hd__clkbuf_16 serial_load_out_buffer (.A(serial_load_out_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(serial_load_out));
+ sky130_fd_sc_hd__buf_16 zero_buffer (.A(zero_buffered),
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd),
+    .X(zero));
 endmodule

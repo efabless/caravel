@@ -803,7 +803,7 @@ module housekeeping #(
     assign mgmt_gpio_out_pre[31:16] = mgmt_gpio_data[31:16];
     assign mgmt_gpio_out_pre[12:11] = mgmt_gpio_data[12:11];
 
-    assign mgmt_gpio_out_pre[10] = (pass_thru_user) ? mgmt_gpio_in[2]
+    assign mgmt_gpio_out_pre[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
 			: mgmt_gpio_data[10];
     assign mgmt_gpio_out_pre[9] = (pass_thru_user) ? mgmt_gpio_in[4]
 			: mgmt_gpio_data[9];
@@ -1058,6 +1058,7 @@ module housekeeping #(
 	    serial_bb_resetn <= 1'b0;
 	    serial_xfer <= 1'b0;
 	    hkspi_disable <= 1'b0;
+	    pwr_ctrl_out <= 'd0;
 
 	    sram_ro_clk <= 1'b0;
 	    sram_ro_csb <= 1'b1;
