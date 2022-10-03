@@ -116,6 +116,12 @@ if __name__ == "__main__":
          )
     args = parser.parse_args()
 
+    if not os.getenv("PDK_ROOT"):
+        logging.error("Please export PDK_ROOT")
+        exit(1)
+    if not os.getenv("PDK"):
+        logging.error("Please export PDK")
+        exit(1)
     caravel_redesign_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     caravel_root = os.path.join(caravel_redesign_root, "caravel")
     mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
