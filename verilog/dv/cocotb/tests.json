@@ -145,6 +145,12 @@
             "GL":["nightly","weekly","tape_out"],
             "GL_SDF":["weekly","tape_out"],
             "description":"tests blinking of mgmt gpio bit as an output"}    
+        ,"mgmt_gpio_bidir" :{"level":0, 
+            "SW":true,
+            "RTL":["setup","nightly","weekly","tape_out"],
+            "GL":["nightly","weekly","tape_out"],
+            "GL_SDF":["weekly","tape_out"],
+            "description":"send random number of blinks through mgmt_gpio and expect to recieve the same number back "}    
         ,"timer0_oneshot" :{"level":0, 
             "SW":true,
             "RTL":["setup","nightly","weekly","tape_out"],
