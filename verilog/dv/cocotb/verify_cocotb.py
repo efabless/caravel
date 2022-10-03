@@ -58,8 +58,21 @@ class RunTest:
 
     # iverilog function
     def runTest_iverilog(self):
+        CARAVEL_ROOT = os.getenv('CARAVEL_ROOT')
+        CARAVEL_VERILOG_PATH  = os.getenv('CARAVEL_VERILOG_PATH')
+        MCW_ROOT = os.getenv('MCW_ROOT')
+        VERILOG_PATH = os.getenv('VERILOG_PATH')
+        CARAVEL_PATH = os.getenv('CARAVEL_PATH')
+        USER_PROJECT_VERILOG  = os.getenv('USER_PROJECT_VERILOG')
+        FIRMWARE_PATH = os.getenv('FIRMWARE_PATH')
+        RUNTAG = os.getenv('RUNTAG')
+        ERRORMAX = os.getenv('ERRORMAX')
+        PDK_ROOT = os.getenv('PDK_ROOT')
+        PDK = os.getenv('PDK')
+        env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK}"
         print(f"Start running test: {self.sim_type}-{self.test_name}")
-        os.system(f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} ")
+        command = f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} "
+        os.system(f"docker run -it {env_vars} -v /home:/home   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
  
@@ -89,7 +102,7 @@ class RunTest:
         os.system(f"vcs -cm line -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
-        os.system("rm AN.DB/ cm.log results.xml ucli.key  -r")
+        os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
 
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
@@ -288,7 +301,6 @@ class main():
         os.environ["VERILOG_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog"
         os.environ["CARAVEL_PATH"] = f"{os.getenv('CARAVEL_VERILOG_PATH')}"
         os.environ["USER_PROJECT_VERILOG"] = f"{repo_path}/verilog/"
-        os.environ["GCC_PATH"] = "/ciic/tools/rv32/bin"
         os.environ["FIRMWARE_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog/dv/firmware"
         os.environ["RUNTAG"] = f"{self.TAG}"
         print(self.maxerr)
