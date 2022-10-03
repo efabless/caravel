@@ -19,7 +19,7 @@ async def mgmt_gpio_out(dut):
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     cocotb.log.info(f"[TEST] Start mgmt_gpio_out test")  
-    phases_fails = 2
+    phases_fails = 3
     phases_passes = 0 
     reg1 =0 # buffer
     reg2 = 0 #buffer
@@ -50,6 +50,7 @@ async def mgmt_gpio_out(dut):
                     await ClockCycles(caravelEnv.clk,10) 
             cocotb.log.info("[TEST] passing sending {reg1} blinks ")
             phases_fails -=1
+            phases_passes +=1
         await ClockCycles(caravelEnv.clk,10) 
 
     if phases_fails != 0:
