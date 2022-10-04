@@ -53,3 +53,52 @@ async def spi_master_rd(dut):
 
     await ClockCycles(caravelEnv.clk,1000) 
 
+
+
+@cocotb.test()
+@repot_test
+async def spi_master_temp(dut):
+    """ the firmware is configured to always send clk to spi so I can't insert alot of logics reading values  
+    
+    the method of testing used can't work if 2 addresses Consecutive have the same address
+    """
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=214842)
+    cpu = RiskV(dut)
+    cpu.cpu_force_reset()
+    cpu.cpu_release_reset()
+    cocotb.log.info (f"[TEST] start spi_master_temp test")
+    await FallingEdge(dut.bin33_monitor)
+    await RisingEdge(dut.bin32_monitor) 
+    a = ''
+    b = ''
+    # first value 
+    for i in range(8): 
+        a = a + dut.bin35_monitor.value.binstr
+        await RisingEdge(dut.bin32_monitor)
+    cocotb.log.info (f" [TEST] a = {a} = {int(a,2)}")
+
+    # second val
+    for i in range(8): 
+        b = b + dut.bin35_monitor.value.binstr
+        await RisingEdge(dut.bin32_monitor)
+    cocotb.log.info (f" [TEST] b = {b} = {int(b,2)}")
+
+    s = int(a,2) + int(b,2)
+    s_bin = bin(s)[2:].zfill(8)
+    cocotb.log.info (f" [TEST] sending sum of {int(a,2)} + {int(b,2)} = {s} = {s_bin}")
+    for i in range(8):
+        dut.bin34_en.value = 1
+        dut.bin34.value = int(s_bin[i],2) # bin 
+        cocotb.log.debug (f"[SPI_VIP] [SPI_op] SDO = {s_bin[i]} ")
+        await FallingEdge(dut.bin32_monitor)
+    dut.bin34_en.value = 0 # enable 
+    while True: 
+        if cpu.read_debug_reg1() == 0xBB:
+            cocotb.log.info(f" [TEST] firmware recieve the right value {s}")
+            break
+        elif cpu.read_debug_reg1() == 0xBB: 
+            cocotb.log.error(f" [TEST] firmware recieve the incorrect value {cpu.read_debug_reg2()}  instead of {s}")
+            break
+
+        await ClockCycles(caravelEnv.clk,10) 
+
