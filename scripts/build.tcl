@@ -9,8 +9,6 @@ property LEFview true;
 property GDS_FILE $::env(MCW_ROOT)/gds/mgmt_core_wrapper.gds;
 property GDS_START 0;
 load user_project_wrapper;
-property LEFview true;
-property GDS_FILE $::env(CARAVEL_ROOT)/gds/user_project_wrapper.gds;
 load user_id_programming;
 load user_id_textblock;
 load $::env(CARAVEL_ROOT)/maglef/simple_por;
