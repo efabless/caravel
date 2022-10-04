@@ -25,6 +25,7 @@ import os
 from tests.bitbang.bitbang_tests import *
 from tests.bitbang.bitbang_tests_cpu import *
 from tests.housekeeping.housekeeping_regs.housekeeping_regs_tests import *
+from tests.housekeeping.housekeeping_spi.user_pass_thru import *
 from tests.temp_partial_test.partial import *
 from tests.hello_world.helloWorld import *
 from tests.cpu.cpu_stress import *

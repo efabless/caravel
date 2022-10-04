@@ -9,8 +9,8 @@ from cocotb.result import TestSuccess
 from tests.common_functions.test_functions import *
 from tests.bitbang.bitbang_functions import *
 from caravel import GPIO_MODE
+from tests.housekeeping.housekeeping_spi.spi_access_functions import *
 import json
-
 reg = Regs()
 
 
@@ -191,23 +191,6 @@ async def hk_regs_rst_spi(dut):
             else:                           cocotb.log.info(f"[TEST] read the right reset value {hex(data_out)}  from [{regs[mem][key][0][0]}] address {address} ")
 
 
-
-
-async def write_reg_spi(caravelEnv,address,data):
-    await caravelEnv.enable_csb()
-    await caravelEnv.hk_write_byte(0x80) # Write stream command
-    await caravelEnv.hk_write_byte(address) # Address (register 19 = GPIO bit-bang control)
-    await caravelEnv.hk_write_byte(data) # Data = 0x01 (enable bit-bang mode)
-    await caravelEnv.disable_csb()
-
-
-async def read_reg_spi(caravelEnv,address):
-    await caravelEnv.enable_csb()
-    await caravelEnv.hk_write_byte(0x40) # read stream command
-    await caravelEnv.hk_write_byte(address) # Address 
-    data = await caravelEnv.hk_read_byte() # Data = 0x01 (enable bit-bang mode)
-    await caravelEnv.disable_csb()
-    return data
 
 
 def generate_key_from_num(num):
