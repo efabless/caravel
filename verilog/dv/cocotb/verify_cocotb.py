@@ -99,10 +99,10 @@ class RunTest:
         os.environ["SIM"] = self.sim_type
         
         os.system(f"vlogan -full64  -sverilog +error+25 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
-        os.system(f"vcs -cm line -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
+        os.system(f"vcs -cm line+tgl+cond+fsm+branch+assert -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
-        os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
+        # os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
 
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
@@ -158,6 +158,7 @@ class RunTest:
 
 class RunRegression: 
     def __init__(self,regression,test,type_arg,testlist) -> None:
+        self.cocotb_path = os.getcwd() 
         self.regression_arg = regression
         self.test_arg = test
         self.testlist_arg = testlist
@@ -241,8 +242,15 @@ class RunRegression:
                     self.failed_tests +=1
                 self.unknown_tests -=1
                 self.update_reg_log()
+            self.generate_cov()
         #TODO: add send mail here
     
+    def generate_cov(self):
+        os.chdir(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}")
+        os.system(f"urg -dir RTL*/*.vdb -format both -show tests -report coverageRTL/")
+        os.system(f"urg -dir GL*/*.vdb -format both -show tests -report coverageGL/")
+        os.system(f"urg -dir SDF*/*.vdb -format both -show tests -report coverageSDF/")
+        os.chdir(self.cocotb_path)
 
     def update_reg_log(self):
         file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
