@@ -91,7 +91,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim):
     return p1
 
 
-def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs):
+def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
     drc_count_mag = os.path.join(log_dir, "caravel_magic_drc.total")
     drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
     lvs_report = os.path.join(signoff_dir, "reports/caravel.lvs.report")
