@@ -56,6 +56,11 @@
  * management protect module).  This allows all outputs to be buffered
  * and sized by the synthesis tools.
  *
+ * Modified 7/24/2022 by Tim Edwards
+ * Replaced the data delay with a negative edge-triggered flop
+ * so that the serial data bit out from the module only changes on
+ * the clock half cycle.  This avoids the need to fine-tune the clock
+ * skew between GPIO blocks.
  *---------------------------------------------------------------------
  */
 
@@ -158,50 +163,26 @@ module gpio_control_block #(
     wire user_gpio_in;
     wire gpio_in_unbuf;
     wire gpio_logic1;
-    wire serial_data_pre;
-    wire serial_data_post_1;
-    wire serial_data_post_2;
+    reg serial_data_out;
 
     /* Serial shift for the above (latched) values */
     reg [PAD_CTRL_BITS-1:0] shift_register;
 
-    /* Create internal reset and load signals from input reset and clock */
-    assign serial_data_pre = shift_register[PAD_CTRL_BITS-1]; 
+    /* Latch the output on the clock negative edge */
+    always @(negedge serial_clock or negedge resetn) begin
+	if (resetn == 1'b0) begin
+	    /* Clear the shift register output */
+	    serial_data_out <= 1'b0;
+        end else begin
+	    serial_data_out <= shift_register[PAD_CTRL_BITS-1];
+	end
+    end
 
     /* Propagate the clock and reset signals so that they aren't wired	*/
     /* all over the chip, but are just wired between the blocks.	*/
     assign serial_clock_out = serial_clock;
     assign resetn_out = resetn;
     assign serial_load_out = serial_load;
-
-    /* Serial data should be buffered again to avoid hold violations	*/
-    /* Do this in two ways:  (1) Add internal delay cells, and (2)	*/
-    /* add a final logic gate after that.  The logic gate is		*/
-    /* synthesized and will be sized appropriately for an output buffer	*/
-
-    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_1 (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .X(serial_data_post_1),
-            .A(serial_data_pre)
-    );
-
-    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .X(serial_data_post_2),
-            .A(serial_data_post_1)
-    );
-
-    assign serial_data_out = serial_data_post_2 & one;
 
     always @(posedge serial_clock or negedge resetn) begin
 	if (resetn == 1'b0) begin
