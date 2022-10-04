@@ -22,7 +22,6 @@ async def SPI_VIP(csb,clk,SDI,SDO,mem):
         await csb_watcher(csb,op)
         cocotb.log.info (f"[SPI_VIP] CSB is deasserted operation has been killed")
 
-# cocotb.scheduler.add
 # watch the csb and when it's diable kill the SPI_op thread
 async def csb_watcher(csb,thread): 
     cocotb.log.info (f"[csb_watcher] start CSB watching")

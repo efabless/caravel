@@ -66,6 +66,27 @@ async def hk_regs_wr_wb(dut):
         if data_out != int(data_exp,2): cocotb.log.error(f"[TEST] wrong read from {regs[mem][key][0][0]} address {hex(address)} retuned val= {bin(data_out)[2:].zfill(bits_num)} expected = {data_exp}")
         else:                           cocotb.log.info(f"[TEST] read the right value {hex(data_out)}  from {regs[mem][key][0][0]} address {hex(address)} ")
 
+'''randomly write then read housekeeping regs through wishbone'''
+@cocotb.test()
+@repot_test
+async def hk_regs_wr_wb_cpu(dut):
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=157521,num_error=INFINITY)
+    cpu = RiskV(dut)
+    cpu.cpu_force_reset()
+    cpu.cpu_release_reset()
+    reg1 =0 # buffer
+    reg2 =0
+    while True: 
+        if cpu.read_debug_reg2() == 0xFF:  # test finish 
+            break
+        if reg1 != cpu.read_debug_reg1():
+            reg1 = cpu.read_debug_reg1()                
+            cocotb.log.error(f"[TEST] error while writing 0x1FFF to reg_mprj_io_{reg1-1}")
+        if reg2 != cpu.read_debug_reg2():
+            reg2 = cpu.read_debug_reg2()                
+            cocotb.log.error(f"[TEST] error while writing 0x0 to reg_mprj_io_{reg2-1}")       
+        await ClockCycles(caravelEnv.clk,10) 
+
 '''randomly write then read housekeeping regs through SPI'''
 @cocotb.test()
 @repot_test
