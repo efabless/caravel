@@ -16,20 +16,31 @@
 `default_nettype none
 /* 
  *---------------------------------------------------------------------
- * See gpio_control_block for description.  This module is like
- * gpio_contro_block except that it has an additional two management-
- * Soc-facing pins, which are the out_enb line and the output line.
+ * gpio_control_block.v
+ *
+ * Controls for the SkyWater GPIO I/O cell.  There is one gpio_control_block
+ * instance for every GPIO cell in the padframe that is available to the
+ * user project (mprj_io[37:0]).
+ *
+ * This module implements logic to do the following:
+ * (1) Allow the GPIO to be accessed by the management SoC or the user
+ *     project.
+ * (2) Simplify the dynamic control of the pad to three signals (input,
+ *     output, and out enable (bar))
+ * (3) Maintain a register of (static) values for all other control
+ *     signals on the GPIO.
+ * (4) Allow the GPIO control blocks to be chained together so that
+ *     the static control words can be transferred to all GPIOs from
+ *     the housekeeping module.
+ *
+ *
+ * NOTES:
+ *
  * If the chip is configured for output with the oeb control
  * register = 1, then the oeb line is controlled by the additional
  * signal from the management SoC.  If the oeb control register = 0,
  * then the output is disabled completely.  The "io" line is input
  * only in this module.
- *
- *---------------------------------------------------------------------
- */
-
-/*
- *---------------------------------------------------------------------
  *
  * This module instantiates a shift register chain that passes through
  * each gpio cell.  These are connected end-to-end around the padframe
@@ -38,6 +49,12 @@
  *
  * See mprj_ctrl.v for the module that registers the data for each
  * I/O and drives the input to the shift register.
+ *
+ * Modified 10/4/2022 by Tim Edwards
+ * Replaces the tri-state output with a zero-value output when the
+ * user project is powered down (same modification as was made to the
+ * management protect module).  This allows all outputs to be buffered
+ * and sized by the synthesis tools.
  *
  *---------------------------------------------------------------------
  */
@@ -135,8 +152,8 @@ module gpio_control_block #(
     wire        pad_gpio_outenb;
     wire	pad_gpio_out;
     wire	pad_gpio_in;
-    wire	one;
-    wire	zero;
+    wire	one, one_unbuf;
+    wire	zero, zero_unbuf;
 
     wire user_gpio_in;
     wire gpio_in_unbuf;
@@ -261,17 +278,10 @@ module gpio_control_block #(
             .gpio_logic1(gpio_logic1)
     );
 
-    sky130_fd_sc_hd__einvp_8 gpio_in_buf (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .Z(user_gpio_in),
-            .A(~gpio_in_unbuf),
-            .TE(gpio_logic1)
-    );
+    assign user_gpio_in = gpio_in_unbuf & gpio_logic1;
+
+    /* Generate constant value 1 and 0 outputs which can be used for constant	*/
+    /* value connections in the 1.8V domain to the GPIO I/O cell.		*/
 
     sky130_fd_sc_hd__conb_1 const_source (
 `ifdef USE_POWER_PINS
@@ -280,9 +290,12 @@ module gpio_control_block #(
             .VPB(vccd),
             .VNB(vssd),
 `endif
-            .HI(one),
-            .LO(zero)
+            .HI(one_unbuf),
+            .LO(zero_unbuf)
     );
+
+    assign one = one_unbuf;
+    assign zero = zero_unbuf;
 
 endmodule
 `default_nettype wire
