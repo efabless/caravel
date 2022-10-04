@@ -19,5 +19,5 @@ select top cell;
 expand;
 cif *hier write disable;
 cif *array write disable;
-gds write $::env(CARAVEL_ROOT)/gds/caravel_new.gds;
+gds write $::env(CARAVEL_ROOT)/gds/caravel.gds;
 quit -noprompt;
