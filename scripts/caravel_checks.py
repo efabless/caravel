@@ -82,7 +82,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim):
         "python3",
         "verify_cocotb.py",
         "-tag",
-        f"CI_{sim}"
+        f"CI_{sim}",
         "-r",
         f"r_{sim}",
         "-v"
@@ -191,10 +191,7 @@ if __name__ == "__main__":
             verify_p1 = run_verification(caravel_root, pdk_root, pdk_env, sim)
             out, err = verify_p1.communicate()
             if err:
-                logging.error(err)
-            if out:
-                with open(f"{log_dir}/caravel_verification.log", "w") as build_log:
-                    print(out)
+                logging.error(err.decode())
 
 
 
