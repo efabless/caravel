@@ -489,35 +489,35 @@ PINS 47 ;
         + PLACED ( 120000 61540 ) N ;
     - vccd + NET vccd + SPECIAL + DIRECTION INOUT + USE POWER
       + PORT
-        + LAYER met5 ( -23700 -800 ) ( 23700 800 )
-        + LAYER met5 ( -23700 -17700 ) ( 23700 -16100 )
-        + LAYER met5 ( -23700 -34600 ) ( 23700 -33000 )
-        + LAYER met5 ( -23700 -51500 ) ( 23700 -49900 )
-        + LAYER met4 ( 9740 -54920 ) ( 11340 2680 )
-        + LAYER met4 ( -15260 -54920 ) ( -13660 2680 )
-        + FIXED ( 28060 57400 ) N ;
+        + LAYER met5 ( -22820 -800 ) ( 22820 800 )
+        + LAYER met5 ( -22820 -17700 ) ( 22820 -16100 )
+        + LAYER met5 ( -22820 -34600 ) ( 22820 -33000 )
+        + LAYER met5 ( -22820 -51500 ) ( 22820 -49900 )
+        + LAYER met4 ( 10620 -54920 ) ( 12220 2680 )
+        + LAYER met4 ( -14380 -54920 ) ( -12780 2680 )
+        + FIXED ( 27180 57400 ) N ;
     - vccd1 + NET vccd1 + SPECIAL + DIRECTION INOUT + USE POWER
       + PORT
-        + LAYER met5 ( -23700 -800 ) ( 23700 800 )
-        + LAYER met5 ( -23700 -17700 ) ( 23700 -16100 )
-        + LAYER met5 ( -23700 -34600 ) ( 23700 -33000 )
-        + LAYER met4 ( 14740 -43260 ) ( 16340 14340 )
-        + LAYER met4 ( -10260 -43260 ) ( -8660 14340 )
-        + FIXED ( 28060 45740 ) N ;
+        + LAYER met5 ( -22820 -800 ) ( 22820 800 )
+        + LAYER met5 ( -22820 -17700 ) ( 22820 -16100 )
+        + LAYER met5 ( -22820 -34600 ) ( 22820 -33000 )
+        + LAYER met4 ( 15620 -43260 ) ( 17220 14340 )
+        + LAYER met4 ( -9380 -43260 ) ( -7780 14340 )
+        + FIXED ( 27180 45740 ) N ;
     - vssd + NET vssd + SPECIAL + DIRECTION INOUT + USE GROUND
       + PORT
-        + LAYER met5 ( -23700 -800 ) ( 23700 800 )
-        + LAYER met5 ( -23700 -17700 ) ( 23700 -16100 )
-        + LAYER met5 ( -23700 -34600 ) ( 23700 -33000 )
-        + LAYER met4 ( -2760 -46470 ) ( -1160 11130 )
-        + FIXED ( 28060 48950 ) N ;
+        + LAYER met5 ( -22820 -800 ) ( 22820 800 )
+        + LAYER met5 ( -22820 -17700 ) ( 22820 -16100 )
+        + LAYER met5 ( -22820 -34600 ) ( 22820 -33000 )
+        + LAYER met4 ( -1880 -46470 ) ( -280 11130 )
+        + FIXED ( 27180 48950 ) N ;
     - vssd1 + NET vssd1 + SPECIAL + DIRECTION INOUT + USE GROUND
       + PORT
-        + LAYER met5 ( -23700 -800 ) ( 23700 800 )
-        + LAYER met5 ( -23700 -17700 ) ( 23700 -16100 )
-        + LAYER met5 ( -23700 -34600 ) ( 23700 -33000 )
-        + LAYER met4 ( 2240 -51710 ) ( 3840 5890 )
-        + FIXED ( 28060 54190 ) N ;
+        + LAYER met5 ( -22820 -800 ) ( 22820 800 )
+        + LAYER met5 ( -22820 -17700 ) ( 22820 -16100 )
+        + LAYER met5 ( -22820 -34600 ) ( 22820 -33000 )
+        + LAYER met4 ( 3120 -51710 ) ( 4720 5890 )
+        + FIXED ( 27180 54190 ) N ;
     - zero + NET zero + DIRECTION OUTPUT + USE SIGNAL
       + PORT
         + LAYER met3 ( -50000 -300 ) ( 50000 300 )
@@ -530,7 +530,7 @@ BLOCKAGES 9 ;
     - LAYER li1 RECT ( 16830 0 ) ( 49410 5240 ) ;
     - LAYER li1 RECT ( 49000 0 ) ( 169810 64845 ) ;
     - LAYER met4 RECT ( 49000 0 ) ( 170000 65000 ) ;
-    - LAYER met5 RECT ( 67000 0 ) ( 170000 65000 ) ;
+    - LAYER met5 RECT ( 50000 0 ) ( 170000 65000 ) ;
     - LAYER met2 RECT ( 120000 0 ) ( 170000 65000 ) ;
     - LAYER met1 RECT ( 120000 0 ) ( 170000 65000 ) ;
 END BLOCKAGES
@@ -579,10 +579,10 @@ SPECIALNETS 4 ;
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 32640 ) ( 51520 32640 )
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 27200 ) ( 51520 27200 )
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 5440 ) ( 51520 5440 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 57400 ) ( 51760 57400 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 40500 ) ( 51760 40500 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 23600 ) ( 51760 23600 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 6700 ) ( 51760 6700 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 57400 ) ( 50000 57400 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 40500 ) ( 50000 40500 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 23600 ) ( 50000 23600 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 6700 ) ( 50000 6700 )
       NEW met4 1600 + SHAPE STRIPE ( 38600 2480 ) ( 38600 60080 )
       NEW met4 1600 + SHAPE STRIPE ( 13600 2480 ) ( 13600 60080 )
       NEW met4 0 + SHAPE STRIPE ( 38600 57400 ) via5_6_1600_1600_1_1_1600_1600
@@ -690,9 +690,9 @@ SPECIALNETS 4 ;
       NEW met1 0 + SHAPE STRIPE ( 13600 5440 ) via2_3_1600_480_1_5_320_320 ;
     - vccd1 ( PIN vccd1 ) ( * vccd1 ) + USE POWER
       + ROUTED met4 0 + SHAPE STRIPE ( 6980 11940 ) via5_6_1400_1600_1_1_1600_1600
-      NEW met5 1600 + SHAPE STRIPE ( 4360 45740 ) ( 51760 45740 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 28840 ) ( 51760 28840 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 11940 ) ( 51760 11940 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 45740 ) ( 50000 45740 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 28840 ) ( 50000 28840 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 11940 ) ( 50000 11940 )
       NEW met4 1600 + SHAPE STRIPE ( 43600 2480 ) ( 43600 60080 )
       NEW met4 1600 + SHAPE STRIPE ( 18600 2480 ) ( 18600 60080 )
       NEW met4 0 + SHAPE STRIPE ( 43600 45740 ) via5_6_1600_1600_1_1_1600_1600
@@ -744,9 +744,9 @@ SPECIALNETS 4 ;
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 35360 ) ( 51520 35360 )
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 29920 ) ( 51520 29920 )
       NEW met1 480 + SHAPE FOLLOWPIN ( 4600 2720 ) ( 51520 2720 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 48950 ) ( 51760 48950 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 32050 ) ( 51760 32050 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 15150 ) ( 51760 15150 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 48950 ) ( 50000 48950 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 32050 ) ( 50000 32050 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 15150 ) ( 50000 15150 )
       NEW met4 1600 + SHAPE STRIPE ( 26100 2480 ) ( 26100 60080 )
       NEW met4 0 + SHAPE STRIPE ( 26100 48950 ) via5_6_1600_1600_1_1_1600_1600
       NEW met4 0 + SHAPE STRIPE ( 26100 32050 ) via5_6_1600_1600_1_1_1600_1600
@@ -808,9 +808,9 @@ SPECIALNETS 4 ;
       NEW met1 0 + SHAPE STRIPE ( 26100 2720 ) via2_3_1600_480_1_5_320_320 ;
     - vssd1 ( PIN vssd1 ) ( * vssd1 ) + USE GROUND
       + ROUTED met4 0 + SHAPE STRIPE ( 10680 20390 ) via5_6_1400_1600_1_1_1600_1600
-      NEW met5 1600 + SHAPE STRIPE ( 4360 54190 ) ( 51760 54190 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 37290 ) ( 51760 37290 )
-      NEW met5 1600 + SHAPE STRIPE ( 4360 20390 ) ( 51760 20390 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 54190 ) ( 50000 54190 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 37290 ) ( 50000 37290 )
+      NEW met5 1600 + SHAPE STRIPE ( 4360 20390 ) ( 50000 20390 )
       NEW met4 1600 + SHAPE STRIPE ( 31100 2480 ) ( 31100 60080 )
       NEW met4 0 + SHAPE STRIPE ( 31100 54190 ) via5_6_1600_1600_1_1_1600_1600
       NEW met4 0 + SHAPE STRIPE ( 31100 37290 ) via5_6_1600_1600_1_1_1600_1600
@@ -842,43 +842,43 @@ NETS 168 ;
       NEW met1 ( 36570 54910 ) M1M2_PR
       NEW met1 ( 36570 54910 ) RECT ( -355 -70 0 70 )  ;
     - _003_ ( _109_ SET_B ) ( _072_ Y ) + USE SIGNAL
-      + ROUTED met2 ( 33810 26010 ) ( * 52530 )
-      NEW met1 ( 33810 26010 ) ( 35650 * )
-      NEW met1 ( 35650 25670 ) ( * 26010 )
-      NEW met1 ( 35650 25670 ) ( 36110 * )
-      NEW met2 ( 36110 22610 ) ( * 25670 )
+      + ROUTED met1 ( 33810 22270 ) ( 36110 * )
+      NEW met1 ( 36110 22270 ) ( * 22610 )
       NEW met1 ( 36110 22610 ) ( 37490 * )
+      NEW met2 ( 33810 22270 ) ( * 52530 )
       NEW met1 ( 33810 52530 ) M1M2_PR
-      NEW met1 ( 33810 26010 ) M1M2_PR
-      NEW met1 ( 36110 25670 ) M1M2_PR
-      NEW met1 ( 36110 22610 ) M1M2_PR
+      NEW met1 ( 33810 22270 ) M1M2_PR
       NEW li1 ( 37490 22610 ) L1M1_PR_MR ;
     - _004_ ( _110_ RESET_B ) ( _073_ X ) + USE SIGNAL
-      + ROUTED met1 ( 4370 56610 ) ( * 57970 )
-      NEW met1 ( 4370 57970 ) ( 6210 * )
-      NEW met1 ( 25070 55930 ) ( * 56610 )
-      NEW met1 ( 25070 55930 ) ( 26450 * )
-      NEW met1 ( 4370 56610 ) ( 25070 * )
-      NEW li1 ( 6210 57970 ) L1M1_PR_MR
+      + ROUTED met1 ( 4370 59330 ) ( 6210 * )
+      NEW met1 ( 4370 59330 ) ( * 60350 )
+      NEW met2 ( 23690 55930 ) ( * 60350 )
+      NEW met1 ( 23690 55930 ) ( 26450 * )
+      NEW met1 ( 4370 60350 ) ( 23690 * )
+      NEW li1 ( 6210 59330 ) L1M1_PR_MR
+      NEW met1 ( 23690 60350 ) M1M2_PR
+      NEW met1 ( 23690 55930 ) M1M2_PR
       NEW li1 ( 26450 55930 ) L1M1_PR_MR ;
     - _005_ ( _110_ SET_B ) ( _074_ Y ) + USE SIGNAL
-      + ROUTED met1 ( 13110 4590 ) ( 23230 * )
-      NEW met2 ( 23230 4590 ) ( * 13800 )
-      NEW met2 ( 22770 13800 ) ( 23230 * )
-      NEW met2 ( 22770 13800 ) ( * 56270 )
-      NEW met1 ( 23230 4590 ) M1M2_PR
+      + ROUTED met1 ( 13110 4590 ) ( 24150 * )
+      NEW met2 ( 23690 35020 ) ( 24150 * )
+      NEW met2 ( 23690 35020 ) ( * 51340 )
+      NEW met2 ( 22770 51340 ) ( 23690 * )
+      NEW met2 ( 22770 51340 ) ( * 56270 )
+      NEW met2 ( 24150 4590 ) ( * 35020 )
+      NEW met1 ( 24150 4590 ) M1M2_PR
       NEW li1 ( 13110 4590 ) L1M1_PR_MR
       NEW met1 ( 22770 56270 ) M1M2_PR ;
     - _006_ ( _111_ RESET_B ) ( _075_ X ) + USE SIGNAL
-      + ROUTED met2 ( 42550 34170 ) ( * 41820 )
-      NEW met3 ( 38870 41820 ) ( 42550 * )
-      NEW met2 ( 38870 41820 ) ( * 43010 )
-      NEW met1 ( 30590 43010 ) ( 38870 * )
+      + ROUTED met2 ( 42550 34170 ) ( * 42500 )
+      NEW met3 ( 39330 42500 ) ( 42550 * )
+      NEW met2 ( 39330 42500 ) ( * 43010 )
+      NEW met1 ( 30590 43010 ) ( 39330 * )
       NEW li1 ( 42550 34170 ) L1M1_PR_MR
       NEW met1 ( 42550 34170 ) M1M2_PR
-      NEW met2 ( 42550 41820 ) M2M3_PR
-      NEW met2 ( 38870 41820 ) M2M3_PR
-      NEW met1 ( 38870 43010 ) M1M2_PR
+      NEW met2 ( 42550 42500 ) M2M3_PR
+      NEW met2 ( 39330 42500 ) M2M3_PR
+      NEW met1 ( 39330 43010 ) M1M2_PR
       NEW li1 ( 30590 43010 ) L1M1_PR_MR
       NEW met1 ( 42550 34170 ) RECT ( -355 -70 0 70 )  ;
     - _007_ ( _111_ SET_B ) ( _076_ Y ) + USE SIGNAL
@@ -926,15 +926,15 @@ NETS 168 ;
       NEW met1 ( 27830 44030 ) M1M2_PR
       NEW li1 ( 28290 44030 ) L1M1_PR_MR ;
     - _013_ ( _114_ SET_B ) ( _082_ Y ) + USE SIGNAL
-      + ROUTED met2 ( 8970 4590 ) ( * 5950 )
-      NEW met1 ( 8970 5950 ) ( 22310 * )
-      NEW met2 ( 22310 5950 ) ( * 36210 )
-      NEW li1 ( 8970 4590 ) L1M1_PR_MR
-      NEW met1 ( 8970 4590 ) M1M2_PR
-      NEW met1 ( 8970 5950 ) M1M2_PR
-      NEW met1 ( 22310 5950 ) M1M2_PR
+      + ROUTED met2 ( 9890 4930 ) ( * 7310 )
+      NEW met1 ( 9890 7310 ) ( 22310 * )
+      NEW met2 ( 22310 7310 ) ( * 36210 )
+      NEW li1 ( 9890 4930 ) L1M1_PR_MR
+      NEW met1 ( 9890 4930 ) M1M2_PR
+      NEW met1 ( 9890 7310 ) M1M2_PR
+      NEW met1 ( 22310 7310 ) M1M2_PR
       NEW met1 ( 22310 36210 ) M1M2_PR
-      NEW met1 ( 8970 4590 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 9890 4930 ) RECT ( -355 -70 0 70 )  ;
     - _014_ ( _115_ RESET_B ) ( _083_ X ) + USE SIGNAL
       + ROUTED met1 ( 24150 50490 ) ( 26910 * )
       NEW met2 ( 24150 50490 ) ( * 57970 )
@@ -945,9 +945,9 @@ NETS 168 ;
       NEW li1 ( 20010 57970 ) L1M1_PR_MR ;
     - _015_ ( _115_ SET_B ) ( _084_ Y ) + USE SIGNAL
       + ROUTED met1 ( 19090 10030 ) ( 23690 * )
-      NEW met2 ( 23230 32300 ) ( 23690 * )
-      NEW met2 ( 23230 32300 ) ( * 50830 )
-      NEW met2 ( 23690 10030 ) ( * 32300 )
+      NEW met2 ( 23690 10030 ) ( * 13800 )
+      NEW met2 ( 23230 13800 ) ( 23690 * )
+      NEW met2 ( 23230 13800 ) ( * 50830 )
       NEW li1 ( 19090 10030 ) L1M1_PR_MR
       NEW met1 ( 23690 10030 ) M1M2_PR
       NEW met1 ( 23230 50830 ) M1M2_PR ;
@@ -960,10 +960,11 @@ NETS 168 ;
       NEW met1 ( 46690 25670 ) M1M2_PR
       NEW li1 ( 43930 25670 ) L1M1_PR_MR ;
     - _017_ ( _116_ SET_B ) ( _086_ Y ) + USE SIGNAL
-      + ROUTED met2 ( 40250 25330 ) ( * 33150 )
-      NEW met1 ( 40250 33150 ) ( 46690 * )
-      NEW met1 ( 40250 25330 ) M1M2_PR
-      NEW met1 ( 40250 33150 ) M1M2_PR
+      + ROUTED met1 ( 42090 25330 0 ) ( 46230 * )
+      NEW met2 ( 46230 25330 ) ( * 33150 )
+      NEW met1 ( 46230 33150 ) ( 46690 * )
+      NEW met1 ( 46230 25330 ) M1M2_PR
+      NEW met1 ( 46230 33150 ) M1M2_PR
       NEW li1 ( 46690 33150 ) L1M1_PR_MR ;
     - _018_ ( _117_ RESET_B ) ( _087_ X ) + USE SIGNAL
       + ROUTED met1 ( 43930 50490 ) ( 48990 * )
@@ -1009,11 +1010,14 @@ NETS 168 ;
       NEW met1 ( 13800 33150 ) ( * 33490 )
       NEW met1 ( 13800 33490 ) ( 18630 * )
       NEW met1 ( 18630 33150 ) ( * 33490 )
-      NEW met1 ( 18630 33150 ) ( 24150 * )
-      NEW met2 ( 24150 18190 ) ( * 33150 )
+      NEW met1 ( 18630 33150 ) ( 23690 * )
+      NEW met2 ( 23690 18530 ) ( * 33150 )
+      NEW met1 ( 23690 18530 ) ( 25530 * )
+      NEW met1 ( 25530 18190 ) ( * 18530 )
+      NEW met1 ( 25070 18190 0 ) ( 25530 * )
       NEW li1 ( 9890 33150 ) L1M1_PR_MR
-      NEW met1 ( 24150 33150 ) M1M2_PR
-      NEW met1 ( 24150 18190 ) M1M2_PR ;
+      NEW met1 ( 23690 33150 ) M1M2_PR
+      NEW met1 ( 23690 18530 ) M1M2_PR ;
     - _024_ ( _120_ RESET_B ) ( _093_ X ) + USE SIGNAL
       + ROUTED met1 ( 30130 23290 ) ( 31510 * )
       NEW met2 ( 31510 23290 ) ( * 33150 )
@@ -1044,21 +1048,23 @@ NETS 168 ;
       NEW met1 ( 35190 23630 ) M1M2_PR
       NEW met1 ( 35190 23630 ) RECT ( -355 -70 0 70 )  ;
     - _042_ ( _065_ A1 ) ( _064_ X ) + USE SIGNAL
-      + ROUTED met2 ( 47610 25500 ) ( * 25670 )
-      NEW met3 ( 46460 25500 ) ( 47610 * )
-      NEW met4 ( 46460 25500 ) ( * 30260 )
-      NEW met3 ( 46460 30260 ) ( 48070 * )
-      NEW met2 ( 48070 30260 ) ( * 36550 )
-      NEW li1 ( 47610 25670 ) L1M1_PR_MR
-      NEW met1 ( 47610 25670 ) M1M2_PR
-      NEW met2 ( 47610 25500 ) M2M3_PR
-      NEW met3 ( 46460 25500 ) M3M4_PR
-      NEW met3 ( 46460 30260 ) M3M4_PR
-      NEW met2 ( 48070 30260 ) M2M3_PR
+      + ROUTED met2 ( 47610 26010 ) ( * 26180 )
+      NEW met3 ( 47380 26180 ) ( 47610 * )
+      NEW met4 ( 47380 26180 ) ( * 29580 )
+      NEW met3 ( 47380 29580 ) ( 47610 * )
+      NEW met2 ( 47610 29580 ) ( * 36550 )
+      NEW met1 ( 47610 36550 ) ( 48070 * )
+      NEW li1 ( 47610 26010 ) L1M1_PR_MR
+      NEW met1 ( 47610 26010 ) M1M2_PR
+      NEW met2 ( 47610 26180 ) M2M3_PR
+      NEW met3 ( 47380 26180 ) M3M4_PR
+      NEW met3 ( 47380 29580 ) M3M4_PR
+      NEW met2 ( 47610 29580 ) M2M3_PR
+      NEW met1 ( 47610 36550 ) M1M2_PR
       NEW li1 ( 48070 36550 ) L1M1_PR_MR
-      NEW met1 ( 48070 36550 ) M1M2_PR
-      NEW met1 ( 47610 25670 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 48070 36550 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 47610 26010 ) RECT ( -355 -70 0 70 ) 
+      NEW met3 ( 47610 26180 ) RECT ( 0 -150 390 150 ) 
+      NEW met3 ( 47380 29580 ) RECT ( -390 -150 0 150 )  ;
     - _043_ ( _070_ B1 ) ( _066_ Y ) + USE SIGNAL
       + ROUTED met2 ( 45770 31110 ) ( * 44030 )
       NEW met1 ( 45770 44030 ) ( 46690 * )
@@ -1070,69 +1076,62 @@ NETS 168 ;
     - _044_ ( _069_ A2 ) ( _068_ B ) ( _067_ X ) + USE SIGNAL
       + ROUTED met2 ( 48530 17850 ) ( * 28050 )
       NEW met2 ( 48530 11730 ) ( * 17850 )
-      NEW met2 ( 48070 28050 ) ( * 28220 )
-      NEW met3 ( 44390 28220 ) ( 48070 * )
-      NEW met2 ( 44390 28220 ) ( * 29070 )
-      NEW met1 ( 44390 29070 ) ( 45770 * )
-      NEW met1 ( 45770 28730 ) ( * 29070 )
       NEW met1 ( 47150 11730 ) ( 48530 * )
-      NEW met1 ( 48070 28050 ) ( 48530 * )
+      NEW met1 ( 46230 28050 ) ( 48530 * )
       NEW met1 ( 48530 11730 ) M1M2_PR
       NEW li1 ( 48530 17850 ) L1M1_PR_MR
       NEW met1 ( 48530 17850 ) M1M2_PR
       NEW met1 ( 48530 28050 ) M1M2_PR
       NEW li1 ( 47150 11730 ) L1M1_PR_MR
-      NEW met1 ( 48070 28050 ) M1M2_PR
-      NEW met2 ( 48070 28220 ) M2M3_PR
-      NEW met2 ( 44390 28220 ) M2M3_PR
-      NEW met1 ( 44390 29070 ) M1M2_PR
-      NEW li1 ( 45770 28730 ) L1M1_PR_MR
+      NEW li1 ( 46230 28050 ) L1M1_PR_MR
       NEW met1 ( 48530 17850 ) RECT ( -355 -70 0 70 )  ;
     - _045_ ( _070_ A1 ) ( _068_ X ) + USE SIGNAL
       + ROUTED met1 ( 47610 13090 ) ( 48070 * )
-      NEW met2 ( 48070 13090 ) ( * 13260 )
-      NEW met3 ( 47380 13260 ) ( 48070 * )
-      NEW met4 ( 47380 13260 ) ( * 29580 )
-      NEW met3 ( 47380 29580 ) ( 47610 * )
-      NEW met2 ( 47610 29580 ) ( * 31110 )
-      NEW met1 ( 47610 31110 ) ( 48990 * )
+      NEW met2 ( 48070 13090 ) ( * 26860 )
+      NEW met3 ( 48070 26860 ) ( 48300 * )
+      NEW met3 ( 48300 26860 ) ( * 28220 )
+      NEW met3 ( 48070 28220 ) ( 48300 * )
+      NEW met2 ( 48070 28220 ) ( * 31110 )
+      NEW met1 ( 48070 31110 ) ( 48990 * )
       NEW li1 ( 48990 31110 ) L1M1_PR_MR
       NEW li1 ( 47610 13090 ) L1M1_PR_MR
       NEW met1 ( 48070 13090 ) M1M2_PR
-      NEW met2 ( 48070 13260 ) M2M3_PR
-      NEW met3 ( 47380 13260 ) M3M4_PR
-      NEW met3 ( 47380 29580 ) M3M4_PR
-      NEW met2 ( 47610 29580 ) M2M3_PR
-      NEW met1 ( 47610 31110 ) M1M2_PR
-      NEW met3 ( 47380 29580 ) RECT ( -390 -150 0 150 )  ;
+      NEW met2 ( 48070 26860 ) M2M3_PR
+      NEW met2 ( 48070 28220 ) M2M3_PR
+      NEW met1 ( 48070 31110 ) M1M2_PR ;
     - _046_ ( _070_ A2 ) ( _069_ Y ) + USE SIGNAL
       + ROUTED met2 ( 47150 18190 ) ( * 18700 )
-      NEW met3 ( 45540 18700 ) ( 47150 * )
-      NEW met4 ( 45540 18700 ) ( * 30940 )
-      NEW met3 ( 45540 30940 ) ( 47150 * )
-      NEW met2 ( 47150 30940 ) ( * 31110 )
+      NEW met3 ( 46460 18700 ) ( 47150 * )
+      NEW met4 ( 46460 18700 ) ( * 30260 )
+      NEW met3 ( 46460 30260 ) ( 47150 * )
+      NEW met2 ( 47150 30260 ) ( * 31110 )
       NEW li1 ( 47150 18190 ) L1M1_PR_MR
       NEW met1 ( 47150 18190 ) M1M2_PR
       NEW met2 ( 47150 18700 ) M2M3_PR
-      NEW met3 ( 45540 18700 ) M3M4_PR
-      NEW met3 ( 45540 30940 ) M3M4_PR
-      NEW met2 ( 47150 30940 ) M2M3_PR
+      NEW met3 ( 46460 18700 ) M3M4_PR
+      NEW met3 ( 46460 30260 ) M3M4_PR
+      NEW met2 ( 47150 30260 ) M2M3_PR
       NEW li1 ( 47150 31110 ) L1M1_PR_MR
       NEW met1 ( 47150 31110 ) M1M2_PR
       NEW met1 ( 47150 18190 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 47150 31110 ) RECT ( -355 -70 0 70 )  ;
     - _047_ ( _139_ TE_B ) ( _063_ Y ) + USE SIGNAL
-      + ROUTED met1 ( 26910 25330 ) ( 31050 * )
-      NEW met2 ( 31050 22950 ) ( * 25330 )
+      + ROUTED met1 ( 26910 24990 ) ( * 25330 )
+      NEW met1 ( 26910 24990 ) ( 31050 * )
+      NEW met2 ( 31050 22950 ) ( * 24990 )
       NEW met1 ( 31050 22950 ) ( 34730 * )
       NEW met1 ( 34730 22950 ) ( * 23290 )
       NEW met1 ( 34730 23290 ) ( 35650 * )
       NEW met1 ( 35650 23290 ) ( * 23630 )
-      NEW met1 ( 35650 23630 ) ( 50370 * )
+      NEW met1 ( 35650 23630 ) ( 39790 * )
+      NEW met1 ( 39790 23290 ) ( * 23630 )
+      NEW met1 ( 39790 23290 ) ( 46690 * )
+      NEW met1 ( 46690 23290 ) ( * 23630 )
+      NEW met1 ( 46690 23630 ) ( 50370 * )
       NEW met2 ( 50370 23630 ) ( * 47090 )
       NEW met1 ( 48530 47090 ) ( 50370 * )
       NEW li1 ( 26910 25330 ) L1M1_PR_MR
-      NEW met1 ( 31050 25330 ) M1M2_PR
+      NEW met1 ( 31050 24990 ) M1M2_PR
       NEW met1 ( 31050 22950 ) M1M2_PR
       NEW met1 ( 50370 23630 ) M1M2_PR
       NEW met1 ( 50370 47090 ) M1M2_PR
@@ -1150,29 +1149,33 @@ NETS 168 ;
     - _058_ ( _109_ Q_N ) + USE SIGNAL ;
     - _059_ ( _121_ Q_N ) + USE SIGNAL ;
     - clknet_0_serial_clock ( clkbuf_1_1__f_serial_clock A ) ( clkbuf_1_0__f_serial_clock A ) ( clkbuf_0_serial_clock X ) + USE CLOCK
-      + ROUTED met1 ( 10350 34170 ) ( 10810 * )
-      NEW met2 ( 10350 34170 ) ( * 57630 )
-      NEW met1 ( 10350 57630 ) ( 10810 * )
-      NEW met1 ( 8510 29070 ) ( 10350 * )
-      NEW met2 ( 10350 29070 ) ( * 34170 )
+      + ROUTED met1 ( 10810 34170 ) ( 11270 * )
+      NEW met2 ( 11270 34170 ) ( * 57630 )
+      NEW met1 ( 10810 57630 ) ( 11270 * )
+      NEW met1 ( 8510 29070 ) ( 11270 * )
+      NEW met2 ( 11270 29070 ) ( * 34170 )
       NEW li1 ( 10810 34170 ) L1M1_PR_MR
-      NEW met1 ( 10350 34170 ) M1M2_PR
-      NEW met1 ( 10350 57630 ) M1M2_PR
+      NEW met1 ( 11270 34170 ) M1M2_PR
+      NEW met1 ( 11270 57630 ) M1M2_PR
       NEW li1 ( 10810 57630 ) L1M1_PR_MR
       NEW li1 ( 8510 29070 ) L1M1_PR_MR
-      NEW met1 ( 10350 29070 ) M1M2_PR ;
+      NEW met1 ( 11270 29070 ) M1M2_PR ;
     - clknet_0_serial_load ( clkbuf_1_1__f_serial_load A ) ( clkbuf_1_0__f_serial_load A ) ( clkbuf_0_serial_load X ) + USE CLOCK
-      + ROUTED met2 ( 17250 31110 ) ( * 38590 )
-      NEW met1 ( 16790 20230 ) ( 17250 * )
-      NEW met2 ( 17250 20230 ) ( * 31110 )
-      NEW met1 ( 8510 38590 ) ( 17250 * )
+      + ROUTED met2 ( 10350 35870 ) ( * 38590 )
+      NEW met1 ( 8510 38590 ) ( 10350 * )
+      NEW met1 ( 16790 30770 ) ( 17250 * )
+      NEW met2 ( 16790 20230 ) ( * 30770 )
+      NEW met2 ( 16790 30770 ) ( * 35870 )
+      NEW met1 ( 10350 35870 ) ( 16790 * )
+      NEW met1 ( 10350 35870 ) M1M2_PR
+      NEW met1 ( 10350 38590 ) M1M2_PR
       NEW li1 ( 8510 38590 ) L1M1_PR_MR
-      NEW li1 ( 17250 31110 ) L1M1_PR_MR
-      NEW met1 ( 17250 31110 ) M1M2_PR
-      NEW met1 ( 17250 38590 ) M1M2_PR
+      NEW li1 ( 17250 30770 ) L1M1_PR_MR
+      NEW met1 ( 16790 30770 ) M1M2_PR
       NEW li1 ( 16790 20230 ) L1M1_PR_MR
-      NEW met1 ( 17250 20230 ) M1M2_PR
-      NEW met1 ( 17250 31110 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 16790 20230 ) M1M2_PR
+      NEW met1 ( 16790 35870 ) M1M2_PR
+      NEW met1 ( 16790 20230 ) RECT ( -355 -70 0 70 )  ;
     - clknet_1_0__leaf_serial_clock ( _123_ CLK ) ( _124_ CLK ) ( _125_ CLK ) ( _126_ CLK ) ( _127_ CLK ) ( _128_ CLK ) ( _129_ CLK )
       ( _130_ CLK ) ( _062__14 A ) ( clkbuf_1_0__f_serial_clock X ) + USE CLOCK
       + ROUTED met1 ( 19550 9350 ) ( 20010 * )
@@ -1185,9 +1188,8 @@ NETS 168 ;
       NEW met1 ( 15410 34170 ) ( 19550 * )
       NEW met1 ( 19550 33830 ) ( * 34170 )
       NEW met2 ( 15410 36890 ) ( * 39270 )
-      NEW met1 ( 16790 41990 ) ( 18170 * )
-      NEW met1 ( 16790 41310 ) ( * 41990 )
-      NEW met1 ( 15410 41310 ) ( 16790 * )
+      NEW met1 ( 18170 41310 ) ( * 41990 )
+      NEW met1 ( 15410 41310 ) ( 18170 * )
       NEW met2 ( 15410 39270 ) ( * 41310 )
       NEW met1 ( 14030 44030 ) ( * 44710 )
       NEW met1 ( 14030 44030 ) ( 15410 * )
@@ -1200,8 +1202,8 @@ NETS 168 ;
       NEW met2 ( 19550 9350 ) ( * 28390 )
       NEW met1 ( 19550 9350 ) M1M2_PR
       NEW li1 ( 20010 9350 ) L1M1_PR_MR
-      NEW li1 ( 7130 50150 ) L1M1_PR_MR
       NEW li1 ( 7130 36890 ) L1M1_PR_MR
+      NEW li1 ( 7130 50150 ) L1M1_PR_MR
       NEW li1 ( 20010 28390 ) L1M1_PR_MR
       NEW met1 ( 19550 28390 ) M1M2_PR
       NEW li1 ( 17250 28390 ) L1M1_PR_MR
@@ -1224,13 +1226,11 @@ NETS 168 ;
     - clknet_1_0__leaf_serial_load ( _098__3 A ) ( _101__6 A ) ( _103__8 A ) ( _106__11 A ) ( _107__12 A ) ( _108__13 A ) ( clkbuf_1_0__f_serial_load X ) + USE CLOCK
       + ROUTED met1 ( 7130 31110 ) ( * 31450 )
       NEW met2 ( 7130 28730 ) ( * 31110 )
-      NEW met1 ( 21850 31110 ) ( * 31790 )
-      NEW met1 ( 21850 31790 ) ( 22310 * )
-      NEW met1 ( 22310 31790 ) ( * 32130 )
-      NEW met1 ( 22310 32130 ) ( 31050 * )
+      NEW met1 ( 21850 31110 ) ( * 32130 )
+      NEW met1 ( 21850 32130 ) ( 31050 * )
       NEW met2 ( 31050 32130 ) ( * 39610 )
-      NEW met1 ( 16330 31450 ) ( * 32130 )
-      NEW met1 ( 16330 32130 ) ( 18630 * )
+      NEW met1 ( 16790 31450 ) ( * 32130 )
+      NEW met1 ( 16790 32130 ) ( 18630 * )
       NEW met1 ( 18630 31790 ) ( * 32130 )
       NEW met1 ( 18630 31790 ) ( 21850 * )
       NEW met1 ( 25530 20570 ) ( 28290 * )
@@ -1239,7 +1239,7 @@ NETS 168 ;
       NEW met1 ( 28290 20570 ) ( 28750 * )
       NEW met1 ( 26910 14790 ) ( 28290 * )
       NEW met2 ( 28290 14790 ) ( * 20570 )
-      NEW met1 ( 7130 31450 ) ( 16330 * )
+      NEW met1 ( 7130 31450 ) ( 16790 * )
       NEW li1 ( 7130 31110 ) L1M1_PR_MR
       NEW li1 ( 7130 28730 ) L1M1_PR_MR
       NEW met1 ( 7130 28730 ) M1M2_PR
@@ -1259,130 +1259,136 @@ NETS 168 ;
       NEW met1 ( 31050 39610 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 28290 32130 ) RECT ( -595 -70 0 70 )  ;
     - gpio_defaults[0] ( PIN gpio_defaults[0] ) ( ANTENNA__071__B DIODE ) ( ANTENNA__072__B DIODE ) ( _072_ B ) ( _071_ B ) + USE SIGNAL
-      + ROUTED met1 ( 4830 51170 ) ( 6210 * )
+      + ROUTED met1 ( 35650 22950 ) ( 37950 * )
+      NEW met2 ( 35650 22950 ) ( * 31620 )
+      NEW met2 ( 35650 31620 ) ( 36110 * )
+      NEW met2 ( 47610 27540 ) ( * 27710 )
+      NEW met3 ( 41860 27540 ) ( 47610 * )
+      NEW met3 ( 41860 27540 ) ( * 28220 )
+      NEW met3 ( 35650 28220 ) ( 41860 * )
+      NEW met1 ( 47610 27710 ) ( 49450 * )
+      NEW met1 ( 4830 51170 ) ( 6210 * )
       NEW met2 ( 4830 51170 ) ( * 61540 0 )
-      NEW met2 ( 34730 52700 ) ( * 55590 )
-      NEW met3 ( 17250 52700 ) ( 34730 * )
-      NEW met2 ( 17250 52530 ) ( * 52700 )
-      NEW met3 ( 34730 52700 ) ( 37490 * )
-      NEW met1 ( 4830 52530 ) ( 17250 * )
-      NEW met2 ( 37490 23290 ) ( * 23460 )
-      NEW met3 ( 37260 23460 ) ( 37490 * )
-      NEW met4 ( 37260 23460 ) ( * 47260 )
-      NEW met3 ( 37260 47260 ) ( 37490 * )
-      NEW met2 ( 47150 23460 ) ( * 26690 )
-      NEW met3 ( 37490 23460 ) ( 47150 * )
-      NEW met2 ( 37490 47260 ) ( * 52700 )
-      NEW met1 ( 51750 26690 ) ( * 27710 )
-      NEW met1 ( 49910 27710 ) ( 51750 * )
-      NEW met1 ( 47150 26690 ) ( 51750 * )
+      NEW met2 ( 34730 55420 ) ( * 55590 )
+      NEW met3 ( 4830 55420 ) ( 34730 * )
+      NEW met3 ( 34730 55420 ) ( 36110 * )
+      NEW met2 ( 36110 31620 ) ( * 55420 )
+      NEW li1 ( 49450 27710 ) L1M1_PR_MR
+      NEW li1 ( 37950 22950 ) L1M1_PR_MR
+      NEW met1 ( 35650 22950 ) M1M2_PR
+      NEW met1 ( 47610 27710 ) M1M2_PR
+      NEW met2 ( 47610 27540 ) M2M3_PR
+      NEW met2 ( 35650 28220 ) M2M3_PR
       NEW li1 ( 6210 51170 ) L1M1_PR_MR
       NEW met1 ( 4830 51170 ) M1M2_PR
-      NEW met1 ( 4830 52530 ) M1M2_PR
       NEW li1 ( 34730 55590 ) L1M1_PR_MR
       NEW met1 ( 34730 55590 ) M1M2_PR
-      NEW met2 ( 34730 52700 ) M2M3_PR
-      NEW met2 ( 17250 52700 ) M2M3_PR
-      NEW met1 ( 17250 52530 ) M1M2_PR
-      NEW met2 ( 37490 52700 ) M2M3_PR
-      NEW li1 ( 37490 23290 ) L1M1_PR_MR
-      NEW met1 ( 37490 23290 ) M1M2_PR
-      NEW met2 ( 37490 23460 ) M2M3_PR
-      NEW met3 ( 37260 23460 ) M3M4_PR
-      NEW met3 ( 37260 47260 ) M3M4_PR
-      NEW met2 ( 37490 47260 ) M2M3_PR
-      NEW met1 ( 47150 26690 ) M1M2_PR
-      NEW met2 ( 47150 23460 ) M2M3_PR
-      NEW li1 ( 49910 27710 ) L1M1_PR_MR
-      NEW met2 ( 4830 52530 ) RECT ( -70 -485 70 0 ) 
+      NEW met2 ( 34730 55420 ) M2M3_PR
+      NEW met2 ( 4830 55420 ) M2M3_PR
+      NEW met2 ( 36110 55420 ) M2M3_PR
+      NEW met2 ( 35650 28220 ) RECT ( -70 -485 70 0 ) 
       NEW met1 ( 34730 55590 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 37490 23290 ) RECT ( -355 -70 0 70 ) 
-      NEW met3 ( 37490 23460 ) RECT ( 0 -150 390 150 ) 
-      NEW met3 ( 37260 47260 ) RECT ( -390 -150 0 150 )  ;
+      NEW met2 ( 4830 55420 ) RECT ( -70 -485 70 0 )  ;
     - gpio_defaults[10] ( PIN gpio_defaults[10] ) ( ANTENNA__085__B DIODE ) ( ANTENNA__086__B DIODE ) ( _086_ B ) ( _085_ B ) + USE SIGNAL
-      + ROUTED met2 ( 49450 3570 ) ( * 6630 )
-      NEW met1 ( 45770 3570 ) ( 49450 * )
-      NEW met1 ( 45770 3570 ) ( * 3910 )
-      NEW met1 ( 42550 3910 ) ( 45770 * )
-      NEW met1 ( 42550 3910 ) ( * 4590 )
+      + ROUTED met2 ( 49450 3230 ) ( * 6630 )
       NEW met1 ( 49450 6630 ) ( 51750 * )
-      NEW met1 ( 31970 4590 ) ( 42550 * )
-      NEW met2 ( 47150 33830 ) ( * 42500 )
-      NEW met3 ( 28290 42500 ) ( 47150 * )
-      NEW met2 ( 28290 42500 ) ( * 48620 )
-      NEW met2 ( 28290 48620 ) ( 28750 * )
-      NEW met2 ( 28750 48620 ) ( * 53380 )
+      NEW met1 ( 29670 48450 ) ( 31970 * )
       NEW met2 ( 27830 53380 ) ( 28750 * )
       NEW met2 ( 27830 53380 ) ( * 61540 0 )
-      NEW met1 ( 47150 33830 ) ( 49450 * )
       NEW met1 ( 49450 33830 ) ( 51750 * )
       NEW met2 ( 51750 6630 ) ( * 33830 )
-      NEW li1 ( 31970 4590 ) L1M1_PR_MR
+      NEW met2 ( 39790 3230 ) ( * 4590 )
+      NEW met1 ( 31970 4590 ) ( 39790 * )
+      NEW met2 ( 47150 33830 ) ( * 44370 )
+      NEW met1 ( 45370 44370 ) ( 47150 * )
+      NEW met1 ( 45370 44030 ) ( * 44370 )
+      NEW met1 ( 42550 44030 ) ( 45370 * )
+      NEW met2 ( 42550 44030 ) ( * 47940 )
+      NEW met3 ( 32430 47940 ) ( 42550 * )
+      NEW met2 ( 32430 47940 ) ( * 48110 )
+      NEW met1 ( 31970 48110 ) ( 32430 * )
+      NEW met1 ( 28750 48110 ) ( 29670 * )
+      NEW met2 ( 28750 48110 ) ( * 53380 )
+      NEW met1 ( 29670 48110 ) ( * 48450 )
+      NEW met1 ( 31970 48110 ) ( * 48450 )
+      NEW met1 ( 39790 3230 ) ( 49450 * )
+      NEW met1 ( 47150 33830 ) ( 49450 * )
       NEW li1 ( 49450 6630 ) L1M1_PR_MR
       NEW met1 ( 49450 6630 ) M1M2_PR
-      NEW met1 ( 49450 3570 ) M1M2_PR
+      NEW met1 ( 49450 3230 ) M1M2_PR
       NEW met1 ( 51750 6630 ) M1M2_PR
-      NEW li1 ( 47150 33830 ) L1M1_PR_MR
-      NEW met1 ( 47150 33830 ) M1M2_PR
-      NEW met2 ( 47150 42500 ) M2M3_PR
-      NEW met2 ( 28290 42500 ) M2M3_PR
       NEW li1 ( 49450 33830 ) L1M1_PR_MR
       NEW met1 ( 51750 33830 ) M1M2_PR
+      NEW met1 ( 39790 3230 ) M1M2_PR
+      NEW met1 ( 39790 4590 ) M1M2_PR
+      NEW li1 ( 31970 4590 ) L1M1_PR_MR
+      NEW li1 ( 47150 33830 ) L1M1_PR_MR
+      NEW met1 ( 47150 33830 ) M1M2_PR
+      NEW met1 ( 47150 44370 ) M1M2_PR
+      NEW met1 ( 42550 44030 ) M1M2_PR
+      NEW met2 ( 42550 47940 ) M2M3_PR
+      NEW met2 ( 32430 47940 ) M2M3_PR
+      NEW met1 ( 32430 48110 ) M1M2_PR
+      NEW met1 ( 28750 48110 ) M1M2_PR
       NEW met1 ( 49450 6630 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 47150 33830 ) RECT ( -355 -70 0 70 )  ;
     - gpio_defaults[11] ( PIN gpio_defaults[11] ) ( ANTENNA__087__B DIODE ) ( ANTENNA__088__B DIODE ) ( _088_ B ) ( _087_ B ) + USE SIGNAL
       + ROUTED met1 ( 29670 10370 ) ( 30590 * )
-      NEW met2 ( 30590 3570 ) ( * 10370 )
-      NEW met1 ( 30590 3570 ) ( 43930 * )
+      NEW met2 ( 30590 3230 ) ( * 10370 )
+      NEW met1 ( 30590 3230 ) ( 34500 * )
+      NEW met1 ( 34500 3230 ) ( * 3570 )
+      NEW met1 ( 34500 3570 ) ( 43930 * )
       NEW met2 ( 30590 10370 ) ( * 13800 )
       NEW met2 ( 47610 58650 ) ( * 60350 )
       NEW met1 ( 30130 60350 ) ( 47610 * )
       NEW met2 ( 30130 60350 ) ( * 61540 0 )
-      NEW met1 ( 44390 17170 ) ( * 17510 )
-      NEW met1 ( 31510 17170 ) ( 44390 * )
-      NEW met2 ( 31510 17170 ) ( * 22780 )
-      NEW met2 ( 31510 22780 ) ( 31970 * )
-      NEW met2 ( 31970 22780 ) ( * 29580 )
-      NEW met3 ( 31970 29580 ) ( 34270 * )
-      NEW met2 ( 34270 29580 ) ( * 40290 )
-      NEW met1 ( 31510 40290 ) ( 34270 * )
-      NEW met2 ( 31510 40290 ) ( * 50660 )
+      NEW met1 ( 44390 17850 ) ( * 18190 )
+      NEW met1 ( 30130 18190 ) ( 44390 * )
+      NEW met2 ( 30130 18190 ) ( * 25500 )
+      NEW met3 ( 30130 25500 ) ( 31050 * )
+      NEW met2 ( 31050 25500 ) ( * 30770 )
+      NEW met2 ( 30590 30770 ) ( 31050 * )
+      NEW met2 ( 30590 30770 ) ( * 36380 )
+      NEW met2 ( 30130 36380 ) ( 30590 * )
+      NEW met2 ( 30130 36380 ) ( * 39270 )
+      NEW met1 ( 30130 39270 ) ( 31510 * )
+      NEW met2 ( 31510 39270 ) ( * 50660 )
       NEW met2 ( 30130 50660 ) ( 31510 * )
       NEW met2 ( 30130 50660 ) ( * 60350 )
-      NEW met2 ( 30590 13800 ) ( 31510 * )
-      NEW met2 ( 31510 13800 ) ( * 17170 )
+      NEW met2 ( 30130 13800 ) ( 30590 * )
+      NEW met2 ( 30130 13800 ) ( * 18190 )
       NEW li1 ( 29670 10370 ) L1M1_PR_MR
       NEW met1 ( 30590 10370 ) M1M2_PR
-      NEW met1 ( 30590 3570 ) M1M2_PR
+      NEW met1 ( 30590 3230 ) M1M2_PR
       NEW li1 ( 43930 3570 ) L1M1_PR_MR
       NEW li1 ( 47610 58650 ) L1M1_PR_MR
       NEW met1 ( 47610 58650 ) M1M2_PR
       NEW met1 ( 47610 60350 ) M1M2_PR
       NEW met1 ( 30130 60350 ) M1M2_PR
-      NEW li1 ( 44390 17510 ) L1M1_PR_MR
-      NEW met1 ( 31510 17170 ) M1M2_PR
-      NEW met2 ( 31970 29580 ) M2M3_PR
-      NEW met2 ( 34270 29580 ) M2M3_PR
-      NEW met1 ( 34270 40290 ) M1M2_PR
-      NEW met1 ( 31510 40290 ) M1M2_PR
+      NEW li1 ( 44390 17850 ) L1M1_PR_MR
+      NEW met1 ( 30130 18190 ) M1M2_PR
+      NEW met2 ( 30130 25500 ) M2M3_PR
+      NEW met2 ( 31050 25500 ) M2M3_PR
+      NEW met1 ( 30130 39270 ) M1M2_PR
+      NEW met1 ( 31510 39270 ) M1M2_PR
       NEW met1 ( 47610 58650 ) RECT ( -355 -70 0 70 )  ;
     - gpio_defaults[12] ( PIN gpio_defaults[12] ) ( ANTENNA__089__B DIODE ) ( ANTENNA__090__B DIODE ) ( _090_ B ) ( _089_ B ) + USE SIGNAL
-      + ROUTED met1 ( 28750 11730 ) ( 33810 * )
+      + ROUTED met1 ( 28750 11730 ) ( 32890 * )
       NEW met1 ( 27830 11730 ) ( 28750 * )
-      NEW met1 ( 33810 11730 ) ( 34500 * )
+      NEW met1 ( 32890 11730 ) ( 34500 * )
       NEW met1 ( 34500 11730 ) ( * 12070 )
       NEW met1 ( 34500 12070 ) ( 43930 * )
+      NEW met2 ( 32890 11730 ) ( * 13800 )
       NEW met2 ( 47610 48450 ) ( * 50150 )
       NEW met1 ( 32890 48450 ) ( 47610 * )
       NEW met2 ( 32890 33830 ) ( * 48450 )
       NEW met2 ( 32430 33830 ) ( 32890 * )
-      NEW met2 ( 32430 17340 ) ( * 33830 )
-      NEW met2 ( 32430 17340 ) ( 33810 * )
+      NEW met2 ( 32430 13800 ) ( * 33830 )
+      NEW met2 ( 32430 13800 ) ( 32890 * )
       NEW met2 ( 32430 48620 ) ( * 61540 0 )
       NEW met2 ( 32430 48620 ) ( 32890 * )
       NEW met2 ( 32890 48450 ) ( * 48620 )
-      NEW met2 ( 33810 11730 ) ( * 17340 )
-      NEW met1 ( 33810 11730 ) M1M2_PR
+      NEW met1 ( 32890 11730 ) M1M2_PR
       NEW li1 ( 28750 11730 ) L1M1_PR_MR
       NEW li1 ( 27830 11730 ) L1M1_PR_MR
       NEW li1 ( 43930 12070 ) L1M1_PR_MR
@@ -1394,45 +1400,42 @@ NETS 168 ;
     - gpio_defaults[1] ( PIN gpio_defaults[1] ) ( ANTENNA__083__B DIODE ) ( ANTENNA__084__B DIODE ) ( _084_ B ) ( _083_ B ) + USE SIGNAL
       + ROUTED met2 ( 19090 7650 ) ( * 9350 )
       NEW met1 ( 18170 7650 ) ( 19090 * )
-      NEW met2 ( 7590 57970 ) ( * 58140 )
-      NEW met2 ( 7130 58140 ) ( 7590 * )
-      NEW met2 ( 7130 58140 ) ( * 61540 0 )
-      NEW met1 ( 7590 57970 ) ( 13800 * )
+      NEW met2 ( 7130 58990 ) ( * 61540 0 )
       NEW met1 ( 18170 58310 ) ( 18630 * )
       NEW met2 ( 18630 43180 ) ( * 58310 )
       NEW met2 ( 18630 43180 ) ( 19090 * )
-      NEW met1 ( 13800 57970 ) ( * 58310 )
-      NEW met1 ( 13800 58310 ) ( 18170 * )
+      NEW met2 ( 18630 58310 ) ( * 58990 )
+      NEW met1 ( 7130 58990 ) ( 18630 * )
       NEW met2 ( 19090 9350 ) ( * 43180 )
       NEW li1 ( 19090 9350 ) L1M1_PR_MR
       NEW met1 ( 19090 9350 ) M1M2_PR
       NEW li1 ( 19090 7650 ) L1M1_PR_MR
       NEW met1 ( 19090 7650 ) M1M2_PR
       NEW li1 ( 18170 7650 ) L1M1_PR_MR
-      NEW met1 ( 7590 57970 ) M1M2_PR
+      NEW met1 ( 7130 58990 ) M1M2_PR
       NEW li1 ( 18170 58310 ) L1M1_PR_MR
       NEW met1 ( 18630 58310 ) M1M2_PR
+      NEW met1 ( 18630 58990 ) M1M2_PR
       NEW met1 ( 19090 9350 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 19090 7650 ) RECT ( -355 -70 0 70 )  ;
     - gpio_defaults[2] ( PIN gpio_defaults[2] ) ( ANTENNA__073__B DIODE ) ( ANTENNA__074__B DIODE ) ( _074_ B ) ( _073_ B ) + USE SIGNAL
-      + ROUTED met1 ( 8050 58310 ) ( 11270 * )
-      NEW met2 ( 9430 58310 ) ( * 61540 0 )
-      NEW met1 ( 12190 4250 ) ( 14950 * )
-      NEW met1 ( 12190 4250 ) ( * 4590 )
-      NEW met1 ( 11730 4590 ) ( 12190 * )
+      + ROUTED met1 ( 8050 58310 ) ( 10810 * )
+      NEW met2 ( 9430 61540 0 ) ( 10810 * )
+      NEW met2 ( 10810 58310 ) ( * 61540 )
+      NEW met1 ( 12650 4250 ) ( 14950 * )
+      NEW met1 ( 12650 4250 ) ( * 4590 )
+      NEW met1 ( 11730 4590 ) ( 12650 * )
       NEW met2 ( 11730 4590 ) ( * 22610 )
-      NEW met2 ( 11270 22610 ) ( 11730 * )
+      NEW met2 ( 10810 22610 ) ( 11730 * )
       NEW met1 ( 14950 4250 ) ( 18170 * )
       NEW met1 ( 13570 3910 ) ( * 4250 )
-      NEW met2 ( 11270 22610 ) ( * 58310 )
+      NEW met2 ( 10810 22610 ) ( * 58310 )
       NEW li1 ( 8050 58310 ) L1M1_PR_MR
-      NEW met1 ( 11270 58310 ) M1M2_PR
-      NEW met1 ( 9430 58310 ) M1M2_PR
+      NEW met1 ( 10810 58310 ) M1M2_PR
       NEW li1 ( 14950 4250 ) L1M1_PR_MR
       NEW met1 ( 11730 4590 ) M1M2_PR
       NEW li1 ( 18170 4250 ) L1M1_PR_MR
       NEW li1 ( 13570 3910 ) L1M1_PR_MR
-      NEW met1 ( 9430 58310 ) RECT ( -595 -70 0 70 ) 
       NEW met1 ( 13570 4250 ) RECT ( 0 -70 255 70 )  ;
     - gpio_defaults[3] ( PIN gpio_defaults[3] ) ( ANTENNA__079__B DIODE ) ( ANTENNA__080__B DIODE ) ( _080_ B ) ( _079_ B ) + USE SIGNAL
       + ROUTED met1 ( 14950 6630 ) ( 16790 * )
@@ -1459,46 +1462,42 @@ NETS 168 ;
       NEW met1 ( 8970 44710 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 11730 59330 ) RECT ( -595 -70 0 70 )  ;
     - gpio_defaults[4] ( PIN gpio_defaults[4] ) ( ANTENNA__081__B DIODE ) ( ANTENNA__082__B DIODE ) ( _082_ B ) ( _081_ B ) + USE SIGNAL
-      + ROUTED met1 ( 10810 4930 ) ( 16790 * )
-      NEW met2 ( 10350 4930 ) ( 10810 * )
-      NEW met2 ( 10350 3910 ) ( * 4930 )
-      NEW met2 ( 15870 26860 ) ( 16330 * )
-      NEW met2 ( 15870 4930 ) ( * 26860 )
-      NEW met1 ( 29670 44710 ) ( 30130 * )
-      NEW met2 ( 29670 44540 ) ( * 44710 )
-      NEW met3 ( 16330 44540 ) ( 29670 * )
-      NEW met2 ( 47150 44370 ) ( * 44540 )
-      NEW met3 ( 29670 44540 ) ( 47150 * )
-      NEW met1 ( 47150 44370 ) ( 49450 * )
+      + ROUTED met1 ( 10350 4930 ) ( 16790 * )
+      NEW met1 ( 10350 3910 ) ( * 4930 )
+      NEW met2 ( 15410 26860 ) ( 16330 * )
+      NEW met2 ( 15410 4930 ) ( * 26860 )
+      NEW met1 ( 28290 45050 ) ( 30130 * )
+      NEW met2 ( 28290 45050 ) ( * 45220 )
+      NEW met3 ( 16330 45220 ) ( 28290 * )
+      NEW met2 ( 45770 44540 ) ( * 44710 )
+      NEW met3 ( 40940 44540 ) ( 45770 * )
+      NEW met3 ( 40940 44540 ) ( * 45220 )
+      NEW met3 ( 28290 45220 ) ( 40940 * )
+      NEW met1 ( 45770 44710 ) ( 49450 * )
       NEW met2 ( 15870 56780 ) ( 16330 * )
       NEW met2 ( 15870 56780 ) ( * 61540 )
       NEW met2 ( 14030 61540 0 ) ( 15870 * )
       NEW met2 ( 16330 26860 ) ( * 56780 )
-      NEW li1 ( 49450 44370 ) L1M1_PR_MR
+      NEW li1 ( 49450 44710 ) L1M1_PR_MR
       NEW li1 ( 16790 4930 ) L1M1_PR_MR
-      NEW met1 ( 10810 4930 ) M1M2_PR
       NEW li1 ( 10350 3910 ) L1M1_PR_MR
-      NEW met1 ( 10350 3910 ) M1M2_PR
-      NEW met1 ( 15870 4930 ) M1M2_PR
-      NEW li1 ( 30130 44710 ) L1M1_PR_MR
-      NEW met1 ( 29670 44710 ) M1M2_PR
-      NEW met2 ( 29670 44540 ) M2M3_PR
-      NEW met2 ( 16330 44540 ) M2M3_PR
-      NEW met1 ( 47150 44370 ) M1M2_PR
-      NEW met2 ( 47150 44540 ) M2M3_PR
-      NEW met1 ( 10350 3910 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 15870 4930 ) RECT ( -595 -70 0 70 ) 
-      NEW met2 ( 16330 44540 ) RECT ( -70 -485 70 0 )  ;
+      NEW met1 ( 15410 4930 ) M1M2_PR
+      NEW li1 ( 30130 45050 ) L1M1_PR_MR
+      NEW met1 ( 28290 45050 ) M1M2_PR
+      NEW met2 ( 28290 45220 ) M2M3_PR
+      NEW met2 ( 16330 45220 ) M2M3_PR
+      NEW met1 ( 45770 44710 ) M1M2_PR
+      NEW met2 ( 45770 44540 ) M2M3_PR
+      NEW met1 ( 15410 4930 ) RECT ( -595 -70 0 70 ) 
+      NEW met2 ( 16330 45220 ) RECT ( -70 -485 70 0 )  ;
     - gpio_defaults[5] ( PIN gpio_defaults[5] ) ( ANTENNA__091__B DIODE ) ( ANTENNA__092__B DIODE ) ( _092_ B ) ( _091_ B ) + USE SIGNAL
       + ROUTED met2 ( 12190 30770 ) ( * 33830 )
-      NEW met2 ( 16790 18530 ) ( * 27710 )
-      NEW met1 ( 15870 27710 ) ( 16790 * )
+      NEW met2 ( 17250 18530 ) ( * 27710 )
+      NEW met1 ( 15870 27710 ) ( 17250 * )
       NEW met2 ( 15870 27710 ) ( * 30770 )
-      NEW met1 ( 17710 20230 ) ( 25990 * )
-      NEW met2 ( 17710 19550 ) ( * 20230 )
-      NEW met2 ( 16790 19550 ) ( 17710 * )
-      NEW met1 ( 16790 15470 ) ( 27370 * )
-      NEW met2 ( 16790 15470 ) ( * 18530 )
+      NEW met1 ( 17250 20230 ) ( 25990 * )
+      NEW met1 ( 17250 15470 ) ( 27370 * )
+      NEW met2 ( 17250 15470 ) ( * 18530 )
       NEW met2 ( 18630 33830 ) ( * 37060 )
       NEW met2 ( 18170 37060 ) ( 18630 * )
       NEW met2 ( 18170 37060 ) ( * 61540 )
@@ -1508,154 +1507,161 @@ NETS 168 ;
       NEW li1 ( 9430 33830 ) L1M1_PR_MR
       NEW met1 ( 12190 30770 ) M1M2_PR
       NEW met1 ( 12190 33830 ) M1M2_PR
-      NEW li1 ( 16790 18530 ) L1M1_PR_MR
-      NEW met1 ( 16790 18530 ) M1M2_PR
-      NEW met1 ( 16790 27710 ) M1M2_PR
+      NEW li1 ( 17250 18530 ) L1M1_PR_MR
+      NEW met1 ( 17250 18530 ) M1M2_PR
+      NEW met1 ( 17250 27710 ) M1M2_PR
       NEW met1 ( 15870 27710 ) M1M2_PR
       NEW met1 ( 15870 30770 ) M1M2_PR
       NEW li1 ( 25990 20230 ) L1M1_PR_MR
-      NEW met1 ( 17710 20230 ) M1M2_PR
+      NEW met1 ( 17250 20230 ) M1M2_PR
       NEW li1 ( 27370 15470 ) L1M1_PR_MR
-      NEW met1 ( 16790 15470 ) M1M2_PR
+      NEW met1 ( 17250 15470 ) M1M2_PR
       NEW met1 ( 18630 33830 ) M1M2_PR
       NEW met1 ( 12190 33830 ) RECT ( -595 -70 0 70 ) 
-      NEW met1 ( 16790 18530 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 17250 18530 ) RECT ( -355 -70 0 70 ) 
+      NEW met2 ( 17250 20230 ) RECT ( -70 -485 70 0 )  ;
     - gpio_defaults[6] ( PIN gpio_defaults[6] ) ( ANTENNA__093__B DIODE ) ( ANTENNA__094__B DIODE ) ( _094_ B ) ( _093_ B ) + USE SIGNAL
       + ROUTED met1 ( 18630 9690 ) ( 21390 * )
-      NEW met2 ( 29670 40290 ) ( * 41310 )
-      NEW met1 ( 20010 41310 ) ( 29670 * )
-      NEW met2 ( 20010 41310 ) ( * 61540 )
+      NEW met2 ( 29670 39610 ) ( * 39780 )
+      NEW met3 ( 20010 39780 ) ( 29670 * )
+      NEW met2 ( 20010 39780 ) ( * 61540 )
       NEW met2 ( 18630 61540 0 ) ( 20010 * )
-      NEW met1 ( 29670 34170 ) ( 31050 * )
-      NEW met2 ( 29670 34170 ) ( * 40290 )
+      NEW met1 ( 29670 33830 ) ( 31050 * )
+      NEW met2 ( 29670 33830 ) ( * 39610 )
       NEW met1 ( 19550 22950 ) ( 20010 * )
-      NEW met2 ( 20010 22950 ) ( * 36380 )
-      NEW met2 ( 19550 36380 ) ( 20010 * )
-      NEW met2 ( 19550 36380 ) ( * 39100 )
-      NEW met2 ( 19550 39100 ) ( 20010 * )
-      NEW met2 ( 20010 39100 ) ( * 41310 )
+      NEW met2 ( 20010 22950 ) ( * 34340 )
+      NEW met2 ( 19550 34340 ) ( 20010 * )
+      NEW met2 ( 19550 34340 ) ( * 39780 )
+      NEW met2 ( 19550 39780 ) ( 20010 * )
       NEW met1 ( 18630 22610 ) ( * 22950 )
       NEW met1 ( 18630 22950 ) ( 19550 * )
       NEW met2 ( 18630 9690 ) ( * 22610 )
       NEW li1 ( 21390 9690 ) L1M1_PR_MR
       NEW met1 ( 18630 9690 ) M1M2_PR
-      NEW li1 ( 29670 40290 ) L1M1_PR_MR
-      NEW met1 ( 29670 40290 ) M1M2_PR
-      NEW met1 ( 29670 41310 ) M1M2_PR
-      NEW met1 ( 20010 41310 ) M1M2_PR
-      NEW li1 ( 31050 34170 ) L1M1_PR_MR
-      NEW met1 ( 29670 34170 ) M1M2_PR
+      NEW li1 ( 29670 39610 ) L1M1_PR_MR
+      NEW met1 ( 29670 39610 ) M1M2_PR
+      NEW met2 ( 29670 39780 ) M2M3_PR
+      NEW met2 ( 20010 39780 ) M2M3_PR
+      NEW li1 ( 31050 33830 ) L1M1_PR_MR
+      NEW met1 ( 29670 33830 ) M1M2_PR
       NEW li1 ( 19550 22950 ) L1M1_PR_MR
       NEW met1 ( 20010 22950 ) M1M2_PR
       NEW met1 ( 18630 22610 ) M1M2_PR
-      NEW met1 ( 29670 40290 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 29670 39610 ) RECT ( -355 -70 0 70 )  ;
     - gpio_defaults[7] ( PIN gpio_defaults[7] ) ( ANTENNA__095__B DIODE ) ( ANTENNA__096__B DIODE ) ( _096_ B ) ( _095_ B ) + USE SIGNAL
-      + ROUTED met2 ( 31050 28390 ) ( * 30770 )
-      NEW met2 ( 30590 30770 ) ( 31050 * )
-      NEW met2 ( 30590 30770 ) ( * 33150 )
-      NEW met1 ( 28290 33150 ) ( 30590 * )
-      NEW met2 ( 28290 33150 ) ( * 34340 )
-      NEW met2 ( 28290 34340 ) ( 28750 * )
-      NEW met2 ( 28750 34340 ) ( * 40290 )
-      NEW met1 ( 23690 40290 ) ( 28750 * )
-      NEW met2 ( 23690 40290 ) ( * 44370 )
-      NEW met1 ( 20930 44370 ) ( 23690 * )
-      NEW met2 ( 20930 44370 ) ( * 61540 0 )
-      NEW met1 ( 14950 23970 ) ( 16790 * )
-      NEW met1 ( 14950 23970 ) ( * 24990 )
-      NEW met1 ( 14950 24990 ) ( 27830 * )
-      NEW met2 ( 27830 24990 ) ( * 28050 )
-      NEW met1 ( 27830 28050 ) ( 31050 * )
+      + ROUTED met1 ( 17250 22270 ) ( 22770 * )
+      NEW met2 ( 22770 22270 ) ( * 41310 )
+      NEW met1 ( 20930 41310 ) ( 22770 * )
       NEW met1 ( 31050 28050 ) ( * 28390 )
-      NEW met1 ( 35650 22610 ) ( * 22950 )
-      NEW met1 ( 30130 22610 ) ( 35650 * )
-      NEW met2 ( 30130 22610 ) ( * 24990 )
-      NEW met1 ( 27830 24990 ) ( 30130 * )
-      NEW met1 ( 35650 22270 ) ( 40250 * )
-      NEW met1 ( 35650 22270 ) ( * 22610 )
+      NEW met1 ( 26910 28050 ) ( 31050 * )
+      NEW met2 ( 26910 26690 ) ( * 28050 )
+      NEW met1 ( 22770 26690 ) ( 26910 * )
+      NEW met2 ( 36570 23290 ) ( * 25500 )
+      NEW met2 ( 36110 25500 ) ( 36570 * )
+      NEW met2 ( 36110 25500 ) ( * 28050 )
+      NEW met1 ( 31050 28050 ) ( 36110 * )
+      NEW met1 ( 36570 22270 ) ( 40250 * )
+      NEW met2 ( 36570 22270 ) ( * 23290 )
+      NEW met2 ( 20930 41310 ) ( * 61540 0 )
+      NEW li1 ( 17250 22270 ) L1M1_PR_MR
+      NEW met1 ( 22770 22270 ) M1M2_PR
+      NEW met1 ( 22770 41310 ) M1M2_PR
+      NEW met1 ( 20930 41310 ) M1M2_PR
       NEW li1 ( 31050 28390 ) L1M1_PR_MR
-      NEW met1 ( 31050 28390 ) M1M2_PR
-      NEW met1 ( 30590 33150 ) M1M2_PR
-      NEW met1 ( 28290 33150 ) M1M2_PR
-      NEW met1 ( 28750 40290 ) M1M2_PR
-      NEW met1 ( 23690 40290 ) M1M2_PR
-      NEW met1 ( 23690 44370 ) M1M2_PR
-      NEW met1 ( 20930 44370 ) M1M2_PR
-      NEW li1 ( 16790 23970 ) L1M1_PR_MR
-      NEW met1 ( 27830 24990 ) M1M2_PR
-      NEW met1 ( 27830 28050 ) M1M2_PR
-      NEW li1 ( 35650 22950 ) L1M1_PR_MR
-      NEW met1 ( 30130 22610 ) M1M2_PR
-      NEW met1 ( 30130 24990 ) M1M2_PR
+      NEW met1 ( 26910 28050 ) M1M2_PR
+      NEW met1 ( 26910 26690 ) M1M2_PR
+      NEW met1 ( 22770 26690 ) M1M2_PR
+      NEW li1 ( 36570 23290 ) L1M1_PR_MR
+      NEW met1 ( 36570 23290 ) M1M2_PR
+      NEW met1 ( 36110 28050 ) M1M2_PR
       NEW li1 ( 40250 22270 ) L1M1_PR_MR
-      NEW met1 ( 31050 28390 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 36570 22270 ) M1M2_PR
+      NEW met2 ( 22770 26690 ) RECT ( -70 -485 70 0 ) 
+      NEW met1 ( 36570 23290 ) RECT ( -355 -70 0 70 )  ;
     - gpio_defaults[8] ( PIN gpio_defaults[8] ) ( ANTENNA__075__B DIODE ) ( ANTENNA__076__B DIODE ) ( _076_ B ) ( _075_ B ) + USE SIGNAL
       + ROUTED met2 ( 22310 61540 ) ( 23230 * 0 )
       NEW met1 ( 48070 52190 ) ( 49450 * )
-      NEW met1 ( 22310 42330 ) ( 28750 * )
-      NEW met2 ( 42550 45050 ) ( * 45900 )
-      NEW met3 ( 27370 45900 ) ( 42550 * )
-      NEW met2 ( 27370 42670 ) ( * 45900 )
-      NEW met1 ( 27370 42330 ) ( * 42670 )
-      NEW met3 ( 42550 45900 ) ( 48070 * )
-      NEW met1 ( 44390 37570 ) ( 48070 * )
-      NEW met2 ( 48070 37570 ) ( * 45900 )
-      NEW met2 ( 22310 42330 ) ( * 61540 )
+      NEW met1 ( 26910 42330 ) ( 28750 * )
+      NEW met2 ( 26910 42330 ) ( * 44370 )
+      NEW met1 ( 22310 44370 ) ( 26910 * )
+      NEW met1 ( 42550 45050 ) ( 43010 * )
+      NEW met2 ( 43010 45050 ) ( * 45900 )
+      NEW met3 ( 27370 45900 ) ( 43010 * )
+      NEW met2 ( 27370 45730 ) ( * 45900 )
+      NEW met2 ( 26910 45730 ) ( 27370 * )
+      NEW met2 ( 26910 44370 ) ( * 45730 )
+      NEW met3 ( 43010 45900 ) ( 48070 * )
+      NEW met1 ( 44390 37570 ) ( 46230 * )
+      NEW met2 ( 46230 37570 ) ( * 42670 )
+      NEW met1 ( 46230 42670 ) ( 48070 * )
+      NEW met2 ( 48070 42670 ) ( * 45900 )
+      NEW met2 ( 22310 44370 ) ( * 61540 )
       NEW met2 ( 48070 45900 ) ( * 52190 )
       NEW li1 ( 49450 52190 ) L1M1_PR_MR
       NEW met1 ( 48070 52190 ) M1M2_PR
       NEW li1 ( 28750 42330 ) L1M1_PR_MR
-      NEW met1 ( 22310 42330 ) M1M2_PR
+      NEW met1 ( 26910 42330 ) M1M2_PR
+      NEW met1 ( 26910 44370 ) M1M2_PR
+      NEW met1 ( 22310 44370 ) M1M2_PR
       NEW li1 ( 42550 45050 ) L1M1_PR_MR
-      NEW met1 ( 42550 45050 ) M1M2_PR
-      NEW met2 ( 42550 45900 ) M2M3_PR
+      NEW met1 ( 43010 45050 ) M1M2_PR
+      NEW met2 ( 43010 45900 ) M2M3_PR
       NEW met2 ( 27370 45900 ) M2M3_PR
-      NEW met1 ( 27370 42670 ) M1M2_PR
       NEW met2 ( 48070 45900 ) M2M3_PR
       NEW li1 ( 44390 37570 ) L1M1_PR_MR
-      NEW met1 ( 48070 37570 ) M1M2_PR
-      NEW met1 ( 42550 45050 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 46230 37570 ) M1M2_PR
+      NEW met1 ( 46230 42670 ) M1M2_PR
+      NEW met1 ( 48070 42670 ) M1M2_PR ;
     - gpio_defaults[9] ( PIN gpio_defaults[9] ) ( ANTENNA__077__B DIODE ) ( ANTENNA__078__B DIODE ) ( _078_ B ) ( _077_ B ) + USE SIGNAL
-      + ROUTED met2 ( 47610 33490 ) ( * 41990 )
-      NEW met1 ( 42550 33490 ) ( 47610 * )
-      NEW met2 ( 42550 28220 ) ( * 33490 )
-      NEW met2 ( 42550 28220 ) ( 43010 * )
-      NEW met2 ( 43010 18020 ) ( * 28220 )
-      NEW met3 ( 42780 18020 ) ( 43010 * )
-      NEW met3 ( 42780 15980 ) ( * 18020 )
-      NEW met3 ( 42090 15980 ) ( 42780 * )
-      NEW met1 ( 44850 47770 ) ( * 48110 )
-      NEW met1 ( 44850 48110 ) ( 45770 * )
-      NEW met2 ( 45770 47940 ) ( * 48110 )
-      NEW met3 ( 45770 47940 ) ( 47610 * )
-      NEW met2 ( 47610 41990 ) ( * 47940 )
+      + ROUTED met1 ( 42090 6290 ) ( 42550 * )
+      NEW met1 ( 42550 5950 ) ( * 6290 )
+      NEW met1 ( 42550 5950 ) ( 46690 * )
+      NEW met2 ( 46690 5780 ) ( * 5950 )
+      NEW met2 ( 46230 5780 ) ( 46690 * )
+      NEW met1 ( 47610 41990 ) ( 48070 * )
+      NEW met2 ( 48070 33490 ) ( * 41990 )
+      NEW met1 ( 44850 33490 ) ( 48070 * )
+      NEW met2 ( 44850 25500 ) ( * 33490 )
+      NEW met3 ( 44850 25500 ) ( 45540 * )
+      NEW met3 ( 45540 22780 ) ( * 25500 )
+      NEW met3 ( 45540 22780 ) ( 46230 * )
+      NEW met1 ( 44850 47770 ) ( 48070 * )
+      NEW met1 ( 48070 46750 ) ( * 47770 )
+      NEW met1 ( 47610 46750 ) ( 48070 * )
+      NEW met2 ( 47610 41820 ) ( * 46750 )
+      NEW met2 ( 47610 41820 ) ( 48070 * )
       NEW met2 ( 14030 46580 ) ( * 46750 )
-      NEW met3 ( 14030 46580 ) ( 23460 * )
-      NEW met3 ( 23460 46580 ) ( * 47940 )
-      NEW met3 ( 23460 47940 ) ( 45770 * )
-      NEW met2 ( 23690 61540 ) ( 25530 * 0 )
-      NEW met2 ( 23690 47940 ) ( * 61540 )
+      NEW met3 ( 14030 46580 ) ( 15180 * )
+      NEW met3 ( 15180 46580 ) ( * 47260 )
+      NEW met3 ( 15180 47260 ) ( 43010 * )
+      NEW met2 ( 43010 46750 ) ( * 47260 )
+      NEW met1 ( 43010 46750 ) ( 47610 * )
+      NEW met2 ( 24150 61540 ) ( 25530 * 0 )
+      NEW met2 ( 24150 60690 ) ( * 61540 )
+      NEW met1 ( 21850 60690 ) ( 24150 * )
+      NEW met2 ( 21850 47940 ) ( * 60690 )
+      NEW met3 ( 21620 47940 ) ( 21850 * )
+      NEW met3 ( 21620 47260 ) ( * 47940 )
       NEW met1 ( 6670 46750 ) ( 14030 * )
-      NEW met2 ( 42090 6630 ) ( * 15980 )
-      NEW li1 ( 42090 6630 ) L1M1_PR_MR
-      NEW met1 ( 42090 6630 ) M1M2_PR
+      NEW met2 ( 46230 5780 ) ( * 22780 )
+      NEW li1 ( 42090 6290 ) L1M1_PR_MR
+      NEW met1 ( 46690 5950 ) M1M2_PR
       NEW li1 ( 6670 46750 ) L1M1_PR_MR
       NEW li1 ( 47610 41990 ) L1M1_PR_MR
-      NEW met1 ( 47610 41990 ) M1M2_PR
-      NEW met1 ( 47610 33490 ) M1M2_PR
-      NEW met1 ( 42550 33490 ) M1M2_PR
-      NEW met2 ( 43010 18020 ) M2M3_PR
-      NEW met2 ( 42090 15980 ) M2M3_PR
+      NEW met1 ( 48070 41990 ) M1M2_PR
+      NEW met1 ( 48070 33490 ) M1M2_PR
+      NEW met1 ( 44850 33490 ) M1M2_PR
+      NEW met2 ( 44850 25500 ) M2M3_PR
+      NEW met2 ( 46230 22780 ) M2M3_PR
       NEW li1 ( 44850 47770 ) L1M1_PR_MR
-      NEW met1 ( 45770 48110 ) M1M2_PR
-      NEW met2 ( 45770 47940 ) M2M3_PR
-      NEW met2 ( 47610 47940 ) M2M3_PR
+      NEW met1 ( 47610 46750 ) M1M2_PR
       NEW met1 ( 14030 46750 ) M1M2_PR
       NEW met2 ( 14030 46580 ) M2M3_PR
-      NEW met2 ( 23690 47940 ) M2M3_PR
-      NEW met1 ( 42090 6630 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 47610 41990 ) RECT ( -355 -70 0 70 ) 
-      NEW met3 ( 23690 47940 ) RECT ( -800 -150 0 150 )  ;
+      NEW met2 ( 43010 47260 ) M2M3_PR
+      NEW met1 ( 43010 46750 ) M1M2_PR
+      NEW met1 ( 24150 60690 ) M1M2_PR
+      NEW met1 ( 21850 60690 ) M1M2_PR
+      NEW met2 ( 21850 47940 ) M2M3_PR ;
     - gpio_logic1 ( gpio_logic_high gpio_logic1 ) ( gpio_in_buf TE ) + USE SIGNAL
       + ROUTED met2 ( 13570 17000 ) ( * 19550 )
       NEW met3 ( 12420 17000 0 ) ( 13570 * )
@@ -1693,35 +1699,36 @@ NETS 168 ;
       NEW met1 ( 46690 17850 ) ( 47610 * )
       NEW met1 ( 48530 45050 ) ( 48990 * )
       NEW met2 ( 48990 36210 ) ( * 45050 )
-      NEW met2 ( 49910 49980 ) ( * 53210 )
+      NEW met2 ( 49910 49980 ) ( * 53550 )
       NEW met2 ( 48990 49980 ) ( 49910 * )
       NEW met2 ( 48990 45050 ) ( * 49980 )
-      NEW met1 ( 47150 52870 ) ( * 53210 )
-      NEW met1 ( 44390 52870 ) ( 47150 * )
+      NEW met1 ( 45310 52870 ) ( * 53550 )
+      NEW met1 ( 44390 52870 ) ( 45310 * )
       NEW met2 ( 44390 52870 ) ( * 53550 )
       NEW met1 ( 40770 53550 ) ( 44390 * )
-      NEW met1 ( 47150 53210 ) ( 49910 * )
+      NEW met1 ( 45310 53550 ) ( 49910 * )
       NEW li1 ( 47150 36550 ) L1M1_PR_MR
       NEW met1 ( 48990 36210 ) M1M2_PR
       NEW met1 ( 48990 18190 ) M1M2_PR
       NEW li1 ( 46690 17850 ) L1M1_PR_MR
       NEW li1 ( 48530 45050 ) L1M1_PR_MR
       NEW met1 ( 48990 45050 ) M1M2_PR
-      NEW met1 ( 49910 53210 ) M1M2_PR
+      NEW met1 ( 49910 53550 ) M1M2_PR
       NEW met1 ( 44390 52870 ) M1M2_PR
       NEW met1 ( 44390 53550 ) M1M2_PR
       NEW li1 ( 40770 53550 ) L1M1_PR_MR ;
     - mgmt_gpio_in ( PIN mgmt_gpio_in ) ( _139_ Z ) + USE SIGNAL
       + ROUTED met3 ( 56350 4420 ) ( 70380 * 0 )
-      NEW met1 ( 24610 21250 ) ( 56350 * )
-      NEW met2 ( 24610 21250 ) ( * 26010 )
-      NEW met2 ( 56350 4420 ) ( * 21250 )
+      NEW met1 ( 29670 23970 ) ( 56350 * )
+      NEW met2 ( 29670 23970 ) ( * 25670 )
+      NEW met1 ( 29670 25670 ) ( * 26010 )
+      NEW met1 ( 25530 26010 ) ( 29670 * )
+      NEW met2 ( 56350 4420 ) ( * 23970 )
       NEW met2 ( 56350 4420 ) M2M3_PR
-      NEW met1 ( 56350 21250 ) M1M2_PR
-      NEW met1 ( 24610 21250 ) M1M2_PR
-      NEW li1 ( 24610 26010 ) L1M1_PR_MR
-      NEW met1 ( 24610 26010 ) M1M2_PR
-      NEW met1 ( 24610 26010 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 56350 23970 ) M1M2_PR
+      NEW met1 ( 29670 23970 ) M1M2_PR
+      NEW met1 ( 29670 25670 ) M1M2_PR
+      NEW li1 ( 25530 26010 ) L1M1_PR_MR ;
     - mgmt_gpio_oeb ( PIN mgmt_gpio_oeb ) ( ANTENNA_input1_A DIODE ) ( input1 A ) + USE SIGNAL
       + ROUTED met2 ( 43930 6970 ) ( * 8500 )
       NEW met3 ( 43930 8500 ) ( 70380 * 0 )
@@ -1763,26 +1770,23 @@ NETS 168 ;
       NEW li1 ( 47105 29070 ) L1M1_PR_MR ;
     - net10 ( output10 A ) ( _117_ Q ) ( _067_ B ) + USE SIGNAL
       + ROUTED met1 ( 46690 49470 ) ( 46730 * )
-      NEW met1 ( 47015 27710 ) ( * 28050 )
-      NEW met1 ( 46230 28050 ) ( 47015 * )
-      NEW met2 ( 46230 28050 ) ( * 28220 )
-      NEW met2 ( 45770 28220 ) ( 46230 * )
-      NEW met2 ( 45770 28220 ) ( * 28730 )
-      NEW met2 ( 45770 28730 ) ( 46690 * )
+      NEW met1 ( 44850 27710 ) ( 47150 * )
+      NEW met1 ( 44850 27710 ) ( * 28050 )
+      NEW met1 ( 43010 28050 ) ( 44850 * )
+      NEW met2 ( 43010 28050 ) ( * 28220 )
+      NEW met3 ( 43010 28220 ) ( 46690 * )
       NEW met1 ( 39790 14790 ) ( * 15130 )
-      NEW met1 ( 39790 15130 ) ( 44390 * )
-      NEW met2 ( 44390 15130 ) ( * 25330 )
-      NEW met1 ( 44390 25330 ) ( 46230 * )
-      NEW met2 ( 46230 25330 ) ( * 28050 )
-      NEW met2 ( 46690 28730 ) ( * 49470 )
+      NEW met1 ( 39790 15130 ) ( 43010 * )
+      NEW met2 ( 43010 15130 ) ( * 28050 )
+      NEW met2 ( 46690 28220 ) ( * 49470 )
       NEW met1 ( 46690 49470 ) M1M2_PR
       NEW li1 ( 46730 49470 ) L1M1_PR_MR
-      NEW li1 ( 47015 27710 ) L1M1_PR_MR
-      NEW met1 ( 46230 28050 ) M1M2_PR
+      NEW li1 ( 47150 27710 ) L1M1_PR_MR
+      NEW met1 ( 43010 28050 ) M1M2_PR
+      NEW met2 ( 43010 28220 ) M2M3_PR
+      NEW met2 ( 46690 28220 ) M2M3_PR
       NEW li1 ( 39790 14790 ) L1M1_PR_MR
-      NEW met1 ( 44390 15130 ) M1M2_PR
-      NEW met1 ( 44390 25330 ) M1M2_PR
-      NEW met1 ( 46230 25330 ) M1M2_PR
+      NEW met1 ( 43010 15130 ) M1M2_PR
       NEW met1 ( 46690 49470 ) RECT ( -315 -70 0 70 )  ;
     - net11 ( output11 A ) ( _118_ Q ) ( _067_ A_N ) + USE SIGNAL
       + ROUTED met1 ( 48530 29070 ) ( 48990 * )
@@ -1818,25 +1822,19 @@ NETS 168 ;
       NEW met1 ( 30170 35870 ) RECT ( 0 -70 315 70 ) 
       NEW met1 ( 30590 20230 ) RECT ( -355 -70 0 70 )  ;
     - net14 ( output14 A ) ( _113_ Q ) ( _063_ A_N ) + USE SIGNAL
-      + ROUTED met1 ( 47610 46750 ) ( * 47430 )
-      NEW met1 ( 37490 46750 ) ( 47610 * )
-      NEW met2 ( 37490 46580 ) ( * 46750 )
-      NEW met2 ( 36570 46580 ) ( 37490 * )
-      NEW met2 ( 36570 39100 ) ( * 46580 )
-      NEW met2 ( 36570 39100 ) ( 37030 * )
-      NEW met2 ( 37030 14450 ) ( * 39100 )
-      NEW met1 ( 37030 14450 ) ( 40250 * )
-      NEW met1 ( 40250 14450 ) ( * 14790 )
-      NEW met1 ( 30190 46750 ) ( 31050 * )
-      NEW met1 ( 31050 46750 ) ( * 47090 )
-      NEW met1 ( 31050 47090 ) ( 36110 * )
-      NEW met1 ( 36110 46750 ) ( * 47090 )
-      NEW met1 ( 36110 46750 ) ( 37490 * )
+      + ROUTED met1 ( 47610 47090 ) ( * 47430 )
+      NEW met1 ( 40710 47090 ) ( 47610 * )
+      NEW met2 ( 40710 14790 ) ( * 47090 )
+      NEW met1 ( 30190 47090 ) ( 33810 * )
+      NEW met1 ( 33810 46750 ) ( * 47090 )
+      NEW met1 ( 33810 46750 ) ( 40710 * )
+      NEW met1 ( 40710 46750 ) ( * 47090 )
       NEW li1 ( 47610 47430 ) L1M1_PR_MR
-      NEW met1 ( 37490 46750 ) M1M2_PR
-      NEW met1 ( 37030 14450 ) M1M2_PR
-      NEW li1 ( 40250 14790 ) L1M1_PR_MR
-      NEW li1 ( 30190 46750 ) L1M1_PR_MR ;
+      NEW met1 ( 40710 47090 ) M1M2_PR
+      NEW li1 ( 40710 14790 ) L1M1_PR_MR
+      NEW met1 ( 40710 14790 ) M1M2_PR
+      NEW li1 ( 30190 47090 ) L1M1_PR_MR
+      NEW met1 ( 40710 14790 ) RECT ( -355 -70 0 70 )  ;
     - net15 ( output15 A ) ( _070_ Y ) + USE SIGNAL
       + ROUTED met2 ( 43010 28730 ) ( * 30770 )
       NEW met1 ( 43010 30770 ) ( 44390 * )
@@ -1909,27 +1907,28 @@ NETS 168 ;
       NEW met2 ( 11730 31790 ) ( * 36210 )
       NEW met1 ( 8050 33490 ) ( * 34170 )
       NEW met1 ( 8050 33490 ) ( 11730 * )
-      NEW met1 ( 28750 44710 ) ( 29210 * )
-      NEW met2 ( 28750 44710 ) ( * 48110 )
-      NEW met1 ( 28750 48110 ) ( 31510 * )
-      NEW met1 ( 25070 41990 0 ) ( 28750 * )
-      NEW met1 ( 28750 41650 ) ( * 41990 )
-      NEW met2 ( 28750 41650 ) ( * 44710 )
+      NEW met1 ( 29210 44710 ) ( 29670 * )
+      NEW met2 ( 29670 44710 ) ( * 45220 )
+      NEW met2 ( 29670 45220 ) ( 30130 * )
+      NEW met2 ( 30130 45220 ) ( * 48110 )
+      NEW met1 ( 30130 48110 ) ( 31510 * )
+      NEW met1 ( 25070 41990 0 ) ( * 42670 )
+      NEW met1 ( 25070 42670 ) ( 29670 * )
+      NEW met2 ( 29670 42670 ) ( * 44710 )
       NEW met1 ( 26910 20230 ) ( 27370 * )
-      NEW met2 ( 27370 20230 ) ( * 41990 )
-      NEW met1 ( 18170 22270 ) ( * 23290 )
-      NEW met1 ( 18170 22270 ) ( 20010 * )
-      NEW met2 ( 20010 19890 ) ( * 22270 )
-      NEW met1 ( 20010 19890 ) ( 26910 * )
+      NEW met2 ( 27370 20230 ) ( * 42670 )
+      NEW met1 ( 17710 23290 ) ( 18170 * )
+      NEW met2 ( 17710 19890 ) ( * 23290 )
+      NEW met1 ( 17710 19890 ) ( 26910 * )
       NEW met1 ( 26910 19890 ) ( * 20230 )
       NEW met2 ( 14030 28050 ) ( * 31790 )
       NEW met1 ( 14030 28050 ) ( 17710 * )
       NEW met2 ( 17710 23290 ) ( * 28050 )
-      NEW met1 ( 17710 23290 ) ( 18170 * )
-      NEW met1 ( 17250 18530 ) ( 20010 * )
-      NEW met2 ( 20010 18530 ) ( * 19890 )
+      NEW met2 ( 16330 14620 ) ( 17250 * )
+      NEW met2 ( 16330 14620 ) ( * 19890 )
+      NEW met1 ( 16330 19890 ) ( 17710 * )
       NEW met1 ( 11730 31790 ) ( 14030 * )
-      NEW met2 ( 17250 3570 ) ( * 18530 )
+      NEW met2 ( 17250 3570 ) ( * 14620 )
       NEW met1 ( 17250 3570 ) M1M2_PR
       NEW met1 ( 11730 3570 ) M1M2_PR
       NEW met1 ( 10810 3570 ) M1M2_PR
@@ -1939,88 +1938,81 @@ NETS 168 ;
       NEW li1 ( 8050 34170 ) L1M1_PR_MR
       NEW met1 ( 11730 33490 ) M1M2_PR
       NEW li1 ( 29210 44710 ) L1M1_PR_MR
-      NEW met1 ( 28750 44710 ) M1M2_PR
-      NEW met1 ( 28750 48110 ) M1M2_PR
+      NEW met1 ( 29670 44710 ) M1M2_PR
+      NEW met1 ( 30130 48110 ) M1M2_PR
       NEW li1 ( 31510 48110 ) L1M1_PR_MR
-      NEW met1 ( 28750 41650 ) M1M2_PR
+      NEW met1 ( 29670 42670 ) M1M2_PR
       NEW li1 ( 26910 20230 ) L1M1_PR_MR
       NEW met1 ( 27370 20230 ) M1M2_PR
-      NEW met1 ( 27370 41990 ) M1M2_PR
+      NEW met1 ( 27370 42670 ) M1M2_PR
       NEW li1 ( 18170 23290 ) L1M1_PR_MR
-      NEW met1 ( 20010 22270 ) M1M2_PR
-      NEW met1 ( 20010 19890 ) M1M2_PR
+      NEW met1 ( 17710 23290 ) M1M2_PR
+      NEW met1 ( 17710 19890 ) M1M2_PR
       NEW met1 ( 14030 31790 ) M1M2_PR
       NEW met1 ( 14030 28050 ) M1M2_PR
       NEW met1 ( 17710 28050 ) M1M2_PR
-      NEW met1 ( 17710 23290 ) M1M2_PR
-      NEW met1 ( 17250 18530 ) M1M2_PR
-      NEW met1 ( 20010 18530 ) M1M2_PR
+      NEW met1 ( 16330 19890 ) M1M2_PR
       NEW met2 ( 11730 33490 ) RECT ( -70 -485 70 0 ) 
-      NEW met1 ( 27370 41990 ) RECT ( -595 -70 0 70 )  ;
+      NEW met1 ( 27370 42670 ) RECT ( -595 -70 0 70 )  ;
     - net22 ( fanout22 X ) ( _130_ RESET_B ) ( _096_ A_N ) ( _095_ A ) ( _093_ A ) ( _128_ RESET_B ) ( _129_ RESET_B )
       ( fanout21 A ) + USE SIGNAL
-      + ROUTED met2 ( 23690 34510 ) ( * 39610 )
-      NEW met1 ( 22310 39610 0 ) ( 23690 * )
-      NEW met1 ( 27370 29070 0 ) ( 27830 * )
-      NEW met2 ( 27830 29070 ) ( * 34850 )
-      NEW met1 ( 23230 34850 ) ( 27830 * )
-      NEW met1 ( 23230 34510 ) ( * 34850 )
-      NEW met1 ( 23230 34510 ) ( 23690 * 0 )
-      NEW met1 ( 28290 37230 ) ( 31510 * )
-      NEW met2 ( 28290 35700 ) ( * 37230 )
-      NEW met2 ( 27830 35700 ) ( 28290 * )
-      NEW met2 ( 27830 34850 ) ( * 35700 )
+      + ROUTED met1 ( 27370 34510 0 ) ( 28750 * )
+      NEW met2 ( 28750 34510 ) ( * 40290 )
+      NEW met1 ( 24150 40290 ) ( 28750 * )
+      NEW met1 ( 24150 39950 ) ( * 40290 )
+      NEW met1 ( 22770 39950 0 ) ( 24150 * )
+      NEW met1 ( 28750 37230 ) ( 31510 * )
       NEW met1 ( 31970 33490 ) ( * 33830 )
-      NEW met1 ( 27830 33490 ) ( 31970 * )
-      NEW met1 ( 27830 28730 ) ( 31970 * )
-      NEW met1 ( 27830 28730 ) ( * 29070 )
+      NEW met1 ( 29210 33490 ) ( 31970 * )
+      NEW met1 ( 29210 33490 ) ( * 34170 )
+      NEW met1 ( 28750 34170 ) ( 29210 * )
+      NEW met1 ( 28750 34170 ) ( * 34510 )
+      NEW met1 ( 27370 29070 0 ) ( 27830 * )
+      NEW met2 ( 27830 29070 ) ( * 34510 )
+      NEW met1 ( 31970 28730 ) ( * 29070 )
+      NEW met1 ( 27830 29070 ) ( 31970 * )
+      NEW met1 ( 28750 47430 ) ( 32430 * )
+      NEW met2 ( 28750 40290 ) ( * 47430 )
       NEW met2 ( 34270 23290 ) ( * 28730 )
       NEW met1 ( 31970 28730 ) ( 34270 * )
-      NEW met1 ( 30130 47430 ) ( 32430 * )
-      NEW met2 ( 30130 37230 ) ( * 47430 )
-      NEW met1 ( 23690 34510 ) M1M2_PR
-      NEW met1 ( 23690 39610 ) M1M2_PR
-      NEW met1 ( 27830 29070 ) M1M2_PR
-      NEW met1 ( 27830 34850 ) M1M2_PR
+      NEW met1 ( 28750 34510 ) M1M2_PR
+      NEW met1 ( 28750 40290 ) M1M2_PR
       NEW li1 ( 31510 37230 ) L1M1_PR_MR
-      NEW met1 ( 28290 37230 ) M1M2_PR
+      NEW met1 ( 28750 37230 ) M1M2_PR
       NEW li1 ( 31970 33830 ) L1M1_PR_MR
-      NEW met1 ( 27830 33490 ) M1M2_PR
+      NEW met1 ( 27830 29070 ) M1M2_PR
+      NEW met1 ( 27830 34510 ) M1M2_PR
       NEW li1 ( 31970 28730 ) L1M1_PR_MR
+      NEW li1 ( 32430 47430 ) L1M1_PR_MR
+      NEW met1 ( 28750 47430 ) M1M2_PR
       NEW li1 ( 34270 23290 ) L1M1_PR_MR
       NEW met1 ( 34270 23290 ) M1M2_PR
       NEW met1 ( 34270 28730 ) M1M2_PR
-      NEW li1 ( 32430 47430 ) L1M1_PR_MR
-      NEW met1 ( 30130 47430 ) M1M2_PR
-      NEW met1 ( 30130 37230 ) M1M2_PR
-      NEW met2 ( 27830 33490 ) RECT ( -70 -485 70 0 ) 
-      NEW met1 ( 34270 23290 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 30130 37230 ) RECT ( -595 -70 0 70 )  ;
+      NEW met2 ( 28750 37230 ) RECT ( -70 -485 70 0 ) 
+      NEW met1 ( 27830 34510 ) RECT ( -595 -70 0 70 ) 
+      NEW met1 ( 34270 23290 ) RECT ( -355 -70 0 70 )  ;
     - net23 ( ANTENNA__079__A DIODE ) ( ANTENNA__080__A_N DIODE ) ( ANTENNA__125__RESET_B DIODE ) ( ANTENNA__073__A DIODE ) ( ANTENNA__074__A_N DIODE ) ( ANTENNA__083__A DIODE ) ( ANTENNA__084__A_N DIODE )
       ( fanout23 X ) ( _084_ A_N ) ( _083_ A ) ( _074_ A_N ) ( _073_ A ) ( _125_ RESET_B ) ( _080_ A_N ) ( _079_ A ) + USE SIGNAL
-      + ROUTED met1 ( 48530 53550 ) ( * 53890 )
-      NEW met1 ( 5750 45730 ) ( 6210 * )
+      + ROUTED met1 ( 5750 45730 ) ( 6210 * )
       NEW met1 ( 6210 45050 ) ( 7590 * )
       NEW met1 ( 6210 45050 ) ( * 45730 )
       NEW met1 ( 5750 4930 ) ( 6670 * )
       NEW met2 ( 5750 4930 ) ( * 45730 )
-      NEW met1 ( 11270 3910 ) ( * 4590 )
-      NEW met1 ( 9890 4590 ) ( 11270 * )
-      NEW met1 ( 9890 4590 ) ( * 4930 )
-      NEW met1 ( 6670 4930 ) ( 9890 * )
-      NEW met1 ( 11270 3230 ) ( 14030 * )
       NEW met1 ( 11270 3230 ) ( * 3910 )
+      NEW met1 ( 5750 3230 ) ( 11270 * )
+      NEW met2 ( 5750 3230 ) ( * 4930 )
+      NEW met1 ( 11270 3230 ) ( 14030 * )
       NEW met1 ( 14030 3230 ) ( 15870 * )
-      NEW met1 ( 16790 9350 ) ( 17250 * )
-      NEW met2 ( 16790 3230 ) ( * 9350 )
-      NEW met1 ( 15870 3230 ) ( 16790 * )
+      NEW met1 ( 15870 9350 ) ( 17250 * )
+      NEW met2 ( 15870 3230 ) ( * 9350 )
       NEW met1 ( 17250 9010 ) ( 22310 * )
       NEW met1 ( 17250 9010 ) ( * 9350 )
       NEW met1 ( 22310 9010 ) ( 23230 * )
-      NEW met1 ( 27370 11390 ) ( 30130 * )
-      NEW met2 ( 27370 9010 ) ( * 11390 )
-      NEW met1 ( 23230 9010 ) ( 27370 * )
-      NEW met1 ( 20930 45050 0 ) ( 31970 * )
+      NEW met1 ( 23230 11390 ) ( 30130 * )
+      NEW met2 ( 23230 9010 ) ( * 11390 )
+      NEW met1 ( 30590 45050 ) ( 31970 * )
+      NEW met1 ( 30590 45050 ) ( * 45390 )
+      NEW met1 ( 21390 45390 0 ) ( 30590 * )
       NEW met1 ( 5750 58310 ) ( 7130 * )
       NEW met1 ( 7130 58650 ) ( 19090 * )
       NEW met1 ( 7130 58310 ) ( * 58650 )
@@ -2028,11 +2020,11 @@ NETS 168 ;
       NEW met2 ( 30590 58990 ) ( 31970 * )
       NEW met1 ( 19090 58990 ) ( 30590 * )
       NEW met1 ( 19090 58650 ) ( * 58990 )
-      NEW met2 ( 45770 52020 ) ( * 53550 )
-      NEW met3 ( 31970 52020 ) ( 45770 * )
+      NEW met2 ( 45770 52700 ) ( * 53890 )
+      NEW met3 ( 31970 52700 ) ( 45770 * )
       NEW met2 ( 5750 45730 ) ( * 58310 )
       NEW met2 ( 31970 45050 ) ( * 58310 )
-      NEW met1 ( 45770 53550 ) ( 48530 * )
+      NEW met1 ( 45770 53890 ) ( 48530 * )
       NEW li1 ( 48530 53890 ) L1M1_PR_MR
       NEW li1 ( 6210 45730 ) L1M1_PR_MR
       NEW met1 ( 5750 45730 ) M1M2_PR
@@ -2040,16 +2032,17 @@ NETS 168 ;
       NEW li1 ( 6670 4930 ) L1M1_PR_MR
       NEW met1 ( 5750 4930 ) M1M2_PR
       NEW li1 ( 11270 3910 ) L1M1_PR_MR
+      NEW met1 ( 5750 3230 ) M1M2_PR
       NEW li1 ( 14030 3230 ) L1M1_PR_MR
       NEW li1 ( 15870 3230 ) L1M1_PR_MR
       NEW li1 ( 17250 9350 ) L1M1_PR_MR
-      NEW met1 ( 16790 9350 ) M1M2_PR
-      NEW met1 ( 16790 3230 ) M1M2_PR
+      NEW met1 ( 15870 9350 ) M1M2_PR
+      NEW met1 ( 15870 3230 ) M1M2_PR
       NEW li1 ( 22310 9010 ) L1M1_PR_MR
       NEW li1 ( 23230 9010 ) L1M1_PR_MR
       NEW li1 ( 30130 11390 ) L1M1_PR_MR
-      NEW met1 ( 27370 11390 ) M1M2_PR
-      NEW met1 ( 27370 9010 ) M1M2_PR
+      NEW met1 ( 23230 11390 ) M1M2_PR
+      NEW met1 ( 23230 9010 ) M1M2_PR
       NEW met1 ( 31970 45050 ) M1M2_PR
       NEW li1 ( 7130 58310 ) L1M1_PR_MR
       NEW met1 ( 5750 58310 ) M1M2_PR
@@ -2057,45 +2050,50 @@ NETS 168 ;
       NEW li1 ( 31970 58310 ) L1M1_PR_MR
       NEW met1 ( 31970 58310 ) M1M2_PR
       NEW met1 ( 30590 58990 ) M1M2_PR
-      NEW met1 ( 45770 53550 ) M1M2_PR
-      NEW met2 ( 45770 52020 ) M2M3_PR
-      NEW met2 ( 31970 52020 ) M2M3_PR
+      NEW met1 ( 45770 53890 ) M1M2_PR
+      NEW met2 ( 45770 52700 ) M2M3_PR
+      NEW met2 ( 31970 52700 ) M2M3_PR
+      NEW met1 ( 15870 3230 ) RECT ( -595 -70 0 70 ) 
+      NEW met1 ( 23230 9010 ) RECT ( -595 -70 0 70 ) 
       NEW met1 ( 31970 58310 ) RECT ( 0 -70 355 70 ) 
-      NEW met2 ( 31970 52020 ) RECT ( -70 -485 70 0 )  ;
+      NEW met2 ( 31970 52700 ) RECT ( -70 -485 70 0 )  ;
     - net24 ( fanout24 X ) ( _122_ RESET_B ) ( _072_ A_N ) ( _123_ RESET_B ) ( _124_ RESET_B ) ( fanout23 A ) + USE SIGNAL
-      + ROUTED met1 ( 40710 52190 ) ( 42090 * )
-      NEW met2 ( 40710 23290 ) ( * 52190 )
-      NEW met1 ( 39330 23290 ) ( 40710 * )
-      NEW met1 ( 47610 52190 ) ( * 52870 )
-      NEW met1 ( 42090 52190 ) ( 47610 * )
-      NEW met1 ( 25530 52530 0 ) ( 27830 * )
-      NEW met2 ( 27830 50830 ) ( * 52530 )
-      NEW met1 ( 27830 50830 ) ( 33350 * )
-      NEW met1 ( 33350 50830 ) ( * 51170 )
-      NEW met1 ( 33350 51170 ) ( 40710 * )
-      NEW met1 ( 14490 50830 0 ) ( 15410 * )
-      NEW met2 ( 15410 50830 ) ( * 53890 )
-      NEW met1 ( 15410 53890 ) ( 25530 * )
-      NEW met1 ( 25530 52530 0 ) ( * 53890 )
-      NEW met2 ( 15410 47090 ) ( * 50830 )
+      + ROUTED met1 ( 37030 38590 ) ( 41170 * )
+      NEW met2 ( 37030 23290 ) ( * 38590 )
+      NEW met1 ( 37030 23290 ) ( 39330 * )
       NEW met1 ( 13570 47090 0 ) ( 15410 * )
-      NEW li1 ( 42090 52190 ) L1M1_PR_MR
-      NEW met1 ( 40710 52190 ) M1M2_PR
-      NEW met1 ( 40710 23290 ) M1M2_PR
+      NEW met1 ( 42090 52190 ) ( 47610 * )
+      NEW met1 ( 47610 52190 ) ( * 52870 )
+      NEW met1 ( 41170 52190 ) ( 42090 * )
+      NEW met1 ( 25530 52530 0 ) ( 27830 * )
+      NEW met2 ( 27830 52020 ) ( * 52530 )
+      NEW met3 ( 27830 52020 ) ( 41170 * )
+      NEW met1 ( 15410 48450 ) ( 27830 * )
+      NEW met2 ( 27830 48450 ) ( * 52020 )
+      NEW met1 ( 14490 50830 0 ) ( 15410 * )
+      NEW met2 ( 15410 48450 ) ( * 50830 )
+      NEW met2 ( 15410 47090 ) ( * 48450 )
+      NEW met2 ( 41170 38590 ) ( * 52190 )
+      NEW met1 ( 41170 38590 ) M1M2_PR
+      NEW met1 ( 37030 38590 ) M1M2_PR
+      NEW met1 ( 37030 23290 ) M1M2_PR
       NEW li1 ( 39330 23290 ) L1M1_PR_MR
-      NEW li1 ( 47610 52870 ) L1M1_PR_MR
-      NEW met1 ( 27830 52530 ) M1M2_PR
-      NEW met1 ( 27830 50830 ) M1M2_PR
-      NEW met1 ( 40710 51170 ) M1M2_PR
-      NEW met1 ( 15410 50830 ) M1M2_PR
-      NEW met1 ( 15410 53890 ) M1M2_PR
       NEW met1 ( 15410 47090 ) M1M2_PR
-      NEW met2 ( 40710 51170 ) RECT ( -70 -485 70 0 )  ;
+      NEW li1 ( 42090 52190 ) L1M1_PR_MR
+      NEW li1 ( 47610 52870 ) L1M1_PR_MR
+      NEW met1 ( 41170 52190 ) M1M2_PR
+      NEW met1 ( 27830 52530 ) M1M2_PR
+      NEW met2 ( 27830 52020 ) M2M3_PR
+      NEW met2 ( 41170 52020 ) M2M3_PR
+      NEW met1 ( 15410 48450 ) M1M2_PR
+      NEW met1 ( 27830 48450 ) M1M2_PR
+      NEW met1 ( 15410 50830 ) M1M2_PR
+      NEW met2 ( 41170 52020 ) RECT ( -70 -485 70 0 )  ;
     - net25 ( fanout25 X ) ( _089_ A ) ( _087_ A ) ( _077_ A ) ( _134_ RESET_B ) ( _133_ RESET_B ) ( _088_ A_N )
       ( _071_ A ) + USE SIGNAL
       + ROUTED met1 ( 49450 13090 ) ( 52210 * )
       NEW met1 ( 48530 41990 ) ( 52210 * )
-      NEW met2 ( 52210 17170 ) ( * 41990 )
+      NEW met2 ( 52210 16830 ) ( * 41990 )
       NEW met1 ( 48530 50150 ) ( 52210 * )
       NEW met2 ( 52210 41990 ) ( * 50150 )
       NEW met1 ( 35650 55590 ) ( 38870 * )
@@ -2103,63 +2101,62 @@ NETS 168 ;
       NEW met1 ( 38870 55930 ) ( 39790 * )
       NEW met1 ( 48530 58310 ) ( 52210 * )
       NEW met2 ( 52210 50150 ) ( * 58310 )
-      NEW met2 ( 52210 13090 ) ( * 17170 )
-      NEW met1 ( 45770 17170 ) ( * 17850 )
-      NEW met2 ( 39790 47430 ) ( * 48110 )
-      NEW met1 ( 39790 48110 ) ( 40710 * )
-      NEW met1 ( 40710 47430 ) ( * 48110 )
-      NEW met1 ( 40710 47430 ) ( 45310 * )
-      NEW met1 ( 45310 47430 ) ( * 47770 )
-      NEW met1 ( 37490 45390 0 ) ( 39790 * )
-      NEW met2 ( 39790 45390 ) ( * 47430 )
-      NEW met2 ( 39790 48110 ) ( * 55930 )
-      NEW met1 ( 45770 17170 ) ( 52210 * )
-      NEW met1 ( 45310 47770 ) ( 52210 * )
+      NEW met2 ( 52210 13090 ) ( * 16830 )
+      NEW met2 ( 39790 48300 ) ( * 55930 )
+      NEW met2 ( 47150 16830 ) ( * 17510 )
+      NEW met1 ( 45770 17510 ) ( 47150 * )
+      NEW met1 ( 45770 17510 ) ( * 17850 )
+      NEW met1 ( 39790 47430 0 ) ( * 48110 )
+      NEW met2 ( 39790 48110 ) ( * 48300 )
+      NEW met1 ( 37490 45390 0 ) ( 38410 * )
+      NEW met2 ( 38410 45390 ) ( * 48300 )
+      NEW met2 ( 38410 48300 ) ( 39790 * )
+      NEW met1 ( 47150 16830 ) ( 52210 * )
+      NEW met1 ( 39790 48110 ) ( 52210 * )
       NEW li1 ( 49450 13090 ) L1M1_PR_MR
       NEW met1 ( 52210 13090 ) M1M2_PR
-      NEW met1 ( 52210 17170 ) M1M2_PR
+      NEW met1 ( 52210 16830 ) M1M2_PR
       NEW li1 ( 48530 41990 ) L1M1_PR_MR
       NEW met1 ( 52210 41990 ) M1M2_PR
       NEW li1 ( 48530 50150 ) L1M1_PR_MR
       NEW met1 ( 52210 50150 ) M1M2_PR
-      NEW met1 ( 52210 47770 ) M1M2_PR
+      NEW met1 ( 52210 48110 ) M1M2_PR
       NEW li1 ( 35650 55590 ) L1M1_PR_MR
       NEW met1 ( 39790 55930 ) M1M2_PR
       NEW li1 ( 48530 58310 ) L1M1_PR_MR
       NEW met1 ( 52210 58310 ) M1M2_PR
+      NEW met1 ( 47150 16830 ) M1M2_PR
+      NEW met1 ( 47150 17510 ) M1M2_PR
       NEW li1 ( 45770 17850 ) L1M1_PR_MR
-      NEW met1 ( 39790 47430 ) M1M2_PR
       NEW met1 ( 39790 48110 ) M1M2_PR
-      NEW met1 ( 39790 45390 ) M1M2_PR
-      NEW met2 ( 52210 47770 ) RECT ( -70 -485 70 0 )  ;
+      NEW met1 ( 38410 45390 ) M1M2_PR
+      NEW met2 ( 52210 48110 ) RECT ( -70 -485 70 0 ) 
+      NEW met1 ( 39790 48110 ) RECT ( 0 -70 595 70 )  ;
     - net26 ( fanout26 X ) ( _136_ A ) ( _135_ RESET_B ) ( _090_ A_N ) + USE SIGNAL
-      + ROUTED met1 ( 15410 25670 ) ( 16790 * )
-      NEW met1 ( 15410 25670 ) ( * 26690 )
-      NEW met2 ( 15410 26690 ) ( * 31620 )
-      NEW met2 ( 15410 31620 ) ( 15870 * )
+      + ROUTED met1 ( 14950 25670 ) ( 16790 * )
+      NEW met2 ( 14950 25670 ) ( * 31620 )
+      NEW met2 ( 14950 31620 ) ( 15870 * )
       NEW met2 ( 15870 31620 ) ( * 56270 )
-      NEW met2 ( 42090 16830 ) ( * 17510 )
-      NEW met1 ( 28750 17510 ) ( 42090 * )
-      NEW met1 ( 28750 16830 ) ( * 17510 )
-      NEW met1 ( 16330 16830 ) ( 28750 * )
-      NEW met2 ( 16330 16830 ) ( * 25670 )
-      NEW met2 ( 42090 16660 ) ( 42550 * )
-      NEW met2 ( 42090 16660 ) ( * 16830 )
+      NEW met1 ( 33810 16830 ) ( 42090 * )
+      NEW met1 ( 33810 16830 ) ( * 17170 )
+      NEW met1 ( 28750 17170 ) ( 33810 * )
+      NEW met1 ( 28750 16830 ) ( * 17170 )
+      NEW met1 ( 15870 16830 ) ( 28750 * )
+      NEW met2 ( 15870 16830 ) ( * 25670 )
+      NEW met1 ( 42090 16830 ) ( 42550 * )
       NEW met1 ( 13110 56270 0 ) ( 15870 * )
-      NEW met2 ( 42550 12410 ) ( * 16660 )
+      NEW met2 ( 42550 12410 ) ( * 16830 )
       NEW li1 ( 42550 12410 ) L1M1_PR_MR
       NEW met1 ( 42550 12410 ) M1M2_PR
       NEW li1 ( 16790 25670 ) L1M1_PR_MR
-      NEW met1 ( 15410 26690 ) M1M2_PR
+      NEW met1 ( 14950 25670 ) M1M2_PR
       NEW met1 ( 15870 56270 ) M1M2_PR
       NEW li1 ( 42090 16830 ) L1M1_PR_MR
-      NEW met1 ( 42090 16830 ) M1M2_PR
-      NEW met1 ( 42090 17510 ) M1M2_PR
-      NEW met1 ( 16330 16830 ) M1M2_PR
-      NEW met1 ( 16330 25670 ) M1M2_PR
+      NEW met1 ( 15870 16830 ) M1M2_PR
+      NEW met1 ( 15870 25670 ) M1M2_PR
+      NEW met1 ( 42550 16830 ) M1M2_PR
       NEW met1 ( 42550 12410 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 42090 16830 ) RECT ( -355 -70 0 70 ) 
-      NEW met1 ( 16330 25670 ) RECT ( -595 -70 0 70 )  ;
+      NEW met1 ( 15870 25670 ) RECT ( -595 -70 0 70 )  ;
     - net27 ( fanout27 X ) ( _132_ RESET_B ) ( _131_ RESET_B ) ( _086_ A_N ) ( _085_ A ) ( _078_ A_N ) ( _076_ A_N )
       ( _075_ A ) + USE SIGNAL
       + ROUTED met1 ( 48530 6290 ) ( 49910 * )
@@ -2167,50 +2164,51 @@ NETS 168 ;
       NEW met1 ( 48530 34170 ) ( 51290 * )
       NEW met2 ( 51290 25330 ) ( * 34170 )
       NEW met1 ( 49910 25330 ) ( 51290 * )
-      NEW met2 ( 39330 34850 ) ( * 36210 )
-      NEW met1 ( 39330 34850 ) ( 45770 * )
-      NEW met1 ( 45770 34170 ) ( * 34850 )
-      NEW met1 ( 45770 34170 ) ( 48530 * )
-      NEW met1 ( 37950 41990 0 ) ( 40250 * )
-      NEW met2 ( 40250 34850 ) ( * 41990 )
+      NEW met2 ( 49910 6290 ) ( * 25330 )
+      NEW met1 ( 40250 36210 0 ) ( 40710 * )
+      NEW met1 ( 40710 35870 ) ( * 36210 )
+      NEW met1 ( 40710 35870 ) ( 46230 * )
+      NEW met2 ( 46230 34170 ) ( * 35870 )
       NEW met1 ( 40250 42670 ) ( 42550 * )
-      NEW met1 ( 40250 41990 ) ( * 42670 )
-      NEW met1 ( 43930 45050 ) ( * 45390 )
-      NEW met1 ( 40250 45390 ) ( 43930 * )
-      NEW met2 ( 40250 41990 ) ( * 45390 )
+      NEW met2 ( 40250 36890 ) ( * 42670 )
+      NEW met1 ( 40250 36210 0 ) ( * 36890 )
+      NEW met1 ( 37950 41990 0 ) ( 40250 * )
+      NEW met1 ( 43930 45050 ) ( * 45730 )
+      NEW met1 ( 40710 45730 ) ( 43930 * )
+      NEW met1 ( 40710 45390 ) ( * 45730 )
+      NEW met1 ( 40250 45390 ) ( 40710 * )
+      NEW met2 ( 40250 42670 ) ( * 45390 )
       NEW met1 ( 45770 47430 ) ( 46230 * )
       NEW met2 ( 45770 45390 ) ( * 47430 )
       NEW met1 ( 43930 45390 ) ( 45770 * )
-      NEW met2 ( 29670 42330 ) ( * 44030 )
-      NEW met1 ( 29670 44030 ) ( 34730 * )
-      NEW met2 ( 34730 44030 ) ( * 47770 )
-      NEW met1 ( 34730 47770 ) ( 40250 * )
-      NEW met2 ( 40250 45390 ) ( * 47770 )
-      NEW met2 ( 49910 6290 ) ( * 25330 )
+      NEW met2 ( 29670 41820 ) ( * 41990 )
+      NEW met3 ( 29670 41820 ) ( 37950 * )
+      NEW met2 ( 37950 41820 ) ( * 41990 )
+      NEW met1 ( 46230 34170 ) ( 48530 * )
       NEW met1 ( 49910 6290 ) M1M2_PR
       NEW li1 ( 48530 6630 ) L1M1_PR_MR
       NEW li1 ( 48530 34170 ) L1M1_PR_MR
       NEW met1 ( 51290 34170 ) M1M2_PR
       NEW met1 ( 51290 25330 ) M1M2_PR
       NEW met1 ( 49910 25330 ) M1M2_PR
-      NEW met1 ( 39330 36210 ) M1M2_PR
-      NEW met1 ( 39330 34850 ) M1M2_PR
-      NEW met1 ( 40250 41990 ) M1M2_PR
-      NEW met1 ( 40250 34850 ) M1M2_PR
+      NEW met1 ( 46230 35870 ) M1M2_PR
+      NEW met1 ( 46230 34170 ) M1M2_PR
       NEW li1 ( 42550 42670 ) L1M1_PR_MR
+      NEW met1 ( 40250 42670 ) M1M2_PR
+      NEW met1 ( 40250 36890 ) M1M2_PR
+      NEW met1 ( 40250 41990 ) M1M2_PR
       NEW li1 ( 43930 45050 ) L1M1_PR_MR
       NEW met1 ( 40250 45390 ) M1M2_PR
       NEW li1 ( 46230 47430 ) L1M1_PR_MR
       NEW met1 ( 45770 47430 ) M1M2_PR
       NEW met1 ( 45770 45390 ) M1M2_PR
-      NEW li1 ( 29670 42330 ) L1M1_PR_MR
-      NEW met1 ( 29670 42330 ) M1M2_PR
-      NEW met1 ( 29670 44030 ) M1M2_PR
-      NEW met1 ( 34730 44030 ) M1M2_PR
-      NEW met1 ( 34730 47770 ) M1M2_PR
-      NEW met1 ( 40250 47770 ) M1M2_PR
-      NEW met1 ( 40250 34850 ) RECT ( -595 -70 0 70 ) 
-      NEW met1 ( 29670 42330 ) RECT ( -355 -70 0 70 )  ;
+      NEW li1 ( 29670 41990 ) L1M1_PR_MR
+      NEW met1 ( 29670 41990 ) M1M2_PR
+      NEW met2 ( 29670 41820 ) M2M3_PR
+      NEW met2 ( 37950 41820 ) M2M3_PR
+      NEW met1 ( 37950 41990 ) M1M2_PR
+      NEW met2 ( 40250 41990 ) RECT ( -70 -485 70 0 ) 
+      NEW met1 ( 29670 41990 ) RECT ( -355 -70 0 70 )  ;
     - net28 ( fanout28 X ) ( fanout26 A ) ( fanout25 A ) ( fanout27 A ) ( fanout22 A ) ( fanout24 A ) + USE SIGNAL
       + ROUTED met1 ( 43010 12410 ) ( 48530 * )
       NEW met2 ( 41630 41990 ) ( * 44540 )
@@ -2221,17 +2219,19 @@ NETS 168 ;
       NEW met1 ( 32430 37570 ) ( 43010 * )
       NEW met2 ( 43010 37570 ) ( * 41990 )
       NEW met1 ( 41630 41990 ) ( 43010 * )
-      NEW met1 ( 33810 24990 ) ( 42550 * )
-      NEW met2 ( 42550 24990 ) ( * 26860 )
-      NEW met2 ( 41630 26860 ) ( 42550 * )
+      NEW met1 ( 33810 26350 ) ( 34730 * )
+      NEW met2 ( 34730 26350 ) ( * 29580 )
+      NEW met2 ( 34270 29580 ) ( 34730 * )
+      NEW met2 ( 34270 29580 ) ( * 37570 )
+      NEW met1 ( 42090 17850 ) ( 43010 * )
+      NEW met2 ( 42090 17850 ) ( * 26860 )
+      NEW met2 ( 41630 26860 ) ( 42090 * )
       NEW met2 ( 41630 26860 ) ( * 37570 )
-      NEW met1 ( 42550 17850 ) ( 43010 * )
-      NEW met2 ( 42550 17850 ) ( * 24990 )
-      NEW met2 ( 42550 17340 ) ( 43010 * )
-      NEW met2 ( 42550 17340 ) ( * 17850 )
-      NEW met2 ( 43010 12410 ) ( * 17340 )
-      NEW met1 ( 43010 12410 ) M1M2_PR
+      NEW met1 ( 42090 14450 ) ( 43010 * )
+      NEW met2 ( 42090 14450 ) ( * 17850 )
+      NEW met2 ( 43010 12410 ) ( * 14450 )
       NEW li1 ( 48530 12410 ) L1M1_PR_MR
+      NEW met1 ( 43010 12410 ) M1M2_PR
       NEW li1 ( 41630 41990 ) L1M1_PR_MR
       NEW met1 ( 41630 41990 ) M1M2_PR
       NEW met1 ( 42090 52870 ) M1M2_PR
@@ -2239,12 +2239,16 @@ NETS 168 ;
       NEW li1 ( 32430 36550 ) L1M1_PR_MR
       NEW met1 ( 43010 37570 ) M1M2_PR
       NEW met1 ( 43010 41990 ) M1M2_PR
-      NEW li1 ( 33810 24990 ) L1M1_PR_MR
-      NEW met1 ( 42550 24990 ) M1M2_PR
-      NEW met1 ( 41630 37570 ) M1M2_PR
+      NEW li1 ( 33810 26350 ) L1M1_PR_MR
+      NEW met1 ( 34730 26350 ) M1M2_PR
+      NEW met1 ( 34270 37570 ) M1M2_PR
       NEW li1 ( 43010 17850 ) L1M1_PR_MR
-      NEW met1 ( 42550 17850 ) M1M2_PR
+      NEW met1 ( 42090 17850 ) M1M2_PR
+      NEW met1 ( 41630 37570 ) M1M2_PR
+      NEW met1 ( 43010 14450 ) M1M2_PR
+      NEW met1 ( 42090 14450 ) M1M2_PR
       NEW met1 ( 41630 41990 ) RECT ( -355 -70 0 70 ) 
+      NEW met1 ( 34270 37570 ) RECT ( -595 -70 0 70 ) 
       NEW met1 ( 41630 37570 ) RECT ( -595 -70 0 70 )  ;
     - net29 ( _109_ CLK_N ) ( _061__1 Y ) + USE CLOCK
       + ROUTED met2 ( 45310 45730 ) ( * 52530 )
@@ -2258,32 +2262,31 @@ NETS 168 ;
       NEW li1 ( 28750 52870 ) L1M1_PR_MR
       NEW met1 ( 45310 45730 ) RECT ( -355 -70 0 70 )  ;
     - net3 ( input3 X ) ( _139_ A ) ( _060_ A ) + USE SIGNAL
-      + ROUTED met2 ( 45770 3910 ) ( 46230 * )
-      NEW met1 ( 46230 3910 ) ( 47150 * )
-      NEW met1 ( 44390 27710 ) ( 45770 * )
-      NEW met1 ( 27830 26010 ) ( * 26350 )
-      NEW met1 ( 27830 26350 ) ( 30130 * )
-      NEW met1 ( 30130 26350 ) ( * 26690 )
-      NEW met1 ( 30130 26690 ) ( 45770 * )
-      NEW met2 ( 45770 3910 ) ( * 27710 )
-      NEW met1 ( 46230 3910 ) M1M2_PR
+      + ROUTED met1 ( 44390 3910 ) ( 47150 * )
+      NEW met1 ( 27830 25330 ) ( * 25670 )
+      NEW met1 ( 27830 25330 ) ( 34270 * )
+      NEW met1 ( 34270 24990 ) ( * 25330 )
+      NEW met1 ( 34270 24990 ) ( 42550 * )
+      NEW met2 ( 42550 24990 ) ( * 27710 )
+      NEW met1 ( 42550 27710 ) ( 44390 * )
+      NEW met2 ( 44390 3910 ) ( * 27710 )
+      NEW met1 ( 44390 3910 ) M1M2_PR
       NEW li1 ( 47150 3910 ) L1M1_PR_MR
       NEW li1 ( 44390 27710 ) L1M1_PR_MR
-      NEW met1 ( 45770 27710 ) M1M2_PR
-      NEW li1 ( 27830 26010 ) L1M1_PR_MR
-      NEW met1 ( 45770 26690 ) M1M2_PR
-      NEW met2 ( 45770 26690 ) RECT ( -70 -485 70 0 )  ;
+      NEW met1 ( 44390 27710 ) M1M2_PR
+      NEW li1 ( 27830 25670 ) L1M1_PR_MR
+      NEW met1 ( 42550 24990 ) M1M2_PR
+      NEW met1 ( 42550 27710 ) M1M2_PR
+      NEW met1 ( 44390 27710 ) RECT ( -355 -70 0 70 )  ;
     - net30 ( _110_ CLK_N ) ( _097__2 Y ) + USE CLOCK
       + ROUTED met1 ( 6670 43010 ) ( 7130 * )
-      NEW met2 ( 7130 43010 ) ( * 55590 )
-      NEW met1 ( 16330 55250 ) ( * 55590 )
-      NEW met1 ( 16330 55250 ) ( 17250 * )
-      NEW met1 ( 17250 55250 ) ( * 55590 )
-      NEW met1 ( 7130 55590 ) ( 16330 * )
+      NEW met2 ( 7130 43010 ) ( * 56610 )
+      NEW met1 ( 17250 55930 ) ( * 56610 )
+      NEW met1 ( 7130 56610 ) ( 17250 * )
       NEW li1 ( 6670 43010 ) L1M1_PR_MR
       NEW met1 ( 7130 43010 ) M1M2_PR
-      NEW met1 ( 7130 55590 ) M1M2_PR
-      NEW li1 ( 17250 55590 ) L1M1_PR_MR ;
+      NEW met1 ( 7130 56610 ) M1M2_PR
+      NEW li1 ( 17250 55930 ) L1M1_PR_MR ;
     - net31 ( _111_ CLK_N ) ( _098__3 Y ) + USE CLOCK
       + ROUTED met1 ( 31510 34170 ) ( 33350 * )
       NEW met2 ( 31510 34170 ) ( * 38590 )
@@ -2320,9 +2323,9 @@ NETS 168 ;
     - net35 ( _115_ CLK_N ) ( _102__7 Y ) + USE CLOCK
       + ROUTED met1 ( 6670 34170 ) ( 7590 * )
       NEW met2 ( 7590 34170 ) ( * 51170 )
-      NEW met1 ( 16330 50490 ) ( * 51170 )
-      NEW met1 ( 16330 50490 ) ( 17710 * )
-      NEW met1 ( 7590 51170 ) ( 16330 * )
+      NEW met1 ( 15870 50490 ) ( * 51170 )
+      NEW met1 ( 15870 50490 ) ( 17710 * )
+      NEW met1 ( 7590 51170 ) ( 15870 * )
       NEW li1 ( 6670 34170 ) L1M1_PR_MR
       NEW met1 ( 7590 34170 ) M1M2_PR
       NEW met1 ( 7590 51170 ) M1M2_PR
@@ -2336,13 +2339,13 @@ NETS 168 ;
       NEW met1 ( 34730 25670 ) M1M2_PR
       NEW met1 ( 34730 25670 ) RECT ( -355 -70 0 70 )  ;
     - net37 ( _117_ CLK_N ) ( _104__9 Y ) + USE CLOCK
-      + ROUTED met1 ( 36110 40290 ) ( 36570 * )
-      NEW met2 ( 36110 40290 ) ( * 50150 )
-      NEW met1 ( 34730 50150 ) ( 36110 * )
+      + ROUTED met1 ( 34730 40290 ) ( 36570 * )
+      NEW met2 ( 34730 40290 ) ( * 50150 )
       NEW li1 ( 36570 40290 ) L1M1_PR_MR
-      NEW met1 ( 36110 40290 ) M1M2_PR
-      NEW met1 ( 36110 50150 ) M1M2_PR
-      NEW li1 ( 34730 50150 ) L1M1_PR_MR ;
+      NEW met1 ( 34730 40290 ) M1M2_PR
+      NEW li1 ( 34730 50150 ) L1M1_PR_MR
+      NEW met1 ( 34730 50150 ) M1M2_PR
+      NEW met1 ( 34730 50150 ) RECT ( -355 -70 0 70 )  ;
     - net38 ( _118_ CLK_N ) ( _105__10 Y ) + USE CLOCK
       + ROUTED met2 ( 29210 15810 ) ( * 55930 )
       NEW met1 ( 29210 55930 ) ( 37490 * )
@@ -2380,14 +2383,12 @@ NETS 168 ;
       NEW li1 ( 26910 31450 ) L1M1_PR_MR
       NEW li1 ( 22310 31450 ) L1M1_PR_MR ;
     - net42 ( _135_ CLK ) ( _062__14 Y ) + USE CLOCK
-      + ROUTED met1 ( 19550 55590 ) ( 20470 * )
-      NEW met1 ( 19550 55590 ) ( * 55930 )
-      NEW met1 ( 16790 55930 ) ( 19550 * )
+      + ROUTED met1 ( 16790 55590 ) ( 20470 * )
       NEW met2 ( 20470 10370 ) ( * 55590 )
       NEW li1 ( 20470 10370 ) L1M1_PR_MR
       NEW met1 ( 20470 10370 ) M1M2_PR
       NEW met1 ( 20470 55590 ) M1M2_PR
-      NEW li1 ( 16790 55930 ) L1M1_PR_MR
+      NEW li1 ( 16790 55590 ) L1M1_PR_MR
       NEW met1 ( 20470 10370 ) RECT ( -355 -70 0 70 )  ;
     - net43 ( _132_ D ) ( _112_ D ) ( hold1 X ) + USE SIGNAL
       + ROUTED met2 ( 39330 39610 ) ( * 41650 )
@@ -2406,20 +2407,20 @@ NETS 168 ;
       NEW met1 ( 39330 39610 ) RECT ( -355 -70 0 70 )  ;
     - net44 ( _134_ D ) ( _117_ D ) ( hold2 X ) + USE SIGNAL
       + ROUTED met1 ( 34270 50490 ) ( 36570 * )
-      NEW met2 ( 34270 47770 ) ( * 50490 )
+      NEW met1 ( 34270 47090 ) ( 34305 * )
+      NEW met2 ( 34270 47090 ) ( * 50490 )
       NEW li1 ( 34270 50490 ) L1M1_PR_MR
       NEW li1 ( 36570 50490 ) L1M1_PR_MR
-      NEW li1 ( 34270 47770 ) L1M1_PR_MR
-      NEW met1 ( 34270 47770 ) M1M2_PR
+      NEW li1 ( 34305 47090 ) L1M1_PR_MR
+      NEW met1 ( 34270 47090 ) M1M2_PR
       NEW met1 ( 34270 50490 ) M1M2_PR
-      NEW met1 ( 34270 47770 ) RECT ( -355 -70 0 70 ) 
+      NEW met1 ( 34305 47090 ) RECT ( 0 -70 320 70 ) 
       NEW met1 ( 34270 50490 ) RECT ( -595 -70 0 70 )  ;
     - net45 ( _123_ D ) ( _109_ D ) ( hold3 X ) + USE SIGNAL
       + ROUTED met1 ( 29670 52870 ) ( 30590 * )
       NEW met2 ( 29670 46750 ) ( * 52870 )
-      NEW met1 ( 18170 46750 ) ( 29670 * )
-      NEW met1 ( 18170 46750 ) ( * 47090 )
-      NEW met1 ( 15870 47090 ) ( 18170 * )
+      NEW met1 ( 15870 46750 ) ( 29670 * )
+      NEW met1 ( 15870 46750 ) ( * 47090 )
       NEW met1 ( 29670 55590 ) ( 31050 * )
       NEW met2 ( 29670 52870 ) ( * 55590 )
       NEW li1 ( 30590 52870 ) L1M1_PR_MR
@@ -2429,21 +2430,21 @@ NETS 168 ;
       NEW li1 ( 31050 55590 ) L1M1_PR_MR
       NEW met1 ( 29670 55590 ) M1M2_PR ;
     - net46 ( _125_ D ) ( _110_ D ) ( hold4 X ) + USE SIGNAL
-      + ROUTED met2 ( 19090 55590 ) ( * 56100 )
-      NEW met2 ( 19090 56100 ) ( 19550 * )
-      NEW met2 ( 19550 56100 ) ( * 58650 )
-      NEW met1 ( 19550 58650 ) ( 25990 * )
-      NEW met1 ( 25990 57630 ) ( * 58650 )
-      NEW met1 ( 25990 57630 ) ( 43930 * )
+      + ROUTED met1 ( 18985 55930 ) ( 19550 * )
+      NEW met2 ( 19550 55930 ) ( * 58650 )
+      NEW met1 ( 19550 58650 ) ( 25070 * )
+      NEW met1 ( 25070 57630 ) ( * 58650 )
+      NEW met1 ( 25070 57630 ) ( 43930 * )
       NEW met1 ( 15410 44710 ) ( 19090 * )
-      NEW met2 ( 19090 44710 ) ( * 55590 )
-      NEW li1 ( 19090 55590 ) L1M1_PR_MR
-      NEW met1 ( 19090 55590 ) M1M2_PR
+      NEW met2 ( 19090 44710 ) ( * 47940 )
+      NEW met2 ( 19090 47940 ) ( 19550 * )
+      NEW met2 ( 19550 47940 ) ( * 55930 )
+      NEW li1 ( 18985 55930 ) L1M1_PR_MR
+      NEW met1 ( 19550 55930 ) M1M2_PR
       NEW met1 ( 19550 58650 ) M1M2_PR
       NEW li1 ( 43930 57630 ) L1M1_PR_MR
       NEW li1 ( 15410 44710 ) L1M1_PR_MR
-      NEW met1 ( 19090 44710 ) M1M2_PR
-      NEW met1 ( 19090 55590 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 19090 44710 ) M1M2_PR ;
     - net47 ( _124_ D ) ( _115_ D ) ( hold5 X ) + USE SIGNAL
       + ROUTED met1 ( 12190 45390 ) ( 13570 * )
       NEW met2 ( 12190 45390 ) ( * 50150 )
@@ -2459,18 +2460,18 @@ NETS 168 ;
       NEW li1 ( 19550 50150 ) L1M1_PR_MR
       NEW met1 ( 12190 50150 ) RECT ( -595 -70 0 70 )  ;
     - net48 ( _126_ D ) ( _113_ D ) ( hold6 X ) + USE SIGNAL
-      + ROUTED met2 ( 19550 42330 ) ( * 47430 )
+      + ROUTED met2 ( 19550 41650 ) ( * 47430 )
       NEW met1 ( 19550 47430 ) ( 20010 * )
       NEW met1 ( 19090 44030 ) ( 24610 * )
       NEW met2 ( 19090 43860 ) ( * 44030 )
       NEW met2 ( 19090 43860 ) ( 19550 * )
-      NEW li1 ( 19550 42330 ) L1M1_PR_MR
-      NEW met1 ( 19550 42330 ) M1M2_PR
+      NEW li1 ( 19550 41650 ) L1M1_PR_MR
+      NEW met1 ( 19550 41650 ) M1M2_PR
       NEW met1 ( 19550 47430 ) M1M2_PR
       NEW li1 ( 20010 47430 ) L1M1_PR_MR
       NEW li1 ( 24610 44030 ) L1M1_PR_MR
       NEW met1 ( 19090 44030 ) M1M2_PR
-      NEW met1 ( 19550 42330 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 19550 41650 ) RECT ( -355 -70 0 70 )  ;
     - net49 ( _118_ D ) ( hold7 X ) + USE SIGNAL
       + ROUTED met1 ( 42550 53890 ) ( 43930 * )
       NEW met2 ( 42550 53890 ) ( * 55590 )
@@ -2483,19 +2484,21 @@ NETS 168 ;
       + ROUTED met1 ( 43010 6290 ) ( 46230 * )
       NEW met1 ( 43010 6290 ) ( * 6970 )
       NEW met1 ( 41170 6970 ) ( 43010 * )
-      NEW met1 ( 35650 17850 ) ( 41170 * )
-      NEW met2 ( 35650 17850 ) ( * 31620 )
-      NEW met2 ( 35190 31620 ) ( 35650 * )
-      NEW met2 ( 35190 31620 ) ( * 49810 )
+      NEW met2 ( 41170 6970 ) ( * 9350 )
+      NEW met1 ( 37490 9350 ) ( 41170 * )
+      NEW met1 ( 35190 33150 ) ( 37490 * )
+      NEW met2 ( 35190 33150 ) ( * 49810 )
       NEW met1 ( 28290 49810 ) ( 35190 * )
       NEW met2 ( 28290 49810 ) ( * 52190 )
       NEW met1 ( 19550 52190 ) ( 28290 * )
       NEW met1 ( 19550 52190 ) ( * 52530 )
-      NEW met2 ( 41170 6970 ) ( * 17850 )
+      NEW met2 ( 37490 9350 ) ( * 33150 )
       NEW li1 ( 46230 6290 ) L1M1_PR_MR
       NEW met1 ( 41170 6970 ) M1M2_PR
-      NEW met1 ( 41170 17850 ) M1M2_PR
-      NEW met1 ( 35650 17850 ) M1M2_PR
+      NEW met1 ( 41170 9350 ) M1M2_PR
+      NEW met1 ( 37490 9350 ) M1M2_PR
+      NEW met1 ( 37490 33150 ) M1M2_PR
+      NEW met1 ( 35190 33150 ) M1M2_PR
       NEW met1 ( 35190 49810 ) M1M2_PR
       NEW met1 ( 28290 49810 ) M1M2_PR
       NEW met1 ( 28290 52190 ) M1M2_PR
@@ -2503,15 +2506,15 @@ NETS 168 ;
     - net50 ( _130_ D ) ( _121_ D ) ( hold8 X ) + USE SIGNAL
       + ROUTED met2 ( 28750 31450 ) ( * 33830 )
       NEW met1 ( 21390 33830 ) ( 28750 * )
-      NEW met1 ( 29210 26690 ) ( 29670 * )
-      NEW met2 ( 29670 26690 ) ( * 31450 )
+      NEW met1 ( 29210 26350 ) ( 29670 * )
+      NEW met2 ( 29670 26350 ) ( * 31450 )
       NEW met1 ( 28750 31450 ) ( 29670 * )
       NEW li1 ( 28750 31450 ) L1M1_PR_MR
       NEW met1 ( 28750 31450 ) M1M2_PR
       NEW met1 ( 28750 33830 ) M1M2_PR
       NEW li1 ( 21390 33830 ) L1M1_PR_MR
-      NEW li1 ( 29210 26690 ) L1M1_PR_MR
-      NEW met1 ( 29670 26690 ) M1M2_PR
+      NEW li1 ( 29210 26350 ) L1M1_PR_MR
+      NEW met1 ( 29670 26350 ) M1M2_PR
       NEW met1 ( 29670 31450 ) M1M2_PR
       NEW met1 ( 28750 31450 ) RECT ( -355 -70 0 70 )  ;
     - net51 ( _129_ D ) ( _120_ D ) ( hold9 X ) + USE SIGNAL
@@ -2527,15 +2530,17 @@ NETS 168 ;
       NEW li1 ( 22770 23290 ) L1M1_PR_MR
       NEW met1 ( 21850 23290 ) M1M2_PR ;
     - net52 ( _133_ D ) ( _116_ D ) ( hold10 X ) + USE SIGNAL
-      + ROUTED met2 ( 39790 32130 ) ( * 44710 )
-      NEW met2 ( 37950 44710 ) ( 39790 * )
-      NEW met1 ( 37950 44710 ) ( 39755 * )
+      + ROUTED met2 ( 39790 32130 ) ( * 44030 )
+      NEW met2 ( 38870 44030 ) ( 39790 * )
+      NEW met2 ( 38870 44030 ) ( * 45730 )
+      NEW met1 ( 38870 45390 ) ( * 45730 )
+      NEW met1 ( 38870 45390 ) ( 39755 * )
       NEW met2 ( 36570 26010 ) ( * 32130 )
       NEW met1 ( 36570 32130 ) ( 39790 * )
       NEW li1 ( 39790 32130 ) L1M1_PR_MR
       NEW met1 ( 39790 32130 ) M1M2_PR
-      NEW met1 ( 37950 44710 ) M1M2_PR
-      NEW li1 ( 39755 44710 ) L1M1_PR_MR
+      NEW met1 ( 38870 45730 ) M1M2_PR
+      NEW li1 ( 39755 45390 ) L1M1_PR_MR
       NEW li1 ( 36570 26010 ) L1M1_PR_MR
       NEW met1 ( 36570 26010 ) M1M2_PR
       NEW met1 ( 36570 32130 ) M1M2_PR
@@ -2555,17 +2560,17 @@ NETS 168 ;
       NEW li1 ( 19550 17510 ) L1M1_PR_MR
       NEW met1 ( 20930 17510 ) M1M2_PR ;
     - net54 ( _131_ D ) ( _111_ D ) ( hold12 X ) + USE SIGNAL
-      + ROUTED met2 ( 35650 40290 ) ( * 42330 )
+      + ROUTED met2 ( 35650 38590 ) ( * 42330 )
       NEW met1 ( 32430 42330 ) ( 35650 * )
       NEW met1 ( 35190 34170 ) ( 35650 * )
-      NEW met2 ( 35650 34170 ) ( * 40290 )
-      NEW li1 ( 35650 40290 ) L1M1_PR_MR
-      NEW met1 ( 35650 40290 ) M1M2_PR
+      NEW met2 ( 35650 34170 ) ( * 38590 )
+      NEW li1 ( 35650 38590 ) L1M1_PR_MR
+      NEW met1 ( 35650 38590 ) M1M2_PR
       NEW met1 ( 35650 42330 ) M1M2_PR
       NEW li1 ( 32430 42330 ) L1M1_PR_MR
       NEW li1 ( 35190 34170 ) L1M1_PR_MR
       NEW met1 ( 35650 34170 ) M1M2_PR
-      NEW met1 ( 35650 40290 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 35650 38590 ) RECT ( -355 -70 0 70 )  ;
     - net55 ( _127_ D ) ( _114_ D ) ( hold13 X ) + USE SIGNAL
       + ROUTED met2 ( 20010 36890 ) ( * 38590 )
       NEW met1 ( 20010 38590 ) ( 25990 * )
@@ -2579,13 +2584,13 @@ NETS 168 ;
       NEW met1 ( 20010 36890 ) RECT ( 0 -70 355 70 ) 
       NEW met2 ( 20010 37570 ) RECT ( -70 -485 70 0 )  ;
     - net6 ( output6 A ) ( _119_ Q ) + USE SIGNAL
-      + ROUTED met1 ( 32890 3910 ) ( 33350 * )
-      NEW met1 ( 29730 16830 ) ( 32890 * )
-      NEW met2 ( 32890 3910 ) ( * 16830 )
+      + ROUTED met1 ( 29730 16830 ) ( 33350 * )
+      NEW met2 ( 33350 3910 ) ( * 16830 )
       NEW li1 ( 33350 3910 ) L1M1_PR_MR
-      NEW met1 ( 32890 3910 ) M1M2_PR
-      NEW met1 ( 32890 16830 ) M1M2_PR
-      NEW li1 ( 29730 16830 ) L1M1_PR_MR ;
+      NEW met1 ( 33350 3910 ) M1M2_PR
+      NEW met1 ( 33350 16830 ) M1M2_PR
+      NEW li1 ( 29730 16830 ) L1M1_PR_MR
+      NEW met1 ( 33350 3910 ) RECT ( -355 -70 0 70 )  ;
     - net7 ( output7 A ) ( _121_ Q ) + USE SIGNAL
       + ROUTED met1 ( 38930 31110 ) ( 39790 * )
       NEW met2 ( 39790 6970 ) ( * 31110 )
@@ -2646,14 +2651,14 @@ NETS 168 ;
       + ROUTED met1 ( 58650 8670 ) ( * 9010 )
       NEW met1 ( 39790 9010 ) ( 58650 * )
       NEW met1 ( 58650 8670 ) ( 83030 * )
-      NEW met1 ( 69230 15470 ) ( 83030 * )
-      NEW met2 ( 69230 15470 ) ( * 16660 )
+      NEW met1 ( 69230 15130 ) ( 83030 * )
+      NEW met2 ( 69230 15130 ) ( * 16660 )
       NEW met3 ( 69230 16660 ) ( 70380 * 0 )
-      NEW met2 ( 83030 8670 ) ( * 15470 )
+      NEW met2 ( 83030 8670 ) ( * 15130 )
       NEW met1 ( 83030 8670 ) M1M2_PR
       NEW li1 ( 39790 9010 ) L1M1_PR_MR
-      NEW met1 ( 83030 15470 ) M1M2_PR
-      NEW met1 ( 69230 15470 ) M1M2_PR
+      NEW met1 ( 83030 15130 ) M1M2_PR
+      NEW met1 ( 69230 15130 ) M1M2_PR
       NEW met2 ( 69230 16660 ) M2M3_PR ;
     - pad_gpio_dm[0] ( PIN pad_gpio_dm[0] ) ( output9 X ) + USE SIGNAL
       + ROUTED met1 ( 36110 13090 ) ( 47150 * )
@@ -2672,46 +2677,46 @@ NETS 168 ;
       NEW met1 ( 34270 15810 ) M1M2_PR
       NEW met1 ( 34270 15810 ) RECT ( -355 -70 0 70 )  ;
     - pad_gpio_dm[2] ( PIN pad_gpio_dm[2] ) ( output11 X ) + USE SIGNAL
-      + ROUTED met1 ( 82800 9010 ) ( 96830 * )
+      + ROUTED met1 ( 82800 9010 ) ( 84410 * )
       NEW met1 ( 82800 9010 ) ( * 9690 )
       NEW met1 ( 46690 9690 ) ( 82800 * )
-      NEW met1 ( 67850 22610 ) ( 96830 * )
-      NEW met2 ( 67850 22610 ) ( * 22780 )
-      NEW met3 ( 67850 22780 ) ( 70380 * 0 )
-      NEW met2 ( 96830 9010 ) ( * 22610 )
-      NEW met1 ( 96830 9010 ) M1M2_PR
+      NEW met1 ( 68310 15810 ) ( 84410 * )
+      NEW met2 ( 68310 15810 ) ( * 22780 )
+      NEW met3 ( 68310 22780 ) ( 70380 * 0 )
+      NEW met2 ( 84410 9010 ) ( * 15810 )
+      NEW met1 ( 84410 9010 ) M1M2_PR
       NEW li1 ( 46690 9690 ) L1M1_PR_MR
-      NEW met1 ( 96830 22610 ) M1M2_PR
-      NEW met1 ( 67850 22610 ) M1M2_PR
-      NEW met2 ( 67850 22780 ) M2M3_PR ;
+      NEW met1 ( 84410 15810 ) M1M2_PR
+      NEW met1 ( 68310 15810 ) M1M2_PR
+      NEW met2 ( 68310 22780 ) M2M3_PR ;
     - pad_gpio_holdover ( PIN pad_gpio_holdover ) ( output12 X ) + USE SIGNAL
-      + ROUTED met2 ( 68770 20570 ) ( * 24820 )
-      NEW met3 ( 68770 24820 ) ( 70380 * 0 )
-      NEW met2 ( 40710 18190 ) ( * 20570 )
-      NEW met1 ( 40710 20570 ) ( 68770 * )
-      NEW met1 ( 68770 20570 ) M1M2_PR
-      NEW met2 ( 68770 24820 ) M2M3_PR
-      NEW met1 ( 40710 20570 ) M1M2_PR
-      NEW li1 ( 40710 18190 ) L1M1_PR_MR
-      NEW met1 ( 40710 18190 ) M1M2_PR
-      NEW met1 ( 40710 18190 ) RECT ( -355 -70 0 70 )  ;
+      + ROUTED met2 ( 67850 16830 ) ( * 24820 )
+      NEW met3 ( 67850 24820 ) ( 70380 * 0 )
+      NEW met1 ( 62100 16830 ) ( 67850 * )
+      NEW met1 ( 62100 16830 ) ( * 17170 )
+      NEW met1 ( 40710 17170 ) ( 62100 * )
+      NEW met1 ( 67850 16830 ) M1M2_PR
+      NEW met2 ( 67850 24820 ) M2M3_PR
+      NEW li1 ( 40710 17170 ) L1M1_PR_MR ;
     - pad_gpio_ib_mode_sel ( PIN pad_gpio_ib_mode_sel ) ( output13 X ) + USE SIGNAL
-      + ROUTED met2 ( 68310 19890 ) ( * 26860 )
-      NEW met3 ( 68310 26860 ) ( 70380 * 0 )
-      NEW met1 ( 39790 19890 ) ( 68310 * )
-      NEW met1 ( 68310 19890 ) M1M2_PR
-      NEW met2 ( 68310 26860 ) M2M3_PR
-      NEW li1 ( 39790 19890 ) L1M1_PR_MR ;
+      + ROUTED met2 ( 68770 20570 ) ( * 26860 )
+      NEW met3 ( 68770 26860 ) ( 70380 * 0 )
+      NEW met1 ( 39790 20570 ) ( 68770 * )
+      NEW met1 ( 68770 20570 ) M1M2_PR
+      NEW met2 ( 68770 26860 ) M2M3_PR
+      NEW li1 ( 39790 20570 ) L1M1_PR_MR ;
     - pad_gpio_in ( PIN pad_gpio_in ) ( ANTENNA_input3_A DIODE ) ( input3 A ) + USE SIGNAL
-      + ROUTED met1 ( 45310 4250 ) ( 45770 * )
-      NEW met2 ( 45310 28730 ) ( * 28900 )
-      NEW met2 ( 45310 4250 ) ( * 28730 )
+      + ROUTED met2 ( 45310 28730 ) ( * 28900 )
+      NEW met2 ( 45310 24140 ) ( 45770 * )
+      NEW met2 ( 45310 24140 ) ( * 28730 )
+      NEW met2 ( 45770 4930 ) ( * 24140 )
       NEW met3 ( 45310 28900 ) ( 70380 * 0 )
-      NEW li1 ( 45770 4250 ) L1M1_PR_MR
-      NEW met1 ( 45310 4250 ) M1M2_PR
+      NEW li1 ( 45770 4930 ) L1M1_PR_MR
+      NEW met1 ( 45770 4930 ) M1M2_PR
       NEW li1 ( 45310 28730 ) L1M1_PR_MR
       NEW met1 ( 45310 28730 ) M1M2_PR
       NEW met2 ( 45310 28900 ) M2M3_PR
+      NEW met1 ( 45770 4930 ) RECT ( 0 -70 355 70 ) 
       NEW met1 ( 45310 28730 ) RECT ( -355 -70 0 70 )  ;
     - pad_gpio_inenb ( PIN pad_gpio_inenb ) ( output14 X ) + USE SIGNAL
       + ROUTED met2 ( 56810 15810 ) ( * 30940 )
@@ -2723,11 +2728,11 @@ NETS 168 ;
     - pad_gpio_out ( PIN pad_gpio_out ) ( output15 X ) + USE SIGNAL
       + ROUTED met2 ( 68770 28390 ) ( * 32980 )
       NEW met3 ( 68770 32980 ) ( 70380 * 0 )
-      NEW met1 ( 47610 28390 ) ( * 28730 )
-      NEW met1 ( 46230 28730 ) ( 47610 * )
-      NEW met1 ( 46230 28390 ) ( * 28730 )
-      NEW met1 ( 39790 28390 ) ( 46230 * )
-      NEW met1 ( 47610 28390 ) ( 68770 * )
+      NEW met1 ( 47150 28390 ) ( * 28680 )
+      NEW met1 ( 46690 28680 ) ( 47150 * )
+      NEW met1 ( 46690 28390 ) ( * 28680 )
+      NEW met1 ( 39790 28390 ) ( 46690 * )
+      NEW met1 ( 47150 28390 ) ( 68770 * )
       NEW met1 ( 68770 28390 ) M1M2_PR
       NEW met2 ( 68770 32980 ) M2M3_PR
       NEW li1 ( 39790 28390 ) L1M1_PR_MR ;
@@ -2755,32 +2760,16 @@ NETS 168 ;
     - resetn ( PIN resetn ) ( ANTENNA_input4_A DIODE ) ( input4 A ) + USE SIGNAL
       + ROUTED met2 ( 68310 29410 ) ( * 41140 )
       NEW met3 ( 68310 41140 ) ( 70380 * 0 )
-      NEW met1 ( 62100 29410 ) ( 68310 * )
-      NEW met1 ( 51290 28730 ) ( * 29410 )
-      NEW met1 ( 51290 28730 ) ( 62100 * )
-      NEW met1 ( 62100 28730 ) ( * 29410 )
+      NEW met1 ( 6670 28390 ) ( 13800 * )
       NEW met1 ( 18170 28730 ) ( 20010 * )
       NEW met1 ( 20010 28730 ) ( * 29410 )
-      NEW met1 ( 20010 29410 ) ( 34730 * )
-      NEW met2 ( 34730 29410 ) ( * 30430 )
-      NEW met1 ( 34730 30430 ) ( 47150 * )
-      NEW met2 ( 47150 29070 ) ( * 30430 )
-      NEW met2 ( 47150 29070 ) ( 47610 * )
-      NEW met2 ( 47610 28900 ) ( * 29070 )
-      NEW met2 ( 47610 28900 ) ( 48070 * )
-      NEW met2 ( 48070 28900 ) ( * 29410 )
-      NEW met1 ( 6670 28390 ) ( 16790 * )
-      NEW met1 ( 16790 28390 ) ( * 28730 )
-      NEW met1 ( 16790 28730 ) ( 18170 * )
-      NEW met1 ( 48070 29410 ) ( 51290 * )
+      NEW met1 ( 13800 28390 ) ( * 28730 )
+      NEW met1 ( 13800 28730 ) ( 18170 * )
+      NEW met1 ( 20010 29410 ) ( 68310 * )
+      NEW li1 ( 6670 28390 ) L1M1_PR_MR
       NEW met1 ( 68310 29410 ) M1M2_PR
       NEW met2 ( 68310 41140 ) M2M3_PR
-      NEW li1 ( 18170 28730 ) L1M1_PR_MR
-      NEW met1 ( 34730 29410 ) M1M2_PR
-      NEW met1 ( 34730 30430 ) M1M2_PR
-      NEW met1 ( 47150 30430 ) M1M2_PR
-      NEW met1 ( 48070 29410 ) M1M2_PR
-      NEW li1 ( 6670 28390 ) L1M1_PR_MR ;
+      NEW li1 ( 18170 28730 ) L1M1_PR_MR ;
     - resetn_out ( PIN resetn_out ) ( output19 X ) + USE SIGNAL
       + ROUTED met2 ( 46230 43180 ) ( * 57970 )
       NEW met1 ( 34270 57970 ) ( 46230 * )
@@ -2794,21 +2783,23 @@ NETS 168 ;
       NEW li1 ( 30130 58310 ) L1M1_PR_MR ;
     - serial_clock ( PIN serial_clock ) ( ANTENNA_clkbuf_0_serial_clock_A DIODE ) ( clkbuf_0_serial_clock A ) + USE CLOCK
       + ROUTED met1 ( 25070 13090 ) ( 25990 * )
-      NEW met1 ( 17250 57630 ) ( 25070 * )
+      NEW met2 ( 24610 54060 ) ( 25070 * )
+      NEW met2 ( 24610 54060 ) ( * 57630 )
+      NEW met1 ( 17250 57630 ) ( 24610 * )
       NEW met1 ( 17250 57630 ) ( * 57970 )
       NEW met2 ( 41630 45220 ) ( * 56610 )
-      NEW met1 ( 25530 56610 ) ( 41630 * )
-      NEW met2 ( 25530 56100 ) ( * 56610 )
-      NEW met2 ( 25070 56100 ) ( 25530 * )
-      NEW met2 ( 25070 13090 ) ( * 57630 )
+      NEW met1 ( 25070 56610 ) ( 41630 * )
+      NEW met2 ( 25070 56610 ) ( * 56780 )
+      NEW met2 ( 24610 56780 ) ( 25070 * )
+      NEW met2 ( 25070 13090 ) ( * 54060 )
       NEW met3 ( 41630 45220 ) ( 70380 * 0 )
       NEW met1 ( 25070 13090 ) M1M2_PR
       NEW li1 ( 25990 13090 ) L1M1_PR_MR
-      NEW met1 ( 25070 57630 ) M1M2_PR
+      NEW met1 ( 24610 57630 ) M1M2_PR
       NEW li1 ( 17250 57970 ) L1M1_PR_MR
       NEW met2 ( 41630 45220 ) M2M3_PR
       NEW met1 ( 41630 56610 ) M1M2_PR
-      NEW met1 ( 25530 56610 ) M1M2_PR ;
+      NEW met1 ( 25070 56610 ) M1M2_PR ;
     - serial_clock_out ( PIN serial_clock_out ) ( serial_clock_out_buffer X ) + USE CLOCK
       + ROUTED met1 ( 25530 12750 ) ( 27370 * )
       NEW met2 ( 69230 18530 ) ( * 41140 )
@@ -2823,55 +2814,56 @@ NETS 168 ;
       NEW met2 ( 68770 47260 ) M2M3_PR
       NEW met1 ( 27370 18530 ) M1M2_PR ;
     - serial_clock_out_buffered ( _134_ CLK ) ( _133_ CLK ) ( _132_ CLK ) ( _131_ CLK ) ( _122_ CLK ) ( clkbuf_1_1__f_serial_clock X ) ( serial_clock_out_buffer A ) + USE CLOCK
-      + ROUTED met1 ( 16790 12750 ) ( 18170 * )
+      + ROUTED met1 ( 17710 52870 ) ( 18170 * )
       NEW met1 ( 17710 33150 ) ( 18170 * )
       NEW met2 ( 17710 28900 ) ( * 33150 )
       NEW met2 ( 17710 28900 ) ( 18170 * )
+      NEW met2 ( 18170 12750 ) ( * 28900 )
+      NEW met1 ( 16790 12750 ) ( 18170 * )
+      NEW met2 ( 31050 42330 ) ( * 42500 )
+      NEW met3 ( 17710 42500 ) ( 31050 * )
       NEW met1 ( 32890 36210 ) ( * 36550 )
-      NEW met1 ( 29670 36210 ) ( 32890 * )
-      NEW met1 ( 29670 35870 ) ( * 36210 )
-      NEW met1 ( 17710 35870 ) ( 29670 * )
-      NEW met2 ( 17710 33150 ) ( * 35870 )
-      NEW met1 ( 30590 42330 ) ( 31050 * )
-      NEW met2 ( 30590 36210 ) ( * 42330 )
+      NEW met1 ( 30590 36210 ) ( 32890 * )
+      NEW met1 ( 30590 36210 ) ( * 36890 )
+      NEW met2 ( 30590 36890 ) ( * 42330 )
+      NEW met2 ( 30590 42330 ) ( 31050 * )
       NEW met1 ( 30590 47770 ) ( 32890 * )
       NEW met2 ( 30590 42330 ) ( * 47770 )
-      NEW met1 ( 17710 52870 ) ( 18170 * )
-      NEW met2 ( 17710 35870 ) ( * 52870 )
-      NEW met2 ( 41170 45050 ) ( * 45730 )
-      NEW met1 ( 30590 45730 ) ( 41170 * )
-      NEW met2 ( 18170 12750 ) ( * 28900 )
-      NEW met1 ( 18170 12750 ) M1M2_PR
-      NEW li1 ( 16790 12750 ) L1M1_PR_MR
-      NEW li1 ( 18170 33150 ) L1M1_PR_MR
-      NEW met1 ( 17710 33150 ) M1M2_PR
-      NEW li1 ( 32890 36550 ) L1M1_PR_MR
-      NEW met1 ( 17710 35870 ) M1M2_PR
-      NEW li1 ( 31050 42330 ) L1M1_PR_MR
-      NEW met1 ( 30590 42330 ) M1M2_PR
-      NEW met1 ( 30590 36210 ) M1M2_PR
-      NEW li1 ( 32890 47770 ) L1M1_PR_MR
-      NEW met1 ( 30590 47770 ) M1M2_PR
+      NEW met1 ( 39790 44710 ) ( 41170 * )
+      NEW met2 ( 39330 44710 ) ( 39790 * )
+      NEW met2 ( 39330 44710 ) ( * 47770 )
+      NEW met1 ( 32890 47770 ) ( 39330 * )
+      NEW met2 ( 17710 33150 ) ( * 52870 )
       NEW li1 ( 18170 52870 ) L1M1_PR_MR
       NEW met1 ( 17710 52870 ) M1M2_PR
-      NEW li1 ( 41170 45050 ) L1M1_PR_MR
-      NEW met1 ( 41170 45050 ) M1M2_PR
-      NEW met1 ( 41170 45730 ) M1M2_PR
-      NEW met1 ( 30590 45730 ) M1M2_PR
-      NEW met1 ( 30590 36210 ) RECT ( -595 -70 0 70 ) 
-      NEW met1 ( 41170 45050 ) RECT ( 0 -70 355 70 ) 
-      NEW met2 ( 30590 45730 ) RECT ( -70 -485 70 0 )  ;
+      NEW li1 ( 18170 33150 ) L1M1_PR_MR
+      NEW met1 ( 17710 33150 ) M1M2_PR
+      NEW met1 ( 18170 12750 ) M1M2_PR
+      NEW li1 ( 16790 12750 ) L1M1_PR_MR
+      NEW li1 ( 31050 42330 ) L1M1_PR_MR
+      NEW met1 ( 31050 42330 ) M1M2_PR
+      NEW met2 ( 31050 42500 ) M2M3_PR
+      NEW met2 ( 17710 42500 ) M2M3_PR
+      NEW li1 ( 32890 36550 ) L1M1_PR_MR
+      NEW met1 ( 30590 36890 ) M1M2_PR
+      NEW li1 ( 32890 47770 ) L1M1_PR_MR
+      NEW met1 ( 30590 47770 ) M1M2_PR
+      NEW li1 ( 41170 44710 ) L1M1_PR_MR
+      NEW met1 ( 39790 44710 ) M1M2_PR
+      NEW met1 ( 39330 47770 ) M1M2_PR
+      NEW met1 ( 31050 42330 ) RECT ( -355 -70 0 70 ) 
+      NEW met2 ( 17710 42500 ) RECT ( -70 -485 70 0 )  ;
     - serial_data_in ( PIN serial_data_in ) ( ANTENNA_input5_A DIODE ) ( input5 A ) + USE SIGNAL
-      + ROUTED met3 ( 110630 49300 ) ( 110860 * 0 )
-      NEW met2 ( 110630 6970 ) ( * 49300 )
+      + ROUTED met3 ( 110860 49300 0 ) ( 111090 * )
+      NEW met2 ( 111090 6970 ) ( * 49300 )
       NEW met1 ( 27830 9010 ) ( 34500 * )
       NEW met1 ( 34500 8670 ) ( * 9010 )
       NEW met1 ( 34500 8670 ) ( 47150 * )
       NEW met2 ( 47150 6970 ) ( * 8670 )
-      NEW met1 ( 47150 6970 ) ( 110630 * )
+      NEW met1 ( 47150 6970 ) ( 111090 * )
       NEW li1 ( 27830 9010 ) L1M1_PR_MR
-      NEW met1 ( 110630 6970 ) M1M2_PR
-      NEW met2 ( 110630 49300 ) M2M3_PR
+      NEW met1 ( 111090 6970 ) M1M2_PR
+      NEW met2 ( 111090 49300 ) M2M3_PR
       NEW li1 ( 47150 6970 ) L1M1_PR_MR
       NEW met1 ( 47150 8670 ) M1M2_PR
       NEW met1 ( 47150 6970 ) M1M2_PR
@@ -2899,18 +2891,22 @@ NETS 168 ;
     - serial_load_out ( PIN serial_load_out ) ( serial_load_out_buffer X ) + USE CLOCK
       + ROUTED met2 ( 69230 41650 ) ( * 55420 )
       NEW met3 ( 69230 55420 ) ( 70380 * 0 )
-      NEW met1 ( 25530 15130 ) ( 27830 * )
-      NEW met2 ( 27830 15130 ) ( * 23970 )
-      NEW met1 ( 27830 23970 ) ( 55430 * )
-      NEW met2 ( 55430 23970 ) ( * 41650 )
+      NEW met2 ( 55430 26690 ) ( * 41650 )
       NEW met1 ( 55430 41650 ) ( 69230 * )
+      NEW met1 ( 48300 26690 ) ( 55430 * )
+      NEW met1 ( 25530 15130 ) ( 27830 * )
+      NEW met2 ( 27830 15130 ) ( * 26690 )
+      NEW met1 ( 27830 26690 ) ( 47610 * )
+      NEW met1 ( 47610 26350 ) ( * 26690 )
+      NEW met1 ( 47610 26350 ) ( 48300 * )
+      NEW met1 ( 48300 26350 ) ( * 26690 )
       NEW met1 ( 69230 41650 ) M1M2_PR
       NEW met2 ( 69230 55420 ) M2M3_PR
+      NEW met1 ( 55430 26690 ) M1M2_PR
+      NEW met1 ( 55430 41650 ) M1M2_PR
       NEW li1 ( 25530 15130 ) L1M1_PR_MR
       NEW met1 ( 27830 15130 ) M1M2_PR
-      NEW met1 ( 27830 23970 ) M1M2_PR
-      NEW met1 ( 55430 23970 ) M1M2_PR
-      NEW met1 ( 55430 41650 ) M1M2_PR ;
+      NEW met1 ( 27830 26690 ) M1M2_PR ;
     - serial_load_out_buffered ( _105__10 A ) ( _104__9 A ) ( _102__7 A ) ( _100__5 A ) ( _099__4 A ) ( _097__2 A ) ( _061__1 A )
       ( clkbuf_1_1__f_serial_load X ) ( serial_load_out_buffer A ) + USE CLOCK
       + ROUTED met2 ( 6210 30770 ) ( * 34170 )
@@ -2924,8 +2920,8 @@ NETS 168 ;
       NEW met1 ( 40710 44030 ) ( * 44370 )
       NEW met1 ( 40710 44370 ) ( 44850 * )
       NEW met1 ( 44850 44370 ) ( * 45050 )
-      NEW met1 ( 16330 30770 ) ( * 31110 )
-      NEW met1 ( 16330 30770 ) ( 23690 * )
+      NEW met1 ( 17710 30770 ) ( * 31110 )
+      NEW met1 ( 17710 30770 ) ( 23690 * )
       NEW met1 ( 23690 30430 ) ( * 30770 )
       NEW met1 ( 23690 30430 ) ( 31970 * )
       NEW met2 ( 31970 30430 ) ( * 39610 )
@@ -2933,7 +2929,7 @@ NETS 168 ;
       NEW met2 ( 28750 14790 ) ( * 30430 )
       NEW met1 ( 16790 14450 ) ( 28750 * )
       NEW met1 ( 28750 14450 ) ( * 14790 )
-      NEW met1 ( 9430 31110 ) ( 16330 * )
+      NEW met1 ( 9430 31110 ) ( 17710 * )
       NEW li1 ( 9430 31110 ) L1M1_PR_MR
       NEW li1 ( 6210 34170 ) L1M1_PR_MR
       NEW met1 ( 6210 34170 ) M1M2_PR
@@ -2978,12 +2974,16 @@ NETS 168 ;
       NEW met1 ( 43010 31450 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 43010 36210 ) RECT ( -355 -70 0 70 )  ;
     - shift_register\[11\] ( hold2 A ) ( _133_ Q ) + USE SIGNAL
-      + ROUTED met2 ( 31050 45390 ) ( * 50150 )
+      + ROUTED met1 ( 31050 45390 ) ( 32430 * )
+      NEW met2 ( 32430 45390 ) ( * 46750 )
+      NEW met1 ( 31050 46750 ) ( 32430 * )
+      NEW met2 ( 31050 46750 ) ( * 50150 )
       NEW li1 ( 31050 45390 ) L1M1_PR_MR
-      NEW met1 ( 31050 45390 ) M1M2_PR
+      NEW met1 ( 32430 45390 ) M1M2_PR
+      NEW met1 ( 32430 46750 ) M1M2_PR
+      NEW met1 ( 31050 46750 ) M1M2_PR
       NEW li1 ( 31050 50150 ) L1M1_PR_MR
       NEW met1 ( 31050 50150 ) M1M2_PR
-      NEW met1 ( 31050 45390 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 31050 50150 ) RECT ( -355 -70 0 70 )  ;
     - shift_register\[12\] ( hold7 A ) ( _135_ D ) ( _134_ Q ) + USE SIGNAL
       + ROUTED met2 ( 46690 53210 ) ( * 54910 )
@@ -3036,13 +3036,13 @@ NETS 168 ;
       NEW met1 ( 28290 41650 ) RECT ( -355 -70 0 70 )  ;
     - shift_register\[5\] ( hold11 A ) ( _127_ Q ) + USE SIGNAL
       + ROUTED met1 ( 18170 31110 ) ( * 31790 )
-      NEW met1 ( 16790 31790 ) ( 18170 * )
-      NEW met2 ( 16790 31790 ) ( * 36210 )
-      NEW met1 ( 16790 36210 ) ( 17250 * )
+      NEW met1 ( 17250 31790 ) ( 18170 * )
+      NEW met2 ( 17250 31790 ) ( * 36210 )
       NEW li1 ( 18170 31110 ) L1M1_PR_MR
-      NEW met1 ( 16790 31790 ) M1M2_PR
-      NEW met1 ( 16790 36210 ) M1M2_PR
-      NEW li1 ( 17250 36210 ) L1M1_PR_MR ;
+      NEW met1 ( 17250 31790 ) M1M2_PR
+      NEW li1 ( 17250 36210 ) L1M1_PR_MR
+      NEW met1 ( 17250 36210 ) M1M2_PR
+      NEW met1 ( 17250 36210 ) RECT ( -355 -70 0 70 )  ;
     - shift_register\[6\] ( hold9 A ) ( _128_ Q ) + USE SIGNAL
       + ROUTED met1 ( 24610 31110 ) ( 25990 * )
       NEW met2 ( 24610 31110 ) ( * 39270 )
@@ -3079,50 +3079,44 @@ NETS 168 ;
       NEW met2 ( 67390 57460 ) M2M3_PR
       NEW li1 ( 48990 22610 ) L1M1_PR_MR ;
     - user_gpio_oeb ( PIN user_gpio_oeb ) ( ANTENNA__065__A0 DIODE ) ( _065_ A0 ) + USE SIGNAL
-      + ROUTED met2 ( 6670 37570 ) ( * 39270 )
-      NEW met2 ( 67850 36550 ) ( * 59500 )
+      + ROUTED met2 ( 67850 36550 ) ( * 59500 )
       NEW met3 ( 67850 59500 ) ( 70380 * 0 )
       NEW met1 ( 62100 36550 ) ( 67850 * )
-      NEW met1 ( 6670 39270 ) ( 13800 * )
-      NEW met1 ( 37490 36890 ) ( 48530 * )
-      NEW met2 ( 37490 36890 ) ( * 38930 )
-      NEW met1 ( 24150 38930 ) ( 37490 * )
-      NEW met1 ( 24150 38930 ) ( * 39270 )
-      NEW met1 ( 15870 39270 ) ( 24150 * )
-      NEW met1 ( 15870 38930 ) ( * 39270 )
-      NEW met1 ( 13800 38930 ) ( 15870 * )
-      NEW met1 ( 13800 38930 ) ( * 39270 )
       NEW met1 ( 62100 36550 ) ( * 36890 )
       NEW met1 ( 48530 36890 ) ( 62100 * )
-      NEW li1 ( 6670 37570 ) L1M1_PR_MR
-      NEW met1 ( 6670 37570 ) M1M2_PR
-      NEW met1 ( 6670 39270 ) M1M2_PR
+      NEW met2 ( 43010 36890 ) ( * 37060 )
+      NEW met3 ( 6670 37060 ) ( 43010 * )
+      NEW met2 ( 6670 37060 ) ( * 37230 )
+      NEW met1 ( 43010 36890 ) ( 48530 * )
       NEW met1 ( 67850 36550 ) M1M2_PR
       NEW met2 ( 67850 59500 ) M2M3_PR
       NEW li1 ( 48530 36890 ) L1M1_PR_MR
-      NEW met1 ( 37490 36890 ) M1M2_PR
-      NEW met1 ( 37490 38930 ) M1M2_PR
-      NEW met1 ( 6670 37570 ) RECT ( -355 -70 0 70 )  ;
+      NEW met1 ( 43010 36890 ) M1M2_PR
+      NEW met2 ( 43010 37060 ) M2M3_PR
+      NEW met2 ( 6670 37060 ) M2M3_PR
+      NEW li1 ( 6670 37230 ) L1M1_PR_MR
+      NEW met1 ( 6670 37230 ) M1M2_PR
+      NEW met1 ( 6670 37230 ) RECT ( -355 -70 0 70 )  ;
     - user_gpio_out ( PIN user_gpio_out ) ( ANTENNA__066__B DIODE ) ( _066_ B ) + USE SIGNAL
-      + ROUTED met1 ( 45310 4930 ) ( 46230 * )
-      NEW met2 ( 47150 45050 ) ( * 61540 )
-      NEW met3 ( 45540 24820 ) ( 46230 * )
-      NEW met3 ( 45540 24820 ) ( * 25500 )
-      NEW met3 ( 44850 25500 ) ( 45540 * )
-      NEW met2 ( 44850 25500 ) ( * 29580 )
-      NEW met2 ( 44850 29580 ) ( 45310 * )
+      + ROUTED met2 ( 47150 45050 ) ( * 61540 )
+      NEW met1 ( 45310 23630 ) ( 46230 * )
+      NEW met2 ( 46230 23630 ) ( * 24820 )
+      NEW met2 ( 45770 24820 ) ( 46230 * )
+      NEW met2 ( 45770 24820 ) ( * 29580 )
+      NEW met2 ( 45310 29580 ) ( 45770 * )
       NEW met2 ( 45310 29580 ) ( * 45050 )
       NEW met1 ( 45310 45050 ) ( 47150 * )
-      NEW met2 ( 46230 4930 ) ( * 24820 )
+      NEW met2 ( 45310 4930 ) ( * 23630 )
       NEW met3 ( 47150 61540 ) ( 70380 * 0 )
       NEW li1 ( 45310 4930 ) L1M1_PR_MR
-      NEW met1 ( 46230 4930 ) M1M2_PR
+      NEW met1 ( 45310 4930 ) M1M2_PR
       NEW li1 ( 47150 45050 ) L1M1_PR_MR
       NEW met1 ( 47150 45050 ) M1M2_PR
       NEW met2 ( 47150 61540 ) M2M3_PR
-      NEW met2 ( 46230 24820 ) M2M3_PR
-      NEW met2 ( 44850 25500 ) M2M3_PR
+      NEW met1 ( 45310 23630 ) M1M2_PR
+      NEW met1 ( 46230 23630 ) M1M2_PR
       NEW met1 ( 45310 45050 ) M1M2_PR
+      NEW met1 ( 45310 4930 ) RECT ( -355 -70 0 70 ) 
       NEW met1 ( 47150 45050 ) RECT ( -355 -70 0 70 )  ;
     - zero ( PIN zero ) ( zero_buffer X ) + USE SIGNAL
       + ROUTED met2 ( 27370 1700 ) ( * 4250 )
@@ -3135,12 +3129,12 @@ NETS 168 ;
       NEW li1 ( 26910 4250 ) L1M1_PR_MR ;
     - zero_buffered ( zero_buffer A ) ( const_source LO ) + USE SIGNAL
       + ROUTED met1 ( 30130 3910 ) ( * 4250 )
-      NEW met2 ( 37490 4250 ) ( * 5950 )
-      NEW met1 ( 37490 5950 ) ( 42550 * )
-      NEW met1 ( 30130 4250 ) ( 37490 * )
+      NEW met2 ( 42550 4250 ) ( * 6630 )
+      NEW met1 ( 30130 4250 ) ( 42550 * )
       NEW li1 ( 30130 3910 ) L1M1_PR_MR
-      NEW met1 ( 37490 4250 ) M1M2_PR
-      NEW met1 ( 37490 5950 ) M1M2_PR
-      NEW li1 ( 42550 5950 ) L1M1_PR_MR ;
+      NEW met1 ( 42550 4250 ) M1M2_PR
+      NEW li1 ( 42550 6630 ) L1M1_PR_MR
+      NEW met1 ( 42550 6630 ) M1M2_PR
+      NEW met1 ( 42550 6630 ) RECT ( -355 -70 0 70 )  ;
 END NETS
 END DESIGN
