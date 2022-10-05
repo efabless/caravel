@@ -17,14 +17,14 @@
 
 #include <defs.h>
 #include <stub.c>
-
+#include <uart.h>
 // --------------------------------------------------------
 
 void wait_for_char(char *c){
-
     while (uart_rxempty_read() == 1);
     if (reg_uart_data == *c){
         reg_debug_1 = 0x1B; // recieved the correct character
+        uart_ev_pending_write(UART_EV_RX);
     }else{
         reg_debug_1 = 0x1E; // timeout didn't recieve the character
     }
