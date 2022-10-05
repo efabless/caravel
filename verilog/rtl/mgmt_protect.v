@@ -180,7 +180,7 @@ module mgmt_protect (
 
 	// Protection, similar to the above, for the three user IRQ lines
 
-	assign user_irq_enable = user_irq_ena & mrpj_logic1[460:458];
+	assign user_irq_enable = user_irq_ena & mprj_logic1[460:458];
 
 	sky130_fd_sc_hd__nand2_4 user_irq_gates [2:0] (
 `ifdef USE_POWER_PINS
@@ -233,7 +233,7 @@ module mgmt_protect (
 	// SoC dumping current into the user project area when
 	// the user project area is powered down.
 	
-	assign user_reset      = (~caravel_rstn) & mprj_logic1[0]);
+	assign user_reset      = (~caravel_rstn) & mprj_logic1[0];
 	assign user_clock      = caravel_clk     & mprj_logic1[1];
 	assign user_clock2     = caravel_clk2    & mprj_logic1[2];
 	assign mprj_cyc_o_user = mprj_cyc_o_core & mprj_logic1[3];
@@ -252,7 +252,7 @@ module mgmt_protect (
 	/* Project data out enable (bar) from the managment side to the	*/
 	/* user project	area when the user project is powered down.	*/
 
-	assign la_oenb_core = la_oenb_mprj & mprj_logic1[329:202]);
+	assign la_oenb_core = la_oenb_mprj & mprj_logic1[329:202];
 
 	/* The conb cell output is a resistive connection directly to	*/
 	/* the power supply, so when returning the user1_powergood	*/
