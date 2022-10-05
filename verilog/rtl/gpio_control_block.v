@@ -45,7 +45,18 @@
  * the clock half cycle.  This avoids the need to fine-tune the clock
  * skew between GPIO blocks.
  *
- * Modified 10/05/2022 by Tim Edwards
+ * Modified 10/4/2022 by Tim Edwards
+ * Replaces the tri-state output with a zero-value output when the
+ * user project is powered down (same modification as was made to the
+ * management protect module).  This allows all outputs to be buffered
+ * and sized by the synthesis tools.
+ *
+ * Modified 10/5/2022 by Tim Edwards
+ * Changed the behavior of the logic for the pad "out" and "oeb"
+ * pins for the user so that they match the logic used for the
+ * management SoC, which is to automatically control these values
+ * when the configuration is set to either input pull-up or input
+ * pull-down modes.
  *
  *---------------------------------------------------------------------
  */
@@ -235,16 +246,18 @@ module gpio_control_block #(
     /* the control block.  In this case, the output enable state is	*/
     /* determined by the OEB configuration bit.				*/
 
-    assign pad_gpio_outenb = (mgmt_ena) ? ((mgmt_gpio_oeb == 1'b1) ?
-			gpio_outenb : 1'b0) : user_gpio_oeb;
+    assign pad_gpio_outenb =
+		(gpio_dm[2:1] == 2'b01) ? 1'b0 :
+		((mgmt_ena) ? ((mgmt_gpio_oeb == 1'b1) ? gpio_outenb : 1'b0) :
+		user_gpio_oeb);
 
     /* For 2-wire interfaces, if the pad is configured for pull-up or	*/
     /* pull-down, drive the output value locally to achieve the		*/
     /* expected pull.							*/
 
-    assign pad_gpio_out = (mgmt_ena) ? ((mgmt_gpio_oeb == 1'b1) ?
-			((gpio_dm[2:1] == 2'b01) ? ~gpio_dm[0] : mgmt_gpio_out) :
-			mgmt_gpio_out) : user_gpio_out; 
+    assign pad_gpio_out =
+		(gpio_dm[2:1] == 2'b01) ? ~gpio_dm[0] :
+		((mgmt_ena) ? mgmt_gpio_out : user_gpio_out);
 
     /* Buffer user_gpio_in with an enable that is set by the user domain vccd */
 
