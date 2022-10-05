@@ -72,7 +72,7 @@ class RunTest:
         env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK}"
         print(f"Start running test: {self.sim_type}-{self.test_name}")
         command = f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} "
-        os.system(f"docker run -it {env_vars} -v /home:/home   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
+        os.system(f"docker run -it {env_vars} -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
  
@@ -140,7 +140,7 @@ class RunTest:
                  f"--strip-debug -ffreestanding -nostdlib -o {elf_out} {SOURCE_FILES} {c_file}")
         hex_command = f"{GCC_PATH}/{GCC_PREFIX}-objcopy -O verilog {elf_out} {hex_file} "
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
-        hex_gen_state = os.system(f"docker run -it -v /home:/home  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
+        hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(sed_command)+"\n"+"\n")
