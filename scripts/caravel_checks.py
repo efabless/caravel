@@ -170,11 +170,13 @@ if __name__ == "__main__":
         lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env)
         logging.info("Running LVS on caravel")
     if verification:
+        verify_p = []
         sim = ["rtl", "gl", "sdf"]
         for sim in sim:
             logging.info(f"Running all {sim} verification on caravel")
-            verify_p1 = run_verification(caravel_root, pdk_root, pdk_env, sim)
-            out, err = verify_p1.communicate()
+            verify_p.append(run_verification(caravel_root, pdk_root, pdk_env, sim))
+        for i in range(len(verify_p)):
+            out, err = verify_p[i].communicate()
             if err:
                 logging.error(err.decode())
 
