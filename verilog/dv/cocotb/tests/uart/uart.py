@@ -66,6 +66,7 @@ async def uart_rx(dut):
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     cocotb.log.info(f"[TEST] Start uart test")  
+    caravelEnv.drive_gpio_in((0,0),0) # IO[0] affects the uart selecting btw system and debug
     caravelEnv.drive_gpio_in((5,5),1)
     # calculate bit time
     clk = clock.period/1000
