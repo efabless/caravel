@@ -78,7 +78,7 @@ readnet verilog ../verilog/gl/digital_pll.v \$circuit2
 readnet verilog ../verilog/gl/gpio_control_block.v \$circuit2
 readnet verilog ../verilog/gl/gpio_defaults_block.v \$circuit2
 readnet verilog ../verilog/gl/gpio_defaults_block_1803.v \$circuit2
-readnet verilog ../verilog/gl/gpio_defaults_block_0c01.v \$circuit2
+readnet verilog ../verilog/gl/gpio_defaults_block_0801.v \$circuit2
 readnet verilog ../verilog/gl/gpio_defaults_block_0403.v \$circuit2
 readnet verilog ../verilog/gl/gpio_logic_high.v \$circuit2
 readnet verilog ../verilog/gl/housekeeping.v \$circuit2

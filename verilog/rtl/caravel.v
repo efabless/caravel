@@ -173,10 +173,10 @@ module caravel (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data */
-    wire [`MPRJ_IO_PADS-5:0] mgmt_io_nc;	/* no-connects */
-    wire [4:0] mgmt_io_out;			/* three-pin interface out */
-    wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out	*/
+    wire [`MPRJ_IO_PADS-5:0] mgmt_io_oeb;	/* output enable, used only by	*/
+						/* the three-pin interfaces	*/
     wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
     wire clock_core;
@@ -703,10 +703,8 @@ module caravel (
         .serial_data_2(mprj_io_loader_data_2),
 
 	.mgmt_gpio_in(mgmt_io_in),
-	.mgmt_gpio_out({mgmt_io_out[4:2], mgmt_io_in[`MPRJ_IO_PADS-4:2],
-			mgmt_io_out[1:0]}),
-	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
-			mgmt_io_oeb[1:0]}),
+	.mgmt_gpio_out(mgmt_io_out),
+	.mgmt_gpio_oeb(mgmt_io_oeb),
 
 	.pwr_ctrl_out(pwr_ctrl_nc),	/* Not used in this version */
 
@@ -792,7 +790,7 @@ module caravel (
 
     // CSB pin is set as an internal pull-up
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h0c01)
+	.GPIO_CONFIG_INIT(13'h0801)
     ) gpio_defaults_block_3 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
@@ -1236,7 +1234,7 @@ module caravel (
     	.serial_load_out(gpio_load_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
-	.mgmt_gpio_out(mgmt_io_in[7:2]),
+	.mgmt_gpio_out(mgmt_io_out[7:2]),
 	.mgmt_gpio_oeb(one_loop1[7:2]),
 
         .one(one_loop1[7:2]),
@@ -1289,7 +1287,7 @@ module caravel (
     	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_1-1):8]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS_1-1):8]),
-	.mgmt_gpio_out(mgmt_io_in[(`MPRJ_IO_PADS_1-1):8]),
+	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS_1-1):8]),
 	.mgmt_gpio_oeb(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
 
         .one(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
@@ -1342,8 +1340,8 @@ module caravel (
     	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-1):(`MPRJ_IO_PADS_2-3)]),
 
     	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
-	.mgmt_gpio_out(mgmt_io_out[4:2]),
-	.mgmt_gpio_oeb(mgmt_io_oeb[4:2]),
+	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
+	.mgmt_gpio_oeb(mgmt_io_oeb[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
 
         .one(),
         .zero(),
@@ -1396,7 +1394,7 @@ module caravel (
     	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-4):0]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-	.mgmt_gpio_out(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
+	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
 	.mgmt_gpio_oeb(one_loop2),
 
         .one(one_loop2),

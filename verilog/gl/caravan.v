@@ -3862,7 +3862,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[38] , \gpio_defaults[37] , \gpio_defaults[36] , \gpio_defaults[35] , \gpio_defaults[34] , \gpio_defaults[33] , \gpio_defaults[32] , \gpio_defaults[31] , \gpio_defaults[30] , \gpio_defaults[29] , \gpio_defaults[28] , \gpio_defaults[27] , \gpio_defaults[26]  })
   );
-  gpio_defaults_block_0c01 gpio_defaults_block_3 (
+  gpio_defaults_block_0801 gpio_defaults_block_3 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[51] , \gpio_defaults[50] , \gpio_defaults[49] , \gpio_defaults[48] , \gpio_defaults[47] , \gpio_defaults[46] , \gpio_defaults[45] , \gpio_defaults[44] , \gpio_defaults[43] , \gpio_defaults[42] , \gpio_defaults[41] , \gpio_defaults[40] , \gpio_defaults[39]  })

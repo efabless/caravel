@@ -1,4 +1,4 @@
-module gpio_defaults_block_0403 (VGND,
+module gpio_defaults_block_0801 (VGND,
     VPWR,
     gpio_defaults);
  input VGND;
@@ -254,7 +254,7 @@ module gpio_defaults_block_0403 (VGND,
  assign gpio_defaults[7] = \gpio_defaults_low[7] ;
  assign gpio_defaults[8] = \gpio_defaults_low[8] ;
  assign gpio_defaults[9] = \gpio_defaults_low[9] ;
- assign gpio_defaults[10] = \gpio_defaults_high[10] ;
+ assign gpio_defaults[10] = \gpio_defaults_low[10] ;
  assign gpio_defaults[11] = \gpio_defaults_high[11] ;
  assign gpio_defaults[12] = \gpio_defaults_low[12] ;
 endmodule

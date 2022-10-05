@@ -253,7 +253,7 @@ module housekeeping #(
     wire [31:0] sram_ro_data;
 
     // Housekeeping side 3-wire interface to GPIOs (see below)
-    wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out_pre;
+    wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out;
 
     // Pass-through mode handling.  Signals may only be applied when the
     // core processor is in reset.
@@ -264,26 +264,6 @@ module housekeeping #(
 	wire wb_rst_i;
 	assign wb_rst_i = ~wb_rstn_i;
 	
-    // Handle the management-side control of the GPIO pins.  All but the
-    // first and last three GPIOs (0, 1 and 35 to 37) are one-pin interfaces with
-    // a single I/O pin whose direction is determined by the local OEB signal.
-    // The other five are straight-through connections of the 3-wire interface.
-
-    assign mgmt_gpio_out[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3] =
-			mgmt_gpio_out_pre[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3];
-    assign mgmt_gpio_out[1:0] = mgmt_gpio_out_pre[1:0];
-
-    genvar i;
-
-    // This implements high-impedence buffers on the GPIO outputs other than
-    // the first and last two GPIOs so that these pins can be tied together
-    // at the top level to create the single-wire interface on those GPIOs.
-    generate
-	for (i = 2; i < `MPRJ_IO_PADS-3; i = i + 1) begin
-	    assign mgmt_gpio_out[i] = mgmt_gpio_oeb[i] ?  1'bz : mgmt_gpio_out_pre[i];
-	end
-    endgenerate
-
     // Pass-through mode.  Housekeeping SPI signals get inserted
     // between the management SoC and the flash SPI I/O.
 
@@ -750,7 +730,7 @@ module housekeeping #(
 	.reset(~porb),
     	.SCK(mgmt_gpio_in[4]),
     	.SDI(mgmt_gpio_in[2]),
-    	.CSB((spi_is_active) ? mgmt_gpio_in[3] : 1'b1),
+    	.CSB((spi_is_enabled) ? mgmt_gpio_in[3] : 1'b1),
     	.SDO(sdo),
     	.sdoenb(sdo_enb),
     	.idata(odata),
@@ -777,9 +757,9 @@ module housekeeping #(
 
     // GPIO data handling to and from the management SoC
 
-    assign mgmt_gpio_out_pre[37] = (qspi_enabled) ? spimemio_flash_io3_do :
+    assign mgmt_gpio_out[37] = (qspi_enabled) ? spimemio_flash_io3_do :
 		mgmt_gpio_data[37];
-    assign mgmt_gpio_out_pre[36] = (qspi_enabled) ? spimemio_flash_io2_do :
+    assign mgmt_gpio_out[36] = (qspi_enabled) ? spimemio_flash_io2_do :
 		mgmt_gpio_data[36];
 
     assign mgmt_gpio_oeb[37] = (qspi_enabled) ? spimemio_flash_io3_oeb :
@@ -795,32 +775,32 @@ module housekeeping #(
     assign spimemio_flash_io2_di = mgmt_gpio_in[36];
 
     // SPI master is assigned to the other 4 bits of the data high word.
-    assign mgmt_gpio_out_pre[32] = (spi_enabled) ? spi_sck : mgmt_gpio_data[32];
-    assign mgmt_gpio_out_pre[33] = (spi_enabled) ? spi_csb : mgmt_gpio_data[33];
-    assign mgmt_gpio_out_pre[34] = mgmt_gpio_data[34];
-    assign mgmt_gpio_out_pre[35] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[35];
+    assign mgmt_gpio_out[32] = (spi_enabled) ? spi_sck : mgmt_gpio_data[32];
+    assign mgmt_gpio_out[33] = (spi_enabled) ? spi_csb : mgmt_gpio_data[33];
+    assign mgmt_gpio_out[34] = mgmt_gpio_data[34];
+    assign mgmt_gpio_out[35] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[35];
 
-    assign mgmt_gpio_out_pre[31:16] = mgmt_gpio_data[31:16];
-    assign mgmt_gpio_out_pre[12:11] = mgmt_gpio_data[12:11];
+    assign mgmt_gpio_out[31:16] = mgmt_gpio_data[31:16];
+    assign mgmt_gpio_out[12:11] = mgmt_gpio_data[12:11];
 
-    assign mgmt_gpio_out_pre[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
+    assign mgmt_gpio_out[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
 			: mgmt_gpio_data[10];
-    assign mgmt_gpio_out_pre[9] = (pass_thru_user) ? mgmt_gpio_in[4]
+    assign mgmt_gpio_out[9] = (pass_thru_user) ? mgmt_gpio_in[4]
 			: mgmt_gpio_data[9];
-    assign mgmt_gpio_out_pre[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
+    assign mgmt_gpio_out[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
 			: mgmt_gpio_data[8];
 
-    assign mgmt_gpio_out_pre[7] = mgmt_gpio_data[7];
-    assign mgmt_gpio_out_pre[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
-    assign mgmt_gpio_out_pre[5:2] = mgmt_gpio_data[5:2];
+    assign mgmt_gpio_out[7] = mgmt_gpio_data[7];
+    assign mgmt_gpio_out[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
+    assign mgmt_gpio_out[5:2] = mgmt_gpio_data[5:2];
 
     // In pass-through modes, route SDO from the respective flash (user or
     // management SoC) to the dedicated SDO pin (GPIO[1])
 
-    assign mgmt_gpio_out_pre[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
+    assign mgmt_gpio_out[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
 		 (pass_thru_user) ? mgmt_gpio_in[11] :
 		 (spi_is_active) ? sdo : mgmt_gpio_data[1];
-    assign mgmt_gpio_out_pre[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
+    assign mgmt_gpio_out[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
 
     assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[0][INP_DIS];
     assign mgmt_gpio_oeb[0] = (debug_mode) ? debug_oeb : ~gpio_configure[0][INP_DIS];
@@ -843,11 +823,11 @@ module housekeeping #(
     // so the pad being under control of the user area takes precedence
     // over the system monitoring function.
 
-    assign mgmt_gpio_out_pre[15] = (clk2_output_dest == 1'b1) ? user_clock
+    assign mgmt_gpio_out[15] = (clk2_output_dest == 1'b1) ? user_clock
 		: mgmt_gpio_data[15];
-    assign mgmt_gpio_out_pre[14] = (clk1_output_dest == 1'b1) ? wb_clk_i
+    assign mgmt_gpio_out[14] = (clk1_output_dest == 1'b1) ? wb_clk_i
 		: mgmt_gpio_data[14];
-    assign mgmt_gpio_out_pre[13] = (trap_output_dest == 1'b1) ? trap
+    assign mgmt_gpio_out[13] = (trap_output_dest == 1'b1) ? trap
 		: mgmt_gpio_data[13];
 
     assign irq[0] = irq_spi;
@@ -1041,7 +1021,7 @@ module housekeeping #(
                 end else begin
 		    if (j == 3) begin
 			// j == 3 corresponds to CSB, which is a weak pull-up
-	                gpio_configure[j] <= 'h0c01;
+	                gpio_configure[j] <= 'h0801;
 		    end else begin
 	                gpio_configure[j] <= 'h0403;
 		    end

@@ -60,6 +60,7 @@
 	`include "gl/gpio_defaults_block.v"
 	`include "gl/gpio_defaults_block_0403.v"
 	`include "gl/gpio_defaults_block_1803.v"
+	`include "gl/gpio_defaults_block_0801.v"
 	`include "gl/gpio_logic_high.v"
 	`include "gl/xres_buf.v"
 	`include "gl/spare_logic_block.v"
