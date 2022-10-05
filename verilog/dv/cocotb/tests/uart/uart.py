@@ -113,14 +113,14 @@ async def uart_send_char(caravelEnv,char):
 async def uart_check_char_recieved(caravelEnv,cpu):
  # check cpu recieved the correct character
     while True: 
-        reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
+        # reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
         reg1 = cpu.read_debug_reg1()
         cocotb.log.debug(f"[TEST] reg1 = {hex(reg1)}")   
         if  reg1 == 0x1B:
-            cocotb.log.info(f"[TEST] Pass cpu has recieved the correct character {chr(int(reg_uart_data,2))}")   
+            cocotb.log.info(f"[TEST] Pass cpu has recieved the correct character ")   
             return
         if reg1 == 0x1E:
-            cocotb.log.error(f"[TEST] Failed cpu has recieved the wrong character {chr(int(reg_uart_data,2))}")  
+            cocotb.log.error(f"[TEST] Failed cpu has recieved the wrong character ")  
             return
                
         await ClockCycles(caravelEnv.clk,1) 
