@@ -55,9 +55,9 @@ proc custom_run_placement {args} {
 }
 
 variable SCRIPT_DIR [file dirname [file normalize [info script]]]
-prep -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overwrite -verbose 0
+prep -design $SCRIPT_DIR -tag $::env(TAG) -overwrite -verbose 0
 exec rm -rf $SCRIPT_DIR/runs/gpio_control_block_interactive
-exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/gpio_control_block_interactive
+exec ln -sf $SCRIPT_DIR/runs/$::env(TAG) $SCRIPT_DIR/runs/gpio_control_block_interactive
 run_synthesis
 
 init_floorplan
@@ -69,7 +69,7 @@ tap_decap_or
 add_route_obs
 run_power_grid_generation
 
-set dont_use_old ::env(DONT_USE_CELLS)
+set dont_use_old $::env(DONT_USE_CELLS)
 global_placement_or
 set ::env(DONT_USE_CELLS) "$::env(DONT_USE_CELLS) sky130_fd_sc_hd__buf_1"
 run_resizer_design
