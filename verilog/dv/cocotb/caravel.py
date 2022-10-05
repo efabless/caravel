@@ -297,12 +297,12 @@ class Caravel_env:
         gpio_dm   =sum(d * 2**i for i, d in enumerate(gpio_dm)) # convert list to binary int
         path.gpio_dm.value           = gpio_dm
         
-    """drive the value of mprj bits with spicific data from input pad at the top"""
-    def release_gpio(self):
-        io = self.caravel_hdl.padframe.mprj_pads.io
-        mprj , n_bits = common.signal_valueZ_size(io)
-        io.value  =  mprj
-        cocotb.log.info(f' [caravel] drive_gpio_in pad mprj with {mprj}')          
+    # """drive the value of mprj bits with spicific data from input pad at the top"""
+    # def release_gpio(self):
+    #     io = self.caravel_hdl.padframe.mprj_pads.io
+    #     mprj , n_bits = common.signal_valueZ_size(io)
+    #     io.value  =  mprj
+    #     cocotb.log.info(f' [caravel] drive_gpio_in pad mprj with {mprj}')          
 
     """drive the value of mprj bits with spicific data from input pad at the top"""
     def drive_gpio_in(self,bits,data):
@@ -325,6 +325,20 @@ class Caravel_env:
             self.dut._id(f'bin{bits}',False).value = data
             self.dut._id(f'bin{bits}_en',False).value = 1
             cocotb.log.debug(f'[caravel] [drive_gpio_in] drive bin{bits} with {data} and bin{bits}_en with 1')
+
+    """ release driving the value of mprj bits """
+    def release_gpio(self,bits):
+        data_bits = []
+        is_list  = isinstance(bits, (list,tuple)) 
+        if is_list : 
+            cocotb.log.debug(f'[caravel] [drive_gpio_disable] start bits[1] = {bits[1]} bits[0]= {bits[0]}')
+            for i,bits2 in enumerate(range(bits[1],bits[0]+1)):
+                self.dut._id(f"bin{bits2}_en",False).value = 0
+                cocotb.log.debug(f'[caravel] [drive_gpio_disable] release driving bin{bits2}')
+        else:
+            self.dut._id(f'bin{bits}_en',False).value = 1
+            cocotb.log.debug(f'[caravel] [drive_gpio_disable] release driving bin{bits}')
+
 
     """drive the value of  gpio management"""
     def drive_mgmt_gpio(self,data):
