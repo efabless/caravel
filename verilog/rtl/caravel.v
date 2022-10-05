@@ -368,11 +368,22 @@ module caravel (
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
 
+
+    // Pass thru clock and reset
+    wire 	pass_thru_clk;
+    wire 	pass_thru_resetn;
+
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
+
+	// Pass thru Clock and reset
+	.clk_in(caravel_clk),
+	.resetn_in(caravel_rstn),
+	.clk_out(pass_thru_clk),
+	.resetn_out(pass_thru_resetn),
 
 	// Clock and reset
 	.core_clk(caravel_clk),
@@ -476,9 +487,9 @@ module caravel (
 	    .vdda2(vdda2_core),
 	    .vssa2(vssa2_core),
 	`endif
-	.caravel_clk(caravel_clk),
+	.caravel_clk(pass_thru_clk),
 	.caravel_clk2(caravel_clk2),
-	.caravel_rstn(caravel_rstn),
+	.caravel_rstn(pass_thru_resetn),
 	.mprj_iena_wb(mprj_iena_wb),
 	.mprj_cyc_o_core(mprj_cyc_o_core),
 	.mprj_stb_o_core(mprj_stb_o_core),
