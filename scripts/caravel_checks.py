@@ -18,7 +18,7 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         "-dnull",
         "-rcfile",
         f"{pdk_root}/{pdk_env}/libs.tech/magic/{pdk_env}.magicrc",
-        "build.tcl",
+        "tech-files/build.tcl",
     ]
     log_file_path = f"{log_dir}/build_caravel.log"
     with open(log_file_path, "w") as build_log:
@@ -37,23 +37,8 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
         "-d",
         "caravel"
     ]
-    mag_drc_cmd = [
-        "python3",
-        "magic_drc.py",
-        "-g",
-        f"{caravel_root}/gds/caravel.gds",
-        "-l",
-        f"{log_dir}",
-        "-s",
-        f"{signoff_dir}",
-        "-p",
-        f"{pdk_root}/sky130A",
-        "-d",
-        "caravel"
-    ]
     p1 = subprocess.Popen(klayout_drc_cmd)
-    p2 = subprocess.Popen(mag_drc_cmd)
-    return p1, p2
+    return p1
 
 def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env):
     os.environ["PDK_ROOT"] = pdk_root
@@ -63,7 +48,7 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, wo
     os.environ["LOG_ROOT"] = log_dir
     os.environ["CARAVEL_ROOT"] = caravel_root
     os.environ["MCW_ROOT"] = mcw_root
-    os.environ["SIGNOFF_ROOT"] = os.path.join(signoff_dir,"reports")
+    os.environ["SIGNOFF_ROOT"] = os.path.join(signoff_dir,"caravel")
     lvs_cmd = [
         "bash",
         "./extra_be_checks/run_full_lvs",
@@ -94,7 +79,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim):
 def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
     drc_count_mag = os.path.join(log_dir, "caravel_magic_drc.total")
     drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
-    lvs_report = os.path.join(signoff_dir, "reports/caravel.lvs.report")
+    lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.report")
     count = 0
     if drc:
         with open(drc_count_mag) as rep:
@@ -171,15 +156,15 @@ if __name__ == "__main__":
 
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
-    if not os.path.exists(f"{signoff_dir}/reports"):
-        os.makedirs(f"{signoff_dir}/reports")
+    if not os.path.exists(f"{signoff_dir}/caravel"):
+        os.makedirs(f"{signoff_dir}/caravel")
 
     logging.info("Building caravel...")
 
     build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
 
     if drc:
-        drc_p1, drc_p2 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
+        drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
         logging.info("Running klayout and magic DRC on caravel")
     if lvs:
         lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env)
@@ -193,17 +178,13 @@ if __name__ == "__main__":
             if err:
                 logging.error(err.decode())
 
-
-
     if lvs and drc:
         drc_p1.wait()
-        drc_p2.wait()
         lvs_p1.wait()
     if lvs:
         lvs_p1.wait()
     if drc:
         drc_p1.wait()
-        drc_p2.wait()
 
     if not check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
         exit(1)
