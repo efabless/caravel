@@ -1,0 +1,97 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO mprj2_logic_high
+  CLASS BLOCK ;
+  FOREIGN mprj2_logic_high ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 100.000 BY 7.000 ;
+  PIN HI
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 3.440 4.000 4.040 ;
+    END
+  END HI
+  PIN vccd2
+    DIRECTION INPUT ;
+    USE POWER ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 1.510 99.820 2.010 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 0.850 -0.240 1.150 5.680 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 40.850 -0.240 41.150 5.680 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 80.850 -0.240 81.150 5.680 ;
+    END
+  END vccd2
+  PIN vssd2
+    DIRECTION INPUT ;
+    USE GROUND ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 4.410 99.820 4.910 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 20.850 -0.240 21.150 5.680 ;
+    END
+    PORT
+      LAYER met2 ;
+        RECT 60.850 -0.240 61.150 5.680 ;
+    END
+  END vssd2
+  OBS
+      LAYER nwell ;
+        RECT -0.190 1.305 100.010 4.135 ;
+      LAYER pwell ;
+        RECT 0.145 -0.085 0.315 0.085 ;
+        RECT 1.525 -0.085 1.695 0.085 ;
+        RECT 7.045 -0.085 7.215 0.085 ;
+        RECT 12.560 -0.055 12.680 0.055 ;
+        RECT 13.485 -0.085 13.655 0.085 ;
+        RECT 19.005 -0.085 19.175 0.085 ;
+        RECT 24.525 -0.085 24.695 0.085 ;
+        RECT 26.365 -0.085 26.535 0.085 ;
+        RECT 31.885 -0.085 32.055 0.085 ;
+        RECT 37.405 -0.085 37.575 0.085 ;
+        RECT 39.245 -0.085 39.415 0.085 ;
+        RECT 44.765 -0.085 44.935 0.085 ;
+        RECT 50.285 -0.085 50.455 0.085 ;
+        RECT 52.125 -0.085 52.295 0.085 ;
+        RECT 57.645 -0.085 57.815 0.085 ;
+        RECT 63.165 -0.085 63.335 0.085 ;
+        RECT 65.005 -0.085 65.175 0.085 ;
+        RECT 70.525 -0.085 70.695 0.085 ;
+        RECT 76.045 -0.085 76.215 0.085 ;
+        RECT 77.885 -0.085 78.055 0.085 ;
+        RECT 83.405 -0.085 83.575 0.085 ;
+        RECT 88.925 -0.085 89.095 0.085 ;
+        RECT 90.765 -0.085 90.935 0.085 ;
+        RECT 96.285 -0.085 96.455 0.085 ;
+        RECT 98.120 -0.055 98.240 0.055 ;
+        RECT 99.505 -0.085 99.675 0.085 ;
+      LAYER li1 ;
+        RECT 0.000 0.085 99.820 5.525 ;
+      LAYER li1 ;
+        RECT 0.000 -0.085 99.820 0.085 ;
+      LAYER met1 ;
+        RECT 0.000 -0.240 99.820 5.680 ;
+      LAYER met2 ;
+        RECT 42.410 3.555 42.690 4.070 ;
+      LAYER met3 ;
+        RECT 4.400 3.575 42.715 3.905 ;
+  END
+END mprj2_logic_high
+END LIBRARY
+
