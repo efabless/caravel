@@ -1,7 +1,7 @@
 from curses import baudrate
 import random
 import cocotb
-from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer
+from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer,Edge
 import cocotb.log
 from cpu import RiskV
 from defsParser import Regs
@@ -72,7 +72,6 @@ async def uart_rx(dut):
     clk = clock.period/1000
     global bit_time_ns
     bit_time_ns = round(10**5 * clk / (96))
-    print (clk)
     # send first char
     await wait_reg1(cpu,caravelEnv,0XAA)  
     await uart_send_char(caravelEnv,"B")
@@ -122,5 +121,44 @@ async def uart_check_char_recieved(caravelEnv,cpu):
         if reg1 == 0x1E:
             cocotb.log.error(f"[TEST] Failed cpu has recieved the wrong character {chr(int(reg_uart_data,2))}")  
             return
+               
+        await ClockCycles(caravelEnv.clk,1) 
+
+@cocotb.test()
+@repot_test
+async def uart_loopback(dut):
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=216756)
+    cpu = RiskV(dut)
+    cpu.cpu_force_reset()
+    cpu.cpu_release_reset()
+    cocotb.log.info(f"[TEST] Start uart test")  
+    await cocotb.start( connect_5_6(dut,caravelEnv)) # short gpio 6 and 5
+    caravelEnv.drive_gpio_in((0,0),0) # IO[0] affects the uart selecting btw system and debug
+
+    # setup watcher loopback results 
+    await cocotb.start(uart_check_char_recieved_loopback(caravelEnv,cpu))
+
+    await ClockCycles(caravelEnv.clk,197000) 
+
+async def connect_5_6(dut,caravelEnv):
+    while True:
+        caravelEnv.drive_gpio_in(5,dut.bin6_monitor.value)
+        await Edge(dut.bin6_monitor)
+
+        
+async def uart_check_char_recieved_loopback(caravelEnv,cpu):
+ # check cpu recieved the correct character
+    while True: 
+        reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
+        reg1 = cpu.read_debug_reg1()
+        cocotb.log.debug(f"[TEST] reg1 = {hex(reg1)}")   
+        if  reg1 == 0x1B:
+            cocotb.log.info(f"[TEST] Pass cpu has sent and recieved the correct character {chr(int(reg_uart_data,2))}") 
+            await wait_reg1(cpu,caravelEnv,0)   
+            
+        if reg1 == 0x1E:
+            cocotb.log.error(f"[TEST] Failed cpu has sent and recieved the wrong character {chr(int(reg_uart_data,2))}")  
+            await wait_reg1(cpu,caravelEnv,0)   
+            
                
         await ClockCycles(caravelEnv.clk,1) 
