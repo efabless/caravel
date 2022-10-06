@@ -140,8 +140,8 @@ module gpio_control_block #(
     wire        pad_gpio_outenb;
     wire	pad_gpio_out;
     wire	pad_gpio_in;
-    wire	one;
-    wire	zero;
+    wire	one_unbuf;
+    wire	zero_unbuf;
 
     wire user_gpio_in;
     wire gpio_in_unbuf;
@@ -261,8 +261,36 @@ module gpio_control_block #(
             .VPB(vccd),
             .VNB(vssd),
 `endif
-            .HI(one),
-            .LO(zero)
+            .HI(one_unbuf),
+            .LO(zero_unbuf)
+    );
+
+    /* Buffer the constant outputs (could be synthesized) */
+    /* NOTE:  Constant cell HI, LO outputs are connected to power	*/
+    /* rails through an approximately 120 ohm resistor, which is not	*/
+    /* enough to drive inputs in the I/O cells while ensuring ESD	*/
+    /* requirements, without buffering.					*/
+
+    sky130_fd_sc_hd__buf_8 const_one_buf (
+`ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+`endif
+            .A(one_unbuf),
+            .X(one)
+    );
+
+    sky130_fd_sc_hd__buf_8 const_zero_buf (
+`ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+`endif
+            .A(zero_unbuf),
+            .X(zero)
     );
 
 endmodule
