@@ -328,7 +328,7 @@ parser.add_argument('-testlist','-tl', help='path of testlist to be run ')
 parser.add_argument('-tag', help='provide tag of the run default would be regression name and if no regression is provided would be run_<random float>_<timestamp>_')
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
-parser.add_argument('-cov','-c',action='store_true', help='enale code coverage')
+parser.add_argument('-cov','-c',action='store_true', help='enable code coverage')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False

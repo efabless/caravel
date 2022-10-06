@@ -51,6 +51,8 @@ run a test
                         breaks default = 3
                         
   -vcs, -v              use vcs as compiler if not used iverilog would be used
+  
+  -cov, -c              enable code coverage
                         
 ```
 
