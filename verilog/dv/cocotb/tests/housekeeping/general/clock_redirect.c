@@ -15,4 +15,4 @@ void main(){
     while (reg_mprj_xfer == 1);
     reg_debug_1 =0xAA;
     return; 
-    }
+}
