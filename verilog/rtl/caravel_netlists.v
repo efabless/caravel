@@ -66,10 +66,6 @@
 	`include "gl/spare_logic_block.v"
 	`include "gl/mgmt_defines.v"
 	`include "gl/mgmt_core_wrapper.v"
-	`include "gl/mgmt_core.v"
-	`include "gl/DFFRAM.v"
-	`include "gl/DFFRAMBB.v"
-	`include "gl/VexRiscv_LiteDebug.v"
 	`include "gl/caravel.v"
     `else
 	`include "digital_pll.v"
@@ -93,10 +89,6 @@
 	`include "xres_buf.v"
 	`include "spare_logic_block.v"
 	`include "mgmt_core_wrapper.v"
-	`include "mgmt_core.v"
-	`include "DFFRAM.v"
-	`include "DFFRAMBB.v"
-	`include "VexRiscv_LiteDebug.v"
 	`include "caravel.v"
     `endif
 
