@@ -56,7 +56,7 @@ async def gpio_all_o(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=45464)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=44980)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -64,19 +64,38 @@ async def gpio_all_i(dut):
     await wait_reg1(cpu,caravelEnv,0xAA)
     cocotb.log.info(f"[TEST] configuration finished")
     data_in = 0x8F66FD7B
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xBB)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[0:32]")
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
     data_in = 0xFFA88C5A
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xCC)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[0:32]")
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
     data_in = 0xC9536346
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:32]")
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
-
+    await wait_reg1(cpu,caravelEnv,0xD1)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+    data_in = 0x3F
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    caravelEnv.drive_gpio_in((37,32),data_in)
+    await wait_reg1(cpu,caravelEnv,0xD2)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    data_in = 0x0
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    caravelEnv.drive_gpio_in((37,32),data_in)
+    await wait_reg1(cpu,caravelEnv,0xD3)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    data_in = 0x15
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    caravelEnv.drive_gpio_in((37,32),data_in)
+    await wait_reg1(cpu,caravelEnv,0xD4)
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    data_in = 0x2A
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    caravelEnv.drive_gpio_in((37,32),data_in) 
     await wait_reg2(cpu,caravelEnv,0xFF) 
     cocotb.log.info(f"[TEST] finish")
 
@@ -102,17 +121,17 @@ async def gpio_all_i_pu(dut):
     cocotb.log.info(f"[TEST] configuration finished")
     await wait_reg1(cpu,caravelEnv,0xB1)
     data_in = 0x0
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:31]")
+    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xB2)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[0:31]")
+    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
     size = 32
     data_in =  int(size) * 'z'
     data_in =  0xFFFFFFFF
-    cocotb.log.info(f"[TEST] send {data_in} to gpio[0:32]")
+    cocotb.log.info(f"[TEST] send {data_in} to gpio[31:0]")
     caravelEnv.release_gpio((31,0))
     await wait_reg1(cpu,caravelEnv,0xB3)
-    cocotb.log.info(f"[TEST] data {data_in} sent successfully to gpio[0:31]")
+    cocotb.log.info(f"[TEST] data {data_in} sent successfully to gpio[31:0]")
     data_in = 0x0
     cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:16]")
     caravelEnv.drive_gpio_in((15,0),data_in)

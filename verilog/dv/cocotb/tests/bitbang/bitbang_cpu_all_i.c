@@ -76,6 +76,14 @@ void main(){
     while (reg_mprj_datal != 0xFFA88C5A);
     reg_debug_1 = 0XCC; // configuration done wait environment to send 0xC9536346 to reg_mprj_datal
     while (reg_mprj_datal != 0xC9536346);
+    reg_debug_1 = 0XD1;
+    while (reg_mprj_datah != 0x3F);
+    reg_debug_1 = 0XD2;
+    while (reg_mprj_datah != 0x0);
+    reg_debug_1 = 0XD3;
+    while (reg_mprj_datah != 0x15);
+    reg_debug_1 = 0XD4;
+    while (reg_mprj_datah != 0x2A);
 
     reg_debug_2 = 0xFF;
 
