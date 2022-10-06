@@ -175,7 +175,7 @@ module caravel (
 
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in	*/
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out	*/
-    wire [`MPRJ_IO_PADS-5:0] mgmt_io_oeb;	/* output enable, used only by	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
 						/* the three-pin interfaces	*/
     wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
