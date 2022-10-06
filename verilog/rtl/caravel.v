@@ -142,6 +142,7 @@ module caravel (
     wire [`MPRJ_IO_PADS*3-1:0] mprj_io_dm;
     wire [`MPRJ_IO_PADS-1:0] mprj_io_in;
     wire [`MPRJ_IO_PADS-1:0] mprj_io_out;
+    wire [`MPRJ_IO_PADS-1:0] mprj_io_one;
 
     // User Project Control (user-facing)
     wire [`MPRJ_IO_PADS-1:0] user_io_oeb;
@@ -252,7 +253,6 @@ module caravel (
 	.vccd2	(vccd2_core),
 	.vssd1	(vssd1_core),
 	.vssd2	(vssd2_core),
-
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -286,6 +286,7 @@ module caravel (
 	.flash_io1_do_core(flash_io1_do),
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
+	.mprj_io_one(mprj_io_one),
 	.mprj_io_in(mprj_io_in),
 	.mprj_io_out(mprj_io_out),
 	.mprj_io_oeb(mprj_io_oeb),
@@ -1181,7 +1182,7 @@ module caravel (
 	.mgmt_gpio_out(mgmt_io_out[1:0]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
 
-        .one(),
+        .one(mprj_io_one[1:0]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1208,9 +1209,6 @@ module caravel (
     	.pad_gpio_in(mprj_io_in[1:0])
     );
 
-    /* Section 1 GPIOs (GPIO 0 to 18) */
-    wire [`MPRJ_IO_PADS_1-1:2] one_loop1;
-
     /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
     gpio_control_block gpio_control_in_1a [5:0] (
@@ -1235,9 +1233,9 @@ module caravel (
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
 	.mgmt_gpio_out(mgmt_io_out[7:2]),
-	.mgmt_gpio_oeb(one_loop1[7:2]),
+	.mgmt_gpio_oeb(mprj_io_one[7:2]),
 
-        .one(one_loop1[7:2]),
+        .one(mprj_io_one[7:2]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1288,9 +1286,9 @@ module caravel (
 
 	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS_1-1):8]),
 	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS_1-1):8]),
-	.mgmt_gpio_oeb(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
-
-        .one(one_loop1[(`MPRJ_IO_PADS_1-1):8]),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_1-1):8]),
+  
+        .one(mprj_io_one[(`MPRJ_IO_PADS_1-1):8]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1343,7 +1341,7 @@ module caravel (
 	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
 
-        .one(),
+        .one(mprj_io_one[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1371,7 +1369,6 @@ module caravel (
     );
 
     /* Section 2 GPIOs (GPIO 19 to 34) */
-    wire [`MPRJ_IO_PADS_2-4:0] one_loop2;
 
     gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-4:0] (
     	`ifdef USE_POWER_PINS
@@ -1395,9 +1392,10 @@ module caravel (
 
 	.mgmt_gpio_in(mgmt_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
 	.mgmt_gpio_out(mgmt_io_out[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
-	.mgmt_gpio_oeb(one_loop2),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
 
-        .one(one_loop2),
+
+        .one(mprj_io_one[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)]),
         .zero(),
 
     	// Serial data chain for pad configuration
