@@ -44,7 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= caravel_stanford
+MPW_TAG ?= mpw-5e
 
 # PDK switch varient
 export PDK?=sky130A
@@ -86,7 +86,7 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 8f6aff1881e5feae49acb6d5be53c4acc91bb235
+OPEN_PDKS_COMMIT ?= 05af1d05227419f0955cd98610351f4680575b95
 # = 1.0.303
 PDK_MAGIC_COMMIT ?= fe2eb6d3906ed15ade0e7a51daea80dd4e3846e2
 # = 8.3.294
@@ -201,114 +201,15 @@ clean:
 	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
 		$(MAKE) -j$(THREADS) clean
 
-#########
-## Verify
-
-
-#.PHONY: verify
-#verify:
-#	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
-#		$(MAKE) -j$(THREADS) all
-#	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
-#		$(MAKE) -j$(THREADS) all
-
-.PHONY: simenv
-simenv:
-	docker pull efabless/dv:latest
-
-dv_caravel_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-caravel && find * -maxdepth 0 -type d)
-dv_standalone_patterns=$(shell cd mgmt_core_wrapper/verilog/dv/tests-standalone && find * -maxdepth 0 -type d)
-dv-caravel-targets-rtl=$(dv_caravel_patterns:%=verify-caravel-%-rtl)
-dv-standalone-targets-rtl=$(dv_standalone_patterns:%=verify-standalone-%-rtl)
-dv-caravel-targets-gl=$(dv_caravel_patterns:%=verify-caravel-%-gl)
-dv-standalone-targets-gl=$(dv_standalone_patterns:%=verify-standalone-%-gl)
-dv-caravel-targets-gl-sdf=$(dv_caravel_patterns:%=verify-caravel-%-gl-sdf)
-dv-standalone-targets-gl-sdf=$(dv_standalone_patterns:%=verify-standalone-%-gl-sdf)
-
-VERIFY_LOG = "verify-${CONFIG}-${SIM}.log"
-TARGET_PATH=$(shell pwd)
-verify_command="source ~/.bashrc && cd ${TARGET_PATH}/mgmt_core_wrapper/verilog/dv/tests-${CONFIG}/$* && export SIM=${SIM} && make"
-dv_base_dependencies=simenv
-docker_run_verify=\
-	docker run -v ${TARGET_PATH}:${TARGET_PATH} -v ${PDK_ROOT}:${PDK_ROOT} \
-		-v ${CARAVEL_ROOT}:${CARAVEL_ROOT} \
-		-e TARGET_PATH=${TARGET_PATH} -e PDK_ROOT=${PDK_ROOT} \
-		-e CARAVEL_ROOT=${CARAVEL_ROOT} \
-		-e TOOLS=/foss/tools/riscv-gnu-toolchain-rv32i/217e7f3debe424d61374d31e33a091a630535937 \
-		-e DESIGNS=$(TARGET_PATH) \
-		-e PDK=$(PDK) \
-		-e CORE_VERILOG_PATH=$(TARGET_PATH)/mgmt_core_wrapper/verilog \
-		-e MCW_ROOT=$(MCW_ROOT) \
-		-u $$(id -u $$USER):$$(id -g $$USER) efabless/dv:latest \
-		sh -c $(verify_command) | tee -a ${VERIFY_LOG}
-
-.PHONY: harden
-harden: $(blocks)
 
 .PHONY: verify
-verify: $(dv-caravel-targets-rtl)
+verify:
+	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
+		$(MAKE) -j$(THREADS) all
+	cd $(CARAVEL_ROOT)/verilog/dv/wb_utests/ && \
+		$(MAKE) -j$(THREADS) all
 
-.PHONY: verify_log_header
-verify_log_header:
-	@echo "*************************************************************************" > ${VERIFY_LOG}
-	@echo "Verification Log: `date`  Configuration: ${CONFIG}  ${SIM}" >> ${VERIFY_LOG}
-	@echo "*************************************************************************" >> ${VERIFY_LOG}
 
-.PHONY: verify-caravel-all-rtl verify-standalone-all-rtl
-verify-caravel-all-rtl: $(dv-caravel-targets-rtl)
-verify-standalone-all-rtl: $(dv-standalone-targets-rtl)
-
-.PHONY: verify-caravel-all-gl verify-standalone-all-gl
-verify-caravel-all-gl: $(dv-caravel-targets-gl)
-verify-standalone-all-gl: $(dv-standalone-targets-gl)
-
-.PHONY: verify-caravel-all-gl-sdf verify-standalone-all-gl-sdf
-verify-caravel-all-gl-sdf: $(dv-targets-gl-sdf)
-verify-standalone-all-gl-sdf: $(dv-targets-gl-sdf)
-
-$(dv-caravel-targets-rtl): SIM=RTL
-$(dv-caravel-targets-rtl): CONFIG=caravel
-$(dv-caravel-targets-rtl): verify-caravel-%-rtl: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-$(dv-caravel-targets-gl): SIM=GL
-$(dv-caravel-targets-gl): CONFIG=caravel
-$(dv-caravel-targets-gl): verify-caravel-%-gl: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-$(dv-caravel-targets-gl-sdf): SIM=GL_SDF
-$(dv-caravel-targets-gl-sdf): CONFIG=caravel
-$(dv-caravel-targets-gl-sdf): verify-caravel-%-gl-sdf: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-$(dv-standalone-targets-rtl): SIM=RTL
-$(dv-standalone-targets-rtl): CONFIG=standalone
-$(dv-standalone-targets-rtl): verify-standalone-%-rtl: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-$(dv-standalone-targets-gl): SIM=GL
-$(dv-standalone-targets-gl): CONFIG=standalone
-$(dv-standalone-targets-gl): verify-standalone-%-gl: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-$(dv-standalone-targets-gl-sdf): SIM=GL_SDF
-$(dv-standalone-targets-gl-sdf): CONFIG=standalone
-$(dv-standalone-targets-gl-sdf): verify-standalone-%-gl-sdf: $(dv_base_dependencies) verify_log_header
-	$(docker_run_verify)
-
-clean-targets=$(blocks:%=clean-%)
-.PHONY: $(clean-targets)
-$(clean-targets): clean-% :
-	rm -f ./verilog/gl/$*.v
-	rm -f ./spef/$*.spef
-	rm -f ./sdc/$*.sdc
-	rm -f ./sdf/$*.sdf
-	rm -f ./gds/$*.gds
-	rm -f ./mag/$*.mag
-	rm -f ./lef/$*.lef
-	rm -f ./maglef/*.maglef
-
-###############
 
 #####
 $(LARGE_FILES_GZ): %.$(ARCHIVE_EXT): %
