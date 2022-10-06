@@ -209,10 +209,10 @@ module caravan (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data */
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_nc;	/* no-connects */
-    wire [4:0] mgmt_io_out;			/* three-pin interface out */
-    wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
+						/* three-pin interfaces		*/
     wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
     wire clock_core;
@@ -762,10 +762,8 @@ module caravan (
 	.serial_data_2(mprj_io_loader_data_2),
 
 	.mgmt_gpio_in(mgmt_io_in),
-	.mgmt_gpio_out({mgmt_io_out[4:2], mgmt_io_in[`MPRJ_IO_PADS-4:2],
-			mgmt_io_out[1:0]}),
-	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
-			mgmt_io_oeb[1:0]}),
+	.mgmt_gpio_out(mgmt_io_out),
+	.mgmt_gpio_oeb(mgmt_io_oeb),
 
 	.pwr_ctrl_out(pwr_ctrl_nc),        /* Not used in this version */
 
@@ -821,22 +819,53 @@ module caravan (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_defaults_block_0 [1:0] (
+    ) gpio_defaults_block_0 (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.gpio_defaults(gpio_defaults[25:0])
+	.gpio_defaults(gpio_defaults[12:0])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h1803)
+    ) gpio_defaults_block_1 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[25:13])
     );
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_defaults_block_2 [2:0] (
+    ) gpio_defaults_block_2 (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.gpio_defaults(gpio_defaults[64:26])
+	.gpio_defaults(gpio_defaults[38:26])
+    );
+
+    // CSB is configured to be a weak pull-up
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0801)
+    ) gpio_defaults_block_3 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[51:39])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0403)
+    ) gpio_defaults_block_4 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[64:52])
     );
 
     /* Via-programmable defaults for the rest of the GPIO pins */
@@ -1152,8 +1181,9 @@ module caravan (
 	.serial_load_out(gpio_load_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
-	.mgmt_gpio_out(mgmt_io_in[7:2]),
+	.mgmt_gpio_out(mgmt_io_out[7:2]),
 	.mgmt_gpio_oeb(mprj_io_one[7:2]),
+
 
         .one(mprj_io_one[7:2]),
         .zero(),
@@ -1204,9 +1234,9 @@ module caravan (
 	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
-	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
+	.mgmt_gpio_out(mgmt_io_out[`DIG1_TOP:8]),
 	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
-
+  
         .one(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
         .zero(),
 
@@ -1257,8 +1287,8 @@ module caravan (
 	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP):(`DIG2_TOP-2)]),
-	.mgmt_gpio_out(mgmt_io_out[4:2]),
-	.mgmt_gpio_oeb(mgmt_io_oeb[4:2]),
+	.mgmt_gpio_out(mgmt_io_out[(`DIG2_TOP):(`DIG2_TOP-2)]),
+	.mgmt_gpio_oeb(mgmt_io_oeb[(`DIG2_TOP):(`DIG2_TOP-2)]),
 
         .one(mprj_io_one[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
         .zero(),
@@ -1310,7 +1340,7 @@ module caravan (
 	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
  	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
- 	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
+ 	.mgmt_gpio_out(mgmt_io_out[(`DIG2_TOP-3):`DIG2_BOT]),
 	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
         .one(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
