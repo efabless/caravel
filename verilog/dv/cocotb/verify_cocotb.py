@@ -104,7 +104,7 @@ class RunTest:
         os.system(f"vcs {coverage_command} -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
-        # os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
+        os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
 
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
