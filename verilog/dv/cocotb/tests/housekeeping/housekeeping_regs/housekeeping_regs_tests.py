@@ -70,22 +70,29 @@ async def hk_regs_wr_wb(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb_cpu(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=157521,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=198243,num_error=INFINITY)    
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     reg1 =0 # buffer
     reg2 =0
+    regs_list = ("reg_hkspi_status","reg_hkspi_chip_id","reg_hkspi_user_id", "reg_hkspi_pll_ena","reg_hkspi_pll_bypass","reg_hkspi_irq","reg_hkspi_trap","reg_hkspi_pll_trim","reg_hkspi_pll_source","reg_hkspi_pll_divide","reg_clk_out_des","reg_hkspi_disable")
     while True: 
         if cpu.read_debug_reg2() == 0xFF:  # test finish 
             break
         if reg1 != cpu.read_debug_reg1():
-            reg1 = cpu.read_debug_reg1()                
-            cocotb.log.error(f"[TEST] error while writing 0x1FFF to reg_mprj_io_{reg1-1}")
+            reg1 = cpu.read_debug_reg1()  
+            if reg1 < 38:              
+                cocotb.log.error(f"[TEST] error while writing 0xFFFFFFFF to reg_mprj_io_{reg1-1}")
+            else: 
+                cocotb.log.error(f"[TEST] error while writing 0xFFFFFFFF to {regs_list[reg1-39]}")
         if reg2 != cpu.read_debug_reg2():
             reg2 = cpu.read_debug_reg2()                
-            cocotb.log.error(f"[TEST] error while writing 0x0 to reg_mprj_io_{reg2-1}")       
-        await ClockCycles(caravelEnv.clk,10) 
+            if reg1 < 38:              
+                cocotb.log.error(f"[TEST] error while writing 0x0 to reg_mprj_io_{reg2-1}") 
+            else: 
+                cocotb.log.error(f"[TEST] error while writing 0x0 to {regs_list[reg1-39]}")      
+        await ClockCycles(caravelEnv.clk,1) 
 
 '''randomly write then read housekeeping regs through SPI'''
 @cocotb.test()
