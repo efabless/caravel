@@ -932,8 +932,8 @@ module caravan (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_14_INIT)
-    ) gpio_defaults_block_14 (
+	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_25_INIT)
+    ) gpio_defaults_block_25 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
