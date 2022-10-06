@@ -14,7 +14,7 @@ from pathlib import Path
 
 iverilog = True
 vcs = False
-
+coverage = False
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -93,13 +93,15 @@ class RunTest:
             macros = f'{macros} +define+SIM=\\\"RTL\\\"'
         else: 
             print(f"Fatal: incorrect simulation type {self.sim_type}")
-         
+        coverage_command = ""
+        if coverage: 
+            coverage_command = "-cm line+tgl+cond+fsm+branch+assert"
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
         
         os.system(f"vlogan -full64  -sverilog +error+25 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
-        os.system(f"vcs -cm line+tgl+cond+fsm+branch+assert -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
+        os.system(f"vcs {coverage_command} -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         # os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
@@ -242,7 +244,8 @@ class RunRegression:
                     self.failed_tests +=1
                 self.unknown_tests -=1
                 self.update_reg_log()
-            self.generate_cov()
+            if coverage:
+                self.generate_cov()
         #TODO: add send mail here
     
     def generate_cov(self):
@@ -325,10 +328,13 @@ parser.add_argument('-testlist','-tl', help='path of testlist to be run ')
 parser.add_argument('-tag', help='provide tag of the run default would be regression name and if no regression is provided would be run_<random float>_<timestamp>_')
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
+parser.add_argument('-cov','-c',action='store_true', help='enale code coverage')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
     vcs = True
+if args.cov: 
+    coverage = True
 if args.sim == None: 
     args.sim= ["RTL"]
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
