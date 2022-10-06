@@ -809,6 +809,8 @@ module housekeeping #(
     assign spi_sdi = (spi_enabled) ? mgmt_gpio_in[34] : 1'b0;
     assign debug_in = (debug_mode) ? mgmt_gpio_in[0] : 1'b0;
 
+    genvar i;
+
     /* These are disconnected, but apply a meaningful signal anyway */
     generate
 	for (i = 2; i < `MPRJ_IO_PADS-3; i = i + 1) begin
