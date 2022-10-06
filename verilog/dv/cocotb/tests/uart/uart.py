@@ -61,7 +61,7 @@ async def start_of_tx(caravelEnv):
 @cocotb.test()
 @repot_test
 async def uart_rx(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=11195844)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=104029)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -95,7 +95,7 @@ async def uart_send_char(caravelEnv,char):
     caravelEnv.drive_gpio_in((5,5),0)
     await Timer(bit_time_ns, units='ns')
     #send bits 
-    for i in range(8):
+    for i in reversed(range(8)):
         caravelEnv.drive_gpio_in((5,5),char_bits[i])
         await Timer(bit_time_ns, units='ns')
 
@@ -113,14 +113,14 @@ async def uart_send_char(caravelEnv,char):
 async def uart_check_char_recieved(caravelEnv,cpu):
  # check cpu recieved the correct character
     while True: 
-        # reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
+        reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
         reg1 = cpu.read_debug_reg1()
         cocotb.log.debug(f"[TEST] reg1 = {hex(reg1)}")   
         if  reg1 == 0x1B:
-            cocotb.log.info(f"[TEST] Pass cpu has recieved the correct character ")   
+            cocotb.log.info(f"[TEST] Pass cpu has recieved the correct character {chr(int(reg_uart_data,2))}")   
             return
         if reg1 == 0x1E:
-            cocotb.log.error(f"[TEST] Failed cpu has recieved the wrong character ")  
+            cocotb.log.error(f"[TEST] Failed cpu has recieved the wrong character {chr(int(reg_uart_data,2))}")  
             return
                
         await ClockCycles(caravelEnv.clk,1) 
