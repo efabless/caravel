@@ -808,7 +808,7 @@ module housekeeping #(
 		 (spi_is_active) ? sdo : mgmt_gpio_data[1];
     assign mgmt_gpio_out[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
 
-    assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[0][INP_DIS];
+    assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[1][INP_DIS];
     assign mgmt_gpio_oeb[0] = (debug_mode) ? debug_oeb : ~gpio_configure[0][INP_DIS];
 
     assign ser_rx = (uart_enabled) ? mgmt_gpio_in[5] : 1'b0;
