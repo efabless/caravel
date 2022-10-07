@@ -21,7 +21,7 @@ set ::env(VERILOG_FILES) "\
 	$::env(DESIGN_DIR)/../../verilog/rtl/gpio_control_block.v"
 
 
-set ::env(PL_TARGET_DENSITY) 0.8
+set ::env(PL_TARGET_DENSITY) 0.9
 set ::env(CLOCK_PORT) "serial_clock"
 
 set ::env(FP_DEF_TEMPLATE) "$::env(DESIGN_DIR)/template/gpio_control_block.def"
@@ -43,13 +43,14 @@ set ::env(SYNTH_STRATEGY) "AREA 0"
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 170 65"
 
-set ::env(RIGHT_MARGIN_MULT) 257
+set ::env(RIGHT_MARGIN_MULT) 256
 set ::env(LEFT_MARGIN_MULT) 10
 set ::env(TOP_MARGIN_MULT) 1
 set ::env(BOTTOM_MARGIN_MULT) 1
 
 set ::env(DPL_CELL_PADDING) 0
 set ::env(GPL_CELL_PADDING) 0
+set ::env(DIODE_PADDING) 0
 
 ## PDN
 set ::env(FP_PDN_MACRO_HOOKS) "\
