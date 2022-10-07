@@ -53,29 +53,5 @@ void main(){
 
     reg_debug_1 = 0XAA; // configuration done 
 
-    // while (true){
-    // reg_debug_2 = reg_mprj_datal;
-
-    // }
-    // reg_debug_1 = 0XB1; //  wait environment to send 0x0 to reg_mprj_datal
-    // while (reg_mprj_datal != 0x0);
-    // reg_debug_2 = reg_mprj_datal;
-    // reg_debug_1 = 0XB2; //  wait environment to send 0xzzzzzzzz to reg_mprj_datal
-    // while (reg_mprj_datal != 0xFFFFFFFF);
-    // reg_debug_2 = reg_mprj_datal;
-    // reg_debug_1 = 0XB3; //  wait environment to send 0xzzzz0000 to reg_mprj_datal
-    // while (reg_mprj_datal != 0xFFFF0000);
-    // reg_debug_2 = reg_mprj_datal;
-    
-    // reg_debug_1 = 0XB5; //  wait environment to send 0x0 to reg_mprj_datah
-    // while (reg_mprj_datah != 0x0);
-    // reg_debug_2 = reg_mprj_datah;
-    // reg_debug_1 = 0XB6; //  wait environment to send 0xzz to reg_mprj_datah
-    // while (reg_mprj_datah != 0x3F);
-    // reg_debug_2 = reg_mprj_datah;
-    // reg_debug_1 = 0XB7; //  wait environment to send 0xz0 to reg_mprj_datah
-    // while (reg_mprj_datah != 0x30);
-    // reg_debug_2 = reg_mprj_datah;
-
-    reg_debug_1 = 0xFF;
+    while (true);
 }
