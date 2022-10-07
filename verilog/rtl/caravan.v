@@ -406,11 +406,13 @@ module caravan (
     wire	mprj_vdd_pwrgood;
     wire	mprj2_vdd_pwrgood;
 
+`ifdef USE_SRAM_RO_INTERFACE
     // SRAM read-noly access from housekeeping
     wire 	hkspi_sram_clk;
     wire	hkspi_sram_csb;
     wire [7:0]  hkspi_sram_addr;
     wire [31:0] hkspi_sram_data;
+`endif
 
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
@@ -495,11 +497,13 @@ module caravan (
 	.la_oenb(la_oenb_mprj),
 	.la_iena(la_iena_mprj),
 
+`ifdef USE_SRAM_RO_INTERFACE
 	// SRAM Read-only access from housekeeping
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
 	.sram_ro_data(hkspi_sram_data),
+`endif
 
 	// Trap status
 	.trap(trap)
@@ -801,10 +805,12 @@ module caravan (
 	.pad_flash_io0_di(flash_io0_di),
 	.pad_flash_io1_di(flash_io1_di),
 
+`ifdef USE_SRAM_RO_INTERFACE
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
 	.sram_ro_data(hkspi_sram_data),
+`endif
 
 	.usr1_vcc_pwrgood(mprj_vcc_pwrgood),
 	.usr2_vcc_pwrgood(mprj2_vcc_pwrgood),

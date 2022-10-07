@@ -170,10 +170,12 @@ module housekeeping #(
     input pad_flash_io0_di,
     input pad_flash_io1_di,
 
+`ifdef USE_SRAM_RO_INTERFACE
     output sram_ro_clk,
     output sram_ro_csb,
     output [7:0] sram_ro_addr,
     input [31:0] sram_ro_data,
+`endif
 
     // System signal monitoring
     input  usr1_vcc_pwrgood,
@@ -203,9 +205,11 @@ module housekeeping #(
     reg serial_xfer;
     reg hkspi_disable;
 
+`ifdef USE_SRAM_RO_INTERFACE
     reg sram_ro_clk;
     reg sram_ro_csb;
     reg [7:0] sram_ro_addr;
+`endif
 
     reg clk1_output_dest;
     reg clk2_output_dest;
@@ -250,7 +254,9 @@ module housekeeping #(
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
 
+`ifdef USE_SRAM_RO_INTERFACE
     wire [31:0] sram_ro_data;
+`endif
 
     // Housekeeping side 3-wire interface to GPIOs (see below)
     wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out;
@@ -364,13 +370,15 @@ module housekeeping #(
 				serial_bb_load, serial_bb_resetn, serial_bb_enable,
 				serial_busy};
 
-	    /* To be added:  SRAM read-only port (registers 14 to 19) */
+`ifdef USE_SRAM_RO_INTERFACE
+	    /* Optional:  SRAM read-only port (registers 14 to 19) */
 	    8'h14 : fdata = {6'b000000, sram_ro_clk, sram_ro_csb};
 	    8'h15 : fdata = sram_ro_addr;
 	    8'h16 : fdata = sram_ro_data[31:24];
 	    8'h17 : fdata = sram_ro_data[23:16];
 	    8'h18 : fdata = sram_ro_data[15:8];
 	    8'h19 : fdata = sram_ro_data[7:0];
+`endif
 
 	    /* System monitoring */
 	    8'h1a : fdata = {4'b0000, usr1_vcc_pwrgood, usr2_vcc_pwrgood,
@@ -516,8 +524,6 @@ module housekeeping #(
 	    spi_adr  | 12'h034 : spiaddr = 8'h14;	// SRAM read-only control
 
 	    gpio_adr | 12'h000 : spiaddr = 8'h13;	// GPIO control
-
-	    /* To be added:  SRAM read-only interface */
 
 	    sys_adr  | 12'h000 : spiaddr = 8'h1a;	// Power monitor
 	    sys_adr  | 12'h004 : spiaddr = 8'h1b;	// Output redirect
@@ -1042,9 +1048,11 @@ module housekeeping #(
 	    hkspi_disable <= 1'b0;
 	    pwr_ctrl_out <= 'd0;
 
+`ifdef USE_SRAM_RO_INTERFACE
 	    sram_ro_clk <= 1'b0;
 	    sram_ro_csb <= 1'b1;
 	    sram_ro_addr <= 8'h00;
+`endif
 
         end else begin
 	    if (cwstb == 1'b1) begin
@@ -1096,7 +1104,8 @@ module housekeeping #(
 			serial_xfer <= cdata[0];
 	    	    end
 
-		    /* To be done:  Add SRAM read-only interface */
+`ifdef USE_SRAM_RO_INTERFACE
+		    /* Optional:  Add SRAM read-only interface */
 		    8'h14: begin
 			sram_ro_clk <= cdata[1];
 			sram_ro_csb <= cdata[0];
@@ -1104,6 +1113,7 @@ module housekeeping #(
 		    8'h15: begin
 	    		sram_ro_addr <= cdata;
 		    end
+`endif
 		    
 		    /* Registers 16 to 19 (SRAM data) are read-only */
 
