@@ -1463,17 +1463,21 @@ module caravel (
 		.X(rstb_l)
     );
 
-    // Spare logic for metal mask fixes
-    wire [107:0] spare_xz_nc;
-    wire [15:0] spare_xi_nc;
-    wire [3:0] spare_xib_nc;
-    wire [7:0] spare_xna_nc;
-    wire [7:0] spare_xno_nc;
-    wire [7:0] spare_xmx_nc;
-    wire [7:0] spare_xfq_nc;
-    wire [7:0] spare_xfqn_nc;
+    /* Spare logic for metal mask fixes */
+    `define NUM_SPARE_BLOCKS (`MPRJ_IO_PADS+4)
 
-    spare_logic_block spare_logic [3:0] (
+    wire [(27*`NUM_SPARE_BLOCKS)-1:0] spare_xz_nc;
+    wire [(4*`NUM_SPARE_BLOCKS)-1:0] spare_xi_nc;
+    wire [(1*`NUM_SPARE_BLOCKS)-1:0] spare_xib_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xna_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xno_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xmx_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xfq_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xfqn_nc;
+
+    // Four spare logic blocks above the processor and one per GPIO
+    // control block.
+    spare_logic_block spare_logic [`NUM_SPARE_BLOCKS-1:0] (
 	`ifdef USE_POWER_PINS
 		.vccd(vccd_core),
 		.vssd(vssd_core),
