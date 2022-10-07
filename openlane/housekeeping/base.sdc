@@ -11,7 +11,10 @@ set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 create_clock [get_ports {"wb_clk_i"} ] -name "wb_clk_i"  -period $::env(WB_CLK_PERIOD)
 create_clock [get_ports {"user_clock"} ] -name "user_clock"  -period $::env(WB_CLK_PERIOD)
 create_clock [get_ports {"mgmt_gpio_in[4]"} ] -name "sck"  -period $::env(SCK_CLK_PERIOD)
-# create_clock -name v_clk -period 10
+##
+set_propagated_clock [get_clocks {wb_clk_i}]
+set_propagated_clock [get_clocks {user_clock}]
+set_propagated_clock [get_clocks {"mgmt_gpio_in[4]"}]
 
 ## GENERATED CLOCKS
 # NOTE: change the clock pins whenever the synthesis receipe changes 
@@ -31,20 +34,20 @@ set_false_path -from [get_ports "porb"]
 ## INPUT/OUTPUT DELAYS
 set input_delay_value 10
 # output delay is 23 which is 2ns less than the clock period, this helps in fixing transition violations due to the high capacitances at the outputs ports
-set output_delay_value 22
+set output_delay_value 10
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
 
 ## INPUT DELAYS
 set_input_delay $input_delay_value -clock [get_clocks wb_clk_i] [all_inputs]
 set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "mgmt_gpio_in[4]"]
-set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "wb_clk_i"]
+# set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "wb_clk_i"]
 set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "user_clock"]
 
 ## OUTPUT DELAYS
 
 # WISHBONE DELAY
-set wb_output_delay 22
+set wb_output_delay 10
 set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_ack_o]
 set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_dat_o[*]]
 
@@ -99,9 +102,9 @@ set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports pa
 set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports pad_flash_io0_ieb]
 
 # SRAM
-set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_clk]
-set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_csb]
-set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_addr[*]]
+# set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_clk]
+# set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_csb]
+# set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports sram_ro_addr[*]]
 
 ## OUTPUT LOADS
 set PT_cap_load 0.21
@@ -136,9 +139,10 @@ set_clock_transition $wb_clk_tran [get_clocks {user_clock}]
 set_clock_transition $sck_clk_tran [get_clocks {sck}]
 
 ## FANOUT
-set ::env(SYNTH_MAX_FANOUT) 10
+set ::env(SYNTH_MAX_FANOUT) 20
 puts "\[INFO\]: Setting maximum fanout to: $::env(SYNTH_MAX_FANOUT)"
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## MAX Transition
-set_max_trans 1.1 [current_design]
+set_max_trans 1.2 [current_design]
+
