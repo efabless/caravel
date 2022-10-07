@@ -170,10 +170,12 @@ module housekeeping #(
     input pad_flash_io0_di,
     input pad_flash_io1_di,
 
+`ifdef USE_SRAM_RO_INTERFACE
     output sram_ro_clk,
     output sram_ro_csb,
     output [7:0] sram_ro_addr,
     input [31:0] sram_ro_data,
+`endif
 
     // System signal monitoring
     input  usr1_vcc_pwrgood,
@@ -203,9 +205,11 @@ module housekeeping #(
     reg serial_xfer;
     reg hkspi_disable;
 
+`ifdef USE_SRAM_RO_INTERFACE
     reg sram_ro_clk;
     reg sram_ro_csb;
     reg [7:0] sram_ro_addr;
+`endif
 
     reg clk1_output_dest;
     reg clk2_output_dest;
@@ -250,10 +254,12 @@ module housekeeping #(
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
 
+`ifdef USE_SRAM_RO_INTERFACE
     wire [31:0] sram_ro_data;
+`endif
 
     // Housekeeping side 3-wire interface to GPIOs (see below)
-    wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out_pre;
+    wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out;
 
     // Pass-through mode handling.  Signals may only be applied when the
     // core processor is in reset.
@@ -264,26 +270,6 @@ module housekeeping #(
 	wire wb_rst_i;
 	assign wb_rst_i = ~wb_rstn_i;
 	
-    // Handle the management-side control of the GPIO pins.  All but the
-    // first and last three GPIOs (0, 1 and 35 to 37) are one-pin interfaces with
-    // a single I/O pin whose direction is determined by the local OEB signal.
-    // The other five are straight-through connections of the 3-wire interface.
-
-    assign mgmt_gpio_out[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3] =
-			mgmt_gpio_out_pre[`MPRJ_IO_PADS-1:`MPRJ_IO_PADS-3];
-    assign mgmt_gpio_out[1:0] = mgmt_gpio_out_pre[1:0];
-
-    genvar i;
-
-    // This implements high-impedence buffers on the GPIO outputs other than
-    // the first and last two GPIOs so that these pins can be tied together
-    // at the top level to create the single-wire interface on those GPIOs.
-    generate
-	for (i = 2; i < `MPRJ_IO_PADS-3; i = i + 1) begin
-	    assign mgmt_gpio_out[i] = mgmt_gpio_oeb[i] ?  1'bz : mgmt_gpio_out_pre[i];
-	end
-    endgenerate
-
     // Pass-through mode.  Housekeeping SPI signals get inserted
     // between the management SoC and the flash SPI I/O.
 
@@ -391,13 +377,15 @@ module housekeeping #(
 				serial_bb_load, serial_bb_resetn, serial_bb_enable,
 				serial_busy};
 
-	    /* To be added:  SRAM read-only port (registers 14 to 19) */
+`ifdef USE_SRAM_RO_INTERFACE
+	    /* Optional:  SRAM read-only port (registers 14 to 19) */
 	    8'h14 : fdata = {6'b000000, sram_ro_clk, sram_ro_csb};
 	    8'h15 : fdata = sram_ro_addr;
 	    8'h16 : fdata = sram_ro_data[31:24];
 	    8'h17 : fdata = sram_ro_data[23:16];
 	    8'h18 : fdata = sram_ro_data[15:8];
 	    8'h19 : fdata = sram_ro_data[7:0];
+`endif
 
 	    /* System monitoring */
 	    8'h1a : fdata = {4'b0000, usr1_vcc_pwrgood, usr2_vcc_pwrgood,
@@ -543,8 +531,6 @@ module housekeeping #(
 	    spi_adr  | 12'h034 : spiaddr = 8'h14;	// SRAM read-only control
 
 	    gpio_adr | 12'h000 : spiaddr = 8'h13;	// GPIO control
-
-	    /* To be added:  SRAM read-only interface */
 
 	    sys_adr  | 12'h000 : spiaddr = 8'h1a;	// Power monitor
 	    sys_adr  | 12'h004 : spiaddr = 8'h1b;	// Output redirect
@@ -766,7 +752,7 @@ module housekeeping #(
 	.reset(~porb),
     	.SCK(mgmt_gpio_in[4]),
     	.SDI(mgmt_gpio_in[2]),
-    	.CSB((spi_is_active) ? mgmt_gpio_in[3] : 1'b1),
+    	.CSB((spi_is_enabled) ? mgmt_gpio_in[3] : 1'b1),
     	.SDO(sdo),
     	.sdoenb(sdo_enb),
     	.idata(odata),
@@ -786,9 +772,9 @@ module housekeeping #(
 
     // GPIO data handling to and from the management SoC
 
-    assign mgmt_gpio_out_pre[37] = (qspi_enabled) ? spimemio_flash_io3_do :
+    assign mgmt_gpio_out[37] = (qspi_enabled) ? spimemio_flash_io3_do :
 		mgmt_gpio_data[37];
-    assign mgmt_gpio_out_pre[36] = (qspi_enabled) ? spimemio_flash_io2_do :
+    assign mgmt_gpio_out[36] = (qspi_enabled) ? spimemio_flash_io2_do :
 		mgmt_gpio_data[36];
 
     assign mgmt_gpio_oeb[37] = (qspi_enabled) ? spimemio_flash_io3_oeb :
@@ -804,39 +790,41 @@ module housekeeping #(
     assign spimemio_flash_io2_di = mgmt_gpio_in[36];
 
     // SPI master is assigned to the other 4 bits of the data high word.
-    assign mgmt_gpio_out_pre[32] = (spi_enabled) ? spi_sck : mgmt_gpio_data[32];
-    assign mgmt_gpio_out_pre[33] = (spi_enabled) ? spi_csb : mgmt_gpio_data[33];
-    assign mgmt_gpio_out_pre[34] = mgmt_gpio_data[34];
-    assign mgmt_gpio_out_pre[35] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[35];
+    assign mgmt_gpio_out[32] = (spi_enabled) ? spi_sck : mgmt_gpio_data[32];
+    assign mgmt_gpio_out[33] = (spi_enabled) ? spi_csb : mgmt_gpio_data[33];
+    assign mgmt_gpio_out[34] = mgmt_gpio_data[34];
+    assign mgmt_gpio_out[35] = (spi_enabled) ? spi_sdo : mgmt_gpio_data[35];
 
-    assign mgmt_gpio_out_pre[31:16] = mgmt_gpio_data[31:16];
-    assign mgmt_gpio_out_pre[12:11] = mgmt_gpio_data[12:11];
+    assign mgmt_gpio_out[31:16] = mgmt_gpio_data[31:16];
+    assign mgmt_gpio_out[12:11] = mgmt_gpio_data[12:11];
 
-    assign mgmt_gpio_out_pre[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
+    assign mgmt_gpio_out[10] = (pass_thru_user_delay) ? mgmt_gpio_in[2]
 			: mgmt_gpio_data[10];
-    assign mgmt_gpio_out_pre[9] = (pass_thru_user) ? mgmt_gpio_in[4]
+    assign mgmt_gpio_out[9] = (pass_thru_user) ? mgmt_gpio_in[4]
 			: mgmt_gpio_data[9];
-    assign mgmt_gpio_out_pre[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
+    assign mgmt_gpio_out[8] = (pass_thru_user_delay) ? mgmt_gpio_in[3]
 			: mgmt_gpio_data[8];
 
-    assign mgmt_gpio_out_pre[7] = mgmt_gpio_data[7];
-    assign mgmt_gpio_out_pre[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
-    assign mgmt_gpio_out_pre[5:2] = mgmt_gpio_data[5:2];
+    assign mgmt_gpio_out[7] = mgmt_gpio_data[7];
+    assign mgmt_gpio_out[6] = (uart_enabled) ? ser_tx : mgmt_gpio_data[6];
+    assign mgmt_gpio_out[5:2] = mgmt_gpio_data[5:2];
 
     // In pass-through modes, route SDO from the respective flash (user or
     // management SoC) to the dedicated SDO pin (GPIO[1])
 
-    assign mgmt_gpio_out_pre[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
+    assign mgmt_gpio_out[1] = (pass_thru_mgmt) ? pad_flash_io1_di :
 		 (pass_thru_user) ? mgmt_gpio_in[11] :
 		 (spi_is_active) ? sdo : mgmt_gpio_data[1];
-    assign mgmt_gpio_out_pre[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
+    assign mgmt_gpio_out[0] = (debug_mode) ? debug_out : mgmt_gpio_data[0];
 
-    assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[0][INP_DIS];
+    assign mgmt_gpio_oeb[1] = (spi_is_active) ? sdo_enb : ~gpio_configure[1][INP_DIS];
     assign mgmt_gpio_oeb[0] = (debug_mode) ? debug_oeb : ~gpio_configure[0][INP_DIS];
 
     assign ser_rx = (uart_enabled) ? mgmt_gpio_in[5] : 1'b0;
     assign spi_sdi = (spi_enabled) ? mgmt_gpio_in[34] : 1'b0;
     assign debug_in = (debug_mode) ? mgmt_gpio_in[0] : 1'b0;
+
+    genvar i;
 
     /* These are disconnected, but apply a meaningful signal anyway */
     generate
@@ -852,11 +840,11 @@ module housekeeping #(
     // so the pad being under control of the user area takes precedence
     // over the system monitoring function.
 
-    assign mgmt_gpio_out_pre[15] = (clk2_output_dest == 1'b1) ? user_clock
+    assign mgmt_gpio_out[15] = (clk2_output_dest == 1'b1) ? user_clock
 		: mgmt_gpio_data[15];
-    assign mgmt_gpio_out_pre[14] = (clk1_output_dest == 1'b1) ? wb_clk_i
+    assign mgmt_gpio_out[14] = (clk1_output_dest == 1'b1) ? wb_clk_i
 		: mgmt_gpio_data[14];
-    assign mgmt_gpio_out_pre[13] = (trap_output_dest == 1'b1) ? trap
+    assign mgmt_gpio_out[13] = (trap_output_dest == 1'b1) ? trap
 		: mgmt_gpio_data[13];
 
     assign irq[0] = irq_spi;
@@ -1043,7 +1031,12 @@ module housekeeping #(
 		if ((j < 2) || (j >= `MPRJ_IO_PADS - 2)) begin
 		    gpio_configure[j] <= 'h1803;
                 end else begin
-	            gpio_configure[j] <= 'h0403;
+		    if (j == 3) begin
+			// j == 3 corresponds to CSB, which is a weak pull-up
+	                gpio_configure[j] <= 'h0801;
+		    end else begin
+	                gpio_configure[j] <= 'h0403;
+		    end
 		end
 	    end
 
@@ -1059,9 +1052,11 @@ module housekeeping #(
 	    hkspi_disable <= 1'b0;
 	    pwr_ctrl_out <= 'd0;
 
+`ifdef USE_SRAM_RO_INTERFACE
 	    sram_ro_clk <= 1'b0;
 	    sram_ro_csb <= 1'b1;
 	    sram_ro_addr <= 8'h00;
+`endif
 
         end else begin
 	    if (cwstb == 1'b1) begin
@@ -1113,7 +1108,8 @@ module housekeeping #(
 			serial_xfer <= cdata[0];
 	    	    end
 
-		    /* To be done:  Add SRAM read-only interface */
+`ifdef USE_SRAM_RO_INTERFACE
+		    /* Optional:  Add SRAM read-only interface */
 		    8'h14: begin
 			sram_ro_clk <= cdata[1];
 			sram_ro_csb <= cdata[0];
@@ -1121,6 +1117,7 @@ module housekeeping #(
 		    8'h15: begin
 	    		sram_ro_addr <= cdata;
 		    end
+`endif
 		    
 		    /* Registers 16 to 19 (SRAM data) are read-only */
 

@@ -3802,12 +3802,12 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vssd1(vssd1_core),
     .zero()
   );
-  gpio_defaults_block_1803 \gpio_defaults_block_0[0]  (
+  gpio_defaults_block_1803 gpio_defaults_block_0 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[12] , \gpio_defaults[11] , \gpio_defaults[10] , \gpio_defaults[9] , \gpio_defaults[8] , \gpio_defaults[7] , \gpio_defaults[6] , \gpio_defaults[5] , \gpio_defaults[4] , \gpio_defaults[3] , \gpio_defaults[2] , \gpio_defaults[1] , \gpio_defaults[0]  })
   );
-  gpio_defaults_block_1803 \gpio_defaults_block_0[1]  (
+  gpio_defaults_block_1803 gpio_defaults_block_1 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[25] , \gpio_defaults[24] , \gpio_defaults[23] , \gpio_defaults[22] , \gpio_defaults[21] , \gpio_defaults[20] , \gpio_defaults[19] , \gpio_defaults[18] , \gpio_defaults[17] , \gpio_defaults[16] , \gpio_defaults[15] , \gpio_defaults[14] , \gpio_defaults[13]  })
@@ -3857,17 +3857,17 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[246] , \gpio_defaults[245] , \gpio_defaults[244] , \gpio_defaults[243] , \gpio_defaults[242] , \gpio_defaults[241] , \gpio_defaults[240] , \gpio_defaults[239] , \gpio_defaults[238] , \gpio_defaults[237] , \gpio_defaults[236] , \gpio_defaults[235] , \gpio_defaults[234]  })
   );
-  gpio_defaults_block_0403 \gpio_defaults_block_2[0]  (
+  gpio_defaults_block_0403 gpio_defaults_block_2 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[38] , \gpio_defaults[37] , \gpio_defaults[36] , \gpio_defaults[35] , \gpio_defaults[34] , \gpio_defaults[33] , \gpio_defaults[32] , \gpio_defaults[31] , \gpio_defaults[30] , \gpio_defaults[29] , \gpio_defaults[28] , \gpio_defaults[27] , \gpio_defaults[26]  })
   );
-  gpio_defaults_block_0403 \gpio_defaults_block_2[1]  (
+  gpio_defaults_block_0801 gpio_defaults_block_3 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[51] , \gpio_defaults[50] , \gpio_defaults[49] , \gpio_defaults[48] , \gpio_defaults[47] , \gpio_defaults[46] , \gpio_defaults[45] , \gpio_defaults[44] , \gpio_defaults[43] , \gpio_defaults[42] , \gpio_defaults[41] , \gpio_defaults[40] , \gpio_defaults[39]  })
   );
-  gpio_defaults_block_0403 \gpio_defaults_block_2[2]  (
+  gpio_defaults_block_0403 gpio_defaults_block_4 (
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .gpio_defaults({ \gpio_defaults[64] , \gpio_defaults[63] , \gpio_defaults[62] , \gpio_defaults[61] , \gpio_defaults[60] , \gpio_defaults[59] , \gpio_defaults[58] , \gpio_defaults[57] , \gpio_defaults[56] , \gpio_defaults[55] , \gpio_defaults[54] , \gpio_defaults[53] , \gpio_defaults[52]  })

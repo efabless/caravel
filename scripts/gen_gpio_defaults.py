@@ -172,7 +172,7 @@ if __name__ == '__main__':
     kvpairs["`USER_CONFIG_GPIO_0_INIT"] = "13'h1803"
     kvpairs["`USER_CONFIG_GPIO_1_INIT"] = "13'h1803"
     kvpairs["`USER_CONFIG_GPIO_2_INIT"] = "13'h0403"
-    kvpairs["`USER_CONFIG_GPIO_3_INIT"] = "13'h0403"
+    kvpairs["`USER_CONFIG_GPIO_3_INIT"] = "13'h0801"
     kvpairs["`USER_CONFIG_GPIO_4_INIT"] = "13'h0403"
 
     # Generate zero and one coordinates for each via
