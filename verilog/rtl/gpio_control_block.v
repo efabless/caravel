@@ -39,6 +39,14 @@
  * See mprj_ctrl.v for the module that registers the data for each
  * I/O and drives the input to the shift register.
  *
+ * Modified 7/24/2022 by Tim Edwards
+ * Replaced the data delay with a negative edge-triggered flop
+ * so that the serial data bit out from the module only changes on
+ * the clock half cycle.  This avoids the need to fine-tune the clock
+ * skew between GPIO blocks.
+ *
+ * Modified 10/05/2022 by Tim Edwards
+ *
  *---------------------------------------------------------------------
  */
 
@@ -135,56 +143,33 @@ module gpio_control_block #(
     wire        pad_gpio_outenb;
     wire	pad_gpio_out;
     wire	pad_gpio_in;
+    wire	one_unbuf;
+    wire	zero_unbuf;
     wire	one;
     wire	zero;
 
     wire user_gpio_in;
-    wire gpio_in_unbuf;
     wire gpio_logic1;
-    wire serial_data_pre;
-    wire serial_data_post_1;
-    wire serial_data_post_2;
+    reg serial_data_out;
 
     /* Serial shift for the above (latched) values */
     reg [PAD_CTRL_BITS-1:0] shift_register;
 
-    /* Create internal reset and load signals from input reset and clock */
-    assign serial_data_pre = shift_register[PAD_CTRL_BITS-1]; 
+    /* Latch the output on the clock negative edge */
+    always @(negedge serial_clock or negedge resetn) begin
+	if (resetn == 1'b0) begin
+	    /* Clear the shift register output */
+	    serial_data_out <= 1'b0;
+        end else begin
+	    serial_data_out <= shift_register[PAD_CTRL_BITS-1];
+	end
+    end
 
     /* Propagate the clock and reset signals so that they aren't wired	*/
     /* all over the chip, but are just wired between the blocks.	*/
     assign serial_clock_out = serial_clock;
     assign resetn_out = resetn;
     assign serial_load_out = serial_load;
-
-    /* Serial data should be buffered again to avoid hold violations	*/
-    /* Do this in two ways:  (1) Add internal delay cells, and (2)	*/
-    /* add a final logic gate after that.  The logic gate is		*/
-    /* synthesized and will be sized appropriately for an output buffer	*/
-
-    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_1 (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .X(serial_data_post_1),
-            .A(serial_data_pre)
-    );
-
-    sky130_fd_sc_hd__dlygate4sd2_1 data_delay_2 (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .X(serial_data_post_2),
-            .A(serial_data_post_1)
-    );
-
-    assign serial_data_out = serial_data_post_2 & one;
 
     always @(posedge serial_clock or negedge resetn) begin
 	if (resetn == 1'b0) begin
@@ -242,11 +227,21 @@ module gpio_control_block #(
 
     /* Implement pad control behavior depending on state of mgmt_ena */
 
-    assign gpio_in_unbuf = pad_gpio_in;
-    assign mgmt_gpio_in = (gpio_inenb == 1'b0 && gpio_outenb == 1'b1) ?
-			pad_gpio_in : 1'bz;
+    /* The pad value always goes back to the housekeeping module	*/
+
+    assign mgmt_gpio_in = pad_gpio_in;
+
+    /* For 2-wire interfaces, the mgmt_gpio_oeb line is tied high at	*/
+    /* the control block.  In this case, the output enable state is	*/
+    /* determined by the OEB configuration bit.				*/
+
     assign pad_gpio_outenb = (mgmt_ena) ? ((mgmt_gpio_oeb == 1'b1) ?
 			gpio_outenb : 1'b0) : user_gpio_oeb;
+
+    /* For 2-wire interfaces, if the pad is configured for pull-up or	*/
+    /* pull-down, drive the output value locally to achieve the		*/
+    /* expected pull.							*/
+
     assign pad_gpio_out = (mgmt_ena) ? ((mgmt_gpio_oeb == 1'b1) ?
 			((gpio_dm[2:1] == 2'b01) ? ~gpio_dm[0] : mgmt_gpio_out) :
 			mgmt_gpio_out) : user_gpio_out; 
@@ -261,17 +256,9 @@ module gpio_control_block #(
             .gpio_logic1(gpio_logic1)
     );
 
-    sky130_fd_sc_hd__einvp_8 gpio_in_buf (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd),
-`endif
-            .Z(user_gpio_in),
-            .A(~gpio_in_unbuf),
-            .TE(gpio_logic1)
-    );
+    /* If user project area is powered down, zero the pad input value	*/
+    /* going to the user project.					*/
+    assign user_gpio_in = pad_gpio_in & gpio_logic1;
 
     sky130_fd_sc_hd__conb_1 const_source (
 `ifdef USE_POWER_PINS
@@ -280,9 +267,12 @@ module gpio_control_block #(
             .VPB(vccd),
             .VNB(vssd),
 `endif
-            .HI(one),
-            .LO(zero)
+            .HI(one_unbuf),
+            .LO(zero_unbuf)
     );
+
+    assign zero = zero_unbuf;
+    assign one = one_unbuf;
 
 endmodule
 `default_nettype wire
