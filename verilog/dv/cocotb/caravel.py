@@ -122,8 +122,9 @@ class Caravel_env:
     """set the spi vsb signal high impedance """
     async def release_csb(self ):
         cocotb.log.info(f' [caravel] release housekeeping spi transmission')
-        await self.drive_csb('z')
-        
+        self.drive_gpio_in((3,3),'z')
+        self.drive_gpio_in((2,2),'z')
+        await ClockCycles(self.clk, 1)
 
     """set the spi vsb signal low to enable housekeeping spi transmission bin E8 mprj[3]"""
     async def enable_csb(self ):
@@ -336,7 +337,7 @@ class Caravel_env:
                 self.dut._id(f"bin{bits2}_en",False).value = 0
                 cocotb.log.debug(f'[caravel] [drive_gpio_disable] release driving bin{bits2}')
         else:
-            self.dut._id(f'bin{bits}_en',False).value = 1
+            self.dut._id(f'bin{bits}_en',False).value = 0
             cocotb.log.debug(f'[caravel] [drive_gpio_disable] release driving bin{bits}')
 
 

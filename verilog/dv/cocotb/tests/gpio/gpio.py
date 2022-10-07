@@ -103,12 +103,13 @@ async def gpio_all_i(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i_pu(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=1245464)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1245464,num_error=2000)
+    await caravelEnv.release_csb()
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     uut = dut.uut
-
+    # await ClockCycles(caravelEnv.clk,1000000000) 
     # for i in range(200):
     #     caravelEnv.drive_gpio_in((31,0),0x0)
     #     await ClockCycles(caravelEnv.clk,10000) 
@@ -117,30 +118,107 @@ async def gpio_all_i_pu(dut):
     
     # return
     await wait_reg1(cpu,caravelEnv,0xAA)
+    # monitor the output of padframe module it suppose to be all ones  when no input is applied
+    await ClockCycles(caravelEnv.clk,100) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if gpio[i] != "1":
+            cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and float")
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive gpios with zero 
+    data_in =  0x0
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if gpio[i] != "0":
+            cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 0 while configured as pullup and drived with 0")
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive gpios with ones 
+    data_in =  0x3FFFFFFFFF
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if gpio[i] != "1":
+            cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and drived with 1")
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive odd half gpios with zeros and float other half
+    data_in =  0x0
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    for i in range(0,38,2):
+        caravelEnv.release_gpio(i) # release even gpios
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if i%2 ==1: #odd
+            if gpio[i]!="1":
+                cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and drived with odd half with 0")
+        else:
+            if gpio[i] != "0":
+                cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 0 while configured as pullup and drived with odd half with 0")
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive even half gpios with zeros and float other half
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    for i in range(1,38,2):
+        caravelEnv.release_gpio(i) # release odd gpios
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if i%2 ==1: #odd
+            if gpio[i] != "0":
+                cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 0 while configured as pullup and drived with even half with 0")
+        else:
+            if gpio[i]!="1":
+                cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and drived with even half with 0")
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive odd half gpios with ones and float other half
+    data_in =  0x3FFFFFFFFF
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    for i in range(0,38,2):
+        caravelEnv.release_gpio(i) # release even gpios
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if gpio[i]!="1":
+            cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and drived with odd half with 1")
+    
+    await ClockCycles(caravelEnv.clk,1000) 
+    # drive even half gpios with zeros and float other half
+    caravelEnv.drive_gpio_in((37,0),data_in)
+    for i in range(1,38,2):
+        caravelEnv.release_gpio(i) # release odd gpios
+    await ClockCycles(caravelEnv.clk,1000) 
+    gpio = dut.uut.padframe.mprj_io_in.value.binstr
+    for i in range(38):
+        if gpio[i] != "1":
+            cocotb.log.error(f"[TEST] gpio[{i}] is having wrong value {gpio[i]} instead of 1 while configured as pullup and drived with even half with 1")
+       
+    await ClockCycles(caravelEnv.clk,1000) 
 
-    cocotb.log.info(f"[TEST] configuration finished")
-    await wait_reg1(cpu,caravelEnv,0xB1)
-    data_in = 0x0
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
-    caravelEnv.drive_gpio_in((31,0),data_in)
-    await wait_reg1(cpu,caravelEnv,0xB2)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
-    size = 32
-    data_in =  int(size) * 'z'
-    data_in =  0xFFFFFFFF
-    cocotb.log.info(f"[TEST] send {data_in} to gpio[31:0]")
-    caravelEnv.release_gpio((31,0))
-    await wait_reg1(cpu,caravelEnv,0xB3)
-    cocotb.log.info(f"[TEST] data {data_in} sent successfully to gpio[31:0]")
-    data_in = 0x0
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:16]")
-    caravelEnv.drive_gpio_in((15,0),data_in)
+    # cocotb.log.info(f"[TEST] configuration finished")
+    # await wait_reg1(cpu,caravelEnv,0xB1)
+    # data_in = 0x0
+    # cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    # caravelEnv.drive_gpio_in((31,0),data_in)
+    # await wait_reg1(cpu,caravelEnv,0xB2)
+    # cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+    # size = 32
+    # data_in =  int(size) * 'z'
+    # data_in =  0xFFFFFFFF
+    # cocotb.log.info(f"[TEST] send {data_in} to gpio[31:0]")
+    # caravelEnv.release_gpio((31,0))
+    # await wait_reg1(cpu,caravelEnv,0xB3)
+    # cocotb.log.info(f"[TEST] data {data_in} sent successfully to gpio[31:0]")
+    # data_in = 0x0
+    # cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[0:16]")
+    # caravelEnv.drive_gpio_in((15,0),data_in)
 
-    # await wait_reg2(cpu,caravelEnv,0xFF) 
-    cocotb.log.info(f"[TEST] finish")
+    # # await wait_reg2(cpu,caravelEnv,0xFF) 
+    # cocotb.log.info(f"[TEST] finish")
 
 
-    await wait_reg1(cpu,caravelEnv,0xFF)
+    # await wait_reg1(cpu,caravelEnv,0xFF)
 
 
 

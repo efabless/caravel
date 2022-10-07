@@ -7,7 +7,7 @@ void main(){
     reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
     reg_debug_1  = 0x0;
     reg_debug_2  = 0x0;
-
+    reg_hkspi_disable = 1;
     reg_mprj_io_37 = GPIO_MODE_MGMT_STD_INPUT_PULLUP;
     reg_mprj_io_36 = GPIO_MODE_MGMT_STD_INPUT_PULLUP;
     reg_mprj_io_35 = GPIO_MODE_MGMT_STD_INPUT_PULLUP;
@@ -57,25 +57,25 @@ void main(){
     // reg_debug_2 = reg_mprj_datal;
 
     // }
-    reg_debug_1 = 0XB1; //  wait environment to send 0x0 to reg_mprj_datal
-    while (reg_mprj_datal != 0x0);
-    reg_debug_2 = reg_mprj_datal;
-    reg_debug_1 = 0XB2; //  wait environment to send 0xzzzzzzzz to reg_mprj_datal
-    while (reg_mprj_datal != 0xFFFFFFFF);
-    reg_debug_2 = reg_mprj_datal;
-    reg_debug_1 = 0XB3; //  wait environment to send 0xzzzz0000 to reg_mprj_datal
-    while (reg_mprj_datal != 0xFFFF0000);
-    reg_debug_2 = reg_mprj_datal;
+    // reg_debug_1 = 0XB1; //  wait environment to send 0x0 to reg_mprj_datal
+    // while (reg_mprj_datal != 0x0);
+    // reg_debug_2 = reg_mprj_datal;
+    // reg_debug_1 = 0XB2; //  wait environment to send 0xzzzzzzzz to reg_mprj_datal
+    // while (reg_mprj_datal != 0xFFFFFFFF);
+    // reg_debug_2 = reg_mprj_datal;
+    // reg_debug_1 = 0XB3; //  wait environment to send 0xzzzz0000 to reg_mprj_datal
+    // while (reg_mprj_datal != 0xFFFF0000);
+    // reg_debug_2 = reg_mprj_datal;
     
-    reg_debug_1 = 0XB5; //  wait environment to send 0x0 to reg_mprj_datah
-    while (reg_mprj_datah != 0x0);
-    reg_debug_2 = reg_mprj_datah;
-    reg_debug_1 = 0XB6; //  wait environment to send 0xzz to reg_mprj_datah
-    while (reg_mprj_datah != 0x3F);
-    reg_debug_2 = reg_mprj_datah;
-    reg_debug_1 = 0XB7; //  wait environment to send 0xz0 to reg_mprj_datah
-    while (reg_mprj_datah != 0x30);
-    reg_debug_2 = reg_mprj_datah;
+    // reg_debug_1 = 0XB5; //  wait environment to send 0x0 to reg_mprj_datah
+    // while (reg_mprj_datah != 0x0);
+    // reg_debug_2 = reg_mprj_datah;
+    // reg_debug_1 = 0XB6; //  wait environment to send 0xzz to reg_mprj_datah
+    // while (reg_mprj_datah != 0x3F);
+    // reg_debug_2 = reg_mprj_datah;
+    // reg_debug_1 = 0XB7; //  wait environment to send 0xz0 to reg_mprj_datah
+    // while (reg_mprj_datah != 0x30);
+    // reg_debug_2 = reg_mprj_datah;
 
     reg_debug_1 = 0xFF;
 }
