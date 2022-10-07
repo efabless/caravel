@@ -165,6 +165,7 @@ module caravan (
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
+    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_one;
 
     // User Project Control (user-facing)
     // 27 GPIO bidirectional with in/out/oeb and a 3.3V copy of the input
@@ -208,10 +209,10 @@ module caravan (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data */
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_nc;	/* no-connects */
-    wire [4:0] mgmt_io_out;			/* three-pin interface out */
-    wire [4:0] mgmt_io_oeb;			/* three-pin output enable */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
+						/* three-pin interfaces		*/
     wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
     wire clock_core;
@@ -291,7 +292,6 @@ module caravan (
 	.vccd2	(vccd2_core),
 	.vssd1	(vssd1_core),
 	.vssd2	(vssd2_core),
-
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -325,6 +325,7 @@ module caravan (
 	.flash_io1_do_core(flash_io1_do),
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
+	.mprj_io_one(mprj_io_one),
 	.mprj_io_in(mprj_io_in),
 	.mprj_io_in_3v3(mprj_io_in_3v3),
 	.mprj_io_out(mprj_io_out),
@@ -405,14 +406,20 @@ module caravan (
     wire	mprj_vdd_pwrgood;
     wire	mprj2_vdd_pwrgood;
 
+`ifdef USE_SRAM_RO_INTERFACE
     // SRAM read-noly access from housekeeping
     wire 	hkspi_sram_clk;
     wire	hkspi_sram_csb;
     wire [7:0]  hkspi_sram_addr;
     wire [31:0] hkspi_sram_data;
+`endif
 
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
+
+    // Pass thru clock and reset
+    wire 	clk_passthru;
+    wire 	resetn_passthru;
 
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
@@ -423,6 +430,12 @@ module caravan (
 	// Clocks and reset
        	.core_clk(caravel_clk),
        	.core_rstn(caravel_rstn),
+
+    // Pass thru Clock and reset
+	.clk_in(caravel_clk),
+	.resetn_in(caravel_rstn),
+	.clk_out(clk_passthru),
+	.resetn_out(resetn_passthru),
 
 	// GPIO (1 pin)
 	.gpio_out_pad(gpio_out_core),
@@ -494,11 +507,13 @@ module caravan (
 	.la_oenb(la_oenb_mprj),
 	.la_iena(la_iena_mprj),
 
+`ifdef USE_SRAM_RO_INTERFACE
 	// SRAM Read-only access from housekeeping
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
 	.sram_ro_data(hkspi_sram_data),
+`endif
 
 	// Trap status
 	.trap(trap)
@@ -522,9 +537,9 @@ module caravan (
 	    .vdda2(vdda2_core),
 	    .vssa2(vssa2_core),
 	`endif
-	.caravel_clk(caravel_clk),
+	.caravel_clk(clk_passthru),
 	.caravel_clk2(caravel_clk2),
-	.caravel_rstn(caravel_rstn),
+	.caravel_rstn(resetn_passthru),
 	.mprj_iena_wb(mprj_iena_wb),
 	.mprj_cyc_o_core(mprj_cyc_o_core),
 	.mprj_stb_o_core(mprj_stb_o_core),
@@ -761,10 +776,8 @@ module caravan (
 	.serial_data_2(mprj_io_loader_data_2),
 
 	.mgmt_gpio_in(mgmt_io_in),
-	.mgmt_gpio_out({mgmt_io_out[4:2], mgmt_io_in[`MPRJ_IO_PADS-4:2],
-			mgmt_io_out[1:0]}),
-	.mgmt_gpio_oeb({mgmt_io_oeb[4:2], mgmt_io_nc[`MPRJ_IO_PADS-6:0],
-			mgmt_io_oeb[1:0]}),
+	.mgmt_gpio_out(mgmt_io_out),
+	.mgmt_gpio_oeb(mgmt_io_oeb),
 
 	.pwr_ctrl_out(pwr_ctrl_nc),        /* Not used in this version */
 
@@ -802,10 +815,12 @@ module caravan (
 	.pad_flash_io0_di(flash_io0_di),
 	.pad_flash_io1_di(flash_io1_di),
 
+`ifdef USE_SRAM_RO_INTERFACE
 	.sram_ro_clk(hkspi_sram_clk),
 	.sram_ro_csb(hkspi_sram_csb),
 	.sram_ro_addr(hkspi_sram_addr),
 	.sram_ro_data(hkspi_sram_data),
+`endif
 
 	.usr1_vcc_pwrgood(mprj_vcc_pwrgood),
 	.usr2_vcc_pwrgood(mprj2_vcc_pwrgood),
@@ -820,22 +835,53 @@ module caravan (
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_defaults_block_0 [1:0] (
+    ) gpio_defaults_block_0 (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.gpio_defaults(gpio_defaults[25:0])
+	.gpio_defaults(gpio_defaults[12:0])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h1803)
+    ) gpio_defaults_block_1 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[25:13])
     );
 
     gpio_defaults_block #(
 	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_defaults_block_2 [2:0] (
+    ) gpio_defaults_block_2 (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.gpio_defaults(gpio_defaults[64:26])
+	.gpio_defaults(gpio_defaults[38:26])
+    );
+
+    // CSB is configured to be a weak pull-up
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0801)
+    ) gpio_defaults_block_3 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[51:39])
+    );
+
+    gpio_defaults_block #(
+	.GPIO_CONFIG_INIT(13'h0403)
+    ) gpio_defaults_block_4 (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.gpio_defaults(gpio_defaults[64:52])
     );
 
     /* Via-programmable defaults for the rest of the GPIO pins */
@@ -1099,7 +1145,7 @@ module caravan (
 	.mgmt_gpio_out(mgmt_io_out[1:0]),
 	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
 
-        .one(),
+        .one(mprj_io_one[1:0]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1127,7 +1173,6 @@ module caravan (
     );
 
     /* Section 1 GPIOs (GPIO 0 to 18) */
-    wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:0] one_loop1;
 
     /* Section 1 GPIOs (GPIO 2 to 7) that start up under management control */
 
@@ -1152,10 +1197,11 @@ module caravan (
 	.serial_load_out(gpio_load_1[7:2]),
 
 	.mgmt_gpio_in(mgmt_io_in[7:2]),
-	.mgmt_gpio_out(mgmt_io_in[7:2]),
-	.mgmt_gpio_oeb(one_loop1[5:0]),
+	.mgmt_gpio_out(mgmt_io_out[7:2]),
+	.mgmt_gpio_oeb(mprj_io_one[7:2]),
 
-        .one(one_loop1[5:0]),
+
+        .one(mprj_io_one[7:2]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1204,10 +1250,10 @@ module caravan (
 	.serial_load_out(gpio_load_1[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
 
 	.mgmt_gpio_in(mgmt_io_in[`DIG1_TOP:8]),
-	.mgmt_gpio_out(mgmt_io_in[`DIG1_TOP:8]),
-	.mgmt_gpio_oeb(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
-
-        .one(one_loop1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-3:6]),
+	.mgmt_gpio_out(mgmt_io_out[`DIG1_TOP:8]),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
+  
+        .one(mprj_io_one[(`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1):8]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1257,10 +1303,10 @@ module caravan (
 	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1):(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-3)]),
 
 	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP):(`DIG2_TOP-2)]),
-	.mgmt_gpio_out(mgmt_io_out[4:2]),
-	.mgmt_gpio_oeb(mgmt_io_oeb[4:2]),
+	.mgmt_gpio_out(mgmt_io_out[(`DIG2_TOP):(`DIG2_TOP-2)]),
+	.mgmt_gpio_oeb(mgmt_io_oeb[(`DIG2_TOP):(`DIG2_TOP-2)]),
 
-        .one(),
+        .one(mprj_io_one[(`MPRJ_DIG_PADS-1):(`MPRJ_DIG_PADS-3)]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1288,7 +1334,6 @@ module caravan (
     );
 
     /* Section 2 GPIOs (GPIO 19 to 37) */
-    wire [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] one_loop2;
 
     gpio_control_block gpio_control_in_2 [`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4:0] (
 	`ifdef USE_POWER_PINS
@@ -1311,10 +1356,10 @@ module caravan (
 	.serial_load_out(gpio_load_2[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
  	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
- 	.mgmt_gpio_out(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
-	.mgmt_gpio_oeb(one_loop2),
+ 	.mgmt_gpio_out(mgmt_io_out[(`DIG2_TOP-3):`DIG2_BOT]),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
 
-        .one(one_loop2),
+        .one(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
         .zero(),
 
     	// Serial data chain for pad configuration
@@ -1376,17 +1421,22 @@ module caravan (
 		.X(rstb_l)
     );
 
-    // Spare logic for metal mask fixes
-    wire [107:0] spare_xz_nc;
-    wire [15:0] spare_xi_nc;
-    wire [3:0] spare_xib_nc;
-    wire [7:0] spare_xna_nc;
-    wire [7:0] spare_xno_nc;
-    wire [7:0] spare_xmx_nc;
-    wire [7:0] spare_xfq_nc;
-    wire [7:0] spare_xfqn_nc;
+    /* Spare logic for metal mask fixes */
+    // `define NUM_SPARE_BLOCKS (`MPRJ_DIG_PADS+4)
+    `define NUM_SPARE_BLOCKS 4
 
-    spare_logic_block spare_logic [3:0] (
+    wire [(27*`NUM_SPARE_BLOCKS)-1:0] spare_xz_nc;
+    wire [(4*`NUM_SPARE_BLOCKS)-1:0] spare_xi_nc;
+    wire [(1*`NUM_SPARE_BLOCKS)-1:0] spare_xib_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xna_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xno_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xmx_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xfq_nc;
+    wire [(2*`NUM_SPARE_BLOCKS)-1:0] spare_xfqn_nc;
+
+    // Four spare logic blocks above the processor and one per GPIO
+    // control block.
+    spare_logic_block spare_logic [`NUM_SPARE_BLOCKS-1:0] (
 	`ifdef USE_POWER_PINS
 		.vccd(vccd_core),
 		.vssd(vssd_core),
