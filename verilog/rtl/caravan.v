@@ -417,6 +417,10 @@ module caravan (
     // Management processor (wrapper).  Any management core
     // implementation must match this pinout.
 
+    // Pass thru clock and reset
+    wire 	clk_passthru;
+    wire 	resetn_passthru;
+
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
@@ -426,6 +430,12 @@ module caravan (
 	// Clocks and reset
        	.core_clk(caravel_clk),
        	.core_rstn(caravel_rstn),
+
+    // Pass thru Clock and reset
+	.clk_in(caravel_clk),
+	.resetn_in(caravel_rstn),
+	.clk_out(clk_passthru),
+	.resetn_out(resetn_passthru),
 
 	// GPIO (1 pin)
 	.gpio_out_pad(gpio_out_core),
@@ -527,9 +537,9 @@ module caravan (
 	    .vdda2(vdda2_core),
 	    .vssa2(vssa2_core),
 	`endif
-	.caravel_clk(caravel_clk),
+	.caravel_clk(clk_passthru),
 	.caravel_clk2(caravel_clk2),
-	.caravel_rstn(caravel_rstn),
+	.caravel_rstn(resetn_passthru),
 	.mprj_iena_wb(mprj_iena_wb),
 	.mprj_cyc_o_core(mprj_cyc_o_core),
 	.mprj_stb_o_core(mprj_stb_o_core),
