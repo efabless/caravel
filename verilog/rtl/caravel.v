@@ -54,6 +54,16 @@ module caravel (
     inout vccd2,	// User area 2 1.8V power
     inout vssd1,	// User area 1 digital ground
     inout vssd2,	// User area 2 digital ground
+    inout vccd_core,	// Internal Management/Common 1.8V power
+    inout vssd_core,	// Internal Common digital ground
+    inout vdda1_core,	// Internal User area 1 3.3V power
+    inout vdda2_core,	// Internal User area 2 3.3V power
+    inout vssa1_core,	// Internal User area 1 analog ground
+    inout vssa2_core,	// Internal User area 2 analog ground
+    inout vccd1_core,	// Internal User area 1 1.8V power
+    inout vccd2_core,	// Internal User area 2 1.8V power
+    inout vssd1_core,	// Internal User area 1 digital ground
+    inout vssd2_core,	// Internal User area 2 digital ground
 
     inout gpio,		// Used for external LDO control
     inout [`MPRJ_IO_PADS-1:0] mprj_io,
