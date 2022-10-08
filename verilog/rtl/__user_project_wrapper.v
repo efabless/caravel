@@ -87,6 +87,10 @@ assign io_oeb = 0;
 assign io_out = io_in;
 `endif
 
+`ifdef LA_TESTING
+user_project_la_example la_testing(la_data_in,la_data_out,la_oenb);
+`endif
+
 // splitting the address space to user address space and debug address space 
 // debug address space are the last 2 registers of user_project_wrapper address space
 wire wbs_cyc_i_user;

@@ -80,7 +80,9 @@ class RunTest:
     def runTest_vcs(self):
         print(f"Start running test: {self.sim_type}-{self.test_name}")
         dirs = f'+incdir+\\\"{go_up(self.cocotb_path,4)}\\\" '
-        macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS'
+        macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
+        if self.test_name == "la":
+            macros = f'{macros} +define+LA_TESTING'
         # shutil.copyfile(f'{self.test_full_dir}/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
         #     shutil.copyfile(f'{self.test_full_dir}/test_data',f'{self.sim_path}/test_data')
