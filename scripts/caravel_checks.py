@@ -100,10 +100,13 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
                 logging.error(f"klayout DRC failed")
                 count = count + 1
     if lvs:
-        with open(lvs_report) as rep:
-            if "Netlists do not match" in rep.read():
-                logging.error(f"LVS failed, find report in {lvs_report}")
-                count = count + 1
+        lvs_cmd = [
+            "python3",
+            "count_lvs.py",
+            "-f",
+            f"{lvs_report}",
+        ]
+        subprocess.run(lvs_cmd)
 
     if verification:
         for sim in ["rtl", "gl", "sdf"]:
