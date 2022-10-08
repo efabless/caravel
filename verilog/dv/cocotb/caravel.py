@@ -58,8 +58,6 @@ class Caravel_env:
 
     async def disable_bins(self):
         for i in range(38):
-            if i == 3:
-                continue
             common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
 
     """setup the vdd and vcc power bins"""

@@ -8,13 +8,9 @@ from cocotb.result import TestSuccess
 from tests.common_functions.test_functions import *
 from tests.bitbang.bitbang_functions import *
 from caravel import GPIO_MODE
+from tests.housekeeping.housekeeping_spi.spi_access_functions import *
 
-async def write_reg_spi(caravelEnv,address,data):
-    await caravelEnv.enable_csb()
-    await caravelEnv.hk_write_byte(0x80) # Write stream command
-    await caravelEnv.hk_write_byte(address) # Address (register 19 = GPIO bit-bang control)
-    await caravelEnv.hk_write_byte(data) # Data = 0x01 (enable bit-bang mode)
-    await caravelEnv.disable_csb()
+
 
 reg = Regs()
 """Testbench of GPIO configuration through bit-bang method using the StriVe housekeeping SPI."""
@@ -62,7 +58,7 @@ async def IRQ_external(dut):
                     cocotb.log.info(f"[TEST] Pass interrupt isn't detected when mprj 7 deasserted")   
             elif reg1 in fail_list:  # pass phase
                 if reg1 == 0x1E:
-                    cocotb.log.info(f"[TEST] Failed interrupt isn't detected when mprj 7 asserted")  
+                    cocotb.log.error(f"[TEST] Failed interrupt isn't detected when mprj 7 asserted")  
                 elif reg1 == 0x2E:
                     cocotb.log.error(f"[TEST] Failed interrupt is detected when mprj 7 deasserted") 
             else: 
