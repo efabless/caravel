@@ -77,15 +77,10 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim):
 
 
 def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
-    drc_count_mag = os.path.join(log_dir, "caravel_magic_drc.total")
     drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
     lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.report")
     count = 0
     if drc:
-        with open(drc_count_mag) as rep:
-            if rep.readline() != 0:
-                logging.error("magic DRC failed")
-                count = count + 1
         with open(drc_count_klayout) as rep:
             if rep.readline() != 0:
                 logging.error(f"klayout DRC failed")
@@ -165,7 +160,7 @@ if __name__ == "__main__":
 
     if drc:
         drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
-        logging.info("Running klayout and magic DRC on caravel")
+        logging.info("Running klayout DRC on caravel")
     if lvs:
         lvs_p1 = run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, work_root, pdk_env)
         logging.info("Running LVS on caravel")
