@@ -12,6 +12,10 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
     os.environ["MCW_ROOT"] = mcw_root
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
+    gpio_defaults_cmd = [
+        "python3",
+        f"scripts/gen_gpio_defaults.py"
+    ]
     build_cmd = [
         "magic",
         "-noconsole",
@@ -22,6 +26,7 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
     ]
     log_file_path = f"{log_dir}/build_caravel.log"
     with open(log_file_path, "w") as build_log:
+        subprocess.run(gpio_defaults_cmd, cwd=caravel_root, stderr=build_log, stdout=build_log)
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
 def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
