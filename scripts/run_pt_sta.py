@@ -101,6 +101,12 @@ if __name__ == "__main__":
     required=True
   )
   parser.add_argument(
+    "-l",
+    "--logs_dir",
+    help="output directory",
+    required=True
+  )
+  parser.add_argument(
     "-rc",
     "--rc_corner",
     help="Specify the RC corner for the parasitics (Values are nom, max, or min) <default is nom>",
@@ -124,7 +130,7 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   output = os.path.abspath(args.output_dir)
-  log = os.path.abspath(os.path.join(output,"pt_logs"))
+  log = os.path.abspath(args.logs_dir)
 
   try:
     os.makedirs(output)

@@ -136,7 +136,24 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir):
             cwd=f"{caravel_root}/scripts",
             stdout=subprocess.PIPE,
         )
-    run_pt_sta.run_sta_all("caravel", signoff_dir, log_dir)
+    sta_cmd = [
+        "python3",
+        "run_pt_sta.py",
+        "-a",
+        "-d",
+        "caravel",
+        "-o",
+        f"{signoff_dir}/caravel",
+        "-l",
+        f"{log_dir}"
+    ]
+    p1 = subprocess.Popen(
+        sta_cmd,
+        cwd=f"{caravel_root}/scripts",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    return p1
 
 def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
     drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
@@ -337,10 +354,11 @@ if __name__ == "__main__":
 
     if sta:
         logging.info(f"Running PrimeTime STA all corners on caravel")
-        run_sta(caravel_root, mcw_root, "mpw-2-sta-debug", log_dir, signoff_dir)
+        sta_p = run_sta(caravel_root, mcw_root, "mpw-2-sta-debug", log_dir, signoff_dir)
         
 
-    if lvs and drc:
+    if lvs and drc and sta:
+        sta_p.wait()
         drc_p1.wait()
         lvs_p1.wait()
     if lvs:
