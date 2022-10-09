@@ -195,7 +195,6 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
 
 
 if __name__ == "__main__":
-    print("here")
     logging.basicConfig(
         level=logging.DEBUG,
         format=f"%(asctime)s | %(levelname)-7s | %(message)s",
@@ -287,7 +286,6 @@ if __name__ == "__main__":
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/caravel"):
         os.makedirs(f"{signoff_dir}/caravel")
-    print("here 2")
     logging.info("Building caravel...")
 
     build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
