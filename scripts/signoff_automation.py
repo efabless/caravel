@@ -34,11 +34,7 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         subprocess.run(
             gpio_defaults_cmd, cwd=caravel_root, stderr=build_log, stdout=build_log
         )
-        sp_build = subprocess.run(build_cmd, stderr=subprocess.PIPE, stdout=build_log)
-        if sp_build.stderr:
-            logging.error(sp_build.stderr.decode())
-            exit(1)
-
+        subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
 def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     klayout_drc_cmd = [
