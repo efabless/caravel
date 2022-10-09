@@ -5,6 +5,7 @@ from cmath import log
 import logging
 import os
 import subprocess
+import count_lvs
 
 
 def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
@@ -92,21 +93,38 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim):
 
 def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
     drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
-    lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.report")
+    lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.rpt")
+    lvs_summary_report = open(os.path.join(signoff_dir, "caravel/lvs_summary.rpt"))
+    f = open(os.path.join(signoff_dir, "caravel/signoff.rpt"))
     count = 0
     if drc:
         with open(drc_count_klayout) as rep:
             if rep.readline() != 0:
                 logging.error(f"klayout DRC failed")
+                f.write("Klayout MR DRC:    Failed")
                 count = count + 1
+            else:
+                logging.info("Klayout MR DRC:    Passed")
+                f.write("Klayout MR DRC:    Passed")
     if lvs:
-        lvs_cmd = [
-            "python3",
-            "count_lvs.py",
-            "-f",
-            f"{lvs_report}",
-        ]
-        subprocess.run(lvs_cmd)
+        failures = count_lvs.count_LVS_failures(args.file)
+        if failures[0] > 0:
+            lvs_summary_report.write("LVS reports:")
+            lvs_summary_report.write("    net count difference = " + str(failures[5]))
+            lvs_summary_report.write(
+                "    device count difference = " + str(failures[6])
+            )
+            lvs_summary_report.write("    unmatched nets = " + str(failures[1]))
+            lvs_summary_report.write("    unmatched devices = " + str(failures[2]))
+            lvs_summary_report.write("    unmatched pins = " + str(failures[3]))
+            lvs_summary_report.write("    property failures = " + str(failures[4]))
+            logging.error(f"LVS on caravel failed")
+            logging.info(f"Find full report at {lvs_report}")
+            logging.info(f"Find summary report at {lvs_summary_report}")
+            f.write("Layout Vs Schematic:    Failed")
+        else:
+            logging.info("Layout Vs Schematic:    Passed")
+            f.write("Layout Vs Schematic:    Passed")
 
     if verification:
         for sim in ["rtl", "gl", "sdf"]:
@@ -115,11 +133,13 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
             )
             with open(verification_report) as rep:
                 if "(0)failed" in rep.read():
-                    pass
+                    logging.info(f"{sim} simulations:    Passed")
+                    f.write(f"{sim} simulations:    Passed")
                 else:
                     logging.error(
-                        f"{sim} simulations failed, find report in {verification_report}"
+                        f"{sim} simulations failed, find report at {verification_report}"
                     )
+                    f.write(f"{sim} simulations:    Failed")
                     count = count + 1
 
     if count > 0:
