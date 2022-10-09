@@ -79,6 +79,7 @@ module user_project_wrapper #(
 );
 
 // Dummy assignments so that we can take it through the openlane flow
+`ifndef GPIO_TESTING
 `ifdef SIM
 // Needed for running GL simulation
 assign io_out = 0;
@@ -86,6 +87,7 @@ assign io_oeb = 0;
 `else
 assign io_out = io_in;
 `endif
+`endif // GPIO_TESTING
 
 `ifdef LA_TESTING
 user_project_la_example la_testing(la_data_in,la_data_out,la_oenb);
@@ -99,15 +101,53 @@ wire [31:0] wbs_dat_o_user;
 
 wire  wbs_cyc_i_debug;
 wire wbs_ack_o_debug;
+`ifdef GPIO_TESTING
+wire wbs_ack_o_gpio;
+wire [31:0] wbs_dat_o_gpio;
+`endif
 wire [31:0] wbs_dat_o_debug;
 
 // reserve the last 2 regs for debugging registers
-assign wbs_cyc_i_user  = (wbs_adr_i[19:3] != 17'h1ffff) ? wbs_cyc_i : 0; 
-assign wbs_cyc_i_debug = (wbs_adr_i[19:3] == 17'h1ffff) ? wbs_cyc_i : 0; 
+`ifndef GPIO_TESTING
+assign wbs_cyc_i_user  = (wbs_adr_i[31:3] != 29'h601FFFF) ? wbs_cyc_i : 0; 
+assign wbs_cyc_i_debug = (wbs_adr_i[31:3] == 29'h601FFFF) ? wbs_cyc_i : 0; 
+`endif
 
-assign wbs_ack_o = (wbs_adr_i[19:3] == 17'h1ffff) ? wbs_ack_o_debug : wbs_ack_o_debug; 
-assign wbs_dat_o = (wbs_adr_i[19:3] == 17'h1ffff) ? wbs_dat_o_debug : wbs_dat_o_user; 
 
+`ifndef GPIO_TESTING
+assign wbs_ack_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_ack_o_debug : wbs_ack_o_debug; 
+assign wbs_dat_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_dat_o_debug : wbs_dat_o_user; 
+`endif
+
+
+// reserve the last 4 regs for debugging registers in case of user gpio testing 
+`ifdef GPIO_TESTING
+assign wbs_cyc_i_user  = (wbs_adr_i[31:4] != 28'h300FFFF) ? wbs_cyc_i : 0; 
+assign wbs_cyc_i_debug = (wbs_adr_i[31:4] == 28'h300FFFF) ? wbs_cyc_i : 0; 
+`endif
+
+`ifdef GPIO_TESTING
+assign wbs_ack_o = (wbs_adr_i[31:4] == 28'h300FFFF) ? (wbs_adr_i[3:0]>=4'h8) ? wbs_ack_o_debug : wbs_ack_o_gpio  : wbs_ack_o_debug; 
+assign wbs_dat_o = (wbs_adr_i[31:4] == 28'h300FFFF) ? (wbs_adr_i[3:0]>=4'h8) ? wbs_dat_o_debug : wbs_dat_o_gpio : wbs_dat_o_user; 
+`endif
+
+
+`ifdef GPIO_TESTING
+user_project_gpio_example gpio_testing(
+    .wb_clk_i(wb_clk_i),
+    .wb_rst_i(wb_rst_i),
+    .wbs_cyc_i(wbs_cyc_i_debug),
+    .wbs_stb_i(wbs_stb_i),
+    .wbs_we_i(wbs_we_i),
+    .wbs_sel_i(wbs_sel_i),
+    .wbs_adr_i(wbs_adr_i),
+    .wbs_dat_i(wbs_dat_i),
+    .wbs_ack_o(wbs_ack_o_gpio),
+    .wbs_dat_o(wbs_dat_o_gpio), 
+    .io_in(io_in),
+    .io_out(io_out),
+    .io_oeb(io_oeb));
+`endif
 
 debug_regs debug(
     .wb_clk_i(wb_clk_i),

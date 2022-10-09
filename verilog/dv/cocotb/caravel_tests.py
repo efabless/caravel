@@ -36,6 +36,7 @@ from tests.irq.IRQ_external import *
 from tests.irq.IRQ_timer import *
 from tests.irq.IRQ_uart import *
 from tests.gpio.gpio import *
+from tests.gpio.gpio_user import *
 from tests.mgmt_gpio.mgmt_gpio import *
 from tests.timer.timer import *
 from tests.uart.uart import *

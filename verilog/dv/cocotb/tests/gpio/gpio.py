@@ -21,7 +21,7 @@ async def gpio_all_o(dut):
     cpu.cpu_release_reset()
    
     await wait_reg1(cpu,caravelEnv,0xAA)
-    cocotb.log.info("[TEST] finish configuring using bitbang")
+    cocotb.log.info("[TEST] finish configuring ")
     i= 0x20
     for j in range(5):
         await wait_reg2(cpu,caravelEnv,37-j)
@@ -330,7 +330,7 @@ async def gpio_all_bidir(dut):
     cpu.cpu_release_reset()
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0x1A)
-    cocotb.log.info("[TEST] finish configuring using bitbang")
+    cocotb.log.info("[TEST] finish configuring ")
     i= 0x20
     for j in range(5):
         await wait_reg2(cpu,caravelEnv,37-j)
