@@ -8,19 +8,21 @@ import os
 
 def run_sta_all (
   design: str,
-  output_dir: str
+  output_dir: str,
+  log_dir: str
 ):
   proc_corners = ["t", "s", "f"]
   rc_corners = ["nom", "max", "min"]
   for proc in proc_corners:
     for rc in rc_corners:
-      run_sta (design, proc, rc, output_dir)
+      run_sta (design, proc, rc, output_dir, log_dir)
 
 def run_sta (
   design: str,
   proc_corner: str,
   rc_corner: str,
-  output_dir: str
+  output_dir: str,
+  log_dir: str
 ):
   print (f"PrimeTime STA run for design: {design} at process corner {proc_corner} and RC corner {rc_corner}")
   
@@ -37,15 +39,19 @@ def run_sta (
 
   # PrimeTime command
   PT_tcl = f"{SCRIPT_DIR}/pt_sta.tcl"
-  pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {output_dir}/pt_logs/{design}-{rc_corner}-{proc_corner}-sta.log"
+  pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log"
   os.system(pt_command)
 
   # Check if there exists any violations
   sta_pass=search_viol(f"{output_dir}/pt_reports/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
-  if not sta_pass:
-    print (f"STA run failed\ncheck report: {output_dir}/pt_reports/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+  if sta_pass == "pass":
+    print (f"STA run passed!")
   else:
-    print (f"STA run passed")
+    print (f"STA run failed!")
+    if sta_pass == "viol":
+      print(f"There are violations. check report: {output_dir}/pt_reports/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+    else:
+      print(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
 
 # Check the required env variables
 def check_env_vars():
@@ -70,10 +76,13 @@ def search_viol(
   report_path: str
 ):
   with open(report_path, 'r') as report:
-    if "(VIOLATED)" or "Could not auto-link design" in report.read():
-      return 0
+    data = report.read()
+    if "(VIOLATED)" in data:
+      return "viol"
+    elif "Could not auto-link design" in data:
+      return "no link"
     else: 
-      return 1
+      return "pass"
 
 parser = argparse.ArgumentParser(
   description="Run STA using PrimeTime"
@@ -114,6 +123,7 @@ parser.add_argument(
 args = parser.parse_args()
 
 output = os.path.abspath(args.output_dir)
+log = os.path.abspath(os.path.join(output,"pt_logs"))
 
 try:
   os.makedirs(output)
@@ -122,12 +132,13 @@ except FileExistsError:
   pass
 
 try:
-  os.makedirs(os.path.join(output,"pt_reports"))
+  os.makedirs(log)
 except FileExistsError:
   # directory already exists
   pass
+
 try:
-  os.makedirs(os.path.join(output,"pt_logs"))
+  os.makedirs(os.path.join(output,"pt_reports"))
 except FileExistsError:
   # directory already exists
   pass
@@ -139,6 +150,6 @@ except FileExistsError:
   pass
 
 if args.all:
-  run_sta_all (args.design, output) 
+  run_sta_all (args.design, output, log) 
 else:
-  run_sta (args.design, args.proc_corner, args.rc_corner, output)
+  run_sta (args.design, args.proc_corner, args.rc_corner, output, log)
