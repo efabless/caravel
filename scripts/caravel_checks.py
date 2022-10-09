@@ -70,18 +70,28 @@ def run_lvs(
     return p1
 
 
-def run_verification(caravel_root, pdk_root, pdk_env, sim):
+def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
-    lvs_cmd = [
-        "python3",
-        "verify_cocotb.py",
-        "-tag",
-        f"CI_{sim}",
-        "-r",
-        f"r_{sim}",
-        "-v",
-    ]
+    if simulator == "vcs":
+        lvs_cmd = [
+            "python3",
+            "verify_cocotb.py",
+            "-tag",
+            f"CI_{sim}",
+            "-r",
+            f"r_{sim}",
+            "-v",
+        ]
+    else:
+        lvs_cmd = [
+            "python3",
+            "verify_cocotb.py",
+            "-tag",
+            f"CI_{sim}",
+            "-r",
+            f"r_{sim}",
+        ]
     p1 = subprocess.Popen(
         lvs_cmd,
         cwd=f"{caravel_root}/verilog/dv/cocotb",
@@ -172,6 +182,36 @@ if __name__ == "__main__":
         help="run verification",
         action="store_true",
     )
+    parser.add_argument(
+        "-rtl",
+        "--rtl",
+        help="run rtl verification",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-gl",
+        "--gl",
+        help="run gl verification",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-sdf",
+        "--sdf",
+        help="run sdf verification",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-iv",
+        "--iverilog",
+        help="run verification using iverilog",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-a",
+        "--all",
+        help="run all checks",
+        action="store_true",
+    )
     args = parser.parse_args()
 
     if not os.getenv("PDK_ROOT"):
@@ -193,6 +233,10 @@ if __name__ == "__main__":
     work_root = os.path.join(caravel_root, "scripts/tech-files")
     drc = args.drc_check
     lvs = args.lvs_check
+    rtl = args.rtl
+    gl = args.gl
+    sdf = args.sdf
+    iverilog = args.iverilog
     verification = args.verification
 
     if not os.path.exists(f"{log_dir}"):
@@ -203,6 +247,11 @@ if __name__ == "__main__":
     logging.info("Building caravel...")
 
     build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
+
+    if args.all:
+        drc = True
+        lvs = True
+        verification = True
 
     if drc:
         drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
@@ -219,12 +268,26 @@ if __name__ == "__main__":
             pdk_env,
         )
         logging.info("Running LVS on caravel")
-    if verification:
+    if verification or iverilog:
         verify_p = []
-        sim = ["rtl", "gl", "sdf"]
+        sim = []
+        if rtl:
+            sim.append("rtl")
+        if gl:
+            sim.append("gl")
+        if sdf:
+            sim.append("sdf")
+        if not rtl and not gl and not sdf:
+            sim = ["rtl", "gl", "sdf"]
+        if verification:
+            simulator = "vcs"
+        elif iverilog:
+            simulator = "iverilog"
         for sim in sim:
             logging.info(f"Running all {sim} verification on caravel")
-            verify_p.append(run_verification(caravel_root, pdk_root, pdk_env, sim))
+            verify_p.append(
+                run_verification(caravel_root, pdk_root, pdk_env, sim, simulator)
+            )
         for i in range(len(verify_p)):
             out, err = verify_p[i].communicate()
             if err:
