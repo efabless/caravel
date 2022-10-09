@@ -104,14 +104,13 @@ module chip_io(
 	inout [`MPRJ_IO_PADS-10:0] mprj_analog_io
 );
 
-	// To be considered:  Master hold signal on all user pads (?)
-    // For now, set holdh_n to 1 (NOTE:  This is in the 3.3V domain)
+    // To be considered:  Master hold signal on all user pads (?)
+    // For now, set holdh_n to 1 internally (NOTE:  This is in the
+    // VDDIO 3.3V domain)
     // and setting enh to porb_h.
 
-    wire [`MPRJ_IO_PADS-1:0] mprj_io_hldh_n;
     wire [`MPRJ_IO_PADS-1:0] mprj_io_enh;
 
-    assign mprj_io_hldh_n = {`MPRJ_IO_PADS{vddio}};
     assign mprj_io_enh = {`MPRJ_IO_PADS{porb_h}};
 	
 	wire analog_a, analog_b;
@@ -395,7 +394,6 @@ module chip_io(
 		.io(mprj_io),
 		.io_out(mprj_io_out),
 		.oeb(mprj_io_oeb),
-		.hldh_n(mprj_io_hldh_n),
 		.enh(mprj_io_enh),
 		.inp_dis(mprj_io_inp_dis),
 		.ib_mode_sel(mprj_io_ib_mode_sel),
