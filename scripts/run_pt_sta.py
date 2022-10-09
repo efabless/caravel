@@ -84,72 +84,73 @@ def search_viol(
     else: 
       return "pass"
 
-parser = argparse.ArgumentParser(
-  description="Run STA using PrimeTime"
-)
-parser.add_argument(
-  "-d",
-  "--design",
-  help="design name",
-  required=True
-)
-parser.add_argument(
-  "-o",
-  "--output_dir",
-  help="output directory",
-  required=True
-)
-parser.add_argument(
-  "-rc",
-  "--rc_corner",
-  help="Specify the RC corner for the parasitics (Values are nom, max, or min) <default is nom>",
-  nargs="?",
-  default="nom"
-)
-parser.add_argument(
-  "-proc",
-  "--proc_corner",
-  help="Specify the process corner (Values are t, f, or s) <default is t>",
-  nargs="?",
-  default="t"
-)
-parser.add_argument(
-  "-a",
-  "--all",
-  help="Specify to run all the process corners and rc corners combinations for the design",
-  action='store_true'
-)
+if __name__ == "__main__":
+  parser = argparse.ArgumentParser(
+    description="Run STA using PrimeTime"
+  )
+  parser.add_argument(
+    "-d",
+    "--design",
+    help="design name",
+    required=True
+  )
+  parser.add_argument(
+    "-o",
+    "--output_dir",
+    help="output directory",
+    required=True
+  )
+  parser.add_argument(
+    "-rc",
+    "--rc_corner",
+    help="Specify the RC corner for the parasitics (Values are nom, max, or min) <default is nom>",
+    nargs="?",
+    default="nom"
+  )
+  parser.add_argument(
+    "-proc",
+    "--proc_corner",
+    help="Specify the process corner (Values are t, f, or s) <default is t>",
+    nargs="?",
+    default="t"
+  )
+  parser.add_argument(
+    "-a",
+    "--all",
+    help="Specify to run all the process corners and rc corners combinations for the design",
+    action='store_true'
+  )
 
-args = parser.parse_args()
+  args = parser.parse_args()
 
-output = os.path.abspath(args.output_dir)
-log = os.path.abspath(os.path.join(output,"pt_logs"))
+  output = os.path.abspath(args.output_dir)
+  log = os.path.abspath(os.path.join(output,"pt_logs"))
 
-try:
-  os.makedirs(output)
-except FileExistsError:
-  # directory already exists
-  pass
+  try:
+    os.makedirs(output)
+  except FileExistsError:
+    # directory already exists
+    pass
 
-try:
-  os.makedirs(log)
-except FileExistsError:
-  # directory already exists
-  pass
+  try:
+    os.makedirs(log)
+  except FileExistsError:
+    # directory already exists
+    pass
 
-try:
-  os.makedirs(os.path.join(output,"pt_reports"))
-except FileExistsError:
-  # directory already exists
-  pass
+  try:
+    os.makedirs(os.path.join(output,"pt_reports"))
+  except FileExistsError:
+    # directory already exists
+    pass
 
-try:
-  os.makedirs(os.path.join(output,"pt_sdf"))
-except FileExistsError:
-  # directory already exists
-  pass
+  try:
+    os.makedirs(os.path.join(output,"pt_sdf"))
+  except FileExistsError:
+    # directory already exists
+    pass
 
-if args.all:
-  run_sta_all (args.design, output, log) 
-else:
-  run_sta (args.design, args.proc_corner, args.rc_corner, output, log)
+  if args.all:
+    run_sta_all (args.design, output, log) 
+  else:
+    run_sta (args.design, args.proc_corner, args.rc_corner, output, log)

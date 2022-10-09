@@ -1,0 +1,21 @@
+cd $::env(CARAVEL_ROOT)/mag
+random seed `$::env(CARAVEL_ROOT)/scripts/set_user_id.py -report`;
+drc off;
+crashbackups stop;
+addpath hexdigits;
+addpath $::env(CARAVEL_ROOT)/mag;
+load mgmt_core_wrapper;
+property LEFview true;
+property GDS_FILE $::env(MCW_ROOT)/gds/mgmt_core_wrapper.gds;
+property GDS_START 0;
+load user_project_wrapper;
+load user_id_programming;
+load user_id_textblock;
+load $::env(CARAVEL_ROOT)/maglef/simple_por;
+load caravel -dereference;
+select top cell;
+expand;
+cif *hier write disable;
+cif *array write disable;
+gds write $::env(CARAVEL_ROOT)/gds/caravel.gds;
+quit -noprompt;
