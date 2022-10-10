@@ -91,7 +91,7 @@ class RunTest:
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
-        if self.test_name in ["gpio_all_o_user","gpio_all_i_user"]:
+        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user"]:
             macros = f'{macros} +define+GPIO_TESTING'
         # shutil.copyfile(f'{self.test_full_dir}/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
