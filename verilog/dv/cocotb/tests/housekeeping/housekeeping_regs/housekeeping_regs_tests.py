@@ -3,12 +3,12 @@ import random
 import cocotb
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
 import cocotb.log
-from cpu import RiskV
-from defsParser import Regs
+from interfaces.cpu import RiskV
+from interfaces.defsParser import Regs
 from cocotb.result import TestSuccess
 from tests.common_functions.test_functions import *
 from tests.bitbang.bitbang_functions import *
-from caravel import GPIO_MODE
+from interfaces.caravel import GPIO_MODE
 from tests.housekeeping.housekeeping_spi.spi_access_functions import *
 import json
 reg = Regs()
@@ -27,7 +27,7 @@ async def hk_regs_wr_wb(dut):
     # write then read
     for i in range(random.randint(7, 20)):
         bits_num = 32 
-        mem = random.choice(['GPIO'])  # can't access 'SPI' and 'sys' register from cpu / read or write
+        mem = random.choice(['GPIO'])  # can't access 'SPI' and 'sys' register from interfaces.cpu / read or write
         key = random.choice(list(regs[mem].keys())) 
         if key == 'base_addr':
             continue

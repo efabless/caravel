@@ -3,12 +3,12 @@ import random
 import cocotb
 from cocotb.clock import Clock
 import cocotb.log
-import caravel 
-from logic_analyzer import LA
+import interfaces.caravel as caravel
+from interfaces.logic_analyzer import LA
 from wb_models.housekeepingWB.housekeepingWB import HK_whiteBox
-import common
+import interfaces.common as common
 import logging
-from cpu import RiskV
+from interfaces.cpu import RiskV
 from cocotb.log import SimTimeContextFilter
 from cocotb.log import SimLogFormatter
 from tests.common_functions.Timeout import Timeout

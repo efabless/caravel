@@ -10,7 +10,7 @@ from math import ceil
 import copy
 import logging
 from wb_models.housekeepingWB.HKmonitor import HKmonitor
-from common import Macros
+from interfaces.common import Macros
 
 
 class HKSPImonitor(Monitor):

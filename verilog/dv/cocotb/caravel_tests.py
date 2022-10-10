@@ -7,16 +7,16 @@ import cocotb.log
 import cocotb.simulator
 from cocotb_coverage.coverage import *
 from cocotb.binary import BinaryValue
-import caravel 
-from logic_analyzer import LA
-from caravel import GPIO_MODE, Caravel_env
+import interfaces.caravel 
+from interfaces.logic_analyzer import LA
+from interfaces.caravel import GPIO_MODE, Caravel_env
 from wb_models.housekeepingWB.housekeepingWB import HK_whiteBox
-import common
+import interfaces.common as common
 import logging
-from cpu import RiskV
+from interfaces.cpu import RiskV
 from cocotb.log import SimTimeContextFilter
 from cocotb.log import SimLogFormatter
-from defsParser import Regs
+from interfaces.defsParser import Regs
 from tests.common_functions.Timeout import Timeout
 from cocotb.result import TestSuccess
 import inspect

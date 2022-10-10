@@ -2,13 +2,13 @@ import random
 import cocotb
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
 import cocotb.log
-from cpu import RiskV
-from defsParser import Regs
+from interfaces.cpu import RiskV
+from interfaces.defsParser import Regs
 from cocotb.result import TestSuccess
 from tests.common_functions.test_functions import *
 from tests.bitbang.bitbang_functions import *
-from caravel import GPIO_MODE
-from common import Macros
+from interfaces.caravel import GPIO_MODE
+from interfaces.common import Macros
 
 reg = Regs()
 

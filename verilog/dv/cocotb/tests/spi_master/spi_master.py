@@ -2,12 +2,12 @@ import random
 import cocotb
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer
 import cocotb.log
-from cpu import RiskV
-from defsParser import Regs
+from interfaces.cpu import RiskV
+from interfaces.defsParser import Regs
 from cocotb.result import TestSuccess
 from tests.common_functions.test_functions import *
 from tests.spi_master.SPI_VIP import read_mem ,SPI_VIP
-from caravel import GPIO_MODE
+from interfaces.caravel import GPIO_MODE
 
 
 bit_time_ns = 0

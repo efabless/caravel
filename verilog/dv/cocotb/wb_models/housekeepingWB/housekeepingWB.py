@@ -14,7 +14,7 @@ import logging
 import fnmatch
 import copy
 from cocotb.result import TestFailure
-from common import Macros
+from interfaces.common import Macros
 
 
 class HK_whiteBox:

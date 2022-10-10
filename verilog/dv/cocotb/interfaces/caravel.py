@@ -21,9 +21,9 @@ from cocotb.handle import (
 from itertools import groupby, product
 
 import interfaces.common as common
-from common import GPIO_MODE
-from common import MASK_GPIO_CTRL
-from common import Macros
+from interfaces.common import GPIO_MODE
+from interfaces.common import MASK_GPIO_CTRL
+from interfaces.common import Macros
 
 def gpio_mode(gpios_values:list):
     gpios=[]

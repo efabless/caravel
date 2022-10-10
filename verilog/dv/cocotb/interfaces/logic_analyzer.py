@@ -20,10 +20,10 @@ from cocotb.handle import (
 
 from itertools import groupby, product
 
-import common
-from common import GPIO_MODE
-from common import MASK_GPIO_CTRL
-from common import Macros
+import interfaces.common as common
+from interfaces.common import GPIO_MODE
+from interfaces.common import MASK_GPIO_CTRL
+from interfaces.common import Macros
 
 class LA: 
     def __init__(self,dut:SimHandleBase):

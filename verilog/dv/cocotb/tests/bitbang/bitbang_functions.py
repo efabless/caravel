@@ -1,4 +1,4 @@
-from defsParser import Regs
+from interfaces.defsParser import Regs
 
 reg = Regs()
 
