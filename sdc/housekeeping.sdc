@@ -1,22 +1,22 @@
 ###############################################################################
 # Created by write_sdc
-# Fri Oct  7 22:29:59 2022
+# Sun Oct  9 22:58:21 2022
 ###############################################################################
 current_design housekeeping
 ###############################################################################
 # Timing Constraints
 ###############################################################################
 create_clock -name wb_clk_i -period 25.0000 [get_ports {wb_clk_i}]
-set_clock_transition 0.0100 [get_clocks {wb_clk_i}]
-set_clock_uncertainty 0.3000 wb_clk_i
+set_clock_transition 0.1500 [get_clocks {wb_clk_i}]
+set_clock_uncertainty 0.1000 wb_clk_i
 set_propagated_clock [get_clocks {wb_clk_i}]
 create_clock -name user_clock -period 25.0000 [get_ports {user_clock}]
-set_clock_transition 0.0100 [get_clocks {user_clock}]
-set_clock_uncertainty 0.3000 user_clock
+set_clock_transition 0.1500 [get_clocks {user_clock}]
+set_clock_uncertainty 0.1000 user_clock
 set_propagated_clock [get_clocks {user_clock}]
 create_clock -name sck -period 100.0000 [get_ports {mgmt_gpio_in[4]}]
-set_clock_transition 0.0100 [get_clocks {sck}]
-set_clock_uncertainty 0.3000 sck
+set_clock_transition 0.1500 [get_clocks {sck}]
+set_clock_uncertainty 0.1000 sck
 set_propagated_clock [get_clocks {sck}]
 create_generated_clock -name wbbd_sck -source [get_ports {wb_clk_i}] -divide_by 2 [get_pins {_7219_/Q}]
 set_propagated_clock [get_clocks {wbbd_sck}]
@@ -563,5 +563,5 @@ set_timing_derate -late 1.0500
 ###############################################################################
 # Design Rules
 ###############################################################################
-set_max_transition 1.2000 [current_design]
+set_max_transition 0.7500 [current_design]
 set_max_fanout 20.0000 [current_design]
