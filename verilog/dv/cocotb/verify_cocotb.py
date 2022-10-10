@@ -84,9 +84,9 @@ class RunTest:
         VERILOG_PATH = os.getenv('VERILOG_PATH')
         dirs = f'+incdir+\\\"{PDK_ROOT}/{PDK}\\\" '
         if self.sim_type == "RTL":
-            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.lst\\\" '
+            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.list\\\" '
         else: 
-            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.lst\\\" '
+            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
 
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
