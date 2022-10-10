@@ -33,7 +33,7 @@ def search_str(file_path, word):
 
 class RunTest:
     def __init__(self,test_name,sim) -> None:
-        self.cocotb_path = os.getcwd() 
+        self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.test_name = test_name
         self.sim_type  = sim
         self.create_log_file()
@@ -72,14 +72,22 @@ class RunTest:
         env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK}"
         print(f"Start running test: {self.sim_type}-{self.test_name}")
         command = f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} "
-        os.system(f"docker run -it {env_vars} -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
+        os.system(f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
  
     # vcs function      
     def runTest_vcs(self):
         print(f"Start running test: {self.sim_type}-{self.test_name}")
-        dirs = f'+incdir+\\\"{go_up(self.cocotb_path,4)}\\\" '
+        PDK_ROOT = os.getenv('PDK_ROOT')
+        PDK = os.getenv('PDK')
+        VERILOG_PATH = os.getenv('VERILOG_PATH')
+        dirs = f'+incdir+\\\"{PDK_ROOT}/{PDK}\\\" '
+        if self.sim_type == "RTL":
+            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.lst\\\" '
+        else: 
+            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.lst\\\" '
+
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
@@ -104,8 +112,8 @@ class RunTest:
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
         
-        os.system(f"vlogan -full64  -sverilog +error+25 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
-        os.system(f"vcs {coverage_command} -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        os.system(f"vcs {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
@@ -164,7 +172,7 @@ class RunTest:
 
 class RunRegression: 
     def __init__(self,regression,test,type_arg,testlist) -> None:
-        self.cocotb_path = os.getcwd() 
+        self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.regression_arg = regression
         self.test_arg = test
         self.testlist_arg = testlist
@@ -308,17 +316,15 @@ class main():
         print(f"Run tag: {self.TAG}")
 
     def def_env_vars(self):
-        cocotb_path = os.getcwd()
-        repo_path = go_up(cocotb_path,4)
-        os.environ["CARAVEL_ROOT"] = f"{repo_path}/caravel"
-        os.environ["CARAVEL_VERILOG_PATH"] = f"{repo_path}/caravel/verilog"
-        os.environ["MCW_ROOT"] = f"{repo_path}/caravel_mgmt_soc_litex/"
+        if os.getenv('CARAVEL_ROOT') is None or os.getenv('MCW_ROOT') is None:
+            print(f"Fatal: CARAVEL_ROOT or MCW_ROOT are not defined")
+            sys.exit()
+        cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
+        os.environ["CARAVEL_VERILOG_PATH"] = f"{os.getenv('CARAVEL_ROOT')}/verilog"
         os.environ["VERILOG_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog"
         os.environ["CARAVEL_PATH"] = f"{os.getenv('CARAVEL_VERILOG_PATH')}"
-        os.environ["USER_PROJECT_VERILOG"] = f"{repo_path}/verilog/"
         os.environ["FIRMWARE_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog/dv/firmware"
         os.environ["RUNTAG"] = f"{self.TAG}"
-        print(self.maxerr)
         os.environ["ERRORMAX"] = f"{self.maxerr}"
 
 

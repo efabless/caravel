@@ -1,11 +1,13 @@
 `ifdef VCS
-	`ifndef GL
-		`include "caravel_mgmt_soc_litex/verilog/includes/rtl_caravel_vcs.v"
-	`else 
-		`include "caravel_mgmt_soc_litex/verilog/includes/gl_caravel_vcs.v"
-	`endif
-	//`include "verilog/includes/user_project_vcs.v"
+	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
+	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
+	`include "libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
+	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
+	`include "libs.ref/sky130_fd_sc_hvl/verilog/primitives.v"
+	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
 `endif
+`timescale 1 ns / 1 ps
+
 module caravel_top ;
 
 // parameter FILENAME = {"hex_files/",`TESTNAME,".hex"};
