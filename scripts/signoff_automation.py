@@ -5,6 +5,7 @@ from cmath import log
 import logging
 import os
 import subprocess
+from sys import stdout
 import count_lvs
 import glob
 import run_pt_sta
@@ -36,6 +37,7 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         )
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
+
 def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
     klayout_drc_cmd = [
         "python3",
@@ -54,13 +56,14 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root):
 
 
 def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pdk_env):
-    os.environ["PDK_ROOT"] = pdk_root
-    os.environ["PDK"] = pdk_env
-    os.environ["LVS_ROOT"] = lvs_root
-    os.environ["LOG_ROOT"] = log_dir
-    os.environ["CARAVEL_ROOT"] = caravel_root
-    os.environ["MCW_ROOT"] = mcw_root
-    os.environ["SIGNOFF_ROOT"] = os.path.join(signoff_dir, "caravel")
+    myenv = os.environ.copy()
+    myenv["PDK_ROOT"] = pdk_root
+    myenv["PDK"] = pdk_env
+    myenv["LVS_ROOT"] = lvs_root
+    myenv["LOG_ROOT"] = log_dir
+    myenv["CARAVEL_ROOT"] = caravel_root
+    myenv["MCW_ROOT"] = mcw_root
+    myenv["SIGNOFF_ROOT"] = os.path.join(signoff_dir, "caravel")
 
     if not os.path.exists(f"{lvs_root}"):
         subprocess.run(
@@ -83,13 +86,20 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pd
         "caravel",
         f"{caravel_root}/gds/caravel.gds",
     ]
-    p1 = subprocess.Popen(lvs_cmd)
+    p1 = subprocess.Popen(
+        lvs_cmd,
+        env=myenv,
+        universal_newlines=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
     return p1
 
 
 def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
-    os.environ["PDK_ROOT"] = pdk_root
-    os.environ["PDK"] = pdk_env
+    myenv = os.environ.copy()
+    myenv["PDK_ROOT"] = pdk_root
+    myenv["PDK"] = pdk_env
     if simulator == "vcs":
         lvs_cmd = [
             "python3",
@@ -112,6 +122,8 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
     p1 = subprocess.Popen(
         lvs_cmd,
         cwd=f"{caravel_root}/verilog/dv/cocotb",
+        env=myenv,
+        universal_newlines=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
@@ -119,9 +131,10 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
 
 
 def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir):
-    os.environ["CARAVEL_ROOT"] = caravel_root
-    os.environ["MCW_ROOT"] = mcw_root
-    os.environ["PT_LIB_ROOT"] = pt_lib_root
+    myenv = os.environ.copy()
+    myenv["CARAVEL_ROOT"] = caravel_root
+    myenv["MCW_ROOT"] = mcw_root
+    myenv["PT_LIB_ROOT"] = pt_lib_root
     if not os.path.exists(f"{pt_lib_root}"):
         subprocess.run(
             [
@@ -141,23 +154,24 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir):
         "-o",
         f"{signoff_dir}/caravel",
         "-l",
-        f"{log_dir}"
+        f"{log_dir}",
     ]
     p1 = subprocess.Popen(
         sta_cmd,
         cwd=f"{caravel_root}/scripts",
+        env=myenv,
+        universal_newlines=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
     return p1
 
+
 def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
-    drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
-    lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.rpt")
-    lvs_summary_report = open(os.path.join(signoff_dir, "caravel/lvs_summary.rpt"))
     f = open(os.path.join(signoff_dir, "caravel/signoff.rpt"))
     count = 0
     if drc:
+        drc_count_klayout = os.path.join(log_dir, "caravel_klayout_drc.total")
         with open(drc_count_klayout) as rep:
             if rep.readline() != 0:
                 logging.error(f"klayout DRC failed")
@@ -167,6 +181,8 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
                 logging.info("Klayout MR DRC:    Passed")
                 f.write("Klayout MR DRC:    Passed")
     if lvs:
+        lvs_summary_report = open(os.path.join(signoff_dir, "caravel/lvs_summary.rpt"))
+        lvs_report = os.path.join(signoff_dir, "caravel/caravel.lvs.rpt")
         failures = count_lvs.count_LVS_failures(args.file)
         if failures[0] > 0:
             lvs_summary_report.write("LVS reports:")
@@ -307,6 +323,7 @@ if __name__ == "__main__":
         drc = True
         lvs = True
         verification = True
+        sta = True
 
     if drc:
         drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root)
@@ -323,6 +340,17 @@ if __name__ == "__main__":
             pdk_env,
         )
         logging.info("Running LVS on caravel")
+
+    if sta:
+        logging.info(f"Running PrimeTime STA all corners on caravel")
+        sta_p = run_sta(
+            caravel_root,
+            mcw_root,
+            f"{caravel_root}/scripts/mpw-2-sta-debug/files/custom/lib",
+            log_dir,
+            signoff_dir,
+        )
+
     if verification or iverilog:
         verify_p = []
         sim = []
@@ -338,29 +366,39 @@ if __name__ == "__main__":
             simulator = "vcs"
         elif iverilog:
             simulator = "iverilog"
-        for sim in sim:
-            logging.info(f"Running all {sim} verification on caravel")
+        for sim_type in sim:
+            logging.info(f"Running all {sim_type} verification on caravel")
             verify_p.append(
-                run_verification(caravel_root, pdk_root, pdk_env, sim, simulator)
+                run_verification(caravel_root, pdk_root, pdk_env, sim_type, simulator)
             )
         for i in range(len(verify_p)):
             out, err = verify_p[i].communicate()
+            ver_log = open(f"{log_dir}/{sim[i]}_caravel.log", "w")
             if err:
                 logging.error(err.decode())
-
-    if sta:
-        logging.info(f"Running PrimeTime STA all corners on caravel")
-        sta_p = run_sta(caravel_root, mcw_root, "mpw-2-sta-debug", log_dir, signoff_dir)
-        
+                ver_log.write(err)
+            if out:
+                ver_log.write(out)
 
     if lvs and drc and sta:
-        sta_p.wait()
+        out, err = sta_p.communicate()
+        sta_log = open(f"{log_dir}/PT_STA_caravel.log", "w")
+        if err:
+            logging.error(err.decode())
+            sta_log.write(err)
+
         drc_p1.wait()
         lvs_p1.wait()
     if lvs:
         lvs_p1.wait()
     if drc:
         drc_p1.wait()
+    if sta:
+        out, err = sta_p.communicate()
+        sta_log = open(f"{log_dir}/PT_STA_caravel.log", "w")
+        if err:
+            logging.error(err.decode())
+            sta_log.write(err)
 
     if not check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification):
         exit(1)

@@ -15,9 +15,10 @@
 
 MAKEFLAGS+=--warn-undefined-variables
 
-export OPENLANE_RUN_TAG = $(shell date '+%y_%m_%d_%H_%M')
+export OPENLANE_RUN_TAG ?= $(shell date '+%y_%m_%d_%H_%M')
 OPENLANE_TAG ?= 2021.11.23_01.42.34
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
+IT_SCRIPT ?= ./interactive.tcl
 designs = $(shell find * -maxdepth 0 -type d)
 current_design = null
 
@@ -26,9 +27,14 @@ openlane_cmd = \
 	-design $$(realpath ./$*) \
 	-save_path $$(realpath ..) \
 	-save \
-	-tag $(OPENLANE_RUN_TAG) \
+	-OPENLANE_RUN_TAG $(OPENLAN_RUN_TAG) \
+	-verbose 1 \
 	-overwrite"
-openlane_cmd_interactive = "flow.tcl -it -file $$(realpath ./$*/interactive.tcl)"
+openlane_cmd_interactive = "flow.tcl -ignore_mismatches -it -file $$(realpath ./$*/$(IT_SCRIPT))"
+openlane_cmd_regression = "cd /openlane && ./run_designs.py \
+													 --regression $$(realpath ./$*/regression.config) \
+													 --threads 6 \
+													 $$(realpath ./$*)"
 
 docker_mounts = \
 	-v $$(realpath $(PWD)/..):$$(realpath $(PWD)/..) \
@@ -45,6 +51,12 @@ docker_env = \
 	-e OPENLANE_RUN_TAG=$(OPENLANE_RUN_TAG) \
 	-w $(PWD)
 
+ifneq ($(OPENLANE_ROOT),)
+$(info openlane $(OPENLANE_ROOT))
+docker_mounts += -v $(OPENLANE_ROOT):/openlane
+docker_mounts += -v $(OPENLANE_ROOT):/openLANE_flow
+endif
+
 ifneq ($(MCW_ROOT),)
 docker_env += -e MCW_ROOT=$(MCW_ROOT)
 docker_mounts += -v $(MCW_ROOT):$(MCW_ROOT)
@@ -59,6 +71,13 @@ docker_run = \
 
 list:
 	@echo $(designs)
+
+regression-designs=$(designs:%=%-regression)
+.PHONY: $(regression-designs)
+$(regression-designs): %-regression: ./%/regression.config
+	$(docker_run) \
+		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd_regression)
+
 
 .PHONY: $(designs)
 $(designs) : % : ./%/config.tcl
