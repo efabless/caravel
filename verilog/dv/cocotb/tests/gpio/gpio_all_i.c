@@ -79,7 +79,7 @@ void main(){
     reg_debug_1 = 0XD5; // for delay insertion for release
     // trying to inject error by sending data to gpio by firmware where gpios configured as input 
     reg_mprj_datal = 0x5AE1FFB8; // random number
-    reg_mprj_datah = 0x5AE1FFB8; // random number
+    reg_mprj_datah = 0x1E; // random number
 
     reg_debug_2 = 0xFF;
 }
