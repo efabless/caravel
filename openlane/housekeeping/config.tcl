@@ -14,56 +14,76 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # OR COMMIT: 182e733faa149c80f36cfd2198a83dcdeb7853ea
+set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) "housekeeping"
-set ::env(ROUTING_CORES) 36
+set ::env(ROUTING_CORES) 12
 set ::env(RUN_KLAYOUT) 0
+set ::env(PDK) "sky130A"
 
-set ::env(VERILOG_FILES) "\
-	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
-    $::env(DESIGN_DIR)/../../verilog/rtl/housekeeping_spi.v\
-    $::env(DESIGN_DIR)/../../verilog/rtl/housekeeping.v"
+set ::env(VERILOG_FILES) [glob $::env(DESIGN_DIR)/src/*.v]
 
-set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_NET) "$::env(CLOCK_PORT) csclk mgmt_gpio_in\[4\]"
+set ::env(CLOCK_PORT) ""
+set ::env(CLOCK_NET) "wb_clk_i csclk mgmt_gpio_in\[4\]"
+set ::env(CLOCK_TREE_SYNTH) 1
 
-set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/housekeeping.def
 
-set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc
+set ::env(BASE_SDC_FILE) [glob $::env(DESIGN_DIR)/base.sdc]
 
 ## Synthesis 
-set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list 
+set ::env(NO_SYNTH_CELL_LIST) [glob $::env(DESIGN_DIR)/no_synth.list] 
+set ::env(DRC_EXCLUDE_CELL_LIST) [glob $::env(DESIGN_DIR)/drc_exclude.list] 
 set ::env(SYNTH_STRATEGY) "AREA 0"
 
-set ::env(SYNTH_MAX_FANOUT) 7
+set ::env(SYNTH_MAX_FANOUT) 20
+set ::env(SYNTH_MAX_TRAN) 1.25
+# set ::env(SYNTH_CAP_LOAD) "180"
+set ::env(SYNTH_BUFFERING) 0
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 300.230 550.950"
+set ::env(DIE_AREA) "0 0 370.230 550.950"
 
-set ::env(DPL_CELL_PADDING) 2
-set ::env(GPL_CELL_PADDING) 2
+set ::env(FP_PIN_ORDER_CFG) [glob $::env(DESIGN_DIR)/pin_order.cfg]
 
-## Routing 
-set ::env(GRT_ADJUSTMENT) 0.06
-set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.2,0,0,0,0"
-set ::env(GRT_OVERFLOW_ITERS) 100
+set ::env(FP_IO_MIN_DISTANCE) 2
 
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.17
+set ::env(CELL_PAD) 0
+set ::env(FP_PDN_HPITCH) 153.18
+set ::env(FP_PDN_HSPACING) 74.99
+set ::env(FP_PDN_HOFFSET) 16.41
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.5
+set ::env(PL_TARGET_DENSITY) 0.28
+set ::env(PL_TIME_DRIVEN) 1
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
+set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 300
 
-set ::env(GRT_ALLOW_CONGESTION) 0
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
+# set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
+# set ::env(PL_RESIZER_MAX_CAP_MARGIN) "30"
 
+# set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 50
+# set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
 set ::env(CLOCK_TREE_SYNTH) 1
-set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+
+## Routing 
+set ::env(GLB_ADJUSTMENT) 0.06 
+set ::env(GLB_OVERFLOW_ITERS) 100
+set ::env(GRT_ALLOW_CONGESTION) 1
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) .17
-set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.1
+set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 250
+# set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) "30"
+# set ::env(GLB_RESIZER_MAX_CAP_MARGIN) "30"
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) "3"
-set ::env(GRT_ANT_ITERS) "7"
+set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(GLB_ANT_ITERS) 5
+# set ::env(USE_ARC_ANTENNA_CHECK) 0
+
+## clock buffering
+set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4}
+set ::env(CTS_ROOT_BUFFER) {sky130_fd_sc_hd__clkbuf_8}

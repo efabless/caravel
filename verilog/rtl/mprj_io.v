@@ -48,7 +48,6 @@ module mprj_io #(
     inout [TOTAL_PADS-1:0] io,
     input [TOTAL_PADS-1:0] io_out,
     input [TOTAL_PADS-1:0] oeb,
-    input [TOTAL_PADS-1:0] hldh_n,
     input [TOTAL_PADS-1:0] enh,
     input [TOTAL_PADS-1:0] inp_dis,
     input [TOTAL_PADS-1:0] ib_mode_sel,
@@ -65,7 +64,8 @@ module mprj_io #(
     inout [TOTAL_PADS-10:0] analog_noesd_io
 );
 
-    wire [TOTAL_PADS-1:0] loop1_io;
+    wire [TOTAL_PADS-1:0] loop0_io;	// Internal loopback to 3.3V domain ground
+    wire [TOTAL_PADS-1:0] loop1_io;	// Internal loopback to 3.3V domain power
     wire [6:0] no_connect_1a, no_connect_1b;
     wire [1:0] no_connect_2a, no_connect_2b;
 
@@ -76,11 +76,11 @@ module mprj_io #(
 	`endif
 	    .OUT(io_out[AREA1PADS - 1:0]),
 	    .OE_N(oeb[AREA1PADS - 1:0]),
-	    .HLD_H_N(hldh_n[AREA1PADS - 1:0]),
+	    .HLD_H_N(loop1_iop[AREA1PADS - 1:0]),
 	    .ENABLE_H(enh[AREA1PADS - 1:0]),
-	    .ENABLE_INP_H(loop1_io[AREA1PADS - 1:0]),
+	    .ENABLE_INP_H(loop0_io[AREA1PADS - 1:0]),
 	    .ENABLE_VDDA_H(porb_h),
-	    .ENABLE_VSWITCH_H(loop1_io[AREA1PADS - 1:0]),
+	    .ENABLE_VSWITCH_H(loop0_io[AREA1PADS - 1:0]),
 	    .ENABLE_VDDIO(vccd_conb[AREA1PADS - 1:0]),
 	    .INP_DIS(inp_dis[AREA1PADS - 1:0]),
 	    .IB_MODE_SEL(ib_mode_sel[AREA1PADS - 1:0]),
@@ -96,8 +96,8 @@ module mprj_io #(
 	    .PAD_A_ESD_1_H(),
 	    .IN(io_in[AREA1PADS - 1:0]),
 	    .IN_H(io_in_3v3[AREA1PADS - 1:0]),
-	    .TIE_HI_ESD(),
-	    .TIE_LO_ESD(loop1_io[AREA1PADS - 1:0])
+	    .TIE_HI_ESD(loop1_io[AREA1PADS - 1:0]),
+	    .TIE_LO_ESD(loop0_io[AREA1PADS - 1:0])
     );
 
     sky130_ef_io__gpiov2_pad_wrapped area2_io_pad [TOTAL_PADS - AREA1PADS - 1:0] (
@@ -107,11 +107,11 @@ module mprj_io #(
 	`endif
 	    .OUT(io_out[TOTAL_PADS - 1:AREA1PADS]),
 	    .OE_N(oeb[TOTAL_PADS - 1:AREA1PADS]),
-	    .HLD_H_N(hldh_n[TOTAL_PADS - 1:AREA1PADS]),
+	    .HLD_H_N(loop1_io[TOTAL_PADS - 1:AREA1PADS]),
 	    .ENABLE_H(enh[TOTAL_PADS - 1:AREA1PADS]),
-	    .ENABLE_INP_H(loop1_io[TOTAL_PADS - 1:AREA1PADS]),
+	    .ENABLE_INP_H(loop0_io[TOTAL_PADS - 1:AREA1PADS]),
 	    .ENABLE_VDDA_H(porb_h),
-	    .ENABLE_VSWITCH_H(loop1_io[TOTAL_PADS - 1:AREA1PADS]),
+	    .ENABLE_VSWITCH_H(loop0_io[TOTAL_PADS - 1:AREA1PADS]),
 	    .ENABLE_VDDIO(vccd_conb[TOTAL_PADS - 1:AREA1PADS]),
 	    .INP_DIS(inp_dis[TOTAL_PADS - 1:AREA1PADS]),
 	    .IB_MODE_SEL(ib_mode_sel[TOTAL_PADS - 1:AREA1PADS]),
@@ -127,8 +127,8 @@ module mprj_io #(
 	    .PAD_A_ESD_1_H(),
 	    .IN(io_in[TOTAL_PADS - 1:AREA1PADS]),
 	    .IN_H(io_in_3v3[TOTAL_PADS - 1:AREA1PADS]),
-	    .TIE_HI_ESD(),
-	    .TIE_LO_ESD(loop1_io[TOTAL_PADS - 1:AREA1PADS])
+	    .TIE_HI_ESD(loop1_io[TOTAL_PADS - 1:AREA1PADS]),
+	    .TIE_LO_ESD(loop0_io[TOTAL_PADS - 1:AREA1PADS])
     );
 
 endmodule

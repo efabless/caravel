@@ -1,0 +1,47 @@
+magic
+tech sky130A
+magscale 1 2
+timestamp 1665254081
+<< obsli1 >>
+rect 92 527 2668 2193
+<< obsm1 >>
+rect 92 496 2668 2224
+<< obsm2 >>
+rect 224 507 2360 2213
+<< metal3 >>
+rect 0 1232 800 1352
+rect 2000 1232 2800 1352
+<< obsm3 >>
+rect 214 1432 2370 2209
+rect 880 1152 1920 1432
+rect 214 511 2370 1152
+<< metal4 >>
+rect 202 496 382 2224
+rect 702 496 882 2224
+rect 1202 496 1382 2224
+rect 1702 496 1882 2224
+rect 2202 496 2382 2224
+<< labels >>
+rlabel metal3 s 2000 1232 2800 1352 6 one
+port 1 nsew signal output
+rlabel metal4 s 202 496 382 2224 6 vccd
+port 2 nsew power bidirectional
+rlabel metal4 s 1202 496 1382 2224 6 vccd
+port 2 nsew power bidirectional
+rlabel metal4 s 2202 496 2382 2224 6 vccd
+port 2 nsew power bidirectional
+rlabel metal4 s 702 496 882 2224 6 vssd
+port 3 nsew ground bidirectional
+rlabel metal4 s 1702 496 1882 2224 6 vssd
+port 3 nsew ground bidirectional
+rlabel metal3 s 0 1232 800 1352 6 zero
+port 4 nsew signal output
+<< properties >>
+string FIXED_BBOX 0 0 2800 2600
+string LEFclass BLOCK
+string LEFview TRUE
+string GDS_END 39178
+string GDS_FILE /openlane/designs/constant_block/runs/RUN_2022.10.08_18.34.19/results/signoff/constant_block.magic.gds
+string GDS_START 27268
+<< end >>
+

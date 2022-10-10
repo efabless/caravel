@@ -1474,7 +1474,8 @@ module caravel (
     );
 
     /* Spare logic for metal mask fixes */
-    `define NUM_SPARE_BLOCKS (`MPRJ_IO_PADS+4)
+    // `define NUM_SPARE_BLOCKS (`MPRJ_IO_PADS+4)
+    `define NUM_SPARE_BLOCKS 4
 
     wire [(27*`NUM_SPARE_BLOCKS)-1:0] spare_xz_nc;
     wire [(4*`NUM_SPARE_BLOCKS)-1:0] spare_xi_nc;

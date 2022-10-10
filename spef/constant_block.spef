@@ -1,0 +1,84 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "constant_block"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "OpenRCX"
+*PROGRAM "Parallel Extraction"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*1 one
+*4 zero
+*5 one_unbuf
+*6 zero_unbuf
+*7 FILLER_0_0
+*8 FILLER_0_24
+*9 FILLER_0_27
+*10 FILLER_1_0
+*11 FILLER_1_16
+*12 FILLER_1_24
+*13 FILLER_1_4
+*14 FILLER_1_8
+*15 FILLER_2_0
+*16 FILLER_2_24
+*17 FILLER_2_27
+*18 TAP_0
+*19 TAP_1
+*20 const_one_buf
+*21 const_source
+*22 const_zero_buf
+
+*PORTS
+one O
+zero O
+
+*D_NET *1 0.000496181
+*CONN
+*P one O
+*I *20:X O *D sky130_fd_sc_hd__buf_16
+*CAP
+1 one 0.00024809
+2 *20:X 0.00024809
+*RES
+1 *20:X one 19.8722 
+*END
+
+*D_NET *4 0.000337027
+*CONN
+*P zero O
+*I *22:X O *D sky130_fd_sc_hd__buf_16
+*CAP
+1 zero 0.000168514
+2 *22:X 0.000168514
+*RES
+1 *22:X zero 19.5839 
+*END
+
+*D_NET *5 0.000235339
+*CONN
+*I *20:A I *D sky130_fd_sc_hd__buf_16
+*I *21:HI O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 *20:A 0.000117669
+2 *21:HI 0.000117669
+*RES
+1 *21:HI *20:A 30.1893 
+*END
+
+*D_NET *6 0.000171306
+*CONN
+*I *22:A I *D sky130_fd_sc_hd__buf_16
+*I *21:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 *22:A 8.56529e-05
+2 *21:LO 8.56529e-05
+*RES
+1 *21:LO *22:A 29.5464 
+*END
