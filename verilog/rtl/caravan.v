@@ -251,6 +251,15 @@ module caravan (
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
+    // Internal power bus names
+    wire vddio_core, vssio_core;
+    wire vdda_core, vssa_core;
+    wire vdda1_core, vssa1_core;
+    wire vdda2_core, vssa2_core;
+    wire vccd_core, vssd_core;
+    wire vccd1_core, vssd1_core;
+    wire vccd2_core, vssd2_core;
+
     chip_io_alt #(
 	.ANALOG_PADS_1(`ANALOG_PADS_1),
 	.ANALOG_PADS_2(`ANALOG_PADS_2)
@@ -420,6 +429,20 @@ module caravan (
     // Pass thru clock and reset
     wire 	clk_passthru;
     wire 	resetn_passthru;
+
+    // Subsystem enable signals (from management SoC)
+    wire	qspi_enabled;
+    wire	uart_enabled;
+    wire	spi_enabled;
+    wire	debug_mode;
+
+    // Other subsystem signals
+    wire	ser_tx, ser_rx;
+    wire	spi_csb, spi_sck, spi_sdo, spi_sdoenb, spi_sdi;
+    wire	debug_out, debug_oeb, trap, debug_in;
+    wire	pll_clk, pll_clk90;
+    wire	spi_pll_ena, spi_pll_dco_ena;
+    wire	ext_clk_sel, ext_reset;
 
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
