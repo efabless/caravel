@@ -79,7 +79,7 @@ set ::env(FP_PDN_VSPACING) 3.4
 set ::env(FP_PDN_HSPACING) 3.4
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.9
+set ::env(PL_TARGET_DENSITY) 0.95
 # for some reason resizer is leaving a floating net after running repair_tie_fanout command
 set ::env(PL_RESIZER_REPAIR_TIE_FANOUT) 0
 
@@ -155,3 +155,4 @@ set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/drc_exclude_list.txt
 set ::env(DRC_EXCLUDE_CELL_LIST_OPT) $::env(DESIGN_DIR)/drc_exclude_list.txt
 set ::env(RSZ_DONT_TOUCH) "user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*"
 set ::env(FP_PDN_SKIPTRIM) 1
+set ::env(MAGIC_NO_DEF_BLOCKAGES) 1
