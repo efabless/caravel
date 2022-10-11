@@ -1,47 +1,89 @@
 ##PT script
-set link_path "* $::env(PT_LIB_ROOT)/scs130hvl_tt_3.3v_25C.lib \
-$::env(PT_LIB_ROOT)/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib \
-$::env(PT_LIB_ROOT)/s8iom0s8_top_gpiov2_tt_tt_1p80v_x_3p30v_025C.lib \
-$::env(PT_LIB_ROOT)/s8iom0s8_top_ground_hvc_wpad_tt_1.80v_3.30v_3.30v_025C.lib \
-$::env(PT_LIB_ROOT)/s8iom0s8_top_ground_lvc_wpad_tt_1.80v_3.30v_025C.lib \
-$::env(PT_LIB_ROOT)/s8iom0s8_top_power_lvc_wpad_tt_1.80v_3.30v_3.30v_025C.lib \
-$::env(PT_LIB_ROOT)/s8iom0s8_top_xres4v2_tt_tt_1p80v_x_3p30v_025C.lib \
-$::env(PT_LIB_ROOT)/simple_por.lib \
-$::env(PT_LIB_ROOT)/sky130_ef_io__corner_pad.lib \
-$::env(PT_LIB_ROOT)/spare_logic_block.lib \
-$::env(PT_LIB_ROOT)/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib \
-"
+
+# Adding SCL and IO link libraries based on the process corner specified
 if {$::env(PROC_CORNER) == "t"} {
-  append link_path "$::env(PT_LIB_ROOT)/scs130hd_tt_1.80v_25C.lib"
+  set link_path "* $::env(PT_LIB_ROOT)/scs130hd_tt_1.80v_25C.lib \
+  $::env(PT_LIB_ROOT)/scs130hvl_tt_3.3v_25C.lib \
+  $::env(PT_LIB_ROOT)/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib \
+  "
 } elseif {$::env(PROC_CORNER) == "f"} {
-  append link_path "$::env(PT_LIB_ROOT)/scs130hd_ff_1.95v_-40C.lib"
+  set link_path "* $::env(PT_LIB_ROOT)/scs130hd_ff_1.95v_-40C.lib \
+  $::env(PT_LIB_ROOT)/scs130hvl_ff_5.5v_-40C.lib \
+  $::env(PT_LIB_ROOT)/scs130hvl_ff_5.5v_lowhv_5.5v_lv_1.95v_-40C.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib \
+  "
 } elseif {$::env(PROC_CORNER) == "s"} {
-  append link_path "$::env(PT_LIB_ROOT)/scs130hd_ss_1.40v_100C.lib"
+  set link_path "* $::env(PT_LIB_ROOT)/scs130hd_ss_1.40v_100C.lib \
+  $::env(PT_LIB_ROOT)/scs130hvl_ss_3.00v_100C.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib \
+  $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib \
+  "
 }
 
+# Reading design netlist
+# TODO: get chip io netlist instead of reading the RTL
 set search_path "$::env(CARAVEL_ROOT)/verilog/gl $::env(MCW_ROOT)/verilog/gl $::env(PT_LIB_ROOT)"
 foreach verilog "[glob $::env(CARAVEL_ROOT)/verilog/gl/*.v] [glob $::env(MCW_ROOT)/verilog/gl/*.v]" {
-  puts "list of .v: $verilog"  
-  read_verilog $verilog
+  if {$verilog != "$::env(CARAVEL_ROOT)/verilog/gl/chip_io.v"} {
+    read_verilog $verilog
+  } 
 }
+read_verilog $::env(CARAVEL_ROOT)/verilog/rtl/defines.v
+read_verilog $::env(CARAVEL_ROOT)/verilog/rtl/mprj_io.v
+read_verilog $::env(CARAVEL_ROOT)/verilog/rtl/chip_io.v
 
 current_design $::env(DESIGN)
 link
-read_sdc $::env(CARAVEL_ROOT)/openlane/$::env(DESIGN)/signoff.sdc
 
+# Reading constraints (signoff)
+if {$::env(DESIGN) == "mgmt_core_wrapper"} {
+  read_sdc $::env(MCW_ROOT)/openlane/$::env(DESIGN)/signoff.sdc
+} else {
+  read_sdc $::env(CARAVEL_ROOT)/openlane/$::env(DESIGN)/signoff.sdc
+}
+
+# Reading parasitics based on the RC corner specified
 proc read_spefs {design rc_corner} {
   set spef_mapping(rstb_level)                               $::env(CARAVEL_ROOT)/spef/multicorner/xres_buf.${rc_corner}.spef
   set spef_mapping(padframe)                                 $::env(CARAVEL_ROOT)/spef/multicorner/chip_io.${rc_corner}.spef
   set spef_mapping(housekeeping)                             $::env(CARAVEL_ROOT)/spef/multicorner/housekeeping.${rc_corner}.spef
-  set spef_mapping(mgmt_buffers)                             $::env(CARAVEL_ROOT)/spef/multicorner/mgmt_protect.${rc_corner}.spef
   set spef_mapping(pll)                                      $::env(CARAVEL_ROOT)/spef/multicorner/digital_pll.${rc_corner}.spef
-  set spef_mapping(clocking)                                 $::env(CARAVEL_ROOT)/spef/multicorner/caravel_clocking.${rc_corner}.spef
+  set spef_mapping(clock_ctrl)                               $::env(CARAVEL_ROOT)/spef/multicorner/caravel_clocking.${rc_corner}.spef
+  set spef_mapping(mgmt_buffers)                             $::env(CARAVEL_ROOT)/spef/multicorner/mgmt_protect.${rc_corner}.spef
   set spef_mapping(mgmt_buffers/powergood_check)             $::env(CARAVEL_ROOT)/spef/multicorner/mgmt_protect_hv.${rc_corner}.spef
+  set spef_mapping(powergood_check)                          $::env(CARAVEL_ROOT)/spef/multicorner/mgmt_protect_hv.${rc_corner}.spef
   set spef_mapping(mgmt_buffers/mprj_logic_high_inst)        $::env(CARAVEL_ROOT)/spef/multicorner/mprj_logic_high.${rc_corner}.spef
+  set spef_mapping(mprj_logic_high_inst)                     $::env(CARAVEL_ROOT)/spef/multicorner/mprj_logic_high.${rc_corner}.spef
+  set spef_mapping(mgmt_buffers/mprj2_logic_high_inst)       $::env(CARAVEL_ROOT)/spef/multicorner/mprj2_logic_high.${rc_corner}.spef
+  set spef_mapping(mprj2_logic_high_inst)                    $::env(CARAVEL_ROOT)/spef/multicorner/mprj2_logic_high.${rc_corner}.spef
   set spef_mapping(soc)                                      $::env(MCW_ROOT)/spef/multicorner/mgmt_core_wrapper.${rc_corner}.spef
-  set spef_mapping(soc/DFFRAM_0)                             $::env(MCW_ROOT)/spef/multicorner/DFFRAM.${rc_corner}.spef
-  set spef_mapping(soc/core)                                 $::env(MCW_ROOT)/spef/multicorner/mgmt_core.${rc_corner}.spef
-
+  set spef_mapping(soc/\core.DFFRAM)                         $::env(MCW_ROOT)/spef/multicorner/DFFRAM.${rc_corner}.spef
+  set spef_mapping(\core.DFFRAM)                             $::env(MCW_ROOT)/spef/multicorner/DFFRAM.${rc_corner}.spef
+  set spef_mapping(soc/\core.DFFRAM_512)                     $::env(MCW_ROOT)/spef/multicorner/DFFRAM_512.${rc_corner}.spef
+  set spef_mapping(\core.DFFRAM_512)                         $::env(MCW_ROOT)/spef/multicorner/DFFRAM_512.${rc_corner}.spef
+  
+  set spef_mapping(gpio_logic_high)                          $::env(CARAVEL_ROOT)/spef/multicorner/gpio_logic_high.${rc_corner}.spef
   set spef_mapping(\gpio_control_bidir_1[0]/gpio_logic_high) $::env(CARAVEL_ROOT)/spef/multicorner/gpio_logic_high.${rc_corner}.spef
   set spef_mapping(\gpio_control_bidir_1[1]/gpio_logic_high) $::env(CARAVEL_ROOT)/spef/multicorner/gpio_logic_high.${rc_corner}.spef
   set spef_mapping(\gpio_control_bidir_2[0]/gpio_logic_high) $::env(CARAVEL_ROOT)/spef/multicorner/gpio_logic_high.${rc_corner}.spef
@@ -161,38 +203,55 @@ proc read_spefs {design rc_corner} {
   foreach key [array names spef_mapping] {
     read_parasitics -path $key $spef_mapping($key)
   }
-  read_parasitics -verbose $::env(CARAVEL_ROOT)/spef/multicorner/$::env(DESIGN).${rc_corner}.spef -pin_cap_included
+  if {$design == "mgmt_core_wrapper"} {
+    read_parasitics -verbose $::env(MCW_ROOT)/spef/multicorner/$::env(DESIGN).${rc_corner}.spef -pin_cap_included
+  } else {
+    read_parasitics -verbose $::env(CARAVEL_ROOT)/spef/multicorner/$::env(DESIGN).${rc_corner}.spef -pin_cap_included
+  }
+
 }
 proc report_results {design rc_corner proc_corner} {
-  report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-all_viol.rpt
+  report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-all_viol.rpt
 
   report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-  -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-min_timing.rpt
+  -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-min_timing.rpt
   
   report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-  -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-max_timing.rpt
+  -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-max_timing.rpt
 
   if {$design == "caravel"} {
     report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-clk-min_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-clk-min_timing.rpt
     
     report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-hk_serial_clk-min_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-hk_serial_clk-min_timing.rpt
     
     report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-hk_serial_clk-max_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-hk_serial_clk-max_timing.rpt
 
     report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hkspi_clk \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-hkspi_clk-min_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-hkspi_clk-min_timing.rpt
 
     report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-soc-min_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-soc-min_timing.rpt
 
     report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}-${rc_corner}-${proc_corner}-soc-max_timing.rpt
+    -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/pt_reports/${design}/${design}-${rc_corner}-${proc_corner}-soc-max_timing.rpt
   }
 
-  write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/pt_sdf/${design}-${rc_corner}-${proc_corner}.sdf
+  write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/pt_sdf/${design}/${design}-${rc_corner}-${proc_corner}.sdf
+
+  # Extract timing model
+  set extract_model_clock_transition_limit 0.75
+  set extract_model_data_transition_limit 0.75
+  set_app_var extract_model_capacitance_limit 1.0
+  set extract_model_num_capacitance_points 7
+  set extract_model_num_clock_transition_points 7
+  set extract_model_num_data_transition_points 7
+  set extract_model_use_conservative_current_slew true
+  set extract_model_enable_report_delay_calculation true
+  set extract_model_with_clock_latency_arcs true
+  extract_model -output $::env(OUT_DIR)/pt_etm/${design}/${design}-${rc_corner}-${proc_corner} -format {db lib} -test_design
 }
 
 read_spefs $::env(DESIGN) $::env(RC_CORNER)
