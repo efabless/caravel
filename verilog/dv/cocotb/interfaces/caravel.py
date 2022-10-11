@@ -51,13 +51,15 @@ class Caravel_env:
     """start carvel by insert power then reset"""
     async def start_up(self):
         await self.power_up()
-        # await self.disable_csb() # no need for this anymore as default for gpio3 is now pullup
+        await self.disable_csb() # no need for this anymore as default for gpio3 is now pullup
         await self.reset()
         await self.disable_bins()
         common.fill_macros(self.dut.macros) # get macros value
 
     async def disable_bins(self):
         for i in range(38):
+            if i ==3:
+                continue
             common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
 
     """setup the vdd and vcc power bins"""
