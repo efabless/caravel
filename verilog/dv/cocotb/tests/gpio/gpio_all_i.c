@@ -7,7 +7,7 @@ void main(){
     reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
     reg_debug_1  = 0x0;
     reg_debug_2  = 0x0;
-
+    reg_hkspi_disable = 1;
     reg_mprj_io_37 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
     reg_mprj_io_36 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
     reg_mprj_io_35 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
@@ -51,20 +51,35 @@ void main(){
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
 
-    reg_debug_1 = 0XAA; // configuration done wait environment to send 0x8F66FD7B to reg_mprj_datal
-    while (reg_mprj_datal != 0x8F66FD7B);
-    reg_debug_1 = 0XBB; // configuration done wait environment to send 0xFFA88C5A to reg_mprj_datal
-    while (reg_mprj_datal != 0xFFA88C5A);
-    reg_debug_1 = 0XCC; // configuration done wait environment to send 0xC9536346 to reg_mprj_datal
-    while (reg_mprj_datal != 0xC9536346);
+    reg_debug_1 = 0XAA; // configuration done wait environment to send 0xFFFFFFFF to reg_mprj_datal
+    while (reg_mprj_datal != 0xFFFFFFFF);
+    reg_debug_2 = reg_mprj_datal;
+    reg_debug_1 = 0XBB; // configuration done wait environment to send 0xAAAAAAAA to reg_mprj_datal
+    while (reg_mprj_datal != 0xAAAAAAAA);
+    reg_debug_2 = reg_mprj_datal;
+    reg_debug_1 = 0XCC; // configuration done wait environment to send 0x55555555 to reg_mprj_datal
+    while (reg_mprj_datal != 0x55555555);
+    reg_debug_2 = reg_mprj_datal;
+    reg_debug_1 = 0XDD; // configuration done wait environment to send 0x0 to reg_mprj_datal
+    while (reg_mprj_datal != 0x0);
+    reg_debug_2 = reg_mprj_datal;
     reg_debug_1 = 0XD1;
     while (reg_mprj_datah != 0x3F);
+    reg_debug_2 = reg_mprj_datah;
     reg_debug_1 = 0XD2;
     while (reg_mprj_datah != 0x0);
+    reg_debug_2 = reg_mprj_datah;
     reg_debug_1 = 0XD3;
     while (reg_mprj_datah != 0x15);
+    reg_debug_2 = reg_mprj_datah;
     reg_debug_1 = 0XD4;
     while (reg_mprj_datah != 0x2A);
+    reg_debug_2 = reg_mprj_datah;
+    reg_debug_1 = 0XD5;
+    reg_debug_1 = 0XD5; // for delay insertion for release
+    // trying to inject error by sending data to gpio by firmware where gpios configured as input 
+    reg_mprj_datal = 0x5AE1FFB8; // random number
+    reg_mprj_datah = 0x1E; // random number
 
     reg_debug_2 = 0xFF;
 }

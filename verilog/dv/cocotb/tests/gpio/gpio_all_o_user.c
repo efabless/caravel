@@ -4,7 +4,8 @@
 // Debug reg DEBUG_ON
 #define reg_mprj_userl (*(volatile uint32_t*)0x300FFFF0)
 #define reg_mprj_userh (*(volatile uint32_t*)0x300FFFF4)
-
+#define reg_oeb_userl (*(volatile uint32_t*)0x300FFFEC)
+#define reg_oeb_userh (*(volatile uint32_t*)0x300FFFE8)
 void main(){
         unsigned int i, j, k;
         reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
@@ -53,7 +54,8 @@ void main(){
 
         reg_mprj_xfer = 1;
         while (reg_mprj_xfer == 1);
-
+        reg_oeb_userl = 0x0;
+        reg_oeb_userh = 0x0;
         reg_debug_1 = 0xAA; // finish configuration 
         reg_mprj_userl = 0x0;
         reg_mprj_userh = 0x0;
@@ -80,7 +82,7 @@ void main(){
         
         // try to give input 
         reg_debug_1 = 0XBB; // configuration done wait environment to send 0x8F66FD7B to reg_mprj_userl
-        int timeout = 1000;
+        int timeout = 100;
         while (reg_mprj_userl != 0x8F66FD7B){
                 timeout--;
                 if (timeout==0){
