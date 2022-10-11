@@ -25,7 +25,8 @@ set ::env(SYNTH_DEFINES) ""
 verilog_elaborate
 #init_floorplan
 #file copy -force $::env(CURRENT_DEF) $::env(TMP_DIR)/lvs.def
-file copy -force $::env(CURRENT_NETLIST) $::env(TMP_DIR)/lvs.v
+save_views -pnl_path $::env(CURRENT_NETLIST) -save_path $::env(CARAVEL_ROOT) 
+exit
 
 # ACTUAL CHIP INTEGRATION
 set ::env(USE_GPIO_ROUTING_LEF) 1
