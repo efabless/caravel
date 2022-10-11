@@ -75,8 +75,6 @@ module chip_io(
 	input  flash_clk_oeb_core,
 	input  flash_io0_oeb_core,
 	input  flash_io1_oeb_core,
-	input  flash_csb_ieb_core,	// NOTE: unused, fix me!
-	input  flash_clk_ieb_core,	// NOTE: unused, fix me!
 	input  flash_io0_ieb_core,
 	input  flash_io1_ieb_core,
 	input  flash_io0_do_core,

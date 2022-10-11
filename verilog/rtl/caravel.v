@@ -196,7 +196,6 @@ module caravel (
     // Flash SPI communication (management SoC to housekeeping)
     wire flash_clk_core,     flash_csb_core;
     wire flash_clk_oeb_core, flash_csb_oeb_core;
-    wire flash_clk_ieb_core, flash_csb_ieb_core;
     wire flash_io0_oeb_core, flash_io1_oeb_core;
     wire flash_io2_oeb_core, flash_io3_oeb_core;
     wire flash_io0_ieb_core, flash_io1_ieb_core;
@@ -237,22 +236,22 @@ module caravel (
 		.vccd2_pad	(vccd2),		// User area 2 1.8V supply
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
+        .vddio	(vddio_core),
+        .vssio	(vssio_core),
+        .vdda	(vdda_core),
+        .vssa	(vssa_core),
+        .vccd	(vccd_core),
+        .vssd	(vssd_core),
+        .vdda1	(vdda1_core),
+        .vdda2	(vdda2_core),
+        .vssa1	(vssa1_core),
+        .vssa2	(vssa2_core),
+        .vccd1	(vccd1_core),
+        .vccd2	(vccd2_core),
+        .vssd1	(vssd1_core),
+        .vssd2	(vssd2_core),
 	`endif
 	// Core Side Pins
-	.vddio	(vddio_core),
-	.vssio	(vssio_core),
-	.vdda	(vdda_core),
-	.vssa	(vssa_core),
-	.vccd	(vccd_core),
-	.vssd	(vssd_core),
-	.vdda1	(vdda1_core),
-	.vdda2	(vdda2_core),
-	.vssa1	(vssa1_core),
-	.vssa2	(vssa2_core),
-	.vccd1	(vccd1_core),
-	.vccd2	(vccd2_core),
-	.vssd1	(vssd1_core),
-	.vssd2	(vssd2_core),
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -278,8 +277,6 @@ module caravel (
 	.flash_clk_oeb_core(flash_clk_oeb),
 	.flash_io0_oeb_core(flash_io0_oeb),
 	.flash_io1_oeb_core(flash_io1_oeb),
-	.flash_csb_ieb_core(flash_csb_ieb),
-	.flash_clk_ieb_core(flash_clk_ieb),
 	.flash_io0_ieb_core(flash_io0_ieb),
 	.flash_io1_ieb_core(flash_io1_ieb),
 	.flash_io0_do_core(flash_io0_do),
@@ -1502,6 +1499,10 @@ module caravel (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
+
+    `ifdef TOP_ROUTING
+    caravel_power_routing caravel_power_routing();
+    `endif
 
 endmodule
 // `default_nettype wire
