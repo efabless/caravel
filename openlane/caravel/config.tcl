@@ -14,15 +14,15 @@
 # SPDX-License-Identifier: Apache-2.0
 
 # User config
-set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) caravel
+set ::env(ROUTING_CORES) 50
 
 set ::env(STD_CELL_LIBRARY_OPT) "sky130_fd_sc_hd"
 
-set verilog_root $script_dir/../../verilog/
-set lef_root $script_dir/../../lef/
-set gds_root $script_dir/../../gds/
+set verilog_root $::env(CARAVEL_ROOT)/verilog/
+set lef_root $::env(CARAVEL_ROOT)/lef/
+set gds_root $::env(CARAVEL_ROOT)/gds/
 
 set mgmt_area_verilog_root $::env(MCW_ROOT)/verilog/
 set mgmt_area_lef_root $::env(MCW_ROOT)/lef/
@@ -50,10 +50,12 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/simple_por.v\
 	$verilog_root/rtl/spare_logic_block.v\
 	$verilog_root/rtl/xres_buf.v \
+	$verilog_root/rtl/caravel_power_routing.v \
 	$mgmt_area_verilog_root/rtl/mgmt_core_wrapper.v \
 	"
 
 set ::env(EXTRA_LEFS) "\
+	$::env(DESIGN_DIR)/caravel_power_routing-shifted.lef \
 	$lef_root/chip_io.lef \
 	$lef_root/user_project_wrapper.lef \
 	$lef_root/mgmt_protect.lef \
@@ -70,12 +72,11 @@ set ::env(EXTRA_LEFS) "\
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
+	$::env(DESIGN_DIR)/caravel_power_routing-shifted.gds \
 	$gds_root/chip_io.gds \
 	$gds_root/user_project_wrapper.gds \
 	$gds_root/mgmt_protect.gds \
 	$gds_root/gpio_control_block.gds \
-	$gds_root/gpio_defaults_block.gds \
-	$gds_root/user_id_programming.gds \
 	$gds_root/housekeeping.gds \
 	$gds_root/digital_pll.gds \
 	$gds_root/caravel_clocking.gds \
@@ -97,7 +98,7 @@ set ::env(LEC_ENABLE) 0
 
 set ::env(FP_SIZING) absolute
 
-set fd [open "$script_dir/../chip_dimensions.txt" "r"]
+set fd [open "$::env(DESIGN_DIR)/../chip_dimensions.txt" "r"]
 set ::env(DIE_AREA) [read $fd]
 close $fd
 
@@ -109,21 +110,16 @@ set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 
 set ::env(DIODE_INSERTION_STRATEGY) 0
 
-set ::env(GLB_RT_ALLOW_CONGESTION) 1
-set ::env(GLB_RT_OVERFLOW_ITERS) 50
-set ::env(GLB_RT_TILES) 30
-set ::env(GLB_RT_MINLAYER) 2
-set ::env(GLB_RT_MAXLAYER) 6
 #set ::env(RT_MIN_LAYER) met1
 #set ::env(RT_MAX_LAYER) met5
 
-set ::env(GLB_RT_ADJUSTMENT) "0"
-set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
-set ::env(GLB_RT_L2_ADJUSTMENT) "0.1"
-set ::env(GLB_RT_L3_ADJUSTMENT) "0.15"
-set ::env(GLB_RT_L4_ADJUSTMENT) "0.15"
-set ::env(GLB_RT_L5_ADJUSTMENT) "0.15"
-set ::env(GLB_RT_L6_ADJUSTMENT) "0"
+#set ::env(GLB_RT_ADJUSTMENT) "0"
+#set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
+#set ::env(GLB_RT_L2_ADJUSTMENT) "0.1"
+#set ::env(GLB_RT_L3_ADJUSTMENT) "0.15"
+#set ::env(GLB_RT_L4_ADJUSTMENT) "0.15"
+#set ::env(GLB_RT_L5_ADJUSTMENT) "0.15"
+#set ::env(GLB_RT_L6_ADJUSTMENT) "0"
 #set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
 #set ::env(GLB_RT_L2_ADJUSTMENT) "0"
 #set ::env(GLB_RT_L3_ADJUSTMENT) "0"
@@ -138,7 +134,7 @@ set ::env(GLB_RT_L6_ADJUSTMENT) "0"
 #set ::env(GLB_RT_L6_ADJUSTMENT) "0"
 
 # set ::env(ROUTING_OPT_ITERS) 7
-# set ::env(GLB_RT_UNIDIRECTIONAL) 0
+set ::env(GLB_RT_UNIDIRECTIONAL) 0
 
 set ::env(FILL_INSERTION) 0
 
@@ -151,5 +147,17 @@ set ::env(QUIT_ON_ILLEGAL_OVERLAPS) 0
 set ::env(QUIT_ON_TR_DRC) 0
 set ::env(QUIT_ON_LVS_ERROR) 0
 
-#set ::env(TRACKS_INFO_FILE) $script_dir/tracks.info
+#set ::env(TRACKS_INFO_FILE) $::env(DESIGN_DIR)/tracks.info
 #
+
+set ::env(ROUTING_OPT_ITERS) 100
+
+set ::env(TECH_LEF) $::env(DESIGN_DIR)/sky130_fd_sc_hd.tlef
+
+set ::env(GLB_RT_ADJUSTMENT) "0"
+set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
+set ::env(GLB_RT_L2_ADJUSTMENT) "0.2"
+set ::env(GLB_RT_L3_ADJUSTMENT) "0.45"
+set ::env(GLB_RT_L4_ADJUSTMENT) "0.45"
+set ::env(GLB_RT_L5_ADJUSTMENT) "0.45"
+set ::env(GLB_RT_L6_ADJUSTMENT) "0"

@@ -76,7 +76,7 @@ module mprj_io #(
 	`endif
 	    .OUT(io_out[AREA1PADS - 1:0]),
 	    .OE_N(oeb[AREA1PADS - 1:0]),
-	    .HLD_H_N(loop1_iop[AREA1PADS - 1:0]),
+	    .HLD_H_N(loop1_io[AREA1PADS - 1:0]),
 	    .ENABLE_H(enh[AREA1PADS - 1:0]),
 	    .ENABLE_INP_H(loop0_io[AREA1PADS - 1:0]),
 	    .ENABLE_VDDA_H(porb_h),
