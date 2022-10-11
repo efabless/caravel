@@ -32,10 +32,11 @@ def search_str(file_path, word):
 
 
 class RunTest:
-    def __init__(self,test_name,sim) -> None:
+    def __init__(self,test_name,sim,corner) -> None:
         self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.test_name = test_name
         self.sim_type  = sim
+        self.corner  = corner
         self.create_log_file()
         self.hex_generate()
         self.runTest()
@@ -45,6 +46,8 @@ class RunTest:
         self.cd_cocotb()
         os.chdir(f"sim/{os.getenv('RUNTAG')}")
         test_dir = f"{self.sim_type}-{self.test_name}"
+        if (self.sim_type == "GL_SDF"):
+            test_dir = f'{test_dir}-{self.corner}'
         os.makedirs(f"{test_dir}",exist_ok=True)
         self.cd_cocotb()
         self.sim_path = f"sim/{os.getenv('RUNTAG')}/{test_dir}/"
@@ -171,11 +174,12 @@ class RunTest:
         os.chdir(self.cocotb_path)
 
 class RunRegression: 
-    def __init__(self,regression,test,type_arg,testlist) -> None:
+    def __init__(self,regression,test,type_arg,testlist,corner) -> None:
         self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.regression_arg = regression
         self.test_arg = test
         self.testlist_arg = testlist
+        self.corners = corner
         if type_arg is None:
             type_arg = "RTL"
         self.type_arg = type_arg
@@ -187,7 +191,7 @@ class RunRegression:
         self.run_regression()
 
     def get_tests(self):
-        self.tests = collections.defaultdict(lambda : collections.defaultdict(dict)) #key is testname and value is list of sim types
+        self.tests = collections.defaultdict(lambda : collections.defaultdict(lambda : collections.defaultdict(dict))) #key is testname and value is list of sim types
         self.unknown_tests = 0
         self.passed_tests = 0
         self.failed_tests = 0
@@ -198,8 +202,13 @@ class RunRegression:
                 if fnmatch(test,"_*"):
                         continue
                 for sim_type in sim_types:
-                    if self.regression_arg in test_elements[sim_type]: 
-                        self.add_new_test(test_name=test,sim_type = sim_type)
+                    if sim_type =="GL_SDF": 
+                        for corner in self.corners: 
+                            if self.regression_arg in test_elements[sim_type]: 
+                                self.add_new_test(test_name=test,sim_type = sim_type,corner = corner)
+                    else: 
+                        if self.regression_arg in test_elements[sim_type]: 
+                                self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
             if (len(self.tests)==0):
                 print(f"fatal:{self.regression_arg} is not a valid regression name please input a valid regression \ncheck tests.json for more info")
                 sys.exit()
@@ -210,9 +219,15 @@ class RunRegression:
                     if test in self.tests_json:
                         if isinstance(self.type_arg,list):
                             for sim_type in self.type_arg:
-                                self.add_new_test(test_name=test,sim_type = sim_type)
+                                if sim_type =="GL_SDF": 
+                                    for corner in self.corners: 
+                                        self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
+                                else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
                         else:
-                            self.add_new_test(test_name=test,sim_type = self.type_arg)
+                            if sim_type =="GL_SDF": 
+                                for corner in self.corners: 
+                                    self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
+                            else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
 
             else:
                 if self.test_arg in self.tests_json:
@@ -229,35 +244,37 @@ class RunRegression:
 
         self.update_reg_log()
 
-    def add_new_test(self,test_name,sim_type):
-        self.tests[test_name][sim_type]["status"]= "pending"
-        self.tests[test_name][sim_type]["starttime"]= "-"
-        self.tests[test_name][sim_type]["endtime"]= "-"
-        self.tests[test_name][sim_type]["duration"] = "-"
-        self.tests[test_name][sim_type]["pass"]= "-"
+    def add_new_test(self,test_name,sim_type,corner):
+        self.tests[test_name][sim_type][corner]["status"]= "pending"
+        self.tests[test_name][sim_type][corner]["starttime"]= "-"
+        self.tests[test_name][sim_type][corner]["endtime"]= "-"
+        self.tests[test_name][sim_type][corner]["duration"] = "-"
+        self.tests[test_name][sim_type][corner]["pass"]= "-"
         self.unknown_tests +=1
 
     def run_regression(self):
         for test,sim_types in self.tests.items():
-            for sim_type,status in sim_types.items(): # TODO: add multithreading or multiprocessing here
-                start_time = datetime.now()
-                self.tests[test][sim_type]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                self.tests[test][sim_type]["duration"] = "-"
-                self.tests[test][sim_type]["status"] = "running"
-                self.update_reg_log()
-                test_run = RunTest(test,sim_type)
-                self.tests[test][sim_type]["status"] = "done"
-                self.tests[test][sim_type]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                self.tests[test][sim_type]["duration"] = ("%.10s" % (datetime.now() - start_time))
-                self.tests[test][sim_type]["pass"]= test_run.passed
-                if test_run.passed == "passed":
-                    self.passed_tests +=1
-                elif test_run.passed == "failed":
-                    self.failed_tests +=1
-                self.unknown_tests -=1
-                self.update_reg_log()
-            if coverage:
-                self.generate_cov()
+            for sim_type,corners in sim_types.items(): # TODO: add multithreading or multiprocessing here
+                for corner,status in corners.items(): # TODO: add multithreading or multiprocessing here
+                    start_time = datetime.now()
+                    self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
+                    self.tests[test][sim_type][corner]["duration"] = "-"
+                    self.tests[test][sim_type][corner]["status"] = "running"
+                    self.update_reg_log()
+                    test_run = RunTest(test,sim_type,corner)
+                    self.tests[test][sim_type][corner]["status"] = "done"
+                    self.tests[test][sim_type][corner]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
+                    self.tests[test][sim_type][corner]["duration"] = ("%.10s" % (datetime.now() - start_time))
+                    self.tests[test][sim_type][corner]["pass"]= test_run.passed
+                    if test_run.passed == "passed":
+                        self.passed_tests +=1
+                    elif test_run.passed == "failed":
+                        self.failed_tests +=1
+                    self.unknown_tests -=1
+                    self.update_reg_log()
+            
+        if coverage:
+            self.generate_cov()
         #TODO: add send mail here
     
     def generate_cov(self):
@@ -272,9 +289,10 @@ class RunRegression:
         f = open(file_name, "w")
         f.write(f"{'Test':<25} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
         for test,sim_types in self.tests.items():
-            for sim_type,status in sim_types.items():
-                new_test_name= f"{sim_type}-{test}"
-                f.write(f"{new_test_name:<25} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
+            for sim_type,corners in sim_types.items():
+                for corner,status in corners.items():
+                    new_test_name= f"{sim_type}-{test}-{corner}"
+                    f.write(f"{new_test_name:<25} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown ")
         f.close()
     
@@ -289,20 +307,21 @@ class main():
         self.regression = args.regression
         self.test       = args.test
         self.testlist   = args.testlist
-        self.type       = args.sim
+        self.sim       = args.sim
         self.tag        = args.tag
+        self.corner        = args.corner
         self.maxerr        = args.maxerr
         self.check_valid_args()
         self.set_tag()
         self.def_env_vars()
-        RunRegression(self.regression,self.test,self.type,self.testlist)
+        RunRegression(self.regression,self.test,self.sim,self.testlist,self.corner)
 
     def check_valid_args(self):
         if all(v is  None for v in [self.regression, self.test, self.testlist]):
             print ("Fatal: Should provide at least one of the following options regression, test or testlist for more info use --help")
             sys.exit()
-        if not set(self.type).issubset(["RTL","GL","GL_SDF"]):
-            print (f"Fatal: {self.type} isnt a correct type for -sim it should be one or combination of the following RTL, GL or GL_SDF")
+        if not set(self.sim).issubset(["RTL","GL","GL_SDF"]):
+            print (f"Fatal: {self.sim} isnt a correct type for -sim it should be one or combination of the following RTL, GL or GL_SDF")
             sys.exit()
     def set_tag(self):
         self.TAG = None # tag will be set in the main phase and other functions will use it
@@ -338,7 +357,8 @@ parser.add_argument('-testlist','-tl', help='path of testlist to be run ')
 parser.add_argument('-tag', help='provide tag of the run default would be regression name and if no regression is provided would be run_<random float>_<timestamp>_')
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
-parser.add_argument('-cov','-c',action='store_true', help='enable code coverage')
+parser.add_argument('-cov',action='store_true', help='enable code coverage')
+parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -347,6 +367,8 @@ if args.cov:
     coverage = True
 if args.sim == None: 
     args.sim= ["RTL"]
+if args.corner == None: 
+    args.corner= ["nom-t"]
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 
