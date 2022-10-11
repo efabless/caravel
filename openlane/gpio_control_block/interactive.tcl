@@ -55,9 +55,9 @@ proc custom_run_placement {args} {
 }
 
 variable SCRIPT_DIR [file dirname [file normalize [info script]]]
-prep -design $SCRIPT_DIR -tag $::env(TAG) -overwrite -verbose 0
+prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overwrite -verbose 0
 exec rm -rf $SCRIPT_DIR/runs/gpio_control_block_interactive
-exec ln -sf $SCRIPT_DIR/runs/$::env(TAG) $SCRIPT_DIR/runs/gpio_control_block_interactive
+exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/gpio_control_block_interactive
 run_synthesis
 
 init_floorplan
@@ -107,7 +107,7 @@ run_antenna_check
 run_lef_cvc
 calc_total_runtime
 save_final_views
-save_final_views -save_path .. -tag $::env(RUN_TAG)
+save_final_views -save_path .. -tag $::env(RUN_OPENLANE_RUN_TAG)
 save_state
 generate_final_summary_report
 check_timing_violations
