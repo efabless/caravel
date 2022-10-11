@@ -77,7 +77,7 @@ void main(){
         
         // try to give input 
         reg_debug_1 = 0XBB; // configuration done wait environment to send 0x8F66FD7B to reg_mprj_datal
-        int timeout = 1000;
+        int timeout = 100;
         while (reg_mprj_datal != 0x8F66FD7B){
                 timeout--;
                 if (timeout==0){
