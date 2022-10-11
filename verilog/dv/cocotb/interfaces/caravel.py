@@ -1,7 +1,7 @@
 import random
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
+from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer
 import cocotb.log
 import cocotb.simulator
 from cocotb.handle import SimHandleBase
@@ -371,6 +371,9 @@ class Caravel_env:
         self.path = self.dut.mprj_io_tb
         data_bit = BinaryValue(value = data , n_bits = 8,bigEndian=False)
         for i in range(7,-1,-1):
+            #  for j in range(4):
+            #     await FallingEdge(self.clk)
+            # await Timer(7, units='ns')
             await FallingEdge(self.clk)
             #common.drive_hdl(self.path,[(4,4),(2,2)],[0,int(data_bit[i])]) # 2 = SDI 4 = SCK
             self.drive_gpio_in((2,2),int(data_bit[i]))
