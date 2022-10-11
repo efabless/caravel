@@ -155,11 +155,7 @@ if __name__ == "__main__":
   except FileExistsError:
     # directory already exists
     pass
-  try:
-    os.makedirs(log)
-  except FileExistsError:
-    # directory already exists
-    pass
+ 
   try:
     os.makedirs(os.path.join(log,args.design))
   except FileExistsError:
