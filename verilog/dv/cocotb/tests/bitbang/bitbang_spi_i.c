@@ -50,7 +50,7 @@ void main()
     reg_mprj_io_0  = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
 	
 	reg_debug_1 = 0xFF; // finish configuration
-    
+    while (reg_debug_2 != 0xDD);
     reg_debug_1 = 0XAA; // configuration done wait environment to send 0x8F66FD7B to reg_mprj_datal
     while (reg_mprj_datal != 0x8F66FD7B);
     reg_debug_1 = 0XBB; // configuration done wait environment to send 0xFFA88C5A to reg_mprj_datal

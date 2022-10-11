@@ -234,7 +234,7 @@ async def bitbang_no_cpu_all_i(dut):
 
 
 
-"""Testbench of GPIO configuration through bit-bang method using the StriVe housekeeping SPI."""
+"""Testbench of GPIO configuration through bit-bang method using the  housekeeping SPI."""
 @cocotb.test()
 @repot_test
 async def io_ports(dut):

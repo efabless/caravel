@@ -1,7 +1,7 @@
 {
     "_comment": "the list contain the fields in register with shift spcified [field name,name iniside housekeeping, shift, size,mode,reset,value(intial is reset value), SPI address map] the shift is from the base address like SPI, system and gpio base address",
     "_comment2": "Base address is the first element and called first address",
-    
+    "_not_used_currently":["0x34",[["SRAM read-only control","sram_ro_csb",0,1,"RW",1,1,20],["SRAM read-only control","sram_ro_clk",1,1,"RW",0,0,20]], "0x30",[["SRAM read-only address","sram_ro_addr",0,8,"RW",0,0,21]]],
 
     "SPI":{     "base_addr":       ["SPI_BASE_ADR",638582784],
                 "0x00":            [["SPI status",null,0,8,"undefined",0,0,0]],
@@ -22,9 +22,7 @@
                 "0x1e":            [["DCO trim",["pll_trim",23,16],0,8,"RW",255,255,15]],
                 "0x1f":            [["DCO trim",["pll_trim",25,24],0,2,"RW",3,3,16]],
                 "0x20":            [["PLL output divider","pll_sel",0,3,"RW",2,2,17],["PLL output divider 2","pll90_sel",3,3,"RW",2,2,17]],
-                "0x24":            [["PLL feedback divider","pll_div",0,5,"RW",4,4,18]],
-                "0x34":            [["SRAM read-only control","sram_ro_csb",0,1,"RW",1,1,20],["SRAM read-only control","sram_ro_clk",1,1,"RW",0,0,20]],
-                "0x30":            [["SRAM read-only address","sram_ro_addr",0,8,"RW",0,0,21]]
+                "0x24":            [["PLL feedback divider","pll_div",0,5,"RW",4,4,18]]
             },
 
     "GPIO":{    "base_addr":       ["GPIO_BASE_ADR",637534208],
@@ -44,8 +42,8 @@
                 "0x29":            [["mprj_io[01](reg_mprj_io_1)",["gpio_configure[1]",12,8],0,5,"RW",24,24,31]],
                 "0x2c":            [["mprj_io[02](reg_mprj_io_2)",["gpio_configure[2]",7,0],0,8,"RW",3,3,34]],
                 "0x2d":            [["mprj_io[02](reg_mprj_io_2)",["gpio_configure[2]",12,8],0,5,"RW",4,4,33]],
-                "0x30":            [["mprj_io[03](reg_mprj_io_3)",["gpio_configure[3]",7,0],0,8,"RW",3,3,36]],
-                "0x31":            [["mprj_io[03](reg_mprj_io_3)",["gpio_configure[3]",12,8],0,5,"RW",4,4,35]],
+                "0x30":            [["mprj_io[03](reg_mprj_io_3)",["gpio_configure[3]",7,0],0,8,"RW",1,1,36]],
+                "0x31":            [["mprj_io[03](reg_mprj_io_3)",["gpio_configure[3]",12,8],0,5,"RW",8,8,35]],
                 "0x34":            [["mprj_io[04](reg_mprj_io_4)",["gpio_configure[4]",7,0],0,8,"RW",3,3,38]],
                 "0x35":            [["mprj_io[04](reg_mprj_io_4)",["gpio_configure[4]",12,8],0,5,"RW",4,4,37]],
                 "0x38":            [["mprj_io[05](reg_mprj_io_5)",["gpio_configure[5]",7,0],0,8,"RW",3,3,40]],
