@@ -64,6 +64,7 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pd
     myenv["CARAVEL_ROOT"] = caravel_root
     myenv["MCW_ROOT"] = mcw_root
     myenv["SIGNOFF_ROOT"] = os.path.join(signoff_dir, "caravel")
+    myenv["WORK_DIR"] = os.path.join(caravel_root, "extra_be_checks")
 
     if not os.path.exists(f"{lvs_root}"):
         subprocess.run(
@@ -76,11 +77,12 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pd
             ],
             cwd=f"{caravel_root}/scripts",
             stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
         )
 
     lvs_cmd = [
         "bash",
-        "./extra_be_checks/run_full_lvs",
+        "./run_full_lvs",
         "caravel",
         f"{caravel_root}/verilog/gl/caravel.v",
         "caravel",
@@ -89,9 +91,8 @@ def run_lvs(caravel_root, mcw_root, log_dir, signoff_dir, pdk_root, lvs_root, pd
     p1 = subprocess.Popen(
         lvs_cmd,
         env=myenv,
+        cwd=f"{caravel_root}/scripts/extra_be_checks",
         universal_newlines=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
     )
     return p1
 
@@ -101,7 +102,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
     myenv["PDK_ROOT"] = pdk_root
     myenv["PDK"] = pdk_env
     if simulator == "vcs":
-        lvs_cmd = [
+        ver_cmd = [
             "python3",
             "verify_cocotb.py",
             "-tag",
@@ -111,7 +112,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
             "-v",
         ]
     else:
-        lvs_cmd = [
+        ver_cmd = [
             "python3",
             "verify_cocotb.py",
             "-tag",
@@ -120,7 +121,7 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
             f"r_{sim}",
         ]
     p1 = subprocess.Popen(
-        lvs_cmd,
+        ver_cmd,
         cwd=f"{caravel_root}/verilog/dv/cocotb",
         env=myenv,
         universal_newlines=True,
@@ -346,7 +347,7 @@ if __name__ == "__main__":
         sta_p = run_sta(
             caravel_root,
             mcw_root,
-            f"{caravel_root}/scripts/mpw-2-sta-debug/files/custom/lib",
+            f"{caravel_root}/scripts/mpw-2-sta-debug/pt_libs",
             log_dir,
             signoff_dir,
         )

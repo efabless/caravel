@@ -134,7 +134,7 @@ async def bitbang_cpu_all_0011(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_1100(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=10000000000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=5065204)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

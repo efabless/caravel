@@ -119,7 +119,9 @@ assign wbs_ack_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_ack_o_debug : wbs_ack_
 assign wbs_dat_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_dat_o_debug : wbs_dat_o_user; 
 // `endif
 
-
+`ifndef GPIO_TESTING
+assign wbs_ack_o_user = 0;
+`endif
 // // reserve the last 4 regs for debugging registers in case of user gpio testing 
 // `ifdef GPIO_TESTING
 // assign wbs_cyc_i_user  = (wbs_adr_i[31:4] != 28'h300FFFF) ? wbs_cyc_i : 0; 
