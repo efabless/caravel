@@ -36,6 +36,9 @@ optional arguments:
 
   -sta, --primetime_sta
                         run verification using iverilog
+                        
+  -d DESIGN, --design DESIGN
+                        design under test
 
   -a, --all             run all checks
 ````
@@ -43,4 +46,5 @@ optional arguments:
 ## Reports and logs
 
 Reports can be found `$CARAVEL_ROOT/signoff/<design_name>/`
+
 Logs can be found at `$CARAVEL_ROOT/scripts/logs/`
