@@ -43,7 +43,6 @@ if {\
     }
 
     # Reading design netlist
-    # TODO: get chip io netlist instead of reading the RTL
     set search_path "$::env(CARAVEL_ROOT)/verilog/gl $::env(MCW_ROOT)/verilog/gl $::env(UPRJ_ROOT)/verilog/gl $::env(PT_LIB_ROOT)"
     puts "list of verilog files:"
     foreach verilog "[glob $::env(CARAVEL_ROOT)/verilog/gl/*.v] [glob $::env(MCW_ROOT)/verilog/gl/*.v] [glob $::env(UPRJ_ROOT)/verilog/gl/*.v]" {
