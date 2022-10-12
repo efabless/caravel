@@ -43,18 +43,25 @@ def run_sta (
   PT_tcl = f"{SCRIPT_DIR}/pt_sta.tcl"
   pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log"
   os.system(pt_command)
-
   # Check if there exists any violations
   sta_pass=search_viol(f"{output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+  log = open(f"{log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
   if sta_pass == "pass":
-    print (f"STA run passed!")
+    print (f"STA run Passed!")
+    log.write(f"STA run Passed!")
   else:
-    print (f"STA run failed!")
+    print (f"STA run Failed!")
+    log.write(f"STA run Failed!\n")
     if sta_pass == "viol":
       print(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+      log.write(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+    elif sta_pass== "no cons":
+      print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+      log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
     else:
       print(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
-
+      log.write(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+  log.close()
 # Check the required env variables
 def check_env_vars():
   pdk_root = os.getenv('PDK_ROOT')
@@ -93,7 +100,12 @@ def search_viol(
       return "viol"
     elif "Could not auto-link design" in data:
       return "no link"
-    else: 
+  report_path = report_path.replace("all_viol", "min_timing")
+  with open(report_path, 'r') as report:
+    data = report.read()
+    if "No constrained paths" in data:
+      return "no cons"
+    else:
       return "pass"
 
 if __name__ == "__main__":
