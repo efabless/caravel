@@ -21,6 +21,7 @@ async def gpio_all_o_user(dut):
     cpu.cpu_release_reset()
    
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring as user output")
     i= 0x20
     for j in range(5):
@@ -155,13 +156,13 @@ async def gpio_all_i_user(dut):
 @repot_test
 async def gpio_all_i_pu_user(dut):
     caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
-    await caravelEnv.release_csb()
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     uut = dut.uut
 
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     # monitor the output of padframe module it suppose to be all ones  when no input is applied
     await ClockCycles(caravelEnv.clk,100) 
     gpio = dut.uut.padframe.mprj_io_in.value.binstr
@@ -257,13 +258,13 @@ async def gpio_all_i_pu_user(dut):
 @repot_test
 async def gpio_all_i_pd_user(dut):
     caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
-    await caravelEnv.release_csb()
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     uut = dut.uut
     
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     # monitor the output of padframe module it suppose to be all ones  when no input is applied
     await ClockCycles(caravelEnv.clk,100) 
     gpio = dut.uut.padframe.mprj_io_in.value.binstr
@@ -366,6 +367,7 @@ async def gpio_all_bidir_user(dut):
     cpu.cpu_release_reset()
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0x1A)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring ")
     i= 0x20
     for j in range(5):
