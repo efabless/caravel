@@ -25,26 +25,26 @@ async def bitbang_cpu_all_o(dut):
     i= 0x20
     for j in range(5):
         await wait_reg2(cpu,caravelEnv,37-j)
-        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,4))} j = {j}')
-        if caravelEnv.monitor_gpio((37,4)).integer != i << 28:
-            cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,4))} instead of {bin(i << 28)}')
+        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,0))} j = {j}')
+        if caravelEnv.monitor_gpio((37,0)).integer != i<<32:
+            cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,0))} instead of {bin(i<<32)}')
         await wait_reg2(cpu,caravelEnv,0)
-        if caravelEnv.monitor_gpio((37,4)).integer != 0:
-            cocotb.log.error(f'[TEST] Wrong gpio output {caravelEnv.monitor_gpio((37,4))} instead of {bin(0x00000)}')
+        if caravelEnv.monitor_gpio((37,0)).integer != 0:
+            cocotb.log.error(f'[TEST] Wrong gpio output {caravelEnv.monitor_gpio((37,0))} instead of {bin(0x00000)}')
         i = i >> 1
         i |= 0x20
 
     i= 0x80000000
     for j in range(32):
         await wait_reg2(cpu,caravelEnv,32-j)
-        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,4))} j = {j}')
+        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,0))} j = {j}')
         if caravelEnv.monitor_gpio((37,32)).integer != 0x3f:
             cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,32))} instead of {bin(0x3f)} ')
-        if caravelEnv.monitor_gpio((31,4)).integer != i>>4 :
-            cocotb.log.error(f'[TEST] Wrong gpio low bits output {caravelEnv.monitor_gpio((31,4))} instead of {bin(i>>4)}')
+        if caravelEnv.monitor_gpio((31,0)).integer != i :
+            cocotb.log.error(f'[TEST] Wrong gpio low bits output {caravelEnv.monitor_gpio((31,0))} instead of {bin(i)}')
         await wait_reg2(cpu,caravelEnv,0)
-        if caravelEnv.monitor_gpio((37,4)).integer != 0:
-            cocotb.log.error(f'Wrong gpio output {caravelEnv.monitor_gpio((37,4))} instead of {bin(0x00000)}')
+        if caravelEnv.monitor_gpio((37,0)).integer != 0:
+            cocotb.log.error(f'Wrong gpio output {caravelEnv.monitor_gpio((37,0))} instead of {bin(0x00000)}')
 
         i = i >> 1
         i |= 0x80000000

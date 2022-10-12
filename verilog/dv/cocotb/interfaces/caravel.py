@@ -58,7 +58,7 @@ class Caravel_env:
 
     async def disable_bins(self):
         for i in range(38):
-            if i ==3:
+            if i in [3,4]: #CSB and SCK
                 continue
             common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
 
@@ -110,7 +110,7 @@ class Caravel_env:
     """drive csb signal bin E8 mprj[3]"""
     async def drive_csb(self,bit): 
         self.drive_gpio_in((3,3),bit)
-        self.drive_gpio_in((2,2),0)
+        self.drive_gpio_in((4,4),0)
         await ClockCycles(self.clk, 1)
 
 
@@ -123,7 +123,7 @@ class Caravel_env:
     async def release_csb(self ):
         cocotb.log.info(f' [caravel] release housekeeping spi transmission')
         self.release_gpio(3)
-        self.release_gpio(2)
+        self.release_gpio(4)
         await ClockCycles(self.clk, 1)
 
     """set the spi vsb signal low to enable housekeeping spi transmission bin E8 mprj[3]"""

@@ -108,4 +108,5 @@ void main(){
 
     reg_debug_2 = 0xFF;
     
+    print("adding a very very long delay because cpu produces X's when code finish and this break the simulation");
 }

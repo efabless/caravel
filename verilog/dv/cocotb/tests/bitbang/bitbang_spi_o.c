@@ -9,7 +9,7 @@ void main()
 	reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
     reg_debug_1  = 0x0;
     reg_debug_2  = 0x0;
-
+    reg_hkspi_disable = 0;
     reg_mprj_io_37 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_36 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_35 = GPIO_MODE_MGMT_STD_OUTPUT;
@@ -43,14 +43,15 @@ void main()
     reg_mprj_io_7  = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_6  = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_5  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_4  = 0x1803;
-    reg_mprj_io_3  = 0x1803;
-    reg_mprj_io_2  = 0x1803;
-    reg_mprj_io_1  = GPIO_MODE_MGMT_STD_OUTPUT;
-    reg_mprj_io_0  = GPIO_MODE_MGMT_STD_OUTPUT;
+    // reg_mprj_io_4  = GPIO_MODE_MGMT_STD_BIDIRECTIONAL;
+    // reg_mprj_io_3  = GPIO_MODE_MGMT_STD_BIDIRECTIONAL;
+    // reg_mprj_io_2  = GPIO_MODE_MGMT_STD_BIDIRECTIONAL;
+    // reg_mprj_io_1  = GPIO_MODE_MGMT_STD_OUTPUT;
+    // reg_mprj_io_0  = GPIO_MODE_MGMT_STD_OUTPUT;
 	
 	reg_debug_1 = 0xFF; // finish configuration
 	while (reg_debug_2 != 0xFF); // finish bit bang 
+    reg_hkspi_disable = 1;
     reg_mprj_datal = 0x0;
     reg_mprj_datah = 0x0;
     i = 0x20;
