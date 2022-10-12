@@ -32,6 +32,7 @@ def run_sta (
   os.environ["PDK"] = os.getenv('PDK')
   os.environ["PT_LIB_ROOT"] = os.getenv('PT_LIB_ROOT')
   os.environ["CARAVEL_ROOT"] = os.getenv('CARAVEL_ROOT')
+  os.environ["UPRJ_ROOT"] = os.getenv('UPRJ_ROOT')
   os.environ["MCW_ROOT"] = os.getenv('MCW_ROOT')
   os.environ["OUT_DIR"] = output_dir
   SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -68,6 +69,7 @@ def check_env_vars():
   pdk = os.getenv('PDK')
   pt_lib_root = os.getenv('PT_LIB_ROOT')
   caravel_root = os.getenv('CARAVEL_ROOT')
+  uprj_root = os.getenv('UPRJ_ROOT')
   mcw_root = os.getenv('MCW_ROOT')
   if pdk_root is None:
     raise FileNotFoundError(
@@ -88,6 +90,10 @@ def check_env_vars():
   if mcw_root is None:
     raise FileNotFoundError(
     "Please export MCW_ROOT to the Caravel Management SoC Litex repo path"
+    )
+  if uprj_root is None:
+    raise FileNotFoundError(
+    "Please export UPRJ_ROOT to the Caravel User Project Wrapper repo path"
     )
 
 # Analyze the STA all violators output report

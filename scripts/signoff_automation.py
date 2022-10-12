@@ -448,7 +448,7 @@ if __name__ == "__main__":
         out, err = sta_p.communicate()
         sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
         if err:
-            logging.error(err.decode())
+            logging.error(err)
             sta_log.write(err)
 
     if not check_errors(
