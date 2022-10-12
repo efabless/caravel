@@ -21,6 +21,7 @@ async def bitbang_cpu_all_o(dut):
     cpu.cpu_release_reset()
    
     await wait_reg1(cpu,caravelEnv,0xFF)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring using bitbang")
     i= 0x20
     for j in range(5):
