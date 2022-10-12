@@ -1,6 +1,6 @@
 ### Housekeeping SDC Update
 ### Mod Rev 2 
-### Date: 30/9/2022
+### Date: 7/10/2022
 
 set ::env(WB_CLK_PERIOD) 25
 set ::env(SCK_CLK_PERIOD) 100
@@ -128,8 +128,8 @@ set_clock_uncertainty $wb_clk_uncer [get_clocks {user_clock}]
 set_clock_uncertainty $sck_clk_uncer [get_clocks {sck}]
 
 ## CLOCK TRANSITION
-set wb_clk_tran 0.01
-set sck_clk_tran 0.01
+set wb_clk_tran 0.15
+set sck_clk_tran 0.15
 
 puts "\[INFO\]: Setting clock transition to: $wb_clk_tran"
 puts "\[INFO\]: Setting clock transition to: $sck_clk_tran"
@@ -144,5 +144,4 @@ puts "\[INFO\]: Setting maximum fanout to: $::env(SYNTH_MAX_FANOUT)"
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## MAX Transition
-set_max_trans 1.2 [current_design]
-
+set_max_trans 0.75 [current_design]

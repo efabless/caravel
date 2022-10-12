@@ -1,0 +1,39 @@
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+max slew
+
+Pin                                    Limit    Slew   Slack
+------------------------------------------------------------
+mgmt_gpio_out[9]                        0.75    2.43   -1.68 (VIOLATED)
+output250/X                             0.75    2.43   -1.68 (VIOLATED)
+mgmt_gpio_out[14]                       0.75    2.42   -1.67 (VIOLATED)
+output218/X                             0.75    2.42   -1.67 (VIOLATED)
+mgmt_gpio_out[15]                       0.75    2.42   -1.67 (VIOLATED)
+output219/X                             0.75    2.42   -1.67 (VIOLATED)
+pad_flash_clk                           0.75    2.41   -1.66 (VIOLATED)
+output251/X                             0.75    2.41   -1.66 (VIOLATED)
+
+max fanout
+
+Pin                                   Limit Fanout  Slack
+---------------------------------------------------------
+user_clock                               20     24     -4 (VIOLATED)
+clkbuf_3_4_0_wb_clk_i/X                  20     22     -2 (VIOLATED)
+
+max capacitance
+
+Pin                                    Limit     Cap   Slack
+------------------------------------------------------------
+output218/X                             0.13    0.21   -0.08 (VIOLATED)
+output219/X                             0.13    0.21   -0.08 (VIOLATED)
+output250/X                             0.13    0.21   -0.08 (VIOLATED)
+output251/X                             0.13    0.21   -0.08 (VIOLATED)
+
+
+===========================================================================
+max slew violation count 8
+max fanout violation count 2
+max cap violation count 4
+============================================================================
