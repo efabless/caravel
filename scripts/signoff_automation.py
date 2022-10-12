@@ -296,8 +296,14 @@ if __name__ == "__main__":
     caravel_redesign_root = os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     )
-    caravel_root = os.path.join(caravel_redesign_root, "caravel")
-    mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
+    if os.getenv("CARAVEL_ROOT") == None:
+        caravel_root = os.path.join(caravel_redesign_root, "caravel")
+        logging.warn(f"CARAVEL_ROOT is not defined, defaulting to {caravel_root}")
+
+    if os.getenv("MCW_ROOT") == None:
+        mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
+        logging.warn(f"MCW_ROOT is not defined, defaulting to {mcw_root}")
+
     pdk_root = os.getenv("PDK_ROOT")
     pdk_env = os.getenv("PDK")
     log_dir = os.path.join(caravel_root, "scripts/logs")
@@ -312,10 +318,17 @@ if __name__ == "__main__":
     verification = args.verification
     sta = args.primetime_sta
 
+    if not os.path.exists(f"{caravel_root}"):
+        logging.error(f"{caravel_root} does not exist!")
+        exit(1)
+    if not os.path.exists(f"{mcw_root}"):
+        logging.error(f"{mcw_root} does not exist!")
+        exit(1)
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/caravel"):
         os.makedirs(f"{signoff_dir}/caravel")
+    
     logging.info("Building caravel...")
 
     build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
