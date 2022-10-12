@@ -174,17 +174,17 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
         with open(drc_count_klayout) as rep:
             if rep.readline().strip() != "0":
                 logging.error(f"klayout DRC failed")
-                f.write("Klayout MR DRC:    Failed")
+                f.write("Klayout MR DRC:    Failed\n")
                 count = count + 1
             else:
                 logging.info("Klayout MR DRC:    Passed")
-                f.write("Klayout MR DRC:    Passed")
+                f.write("Klayout MR DRC:    Passed\n")
     if lvs:
         lvs_summary_report = open(
-            os.path.join(signoff_dir, f"{design}/lvs_summary.rpt")
+            os.path.join(signoff_dir, f"{design}/lvs_summary.rpt"), "w"
         )
-        lvs_report = os.path.join(signoff_dir, f"{design}/{design}.lvs.rpt")
-        failures = count_lvs.count_LVS_failures(args.file)
+        lvs_report = os.path.join(signoff_dir, f"{design}/{design}.lvs.json")
+        failures = count_lvs.count_LVS_failures(lvs_report)
         if failures[0] > 0:
             lvs_summary_report.write("LVS reports:")
             lvs_summary_report.write("    net count difference = " + str(failures[5]))
@@ -198,10 +198,11 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
             logging.error(f"LVS on {design} failed")
             logging.info(f"Find full report at {lvs_report}")
             logging.info(f"Find summary report at {lvs_summary_report}")
-            f.write("Layout Vs Schematic:    Failed")
+            f.write("Layout Vs Schematic:    Failed\n")
         else:
+            lvs_summary_report.write("Layout Vs Schematic Passed")
             logging.info("Layout Vs Schematic:    Passed")
-            f.write("Layout Vs Schematic:    Passed")
+            f.write("Layout Vs Schematic:    Passed\n")
 
     if verification:
         for sim in ["rtl", "gl", "sdf"]:
@@ -211,12 +212,12 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
             with open(verification_report) as rep:
                 if "(0)failed" in rep.read():
                     logging.info(f"{sim} simulations:    Passed")
-                    f.write(f"{sim} simulations:    Passed")
+                    f.write(f"{sim} simulations:    Passed\n")
                 else:
                     logging.error(
                         f"{sim} simulations failed, find report at {verification_report}"
                     )
-                    f.write(f"{sim} simulations:    Failed")
+                    f.write(f"{sim} simulations:    Failed\n")
                     count = count + 1
 
     if sta:
@@ -228,11 +229,11 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
                 lines = rep.readlines()
                 if "Passed" in lines[-1]:
                     logging.info(f"{log_name} STA:    Passed")
-                    f.write(f"{log_name} STA:    Passed")
+                    f.write(f"{log_name} STA:    Passed\n")
                 else:
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
-                    f.write(f"{log_name} STA:    Failed")
+                    f.write(f"{log_name} STA:    Failed\n")
 
     if count > 0:
         return False
