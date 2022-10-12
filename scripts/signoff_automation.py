@@ -329,6 +329,13 @@ if __name__ == "__main__":
         mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
         logging.warning(f"MCW_ROOT is not defined, defaulting to {mcw_root}")
 
+    if not os.path.exists(f"{caravel_root}"):
+        logging.error(f"{caravel_root} does not exist!")
+        exit(1)
+    if not os.path.exists(f"{mcw_root}"):
+        logging.error(f"{mcw_root} does not exist!")
+        exit(1)
+
     pdk_root = os.getenv("PDK_ROOT")
     pdk_env = os.getenv("PDK")
     log_dir = os.path.join(caravel_root, "scripts/logs")
@@ -344,12 +351,7 @@ if __name__ == "__main__":
     sta = args.primetime_sta
     design = args.design
 
-    if not os.path.exists(f"{caravel_root}"):
-        logging.error(f"{caravel_root} does not exist!")
-        exit(1)
-    if not os.path.exists(f"{mcw_root}"):
-        logging.error(f"{mcw_root} does not exist!")
-        exit(1)
+    
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
