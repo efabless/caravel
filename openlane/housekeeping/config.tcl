@@ -14,7 +14,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 ## This should be changed to point at Caravel root
-set ::env(CARAVEL_ROOT) $::env(HOME)/home/hosni/caravel_redesign/caravel
+set ::env(CARAVEL_ROOT) $::env(DESIGN_DIR)/../..
 
 set ::env(DESIGN_NAME) "housekeeping"
 set ::env(ROUTING_CORES) 12
