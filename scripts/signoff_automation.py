@@ -17,10 +17,6 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
 
-    if glob.glob(f"{caravel_root}/gds/*.gz"):
-        logging.error("Compressed gds files. Please uncompress first.")
-        exit(1)
-
     gpio_defaults_cmd = ["python3", f"scripts/gen_gpio_defaults.py"]
     build_cmd = [
         "magic",
@@ -75,7 +71,7 @@ def run_lvs(
                 "clone",
                 "https://github.com/d-m-bailey/extra_be_checks.git",
                 "-b",
-                f"{design}",
+                f"caravel",
             ],
             cwd=f"{caravel_root}/scripts",
             stdout=subprocess.PIPE,
@@ -324,10 +320,14 @@ if __name__ == "__main__":
     if os.getenv("CARAVEL_ROOT") == None:
         caravel_root = os.path.join(caravel_redesign_root, "caravel")
         logging.warning(f"CARAVEL_ROOT is not defined, defaulting to {caravel_root}")
+    else:
+        caravel_root = os.getenv("CARAVEL_ROOT")
 
     if os.getenv("MCW_ROOT") == None:
         mcw_root = os.path.join(caravel_redesign_root, "caravel_mgmt_soc_litex")
         logging.warning(f"MCW_ROOT is not defined, defaulting to {mcw_root}")
+    else:
+        mcw_root = os.getenv("MCW_ROOT")
 
     if not os.path.exists(f"{caravel_root}"):
         logging.error(f"{caravel_root} does not exist!")
@@ -356,6 +356,11 @@ if __name__ == "__main__":
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
+
+    if lvs or drc:
+        if glob.glob(f"{caravel_root}/gds/*.gz"):
+            logging.error("Compressed gds files. Please uncompress first.")
+            exit(1)
 
     if design == "caravel":
         logging.info("Building caravel...")
