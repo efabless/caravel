@@ -26,6 +26,9 @@ prep -design $SCRIPT_DIR -tag caravel_lvs -overwrite --verbose 2
 
 set ::env(SYNTH_DEFINES) "USE_POWER_PINS"
 verilog_elaborate
+set ::env(CURRENT_SDC) $::env(BASE_SDC_FILE)
+init_floorplan
+file copy -force $::env(CURRENT_DEF) $::env(TMP_DIR)/lvs.def
 file copy -force $::env(CURRENT_NETLIST) $::env(TMP_DIR)/lvs.v
 
 prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overwrite -verbose 2
@@ -38,6 +41,9 @@ exec rm -rf $SCRIPT_DIR/runs/caravel
 exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/caravel
 
 file copy -force $::env(CARAVEL_ROOT)/openlane/caravel/runs/caravel_lvs/tmp/lvs.v $::env(RUN_DIR)/caravel.v
+file copy -force $::env(CARAVEL_ROOT)/openlane/caravel/runs/caravel_lvs/tmp/lvs.def $::env(RUN_DIR)/lvs.def
+file copy $::env(CARAVEL_ROOT)/openlane/caravel/runs/caravel_lvs/tmp/merged_unpadded.lef $::env(RUN_DIR)/lvs.lef
+
 
 set ::env(SYNTH_DEFINES) "TOP_ROUTING"
 verilog_elaborate
@@ -229,18 +235,10 @@ global_routing
 detailed_routing
 li1_hack_end
 remove_component -input $::env(CURRENT_DEF) -instance_name obs_li1 
-run_magic
-save_views       -def_path $::env(CURRENT_DEF) \
-                 -gds_path $::env(magic_result_file_tag).gds \
-                 -mag_path $::env(magic_result_file_tag).mag \
-                 -verilog_path $::env(RUN_DIR)/caravel.v \
-                 -save_path $save_path \
-                 -tag caravel
-exit
 
 label_macro_pins\
-	-lef $::env(TMP_DIR)/lvs.lef\
-	-netlist_def $::env(TMP_DIR)/lvs.def
+	-lef $::env(RUN_DIR)/lvs.lef\
+	-netlist_def $::env(RUN_DIR)/lvs.def
 	# -extra_args {-v\
 	# --map padframe vddio vddio INOUT\
 	# --map padframe vssio vssio INOUT\
@@ -248,7 +246,15 @@ label_macro_pins\
 	# --map padframe vccd vccd INOUT\
 	# --map padframe vssd vssd INOUT}
 
+save_views       -def_path $::env(CURRENT_DEF) \
+                 -gds_path $::env(magic_result_file_tag).gds \
+                 -mag_path $::env(magic_result_file_tag).mag \
+                 -verilog_path $::env(RUN_DIR)/caravel.v \
+                 -save_path $save_path \
+                 -tag caravel
+
 run_magic
+exit
 
 run_magic_spice_export
 
