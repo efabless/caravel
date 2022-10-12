@@ -47,11 +47,11 @@ def run_sta (
   sta_pass=search_viol(f"{output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
   log = open(f"{log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
   if sta_pass == "pass":
-    print (f"STA run passed!")
-    log.write(f"STA run passed!")
+    print (f"STA run Passed!")
+    log.write(f"STA run Passed!")
   else:
-    print (f"STA run failed!")
-    log.write(f"STA run failed!")
+    print (f"STA run Failed!")
+    log.write(f"STA run Failed!\n")
     if sta_pass == "viol":
       print(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
       log.write(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
