@@ -12,29 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
-
-cd $::env(CARAVEL_ROOT)/mag
-random seed `$::env(CARAVEL_ROOT)/scripts/set_user_id.py -report`;
+set extdir $::env(LOG_DIR)/tmp_ext
+file mkdir $extdir
+cd $extdir
 drc off;
 crashbackups stop;
-addpath hexdigits;
-addpath $::env(CARAVEL_ROOT)/mag;
-addpath $::env(MCW_ROOT)/mag;
-load RAM128;
-load RAM256;
-load mgmt_core_wrapper -dereference;
-property LEFview true;
-property GDS_FILE $::env(MCW_ROOT)/gds/mgmt_core_wrapper.gds;
-property GDS_START 0;
-gds read $::env(CARAVEL_ROOT)/openlane/caravel/caravel_power_routing-shifted.gds;
-load user_project_wrapper;
-load user_id_programming;
-load user_id_textblock;
-load $::env(CARAVEL_ROOT)/maglef/simple_por;
-load caravel -dereference;
+gds read $::env(DESIGN_GDS_ROOT);
 select top cell;
-expand;
-cif *hier write disable;
-cif *array write disable;
-gds write $::env(CARAVEL_ROOT)/gds/caravel.gds;
+extract do local;
+extract no capacitance;
+extract no coupling;
+extract no resistance;
+extract no adjust;
+extract unique;
+extract;
+feedback save ./$::env(LOG_DIR)/$::env(DESIGN)_ext2spice.antenna.feedback.log;
+antennacheck debug;
+antennacheck;
 quit -noprompt;
