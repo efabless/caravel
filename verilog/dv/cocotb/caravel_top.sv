@@ -1,3 +1,4 @@
+`timescale 1 ns / 1 ps
 `ifdef VCS
 `ifndef ENABLE_SDF
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
@@ -8,14 +9,13 @@
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
 `else
 	`include "cvc-pdk/sky130_ef_io.v"
-	`include "cvc-pdk/sky130_fd_io.v "
+	`include "cvc-pdk/sky130_fd_io.v"
 	`include "cvc-pdk/primitives_hd.v"
 	`include "cvc-pdk/sky130_fd_sc_hd.v"
 	`include "cvc-pdk/primitives_hvl.v"
 	`include "cvc-pdk/sky130_fd_sc_hvl.v"
 `endif // ENABLE_SDF
 `endif // VCS
-`timescale 1 ns / 1 ps
 
 module caravel_top ;
 
@@ -34,9 +34,11 @@ initial begin
 		$dumpvars (0, caravel_top);
 	`endif
 end
+	`ifdef VCS
 	`ifdef ENABLE_SDF
-		`include "sdf_pt/sdf_includes.v"
+		`include "sdf_includes.v"
 	`endif
+	`endif // VCS
 	wire vddio_tb;	// Common 3.3V padframe/ESD power
     wire vddio_2_tb;	// Common 3.3V padframe/ESD power
     wire vssio_tb;	// Common padframe/ESD ground
