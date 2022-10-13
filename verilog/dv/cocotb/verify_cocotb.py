@@ -30,6 +30,20 @@ def search_str(file_path, word):
         else:
             return "failed"
 
+def change_dff(str,new_str,file_path):
+    # Read in the file
+    with open(file_path, 'r') as file :
+        filedata = file.read()
+
+    if new_str == "> dff2":
+        if new_str in filedata: # to avoid type dff22 types 
+            return
+    # Replace the target string
+    filedata = filedata.replace(str, new_str)
+
+    # Write the file out again
+    with open(file_path, 'w') as file:
+        file.write(filedata)
 
 class RunTest:
     def __init__(self,test_name,sim,corner) -> None:
@@ -137,6 +151,7 @@ class RunTest:
         return (test_path)
 
     def hex_generate(self):
+        tests_use_dff2 = ["mem_dff"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()
@@ -158,6 +173,10 @@ class RunTest:
                  f"--strip-debug -ffreestanding -nostdlib -o {elf_out} {SOURCE_FILES} {c_file}")
         hex_command = f"{GCC_PATH}/{GCC_PREFIX}-objcopy -O verilog {elf_out} {hex_file} "
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
+        #change linker script to dff2 
+        if self.test_name in tests_use_dff2:
+            change_dff(str="> dff",new_str="> dff2",file_path=LINKER_SCRIPT)
+            # sys.exit()
         hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
@@ -167,6 +186,9 @@ class RunTest:
         if hex_gen_state != 0 :
             print(f"fatal: Error when generating hex")
             sys.exit()
+        if self.test_name in tests_use_dff2:
+            change_dff(str="> dff2",new_str="> dff",file_path=LINKER_SCRIPT)
+        sys.exit()
 
     def cd_make(self):
         os.chdir(f"{os.getenv('VERILOG_PATH')}/dv/make")

@@ -156,12 +156,18 @@
             "GL":["r_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"stress the cpu with heavy processing"}
-        ,"mem_stress" :{"level":2, 
+        ,"mem_dff2" :{"level":2, 
             "SW":true,
             "RTL":["r_rtl","nightly","weekly","tape_out"],
             "GL":["r_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
-            "description":"Memory stress tests write and read from 800 bytes 200 words and 400 half words"}
+            "description":"Memory stress for all space of dff2"}
+        ,"mem_dff" :{"level":2, 
+            "SW":true,
+            "RTL":["r_rtl","nightly","weekly","tape_out"],
+            "GL":["r_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "description":"Memory stress for all space of dff"}
         ,"IRQ_external" :{"level":2, 
             "SW":true,
             "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
