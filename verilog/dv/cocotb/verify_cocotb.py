@@ -10,6 +10,7 @@ from fnmatch import fnmatch
 from datetime import datetime
 import random
 from pathlib import Path
+import shutil
 
 
 iverilog = True
@@ -104,7 +105,7 @@ class RunTest:
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.list\\\" '
         else: 
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
-
+        full_test_name = f"{self.sim_type}-{self.test_name}"
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
@@ -116,7 +117,8 @@ class RunTest:
         if (self.sim_type=="GL_SDF"):
             macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"-{self.corner}\\\"'
             os.makedirs(f"annotation_logs",exist_ok=True)
-            dirs = f"{dirs} +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/sdf_pt\\\""
+            dirs = f"{dirs} +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime_signoff/\\\" +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
+            full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         elif(self.sim_type=="GL"): 
             macros = f'{macros}  +define+GL  +define+SIM=GL'
         elif (self.sim_type=="RTL"): 
@@ -129,12 +131,16 @@ class RunTest:
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
-        
-        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        os.environ["TESTFULLNAME"] = f"{full_test_name}"
+
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
+        if os.path.exists(f"{self.cocotb_path}/sdfAnnotateInfo"):
+            shutil.move(f"{self.cocotb_path}/sdfAnnotateInfo", f"{self.sim_path}/sdfAnnotateInfo")
+        shutil.copyfile(f'{self.cocotb_path}/hex_files/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
 
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
@@ -315,7 +321,7 @@ class RunRegression:
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():
                     new_test_name= f"{sim_type}-{test}-{corner}"
-                    f.write(f"{new_test_name:<25} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
+                    f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown ")
         f.close()
     
