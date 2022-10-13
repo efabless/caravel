@@ -165,17 +165,19 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
     )
     return p1
 
-def run_antenna(log_dir, design_root, design, pdk_root, pdk_env):
+def run_antenna(log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root):
     os.environ["DESIGN_GDS_ROOT"] = design_root
     os.environ["DESIGN"] = design
     os.environ["LOG_DIR"] = log_dir
+    os.environ["CARAVEL_ROOT"] = caravel_root
+    os.environ["MCW_ROOT"] = mcw_root
     antenna_cmd = [
         "magic",
         "-noconsole",
         "-dnull",
         "-rcfile",
         f"{pdk_root}/{pdk_env}/libs.tech/magic/{pdk_env}.magicrc",
-        "tech-files/build.tcl",
+        "tech-files/antenna_check.tcl",
     ]
     p1 = subprocess.Popen(antenna_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return p1
@@ -446,7 +448,7 @@ if __name__ == "__main__":
     
     if antenna:
         logging.info(f"Running antenna checks on {design}")
-        ant = run_antenna(log_dir, signoff_dir, design_root, design, pdk_root, pdk_env)
+        ant = run_antenna(log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root)
 
     if verification or iverilog:
         verify_p = []
@@ -499,12 +501,12 @@ if __name__ == "__main__":
     
     if antenna:
         out, err = ant.communicate()
-        ant_rep = open(f"{signoff_dir}/antenna-vios.report", "w")
+        ant_rep = open(f"{signoff_dir}/{design}/antenna-vios.report", "w")
         if err:
-            logging.error(err)
-            ant_rep.write(err)
+            logging.error(err.decode())
+            ant_rep.write(err.decode())
         if out:
-            ant_rep.write(out)
+            ant_rep.write(out.decode())
 
     if not check_errors(
         caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta,  design, antenna
