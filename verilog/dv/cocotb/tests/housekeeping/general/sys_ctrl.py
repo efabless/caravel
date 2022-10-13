@@ -23,6 +23,7 @@ async def clock_redirect(dut):
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
+    error_margin = 0.1
     # calculate core clock
     await  cocotb.start(calculate_clk_period(dut.uut.clock,"core clock"))  
     await ClockCycles(caravelEnv.clk,110)
@@ -41,8 +42,8 @@ async def clock_redirect(dut):
 
     await write_reg_spi(caravelEnv,0x1b,0x4) # enable user clock output redirect
     await  cocotb.start(calculate_clk_period(dut.bin14_monitor,clock_name))  
-    await ClockCycles(caravelEnv.clk,110)
-    if user_clock  != core_clock:
+    await ClockCycles(caravelEnv.clk,110)   
+    if  abs(user_clock - core_clock) > (error_margin*core_clock):
         cocotb.log.error(f"[TEST] Error: {clock_name} is directed with wrong value {clock_name} period = {user_clock} and core clock = {core_clock}")
     else: 
         cocotb.log.info(f"[TEST] Pass: {clock_name} has directed successfully")
@@ -60,7 +61,7 @@ async def clock_redirect(dut):
     await write_reg_spi(caravelEnv,0x1b,0x4) # enable caravel clock output redirect
     await  cocotb.start(calculate_clk_period(dut.bin15_monitor,clock_name))  
     await ClockCycles(caravelEnv.clk,110)
-    if caravel_clock  != core_clock:
+    if abs(caravel_clock - core_clock) > error_margin*core_clock:
         cocotb.log.error(f"[TEST] Error: {clock_name} is directed with wrong value {clock_name} period = {caravel_clock} and core clock = {core_clock}")
     else: 
         cocotb.log.info(f"[TEST] Pass: {clock_name} has directed successfully")
@@ -91,7 +92,7 @@ async def calculate_clk_period(clk,name):
 @cocotb.test()
 @repot_test
 async def hk_disable(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=3598)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=12409)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

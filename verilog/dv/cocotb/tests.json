@@ -128,8 +128,8 @@
         ,"hk_regs_wr_wb" :{"level":0, 
             "SW":false,
             "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL":[],
+            "GL_SDF":[],
             "description":"write then read (the written value) from random housekeeping registers through the firmware but without using CPU, the SPI and system regs can't be read using firmware so the test only GPIO regs inside housekeeping "}
         ,"hk_regs_wr_spi" :{"level":0, 
             "SW":false,
