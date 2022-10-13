@@ -166,16 +166,36 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
     return p1
 
 
-def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design):
-    f = open(os.path.join(signoff_dir, f"{design}/signoff.rpt"), "w")
-    count = 0
+def run_antenna(
+    log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
+):
+    os.environ["DESIGN_GDS_ROOT"] = design_root
+    os.environ["DESIGN"] = design
+    os.environ["LOG_DIR"] = log_dir
+    os.environ["CARAVEL_ROOT"] = caravel_root
+    os.environ["MCW_ROOT"] = mcw_root
+    antenna_cmd = [
+        "magic",
+        "-noconsole",
+        "-dnull",
+        "-rcfile",
+        f"{pdk_root}/{pdk_env}/libs.tech/magic/{pdk_env}.magicrc",
+        "tech-files/antenna_check.tcl",
+    ]
+    p1 = subprocess.Popen(antenna_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    return p1
+
+
+def check_errors(
+    caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna
+):
+    f = open(os.path.join(signoff_dir, f"{design}/standalone_pvr.rpt"), "w")
     if drc:
         drc_count_klayout = os.path.join(log_dir, f"{design}_klayout_drc.total")
         with open(drc_count_klayout) as rep:
             if rep.readline().strip() != "0":
                 logging.error(f"klayout DRC failed")
                 f.write("Klayout MR DRC:    Failed\n")
-                count = count + 1
             else:
                 logging.info("Klayout MR DRC:    Passed")
                 f.write("Klayout MR DRC:    Passed\n")
@@ -218,7 +238,6 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
                         f"{sim} simulations failed, find report at {verification_report}"
                     )
                     f.write(f"{sim} simulations:    Failed\n")
-                    count = count + 1
 
     if sta:
         sta_logs = glob.glob(f"{log_dir}/{design}/{design}-*sta.log")
@@ -235,9 +254,15 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
                     logging.error(f"{log_name} STA:    Failed")
                     f.write(f"{log_name} STA:    Failed\n")
 
-    if count > 0:
-        return False
-    return True
+    if antenna:
+        antenna_report = os.path.join(signoff_dir, f"{design}/antenna-vios.report")
+        with open(antenna_report) as rep:
+            if "Antenna violation detected" in rep.read():
+                logging.error(f"Antenna checks failed find report at {antenna_report}")
+                f.write("Antenna checks:    Failed\n")
+            else:
+                logging.info("Antenna checks:    Passed")
+                f.write("Antenna checks:    Passed\n")
 
 
 if __name__ == "__main__":
@@ -261,8 +286,8 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "-v",
-        "--verification",
-        help="run verification",
+        "--vcs",
+        help="run verification using vcs",
         action="store_true",
     )
     parser.add_argument(
@@ -293,6 +318,12 @@ if __name__ == "__main__":
         "-sta",
         "--primetime_sta",
         help="run verification using iverilog",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-ant",
+        "--antenna",
+        help="run antenna checks",
         action="store_true",
     )
     parser.add_argument(
@@ -348,20 +379,34 @@ if __name__ == "__main__":
     gl = args.gl
     sdf = args.sdf
     iverilog = args.iverilog
-    verification = args.verification
+    verification = args.vcs
     sta = args.primetime_sta
     design = args.design
+    antenna = args.antenna
 
-    
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
 
-    if lvs or drc:
+    if lvs or drc or antenna:
         if glob.glob(f"{caravel_root}/gds/*.gz"):
-            logging.error("Compressed gds files. Please uncompress first.")
+            logging.error(
+                f"Compressed gds files in {caravel_root}. Please uncompress first."
+            )
             exit(1)
+
+        if glob.glob(f"{mcw_root}/gds/*.gz"):
+            logging.error(
+                f"Compressed gds files in {mcw_root}. Please uncompress first."
+            )
+            exit(1)
+
+        design_root = os.path.join(caravel_root, f"gds/{design}.gds")
+        if not os.path.exists(design_root):
+            design_root = os.path.join(mcw_root, f"gds/{design}.gds")
+        if not os.path.exists(design_root):
+            logging.error(f"can't find {design}.gds file")
 
     if design == "caravel":
         logging.info("Building caravel...")
@@ -400,6 +445,12 @@ if __name__ == "__main__":
             log_dir,
             signoff_dir,
             design,
+        )
+
+    if antenna:
+        logging.info(f"Running antenna checks on {design}")
+        ant = run_antenna(
+            log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
         )
 
     if verification or iverilog:
@@ -451,7 +502,15 @@ if __name__ == "__main__":
             logging.error(err)
             sta_log.write(err)
 
-    if not check_errors(
-        caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta,  design,
-    ):
-        exit(1)
+    if antenna:
+        out, err = ant.communicate()
+        ant_rep = open(f"{signoff_dir}/{design}/antenna-vios.report", "w")
+        if err:
+            logging.error(err.decode())
+            ant_rep.write(err.decode())
+        if out:
+            ant_rep.write(out.decode())
+
+    check_errors(
+        caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna
+    )
