@@ -88,8 +88,8 @@ set_max_fanout 12 [current_design]
 # synthesis max fanout should be less than 12 (7 maybe)
 
 ## Set system monitoring mux select to zero so that the clock/user_clk monitoring is disabled 
-set_case_analysis 0 [get_pins housekeeping/_3948_/S]
-set_case_analysis 0 [get_pins housekeeping/_3949_/S]
+set_case_analysis 0 [get_pins housekeeping/_3936_/S]
+set_case_analysis 0 [get_pins housekeeping/_3937_/S]
 
 # Add case analysis for pads DM[2]==1'b1 & DM[1]==1'b1 & DM[0]==1'b0
 
