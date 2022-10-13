@@ -215,7 +215,58 @@ module caravel (
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
-    chip_io padframe(
+	// Flash buffered signals
+    wire flash_clk_frame_buf;
+    wire flash_csb_frame_buf;
+    wire flash_clk_ieb_buf, flash_csb_ieb_buf;
+    wire flash_io0_oeb_buf, flash_io1_oeb_buf;
+    wire flash_io0_ieb_buf, flash_io1_ieb_buf;
+    wire flash_io0_do_buf,  flash_io1_do_buf;
+    wire flash_io0_di_buf,  flash_io1_di_buf;
+	
+	// Clock and reset buffered signals
+	wire caravel_clk_buf;
+	wire caravel_rstn_buf;
+	wire clock_core_buf;
+
+	buff_flash_clkrst flash_clkrst_buffers (
+	.in_n({
+		caravel_clk,
+		caravel_rstn,
+		flash_clk_frame, 
+		flash_csb_frame, 
+		flash_clk_oeb, 
+		flash_csb_oeb, 
+		flash_io0_oeb, 
+		flash_io1_oeb,
+		flash_io0_ieb, 
+		flash_io1_ieb,
+		flash_io0_do,  
+		flash_io1_do }), 
+	.in_s({
+		clock_core,
+		flash_io1_di, 
+		flash_io0_di }),
+	.out_s({ 
+		caravel_clk_buf,
+		caravel_rstn_buf,
+		flash_clk_frame_buf, 
+		flash_csb_frame_buf, 
+		flash_clk_oeb_buf, 
+		flash_csb_oeb_buf, 
+		flash_io0_oeb_buf, 
+		flash_io1_oeb_buf,
+		flash_io0_ieb_buf, 
+		flash_io1_ieb_buf,
+		flash_io0_do_buf,  
+		flash_io1_do_buf }), 
+	.out_n({
+		clock_core_buf,
+		flash_io1_di_buf, 
+		flash_io0_di_buf })
+	);
+
+	chip_io padframe(
 	`ifndef TOP_ROUTING
 		// Package Pins
 		.vddio_pad	(vddio),		// Common padframe/ESD supply
@@ -271,16 +322,16 @@ module caravel (
 	.gpio_mode1_core(gpio_mode1_core),
 	.gpio_outenb_core(gpio_outenb_core),
 	.gpio_inenb_core(gpio_inenb_core),
-	.flash_csb_core(flash_csb_frame),
-	.flash_clk_core(flash_clk_frame),
-	.flash_csb_oeb_core(flash_csb_oeb),
-	.flash_clk_oeb_core(flash_clk_oeb),
-	.flash_io0_oeb_core(flash_io0_oeb),
-	.flash_io1_oeb_core(flash_io1_oeb),
-	.flash_io0_ieb_core(flash_io0_ieb),
-	.flash_io1_ieb_core(flash_io1_ieb),
-	.flash_io0_do_core(flash_io0_do),
-	.flash_io1_do_core(flash_io1_do),
+	.flash_csb_core(flash_csb_frame_buf),
+	.flash_clk_core(flash_clk_frame_buf),
+	.flash_csb_oeb_core(flash_csb_oeb_buf),
+	.flash_clk_oeb_core(flash_clk_oeb_buf),
+	.flash_io0_oeb_core(flash_io0_oeb_buf),
+	.flash_io1_oeb_core(flash_io1_oeb_buf),
+	.flash_io0_ieb_core(flash_io0_ieb_buf),
+	.flash_io1_ieb_core(flash_io1_ieb_buf),
+	.flash_io0_do_core(flash_io0_do_buf),
+	.flash_io1_do_core(flash_io1_do_buf),
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
 	.mprj_io_one(mprj_io_one),
@@ -379,12 +430,12 @@ module caravel (
 	`endif
 
 	// Clock and reset
-	.core_clk(caravel_clk),
-	.core_rstn(caravel_rstn),
+	.core_clk(caravel_clk_buf),
+	.core_rstn(caravel_rstn_buf),
 
     // Pass thru Clock and reset
-	.clk_in(caravel_clk),
-	.resetn_in(caravel_rstn),
+	.clk_in(caravel_clk_buf),
+	.resetn_in(caravel_rstn_buf),
 	.clk_out(clk_passthru),
 	.resetn_out(resetn_passthru),
 
@@ -629,7 +680,7 @@ module caravel (
 		.VGND(vssd_core),
     `endif
         .ext_clk_sel(ext_clk_sel),
-        .ext_clk(clock_core),
+        .ext_clk(clock_core_buf),
         .pll_clk(pll_clk),
         .pll_clk90(pll_clk90),
         .resetb(rstb_l),
@@ -650,7 +701,7 @@ module caravel (
     `endif
         .resetb(rstb_l),
         .enable(spi_pll_ena),
-        .osc(clock_core),
+        .osc(clock_core_buf),
         .clockp({pll_clk, pll_clk90}),
         .div(spi_pll_div),
         .dco(spi_pll_dco_ena),
@@ -751,8 +802,8 @@ module caravel (
 	.pad_flash_io1_ieb(flash_io1_ieb),
 	.pad_flash_io0_do(flash_io0_do),
 	.pad_flash_io1_do(flash_io1_do),
-	.pad_flash_io0_di(flash_io0_di),
-	.pad_flash_io1_di(flash_io1_di),
+	.pad_flash_io0_di(flash_io0_di_buf),
+	.pad_flash_io1_di(flash_io1_di_buf),
 
 `ifdef USE_SRAM_RO_INTERFACE
 	.sram_ro_clk(hkspi_sram_clk),
