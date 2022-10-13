@@ -39,7 +39,7 @@ def run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design):
         "python3",
         "klayout_drc.py",
         "-g",
-        f"{caravel_root}/gds/{design}",
+        f"{caravel_root}/gds/{design}.gds",
         "-l",
         f"{log_dir}",
         "-s",
