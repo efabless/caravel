@@ -1,17 +1,17 @@
-CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/reports/signoff/digital_pll.rpt
-CVC: Error output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/reports/signoff/digital_pll.rpt.error.gz
-CVC: Debug output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/reports/signoff/digital_pll.rpt.debug.gz
+CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/reports/signoff/digital_pll.rpt
+CVC: Error output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/reports/signoff/digital_pll.rpt.error.gz
+CVC: Debug output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/reports/signoff/digital_pll.rpt.debug.gz
 CVC: Circuit Validation Check  Version 1.1.0
-CVC: Start: Thu Oct 13 13:18:00 2022
+CVC: Start: Thu Oct 13 13:49:17 2022
 
 Using the following parameters for CVC (Circuit Validation Check) from /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc/cvcrc
 CVC_TOP = 'digital_pll'
-CVC_NETLIST = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/tmp/signoff/digital_pll.cdl'
+CVC_NETLIST = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/tmp/signoff/digital_pll.cdl'
 CVC_MODE = 'digital_pll'
 CVC_MODEL_FILE = '/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc/models'
-CVC_POWER_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/tmp/signoff/digital_pll.power'
+CVC_POWER_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/tmp/signoff/digital_pll.power'
 CVC_FUSE_FILE = ''
-CVC_REPORT_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/reports/signoff/digital_pll.rpt'
+CVC_REPORT_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/reports/signoff/digital_pll.rpt'
 CVC_REPORT_TITLE = 'CVC $CVC_TOP'
 CVC_CIRCUIT_ERROR_LIMIT = '100'
 CVC_SEARCH_LIMIT = '100'
@@ -45,206 +45,7 @@ End of parameters
 
 CVC: Reading device model settings...
 CVC: Reading power settings...
-CVC: Parsing netlist /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/tmp/signoff/digital_pll.cdl
-Cdl fixed data size 29257
-Usage CDL: Time: 0  Memory: 6924  I/O: 376  Swap: 0
+CVC: Parsing netlist /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_47/tmp/signoff/digital_pll.cdl
+Cdl fixed data size 29223
+Usage CDL: Time: 0  Memory: 6936  I/O: 3952  Swap: 0
 CVC: Counting and linking...
-CVC: Assigning IDs ...
-Usage DB: Time: 0  Memory: 7180  I/O: 376  Swap: 0
-CVC: 622(622) instances, 1368(1368) nets, 2706(2706) devices.
-CVC: Setting models ...
-Setting model tolerances...
-CVC: Shorting switches...
-	Shorted 2 short
-Setting instance power...
-
-ModelList> filename /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc/models
- Model> sky130_fd_pr__cap_mim_m3_1         0 C->capacitor  Parameters>
- Model> sky130_fd_pr__cap_mim_m3_2         0 C->capacitor  Parameters>
- Model> sky130_fd_pr__cap_var         0 C->capacitor  Parameters>
- Model> condiode           0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__diode_pd2nw_05v5         0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__diode_pw2nd_05v5         0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__diode_pw2nd_11v0         0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__model__parasitic__diode_ps2dn         0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__model__parasitic__diode_ps2nw         0 D->diode      Parameters> Diodes> 1-2
- Model> sky130_fd_pr__model__parasitic__diode_pw2dn         0 D->diode      Parameters> Diodes> 1-2
- Model> nfet_01v8       1352 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
- Model> pfet_01v8_hvt      1352 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_bs_flash__special_sonosfet_star         0 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__esd_nfet_g5v0d10v5         0 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__nfet_01v8         0 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__nfet_01v8_lvt         0 M->nmos       Parameters> Vth=0.1 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__nfet_03v3_nvt         0 M->nmos       Parameters> Vth=0.2 Vds=3.3 Vgs=3.3 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__nfet_05v0_nvt         0 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__nfet_g5v0d10v5         0 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__pfet_01v8         0 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_pr__pfet_01v8_hvt         0 M->pmos       Parameters> Vth=-0.3 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_pr__pfet_01v8_lvt         0 M->pmos       Parameters> Vth=-0.1 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_pr__pfet_g5v0d10v5         0 M->pmos       Parameters> Vth=-0.2 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_pr__special_nfet_latch         0 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
- Model> sky130_fd_pr__special_pfet_pass         0 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
- Model> sky130_fd_pr__pnp_05v5         0 Q->bipolar    Parameters>
- Model> short              2 R->switch_on  Parameters>
- Model> sky130_fd_pr__res_generic_m1         0 R->resistor   Parameters> R=l/w
- Model> sky130_fd_pr__res_generic_m2         0 R->resistor   Parameters> R=l/w
- Model> sky130_fd_pr__res_generic_m3         0 R->resistor   Parameters> R=l/w
- Model> sky130_fd_pr__res_generic_m4         0 R->resistor   Parameters> R=l/w
- Model> sky130_fd_pr__res_generic_m5         0 R->resistor   Parameters> R=l/w
- Model> sky130_fd_pr__res_generic_nd         0 R->resistor   Parameters> R=l/w*120
- Model> sky130_fd_pr__res_generic_nd__hv         0 R->resistor   Parameters> R=l/w*114
- Model> sky130_fd_pr__res_generic_pd__hv         0 R->resistor   Parameters> R=l/w*191
- Model> sky130_fd_pr__res_generic_po         0 R->resistor   Parameters> R=l/w*48
- Model> sky130_fd_pr__res_high_po         0 R->resistor   Parameters> R=l/w*2000
- Model> sky130_fd_pr__res_xhigh_po         0 R->resistor   Parameters> R=l/w*2000
-ModelList> end
-
-Power List> filename /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/tmp/signoff/digital_pll.power
- VPWR power 1.8 -> 1.8 power
- VGND power 0.0 -> 0.0 power
- dco~>std_input input std_input -> min@0.0 max@1.8 input family(std_input;)
- enable~>std_input input std_input -> min@0.0 max@1.8 input family(std_input;)
- osc~>std_input input std_input -> min@0.0 max@1.8 input family(std_input;)
- resetb~>std_input input std_input -> min@0.0 max@1.8 input family(std_input;)
-div[4:0]~>std_input input std_input
- ->div[0] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->div[1] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->div[2] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->div[3] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->div[4] input std_input -> min@0.0 max@1.8 input family(std_input;)
-ext_trim[25:0]~>std_input input std_input
- ->ext_trim[0] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[10] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[11] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[12] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[13] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[14] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[15] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[16] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[17] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[18] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[19] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[1] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[20] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[21] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[22] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[23] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[24] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[25] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[2] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[3] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[4] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[5] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[6] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[7] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[8] input std_input -> min@0.0 max@1.8 input family(std_input;)
- ->ext_trim[9] input std_input -> min@0.0 max@1.8 input family(std_input;)
-> expected values
-> macros
- #define std_input min@VGND max@VPWR -> min@0.0 max@1.8
-Power List> end
-
-CVC: Linking devices...
-Usage EQUIV: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 44
-Hash dump:parameter->resistance map
-Contains 53 buckets, 35 elements
-Element count 0, 18
-Element count 1, 35
-Unused hash: 0.34, average depth 1.00
-Hash dump:text->circuit map
-Contains 337 buckets, 438 elements
-Element count 0, 71
-Element count 1, 144
-Element count 2, 81
-Element count 3, 33
-Element count 4, 7
-Element count 5, 1
-Unused hash: 0.21, average depth 2.06
-Hash dump:string->text map
-Contains 1493 buckets, 2088 elements
-Element count 0, 377
-Element count 1, 512
-Element count 2, 340
-Element count 3, 181
-Element count 4, 67
-Element count 5, 12
-Element count 6, 3
-Element count 7, 1
-Unused hash: 0.25, average depth 2.41
-CVC: Shorting non conducting resistors...
-CVC: Calculating resistor voltages...
-Usage RES: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 44
-CVC: Calculating min/max voltages...
-Processing trivial nets found 335 trivial nets
-CVC: Ignoring invalid calculations...
-CVC:   Removed 0 calculations
-Copying master nets
-CVC: Ignoring non-conducting devices...
-CVC:   Ignored 0 devices
-Usage MIN/MAX1: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 613
-! Checking forward bias diode errors: 
-
-! Checking nmos source/drain vs bias errors: 
-
-! Checking nmos gate vs source errors: 
-
-! Checking pmos source/drain vs bias errors: 
-
-! Checking pmos gate vs source errors: 
-
-Usage ERROR: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-CVC: Propagating Simulation voltages 1...
-Usage SIM1: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 613
-CVC: Propagating Simulation voltages 3...
-Usage SIM2: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 613
-Added 0 latch voltages
-CVC: Calculating min/max voltages...
-Processing trivial nets found 335 trivial nets
-CVC: Ignoring invalid calculations...
-CVC:   Removed 0 calculations
-Copying master nets
-CVC: Ignoring non-conducting devices...
-CVC:   Ignored 0 devices
-Usage MIN/MAX2: Time: 0  Memory: 7808  I/O: 392  Swap: 0
-Power nets 1182
-! Checking overvoltage errors
-
-! Checking nmos possible leak errors: 
-
-! Checking pmos possible leak errors: 
-
-! Checking mos floating input errors:
-
-! Checking expected values:
-
-CVC: Error Counts
-CVC: Fuse Problems:         0
-CVC: Min Voltage Conflicts: 0
-CVC: Max Voltage Conflicts: 0
-CVC: Leaks:                 0
-CVC: LDD drain->source:     0
-CVC: HI-Z Inputs:           0
-CVC: Forward Bias Diodes:   0
-CVC: NMOS Source vs Bulk:   0
-CVC: NMOS Gate vs Source:   0
-CVC: NMOS Possible Leaks:   0
-CVC: PMOS Source vs Bulk:   0
-CVC: PMOS Gate vs Source:   0
-CVC: PMOS Possible Leaks:   0
-CVC: Overvoltage-VBG:       0
-CVC: Overvoltage-VBS:       0
-CVC: Overvoltage-VDS:       0
-CVC: Overvoltage-VGS:       0
-CVC: Model errors:          0
-CVC: Unexpected voltage :   0
-CVC: Total:                 0
-Usage Total: Time: 0  Memory: 8464  I/O: 432  Swap: 0
-Virtual net update/access 12546/308300
-CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_13_06_16/reports/signoff/digital_pll.rpt
-CVC: End: Thu Oct 13 13:18:00 2022
-
