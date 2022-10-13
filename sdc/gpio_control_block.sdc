@@ -109,3 +109,7 @@ set_driving_cell -lib_cell sky130_fd_sc_hd__inv_2 -pin {Y} -input_transition_ris
 ###############################################################################
 set_max_transition 0.75 [current_design]
 set_max_fanout 7.0000 [current_design]
+
+# False path from the RESET port
+set_false_path -from [get_ports "resetn"]
+set_false_path -from [get_ports {gpio_defaults[*]}]

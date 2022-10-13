@@ -12,13 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
-
-set script_dir [file dirname [file normalize [info script]]]
-
 set ::env(DESIGN_NAME) digital_pll
 set ::env(DESIGN_IS_CORE) 1
 
-set ::env(VERILOG_FILES) $script_dir/../../verilog/rtl/digital_pll.v
+set ::env(VERILOG_FILES) $::env(DESIGN_DIR)/../../verilog/rtl/digital_pll.v
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_TREE_SYNTH) 0
@@ -29,10 +26,10 @@ set ::env(SYNTH_MAX_FANOUT) 6
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_SIZING) 0
 
-set ::env(BASE_SDC_FILE) $script_dir/base.sdc 
+set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc 
 
 ## Floorplan
-set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
+set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/digital_pll.def
 
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 75 75"
@@ -40,23 +37,29 @@ set ::env(DIE_AREA) "0 0 75 75"
 set ::env(TOP_MARGIN_MULT) 2
 set ::env(BOTTOM_MARGIN_MULT) 2
 
-set ::env(CELL_PAD)  0
+set ::env(DIODE_PADDING) 0
+set ::env(DPL_CELL_PADDING) 0
+set ::env(DRT_CELL_PADDING)  0
 
 ## PDN 
 set ::env(FP_PDN_VPITCH) 40
 set ::env(FP_PDN_HPITCH) 40
+set ::env(FP_PDN_HOFFSET) 16.41
+set ::env(FP_PDN_HSPACING) 18.4
+set ::env(FP_PDN_VSPACING) 18.4
 
 ## Placement
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(PL_TARGET_DENSITY) 0.82
+set ::env(PL_TARGET_DENSITY) 0.9
 
 ## Routing 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(GLB_RT_ADJUSTMENT) 0
-
-set ::env(GLB_RT_MINLAYER) 2
-set ::env(GLB_RT_MAXLAYER) 6
+set ::env(GRT_ADJUSTMENT) 0
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) "4"
+
+set ::env(STA_WRITE_LIB) 0
+set ::env(FP_PDN_SKIPTRIM) 1
+

@@ -26,6 +26,17 @@ def run_sta (
 ):
   print (f"PrimeTime STA run for design: {design} at process corner {proc_corner} and RC corner {rc_corner}")
   
+  # Output directory structure 
+  sub_dirs = ['reports', 'sdf', 'lib']
+  for item in sub_dirs:
+    path=os.path.join(output_dir,item)
+    try:
+      os.makedirs(os.path.join(path,rc_corner))
+    except FileExistsError:
+      # directory already exists
+      pass
+
+
   # Enviornment Variables
   check_env_vars()
   os.environ["PDK_ROOT"] = os.getenv('PDK_ROOT')
@@ -45,7 +56,7 @@ def run_sta (
   pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log"
   os.system(pt_command)
   # Check if there exists any violations
-  sta_pass=search_viol(f"{output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+  sta_pass=search_viol(f"{output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
   log = open(f"{log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
   if sta_pass == "pass":
     print (f"STA run Passed!")
@@ -54,8 +65,8 @@ def run_sta (
     print (f"STA run Failed!")
     log.write(f"STA run Failed!\n")
     if sta_pass == "viol":
-      print(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
-      log.write(f"There are violations. check report: {output_dir}/pt_reports/{design}/{design}-{rc_corner}-{proc_corner}-all_viol.rpt")
+      print(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
+      log.write(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
     elif sta_pass== "no cons":
       print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
       log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
@@ -159,7 +170,7 @@ if __name__ == "__main__":
 
   args = parser.parse_args()
 
-  output = os.path.abspath(args.output_dir)
+  output = os.path.abspath(os.path.join(args.output_dir,"primetime-signoff"))
   log = os.path.abspath(args.logs_dir)
 
   try:
@@ -180,16 +191,10 @@ if __name__ == "__main__":
     # directory already exists
     pass
 
-  sub_dirs = ['pt_reports', 'pt_sdf', 'pt_etm']
+  sub_dirs = ['reports', 'sdf', 'lib']
   for item in sub_dirs:
-    path = os.path.join(output,item)
     try:
-      os.makedirs(path)
-    except FileExistsError:
-      # directory already exists
-      pass
-    try:
-      os.makedirs(os.path.join(path,args.design))
+      os.makedirs(os.path.join(output,item))
     except FileExistsError:
       # directory already exists
       pass
