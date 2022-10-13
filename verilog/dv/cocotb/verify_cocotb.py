@@ -184,7 +184,6 @@ class RunTest:
         #change linker script to dff2 
         if self.test_name in tests_use_dff2:
             change_dff(str="> dff",new_str="> dff2",file_path=LINKER_SCRIPT)
-            # sys.exit()
         hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
@@ -196,7 +195,6 @@ class RunTest:
             sys.exit()
         if self.test_name in tests_use_dff2:
             change_dff(str="> dff2",new_str="> dff",file_path=LINKER_SCRIPT)
-        sys.exit()
 
     def cd_make(self):
         os.chdir(f"{os.getenv('VERILOG_PATH')}/dv/make")
