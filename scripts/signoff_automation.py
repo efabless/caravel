@@ -165,7 +165,10 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
     )
     return p1
 
-def run_antenna(log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root):
+
+def run_antenna(
+    log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
+):
     os.environ["DESIGN_GDS_ROOT"] = design_root
     os.environ["DESIGN"] = design
     os.environ["LOG_DIR"] = log_dir
@@ -182,16 +185,17 @@ def run_antenna(log_dir, design_root, design, pdk_root, pdk_env, caravel_root, m
     p1 = subprocess.Popen(antenna_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     return p1
 
-def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna):
-    f = open(os.path.join(signoff_dir, f"{design}/signoff.rpt"), "w")
-    count = 0
+
+def check_errors(
+    caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna
+):
+    f = open(os.path.join(signoff_dir, f"{design}/standalone_pvr.rpt"), "w")
     if drc:
         drc_count_klayout = os.path.join(log_dir, f"{design}_klayout_drc.total")
         with open(drc_count_klayout) as rep:
             if rep.readline().strip() != "0":
                 logging.error(f"klayout DRC failed")
                 f.write("Klayout MR DRC:    Failed\n")
-                count = count + 1
             else:
                 logging.info("Klayout MR DRC:    Passed")
                 f.write("Klayout MR DRC:    Passed\n")
@@ -249,21 +253,16 @@ def check_errors(caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
                     f.write(f"{log_name} STA:    Failed\n")
-    
+
     if antenna:
         antenna_report = os.path.join(signoff_dir, f"{design}/antenna-vios.report")
         with open(antenna_report) as rep:
-            if "Antenna violation detected" in rep.readlines():
+            if "Antenna violation detected" in rep.read():
                 logging.error(f"Antenna checks failed find report at {antenna_report}")
                 f.write("Antenna checks:    Failed\n")
-                count = count + 1
             else:
                 logging.info("Antenna checks:    Passed")
                 f.write("Antenna checks:    Passed\n")
-
-    if count > 0:
-        return False
-    return True
 
 
 if __name__ == "__main__":
@@ -369,7 +368,6 @@ if __name__ == "__main__":
         logging.error(f"{mcw_root} does not exist!")
         exit(1)
 
-
     pdk_root = os.getenv("PDK_ROOT")
     pdk_env = os.getenv("PDK")
     log_dir = os.path.join(caravel_root, "scripts/logs")
@@ -386,7 +384,6 @@ if __name__ == "__main__":
     design = args.design
     antenna = args.antenna
 
-    
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
@@ -394,13 +391,17 @@ if __name__ == "__main__":
 
     if lvs or drc or antenna:
         if glob.glob(f"{caravel_root}/gds/*.gz"):
-            logging.error(f"Compressed gds files in {caravel_root}. Please uncompress first.")
+            logging.error(
+                f"Compressed gds files in {caravel_root}. Please uncompress first."
+            )
             exit(1)
-        
+
         if glob.glob(f"{mcw_root}/gds/*.gz"):
-            logging.error(f"Compressed gds files in {mcw_root}. Please uncompress first.")
+            logging.error(
+                f"Compressed gds files in {mcw_root}. Please uncompress first."
+            )
             exit(1)
-        
+
         design_root = os.path.join(caravel_root, f"gds/{design}.gds")
         if not os.path.exists(design_root):
             design_root = os.path.join(mcw_root, f"gds/{design}.gds")
@@ -445,10 +446,12 @@ if __name__ == "__main__":
             signoff_dir,
             design,
         )
-    
+
     if antenna:
         logging.info(f"Running antenna checks on {design}")
-        ant = run_antenna(log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root)
+        ant = run_antenna(
+            log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
+        )
 
     if verification or iverilog:
         verify_p = []
@@ -498,7 +501,7 @@ if __name__ == "__main__":
         if err:
             logging.error(err)
             sta_log.write(err)
-    
+
     if antenna:
         out, err = ant.communicate()
         ant_rep = open(f"{signoff_dir}/{design}/antenna-vios.report", "w")
@@ -508,7 +511,6 @@ if __name__ == "__main__":
         if out:
             ant_rep.write(out.decode())
 
-    if not check_errors(
-        caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta,  design, antenna
-    ):
-        exit(1)
+    check_errors(
+        caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna
+    )
