@@ -73,9 +73,9 @@ module digital_pll(
     (* keep *)
     sky130_fd_sc_hd__clkbuf_16 clockp_buffer_0 (
 `ifdef USE_POWER_PINS
-        .VPWR(vccd),
-        .VGND(vssd),
-        .VPB(vccd),
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
         .VNB(vssd),
 `endif
         .A(clockp_buffer_in[0]),
@@ -85,10 +85,10 @@ module digital_pll(
     (* keep *)
     sky130_fd_sc_hd__clkbuf_16 clockp_buffer_1 (
 `ifdef USE_POWER_PINS
-        .VPWR(vccd),
-        .VGND(vssd),
-        .VPB(vccd),
-        .VNB(vssd),
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
 `endif
         .A(clockp_buffer_in[1]),
         .X(clockp[1])
