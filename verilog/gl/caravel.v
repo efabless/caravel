@@ -3,10 +3,13 @@
 module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vdda1_2, vdda2, vssa1, vssa1_2, vssa2, vccd1, vccd2, vssd1, vssd2, gpio, mprj_io, clock, resetb, flash_csb, flash_clk, flash_io0, flash_io1);
   wire caravel_clk;
   wire caravel_clk2;
+  wire caravel_clk_buf;
   wire caravel_rstn;
+  wire caravel_rstn_buf;
   wire clk_passthru;
   input clock;
   wire clock_core;
+  wire clock_core_buf;
   wire debug_in;
   wire debug_mode;
   wire debug_oeb;
@@ -16,32 +19,46 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   output flash_clk;
   wire flash_clk_core;
   wire flash_clk_frame;
+  wire flash_clk_frame_buf;
   wire flash_clk_ieb;
+  wire flash_clk_ieb_buf;
   wire flash_clk_oeb;
+  wire flash_clk_oeb_buf;
   wire flash_clk_oeb_core;
   output flash_csb;
   wire flash_csb_core;
   wire flash_csb_frame;
+  wire flash_csb_frame_buf;
   wire flash_csb_ieb;
+  wire flash_csb_ieb_buf;
   wire flash_csb_oeb;
+  wire flash_csb_oeb_buf;
   wire flash_csb_oeb_core;
   output flash_io0;
   wire flash_io0_di;
+  wire flash_io0_di_buf;
   wire flash_io0_di_core;
   wire flash_io0_do;
+  wire flash_io0_do_buf;
   wire flash_io0_do_core;
   wire flash_io0_ieb;
+  wire flash_io0_ieb_buf;
   wire flash_io0_ieb_core;
   wire flash_io0_oeb;
+  wire flash_io0_oeb_buf;
   wire flash_io0_oeb_core;
   output flash_io1;
   wire flash_io1_di;
+  wire flash_io1_di_buf;
   wire flash_io1_di_core;
   wire flash_io1_do;
+  wire flash_io1_do_buf;
   wire flash_io1_do_core;
   wire flash_io1_ieb;
+  wire flash_io1_ieb_buf;
   wire flash_io1_ieb_core;
   wire flash_io1_oeb;
+  wire flash_io1_oeb_buf;
   wire flash_io1_oeb_core;
   wire flash_io2_di_core;
   wire flash_io2_do_core;
@@ -3147,7 +3164,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VGND(vssd_core),
     .VPWR(vccd_core),
     .core_clk(caravel_clk),
-    .ext_clk(clock_core),
+    .ext_clk(clock_core_buf),
     .ext_clk_sel(ext_clk_sel),
     .ext_reset(ext_reset),
     .pll_clk(pll_clk),
@@ -3157,6 +3174,12 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .sel({ \spi_pll_sel[2] , \spi_pll_sel[1] , \spi_pll_sel[0]  }),
     .sel2({ \spi_pll90_sel[2] , \spi_pll90_sel[1] , \spi_pll90_sel[0]  }),
     .user_clk(caravel_clk2)
+  );
+  buff_flash_clkrst flash_clkrst_buffers (
+    .in_n({ caravel_clk, caravel_rstn, flash_clk_frame, flash_csb_frame, flash_clk_oeb, flash_csb_oeb, flash_io0_oeb, flash_io1_oeb, flash_io0_ieb, flash_io1_ieb, flash_io0_do, flash_io1_do }),
+    .in_s({ clock_core, flash_io1_di, flash_io0_di }),
+    .out_n({ clock_core_buf, flash_io1_di_buf, flash_io0_di_buf }),
+    .out_s({ caravel_clk_buf, caravel_rstn_buf, flash_clk_frame_buf, flash_csb_frame_buf, flash_clk_oeb_buf, flash_csb_oeb_buf, flash_io0_oeb_buf, flash_io1_oeb_buf, flash_io0_ieb_buf, flash_io1_ieb_buf, flash_io0_do_buf, flash_io1_do_buf })
   );
   gpio_control_block \gpio_control_bidir_1[0]  (
     .gpio_defaults({ \gpio_defaults[12] , \gpio_defaults[11] , \gpio_defaults[10] , \gpio_defaults[9] , \gpio_defaults[8] , \gpio_defaults[7] , \gpio_defaults[6] , \gpio_defaults[5] , \gpio_defaults[4] , \gpio_defaults[3] , \gpio_defaults[2] , \gpio_defaults[1] , \gpio_defaults[0]  }),
@@ -4694,11 +4717,11 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .pad_flash_clk_oeb(flash_clk_oeb),
     .pad_flash_csb(flash_csb_frame),
     .pad_flash_csb_oeb(flash_csb_oeb),
-    .pad_flash_io0_di(flash_io0_di),
+    .pad_flash_io0_di(flash_io0_di_buf),
     .pad_flash_io0_do(flash_io0_do),
     .pad_flash_io0_ieb(flash_io0_ieb),
     .pad_flash_io0_oeb(flash_io0_oeb),
-    .pad_flash_io1_di(flash_io1_di),
+    .pad_flash_io1_di(flash_io1_di_buf),
     .pad_flash_io1_do(flash_io1_do),
     .pad_flash_io1_ieb(flash_io1_ieb),
     .pad_flash_io1_oeb(flash_io1_oeb),
@@ -4840,21 +4863,21 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .clock(clock),
     .clock_core(clock_core),
     .flash_clk(flash_clk),
-    .flash_clk_core(flash_clk_frame),
-    .flash_clk_oeb_core(flash_clk_oeb),
+    .flash_clk_core(flash_clk_frame_buf),
+    .flash_clk_oeb_core(flash_clk_oeb_buf),
     .flash_csb(flash_csb),
-    .flash_csb_core(flash_csb_frame),
-    .flash_csb_oeb_core(flash_csb_oeb),
+    .flash_csb_core(flash_csb_frame_buf),
+    .flash_csb_oeb_core(flash_csb_oeb_buf),
     .flash_io0(flash_io0),
     .flash_io0_di_core(flash_io0_di),
-    .flash_io0_do_core(flash_io0_do),
-    .flash_io0_ieb_core(flash_io0_ieb),
-    .flash_io0_oeb_core(flash_io0_oeb),
+    .flash_io0_do_core(flash_io0_do_buf),
+    .flash_io0_ieb_core(flash_io0_ieb_buf),
+    .flash_io0_oeb_core(flash_io0_oeb_buf),
     .flash_io1(flash_io1),
     .flash_io1_di_core(flash_io1_di),
-    .flash_io1_do_core(flash_io1_do),
-    .flash_io1_ieb_core(flash_io1_ieb),
-    .flash_io1_oeb_core(flash_io1_oeb),
+    .flash_io1_do_core(flash_io1_do_buf),
+    .flash_io1_ieb_core(flash_io1_ieb_buf),
+    .flash_io1_oeb_core(flash_io1_oeb_buf),
     .gpio(gpio),
     .gpio_in_core(gpio_in_core),
     .gpio_inenb_core(gpio_inenb_core),
@@ -4922,7 +4945,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .div({ \spi_pll_div[4] , \spi_pll_div[3] , \spi_pll_div[2] , \spi_pll_div[1] , \spi_pll_div[0]  }),
     .enable(spi_pll_ena),
     .ext_trim({ \spi_pll_trim[25] , \spi_pll_trim[24] , \spi_pll_trim[23] , \spi_pll_trim[22] , \spi_pll_trim[21] , \spi_pll_trim[20] , \spi_pll_trim[19] , \spi_pll_trim[18] , \spi_pll_trim[17] , \spi_pll_trim[16] , \spi_pll_trim[15] , \spi_pll_trim[14] , \spi_pll_trim[13] , \spi_pll_trim[12] , \spi_pll_trim[11] , \spi_pll_trim[10] , \spi_pll_trim[9] , \spi_pll_trim[8] , \spi_pll_trim[7] , \spi_pll_trim[6] , \spi_pll_trim[5] , \spi_pll_trim[4] , \spi_pll_trim[3] , \spi_pll_trim[2] , \spi_pll_trim[1] , \spi_pll_trim[0]  }),
-    .osc(clock_core),
+    .osc(clock_core_buf),
     .resetb(rstb_l)
   );
   simple_por por (
@@ -4945,10 +4968,10 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   mgmt_core_wrapper soc (
     .VGND(vssd_core),
     .VPWR(vccd_core),
-    .clk_in(caravel_clk),
+    .clk_in(caravel_clk_buf),
     .clk_out(clk_passthru),
-    .core_clk(caravel_clk),
-    .core_rstn(caravel_rstn),
+    .core_clk(caravel_clk_buf),
+    .core_rstn(caravel_rstn_buf),
     .debug_in(debug_in),
     .debug_mode(debug_mode),
     .debug_oeb(debug_oeb),
@@ -4992,7 +5015,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .mprj_wb_iena(mprj_iena_wb),
     .mprj_we_o(mprj_we_o_core),
     .qspi_enabled(qspi_enabled),
-    .resetn_in(caravel_rstn),
+    .resetn_in(caravel_rstn_buf),
     .resetn_out(resetn_passthru),
     .ser_rx(ser_rx),
     .ser_tx(ser_tx),
@@ -5059,24 +5082,24 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .mask_rev({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  })
   );
-  assign \gpio_clock_1_shifted[18]  = \gpio_clock_1[17] ;
-  assign \gpio_clock_1_shifted[17]  = \gpio_clock_1[16] ;
-  assign \gpio_clock_1_shifted[16]  = \gpio_clock_1[15] ;
-  assign \gpio_clock_1_shifted[15]  = \gpio_clock_1[14] ;
-  assign \gpio_clock_1_shifted[14]  = \gpio_clock_1[13] ;
-  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
-  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
-  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
-  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
-  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
-  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
-  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
-  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
-  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
-  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
-  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
-  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
-  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
+  assign \gpio_serial_link_1_shifted[18]  = \gpio_serial_link_1[17] ;
+  assign \gpio_serial_link_1_shifted[17]  = \gpio_serial_link_1[16] ;
+  assign \gpio_serial_link_1_shifted[16]  = \gpio_serial_link_1[15] ;
+  assign \gpio_serial_link_1_shifted[15]  = \gpio_serial_link_1[14] ;
+  assign \gpio_serial_link_1_shifted[14]  = \gpio_serial_link_1[13] ;
+  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
+  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
+  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
+  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
+  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
+  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
+  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
+  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
+  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
+  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
+  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
+  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
+  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
   assign \gpio_serial_link_2_shifted[17]  = \gpio_serial_link_2[18] ;
   assign \gpio_serial_link_2_shifted[16]  = \gpio_serial_link_2[17] ;
   assign \gpio_serial_link_2_shifted[15]  = \gpio_serial_link_2[16] ;
@@ -5114,6 +5137,42 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \gpio_load_2_shifted[2]  = \gpio_load_2[3] ;
   assign \gpio_load_2_shifted[1]  = \gpio_load_2[2] ;
   assign \gpio_load_2_shifted[0]  = \gpio_load_2[1] ;
+  assign \gpio_load_1_shifted[18]  = \gpio_load_1[17] ;
+  assign \gpio_load_1_shifted[17]  = \gpio_load_1[16] ;
+  assign \gpio_load_1_shifted[16]  = \gpio_load_1[15] ;
+  assign \gpio_load_1_shifted[15]  = \gpio_load_1[14] ;
+  assign \gpio_load_1_shifted[14]  = \gpio_load_1[13] ;
+  assign \gpio_load_1_shifted[13]  = \gpio_load_1[12] ;
+  assign \gpio_load_1_shifted[12]  = \gpio_load_1[11] ;
+  assign \gpio_load_1_shifted[11]  = \gpio_load_1[10] ;
+  assign \gpio_load_1_shifted[10]  = \gpio_load_1[9] ;
+  assign \gpio_load_1_shifted[9]  = \gpio_load_1[8] ;
+  assign \gpio_load_1_shifted[8]  = \gpio_load_1[7] ;
+  assign \gpio_load_1_shifted[7]  = \gpio_load_1[6] ;
+  assign \gpio_load_1_shifted[6]  = \gpio_load_1[5] ;
+  assign \gpio_load_1_shifted[5]  = \gpio_load_1[4] ;
+  assign \gpio_load_1_shifted[4]  = \gpio_load_1[3] ;
+  assign \gpio_load_1_shifted[3]  = \gpio_load_1[2] ;
+  assign \gpio_load_1_shifted[2]  = \gpio_load_1[1] ;
+  assign \gpio_load_1_shifted[1]  = \gpio_load_1[0] ;
+  assign \gpio_resetn_1_shifted[18]  = \gpio_resetn_1[17] ;
+  assign \gpio_resetn_1_shifted[17]  = \gpio_resetn_1[16] ;
+  assign \gpio_resetn_1_shifted[16]  = \gpio_resetn_1[15] ;
+  assign \gpio_resetn_1_shifted[15]  = \gpio_resetn_1[14] ;
+  assign \gpio_resetn_1_shifted[14]  = \gpio_resetn_1[13] ;
+  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
+  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
+  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
+  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
+  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
+  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
+  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
+  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
+  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
+  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
+  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
+  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
+  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
   assign \gpio_resetn_2_shifted[18]  = \gpio_resetn_1_shifted[0] ;
   assign \gpio_resetn_2_shifted[17]  = \gpio_resetn_2[18] ;
   assign \gpio_resetn_2_shifted[16]  = \gpio_resetn_2[17] ;
@@ -5152,63 +5211,27 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \gpio_clock_2_shifted[2]  = \gpio_clock_2[3] ;
   assign \gpio_clock_2_shifted[1]  = \gpio_clock_2[2] ;
   assign \gpio_clock_2_shifted[0]  = \gpio_clock_2[1] ;
-  assign \gpio_load_1_shifted[18]  = \gpio_load_1[17] ;
-  assign \gpio_load_1_shifted[17]  = \gpio_load_1[16] ;
-  assign \gpio_load_1_shifted[16]  = \gpio_load_1[15] ;
-  assign \gpio_load_1_shifted[15]  = \gpio_load_1[14] ;
-  assign \gpio_load_1_shifted[14]  = \gpio_load_1[13] ;
-  assign \gpio_load_1_shifted[13]  = \gpio_load_1[12] ;
-  assign \gpio_load_1_shifted[12]  = \gpio_load_1[11] ;
-  assign \gpio_load_1_shifted[11]  = \gpio_load_1[10] ;
-  assign \gpio_load_1_shifted[10]  = \gpio_load_1[9] ;
-  assign \gpio_load_1_shifted[9]  = \gpio_load_1[8] ;
-  assign \gpio_load_1_shifted[8]  = \gpio_load_1[7] ;
-  assign \gpio_load_1_shifted[7]  = \gpio_load_1[6] ;
-  assign \gpio_load_1_shifted[6]  = \gpio_load_1[5] ;
-  assign \gpio_load_1_shifted[5]  = \gpio_load_1[4] ;
-  assign \gpio_load_1_shifted[4]  = \gpio_load_1[3] ;
-  assign \gpio_load_1_shifted[3]  = \gpio_load_1[2] ;
-  assign \gpio_load_1_shifted[2]  = \gpio_load_1[1] ;
-  assign \gpio_load_1_shifted[1]  = \gpio_load_1[0] ;
-  assign \gpio_resetn_1_shifted[18]  = \gpio_resetn_1[17] ;
-  assign \gpio_resetn_1_shifted[17]  = \gpio_resetn_1[16] ;
-  assign \gpio_resetn_1_shifted[16]  = \gpio_resetn_1[15] ;
-  assign \gpio_resetn_1_shifted[15]  = \gpio_resetn_1[14] ;
-  assign \gpio_resetn_1_shifted[14]  = \gpio_resetn_1[13] ;
-  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
-  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
-  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
-  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
-  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
-  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
-  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
-  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
-  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
-  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
-  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
-  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
-  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
-  assign \gpio_serial_link_1_shifted[17]  = \gpio_serial_link_1[16] ;
-  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
-  assign \gpio_serial_link_1_shifted[14]  = \gpio_serial_link_1[13] ;
-  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
-  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
-  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
-  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
-  assign \gpio_serial_link_1_shifted[18]  = \gpio_serial_link_1[17] ;
-  assign \gpio_serial_link_1_shifted[15]  = \gpio_serial_link_1[14] ;
-  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
-  assign \gpio_serial_link_1_shifted[16]  = \gpio_serial_link_1[15] ;
-  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
-  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
-  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
-  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
-  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
+  assign \gpio_clock_1_shifted[18]  = \gpio_clock_1[17] ;
+  assign \gpio_clock_1_shifted[17]  = \gpio_clock_1[16] ;
+  assign \gpio_clock_1_shifted[16]  = \gpio_clock_1[15] ;
+  assign \gpio_clock_1_shifted[15]  = \gpio_clock_1[14] ;
+  assign \gpio_clock_1_shifted[14]  = \gpio_clock_1[13] ;
+  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
+  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
+  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
+  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
+  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
+  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
+  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
+  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
+  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
+  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
+  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
+  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
+  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
   assign mprj_io_loader_data_2 = \gpio_serial_link_2_shifted[18] ;
   assign mprj_io_loader_data_1 = \gpio_serial_link_1_shifted[0] ;
   assign mprj_io_loader_strobe = \gpio_load_1_shifted[0] ;
   assign mprj_io_loader_clock = \gpio_clock_1_shifted[0] ;
   assign mprj_io_loader_resetn = \gpio_resetn_1_shifted[0] ;
-  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
-  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
 endmodule

@@ -64,6 +64,7 @@ set mprj_y 1393.590
 
 set soc_x 260.170
 set soc_y 265.010
+add_macro_placement flash_clkrst_buffers 2442 223 N
 add_macro_placement caravel_power_routing 30.11 169.5 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
