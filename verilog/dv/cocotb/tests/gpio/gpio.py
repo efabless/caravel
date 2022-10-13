@@ -15,12 +15,13 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def gpio_all_o(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=376123)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=586652)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
    
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring ")
     i= 0x20
     for j in range(5):
@@ -51,7 +52,7 @@ async def gpio_all_o(dut):
 
     await wait_reg1(cpu,caravelEnv,0XBB)
     data_in = 0x8F66FD7B
-    cocotb.log.info(f"[TEST] try send {hex(data_in)} to gpio[31:0]")
+    cocotb.log.info(f"[TEST] try drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     reg2 =0
     await wait_reg1(cpu,caravelEnv,0XFF)
@@ -73,47 +74,82 @@ async def gpio_all_o(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=44980)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=56837)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
-    uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0xAA)
     cocotb.log.info(f"[TEST] configuration finished")
-    data_in = 0x8F66FD7B
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    data_in = 0xFFFFFFFF
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xBB)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
-    data_in = 0xFFA88C5A
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
+    data_in = 0xAAAAAAAA
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xCC)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
-    data_in = 0xC9536346
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
+    data_in = 0x55555555
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
+    caravelEnv.drive_gpio_in((31,0),data_in)
+    await wait_reg1(cpu,caravelEnv,0xDD)
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
+    data_in = 0x0
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xD1)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0x3F
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD2)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[37:32]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datah has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0x0
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD3)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[37:32]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datah has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0x15
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD4)
-    cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[37:32]")
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[37:32]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datah has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0x2A
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in) 
-    await wait_reg2(cpu,caravelEnv,0xFF) 
+    await wait_reg1(cpu,caravelEnv,0XD5) 
+    if cpu.read_debug_reg2() == data_in:
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[37:32]")
+    else: 
+        cocotb.log.error(f"[TEST] Error: reg_mprj_datah has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
+    caravelEnv.release_gpio((37,0))
+    await wait_reg2(cpu,caravelEnv,0XFF) 
+    if caravelEnv.monitor_gpio((37,0)).binstr != "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz":
+        cocotb.log.error(f"[TEST] ERROR: firmware can write to the gpios while they are configured as input_nopull gpio= {caravelEnv.monitor_gpio((37,0))}")
+    else:
+        cocotb.log.info(f"[TEST] [TEST] PASS: firmware cannot write to the gpios while they are configured as input_nopull gpio= {caravelEnv.monitor_gpio((37,0))}")
     cocotb.log.info(f"[TEST] finish")
 
 
@@ -121,13 +157,13 @@ async def gpio_all_i(dut):
 @repot_test
 async def gpio_all_i_pu(dut):
     caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
-    await caravelEnv.release_csb()
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     uut = dut.uut
 
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     # monitor the output of padframe module it suppose to be all ones  when no input is applied
     await ClockCycles(caravelEnv.clk,100) 
     gpio = dut.uut.padframe.mprj_io_in.value.binstr
@@ -223,13 +259,13 @@ async def gpio_all_i_pu(dut):
 @repot_test
 async def gpio_all_i_pd(dut):
     caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
-    await caravelEnv.release_csb()
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
     uut = dut.uut
     
     await wait_reg1(cpu,caravelEnv,0xAA)
+    await caravelEnv.release_csb()
     # monitor the output of padframe module it suppose to be all ones  when no input is applied
     await ClockCycles(caravelEnv.clk,100) 
     gpio = dut.uut.padframe.mprj_io_in.value.binstr
@@ -330,6 +366,7 @@ async def gpio_all_bidir(dut):
     cpu.cpu_release_reset()
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0x1A)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring ")
     i= 0x20
     for j in range(5):
@@ -361,59 +398,59 @@ async def gpio_all_bidir(dut):
     await wait_reg1(cpu,caravelEnv,0x2A)
     cocotb.log.info(f"[TEST] configuration finished")
     data_in = 0x8F66FD7B
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xBB)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xFFA88C5A
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xCC)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xC9536346
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[31:0]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[31:0]")
     caravelEnv.drive_gpio_in((31,0),data_in)
     await wait_reg1(cpu,caravelEnv,0xD1)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xC9536346
     data_in = 0x3F
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD2)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xC9536346
     data_in = 0x0
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD3)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xC9536346
     data_in = 0x15
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in)
     await wait_reg1(cpu,caravelEnv,0xD4)
     if cpu.read_debug_reg2() == data_in:
-        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully to gpio[31:0]")
+        cocotb.log.info(f"[TEST] data {hex(data_in)} sent successfully through gpio[31:0]")
     else: 
         cocotb.log.error(f"[TEST] Error: reg_mprj_datal has recieved wrong data {cpu.read_debug_reg2()} instead of {data_in}")
     data_in = 0xC9536346
     data_in = 0x2A
-    cocotb.log.info(f"[TEST] send {hex(data_in)} to gpio[37:32]")
+    cocotb.log.info(f"[TEST] drive {hex(data_in)} to gpio[37:32]")
     caravelEnv.drive_gpio_in((37,32),data_in) 
     await wait_reg2(cpu,caravelEnv,0xFF) 
     cocotb.log.info(f"[TEST] finish")

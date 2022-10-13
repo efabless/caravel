@@ -1,7 +1,7 @@
 import random
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
+from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer
 import cocotb.log
 import cocotb.simulator
 from cocotb.handle import SimHandleBase
@@ -51,13 +51,15 @@ class Caravel_env:
     """start carvel by insert power then reset"""
     async def start_up(self):
         await self.power_up()
-        # await self.disable_csb() # no need for this anymore as default for gpio3 is now pullup
+        await self.disable_csb() # no need for this anymore as default for gpio3 is now pullup
         await self.reset()
         await self.disable_bins()
         common.fill_macros(self.dut.macros) # get macros value
 
     async def disable_bins(self):
         for i in range(38):
+            if i in [3,4]: #CSB and SCK
+                continue
             common.drive_hdl(self.dut._id(f"bin{i}_en",False),(0,0),0) 
 
     """setup the vdd and vcc power bins"""
@@ -108,7 +110,7 @@ class Caravel_env:
     """drive csb signal bin E8 mprj[3]"""
     async def drive_csb(self,bit): 
         self.drive_gpio_in((3,3),bit)
-        self.drive_gpio_in((2,2),0)
+        self.drive_gpio_in((4,4),0)
         await ClockCycles(self.clk, 1)
 
 
@@ -121,7 +123,7 @@ class Caravel_env:
     async def release_csb(self ):
         cocotb.log.info(f' [caravel] release housekeeping spi transmission')
         self.release_gpio(3)
-        self.release_gpio(2)
+        self.release_gpio(4)
         await ClockCycles(self.clk, 1)
 
     """set the spi vsb signal low to enable housekeeping spi transmission bin E8 mprj[3]"""
@@ -369,6 +371,9 @@ class Caravel_env:
         self.path = self.dut.mprj_io_tb
         data_bit = BinaryValue(value = data , n_bits = 8,bigEndian=False)
         for i in range(7,-1,-1):
+            #  for j in range(4):
+            #     await FallingEdge(self.clk)
+            # await Timer(7, units='ns')
             await FallingEdge(self.clk)
             #common.drive_hdl(self.path,[(4,4),(2,2)],[0,int(data_bit[i])]) # 2 = SDI 4 = SCK
             self.drive_gpio_in((2,2),int(data_bit[i]))

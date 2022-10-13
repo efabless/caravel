@@ -1,12 +1,21 @@
+`timescale 1 ns / 1 ps
 `ifdef VCS
+`ifndef ENABLE_SDF
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
 	`include "libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
 	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/primitives.v"
 	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
-`endif
-`timescale 1 ns / 1 ps
+`else
+	`include "cvc-pdk/sky130_ef_io.v"
+	`include "cvc-pdk/sky130_fd_io.v"
+	`include "cvc-pdk/primitives_hd.v"
+	`include "cvc-pdk/sky130_fd_sc_hd.v"
+	`include "cvc-pdk/primitives_hvl.v"
+	`include "cvc-pdk/sky130_fd_sc_hvl.v"
+`endif // ENABLE_SDF
+`endif // VCS
 
 module caravel_top ;
 
@@ -15,7 +24,7 @@ parameter FILENAME={"hex_files/",`TESTNAME,".hex"};
 initial begin
 	`ifdef VCS
 		`ifdef ENABLE_SDF
-				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME , `SDF_POSTFIX, ".vpd"});
+				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME , `CORNER,"-",`SDF_POSTFIX, ".vpd"});
 		`else
 				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME ,".vpd"});
 		`endif
@@ -25,7 +34,11 @@ initial begin
 		$dumpvars (0, caravel_top);
 	`endif
 end
-
+	`ifdef VCS
+	`ifdef ENABLE_SDF
+		`include "sdf_includes.v"
+	`endif
+	`endif // VCS
 	wire vddio_tb;	// Common 3.3V padframe/ESD power
     wire vddio_2_tb;	// Common 3.3V padframe/ESD power
     wire vssio_tb;	// Common padframe/ESD ground

@@ -17,6 +17,7 @@
 
 #include <defs.h>
 #include <csr.h>
+#include <stub.c>
 
 // --------------------------------------------------------
 
@@ -176,5 +177,6 @@ void main()
     reg_spimaster_cs = 0x0000;  // release CS
     reg_spimaster_cs = 0x10001;  // sel=0, manual CS
 
+    print("adding a very very long delay because cpu produces X's when code finish and this break the simulation");
 }
 

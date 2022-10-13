@@ -9,7 +9,7 @@ void main()
 	reg_wb_enable =1; // for enable writing to reg_debug_1 and reg_debug_2
     reg_debug_1  = 0x0;
     reg_debug_2  = 0x0;
-
+    reg_hkspi_disable = 1;
     reg_mprj_io_37 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
     reg_mprj_io_36 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
     reg_mprj_io_35 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
@@ -50,7 +50,7 @@ void main()
     reg_mprj_io_0  = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
 	
 	reg_debug_1 = 0xFF; // finish configuration
-    
+    while (reg_debug_2 != 0xDD);
     reg_debug_1 = 0XAA; // configuration done wait environment to send 0x8F66FD7B to reg_mprj_datal
     while (reg_mprj_datal != 0x8F66FD7B);
     reg_debug_1 = 0XBB; // configuration done wait environment to send 0xFFA88C5A to reg_mprj_datal

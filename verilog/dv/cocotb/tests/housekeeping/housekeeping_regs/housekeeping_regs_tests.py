@@ -110,10 +110,10 @@ async def hk_regs_wr_spi(dut):
         if key == 'base_addr':
             continue
         address = regs[mem][key][0][7]
-        if address in [111,36]: # 111 is for Housekeeping SPI disable, writing 1 to this address will disable the SPI and 36 is for mprj_io[03] changing bit 3 of this register would disable the spi by deassert spi_is_enabled
+        if address in [111,36,10]: # 111 is for Housekeeping SPI disable, writing 1 to this address will disable the SPI and 36 is for mprj_io[03] changing bit 3 of this register would disable the spi by deassert spi_is_enabled and 10 0xa cpu irq is self resetting 
             continue
         # address = int(key,16)
-        if  address in [0x69,0x6A,0x6B,0x6C]: # skip testing reg_mprj_datal and reg_mprj_datah because when reading them it's getting the gpio input value
+        if  address in [0x69,0x6A,0x6B,0x6C,0x6D]: # skip testing reg_mprj_datal and reg_mprj_datah because when reading them it's getting the gpio input value
             continue
         data_in = random.getrandbits(bits_num)
         cocotb.log.info(f"[TEST] Writing {bin(data_in)} to reg [{regs[mem][key][0][0]}] address {hex(address)} through SPI")
