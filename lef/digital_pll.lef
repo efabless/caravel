@@ -8,28 +8,20 @@ MACRO digital_pll
   ORIGIN 0.000 0.000 ;
   SIZE 75.000 BY 75.000 ;
   PIN VGND
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE GROUND ;
-    PORT
-      LAYER met5 ;
-        RECT 5.520 41.050 69.460 42.650 ;
-    END
     PORT
       LAYER met4 ;
         RECT 41.040 5.200 42.640 68.240 ;
     END
+    PORT
+      LAYER met5 ;
+        RECT 5.280 41.050 69.700 42.650 ;
+    END
   END VGND
   PIN VPWR
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE POWER ;
-    PORT
-      LAYER met5 ;
-        RECT 5.520 21.050 69.460 22.650 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 5.520 61.050 69.460 62.650 ;
-    END
     PORT
       LAYER met4 ;
         RECT 21.040 5.200 22.640 68.240 ;
@@ -37,6 +29,14 @@ MACRO digital_pll
     PORT
       LAYER met4 ;
         RECT 61.040 5.200 62.640 68.240 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 5.280 21.050 69.700 22.650 ;
+    END
+    PORT
+      LAYER met5 ;
+        RECT 5.280 61.050 69.700 62.650 ;
     END
   END VPWR
   PIN clockp[0]
@@ -339,7 +339,7 @@ MACRO digital_pll
       LAYER li1 ;
         RECT 5.520 5.355 69.460 68.085 ;
       LAYER met1 ;
-        RECT 2.830 5.200 72.150 68.980 ;
+        RECT 2.830 4.460 72.150 69.320 ;
       LAYER met2 ;
         RECT 3.410 70.720 8.090 72.605 ;
         RECT 8.930 70.720 14.070 72.605 ;

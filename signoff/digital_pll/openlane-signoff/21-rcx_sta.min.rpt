@@ -1,0 +1,178 @@
+
+===========================================================================
+report_checks -path_delay min (Hold)
+============================================================================
+Startpoint: _394_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _395_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _394_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.04    0.33    0.34 ^ _394_/Q (sky130_fd_sc_hd__dfrtp_2)
+     1    0.00                           pll_control.oscbuf[0] (net)
+                  0.04    0.00    0.34 ^ _395_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  0.34   data arrival time
+
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _395_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                         -0.03    0.23   library hold time
+                                  0.23   data required time
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.34   data arrival time
+-----------------------------------------------------------------------------
+                                  0.11   slack (MET)
+
+
+Startpoint: _395_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _396_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _395_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.12    0.41    0.41 ^ _395_/Q (sky130_fd_sc_hd__dfrtp_2)
+     3    0.02                           pll_control.oscbuf[1] (net)
+                  0.12    0.00    0.41 ^ _396_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  0.41   data arrival time
+
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _396_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                         -0.04    0.21   library hold time
+                                  0.21   data required time
+-----------------------------------------------------------------------------
+                                  0.21   data required time
+                                 -0.41   data arrival time
+-----------------------------------------------------------------------------
+                                  0.20   slack (MET)
+
+
+Startpoint: _379_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _379_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _379_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.06    0.36    0.36 ^ _379_/Q (sky130_fd_sc_hd__dfrtp_2)
+     3    0.01                           pll_control.prep[0] (net)
+                  0.06    0.00    0.36 ^ _287_/A (sky130_fd_sc_hd__or2_2)
+                  0.03    0.09    0.46 ^ _287_/X (sky130_fd_sc_hd__or2_2)
+     1    0.00                           _023_ (net)
+                  0.03    0.00    0.46 ^ _379_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  0.46   data arrival time
+
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _379_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                         -0.02    0.23   library hold time
+                                  0.23   data required time
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.46   data arrival time
+-----------------------------------------------------------------------------
+                                  0.23   slack (MET)
+
+
+Startpoint: _381_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _381_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _381_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.05    0.35    0.35 ^ _381_/Q (sky130_fd_sc_hd__dfrtp_2)
+     2    0.01                           pll_control.prep[2] (net)
+                  0.05    0.00    0.35 ^ _285_/A1 (sky130_fd_sc_hd__mux2_1)
+                  0.04    0.11    0.46 ^ _285_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _025_ (net)
+                  0.04    0.00    0.46 ^ _381_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  0.46   data arrival time
+
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _381_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                         -0.03    0.23   library hold time
+                                  0.23   data required time
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.46   data arrival time
+-----------------------------------------------------------------------------
+                                  0.24   slack (MET)
+
+
+Startpoint: _380_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _380_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _380_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.06    0.35    0.36 ^ _380_/Q (sky130_fd_sc_hd__dfrtp_2)
+     3    0.01                           pll_control.prep[1] (net)
+                  0.06    0.00    0.36 ^ _286_/A0 (sky130_fd_sc_hd__mux2_1)
+                  0.04    0.11    0.47 ^ _286_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _024_ (net)
+                  0.04    0.00    0.47 ^ _380_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  0.47   data arrival time
+
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _380_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.25    0.25   clock uncertainty
+                          0.00    0.25   clock reconvergence pessimism
+                         -0.03    0.23   library hold time
+                                  0.23   data required time
+-----------------------------------------------------------------------------
+                                  0.23   data required time
+                                 -0.47   data arrival time
+-----------------------------------------------------------------------------
+                                  0.24   slack (MET)
+
+

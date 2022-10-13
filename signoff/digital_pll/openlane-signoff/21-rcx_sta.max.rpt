@@ -1,0 +1,322 @@
+
+===========================================================================
+report_checks -path_delay max (Setup)
+============================================================================
+Startpoint: _383_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _392_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _383_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.10    0.50    0.51 v _383_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.03                           pll_control.count0[1] (net)
+                  0.10    0.00    0.51 v _200_/A (sky130_fd_sc_hd__xor2_2)
+                  0.09    0.23    0.74 v _200_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _062_ (net)
+                  0.09    0.00    0.74 v _202_/A2 (sky130_fd_sc_hd__a211o_2)
+                  0.07    0.39    1.13 v _202_/X (sky130_fd_sc_hd__a211o_2)
+     3    0.01                           _064_ (net)
+                  0.07    0.00    1.13 v _212_/A2 (sky130_fd_sc_hd__a21o_2)
+                  0.06    0.26    1.39 v _212_/X (sky130_fd_sc_hd__a21o_2)
+     3    0.01                           _074_ (net)
+                  0.06    0.00    1.39 v _213_/A3 (sky130_fd_sc_hd__a32o_2)
+                  0.05    0.29    1.68 v _213_/X (sky130_fd_sc_hd__a32o_2)
+     3    0.01                           _075_ (net)
+                  0.05    0.00    1.68 v _224_/B1 (sky130_fd_sc_hd__a2111oi_2)
+                  0.26    0.34    2.02 ^ _224_/Y (sky130_fd_sc_hd__a2111oi_2)
+     1    0.00                           _086_ (net)
+                  0.26    0.00    2.02 ^ _227_/A1 (sky130_fd_sc_hd__o31a_2)
+                  0.42    0.49    2.51 ^ _227_/X (sky130_fd_sc_hd__o31a_2)
+    13    0.08                           _089_ (net)
+                  0.42    0.01    2.52 ^ _233_/C_N (sky130_fd_sc_hd__or4bb_2)
+                  0.09    0.67    3.18 v _233_/X (sky130_fd_sc_hd__or4bb_2)
+     1    0.00                           _095_ (net)
+                  0.09    0.00    3.18 v _238_/B (sky130_fd_sc_hd__and4_2)
+                  0.06    0.26    3.44 v _238_/X (sky130_fd_sc_hd__and4_2)
+     3    0.01                           _100_ (net)
+                  0.06    0.00    3.44 v _243_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.12    0.19    3.63 v _243_/X (sky130_fd_sc_hd__o31a_2)
+     8    0.03                           _105_ (net)
+                  0.12    0.00    3.63 v _260_/S (sky130_fd_sc_hd__mux2_1)
+                  0.06    0.35    3.99 v _260_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _036_ (net)
+                  0.06    0.00    3.99 v _392_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  3.99   data arrival time
+
+                          6.67    6.67   clock pll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.10    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    6.67 ^ _392_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                         -0.25    6.42   clock uncertainty
+                          0.00    6.42   clock reconvergence pessimism
+                         -0.11    6.31   library setup time
+                                  6.31   data required time
+-----------------------------------------------------------------------------
+                                  6.31   data required time
+                                 -3.99   data arrival time
+-----------------------------------------------------------------------------
+                                  2.32   slack (MET)
+
+
+Startpoint: _383_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _388_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _383_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.10    0.50    0.51 v _383_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.03                           pll_control.count0[1] (net)
+                  0.10    0.00    0.51 v _200_/A (sky130_fd_sc_hd__xor2_2)
+                  0.09    0.23    0.74 v _200_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _062_ (net)
+                  0.09    0.00    0.74 v _202_/A2 (sky130_fd_sc_hd__a211o_2)
+                  0.07    0.39    1.13 v _202_/X (sky130_fd_sc_hd__a211o_2)
+     3    0.01                           _064_ (net)
+                  0.07    0.00    1.13 v _212_/A2 (sky130_fd_sc_hd__a21o_2)
+                  0.06    0.26    1.39 v _212_/X (sky130_fd_sc_hd__a21o_2)
+     3    0.01                           _074_ (net)
+                  0.06    0.00    1.39 v _213_/A3 (sky130_fd_sc_hd__a32o_2)
+                  0.05    0.29    1.68 v _213_/X (sky130_fd_sc_hd__a32o_2)
+     3    0.01                           _075_ (net)
+                  0.05    0.00    1.68 v _224_/B1 (sky130_fd_sc_hd__a2111oi_2)
+                  0.26    0.34    2.02 ^ _224_/Y (sky130_fd_sc_hd__a2111oi_2)
+     1    0.00                           _086_ (net)
+                  0.26    0.00    2.02 ^ _227_/A1 (sky130_fd_sc_hd__o31a_2)
+                  0.42    0.49    2.51 ^ _227_/X (sky130_fd_sc_hd__o31a_2)
+    13    0.08                           _089_ (net)
+                  0.42    0.01    2.52 ^ _233_/C_N (sky130_fd_sc_hd__or4bb_2)
+                  0.09    0.67    3.18 v _233_/X (sky130_fd_sc_hd__or4bb_2)
+     1    0.00                           _095_ (net)
+                  0.09    0.00    3.18 v _238_/B (sky130_fd_sc_hd__and4_2)
+                  0.06    0.26    3.44 v _238_/X (sky130_fd_sc_hd__and4_2)
+     3    0.01                           _100_ (net)
+                  0.06    0.00    3.44 v _243_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.12    0.19    3.63 v _243_/X (sky130_fd_sc_hd__o31a_2)
+     8    0.03                           _105_ (net)
+                  0.12    0.00    3.63 v _270_/S (sky130_fd_sc_hd__mux2_1)
+                  0.05    0.34    3.98 v _270_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _032_ (net)
+                  0.05    0.00    3.98 v _388_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  3.98   data arrival time
+
+                          6.67    6.67   clock pll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.10    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    6.67 ^ _388_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                         -0.25    6.42   clock uncertainty
+                          0.00    6.42   clock reconvergence pessimism
+                         -0.11    6.31   library setup time
+                                  6.31   data required time
+-----------------------------------------------------------------------------
+                                  6.31   data required time
+                                 -3.98   data arrival time
+-----------------------------------------------------------------------------
+                                  2.34   slack (MET)
+
+
+Startpoint: _383_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _391_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _383_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.10    0.50    0.51 v _383_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.03                           pll_control.count0[1] (net)
+                  0.10    0.00    0.51 v _200_/A (sky130_fd_sc_hd__xor2_2)
+                  0.09    0.23    0.74 v _200_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _062_ (net)
+                  0.09    0.00    0.74 v _202_/A2 (sky130_fd_sc_hd__a211o_2)
+                  0.07    0.39    1.13 v _202_/X (sky130_fd_sc_hd__a211o_2)
+     3    0.01                           _064_ (net)
+                  0.07    0.00    1.13 v _212_/A2 (sky130_fd_sc_hd__a21o_2)
+                  0.06    0.26    1.39 v _212_/X (sky130_fd_sc_hd__a21o_2)
+     3    0.01                           _074_ (net)
+                  0.06    0.00    1.39 v _213_/A3 (sky130_fd_sc_hd__a32o_2)
+                  0.05    0.29    1.68 v _213_/X (sky130_fd_sc_hd__a32o_2)
+     3    0.01                           _075_ (net)
+                  0.05    0.00    1.68 v _224_/B1 (sky130_fd_sc_hd__a2111oi_2)
+                  0.26    0.34    2.02 ^ _224_/Y (sky130_fd_sc_hd__a2111oi_2)
+     1    0.00                           _086_ (net)
+                  0.26    0.00    2.02 ^ _227_/A1 (sky130_fd_sc_hd__o31a_2)
+                  0.42    0.49    2.51 ^ _227_/X (sky130_fd_sc_hd__o31a_2)
+    13    0.08                           _089_ (net)
+                  0.42    0.01    2.52 ^ _233_/C_N (sky130_fd_sc_hd__or4bb_2)
+                  0.09    0.67    3.18 v _233_/X (sky130_fd_sc_hd__or4bb_2)
+     1    0.00                           _095_ (net)
+                  0.09    0.00    3.18 v _238_/B (sky130_fd_sc_hd__and4_2)
+                  0.06    0.26    3.44 v _238_/X (sky130_fd_sc_hd__and4_2)
+     3    0.01                           _100_ (net)
+                  0.06    0.00    3.44 v _243_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.12    0.19    3.63 v _243_/X (sky130_fd_sc_hd__o31a_2)
+     8    0.03                           _105_ (net)
+                  0.12    0.00    3.63 v _262_/S (sky130_fd_sc_hd__mux2_1)
+                  0.05    0.34    3.98 v _262_/X (sky130_fd_sc_hd__mux2_1)
+     1    0.00                           _035_ (net)
+                  0.05    0.00    3.98 v _391_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  3.98   data arrival time
+
+                          6.67    6.67   clock pll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.10    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    6.67 ^ _391_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                         -0.25    6.42   clock uncertainty
+                          0.00    6.42   clock reconvergence pessimism
+                         -0.11    6.31   library setup time
+                                  6.31   data required time
+-----------------------------------------------------------------------------
+                                  6.31   data required time
+                                 -3.98   data arrival time
+-----------------------------------------------------------------------------
+                                  2.34   slack (MET)
+
+
+Startpoint: _383_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _390_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _383_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.10    0.50    0.51 v _383_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.03                           pll_control.count0[1] (net)
+                  0.10    0.00    0.51 v _200_/A (sky130_fd_sc_hd__xor2_2)
+                  0.09    0.23    0.74 v _200_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _062_ (net)
+                  0.09    0.00    0.74 v _202_/A2 (sky130_fd_sc_hd__a211o_2)
+                  0.07    0.39    1.13 v _202_/X (sky130_fd_sc_hd__a211o_2)
+     3    0.01                           _064_ (net)
+                  0.07    0.00    1.13 v _212_/A2 (sky130_fd_sc_hd__a21o_2)
+                  0.06    0.26    1.39 v _212_/X (sky130_fd_sc_hd__a21o_2)
+     3    0.01                           _074_ (net)
+                  0.06    0.00    1.39 v _213_/A3 (sky130_fd_sc_hd__a32o_2)
+                  0.05    0.29    1.68 v _213_/X (sky130_fd_sc_hd__a32o_2)
+     3    0.01                           _075_ (net)
+                  0.05    0.00    1.68 v _224_/B1 (sky130_fd_sc_hd__a2111oi_2)
+                  0.26    0.34    2.02 ^ _224_/Y (sky130_fd_sc_hd__a2111oi_2)
+     1    0.00                           _086_ (net)
+                  0.26    0.00    2.02 ^ _227_/A1 (sky130_fd_sc_hd__o31a_2)
+                  0.42    0.49    2.51 ^ _227_/X (sky130_fd_sc_hd__o31a_2)
+    13    0.08                           _089_ (net)
+                  0.42    0.01    2.52 ^ _233_/C_N (sky130_fd_sc_hd__or4bb_2)
+                  0.09    0.67    3.18 v _233_/X (sky130_fd_sc_hd__or4bb_2)
+     1    0.00                           _095_ (net)
+                  0.09    0.00    3.18 v _238_/B (sky130_fd_sc_hd__and4_2)
+                  0.06    0.26    3.44 v _238_/X (sky130_fd_sc_hd__and4_2)
+     3    0.01                           _100_ (net)
+                  0.06    0.00    3.44 v _243_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.12    0.19    3.63 v _243_/X (sky130_fd_sc_hd__o31a_2)
+     8    0.03                           _105_ (net)
+                  0.12    0.00    3.63 v _264_/C1 (sky130_fd_sc_hd__o211a_2)
+                  0.05    0.17    3.80 v _264_/X (sky130_fd_sc_hd__o211a_2)
+     1    0.01                           _123_ (net)
+                  0.05    0.00    3.80 v _265_/B (sky130_fd_sc_hd__xnor2_2)
+                  0.05    0.13    3.94 v _265_/Y (sky130_fd_sc_hd__xnor2_2)
+     1    0.00                           _034_ (net)
+                  0.05    0.00    3.94 v _390_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  3.94   data arrival time
+
+                          6.67    6.67   clock pll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.10    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    6.67 ^ _390_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                         -0.25    6.42   clock uncertainty
+                          0.00    6.42   clock reconvergence pessimism
+                         -0.10    6.32   library setup time
+                                  6.32   data required time
+-----------------------------------------------------------------------------
+                                  6.32   data required time
+                                 -3.94   data arrival time
+-----------------------------------------------------------------------------
+                                  2.38   slack (MET)
+
+
+Startpoint: _383_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Endpoint: _393_ (rising edge-triggered flip-flop clocked by pll_control_clock)
+Path Group: pll_control_clock
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                          0.00    0.00   clock pll_control_clock (rise edge)
+                          0.00    0.00   clock source latency
+                  0.10    0.00    0.00 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    0.00 ^ _383_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                  0.10    0.50    0.51 v _383_/Q (sky130_fd_sc_hd__dfrtp_2)
+     6    0.03                           pll_control.count0[1] (net)
+                  0.10    0.00    0.51 v _200_/A (sky130_fd_sc_hd__xor2_2)
+                  0.09    0.23    0.74 v _200_/X (sky130_fd_sc_hd__xor2_2)
+     3    0.01                           _062_ (net)
+                  0.09    0.00    0.74 v _202_/A2 (sky130_fd_sc_hd__a211o_2)
+                  0.07    0.39    1.13 v _202_/X (sky130_fd_sc_hd__a211o_2)
+     3    0.01                           _064_ (net)
+                  0.07    0.00    1.13 v _212_/A2 (sky130_fd_sc_hd__a21o_2)
+                  0.06    0.26    1.39 v _212_/X (sky130_fd_sc_hd__a21o_2)
+     3    0.01                           _074_ (net)
+                  0.06    0.00    1.39 v _213_/A3 (sky130_fd_sc_hd__a32o_2)
+                  0.05    0.29    1.68 v _213_/X (sky130_fd_sc_hd__a32o_2)
+     3    0.01                           _075_ (net)
+                  0.05    0.00    1.68 v _224_/B1 (sky130_fd_sc_hd__a2111oi_2)
+                  0.26    0.34    2.02 ^ _224_/Y (sky130_fd_sc_hd__a2111oi_2)
+     1    0.00                           _086_ (net)
+                  0.26    0.00    2.02 ^ _227_/A1 (sky130_fd_sc_hd__o31a_2)
+                  0.42    0.49    2.51 ^ _227_/X (sky130_fd_sc_hd__o31a_2)
+    13    0.08                           _089_ (net)
+                  0.42    0.01    2.52 ^ _233_/C_N (sky130_fd_sc_hd__or4bb_2)
+                  0.09    0.67    3.18 v _233_/X (sky130_fd_sc_hd__or4bb_2)
+     1    0.00                           _095_ (net)
+                  0.09    0.00    3.18 v _238_/B (sky130_fd_sc_hd__and4_2)
+                  0.06    0.26    3.44 v _238_/X (sky130_fd_sc_hd__and4_2)
+     3    0.01                           _100_ (net)
+                  0.06    0.00    3.44 v _243_/B1 (sky130_fd_sc_hd__o31a_2)
+                  0.12    0.19    3.63 v _243_/X (sky130_fd_sc_hd__o31a_2)
+     8    0.03                           _105_ (net)
+                  0.12    0.00    3.64 v _257_/A2 (sky130_fd_sc_hd__o22a_2)
+                  0.03    0.25    3.89 v _257_/X (sky130_fd_sc_hd__o22a_2)
+     1    0.00                           _037_ (net)
+                  0.03    0.00    3.89 v _393_/D (sky130_fd_sc_hd__dfrtp_2)
+                                  3.89   data arrival time
+
+                          6.67    6.67   clock pll_control_clock (rise edge)
+                          0.00    6.67   clock source latency
+                  0.10    0.00    6.67 ^ ringosc.ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.09                           pll_control.clock (net)
+                  0.10    0.00    6.67 ^ _393_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                         -0.25    6.42   clock uncertainty
+                          0.00    6.42   clock reconvergence pessimism
+                         -0.10    6.32   library setup time
+                                  6.32   data required time
+-----------------------------------------------------------------------------
+                                  6.32   data required time
+                                 -3.89   data arrival time
+-----------------------------------------------------------------------------
+                                  2.43   slack (MET)
+
+
