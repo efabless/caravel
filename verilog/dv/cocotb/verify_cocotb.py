@@ -103,7 +103,7 @@ class RunTest:
         if (self.sim_type=="GL_SDF"):
             macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"-{self.corner}\\\"'
             os.makedirs(f"annotation_logs",exist_ok=True)
-            dirs = f"{dirs} +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/sdf_pt\\\" +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
+            dirs = f"{dirs} +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime_signoff/\\\" +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
             full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         elif(self.sim_type=="GL"): 
             macros = f'{macros}  +define+GL  +define+SIM=GL'
