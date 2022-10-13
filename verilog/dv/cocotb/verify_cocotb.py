@@ -101,9 +101,11 @@ class RunTest:
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
         #     shutil.copyfile(f'{self.test_full_dir}/test_data',f'{self.sim_path}/test_data')
         if (self.sim_type=="GL_SDF"):
-            macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"-{self.corner}\\\"'
+            macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\" +define+CORNER=\\\"{self.corner[0:3]}\\\"'
+            # corner example is corner nom-t so `SDF_POSTFIX = tt and `CORNER = nom
             os.makedirs(f"annotation_logs",exist_ok=True)
-            dirs = f"{dirs} +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime_signoff/\\\" +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
+            dirs = f"{dirs}  +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
+            # +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime-signoff/\\\"
             full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         elif(self.sim_type=="GL"): 
             macros = f'{macros}  +define+GL  +define+SIM=GL'

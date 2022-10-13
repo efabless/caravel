@@ -24,7 +24,7 @@ parameter FILENAME={"hex_files/",`TESTNAME,".hex"};
 initial begin
 	`ifdef VCS
 		`ifdef ENABLE_SDF
-				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME , `SDF_POSTFIX, ".vpd"});
+				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME , `CORNER,"-",`SDF_POSTFIX, ".vpd"});
 		`else
 				$vcdplusfile({`MAIN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/",`TESTNAME ,".vpd"});
 		`endif
