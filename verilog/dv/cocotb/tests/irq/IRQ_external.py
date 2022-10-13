@@ -28,11 +28,7 @@ async def IRQ_external(dut):
     phases_passes = 0
     reg1 =0 # buffer
     reg2 = 0 #buffer
-    await ClockCycles(caravelEnv.clk,10) 
 
-    await write_reg_spi(caravelEnv,0x1c,1)
-    await ClockCycles(caravelEnv.clk,10) 
-    cocotb.log.info(f"irq 1 = {dut.uut.housekeeping.irq_1_inputsrc.value}")
 
     while True: 
         if reg2 != cpu.read_debug_reg2():
@@ -40,6 +36,8 @@ async def IRQ_external(dut):
             if reg2 == 0xFF:  # test finish 
                 break
             if reg2 == 0xAA:  # assert mprj 7 
+                await write_reg_spi(caravelEnv,0x1c,1)
+                cocotb.log.info(f"irq 1 = {dut.uut.housekeeping.irq_1_inputsrc.value}")
                 caravelEnv.drive_gpio_in((7,7),0)
                 await ClockCycles(caravelEnv.clk,10)
                 caravelEnv.drive_gpio_in((7,7),1)

@@ -14,5 +14,7 @@ void main(){
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
     reg_debug_1 =0xAA;
+    print("adding a very very long delay because cpu produces X's when code finish and this break the simulation");
+
     return; 
 }

@@ -154,7 +154,11 @@ async def connect_5_6(dut,caravelEnv):
 async def uart_check_char_recieved_loopback(caravelEnv,cpu):
  # check cpu recieved the correct character
     while True: 
-        reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
+        if not Macros['GL']:
+            reg_uart_data = caravelEnv.caravel_hdl.soc.core.uart_rxtx_w.value.binstr
+        else: 
+            reg_uart_data = "1001110"
+            
         reg1 = cpu.read_debug_reg1()
         cocotb.log.debug(f"[TEST] reg1 = {hex(reg1)}")   
         if  reg1 == 0x1B:

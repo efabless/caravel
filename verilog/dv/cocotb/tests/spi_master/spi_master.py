@@ -80,12 +80,14 @@ async def spi_master_temp(dut):
     # second val
     for i in range(8): 
         b = b + dut.bin35_monitor.value.binstr
-        await RisingEdge(dut.bin32_monitor)
+        if i != 7: # skip last cycle wait
+            await RisingEdge(dut.bin32_monitor)
     cocotb.log.info (f" [TEST] b = {b} = {int(b,2)}")
 
     s = int(a,2) + int(b,2)
     s_bin = bin(s)[2:].zfill(8)
     cocotb.log.info (f" [TEST] sending sum of {int(a,2)} + {int(b,2)} = {s} = {s_bin}")
+    await FallingEdge(dut.bin32_monitor)
     for i in range(8):
         dut.bin34_en.value = 1
         dut.bin34.value = int(s_bin[i],2) # bin 

@@ -9,7 +9,7 @@ void main(){
 
     while (reg_debug_1 != 0xAA);
     reg_hkspi_disable = 0;
-    // reg_hkspi_pll_ena =0;
+    reg_hkspi_pll_ena =0;
     reg_debug_1 =0xBB;
     print("adding a very very long delay because cpu produces X's when code finish and this break the simulation");
 }
