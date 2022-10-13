@@ -76,7 +76,7 @@ module digital_pll(
         .VPWR(VPWR),
         .VGND(VGND),
         .VPB(VPWR),
-        .VNB(vssd),
+        .VNB(VGND),
 `endif
         .A(clockp_buffer_in[0]),
         .X(clockp[0])
