@@ -49,7 +49,7 @@ void main(){
     reg_mprj_io_0  = GPIO_MODE_MGMT_STD_OUTPUT;
 
     // bitbang
-    for(int i =0;i<19*13;i++){
+    for(int i =0;i<62;i++){
         clock11();
         clock11();
         clock00();
