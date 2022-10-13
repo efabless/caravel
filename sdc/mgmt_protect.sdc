@@ -1,11 +1,12 @@
-### Management Protect Signoff SDC
-### Rev 1
-### Date: 9/10/2022
-
+###############################################################################
+# Created by write_sdc
+# Thu Oct 13 16:37:26 2022
+###############################################################################
+current_design mgmt_protect
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name v_clk -period 10
+create_clock -name v_clk -period 10.0000 
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_clk}]
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_clk2}]
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_rstn}]
@@ -1634,4 +1635,4 @@ set_load -pin_load 0.2000 [get_ports {user_irq[0]}]
 ###############################################################################
 # Design Rules
 ###############################################################################
-set_max_transition 0.75 [current_design]
+set_max_transition 1.2500 [current_design]
