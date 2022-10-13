@@ -32,9 +32,8 @@ set_false_path -from [get_ports $::env(RESET_PORT)]
 set_false_path -from [get_ports "porb"]
 
 ## INPUT/OUTPUT DELAYS
-set input_delay_value 10
-# output delay is 23 which is 2ns less than the clock period, this helps in fixing transition violations due to the high capacitances at the outputs ports
-set output_delay_value 10
+set input_delay_value 5
+set output_delay_value 5
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
 
@@ -47,7 +46,7 @@ set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "user_clock"]
 ## OUTPUT DELAYS
 
 # WISHBONE DELAY
-set wb_output_delay 10
+set wb_output_delay 5
 set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_ack_o]
 set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_dat_o[*]]
 
@@ -118,14 +117,15 @@ set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
 set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
 
 ## CLOCK UNCERTAINITY
-set wb_clk_uncer 0.3
-set sck_clk_uncer 0.3
+set wb_clk_uncer 0.2
+set sck_clk_uncer 0.2
 
 puts "\[INFO\]: Setting WB clock uncertainity to: $wb_clk_uncer"
 puts "\[INFO\]: Setting SCK clock uncertainity to: $sck_clk_uncer"
 set_clock_uncertainty $wb_clk_uncer [get_clocks {wb_clk_i}]
 set_clock_uncertainty $wb_clk_uncer [get_clocks {user_clock}]
 set_clock_uncertainty $sck_clk_uncer [get_clocks {sck}]
+set_clock_uncertainty $sck_clk_uncer [get_clocks {wbbd_sck}]
 
 ## CLOCK TRANSITION
 set wb_clk_tran 0.15
@@ -145,3 +145,12 @@ set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## MAX Transition
 set_max_trans 0.75 [current_design]
+
+set_max_transition 0.4 [get_clocks {wb_clk_i}] -clock_path
+set_max_transition 0.4 [get_clocks {user_clock}] -clock_path
+set_max_transition 0.4 [get_clocks {sck}] -clock_path
+
+set_max_transition 0.4 [get_ports {pad_flash_clk}] -clock_path
+set_max_transition 0.4 [get_ports {mgmt_gpio_out[15]}] -clock_path
+set_max_transition 0.4 [get_ports {mgmt_gpio_out[9]}] -clock_path
+set_max_transition 0.4 [get_ports {mgmt_gpio_out[14]}] -clock_path

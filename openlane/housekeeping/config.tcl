@@ -15,6 +15,7 @@
 
 ## This should be changed to point at Caravel root
 set ::env(CARAVEL_ROOT) $::env(DESIGN_DIR)/../..
+set ::env(STA_WRITE_LIB) 0
 
 set ::env(DESIGN_NAME) "housekeeping"
 set ::env(ROUTING_CORES) 12
@@ -38,7 +39,6 @@ set ::env(NO_SYNTH_CELL_LIST) [glob $::env(DESIGN_DIR)/no_synth.list]
 set ::env(SYNTH_STRATEGY) "AREA 0"
 
 set ::env(SYNTH_MAX_FANOUT) 20
-# set ::env(SYNTH_CAP_LOAD) "180"
 set ::env(SYNTH_BUFFERING) 0
 
 ## Floorplan
@@ -55,15 +55,16 @@ set ::env(FP_PDN_HSPACING) 74.99
 set ::env(FP_PDN_HOFFSET) 16.41
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.28
+set ::env(PL_TARGET_DENSITY) 0.31
 set ::env(PL_TIME_DRIVEN) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 80
+# set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 250
+set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.4
 
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.02
-# set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "30"
-# set ::env(PL_RESIZER_MAX_CAP_MARGIN) "30"
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
+set ::env(PL_RESIZER_MAX_SLEW_MARGIN) "50"
+set ::env(PL_RESIZER_MAX_CAP_MARGIN) "50"
 
 # set ::env(PL_RESIZER_HOLD_MAX_BUFFER_PERCENT) 50
 # set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 1
@@ -75,10 +76,11 @@ set ::env(GLB_OVERFLOW_ITERS) 100
 set ::env(GRT_ALLOW_CONGESTION) 1
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.1
-set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 100
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.4
+# set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 250
 # set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) "30"
 # set ::env(GLB_RESIZER_MAX_CAP_MARGIN) "30"
+set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 0.2
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) 3
@@ -89,3 +91,5 @@ set ::env(GRT_MAX_DIODE_INS_ITERS) 10
 ## clock buffering
 # set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4}
 # set ::env(CTS_ROOT_BUFFER) {sky130_fd_sc_hd__clkbuf_8}
+# set ::env(CTS_CLK_MAX_WIRE_LENGTH) 120
+set ::env(CTS_MAX_CAP) 0.25
