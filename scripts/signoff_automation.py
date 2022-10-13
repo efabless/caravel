@@ -379,7 +379,7 @@ if __name__ == "__main__":
     gl = args.gl
     sdf = args.sdf
     iverilog = args.iverilog
-    verification = args.verification
+    verification = args.vcs
     sta = args.primetime_sta
     design = args.design
     antenna = args.antenna
@@ -390,7 +390,7 @@ if __name__ == "__main__":
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
 
-    if lvs or drc:
+    if lvs or drc or antenna:
         if glob.glob(f"{caravel_root}/gds/*.gz"):
             logging.error(f"Compressed gds files in {caravel_root}. Please uncompress first.")
             exit(1)
