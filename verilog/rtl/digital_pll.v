@@ -43,6 +43,7 @@ module digital_pll(
 
     output [1:0] clockp;	// Two 90 degree clock phases
 
+    wire [1:0]   clockp_buffer_in;	// Input wires to clockp buffers
     wire [25:0]  itrim;		// Internally generated trim bits
     wire [25:0]  otrim;		// Trim bits applied to the ring oscillator
     wire	 creset;	// Controller reset
@@ -58,15 +59,39 @@ module digital_pll(
     ring_osc2x13 ringosc (
         .reset(ireset),
         .trim(itrim),
-        .clockp(clockp)
+        .clockp(clockp_buffer_in)
     );
 
     digital_pll_controller pll_control (
         .reset(creset),
-        .clock(clockp[0]),
+        .clock(clockp_buffer_in[0]),
         .osc(osc),
         .div(div),
         .trim(otrim)
+    );
+
+    (* keep *)
+    sky130_fd_sc_hd__clkbuf_16 clockp_buffer_0 (
+`ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+`endif
+        .A(clockp_buffer_in[0]),
+        .X(clockp[0])
+    );
+
+    (* keep *)
+    sky130_fd_sc_hd__clkbuf_16 clockp_buffer_1 (
+`ifdef USE_POWER_PINS
+        .VPWR(VPWR),
+        .VGND(VGND),
+        .VPB(VPWR),
+        .VNB(VGND),
+`endif
+        .A(clockp_buffer_in[1]),
+        .X(clockp[1])
     );
 
 endmodule

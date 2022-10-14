@@ -45,26 +45,40 @@ module user_project_gpio_example (
 );
     reg [31:0] io_l;
     reg [5:0] io_h;
-
+    reg [31:0] oeb_l;
+    reg [5:0] oeb_h;
 
      always @(posedge wb_clk_i or posedge wb_rst_i) begin
         if (wb_rst_i) begin
             io_l <=0;
             io_h <=0;
+            oeb_l <=0;
+            oeb_h <=0;
             wbs_dat_o   <=0;
             wbs_ack_o   <=0;
-        end else if (wbs_cyc_i && wbs_stb_i && wbs_we_i && !wbs_ack_o && (wbs_adr_i[3:0]==4'h4||wbs_adr_i[3:0]==4'h0))begin // write
+
+        end else if (wbs_cyc_i && wbs_stb_i && wbs_we_i && !wbs_ack_o && (wbs_adr_i[31:0]==32'h300FFFF4||wbs_adr_i[31:0]==32'h300FFFF0||wbs_adr_i[31:0]==32'h300FFFEC||wbs_adr_i[31:0]==32'h300FFFE8))begin // write
             // write to io_l
-            io_l[7:0]    <= ((wbs_adr_i[3:0]==4'h0) && wbs_sel_i[0])?  wbs_dat_i[7:0]   :io_l[7:0];
-            io_l[15:8]   <= ((wbs_adr_i[3:0]==4'h0) && wbs_sel_i[1])?  wbs_dat_i[15:8]  :io_l[15:8];
-            io_l[23:16]  <= ((wbs_adr_i[3:0]==4'h0) && wbs_sel_i[2])?  wbs_dat_i[23:16] :io_l[23:16];
-            io_l[31:24]  <= ((wbs_adr_i[3:0]==4'h0) && wbs_sel_i[3])?  wbs_dat_i[31:24] :io_l[31:24];
+            io_l[7:0]    <= ((wbs_adr_i[31:0]==32'h300FFFF0) && wbs_sel_i[0])?  wbs_dat_i[7:0]   :io_l[7:0];
+            io_l[15:8]   <= ((wbs_adr_i[31:0]==32'h300FFFF0) && wbs_sel_i[1])?  wbs_dat_i[15:8]  :io_l[15:8];
+            io_l[23:16]  <= ((wbs_adr_i[31:0]==32'h300FFFF0) && wbs_sel_i[2])?  wbs_dat_i[23:16] :io_l[23:16];
+            io_l[31:24]  <= ((wbs_adr_i[31:0]==32'h300FFFF0) && wbs_sel_i[3])?  wbs_dat_i[31:24] :io_l[31:24];
             // io_h
-            io_h[5:0]  <= ((wbs_adr_i[3:0]==4'h4) && wbs_sel_i[0])?  wbs_dat_i[5:0] :io_h[5:0];
+            io_h[5:0]  <= ((wbs_adr_i[31:0]==32'h300FFFF4) && wbs_sel_i[0])?  wbs_dat_i[5:0] :io_h[5:0];
+            // oeb_l
+            oeb_l[7:0]    <= ((wbs_adr_i[31:0]==32'h300FFFEC) && wbs_sel_i[0])?  wbs_dat_i[7:0]   :oeb_l[7:0];
+            oeb_l[15:8]   <= ((wbs_adr_i[31:0]==32'h300FFFEC) && wbs_sel_i[1])?  wbs_dat_i[15:8]  :oeb_l[15:8];
+            oeb_l[23:16]  <= ((wbs_adr_i[31:0]==32'h300FFFEC) && wbs_sel_i[2])?  wbs_dat_i[23:16] :oeb_l[23:16];
+            oeb_l[31:24]  <= ((wbs_adr_i[31:0]==32'h300FFFEC) && wbs_sel_i[3])?  wbs_dat_i[31:24] :oeb_l[31:24];
+            // oeb_h
+            oeb_h[7:0]    <= ((wbs_adr_i[31:0]==32'h300FFFE8) && wbs_sel_i[0])?  wbs_dat_i[7:0]   :oeb_h[7:0];
+            oeb_h[15:8]   <= ((wbs_adr_i[31:0]==32'h300FFFE8) && wbs_sel_i[1])?  wbs_dat_i[15:8]  :oeb_h[15:8];
+            oeb_h[23:16]  <= ((wbs_adr_i[31:0]==32'h300FFFE8) && wbs_sel_i[2])?  wbs_dat_i[23:16] :oeb_h[23:16];
+            oeb_h[31:24]  <= ((wbs_adr_i[31:0]==32'h300FFFE8) && wbs_sel_i[3])?  wbs_dat_i[31:24] :oeb_h[31:24];
 
             wbs_ack_o <= 1;
-        end else if (wbs_cyc_i && wbs_stb_i && !wbs_we_i && !wbs_ack_o && (wbs_adr_i[3:0]==4'h4||wbs_adr_i[3:0]==4'h0)) begin // read 
-            wbs_dat_o <= (wbs_adr_i[3:0]==4'h0)? io_in[31:0] : io_in[`MPRJ_IO_PADS-1:32]; 
+        end else if (wbs_cyc_i && wbs_stb_i && !wbs_we_i && !wbs_ack_o && (wbs_adr_i[31:0]==32'h300FFFF4||wbs_adr_i[31:0]==32'h300FFFF0||wbs_adr_i[31:0]==32'h300FFFEC||wbs_adr_i[31:0]==32'h300FFFE8)) begin // read 
+            wbs_dat_o <= (wbs_adr_i[31:0]==32'h300FFFF0)? io_in[31:0] :(wbs_adr_i[31:0]==32'h300FFFF4)? io_in[`MPRJ_IO_PADS-1:32] : (wbs_adr_i[31:0]==32'h300FFFEC) ? io_oeb[31:0]: io_oeb[37:32]; 
             wbs_ack_o <= 1;
         end else begin 
             wbs_ack_o <= 0;
@@ -73,7 +87,7 @@ module user_project_gpio_example (
     end
    
     assign io_out = {io_h,io_l};
-    assign io_oeb = 38'h0;
+    assign io_oeb = {oeb_h,oeb_l};
 
 endmodule
 

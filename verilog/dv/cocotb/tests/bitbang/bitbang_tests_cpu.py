@@ -21,30 +21,31 @@ async def bitbang_cpu_all_o(dut):
     cpu.cpu_release_reset()
    
     await wait_reg1(cpu,caravelEnv,0xFF)
+    await caravelEnv.release_csb()
     cocotb.log.info("[TEST] finish configuring using bitbang")
     i= 0x20
     for j in range(5):
         await wait_reg2(cpu,caravelEnv,37-j)
-        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,4))} j = {j}')
-        if caravelEnv.monitor_gpio((37,4)).integer != i << 28:
-            cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,4))} instead of {bin(i << 28)}')
+        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,0))} j = {j}')
+        if caravelEnv.monitor_gpio((37,0)).integer != i<<32:
+            cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,0))} instead of {bin(i<<32)}')
         await wait_reg2(cpu,caravelEnv,0)
-        if caravelEnv.monitor_gpio((37,4)).integer != 0:
-            cocotb.log.error(f'[TEST] Wrong gpio output {caravelEnv.monitor_gpio((37,4))} instead of {bin(0x00000)}')
+        if caravelEnv.monitor_gpio((37,0)).integer != 0:
+            cocotb.log.error(f'[TEST] Wrong gpio output {caravelEnv.monitor_gpio((37,0))} instead of {bin(0x00000)}')
         i = i >> 1
         i |= 0x20
 
     i= 0x80000000
     for j in range(32):
         await wait_reg2(cpu,caravelEnv,32-j)
-        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,4))} j = {j}')
+        cocotb.log.info(f'[Test] gpio out = {caravelEnv.monitor_gpio((37,0))} j = {j}')
         if caravelEnv.monitor_gpio((37,32)).integer != 0x3f:
             cocotb.log.error(f'[TEST] Wrong gpio high bits output {caravelEnv.monitor_gpio((37,32))} instead of {bin(0x3f)} ')
-        if caravelEnv.monitor_gpio((31,4)).integer != i>>4 :
-            cocotb.log.error(f'[TEST] Wrong gpio low bits output {caravelEnv.monitor_gpio((31,4))} instead of {bin(i>>4)}')
+        if caravelEnv.monitor_gpio((31,0)).integer != i :
+            cocotb.log.error(f'[TEST] Wrong gpio low bits output {caravelEnv.monitor_gpio((31,0))} instead of {bin(i)}')
         await wait_reg2(cpu,caravelEnv,0)
-        if caravelEnv.monitor_gpio((37,4)).integer != 0:
-            cocotb.log.error(f'Wrong gpio output {caravelEnv.monitor_gpio((37,4))} instead of {bin(0x00000)}')
+        if caravelEnv.monitor_gpio((37,0)).integer != 0:
+            cocotb.log.error(f'Wrong gpio output {caravelEnv.monitor_gpio((37,0))} instead of {bin(0x00000)}')
 
         i = i >> 1
         i |= 0x80000000
@@ -113,7 +114,7 @@ async def bitbang_cpu_all_01(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_0011(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=5065204)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=5963970)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -134,7 +135,7 @@ async def bitbang_cpu_all_0011(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_1100(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=10000000000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=5962067)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -224,7 +225,7 @@ async def bitbang_cpu_all_i(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_spi_o(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=639757)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=2639757)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -289,7 +290,7 @@ async def bitbang_spi_o(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_spi_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=56703)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=11156703)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -316,7 +317,7 @@ async def bitbang_spi_i(dut):
     await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 1	and 36	
     await clock_in_right_i_left_i_standard_spi(caravelEnv,0) # 0	and 37	
     await load_spi(caravelEnv)		                         # load
-
+    cpu.write_debug_reg2_backdoor(0xDD)
     await wait_reg1(cpu,caravelEnv,0xAA)
     cocotb.log.info(f"[TEST] configuration finished")
     data_in = 0x8F66FD7B

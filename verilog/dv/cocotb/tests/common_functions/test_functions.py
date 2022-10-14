@@ -57,7 +57,7 @@ def repot_test(func):
         cocotb.log.error = CallCounted(cocotb.log.error)
         cocotb.log.critical = CallCounted(cocotb.log.critical)
         cocotb.log.warning = CallCounted(cocotb.log.warning)
-        handler = logging.FileHandler(f"sim/{os.getenv('RUNTAG')}/{os.getenv('SIM')}-{TestName}/{TestName}.log",mode='w')
+        handler = logging.FileHandler(f"sim/{os.getenv('RUNTAG')}/{os.getenv('TESTFULLNAME')}/{TestName}.log",mode='w')
         handler.addFilter(SimTimeContextFilter())
         handler.setFormatter(SimLogFormatter())
         cocotb.log.addHandler(handler) 

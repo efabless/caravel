@@ -10,6 +10,7 @@ from fnmatch import fnmatch
 from datetime import datetime
 import random
 from pathlib import Path
+import shutil
 
 
 iverilog = True
@@ -30,12 +31,27 @@ def search_str(file_path, word):
         else:
             return "failed"
 
+def change_dff(str,new_str,file_path):
+    # Read in the file
+    with open(file_path, 'r') as file :
+        filedata = file.read()
+
+    if new_str == "> dff2":
+        if new_str in filedata: # to avoid type dff22 types 
+            return
+    # Replace the target string
+    filedata = filedata.replace(str, new_str)
+
+    # Write the file out again
+    with open(file_path, 'w') as file:
+        file.write(filedata)
 
 class RunTest:
-    def __init__(self,test_name,sim) -> None:
+    def __init__(self,test_name,sim,corner) -> None:
         self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.test_name = test_name
         self.sim_type  = sim
+        self.corner  = corner
         self.create_log_file()
         self.hex_generate()
         self.runTest()
@@ -45,6 +61,8 @@ class RunTest:
         self.cd_cocotb()
         os.chdir(f"sim/{os.getenv('RUNTAG')}")
         test_dir = f"{self.sim_type}-{self.test_name}"
+        if (self.sim_type == "GL_SDF"):
+            test_dir = f'{test_dir}-{self.corner}'
         os.makedirs(f"{test_dir}",exist_ok=True)
         self.cd_cocotb()
         self.sim_path = f"sim/{os.getenv('RUNTAG')}/{test_dir}/"
@@ -75,7 +93,7 @@ class RunTest:
         os.system(f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
- 
+
     # vcs function      
     def runTest_vcs(self):
         print(f"Start running test: {self.sim_type}-{self.test_name}")
@@ -87,18 +105,22 @@ class RunTest:
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.list\\\" '
         else: 
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
-
+        full_test_name = f"{self.sim_type}-{self.test_name}"
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
-        if self.test_name == "gpio_all_o_user":
+        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
             macros = f'{macros} +define+GPIO_TESTING'
         # shutil.copyfile(f'{self.test_full_dir}/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
         #     shutil.copyfile(f'{self.test_full_dir}/test_data',f'{self.sim_path}/test_data')
         if (self.sim_type=="GL_SDF"):
-            macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"-{self.corner}\\\"'
+            macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\" +define+CORNER=\\\"{self.corner[0:3]}\\\"'
+            # corner example is corner nom-t so `SDF_POSTFIX = tt and `CORNER = nom
             os.makedirs(f"annotation_logs",exist_ok=True)
+            dirs = f"{dirs}  +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
+            # +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime-signoff/\\\"
+            full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         elif(self.sim_type=="GL"): 
             macros = f'{macros}  +define+GL  +define+SIM=GL'
         elif (self.sim_type=="RTL"): 
@@ -111,12 +133,16 @@ class RunTest:
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
-        
-        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.sim_type}-{self.test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
-        os.system(f"vcs {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
+        os.environ["TESTFULLNAME"] = f"{full_test_name}"
+
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
+        if os.path.exists(f"{self.cocotb_path}/sdfAnnotateInfo"):
+            shutil.move(f"{self.cocotb_path}/sdfAnnotateInfo", f"{self.sim_path}/sdfAnnotateInfo")
+        shutil.copyfile(f'{self.cocotb_path}/hex_files/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
 
     def find(self,name, path):
         for root, dirs, files in os.walk(path):
@@ -133,6 +159,7 @@ class RunTest:
         return (test_path)
 
     def hex_generate(self):
+        tests_use_dff2 = ["mem_dff"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()
@@ -154,6 +181,9 @@ class RunTest:
                  f"--strip-debug -ffreestanding -nostdlib -o {elf_out} {SOURCE_FILES} {c_file}")
         hex_command = f"{GCC_PATH}/{GCC_PREFIX}-objcopy -O verilog {elf_out} {hex_file} "
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
+        #change linker script to dff2 
+        if self.test_name in tests_use_dff2:
+            change_dff(str="> dff",new_str="> dff2",file_path=LINKER_SCRIPT)
         hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
@@ -163,6 +193,8 @@ class RunTest:
         if hex_gen_state != 0 :
             print(f"fatal: Error when generating hex")
             sys.exit()
+        if self.test_name in tests_use_dff2:
+            change_dff(str="> dff2",new_str="> dff",file_path=LINKER_SCRIPT)
 
     def cd_make(self):
         os.chdir(f"{os.getenv('VERILOG_PATH')}/dv/make")
@@ -171,11 +203,12 @@ class RunTest:
         os.chdir(self.cocotb_path)
 
 class RunRegression: 
-    def __init__(self,regression,test,type_arg,testlist) -> None:
+    def __init__(self,regression,test,type_arg,testlist,corner) -> None:
         self.cocotb_path = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb"
         self.regression_arg = regression
         self.test_arg = test
         self.testlist_arg = testlist
+        self.corners = corner
         if type_arg is None:
             type_arg = "RTL"
         self.type_arg = type_arg
@@ -187,7 +220,7 @@ class RunRegression:
         self.run_regression()
 
     def get_tests(self):
-        self.tests = collections.defaultdict(lambda : collections.defaultdict(dict)) #key is testname and value is list of sim types
+        self.tests = collections.defaultdict(lambda : collections.defaultdict(lambda : collections.defaultdict(dict))) #key is testname and value is list of sim types
         self.unknown_tests = 0
         self.passed_tests = 0
         self.failed_tests = 0
@@ -198,8 +231,13 @@ class RunRegression:
                 if fnmatch(test,"_*"):
                         continue
                 for sim_type in sim_types:
-                    if self.regression_arg in test_elements[sim_type]: 
-                        self.add_new_test(test_name=test,sim_type = sim_type)
+                    if sim_type =="GL_SDF": 
+                        for corner in self.corners: 
+                            if self.regression_arg in test_elements[sim_type]: 
+                                self.add_new_test(test_name=test,sim_type = sim_type,corner = corner)
+                    else: 
+                        if self.regression_arg in test_elements[sim_type]: 
+                                self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
             if (len(self.tests)==0):
                 print(f"fatal:{self.regression_arg} is not a valid regression name please input a valid regression \ncheck tests.json for more info")
                 sys.exit()
@@ -210,9 +248,15 @@ class RunRegression:
                     if test in self.tests_json:
                         if isinstance(self.type_arg,list):
                             for sim_type in self.type_arg:
-                                self.add_new_test(test_name=test,sim_type = sim_type)
+                                if sim_type =="GL_SDF": 
+                                    for corner in self.corners: 
+                                        self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
+                                else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
                         else:
-                            self.add_new_test(test_name=test,sim_type = self.type_arg)
+                            if sim_type =="GL_SDF": 
+                                for corner in self.corners: 
+                                    self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
+                            else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
 
             else:
                 if self.test_arg in self.tests_json:
@@ -229,35 +273,37 @@ class RunRegression:
 
         self.update_reg_log()
 
-    def add_new_test(self,test_name,sim_type):
-        self.tests[test_name][sim_type]["status"]= "pending"
-        self.tests[test_name][sim_type]["starttime"]= "-"
-        self.tests[test_name][sim_type]["endtime"]= "-"
-        self.tests[test_name][sim_type]["duration"] = "-"
-        self.tests[test_name][sim_type]["pass"]= "-"
+    def add_new_test(self,test_name,sim_type,corner):
+        self.tests[test_name][sim_type][corner]["status"]= "pending"
+        self.tests[test_name][sim_type][corner]["starttime"]= "-"
+        self.tests[test_name][sim_type][corner]["endtime"]= "-"
+        self.tests[test_name][sim_type][corner]["duration"] = "-"
+        self.tests[test_name][sim_type][corner]["pass"]= "-"
         self.unknown_tests +=1
 
     def run_regression(self):
         for test,sim_types in self.tests.items():
-            for sim_type,status in sim_types.items(): # TODO: add multithreading or multiprocessing here
-                start_time = datetime.now()
-                self.tests[test][sim_type]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                self.tests[test][sim_type]["duration"] = "-"
-                self.tests[test][sim_type]["status"] = "running"
-                self.update_reg_log()
-                test_run = RunTest(test,sim_type)
-                self.tests[test][sim_type]["status"] = "done"
-                self.tests[test][sim_type]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                self.tests[test][sim_type]["duration"] = ("%.10s" % (datetime.now() - start_time))
-                self.tests[test][sim_type]["pass"]= test_run.passed
-                if test_run.passed == "passed":
-                    self.passed_tests +=1
-                elif test_run.passed == "failed":
-                    self.failed_tests +=1
-                self.unknown_tests -=1
-                self.update_reg_log()
-            if coverage:
-                self.generate_cov()
+            for sim_type,corners in sim_types.items(): # TODO: add multithreading or multiprocessing here
+                for corner,status in corners.items(): # TODO: add multithreading or multiprocessing here
+                    start_time = datetime.now()
+                    self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
+                    self.tests[test][sim_type][corner]["duration"] = "-"
+                    self.tests[test][sim_type][corner]["status"] = "running"
+                    self.update_reg_log()
+                    test_run = RunTest(test,sim_type,corner)
+                    self.tests[test][sim_type][corner]["status"] = "done"
+                    self.tests[test][sim_type][corner]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
+                    self.tests[test][sim_type][corner]["duration"] = ("%.10s" % (datetime.now() - start_time))
+                    self.tests[test][sim_type][corner]["pass"]= test_run.passed
+                    if test_run.passed == "passed":
+                        self.passed_tests +=1
+                    elif test_run.passed == "failed":
+                        self.failed_tests +=1
+                    self.unknown_tests -=1
+                    self.update_reg_log()
+            
+        if coverage:
+            self.generate_cov()
         #TODO: add send mail here
     
     def generate_cov(self):
@@ -272,9 +318,10 @@ class RunRegression:
         f = open(file_name, "w")
         f.write(f"{'Test':<25} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
         for test,sim_types in self.tests.items():
-            for sim_type,status in sim_types.items():
-                new_test_name= f"{sim_type}-{test}"
-                f.write(f"{new_test_name:<25} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
+            for sim_type,corners in sim_types.items():
+                for corner,status in corners.items():
+                    new_test_name= f"{sim_type}-{test}-{corner}"
+                    f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown ")
         f.close()
     
@@ -289,20 +336,21 @@ class main():
         self.regression = args.regression
         self.test       = args.test
         self.testlist   = args.testlist
-        self.type       = args.sim
+        self.sim       = args.sim
         self.tag        = args.tag
+        self.corner        = args.corner
         self.maxerr        = args.maxerr
         self.check_valid_args()
         self.set_tag()
         self.def_env_vars()
-        RunRegression(self.regression,self.test,self.type,self.testlist)
+        RunRegression(self.regression,self.test,self.sim,self.testlist,self.corner)
 
     def check_valid_args(self):
         if all(v is  None for v in [self.regression, self.test, self.testlist]):
             print ("Fatal: Should provide at least one of the following options regression, test or testlist for more info use --help")
             sys.exit()
-        if not set(self.type).issubset(["RTL","GL","GL_SDF"]):
-            print (f"Fatal: {self.type} isnt a correct type for -sim it should be one or combination of the following RTL, GL or GL_SDF")
+        if not set(self.sim).issubset(["RTL","GL","GL_SDF"]):
+            print (f"Fatal: {self.sim} isnt a correct type for -sim it should be one or combination of the following RTL, GL or GL_SDF")
             sys.exit()
     def set_tag(self):
         self.TAG = None # tag will be set in the main phase and other functions will use it
@@ -338,7 +386,8 @@ parser.add_argument('-testlist','-tl', help='path of testlist to be run ')
 parser.add_argument('-tag', help='provide tag of the run default would be regression name and if no regression is provided would be run_<random float>_<timestamp>_')
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
-parser.add_argument('-cov','-c',action='store_true', help='enable code coverage')
+parser.add_argument('-cov',action='store_true', help='enable code coverage')
+parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -347,6 +396,8 @@ if args.cov:
     coverage = True
 if args.sim == None: 
     args.sim= ["RTL"]
+if args.corner == None: 
+    args.corner= ["nom-t"]
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 

@@ -21,8 +21,8 @@ puts "\[INFO\]: Setting timing derate to: [expr {$::env(SYNTH_TIMING_DERATE) * 1
 set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
 set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
 
-puts "\[INFO\]: Setting clock uncertainity to: $::env(SYNTH_CLOCK_UNCERTAINITY)"
-set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINITY) [get_clocks {pll_control_clock}]
+puts "\[INFO\]: Setting clock uncertainity to: $::env(SYNTH_CLOCK_UNCERTAINTY)"
+set_clock_uncertainty $::env(SYNTH_CLOCK_UNCERTAINTY) [get_clocks {pll_control_clock}]
 
 puts "\[INFO\]: Setting clock transition to: $::env(SYNTH_CLOCK_TRANSITION)"
 set_clock_transition $::env(SYNTH_CLOCK_TRANSITION) [get_clocks {pll_control_clock}]

@@ -13,15 +13,14 @@
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
 
-set script_dir [file dirname [file normalize [info script]]]
 
 set ::env(DESIGN_NAME) caravel_clocking
 set ::env(DESIGN_IS_CORE) 1
 
 set ::env(VERILOG_FILES) "\
-	$script_dir/../../verilog/rtl/defines.v\
-	$script_dir/../../verilog/rtl/clock_div.v\
-	$script_dir/../../verilog/rtl/caravel_clocking.v"
+	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
+	$::env(DESIGN_DIR)/../../verilog/rtl/clock_div.v\
+	$::env(DESIGN_DIR)/../../verilog/rtl/caravel_clocking.v"
 
 set ::env(CLOCK_PORT) "ext_clk"
 set ::env(CLOCK_NET) "ext_clk core_clk pll_clk pll_clk90"
@@ -32,48 +31,59 @@ set ::env(RUN_KLAYOUT) 0
 ## Synthesis
 set ::env(SYNTH_STRATEGY) "DELAY 0"
 set ::env(CLOCK_TREE_SYNTH) 1
+set ::env(SYNTH_SIZING) 0
+set ::env(SYNTH_BUFFERING) 0
 
-set ::env(BASE_SDC_FILE) $script_dir/base.sdc 
+set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc 
 
-set ::env(NO_SYNTH_CELL_LIST) $script_dir/no_synth.list 
+set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list 
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 100 60"
 
-set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
+set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/caravel_clocking.def
 
 set ::env(FP_TAPCELL_DIST) 6
 
-set ::env(LEFT_MARGIN_MULT) 0
-set ::env(BOTTOM_MARGIN_MULT) 0
+set ::env(LEFT_MARGIN_MULT) 2
+set ::env(BOTTOM_MARGIN_MULT) 2
 set ::env(TOP_MARGIN_MULT) "2"
+set ::env(BOTTOM_MARGIN_MULT) "1"
 
-set ::env(CELL_PAD) 0
+set ::env(DPL_CELL_PADDING) 0
+set ::env(GPL_CELL_PADDING) 0
+set ::env(DIODE_PADDING) 0
 
 ## PDN
 set ::env(FP_PDN_HPITCH) 16.9
 set ::env(FP_PDN_VPITCH) 15.5
+set ::env(FP_PDN_HSPACING) 6.85
+set ::env(FP_PDN_VSPACING) 6.15
+set ::env(FP_PDN_HOFFSET) 13.69
+set ::env(FP_PDN_VOFFSET) 15.4
+# vertical 21.29 15.61
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.74
+set ::env(PL_TARGET_DENSITY) 0.9
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.25
+set ::env(GRT_RESIZER_HOLD_SLACK_MARGIN) 0.25
 
 ## Routing
-set ::env(GLB_RT_ADJUSTMENT) 0
+set ::env(GRT_ADJUSTMENT) 0
 
-set ::env(GLB_RT_MINLAYER) 2
-set ::env(GLB_RT_MAXLAYER) 6
-
-# prevent signal routing on li1
-set ::env(GLB_RT_OBS) "\
-	li1 0 54.64000 100.0 60,\
-	li1 94.29500 0 100 60"
-
-set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+set ::env(GRT_RESIZER_TIMING_OPTIMIZATIONS) 1
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) 4
+
+set ::env(SYNTH_EXTRA_MAPPING_FILE) $::env(SYNTH_MUX_MAP)
+set ::env(RSZ_DONT_TOUCH_RX) "core_clk|user_clk"
+set ::env(RSZ_USE_OLD_REMOVER) 1
+set ::env(FP_PDN_SKIP_TRIM) 1
+set ::env(CTS_MAX_CAP) 0.25
+
+#set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/drc_exclude.list
+set ::env(SYNTH_MAX_FANOUT) 12
