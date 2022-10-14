@@ -60,7 +60,7 @@ set ::env(FP_PDN_HPITCH) 16.9
 set ::env(FP_PDN_VPITCH) 15.5
 set ::env(FP_PDN_HSPACING) 6.85
 set ::env(FP_PDN_VSPACING) 6.15
-set ::env(FP_PDN_HOFFSET) 10.97
+set ::env(FP_PDN_HOFFSET) 13.69
 set ::env(FP_PDN_VOFFSET) 15.4
 # vertical 21.29 15.61
 
