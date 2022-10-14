@@ -55,15 +55,17 @@ if {\
 
     # Reading constraints (signoff)
     if {$::env(DESIGN) == "mgmt_core_wrapper" | $::env(DESIGN) == "RAM256" | $::env(DESIGN) == "RAM128"} {
-      read_sdc $::env(MCW_ROOT)/sdc/$::env(DESIGN).sdc
+      read_sdc $::env(MCW_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
     } else {
-      read_sdc $::env(CARAVEL_ROOT)/sdc/$::env(DESIGN).sdc
+      read_sdc $::env(CARAVEL_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
     }
 
     # Reading parasitics based on the RC corner specified
     proc read_spefs {design rc_corner} {
       if {$design == "caravel"} {
+        set spef_mapping(flash_clkrst_buffers)                     $::env(CARAVEL_ROOT)/signoff/buff_flash_clkrst/openlane-signoff/buff_flash_clkrst.${rc_corner}.spef
         set spef_mapping(mprj)                                     $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
+       
         # add your module name instantiated in user_project_wrapper here
         # set spef_mapping(mprj/<instance name>)                     $::env(UPRJ_ROOT)/signoff/<design name>/openlane-signoff/spef/<design name>.${rc_corner}.spef
 

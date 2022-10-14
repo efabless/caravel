@@ -1635,3 +1635,4 @@ set_load -pin_load 0.2000 [get_ports {user_irq[0]}]
 # Design Rules
 ###############################################################################
 set_max_transition 0.75 [current_design]
+set_max_fanout 7.0000 [current_design]

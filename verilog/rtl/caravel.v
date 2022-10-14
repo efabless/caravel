@@ -174,12 +174,18 @@ module caravel (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
-						/* the three-pin interfaces	*/
-    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;		/* two- and three-pin data in	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;		/* two- and three-pin data out	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;		/* output enable, used only by	*/
+												/* the three-pin interfaces	*/
+    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;		/* no-connects */
 
+	/* Buffers are placed between housekeeping and gpio_control_block		*/
+    /* instances to mitigate timing issues on very long (> 1.5mm) wires.	*/
+	wire [`MPRJ_IO_PADS-1:0] mgmt_io_in_hk;		/* two- and three-pin data in	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out_hk;	/* two- and three-pin data out	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb_hk;	/* output enable, used only by	*/
+				
     wire clock_core;
 
     // Power-on-reset signal.  The reset pad generates the sense-inverted
@@ -229,6 +235,16 @@ module caravel (
 	wire caravel_rstn_buf;
 	wire clock_core_buf;
 
+	// SoC pass through buffered signals
+	wire mprj_io_loader_clock_buf;
+	wire mprj_io_loader_strobe_buf;
+	wire mprj_io_loader_resetn_buf;
+	wire mprj_io_loader_data_2_buf;
+	wire rstb_l_buf;
+	wire por_l_buf;
+	wire porb_h_buf;
+	
+	// top-level buffers
 	buff_flash_clkrst flash_clkrst_buffers (
 	.in_n({
 		caravel_clk,
@@ -265,6 +281,25 @@ module caravel (
 		flash_io1_di_buf, 
 		flash_io0_di_buf })
 	);
+
+	`ifdef NO_TOP_LEVEL_BUFFERING
+		assign mgmt_io_in_hk = mgmt_io_in;
+		assign mgmt_io_out = mgmt_io_out_hk;
+		assign mgmt_io_oeb = mgmt_io_oeb_hk;
+	`else
+		gpio_signal_buffering sigbuf (
+		`ifdef USE_POWER_PINS
+			.vccd(vccd),
+			.vssd(vssd),
+		`endif
+		.mgmt_io_in_unbuf(mgmt_io_in),
+		.mgmt_io_out_unbuf(mgmt_io_out_hk),
+		.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk),
+		.mgmt_io_in_buf(mgmt_io_in_hk),
+		.mgmt_io_out_buf(mgmt_io_out),
+		.mgmt_io_oeb_buf(mgmt_io_oeb)
+		);
+	`endif
 
 	chip_io padframe(
 	`ifndef TOP_ROUTING
@@ -312,8 +347,8 @@ module caravel (
 	.flash_io0(flash_io0),
 	.flash_io1(flash_io1),
 	// SoC Core Interface
-	.porb_h(porb_h),
-	.por(por_l),
+	.porb_h(porb_h_buf),
+	.por(por_l_buf),
 	.resetb_core_h(rstb_h),
 	.clock_core(clock_core),
 	.gpio_out_core(gpio_out_core),
@@ -409,7 +444,7 @@ module caravel (
     wire	mprj2_vdd_pwrgood;
 
 `ifdef USE_SRAM_RO_INTERFACE
-    // SRAM read-only access from houskeeping
+    // SRAM read-only access from housekeeping
     wire 	hkspi_sram_clk;
     wire 	hkspi_sram_csb;
     wire [7:0]	hkspi_sram_addr;
@@ -428,6 +463,22 @@ module caravel (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
+
+	// SoC pass through buffered signals
+	.serial_clock_in(mprj_io_loader_clock),
+	.serial_clock_out(mprj_io_loader_clock_buf),
+	.serial_load_in(mprj_io_loader_strobe),
+	.serial_load_out(mprj_io_loader_strobe_buf),
+	.serial_resetn_in(mprj_io_loader_resetn),
+	.serial_resetn_out(mprj_io_loader_resetn_buf),
+	.serial_data_2_in(mprj_io_loader_data_2),
+	.serial_data_2_out(mprj_io_loader_data_2_buf),
+	.rstb_l_in(rstb_l),
+	.rstb_l_out(rstb_l_buf),
+	.porb_h_in(porb_h),
+	.porb_h_out(porb_h_buf),
+	.por_l_in(por_l),
+	.por_l_out(por_l_buf),
 
 	// Clock and reset
 	.core_clk(caravel_clk_buf),
@@ -637,7 +688,7 @@ module caravel (
 					 mprj_io_loader_data_1};
     // Note that serial_link_2 is backwards compared to serial_link_1, so it
     // shifts in the other direction.
-    assign gpio_serial_link_2_shifted = {mprj_io_loader_data_2,
+    assign gpio_serial_link_2_shifted = {mprj_io_loader_data_2_buf,
 					 gpio_serial_link_2[`MPRJ_IO_PADS_2-1:1]};
 
     // Propagating clock and reset to mitigate timing and fanout issues
@@ -656,15 +707,15 @@ module caravel (
 
     assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-2:0],
 					 mprj_io_loader_clock};
-    assign gpio_clock_2_shifted = {mprj_io_loader_clock,
+    assign gpio_clock_2_shifted = {mprj_io_loader_clock_buf,
 					gpio_clock_2[`MPRJ_IO_PADS_2-1:1]};
     assign gpio_resetn_1_shifted = {gpio_resetn_1[`MPRJ_IO_PADS_1-2:0],
 					 mprj_io_loader_resetn};
-    assign gpio_resetn_2_shifted = {mprj_io_loader_resetn,
+    assign gpio_resetn_2_shifted = {mprj_io_loader_resetn_buf,
 					gpio_resetn_2[`MPRJ_IO_PADS_2-1:1]};
     assign gpio_load_1_shifted = {gpio_load_1[`MPRJ_IO_PADS_1-2:0],
 					 mprj_io_loader_strobe};
-    assign gpio_load_2_shifted = {mprj_io_loader_strobe,
+    assign gpio_load_2_shifted = {mprj_io_loader_strobe_buf,
 					gpio_load_2[`MPRJ_IO_PADS_2-1:1]};
 
     wire [2:0] spi_pll_sel;
@@ -683,7 +734,7 @@ module caravel (
         .ext_clk(clock_core_buf),
         .pll_clk(pll_clk),
         .pll_clk90(pll_clk90),
-        .resetb(rstb_l),
+        .resetb(rstb_l_buf),
         .sel(spi_pll_sel),
         .sel2(spi_pll90_sel),
         .ext_reset(ext_reset),  // From housekeeping SPI
@@ -699,7 +750,7 @@ module caravel (
 		.VPWR(vccd_core),
 		.VGND(vssd_core),
     `endif
-        .resetb(rstb_l),
+        .resetb(rstb_l_buf),
         .enable(spi_pll_ena),
         .osc(clock_core_buf),
         .clockp({pll_clk, pll_clk90}),
@@ -765,9 +816,9 @@ module caravel (
         .serial_data_1(mprj_io_loader_data_1),
         .serial_data_2(mprj_io_loader_data_2),
 
-	.mgmt_gpio_in(mgmt_io_in),
-	.mgmt_gpio_out(mgmt_io_out),
-	.mgmt_gpio_oeb(mgmt_io_oeb),
+	.mgmt_gpio_in(mgmt_io_in_hk),
+	.mgmt_gpio_out(mgmt_io_out_hk),
+	.mgmt_gpio_oeb(mgmt_io_oeb_hk),
 
 	.pwr_ctrl_out(pwr_ctrl_nc),	/* Not used in this version */
 

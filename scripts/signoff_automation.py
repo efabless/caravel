@@ -61,7 +61,7 @@ def run_lvs(
     myenv["LOG_ROOT"] = log_dir
     myenv["CARAVEL_ROOT"] = caravel_root
     myenv["MCW_ROOT"] = mcw_root
-    myenv["SIGNOFF_ROOT"] = os.path.join(signoff_dir, f"{design}")
+    myenv["SIGNOFF_ROOT"] = os.path.join(signoff_dir, f"{design}/standalone_pvr")
     myenv["WORK_DIR"] = os.path.join(caravel_root, "extra_be_checks")
 
     if not os.path.exists(f"{lvs_root}"):
@@ -151,7 +151,7 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
         "-d",
         f"{design}",
         "-o",
-        f"{signoff_dir}/{design}",
+        f"{signoff_dir}/{design}/standalone_pvr",
         "-l",
         f"{log_dir}",
     ]
@@ -201,9 +201,9 @@ def check_errors(
                 f.write("Klayout MR DRC:    Passed\n")
     if lvs:
         lvs_summary_report = open(
-            os.path.join(signoff_dir, f"{design}/lvs_summary.rpt"), "w"
+            os.path.join(signoff_dir, f"{design}/standalone_pvr/lvs_summary.rpt"), "w"
         )
-        lvs_report = os.path.join(signoff_dir, f"{design}/{design}.lvs.json")
+        lvs_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/{design}.lvs.json")
         failures = count_lvs.count_LVS_failures(lvs_report)
         if failures[0] > 0:
             lvs_summary_report.write("LVS reports:")
@@ -255,7 +255,7 @@ def check_errors(
                     f.write(f"{log_name} STA:    Failed\n")
 
     if antenna:
-        antenna_report = os.path.join(signoff_dir, f"{design}/antenna-vios.report")
+        antenna_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/antenna-vios.report")
         with open(antenna_report) as rep:
             if "Antenna violation detected" in rep.read():
                 logging.error(f"Antenna checks failed find report at {antenna_report}")
@@ -388,6 +388,8 @@ if __name__ == "__main__":
         os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
+    if not os.path.exists(f"{signoff_dir}/{design}/standalone_pvr"):
+        os.makedirs(f"{signoff_dir}/{design}/standalone_pvr")
 
     if lvs or drc or antenna:
         if glob.glob(f"{caravel_root}/gds/*.gz"):
@@ -477,7 +479,7 @@ if __name__ == "__main__":
             out, err = verify_p[i].communicate()
             ver_log = open(f"{log_dir}/{sim[i]}_caravel.log", "w")
             if err:
-                logging.error(err.decode())
+                logging.error(err)
                 ver_log.write(err)
             if out:
                 ver_log.write(out)
@@ -486,7 +488,7 @@ if __name__ == "__main__":
         out, err = sta_p.communicate()
         sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
         if err:
-            logging.error(err.decode())
+            logging.error(err)
             sta_log.write(err)
 
         drc_p1.wait()
@@ -504,7 +506,7 @@ if __name__ == "__main__":
 
     if antenna:
         out, err = ant.communicate()
-        ant_rep = open(f"{signoff_dir}/{design}/antenna-vios.report", "w")
+        ant_rep = open(f"{signoff_dir}/{design}/standalone_pvr/antenna-vios.report", "w")
         if err:
             logging.error(err.decode())
             ant_rep.write(err.decode())
