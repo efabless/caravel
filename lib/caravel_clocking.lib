@@ -136,13 +136,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : rising_edge;
 	cell_rise(template_3) {
-          values("1.77221,1.77409,1.78052,1.80015,1.85837,2.06019,2.82071");
+          values("1.77351,1.77539,1.78182,1.80145,1.85967,2.06149,2.82202");
 	}
 	rise_transition(template_3) {
           values("0.02434,0.02582,0.03117,0.05049,0.12301,0.40937,1.50421");
 	}
 	cell_fall(template_4) {
-          values("0.85618,0.85790,0.86375,0.88030,0.92361,1.05078,1.51223");
+          values("0.85614,0.85786,0.86371,0.88026,0.92357,1.05073,1.51219");
 	}
 	fall_transition(template_4) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -152,13 +152,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : falling_edge;
 	cell_rise(template_5) {
-          values("-2.16414,-2.16227,-2.15583,-2.13620,-2.07798,-1.87616,-1.11564");
+          values("-2.16497,-2.16309,-2.15666,-2.13703,-2.07881,-1.87699,-1.11647");
 	}
 	rise_transition(template_5) {
           values("0.02434,0.02582,0.03117,0.05049,0.12301,0.40937,1.50421");
 	}
 	cell_fall(template_6) {
-          values("3.08430,3.08602,3.09188,3.10842,3.15174,3.27890,3.74035");
+          values("3.08532,3.08703,3.09289,3.10943,3.15275,3.27991,3.74136");
 	}
 	fall_transition(template_6) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -168,7 +168,7 @@ library (caravel_clocking) {
         related_pin : "core_clk";
         timing_type : rising_edge;
 	cell_rise(template_7) {
-          values("1.77221,1.77409,1.78052,1.80015,1.85837,2.06019,2.82071");
+          values("1.77351,1.77539,1.78182,1.80145,1.85967,2.06149,2.82202");
 	}
 	rise_transition(template_7) {
           values("0.02434,0.02582,0.03117,0.05049,0.12301,0.40937,1.50421");
@@ -190,7 +190,7 @@ library (caravel_clocking) {
           values("0.02434,0.02582,0.03117,0.05049,0.12301,0.40937,1.50421");
 	}
 	cell_fall(template_10) {
-          values("15.58430,15.58602,15.59188,15.60842,15.65173,15.77890,16.24035");
+          values("15.58532,15.58703,15.59289,15.60943,15.65275,15.77991,16.24136");
 	}
 	fall_transition(template_10) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -208,44 +208,44 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.49684");
+          values("0.49683");
 	}
 	fall_constraint(scalar) {
-          values("-0.20537");
+          values("-0.20539");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("-0.31427");
+          values("-0.31425");
 	}
 	fall_constraint(scalar) {
-          values("0.41908");
+          values("0.41911");
 	}
       }
     }
     pin("ext_reset") {
       direction : input;
-      capacitance : 0.0201;
+      capacitance : 0.0202;
       timing() {
         related_pin : "ext_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("-5.57870");
+          values("-5.57863");
 	}
 	fall_constraint(scalar) {
-          values("-6.49938");
+          values("-6.49931");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("5.64693");
+          values("5.64686");
 	}
 	fall_constraint(scalar) {
-          values("6.65725");
+          values("6.65718");
 	}
       }
     }
@@ -265,7 +265,7 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("2.90140");
+          values("2.90246");
 	}
       }
       timing() {
@@ -273,27 +273,27 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-2.00722");
+          values("-2.00804");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.72445");
+          values("0.72450");
 	}
 	fall_constraint(scalar) {
-          values("-0.54299");
+          values("-0.54295");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.25961");
+          values("0.25956");
 	}
 	fall_constraint(scalar) {
-          values("0.96820");
+          values("0.96816");
 	}
       }
       timing() {
@@ -301,7 +301,7 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.75066");
+          values("1.75071");
 	}
       }
       timing() {
@@ -309,7 +309,7 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-0.99300");
+          values("-0.99291");
 	}
       }
       timing() {
@@ -317,7 +317,7 @@ library (caravel_clocking) {
         timing_sense : positive_unate;
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.67864");
+          values("0.67873");
 	}
       }
       timing() {
@@ -333,7 +333,7 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.74186");
+          values("1.74203");
 	}
       }
       timing() {
@@ -353,13 +353,13 @@ library (caravel_clocking) {
         timing_sense : negative_unate;
         timing_type : combinational;
 	cell_rise(template_1) {
-          values("1.49291,1.49553,1.50578,1.54124,1.68206,2.32279,5.28059");
+          values("1.49283,1.49546,1.50571,1.54117,1.68199,2.32272,5.28052");
 	}
 	rise_transition(template_1) {
           values("0.02385,0.02585,0.03448,0.07350,0.26600,1.18188,5.39669");
 	}
 	cell_fall(template_2) {
-          values("0.55765,0.55968,0.56723,0.59033,0.65904,0.93079,2.17782");
+          values("0.55758,0.55961,0.56716,0.59025,0.65897,0.93072,2.17775");
 	}
 	fall_transition(template_2) {
           values("0.01891,0.02021,0.02508,0.04333,0.11877,0.48588,2.21350");
@@ -369,13 +369,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : falling_edge;
 	cell_rise(template_11) {
-          values("16.39387,16.39649,16.40674,16.44221,16.58302,17.22375,20.18155");
+          values("16.39483,16.39745,16.40770,16.44316,16.58398,17.22471,20.18251");
 	}
 	rise_transition(template_11) {
           values("0.02385,0.02585,0.03448,0.07350,0.26600,1.18188,5.39669");
 	}
 	cell_fall(template_12) {
-          values("16.37211,16.37413,16.38169,16.40478,16.47349,16.74524,17.99227");
+          values("16.37308,16.37510,16.38266,16.40575,16.47446,16.74621,17.99324");
 	}
 	fall_transition(template_12) {
           values("0.01891,0.02021,0.02508,0.04333,0.11877,0.48588,2.21350");
@@ -389,7 +389,7 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : rising_edge;
 	cell_rise(template_13) {
-          values("1.64936,1.65123,1.65766,1.67713,1.73528,1.93733,2.70491");
+          values("1.65058,1.65245,1.65888,1.67835,1.73650,1.93855,2.70612");
 	}
 	rise_transition(template_13) {
           values("0.02440,0.02589,0.03121,0.05053,0.12314,0.40881,1.50596");
@@ -405,13 +405,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : falling_edge;
 	cell_rise(template_15) {
-          values("-0.15034,-0.14847,-0.14205,-0.12258,-0.06443,0.13762,0.90520");
+          values("-0.15034,-0.14848,-0.14205,-0.12258,-0.06443,0.13762,0.90519");
 	}
 	rise_transition(template_15) {
           values("0.02440,0.02589,0.03121,0.05053,0.12314,0.40881,1.50596");
 	}
 	cell_fall(template_16) {
-          values("15.44328,15.44496,15.45091,15.46750,15.51068,15.63790,16.09947");
+          values("15.44422,15.44590,15.45185,15.46844,15.51162,15.63883,16.10041");
 	}
 	fall_transition(template_16) {
           values("0.02337,0.02441,0.02829,0.04105,0.08438,0.25148,0.91299");
@@ -421,13 +421,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : rising_edge;
 	cell_rise(template_17) {
-          values("2.24230,2.24417,2.25060,2.27007,2.32821,2.53027,3.29785");
+          values("2.24350,2.24537,2.25180,2.27127,2.32941,2.53147,3.29904");
 	}
 	rise_transition(template_17) {
           values("0.02440,0.02589,0.03121,0.05053,0.12314,0.40881,1.50596");
 	}
 	cell_fall(template_18) {
-          values("2.55628,2.55796,2.56391,2.58051,2.62369,2.75090,3.21247");
+          values("2.55720,2.55888,2.56483,2.58142,2.62460,2.75182,3.21339");
 	}
 	fall_transition(template_18) {
           values("0.02337,0.02441,0.02829,0.04105,0.08438,0.25148,0.91299");
@@ -437,13 +437,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : rising_edge;
 	cell_rise(template_19) {
-          values("2.35748,2.35935,2.36578,2.38525,2.44339,2.64545,3.41303");
+          values("2.35743,2.35930,2.36573,2.38520,2.44335,2.64540,3.41297");
 	}
 	rise_transition(template_19) {
           values("0.02440,0.02589,0.03121,0.05053,0.12314,0.40881,1.50596");
 	}
 	cell_fall(template_20) {
-          values("2.62006,2.62174,2.62769,2.64428,2.68746,2.81468,3.27625");
+          values("2.62003,2.62170,2.62766,2.64425,2.68743,2.81464,3.27621");
 	}
 	fall_transition(template_20) {
           values("0.02337,0.02441,0.02829,0.04105,0.08438,0.25148,0.91299");
@@ -453,13 +453,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : falling_edge;
 	cell_rise(template_21) {
-          values("6.65311,6.65498,6.66141,6.68088,6.73902,6.94108,7.70866");
+          values("6.65320,6.65507,6.66150,6.68097,6.73911,6.94117,7.70874");
 	}
 	rise_transition(template_21) {
           values("0.02440,0.02589,0.03121,0.05053,0.12314,0.40881,1.50596");
 	}
 	cell_fall(template_22) {
-          values("6.91013,6.91180,6.91776,6.93435,6.97753,7.10474,7.56632");
+          values("6.91022,6.91190,6.91786,6.93445,6.97763,7.10484,7.56641");
 	}
 	fall_transition(template_22) {
           values("0.02337,0.02441,0.02829,0.04105,0.08438,0.25148,0.91299");
@@ -505,7 +505,7 @@ library (caravel_clocking) {
     }
     pin("sel2[0]") {
       direction : input;
-      capacitance : 0.0137;
+      capacitance : 0.0136;
     }
     }
   }
