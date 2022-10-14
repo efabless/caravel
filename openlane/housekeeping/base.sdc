@@ -46,9 +46,8 @@ set_input_delay 0 -clock [get_clocks wb_clk_i] [get_port "user_clock"]
 ## OUTPUT DELAYS
 
 # WISHBONE DELAY
-set wb_output_delay 5
-set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_ack_o]
-set_output_delay $wb_output_delay -clock [get_clocks wb_clk_i] [get_ports wb_dat_o[*]]
+set_output_delay -1.5 -clock [get_clocks wb_clk_i] [get_ports wb_ack_o]
+set_output_delay -1.5 -clock [get_clocks wb_clk_i] [get_ports wb_dat_o[*]]
 
 # PLL DELAYS
 set_output_delay $output_delay_value  -clock [get_clocks wb_clk_i] [get_ports pll_ena]
