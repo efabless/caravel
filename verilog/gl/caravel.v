@@ -3176,6 +3176,8 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .user_clk(caravel_clk2)
   );
   buff_flash_clkrst flash_clkrst_buffers (
+    .VGND(vssd_core),
+    .VPWR(vccd_core),
     .in_n({ caravel_clk, caravel_rstn, flash_clk_frame, flash_csb_frame, flash_clk_oeb, flash_csb_oeb, flash_io0_oeb, flash_io1_oeb, flash_io0_ieb, flash_io1_ieb, flash_io0_do, flash_io1_do }),
     .in_s({ clock_core, flash_io1_di, flash_io0_di }),
     .out_n({ clock_core_buf, flash_io1_di_buf, flash_io0_di_buf }),
