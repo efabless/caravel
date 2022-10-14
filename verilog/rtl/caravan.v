@@ -263,12 +263,16 @@ module caravan (
     assign mgmt_io_oeb = mgmt_io_oeb_hk;
 `else
     gpio_signal_buffering_alt sigbuf (
+	`ifdef USE_POWER_PINS
+	    .vccd(vccd),
+	    .vssd(vssd),
+	`endif
 	.mgmt_io_in_unbuf(mgmt_io_in),
 	.mgmt_io_out_unbuf(mgmt_io_out_hk),
-	.mgmt_io_oeb_buf(mgmt_io_oeb_hk),
+	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk),
 	.mgmt_io_in_buf(mgmt_io_in_hk),
 	.mgmt_io_out_buf(mgmt_io_out),
-	.mgmt_io_oeb_unbuf(mgmt_io_oeb)
+	.mgmt_io_oeb_buf(mgmt_io_oeb)
     );
 `endif
 

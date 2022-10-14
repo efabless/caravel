@@ -221,18 +221,22 @@ module caravel (
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
-`ifndef NO_TOP_LEVEL_BUFFERING
+`ifdef NO_TOP_LEVEL_BUFFERING
     assign mgmt_io_in_hk = mgmt_io_in;
     assign mgmt_io_out = mgmt_io_out_hk;
     assign mgmt_io_oeb = mgmt_io_oeb_hk;
 `else
     gpio_signal_buffering sigbuf (
+	`ifdef USE_POWER_PINS
+	    .vccd(vccd),
+	    .vssd(vssd),
+	`endif
 	.mgmt_io_in_unbuf(mgmt_io_in),
 	.mgmt_io_out_unbuf(mgmt_io_out_hk),
-	.mgmt_io_oeb_buf(mgmt_io_oeb_hk),
+	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk),
 	.mgmt_io_in_buf(mgmt_io_in_hk),
 	.mgmt_io_out_buf(mgmt_io_out),
-	.mgmt_io_oeb_unbuf(mgmt_io_oeb)
+	.mgmt_io_oeb_buf(mgmt_io_oeb)
     );
 `endif
 
