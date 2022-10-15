@@ -209,11 +209,17 @@ module caravan (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* one- and three-pin data in */
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* one- and three-pin data out */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* two- and three-pin data in */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* two- and three-pin data out */
     wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
 						/* three-pin interfaces		*/
     wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
+
+    /* Buffers are placed between housekeeping and gpio_control_block		*/
+    /* instances to mitigate timing issues on very long (> 1.5mm) wires.	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in_hk;	/* mgmt_io_in at housekeeping	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out_hk;	/* mgmt_io_out at housekeeping	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb_hk;	/* mgmt_io_oeb at housekeeping	*/
 
     wire clock_core;
 
@@ -250,6 +256,25 @@ module caravan (
     wire flash_io0_ieb, flash_io1_ieb;
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
+
+`ifndef NO_TOP_LEVEL_BUFFERING
+    assign mgmt_io_in_hk = mgmt_io_in;
+    assign mgmt_io_out = mgmt_io_out_hk;
+    assign mgmt_io_oeb = mgmt_io_oeb_hk;
+`else
+    gpio_signal_buffering_alt sigbuf (
+	`ifdef USE_POWER_PINS
+	    .vccd(vccd),
+	    .vssd(vssd),
+	`endif
+	.mgmt_io_in_unbuf(mgmt_io_in),
+	.mgmt_io_out_unbuf(mgmt_io_out_hk),
+	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk),
+	.mgmt_io_in_buf(mgmt_io_in_hk),
+	.mgmt_io_out_buf(mgmt_io_out),
+	.mgmt_io_oeb_buf(mgmt_io_oeb)
+    );
+`endif
 
     chip_io_alt #(
 	.ANALOG_PADS_1(`ANALOG_PADS_1),
@@ -775,9 +800,9 @@ module caravan (
 	.serial_data_1(mprj_io_loader_data_1),
 	.serial_data_2(mprj_io_loader_data_2),
 
-	.mgmt_gpio_in(mgmt_io_in),
-	.mgmt_gpio_out(mgmt_io_out),
-	.mgmt_gpio_oeb(mgmt_io_oeb),
+	.mgmt_gpio_in(mgmt_io_in_hk),
+	.mgmt_gpio_out(mgmt_io_out_hk),
+	.mgmt_gpio_oeb(mgmt_io_oeb_hk),
 
 	.pwr_ctrl_out(pwr_ctrl_nc),        /* Not used in this version */
 
