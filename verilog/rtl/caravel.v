@@ -246,6 +246,10 @@ module caravel (
 	
 	// top-level buffers
 	buff_flash_clkrst flash_clkrst_buffers (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
 	.in_n({
 		caravel_clk,
 		caravel_rstn,
