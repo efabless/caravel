@@ -34,12 +34,12 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
 
-def run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design):
+def run_drc(design_root, log_dir, signoff_dir, pdk_root, design):
     klayout_drc_cmd = [
         "python3",
         "klayout_drc.py",
         "-g",
-        f"{caravel_root}/gds/{design}.gds",
+        f"{design_root}/gds/{design}.gds",
         "-l",
         f"{log_dir}",
         "-s",
@@ -383,6 +383,8 @@ if __name__ == "__main__":
     sta = args.primetime_sta
     design = args.design
     antenna = args.antenna
+    if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+        signoff_dir = os.path.join(mcw_root, "signoff")
 
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
@@ -423,7 +425,10 @@ if __name__ == "__main__":
         sta = True
 
     if drc:
-        drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design)
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+            drc_p1 = run_drc(mcw_root, log_dir, signoff_dir, pdk_root, design)
+        else:
+            drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design)
         logging.info(f"Running klayout DRC on {design}")
     if lvs:
         lvs_p1 = run_lvs(

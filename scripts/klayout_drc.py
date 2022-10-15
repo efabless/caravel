@@ -6,7 +6,7 @@ import os
 
 
 def klayout_gds_drc_check(design_name, drc_script_path, gds_input_file_path, signoff_directory, logs_directory):
-    report_file_path = signoff_directory / 'caravel' / f'{design_name}_klayout_drc.xml'
+    report_file_path = signoff_directory / f'{design_name}' / f'{design_name}_klayout_drc.xml'
     run_drc_check_cmd = ['klayout', '-b', '-r', drc_script_path,
                          '-rd', f"input={gds_input_file_path}",
                          '-rd', f"report={report_file_path}",

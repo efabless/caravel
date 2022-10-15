@@ -233,29 +233,38 @@ if {\
       report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-all_viol.rpt
 
       report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-      -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-min_timing.rpt
+      -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-min_timing.rpt
       
       report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-      -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-max_timing.rpt
+      -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-max_timing.rpt
 
       if {$design == "caravel"} {
         report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-min_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-min_timing.rpt
+        
+        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-max_timing.rpt
         
         report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-min_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-min_timing.rpt
         
         report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-max_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-max_timing.rpt
+
+        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hkspi_clk \
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-max_timing.rpt
 
         report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hkspi_clk \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-min_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-min_timing.rpt
 
         report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
 
         report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-        -max_paths 1000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
+
+        report_case_analysis -nosplit > $::env(OUT_DIR)/reports/${design}.case_analysis.rpt
+        report_exceptions -nosplit > $::env(OUT_DIR)/reports/${design}.false_paths.rpt
       }
 
       write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/sdf/${rc_corner}/${design}.${proc_corner}${proc_corner}.sdf
