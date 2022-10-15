@@ -139,7 +139,7 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
             [
                 "git",
                 "clone",
-                "git@github.com:efabless/mpw-2-sta-debug.git",
+                "git@github.com:efabless/pt_libs.git",
             ],
             cwd=f"{caravel_root}/scripts",
             stdout=subprocess.PIPE,
@@ -443,7 +443,7 @@ if __name__ == "__main__":
         sta_p = run_sta(
             caravel_root,
             mcw_root,
-            f"{caravel_root}/scripts/mpw-2-sta-debug/pt_libs",
+            f"{caravel_root}/scripts/pt_libs",
             log_dir,
             signoff_dir,
             design,
