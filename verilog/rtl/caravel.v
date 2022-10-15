@@ -174,18 +174,18 @@ module caravel (
     // ser_tx    = mprj_io[6]		(output)
     // irq 	 = mprj_io[7]		(input)
 
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;		/* two- and three-pin data in	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;		/* two- and three-pin data out	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;		/* output enable, used only by	*/
-												/* the three-pin interfaces	*/
-    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;		/* no-connects */
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in;	/* two- and three-pin data in	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out;	/* two- and three-pin data out	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb;	/* output enable, used only by	*/
+						/* the three-pin interfaces	*/
+    wire [`MPRJ_PWR_PADS-1:0] pwr_ctrl_nc;	/* no-connects */
 
-	/* Buffers are placed between housekeeping and gpio_control_block		*/
+    /* Buffers are placed between housekeeping and gpio_control_block		*/
     /* instances to mitigate timing issues on very long (> 1.5mm) wires.	*/
-	wire [`MPRJ_IO_PADS-1:0] mgmt_io_in_hk;		/* two- and three-pin data in	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out_hk;	/* two- and three-pin data out	*/
-    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb_hk;	/* output enable, used only by	*/
-				
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_in_hk;	/* mgmt_io_in at housekeeping	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_out_hk;	/* mgmt_io_out at housekeeping	*/
+    wire [`MPRJ_IO_PADS-1:0] mgmt_io_oeb_hk;	/* mgmt_io_oeb at housekeeping	*/
+    
     wire clock_core;
 
     // Power-on-reset signal.  The reset pad generates the sense-inverted

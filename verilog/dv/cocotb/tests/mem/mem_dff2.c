@@ -30,7 +30,4 @@ void main()
     if (!is_fail)
         reg_debug_1 = 0x1B;
 
-
-    // test finish 
-    reg_debug_1 = 0xFF;
 }
