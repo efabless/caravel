@@ -11,13 +11,14 @@ Creating placeholder cell definition.
 Call to undefined subcircuit sky130_fd_sc_hd__nor2_2
 Creating placeholder cell definition.
 Generating JSON file result
-Reading netlist file /home/hosni/My_forks/marwan/caravel/openlane/buff_flash_clkrst/runs/22_10_15_06_27/results/signoff/buff_flash_clkrst.gds.spice
+Reading netlist file /home/hosni/My_forks/FINAL/caravel/openlane/buff_flash_clkrst/runs/22_10_13_10_28/results/signoff/buff_flash_clkrst.gds.spice
 Call to undefined subcircuit sky130_fd_pr__pfet_01v8_hvt
 Creating placeholder cell definition.
 Call to undefined subcircuit sky130_fd_pr__nfet_01v8
 Creating placeholder cell definition.
-Reading netlist file /home/hosni/My_forks/marwan/caravel/openlane/buff_flash_clkrst/runs/22_10_15_06_27/tmp/signoff/27-buff_flash_clkrst.pnl.v
+Reading netlist file /home/hosni/My_forks/FINAL/caravel/openlane/buff_flash_clkrst/runs/22_10_13_10_28/tmp/signoff/25-buff_flash_clkrst.pnl.v
 Warning:  A case-insensitive file has been read and so the	verilog file must be treated case-insensitive to match.
+Creating placeholder cell definition for module sky130_ef_sc_hd__decap_12.
 Reading setup file /home/hosni/OL_LATEST/OpenLane/pdks/sky130A/libs.tech/netgen/sky130A_setup.tcl
 Model sky130_fd_pr__res_generic_po pin end_a == end_b
 No property mult found for device sky130_fd_pr__res_generic_po
@@ -76,11 +77,8 @@ No property topography found for device sky130_fd_pr__pfet_01v8_hvt
 No property value found for device sky130_fd_pr__diode_pw2nd_05v5
 No property mult found for device sky130_fd_pr__diode_pw2nd_05v5
 No property perim found for device sky130_fd_pr__diode_pw2nd_05v5
-No property value found for device sky130_fd_pr__diode_pw2nd_05v5
-No property mult found for device sky130_fd_pr__diode_pw2nd_05v5
-No property perim found for device sky130_fd_pr__diode_pw2nd_05v5
-Comparison output logged to file /home/hosni/My_forks/marwan/caravel/openlane/buff_flash_clkrst/runs/22_10_15_06_27/logs/signoff/30-buff_flash_clkrst.gds.lvs.log
-Logging to file "/home/hosni/My_forks/marwan/caravel/openlane/buff_flash_clkrst/runs/22_10_15_06_27/logs/signoff/30-buff_flash_clkrst.gds.lvs.log" enabled
+Comparison output logged to file /home/hosni/My_forks/FINAL/caravel/openlane/buff_flash_clkrst/runs/22_10_13_10_28/logs/signoff/28-buff_flash_clkrst.gds.log
+Logging to file "/home/hosni/My_forks/FINAL/caravel/openlane/buff_flash_clkrst/runs/22_10_13_10_28/logs/signoff/28-buff_flash_clkrst.gds.log" enabled
 Circuit sky130_fd_pr__pfet_01v8_hvt contains no devices.
 Circuit sky130_fd_pr__nfet_01v8 contains no devices.
 
@@ -112,18 +110,21 @@ Circuit contains 7 nets.
 Circuit 1 contains 4 devices, Circuit 2 contains 4 devices.
 Circuit 1 contains 7 nets,    Circuit 2 contains 7 nets.
 
+Circuit sky130_ef_sc_hd__decap_12 contains no devices.
 
-Contents of circuit 1:  Circuit: 'sky130_fd_sc_hd__diode_2'
-Circuit sky130_fd_sc_hd__diode_2 contains 1 device instances.
-  Class: sky130_fd_pr__diode_pw2nd_05v5 instances:   1
-Circuit contains 2 nets, and 3 disconnected pins.
-Contents of circuit 2:  Circuit: 'sky130_fd_sc_hd__diode_2'
-Circuit sky130_fd_sc_hd__diode_2 contains 1 device instances.
-  Class: sky130_fd_pr__diode_pw2nd_05v5 instances:   1
-Circuit contains 2 nets, and 3 disconnected pins.
+Contents of circuit 1:  Circuit: 'sky130_fd_sc_hd__decap_4'
+Circuit sky130_fd_sc_hd__decap_4 contains 2 device instances.
+  Class: sky130_fd_pr__nfet_01v8 instances:   1
+  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
+Circuit contains 4 nets.
+Contents of circuit 2:  Circuit: 'sky130_fd_sc_hd__decap_4'
+Circuit sky130_fd_sc_hd__decap_4 contains 2 device instances.
+  Class: sky130_fd_pr__nfet_01v8 instances:   1
+  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
+Circuit contains 4 nets.
 
-Circuit 1 contains 1 devices, Circuit 2 contains 1 devices.
-Circuit 1 contains 2 nets,    Circuit 2 contains 2 nets.
+Circuit 1 contains 2 devices, Circuit 2 contains 2 devices.
+Circuit 1 contains 4 nets,    Circuit 2 contains 4 nets.
 
 
 Contents of circuit 1:  Circuit: 'sky130_fd_sc_hd__decap_3'
@@ -133,21 +134,6 @@ Circuit sky130_fd_sc_hd__decap_3 contains 2 device instances.
 Circuit contains 4 nets.
 Contents of circuit 2:  Circuit: 'sky130_fd_sc_hd__decap_3'
 Circuit sky130_fd_sc_hd__decap_3 contains 2 device instances.
-  Class: sky130_fd_pr__nfet_01v8 instances:   1
-  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
-Circuit contains 4 nets.
-
-Circuit 1 contains 2 devices, Circuit 2 contains 2 devices.
-Circuit 1 contains 4 nets,    Circuit 2 contains 4 nets.
-
-
-Contents of circuit 1:  Circuit: 'sky130_fd_sc_hd__decap_4'
-Circuit sky130_fd_sc_hd__decap_4 contains 2 device instances.
-  Class: sky130_fd_pr__nfet_01v8 instances:   1
-  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
-Circuit contains 4 nets.
-Contents of circuit 2:  Circuit: 'sky130_fd_sc_hd__decap_4'
-Circuit sky130_fd_sc_hd__decap_4 contains 2 device instances.
   Class: sky130_fd_pr__nfet_01v8 instances:   1
   Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
 Circuit contains 4 nets.
@@ -171,68 +157,49 @@ Circuit 1 contains 2 devices, Circuit 2 contains 2 devices.
 Circuit 1 contains 4 nets,    Circuit 2 contains 4 nets.
 
 
-Contents of circuit 1:  Circuit: 'sky130_fd_sc_hd__decap_6'
-Circuit sky130_fd_sc_hd__decap_6 contains 2 device instances.
-  Class: sky130_fd_pr__nfet_01v8 instances:   1
-  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
-Circuit contains 4 nets.
-Contents of circuit 2:  Circuit: 'sky130_fd_sc_hd__decap_6'
-Circuit sky130_fd_sc_hd__decap_6 contains 2 device instances.
-  Class: sky130_fd_pr__nfet_01v8 instances:   1
-  Class: sky130_fd_pr__pfet_01v8_hvt instances:   1
-Circuit contains 4 nets.
-
-Circuit 1 contains 2 devices, Circuit 2 contains 2 devices.
-Circuit 1 contains 4 nets,    Circuit 2 contains 4 nets.
-
-
 Contents of circuit 1:  Circuit: 'buff_flash_clkrst'
-Circuit buff_flash_clkrst contains 68 device instances.
+Circuit buff_flash_clkrst contains 48 device instances.
+  Class: sky130_ef_sc_hd__decap_12 instances:   7
   Class: sky130_fd_sc_hd__clkbuf_8 instances:  15
-  Class: sky130_fd_sc_hd__decap_3 instances:  13
-  Class: sky130_fd_sc_hd__decap_4 instances:  21
-  Class: sky130_fd_sc_hd__decap_6 instances:   2
-  Class: sky130_fd_sc_hd__decap_8 instances:   2
-  Class: sky130_fd_sc_hd__diode_2 instances:  15
+  Class: sky130_fd_sc_hd__decap_3 instances:  12
+  Class: sky130_fd_sc_hd__decap_4 instances:  10
+  Class: sky130_fd_sc_hd__decap_8 instances:   4
 Circuit contains 32 nets.
 Contents of circuit 2:  Circuit: 'buff_flash_clkrst'
-Circuit buff_flash_clkrst contains 68 device instances.
+Circuit buff_flash_clkrst contains 48 device instances.
+  Class: sky130_ef_sc_hd__decap_12 instances:   7
   Class: sky130_fd_sc_hd__clkbuf_8 instances:  15
-  Class: sky130_fd_sc_hd__decap_3 instances:  13
-  Class: sky130_fd_sc_hd__decap_4 instances:  21
-  Class: sky130_fd_sc_hd__decap_6 instances:   2
-  Class: sky130_fd_sc_hd__decap_8 instances:   2
-  Class: sky130_fd_sc_hd__diode_2 instances:  15
+  Class: sky130_fd_sc_hd__decap_3 instances:  12
+  Class: sky130_fd_sc_hd__decap_4 instances:  10
+  Class: sky130_fd_sc_hd__decap_8 instances:   4
 Circuit contains 32 nets.
 
 Circuit was modified by parallel/series device merging.
 New circuit summary:
 
 Contents of circuit 1:  Circuit: 'buff_flash_clkrst'
-Circuit buff_flash_clkrst contains 34 device instances.
+Circuit buff_flash_clkrst contains 19 device instances.
+  Class: sky130_ef_sc_hd__decap_12 instances:   1
   Class: sky130_fd_sc_hd__clkbuf_8 instances:  15
   Class: sky130_fd_sc_hd__decap_3 instances:   1
   Class: sky130_fd_sc_hd__decap_4 instances:   1
-  Class: sky130_fd_sc_hd__decap_6 instances:   1
   Class: sky130_fd_sc_hd__decap_8 instances:   1
-  Class: sky130_fd_sc_hd__diode_2 instances:  15
 Circuit contains 32 nets.
 Contents of circuit 2:  Circuit: 'buff_flash_clkrst'
-Circuit buff_flash_clkrst contains 34 device instances.
+Circuit buff_flash_clkrst contains 19 device instances.
+  Class: sky130_ef_sc_hd__decap_12 instances:   1
   Class: sky130_fd_sc_hd__clkbuf_8 instances:  15
   Class: sky130_fd_sc_hd__decap_3 instances:   1
   Class: sky130_fd_sc_hd__decap_4 instances:   1
-  Class: sky130_fd_sc_hd__decap_6 instances:   1
   Class: sky130_fd_sc_hd__decap_8 instances:   1
-  Class: sky130_fd_sc_hd__diode_2 instances:  15
 Circuit contains 32 nets.
 
-Circuit 1 contains 34 devices, Circuit 2 contains 34 devices.
+Circuit 1 contains 19 devices, Circuit 2 contains 19 devices.
 Circuit 1 contains 32 nets,    Circuit 2 contains 32 nets.
 
 
 Final result: 
 Circuits match uniquely.
 .
-Logging to file "/home/hosni/My_forks/marwan/caravel/openlane/buff_flash_clkrst/runs/22_10_15_06_27/logs/signoff/30-buff_flash_clkrst.gds.lvs.log" disabled
+Logging to file "/home/hosni/My_forks/FINAL/caravel/openlane/buff_flash_clkrst/runs/22_10_13_10_28/logs/signoff/28-buff_flash_clkrst.gds.log" disabled
 LVS Done.
