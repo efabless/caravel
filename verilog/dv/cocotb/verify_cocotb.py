@@ -16,6 +16,8 @@ import shutil
 iverilog = True
 vcs = False
 coverage = False
+remove_waves = True
+
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -135,6 +137,10 @@ class RunTest:
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
+        #delete wave when passed
+        if self.passed == "passed" and remove_waves:
+             os.system(f'rm {self.cocotb_path}/{self.sim_path}*.vpd')
+             os.system(f'rm {self.cocotb_path}/{self.sim_path}*.vcd')
         os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
         if os.path.exists(f"{self.cocotb_path}/sdfAnnotateInfo"):
             shutil.move(f"{self.cocotb_path}/sdfAnnotateInfo", f"{self.sim_path}/sdfAnnotateInfo")
@@ -404,6 +410,7 @@ parser.add_argument('-maxerr', help='max number of errors for every test before 
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
 parser.add_argument('-cov',action='store_true', help='enable code coverage')
 parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
+parser.add_argument('-keep_pass_wave',action='store_true', help='Normally the waves of passed tests would be removed using this option will not remove them ')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -414,6 +421,8 @@ if args.sim == None:
     args.sim= ["RTL"]
 if args.corner == None: 
     args.corner= ["nom-t"]
+if args.keep_pass_wave: 
+    remove_waves = False
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 
