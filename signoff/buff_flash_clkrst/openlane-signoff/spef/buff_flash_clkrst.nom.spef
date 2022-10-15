@@ -14,574 +14,734 @@
 *L_UNIT 1 HENRY
 
 *NAME_MAP
-*3 in_n[0]
-*4 in_n[10]
-*5 in_n[11]
-*6 in_n[1]
-*7 in_n[2]
-*8 in_n[3]
-*9 in_n[4]
-*10 in_n[5]
-*11 in_n[6]
-*12 in_n[7]
-*13 in_n[8]
-*14 in_n[9]
-*15 in_s[0]
-*16 in_s[1]
-*17 in_s[2]
-*18 out_n[0]
-*19 out_n[1]
-*20 out_n[2]
-*21 out_s[0]
-*22 out_s[10]
-*23 out_s[11]
-*24 out_s[1]
-*25 out_s[2]
-*26 out_s[3]
-*27 out_s[4]
-*28 out_s[5]
-*29 out_s[6]
-*30 out_s[7]
-*31 out_s[8]
-*32 out_s[9]
-*33 BUF\[0\]
-*34 BUF\[10\]
-*35 BUF\[11\]
-*36 BUF\[12\]
-*37 BUF\[13\]
-*38 BUF\[14\]
-*39 BUF\[1\]
-*40 BUF\[2\]
-*41 BUF\[3\]
-*42 BUF\[4\]
-*43 BUF\[5\]
-*44 BUF\[6\]
-*45 BUF\[7\]
-*46 BUF\[8\]
-*47 BUF\[9\]
-*48 FILLER_0_19
-*49 FILLER_0_27
-*50 FILLER_0_29
-*51 FILLER_0_3
-*52 FILLER_0_41
-*53 FILLER_0_54
-*54 FILLER_0_57
-*55 FILLER_0_7
-*56 FILLER_0_70
-*57 FILLER_0_74
-*58 FILLER_1_17
-*59 FILLER_1_3
-*60 FILLER_1_32
-*61 FILLER_1_47
-*62 FILLER_1_55
-*63 FILLER_1_57
-*64 FILLER_1_70
-*65 FILLER_1_74
-*66 FILLER_2_26
-*67 FILLER_2_29
-*68 FILLER_2_3
-*69 FILLER_2_52
-*70 FILLER_2_67
-*71 FILLER_3_15
-*72 FILLER_3_27
-*73 FILLER_3_3
-*74 FILLER_3_42
-*75 FILLER_3_54
-*76 FILLER_3_57
-*77 FILLER_3_70
-*78 FILLER_3_74
-*79 FILLER_4_19
-*80 FILLER_4_27
-*81 FILLER_4_29
-*82 FILLER_4_3
-*83 FILLER_4_41
-*84 FILLER_4_53
-*85 FILLER_4_57
-*86 FILLER_4_7
-*87 FILLER_4_70
-*88 FILLER_4_74
-*89 PHY_0
-*90 PHY_1
-*91 PHY_2
-*92 PHY_3
-*93 PHY_4
-*94 PHY_5
-*95 PHY_6
-*96 PHY_7
-*97 PHY_8
-*98 PHY_9
-*99 TAP_10
-*100 TAP_11
-*101 TAP_12
-*102 TAP_13
-*103 TAP_14
-*104 TAP_15
-*105 TAP_16
+*3 in_e[0]
+*4 in_e[10]
+*5 in_e[11]
+*6 in_e[1]
+*7 in_e[2]
+*8 in_e[3]
+*9 in_e[4]
+*10 in_e[5]
+*11 in_e[6]
+*12 in_e[7]
+*13 in_e[8]
+*14 in_e[9]
+*15 in_w[0]
+*16 in_w[1]
+*17 in_w[2]
+*18 out_e[0]
+*19 out_e[1]
+*20 out_e[2]
+*21 out_w[0]
+*22 out_w[10]
+*23 out_w[11]
+*24 out_w[1]
+*25 out_w[2]
+*26 out_w[3]
+*27 out_w[4]
+*28 out_w[5]
+*29 out_w[6]
+*30 out_w[7]
+*31 out_w[8]
+*32 out_w[9]
+*33 ANTENNA_BUF\[0\]_A
+*34 ANTENNA_BUF\[10\]_A
+*35 ANTENNA_BUF\[11\]_A
+*36 ANTENNA_BUF\[12\]_A
+*37 ANTENNA_BUF\[13\]_A
+*38 ANTENNA_BUF\[14\]_A
+*39 ANTENNA_BUF\[1\]_A
+*40 ANTENNA_BUF\[2\]_A
+*41 ANTENNA_BUF\[3\]_A
+*42 ANTENNA_BUF\[4\]_A
+*43 ANTENNA_BUF\[5\]_A
+*44 ANTENNA_BUF\[6\]_A
+*45 ANTENNA_BUF\[7\]_A
+*46 ANTENNA_BUF\[8\]_A
+*47 ANTENNA_BUF\[9\]_A
+*48 BUF\[0\]
+*49 BUF\[10\]
+*50 BUF\[11\]
+*51 BUF\[12\]
+*52 BUF\[13\]
+*53 BUF\[14\]
+*54 BUF\[1\]
+*55 BUF\[2\]
+*56 BUF\[3\]
+*57 BUF\[4\]
+*58 BUF\[5\]
+*59 BUF\[6\]
+*60 BUF\[7\]
+*61 BUF\[8\]
+*62 BUF\[9\]
+*63 FILLER_0_19
+*64 FILLER_0_23
+*65 FILLER_0_26
+*66 FILLER_0_29
+*67 FILLER_0_3
+*68 FILLER_0_33
+*69 FILLER_0_39
+*70 FILLER_0_54
+*71 FILLER_0_57
+*72 FILLER_0_7
+*73 FILLER_0_70
+*74 FILLER_0_74
+*75 FILLER_1_17
+*76 FILLER_1_3
+*77 FILLER_1_32
+*78 FILLER_1_47
+*79 FILLER_1_51
+*80 FILLER_1_54
+*81 FILLER_1_57
+*82 FILLER_1_70
+*83 FILLER_1_74
+*84 FILLER_2_11
+*85 FILLER_2_26
+*86 FILLER_2_29
+*87 FILLER_2_3
+*88 FILLER_2_33
+*89 FILLER_2_52
+*90 FILLER_2_67
+*91 FILLER_2_73
+*92 FILLER_3_27
+*93 FILLER_3_3
+*94 FILLER_3_42
+*95 FILLER_3_48
+*96 FILLER_3_54
+*97 FILLER_3_57
+*98 FILLER_3_70
+*99 FILLER_3_74
+*100 FILLER_3_8
+*101 FILLER_4_19
+*102 FILLER_4_25
+*103 FILLER_4_29
+*104 FILLER_4_3
+*105 FILLER_4_33
+*106 FILLER_4_39
+*107 FILLER_4_42
+*108 FILLER_4_48
+*109 FILLER_4_54
+*110 FILLER_4_57
+*111 FILLER_4_7
+*112 FILLER_4_70
+*113 FILLER_4_74
+*114 PHY_0
+*115 PHY_1
+*116 PHY_2
+*117 PHY_3
+*118 PHY_4
+*119 PHY_5
+*120 PHY_6
+*121 PHY_7
+*122 PHY_8
+*123 PHY_9
+*124 TAP_10
+*125 TAP_11
+*126 TAP_12
+*127 TAP_13
+*128 TAP_14
+*129 TAP_15
+*130 TAP_16
 
 *PORTS
-in_n[0] I
-in_n[10] I
-in_n[11] I
-in_n[1] I
-in_n[2] I
-in_n[3] I
-in_n[4] I
-in_n[5] I
-in_n[6] I
-in_n[7] I
-in_n[8] I
-in_n[9] I
-in_s[0] I
-in_s[1] I
-in_s[2] I
-out_n[0] O
-out_n[1] O
-out_n[2] O
-out_s[0] O
-out_s[10] O
-out_s[11] O
-out_s[1] O
-out_s[2] O
-out_s[3] O
-out_s[4] O
-out_s[5] O
-out_s[6] O
-out_s[7] O
-out_s[8] O
-out_s[9] O
+in_e[0] I
+in_e[10] I
+in_e[11] I
+in_e[1] I
+in_e[2] I
+in_e[3] I
+in_e[4] I
+in_e[5] I
+in_e[6] I
+in_e[7] I
+in_e[8] I
+in_e[9] I
+in_w[0] I
+in_w[1] I
+in_w[2] I
+out_e[0] O
+out_e[1] O
+out_e[2] O
+out_w[0] O
+out_w[10] O
+out_w[11] O
+out_w[1] O
+out_w[2] O
+out_w[3] O
+out_w[4] O
+out_w[5] O
+out_w[6] O
+out_w[7] O
+out_w[8] O
+out_w[9] O
 
-*D_NET *3 0.000746189
+*D_NET *3 0.00187969
 *CONN
-*P in_n[0] I
-*I *41:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[0] I
+*I *56:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *41:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[0] 0.000291118
-2 *41:A 0.000291118
-3 *41:A out_n[2] 0.000163953
-4 *41:A *42:A 0
+1 in_e[0] 0.000387464
+2 *56:A 0
+3 *41:DIODE 0.000291067
+4 *3:10 0.000678531
+5 *41:DIODE *57:A 9.56968e-05
+6 *3:10 out_e[2] 0
+7 *3:10 *57:A 0.000225314
+8 *3:10 *6:5 0.000201621
+9 *3:10 *7:7 0
 *RES
-1 in_n[0] *41:A 20.5321 
+1 in_e[0] *3:10 13 
+2 *3:10 *41:DIODE 22.7286 
+3 *3:10 *56:A 9.3 
 *END
 
-*D_NET *4 0.000540091
+*D_NET *4 0.00145612
 *CONN
-*P in_n[10] I
-*I *37:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[10] I
+*I *52:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *37:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[10] 0.00024161
-2 *37:A 0.00024161
-3 *37:A out_s[10] 5.68722e-05
-4 *37:A *36:A 0
-5 *37:A *38:A 0
+1 in_e[10] 0.000380355
+2 *52:A 0
+3 *37:DIODE 0.000116605
+4 *4:10 0.00049696
+5 *37:DIODE *35:DIODE 0.000145804
+6 *4:10 *35:DIODE 6.05161e-06
+7 *4:10 *36:DIODE 4.02038e-05
+8 *4:10 *51:A 2.6949e-05
+9 *4:10 *5:12 0
+10 *4:10 *14:8 0.000243192
 *RES
-1 in_n[10] *37:A 18.55 
+1 in_e[10] *4:10 12.4107 
+2 *4:10 *37:DIODE 11.8893 
+3 *4:10 *52:A 9.3 
 *END
 
-*D_NET *5 0.00290352
+*D_NET *5 0.00554924
 *CONN
-*P in_n[11] I
-*I *38:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[11] I
+*I *53:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *38:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[11] 0.00113707
-2 *38:A 0.00113707
-3 *38:A out_s[10] 0
-4 *38:A out_s[11] 0.000304969
-5 *38:A out_s[9] 0.000140933
-6 *38:A *36:A 0.000183477
-7 *37:A *38:A 0
+1 in_e[11] 0.00157743
+2 *53:A 0
+3 *38:DIODE 0.000514666
+4 *5:12 0.00209209
+5 *38:DIODE *45:DIODE 1.48543e-05
+6 *5:12 out_w[10] 0.000761524
+7 *5:12 out_w[11] 0.000305857
+8 *5:12 out_w[9] 0.000142157
+9 *5:12 *51:A 0.000140668
+10 *4:10 *5:12 0
 *RES
-1 in_n[11] *38:A 36.925 
+1 in_e[11] *5:12 31.7857 
+2 *5:12 *38:DIODE 16.8179 
+3 *5:12 *53:A 9.3 
 *END
 
-*D_NET *6 0.00134243
+*D_NET *6 0.00181316
 *CONN
-*P in_n[1] I
-*I *42:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[1] I
+*I *42:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *57:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[1] 0.000293149
-2 *42:A 0.000293149
-3 *42:A out_s[0] 7.58571e-05
-4 *42:A *43:A 0.000680277
-5 *41:A *42:A 0
+1 in_e[1] 9.4603e-05
+2 *42:DIODE 0.000267466
+3 *57:A 0.000276531
+4 *6:5 0.000638599
+5 *57:A out_e[2] 0
+6 *57:A out_w[1] 1.33343e-05
+7 *57:A *7:7 0
+8 *6:5 *7:7 0
+9 *41:DIODE *57:A 9.56968e-05
+10 *3:10 *57:A 0.000225314
+11 *3:10 *6:5 0.000201621
 *RES
-1 in_n[1] *42:A 22.7464 
+1 in_e[1] *6:5 2.64286 
+2 *6:5 *57:A 20.2286 
+3 *6:5 *42:DIODE 16.8 
 *END
 
-*D_NET *7 0.00200548
+*D_NET *7 0.00154805
 *CONN
-*P in_n[2] I
-*I *43:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[2] I
+*I *58:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *43:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[2] 0.000625829
-2 *43:A 0.000625829
-3 *43:A out_s[0] 0
-4 *43:A out_s[1] 6.74911e-05
-5 *43:A out_s[2] 6.05161e-06
-6 *43:A *44:A 0
-7 *42:A *43:A 0.000680277
+1 in_e[2] 0.000587161
+2 *58:A 0
+3 *43:DIODE 0.000103917
+4 *7:7 0.000691078
+5 *43:DIODE out_w[1] 0
+6 *43:DIODE out_w[3] 5.73473e-05
+7 *7:7 out_w[1] 0
+8 *7:7 out_w[3] 0.000108543
+9 *7:7 *8:10 0
+10 *57:A *7:7 0
+11 *3:10 *7:7 0
+12 *6:5 *7:7 0
 *RES
-1 in_n[2] *43:A 27.5679 
+1 in_e[2] *7:7 11.1786 
+2 *7:7 *43:DIODE 16.05 
+3 *7:7 *58:A 13.8 
 *END
 
-*D_NET *8 0.000719992
+*D_NET *8 0.00152251
 *CONN
-*P in_n[3] I
-*I *44:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[3] I
+*I *44:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *59:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[3] 0.000359996
-2 *44:A 0.000359996
-3 *44:A *45:A 0
-4 *43:A *44:A 0
+1 in_e[3] 0.000400726
+2 *44:DIODE 0.00014329
+3 *59:A 0
+4 *8:10 0.000544016
+5 *8:10 *9:7 0.000434482
+6 *7:7 *8:10 0
 *RES
-1 in_n[3] *44:A 20.5321 
+1 in_e[3] *8:10 13 
+2 *8:10 *59:A 9.3 
+3 *8:10 *44:DIODE 11.4786 
 *END
 
-*D_NET *9 0.00131838
+*D_NET *9 0.00192139
 *CONN
-*P in_n[4] I
-*I *45:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[4] I
+*I *60:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *45:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[4] 0.000565243
-2 *45:A 0.000565243
-3 *45:A out_s[3] 0.000187893
-4 *45:A *46:A 0
-5 *44:A *45:A 0
+1 in_e[4] 0.000462929
+2 *60:A 0
+3 *45:DIODE 0.000133052
+4 *9:7 0.000595982
+5 *45:DIODE out_w[3] 9.80029e-05
+6 *9:7 out_w[3] 0.000182086
+7 *9:7 *10:10 0
+8 *38:DIODE *45:DIODE 1.48543e-05
+9 *8:10 *9:7 0.000434482
 *RES
-1 in_n[4] *45:A 25.3893 
+1 in_e[4] *9:7 11.5893 
+2 *9:7 *45:DIODE 16.5857 
+3 *9:7 *60:A 13.8 
 *END
 
-*D_NET *10 0.00105711
+*D_NET *10 0.00162067
 *CONN
-*P in_n[5] I
-*I *46:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[5] I
+*I *46:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *61:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[5] 0.000528554
-2 *46:A 0.000528554
-3 *45:A *46:A 0
+1 in_e[5] 0.000647855
+2 *46:DIODE 9.98743e-05
+3 *61:A 0
+4 *10:10 0.000747729
+5 *46:DIODE out_w[5] 0
+6 *46:DIODE out_w[6] 0.000104974
+7 *46:DIODE *49:A 7.79781e-06
+8 *46:DIODE *11:12 1.24368e-05
+9 *10:10 *11:12 0
+10 *9:7 *10:10 0
 *RES
-1 in_n[5] *46:A 23.5679 
+1 in_e[5] *10:10 16.0357 
+2 *10:10 *61:A 9.3 
+3 *10:10 *46:DIODE 20.4786 
 *END
 
-*D_NET *11 0.00171215
+*D_NET *11 0.00252686
 *CONN
-*P in_n[6] I
-*I *47:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[6] I
+*I *47:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *62:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[6] 0.000448575
-2 *47:A 0.000448575
-3 *47:A out_s[6] 0.000141554
-4 *47:A *34:A 0.000673444
+1 in_e[6] 0.000760505
+2 *47:DIODE 0.000140069
+3 *62:A 2.22847e-05
+4 *11:12 0.000922859
+5 *11:12 out_w[6] 9.64007e-05
+6 *11:12 *49:A 0.000176112
+7 *11:12 *12:7 0.000396187
+8 *46:DIODE *11:12 1.24368e-05
+9 *10:10 *11:12 0
 *RES
-1 in_n[6] *47:A 25.3357 
+1 in_e[6] *11:12 19.9643 
+2 *11:12 *62:A 9.72857 
+3 *11:12 *47:DIODE 11.4786 
 *END
 
-*D_NET *12 0.00184731
+*D_NET *12 0.0019749
 *CONN
-*P in_n[7] I
-*I *34:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[7] I
+*I *34:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *49:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[7] 0.000505756
-2 *34:A 0.000505756
-3 *34:A out_s[6] 3.85148e-05
-4 *34:A out_s[7] 0.000123836
-5 *34:A out_s[8] 0
-6 *34:A *35:A 0
-7 *47:A *34:A 0.000673444
+1 in_e[7] 0.000219716
+2 *34:DIODE 0
+3 *49:A 0.000401317
+4 *12:7 0.000621033
+5 *49:A out_w[6] 7.45425e-05
+6 *49:A out_w[7] 7.8195e-05
+7 *49:A out_w[8] 0
+8 *49:A *50:A 0
+9 *49:A *51:A 0
+10 *12:7 *50:A 0
+11 *12:7 *13:5 0
+12 *46:DIODE *49:A 7.79781e-06
+13 *11:12 *49:A 0.000176112
+14 *11:12 *12:7 0.000396187
 *RES
-1 in_n[7] *34:A 26.2107 
+1 in_e[7] *12:7 5.60714 
+2 *12:7 *49:A 22.4786 
+3 *12:7 *34:DIODE 13.8 
 *END
 
-*D_NET *13 0.00083737
+*D_NET *13 0.00197511
 *CONN
-*P in_n[8] I
-*I *35:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[8] I
+*I *35:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *50:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_n[8] 0.000415659
-2 *35:A 0.000415659
-3 *35:A out_s[8] 6.05161e-06
-4 *35:A *36:A 0
-5 *34:A *35:A 0
+1 in_e[8] 0.000160901
+2 *35:DIODE 0.000149368
+3 *50:A 0.000253042
+4 *13:5 0.00056331
+5 *35:DIODE *36:DIODE 0.000528038
+6 *50:A out_w[8] 6.05161e-06
+7 *50:A *51:A 0.000154364
+8 *13:5 *51:A 8.18233e-06
+9 *13:5 *14:8 0
+10 *37:DIODE *35:DIODE 0.000145804
+11 *49:A *50:A 0
+12 *4:10 *35:DIODE 6.05161e-06
+13 *12:7 *50:A 0
+14 *12:7 *13:5 0
 *RES
-1 in_n[8] *35:A 21.1929 
+1 in_e[8] *13:5 2.94643 
+2 *13:5 *50:A 18.3714 
+3 *13:5 *35:DIODE 18.8536 
 *END
 
-*D_NET *14 0.00191759
+*D_NET *14 0.00451834
 *CONN
-*P in_n[9] I
-*I *36:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_e[9] I
+*I *51:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *36:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_n[9] 0.000817106
-2 *36:A 0.000817106
-3 *36:A out_s[10] 0
-4 *36:A out_s[11] 9.98961e-05
-5 *35:A *36:A 0
-6 *37:A *36:A 0
-7 *38:A *36:A 0.000183477
+1 in_e[9] 0.00016525
+2 *51:A 0.000480827
+3 *36:DIODE 0.000672942
+4 *14:8 0.00131902
+5 *51:A out_w[10] 0
+6 *51:A out_w[11] 0.000139202
+7 *51:A out_w[8] 0.000595039
+8 *51:A out_w[9] 4.46186e-06
+9 *35:DIODE *36:DIODE 0.000528038
+10 *49:A *51:A 0
+11 *50:A *51:A 0.000154364
+12 *4:10 *36:DIODE 4.02038e-05
+13 *4:10 *51:A 2.6949e-05
+14 *4:10 *14:8 0.000243192
+15 *5:12 *51:A 0.000140668
+16 *13:5 *51:A 8.18233e-06
+17 *13:5 *14:8 0
 *RES
-1 in_n[9] *36:A 29.3714 
+1 in_e[9] *14:8 8.08929 
+2 *14:8 *36:DIODE 18.05 
+3 *14:8 *51:A 30.7107 
 *END
 
-*D_NET *15 0.000565776
+*D_NET *15 0.00178329
 *CONN
-*P in_s[0] I
-*I *33:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_w[0] I
+*I *48:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *33:DIODE I *D sky130_fd_sc_hd__diode_2
 *CAP
-1 in_s[0] 0.000232546
-2 *33:A 0.000232546
-3 *33:A out_n[0] 0.000100684
-4 *33:A *39:A 0
+1 in_w[0] 0.000188195
+2 *48:A 2.05682e-05
+3 *33:DIODE 0.000228868
+4 *15:8 0.000437631
+5 *33:DIODE out_e[0] 0.000539231
+6 *33:DIODE out_e[2] 0
+7 *33:DIODE *40:DIODE 4.29272e-05
+8 *33:DIODE *17:13 1.69497e-05
+9 *48:A out_e[0] 4.3537e-05
+10 *15:8 out_e[0] 5.52302e-05
+11 *15:8 *16:16 0.000210157
 *RES
-1 in_s[0] *33:A 17.9071 
+1 in_w[0] *15:8 8.5 
+2 *15:8 *33:DIODE 25.1036 
+3 *15:8 *48:A 9.83571 
 *END
 
-*D_NET *16 0.00194543
+*D_NET *16 0.00312588
 *CONN
-*P in_s[1] I
-*I *39:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_w[1] I
+*I *39:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *54:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_s[1] 0.000603696
-2 *39:A 0.000603696
-3 *39:A out_n[0] 0.000738039
-4 *39:A out_n[2] 0
-5 *39:A *40:A 0
-6 *33:A *39:A 0
+1 in_w[1] 0.000895518
+2 *39:DIODE 0.000143173
+3 *54:A 0
+4 *16:16 0.00103869
+5 *16:16 out_e[0] 0.000783311
+6 *16:16 out_e[1] 5.5033e-05
+7 *16:16 out_w[0] 0
+8 *16:16 *17:13 0
+9 *15:8 *16:16 0.000210157
 *RES
-1 in_s[1] *39:A 27.4607 
+1 in_w[1] *16:16 25.375 
+2 *16:16 *54:A 9.3 
+3 *16:16 *39:DIODE 11.4786 
 *END
 
-*D_NET *17 0.000720944
+*D_NET *17 0.00135891
 *CONN
-*P in_s[2] I
-*I *40:A I *D sky130_fd_sc_hd__clkbuf_8
+*P in_w[2] I
+*I *40:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *55:A I *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 in_s[2] 0.000360472
-2 *40:A 0.000360472
-3 *40:A out_s[0] 0
-4 *39:A *40:A 0
+1 in_w[2] 0.00034894
+2 *40:DIODE 7.53083e-05
+3 *55:A 0.000133249
+4 *17:13 0.000557498
+5 *17:13 out_w[0] 0.000184038
+6 *33:DIODE *40:DIODE 4.29272e-05
+7 *33:DIODE *17:13 1.69497e-05
+8 *16:16 *17:13 0
 *RES
-1 in_s[2] *40:A 20.1214 
+1 in_w[2] *17:13 7.51786 
+2 *17:13 *55:A 15.5679 
+3 *17:13 *40:DIODE 15.4429 
 *END
 
-*D_NET *18 0.00251314
+*D_NET *18 0.00293082
 *CONN
-*P out_n[0] O
-*I *33:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_e[0] O
+*I *48:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_n[0] 0.00083721
-2 *33:X 0.00083721
-3 out_n[0] out_n[1] 0
-4 out_n[0] out_n[2] 0
-5 *33:A out_n[0] 0.000100684
-6 *39:A out_n[0] 0.000738039
+1 out_e[0] 0.000754758
+2 *48:X 0.000754758
+3 out_e[0] out_e[1] 0
+4 out_e[0] out_e[2] 0
+5 *33:DIODE out_e[0] 0.000539231
+6 *48:A out_e[0] 4.3537e-05
+7 *15:8 out_e[0] 5.52302e-05
+8 *16:16 out_e[0] 0.000783311
 *RES
-1 *33:X out_n[0] 32.2464 
+1 *48:X out_e[0] 32.55 
 *END
 
-*D_NET *19 0.0008921
+*D_NET *19 0.000686393
 *CONN
-*P out_n[1] O
-*I *39:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_e[1] O
+*I *54:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_n[1] 0.000313512
-2 *39:X 0.000313512
-3 out_n[1] out_n[2] 0.000265077
-4 out_n[0] out_n[1] 0
+1 out_e[1] 0.000244599
+2 *54:X 0.000244599
+3 out_e[1] out_e[2] 0.000142163
+4 out_e[0] out_e[1] 0
+5 *16:16 out_e[1] 5.5033e-05
 *RES
-1 *39:X out_n[1] 20.175 
+1 *54:X out_e[1] 19.3536 
 *END
 
-*D_NET *20 0.00165991
+*D_NET *20 0.00121938
 *CONN
-*P out_n[2] O
-*I *40:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_e[2] O
+*I *55:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_n[2] 0.000615442
-2 *40:X 0.000615442
-3 out_n[2] out_s[0] 0
-4 out_n[0] out_n[2] 0
-5 out_n[1] out_n[2] 0.000265077
-6 *39:A out_n[2] 0
-7 *41:A out_n[2] 0.000163953
+1 out_e[2] 0.000443508
+2 *55:X 0.000443508
+3 out_e[2] out_w[0] 0.000190199
+4 out_e[0] out_e[2] 0
+5 out_e[1] out_e[2] 0.000142163
+6 *33:DIODE out_e[2] 0
+7 *57:A out_e[2] 0
+8 *3:10 out_e[2] 0
 *RES
-1 *40:X out_n[2] 26.7464 
+1 *55:X out_e[2] 24.0321 
 *END
 
-*D_NET *21 0.00149166
+*D_NET *21 0.00147049
 *CONN
-*P out_s[0] O
-*I *41:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[0] O
+*I *56:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[0] 0.000551682
-2 *41:X 0.000551682
-3 out_s[0] out_s[1] 0.000312442
-4 out_s[0] out_s[2] 0
-5 out_n[2] out_s[0] 0
-6 *40:A out_s[0] 0
-7 *42:A out_s[0] 7.58571e-05
-8 *43:A out_s[0] 0
+1 out_w[0] 0.000548128
+2 *56:X 0.000548128
+3 out_w[0] out_w[1] 0
+4 out_w[0] out_w[2] 0
+5 out_e[2] out_w[0] 0.000190199
+6 *16:16 out_w[0] 0
+7 *17:13 out_w[0] 0.000184038
 *RES
-1 *41:X out_s[0] 27.6214 
+1 *56:X out_w[0] 27.2107 
 *END
 
-*D_NET *22 0.00205685
+*D_NET *22 0.00197539
 *CONN
-*P out_s[10] O
-*I *37:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[10] O
+*I *52:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[10] 0.000999988
-2 *37:X 0.000999988
-3 out_s[10] out_s[11] 0
-4 out_s[10] out_s[9] 0
-5 *36:A out_s[10] 0
-6 *37:A out_s[10] 5.68722e-05
-7 *38:A out_s[10] 0
+1 out_w[10] 0.000606934
+2 *52:X 0.000606934
+3 out_w[10] out_w[11] 0
+4 out_w[10] out_w[9] 0
+5 *51:A out_w[10] 0
+6 *5:12 out_w[10] 0.000761524
 *RES
-1 *37:X out_s[10] 30.4607 
+1 *52:X out_w[10] 27.4607 
 *END
 
-*D_NET *23 0.00269979
+*D_NET *23 0.001722
 *CONN
-*P out_s[11] O
-*I *38:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[11] O
+*I *53:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[11] 0.001077
-2 *38:X 0.001077
-3 out_s[11] out_s[9] 0.000140933
-4 out_s[10] out_s[11] 0
-5 *36:A out_s[11] 9.98961e-05
-6 *38:A out_s[11] 0.000304969
+1 out_w[11] 0.000567392
+2 *53:X 0.000567392
+3 out_w[11] out_w[9] 0.000142157
+4 out_w[10] out_w[11] 0
+5 *51:A out_w[11] 0.000139202
+6 *5:12 out_w[11] 0.000305857
 *RES
-1 *38:X out_s[11] 28.3 
+1 *53:X out_w[11] 25.6036 
 *END
 
-*D_NET *24 0.00141598
+*D_NET *24 0.00132391
 *CONN
-*P out_s[1] O
-*I *42:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[1] O
+*I *57:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[1] 0.000407902
-2 *42:X 0.000407902
-3 out_s[1] out_s[2] 0.000220246
-4 out_s[1] out_s[3] 0
-5 out_s[0] out_s[1] 0.000312442
-6 *43:A out_s[1] 6.74911e-05
+1 out_w[1] 0.000545165
+2 *57:X 0.000545165
+3 out_w[1] out_w[2] 0.000220246
+4 out_w[0] out_w[1] 0
+5 *43:DIODE out_w[1] 0
+6 *57:A out_w[1] 1.33343e-05
+7 *7:7 out_w[1] 0
 *RES
-1 *42:X out_s[1] 23.9964 
+1 *57:X out_w[1] 24.1214 
 *END
 
-*D_NET *25 0.000977116
+*D_NET *25 0.000981632
 *CONN
-*P out_s[2] O
-*I *43:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[2] O
+*I *58:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[2] 0.000375409
-2 *43:X 0.000375409
-3 out_s[2] out_s[3] 0
-4 out_s[0] out_s[2] 0
-5 out_s[1] out_s[2] 0.000220246
-6 *43:A out_s[2] 6.05161e-06
+1 out_w[2] 0.000380693
+2 *58:X 0.000380693
+3 out_w[2] out_w[3] 0
+4 out_w[0] out_w[2] 0
+5 out_w[1] out_w[2] 0.000220246
 *RES
-1 *43:X out_s[2] 23.175 
+1 *58:X out_w[2] 23.175 
 *END
 
-*D_NET *26 0.00144163
+*D_NET *26 0.0012928
 *CONN
-*P out_s[3] O
-*I *44:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[3] O
+*I *59:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[3] 0.000626868
-2 *44:X 0.000626868
-3 out_s[3] out_s[4] 0
-4 out_s[3] out_s[5] 0
-5 out_s[1] out_s[3] 0
-6 out_s[2] out_s[3] 0
-7 *45:A out_s[3] 0.000187893
+1 out_w[3] 0.00042341
+2 *59:X 0.00042341
+3 out_w[3] out_w[4] 0
+4 out_w[2] out_w[3] 0
+5 *43:DIODE out_w[3] 5.73473e-05
+6 *45:DIODE out_w[3] 9.80029e-05
+7 *7:7 out_w[3] 0.000108543
+8 *9:7 out_w[3] 0.000182086
 *RES
-1 *44:X out_s[3] 25.9071 
+1 *59:X out_w[3] 24.2643 
 *END
 
-*D_NET *27 0.000857812
+*D_NET *27 0.000876889
 *CONN
-*P out_s[4] O
-*I *45:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[4] O
+*I *60:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[4] 0.00037039
-2 *45:X 0.00037039
-3 out_s[4] out_s[5] 0.000117033
-4 out_s[3] out_s[4] 0
+1 out_w[4] 0.000381282
+2 *60:X 0.000381282
+3 out_w[4] out_w[5] 0.000114324
+4 out_w[3] out_w[4] 0
 *RES
-1 *45:X out_s[4] 21.3 
+1 *60:X out_w[4] 21.3 
 *END
 
-*D_NET *28 0.0011436
+*D_NET *28 0.000948646
 *CONN
-*P out_s[5] O
-*I *46:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[5] O
+*I *61:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[5] 0.000513285
-2 *46:X 0.000513285
-3 out_s[5] out_s[6] 0
-4 out_s[3] out_s[5] 0
-5 out_s[4] out_s[5] 0.000117033
+1 out_w[5] 0.000417161
+2 *61:X 0.000417161
+3 out_w[5] out_w[6] 0
+4 out_w[4] out_w[5] 0.000114324
+5 *46:DIODE out_w[5] 0
 *RES
-1 *46:X out_s[5] 23.175 
+1 *61:X out_w[5] 21.5321 
 *END
 
-*D_NET *29 0.00186776
+*D_NET *29 0.00162205
 *CONN
-*P out_s[6] O
-*I *47:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[6] O
+*I *62:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[6] 0.000801981
-2 *47:X 0.000801981
-3 out_s[6] out_s[7] 8.37335e-05
-4 out_s[5] out_s[6] 0
-5 *34:A out_s[6] 3.85148e-05
-6 *47:A out_s[6] 0.000141554
+1 out_w[6] 0.000472408
+2 *62:X 0.000472408
+3 out_w[6] out_w[7] 0.000401319
+4 out_w[6] out_w[8] 0
+5 out_w[5] out_w[6] 0
+6 *46:DIODE out_w[6] 0.000104974
+7 *49:A out_w[6] 7.45425e-05
+8 *11:12 out_w[6] 9.64007e-05
 *RES
-1 *47:X out_s[6] 27.5321 
+1 *62:X out_w[6] 26.1214 
 *END
 
-*D_NET *30 0.00134038
+*D_NET *30 0.00152704
 *CONN
-*P out_s[7] O
-*I *34:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[7] O
+*I *49:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[7] 0.000566407
-2 *34:X 0.000566407
-3 out_s[7] out_s[8] 0
-4 out_s[6] out_s[7] 8.37335e-05
-5 *34:A out_s[7] 0.000123836
+1 out_w[7] 0.000523762
+2 *49:X 0.000523762
+3 out_w[7] out_w[8] 0
+4 out_w[6] out_w[7] 0.000401319
+5 *49:A out_w[7] 7.8195e-05
 *RES
-1 *34:X out_s[7] 24.3357 
+1 *49:X out_w[7] 24.3357 
 *END
 
-*D_NET *31 0.00161835
+*D_NET *31 0.00193802
 *CONN
-*P out_s[8] O
-*I *35:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[8] O
+*I *50:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[8] 0.000784339
-2 *35:X 0.000784339
-3 out_s[8] out_s[9] 4.36202e-05
-4 out_s[7] out_s[8] 0
-5 *34:A out_s[8] 0
-6 *35:A out_s[8] 6.05161e-06
+1 out_w[8] 0.000647848
+2 *50:X 0.000647848
+3 out_w[8] out_w[9] 4.12337e-05
+4 out_w[6] out_w[8] 0
+5 out_w[7] out_w[8] 0
+6 *49:A out_w[8] 0
+7 *50:A out_w[8] 6.05161e-06
+8 *51:A out_w[8] 0.000595039
 *RES
-1 *35:X out_s[8] 27.3893 
+1 *50:X out_w[8] 27.3893 
 *END
 
-*D_NET *32 0.000618171
+*D_NET *32 0.00061345
 *CONN
-*P out_s[9] O
-*I *36:X O *D sky130_fd_sc_hd__clkbuf_8
+*P out_w[9] O
+*I *51:X O *D sky130_fd_sc_hd__clkbuf_8
 *CAP
-1 out_s[9] 0.000146343
-2 *36:X 0.000146343
-3 out_s[10] out_s[9] 0
-4 out_s[11] out_s[9] 0.000140933
-5 out_s[8] out_s[9] 4.36202e-05
-6 *38:A out_s[9] 0.000140933
+1 out_w[9] 0.00014172
+2 *51:X 0.00014172
+3 out_w[10] out_w[9] 0
+4 out_w[11] out_w[9] 0.000142157
+5 out_w[8] out_w[9] 4.12337e-05
+6 *51:A out_w[9] 4.46186e-06
+7 *5:12 out_w[9] 0.000142157
 *RES
-1 *36:X out_s[9] 17.4964 
+1 *51:X out_w[9] 17.4964 
 *END
