@@ -231,6 +231,7 @@ class RunRegression:
         self.test_arg = test
         self.testlist_arg = testlist
         self.corners = corner
+        self.total_start_time = datetime.now()
         if type_arg is None:
             type_arg = "RTL"
         self.type_arg = type_arg
@@ -344,7 +345,7 @@ class RunRegression:
                 for corner,status in corners.items():
                     new_test_name= f"{sim_type}-{test}-{corner}"
                     f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
-        f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown ")
+        f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown  ({('%.10s' % (datetime.now() - self.total_start_time))})time consumed ")
         f.close()
     
     def write_command_log(self):
