@@ -36,10 +36,6 @@ def change_dff(str,new_str,file_path):
     with open(file_path, 'r') as file :
         filedata = file.read()
 
-    if new_str == "> dff2":
-        if new_str in filedata: # to avoid type dff22 types 
-            return
-    # Replace the target string
     filedata = filedata.replace(str, new_str)
 
     # Write the file out again
@@ -160,6 +156,7 @@ class RunTest:
 
     def hex_generate(self):
         tests_use_dff2 = ["mem_dff"]
+        tests_use_dff = ["mem_dff2"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()
@@ -175,15 +172,18 @@ class RunTest:
         CPUFLAGS = f"-march=rv32i -mabi=ilp32 -D__vexriscv__ "
         verilog_path = f"{os.getenv('VERILOG_PATH')}"
         test_dir = f"{os.getenv('VERILOG_PATH')}/dv/tests-caravel/mem" # linker script include // TODO: to fix this in the future from the mgmt repo
-        print(test_dir)
+        #change linker script to for mem tests 
+        if self.test_name in tests_use_dff2:
+           LINKER_SCRIPT = self.linkerScript_for_mem("dff2",LINKER_SCRIPT)
+        elif self.test_name in tests_use_dff:
+           LINKER_SCRIPT = self.linkerScript_for_mem("dff",LINKER_SCRIPT)
+
         elf_command = (f"{GCC_PATH}/{GCC_PREFIX}-gcc -g -I{verilog_path}/dv/firmware -I{verilog_path}/dv/generated  -I{verilog_path}/dv/ "
                  f"-I{verilog_path}/common {CPUFLAGS} -Wl,-Bstatic,-T,{LINKER_SCRIPT},"
                  f"--strip-debug -ffreestanding -nostdlib -o {elf_out} {SOURCE_FILES} {c_file}")
         hex_command = f"{GCC_PATH}/{GCC_PREFIX}-objcopy -O verilog {elf_out} {hex_file} "
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
-        #change linker script to dff2 
-        if self.test_name in tests_use_dff2:
-            change_dff(str="> dff",new_str="> dff2",file_path=LINKER_SCRIPT)
+       
         hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
         self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
@@ -193,8 +193,24 @@ class RunTest:
         if hex_gen_state != 0 :
             print(f"fatal: Error when generating hex")
             sys.exit()
-        if self.test_name in tests_use_dff2:
-            change_dff(str="> dff2",new_str="> dff",file_path=LINKER_SCRIPT)
+        
+    #change linker script to for mem tests 
+    def linkerScript_for_mem(self,ram,LINKER_SCRIPT):
+        new_LINKER_SCRIPT = f"{self.cocotb_path}/{self.sim_path}/sections.lds"
+        shutil.copyfile(LINKER_SCRIPT, new_LINKER_SCRIPT)
+        if ram == "dff2":  
+            change_dff(str="> dff ",new_str="> dff2 ",file_path=new_LINKER_SCRIPT)
+            change_dff(str="> dff\n",new_str="> dff2\n",file_path=new_LINKER_SCRIPT)
+            change_dff(str="ORIGIN(dff)",new_str="ORIGIN(dff2)",file_path=LINKER_SCRIPT)
+            change_dff(str="LENGTH(dff)",new_str="LENGTH(dff2)",file_path=LINKER_SCRIPT)
+        elif ram == "dff":
+            change_dff(str="> dff2 ",new_str="> dff ",file_path=new_LINKER_SCRIPT)
+            change_dff(str="ORIGIN(dff2)",new_str="ORIGIN(dff)",file_path=LINKER_SCRIPT)
+            change_dff(str="LENGTH(dff2)",new_str="LENGTH(dff)",file_path=LINKER_SCRIPT)
+        else: 
+            print(f"ERROR: wrong trype of ram {ram} need to be used for now the oldy rams that can be used for flashing and data are dff and dff2")
+            sys.exit()
+        return new_LINKER_SCRIPT
 
     def cd_make(self):
         os.chdir(f"{os.getenv('VERILOG_PATH')}/dv/make")
