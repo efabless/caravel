@@ -77,8 +77,10 @@ EOF
 
 # Generate LEF of chip_io
 echo "Generating LEF view of chip_io"
+export MAGTYPE=maglef
 magic -d OGL -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
-load chip_io
+# To do:  Read abstract views of subcells
+load chip_io -dereference
 select top cell
 lef write
 quit -noprompt
@@ -86,8 +88,10 @@ EOF
 
 # Generate LEF of chip_io_alt
 echo "Generating LEF view of chip_io_alt"
+export MAGTYPE=maglef
 magic -d OGL -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
-load chip_io_alt
+# To do:  Read abstract views of subcells
+load chip_io_alt -dereference
 select top cell
 lef write
 quit -noprompt
