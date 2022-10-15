@@ -42,7 +42,7 @@ from tests.timer.timer import *
 from tests.uart.uart import *
 from tests.spi_master.spi_master import *
 from tests.logicAnalyzer.la import *
-
+from tests.debug.debug import *
 
 
 # archive tests
