@@ -338,7 +338,7 @@ class RunRegression:
     def update_reg_log(self):
         file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
         f = open(file_name, "w")
-        f.write(f"{'Test':<25} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
+        f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():

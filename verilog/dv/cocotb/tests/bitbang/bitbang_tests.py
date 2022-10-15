@@ -80,6 +80,7 @@ async def bitbang_no_cpu_all_o(dut):
     await clock_in_right_o_left_i_standard(cpu,0) # 1	and 36	
     await clock_in_end_output(cpu)		          # 0   and 37 and load
 
+    await caravelEnv.release_csb()
     await cpu.drive_data2address(reg.get_addr('reg_mprj_datal'),0x0) 
     await cpu.drive_data2address(reg.get_addr('reg_mprj_datah'),0x0) 
 
