@@ -207,12 +207,12 @@ class RunTest:
         if ram == "dff2":  
             change_dff(str="> dff ",new_str="> dff2 ",file_path=new_LINKER_SCRIPT)
             change_dff(str="> dff\n",new_str="> dff2\n",file_path=new_LINKER_SCRIPT)
-            change_dff(str="ORIGIN(dff)",new_str="ORIGIN(dff2)",file_path=LINKER_SCRIPT)
-            change_dff(str="LENGTH(dff)",new_str="LENGTH(dff2)",file_path=LINKER_SCRIPT)
+            change_dff(str="ORIGIN(dff)",new_str="ORIGIN(dff2)",file_path=new_LINKER_SCRIPT)
+            change_dff(str="LENGTH(dff)",new_str="LENGTH(dff2)",file_path=new_LINKER_SCRIPT)
         elif ram == "dff":
             change_dff(str="> dff2 ",new_str="> dff ",file_path=new_LINKER_SCRIPT)
-            change_dff(str="ORIGIN(dff2)",new_str="ORIGIN(dff)",file_path=LINKER_SCRIPT)
-            change_dff(str="LENGTH(dff2)",new_str="LENGTH(dff)",file_path=LINKER_SCRIPT)
+            change_dff(str="ORIGIN(dff2)",new_str="ORIGIN(dff)",file_path=new_LINKER_SCRIPT)
+            change_dff(str="LENGTH(dff2)",new_str="LENGTH(dff)",file_path=new_LINKER_SCRIPT)
         else: 
             print(f"ERROR: wrong trype of ram {ram} need to be used for now the oldy rams that can be used for flashing and data are dff and dff2")
             sys.exit()
