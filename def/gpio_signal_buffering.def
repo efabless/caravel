@@ -778,7 +778,7 @@ COMPONENTS 624 ;
       + PLACED ( 204800 1744665 ) FE ;
    - sky130_fd_sc_hd__tapvpwrvgnd_1_165 sky130_fd_sc_hd__tapvpwrvgnd_1
       + PLACED ( 202080 1744665 ) E ;
-   - sky130_fd_sc_hd__buf_8_150 sky130_fd_sc_hd__buf_8
+   - sky130_ef_sc_hd__decap_12_100 sky130_ef_sc_hd__decap_12
       + PLACED ( 207520 1745125 ) E ;
    - sky130_fd_sc_hd__tapvpwrvgnd_1_162 sky130_fd_sc_hd__tapvpwrvgnd_1
       + PLACED ( 207520 1744665 ) E ;
@@ -2122,7 +2122,7 @@ NONDEFAULTRULES 3 ;
      + LAYER met3 WIDTH 1850 ;
 END NONDEFAULTRULES
 
-NETS 265 ;
+NETS 263 ;
    - sky130_fd_sc_hd__buf_8_29/A ( sky130_fd_sc_hd__buf_8_29 A )
        ( sky130_fd_sc_hd__buf_8_19 X )
       + ROUTED met1  ( 3384835 3615175 ) mcon_170_1090 
@@ -5897,8 +5897,6 @@ NETS 265 ;
       NEW met2  ( 205975 1740375 ) ( 206685 * )
       NEW met2  ( 205975 1740195 ) ( 206685 * )
       NEW met2  ( 741440 212790 ) ( 742390 * ) ;
-   - sky130_fd_sc_hd__buf_8_150/X ( sky130_fd_sc_hd__buf_8_150 X ) ;
-   - sky130_fd_sc_hd__buf_8_150/A ( sky130_fd_sc_hd__buf_8_150 A ) ;
    - mgmt_io_in_unbuf[19] ( sky130_fd_sc_hd__buf_8_172 A )
       + ROUTED met1  ( 218665 3057740 ) ( * 3060710 )
       NEW met1  ( 218665 3057600 ) ( 218945 * )
@@ -6731,8 +6729,8 @@ NETS 265 ;
        ( sky130_fd_sc_hd__buf_8_151 VNB )
        ( sky130_fd_sc_hd__buf_8_0 VNB )
        ( sky130_fd_sc_hd__tapvpwrvgnd_1_162 VGND )
-       ( sky130_fd_sc_hd__buf_8_150 VNB )
-       ( sky130_fd_sc_hd__buf_8_150 VGND )
+       ( sky130_ef_sc_hd__decap_12_100 VNB )
+       ( sky130_ef_sc_hd__decap_12_100 VGND )
        ( sky130_fd_sc_hd__tapvpwrvgnd_1_165 VGND )
        ( sky130_fd_sc_hd__buf_8_152 VGND )
        ( sky130_fd_sc_hd__buf_8_153 VGND )
@@ -7927,8 +7925,8 @@ NETS 265 ;
        ( sky130_fd_sc_hd__buf_8_151 VPB )
        ( sky130_fd_sc_hd__buf_8_0 VPB )
        ( sky130_fd_sc_hd__tapvpwrvgnd_1_162 VPWR )
-       ( sky130_fd_sc_hd__buf_8_150 VPWR )
-       ( sky130_fd_sc_hd__buf_8_150 VPB )
+       ( sky130_ef_sc_hd__decap_12_100 VPWR )
+       ( sky130_ef_sc_hd__decap_12_100 VPB )
        ( sky130_fd_sc_hd__tapvpwrvgnd_1_165 VPWR )
        ( sky130_fd_sc_hd__tapvpwrvgnd_1_164 VPWR )
        ( sky130_fd_sc_hd__buf_8_153 VPWR )
