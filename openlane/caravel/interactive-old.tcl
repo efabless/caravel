@@ -64,6 +64,11 @@ set mprj_y 1393.590
 
 set soc_x 260.170
 set soc_y 265.010
+add_macro_placement copyright_block 747.91000 81.49000 N
+add_macro_placement open_source 1030.49000 10.27000 N
+add_macro_placement user_id_textblock 481.36000 34.45000 N
+add_macro_placement caravel_logo 1346.85000 25.50000 N
+add_macro_placement caravel_motto -271.86000 -22.23000 N
 add_macro_placement sigbuf 0 0 N
 add_macro_placement flash_clkrst_buffers 2292 238 N
 add_macro_placement caravel_power_routing 0 0 N
