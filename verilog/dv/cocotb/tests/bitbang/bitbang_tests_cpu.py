@@ -115,11 +115,17 @@ async def bitbang_cpu_all_01(dut):
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
     type = False # type of shifting 01 or 10
     for gpio in gpios_l:
-        shift(uut._id(gpio,False),type)
+        if not Macros['GL']:
+            shift(uut._id(gpio,False),type)
+        else: 
+            shift(uut._id(f'\\{gpio} ',False),type)
         type = not type
     type = False # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
-        shift(uut._id(gpio,False),type)
+        if not Macros['GL']:
+            shift(uut._id(gpio,False),type)
+        else: 
+            shift(uut._id(f'\\{gpio} ',False),type)
         type = not type
 
 @cocotb.test()
@@ -134,14 +140,14 @@ async def bitbang_cpu_all_0011(dut):
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
     
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
-    type = 0 # type of shifting 01 or 10
+    type = 2 # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
             shift_2(uut._id(gpio,False),type)
         else: 
             shift_2(uut._id(f'\\{gpio} ',False),type)
         type = (type + 1) %4
-    type = 0 # type of shifting 01 or 10
+    type = 2 # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if not Macros['GL']:
             shift_2(uut._id(gpio,False),type)
@@ -161,14 +167,14 @@ async def bitbang_cpu_all_1100(dut):
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
     
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
-    type = 2 # type of shifting 01 or 10
+    type = 0 # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
             shift_2(uut._id(gpio,False),type)
         else: 
             shift_2(uut._id(f'\\{gpio} ',False),type)
         type = (type + 1) %4
-    type = 2 # type of shifting 01 or 10
+    type = 0 # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if not Macros['GL']:
             shift_2(uut._id(gpio,False),type)
@@ -178,19 +184,24 @@ async def bitbang_cpu_all_1100(dut):
 
 def shift_2(gpio,shift_type):
     if shift_type == 0: 
-        bits = "1001100110011"
-    elif shift_type == 1: 
-        bits = "1100110011001"
-    elif shift_type == 2: 
-        bits = "0110011001100"
-    elif shift_type == 3: 
         bits = "0011001100110"
+    elif shift_type == 1: 
+        bits = "0110011001100"
+    elif shift_type == 2: 
+        bits = "1100110011001"
+    elif shift_type == 3: 
+        bits = "1001100110011"
     fail = False
     if not Macros['GL']:
-        cocotb.log.info(f"[TEST] gpio {gpio} shift {gpio._id(f'shift_register',False).value} expected {bits}")
+        cocotb.log.info(f"[TEST] gpio {gpio} shift {gpio._id(f'shift_register',False).value.binstr[::-1]} expected {bits}")
+    else :
+        shift_reg =''
+        for i in range(13):
+            shift_reg +=  gpio._id(f"\\shift_register[{i}] ",False).value.binstr
+        cocotb.log.info(f"[TEST] gpio {gpio} shift {shift_reg} expected {bits}")
     for i in range(13):
         if not Macros['GL']:
-            shift_register = gpio._id(f"shift_register",False).value.binstr[i]
+            shift_register = gpio._id(f"shift_register",False).value.binstr[12-i]
         else:  
             shift_register = gpio._id(f"\\shift_register[{i}] ",False).value.binstr
         if shift_register != bits[i]:
