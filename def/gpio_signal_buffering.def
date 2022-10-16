@@ -1360,7 +1360,7 @@ COMPONENTS 624 ;
       + PLACED ( 3333755 4979130 ) FS ;
 END COMPONENTS
 
-PINS 182 ;
+PINS 150 ;
    - vccd + NET vccd
      + DIRECTION INPUT
      + USE POWER
@@ -1381,42 +1381,32 @@ PINS 182 ;
      + USE GROUND
      + PORT
         + LAYER met3 ( -765 -235 ) ( 765 235 )        + PLACED ( 843845 4987560 ) N ;
-   - mgmt_io_out_buf[19] + NET mgmt_io_out_buf[19]
+   - mgmt_io_out_buf[12] + NET mgmt_io_out_buf[12]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -700 -70 ) ( 700 70 )        + PLACED ( 858845 4976795 ) N ;
-   - mgmt_io_in_unbuf[19] + NET mgmt_io_in_unbuf[19]
+   - mgmt_io_in_unbuf[12] + NET mgmt_io_in_unbuf[12]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -700 -70 ) ( 700 70 )        + PLACED ( 859845 4977075 ) N ;
-   - mgmt_io_in_unbuf[18] + NET mgmt_io_in_unbuf[18]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 2080307.5 4976585 ) N ;
-   - mgmt_io_out_buf[18] + NET mgmt_io_out_buf[18]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 2081307.5 4976305 ) N ;
-   - mgmt_io_out_buf[21] + NET mgmt_io_out_buf[21]
+   - mgmt_io_out_buf[14] + NET mgmt_io_out_buf[14]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -700 -70 ) ( 700 70 )        + PLACED ( 854850 4974555 ) N ;
-   - mgmt_io_in_unbuf[21] + NET mgmt_io_in_unbuf[21]
+   - mgmt_io_in_unbuf[14] + NET mgmt_io_in_unbuf[14]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -700 -70 ) ( 700 70 )        + PLACED ( 855850 4974835 ) N ;
-   - mgmt_io_out_buf[20] + NET mgmt_io_out_buf[20]
+   - mgmt_io_out_buf[13] + NET mgmt_io_out_buf[13]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -700 -70 ) ( 700 70 )        + PLACED ( 856855 4975675 ) N ;
-   - mgmt_io_in_unbuf[20] + NET mgmt_io_in_unbuf[20]
+   - mgmt_io_in_unbuf[13] + NET mgmt_io_in_unbuf[13]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
@@ -1441,12 +1431,12 @@ PINS 182 ;
      + USE GROUND
      + PORT
         + LAYER met3 ( -225 -742.5 ) ( 225 742.5 )        + PLACED ( 3387545 2241392.5 ) N ;
-   - mgmt_io_out_buf[17] + NET mgmt_io_out_buf[17]
+   - mgmt_io_out_buf[10] + NET mgmt_io_out_buf[10]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3303387.5 4975325 ) N ;
-   - mgmt_io_in_unbuf[17] + NET mgmt_io_in_unbuf[17]
+   - mgmt_io_in_unbuf[10] + NET mgmt_io_in_unbuf[10]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
@@ -1461,102 +1451,102 @@ PINS 182 ;
      + USE GROUND
      + PORT
         + LAYER met3 ( -225 -742.5 ) ( 225 742.5 )        + PLACED ( 3387575 3623377.5 ) N ;
-   - mgmt_io_out_buf[16] + NET mgmt_io_out_buf[16]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3305387.5 4974205 ) N ;
-   - mgmt_io_in_unbuf[16] + NET mgmt_io_in_unbuf[16]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3304387.5 4974485 ) N ;
-   - mgmt_io_out_buf[15] + NET mgmt_io_out_buf[15]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3307387.5 4973085 ) N ;
-   - mgmt_io_in_unbuf[15] + NET mgmt_io_in_unbuf[15]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3306387.5 4973365 ) N ;
-   - mgmt_io_out_buf[11] + NET mgmt_io_out_buf[11]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368470 2277557.5 ) N ;
-   - mgmt_io_in_unbuf[11] + NET mgmt_io_in_unbuf[11]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368750 2278557.5 ) N ;
-   - mgmt_io_in_unbuf[14] + NET mgmt_io_in_unbuf[14]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371970 3642887.5 ) N ;
-   - mgmt_io_out_buf[14] + NET mgmt_io_out_buf[14]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371690 3641887.5 ) N ;
-   - mgmt_io_in_unbuf[13] + NET mgmt_io_in_unbuf[13]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370850 3640887.5 ) N ;
-   - mgmt_io_out_buf[13] + NET mgmt_io_out_buf[13]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370570 3639887.5 ) N ;
-   - mgmt_io_in_unbuf[12] + NET mgmt_io_in_unbuf[12]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369870 2280557.5 ) N ;
-   - mgmt_io_out_buf[12] + NET mgmt_io_out_buf[12]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369590 2279557.5 ) N ;
-   - mgmt_io_in_unbuf[7] + NET mgmt_io_in_unbuf[7]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364270 2270557.5 ) N ;
-   - mgmt_io_out_buf[7] + NET mgmt_io_out_buf[7]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3363990 2269557.5 ) N ;
-   - mgmt_io_in_unbuf[8] + NET mgmt_io_in_unbuf[8]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365390 2272557.5 ) N ;
-   - mgmt_io_out_buf[8] + NET mgmt_io_out_buf[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365110 2271557.5 ) N ;
-   - mgmt_io_in_unbuf[9] + NET mgmt_io_in_unbuf[9]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366510 2274557.5 ) N ;
    - mgmt_io_out_buf[9] + NET mgmt_io_out_buf[9]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3305387.5 4974205 ) N ;
+   - mgmt_io_in_unbuf[9] + NET mgmt_io_in_unbuf[9]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3304387.5 4974485 ) N ;
+   - mgmt_io_out_buf[8] + NET mgmt_io_out_buf[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3307387.5 4973085 ) N ;
+   - mgmt_io_in_unbuf[8] + NET mgmt_io_in_unbuf[8]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 3306387.5 4973365 ) N ;
+   - mgmt_io_out_buf[4] + NET mgmt_io_out_buf[4]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368470 2277557.5 ) N ;
+   - mgmt_io_in_unbuf[4] + NET mgmt_io_in_unbuf[4]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368750 2278557.5 ) N ;
+   - mgmt_io_in_unbuf[7] + NET mgmt_io_in_unbuf[7]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371970 3642887.5 ) N ;
+   - mgmt_io_out_buf[7] + NET mgmt_io_out_buf[7]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371690 3641887.5 ) N ;
+   - mgmt_io_in_unbuf[6] + NET mgmt_io_in_unbuf[6]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370850 3640887.5 ) N ;
+   - mgmt_io_out_buf[6] + NET mgmt_io_out_buf[6]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370570 3639887.5 ) N ;
+   - mgmt_io_in_unbuf[5] + NET mgmt_io_in_unbuf[5]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369870 2280557.5 ) N ;
+   - mgmt_io_out_buf[5] + NET mgmt_io_out_buf[5]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369590 2279557.5 ) N ;
+   - mgmt_io_in_unbuf[0] + NET mgmt_io_in_unbuf[0]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364270 2270557.5 ) N ;
+   - mgmt_io_out_buf[0] + NET mgmt_io_out_buf[0]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3363990 2269557.5 ) N ;
+   - mgmt_io_in_unbuf[1] + NET mgmt_io_in_unbuf[1]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365390 2272557.5 ) N ;
+   - mgmt_io_out_buf[1] + NET mgmt_io_out_buf[1]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365110 2271557.5 ) N ;
+   - mgmt_io_in_unbuf[2] + NET mgmt_io_in_unbuf[2]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366510 2274557.5 ) N ;
+   - mgmt_io_out_buf[2] + NET mgmt_io_out_buf[2]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
         + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366230 2273557.5 ) N ;
-   - mgmt_io_in_unbuf[10] + NET mgmt_io_in_unbuf[10]
+   - mgmt_io_in_unbuf[3] + NET mgmt_io_in_unbuf[3]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3367630 2276557.5 ) N ;
-   - mgmt_io_out_buf[10] + NET mgmt_io_out_buf[10]
+   - mgmt_io_out_buf[3] + NET mgmt_io_out_buf[3]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
@@ -1581,67 +1571,67 @@ PINS 182 ;
      + USE POWER
      + PORT
         + LAYER met3 ( -765 -235 ) ( 765 235 )        + PLACED ( 2203020 210155 ) N ;
-   - mgmt_io_oeb_buf[37] + NET mgmt_io_oeb_buf[37]
+   - mgmt_io_oeb_buf[2] + NET mgmt_io_oeb_buf[2]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 666242.5 220830 ) N ;
-   - mgmt_io_out_buf[34] + NET mgmt_io_out_buf[34]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 656242.5 225310 ) N ;
-   - mgmt_io_in_unbuf[34] + NET mgmt_io_in_unbuf[34]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 657242.5 225030 ) N ;
-   - mgmt_io_out_buf[35] + NET mgmt_io_out_buf[35]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 658242.5 224470 ) N ;
-   - mgmt_io_in_unbuf[35] + NET mgmt_io_in_unbuf[35]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 659242.5 224190 ) N ;
-   - mgmt_io_out_buf[36] + NET mgmt_io_out_buf[36]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 660242.5 223630 ) N ;
-   - mgmt_io_in_unbuf[36] + NET mgmt_io_in_unbuf[36]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 661242.5 223350 ) N ;
-   - mgmt_io_out_buf[37] + NET mgmt_io_out_buf[37]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 662242.5 222790 ) N ;
-   - mgmt_io_in_unbuf[37] + NET mgmt_io_in_unbuf[37]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 663242.5 222510 ) N ;
-   - mgmt_io_oeb_buf[35] + NET mgmt_io_oeb_buf[35]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 664242.5 221950 ) N ;
-   - mgmt_io_oeb_buf[36] + NET mgmt_io_oeb_buf[36]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 665242.5 221390 ) N ;
    - mgmt_io_out_buf[27] + NET mgmt_io_out_buf[27]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220345 3057127.5 ) N ;
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 656242.5 225310 ) N ;
    - mgmt_io_in_unbuf[27] + NET mgmt_io_in_unbuf[27]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 657242.5 225030 ) N ;
+   - mgmt_io_out_buf[28] + NET mgmt_io_out_buf[28]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 658242.5 224470 ) N ;
+   - mgmt_io_in_unbuf[28] + NET mgmt_io_in_unbuf[28]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 659242.5 224190 ) N ;
+   - mgmt_io_out_buf[29] + NET mgmt_io_out_buf[29]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 660242.5 223630 ) N ;
+   - mgmt_io_in_unbuf[29] + NET mgmt_io_in_unbuf[29]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 661242.5 223350 ) N ;
+   - mgmt_io_out_buf[30] + NET mgmt_io_out_buf[30]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 662242.5 222790 ) N ;
+   - mgmt_io_in_unbuf[30] + NET mgmt_io_in_unbuf[30]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 663242.5 222510 ) N ;
+   - mgmt_io_oeb_buf[0] + NET mgmt_io_oeb_buf[0]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 664242.5 221950 ) N ;
+   - mgmt_io_oeb_buf[1] + NET mgmt_io_oeb_buf[1]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 665242.5 221390 ) N ;
+   - mgmt_io_out_buf[20] + NET mgmt_io_out_buf[20]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220345 3057127.5 ) N ;
+   - mgmt_io_in_unbuf[20] + NET mgmt_io_in_unbuf[20]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
@@ -1676,537 +1666,451 @@ PINS 182 ;
      + USE POWER
      + PORT
         + LAYER met3 ( -225 -742.5 ) ( 225 742.5 )        + PLACED ( 200335 4441807.5 ) N ;
-   - mgmt_io_in_unbuf[23] + NET mgmt_io_in_unbuf[23]
+   - mgmt_io_in_unbuf[16] + NET mgmt_io_in_unbuf[16]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -587.5 ) ( 70 587.5 )        + PLACED ( 215725 4459997.5 ) N ;
-   - mgmt_io_out_buf[22] + NET mgmt_io_out_buf[22]
+   - mgmt_io_out_buf[15] + NET mgmt_io_out_buf[15]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -587.5 ) ( 70 587.5 )        + PLACED ( 214885 4460997.5 ) N ;
-   - mgmt_io_in_unbuf[22] + NET mgmt_io_in_unbuf[22]
+   - mgmt_io_in_unbuf[15] + NET mgmt_io_in_unbuf[15]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -587.5 ) ( 70 587.5 )        + PLACED ( 214605 4461997.5 ) N ;
-   - mgmt_io_out_buf[23] + NET mgmt_io_out_buf[23]
+   - mgmt_io_out_buf[16] + NET mgmt_io_out_buf[16]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -587.5 ) ( 70 587.5 )        + PLACED ( 216005 4458997.5 ) N ;
-   - mgmt_io_in_unbuf[24] + NET mgmt_io_in_unbuf[24]
+   - mgmt_io_in_unbuf[17] + NET mgmt_io_in_unbuf[17]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 216705 3064127.5 ) N ;
-   - mgmt_io_out_buf[24] + NET mgmt_io_out_buf[24]
+   - mgmt_io_out_buf[17] + NET mgmt_io_out_buf[17]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 216985 3063127.5 ) N ;
-   - mgmt_io_out_buf[25] + NET mgmt_io_out_buf[25]
+   - mgmt_io_out_buf[18] + NET mgmt_io_out_buf[18]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218105 3061127.5 ) N ;
-   - mgmt_io_in_unbuf[25] + NET mgmt_io_in_unbuf[25]
+   - mgmt_io_in_unbuf[18] + NET mgmt_io_in_unbuf[18]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 217825 3062127.5 ) N ;
-   - mgmt_io_in_unbuf[26] + NET mgmt_io_in_unbuf[26]
+   - mgmt_io_in_unbuf[19] + NET mgmt_io_in_unbuf[19]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218945 3060127.5 ) N ;
-   - mgmt_io_out_buf[26] + NET mgmt_io_out_buf[26]
+   - mgmt_io_out_buf[19] + NET mgmt_io_out_buf[19]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 219225 3059127.5 ) N ;
-   - mgmt_io_out_buf[33] + NET mgmt_io_out_buf[33]
+   - mgmt_io_out_buf[26] + NET mgmt_io_out_buf[26]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 226925 1765915 ) N ;
-   - mgmt_io_in_unbuf[33] + NET mgmt_io_in_unbuf[33]
+   - mgmt_io_in_unbuf[26] + NET mgmt_io_in_unbuf[26]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 226645 1766915 ) N ;
-   - mgmt_io_out_buf[32] + NET mgmt_io_out_buf[32]
+   - mgmt_io_out_buf[25] + NET mgmt_io_out_buf[25]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 225805 1767915 ) N ;
-   - mgmt_io_in_unbuf[32] + NET mgmt_io_in_unbuf[32]
+   - mgmt_io_in_unbuf[25] + NET mgmt_io_in_unbuf[25]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 225525 1768915 ) N ;
-   - mgmt_io_out_buf[31] + NET mgmt_io_out_buf[31]
+   - mgmt_io_out_buf[24] + NET mgmt_io_out_buf[24]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 224685 1769915 ) N ;
-   - mgmt_io_in_unbuf[31] + NET mgmt_io_in_unbuf[31]
+   - mgmt_io_in_unbuf[24] + NET mgmt_io_in_unbuf[24]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 224405 1770915 ) N ;
-   - mgmt_io_out_buf[30] + NET mgmt_io_out_buf[30]
+   - mgmt_io_out_buf[23] + NET mgmt_io_out_buf[23]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 223565 1771915 ) N ;
-   - mgmt_io_in_unbuf[30] + NET mgmt_io_in_unbuf[30]
+   - mgmt_io_in_unbuf[23] + NET mgmt_io_in_unbuf[23]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 223285 1772915 ) N ;
-   - mgmt_io_out_buf[29] + NET mgmt_io_out_buf[29]
+   - mgmt_io_out_buf[22] + NET mgmt_io_out_buf[22]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222585 3053127.5 ) N ;
-   - mgmt_io_in_unbuf[29] + NET mgmt_io_in_unbuf[29]
+   - mgmt_io_in_unbuf[22] + NET mgmt_io_in_unbuf[22]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222305 3054127.5 ) N ;
-   - mgmt_io_out_buf[28] + NET mgmt_io_out_buf[28]
+   - mgmt_io_out_buf[21] + NET mgmt_io_out_buf[21]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221465 3055127.5 ) N ;
-   - mgmt_io_in_unbuf[28] + NET mgmt_io_in_unbuf[28]
+   - mgmt_io_in_unbuf[21] + NET mgmt_io_in_unbuf[21]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221185 3056127.5 ) N ;
-   - mgmt_io_out_unbuf[21] + NET mgmt_io_out_unbuf[21]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3368190 1144957.5 ) N ;
-   - mgmt_io_in_buf[21] + NET mgmt_io_in_buf[21]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3368470 1145957.5 ) N ;
-   - mgmt_io_out_unbuf[11] + NET mgmt_io_out_unbuf[11]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368610 1182967.5 ) N ;
-   - mgmt_io_in_buf[11] + NET mgmt_io_in_buf[11]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368890 1181967.5 ) N ;
-   - mgmt_io_in_buf[18] + NET mgmt_io_in_buf[18]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3376870 1167967.5 ) N ;
-   - mgmt_io_out_unbuf[18] + NET mgmt_io_out_unbuf[18]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3376590 1168967.5 ) N ;
-   - mgmt_io_in_buf[17] + NET mgmt_io_in_buf[17]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3375610 1169967.5 ) N ;
-   - mgmt_io_out_unbuf[17] + NET mgmt_io_out_unbuf[17]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3375330 1170967.5 ) N ;
-   - mgmt_io_in_buf[16] + NET mgmt_io_in_buf[16]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3374490 1171967.5 ) N ;
-   - mgmt_io_out_unbuf[16] + NET mgmt_io_out_unbuf[16]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3374210 1172967.5 ) N ;
-   - mgmt_io_in_buf[15] + NET mgmt_io_in_buf[15]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3373370 1173967.5 ) N ;
-   - mgmt_io_out_unbuf[15] + NET mgmt_io_out_unbuf[15]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3373090 1174967.5 ) N ;
-   - mgmt_io_in_buf[14] + NET mgmt_io_in_buf[14]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3372250 1175967.5 ) N ;
    - mgmt_io_out_unbuf[14] + NET mgmt_io_out_unbuf[14]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371970 1176967.5 ) N ;
-   - mgmt_io_in_buf[13] + NET mgmt_io_in_buf[13]
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3368190 1144957.5 ) N ;
+   - mgmt_io_in_buf[14] + NET mgmt_io_in_buf[14]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371130 1177967.5 ) N ;
-   - mgmt_io_out_unbuf[13] + NET mgmt_io_out_unbuf[13]
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3368470 1145957.5 ) N ;
+   - mgmt_io_out_unbuf[4] + NET mgmt_io_out_unbuf[4]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370850 1178967.5 ) N ;
-   - mgmt_io_in_buf[12] + NET mgmt_io_in_buf[12]
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368610 1182967.5 ) N ;
+   - mgmt_io_in_buf[4] + NET mgmt_io_in_buf[4]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370010 1179967.5 ) N ;
-   - mgmt_io_out_unbuf[12] + NET mgmt_io_out_unbuf[12]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369730 1180967.5 ) N ;
-   - mgmt_io_out_unbuf[7] + NET mgmt_io_out_unbuf[7]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364130 1190967.5 ) N ;
-   - mgmt_io_in_buf[7] + NET mgmt_io_in_buf[7]
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3368890 1181967.5 ) N ;
+   - mgmt_io_in_buf[11] + NET mgmt_io_in_buf[11]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364410 1189967.5 ) N ;
-   - mgmt_io_out_unbuf[8] + NET mgmt_io_out_unbuf[8]
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3376870 1167967.5 ) N ;
+   - mgmt_io_out_unbuf[11] + NET mgmt_io_out_unbuf[11]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365250 1188967.5 ) N ;
-   - mgmt_io_in_buf[8] + NET mgmt_io_in_buf[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365530 1187967.5 ) N ;
-   - mgmt_io_out_unbuf[9] + NET mgmt_io_out_unbuf[9]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366370 1186967.5 ) N ;
-   - mgmt_io_in_buf[9] + NET mgmt_io_in_buf[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366650 1185967.5 ) N ;
-   - mgmt_io_out_unbuf[10] + NET mgmt_io_out_unbuf[10]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3367490 1184967.5 ) N ;
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3376590 1168967.5 ) N ;
    - mgmt_io_in_buf[10] + NET mgmt_io_in_buf[10]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3375610 1169967.5 ) N ;
+   - mgmt_io_out_unbuf[10] + NET mgmt_io_out_unbuf[10]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3375330 1170967.5 ) N ;
+   - mgmt_io_in_buf[9] + NET mgmt_io_in_buf[9]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3374490 1171967.5 ) N ;
+   - mgmt_io_out_unbuf[9] + NET mgmt_io_out_unbuf[9]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3374210 1172967.5 ) N ;
+   - mgmt_io_in_buf[8] + NET mgmt_io_in_buf[8]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3373370 1173967.5 ) N ;
+   - mgmt_io_out_unbuf[8] + NET mgmt_io_out_unbuf[8]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3373090 1174967.5 ) N ;
+   - mgmt_io_in_buf[7] + NET mgmt_io_in_buf[7]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3372250 1175967.5 ) N ;
+   - mgmt_io_out_unbuf[7] + NET mgmt_io_out_unbuf[7]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371970 1176967.5 ) N ;
+   - mgmt_io_in_buf[6] + NET mgmt_io_in_buf[6]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3371130 1177967.5 ) N ;
+   - mgmt_io_out_unbuf[6] + NET mgmt_io_out_unbuf[6]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370850 1178967.5 ) N ;
+   - mgmt_io_in_buf[5] + NET mgmt_io_in_buf[5]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370010 1179967.5 ) N ;
+   - mgmt_io_out_unbuf[5] + NET mgmt_io_out_unbuf[5]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3369730 1180967.5 ) N ;
+   - mgmt_io_out_unbuf[0] + NET mgmt_io_out_unbuf[0]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364130 1190967.5 ) N ;
+   - mgmt_io_in_buf[0] + NET mgmt_io_in_buf[0]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3364410 1189967.5 ) N ;
+   - mgmt_io_out_unbuf[1] + NET mgmt_io_out_unbuf[1]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365250 1188967.5 ) N ;
+   - mgmt_io_in_buf[1] + NET mgmt_io_in_buf[1]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3365530 1187967.5 ) N ;
+   - mgmt_io_out_unbuf[2] + NET mgmt_io_out_unbuf[2]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366370 1186967.5 ) N ;
+   - mgmt_io_in_buf[2] + NET mgmt_io_in_buf[2]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3366650 1185967.5 ) N ;
+   - mgmt_io_out_unbuf[3] + NET mgmt_io_out_unbuf[3]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3367490 1184967.5 ) N ;
+   - mgmt_io_in_buf[3] + NET mgmt_io_in_buf[3]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
         + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3367770 1183967.5 ) N ;
-   - mgmt_io_in_buf[20] + NET mgmt_io_in_buf[20]
+   - mgmt_io_in_buf[13] + NET mgmt_io_in_buf[13]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3369590 1147957.5 ) N ;
-   - mgmt_io_in_buf[19] + NET mgmt_io_in_buf[19]
+   - mgmt_io_in_buf[12] + NET mgmt_io_in_buf[12]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3370710 1149957.5 ) N ;
-   - mgmt_io_in_buf[34] + NET mgmt_io_in_buf[34]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3371830 1151842.5 ) N ;
-   - mgmt_io_in_buf[35] + NET mgmt_io_in_buf[35]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3372950 1153842.5 ) N ;
-   - mgmt_io_in_buf[36] + NET mgmt_io_in_buf[36]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3374070 1155842.5 ) N ;
-   - mgmt_io_in_buf[37] + NET mgmt_io_in_buf[37]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3375190 1157842.5 ) N ;
-   - mgmt_io_out_unbuf[33] + NET mgmt_io_out_unbuf[33]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3354750 1120957.5 ) N ;
-   - mgmt_io_in_buf[33] + NET mgmt_io_in_buf[33]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3355030 1121957.5 ) N ;
-   - mgmt_io_out_unbuf[32] + NET mgmt_io_out_unbuf[32]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3355870 1122957.5 ) N ;
-   - mgmt_io_in_buf[32] + NET mgmt_io_in_buf[32]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3356150 1123957.5 ) N ;
-   - mgmt_io_out_unbuf[31] + NET mgmt_io_out_unbuf[31]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3356990 1124957.5 ) N ;
-   - mgmt_io_in_buf[31] + NET mgmt_io_in_buf[31]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3357270 1125957.5 ) N ;
-   - mgmt_io_out_unbuf[30] + NET mgmt_io_out_unbuf[30]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3358110 1126957.5 ) N ;
-   - mgmt_io_in_buf[30] + NET mgmt_io_in_buf[30]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3358390 1127957.5 ) N ;
-   - mgmt_io_out_unbuf[29] + NET mgmt_io_out_unbuf[29]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3359230 1128957.5 ) N ;
-   - mgmt_io_in_buf[29] + NET mgmt_io_in_buf[29]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3359510 1129957.5 ) N ;
-   - mgmt_io_out_unbuf[28] + NET mgmt_io_out_unbuf[28]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3360350 1130957.5 ) N ;
-   - mgmt_io_in_buf[28] + NET mgmt_io_in_buf[28]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3360630 1131957.5 ) N ;
-   - mgmt_io_out_unbuf[27] + NET mgmt_io_out_unbuf[27]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3361470 1132957.5 ) N ;
    - mgmt_io_in_buf[27] + NET mgmt_io_in_buf[27]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3361750 1133957.5 ) N ;
+        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3371830 1151842.5 ) N ;
+   - mgmt_io_in_buf[28] + NET mgmt_io_in_buf[28]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3372950 1153842.5 ) N ;
+   - mgmt_io_in_buf[29] + NET mgmt_io_in_buf[29]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3374070 1155842.5 ) N ;
+   - mgmt_io_in_buf[30] + NET mgmt_io_in_buf[30]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3375190 1157842.5 ) N ;
    - mgmt_io_out_unbuf[26] + NET mgmt_io_out_unbuf[26]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3362590 1134957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3354750 1120957.5 ) N ;
    - mgmt_io_in_buf[26] + NET mgmt_io_in_buf[26]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3362870 1135957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3355030 1121957.5 ) N ;
    - mgmt_io_out_unbuf[25] + NET mgmt_io_out_unbuf[25]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3363710 1136957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3355870 1122957.5 ) N ;
    - mgmt_io_in_buf[25] + NET mgmt_io_in_buf[25]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3363990 1137957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3356150 1123957.5 ) N ;
    - mgmt_io_out_unbuf[24] + NET mgmt_io_out_unbuf[24]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3364830 1138957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3356990 1124957.5 ) N ;
    - mgmt_io_in_buf[24] + NET mgmt_io_in_buf[24]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3365110 1139957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3357270 1125957.5 ) N ;
    - mgmt_io_out_unbuf[23] + NET mgmt_io_out_unbuf[23]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3365950 1140957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3358110 1126957.5 ) N ;
    - mgmt_io_in_buf[23] + NET mgmt_io_in_buf[23]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3366230 1141957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3358390 1127957.5 ) N ;
    - mgmt_io_out_unbuf[22] + NET mgmt_io_out_unbuf[22]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3367070 1142957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3359230 1128957.5 ) N ;
    - mgmt_io_in_buf[22] + NET mgmt_io_in_buf[22]
      + DIRECTION OUTPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3367350 1143957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3359510 1129957.5 ) N ;
+   - mgmt_io_out_unbuf[21] + NET mgmt_io_out_unbuf[21]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3360350 1130957.5 ) N ;
+   - mgmt_io_in_buf[21] + NET mgmt_io_in_buf[21]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3360630 1131957.5 ) N ;
    - mgmt_io_out_unbuf[20] + NET mgmt_io_out_unbuf[20]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3369310 1146957.5 ) N ;
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3361470 1132957.5 ) N ;
+   - mgmt_io_in_buf[20] + NET mgmt_io_in_buf[20]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3361750 1133957.5 ) N ;
    - mgmt_io_out_unbuf[19] + NET mgmt_io_out_unbuf[19]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3370430 1148957.5 ) N ;
-   - mgmt_io_out_unbuf[34] + NET mgmt_io_out_unbuf[34]
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3362590 1134957.5 ) N ;
+   - mgmt_io_in_buf[19] + NET mgmt_io_in_buf[19]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3362870 1135957.5 ) N ;
+   - mgmt_io_out_unbuf[18] + NET mgmt_io_out_unbuf[18]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3363710 1136957.5 ) N ;
+   - mgmt_io_in_buf[18] + NET mgmt_io_in_buf[18]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3363990 1137957.5 ) N ;
+   - mgmt_io_out_unbuf[17] + NET mgmt_io_out_unbuf[17]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3364830 1138957.5 ) N ;
+   - mgmt_io_in_buf[17] + NET mgmt_io_in_buf[17]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3365110 1139957.5 ) N ;
+   - mgmt_io_out_unbuf[16] + NET mgmt_io_out_unbuf[16]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3365950 1140957.5 ) N ;
+   - mgmt_io_in_buf[16] + NET mgmt_io_in_buf[16]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3366230 1141957.5 ) N ;
+   - mgmt_io_out_unbuf[15] + NET mgmt_io_out_unbuf[15]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3367070 1142957.5 ) N ;
+   - mgmt_io_in_buf[15] + NET mgmt_io_in_buf[15]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3367350 1143957.5 ) N ;
+   - mgmt_io_out_unbuf[27] + NET mgmt_io_out_unbuf[27]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3371550 1150842.5 ) N ;
-   - mgmt_io_out_unbuf[35] + NET mgmt_io_out_unbuf[35]
+   - mgmt_io_out_unbuf[28] + NET mgmt_io_out_unbuf[28]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3372670 1152842.5 ) N ;
-   - mgmt_io_out_unbuf[36] + NET mgmt_io_out_unbuf[36]
+   - mgmt_io_out_unbuf[29] + NET mgmt_io_out_unbuf[29]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3373790 1154842.5 ) N ;
-   - mgmt_io_out_unbuf[37] + NET mgmt_io_out_unbuf[37]
+   - mgmt_io_out_unbuf[30] + NET mgmt_io_out_unbuf[30]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3374910 1156842.5 ) N ;
-   - mgmt_io_oeb_unbuf[35] + NET mgmt_io_oeb_unbuf[35]
+   - mgmt_io_oeb_unbuf[0] + NET mgmt_io_oeb_unbuf[0]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3376030 1158842.5 ) N ;
-   - mgmt_io_oeb_unbuf[37] + NET mgmt_io_oeb_unbuf[37]
+   - mgmt_io_oeb_unbuf[2] + NET mgmt_io_oeb_unbuf[2]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3377710 1160842.5 ) N ;
-   - mgmt_io_oeb_unbuf[36] + NET mgmt_io_oeb_unbuf[36]
+   - mgmt_io_oeb_unbuf[1] + NET mgmt_io_oeb_unbuf[1]
      + DIRECTION INPUT
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -592.5 ) ( 70 592.5 )        + PLACED ( 3376870 1159842.5 ) N ;
-   - mgmt_io_out_unbuf[1] + NET mgmt_io_out_unbuf[1]
+   - mgmt_io_out_unbuf[13] + NET mgmt_io_out_unbuf[13]
+     + DIRECTION INPUT
+     + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3352790 716355 ) N ;
-   - mgmt_io_in_buf[1] + NET mgmt_io_in_buf[1]
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3369310 1146957.5 ) N ;
+   - mgmt_io_out_unbuf[12] + NET mgmt_io_out_unbuf[12]
+     + DIRECTION INPUT
+     + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3352510 715355 ) N ;
-   - mgmt_io_out_unbuf[2] + NET mgmt_io_out_unbuf[2]
+        + LAYER met1 ( -70 -707.5 ) ( 70 707.5 )        + PLACED ( 3370430 1148957.5 ) N ;
+   - mgmt_io_out_buf[11] + NET mgmt_io_out_buf[11]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3351670 714355 ) N ;
-   - mgmt_io_in_buf[2] + NET mgmt_io_in_buf[2]
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 2081307.5 4976305 ) N ;
+   - mgmt_io_in_unbuf[11] + NET mgmt_io_in_unbuf[11]
+     + DIRECTION INPUT
+     + USE SIGNAL
      + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3351390 713355 ) N ;
-   - mgmt_io_out_unbuf[3] + NET mgmt_io_out_unbuf[3]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3350550 712355 ) N ;
-   - mgmt_io_in_buf[3] + NET mgmt_io_in_buf[3]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3350270 711355 ) N ;
-   - mgmt_io_out_unbuf[4] + NET mgmt_io_out_unbuf[4]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3349430 710355 ) N ;
-   - mgmt_io_in_buf[4] + NET mgmt_io_in_buf[4]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3349150 709355 ) N ;
-   - mgmt_io_out_unbuf[5] + NET mgmt_io_out_unbuf[5]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3348310 708355 ) N ;
-   - mgmt_io_in_buf[5] + NET mgmt_io_in_buf[5]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3348030 707355 ) N ;
-   - mgmt_io_out_unbuf[6] + NET mgmt_io_out_unbuf[6]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3347190 706355 ) N ;
-   - mgmt_io_in_unbuf[6] + NET mgmt_io_in_unbuf[6]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3346910 705355 ) N ;
-   - mgmt_io_out_unbuf[0] + NET mgmt_io_out_unbuf[0]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3353910 591355 ) N ;
-   - mgmt_io_in_buf[0] + NET mgmt_io_in_buf[0]
-     + PORT
-        + LAYER met1 ( -70 -785 ) ( 70 785 )        + PLACED ( 3353070 591355 ) N ;
-   - mgmt_io_oeb_unbuf[0] + NET mgmt_io_oeb_unbuf[0]
-     + PORT
-        + LAYER met1 ( -70 -790 ) ( 70 790 )        + PLACED ( 3352530 591360 ) N ;
-   - mgmt_io_oeb_buf[0] + NET mgmt_io_oeb_buf[0]
-     + PORT
-        + LAYER met1 ( -70 -790 ) ( 70 790 )        + PLACED ( 3352530 599000 ) N ;
-   - mgmt_io_in_unbuf[0] + NET mgmt_io_in_unbuf[0]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3353070 599415 ) N ;
-   - mgmt_io_out_buf[0] + NET mgmt_io_out_buf[0]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3353910 599415 ) N ;
-   - mgmt_io_oeb_unbuf[1] + NET mgmt_io_oeb_unbuf[1]
-     + PORT
-        + LAYER met1 ( -70 -750 ) ( 70 750 )        + PLACED ( 3353330 717320 ) N ;
-   - mgmt_io_oeb_buf[1] + NET mgmt_io_oeb_buf[1]
-     + PORT
-        + LAYER met1 ( -70 -750 ) ( 70 750 )        + PLACED ( 3353330 818040 ) N ;
-   - mgmt_io_out_buf[1] + NET mgmt_io_out_buf[1]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3352790 817415 ) N ;
-   - mgmt_io_in_unbuf[1] + NET mgmt_io_in_unbuf[1]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3352510 816415 ) N ;
-   - mgmt_io_out_buf[2] + NET mgmt_io_out_buf[2]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3351670 1045415 ) N ;
-   - mgmt_io_in_unbuf[2] + NET mgmt_io_in_unbuf[2]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3351390 1044415 ) N ;
-   - mgmt_io_out_buf[3] + NET mgmt_io_out_buf[3]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3350550 1113415 ) N ;
-   - mgmt_io_out_buf[4] + NET mgmt_io_out_buf[4]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3349430 1111415 ) N ;
-   - mgmt_io_out_buf[5] + NET mgmt_io_out_buf[5]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3348310 1109415 ) N ;
-   - mgmt_io_out_buf[6] + NET mgmt_io_out_buf[6]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3347190 1107415 ) N ;
-   - mgmt_io_in_unbuf[6] + NET mgmt_io_in_unbuf[6]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3346910 1106415 ) N ;
-   - mgmt_io_in_unbuf[5] + NET mgmt_io_in_unbuf[5]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3348030 1108415 ) N ;
-   - mgmt_io_in_unbuf[4] + NET mgmt_io_in_unbuf[4]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3349150 1110415 ) N ;
-   - mgmt_io_in_unbuf[3] + NET mgmt_io_in_unbuf[3]
-     + PORT
-        + LAYER met1 ( -70 -375 ) ( 70 375 )        + PLACED ( 3350270 1112415 ) N ;
+        + LAYER met1 ( -772.5 -70 ) ( 772.5 70 )        + PLACED ( 2080307.5 4976585 ) N ;
 END PINS
 
 NONDEFAULTRULES 3 ;
@@ -2218,39 +2122,7 @@ NONDEFAULTRULES 3 ;
      + LAYER met3 WIDTH 1850 ;
 END NONDEFAULTRULES
 
-NETS 281 ;
-   - mgmt_io_out_buf[0]
-      + ROUTED met1  ( 3353910 590640 ) ( * 599720 ) ;
-   - mgmt_io_in_unbuf[0]
-      + ROUTED met1  ( 3353070 590640 ) ( * 599720 ) ;
-   - mgmt_io_oeb_buf[0]
-      + ROUTED met1  ( 3352530 590640 ) ( * 599720 ) ;
-   - mgmt_io_oeb_buf[1]
-      + ROUTED met1  ( 3353330 716640 ) ( * 818720 ) ;
-   - mgmt_io_out_buf[1]
-      + ROUTED met1  ( 3352790 715640 ) ( * 817720 ) ;
-   - mgmt_io_in_unbuf[1]
-      + ROUTED met1  ( 3352510 714640 ) ( * 816720 ) ;
-   - mgmt_io_out_buf[2]
-      + ROUTED met1  ( 3351670 713640 ) ( * 1045720 ) ;
-   - mgmt_io_in_unbuf[2]
-      + ROUTED met1  ( 3351390 712640 ) ( * 1044720 ) ;
-   - mgmt_io_out_buf[3]
-      + ROUTED met1  ( 3350550 711640 ) ( * 1113720 ) ;
-   - mgmt_io_in_unbuf[3]
-      + ROUTED met1  ( 3350270 710640 ) ( * 1112720 ) ;
-   - mgmt_io_out_buf[4]
-      + ROUTED met1  ( 3349430 709640 ) ( * 1111720 ) ;
-   - mgmt_io_in_unbuf[4]
-      + ROUTED met1  ( 3349150 708640 ) ( * 1110720 ) ;
-   - mgmt_io_out_buf[5]
-      + ROUTED met1  ( 3348310 707640 ) ( * 1109720 ) ;
-   - mgmt_io_in_unbuf[5]
-      + ROUTED met1  ( 3348030 706640 ) ( * 1108720 ) ;
-   - mgmt_io_out_buf[6]
-      + ROUTED met1  ( 3347190 705640 ) ( * 1107720 ) ;
-   - mgmt_io_in_unbuf[6]
-      + ROUTED met1  ( 3346910 704640 ) ( * 1106720 ) ;
+NETS 265 ;
    - sky130_fd_sc_hd__buf_8_29/A ( sky130_fd_sc_hd__buf_8_29 A )
        ( sky130_fd_sc_hd__buf_8_19 X )
       + ROUTED met1  ( 3384835 3615175 ) mcon_170_1090 
@@ -2270,7 +2142,7 @@ NETS 281 ;
       NEW met1  ( 3372950 2248705 ) ( 3373070 * )
       NEW met1  ( 3384770 3614640 ) ( 3384890 * )
       NEW met1  ( 3384830 3615175 ) via_260_1090_vh  ;
-   - mgmt_io_out_unbuf[15] ( sky130_fd_sc_hd__buf_8_19 A )
+   - mgmt_io_out_unbuf[8] ( sky130_fd_sc_hd__buf_8_19 A )
       + ROUTED met1  ( 3373090 1174320 ) ( * 2244700 )
       NEW met1  ( 3372970 2244840 ) ( 3373090 * )
       NEW met1  ( 3373030 2244930 ) via_260_260_vh 
@@ -2281,7 +2153,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2245055 ) via_260_1090_vh 
       NEW met1  ( 3384835 2245055 ) mcon_170_1090 
       NEW met2  ( 3366060 2244870 ) ( 3372830 * ) ;
-   - mgmt_io_in_buf[23] ( sky130_fd_sc_hd__buf_8_109 X )
+   - mgmt_io_in_buf[16] ( sky130_fd_sc_hd__buf_8_109 X )
       + ROUTED met1  ( 3366230 220650 ) ( * 1142630 )
       NEW met1  ( 2525810 220510 ) ( 3366230 * )
       NEW met1  ( 2525810 217170 ) ( * 220370 )
@@ -2297,7 +2169,7 @@ NETS 281 ;
       NEW met1  ( 2216550 212460 ) ( 2216670 * )
       NEW met1  ( 2216610 212875 ) via_260_850_vh 
       NEW met1  ( 2216615 212875 ) mcon_170_850  ;
-   - mgmt_io_in_buf[15] ( sky130_fd_sc_hd__buf_8_18 X )
+   - mgmt_io_in_buf[8] ( sky130_fd_sc_hd__buf_8_18 X )
       + ROUTED met1  ( 3373370 1173320 ) ( * 2245320 )
       NEW met1  ( 3373250 2245460 ) ( 3373370 * )
       NEW met1  ( 3373310 2245550 ) via_260_260_vh 
@@ -2348,7 +2220,7 @@ NETS 281 ;
       NEW met2  ( 3372870 3618915 ) via_260_260_vh 
       NEW met2  ( 3369280 3618855 ) ( 3372670 * )
       NEW met1  ( 3372810 3618825 ) ( 3372930 * ) ;
-   - mgmt_io_in_buf[34] ( sky130_fd_sc_hd__buf_8_119 X )
+   - mgmt_io_in_buf[27] ( sky130_fd_sc_hd__buf_8_119 X )
       + ROUTED met1  ( 3371830 216450 ) ( * 1152370 )
       NEW met1  ( 2531410 216310 ) ( 3371830 * )
       NEW met1  ( 2531410 214370 ) ( * 216170 )
@@ -2364,7 +2236,7 @@ NETS 281 ;
       NEW met1  ( 2246450 212460 ) ( 2246570 * )
       NEW met1  ( 2246510 212875 ) via_260_850_vh 
       NEW met1  ( 2246515 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[22] ( sky130_fd_sc_hd__buf_8_108 A )
+   - mgmt_io_out_unbuf[15] ( sky130_fd_sc_hd__buf_8_108 A )
       + ROUTED met1  ( 3367070 220090 ) ( * 1143610 )
       NEW met1  ( 2526650 219950 ) ( 3367070 * )
       NEW met1  ( 2526650 216890 ) ( * 219810 )
@@ -2400,7 +2272,7 @@ NETS 281 ;
       NEW met1  ( 3375190 2260665 ) ( 3375310 * )
       NEW met1  ( 3384770 3626600 ) ( 3384890 * )
       NEW met1  ( 3384830 3627135 ) via_260_1090_vh  ;
-   - mgmt_io_out_unbuf[17] ( sky130_fd_sc_hd__buf_8_17 A )
+   - mgmt_io_out_unbuf[10] ( sky130_fd_sc_hd__buf_8_17 A )
       + ROUTED met1  ( 3375330 1170320 ) ( * 2256660 )
       NEW met1  ( 3375210 2256800 ) ( 3375330 * )
       NEW met1  ( 3375270 2256890 ) via_260_260_vh 
@@ -2433,7 +2305,7 @@ NETS 281 ;
       NEW met1  ( 3373090 3619795 ) ( 3373210 * )
       NEW met1  ( 3381710 3619270 ) ( 3381830 * )
       NEW met1  ( 3381770 3619805 ) via_260_1090_vh  ;
-   - mgmt_io_in_unbuf[21] ( sky130_fd_sc_hd__buf_8_39 A )
+   - mgmt_io_in_unbuf[14] ( sky130_fd_sc_hd__buf_8_39 A )
       + ROUTED met1  ( 840715 4974835 ) ( 856480 * )
       NEW met1  ( 840515 4974895 ) via_260_260_hv  ( * 4974985 )
        ( 840575 * )
@@ -2444,7 +2316,7 @@ NETS 281 ;
       NEW met2  ( 839960 4981910 ) ( 840910 * )
       NEW met2  ( 840455 4974805 ) ( 840575 * )
       NEW met2  ( 840455 4974470 ) ( * 4974665 ) ;
-   - mgmt_io_out_buf[33] ( sky130_fd_sc_hd__buf_8_129 X )
+   - mgmt_io_out_buf[26] ( sky130_fd_sc_hd__buf_8_129 X )
       + ROUTED met1  ( 226925 1678030 ) ( * 1766580 )
       NEW met1  ( 226805 1677890 ) ( 226925 * )
       NEW met1  ( 226865 1677800 ) via_260_260_vh  ( * 1677740 )
@@ -2454,7 +2326,7 @@ NETS 281 ;
       NEW met2  ( 202915 1677825 ) ( 203625 * )
       NEW met2  ( 202915 1677645 ) ( 203625 * )
       NEW met1  ( 226805 1677710 ) ( 226925 * ) ;
-   - mgmt_io_out_unbuf[35] ( sky130_fd_sc_hd__buf_8_118 A )
+   - mgmt_io_out_unbuf[28] ( sky130_fd_sc_hd__buf_8_118 A )
       + ROUTED met1  ( 3372670 215890 ) ( * 1153380 )
       NEW met1  ( 2532250 215750 ) ( 3372670 * )
       NEW met1  ( 2532250 214090 ) ( * 215610 )
@@ -2471,7 +2343,7 @@ NETS 281 ;
       NEW li1  ( 2247005 215965 ) ( 2247925 * )
       NEW li1  ( 2247465 215935 ) mcon_1090_170 
       NEW met2  ( 2246990 215850 ) ( 2247940 * ) ;
-   - mgmt_io_in_buf[24] ( sky130_fd_sc_hd__buf_8_107 X )
+   - mgmt_io_in_buf[17] ( sky130_fd_sc_hd__buf_8_107 X )
       + ROUTED met1  ( 3365110 221490 ) ( * 1140620 )
       NEW met1  ( 2524690 221350 ) ( 3365110 * )
       NEW met1  ( 2524690 217730 ) ( * 221210 )
@@ -2487,7 +2359,7 @@ NETS 281 ;
       NEW met1  ( 2210570 212460 ) ( 2210690 * )
       NEW met1  ( 2210630 212875 ) via_260_850_vh 
       NEW met1  ( 2210635 212875 ) mcon_170_850  ;
-   - mgmt_io_in_buf[9] ( sky130_fd_sc_hd__buf_8_49 X )
+   - mgmt_io_in_buf[2] ( sky130_fd_sc_hd__buf_8_49 X )
       + ROUTED met1  ( 3366650 1185320 ) ( * 2209440 )
       NEW met1  ( 3366530 2209580 ) ( 3366650 * )
       NEW met1  ( 3366590 2209670 ) via_260_260_vh 
@@ -2497,7 +2369,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2209710 ) ( 3382130 * )
       NEW met2  ( 3381420 2209530 ) ( 3382130 * )
       NEW met2  ( 3366060 2209610 ) ( 3366390 * ) ;
-   - mgmt_io_in_unbuf[9] ( sky130_fd_sc_hd__buf_8_49 A )
+   - mgmt_io_in_unbuf[2] ( sky130_fd_sc_hd__buf_8_49 A )
       + ROUTED met1  ( 3366510 2214115 ) ( * 2275205 )
       NEW met1  ( 3366510 2213975 ) ( 3366630 * )
       NEW met1  ( 3366570 2213885 ) via_260_260_vh  ( * 2213825 )
@@ -2508,7 +2380,7 @@ NETS 281 ;
       NEW met1  ( 3381775 2213805 ) mcon_170_1090 
       NEW met2  ( 3366060 2213825 ) ( 3366370 * )
       NEW met1  ( 3366510 2213795 ) ( 3366630 * ) ;
-   - mgmt_io_in_buf[17] ( sky130_fd_sc_hd__buf_8_16 X )
+   - mgmt_io_in_buf[10] ( sky130_fd_sc_hd__buf_8_16 X )
       + ROUTED met1  ( 3375610 1169320 ) ( * 2257280 )
       NEW met1  ( 3375490 2257420 ) ( 3375610 * )
       NEW met1  ( 3375550 2257510 ) via_260_260_vh 
@@ -2538,7 +2410,7 @@ NETS 281 ;
       NEW met1  ( 3375470 2261515 ) ( 3375590 * )
       NEW met2  ( 3381420 3627670 ) ( 3382130 * )
       NEW met2  ( 3381420 3627490 ) ( 3382130 * ) ;
-   - mgmt_io_out_buf[14] ( sky130_fd_sc_hd__buf_8_27 X )
+   - mgmt_io_out_buf[7] ( sky130_fd_sc_hd__buf_8_27 X )
       + ROUTED met1  ( 3371690 3613165 ) ( * 3642535 )
       NEW met1  ( 3371690 3613025 ) ( 3371810 * )
       NEW met1  ( 3371750 3612935 ) via_260_260_vh  ( * 3612875 )
@@ -2547,7 +2419,7 @@ NETS 281 ;
       NEW met2  ( 3384480 3612780 ) ( 3385190 * )
       NEW met2  ( 3369280 3612875 ) ( 3371550 * )
       NEW met1  ( 3371690 3612845 ) ( 3371810 * ) ;
-   - mgmt_io_in_unbuf[20] ( sky130_fd_sc_hd__buf_8_38 A )
+   - mgmt_io_in_unbuf[13] ( sky130_fd_sc_hd__buf_8_38 A )
       + ROUTED met1  ( 846575 4975955 ) ( 858485 * )
       NEW met1  ( 846375 4976015 ) via_260_260_hv  ( * 4976105 )
        ( 846435 * )
@@ -2558,7 +2430,7 @@ NETS 281 ;
       NEW met2  ( 845940 4981910 ) ( 846890 * )
       NEW met2  ( 846315 4975925 ) ( 846435 * )
       NEW met2  ( 846435 4975345 ) ( * 4975785 ) ;
-   - mgmt_io_in_unbuf[30] ( sky130_fd_sc_hd__buf_8_139 A )
+   - mgmt_io_in_unbuf[23] ( sky130_fd_sc_hd__buf_8_139 A )
       + ROUTED met1  ( 223285 1696940 ) ( * 1773580 )
       NEW met1  ( 223165 1696800 ) ( 223285 * )
       NEW met1  ( 223225 1696710 ) via_260_260_vh  ( * 1696650 )
@@ -2569,7 +2441,7 @@ NETS 281 ;
       NEW met1  ( 206335 1696630 ) via_260_1090_vh 
       NEW met1  ( 206330 1696630 ) mcon_170_1090 
       NEW met1  ( 223165 1696620 ) ( 223285 * ) ;
-   - mgmt_io_in_unbuf[33] ( sky130_fd_sc_hd__buf_8_128 A )
+   - mgmt_io_in_unbuf[26] ( sky130_fd_sc_hd__buf_8_128 A )
       + ROUTED met1  ( 226645 1679000 ) ( * 1767580 )
       NEW met1  ( 226525 1678860 ) ( 226645 * )
       NEW met1  ( 226585 1678770 ) via_260_260_vh  ( * 1678710 )
@@ -2580,7 +2452,7 @@ NETS 281 ;
       NEW met1  ( 206335 1678690 ) via_260_1090_vh 
       NEW met1  ( 206330 1678690 ) mcon_170_1090 
       NEW met1  ( 226525 1678680 ) ( 226645 * ) ;
-   - mgmt_io_out_unbuf[34] ( sky130_fd_sc_hd__buf_8_117 A )
+   - mgmt_io_out_unbuf[27] ( sky130_fd_sc_hd__buf_8_117 A )
       + ROUTED met1  ( 3371550 216730 ) ( * 1151370 )
       NEW met1  ( 2531130 216590 ) ( 3371550 * )
       NEW met1  ( 2531130 214650 ) ( * 216450 )
@@ -2597,7 +2469,7 @@ NETS 281 ;
       NEW li1  ( 2241025 215965 ) ( 2241945 * )
       NEW li1  ( 2241485 215935 ) mcon_1090_170 
       NEW met2  ( 2241010 215850 ) ( 2241960 * ) ;
-   - mgmt_io_out_unbuf[23] ( sky130_fd_sc_hd__buf_8_106 A )
+   - mgmt_io_out_unbuf[16] ( sky130_fd_sc_hd__buf_8_106 A )
       + ROUTED met1  ( 3365950 220930 ) ( * 1141620 )
       NEW met1  ( 2525530 220790 ) ( 3365950 * )
       NEW met1  ( 2525530 217450 ) ( * 220650 )
@@ -2614,7 +2486,7 @@ NETS 281 ;
       NEW li1  ( 2211125 215965 ) ( 2212045 * )
       NEW li1  ( 2211585 215935 ) mcon_1090_170 
       NEW met2  ( 2211110 215850 ) ( 2212060 * ) ;
-   - mgmt_io_out_buf[9] ( sky130_fd_sc_hd__buf_8_48 X )
+   - mgmt_io_out_buf[2] ( sky130_fd_sc_hd__buf_8_48 X )
       + ROUTED met1  ( 3366230 2213145 ) ( * 2274205 )
       NEW met1  ( 3366230 2213005 ) ( 3366350 * )
       NEW met1  ( 3366290 2212915 ) via_260_260_vh  ( * 2212855 )
@@ -2623,7 +2495,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2212760 ) ( 3385190 * )
       NEW met2  ( 3366060 2212855 ) ( 3366090 * )
       NEW met1  ( 3366230 2212825 ) ( 3366350 * ) ;
-   - mgmt_io_out_unbuf[9] ( sky130_fd_sc_hd__buf_8_48 A )
+   - mgmt_io_out_unbuf[2] ( sky130_fd_sc_hd__buf_8_48 A )
       + ROUTED met1  ( 3366370 1186320 ) ( * 2208820 )
       NEW met1  ( 3366250 2208960 ) ( 3366370 * )
       NEW met1  ( 3366310 2209050 ) via_260_260_vh 
@@ -2697,7 +2569,7 @@ NETS 281 ;
       NEW met2  ( 3370770 2236835 ) via_260_260_vh 
       NEW met2  ( 3366060 2236775 ) ( 3370570 * )
       NEW met1  ( 3370710 2236745 ) ( 3370830 * ) ;
-   - mgmt_io_out_unbuf[13] ( sky130_fd_sc_hd__buf_8_37 A )
+   - mgmt_io_out_unbuf[6] ( sky130_fd_sc_hd__buf_8_37 A )
       + ROUTED met1  ( 3370850 1178320 ) ( * 2232740 )
       NEW met1  ( 3370730 2232880 ) ( 3370850 * )
       NEW met1  ( 3370790 2232970 ) via_260_260_vh 
@@ -2727,7 +2599,7 @@ NETS 281 ;
       NEW met1  ( 3371830 2242725 ) ( 3371950 * )
       NEW met1  ( 3384770 3608660 ) ( 3384890 * )
       NEW met1  ( 3384830 3609195 ) via_260_1090_vh  ;
-   - mgmt_io_out_unbuf[14] ( sky130_fd_sc_hd__buf_8_15 A )
+   - mgmt_io_out_unbuf[7] ( sky130_fd_sc_hd__buf_8_15 A )
       + ROUTED met1  ( 3371970 1176320 ) ( * 2238720 )
       NEW met1  ( 3371850 2238860 ) ( 3371970 * )
       NEW met1  ( 3371910 2238950 ) via_260_260_vh 
@@ -2738,7 +2610,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2239075 ) via_260_1090_vh 
       NEW met1  ( 3384835 2239075 ) mcon_170_1090 
       NEW met2  ( 3366060 2238890 ) ( 3371710 * ) ;
-   - mgmt_io_in_unbuf[14] ( sky130_fd_sc_hd__buf_8_26 A )
+   - mgmt_io_in_unbuf[7] ( sky130_fd_sc_hd__buf_8_26 A )
       + ROUTED met1  ( 3371970 3614135 ) ( * 3643535 )
       NEW met1  ( 3371970 3613995 ) ( 3372090 * )
       NEW met1  ( 3372030 3613905 ) via_260_260_vh  ( * 3613845 )
@@ -2769,7 +2641,7 @@ NETS 281 ;
       NEW met1  ( 217565 1726520 ) ( 217685 * )
       NEW met2  ( 217945 3010240 ) ( 221530 * )
       NEW met2  ( 205865 3010160 ) ( 206575 * ) ;
-   - mgmt_io_out_buf[30] ( sky130_fd_sc_hd__buf_8_138 X )
+   - mgmt_io_out_buf[23] ( sky130_fd_sc_hd__buf_8_138 X )
       + ROUTED met1  ( 223565 1695970 ) ( * 1772580 )
       NEW met1  ( 223445 1695830 ) ( 223565 * )
       NEW met1  ( 223505 1695740 ) via_260_260_vh  ( * 1695680 )
@@ -2779,7 +2651,7 @@ NETS 281 ;
       NEW met2  ( 202915 1695765 ) ( 203625 * )
       NEW met2  ( 202915 1695585 ) ( 203625 * )
       NEW met1  ( 223445 1695650 ) ( 223565 * ) ;
-   - mgmt_io_oeb_unbuf[37] ( sky130_fd_sc_hd__buf_8_127 A )
+   - mgmt_io_oeb_unbuf[2] ( sky130_fd_sc_hd__buf_8_127 A )
       + ROUTED met1  ( 3377710 212315 ) ( * 1161380 )
       NEW met1  ( 2537290 212175 ) ( 3377710 * )
       NEW met1  ( 2537290 211850 ) ( * 212035 )
@@ -2796,7 +2668,7 @@ NETS 281 ;
       NEW li1  ( 2270925 215965 ) ( 2271845 * )
       NEW li1  ( 2271385 215935 ) mcon_1090_170 
       NEW met2  ( 2270910 215850 ) ( 2271860 * ) ;
-   - mgmt_io_in_buf[19] ( sky130_fd_sc_hd__buf_8_116 X )
+   - mgmt_io_in_buf[12] ( sky130_fd_sc_hd__buf_8_116 X )
       + ROUTED met1  ( 3370710 217290 ) ( * 1150610 )
       NEW met1  ( 2530290 217150 ) ( 3370710 * )
       NEW met1  ( 2530290 214930 ) ( * 217010 )
@@ -2812,7 +2684,7 @@ NETS 281 ;
       NEW met1  ( 2240470 212460 ) ( 2240590 * )
       NEW met1  ( 2240530 212875 ) via_260_850_vh 
       NEW met1  ( 2240535 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[24] ( sky130_fd_sc_hd__buf_8_105 A )
+   - mgmt_io_out_unbuf[17] ( sky130_fd_sc_hd__buf_8_105 A )
       + ROUTED met1  ( 3364830 221770 ) ( * 1139620 )
       NEW met1  ( 2524410 221630 ) ( 3364830 * )
       NEW met1  ( 2524410 218010 ) ( * 221490 )
@@ -2829,7 +2701,7 @@ NETS 281 ;
       NEW li1  ( 2205145 215965 ) ( 2206065 * )
       NEW li1  ( 2205605 215935 ) mcon_1090_170 
       NEW met2  ( 2205130 215850 ) ( 2206080 * ) ;
-   - mgmt_io_out_buf[8] ( sky130_fd_sc_hd__buf_8_47 X )
+   - mgmt_io_out_buf[1] ( sky130_fd_sc_hd__buf_8_47 X )
       + ROUTED met1  ( 3365110 2207165 ) ( * 2272205 )
       NEW met1  ( 3365110 2207025 ) ( 3365230 * )
       NEW met1  ( 3365170 2206935 ) via_260_260_vh  ( * 2206875 )
@@ -2838,7 +2710,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2206780 ) ( 3385190 * )
       NEW met2  ( 3364935 2206875 ) ( 3364970 * )
       NEW met1  ( 3365110 2206845 ) ( 3365230 * ) ;
-   - mgmt_io_out_unbuf[8] ( sky130_fd_sc_hd__buf_8_47 A )
+   - mgmt_io_out_unbuf[1] ( sky130_fd_sc_hd__buf_8_47 A )
       + ROUTED met1  ( 3365250 1188320 ) ( * 2202840 )
       NEW met1  ( 3365130 2202980 ) ( 3365250 * )
       NEW met1  ( 3365190 2203070 ) via_260_260_vh 
@@ -2934,7 +2806,7 @@ NETS 281 ;
       NEW met2  ( 205975 1746355 ) ( 206685 * )
       NEW met2  ( 205975 1746175 ) ( 206685 * )
       NEW met2  ( 747420 212790 ) ( 748370 * ) ;
-   - mgmt_io_in_buf[13] ( sky130_fd_sc_hd__buf_8_36 X )
+   - mgmt_io_in_buf[6] ( sky130_fd_sc_hd__buf_8_36 X )
       + ROUTED met1  ( 3371130 1177320 ) ( * 2233360 )
       NEW met1  ( 3371010 2233500 ) ( 3371130 * )
       NEW met1  ( 3371070 2233590 ) via_260_260_vh 
@@ -2964,7 +2836,7 @@ NETS 281 ;
       NEW met1  ( 3370990 2237715 ) ( 3371110 * )
       NEW met1  ( 3381710 2237190 ) ( 3381830 * )
       NEW met1  ( 3381770 2237725 ) via_260_1090_vh  ;
-   - mgmt_io_in_buf[14] ( sky130_fd_sc_hd__buf_8_14 X )
+   - mgmt_io_in_buf[7] ( sky130_fd_sc_hd__buf_8_14 X )
       + ROUTED met1  ( 3372250 1175320 ) ( * 2239340 )
       NEW met1  ( 3372130 2239480 ) ( 3372250 * )
       NEW met1  ( 3372190 2239570 ) via_260_260_vh 
@@ -2994,7 +2866,7 @@ NETS 281 ;
       NEW met1  ( 3372110 2243695 ) ( 3372230 * )
       NEW met2  ( 3381420 3609730 ) ( 3382130 * )
       NEW met2  ( 3381420 3609550 ) ( 3382130 * ) ;
-   - mgmt_io_in_unbuf[13] ( sky130_fd_sc_hd__buf_8_25 A )
+   - mgmt_io_in_unbuf[6] ( sky130_fd_sc_hd__buf_8_25 A )
       + ROUTED met1  ( 3370850 3608155 ) ( * 3641535 )
       NEW met1  ( 3370850 3608015 ) ( 3370970 * )
       NEW met1  ( 3370910 3607925 ) via_260_260_vh  ( * 3607865 )
@@ -3045,7 +2917,7 @@ NETS 281 ;
       NEW met2  ( 222705 2985700 ) ( 222650 * )
       NEW met1  ( 203105 2985350 ) ( 203225 * )
       NEW met1  ( 203165 2985885 ) via_260_1090_vh  ;
-   - mgmt_io_oeb_unbuf[35] ( sky130_fd_sc_hd__buf_8_126 A )
+   - mgmt_io_oeb_unbuf[0] ( sky130_fd_sc_hd__buf_8_126 A )
       + ROUTED met1  ( 3376030 213370 ) ( * 1159370 )
       NEW met1  ( 2535610 213230 ) ( 3376030 * )
       NEW met1  ( 2535610 212410 ) ( * 213090 )
@@ -3062,7 +2934,7 @@ NETS 281 ;
       NEW li1  ( 2264945 215965 ) ( 2265865 * )
       NEW li1  ( 2265405 215935 ) mcon_1090_170 
       NEW met2  ( 2264930 215850 ) ( 2265880 * ) ;
-   - mgmt_io_out_unbuf[19] ( sky130_fd_sc_hd__buf_8_115 A )
+   - mgmt_io_out_unbuf[12] ( sky130_fd_sc_hd__buf_8_115 A )
       + ROUTED met1  ( 3370430 217570 ) ( * 1149610 )
       NEW met1  ( 2530010 217430 ) ( 3370430 * )
       NEW met1  ( 2530010 215210 ) ( * 217290 )
@@ -3079,7 +2951,7 @@ NETS 281 ;
       NEW li1  ( 2235045 215965 ) ( 2235965 * )
       NEW li1  ( 2235505 215935 ) mcon_1090_170 
       NEW met2  ( 2235030 215850 ) ( 2235980 * ) ;
-   - mgmt_io_out_unbuf[25] ( sky130_fd_sc_hd__buf_8_104 A )
+   - mgmt_io_out_unbuf[18] ( sky130_fd_sc_hd__buf_8_104 A )
       + ROUTED met1  ( 3363710 222610 ) ( * 1137620 )
       NEW met1  ( 2523290 222470 ) ( 3363710 * )
       NEW met1  ( 2523290 218570 ) ( * 222330 )
@@ -3116,7 +2988,7 @@ NETS 281 ;
       NEW met1  ( 210985 3050305 ) ( 211105 * )
       NEW met2  ( 211365 4452350 ) ( 216065 * )
       NEW met2  ( 205740 4452270 ) ( 206450 * ) ;
-   - mgmt_io_in_buf[8] ( sky130_fd_sc_hd__buf_8_46 X )
+   - mgmt_io_in_buf[1] ( sky130_fd_sc_hd__buf_8_46 X )
       + ROUTED met1  ( 3365530 1187320 ) ( * 2203460 )
       NEW met1  ( 3365410 2203600 ) ( 3365530 * )
       NEW met1  ( 3365470 2203690 ) via_260_260_vh 
@@ -3126,7 +2998,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2203730 ) ( 3382130 * )
       NEW met2  ( 3381420 2203550 ) ( 3382130 * )
       NEW met2  ( 3364970 2203630 ) ( 3365270 * ) ;
-   - mgmt_io_in_unbuf[8] ( sky130_fd_sc_hd__buf_8_46 A )
+   - mgmt_io_in_unbuf[1] ( sky130_fd_sc_hd__buf_8_46 A )
       + ROUTED met1  ( 3365390 2208135 ) ( * 2273205 )
       NEW met1  ( 3365390 2207995 ) ( 3365510 * )
       NEW met1  ( 3365450 2207905 ) via_260_260_vh  ( * 2207845 )
@@ -3267,7 +3139,7 @@ NETS 281 ;
       NEW met1  ( 2231325 215935 ) mcon_170_850 
       NEW met2  ( 758030 215850 ) ( 758980 * )
       NEW li1  ( 758045 215965 ) ( 758965 * ) ;
-   - mgmt_io_out_buf[12] ( sky130_fd_sc_hd__buf_8_35 X )
+   - mgmt_io_out_buf[5] ( sky130_fd_sc_hd__buf_8_35 X )
       + ROUTED met1  ( 3369590 2231085 ) ( * 2280205 )
       NEW met1  ( 3369590 2230945 ) ( 3369710 * )
       NEW met1  ( 3369650 2230855 ) via_260_260_vh  ( * 2230795 )
@@ -3276,7 +3148,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2230700 ) ( 3385190 * )
       NEW met2  ( 3366060 2230795 ) ( 3369450 * )
       NEW met1  ( 3369590 2230765 ) ( 3369710 * ) ;
-   - mgmt_io_out_unbuf[12] ( sky130_fd_sc_hd__buf_8_35 A )
+   - mgmt_io_out_unbuf[5] ( sky130_fd_sc_hd__buf_8_35 A )
       + ROUTED met1  ( 3369730 1180320 ) ( * 2226760 )
       NEW met1  ( 3369610 2226900 ) ( 3369730 * )
       NEW met1  ( 3369670 2226990 ) via_260_260_vh 
@@ -3287,7 +3159,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2227115 ) via_260_1090_vh 
       NEW met1  ( 3384835 2227115 ) mcon_170_1090 
       NEW met2  ( 3366060 2226930 ) ( 3369470 * ) ;
-   - mgmt_io_in_buf[7] ( sky130_fd_sc_hd__buf_8_13 X )
+   - mgmt_io_in_buf[0] ( sky130_fd_sc_hd__buf_8_13 X )
       + ROUTED met1  ( 3364410 1189320 ) ( * 2197480 )
       NEW met1  ( 3364290 2197620 ) ( 3364410 * )
       NEW met1  ( 3364350 2197710 ) via_260_260_vh 
@@ -3297,7 +3169,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2197750 ) ( 3382130 * )
       NEW met2  ( 3381420 2197570 ) ( 3382130 * )
       NEW met2  ( 3363820 2197650 ) ( 3364150 * ) ;
-   - mgmt_io_in_unbuf[7] ( sky130_fd_sc_hd__buf_8_13 A )
+   - mgmt_io_in_unbuf[0] ( sky130_fd_sc_hd__buf_8_13 A )
       + ROUTED met1  ( 3364270 2202155 ) ( * 2271205 )
       NEW met1  ( 3364270 2202015 ) ( 3364390 * )
       NEW met1  ( 3364330 2201925 ) via_260_260_vh  ( * 2201865 )
@@ -3308,7 +3180,7 @@ NETS 281 ;
       NEW met1  ( 3381775 2201845 ) mcon_170_1090 
       NEW met2  ( 3363820 2201865 ) ( 3364130 * )
       NEW met1  ( 3364270 2201835 ) ( 3364390 * ) ;
-   - mgmt_io_out_buf[13] ( sky130_fd_sc_hd__buf_8_24 X )
+   - mgmt_io_out_buf[6] ( sky130_fd_sc_hd__buf_8_24 X )
       + ROUTED met1  ( 3370570 3607185 ) ( * 3640535 )
       NEW met1  ( 3370570 3607045 ) ( 3370690 * )
       NEW met1  ( 3370630 3606955 ) via_260_260_vh  ( * 3606895 )
@@ -3357,7 +3229,7 @@ NETS 281 ;
       NEW met1  ( 222045 1702600 ) ( 222165 * )
       NEW met2  ( 222425 2986320 ) ( 222650 * )
       NEW met2  ( 205865 2986240 ) ( 206575 * ) ;
-   - mgmt_io_oeb_unbuf[36] ( sky130_fd_sc_hd__buf_8_125 A )
+   - mgmt_io_oeb_unbuf[1] ( sky130_fd_sc_hd__buf_8_125 A )
       + ROUTED met1  ( 3376870 212810 ) ( * 1160380 )
       NEW met1  ( 2536450 212670 ) ( 3376870 * )
       NEW met1  ( 2536450 212130 ) ( * 212530 )
@@ -3374,7 +3246,7 @@ NETS 281 ;
       NEW met2  ( 2270410 212970 ) ( 2271360 * )
       NEW met2  ( 2270885 212880 ) via_1090_260_hv  mcon_1090_170 
       NEW met2  ( 2270410 212790 ) ( 2271360 * ) ;
-   - mgmt_io_in_buf[20] ( sky130_fd_sc_hd__buf_8_114 X )
+   - mgmt_io_in_buf[13] ( sky130_fd_sc_hd__buf_8_114 X )
       + ROUTED met1  ( 3369590 218130 ) ( * 1148610 )
       NEW met1  ( 2529170 217990 ) ( 3369590 * )
       NEW met1  ( 2529170 215490 ) ( * 217850 )
@@ -3390,7 +3262,7 @@ NETS 281 ;
       NEW met1  ( 2234490 212460 ) ( 2234610 * )
       NEW met1  ( 2234550 212875 ) via_260_850_vh 
       NEW met1  ( 2234555 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[26] ( sky130_fd_sc_hd__buf_8_103 A )
+   - mgmt_io_out_unbuf[19] ( sky130_fd_sc_hd__buf_8_103 A )
       + ROUTED met1  ( 3362590 223450 ) ( * 1135620 )
       NEW met1  ( 2522170 223310 ) ( 3362590 * )
       NEW met1  ( 2522170 219130 ) ( * 223170 )
@@ -3407,7 +3279,7 @@ NETS 281 ;
       NEW li1  ( 2193185 215965 ) ( 2194105 * )
       NEW li1  ( 2193645 215935 ) mcon_1090_170 
       NEW met2  ( 2193170 215850 ) ( 2194120 * ) ;
-   - mgmt_io_in_unbuf[24] ( sky130_fd_sc_hd__buf_8_169 A )
+   - mgmt_io_in_unbuf[17] ( sky130_fd_sc_hd__buf_8_169 A )
       + ROUTED met1  ( 216705 3020725 ) ( * 3064710 )
       NEW met1  ( 216585 3020585 ) ( 216705 * )
       NEW met1  ( 216645 3020495 ) via_260_260_vh  ( * 3020435 )
@@ -3438,7 +3310,7 @@ NETS 281 ;
       NEW met2  ( 211645 4451730 ) ( 216065 * )
       NEW met1  ( 202980 4451380 ) ( 203100 * )
       NEW met1  ( 203040 4451915 ) via_260_1090_vh  ;
-   - mgmt_io_out_buf[7] ( sky130_fd_sc_hd__buf_8_12 X )
+   - mgmt_io_out_buf[0] ( sky130_fd_sc_hd__buf_8_12 X )
       + ROUTED met1  ( 3363990 2201185 ) ( * 2270205 )
       NEW met1  ( 3363990 2201045 ) ( 3364110 * )
       NEW met1  ( 3364050 2200955 ) via_260_260_vh  ( * 2200895 )
@@ -3447,7 +3319,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2200800 ) ( 3385190 * )
       NEW met2  ( 3363820 2200895 ) ( 3363850 * )
       NEW met1  ( 3363990 2200865 ) ( 3364110 * ) ;
-   - mgmt_io_out_unbuf[7] ( sky130_fd_sc_hd__buf_8_12 A )
+   - mgmt_io_out_unbuf[0] ( sky130_fd_sc_hd__buf_8_12 A )
       + ROUTED met1  ( 3364130 1190320 ) ( * 2196860 )
       NEW met1  ( 3364010 2197000 ) ( 3364130 * )
       NEW met1  ( 3364070 2197090 ) via_260_260_vh 
@@ -3458,7 +3330,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2197215 ) via_260_1090_vh 
       NEW met1  ( 3384835 2197215 ) mcon_170_1090 
       NEW met2  ( 3363820 2197030 ) ( 3363870 * ) ;
-   - mgmt_io_in_buf[33] ( sky130_fd_sc_hd__buf_8_89 X )
+   - mgmt_io_in_buf[26] ( sky130_fd_sc_hd__buf_8_89 X )
       + ROUTED met1  ( 3355030 229050 ) ( * 1122660 )
       NEW met1  ( 2514610 228910 ) ( 3355030 * )
       NEW met1  ( 2514610 222770 ) ( * 228770 )
@@ -3603,7 +3475,7 @@ NETS 281 ;
       NEW met2  ( 753400 212790 ) ( 754350 * )
       NEW met2  ( 212205 1752235 ) ( 223670 * )
       NEW met2  ( 205925 1752155 ) ( 206635 * ) ;
-   - mgmt_io_in_buf[12] ( sky130_fd_sc_hd__buf_8_34 X )
+   - mgmt_io_in_buf[5] ( sky130_fd_sc_hd__buf_8_34 X )
       + ROUTED met1  ( 3370010 1179320 ) ( * 2227380 )
       NEW met1  ( 3369890 2227520 ) ( 3370010 * )
       NEW met1  ( 3369950 2227610 ) via_260_260_vh 
@@ -3613,7 +3485,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2227650 ) ( 3382130 * )
       NEW met2  ( 3381420 2227470 ) ( 3382130 * )
       NEW met2  ( 3366060 2227550 ) ( 3369750 * ) ;
-   - mgmt_io_in_unbuf[12] ( sky130_fd_sc_hd__buf_8_34 A )
+   - mgmt_io_in_unbuf[5] ( sky130_fd_sc_hd__buf_8_34 A )
       + ROUTED met1  ( 3369870 2232055 ) ( * 2281205 )
       NEW met1  ( 3369870 2231915 ) ( 3369990 * )
       NEW met1  ( 3369930 2231825 ) via_260_260_vh  ( * 2231765 )
@@ -3642,7 +3514,7 @@ NETS 281 ;
       NEW met1  ( 3376450 2266645 ) ( 3376570 * )
       NEW met1  ( 3384770 3632580 ) ( 3384890 * )
       NEW met1  ( 3384830 3633115 ) via_260_1090_vh  ;
-   - mgmt_io_out_unbuf[18] ( sky130_fd_sc_hd__buf_8_23 A )
+   - mgmt_io_out_unbuf[11] ( sky130_fd_sc_hd__buf_8_23 A )
       + ROUTED met1  ( 3376590 1168320 ) ( * 2262640 )
       NEW met1  ( 3376470 2262780 ) ( 3376590 * )
       NEW met1  ( 3376530 2262870 ) via_260_260_vh 
@@ -3653,7 +3525,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2262995 ) via_260_1090_vh 
       NEW met1  ( 3384835 2262995 ) mcon_170_1090 
       NEW met2  ( 3376110 2262810 ) ( 3376330 * ) ;
-   - mgmt_io_out_buf[21] ( sky130_fd_sc_hd__buf_8_45 X )
+   - mgmt_io_out_buf[14] ( sky130_fd_sc_hd__buf_8_45 X )
       + ROUTED met1  ( 839745 4974555 ) ( 855480 * )
       NEW met1  ( 839545 4974615 ) via_260_260_hv  ( * 4974705 )
        ( 839605 * )
@@ -3664,7 +3536,7 @@ NETS 281 ;
       NEW met1  ( 839485 4984885 ) mcon_170_850 
       NEW met2  ( 839485 4974525 ) ( 839605 * )
       NEW met2  ( 839485 4974470 ) ( * 4974385 ) ;
-   - mgmt_io_in_unbuf[29] ( sky130_fd_sc_hd__buf_8_179 A )
+   - mgmt_io_in_unbuf[22] ( sky130_fd_sc_hd__buf_8_179 A )
       + ROUTED met1  ( 222305 2990825 ) ( * 3054710 )
       NEW met1  ( 222185 2990685 ) ( 222305 * )
       NEW met1  ( 222245 2990595 ) via_260_260_vh  ( * 2990535 )
@@ -3735,7 +3607,7 @@ NETS 281 ;
       NEW met2  ( 221585 2991680 ) ( 221605 * )
       NEW met1  ( 203105 2991330 ) ( 203225 * )
       NEW met1  ( 203165 2991865 ) via_260_1090_vh  ;
-   - mgmt_io_in_buf[37] ( sky130_fd_sc_hd__buf_8_124 X )
+   - mgmt_io_in_buf[30] ( sky130_fd_sc_hd__buf_8_124 X )
       + ROUTED met1  ( 3375190 213930 ) ( * 1158380 )
       NEW met1  ( 2534770 213790 ) ( 3375190 * )
       NEW met1  ( 2534770 212690 ) ( * 213650 )
@@ -3751,7 +3623,7 @@ NETS 281 ;
       NEW met1  ( 2264390 212460 ) ( 2264510 * )
       NEW met1  ( 2264450 212875 ) via_260_850_vh 
       NEW met1  ( 2264455 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[20] ( sky130_fd_sc_hd__buf_8_113 A )
+   - mgmt_io_out_unbuf[13] ( sky130_fd_sc_hd__buf_8_113 A )
       + ROUTED met1  ( 3369310 218410 ) ( * 1147600 )
       NEW met1  ( 2528890 218270 ) ( 3369310 * )
       NEW met1  ( 2528890 215770 ) ( * 218130 )
@@ -3768,7 +3640,7 @@ NETS 281 ;
       NEW li1  ( 2229065 215965 ) ( 2229985 * )
       NEW li1  ( 2229525 215935 ) mcon_1090_170 
       NEW met2  ( 2229050 215850 ) ( 2230000 * ) ;
-   - mgmt_io_in_buf[25] ( sky130_fd_sc_hd__buf_8_102 X )
+   - mgmt_io_in_buf[18] ( sky130_fd_sc_hd__buf_8_102 X )
       + ROUTED met1  ( 3363990 222330 ) ( * 1138610 )
       NEW met1  ( 2523570 222190 ) ( 3363990 * )
       NEW met1  ( 2523570 218290 ) ( * 222050 )
@@ -3784,7 +3656,7 @@ NETS 281 ;
       NEW met1  ( 2204590 212460 ) ( 2204710 * )
       NEW met1  ( 2204650 212875 ) via_260_850_vh 
       NEW met1  ( 2204655 212875 ) mcon_170_850  ;
-   - mgmt_io_out_buf[24] ( sky130_fd_sc_hd__buf_8_168 X )
+   - mgmt_io_out_buf[17] ( sky130_fd_sc_hd__buf_8_168 X )
       + ROUTED met1  ( 216985 3019755 ) ( * 3063710 )
       NEW met1  ( 216865 3019615 ) ( 216985 * )
       NEW met1  ( 216925 3019525 ) via_260_260_vh  ( * 3019465 )
@@ -3794,7 +3666,7 @@ NETS 281 ;
       NEW met2  ( 202805 3019550 ) ( 203515 * )
       NEW met2  ( 202805 3019370 ) ( 203515 * )
       NEW met1  ( 216865 3019435 ) ( 216985 * ) ;
-   - mgmt_io_out_unbuf[27] ( sky130_fd_sc_hd__buf_8_99 A )
+   - mgmt_io_out_unbuf[20] ( sky130_fd_sc_hd__buf_8_99 A )
       + ROUTED met1  ( 3361470 224290 ) ( * 1133620 )
       NEW met1  ( 2521050 224150 ) ( 3361470 * )
       NEW met1  ( 2521050 219690 ) ( * 224010 )
@@ -3811,7 +3683,7 @@ NETS 281 ;
       NEW li1  ( 2187205 215965 ) ( 2188125 * )
       NEW li1  ( 2187665 215935 ) mcon_1090_170 
       NEW met2  ( 2187190 215850 ) ( 2188140 * ) ;
-   - mgmt_io_out_unbuf[32] ( sky130_fd_sc_hd__buf_8_88 A )
+   - mgmt_io_out_unbuf[25] ( sky130_fd_sc_hd__buf_8_88 A )
       + ROUTED met1  ( 3355870 228490 ) ( * 1123630 )
       NEW met1  ( 2515450 228350 ) ( 3355870 * )
       NEW met1  ( 2515450 222490 ) ( * 228210 )
@@ -3922,7 +3794,7 @@ NETS 281 ;
       NEW met1  ( 2201425 215935 ) mcon_170_850 
       NEW met2  ( 728130 215850 ) ( 729080 * )
       NEW li1  ( 728145 215965 ) ( 729065 * ) ;
-   - mgmt_io_out_buf[34] ( sky130_fd_sc_hd__buf_8_55 X )
+   - mgmt_io_out_buf[27] ( sky130_fd_sc_hd__buf_8_55 X )
       + ROUTED met1  ( 655685 225310 ) ( 760350 * ) ( * 225370 )
        via_260_260_hv  ( * 225460 ) ( 760410 * )
       NEW met2  ( 760290 225600 ) ( * 232275 )
@@ -3952,7 +3824,7 @@ NETS 281 ;
       NEW met1  ( 2237305 215935 ) mcon_170_850 
       NEW met2  ( 764010 215850 ) ( 764960 * )
       NEW li1  ( 764025 215965 ) ( 764945 * ) ;
-   - mgmt_io_in_buf[18] ( sky130_fd_sc_hd__buf_8_22 X )
+   - mgmt_io_in_buf[11] ( sky130_fd_sc_hd__buf_8_22 X )
       + ROUTED met1  ( 3376870 1167320 ) ( * 2263260 )
       NEW met1  ( 3376750 2263400 ) ( 3376870 * )
       NEW met1  ( 3376810 2263490 ) via_260_260_vh 
@@ -4002,7 +3874,7 @@ NETS 281 ;
       NEW met2  ( 3376370 3636855 ) via_260_260_vh 
       NEW met2  ( 3376220 3636795 ) ( 3376170 * )
       NEW met1  ( 3376310 3636765 ) ( 3376430 * ) ;
-   - mgmt_io_out_buf[20] ( sky130_fd_sc_hd__buf_8_44 X )
+   - mgmt_io_out_buf[13] ( sky130_fd_sc_hd__buf_8_44 X )
       + ROUTED met1  ( 845725 4975675 ) ( 857485 * )
       NEW met1  ( 845525 4975735 ) via_260_260_hv  ( * 4975825 )
        ( 845585 * )
@@ -4033,7 +3905,7 @@ NETS 281 ;
       NEW met2  ( 2087680 4976500 ) ( * 4976435 )
       NEW met1  ( 2087610 4983035 ) ( 2087730 * )
       NEW met1  ( 2087670 4983450 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[18] ( sky130_fd_sc_hd__buf_8_11 A )
+   - mgmt_io_in_unbuf[11] ( sky130_fd_sc_hd__buf_8_11 A )
       + ROUTED met1  ( 2079605 4976585 ) ( 2083405 * ) ( * 4976645 )
        via_260_260_hv  ( * 4976735 ) ( 2083465 * )
       NEW met2  ( 2083465 4976875 ) ( * 4983215 )
@@ -4103,7 +3975,7 @@ NETS 281 ;
       NEW met1  ( 220925 1708580 ) ( 221045 * )
       NEW met2  ( 221305 2992300 ) ( 221605 * )
       NEW met2  ( 205865 2992220 ) ( 206575 * ) ;
-   - mgmt_io_out_unbuf[37] ( sky130_fd_sc_hd__buf_8_123 A )
+   - mgmt_io_out_unbuf[30] ( sky130_fd_sc_hd__buf_8_123 A )
       + ROUTED met1  ( 3374910 214210 ) ( * 1157380 )
       NEW met1  ( 2534490 214070 ) ( 3374910 * )
       NEW met1  ( 2534490 212970 ) ( * 213930 )
@@ -4120,7 +3992,7 @@ NETS 281 ;
       NEW li1  ( 2258965 215965 ) ( 2259885 * )
       NEW li1  ( 2259425 215935 ) mcon_1090_170 
       NEW met2  ( 2258950 215850 ) ( 2259900 * ) ;
-   - mgmt_io_in_buf[21] ( sky130_fd_sc_hd__buf_8_112 X )
+   - mgmt_io_in_buf[14] ( sky130_fd_sc_hd__buf_8_112 X )
       + ROUTED met1  ( 3368470 218970 ) ( * 1146600 )
       NEW met1  ( 2528050 218830 ) ( 3368470 * )
       NEW met1  ( 2528050 216050 ) ( * 218690 )
@@ -4136,7 +4008,7 @@ NETS 281 ;
       NEW met1  ( 2228510 212460 ) ( 2228630 * )
       NEW met1  ( 2228570 212875 ) via_260_850_vh 
       NEW met1  ( 2228575 212875 ) mcon_170_850  ;
-   - mgmt_io_in_buf[26] ( sky130_fd_sc_hd__buf_8_101 X )
+   - mgmt_io_in_buf[19] ( sky130_fd_sc_hd__buf_8_101 X )
       + ROUTED met1  ( 3362870 223170 ) ( * 1136610 )
       NEW met1  ( 2522450 223030 ) ( 3362870 * )
       NEW met1  ( 2522450 218850 ) ( * 222890 )
@@ -4152,7 +4024,7 @@ NETS 281 ;
       NEW met1  ( 2198610 212460 ) ( 2198730 * )
       NEW met1  ( 2198670 212875 ) via_260_850_vh 
       NEW met1  ( 2198675 212875 ) mcon_170_850  ;
-   - mgmt_io_out_buf[29] ( sky130_fd_sc_hd__buf_8_178 X )
+   - mgmt_io_out_buf[22] ( sky130_fd_sc_hd__buf_8_178 X )
       + ROUTED met1  ( 222585 2989855 ) ( * 3053710 )
       NEW met1  ( 222465 2989715 ) ( 222585 * )
       NEW met1  ( 222525 2989625 ) via_260_260_vh  ( * 2989565 )
@@ -4204,7 +4076,7 @@ NETS 281 ;
       NEW met2  ( 836240 4974470 ) ( * 4974685 )
       NEW met1  ( 836190 4981410 ) ( 836310 * )
       NEW met1  ( 836250 4981825 ) via_260_850_vh  ;
-   - mgmt_io_out_unbuf[28] ( sky130_fd_sc_hd__buf_8_98 A )
+   - mgmt_io_out_unbuf[21] ( sky130_fd_sc_hd__buf_8_98 A )
       + ROUTED met1  ( 3360350 225130 ) ( * 1131630 )
       NEW met1  ( 2519930 224990 ) ( 3360350 * )
       NEW met1  ( 2519930 220250 ) ( * 224850 )
@@ -4366,7 +4238,7 @@ NETS 281 ;
       NEW met1  ( 3374070 2254685 ) ( 3374190 * )
       NEW met1  ( 3384770 3620620 ) ( 3384890 * )
       NEW met1  ( 3384830 3621155 ) via_260_1090_vh  ;
-   - mgmt_io_out_unbuf[16] ( sky130_fd_sc_hd__buf_8_21 A )
+   - mgmt_io_out_unbuf[9] ( sky130_fd_sc_hd__buf_8_21 A )
       + ROUTED met1  ( 3374210 1172320 ) ( * 2250680 )
       NEW met1  ( 3374090 2250820 ) ( 3374210 * )
       NEW met1  ( 3374150 2250910 ) via_260_260_vh 
@@ -4399,7 +4271,7 @@ NETS 281 ;
       NEW met1  ( 3376590 3637615 ) ( 3376710 * )
       NEW met1  ( 3381710 3637210 ) ( 3381830 * )
       NEW met1  ( 3381770 3637745 ) via_260_1090_vh  ;
-   - mgmt_io_out_buf[19] ( sky130_fd_sc_hd__buf_8_43 X )
+   - mgmt_io_out_buf[12] ( sky130_fd_sc_hd__buf_8_43 X )
       + ROUTED met1  ( 851705 4976795 ) ( 859475 * )
       NEW met1  ( 851505 4976855 ) via_260_260_hv  ( * 4976945 )
        ( 851565 * )
@@ -4410,7 +4282,7 @@ NETS 281 ;
       NEW met1  ( 851445 4984885 ) mcon_170_850 
       NEW met2  ( 851445 4976765 ) ( 851565 * )
       NEW met2  ( 851445 4975560 ) ( * 4976625 ) ;
-   - mgmt_io_out_buf[18] ( sky130_fd_sc_hd__buf_8_10 X )
+   - mgmt_io_out_buf[11] ( sky130_fd_sc_hd__buf_8_10 X )
       + ROUTED met1  ( 2080605 4976305 ) ( 2084375 * ) ( * 4976365 )
        via_260_260_hv  ( * 4976455 ) ( 2084435 * )
       NEW met2  ( 2084435 4976595 ) ( * 4986015 )
@@ -4481,7 +4353,7 @@ NETS 281 ;
       NEW met1  ( 215325 1738480 ) ( 215445 * )
       NEW met2  ( 215705 3022200 ) ( 221530 * )
       NEW met2  ( 205865 3022120 ) ( 206575 * ) ;
-   - mgmt_io_out_buf[31] ( sky130_fd_sc_hd__buf_8_133 X )
+   - mgmt_io_out_buf[24] ( sky130_fd_sc_hd__buf_8_133 X )
       + ROUTED met1  ( 224685 1689990 ) ( * 1770580 )
       NEW met1  ( 224565 1689850 ) ( 224685 * )
       NEW met1  ( 224625 1689760 ) via_260_260_vh  ( * 1689700 )
@@ -4491,7 +4363,7 @@ NETS 281 ;
       NEW met2  ( 202915 1689785 ) ( 203625 * )
       NEW met2  ( 202915 1689605 ) ( 203625 * )
       NEW met1  ( 224565 1689670 ) ( 224685 * ) ;
-   - mgmt_io_in_buf[36] ( sky130_fd_sc_hd__buf_8_122 X )
+   - mgmt_io_in_buf[29] ( sky130_fd_sc_hd__buf_8_122 X )
       + ROUTED met1  ( 3374070 214770 ) ( * 1156380 )
       NEW met1  ( 2533650 214630 ) ( 3374070 * )
       NEW met1  ( 2533650 213250 ) ( * 214490 )
@@ -4507,7 +4379,7 @@ NETS 281 ;
       NEW met1  ( 2258410 212460 ) ( 2258530 * )
       NEW met1  ( 2258470 212875 ) via_260_850_vh 
       NEW met1  ( 2258475 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[21] ( sky130_fd_sc_hd__buf_8_111 A )
+   - mgmt_io_out_unbuf[14] ( sky130_fd_sc_hd__buf_8_111 A )
       + ROUTED met1  ( 3368190 219250 ) ( * 1145620 )
       NEW met1  ( 2527770 219110 ) ( 3368190 * )
       NEW met1  ( 2527770 216330 ) ( * 218970 )
@@ -4524,7 +4396,7 @@ NETS 281 ;
       NEW li1  ( 2223085 215965 ) ( 2224005 * )
       NEW li1  ( 2223545 215935 ) mcon_1090_170 
       NEW met2  ( 2223070 215850 ) ( 2224020 * ) ;
-   - mgmt_io_in_buf[27] ( sky130_fd_sc_hd__buf_8_100 X )
+   - mgmt_io_in_buf[20] ( sky130_fd_sc_hd__buf_8_100 X )
       + ROUTED met1  ( 3361750 224010 ) ( * 1134640 )
       NEW met1  ( 2521330 223870 ) ( 3361750 * )
       NEW met1  ( 2521330 219410 ) ( * 223730 )
@@ -4540,7 +4412,7 @@ NETS 281 ;
       NEW met1  ( 2192630 212460 ) ( 2192750 * )
       NEW met1  ( 2192690 212875 ) via_260_850_vh 
       NEW met1  ( 2192695 212875 ) mcon_170_850  ;
-   - mgmt_io_in_unbuf[28] ( sky130_fd_sc_hd__buf_8_177 A )
+   - mgmt_io_in_unbuf[21] ( sky130_fd_sc_hd__buf_8_177 A )
       + ROUTED met1  ( 221185 2996805 ) ( * 3056710 )
       NEW met1  ( 221065 2996665 ) ( 221185 * )
       NEW met1  ( 221125 2996575 ) via_260_260_vh  ( * 2996515 )
@@ -4571,7 +4443,7 @@ NETS 281 ;
       NEW met2  ( 216125 4427810 ) ( 216065 * )
       NEW met1  ( 202980 4427460 ) ( 203100 * )
       NEW met1  ( 203040 4427995 ) via_260_1090_vh  ;
-   - mgmt_io_in_unbuf[22] ( sky130_fd_sc_hd__buf_8_188 A )
+   - mgmt_io_in_unbuf[15] ( sky130_fd_sc_hd__buf_8_188 A )
       + ROUTED met1  ( 214605 4438795 ) ( * 4462515 )
       NEW met1  ( 214485 4438655 ) ( 214605 * )
       NEW met1  ( 214545 4438565 ) via_260_260_vh 
@@ -4582,7 +4454,7 @@ NETS 281 ;
       NEW met1  ( 206095 4438605 ) mcon_170_1090 
       NEW met2  ( 214745 4438625 ) ( 216065 * )
       NEW met1  ( 214485 4438475 ) ( 214605 * ) ;
-   - mgmt_io_in_buf[11] ( sky130_fd_sc_hd__buf_8_53 X )
+   - mgmt_io_in_buf[4] ( sky130_fd_sc_hd__buf_8_53 X )
       + ROUTED met1  ( 3368890 1181320 ) ( * 2221400 )
       NEW met1  ( 3368770 2221540 ) ( 3368890 * )
       NEW met1  ( 3368830 2221630 ) via_260_260_vh 
@@ -4592,7 +4464,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2221670 ) ( 3382130 * )
       NEW met2  ( 3381420 2221490 ) ( 3382130 * )
       NEW met2  ( 3366060 2221570 ) ( 3368630 * ) ;
-   - mgmt_io_in_unbuf[11] ( sky130_fd_sc_hd__buf_8_53 A )
+   - mgmt_io_in_unbuf[4] ( sky130_fd_sc_hd__buf_8_53 A )
       + ROUTED met1  ( 3368750 2226075 ) ( * 2279205 )
       NEW met1  ( 3368750 2225935 ) ( 3368870 * )
       NEW met1  ( 3368810 2225845 ) via_260_260_vh  ( * 2225785 )
@@ -4603,7 +4475,7 @@ NETS 281 ;
       NEW met1  ( 3381775 2225765 ) mcon_170_1090 
       NEW met2  ( 3366060 2225785 ) ( 3368610 * )
       NEW met1  ( 3368750 2225755 ) ( 3368870 * ) ;
-   - mgmt_io_in_buf[28] ( sky130_fd_sc_hd__buf_8_97 X )
+   - mgmt_io_in_buf[21] ( sky130_fd_sc_hd__buf_8_97 X )
       + ROUTED met1  ( 3360630 224850 ) ( * 1132610 )
       NEW met1  ( 2520210 224710 ) ( 3360630 * )
       NEW met1  ( 2520210 219970 ) ( * 224570 )
@@ -4619,7 +4491,7 @@ NETS 281 ;
       NEW met1  ( 2186650 212460 ) ( 2186770 * )
       NEW met1  ( 2186710 212875 ) via_260_850_vh 
       NEW met1  ( 2186715 212875 ) mcon_170_850  ;
-   - mgmt_io_out_unbuf[33] ( sky130_fd_sc_hd__buf_8_86 A )
+   - mgmt_io_out_unbuf[26] ( sky130_fd_sc_hd__buf_8_86 A )
       + ROUTED met1  ( 3354750 229330 ) ( * 1121680 )
       NEW met1  ( 2514330 229190 ) ( 3354750 * )
       NEW met1  ( 2514330 223050 ) ( * 229050 )
@@ -4725,7 +4597,7 @@ NETS 281 ;
       NEW met2  ( 205975 1728415 ) ( 206685 * )
       NEW met2  ( 205975 1728235 ) ( 206685 * )
       NEW met2  ( 729480 212790 ) ( 730430 * ) ;
-   - mgmt_io_in_buf[16] ( sky130_fd_sc_hd__buf_8_20 X )
+   - mgmt_io_in_buf[9] ( sky130_fd_sc_hd__buf_8_20 X )
       + ROUTED met1  ( 3374490 1171320 ) ( * 2251300 )
       NEW met1  ( 3374370 2251440 ) ( 3374490 * )
       NEW met1  ( 3374430 2251530 ) via_260_260_vh 
@@ -4775,7 +4647,7 @@ NETS 281 ;
       NEW met2  ( 3373990 3624895 ) via_260_260_vh 
       NEW met2  ( 3369280 3624835 ) ( 3373790 * )
       NEW met1  ( 3373930 3624805 ) ( 3374050 * ) ;
-   - mgmt_io_in_unbuf[19] ( sky130_fd_sc_hd__buf_8_42 A )
+   - mgmt_io_in_unbuf[12] ( sky130_fd_sc_hd__buf_8_42 A )
       + ROUTED met1  ( 852675 4977075 ) ( 860475 * )
       NEW met1  ( 852475 4977135 ) via_260_260_hv  ( * 4977225 )
        ( 852535 * )
@@ -4826,7 +4698,7 @@ NETS 281 ;
       NEW met1  ( 219805 1714560 ) ( 219925 * )
       NEW met2  ( 220185 2998280 ) ( 221530 * )
       NEW met2  ( 205865 2998200 ) ( 206575 * ) ;
-   - mgmt_io_in_unbuf[31] ( sky130_fd_sc_hd__buf_8_132 A )
+   - mgmt_io_in_unbuf[24] ( sky130_fd_sc_hd__buf_8_132 A )
       + ROUTED met1  ( 224405 1690960 ) ( * 1771580 )
       NEW met1  ( 224285 1690820 ) ( 224405 * )
       NEW met1  ( 224345 1690730 ) via_260_260_vh  ( * 1690670 )
@@ -4837,7 +4709,7 @@ NETS 281 ;
       NEW met1  ( 206335 1690650 ) via_260_1090_vh 
       NEW met1  ( 206330 1690650 ) mcon_170_1090 
       NEW met1  ( 224285 1690640 ) ( 224405 * ) ;
-   - mgmt_io_in_buf[35] ( sky130_fd_sc_hd__buf_8_121 X )
+   - mgmt_io_in_buf[28] ( sky130_fd_sc_hd__buf_8_121 X )
       + ROUTED met1  ( 3372950 215610 ) ( * 1154370 )
       NEW met1  ( 2532530 215470 ) ( 3372950 * )
       NEW met1  ( 2532530 213810 ) ( * 215330 )
@@ -4853,7 +4725,7 @@ NETS 281 ;
       NEW met1  ( 2252430 212460 ) ( 2252550 * )
       NEW met1  ( 2252490 212875 ) via_260_850_vh 
       NEW met1  ( 2252495 212875 ) mcon_170_850  ;
-   - mgmt_io_in_buf[22] ( sky130_fd_sc_hd__buf_8_110 X )
+   - mgmt_io_in_buf[15] ( sky130_fd_sc_hd__buf_8_110 X )
       + ROUTED met1  ( 3367350 219810 ) ( * 1144620 )
       NEW met1  ( 2526930 219670 ) ( 3367350 * )
       NEW met1  ( 2526930 216610 ) ( * 219530 )
@@ -4869,7 +4741,7 @@ NETS 281 ;
       NEW met1  ( 2222530 212460 ) ( 2222650 * )
       NEW met1  ( 2222590 212875 ) via_260_850_vh 
       NEW met1  ( 2222595 212875 ) mcon_170_850  ;
-   - mgmt_io_out_buf[28] ( sky130_fd_sc_hd__buf_8_176 X )
+   - mgmt_io_out_buf[21] ( sky130_fd_sc_hd__buf_8_176 X )
       + ROUTED met1  ( 221465 2995835 ) ( * 3055710 )
       NEW met1  ( 221345 2995695 ) ( 221465 * )
       NEW met1  ( 221405 2995605 ) via_260_260_vh  ( * 2995545 )
@@ -4899,7 +4771,7 @@ NETS 281 ;
       NEW met1  ( 214345 3032245 ) ( 214465 * )
       NEW met2  ( 214725 4434410 ) ( 216065 * )
       NEW met2  ( 205740 4434330 ) ( 206450 * ) ;
-   - mgmt_io_out_buf[22] ( sky130_fd_sc_hd__buf_8_187 X )
+   - mgmt_io_out_buf[15] ( sky130_fd_sc_hd__buf_8_187 X )
       + ROUTED met1  ( 214885 4437945 ) ( * 4461515 )
       NEW met1  ( 214765 4437805 ) ( 214885 * )
       NEW met1  ( 214825 4437715 ) via_260_260_vh  ( * 4437655 )
@@ -4909,7 +4781,7 @@ NETS 281 ;
       NEW met2  ( 202680 4437740 ) ( 203390 * )
       NEW met2  ( 202680 4437560 ) ( 203390 * )
       NEW met1  ( 214765 4437625 ) ( 214885 * ) ;
-   - mgmt_io_out_buf[11] ( sky130_fd_sc_hd__buf_8_52 X )
+   - mgmt_io_out_buf[4] ( sky130_fd_sc_hd__buf_8_52 X )
       + ROUTED met1  ( 3368470 2225105 ) ( * 2278205 )
       NEW met1  ( 3368470 2224965 ) ( 3368590 * )
       NEW met1  ( 3368530 2224875 ) via_260_260_vh  ( * 2224815 )
@@ -4918,7 +4790,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2224720 ) ( 3385190 * )
       NEW met2  ( 3366060 2224815 ) ( 3368330 * )
       NEW met1  ( 3368470 2224785 ) ( 3368590 * ) ;
-   - mgmt_io_out_unbuf[11] ( sky130_fd_sc_hd__buf_8_52 A )
+   - mgmt_io_out_unbuf[4] ( sky130_fd_sc_hd__buf_8_52 A )
       + ROUTED met1  ( 3368610 1182320 ) ( * 2220780 )
       NEW met1  ( 3368490 2220920 ) ( 3368610 * )
       NEW met1  ( 3368550 2221010 ) via_260_260_vh 
@@ -4929,7 +4801,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2221135 ) via_260_1090_vh 
       NEW met1  ( 3384835 2221135 ) mcon_170_1090 
       NEW met2  ( 3366060 2220950 ) ( 3368350 * ) ;
-   - mgmt_io_in_buf[29] ( sky130_fd_sc_hd__buf_8_96 X )
+   - mgmt_io_in_buf[22] ( sky130_fd_sc_hd__buf_8_96 X )
       + ROUTED met1  ( 3359510 225690 ) ( * 1130630 )
       NEW met1  ( 2519090 225550 ) ( 3359510 * )
       NEW met1  ( 2519090 220530 ) ( * 225410 )
@@ -4964,7 +4836,7 @@ NETS 281 ;
       NEW met2  ( 2248340 212790 ) ( 2249290 * )
       NEW met1  ( 775430 212460 ) ( 775550 * )
       NEW met1  ( 775490 212875 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[35] ( sky130_fd_sc_hd__buf_8_85 A )
+   - mgmt_io_in_unbuf[28] ( sky130_fd_sc_hd__buf_8_85 A )
       + ROUTED met1  ( 658685 224190 ) ( 771690 * ) ( * 224250 )
        via_260_260_hv  ( * 224340 ) ( 771750 * )
       NEW met2  ( 771630 224480 ) ( * 232275 )
@@ -5142,7 +5014,7 @@ NETS 281 ;
       NEW met2  ( 220465 2997660 ) ( 221530 * )
       NEW met1  ( 203105 2997310 ) ( 203225 * )
       NEW met1  ( 203165 2997845 ) via_260_1090_vh  ;
-   - mgmt_io_out_buf[32] ( sky130_fd_sc_hd__buf_8_131 X )
+   - mgmt_io_out_buf[25] ( sky130_fd_sc_hd__buf_8_131 X )
       + ROUTED met1  ( 225805 1684010 ) ( * 1768580 )
       NEW met1  ( 225685 1683870 ) ( 225805 * )
       NEW met1  ( 225745 1683780 ) via_260_260_vh  ( * 1683720 )
@@ -5152,7 +5024,7 @@ NETS 281 ;
       NEW met2  ( 202915 1683805 ) ( 203625 * )
       NEW met2  ( 202915 1683625 ) ( 203625 * )
       NEW met1  ( 225685 1683690 ) ( 225805 * ) ;
-   - mgmt_io_out_unbuf[36] ( sky130_fd_sc_hd__buf_8_120 A )
+   - mgmt_io_out_unbuf[29] ( sky130_fd_sc_hd__buf_8_120 A )
       + ROUTED met1  ( 3373790 215050 ) ( * 1155370 )
       NEW met1  ( 2533370 214910 ) ( 3373790 * )
       NEW met1  ( 2533370 213530 ) ( * 214770 )
@@ -5169,7 +5041,7 @@ NETS 281 ;
       NEW li1  ( 2252985 215965 ) ( 2253905 * )
       NEW li1  ( 2253445 215935 ) mcon_1090_170 
       NEW met2  ( 2252970 215850 ) ( 2253920 * ) ;
-   - mgmt_io_in_unbuf[27] ( sky130_fd_sc_hd__buf_8_175 A )
+   - mgmt_io_in_unbuf[20] ( sky130_fd_sc_hd__buf_8_175 A )
       + ROUTED met1  ( 220065 3002785 ) ( * 3058710 )
       NEW met1  ( 219945 3002645 ) ( 220065 * )
       NEW met1  ( 220005 3002555 ) via_260_260_vh  ( * 3002495 )
@@ -5200,7 +5072,7 @@ NETS 281 ;
       NEW met2  ( 215005 4433790 ) ( 216065 * )
       NEW met1  ( 202980 4433440 ) ( 203100 * )
       NEW met1  ( 203040 4433975 ) via_260_1090_vh  ;
-   - mgmt_io_in_unbuf[23] ( sky130_fd_sc_hd__buf_8_186 A )
+   - mgmt_io_in_unbuf[16] ( sky130_fd_sc_hd__buf_8_186 A )
       + ROUTED met1  ( 215725 4432935 ) ( * 4460515 )
       NEW met1  ( 215605 4432795 ) ( 215725 * )
       NEW met1  ( 215665 4432705 ) via_260_260_vh  ( * 4432645 )
@@ -5211,7 +5083,7 @@ NETS 281 ;
       NEW met1  ( 206100 4432625 ) via_260_1090_vh 
       NEW met1  ( 206095 4432625 ) mcon_170_1090 
       NEW met1  ( 215605 4432615 ) ( 215725 * ) ;
-   - mgmt_io_out_buf[15] ( sky130_fd_sc_hd__buf_8_197 X )
+   - mgmt_io_out_buf[8] ( sky130_fd_sc_hd__buf_8_197 X )
       + ROUTED met1  ( 3306685 4973085 ) ( 3329320 * ) ( * 4973145 )
        via_260_260_hv  ( * 4973235 ) ( 3329380 * )
       NEW met2  ( 3329380 4973375 ) ( * 4985605 )
@@ -5221,7 +5093,7 @@ NETS 281 ;
       NEW met1  ( 3329380 4986100 ) mcon_170_850 
       NEW met2  ( 3329260 4973055 ) ( 3329380 * )
       NEW met2  ( 3329380 4972915 ) ( 3329380 * ) ;
-   - mgmt_io_in_buf[10] ( sky130_fd_sc_hd__buf_8_51 X )
+   - mgmt_io_in_buf[3] ( sky130_fd_sc_hd__buf_8_51 X )
       + ROUTED met1  ( 3367770 1183320 ) ( * 2215420 )
       NEW met1  ( 3367650 2215560 ) ( 3367770 * )
       NEW met1  ( 3367710 2215650 ) via_260_260_vh 
@@ -5231,7 +5103,7 @@ NETS 281 ;
       NEW met2  ( 3381420 2215690 ) ( 3382130 * )
       NEW met2  ( 3381420 2215510 ) ( 3382130 * )
       NEW met2  ( 3366060 2215590 ) ( 3367510 * ) ;
-   - mgmt_io_in_unbuf[10] ( sky130_fd_sc_hd__buf_8_51 A )
+   - mgmt_io_in_unbuf[3] ( sky130_fd_sc_hd__buf_8_51 A )
       + ROUTED met1  ( 3367630 2220095 ) ( * 2277205 )
       NEW met1  ( 3367630 2219955 ) ( 3367750 * )
       NEW met1  ( 3367690 2219865 ) via_260_260_vh  ( * 2219805 )
@@ -5242,7 +5114,7 @@ NETS 281 ;
       NEW met1  ( 3381775 2219785 ) mcon_170_1090 
       NEW met2  ( 3366060 2219805 ) ( 3367490 * )
       NEW met1  ( 3367630 2219775 ) ( 3367750 * ) ;
-   - mgmt_io_in_buf[30] ( sky130_fd_sc_hd__buf_8_95 X )
+   - mgmt_io_in_buf[23] ( sky130_fd_sc_hd__buf_8_95 X )
       + ROUTED met1  ( 3358390 226530 ) ( * 1128650 )
       NEW met1  ( 2517970 226390 ) ( 3358390 * )
       NEW met1  ( 2517970 221090 ) ( * 226250 )
@@ -5258,7 +5130,7 @@ NETS 281 ;
       NEW met1  ( 2174690 212460 ) ( 2174810 * )
       NEW met1  ( 2174750 212875 ) via_260_850_vh 
       NEW met1  ( 2174755 212875 ) mcon_170_850  ;
-   - mgmt_io_out_buf[36] ( sky130_fd_sc_hd__buf_8_84 X )
+   - mgmt_io_out_buf[29] ( sky130_fd_sc_hd__buf_8_84 X )
       + ROUTED met1  ( 659685 223630 ) ( 772310 * ) ( * 223690 )
        via_260_260_hv  ( * 223780 ) ( 772370 * )
       NEW met2  ( 772250 223920 ) ( * 232275 )
@@ -5395,7 +5267,7 @@ NETS 281 ;
       NEW met2  ( 3375110 3630875 ) via_260_260_vh 
       NEW met2  ( 3369280 3630815 ) ( 3374910 * )
       NEW met1  ( 3375050 3630785 ) ( 3375170 * ) ;
-   - mgmt_io_out_buf[27] ( sky130_fd_sc_hd__buf_8_174 X )
+   - mgmt_io_out_buf[20] ( sky130_fd_sc_hd__buf_8_174 X )
       + ROUTED met1  ( 220345 3001815 ) ( * 3057710 )
       NEW met1  ( 220225 3001675 ) ( 220345 * )
       NEW met1  ( 220285 3001585 ) via_260_260_vh  ( * 3001525 )
@@ -5405,7 +5277,7 @@ NETS 281 ;
       NEW met2  ( 202805 3001610 ) ( 203515 * )
       NEW met2  ( 202805 3001430 ) ( 203515 * )
       NEW met1  ( 220225 3001495 ) ( 220345 * ) ;
-   - mgmt_io_out_buf[23] ( sky130_fd_sc_hd__buf_8_185 X )
+   - mgmt_io_out_buf[16] ( sky130_fd_sc_hd__buf_8_185 X )
       + ROUTED met1  ( 216005 4431965 ) ( * 4459515 )
       NEW met1  ( 215885 4431825 ) ( 216005 * )
       NEW met1  ( 215945 4431735 ) via_260_260_vh  ( * 4431675 )
@@ -5415,7 +5287,7 @@ NETS 281 ;
       NEW met2  ( 202680 4431760 ) ( 203390 * )
       NEW met2  ( 202680 4431580 ) ( 203390 * )
       NEW met1  ( 215885 4431645 ) ( 216005 * ) ;
-   - mgmt_io_out_buf[16] ( sky130_fd_sc_hd__buf_8_196 X )
+   - mgmt_io_out_buf[9] ( sky130_fd_sc_hd__buf_8_196 X )
       + ROUTED met1  ( 3304685 4974205 ) ( 3323340 * ) ( * 4974265 )
        via_260_260_hv  ( * 4974355 ) ( 3323400 * )
       NEW met2  ( 3323400 4974495 ) ( * 4985605 )
@@ -5465,7 +5337,7 @@ NETS 281 ;
       NEW met1  ( 218685 1720540 ) ( 218805 * )
       NEW met2  ( 219065 3004260 ) ( 221530 * )
       NEW met2  ( 205865 3004180 ) ( 206575 * ) ;
-   - mgmt_io_in_unbuf[32] ( sky130_fd_sc_hd__buf_8_130 A )
+   - mgmt_io_in_unbuf[25] ( sky130_fd_sc_hd__buf_8_130 A )
       + ROUTED met1  ( 225525 1684860 ) ( * 1769580 )
       NEW met1  ( 225405 1684720 ) ( 225525 * )
       NEW met1  ( 225465 1684630 ) via_260_260_vh 
@@ -5496,7 +5368,7 @@ NETS 281 ;
       NEW met1  ( 213225 3038345 ) ( 213345 * )
       NEW met2  ( 213605 4440390 ) ( 216065 * )
       NEW met2  ( 205740 4440310 ) ( 206450 * ) ;
-   - mgmt_io_out_buf[10] ( sky130_fd_sc_hd__buf_8_50 X )
+   - mgmt_io_out_buf[3] ( sky130_fd_sc_hd__buf_8_50 X )
       + ROUTED met1  ( 3367350 2219125 ) ( * 2276205 )
       NEW met1  ( 3367350 2218985 ) ( 3367470 * )
       NEW met1  ( 3367410 2218895 ) via_260_260_vh  ( * 2218835 )
@@ -5505,7 +5377,7 @@ NETS 281 ;
       NEW met2  ( 3384480 2218740 ) ( 3385190 * )
       NEW met2  ( 3366060 2218835 ) ( 3367210 * )
       NEW met1  ( 3367350 2218805 ) ( 3367470 * ) ;
-   - mgmt_io_out_unbuf[10] ( sky130_fd_sc_hd__buf_8_50 A )
+   - mgmt_io_out_unbuf[3] ( sky130_fd_sc_hd__buf_8_50 A )
       + ROUTED met1  ( 3367490 1184320 ) ( * 2214800 )
       NEW met1  ( 3367370 2214940 ) ( 3367490 * )
       NEW met1  ( 3367430 2215030 ) via_260_260_vh 
@@ -5516,7 +5388,7 @@ NETS 281 ;
       NEW met1  ( 3384830 2215155 ) via_260_1090_vh 
       NEW met1  ( 3384835 2215155 ) mcon_170_1090 
       NEW met2  ( 3366060 2214970 ) ( 3367230 * ) ;
-   - mgmt_io_out_unbuf[29] ( sky130_fd_sc_hd__buf_8_94 A )
+   - mgmt_io_out_unbuf[22] ( sky130_fd_sc_hd__buf_8_94 A )
       + ROUTED met1  ( 3359230 225970 ) ( * 1129610 )
       NEW met1  ( 2518810 225830 ) ( 3359230 * )
       NEW met1  ( 2518810 220810 ) ( * 225690 )
@@ -5708,7 +5580,7 @@ NETS 281 ;
       NEW met2  ( 219345 3003640 ) ( 221530 * )
       NEW met1  ( 203105 3003290 ) ( 203225 * )
       NEW met1  ( 203165 3003825 ) via_260_1090_vh  ;
-   - mgmt_io_out_buf[26] ( sky130_fd_sc_hd__buf_8_173 X )
+   - mgmt_io_out_buf[19] ( sky130_fd_sc_hd__buf_8_173 X )
       + ROUTED met1  ( 219225 3007795 ) ( * 3059710 )
       NEW met1  ( 219105 3007655 ) ( 219225 * )
       NEW met1  ( 219165 3007565 ) via_260_260_vh  ( * 3007505 )
@@ -5759,7 +5631,7 @@ NETS 281 ;
       NEW met1  ( 211405 4455565 ) ( 211525 * )
       NEW met2  ( 847580 4976785 ) ( 847700 * )
       NEW met2  ( 847580 4975345 ) ( * 4976645 ) ;
-   - mgmt_io_out_buf[17] ( sky130_fd_sc_hd__buf_8_195 X )
+   - mgmt_io_out_buf[10] ( sky130_fd_sc_hd__buf_8_195 X )
       + ROUTED met1  ( 3302685 4975325 ) ( 3317360 * ) ( * 4975385 )
        via_260_260_hv  ( * 4975475 ) ( 3317420 * )
       NEW met2  ( 3317420 4975615 ) ( * 4985605 )
@@ -5769,7 +5641,7 @@ NETS 281 ;
       NEW met1  ( 3317420 4986100 ) mcon_170_850 
       NEW met2  ( 3317300 4975295 ) ( 3317420 * )
       NEW met2  ( 3317420 4972915 ) ( * 4975155 ) ;
-   - mgmt_io_in_buf[31] ( sky130_fd_sc_hd__buf_8_93 X )
+   - mgmt_io_in_buf[24] ( sky130_fd_sc_hd__buf_8_93 X )
       + ROUTED met1  ( 3357270 227370 ) ( * 1126670 )
       NEW met1  ( 2516850 227230 ) ( 3357270 * )
       NEW met1  ( 2516850 221650 ) ( * 227090 )
@@ -5920,7 +5792,7 @@ NETS 281 ;
       NEW met2  ( 741440 212790 ) ( 742390 * ) ;
    - sky130_fd_sc_hd__buf_8_150/X ( sky130_fd_sc_hd__buf_8_150 X ) ;
    - sky130_fd_sc_hd__buf_8_150/A ( sky130_fd_sc_hd__buf_8_150 A ) ;
-   - mgmt_io_in_unbuf[26] ( sky130_fd_sc_hd__buf_8_172 A )
+   - mgmt_io_in_unbuf[19] ( sky130_fd_sc_hd__buf_8_172 A )
       + ROUTED met1  ( 218945 3008765 ) ( * 3060710 )
       NEW met1  ( 218825 3008625 ) ( 218945 * )
       NEW met1  ( 218885 3008535 ) via_260_260_vh  ( * 3008475 )
@@ -5973,7 +5845,7 @@ NETS 281 ;
       NEW met2  ( 848200 4975345 ) ( * 4976925 )
       NEW met1  ( 848150 4981410 ) ( 848270 * )
       NEW met1  ( 848210 4981825 ) via_260_850_vh  ;
-   - mgmt_io_out_unbuf[30] ( sky130_fd_sc_hd__buf_8_92 A )
+   - mgmt_io_out_unbuf[23] ( sky130_fd_sc_hd__buf_8_92 A )
       + ROUTED met1  ( 3358110 226810 ) ( * 1127640 )
       NEW met1  ( 2517690 226670 ) ( 3358110 * )
       NEW met1  ( 2517690 221370 ) ( * 226530 )
@@ -6081,7 +5953,7 @@ NETS 281 ;
       NEW met2  ( 205975 1710475 ) ( 206685 * )
       NEW met2  ( 205975 1710295 ) ( 206685 * )
       NEW met2  ( 711540 212790 ) ( 712490 * ) ;
-   - mgmt_io_in_unbuf[25] ( sky130_fd_sc_hd__buf_8_171 A )
+   - mgmt_io_in_unbuf[18] ( sky130_fd_sc_hd__buf_8_171 A )
       + ROUTED met1  ( 217825 3014745 ) ( * 3062710 )
       NEW met1  ( 217705 3014605 ) ( 217825 * )
       NEW met1  ( 217765 3014515 ) via_260_260_vh  ( * 3014455 )
@@ -6133,7 +6005,7 @@ NETS 281 ;
       NEW met1  ( 212525 4449585 ) ( 212645 * )
       NEW met2  ( 841600 4975665 ) ( 841720 * )
       NEW met2  ( 841600 4974470 ) ( * 4975525 ) ;
-   - mgmt_io_in_unbuf[15] ( sky130_fd_sc_hd__buf_8_193 A )
+   - mgmt_io_in_unbuf[8] ( sky130_fd_sc_hd__buf_8_193 A )
       + ROUTED met1  ( 3305685 4973365 ) ( 3328350 * ) ( * 4973425 )
        via_260_260_hv  ( * 4973515 ) ( 3328410 * )
       NEW met2  ( 3328410 4973655 ) ( * 4982805 )
@@ -6143,7 +6015,7 @@ NETS 281 ;
       NEW met2  ( 3327955 4983125 ) ( 3328905 * )
       NEW met2  ( 3328290 4973335 ) ( 3328410 * )
       NEW met2  ( 3328410 4972915 ) ( * 4973195 ) ;
-   - mgmt_io_out_unbuf[31] ( sky130_fd_sc_hd__buf_8_91 A )
+   - mgmt_io_out_unbuf[24] ( sky130_fd_sc_hd__buf_8_91 A )
       + ROUTED met1  ( 3356990 227650 ) ( * 1125620 )
       NEW met1  ( 2516570 227510 ) ( 3356990 * )
       NEW met1  ( 2516570 221930 ) ( * 227370 )
@@ -6205,7 +6077,7 @@ NETS 281 ;
       NEW met2  ( 205975 1680575 ) ( 206685 * )
       NEW met2  ( 205975 1680395 ) ( 206685 * )
       NEW met2  ( 681640 212790 ) ( 682590 * ) ;
-   - mgmt_io_out_buf[25] ( sky130_fd_sc_hd__buf_8_170 X )
+   - mgmt_io_out_buf[18] ( sky130_fd_sc_hd__buf_8_170 X )
       + ROUTED met1  ( 218105 3013775 ) ( * 3061710 )
       NEW met1  ( 217985 3013635 ) ( 218105 * )
       NEW met1  ( 218045 3013545 ) via_260_260_vh  ( * 3013485 )
@@ -6237,7 +6109,7 @@ NETS 281 ;
       NEW met2  ( 842220 4974470 ) ( * 4975805 )
       NEW met1  ( 842170 4981410 ) ( 842290 * )
       NEW met1  ( 842230 4981825 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[16] ( sky130_fd_sc_hd__buf_8_192 A )
+   - mgmt_io_in_unbuf[9] ( sky130_fd_sc_hd__buf_8_192 A )
       + ROUTED met1  ( 3303685 4974485 ) ( 3322370 * ) ( * 4974545 )
        via_260_260_hv  ( * 4974635 ) ( 3322430 * )
       NEW met2  ( 3322430 4974775 ) ( * 4982805 )
@@ -6247,7 +6119,7 @@ NETS 281 ;
       NEW met2  ( 3321975 4983125 ) ( 3322925 * )
       NEW met2  ( 3322310 4974455 ) ( 3322430 * )
       NEW met2  ( 3322430 4972915 ) ( * 4974315 ) ;
-   - mgmt_io_in_buf[32] ( sky130_fd_sc_hd__buf_8_90 X )
+   - mgmt_io_in_buf[25] ( sky130_fd_sc_hd__buf_8_90 X )
       + ROUTED met1  ( 3356150 228210 ) ( * 1124620 )
       NEW met1  ( 2515730 228070 ) ( 3356150 * )
       NEW met1  ( 2515730 222210 ) ( * 227930 )
@@ -6263,7 +6135,7 @@ NETS 281 ;
       NEW met1  ( 2162730 212460 ) ( 2162850 * )
       NEW met1  ( 2162790 212875 ) via_260_850_vh 
       NEW met1  ( 2162795 212875 ) mcon_170_850  ;
-   - mgmt_io_in_unbuf[17] ( sky130_fd_sc_hd__buf_8_191 A )
+   - mgmt_io_in_unbuf[10] ( sky130_fd_sc_hd__buf_8_191 A )
       + ROUTED met1  ( 3301685 4975605 ) ( 3316390 * ) ( * 4975665 )
        via_260_260_hv  ( * 4975755 ) ( 3316450 * )
       NEW met2  ( 3316450 4975895 ) ( * 4982805 )
@@ -6294,7 +6166,7 @@ NETS 281 ;
       NEW met1  ( 213645 4443605 ) ( 213765 * )
       NEW met2  ( 835620 4974545 ) ( 835740 * )
       NEW met2  ( 835620 4974470 ) ( * 4974405 ) ;
-   - mgmt_io_oeb_buf[37] ( sky130_fd_sc_hd__buf_8_9 X )
+   - mgmt_io_oeb_buf[2] ( sky130_fd_sc_hd__buf_8_9 X )
       + ROUTED met1  ( 665685 220830 ) ( 790250 * ) ( * 220890 )
        via_260_260_hv  ( * 220980 ) ( 790310 * )
       NEW met2  ( 790190 221120 ) ( * 232275 )
@@ -7260,7 +7132,7 @@ NETS 281 ;
       NEW met2  ( 2208160 211525 ) ( 2209885 * )
       NEW met2  ( 2209022.5 211690 ) via2_1785_300_vx 
       NEW met2  ( 2209022.5 211690 ) via_1785_300_vh  ;
-   - mgmt_io_oeb_buf[36] ( sky130_fd_sc_hd__buf_8_8 X )
+   - mgmt_io_oeb_buf[1] ( sky130_fd_sc_hd__buf_8_8 X )
       + ROUTED met1  ( 664685 221390 ) ( 789630 * ) ( * 221450 )
        via_260_260_hv  ( * 221540 ) ( 789690 * )
       NEW met2  ( 789570 221680 ) ( * 232275 )
@@ -7295,7 +7167,7 @@ NETS 281 ;
       NEW met1  ( 2267210 212875 ) via_260_850_vh 
       NEW met1  ( 2267205 212875 ) mcon_170_850 
       NEW met2  ( 793410 212790 ) ( 794360 * ) ;
-   - mgmt_io_oeb_buf[35] ( sky130_fd_sc_hd__buf_8_7 X )
+   - mgmt_io_oeb_buf[0] ( sky130_fd_sc_hd__buf_8_7 X )
       + ROUTED met1  ( 663685 221950 ) ( 784270 * ) ( * 222010 )
        via_260_260_hv  ( * 222100 ) ( 784330 * )
       NEW met2  ( 784210 222240 ) ( * 232275 )
@@ -7344,7 +7216,7 @@ NETS 281 ;
       NEW met2  ( 2260300 212790 ) ( 2261250 * )
       NEW met1  ( 787390 212460 ) ( 787510 * )
       NEW met1  ( 787450 212875 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[37] ( sky130_fd_sc_hd__buf_8_6 A )
+   - mgmt_io_in_unbuf[30] ( sky130_fd_sc_hd__buf_8_6 A )
       + ROUTED met1  ( 662685 222510 ) ( 783650 * ) ( * 222570 )
        via_260_260_hv  ( * 222660 ) ( 783710 * )
       NEW met2  ( 783590 222800 ) ( * 232275 )
@@ -7353,7 +7225,7 @@ NETS 281 ;
       NEW met2  ( 783300 212970 ) ( 784250 * )
       NEW met2  ( 783775 212880 ) via_1090_260_hv  mcon_1090_170 
       NEW met2  ( 783300 212790 ) ( 784250 * ) ;
-   - mgmt_io_out_buf[37] ( sky130_fd_sc_hd__buf_8_5 X )
+   - mgmt_io_out_buf[30] ( sky130_fd_sc_hd__buf_8_5 X )
       + ROUTED met1  ( 661685 222790 ) ( 778290 * ) ( * 222850 )
        via_260_260_hv  ( * 222940 ) ( 778350 * )
       NEW met2  ( 778230 223080 ) ( * 232275 )
@@ -7402,7 +7274,7 @@ NETS 281 ;
       NEW met2  ( 2254320 212790 ) ( 2255270 * )
       NEW met1  ( 781410 212460 ) ( 781530 * )
       NEW met1  ( 781470 212875 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[36] ( sky130_fd_sc_hd__buf_8_4 A )
+   - mgmt_io_in_unbuf[29] ( sky130_fd_sc_hd__buf_8_4 A )
       + ROUTED met1  ( 660685 223350 ) ( 777670 * ) ( * 223410 )
        via_260_260_hv  ( * 223500 ) ( 777730 * )
       NEW met2  ( 777610 223640 ) ( * 232275 )
@@ -7411,7 +7283,7 @@ NETS 281 ;
       NEW met2  ( 777320 212970 ) ( 778270 * )
       NEW met2  ( 777795 212880 ) via_1090_260_hv  mcon_1090_170 
       NEW met2  ( 777320 212790 ) ( 778270 * ) ;
-   - mgmt_io_out_buf[35] ( sky130_fd_sc_hd__buf_8_3 X )
+   - mgmt_io_out_buf[28] ( sky130_fd_sc_hd__buf_8_3 X )
       + ROUTED met1  ( 657685 224470 ) ( 766330 * ) ( * 224530 )
        via_260_260_hv  ( * 224620 ) ( 766390 * )
       NEW met2  ( 766270 224760 ) ( * 232275 )
@@ -7460,7 +7332,7 @@ NETS 281 ;
       NEW met2  ( 2242360 212790 ) ( 2243310 * )
       NEW met1  ( 769450 212460 ) ( 769570 * )
       NEW met1  ( 769510 212875 ) via_260_850_vh  ;
-   - mgmt_io_in_unbuf[34] ( sky130_fd_sc_hd__buf_8_2 A )
+   - mgmt_io_in_unbuf[27] ( sky130_fd_sc_hd__buf_8_2 A )
       + ROUTED met1  ( 656685 225030 ) ( 765710 * ) ( * 225090 )
        via_260_260_hv  ( * 225180 ) ( 765770 * )
       NEW met2  ( 765650 225320 ) ( * 232275 )
