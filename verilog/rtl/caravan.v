@@ -262,17 +262,26 @@ module caravan (
     assign mgmt_io_out = mgmt_io_out_hk;
     assign mgmt_io_oeb = mgmt_io_oeb_hk;
 `else
+
+    assign mgmt_io_in_hk[6:0] = mgmt_io_in[6:0];
+    assign mgmt_io_out[6:0] = mgmt_io_out_hk[6:0];
+    assign mgmt_io_oeb[34:0] = mgmt_io_oeb_hk[34:0];
+
+    /* The following are no-connects in caravan (no associated GPIO)
+    assign mgmt_io_in_hk[24:14] = mgmt_io_in[24:14];
+    assign mgmt_io_out[24:14] = mgmt_io_out_hk[24:14];
+
     gpio_signal_buffering_alt sigbuf (
 	`ifdef USE_POWER_PINS
 	    .vccd(vccd),
 	    .vssd(vssd),
 	`endif
-	.mgmt_io_in_unbuf(mgmt_io_in),
-	.mgmt_io_out_unbuf(mgmt_io_out_hk),
-	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk),
-	.mgmt_io_in_buf(mgmt_io_in_hk),
-	.mgmt_io_out_buf(mgmt_io_out),
-	.mgmt_io_oeb_buf(mgmt_io_oeb)
+	.mgmt_io_in_unbuf(mgmt_io_in[37:7]),
+	.mgmt_io_out_unbuf({mgmt_io_out_hk[37:25],mgmt_io_out_hk[13:7]}),
+	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk[37:35]),
+	.mgmt_io_in_buf({mgmt_io_in_hk[37:25],mgmt_io_in_hk[13:7]}),
+	.mgmt_io_out_buf({mgmt_io_out[37:25],mgmt_io_out[13:7]}),
+	.mgmt_io_oeb_buf(mgmt_io_oeb[37:35])
     );
 `endif
 
