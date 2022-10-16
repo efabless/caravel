@@ -202,3 +202,5 @@ set ::env(GRT_ANT_ITERS) 50
 set ::env(GRT_MAX_DIODE_INS_ITERS) 50
 # set ::env(USE_ARC_ANTENNA_CHECK) 0
 # set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 150
+
+set ::env(MAGIC_DEF_LABELS) 0
