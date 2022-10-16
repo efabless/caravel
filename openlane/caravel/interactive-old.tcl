@@ -65,8 +65,8 @@ set mprj_y 1393.590
 set soc_x 260.170
 set soc_y 265.010
 add_macro_placement sigbuf 0 0 N
-add_macro_placement flash_clkrst_buffers 2442 223 E
-add_macro_placement caravel_power_routing 30.11 169.5 N
+add_macro_placement flash_clkrst_buffers 2292 238 N
+add_macro_placement caravel_power_routing 0 0 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
 add_macro_placement housekeeping 2962.17 500.010 N
@@ -78,9 +78,9 @@ add_macro_placement user_id_value 3283.120 440.630 N
 add_macro_placement por 3250.730 234.721 MX
 add_macro_placement pll 3140.730 404.721 N
 add_macro_placement spare_logic\\\[0\\\] 443.16 1162.64 N
-add_macro_placement spare_logic\\\[1\\\] 446.75500 1243.36700 N
-add_macro_placement spare_logic\\\[2\\\] 2875.72600 1234.93300 N
-add_macro_placement spare_logic\\\[3\\\] 3067.79200 1229.28000 N
+add_macro_placement spare_logic\\\[1\\\] 543.16 1162.64 N
+add_macro_placement spare_logic\\\[2\\\] 3204.37 1102.96 N
+add_macro_placement spare_logic\\\[3\\\] 2543.16 1162.64 N
 
 add_macro_placement clock_ctrl 3133.820 316.420 N
 #add_macro_placement clocking 1028.730 27.440 N
