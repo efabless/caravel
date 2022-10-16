@@ -93,3 +93,5 @@ set ::env(GRT_MAX_DIODE_INS_ITERS) 10
 # set ::env(CTS_ROOT_BUFFER) {sky130_fd_sc_hd__clkbuf_8}
 # set ::env(CTS_CLK_MAX_WIRE_LENGTH) 120
 set ::env(CTS_MAX_CAP) 0.25
+
+set ::env(MAGIC_DEF_LABELS) 0
