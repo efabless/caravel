@@ -52,6 +52,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/xres_buf.v \
 	$verilog_root/rtl/caravel_power_routing.v \
 	$verilog_root/rtl/buff_flash_clkrst.v \
+	$verilog_root/rtl/gpio_signal_buffering.v \
 	$mgmt_area_verilog_root/rtl/mgmt_core_wrapper.v \
 	"
 
@@ -70,12 +71,14 @@ set ::env(EXTRA_LEFS) "\
 	$lef_root/xres_buf.lef\
 	$lef_root/spare_logic_block.lef\
 	$lef_root/buff_flash_clkrst.lef\
+	$lef_root/gpio_signal_buffering.lef\
 	$mgmt_area_lef_root/mgmt_core_wrapper.lef \
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
 	$::env(DESIGN_DIR)/caravel_power_routing-shifted.gds \
     $gds_root/buff_flash_clkrst.gds \
+    $gds_root/gpio_signal_buffering.gds \
 	$gds_root/chip_io.gds \
 	$gds_root/user_project_wrapper.gds \
 	$gds_root/mgmt_protect.gds \

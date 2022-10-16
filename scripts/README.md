@@ -41,7 +41,7 @@ optional arguments:
   -a, --all                     run all checks
 ````
 ### How to run Caravel top-level STA including user project wrapper
-1. edit in [pt_sta.tcl](./pt_sta.tcl) the spef mapping section to add the user project module instantiated in user project wrapper
+1. edit in [pt_sta.tcl](https://github.com/efabless/caravel/blob/caravel_redesign/scripts/pt_sta.tcl#L69) the spef mapping section to add the user project module instantiated in user project wrapper
 2. run the command
   ````
   python3 signoff_automation.py -d caravel -sta

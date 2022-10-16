@@ -34,12 +34,12 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
 
-def run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design):
+def run_drc(design_root, log_dir, signoff_dir, pdk_root, design):
     klayout_drc_cmd = [
         "python3",
         "klayout_drc.py",
         "-g",
-        f"{caravel_root}/gds/{design}.gds",
+        f"{design_root}/gds/{design}.gds",
         "-l",
         f"{log_dir}",
         "-s",
@@ -206,15 +206,15 @@ def check_errors(
         lvs_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/{design}.lvs.json")
         failures = count_lvs.count_LVS_failures(lvs_report)
         if failures[0] > 0:
-            lvs_summary_report.write("LVS reports:")
-            lvs_summary_report.write("    net count difference = " + str(failures[5]))
+            lvs_summary_report.write("LVS reports:\n")
+            lvs_summary_report.write("    net count difference = " + str(failures[5]) + "\n")
             lvs_summary_report.write(
-                "    device count difference = " + str(failures[6])
+                "    device count difference = " + str(failures[6] + "\n")
             )
-            lvs_summary_report.write("    unmatched nets = " + str(failures[1]))
-            lvs_summary_report.write("    unmatched devices = " + str(failures[2]))
-            lvs_summary_report.write("    unmatched pins = " + str(failures[3]))
-            lvs_summary_report.write("    property failures = " + str(failures[4]))
+            lvs_summary_report.write("    unmatched nets = " + str(failures[1]) + "\n")
+            lvs_summary_report.write("    unmatched devices = " + str(failures[2]) + "\n")
+            lvs_summary_report.write("    unmatched pins = " + str(failures[3]) + "\n")
+            lvs_summary_report.write("    property failures = " + str(failures[4]) + "\n")
             logging.error(f"LVS on {design} failed")
             logging.info(f"Find full report at {lvs_report}")
             logging.info(f"Find summary report at {lvs_summary_report}")
@@ -383,6 +383,8 @@ if __name__ == "__main__":
     sta = args.primetime_sta
     design = args.design
     antenna = args.antenna
+    if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+        signoff_dir = os.path.join(mcw_root, "signoff")
 
     if not os.path.exists(f"{log_dir}"):
         os.makedirs(f"{log_dir}")
@@ -423,7 +425,10 @@ if __name__ == "__main__":
         sta = True
 
     if drc:
-        drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design)
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+            drc_p1 = run_drc(mcw_root, log_dir, signoff_dir, pdk_root, design)
+        else:
+            drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design)
         logging.info(f"Running klayout DRC on {design}")
     if lvs:
         lvs_p1 = run_lvs(

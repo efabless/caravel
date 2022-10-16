@@ -64,7 +64,8 @@ set mprj_y 1393.590
 
 set soc_x 260.170
 set soc_y 265.010
-add_macro_placement flash_clkrst_buffers 2442 223 N
+add_macro_placement sigbuf 0 0 N
+add_macro_placement flash_clkrst_buffers 2442 223 E
 add_macro_placement caravel_power_routing 30.11 169.5 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
@@ -247,14 +248,13 @@ label_macro_pins\
 	# --map padframe vccd vccd INOUT\
 	# --map padframe vssd vssd INOUT}
 
+run_magic
 save_views       -def_path $::env(CURRENT_DEF) \
                  -gds_path $::env(magic_result_file_tag).gds \
                  -mag_path $::env(magic_result_file_tag).mag \
                  -verilog_path $::env(RUN_DIR)/caravel.v \
                  -save_path $save_path \
                  -tag caravel
-
-run_magic
 exit
 
 run_magic_spice_export
