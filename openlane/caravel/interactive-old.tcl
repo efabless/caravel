@@ -80,7 +80,7 @@ add_macro_placement pll 3140.730 404.721 N
 add_macro_placement spare_logic\\\[0\\\] 443.16 1162.64 N
 add_macro_placement spare_logic\\\[1\\\] 543.16 1162.64 N
 add_macro_placement spare_logic\\\[2\\\] 3204.37 1102.96 N
-add_macro_placement spare_logic\\\[3\\\] 2543.16 1162.64 N
+add_macro_placement spare_logic\\\[3\\\] 2943.16 1162.64 N
 
 add_macro_placement clock_ctrl 3133.820 316.420 N
 #add_macro_placement clocking 1028.730 27.440 N

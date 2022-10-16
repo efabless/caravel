@@ -4833,9 +4833,9 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .debug_out(debug_out),
     .irq({ \irq_spi[2] , \irq_spi[1] , \irq_spi[0]  }),
     .mask_rev_in({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  }),
-    .mgmt_gpio_in({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in_hk[24] , \mgmt_io_in_hk[23] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[21] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[19] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[17] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[15] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7] , \mgmt_io_in_hk[6] , \mgmt_io_in_hk[5] , \mgmt_io_in_hk[4] , \mgmt_io_in_hk[3] , \mgmt_io_in_hk[2] , \mgmt_io_in_hk[1] , \mgmt_io_in_hk[0]  }),
-    .mgmt_gpio_oeb({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35] , \mgmt_io_oeb_hk[34] , \mgmt_io_oeb_hk[33] , \mgmt_io_oeb_hk[32] , \mgmt_io_oeb_hk[31] , \mgmt_io_oeb_hk[30] , \mgmt_io_oeb_hk[29] , \mgmt_io_oeb_hk[28] , \mgmt_io_oeb_hk[27] , \mgmt_io_oeb_hk[26] , \mgmt_io_oeb_hk[25] , \mgmt_io_oeb_hk[24] , \mgmt_io_oeb_hk[23] , \mgmt_io_oeb_hk[22] , \mgmt_io_oeb_hk[21] , \mgmt_io_oeb_hk[20] , \mgmt_io_oeb_hk[19] , \mgmt_io_oeb_hk[18] , \mgmt_io_oeb_hk[17] , \mgmt_io_oeb_hk[16] , \mgmt_io_oeb_hk[15] , \mgmt_io_oeb_hk[14] , \mgmt_io_oeb_hk[13] , \mgmt_io_oeb_hk[12] , \mgmt_io_oeb_hk[11] , \mgmt_io_oeb_hk[10] , \mgmt_io_oeb_hk[9] , \mgmt_io_oeb_hk[8] , \mgmt_io_oeb_hk[7] , \mgmt_io_oeb_hk[6] , \mgmt_io_oeb_hk[5] , \mgmt_io_oeb_hk[4] , \mgmt_io_oeb_hk[3] , \mgmt_io_oeb_hk[2] , \mgmt_io_oeb_hk[1] , \mgmt_io_oeb_hk[0]  }),
-    .mgmt_gpio_out({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out_hk[24] , \mgmt_io_out_hk[23] , \mgmt_io_out_hk[22] , \mgmt_io_out_hk[21] , \mgmt_io_out_hk[20] , \mgmt_io_out_hk[19] , \mgmt_io_out_hk[18] , \mgmt_io_out_hk[17] , \mgmt_io_out_hk[16] , \mgmt_io_out_hk[15] , \mgmt_io_out_hk[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7] , \mgmt_io_out_hk[6] , \mgmt_io_out_hk[5] , \mgmt_io_out_hk[4] , \mgmt_io_out_hk[3] , \mgmt_io_out_hk[2] , \mgmt_io_out_hk[1] , \mgmt_io_out_hk[0]  }),
+    .mgmt_gpio_in({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in_hk[24] , \mgmt_io_in_hk[23] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[21] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[19] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[17] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[15] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7] , \mgmt_io_in[6] , \mgmt_io_in[5] , \mgmt_io_in[4] , \mgmt_io_in[3] , \mgmt_io_in[2] , \mgmt_io_in[1] , \mgmt_io_in[0]  }),
+    .mgmt_gpio_oeb({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35] , \mgmt_io_oeb[34] , \mgmt_io_oeb[33] , \mgmt_io_oeb[32] , \mgmt_io_oeb[31] , \mgmt_io_oeb[30] , \mgmt_io_oeb[29] , \mgmt_io_oeb[28] , \mgmt_io_oeb[27] , \mgmt_io_oeb[26] , \mgmt_io_oeb[25] , \mgmt_io_oeb[24] , \mgmt_io_oeb[23] , \mgmt_io_oeb[22] , \mgmt_io_oeb[21] , \mgmt_io_oeb[20] , \mgmt_io_oeb[19] , \mgmt_io_oeb[18] , \mgmt_io_oeb[17] , \mgmt_io_oeb[16] , \mgmt_io_oeb[15] , \mgmt_io_oeb[14] , \mgmt_io_oeb[13] , \mgmt_io_oeb[12] , \mgmt_io_oeb[11] , \mgmt_io_oeb[10] , \mgmt_io_oeb[9] , \mgmt_io_oeb[8] , \mgmt_io_oeb[7] , \mgmt_io_oeb[6] , \mgmt_io_oeb[5] , \mgmt_io_oeb[4] , \mgmt_io_oeb[3] , \mgmt_io_oeb[2] , \mgmt_io_oeb[1] , \mgmt_io_oeb[0]  }),
+    .mgmt_gpio_out({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out_hk[24] , \mgmt_io_out_hk[23] , \mgmt_io_out_hk[22] , \mgmt_io_out_hk[21] , \mgmt_io_out_hk[20] , \mgmt_io_out_hk[19] , \mgmt_io_out_hk[18] , \mgmt_io_out_hk[17] , \mgmt_io_out_hk[16] , \mgmt_io_out_hk[15] , \mgmt_io_out_hk[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7] , \mgmt_io_out[6] , \mgmt_io_out[5] , \mgmt_io_out[4] , \mgmt_io_out[3] , \mgmt_io_out[2] , \mgmt_io_out[1] , \mgmt_io_out[0]  }),
     .pad_flash_clk(flash_clk_frame),
     .pad_flash_clk_oeb(flash_clk_oeb),
     .pad_flash_csb(flash_csb_frame),
@@ -5089,12 +5089,12 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .X(rstb_l)
   );
   gpio_signal_buffering sigbuf (
-    .mgmt_io_in_buf({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in_hk[24] , \mgmt_io_in_hk[23] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[21] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[19] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[17] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[15] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7] , \mgmt_io_in_hk[6] , \mgmt_io_in_hk[5] , \mgmt_io_in_hk[4] , \mgmt_io_in_hk[3] , \mgmt_io_in_hk[2] , \mgmt_io_in_hk[1] , \mgmt_io_in_hk[0]  }),
-    .mgmt_io_in_unbuf({ \mgmt_io_in[37] , \mgmt_io_in[36] , \mgmt_io_in[35] , \mgmt_io_in[34] , \mgmt_io_in[33] , \mgmt_io_in[32] , \mgmt_io_in[31] , \mgmt_io_in[30] , \mgmt_io_in[29] , \mgmt_io_in[28] , \mgmt_io_in[27] , \mgmt_io_in[26] , \mgmt_io_in[25] , \mgmt_io_in[24] , \mgmt_io_in[23] , \mgmt_io_in[22] , \mgmt_io_in[21] , \mgmt_io_in[20] , \mgmt_io_in[19] , \mgmt_io_in[18] , \mgmt_io_in[17] , \mgmt_io_in[16] , \mgmt_io_in[15] , \mgmt_io_in[14] , \mgmt_io_in[13] , \mgmt_io_in[12] , \mgmt_io_in[11] , \mgmt_io_in[10] , \mgmt_io_in[9] , \mgmt_io_in[8] , \mgmt_io_in[7] , \mgmt_io_in[6] , \mgmt_io_in[5] , \mgmt_io_in[4] , \mgmt_io_in[3] , \mgmt_io_in[2] , \mgmt_io_in[1] , \mgmt_io_in[0]  }),
-    .mgmt_io_oeb_buf({ \mgmt_io_oeb[37] , \mgmt_io_oeb[36] , \mgmt_io_oeb[35] , \mgmt_io_oeb[34] , \mgmt_io_oeb[33] , \mgmt_io_oeb[32] , \mgmt_io_oeb[31] , \mgmt_io_oeb[30] , \mgmt_io_oeb[29] , \mgmt_io_oeb[28] , \mgmt_io_oeb[27] , \mgmt_io_oeb[26] , \mgmt_io_oeb[25] , \mgmt_io_oeb[24] , \mgmt_io_oeb[23] , \mgmt_io_oeb[22] , \mgmt_io_oeb[21] , \mgmt_io_oeb[20] , \mgmt_io_oeb[19] , \mgmt_io_oeb[18] , \mgmt_io_oeb[17] , \mgmt_io_oeb[16] , \mgmt_io_oeb[15] , \mgmt_io_oeb[14] , \mgmt_io_oeb[13] , \mgmt_io_oeb[12] , \mgmt_io_oeb[11] , \mgmt_io_oeb[10] , \mgmt_io_oeb[9] , \mgmt_io_oeb[8] , \mgmt_io_oeb[7] , \mgmt_io_oeb[6] , \mgmt_io_oeb[5] , \mgmt_io_oeb[4] , \mgmt_io_oeb[3] , \mgmt_io_oeb[2] , \mgmt_io_oeb[1] , \mgmt_io_oeb[0]  }),
-    .mgmt_io_oeb_unbuf({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35] , \mgmt_io_oeb_hk[34] , \mgmt_io_oeb_hk[33] , \mgmt_io_oeb_hk[32] , \mgmt_io_oeb_hk[31] , \mgmt_io_oeb_hk[30] , \mgmt_io_oeb_hk[29] , \mgmt_io_oeb_hk[28] , \mgmt_io_oeb_hk[27] , \mgmt_io_oeb_hk[26] , \mgmt_io_oeb_hk[25] , \mgmt_io_oeb_hk[24] , \mgmt_io_oeb_hk[23] , \mgmt_io_oeb_hk[22] , \mgmt_io_oeb_hk[21] , \mgmt_io_oeb_hk[20] , \mgmt_io_oeb_hk[19] , \mgmt_io_oeb_hk[18] , \mgmt_io_oeb_hk[17] , \mgmt_io_oeb_hk[16] , \mgmt_io_oeb_hk[15] , \mgmt_io_oeb_hk[14] , \mgmt_io_oeb_hk[13] , \mgmt_io_oeb_hk[12] , \mgmt_io_oeb_hk[11] , \mgmt_io_oeb_hk[10] , \mgmt_io_oeb_hk[9] , \mgmt_io_oeb_hk[8] , \mgmt_io_oeb_hk[7] , \mgmt_io_oeb_hk[6] , \mgmt_io_oeb_hk[5] , \mgmt_io_oeb_hk[4] , \mgmt_io_oeb_hk[3] , \mgmt_io_oeb_hk[2] , \mgmt_io_oeb_hk[1] , \mgmt_io_oeb_hk[0]  }),
-    .mgmt_io_out_buf({ \mgmt_io_out[37] , \mgmt_io_out[36] , \mgmt_io_out[35] , \mgmt_io_out[34] , \mgmt_io_out[33] , \mgmt_io_out[32] , \mgmt_io_out[31] , \mgmt_io_out[30] , \mgmt_io_out[29] , \mgmt_io_out[28] , \mgmt_io_out[27] , \mgmt_io_out[26] , \mgmt_io_out[25] , \mgmt_io_out[24] , \mgmt_io_out[23] , \mgmt_io_out[22] , \mgmt_io_out[21] , \mgmt_io_out[20] , \mgmt_io_out[19] , \mgmt_io_out[18] , \mgmt_io_out[17] , \mgmt_io_out[16] , \mgmt_io_out[15] , \mgmt_io_out[14] , \mgmt_io_out[13] , \mgmt_io_out[12] , \mgmt_io_out[11] , \mgmt_io_out[10] , \mgmt_io_out[9] , \mgmt_io_out[8] , \mgmt_io_out[7] , \mgmt_io_out[6] , \mgmt_io_out[5] , \mgmt_io_out[4] , \mgmt_io_out[3] , \mgmt_io_out[2] , \mgmt_io_out[1] , \mgmt_io_out[0]  }),
-    .mgmt_io_out_unbuf({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out_hk[24] , \mgmt_io_out_hk[23] , \mgmt_io_out_hk[22] , \mgmt_io_out_hk[21] , \mgmt_io_out_hk[20] , \mgmt_io_out_hk[19] , \mgmt_io_out_hk[18] , \mgmt_io_out_hk[17] , \mgmt_io_out_hk[16] , \mgmt_io_out_hk[15] , \mgmt_io_out_hk[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7] , \mgmt_io_out_hk[6] , \mgmt_io_out_hk[5] , \mgmt_io_out_hk[4] , \mgmt_io_out_hk[3] , \mgmt_io_out_hk[2] , \mgmt_io_out_hk[1] , \mgmt_io_out_hk[0]  }),
+    .mgmt_io_in_buf({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in_hk[24] , \mgmt_io_in_hk[23] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[21] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[19] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[17] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[15] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7]  }),
+    .mgmt_io_in_unbuf({ \mgmt_io_in[37] , \mgmt_io_in[36] , \mgmt_io_in[35] , \mgmt_io_in[34] , \mgmt_io_in[33] , \mgmt_io_in[32] , \mgmt_io_in[31] , \mgmt_io_in[30] , \mgmt_io_in[29] , \mgmt_io_in[28] , \mgmt_io_in[27] , \mgmt_io_in[26] , \mgmt_io_in[25] , \mgmt_io_in[24] , \mgmt_io_in[23] , \mgmt_io_in[22] , \mgmt_io_in[21] , \mgmt_io_in[20] , \mgmt_io_in[19] , \mgmt_io_in[18] , \mgmt_io_in[17] , \mgmt_io_in[16] , \mgmt_io_in[15] , \mgmt_io_in[14] , \mgmt_io_in[13] , \mgmt_io_in[12] , \mgmt_io_in[11] , \mgmt_io_in[10] , \mgmt_io_in[9] , \mgmt_io_in[8] , \mgmt_io_in[7]  }),
+    .mgmt_io_oeb_buf({ \mgmt_io_oeb[37] , \mgmt_io_oeb[36] , \mgmt_io_oeb[35]  }),
+    .mgmt_io_oeb_unbuf({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35]  }),
+    .mgmt_io_out_buf({ \mgmt_io_out[37] , \mgmt_io_out[36] , \mgmt_io_out[35] , \mgmt_io_out[34] , \mgmt_io_out[33] , \mgmt_io_out[32] , \mgmt_io_out[31] , \mgmt_io_out[30] , \mgmt_io_out[29] , \mgmt_io_out[28] , \mgmt_io_out[27] , \mgmt_io_out[26] , \mgmt_io_out[25] , \mgmt_io_out[24] , \mgmt_io_out[23] , \mgmt_io_out[22] , \mgmt_io_out[21] , \mgmt_io_out[20] , \mgmt_io_out[19] , \mgmt_io_out[18] , \mgmt_io_out[17] , \mgmt_io_out[16] , \mgmt_io_out[15] , \mgmt_io_out[14] , \mgmt_io_out[13] , \mgmt_io_out[12] , \mgmt_io_out[11] , \mgmt_io_out[10] , \mgmt_io_out[9] , \mgmt_io_out[8] , \mgmt_io_out[7]  }),
+    .mgmt_io_out_unbuf({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out_hk[24] , \mgmt_io_out_hk[23] , \mgmt_io_out_hk[22] , \mgmt_io_out_hk[21] , \mgmt_io_out_hk[20] , \mgmt_io_out_hk[19] , \mgmt_io_out_hk[18] , \mgmt_io_out_hk[17] , \mgmt_io_out_hk[16] , \mgmt_io_out_hk[15] , \mgmt_io_out_hk[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7]  }),
     .vccd(vccd),
     .vssd(vssd)
   );
@@ -5229,114 +5229,6 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .mask_rev({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  })
   );
-  assign \gpio_resetn_1_shifted[18]  = \gpio_resetn_1[17] ;
-  assign \gpio_resetn_1_shifted[17]  = \gpio_resetn_1[16] ;
-  assign \gpio_resetn_1_shifted[16]  = \gpio_resetn_1[15] ;
-  assign \gpio_resetn_1_shifted[15]  = \gpio_resetn_1[14] ;
-  assign \gpio_resetn_1_shifted[14]  = \gpio_resetn_1[13] ;
-  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
-  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
-  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
-  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
-  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
-  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
-  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
-  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
-  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
-  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
-  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
-  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
-  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
-  assign \gpio_clock_2_shifted[17]  = \gpio_clock_2[18] ;
-  assign \gpio_clock_2_shifted[16]  = \gpio_clock_2[17] ;
-  assign \gpio_clock_2_shifted[15]  = \gpio_clock_2[16] ;
-  assign \gpio_clock_2_shifted[14]  = \gpio_clock_2[15] ;
-  assign \gpio_clock_2_shifted[13]  = \gpio_clock_2[14] ;
-  assign \gpio_clock_2_shifted[12]  = \gpio_clock_2[13] ;
-  assign \gpio_clock_2_shifted[11]  = \gpio_clock_2[12] ;
-  assign \gpio_clock_2_shifted[10]  = \gpio_clock_2[11] ;
-  assign \gpio_clock_2_shifted[9]  = \gpio_clock_2[10] ;
-  assign \gpio_clock_2_shifted[8]  = \gpio_clock_2[9] ;
-  assign \gpio_clock_2_shifted[7]  = \gpio_clock_2[8] ;
-  assign \gpio_clock_2_shifted[6]  = \gpio_clock_2[7] ;
-  assign \gpio_clock_2_shifted[5]  = \gpio_clock_2[6] ;
-  assign \gpio_clock_2_shifted[4]  = \gpio_clock_2[5] ;
-  assign \gpio_clock_2_shifted[3]  = \gpio_clock_2[4] ;
-  assign \gpio_clock_2_shifted[2]  = \gpio_clock_2[3] ;
-  assign \gpio_clock_2_shifted[1]  = \gpio_clock_2[2] ;
-  assign \gpio_clock_2_shifted[0]  = \gpio_clock_2[1] ;
-  assign \gpio_clock_1_shifted[18]  = \gpio_clock_1[17] ;
-  assign \gpio_clock_1_shifted[17]  = \gpio_clock_1[16] ;
-  assign \gpio_clock_1_shifted[16]  = \gpio_clock_1[15] ;
-  assign \gpio_clock_1_shifted[15]  = \gpio_clock_1[14] ;
-  assign \gpio_clock_1_shifted[14]  = \gpio_clock_1[13] ;
-  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
-  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
-  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
-  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
-  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
-  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
-  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
-  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
-  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
-  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
-  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
-  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
-  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
-  assign \gpio_serial_link_1_shifted[18]  = \gpio_serial_link_1[17] ;
-  assign \gpio_serial_link_1_shifted[17]  = \gpio_serial_link_1[16] ;
-  assign \gpio_serial_link_1_shifted[16]  = \gpio_serial_link_1[15] ;
-  assign \gpio_serial_link_1_shifted[15]  = \gpio_serial_link_1[14] ;
-  assign \gpio_serial_link_1_shifted[14]  = \gpio_serial_link_1[13] ;
-  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
-  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
-  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
-  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
-  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
-  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
-  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
-  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
-  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
-  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
-  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
-  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
-  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
-  assign \gpio_serial_link_2_shifted[17]  = \gpio_serial_link_2[18] ;
-  assign \gpio_serial_link_2_shifted[16]  = \gpio_serial_link_2[17] ;
-  assign \gpio_serial_link_2_shifted[15]  = \gpio_serial_link_2[16] ;
-  assign \gpio_serial_link_2_shifted[14]  = \gpio_serial_link_2[15] ;
-  assign \gpio_serial_link_2_shifted[13]  = \gpio_serial_link_2[14] ;
-  assign \gpio_serial_link_2_shifted[12]  = \gpio_serial_link_2[13] ;
-  assign \gpio_serial_link_2_shifted[11]  = \gpio_serial_link_2[12] ;
-  assign \gpio_serial_link_2_shifted[10]  = \gpio_serial_link_2[11] ;
-  assign \gpio_serial_link_2_shifted[9]  = \gpio_serial_link_2[10] ;
-  assign \gpio_serial_link_2_shifted[8]  = \gpio_serial_link_2[9] ;
-  assign \gpio_serial_link_2_shifted[7]  = \gpio_serial_link_2[8] ;
-  assign \gpio_serial_link_2_shifted[6]  = \gpio_serial_link_2[7] ;
-  assign \gpio_serial_link_2_shifted[5]  = \gpio_serial_link_2[6] ;
-  assign \gpio_serial_link_2_shifted[4]  = \gpio_serial_link_2[5] ;
-  assign \gpio_serial_link_2_shifted[3]  = \gpio_serial_link_2[4] ;
-  assign \gpio_serial_link_2_shifted[2]  = \gpio_serial_link_2[3] ;
-  assign \gpio_serial_link_2_shifted[1]  = \gpio_serial_link_2[2] ;
-  assign \gpio_serial_link_2_shifted[0]  = \gpio_serial_link_2[1] ;
-  assign \gpio_load_1_shifted[18]  = \gpio_load_1[17] ;
-  assign \gpio_load_1_shifted[17]  = \gpio_load_1[16] ;
-  assign \gpio_load_1_shifted[16]  = \gpio_load_1[15] ;
-  assign \gpio_load_1_shifted[15]  = \gpio_load_1[14] ;
-  assign \gpio_load_1_shifted[14]  = \gpio_load_1[13] ;
-  assign \gpio_load_1_shifted[13]  = \gpio_load_1[12] ;
-  assign \gpio_load_1_shifted[12]  = \gpio_load_1[11] ;
-  assign \gpio_load_1_shifted[11]  = \gpio_load_1[10] ;
-  assign \gpio_load_1_shifted[10]  = \gpio_load_1[9] ;
-  assign \gpio_load_1_shifted[9]  = \gpio_load_1[8] ;
-  assign \gpio_load_1_shifted[8]  = \gpio_load_1[7] ;
-  assign \gpio_load_1_shifted[7]  = \gpio_load_1[6] ;
-  assign \gpio_load_1_shifted[6]  = \gpio_load_1[5] ;
-  assign \gpio_load_1_shifted[5]  = \gpio_load_1[4] ;
-  assign \gpio_load_1_shifted[4]  = \gpio_load_1[3] ;
-  assign \gpio_load_1_shifted[3]  = \gpio_load_1[2] ;
-  assign \gpio_load_1_shifted[2]  = \gpio_load_1[1] ;
-  assign \gpio_load_1_shifted[1]  = \gpio_load_1[0] ;
   assign \gpio_resetn_2_shifted[17]  = \gpio_resetn_2[18] ;
   assign \gpio_resetn_2_shifted[16]  = \gpio_resetn_2[17] ;
   assign \gpio_resetn_2_shifted[15]  = \gpio_resetn_2[16] ;
@@ -5373,6 +5265,163 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \gpio_load_2_shifted[2]  = \gpio_load_2[3] ;
   assign \gpio_load_2_shifted[1]  = \gpio_load_2[2] ;
   assign \gpio_load_2_shifted[0]  = \gpio_load_2[1] ;
+  assign \gpio_clock_1_shifted[18]  = \gpio_clock_1[17] ;
+  assign \gpio_clock_1_shifted[17]  = \gpio_clock_1[16] ;
+  assign \gpio_clock_1_shifted[16]  = \gpio_clock_1[15] ;
+  assign \gpio_clock_1_shifted[15]  = \gpio_clock_1[14] ;
+  assign \gpio_clock_1_shifted[14]  = \gpio_clock_1[13] ;
+  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
+  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
+  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
+  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
+  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
+  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
+  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
+  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
+  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
+  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
+  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
+  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
+  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
+  assign \gpio_serial_link_1_shifted[18]  = \gpio_serial_link_1[17] ;
+  assign \gpio_serial_link_1_shifted[17]  = \gpio_serial_link_1[16] ;
+  assign \gpio_serial_link_1_shifted[16]  = \gpio_serial_link_1[15] ;
+  assign \gpio_serial_link_1_shifted[15]  = \gpio_serial_link_1[14] ;
+  assign \gpio_serial_link_1_shifted[14]  = \gpio_serial_link_1[13] ;
+  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
+  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
+  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
+  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
+  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
+  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
+  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
+  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
+  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
+  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
+  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
+  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
+  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
+  assign \gpio_resetn_1_shifted[18]  = \gpio_resetn_1[17] ;
+  assign \gpio_resetn_1_shifted[17]  = \gpio_resetn_1[16] ;
+  assign \gpio_resetn_1_shifted[16]  = \gpio_resetn_1[15] ;
+  assign \gpio_resetn_1_shifted[15]  = \gpio_resetn_1[14] ;
+  assign \gpio_resetn_1_shifted[14]  = \gpio_resetn_1[13] ;
+  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
+  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
+  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
+  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
+  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
+  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
+  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
+  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
+  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
+  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
+  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
+  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
+  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
+  assign \mgmt_io_in_hk[6]  = \mgmt_io_in[6] ;
+  assign \mgmt_io_in_hk[5]  = \mgmt_io_in[5] ;
+  assign \mgmt_io_in_hk[4]  = \mgmt_io_in[4] ;
+  assign \mgmt_io_in_hk[3]  = \mgmt_io_in[3] ;
+  assign \mgmt_io_in_hk[2]  = \mgmt_io_in[2] ;
+  assign \mgmt_io_in_hk[1]  = \mgmt_io_in[1] ;
+  assign \mgmt_io_in_hk[0]  = \mgmt_io_in[0] ;
+  assign \gpio_load_1_shifted[18]  = \gpio_load_1[17] ;
+  assign \gpio_load_1_shifted[17]  = \gpio_load_1[16] ;
+  assign \gpio_load_1_shifted[16]  = \gpio_load_1[15] ;
+  assign \gpio_load_1_shifted[15]  = \gpio_load_1[14] ;
+  assign \gpio_load_1_shifted[14]  = \gpio_load_1[13] ;
+  assign \gpio_load_1_shifted[13]  = \gpio_load_1[12] ;
+  assign \gpio_load_1_shifted[12]  = \gpio_load_1[11] ;
+  assign \gpio_load_1_shifted[11]  = \gpio_load_1[10] ;
+  assign \gpio_load_1_shifted[10]  = \gpio_load_1[9] ;
+  assign \gpio_load_1_shifted[9]  = \gpio_load_1[8] ;
+  assign \gpio_load_1_shifted[8]  = \gpio_load_1[7] ;
+  assign \gpio_load_1_shifted[7]  = \gpio_load_1[6] ;
+  assign \gpio_load_1_shifted[6]  = \gpio_load_1[5] ;
+  assign \gpio_load_1_shifted[5]  = \gpio_load_1[4] ;
+  assign \gpio_load_1_shifted[4]  = \gpio_load_1[3] ;
+  assign \gpio_load_1_shifted[3]  = \gpio_load_1[2] ;
+  assign \gpio_load_1_shifted[2]  = \gpio_load_1[1] ;
+  assign \gpio_load_1_shifted[1]  = \gpio_load_1[0] ;
+  assign \mgmt_io_oeb_hk[34]  = \mgmt_io_oeb[34] ;
+  assign \mgmt_io_oeb_hk[33]  = \mgmt_io_oeb[33] ;
+  assign \mgmt_io_oeb_hk[32]  = \mgmt_io_oeb[32] ;
+  assign \mgmt_io_oeb_hk[31]  = \mgmt_io_oeb[31] ;
+  assign \mgmt_io_oeb_hk[30]  = \mgmt_io_oeb[30] ;
+  assign \mgmt_io_oeb_hk[29]  = \mgmt_io_oeb[29] ;
+  assign \mgmt_io_oeb_hk[28]  = \mgmt_io_oeb[28] ;
+  assign \mgmt_io_oeb_hk[27]  = \mgmt_io_oeb[27] ;
+  assign \mgmt_io_oeb_hk[26]  = \mgmt_io_oeb[26] ;
+  assign \mgmt_io_oeb_hk[25]  = \mgmt_io_oeb[25] ;
+  assign \mgmt_io_oeb_hk[24]  = \mgmt_io_oeb[24] ;
+  assign \mgmt_io_oeb_hk[23]  = \mgmt_io_oeb[23] ;
+  assign \mgmt_io_oeb_hk[22]  = \mgmt_io_oeb[22] ;
+  assign \mgmt_io_oeb_hk[21]  = \mgmt_io_oeb[21] ;
+  assign \mgmt_io_oeb_hk[20]  = \mgmt_io_oeb[20] ;
+  assign \mgmt_io_oeb_hk[19]  = \mgmt_io_oeb[19] ;
+  assign \mgmt_io_oeb_hk[18]  = \mgmt_io_oeb[18] ;
+  assign \mgmt_io_oeb_hk[17]  = \mgmt_io_oeb[17] ;
+  assign \mgmt_io_oeb_hk[16]  = \mgmt_io_oeb[16] ;
+  assign \mgmt_io_oeb_hk[15]  = \mgmt_io_oeb[15] ;
+  assign \mgmt_io_oeb_hk[14]  = \mgmt_io_oeb[14] ;
+  assign \mgmt_io_oeb_hk[13]  = \mgmt_io_oeb[13] ;
+  assign \mgmt_io_oeb_hk[12]  = \mgmt_io_oeb[12] ;
+  assign \mgmt_io_oeb_hk[11]  = \mgmt_io_oeb[11] ;
+  assign \mgmt_io_oeb_hk[10]  = \mgmt_io_oeb[10] ;
+  assign \mgmt_io_oeb_hk[9]  = \mgmt_io_oeb[9] ;
+  assign \mgmt_io_oeb_hk[8]  = \mgmt_io_oeb[8] ;
+  assign \mgmt_io_oeb_hk[7]  = \mgmt_io_oeb[7] ;
+  assign \mgmt_io_oeb_hk[6]  = \mgmt_io_oeb[6] ;
+  assign \mgmt_io_oeb_hk[5]  = \mgmt_io_oeb[5] ;
+  assign \mgmt_io_oeb_hk[4]  = \mgmt_io_oeb[4] ;
+  assign \mgmt_io_oeb_hk[3]  = \mgmt_io_oeb[3] ;
+  assign \mgmt_io_oeb_hk[2]  = \mgmt_io_oeb[2] ;
+  assign \mgmt_io_oeb_hk[1]  = \mgmt_io_oeb[1] ;
+  assign \mgmt_io_oeb_hk[0]  = \mgmt_io_oeb[0] ;
+  assign \mgmt_io_out_hk[6]  = \mgmt_io_out[6] ;
+  assign \mgmt_io_out_hk[5]  = \mgmt_io_out[5] ;
+  assign \mgmt_io_out_hk[4]  = \mgmt_io_out[4] ;
+  assign \mgmt_io_out_hk[3]  = \mgmt_io_out[3] ;
+  assign \mgmt_io_out_hk[2]  = \mgmt_io_out[2] ;
+  assign \mgmt_io_out_hk[1]  = \mgmt_io_out[1] ;
+  assign \mgmt_io_out_hk[0]  = \mgmt_io_out[0] ;
+  assign \gpio_clock_2_shifted[17]  = \gpio_clock_2[18] ;
+  assign \gpio_clock_2_shifted[16]  = \gpio_clock_2[17] ;
+  assign \gpio_clock_2_shifted[15]  = \gpio_clock_2[16] ;
+  assign \gpio_clock_2_shifted[14]  = \gpio_clock_2[15] ;
+  assign \gpio_clock_2_shifted[13]  = \gpio_clock_2[14] ;
+  assign \gpio_clock_2_shifted[12]  = \gpio_clock_2[13] ;
+  assign \gpio_clock_2_shifted[11]  = \gpio_clock_2[12] ;
+  assign \gpio_clock_2_shifted[10]  = \gpio_clock_2[11] ;
+  assign \gpio_clock_2_shifted[9]  = \gpio_clock_2[10] ;
+  assign \gpio_clock_2_shifted[8]  = \gpio_clock_2[9] ;
+  assign \gpio_clock_2_shifted[7]  = \gpio_clock_2[8] ;
+  assign \gpio_clock_2_shifted[6]  = \gpio_clock_2[7] ;
+  assign \gpio_clock_2_shifted[5]  = \gpio_clock_2[6] ;
+  assign \gpio_clock_2_shifted[4]  = \gpio_clock_2[5] ;
+  assign \gpio_clock_2_shifted[3]  = \gpio_clock_2[4] ;
+  assign \gpio_clock_2_shifted[2]  = \gpio_clock_2[3] ;
+  assign \gpio_clock_2_shifted[1]  = \gpio_clock_2[2] ;
+  assign \gpio_clock_2_shifted[0]  = \gpio_clock_2[1] ;
+  assign \gpio_serial_link_2_shifted[17]  = \gpio_serial_link_2[18] ;
+  assign \gpio_serial_link_2_shifted[16]  = \gpio_serial_link_2[17] ;
+  assign \gpio_serial_link_2_shifted[15]  = \gpio_serial_link_2[16] ;
+  assign \gpio_serial_link_2_shifted[14]  = \gpio_serial_link_2[15] ;
+  assign \gpio_serial_link_2_shifted[13]  = \gpio_serial_link_2[14] ;
+  assign \gpio_serial_link_2_shifted[12]  = \gpio_serial_link_2[13] ;
+  assign \gpio_serial_link_2_shifted[11]  = \gpio_serial_link_2[12] ;
+  assign \gpio_serial_link_2_shifted[10]  = \gpio_serial_link_2[11] ;
+  assign \gpio_serial_link_2_shifted[9]  = \gpio_serial_link_2[10] ;
+  assign \gpio_serial_link_2_shifted[8]  = \gpio_serial_link_2[9] ;
+  assign \gpio_serial_link_2_shifted[7]  = \gpio_serial_link_2[8] ;
+  assign \gpio_serial_link_2_shifted[6]  = \gpio_serial_link_2[7] ;
+  assign \gpio_serial_link_2_shifted[5]  = \gpio_serial_link_2[6] ;
+  assign \gpio_serial_link_2_shifted[4]  = \gpio_serial_link_2[5] ;
+  assign \gpio_serial_link_2_shifted[3]  = \gpio_serial_link_2[4] ;
+  assign \gpio_serial_link_2_shifted[2]  = \gpio_serial_link_2[3] ;
+  assign \gpio_serial_link_2_shifted[1]  = \gpio_serial_link_2[2] ;
+  assign \gpio_serial_link_2_shifted[0]  = \gpio_serial_link_2[1] ;
   assign mprj_io_loader_data_2_buf = \gpio_serial_link_2_shifted[18] ;
   assign mprj_io_loader_resetn_buf = \gpio_resetn_2_shifted[18] ;
   assign mprj_io_loader_strobe_buf = \gpio_load_2_shifted[18] ;
