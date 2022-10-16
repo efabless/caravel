@@ -28,6 +28,20 @@ VPWR                                       |VPWR
 Cell pin lists are equivalent.
 Device classes sky130_fd_sc_hd__diode_2 and sky130_fd_sc_hd__diode_2 are equivalent.
 
+Circuit 1 cell sky130_fd_sc_hd__fill_2 and Circuit 2 cell sky130_fd_sc_hd__fill_2 are black boxes.
+Warning: Equate pins:  cell sky130_fd_sc_hd__fill_2 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: sky130_fd_sc_hd__fill_2         |Circuit 2: sky130_fd_sc_hd__fill_2         
+-------------------------------------------|-------------------------------------------
+VGND                                       |VGND                                       
+VNB                                        |VNB                                        
+VPB                                        |VPB                                        
+VPWR                                       |VPWR                                       
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes sky130_fd_sc_hd__fill_2 and sky130_fd_sc_hd__fill_2 are equivalent.
+
 Circuit 1 cell sky130_fd_sc_hd__tapvpwrvgnd_1 and Circuit 2 cell sky130_fd_sc_hd__tapvpwrvgnd_1 are black boxes.
 Warning: Equate pins:  cell sky130_fd_sc_hd__tapvpwrvgnd_1 is a placeholder, treated as a black box.
 
@@ -81,20 +95,6 @@ VPWR                                       |VPWR
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes sky130_fd_sc_hd__decap_4 and sky130_fd_sc_hd__decap_4 are equivalent.
-
-Circuit 1 cell sky130_fd_sc_hd__fill_2 and Circuit 2 cell sky130_fd_sc_hd__fill_2 are black boxes.
-Warning: Equate pins:  cell sky130_fd_sc_hd__fill_2 is a placeholder, treated as a black box.
-
-Subcircuit pins:
-Circuit 1: sky130_fd_sc_hd__fill_2         |Circuit 2: sky130_fd_sc_hd__fill_2         
--------------------------------------------|-------------------------------------------
-VGND                                       |VGND                                       
-VNB                                        |VNB                                        
-VPB                                        |VPB                                        
-VPWR                                       |VPWR                                       
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes sky130_fd_sc_hd__fill_2 and sky130_fd_sc_hd__fill_2 are equivalent.
 
 Circuit 1 cell sky130_fd_sc_hd__fill_1 and Circuit 2 cell sky130_fd_sc_hd__fill_1 are black boxes.
 Warning: Equate pins:  cell sky130_fd_sc_hd__fill_1 is a placeholder, treated as a black box.
@@ -964,20 +964,20 @@ X                                          |X
 Cell pin lists are equivalent.
 Device classes sky130_fd_sc_hd__and2b_2 and sky130_fd_sc_hd__and2b_2 are equivalent.
 
-Class mgmt_protect (0):  Merged 31138 parallel devices.
-Class mgmt_protect (1):  Merged 31138 parallel devices.
+Class mgmt_protect (0):  Merged 31305 parallel devices.
+Class mgmt_protect (1):  Merged 31305 parallel devices.
 Subcircuit summary:
 Circuit 1: mgmt_protect                    |Circuit 2: mgmt_protect                    
 -------------------------------------------|-------------------------------------------
-sky130_fd_sc_hd__decap_6 (2899->1)         |sky130_fd_sc_hd__decap_6 (2899->1)         
-sky130_fd_sc_hd__diode_2 (3474->3061)      |sky130_fd_sc_hd__diode_2 (3474->3061)      
+sky130_fd_sc_hd__decap_6 (2885->1)         |sky130_fd_sc_hd__decap_6 (2885->1)         
+sky130_fd_sc_hd__diode_2 (3581->3061)      |sky130_fd_sc_hd__diode_2 (3581->3061)      
+sky130_fd_sc_hd__fill_2 (2520->1)          |sky130_fd_sc_hd__fill_2 (2520->1)          
 sky130_fd_sc_hd__tapvpwrvgnd_1 (4525->1)   |sky130_fd_sc_hd__tapvpwrvgnd_1 (4525->1)   
-sky130_ef_sc_hd__decap_12 (11275->1)       |sky130_ef_sc_hd__decap_12 (11275->1)       
-sky130_fd_sc_hd__decap_3 (1347->1)         |sky130_fd_sc_hd__decap_3 (1347->1)         
-sky130_fd_sc_hd__decap_4 (3451->1)         |sky130_fd_sc_hd__decap_4 (3451->1)         
-sky130_fd_sc_hd__fill_2 (2386->1)          |sky130_fd_sc_hd__fill_2 (2386->1)          
-sky130_fd_sc_hd__fill_1 (3675->1)          |sky130_fd_sc_hd__fill_1 (3675->1)          
-sky130_fd_sc_hd__decap_8 (1175->1)         |sky130_fd_sc_hd__decap_8 (1175->1)         
+sky130_ef_sc_hd__decap_12 (11260->1)       |sky130_ef_sc_hd__decap_12 (11260->1)       
+sky130_fd_sc_hd__decap_3 (1355->1)         |sky130_fd_sc_hd__decap_3 (1355->1)         
+sky130_fd_sc_hd__decap_4 (3409->1)         |sky130_fd_sc_hd__decap_4 (3409->1)         
+sky130_fd_sc_hd__fill_1 (3673->1)          |sky130_fd_sc_hd__fill_1 (3673->1)          
+sky130_fd_sc_hd__decap_8 (1166->1)         |sky130_fd_sc_hd__decap_8 (1166->1)         
 sky130_fd_sc_hd__buf_6 (1358)              |sky130_fd_sc_hd__buf_6 (1358)              
 sky130_fd_sc_hd__and2_4 (210)              |sky130_fd_sc_hd__and2_4 (210)              
 sky130_fd_sc_hd__and3b_4 (115)             |sky130_fd_sc_hd__and3b_4 (115)             
@@ -1006,313 +1006,29 @@ Number of nets: 4101                       |Number of nets: 4101
 ---------------------------------------------------------------------------------------
 Resolving automorphisms by property value.
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance \ANTENNA_user_wb_dat_gates[12]_A  network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-Circuit 2 parallel/series network does not match Circuit 1
-Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_user_wb_dat_gates\[12\]_A network:
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
-  M = 1
+Circuit 2 instance sky130_fd_sc_hd__diode_2:ANTENNA_64 network:
+  M = 5
 Resolving automorphisms by pin name.
 Netlists match uniquely.
 
@@ -1763,17 +1479,17 @@ mprj_dat_i_core[15]                        |mprj_dat_i_core[15]
 mprj_dat_i_core[18]                        |mprj_dat_i_core[18]                        
 mprj_dat_i_core[19]                        |mprj_dat_i_core[19]                        
 la_data_in_mprj[11]                        |la_data_in_mprj[11]                        
-la_data_in_mprj[59]                        |la_data_in_mprj[59]                        
+la_data_in_mprj[60]                        |la_data_in_mprj[60]                        
 la_data_in_mprj[56]                        |la_data_in_mprj[56]                        
 la_data_in_mprj[57]                        |la_data_in_mprj[57]                        
-la_data_in_mprj[60]                        |la_data_in_mprj[60]                        
+la_data_in_mprj[59]                        |la_data_in_mprj[59]                        
 la_data_in_mprj[0]                         |la_data_in_mprj[0]                         
 la_data_in_mprj[58]                        |la_data_in_mprj[58]                        
 la_data_in_mprj[18]                        |la_data_in_mprj[18]                        
 mprj_ack_i_core                            |mprj_ack_i_core                            
 mprj_dat_i_core[10]                        |mprj_dat_i_core[10]                        
-mprj_dat_i_core[11]                        |mprj_dat_i_core[11]                        
-mprj_dat_i_core[14]                        |mprj_dat_i_core[14]                        
+mprj_dat_i_core[14]                        |mprj_dat_i_core[11] **Mismatch**           
+mprj_dat_i_core[11]                        |mprj_dat_i_core[14] **Mismatch**           
 mprj_dat_i_core[20]                        |mprj_dat_i_core[20]                        
 la_data_in_mprj[21]                        |la_data_in_mprj[21]                        
 la_data_in_mprj[20]                        |la_data_in_mprj[20]                        
@@ -1818,10 +1534,10 @@ mprj_dat_i_core[27]                        |mprj_dat_i_core[27]
 mprj_dat_i_core[29]                        |mprj_dat_i_core[29]                        
 mprj_dat_i_core[30]                        |mprj_dat_i_core[30]                        
 mprj_dat_i_core[31]                        |mprj_dat_i_core[31]                        
-mprj_dat_i_core[4]                         |mprj_dat_i_core[4]                         
+mprj_dat_i_core[5]                         |mprj_dat_i_core[5]                         
 mprj_dat_i_core[16]                        |mprj_dat_i_core[16]                        
 mprj_dat_i_core[17]                        |mprj_dat_i_core[17]                        
-mprj_dat_i_core[5]                         |mprj_dat_i_core[5]                         
+mprj_dat_i_core[4]                         |mprj_dat_i_core[4]                         
 mprj_dat_i_core[6]                         |mprj_dat_i_core[6]                         
 mprj_dat_i_core[7]                         |mprj_dat_i_core[7]                         
 mprj_dat_i_core[8]                         |mprj_dat_i_core[8]                         
@@ -1845,8 +1561,10 @@ la_data_out_core[41]                       |la_data_out_core[41]
 la_data_out_core[43]                       |la_data_out_core[43]                       
 la_data_out_core[42]                       |la_data_out_core[42]                       
 la_data_out_core[55]                       |la_data_out_core[55]                       
-la_data_out_core[59]                       |la_data_out_core[59]                       
 la_data_out_core[101]                      |la_data_out_core[101]                      
+la_data_out_core[56]                       |la_data_out_core[56]                       
+la_data_out_core[57]                       |la_data_out_core[57]                       
+la_data_out_core[59]                       |la_data_out_core[59]                       
 la_data_out_core[27]                       |la_data_out_core[27]                       
 user_irq_core[1]                           |user_irq_core[1]                           
 la_data_out_core[5]                        |la_data_out_core[5]                        
@@ -1854,8 +1572,6 @@ la_data_out_core[13]                       |la_data_out_core[13]
 la_data_out_core[6]                        |la_data_out_core[6]                        
 la_data_out_core[0]                        |la_data_out_core[0]                        
 la_data_out_core[58]                       |la_data_out_core[58]                       
-la_data_out_core[56]                       |la_data_out_core[56]                       
-la_data_out_core[57]                       |la_data_out_core[57]                       
 la_data_out_core[60]                       |la_data_out_core[60]                       
 la_data_out_core[45]                       |la_data_out_core[45]                       
 la_data_out_core[44]                       |la_data_out_core[44]                       
@@ -1976,20 +1692,20 @@ mprj_dat_i_user[3]                         |mprj_dat_i_user[3]
 mprj_dat_i_user[15]                        |mprj_dat_i_user[15]                        
 mprj_dat_i_user[18]                        |mprj_dat_i_user[18]                        
 mprj_dat_i_user[19]                        |mprj_dat_i_user[19]                        
-mprj_dat_i_user[4]                         |mprj_dat_i_user[4]                         
+mprj_dat_i_user[5]                         |mprj_dat_i_user[5]                         
 mprj_dat_i_user[16]                        |mprj_dat_i_user[16]                        
 mprj_dat_i_user[17]                        |mprj_dat_i_user[17]                        
-mprj_dat_i_user[5]                         |mprj_dat_i_user[5]                         
+mprj_dat_i_user[4]                         |mprj_dat_i_user[4]                         
 mprj_dat_i_user[6]                         |mprj_dat_i_user[6]                         
 mprj_dat_i_user[7]                         |mprj_dat_i_user[7]                         
 mprj_dat_i_user[8]                         |mprj_dat_i_user[8]                         
 mprj_dat_i_user[9]                         |mprj_dat_i_user[9]                         
 mprj_dat_i_user[2]                         |mprj_dat_i_user[2]                         
 mprj_dat_i_user[10]                        |mprj_dat_i_user[10]                        
-mprj_dat_i_user[11]                        |mprj_dat_i_user[11]                        
-mprj_dat_i_user[14]                        |mprj_dat_i_user[14]                        
+mprj_dat_i_user[14]                        |mprj_dat_i_user[11] **Mismatch**           
+mprj_dat_i_user[11]                        |mprj_dat_i_user[14] **Mismatch**           
 mprj_dat_i_user[20]                        |mprj_dat_i_user[20]                        
-la_iena_mprj[59]                           |la_iena_mprj[59]                           
+la_iena_mprj[60]                           |la_iena_mprj[60]                           
 la_data_out_mprj[39]                       |la_data_out_mprj[39]                       
 la_data_out_mprj[6]                        |la_data_out_mprj[6]                        
 la_data_out_mprj[120]                      |la_data_out_mprj[120]                      
@@ -2013,7 +1729,7 @@ caravel_clk2                               |caravel_clk2
 la_iena_mprj[55]                           |la_iena_mprj[55]                           
 la_iena_mprj[56]                           |la_iena_mprj[56]                           
 la_iena_mprj[57]                           |la_iena_mprj[57]                           
-la_iena_mprj[60]                           |la_iena_mprj[60]                           
+la_iena_mprj[59]                           |la_iena_mprj[59]                           
 la_iena_mprj[61]                           |la_iena_mprj[61]                           
 la_iena_mprj[5]                            |la_iena_mprj[5]                            
 la_iena_mprj[6]                            |la_iena_mprj[6]                            

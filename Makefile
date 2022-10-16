@@ -1285,10 +1285,7 @@ sky130:
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
 			cd $(PDK_ROOT)/open_pdks && \
-			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --enable-sram-sky130 && \
-			cd sky130 && \
-			make veryclean && \
-			make prerequisites && \
+			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk --enable-sram-sky130 && \
 			make && \
 			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
 			make clean \
