@@ -230,6 +230,9 @@ if {\
 
     }
     proc report_results {design rc_corner proc_corner} {
+      report_global_timing -separate_all_groups -significant_digits 4 > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-global.rpt
+      report_analysis_coverage -significant_digits 4 -nosplit -status_details {untested} > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-coverage.rpt
+
       report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-all_viol.rpt
 
       report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
