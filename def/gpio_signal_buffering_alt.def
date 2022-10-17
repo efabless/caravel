@@ -16,15 +16,21 @@ VIAS 18 ;
       + RECT via ( -75 -75 ) ( 75 75 )
       + RECT via ( 245 -75 ) ( 395 75 )
       + RECT via ( 565 -75 ) ( 715 75 ) ;
+   - via_260_260_hv
+      + RECT met1 ( -160 -130 ) ( 160 130 )
+      + RECT met2 ( -130 -160 ) ( 130 160 )
+      + RECT via ( -75 -75 ) ( 75 75 ) ;
    - via_260_660_vh
       + RECT met1 ( -130 -360 ) ( 130 360 )
       + RECT met2 ( -160 -330 ) ( 160 330 )
       + RECT via ( -75 -235 ) ( 75 -85 )
       + RECT via ( -75 85 ) ( 75 235 ) ;
-   - via_260_260_hv
-      + RECT met1 ( -160 -130 ) ( 160 130 )
-      + RECT met2 ( -130 -160 ) ( 130 160 )
-      + RECT via ( -75 -75 ) ( 75 75 ) ;
+   - via_1090_260_hv
+      + RECT met1 ( -575 -130 ) ( 575 130 )
+      + RECT met2 ( -545 -160 ) ( 545 160 )
+      + RECT via ( -395 -75 ) ( -245 75 )
+      + RECT via ( -75 -75 ) ( 75 75 )
+      + RECT via ( 245 -75 ) ( 395 75 ) ;
    - via_300_1785_hh
       + RECT met1 ( -180 -892.5 ) ( 180 892.5 )
       + RECT met2 ( -180 -892.5 ) ( 180 892.5 )
@@ -33,12 +39,6 @@ VIAS 18 ;
       + RECT via ( -75 -75 ) ( 75 75 )
       + RECT via ( -75 245 ) ( 75 395 )
       + RECT via ( -75 565 ) ( 75 715 ) ;
-   - via_1090_260_hv
-      + RECT met1 ( -575 -130 ) ( 575 130 )
-      + RECT met2 ( -545 -160 ) ( 545 160 )
-      + RECT via ( -395 -75 ) ( -245 75 )
-      + RECT via ( -75 -75 ) ( 75 75 )
-      + RECT via ( 245 -75 ) ( 395 75 ) ;
    - via_260_260_vh
       + RECT met1 ( -130 -160 ) ( 130 160 )
       + RECT met2 ( -160 -130 ) ( 160 130 )
@@ -60,12 +60,6 @@ VIAS 18 ;
       + RECT mcon ( -85 -445 ) ( 85 -275 )
       + RECT mcon ( -85 -85 ) ( 85 85 )
       + RECT mcon ( -85 275 ) ( 85 445 ) ;
-   - via_260_1090_vh
-      + RECT met1 ( -130 -575 ) ( 130 575 )
-      + RECT met2 ( -160 -545 ) ( 160 545 )
-      + RECT via ( -75 -395 ) ( 75 -245 )
-      + RECT via ( -75 -75 ) ( 75 75 )
-      + RECT via ( -75 245 ) ( 75 395 ) ;
    - via_1785_300_hh
       + RECT met1 ( -922.5 -150 ) ( 922.5 150 )
       + RECT met2 ( -922.5 -150 ) ( 922.5 150 )
@@ -74,6 +68,12 @@ VIAS 18 ;
       + RECT via ( -75 -75 ) ( 75 75 )
       + RECT via ( 245 -75 ) ( 395 75 )
       + RECT via ( 565 -75 ) ( 715 75 ) ;
+   - via_260_1090_vh
+      + RECT met1 ( -130 -575 ) ( 130 575 )
+      + RECT met2 ( -160 -545 ) ( 160 545 )
+      + RECT via ( -75 -395 ) ( 75 -245 )
+      + RECT via ( -75 -75 ) ( 75 75 )
+      + RECT via ( -75 245 ) ( 75 395 ) ;
    - mcon_1090_170
       + RECT li1 ( -545 -85 ) ( 545 85 )
       + RECT met1 ( -575 -115 ) ( 575 115 )
@@ -927,11 +927,6 @@ PINS 98 ;
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 665242.5 221390 ) N ;
-   - mgmt_io_in_unbuf[9] + NET mgmt_io_in_unbuf[9]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220065 3058127.5 ) N ;
    - vssd + NET vssd
      + DIRECTION INPUT
      + USE GROUND
@@ -952,16 +947,6 @@ PINS 98 ;
      + USE POWER
      + PORT
         + LAYER met3 ( -225 -742.5 ) ( 225 742.5 )        + PLACED ( 200490 3017942.5 ) N ;
-   - mgmt_io_in_unbuf[7] + NET mgmt_io_in_unbuf[7]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 217825 3062127.5 ) N ;
-   - mgmt_io_in_unbuf[8] + NET mgmt_io_in_unbuf[8]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218945 3060127.5 ) N ;
    - mgmt_io_in_unbuf[15] + NET mgmt_io_in_unbuf[15]
      + DIRECTION INPUT
      + USE SIGNAL
@@ -982,16 +967,6 @@ PINS 98 ;
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -735 ) ( 70 735 )        + PLACED ( 223285 1772915 ) N ;
-   - mgmt_io_in_unbuf[11] + NET mgmt_io_in_unbuf[11]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222305 3054127.5 ) N ;
-   - mgmt_io_in_unbuf[10] + NET mgmt_io_in_unbuf[10]
-     + DIRECTION INPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221185 3056127.5 ) N ;
    - mgmt_io_in_buf[4] + NET mgmt_io_in_buf[4]
      + DIRECTION OUTPUT
      + USE SIGNAL
@@ -1242,31 +1217,6 @@ PINS 98 ;
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -70 -717.5 ) ( 70 717.5 )        + PLACED ( 3370290 3639887.5 ) N ;
-   - mgmt_io_out_buf[7] + NET mgmt_io_out_buf[7]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218385 3061127.5 ) N ;
-   - mgmt_io_out_buf[8] + NET mgmt_io_out_buf[8]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 219505 3059127.5 ) N ;
-   - mgmt_io_out_buf[9] + NET mgmt_io_out_buf[9]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220625 3057127.5 ) N ;
-   - mgmt_io_out_buf[10] + NET mgmt_io_out_buf[10]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221745 3055127.5 ) N ;
-   - mgmt_io_out_buf[11] + NET mgmt_io_out_buf[11]
-     + DIRECTION OUTPUT
-     + USE SIGNAL
-     + PORT
-        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222865 3053127.5 ) N ;
    - mgmt_io_out_buf[12] + NET mgmt_io_out_buf[12]
      + DIRECTION OUTPUT
      + USE SIGNAL
@@ -1307,6 +1257,44 @@ PINS 98 ;
      + USE SIGNAL
      + PORT
         + LAYER met1 ( -627.5 -70 ) ( 627.5 70 )        + PLACED ( 662382.5 222930 ) N ;
+   - mgmt_io_out_buf[11] + NET mgmt_io_out_buf[11]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222865 3053127.5 ) N ;
+   - mgmt_io_out_buf[10] + NET mgmt_io_out_buf[10]
+     + DIRECTION OUTPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221745 3055127.5 ) N ;
+   - mgmt_io_in_unbuf[10] + NET mgmt_io_in_unbuf[10]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 221185 3056127.5 ) N ;
+   - mgmt_io_in_unbuf[11] + NET mgmt_io_in_unbuf[11]
+     + DIRECTION INPUT
+     + USE SIGNAL
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 222305 3054127.5 ) N ;
+   - mgmt_io_out_buf[9] + NET mgmt_io_out_buf[9]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220625 3057322.5 ) N ;
+   - mgmt_io_in_unbuf[9] + NET mgmt_io_in_unbuf[9]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 220065 3058322.5 ) N ;
+   - mgmt_io_out_buf[8] + NET mgmt_io_out_buf[8]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 219505 3059322.5 ) N ;
+   - mgmt_io_in_unbuf[8] + NET mgmt_io_in_unbuf[8]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218945 3060322.5 ) N ;
+   - mgmt_io_out_buf[7] + NET mgmt_io_out_buf[7]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 218385 3061187.5 ) N ;
+   - mgmt_io_in_unbuf[7] + NET mgmt_io_in_unbuf[7]
+     + PORT
+        + LAYER met1 ( -70 -652.5 ) ( 70 652.5 )        + PLACED ( 217825 3062187.5 ) N ;
 END PINS
 
 NONDEFAULTRULES 4 ;
@@ -2787,7 +2775,7 @@ NETS 147 ;
       NEW met1  ( 203105 2997310 ) ( 203225 * )
       NEW met1  ( 203165 2997845 ) via_260_1090_vh  ;
    - mgmt_io_in_unbuf[9] ( sky130_fd_sc_hd__buf_8_175 A )
-      + ROUTED met1  ( 220065 3002785 ) ( * 3058710 )
+      + ROUTED met1  ( 220065 3002785 ) ( * 3058905 )
       NEW met1  ( 219945 3002645 ) ( 220065 * )
       NEW met1  ( 220005 3002555 ) via_260_260_vh  ( * 3002495 )
        ( 221530 * )
@@ -2916,7 +2904,7 @@ NETS 147 ;
       NEW met2  ( 3366060 2219805 ) ( 3367490 * )
       NEW met1  ( 3367630 2219775 ) ( 3367750 * ) ;
    - mgmt_io_out_buf[9] ( sky130_fd_sc_hd__buf_8_174 X )
-      + ROUTED met1  ( 220625 3055225 ) ( * 3057710 )
+      + ROUTED met1  ( 220625 3055225 ) ( * 3057905 )
       NEW met1  ( 220345 3055085 ) ( 220625 * )
       NEW met1  ( 220345 3001815 ) ( * 3054945 )
       NEW met1  ( 220225 3001675 ) ( 220345 * )
@@ -3113,9 +3101,9 @@ NETS 147 ;
       NEW met1  ( 203105 3003290 ) ( 203225 * )
       NEW met1  ( 203165 3003825 ) via_260_1090_vh  ;
    - mgmt_io_out_buf[8] ( sky130_fd_sc_hd__buf_8_173 X )
-      + ROUTED met1  ( 219505 3057280 ) ( * 3059710 )
-      NEW met1  ( 219225 3057140 ) ( 219505 * )
-      NEW met1  ( 219225 3007795 ) ( * 3057000 )
+      + ROUTED met1  ( 219505 3057440 ) ( * 3059905 )
+      NEW met1  ( 219225 3057300 ) ( 219505 * )
+      NEW met1  ( 219225 3007795 ) ( * 3057160 )
       NEW met1  ( 219105 3007655 ) ( 219225 * )
       NEW met1  ( 219165 3007565 ) via_260_260_vh  ( * 3007505 )
        ( 221530 * )
@@ -3237,7 +3225,7 @@ NETS 147 ;
       NEW met1  ( 2168770 212875 ) via_260_850_vh 
       NEW met1  ( 2168775 212875 ) mcon_170_850  ;
    - mgmt_io_in_unbuf[8] ( sky130_fd_sc_hd__buf_8_172 A )
-      + ROUTED met1  ( 218945 3008765 ) ( * 3060710 )
+      + ROUTED met1  ( 218945 3008765 ) ( * 3060905 )
       NEW met1  ( 218825 3008625 ) ( 218945 * )
       NEW met1  ( 218885 3008535 ) via_260_260_vh  ( * 3008475 )
        ( 221530 * )
@@ -3356,7 +3344,7 @@ NETS 147 ;
       NEW li1  ( 2169725 215935 ) mcon_1090_170 
       NEW met2  ( 2169250 215850 ) ( 2170200 * ) ;
    - mgmt_io_in_unbuf[7] ( sky130_fd_sc_hd__buf_8_171 A )
-      + ROUTED met1  ( 217825 3014745 ) ( * 3062710 )
+      + ROUTED met1  ( 217825 3014745 ) ( * 3062770 )
       NEW met1  ( 217705 3014605 ) ( 217825 * )
       NEW met1  ( 217765 3014515 ) via_260_260_vh  ( * 3014455 )
        ( 221530 * )
@@ -3429,7 +3417,7 @@ NETS 147 ;
       NEW li1  ( 2163745 215935 ) mcon_1090_170 
       NEW met2  ( 2163270 215850 ) ( 2164220 * ) ;
    - mgmt_io_out_buf[7] ( sky130_fd_sc_hd__buf_8_170 X )
-      + ROUTED met1  ( 218385 3059305 ) ( * 3061710 )
+      + ROUTED met1  ( 218385 3059305 ) ( * 3061770 )
       NEW met1  ( 218105 3059165 ) ( 218385 * )
       NEW met1  ( 218105 3013775 ) ( * 3059025 )
       NEW met1  ( 217985 3013635 ) ( 218105 * )
