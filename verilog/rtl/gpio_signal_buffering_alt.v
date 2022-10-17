@@ -103,10 +103,10 @@ module gpio_signal_buffering_alt (
 
     /* Instantiate 48 + 48 + 6 = 101 buffers of size 8 */
 
-    wire [100:0] buf_in;
-    wire [100:0] buf_out;
+    wire [101:0] buf_in;
+    wire [101:0] buf_out;
 
-    sky130_fd_sc_hd__buf_8 signal_buffers [100:0] (
+    sky130_fd_sc_hd__buf_8 signal_buffers [101:0] (
         `ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -149,71 +149,71 @@ module gpio_signal_buffering_alt (
     // mgmt_io_in, left-hand side
     //----------------------------------------
 
-    assign buf_in[8] = mgmt_io_in_unbuf[8];
+    assign buf_in[8] = mgmt_io_in_unbuf[7];
     assign buf_in[9] = buf_out[8];
     assign buf_in[10] = buf_out[9];
     assign buf_in[11] = buf_out[10];
-    assign mgmt_io_in_buf[8] = buf_out[11];
+    assign mgmt_io_in_buf[7] = buf_out[11];
 
-    assign buf_in[12] = mgmt_io_in_unbuf[9];
+    assign buf_in[12] = mgmt_io_in_unbuf[8];
     assign buf_in[13] = buf_out[12];
     assign buf_in[14] = buf_out[13];
     assign buf_in[15] = buf_out[14];
-    assign mgmt_io_in_buf[9] = buf_out[15];
+    assign mgmt_io_in_buf[8] = buf_out[15];
 
-    assign buf_in[16] = mgmt_io_in_unbuf[10];
+    assign buf_in[16] = mgmt_io_in_unbuf[9];
     assign buf_in[17] = buf_out[16];
     assign buf_in[18] = buf_out[17];
     assign buf_in[19] = buf_out[18];
-    assign mgmt_io_in_buf[10] = buf_out[19];
+    assign mgmt_io_in_buf[9] = buf_out[19];
 
-    assign buf_in[20] = mgmt_io_in_unbuf[11];
+    assign buf_in[20] = mgmt_io_in_unbuf[10];
     assign buf_in[21] = buf_out[20];
     assign buf_in[22] = buf_out[21];
     assign buf_in[23] = buf_out[22];
-    assign mgmt_io_in_buf[11] = buf_out[23];
+    assign mgmt_io_in_buf[10] = buf_out[23];
 
-    assign buf_in[24] = mgmt_io_in_unbuf[12];
+    assign buf_in[24] = mgmt_io_in_unbuf[11];
     assign buf_in[25] = buf_out[24];
     assign buf_in[26] = buf_out[25];
     assign buf_in[27] = buf_out[26];
-    assign mgmt_io_in_buf[12] = buf_out[27];
+    assign mgmt_io_in_buf[11] = buf_out[27];
 
-    assign buf_in[28] = mgmt_io_in_unbuf[13];
+    assign buf_in[28] = mgmt_io_in_unbuf[12];
     assign buf_in[29] = buf_out[28];
     assign buf_in[30] = buf_out[29];
-    assign mgmt_io_in_buf[13] = buf_out[30];
+    assign mgmt_io_in_buf[12] = buf_out[30];
 
-    assign buf_in[31] = mgmt_io_in_unbuf[14];
+    assign buf_in[31] = mgmt_io_in_unbuf[13];
     assign buf_in[32] = buf_out[31];
     assign buf_in[33] = buf_out[32];
-    assign mgmt_io_in_buf[14] = buf_out[33];
+    assign mgmt_io_in_buf[13] = buf_out[33];
 
-    assign buf_in[34] = mgmt_io_in_unbuf[15];
+    assign buf_in[34] = mgmt_io_in_unbuf[14];
     assign buf_in[35] = buf_out[34];
     assign buf_in[36] = buf_out[35];
-    assign mgmt_io_in_buf[15] = buf_out[36];
+    assign mgmt_io_in_buf[14] = buf_out[36];
 
-    assign buf_in[37] = mgmt_io_in_unbuf[16];
+    assign buf_in[37] = mgmt_io_in_unbuf[15];
     assign buf_in[38] = buf_out[37];
     assign buf_in[39] = buf_out[38];
-    assign mgmt_io_in_buf[16] = buf_out[39];
+    assign mgmt_io_in_buf[15] = buf_out[39];
 
-    assign buf_in[40] = mgmt_io_in_unbuf[17];
+    assign buf_in[40] = mgmt_io_in_unbuf[16];
     assign buf_in[41] = buf_out[40];
-    assign mgmt_io_in_buf[17] = buf_out[41];
+    assign mgmt_io_in_buf[16] = buf_out[41];
 
-    assign buf_in[42] = mgmt_io_in_unbuf[18];
+    assign buf_in[42] = mgmt_io_in_unbuf[17];
     assign buf_in[43] = buf_out[42];
-    assign mgmt_io_in_buf[18] = buf_out[43];
+    assign mgmt_io_in_buf[17] = buf_out[43];
 
-    assign buf_in[44] = mgmt_io_in_unbuf[19];
+    assign buf_in[44] = mgmt_io_in_unbuf[18];
     assign buf_in[45] = buf_out[44];
-    assign mgmt_io_in_buf[19] = buf_out[45];
+    assign mgmt_io_in_buf[18] = buf_out[45];
 
-    assign buf_in[46] = mgmt_io_in_unbuf[20];
+    assign buf_in[46] = mgmt_io_in_unbuf[19];
     assign buf_in[47] = buf_out[46];
-    assign mgmt_io_in_buf[20] = buf_out[47];
+    assign mgmt_io_in_buf[19] = buf_out[47];
 
     //----------------------------------------
     // mgmt_io_out, right-hand side
