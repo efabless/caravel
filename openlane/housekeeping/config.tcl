@@ -40,6 +40,7 @@ set ::env(SYNTH_STRATEGY) "AREA 0"
 
 set ::env(SYNTH_MAX_FANOUT) 20
 set ::env(SYNTH_BUFFERING) 0
+set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
@@ -95,3 +96,4 @@ set ::env(GRT_MAX_DIODE_INS_ITERS) 10
 set ::env(CTS_MAX_CAP) 0.25
 
 set ::env(MAGIC_DEF_LABELS) 0
+set ::env(RSZ_DONT_TOUCH_RX) {mgmt_gpio_out_9_prebuff|mgmt_gpio_out\[9\]|mgmt_gpio_out_14_prebuff|mgmt_gpio_out\[14\]|mgmt_gpio_out_15_prebuff|mgmt_gpio_out\[15\]|pad_flash_clk\y|pad_flash_clk_prebuff}
