@@ -8,12 +8,15 @@ echo ${PDK:=sky130A} > /dev/null
 cd ../mag
 magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc << EOF
 drc off
+addpath primitives
+addpath hexdigits
 crashbackups stop
 load caravel
 select top cell
 expand
 extract no all      ;# <-- large speed-up
 extract do local
+# extract unique	;# <-- because of gpio_signal_buffering power/ground
 extract all
 ext2spice lvs
 ext2spice
@@ -25,6 +28,6 @@ netgen -batch lvs "caravel.spice caravel" "../verilog/gl/caravel.v caravel" \
 	$PDK_ROOT/$PDK/libs.tech/netgen/${PDK}_setup.tcl caravel_comp.out
 
 # mv caravel.spice ../spi/lvs/caravel_lvs.spice
-mv caravel.spice ../spi/lvs/caravel.spice
-mv caravel_comp.out ../signoff/
+# mv caravel.spice ../spi/lvs/caravel.spice
+# mv caravel_comp.out ../signoff/
 exit 0

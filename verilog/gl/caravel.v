@@ -5095,8 +5095,8 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .mgmt_io_oeb_unbuf({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35]  }),
     .mgmt_io_out_buf({ \mgmt_io_out[37] , \mgmt_io_out[36] , \mgmt_io_out[35] , \mgmt_io_out[34] , \mgmt_io_out[33] , \mgmt_io_out[32] , \mgmt_io_out[31] , \mgmt_io_out[30] , \mgmt_io_out[29] , \mgmt_io_out[28] , \mgmt_io_out[27] , \mgmt_io_out[26] , \mgmt_io_out[25] , \mgmt_io_out[24] , \mgmt_io_out[23] , \mgmt_io_out[22] , \mgmt_io_out[21] , \mgmt_io_out[20] , \mgmt_io_out[19] , \mgmt_io_out[18] , \mgmt_io_out[17] , \mgmt_io_out[16] , \mgmt_io_out[15] , \mgmt_io_out[14] , \mgmt_io_out[13] , \mgmt_io_out[12] , \mgmt_io_out[11] , \mgmt_io_out[10] , \mgmt_io_out[9] , \mgmt_io_out[8] , \mgmt_io_out[7]  }),
     .mgmt_io_out_unbuf({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out_hk[24] , \mgmt_io_out_hk[23] , \mgmt_io_out_hk[22] , \mgmt_io_out_hk[21] , \mgmt_io_out_hk[20] , \mgmt_io_out_hk[19] , \mgmt_io_out_hk[18] , \mgmt_io_out_hk[17] , \mgmt_io_out_hk[16] , \mgmt_io_out_hk[15] , \mgmt_io_out_hk[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7]  }),
-    .vccd(vccd),
-    .vssd(vssd)
+    .vccd(vccd_core),
+    .vssd(vssd_core)
   );
   mgmt_core_wrapper soc (
     .VGND(vssd_core),

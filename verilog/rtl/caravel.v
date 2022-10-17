@@ -303,8 +303,8 @@ module caravel (
 
 		gpio_signal_buffering sigbuf (
 		`ifdef USE_POWER_PINS
-			.vccd(vccd),
-			.vssd(vssd),
+			.vccd(vccd_core),
+			.vssd(vssd_core),
 		`endif
 		.mgmt_io_in_unbuf(mgmt_io_in[37:7]),
 		.mgmt_io_out_unbuf(mgmt_io_out_hk[37:7]),
