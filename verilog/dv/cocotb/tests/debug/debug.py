@@ -26,24 +26,26 @@ async def debug(dut):
     # calculate bit time
     clk = clock.period/1000
     global bit_time_ns
-    bit_time_ns = round(10**5 * clk / (96))
+    bit_time_ns = round(10**5 * clk / (1152))
     cocotb.log.info(f"[TEST] bit time in nano second = {bit_time_ns}")  
-    caravelEnv.drive_gpio_in((0,0),0) # IO[0] affects the uart selecting btw system and debug
+    caravelEnv.drive_gpio_in((0,0),1) # IO[0] affects the uart selecting btw system and debug
     caravelEnv.drive_gpio_in((5,5),1)
     # wait for start of sending
     await wait_reg1(cpu,caravelEnv,0XAA) 
+    # caravelEnv.drive_gpio_in((0,0),1) # IO[0] affects the uart selecting btw system and debug
     cocotb.log.info(f"[TEST] Start debug test")  
     # send random data to address 30'h00400024 and expect to recieve the same data back it back
-    address = 0x00000410
+    dff_address = random.randint(0x00000400, 0x00000600)
     data = random.getrandbits(32)
-    data = 0xFFFFFFFF
-    cocotb.log.info (f"[TEST] Executing DFF2 write address={hex(address)} data = {hex(data)}")
+    address = dff_address >>2 # address has to be shifted
+    # data = 0xFFFFFFF0
+    cocotb.log.info (f"[TEST] Executing DFF2 write address={hex(dff_address)} data = {hex(data)}")
     await wb_write(caravelEnv,address,data)
     receieved_data = await wb_read(caravelEnv,address)
     if data != receieved_data: 
-        cocotb.log.error(f"[TEST] DFF2 write failed expected data = {hex(data)} recieved data = {hex(receieved_data)}")
+        cocotb.log.error(f"[TEST] DFF2 reading failed from address {hex(address)} expected data = {hex(data)} recieved data = {hex(receieved_data)}")
     else: 
-        cocotb.log.info(f"[TEST] DFF2 write succeeded")
+        cocotb.log.info(f"[TEST] PASS: DFF2 reading right value {hex(data)} from {hex(address)} ")
 
     
 async def start_of_tx(caravelEnv):
@@ -66,18 +68,12 @@ async def uart_send_char(caravelEnv,char):
     # stop of frame
     caravelEnv.drive_gpio_in((5,5),1)
     await Timer(bit_time_ns, units='ns')
-    await Timer(bit_time_ns, units='ns')
-    # insert 4 bit delay just for debugging
-    await Timer(bit_time_ns, units='ns')
-    await Timer(bit_time_ns, units='ns')
-    await Timer(bit_time_ns, units='ns')
-    await Timer(bit_time_ns, units='ns')
-
+    
 async def uart_get_char(caravelEnv):
     await start_of_tx(caravelEnv)
     char  = ''
     for i in range (8):
-        char = char + caravelEnv.monitor_gpio((6,6)).binstr 
+        char =  caravelEnv.monitor_gpio((6,6)).binstr  + char 
         await Timer(bit_time_ns, units='ns')  
     cocotb.log.info (f"[uart_get_char] recieving {char} from uart")
     
