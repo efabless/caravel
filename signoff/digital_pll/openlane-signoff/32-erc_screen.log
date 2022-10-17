@@ -1,17 +1,17 @@
 CVC: Circuit Validation Check  Version 1.1.0
-CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/reports/signoff/digital_pll.rpt
-CVC: Error output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/reports/signoff/digital_pll.rpt.error.gz
-CVC: Debug output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/reports/signoff/digital_pll.rpt.debug.gz
-CVC: Start: Mon Oct 17 17:47:26 2022
+CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/reports/signoff/digital_pll.rpt
+CVC: Error output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/reports/signoff/digital_pll.rpt.error.gz
+CVC: Debug output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/reports/signoff/digital_pll.rpt.debug.gz
+CVC: Start: Mon Oct 17 19:27:10 2022
 
 Using the following parameters for CVC (Circuit Validation Check) from /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc/cvcrc
 CVC_TOP = 'digital_pll'
-CVC_NETLIST = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/tmp/signoff/digital_pll.cdl'
+CVC_NETLIST = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/tmp/signoff/digital_pll.cdl'
 CVC_MODE = 'digital_pll'
 CVC_MODEL_FILE = '/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc/models'
-CVC_POWER_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/tmp/signoff/digital_pll.power'
+CVC_POWER_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/tmp/signoff/digital_pll.power'
 CVC_FUSE_FILE = ''
-CVC_REPORT_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/reports/signoff/digital_pll.rpt'
+CVC_REPORT_FILE = '/home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/reports/signoff/digital_pll.rpt'
 CVC_REPORT_TITLE = 'CVC $CVC_TOP'
 CVC_CIRCUIT_ERROR_LIMIT = '100'
 CVC_SEARCH_LIMIT = '100'
@@ -45,10 +45,101 @@ End of parameters
 
 CVC: Reading device model settings...
 CVC: Reading power settings...
-CVC: Parsing netlist /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_10_45/tmp/signoff/digital_pll.cdl
+CVC: Parsing netlist /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/tmp/signoff/digital_pll.cdl
 
-Cdl fixed data size 28636
-Usage CDL: Time: 0  Memory: 7024  I/O: 8  Swap: 0
+Cdl fixed data size 28478
+Usage CDL: Time: 0  Memory: 6976  I/O: 8  Swap: 0
 CVC: Counting and linking...
-Fatal error:could not find subcircuit: XFILLER_0_98(sky130_ef_sc_hd__decap_12) in digital_pll
+CVC: Assigning IDs ...
+Usage DB: Time: 0  Memory: 6976  I/O: 8  Swap: 0
+CVC: 576(576) instances, 1426(1426) nets, 2798(2798) devices.
+Setting power for mode...
+Setting models...
+CVC: Setting models ...
+Setting model tolerances...
+CVC: Shorting switches...
+ model short...
+	Shorted 2 short
+Setting instance power...
+CVC: Linking devices...
+
+Usage EQUIV: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 44
+CVC: Shorting non conducting resistors...
+CVC: Calculating resistor voltages...
+Usage RES: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 44
+CVC: Calculating min/max voltages...
+Processing trivial nets found 392 trivial nets
+CVC: Ignoring invalid calculations...
+CVC:   Removed 0 calculations
+Copying master nets
+CVC: Ignoring non-conducting devices...
+CVC:   Ignored 0 devices
+Usage MIN/MAX1: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 613
+! Checking forward bias diode errors: 
+
+! Checking nmos source/drain vs bias errors: 
+
+! Checking nmos gate vs source errors: 
+
+! Checking pmos source/drain vs bias errors: 
+
+! Checking pmos gate vs source errors: 
+
+Usage ERROR: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Saving min/max voltages...
+CVC: Propagating Simulation voltages 1...
+Usage SIM1: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 613
+Saving simulation voltages...
+CVC: Propagating Simulation voltages 3...
+Usage SIM2: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 613
+Added 0 latch voltages
+CVC: Calculating min/max voltages...
+Processing trivial nets found 392 trivial nets
+CVC: Ignoring invalid calculations...
+CVC:   Removed 0 calculations
+Copying master nets
+CVC: Ignoring non-conducting devices...
+CVC:   Ignored 0 devices
+Usage MIN/MAX2: Time: 0  Memory: 7616  I/O: 24  Swap: 0
+Power nets 1182
+! Checking overvoltage errors
+
+! Checking nmos possible leak errors: 
+
+! Checking pmos possible leak errors: 
+
+! Checking mos floating input errors:
+
+! Checking expected values:
+
+CVC: Error Counts
+CVC: Fuse Problems:         0
+CVC: Min Voltage Conflicts: 0
+CVC: Max Voltage Conflicts: 0
+CVC: Leaks:                 0
+CVC: LDD drain->source:     0
+CVC: HI-Z Inputs:           0
+CVC: Forward Bias Diodes:   0
+CVC: NMOS Source vs Bulk:   0
+CVC: NMOS Gate vs Source:   0
+CVC: NMOS Possible Leaks:   0
+CVC: PMOS Source vs Bulk:   0
+CVC: PMOS Gate vs Source:   0
+CVC: PMOS Possible Leaks:   0
+CVC: Overvoltage-VBG:       0
+CVC: Overvoltage-VBS:       0
+CVC: Overvoltage-VDS:       0
+CVC: Overvoltage-VGS:       0
+CVC: Model errors:          0
+CVC: Unexpected voltage :   0
+CVC: Total:                 0
+Usage Total: Time: 0  Memory: 8456  I/O: 64  Swap: 0
+Virtual net update/access 12621/318421
+CVC: Log output to /home/kareem_farid/caravel/openlane/digital_pll/runs/22_10_17_12_25/reports/signoff/digital_pll.rpt
+CVC: End: Mon Oct 17 19:27:10 2022
 
