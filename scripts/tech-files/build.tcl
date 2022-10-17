@@ -26,7 +26,7 @@ load mgmt_core_wrapper -dereference;
 property LEFview true;
 property GDS_FILE $::env(MCW_ROOT)/gds/mgmt_core_wrapper.gds;
 property GDS_START 0;
-gds read $::env(CARAVEL_ROOT)/openlane/caravel/caravel_power_routing-shifted.gds;
+gds read $::env(CARAVEL_ROOT)/gds/caravel_power_routing.gds;
 load user_project_wrapper;
 load user_id_programming;
 load user_id_textblock;
