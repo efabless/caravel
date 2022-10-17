@@ -189,7 +189,7 @@ def run_antenna(
 def check_errors(
     caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna
 ):
-    f = open(os.path.join(signoff_dir, f"{design}/standalone_pvr.rpt"), "w")
+    f = open(os.path.join(signoff_dir, f"{design}/signoff.rpt"), "w")
     if drc:
         drc_count_klayout = os.path.join(log_dir, f"{design}_klayout_drc.total")
         with open(drc_count_klayout) as rep:
@@ -249,6 +249,15 @@ def check_errors(
                 if "Passed" in lines[-1]:
                     logging.info(f"{log_name} STA:    Passed")
                     f.write(f"{log_name} STA:    Passed\n")
+                elif "max_transition and max_capacitance" in lines[-1]:
+                    logging.info(f"{log_name} STA:    Passed (max_tran & max_cap)")
+                    f.write(f"{log_name} STA:    Passed (max_tran & max_cap)\n")
+                elif "max_transition" in lines[-1]:
+                    logging.info(f"{log_name} STA:    Passed (max_tran)")
+                    f.write(f"{log_name} STA:    Passed (max_tran)\n")
+                elif "max_capacitance" in lines[-1]:
+                    logging.info(f"{log_name} STA:    Passed (max_cap)")
+                    f.write(f"{log_name} STA:    Passed (max_cap)\n")
                 else:
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
