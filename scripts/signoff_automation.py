@@ -151,7 +151,7 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
         "-d",
         f"{design}",
         "-o",
-        f"{signoff_dir}/{design}/standalone_pvr",
+        f"{signoff_dir}/{design}",
         "-l",
         f"{log_dir}",
     ]

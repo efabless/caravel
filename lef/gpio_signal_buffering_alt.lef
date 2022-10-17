@@ -231,30 +231,6 @@ MACRO gpio_signal_buffering_alt
         RECT 3364.340 1184.250 3364.480 1185.685 ;
     END
   END mgmt_io_in_buf[0]
-  PIN mgmt_io_out_buf[7]
-    DIRECTION OUTPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 218.315 3060.475 218.455 3061.780 ;
-    END
-  END mgmt_io_out_buf[7]
-  PIN mgmt_io_out_buf[8]
-    DIRECTION OUTPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 219.435 3058.475 219.575 3059.780 ;
-    END
-  END mgmt_io_out_buf[8]
-  PIN mgmt_io_out_buf[9]
-    DIRECTION OUTPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 220.555 3056.475 220.695 3057.780 ;
-    END
-  END mgmt_io_out_buf[9]
   PIN mgmt_io_out_buf[10]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
@@ -287,30 +263,6 @@ MACRO gpio_signal_buffering_alt
         RECT 221.115 3055.475 221.255 3056.780 ;
     END
   END mgmt_io_in_unbuf[10]
-  PIN mgmt_io_in_unbuf[9]
-    DIRECTION INPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 219.995 3057.475 220.135 3058.780 ;
-    END
-  END mgmt_io_in_unbuf[9]
-  PIN mgmt_io_in_unbuf[8]
-    DIRECTION INPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 218.875 3059.475 219.015 3060.780 ;
-    END
-  END mgmt_io_in_unbuf[8]
-  PIN mgmt_io_in_unbuf[7]
-    DIRECTION INPUT ;
-    USE SIGNAL ;
-    PORT
-      LAYER met1 ;
-        RECT 217.755 3061.475 217.895 3062.780 ;
-    END
-  END mgmt_io_in_unbuf[7]
   PIN mgmt_io_out_buf[12]
     DIRECTION OUTPUT ;
     USE SIGNAL ;
@@ -751,6 +703,42 @@ MACRO gpio_signal_buffering_alt
         RECT 200.265 3017.200 200.715 3018.685 ;
     END
   END vccd
+  PIN mgmt_io_out_buf[9]
+    PORT
+      LAYER met1 ;
+        RECT 220.555 3056.670 220.695 3057.975 ;
+    END
+  END mgmt_io_out_buf[9]
+  PIN mgmt_io_in_unbuf[9]
+    PORT
+      LAYER met1 ;
+        RECT 219.995 3057.670 220.135 3058.975 ;
+    END
+  END mgmt_io_in_unbuf[9]
+  PIN mgmt_io_out_buf[8]
+    PORT
+      LAYER met1 ;
+        RECT 219.435 3058.670 219.575 3059.975 ;
+    END
+  END mgmt_io_out_buf[8]
+  PIN mgmt_io_in_unbuf[8]
+    PORT
+      LAYER met1 ;
+        RECT 218.875 3059.670 219.015 3060.975 ;
+    END
+  END mgmt_io_in_unbuf[8]
+  PIN mgmt_io_out_buf[7]
+    PORT
+      LAYER met1 ;
+        RECT 218.315 3060.535 218.455 3061.840 ;
+    END
+  END mgmt_io_out_buf[7]
+  PIN mgmt_io_in_unbuf[7]
+    PORT
+      LAYER met1 ;
+        RECT 217.755 3061.535 217.895 3062.840 ;
+    END
+  END mgmt_io_in_unbuf[7]
   OBS
       LAYER nwell ;
         RECT 3377.675 3601.870 3379.280 3608.690 ;
@@ -12146,8 +12134,8 @@ MACRO gpio_signal_buffering_alt
         RECT 205.735 2986.200 206.705 2986.460 ;
         RECT 207.170 2984.730 207.650 3024.940 ;
         RECT 209.890 2984.730 210.370 3019.030 ;
-        RECT 217.755 3014.675 217.895 3061.475 ;
-        RECT 218.315 3059.235 218.455 3060.475 ;
+        RECT 217.755 3014.675 217.895 3061.535 ;
+        RECT 218.315 3059.235 218.455 3060.535 ;
         RECT 217.635 3014.355 217.895 3014.675 ;
         RECT 218.035 3059.095 218.455 3059.235 ;
         RECT 218.035 3013.705 218.175 3059.095 ;
@@ -12197,11 +12185,11 @@ MACRO gpio_signal_buffering_alt
         RECT 217.495 1726.450 217.755 1726.770 ;
         RECT 217.895 3009.520 218.155 3009.840 ;
         RECT 217.895 1725.800 218.035 3009.520 ;
-        RECT 218.875 3008.695 219.015 3059.475 ;
-        RECT 219.435 3057.210 219.575 3058.475 ;
+        RECT 218.875 3008.695 219.015 3059.670 ;
+        RECT 219.435 3057.370 219.575 3058.670 ;
         RECT 218.755 3008.375 219.015 3008.695 ;
-        RECT 219.155 3057.070 219.575 3057.210 ;
-        RECT 219.155 3007.725 219.295 3057.070 ;
+        RECT 219.155 3057.230 219.575 3057.370 ;
+        RECT 219.155 3007.725 219.295 3057.230 ;
         RECT 219.035 3007.405 219.295 3007.725 ;
         RECT 217.775 1725.480 218.035 1725.800 ;
         RECT 218.735 3004.160 218.995 3004.480 ;
@@ -12213,8 +12201,8 @@ MACRO gpio_signal_buffering_alt
         RECT 218.615 1720.470 218.875 1720.790 ;
         RECT 219.015 3003.540 219.275 3003.860 ;
         RECT 219.015 1719.820 219.155 3003.540 ;
-        RECT 219.995 3002.715 220.135 3057.475 ;
-        RECT 220.555 3055.155 220.695 3056.475 ;
+        RECT 219.995 3002.715 220.135 3057.670 ;
+        RECT 220.555 3055.155 220.695 3056.670 ;
         RECT 219.875 3002.395 220.135 3002.715 ;
         RECT 220.275 3055.015 220.695 3055.155 ;
         RECT 220.275 3001.745 220.415 3055.015 ;
