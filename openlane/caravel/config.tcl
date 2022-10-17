@@ -53,20 +53,10 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/caravel_power_routing.v \
 	$verilog_root/rtl/buff_flash_clkrst.v \
 	$verilog_root/rtl/gpio_signal_buffering.v \
-	$verilog_root/rtl/caravel_logo.v \
-	$verilog_root/rtl/caravel_motto.v \
-	$verilog_root/rtl/copyright_block.v \
-	$verilog_root/rtl/open_source.v \
-	$verilog_root/rtl/user_id_textblock.v \
 	$mgmt_area_verilog_root/rtl/mgmt_core_wrapper.v \
 	"
 
 set ::env(EXTRA_LEFS) "\
-	$::env(CARAVEL_ROOT)/openlane/caravel/stubs/caravel_logo.lef \
-	$::env(CARAVEL_ROOT)/openlane/caravel/stubs/caravel_motto.lef \
-	$::env(CARAVEL_ROOT)/openlane/caravel/stubs/copyright_block.lef \
-	$::env(CARAVEL_ROOT)/openlane/caravel/stubs/open_source.lef \
-	$::env(CARAVEL_ROOT)/openlane/caravel/stubs/user_id_textblock.lef \
 	$lef_root/caravel_power_routing.lef \
 	$lef_root/chip_io.lef \
 	$lef_root/user_project_wrapper.lef \
@@ -86,11 +76,6 @@ set ::env(EXTRA_LEFS) "\
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
-    $gds_root/copyright_block.gds \
-    $gds_root/open_source.gds \
-    $gds_root/user_id_textblock.gds \
-    $gds_root/caravel_logo.gds \
-    $gds_root/caravel_motto.gds \
     $gds_root/caravel_power_routing.gds \
     $gds_root/buff_flash_clkrst.gds \
     $gds_root/gpio_signal_buffering.gds \
