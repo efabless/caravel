@@ -1,23 +1,59 @@
 * NGSPICE file created from digital_pll.ext - technology: sky130A
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__and3_2 abstract view
-.subckt sky130_fd_sc_hd__and3_2 A B C VGND VNB VPB VPWR X
-.ends
-
 * Black-box entry subcircuit for sky130_fd_sc_hd__nor2_2 abstract view
 .subckt sky130_fd_sc_hd__nor2_2 A B VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__buf_2 abstract view
+.subckt sky130_fd_sc_hd__buf_2 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__or3_2 abstract view
+.subckt sky130_fd_sc_hd__or3_2 A B C VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__clkinv_1 abstract view
 .subckt sky130_fd_sc_hd__clkinv_1 A VGND VNB VPB VPWR Y
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__a32o_2 abstract view
-.subckt sky130_fd_sc_hd__a32o_2 A1 A2 A3 B1 B2 VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__a22o_2 abstract view
+.subckt sky130_fd_sc_hd__a22o_2 A1 A2 B1 B2 VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__o211a_2 abstract view
-.subckt sky130_fd_sc_hd__o211a_2 A1 A2 B1 C1 VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__diode_2 abstract view
+.subckt sky130_fd_sc_hd__diode_2 DIODE VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__nand2_2 abstract view
+.subckt sky130_fd_sc_hd__nand2_2 A B VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__and3_2 abstract view
+.subckt sky130_fd_sc_hd__and3_2 A B C VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__einvp_2 abstract view
+.subckt sky130_fd_sc_hd__einvp_2 A TE VGND VNB VPB VPWR Z
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_4 abstract view
+.subckt sky130_fd_sc_hd__decap_4 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_1 abstract view
+.subckt sky130_fd_sc_hd__fill_1 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__a21oi_2 abstract view
+.subckt sky130_fd_sc_hd__a21oi_2 A1 A2 B1 VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__einvn_8 abstract view
+.subckt sky130_fd_sc_hd__einvn_8 A TE_B VGND VNB VPB VPWR Z
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__a21bo_2 abstract view
+.subckt sky130_fd_sc_hd__a21bo_2 A1 A2 B1_N VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__xor2_2 abstract view
@@ -28,188 +64,152 @@
 .subckt sky130_fd_sc_hd__a21o_2 A1 A2 B1 VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__einvp_2 abstract view
-.subckt sky130_fd_sc_hd__einvp_2 A TE VGND VNB VPB VPWR Z
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__fill_1 abstract view
-.subckt sky130_fd_sc_hd__fill_1 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__einvn_8 abstract view
-.subckt sky130_fd_sc_hd__einvn_8 A TE_B VGND VNB VPB VPWR Z
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__and2b_2 abstract view
-.subckt sky130_fd_sc_hd__and2b_2 A_N B VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__nand2_2 abstract view
-.subckt sky130_fd_sc_hd__nand2_2 A B VGND VNB VPB VPWR Y
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__nand2b_2 abstract view
-.subckt sky130_fd_sc_hd__nand2b_2 A_N B VGND VNB VPB VPWR Y
-.ends
-
 * Black-box entry subcircuit for sky130_fd_sc_hd__or2_2 abstract view
 .subckt sky130_fd_sc_hd__or2_2 A B VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_3 abstract view
-.subckt sky130_fd_sc_hd__decap_3 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__xnor2_2 abstract view
-.subckt sky130_fd_sc_hd__xnor2_2 A B VGND VNB VPB VPWR Y
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__einvn_4 abstract view
 .subckt sky130_fd_sc_hd__einvn_4 A TE_B VGND VNB VPB VPWR Z
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__o21ai_2 abstract view
-.subckt sky130_fd_sc_hd__o21ai_2 A1 A2 B1 VGND VNB VPB VPWR Y
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__o21a_2 abstract view
-.subckt sky130_fd_sc_hd__o21a_2 A1 A2 B1 VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__fill_2 abstract view
-.subckt sky130_fd_sc_hd__fill_2 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__a21oi_2 abstract view
-.subckt sky130_fd_sc_hd__a21oi_2 A1 A2 B1 VGND VNB VPB VPWR Y
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__diode_2 abstract view
-.subckt sky130_fd_sc_hd__diode_2 DIODE VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_2 abstract view
-.subckt sky130_fd_sc_hd__clkbuf_2 A VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__a22o_2 abstract view
-.subckt sky130_fd_sc_hd__a22o_2 A1 A2 B1 B2 VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__and2_2 abstract view
-.subckt sky130_fd_sc_hd__and2_2 A B VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__o22a_2 abstract view
-.subckt sky130_fd_sc_hd__o22a_2 A1 A2 B1 B2 VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_1 abstract view
-.subckt sky130_fd_sc_hd__clkbuf_1 A VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__or3_2 abstract view
-.subckt sky130_fd_sc_hd__or3_2 A B C VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__mux2_1 abstract view
-.subckt sky130_fd_sc_hd__mux2_1 A0 A1 S VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__and4_2 abstract view
-.subckt sky130_fd_sc_hd__and4_2 A B C D VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__dfrtp_2 abstract view
-.subckt sky130_fd_sc_hd__dfrtp_2 CLK D RESET_B VGND VNB VPB VPWR Q
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__or3b_2 abstract view
-.subckt sky130_fd_sc_hd__or3b_2 A B C_N VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__a211o_2 abstract view
-.subckt sky130_fd_sc_hd__a211o_2 A1 A2 B1 C1 VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__a21bo_2 abstract view
-.subckt sky130_fd_sc_hd__a21bo_2 A1 A2 B1_N VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__einvp_1 abstract view
-.subckt sky130_fd_sc_hd__einvp_1 A TE VGND VNB VPB VPWR Z
-.ends
-
 * Black-box entry subcircuit for sky130_fd_sc_hd__or4bb_2 abstract view
 .subckt sky130_fd_sc_hd__or4bb_2 A B C_N D_N VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__inv_2 abstract view
-.subckt sky130_fd_sc_hd__inv_2 A VGND VNB VPB VPWR Y
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__tapvpwrvgnd_1 abstract view
-.subckt sky130_fd_sc_hd__tapvpwrvgnd_1 VGND VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_4 abstract view
-.subckt sky130_fd_sc_hd__decap_4 VGND VNB VPB VPWR
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__nand3_2 abstract view
-.subckt sky130_fd_sc_hd__nand3_2 A B C VGND VNB VPB VPWR Y
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__o221a_2 abstract view
-.subckt sky130_fd_sc_hd__o221a_2 A1 A2 B1 B2 C1 VGND VNB VPB VPWR X
-.ends
-
-* Black-box entry subcircuit for sky130_fd_sc_hd__o2bb2a_2 abstract view
-.subckt sky130_fd_sc_hd__o2bb2a_2 A1_N A2_N B1 B2 VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__and3b_2 abstract view
 .subckt sky130_fd_sc_hd__and3b_2 A_N B C VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_16 abstract view
-.subckt sky130_fd_sc_hd__clkbuf_16 A VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__o21a_2 abstract view
+.subckt sky130_fd_sc_hd__o21a_2 A1 A2 B1 VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_ef_sc_hd__decap_12 abstract view
-.subckt sky130_ef_sc_hd__decap_12 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_2 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_2 A VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__clkinv_2 abstract view
-.subckt sky130_fd_sc_hd__clkinv_2 A VGND VNB VPB VPWR Y
+* Black-box entry subcircuit for sky130_fd_sc_hd__xnor2_2 abstract view
+.subckt sky130_fd_sc_hd__xnor2_2 A B VGND VNB VPB VPWR Y
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__o31a_2 abstract view
-.subckt sky130_fd_sc_hd__o31a_2 A1 A2 A3 B1 VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__and2_2 abstract view
+.subckt sky130_fd_sc_hd__and2_2 A B VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__clkinv_8 abstract view
-.subckt sky130_fd_sc_hd__clkinv_8 A VGND VNB VPB VPWR Y
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_1 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_1 A VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__decap_6 abstract view
-.subckt sky130_fd_sc_hd__decap_6 VGND VNB VPB VPWR
+* Black-box entry subcircuit for sky130_fd_sc_hd__fill_2 abstract view
+.subckt sky130_fd_sc_hd__fill_2 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__inv_2 abstract view
+.subckt sky130_fd_sc_hd__inv_2 A VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__a32o_2 abstract view
+.subckt sky130_fd_sc_hd__a32o_2 A1 A2 A3 B1 B2 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__o211a_2 abstract view
+.subckt sky130_fd_sc_hd__o211a_2 A1 A2 B1 C1 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__a31o_2 abstract view
+.subckt sky130_fd_sc_hd__a31o_2 A1 A2 A3 B1 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__or2b_2 abstract view
+.subckt sky130_fd_sc_hd__or2b_2 A B_N VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__decap_3 abstract view
+.subckt sky130_fd_sc_hd__decap_3 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__a211o_2 abstract view
+.subckt sky130_fd_sc_hd__a211o_2 A1 A2 B1 C1 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__mux2_2 abstract view
+.subckt sky130_fd_sc_hd__mux2_2 A0 A1 S VGND VNB VPB VPWR X
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__or4_2 abstract view
 .subckt sky130_fd_sc_hd__or4_2 A B C D VGND VNB VPB VPWR X
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__conb_1 abstract view
-.subckt sky130_fd_sc_hd__conb_1 VGND VNB VPB VPWR HI LO
+* Black-box entry subcircuit for sky130_fd_sc_hd__dfrtp_2 abstract view
+.subckt sky130_fd_sc_hd__dfrtp_2 CLK D RESET_B VGND VNB VPB VPWR Q
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__einvp_1 abstract view
+.subckt sky130_fd_sc_hd__einvp_1 A TE VGND VNB VPB VPWR Z
 .ends
 
 * Black-box entry subcircuit for sky130_fd_sc_hd__a2111oi_2 abstract view
 .subckt sky130_fd_sc_hd__a2111oi_2 A1 A2 B1 C1 D1 VGND VNB VPB VPWR Y
 .ends
 
-* Black-box entry subcircuit for sky130_fd_sc_hd__a31o_2 abstract view
-.subckt sky130_fd_sc_hd__a31o_2 A1 A2 A3 B1 VGND VNB VPB VPWR X
+* Black-box entry subcircuit for sky130_fd_sc_hd__o22a_2 abstract view
+.subckt sky130_fd_sc_hd__o22a_2 A1 A2 B1 B2 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__o221a_2 abstract view
+.subckt sky130_fd_sc_hd__o221a_2 A1 A2 B1 B2 C1 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__tapvpwrvgnd_1 abstract view
+.subckt sky130_fd_sc_hd__tapvpwrvgnd_1 VGND VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__o31a_2 abstract view
+.subckt sky130_fd_sc_hd__o31a_2 A1 A2 A3 B1 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__o21ai_2 abstract view
+.subckt sky130_fd_sc_hd__o21ai_2 A1 A2 B1 VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkbuf_16 abstract view
+.subckt sky130_fd_sc_hd__clkbuf_16 A VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__and4_2 abstract view
+.subckt sky130_fd_sc_hd__and4_2 A B C D VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__or3b_2 abstract view
+.subckt sky130_fd_sc_hd__or3b_2 A B C_N VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__nand3_2 abstract view
+.subckt sky130_fd_sc_hd__nand3_2 A B C VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkinv_2 abstract view
+.subckt sky130_fd_sc_hd__clkinv_2 A VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__o2bb2a_2 abstract view
+.subckt sky130_fd_sc_hd__o2bb2a_2 A1_N A2_N B1 B2 VGND VNB VPB VPWR X
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__clkinv_8 abstract view
+.subckt sky130_fd_sc_hd__clkinv_8 A VGND VNB VPB VPWR Y
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__conb_1 abstract view
+.subckt sky130_fd_sc_hd__conb_1 VGND VNB VPB VPWR HI LO
+.ends
+
+* Black-box entry subcircuit for sky130_ef_sc_hd__decap_12 abstract view
+.subckt sky130_ef_sc_hd__decap_12 VGND VNB VPB VPWR
+.ends
+
+* Black-box entry subcircuit for sky130_fd_sc_hd__and2b_2 abstract view
+.subckt sky130_fd_sc_hd__and2b_2 A_N B VGND VNB VPB VPWR X
 .ends
 
 .subckt digital_pll VGND VPWR clockp[0] clockp[1] dco div[0] div[1] div[2] div[3]
@@ -217,714 +217,683 @@
 + ext_trim[15] ext_trim[16] ext_trim[17] ext_trim[18] ext_trim[19] ext_trim[1] ext_trim[20]
 + ext_trim[21] ext_trim[22] ext_trim[23] ext_trim[24] ext_trim[25] ext_trim[2] ext_trim[3]
 + ext_trim[4] ext_trim[5] ext_trim[6] ext_trim[7] ext_trim[8] ext_trim[9] osc resetb
-X_294_ _315_/B _303_/B _294_/C VGND VGND VPWR VPWR _336_/A sky130_fd_sc_hd__and3_2
-X_363_ dco _378_/B VGND VGND VPWR VPWR _363_/Y sky130_fd_sc_hd__nor2_2
+X_432_ _432_/A _432_/B VGND VGND VPWR VPWR _432_/Y sky130_fd_sc_hd__nor2_2
+X_294_ _294_/A VGND VGND VPWR VPWR _385_/B sky130_fd_sc_hd__buf_2
+X_363_ _459_/Q _363_/B _363_/C VGND VGND VPWR VPWR _387_/B sky130_fd_sc_hd__or3_2
 Xringosc.dstage\[1\].id.delayint0 ringosc.dstage\[1\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[1\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-X_346_ _298_/X _333_/X _345_/Y ext_trim[20] dco VGND VGND VPWR VPWR _346_/X sky130_fd_sc_hd__a32o_2
-X_277_ _385_/Q _280_/A _276_/Y _285_/S VGND VGND VPWR VPWR _385_/D sky130_fd_sc_hd__o211a_2
-X_200_ _383_/Q _398_/Q VGND VGND VPWR VPWR _218_/B sky130_fd_sc_hd__xor2_2
-X_329_ _315_/B _303_/B _248_/B VGND VGND VPWR VPWR _332_/C sky130_fd_sc_hd__a21o_2
-Xringosc.dstage\[11\].id.delayen1 ringosc.dstage\[11\].id.delayen1/A _353_/X VGND
+X_415_ _370_/X ext_trim[25] _390_/X _396_/C VGND VGND VPWR VPWR _415_/X sky130_fd_sc_hd__a22o_2
+XANTENNA__247__B1 div[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_346_ _388_/A _392_/B VGND VGND VPWR VPWR _358_/B sky130_fd_sc_hd__nand2_2
+X_277_ _447_/Q _445_/Q _337_/B VGND VGND VPWR VPWR _282_/C sky130_fd_sc_hd__and3_2
+Xringosc.dstage\[11\].id.delayen1 ringosc.dstage\[11\].id.delayen1/A _414_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[11\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-XFILLER_18_97 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_18_75 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[10\].id.delayenb0 ringosc.dstage\[10\].id.delayenb1/A _314_/X VGND
+XFILLER_2_132 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XFILLER_0_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_329_ _332_/C _328_/X _337_/B VGND VGND VPWR VPWR _450_/D sky130_fd_sc_hd__a21oi_2
+XFILLER_9_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xringosc.dstage\[10\].id.delayenb0 ringosc.dstage\[10\].id.delayenb1/A _373_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[10\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-Xringosc.dstage\[9\].id.delayenb0 ringosc.dstage\[9\].id.delayenb1/A _312_/X VGND
+XANTENNA__383__A2 ext_trim[14] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xringosc.dstage\[9\].id.delayenb0 ringosc.dstage\[9\].id.delayenb1/A _369_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[9\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-XFILLER_13_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_293_ dco _298_/C VGND VGND VPWR VPWR _294_/C sky130_fd_sc_hd__and2b_2
-X_362_ dco _378_/B VGND VGND VPWR VPWR _362_/Y sky130_fd_sc_hd__nor2_2
-X_345_ _393_/Q _345_/B VGND VGND VPWR VPWR _345_/Y sky130_fd_sc_hd__nand2_2
-X_276_ _386_/Q _278_/B VGND VGND VPWR VPWR _276_/Y sky130_fd_sc_hd__nand2b_2
-X_328_ _328_/A _328_/B VGND VGND VPWR VPWR _336_/B sky130_fd_sc_hd__or2_2
-XFILLER_9_78 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_259_ _259_/A _259_/B VGND VGND VPWR VPWR _259_/Y sky130_fd_sc_hd__xnor2_2
-XFILLER_20_33 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[9\].id.delayenb1 ringosc.dstage\[9\].id.delayenb1/A _350_/X VGND
-+ VGND VPWR VPWR ringosc.dstage\[9\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-Xringosc.dstage\[10\].id.delayenb1 ringosc.dstage\[10\].id.delayenb1/A _351_/X VGND
+XANTENNA__365__A2 ext_trim[7] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_6_67 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_362_ _444_/A ext_trim[6] _403_/A _361_/X VGND VGND VPWR VPWR _362_/X sky130_fd_sc_hd__a22o_2
+X_431_ _432_/A _432_/B VGND VGND VPWR VPWR _431_/Y sky130_fd_sc_hd__nor2_2
+X_293_ _291_/B _315_/A _315_/B VGND VGND VPWR VPWR _313_/B sky130_fd_sc_hd__a21bo_2
+XANTENNA__247__A1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_276_ _462_/D _462_/Q VGND VGND VPWR VPWR _337_/B sky130_fd_sc_hd__xor2_2
+X_345_ _413_/B _363_/C VGND VGND VPWR VPWR _392_/B sky130_fd_sc_hd__nor2_2
+X_414_ _343_/X ext_trim[24] _413_/X VGND VGND VPWR VPWR _414_/X sky130_fd_sc_hd__a21o_2
+X_259_ _241_/Y _242_/X div[3] VGND VGND VPWR VPWR _260_/B sky130_fd_sc_hd__a21o_2
+X_328_ _328_/A _328_/B VGND VGND VPWR VPWR _328_/X sky130_fd_sc_hd__or2_2
+XANTENNA__386__B1 ext_trim[15] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xringosc.dstage\[10\].id.delayenb1 ringosc.dstage\[10\].id.delayenb1/A _412_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[10\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-XFILLER_15_99 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_292_ _324_/A _323_/B VGND VGND VPWR VPWR _303_/B sky130_fd_sc_hd__nand2_2
-X_361_ dco _378_/B VGND VGND VPWR VPWR _361_/Y sky130_fd_sc_hd__nor2_2
-X_344_ _391_/Q _390_/Q _392_/Q VGND VGND VPWR VPWR _345_/B sky130_fd_sc_hd__o21ai_2
-X_275_ _386_/Q _278_/B _285_/S VGND VGND VPWR VPWR _386_/D sky130_fd_sc_hd__o21a_2
-XFILLER_4_90 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[4\].id.delayen0 ringosc.dstage\[4\].id.delayen0/A _302_/X VGND VGND
+Xringosc.dstage\[9\].id.delayenb1 ringosc.dstage\[9\].id.delayenb1/A _411_/X VGND
++ VGND VPWR VPWR ringosc.dstage\[9\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
+XANTENNA__228__A div[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_430_ _432_/A _432_/B VGND VGND VPWR VPWR _430_/Y sky130_fd_sc_hd__nor2_2
+X_292_ _454_/Q _453_/Q VGND VGND VPWR VPWR _315_/A sky130_fd_sc_hd__or2_2
+X_361_ _410_/A _408_/B _361_/C VGND VGND VPWR VPWR _361_/X sky130_fd_sc_hd__or3_2
+X_275_ _454_/Q _453_/Q _291_/B _341_/B VGND VGND VPWR VPWR _282_/B sky130_fd_sc_hd__or4bb_2
+X_344_ _459_/Q _363_/B _344_/C VGND VGND VPWR VPWR _374_/B sky130_fd_sc_hd__or3_2
+X_413_ _433_/A _413_/B _413_/C VGND VGND VPWR VPWR _413_/X sky130_fd_sc_hd__and3b_2
+Xringosc.dstage\[4\].id.delayen0 ringosc.dstage\[4\].id.delayen0/A _357_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[4\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
 XFILLER_3_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_2_134 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-X_327_ _392_/Q _327_/B VGND VGND VPWR VPWR _327_/X sky130_fd_sc_hd__or2_2
-XFILLER_9_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_258_ _261_/A _261_/B _247_/B VGND VGND VPWR VPWR _259_/B sky130_fd_sc_hd__a21oi_2
-X_189_ _386_/Q _401_/Q VGND VGND VPWR VPWR _190_/B sky130_fd_sc_hd__or2_2
-XANTENNA__310__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_15_67 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_15_23 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_327_ _449_/Q _332_/A _450_/Q VGND VGND VPWR VPWR _328_/B sky130_fd_sc_hd__a21oi_2
+X_258_ _256_/Y _257_/X div[4] VGND VGND VPWR VPWR _281_/B sky130_fd_sc_hd__o21a_2
+XANTENNA__416__A enable VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_9_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
 Xringosc.dstage\[9\].id.delaybuf0 ringosc.dstage\[8\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[9\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
 Xringosc.dstage\[10\].id.delaybuf0 ringosc.dstage\[9\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[10\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
-Xringosc.dstage\[5\].id.delayenb0 ringosc.dstage\[5\].id.delayenb1/A _305_/X VGND
+Xringosc.dstage\[5\].id.delayenb0 ringosc.dstage\[5\].id.delayenb1/A _360_/X VGND
 + VGND VPWR VPWR ringosc.ibufp10/A sky130_fd_sc_hd__einvn_8
-X_291_ _392_/Q _307_/C VGND VGND VPWR VPWR _323_/B sky130_fd_sc_hd__nor2_2
-X_360_ dco _378_/B VGND VGND VPWR VPWR _360_/Y sky130_fd_sc_hd__nor2_2
-X_343_ dco ext_trim[19] _336_/A _336_/B VGND VGND VPWR VPWR _343_/X sky130_fd_sc_hd__a22o_2
-X_274_ _385_/Q _280_/A VGND VGND VPWR VPWR _278_/B sky130_fd_sc_hd__and2_2
-Xringosc.dstage\[4\].id.delayen1 ringosc.dstage\[4\].id.delayen1/A _341_/X VGND VGND
+X_360_ _343_/X ext_trim[5] _359_/X VGND VGND VPWR VPWR _360_/X sky130_fd_sc_hd__a21o_2
+XANTENNA__259__B1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_291_ _408_/B _291_/B VGND VGND VPWR VPWR _313_/A sky130_fd_sc_hd__xnor2_2
+X_412_ _343_/X ext_trim[23] _384_/Y VGND VGND VPWR VPWR _412_/X sky130_fd_sc_hd__a21o_2
+X_274_ _294_/A _361_/C VGND VGND VPWR VPWR _341_/B sky130_fd_sc_hd__nor2_2
+X_343_ _433_/A VGND VGND VPWR VPWR _343_/X sky130_fd_sc_hd__buf_2
+Xringosc.dstage\[4\].id.delayen1 ringosc.dstage\[4\].id.delayen1/A _397_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[4\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-X_326_ dco ext_trim[14] _304_/X _322_/X VGND VGND VPWR VPWR _326_/X sky130_fd_sc_hd__a22o_2
-X_188_ _386_/Q _401_/Q VGND VGND VPWR VPWR _190_/A sky130_fd_sc_hd__nand2_2
-X_257_ _393_/Q _271_/B _255_/X _256_/Y VGND VGND VPWR VPWR _393_/D sky130_fd_sc_hd__o22a_2
-X_309_ dco ext_trim[7] _336_/A _308_/X VGND VGND VPWR VPWR _309_/X sky130_fd_sc_hd__a22o_2
-XANTENNA__310__A2 ext_trim[8] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__295__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_0_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_257_ _261_/A _261_/B VGND VGND VPWR VPWR _257_/X sky130_fd_sc_hd__and2_2
+XANTENNA__416__B resetb VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_326_ _452_/Q _326_/B VGND VGND VPWR VPWR _332_/C sky130_fd_sc_hd__nand2_2
+XANTENNA__377__A2 ext_trim[12] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_309_ _455_/Q _316_/A VGND VGND VPWR VPWR _309_/Y sky130_fd_sc_hd__nor2_2
 Xringosc.dstage\[9\].id.delaybuf1 ringosc.dstage\[9\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[9\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-Xringosc.dstage\[5\].id.delayenb1 ringosc.dstage\[5\].id.delayenb1/A _342_/X VGND
-+ VGND VPWR VPWR ringosc.dstage\[5\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
 Xringosc.dstage\[10\].id.delaybuf1 ringosc.dstage\[10\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[10\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-X_290_ _393_/Q _307_/B _391_/Q VGND VGND VPWR VPWR _315_/B sky130_fd_sc_hd__or3_2
-XFILLER_3_49 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_342_ dco ext_trim[18] _324_/B _296_/Y VGND VGND VPWR VPWR _342_/X sky130_fd_sc_hd__a22o_2
-X_273_ _384_/Q _383_/Q _382_/Q VGND VGND VPWR VPWR _280_/A sky130_fd_sc_hd__and3_2
-X_325_ _328_/A _349_/B VGND VGND VPWR VPWR _325_/X sky130_fd_sc_hd__or2_2
-X_187_ _382_/Q _397_/Q _285_/S VGND VGND VPWR VPWR _397_/D sky130_fd_sc_hd__mux2_1
-X_256_ _255_/A _255_/B _271_/B VGND VGND VPWR VPWR _256_/Y sky130_fd_sc_hd__o21ai_2
-X_308_ _327_/B _328_/B VGND VGND VPWR VPWR _308_/X sky130_fd_sc_hd__or2_2
-X_239_ _388_/Q _387_/Q VGND VGND VPWR VPWR _268_/B sky130_fd_sc_hd__nand2_2
-XANTENNA__295__A2 ext_trim[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_16_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_22_127 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xringosc.dstage\[5\].id.delayenb1 ringosc.dstage\[5\].id.delayenb1/A _398_/X VGND
++ VGND VPWR VPWR ringosc.dstage\[5\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
+XFILLER_16_112 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_11_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+X_290_ _455_/Q VGND VGND VPWR VPWR _408_/B sky130_fd_sc_hd__inv_2
+X_411_ _394_/X _396_/X _410_/X ext_trim[22] _370_/X VGND VGND VPWR VPWR _411_/X sky130_fd_sc_hd__a32o_2
+X_342_ ext_trim[0] _423_/A _403_/A VGND VGND VPWR VPWR _342_/X sky130_fd_sc_hd__a21o_2
+X_273_ _459_/Q _388_/B VGND VGND VPWR VPWR _361_/C sky130_fd_sc_hd__or2_2
+X_325_ _451_/Q _328_/A _324_/X _332_/B VGND VGND VPWR VPWR _451_/D sky130_fd_sc_hd__o211a_2
+X_256_ _261_/A _261_/B VGND VGND VPWR VPWR _256_/Y sky130_fd_sc_hd__nor2_2
+X_239_ _451_/Q _466_/Q VGND VGND VPWR VPWR _240_/B sky130_fd_sc_hd__and2_2
+X_308_ _456_/Q VGND VGND VPWR VPWR _371_/A sky130_fd_sc_hd__inv_2
 Xringosc.dstage\[5\].id.delaybuf0 ringosc.dstage\[4\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[5\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
-X_341_ _325_/X _338_/X _340_/X ext_trim[17] dco VGND VGND VPWR VPWR _341_/X sky130_fd_sc_hd__a32o_2
-Xringosc.dstage\[1\].id.delayenb0 ringosc.dstage\[1\].id.delayenb1/A _295_/X VGND
+X_410_ _410_/A _410_/B VGND VGND VPWR VPWR _410_/X sky130_fd_sc_hd__or2_2
+Xringosc.dstage\[1\].id.delayenb0 ringosc.dstage\[1\].id.delayenb1/A _351_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[1\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-XANTENNA__361__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_272_ _387_/Q _238_/X _271_/Y VGND VGND VPWR VPWR _387_/D sky130_fd_sc_hd__o21a_2
+X_272_ _458_/Q _457_/Q VGND VGND VPWR VPWR _388_/B sky130_fd_sc_hd__or2_2
+X_341_ dco _341_/B VGND VGND VPWR VPWR _403_/A sky130_fd_sc_hd__nor2_2
 Xringosc.dstage\[8\].id.delayint0 ringosc.dstage\[8\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[8\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
 XFILLER_5_134 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-XANTENNA__356__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_324_ _324_/A _324_/B VGND VGND VPWR VPWR _347_/C sky130_fd_sc_hd__or2_2
-X_186_ _383_/Q _398_/Q _285_/S VGND VGND VPWR VPWR _398_/D sky130_fd_sc_hd__mux2_1
-X_255_ _255_/A _255_/B VGND VGND VPWR VPWR _255_/X sky130_fd_sc_hd__and2_2
-XFILLER_1_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_307_ _393_/Q _307_/B _307_/C VGND VGND VPWR VPWR _328_/B sky130_fd_sc_hd__or3_2
-XFILLER_1_50 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_238_ _380_/Q _238_/B _238_/C _238_/D VGND VGND VPWR VPWR _238_/X sky130_fd_sc_hd__and4_2
-XANTENNA__213__B1 div[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_19_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_10_70 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__364__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_255_ _254_/Y _241_/A _241_/B _240_/B VGND VGND VPWR VPWR _261_/B sky130_fd_sc_hd__a31o_2
+X_324_ _452_/Q _326_/B VGND VGND VPWR VPWR _324_/X sky130_fd_sc_hd__or2b_2
+X_238_ _451_/Q _466_/Q VGND VGND VPWR VPWR _254_/A sky130_fd_sc_hd__nor2_2
+X_307_ _307_/A VGND VGND VPWR VPWR _457_/D sky130_fd_sc_hd__buf_2
+XFILLER_15_26 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_0 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__359__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__407__B1 ext_trim[20] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 Xringosc.dstage\[5\].id.delaybuf1 ringosc.dstage\[5\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[5\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-XFILLER_12_16 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_12_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[1\].id.delayenb1 ringosc.dstage\[1\].id.delayenb1/A _326_/X VGND
+Xringosc.dstage\[1\].id.delayenb1 ringosc.dstage\[1\].id.delayenb1/A _383_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[1\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_340_ _340_/A _340_/B _340_/C VGND VGND VPWR VPWR _340_/X sky130_fd_sc_hd__and3_2
-X_271_ _387_/Q _271_/B VGND VGND VPWR VPWR _271_/Y sky130_fd_sc_hd__nand2_2
-Xringosc.dstage\[1\].id.delayen0 ringosc.dstage\[1\].id.delayen0/A _295_/X VGND VGND
+XFILLER_12_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_271_ _456_/Q _455_/Q VGND VGND VPWR VPWR _294_/A sky130_fd_sc_hd__or2_2
+X_340_ _433_/A VGND VGND VPWR VPWR _423_/A sky130_fd_sc_hd__buf_2
+XFILLER_4_94 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__398__A2 ext_trim[18] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xringosc.dstage\[1\].id.delayen0 ringosc.dstage\[1\].id.delayen0/A _351_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[1\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-X_323_ _393_/Q _323_/B VGND VGND VPWR VPWR _349_/B sky130_fd_sc_hd__nand2_2
-XANTENNA__372__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_185_ _384_/Q _399_/Q _285_/S VGND VGND VPWR VPWR _399_/D sky130_fd_sc_hd__mux2_1
-X_254_ _393_/Q _269_/A VGND VGND VPWR VPWR _255_/B sky130_fd_sc_hd__xnor2_2
-XANTENNA__367__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_306_ dco ext_trim[6] _332_/A _298_/X VGND VGND VPWR VPWR _306_/X sky130_fd_sc_hd__a22o_2
-X_237_ _237_/A _237_/B _237_/C VGND VGND VPWR VPWR _238_/D sky130_fd_sc_hd__or3_2
-XANTENNA__313__A_N ext_trim[10] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__222__B2 div[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__222__A1 div[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__289__A1 ext_trim[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__213__A1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__372__A ext_trim[10] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_254_ _254_/A VGND VGND VPWR VPWR _254_/Y sky130_fd_sc_hd__inv_2
+X_323_ _452_/Q _326_/B _332_/B VGND VGND VPWR VPWR _452_/D sky130_fd_sc_hd__o21a_2
+X_237_ _227_/A _227_/B _245_/B _236_/X VGND VGND VPWR VPWR _241_/B sky130_fd_sc_hd__a211o_2
+X_306_ _344_/C _305_/X _319_/B VGND VGND VPWR VPWR _307_/A sky130_fd_sc_hd__mux2_2
 XPHY_1 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__375__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_13_118 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__334__B1 ext_trim[15] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_270_ _388_/Q _269_/Y _271_/B VGND VGND VPWR VPWR _388_/D sky130_fd_sc_hd__mux2_1
-XANTENNA__316__B1 ext_trim[11] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[1\].id.delayen1 ringosc.dstage\[1\].id.delayen1/A _326_/X VGND VGND
+X_270_ _388_/A _363_/C _315_/B _289_/B VGND VGND VPWR VPWR _270_/X sky130_fd_sc_hd__or4_2
+X_399_ _367_/X ext_trim[19] _390_/A _403_/B VGND VGND VPWR VPWR _399_/X sky130_fd_sc_hd__a22o_2
+Xringosc.dstage\[1\].id.delayen1 ringosc.dstage\[1\].id.delayen1/A _383_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[1\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
 XFILLER_4_62 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_399_ _401_/CLK _399_/D _376_/Y VGND VGND VPWR VPWR _399_/Q sky130_fd_sc_hd__dfrtp_2
-X_322_ _393_/Q _307_/B _320_/X _321_/Y VGND VGND VPWR VPWR _322_/X sky130_fd_sc_hd__o211a_2
+X_322_ _451_/Q _328_/A VGND VGND VPWR VPWR _326_/B sky130_fd_sc_hd__and2_2
 Xringosc.dstage\[1\].id.delaybuf0 ringosc.dstage\[0\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[1\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
 Xringosc.dstage\[4\].id.delayint0 ringosc.dstage\[4\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[4\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-X_184_ _385_/Q _400_/Q _285_/S VGND VGND VPWR VPWR _400_/D sky130_fd_sc_hd__mux2_1
-X_253_ _259_/A _261_/A _261_/B _324_/B _269_/A VGND VGND VPWR VPWR _255_/A sky130_fd_sc_hd__a32o_2
-X_305_ dco ext_trim[5] _304_/X VGND VGND VPWR VPWR _305_/X sky130_fd_sc_hd__a21o_2
-X_236_ _236_/A _236_/B _207_/X VGND VGND VPWR VPWR _237_/C sky130_fd_sc_hd__or3b_2
-XANTENNA__289__A2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__378__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__288__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_219_ div[1] _219_/B VGND VGND VPWR VPWR _223_/A sky130_fd_sc_hd__nand2_2
-Xringosc.dstage\[9\].id.delayen0 ringosc.dstage\[9\].id.delayen0/A _312_/X VGND VGND
+X_253_ _253_/A _253_/B VGND VGND VPWR VPWR _261_/A sky130_fd_sc_hd__and2_2
+X_236_ _449_/Q _464_/Q VGND VGND VPWR VPWR _236_/X sky130_fd_sc_hd__and2_2
+X_305_ _305_/A _305_/B VGND VGND VPWR VPWR _305_/X sky130_fd_sc_hd__xor2_2
+XFILLER_10_83 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_219_ _448_/Q VGND VGND VPWR VPWR _332_/A sky130_fd_sc_hd__buf_2
+Xringosc.dstage\[9\].id.delayen0 ringosc.dstage\[9\].id.delayen0/A _369_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[9\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-XFILLER_16_116 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_2 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__343__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_8_134 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-XANTENNA__334__B2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__316__B2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_398_ _401_/CLK _398_/D _375_/Y VGND VGND VPWR VPWR _398_/Q sky130_fd_sc_hd__dfrtp_2
+XFILLER_16_93 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_398_ _367_/X ext_trim[18] _388_/B _384_/Y VGND VGND VPWR VPWR _398_/X sky130_fd_sc_hd__a22o_2
+X_467_ _467_/CLK _467_/D _444_/Y VGND VGND VPWR VPWR _467_/Q sky130_fd_sc_hd__dfrtp_2
 Xringosc.dstage\[1\].id.delaybuf1 ringosc.dstage\[1\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[1\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-X_321_ _393_/Q _328_/A _323_/B VGND VGND VPWR VPWR _321_/Y sky130_fd_sc_hd__o21ai_2
-X_183_ _386_/Q _401_/Q _285_/S VGND VGND VPWR VPWR _401_/D sky130_fd_sc_hd__mux2_1
-X_252_ _339_/A _266_/A _266_/B _327_/B _269_/A VGND VGND VPWR VPWR _261_/B sky130_fd_sc_hd__a32o_2
-XFILLER_13_94 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__225__B1 div[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_304_ _339_/A _303_/B _294_/C _303_/X VGND VGND VPWR VPWR _304_/X sky130_fd_sc_hd__o211a_2
-X_235_ div[0] _235_/B VGND VGND VPWR VPWR _236_/A sky130_fd_sc_hd__and2_2
-X_218_ _218_/A _218_/B VGND VGND VPWR VPWR _219_/B sky130_fd_sc_hd__xnor2_2
-Xringosc.dstage\[9\].id.delayen1 ringosc.dstage\[9\].id.delayen1/A _350_/X VGND VGND
+X_321_ _450_/Q _449_/Q _332_/A VGND VGND VPWR VPWR _328_/A sky130_fd_sc_hd__and3_2
+X_252_ _452_/Q _467_/Q VGND VGND VPWR VPWR _253_/B sky130_fd_sc_hd__or2_2
+XFILLER_13_50 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_304_ _304_/A VGND VGND VPWR VPWR _458_/D sky130_fd_sc_hd__buf_2
+X_235_ _450_/Q _465_/Q VGND VGND VPWR VPWR _245_/B sky130_fd_sc_hd__and2_2
+XFILLER_20_29 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_218_ _218_/A VGND VGND VPWR VPWR _464_/D sky130_fd_sc_hd__buf_2
+Xringosc.dstage\[9\].id.delayen1 ringosc.dstage\[9\].id.delayen1/A _411_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[9\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-XFILLER_21_72 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_7_41 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__343__A2 ext_trim[19] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__296__B dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_397_ _401_/CLK _397_/D _374_/Y VGND VGND VPWR VPWR _397_/Q sky130_fd_sc_hd__dfrtp_2
-XFILLER_4_31 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_320_ _392_/Q _327_/B _391_/Q _324_/A VGND VGND VPWR VPWR _320_/X sky130_fd_sc_hd__a211o_2
-X_182_ _396_/D _396_/Q VGND VGND VPWR VPWR _287_/B sky130_fd_sc_hd__xor2_2
-X_251_ _269_/A _268_/A _268_/B VGND VGND VPWR VPWR _266_/B sky130_fd_sc_hd__a21bo_2
-X_303_ _327_/B _303_/B VGND VGND VPWR VPWR _303_/X sky130_fd_sc_hd__or2_2
-X_234_ _381_/Q _379_/Q _287_/B VGND VGND VPWR VPWR _238_/C sky130_fd_sc_hd__and3_2
-XANTENNA__207__A1 div[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.iss.reseten0 ringosc.iss.const1/HI _378_/B VGND VGND VPWR VPWR ringosc.ibufp00/A
+XFILLER_5_105 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+X_397_ _393_/X _394_/X _396_/X ext_trim[17] _370_/X VGND VGND VPWR VPWR _397_/X sky130_fd_sc_hd__a32o_2
+X_466_ _467_/CLK _466_/D _443_/Y VGND VGND VPWR VPWR _466_/Q sky130_fd_sc_hd__dfrtp_2
+X_320_ _453_/Q _282_/X _319_/Y VGND VGND VPWR VPWR _453_/D sky130_fd_sc_hd__o21a_2
+X_251_ _452_/Q _467_/Q VGND VGND VPWR VPWR _253_/A sky130_fd_sc_hd__nand2_2
+XFILLER_13_84 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_449_ _467_/CLK _449_/D _422_/Y VGND VGND VPWR VPWR _449_/Q sky130_fd_sc_hd__dfrtp_2
+X_234_ _450_/Q _465_/Q VGND VGND VPWR VPWR _241_/A sky130_fd_sc_hd__or2_2
+X_303_ _413_/B _302_/Y _319_/B VGND VGND VPWR VPWR _304_/A sky130_fd_sc_hd__mux2_2
+Xringosc.iss.reseten0 ringosc.iss.const1/HI _423_/B VGND VGND VPWR VPWR ringosc.ibufp00/A
 + sky130_fd_sc_hd__einvp_1
 Xringosc.dstage\[0\].id.delayint0 ringosc.dstage\[0\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[0\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-X_217_ _226_/A _217_/B _217_/C VGND VGND VPWR VPWR _237_/A sky130_fd_sc_hd__or3_2
-XFILLER_10_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__346__B1 ext_trim[20] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_19_50 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_217_ _449_/Q _464_/Q _332_/B VGND VGND VPWR VPWR _218_/A sky130_fd_sc_hd__mux2_2
+XFILLER_10_52 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_4 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-Xringosc.dstage\[8\].id.delayenb0 ringosc.dstage\[8\].id.delayenb1/A _310_/X VGND
+XFILLER_7_64 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+Xringosc.dstage\[8\].id.delayenb0 ringosc.dstage\[8\].id.delayenb1/A _366_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[8\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-X_396_ _401_/CLK _396_/D _373_/Y VGND VGND VPWR VPWR _396_/Q sky130_fd_sc_hd__dfrtp_2
-X_181_ _396_/D _396_/Q VGND VGND VPWR VPWR _285_/S sky130_fd_sc_hd__xnor2_2
-X_250_ _347_/B _269_/A VGND VGND VPWR VPWR _266_/A sky130_fd_sc_hd__xnor2_2
-X_379_ _401_/CLK _379_/D _356_/Y VGND VGND VPWR VPWR _379_/Q sky130_fd_sc_hd__dfrtp_2
-X_302_ dco ext_trim[4] _340_/A VGND VGND VPWR VPWR _302_/X sky130_fd_sc_hd__a21o_2
-X_233_ _388_/Q _387_/Q _269_/A _288_/B VGND VGND VPWR VPWR _238_/B sky130_fd_sc_hd__or4bb_2
-X_216_ div[2] _216_/B VGND VGND VPWR VPWR _217_/C sky130_fd_sc_hd__nor2_2
+X_396_ _396_/A _396_/B _396_/C VGND VGND VPWR VPWR _396_/X sky130_fd_sc_hd__and3_2
+X_465_ _467_/CLK _465_/D _442_/Y VGND VGND VPWR VPWR _465_/Q sky130_fd_sc_hd__dfrtp_2
+X_250_ _233_/A _280_/B _278_/A _278_/B _278_/C VGND VGND VPWR VPWR _250_/Y sky130_fd_sc_hd__a2111oi_2
+X_379_ _367_/X ext_trim[13] _390_/A _378_/X VGND VGND VPWR VPWR _379_/X sky130_fd_sc_hd__a22o_2
+X_448_ _467_/CLK _448_/D _421_/Y VGND VGND VPWR VPWR _448_/Q sky130_fd_sc_hd__dfrtp_2
+X_233_ _233_/A _233_/B VGND VGND VPWR VPWR _280_/B sky130_fd_sc_hd__nand2_2
+X_302_ _302_/A _302_/B VGND VGND VPWR VPWR _302_/Y sky130_fd_sc_hd__xnor2_2
+XFILLER_18_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_216_ _216_/A VGND VGND VPWR VPWR _465_/D sky130_fd_sc_hd__buf_2
 Xringosc.iss.delayint0 ringosc.iss.delayen1/Z VGND VGND VPWR VPWR ringosc.iss.delayen0/A
 + sky130_fd_sc_hd__clkinv_1
-XANTENNA__346__B2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XPHY_5 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__337__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_21_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__319__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[8\].id.delayenb1 ringosc.dstage\[8\].id.delayenb1/A _348_/X VGND
+X_464_ _467_/CLK _464_/D _441_/Y VGND VGND VPWR VPWR _464_/Q sky130_fd_sc_hd__dfrtp_2
+Xringosc.dstage\[8\].id.delayenb1 ringosc.dstage\[8\].id.delayenb1/A _409_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[8\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_395_ _401_/CLK _395_/D _372_/Y VGND VGND VPWR VPWR _396_/D sky130_fd_sc_hd__dfrtp_2
-XFILLER_4_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_180_ _389_/Q VGND VGND VPWR VPWR _347_/B sky130_fd_sc_hd__inv_2
-X_378_ dco _378_/B VGND VGND VPWR VPWR _378_/Y sky130_fd_sc_hd__nor2_2
-X_301_ _390_/Q _315_/B _303_/B _294_/C VGND VGND VPWR VPWR _340_/A sky130_fd_sc_hd__o211a_2
-X_232_ _388_/Q _387_/Q VGND VGND VPWR VPWR _268_/A sky130_fd_sc_hd__or2_2
-XANTENNA__394__D osc VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[6\].id.delayen0 ringosc.dstage\[6\].id.delayen0/A _306_/X VGND VGND
+X_395_ _395_/A _408_/C VGND VGND VPWR VPWR _396_/C sky130_fd_sc_hd__or2_2
+X_378_ _410_/A _387_/B VGND VGND VPWR VPWR _378_/X sky130_fd_sc_hd__or2_2
+X_447_ _467_/CLK _447_/D _420_/Y VGND VGND VPWR VPWR _447_/Q sky130_fd_sc_hd__dfrtp_2
+X_232_ div[1] _228_/B _279_/B div[0] VGND VGND VPWR VPWR _233_/B sky130_fd_sc_hd__o22a_2
+X_301_ _305_/A _305_/B _288_/B VGND VGND VPWR VPWR _302_/B sky130_fd_sc_hd__a21oi_2
+XANTENNA__391__A2 ext_trim[16] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xringosc.dstage\[6\].id.delayen0 ringosc.dstage\[6\].id.delayen0/A _362_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[6\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-X_215_ _211_/Y _212_/X div[3] VGND VGND VPWR VPWR _226_/B sky130_fd_sc_hd__a21o_2
+X_215_ _450_/Q _465_/Q _332_/B VGND VGND VPWR VPWR _216_/A sky130_fd_sc_hd__mux2_2
+XFILLER_21_75 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_6 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_7_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__337__A2 ext_trim[16] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__319__A2 ext_trim[13] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_394_ _401_/CLK osc _371_/Y VGND VGND VPWR VPWR _395_/D sky130_fd_sc_hd__dfrtp_2
-X_377_ dco _378_/B VGND VGND VPWR VPWR _377_/Y sky130_fd_sc_hd__nor2_2
+XFILLER_7_88 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_394_ _371_/A _374_/B _408_/C _289_/B _403_/B VGND VGND VPWR VPWR _394_/X sky130_fd_sc_hd__o221a_2
+X_463_ _467_/CLK _463_/D _440_/Y VGND VGND VPWR VPWR _463_/Q sky130_fd_sc_hd__dfrtp_2
+XFILLER_4_78 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_377_ _367_/X ext_trim[12] _350_/C _376_/X VGND VGND VPWR VPWR _377_/X sky130_fd_sc_hd__a22o_2
+X_446_ _467_/CLK _446_/D _419_/Y VGND VGND VPWR VPWR _446_/Q sky130_fd_sc_hd__dfrtp_2
 Xringosc.dstage\[8\].id.delaybuf0 ringosc.dstage\[7\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[8\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
-Xringosc.dstage\[4\].id.delayenb0 ringosc.dstage\[4\].id.delayenb1/A _302_/X VGND
+Xringosc.dstage\[4\].id.delayenb0 ringosc.dstage\[4\].id.delayenb1/A _357_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[4\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-X_300_ dco ext_trim[3] _294_/C VGND VGND VPWR VPWR _300_/X sky130_fd_sc_hd__a21o_2
-X_231_ _327_/B _298_/C VGND VGND VPWR VPWR _288_/B sky130_fd_sc_hd__nor2_2
-XANTENNA__352__A_N dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XTAP_90 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-Xringosc.dstage\[10\].id.delayen0 ringosc.dstage\[10\].id.delayen0/A _314_/X VGND
+X_231_ _231_/A _231_/B VGND VGND VPWR VPWR _279_/B sky130_fd_sc_hd__nand2_2
+X_300_ _413_/C _319_/B _298_/X _299_/Y VGND VGND VPWR VPWR _459_/D sky130_fd_sc_hd__o22a_2
+XFILLER_1_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_1_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_429_ _432_/A _432_/B VGND VGND VPWR VPWR _429_/Y sky130_fd_sc_hd__nor2_2
+Xringosc.dstage\[10\].id.delayen0 ringosc.dstage\[10\].id.delayen0/A _373_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[10\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-Xringosc.dstage\[6\].id.delayen1 ringosc.dstage\[6\].id.delayen1/A _343_/X VGND VGND
+XTAP_90 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+XFILLER_19_20 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xringosc.dstage\[6\].id.delayen1 ringosc.dstage\[6\].id.delayen1/A _399_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[6\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-X_214_ _211_/Y _212_/X div[3] VGND VGND VPWR VPWR _217_/B sky130_fd_sc_hd__a21oi_2
+X_214_ _214_/A VGND VGND VPWR VPWR _466_/D sky130_fd_sc_hd__buf_2
 XPHY_7 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XFILLER_21_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_7_89 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-XFILLER_8_128 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_393_ _401_/CLK _393_/D _370_/Y VGND VGND VPWR VPWR _393_/Q sky130_fd_sc_hd__dfrtp_2
+XFILLER_12_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_393_ _393_/A _410_/B VGND VGND VPWR VPWR _393_/X sky130_fd_sc_hd__or2_2
+X_462_ _467_/CLK _462_/D _439_/Y VGND VGND VPWR VPWR _462_/Q sky130_fd_sc_hd__dfrtp_2
+XFILLER_1_134 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_13_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 Xringosc.dstage\[8\].id.delaybuf1 ringosc.dstage\[8\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[8\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-Xringosc.dstage\[4\].id.delayenb1 ringosc.dstage\[4\].id.delayenb1/A _341_/X VGND
+X_376_ _410_/A _376_/B VGND VGND VPWR VPWR _376_/X sky130_fd_sc_hd__or2_2
+Xringosc.dstage\[4\].id.delayenb1 ringosc.dstage\[4\].id.delayenb1/A _397_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[4\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_376_ dco _378_/B VGND VGND VPWR VPWR _376_/Y sky130_fd_sc_hd__nor2_2
-X_230_ _393_/Q _324_/B VGND VGND VPWR VPWR _298_/C sky130_fd_sc_hd__or2_2
-X_359_ dco _378_/B VGND VGND VPWR VPWR _359_/Y sky130_fd_sc_hd__nor2_2
-XTAP_91 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__300__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[10\].id.delayen1 ringosc.dstage\[10\].id.delayen1/A _351_/X VGND
+X_445_ _467_/CLK _445_/D _418_/Y VGND VGND VPWR VPWR _445_/Q sky130_fd_sc_hd__dfrtp_2
+X_230_ _332_/A _463_/Q VGND VGND VPWR VPWR _231_/B sky130_fd_sc_hd__or2_2
+X_359_ _395_/A _376_/B _350_/C _358_/X VGND VGND VPWR VPWR _359_/X sky130_fd_sc_hd__o211a_2
+X_428_ _432_/A _432_/B VGND VGND VPWR VPWR _428_/Y sky130_fd_sc_hd__nor2_2
+Xringosc.dstage\[10\].id.delayen1 ringosc.dstage\[10\].id.delayen1/A _412_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[10\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
+XTAP_91 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_80 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_213_ div[3] _211_/Y _212_/X div[2] _216_/B VGND VGND VPWR VPWR _226_/A sky130_fd_sc_hd__a32o_2
-XANTENNA__313__B dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_213_ _451_/Q _466_/Q _332_/B VGND VGND VPWR VPWR _214_/A sky130_fd_sc_hd__mux2_2
+XFILLER_16_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_8 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_4_132 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
-X_392_ _401_/CLK _392_/D _369_/Y VGND VGND VPWR VPWR _392_/Q sky130_fd_sc_hd__dfrtp_2
-X_375_ dco _378_/B VGND VGND VPWR VPWR _375_/Y sky130_fd_sc_hd__nor2_2
-XFILLER_1_59 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_358_ dco _378_/B VGND VGND VPWR VPWR _358_/Y sky130_fd_sc_hd__nor2_2
+XFILLER_7_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XANTENNA__258__B1 div[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_392_ _413_/C _392_/B VGND VGND VPWR VPWR _410_/B sky130_fd_sc_hd__nand2_2
+X_461_ _467_/CLK _461_/D _438_/Y VGND VGND VPWR VPWR _462_/D sky130_fd_sc_hd__dfrtp_2
+X_375_ _376_/B _350_/C _374_/X ext_trim[11] _370_/X VGND VGND VPWR VPWR _375_/X sky130_fd_sc_hd__a32o_2
+X_444_ _444_/A _444_/B VGND VGND VPWR VPWR _444_/Y sky130_fd_sc_hd__nor2_2
+X_358_ _385_/B _358_/B VGND VGND VPWR VPWR _358_/X sky130_fd_sc_hd__or2_2
+X_427_ _432_/A _432_/B VGND VGND VPWR VPWR _427_/Y sky130_fd_sc_hd__nor2_2
 XTAP_92 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 Xringosc.dstage\[4\].id.delaybuf0 ringosc.dstage\[3\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[4\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
 XTAP_81 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_70 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_289_ ext_trim[0] dco _332_/A VGND VGND VPWR VPWR _289_/X sky130_fd_sc_hd__a21o_2
-XANTENNA__300__A2 ext_trim[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_289_ _294_/A _289_/B VGND VGND VPWR VPWR _395_/A sky130_fd_sc_hd__nand2_2
 Xringosc.dstage\[7\].id.delayint0 ringosc.dstage\[7\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[7\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-X_212_ _211_/A _211_/B _211_/C VGND VGND VPWR VPWR _212_/X sky130_fd_sc_hd__a21o_2
-Xringosc.dstage\[0\].id.delayenb0 ringosc.dstage\[0\].id.delayenb1/A _289_/X VGND
+X_212_ _212_/A VGND VGND VPWR VPWR _467_/D sky130_fd_sc_hd__buf_2
+XFILLER_10_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+Xringosc.dstage\[0\].id.delayenb0 ringosc.dstage\[0\].id.delayenb1/A _342_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[0\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
 XPHY_9 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_7_47 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_16_78 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_16_67 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_16_45 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_8_90 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_391_ _401_/CLK _391_/D _368_/Y VGND VGND VPWR VPWR _391_/Q sky130_fd_sc_hd__dfrtp_2
-XFILLER_13_24 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_374_ dco _378_/B VGND VGND VPWR VPWR _374_/Y sky130_fd_sc_hd__nor2_2
+X_391_ _343_/X ext_trim[16] _390_/X VGND VGND VPWR VPWR _391_/X sky130_fd_sc_hd__a21o_2
+X_460_ _467_/CLK osc _437_/Y VGND VGND VPWR VPWR _461_/D sky130_fd_sc_hd__dfrtp_2
+XFILLER_4_133 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XANTENNA__397__B1 ext_trim[17] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_443_ _444_/A _444_/B VGND VGND VPWR VPWR _443_/Y sky130_fd_sc_hd__nor2_2
+X_374_ _393_/A _374_/B VGND VGND VPWR VPWR _374_/X sky130_fd_sc_hd__or2_2
+XFILLER_5_91 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XTAP_93 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-Xringosc.dstage\[3\].id.delayen0 ringosc.dstage\[3\].id.delayen0/A _300_/X VGND VGND
+X_357_ _343_/X ext_trim[4] _396_/A VGND VGND VPWR VPWR _357_/X sky130_fd_sc_hd__a21o_2
+Xringosc.dstage\[3\].id.delayen0 ringosc.dstage\[3\].id.delayen0/A _354_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[3\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
 XTAP_82 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_357_ dco _378_/B VGND VGND VPWR VPWR _357_/Y sky130_fd_sc_hd__nor2_2
+X_288_ _288_/A _288_/B VGND VGND VPWR VPWR _305_/A sky130_fd_sc_hd__nor2_2
 XTAP_60 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+X_426_ _432_/A _432_/B VGND VGND VPWR VPWR _426_/Y sky130_fd_sc_hd__nor2_2
 XTAP_71 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_288_ dco _288_/B VGND VGND VPWR VPWR _332_/A sky130_fd_sc_hd__nor2_2
 Xringosc.dstage\[4\].id.delaybuf1 ringosc.dstage\[4\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[4\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-X_211_ _211_/A _211_/B _211_/C VGND VGND VPWR VPWR _211_/Y sky130_fd_sc_hd__nand3_2
-Xringosc.dstage\[0\].id.delayenb1 ringosc.dstage\[0\].id.delayenb1/A _319_/X VGND
+X_211_ _452_/Q _467_/Q _332_/B VGND VGND VPWR VPWR _212_/A sky130_fd_sc_hd__mux2_2
+Xringosc.dstage\[0\].id.delayenb1 ringosc.dstage\[0\].id.delayenb1/A _379_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[0\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
+X_409_ _367_/X ext_trim[21] _390_/X _408_/X VGND VGND VPWR VPWR _409_/X sky130_fd_sc_hd__a22o_2
 Xringosc.iss.delayenb0 ringosc.iss.delayenb1/A ringosc.iss.ctrlen0/X VGND VGND VPWR
 + VPWR ringosc.ibufp00/A sky130_fd_sc_hd__einvn_8
-XFILLER_15_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_390_ _401_/CLK _390_/D _367_/Y VGND VGND VPWR VPWR _390_/Q sky130_fd_sc_hd__dfrtp_2
-XFILLER_13_69 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__312__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_373_ dco _378_/B VGND VGND VPWR VPWR _373_/Y sky130_fd_sc_hd__nor2_2
-X_356_ dco _378_/B VGND VGND VPWR VPWR _356_/Y sky130_fd_sc_hd__nor2_2
-X_287_ _379_/Q _287_/B VGND VGND VPWR VPWR _379_/D sky130_fd_sc_hd__or2_2
+XFILLER_21_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__412__A2 ext_trim[23] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_390_ _390_/A _403_/B _396_/B VGND VGND VPWR VPWR _390_/X sky130_fd_sc_hd__and3_2
+XFILLER_4_101 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_373_ _370_/X _361_/C _393_/A _372_/X VGND VGND VPWR VPWR _373_/X sky130_fd_sc_hd__o31a_2
+X_442_ _444_/A _444_/B VGND VGND VPWR VPWR _442_/Y sky130_fd_sc_hd__nor2_2
+X_425_ _444_/B VGND VGND VPWR VPWR _432_/B sky130_fd_sc_hd__buf_2
+X_287_ _344_/C _291_/B VGND VGND VPWR VPWR _288_/B sky130_fd_sc_hd__and2_2
+X_356_ _410_/A _374_/B _358_/B _349_/A VGND VGND VPWR VPWR _396_/A sky130_fd_sc_hd__o211a_2
 XTAP_94 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-Xringosc.dstage\[3\].id.delayen1 ringosc.dstage\[3\].id.delayen1/A _337_/X VGND VGND
-+ VPWR VPWR ringosc.dstage\[3\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
+XFILLER_19_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_19_57 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XTAP_83 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_50 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_61 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_72 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_210_ _210_/A _210_/B VGND VGND VPWR VPWR _211_/C sky130_fd_sc_hd__or2_2
-X_339_ _339_/A _347_/C VGND VGND VPWR VPWR _340_/C sky130_fd_sc_hd__or2_2
+Xringosc.dstage\[3\].id.delayen1 ringosc.dstage\[3\].id.delayen1/A _391_/X VGND VGND
++ VPWR VPWR ringosc.dstage\[3\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
+X_408_ _410_/A _408_/B _408_/C VGND VGND VPWR VPWR _408_/X sky130_fd_sc_hd__or3_2
+X_210_ _333_/S VGND VGND VPWR VPWR _332_/B sky130_fd_sc_hd__buf_2
+X_339_ dco VGND VGND VPWR VPWR _433_/A sky130_fd_sc_hd__buf_2
+Xringosc.iss.delayenb1 ringosc.iss.delayenb1/A _415_/X VGND VGND VPWR VPWR ringosc.iss.delayen1/Z
++ sky130_fd_sc_hd__einvn_4
+XFILLER_15_125 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 Xringosc.dstage\[0\].id.delaybuf0 ringosc.ibufp00/A VGND VGND VPWR VPWR ringosc.dstage\[0\].id.delayenb1/A
 + sky130_fd_sc_hd__clkbuf_2
-Xringosc.iss.delayenb1 ringosc.iss.delayenb1/A _354_/X VGND VGND VPWR VPWR ringosc.iss.delayen1/Z
-+ sky130_fd_sc_hd__einvn_4
 Xringosc.dstage\[3\].id.delayint0 ringosc.dstage\[3\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[3\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-XFILLER_8_70 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
-X_372_ dco _378_/B VGND VGND VPWR VPWR _372_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__362__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__312__A2 ext_trim[9] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__357__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_286_ _380_/Q _379_/Q _287_/B VGND VGND VPWR VPWR _380_/D sky130_fd_sc_hd__mux2_1
-X_355_ enable resetb VGND VGND VPWR VPWR _378_/B sky130_fd_sc_hd__nand2_2
+XFILLER_14_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_372_ ext_trim[10] _433_/A VGND VGND VPWR VPWR _372_/X sky130_fd_sc_hd__or2b_2
+X_441_ _441_/A _441_/B VGND VGND VPWR VPWR _441_/Y sky130_fd_sc_hd__nor2_2
+XANTENNA__379__A2 ext_trim[13] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_424_ _433_/A VGND VGND VPWR VPWR _432_/A sky130_fd_sc_hd__buf_2
+X_286_ _344_/C _291_/B VGND VGND VPWR VPWR _288_/A sky130_fd_sc_hd__nor2_2
+X_355_ _456_/Q VGND VGND VPWR VPWR _410_/A sky130_fd_sc_hd__buf_2
 XTAP_95 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_19_47 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XTAP_84 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_51 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_62 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_10_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XTAP_73 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_338_ _265_/A _315_/B _347_/C _248_/B _336_/B VGND VGND VPWR VPWR _338_/X sky130_fd_sc_hd__o221a_2
-X_269_ _269_/A _269_/B VGND VGND VPWR VPWR _269_/Y sky130_fd_sc_hd__xnor2_2
-XANTENNA__370__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_407_ _361_/X _404_/X _406_/Y ext_trim[20] _370_/X VGND VGND VPWR VPWR _407_/X sky130_fd_sc_hd__a32o_2
+X_338_ _338_/A VGND VGND VPWR VPWR _445_/D sky130_fd_sc_hd__buf_2
+X_269_ _456_/Q _455_/Q VGND VGND VPWR VPWR _289_/B sky130_fd_sc_hd__nand2_2
 Xringosc.dstage\[0\].id.delaybuf1 ringosc.dstage\[0\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[0\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-XANTENNA__365__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_12_107 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+XANTENNA__370__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 Xringosc.iss.delaybuf0 ringosc.iss.delayenb1/A VGND VGND VPWR VPWR ringosc.iss.delayen1/A
 + sky130_fd_sc_hd__clkbuf_1
-X_371_ dco _378_/B VGND VGND VPWR VPWR _371_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__373__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_285_ _380_/Q _381_/Q _285_/S VGND VGND VPWR VPWR _381_/D sky130_fd_sc_hd__mux2_1
-X_354_ dco ext_trim[25] _336_/X _340_/C VGND VGND VPWR VPWR _354_/X sky130_fd_sc_hd__a22o_2
+XFILLER_7_122 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_4_29 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_371_ _371_/A _408_/B VGND VGND VPWR VPWR _393_/A sky130_fd_sc_hd__nor2_2
+X_440_ _441_/A _441_/B VGND VGND VPWR VPWR _440_/Y sky130_fd_sc_hd__nor2_2
+X_354_ _343_/X ext_trim[3] _350_/C VGND VGND VPWR VPWR _354_/X sky130_fd_sc_hd__a21o_2
+X_423_ _423_/A _423_/B VGND VGND VPWR VPWR _423_/Y sky130_fd_sc_hd__nor2_2
+X_285_ _363_/B _316_/A VGND VGND VPWR VPWR _302_/A sky130_fd_sc_hd__xnor2_2
 XTAP_85 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_52 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_63 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_74 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__368__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_337_ dco ext_trim[16] _336_/X VGND VGND VPWR VPWR _337_/X sky130_fd_sc_hd__a21o_2
-X_199_ _382_/Q _397_/Q VGND VGND VPWR VPWR _221_/A sky130_fd_sc_hd__nand2_2
-X_268_ _268_/A _268_/B VGND VGND VPWR VPWR _269_/B sky130_fd_sc_hd__nand2_2
-XANTENNA__351__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__342__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_14_5 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__376__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__306__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_370_ dco _378_/B VGND VGND VPWR VPWR _370_/Y sky130_fd_sc_hd__nor2_2
-X_284_ _382_/Q _285_/S _284_/C VGND VGND VPWR VPWR _382_/D sky130_fd_sc_hd__nand3_2
-X_353_ dco ext_trim[24] _352_/X VGND VGND VPWR VPWR _353_/X sky130_fd_sc_hd__a21o_2
-XANTENNA__215__B1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[0\].id.delayen0 ringosc.dstage\[0\].id.delayen0/A _289_/X VGND VGND
+XFILLER_4_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_406_ _413_/C _406_/B VGND VGND VPWR VPWR _406_/Y sky130_fd_sc_hd__nand2_2
+X_337_ _445_/Q _337_/B VGND VGND VPWR VPWR _338_/A sky130_fd_sc_hd__or2_2
+X_268_ _454_/Q _453_/Q VGND VGND VPWR VPWR _315_/B sky130_fd_sc_hd__nand2_2
+XANTENNA__415__A2 ext_trim[25] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__342__A1 ext_trim[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__348__A_N dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_370_ dco VGND VGND VPWR VPWR _370_/X sky130_fd_sc_hd__buf_2
+X_353_ _444_/A ext_trim[2] _376_/B _350_/C VGND VGND VPWR VPWR _353_/X sky130_fd_sc_hd__a22o_2
+X_422_ _423_/A _423_/B VGND VGND VPWR VPWR _422_/Y sky130_fd_sc_hd__nor2_2
+X_284_ _284_/A VGND VGND VPWR VPWR _319_/B sky130_fd_sc_hd__buf_2
+Xringosc.dstage\[0\].id.delayen0 ringosc.dstage\[0\].id.delayen0/A _342_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[0\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
 XTAP_86 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_53 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_64 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_75 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_336_ _336_/A _336_/B _340_/B VGND VGND VPWR VPWR _336_/X sky130_fd_sc_hd__and3_2
-Xringosc.dstage\[7\].id.delayenb0 ringosc.dstage\[7\].id.delayenb1/A _309_/X VGND
+Xringosc.dstage\[7\].id.delayenb0 ringosc.dstage\[7\].id.delayenb1/A _365_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[7\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
-X_198_ _382_/Q _397_/Q VGND VGND VPWR VPWR _218_/A sky130_fd_sc_hd__and2_2
-X_267_ _271_/B _266_/Y _389_/Q _238_/X VGND VGND VPWR VPWR _389_/D sky130_fd_sc_hd__o2bb2a_2
-X_319_ dco ext_trim[13] _336_/A _318_/X VGND VGND VPWR VPWR _319_/X sky130_fd_sc_hd__a22o_2
-XANTENNA__351__A2 ext_trim[23] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__342__A2 ext_trim[18] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_7_113 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_7_124 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_11_131 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
-XANTENNA__306__A2 ext_trim[6] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[0\].id.delayen1 ringosc.dstage\[0\].id.delayen1/A _319_/X VGND VGND
+X_267_ _344_/C VGND VGND VPWR VPWR _363_/C sky130_fd_sc_hd__inv_2
+X_405_ _344_/C _410_/A _413_/B VGND VGND VPWR VPWR _406_/B sky130_fd_sc_hd__o21ai_2
+X_336_ _336_/A VGND VGND VPWR VPWR _446_/D sky130_fd_sc_hd__buf_2
+XFILLER_21_17 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__360__A2 ext_trim[5] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_319_ _453_/Q _319_/B VGND VGND VPWR VPWR _319_/Y sky130_fd_sc_hd__nand2_2
+XANTENNA__351__A2 ext_trim[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_421_ _423_/A _423_/B VGND VGND VPWR VPWR _421_/Y sky130_fd_sc_hd__nor2_2
+Xringosc.dstage\[0\].id.delayen1 ringosc.dstage\[0\].id.delayen1/A _379_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[0\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
 XTAP_87 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_54 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_283_ _284_/C _282_/Y _287_/B VGND VGND VPWR VPWR _383_/D sky130_fd_sc_hd__a21oi_2
-X_352_ dco _392_/Q _393_/Q VGND VGND VPWR VPWR _352_/X sky130_fd_sc_hd__and3b_2
 XTAP_65 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
+X_283_ _363_/B _316_/A _270_/X _282_/X VGND VGND VPWR VPWR _284_/A sky130_fd_sc_hd__o31a_2
+X_352_ dco VGND VGND VPWR VPWR _444_/A sky130_fd_sc_hd__buf_2
 XTAP_76 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XFILLER_14_83 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[7\].id.delayenb1 ringosc.dstage\[7\].id.delayenb1/A _346_/X VGND
+XANTENNA__384__B dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+Xringosc.dstage\[7\].id.delayenb1 ringosc.dstage\[7\].id.delayenb1/A _407_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[7\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_335_ _248_/B _328_/B _347_/C _327_/B VGND VGND VPWR VPWR _340_/B sky130_fd_sc_hd__o22a_2
-X_197_ _383_/Q _398_/Q VGND VGND VPWR VPWR _197_/X sky130_fd_sc_hd__and2_2
-X_266_ _266_/A _266_/B VGND VGND VPWR VPWR _266_/Y sky130_fd_sc_hd__xnor2_2
-X_249_ _389_/Q _269_/A VGND VGND VPWR VPWR _249_/Y sky130_fd_sc_hd__nor2_2
-X_318_ _390_/Q _328_/B VGND VGND VPWR VPWR _318_/X sky130_fd_sc_hd__or2_2
-Xringosc.dstage\[8\].id.delayen0 ringosc.dstage\[8\].id.delayen0/A _310_/X VGND VGND
+X_335_ _446_/Q _445_/Q _337_/B VGND VGND VPWR VPWR _336_/A sky130_fd_sc_hd__mux2_2
+X_266_ _457_/Q VGND VGND VPWR VPWR _344_/C sky130_fd_sc_hd__buf_2
+X_404_ _404_/A _404_/B _404_/C VGND VGND VPWR VPWR _404_/X sky130_fd_sc_hd__and3_2
+XANTENNA__460__D osc VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_249_ div[2] _249_/B VGND VGND VPWR VPWR _278_/C sky130_fd_sc_hd__nor2_2
+X_318_ _318_/A VGND VGND VPWR VPWR _454_/D sky130_fd_sc_hd__buf_2
+XFILLER_22_61 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_22_50 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+Xringosc.dstage\[8\].id.delayen0 ringosc.dstage\[8\].id.delayen0/A _366_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[8\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-XFILLER_22_83 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xclockp_buffer_0 _401_/CLK VGND VGND VPWR VPWR clockp[0] sky130_fd_sc_hd__clkbuf_16
-X_282_ _383_/Q _382_/Q VGND VGND VPWR VPWR _282_/Y sky130_fd_sc_hd__xnor2_2
-X_351_ dco ext_trim[23] _296_/Y VGND VGND VPWR VPWR _351_/X sky130_fd_sc_hd__a21o_2
+Xclockp_buffer_0 _467_/CLK VGND VGND VPWR VPWR clockp[0] sky130_fd_sc_hd__clkbuf_16
+X_351_ _343_/X ext_trim[1] _390_/A VGND VGND VPWR VPWR _351_/X sky130_fd_sc_hd__a21o_2
+X_420_ _423_/A _423_/B VGND VGND VPWR VPWR _420_/Y sky130_fd_sc_hd__nor2_2
+X_282_ _446_/Q _282_/B _282_/C _282_/D VGND VGND VPWR VPWR _282_/X sky130_fd_sc_hd__and4_2
 XTAP_88 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_55 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_66 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_77 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_334_ _324_/B _296_/Y _327_/X ext_trim[15] dco VGND VGND VPWR VPWR _334_/X sky130_fd_sc_hd__a32o_2
-X_196_ _384_/Q _399_/Q VGND VGND VPWR VPWR _208_/B sky130_fd_sc_hd__and2_2
-X_265_ _265_/A _265_/B VGND VGND VPWR VPWR _390_/D sky130_fd_sc_hd__xnor2_2
-XANTENNA__354__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_317_ dco ext_trim[12] _294_/C _297_/X VGND VGND VPWR VPWR _317_/X sky130_fd_sc_hd__a22o_2
-XFILLER_2_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_11_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_248_ _327_/B _248_/B VGND VGND VPWR VPWR _339_/A sky130_fd_sc_hd__nand2_2
-X_179_ _390_/Q VGND VGND VPWR VPWR _265_/A sky130_fd_sc_hd__inv_2
+X_334_ _334_/A VGND VGND VPWR VPWR _447_/D sky130_fd_sc_hd__buf_2
+X_403_ _403_/A _403_/B _403_/C VGND VGND VPWR VPWR _404_/C sky130_fd_sc_hd__and3_2
+X_265_ _459_/Q VGND VGND VPWR VPWR _388_/A sky130_fd_sc_hd__inv_2
+XANTENNA__409__A2 ext_trim[21] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_317_ _454_/Q _316_/Y _319_/B VGND VGND VPWR VPWR _318_/A sky130_fd_sc_hd__mux2_2
+X_248_ _241_/Y _242_/X div[3] VGND VGND VPWR VPWR _278_/B sky130_fd_sc_hd__a21oi_2
 Xringosc.dstage\[7\].id.delaybuf0 ringosc.dstage\[6\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[7\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
-Xringosc.dstage\[3\].id.delayenb0 ringosc.dstage\[3\].id.delayenb1/A _300_/X VGND
+Xringosc.dstage\[3\].id.delayenb0 ringosc.dstage\[3\].id.delayenb1/A _354_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[3\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
 Xringosc.dstage\[11\].id.delayint0 ringosc.dstage\[11\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[11\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-XFILLER_11_100 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
-Xringosc.dstage\[8\].id.delayen1 ringosc.dstage\[8\].id.delayen1/A _348_/X VGND VGND
+Xringosc.dstage\[8\].id.delayen1 ringosc.dstage\[8\].id.delayen1/A _409_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[8\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-XFILLER_8_42 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 Xclockp_buffer_1 ringosc.ibufp11/Y VGND VGND VPWR VPWR clockp[1] sky130_fd_sc_hd__clkbuf_16
-XANTENNA__309__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_17_84 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_5_87 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_350_ _338_/X _340_/X _349_/X ext_trim[22] dco VGND VGND VPWR VPWR _350_/X sky130_fd_sc_hd__a32o_2
-X_281_ _284_/C _280_/X _287_/B VGND VGND VPWR VPWR _384_/D sky130_fd_sc_hd__a21oi_2
+XFILLER_0_132 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+X_350_ _374_/B _376_/B _350_/C VGND VGND VPWR VPWR _390_/A sky130_fd_sc_hd__and3_2
+X_281_ _281_/A _281_/B _281_/C VGND VGND VPWR VPWR _282_/D sky130_fd_sc_hd__or3_2
 XTAP_89 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XTAP_78 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_56 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_67 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-X_333_ _333_/A _333_/B _333_/C VGND VGND VPWR VPWR _333_/X sky130_fd_sc_hd__and3_2
+XTAP_78 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XPHY_40 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_2_99 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_195_ _384_/Q _399_/Q VGND VGND VPWR VPWR _211_/A sky130_fd_sc_hd__or2_2
-X_264_ _347_/B _266_/B _263_/Y _271_/B VGND VGND VPWR VPWR _265_/B sky130_fd_sc_hd__o211a_2
-X_316_ _303_/B _294_/C _315_/X ext_trim[11] dco VGND VGND VPWR VPWR _316_/X sky130_fd_sc_hd__a32o_2
-X_247_ _247_/A _247_/B VGND VGND VPWR VPWR _261_/A sky130_fd_sc_hd__nor2_2
-XANTENNA__354__A2 ext_trim[25] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_402_ _374_/B _358_/B _289_/B VGND VGND VPWR VPWR _403_/C sky130_fd_sc_hd__a21o_2
+X_333_ _446_/Q _447_/Q _333_/S VGND VGND VPWR VPWR _334_/A sky130_fd_sc_hd__mux2_2
+X_264_ _291_/B VGND VGND VPWR VPWR _316_/A sky130_fd_sc_hd__buf_2
+XANTENNA__354__A2 ext_trim[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_247_ div[3] _241_/Y _242_/X div[2] _249_/B VGND VGND VPWR VPWR _278_/A sky130_fd_sc_hd__a32o_2
+X_316_ _316_/A _316_/B VGND VGND VPWR VPWR _316_/Y sky130_fd_sc_hd__xnor2_2
 Xringosc.dstage\[7\].id.delaybuf1 ringosc.dstage\[7\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[7\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-Xringosc.dstage\[3\].id.delayenb1 ringosc.dstage\[3\].id.delayenb1/A _337_/X VGND
+Xringosc.dstage\[3\].id.delayenb1 ringosc.dstage\[3\].id.delayenb1/A _391_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[3\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_178_ _391_/Q VGND VGND VPWR VPWR _307_/C sky130_fd_sc_hd__inv_2
-XANTENNA__309__A2 ext_trim[7] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_10_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_280_ _280_/A _280_/B VGND VGND VPWR VPWR _280_/X sky130_fd_sc_hd__or2_2
+X_280_ _280_/A _280_/B _262_/X VGND VGND VPWR VPWR _281_/C sky130_fd_sc_hd__or3b_2
+XANTENNA__375__B1 ext_trim[11] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XTAP_79 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_46 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_57 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_68 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XPHY_41 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_332_ _332_/A _336_/B _332_/C VGND VGND VPWR VPWR _333_/C sky130_fd_sc_hd__and3_2
-X_194_ _384_/Q _399_/Q VGND VGND VPWR VPWR _208_/A sky130_fd_sc_hd__nor2_2
-X_401_ _401_/CLK _401_/D _378_/Y VGND VGND VPWR VPWR _401_/Q sky130_fd_sc_hd__dfrtp_2
-X_263_ _269_/A _268_/A _249_/Y VGND VGND VPWR VPWR _263_/Y sky130_fd_sc_hd__a21oi_2
+X_401_ _395_/A _376_/B _387_/B _289_/B VGND VGND VPWR VPWR _404_/B sky130_fd_sc_hd__o22a_2
+X_332_ _332_/A _332_/B _332_/C VGND VGND VPWR VPWR _448_/D sky130_fd_sc_hd__nand3_2
+X_263_ _250_/Y _281_/B _260_/X _262_/X VGND VGND VPWR VPWR _291_/B sky130_fd_sc_hd__o31a_2
 XPHY_30 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_315_ _328_/A _315_/B VGND VGND VPWR VPWR _315_/X sky130_fd_sc_hd__or2_2
-X_177_ _392_/Q VGND VGND VPWR VPWR _307_/B sky130_fd_sc_hd__inv_2
-X_246_ _391_/Q _269_/A VGND VGND VPWR VPWR _247_/B sky130_fd_sc_hd__and2_2
-XFILLER_11_113 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_11_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_229_ _392_/Q _391_/Q VGND VGND VPWR VPWR _324_/B sky130_fd_sc_hd__or2_2
+XFILLER_20_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_246_ _246_/A _246_/B VGND VGND VPWR VPWR _249_/B sky130_fd_sc_hd__xnor2_2
+X_315_ _315_/A _315_/B VGND VGND VPWR VPWR _316_/B sky130_fd_sc_hd__nand2_2
+XFILLER_22_42 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_229_ _332_/A _463_/Q VGND VGND VPWR VPWR _231_/A sky130_fd_sc_hd__nand2_2
+XFILLER_8_77 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
 Xringosc.dstage\[3\].id.delaybuf0 ringosc.dstage\[2\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[3\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
 Xringosc.dstage\[6\].id.delayint0 ringosc.dstage\[6\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[6\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-XFILLER_5_78 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-XFILLER_14_10 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_17_86 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_5_78 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XTAP_47 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_58 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-XANTENNA__216__A div[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XTAP_69 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 Xringosc.ibufp10 ringosc.ibufp10/A VGND VGND VPWR VPWR ringosc.ibufp11/A sky130_fd_sc_hd__clkinv_2
 XPHY_42 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_331_ _339_/A _303_/B _328_/B _248_/B VGND VGND VPWR VPWR _333_/B sky130_fd_sc_hd__o22a_2
+X_400_ _371_/A _361_/C _358_/X _374_/X VGND VGND VPWR VPWR _404_/A sky130_fd_sc_hd__o211a_2
 XPHY_31 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_193_ _385_/Q _400_/Q VGND VGND VPWR VPWR _210_/B sky130_fd_sc_hd__and2_2
+X_331_ _332_/C _330_/Y _337_/B VGND VGND VPWR VPWR _449_/D sky130_fd_sc_hd__a21oi_2
+X_262_ div[4] _256_/Y _261_/Y _253_/A VGND VGND VPWR VPWR _262_/X sky130_fd_sc_hd__o211a_2
 XPHY_20 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_262_ _391_/Q _261_/X _271_/B VGND VGND VPWR VPWR _391_/D sky130_fd_sc_hd__mux2_1
-X_400_ _401_/CLK _400_/D _377_/Y VGND VGND VPWR VPWR _400_/Q sky130_fd_sc_hd__dfrtp_2
-XANTENNA__348__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_2_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_2_35 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_11_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_176_ _393_/Q VGND VGND VPWR VPWR _324_/A sky130_fd_sc_hd__inv_2
-X_314_ dco _298_/C _328_/A _313_/Y VGND VGND VPWR VPWR _314_/X sky130_fd_sc_hd__o31a_2
-X_245_ _391_/Q _269_/A VGND VGND VPWR VPWR _247_/A sky130_fd_sc_hd__nor2_2
-Xringosc.dstage\[5\].id.delayen0 ringosc.dstage\[5\].id.delayen0/A _305_/X VGND VGND
+X_245_ _245_/A _245_/B VGND VGND VPWR VPWR _246_/B sky130_fd_sc_hd__nor2_2
+X_314_ _319_/B _313_/Y _455_/Q _282_/X VGND VGND VPWR VPWR _455_/D sky130_fd_sc_hd__o2bb2a_2
+Xringosc.dstage\[5\].id.delayen0 ringosc.dstage\[5\].id.delayen0/A _360_/X VGND VGND
 + VPWR VPWR ringosc.ibufp10/A sky130_fd_sc_hd__einvp_2
+XFILLER_22_98 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__248__B1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__411__B1 ext_trim[22] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 Xringosc.dstage\[3\].id.delaybuf1 ringosc.dstage\[3\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[3\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-X_228_ _390_/Q _389_/Q VGND VGND VPWR VPWR _327_/B sky130_fd_sc_hd__or2_2
-XFILLER_3_132 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
-XANTENNA__219__A div[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_0_90 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_228_ div[1] _228_/B VGND VGND VPWR VPWR _233_/A sky130_fd_sc_hd__nand2_2
+XFILLER_3_110 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
 XTAP_48 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 XTAP_59 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
 Xringosc.ibufp00 ringosc.ibufp00/A VGND VGND VPWR VPWR ringosc.ibufp01/A sky130_fd_sc_hd__clkinv_2
 Xringosc.ibufp11 ringosc.ibufp11/A VGND VGND VPWR VPWR ringosc.ibufp11/Y sky130_fd_sc_hd__clkinv_8
+XANTENNA__366__A2 ext_trim[8] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__357__A2 ext_trim[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XPHY_43 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_330_ _265_/A _298_/C _303_/X _315_/X VGND VGND VPWR VPWR _333_/A sky130_fd_sc_hd__o211a_2
 XPHY_32 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+X_330_ _449_/Q _332_/A VGND VGND VPWR VPWR _330_/Y sky130_fd_sc_hd__xnor2_2
 XPHY_10 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_192_ _210_/A VGND VGND VPWR VPWR _192_/Y sky130_fd_sc_hd__inv_2
 XPHY_21 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_261_ _261_/A _261_/B VGND VGND VPWR VPWR _261_/X sky130_fd_sc_hd__xor2_2
-XANTENNA__348__A2 ext_trim[21] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__293__A_N dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_313_ ext_trim[10] dco VGND VGND VPWR VPWR _313_/Y sky130_fd_sc_hd__nand2b_2
-X_244_ _307_/B _269_/A VGND VGND VPWR VPWR _259_/A sky130_fd_sc_hd__xnor2_2
-Xringosc.dstage\[5\].id.delayen1 ringosc.dstage\[5\].id.delayen1/A _342_/X VGND VGND
+X_261_ _261_/A _261_/B VGND VGND VPWR VPWR _261_/Y sky130_fd_sc_hd__nand2_2
+X_459_ _467_/CLK _459_/D _436_/Y VGND VGND VPWR VPWR _459_/Q sky130_fd_sc_hd__dfrtp_2
+X_244_ _450_/Q _465_/Q VGND VGND VPWR VPWR _245_/A sky130_fd_sc_hd__nor2_2
+X_313_ _313_/A _313_/B VGND VGND VPWR VPWR _313_/Y sky130_fd_sc_hd__xnor2_2
+Xringosc.dstage\[5\].id.delayen1 ringosc.dstage\[5\].id.delayen1/A _398_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[5\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-XFILLER_22_88 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_227_ _224_/Y _237_/B _226_/X _207_/X VGND VGND VPWR VPWR _269_/A sky130_fd_sc_hd__o31a_2
-XFILLER_8_24 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__235__A div[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_227_ _227_/A _227_/B VGND VGND VPWR VPWR _228_/B sky130_fd_sc_hd__xnor2_2
 Xringosc.dstage\[2\].id.delayint0 ringosc.dstage\[2\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[2\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
 XTAP_49 VGND VPWR sky130_fd_sc_hd__tapvpwrvgnd_1
-Xringosc.ibufp01 ringosc.ibufp01/A VGND VGND VPWR VPWR _401_/CLK sky130_fd_sc_hd__clkinv_8
+Xringosc.ibufp01 ringosc.ibufp01/A VGND VGND VPWR VPWR _467_/CLK sky130_fd_sc_hd__clkinv_8
 XPHY_44 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_33 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_11 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_260_ _392_/Q _259_/Y _271_/B VGND VGND VPWR VPWR _392_/D sky130_fd_sc_hd__mux2_1
+X_260_ _278_/A _260_/B VGND VGND VPWR VPWR _260_/X sky130_fd_sc_hd__and2_2
 XPHY_22 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_389_ _401_/CLK _389_/D _366_/Y VGND VGND VPWR VPWR _389_/Q sky130_fd_sc_hd__dfrtp_2
-X_191_ _385_/Q _400_/Q VGND VGND VPWR VPWR _210_/A sky130_fd_sc_hd__nor2_2
-X_312_ dco ext_trim[9] _304_/X _311_/X VGND VGND VPWR VPWR _312_/X sky130_fd_sc_hd__a22o_2
-X_243_ _307_/B _269_/A _242_/X _238_/X VGND VGND VPWR VPWR _271_/B sky130_fd_sc_hd__o31a_2
-XFILLER_14_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_226_ _226_/A _226_/B VGND VGND VPWR VPWR _226_/X sky130_fd_sc_hd__and2_2
-XFILLER_6_120 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_6
-XFILLER_8_58 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
-Xringosc.dstage\[11\].id.delayenb0 ringosc.dstage\[11\].id.delayenb1/A _316_/X VGND
+X_389_ _289_/B _387_/B _408_/C _385_/B VGND VGND VPWR VPWR _396_/B sky130_fd_sc_hd__o22a_2
+X_458_ _467_/CLK _458_/D _435_/Y VGND VGND VPWR VPWR _458_/Q sky130_fd_sc_hd__dfrtp_2
+X_243_ _227_/A _227_/B _236_/X VGND VGND VPWR VPWR _246_/A sky130_fd_sc_hd__a21o_2
+X_312_ _371_/A _312_/B VGND VGND VPWR VPWR _456_/D sky130_fd_sc_hd__xnor2_2
+XFILLER_7_109 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_11_105 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xringosc.dstage\[11\].id.delayenb0 ringosc.dstage\[11\].id.delayenb1/A _375_/X VGND
 + VGND VPWR VPWR ringosc.iss.delayenb1/A sky130_fd_sc_hd__einvn_8
-X_209_ _209_/A _209_/B VGND VGND VPWR VPWR _216_/B sky130_fd_sc_hd__xnor2_2
-XFILLER_0_81 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__302__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_14_79 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
+X_226_ _449_/Q _464_/Q VGND VGND VPWR VPWR _227_/B sky130_fd_sc_hd__xor2_2
+XANTENNA__341__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_209_ _462_/D _462_/Q VGND VGND VPWR VPWR _333_/S sky130_fd_sc_hd__xnor2_2
+XFILLER_5_48 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_12 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_45 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_34 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_190_ _190_/A _190_/B VGND VGND VPWR VPWR _206_/A sky130_fd_sc_hd__and2_2
 XPHY_23 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_388_ _401_/CLK _388_/D _365_/Y VGND VGND VPWR VPWR _388_/Q sky130_fd_sc_hd__dfrtp_2
-X_311_ _327_/B _315_/B _303_/B _248_/B VGND VGND VPWR VPWR _311_/X sky130_fd_sc_hd__o22a_2
-X_242_ _324_/A _307_/C _268_/B _248_/B VGND VGND VPWR VPWR _242_/X sky130_fd_sc_hd__or4_2
-XFILLER_22_35 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[11\].id.delayenb1 ringosc.dstage\[11\].id.delayenb1/A _353_/X VGND
+X_388_ _388_/A _388_/B VGND VGND VPWR VPWR _408_/C sky130_fd_sc_hd__or2_2
+X_457_ _467_/CLK _457_/D _432_/Y VGND VGND VPWR VPWR _457_/Q sky130_fd_sc_hd__dfrtp_2
+X_242_ _241_/A _241_/B _241_/C VGND VGND VPWR VPWR _242_/X sky130_fd_sc_hd__a21o_2
+XFILLER_11_14 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_311_ _408_/B _313_/B _310_/Y _284_/A VGND VGND VPWR VPWR _312_/B sky130_fd_sc_hd__o211a_2
+XFILLER_20_106 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__339__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__249__A div[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_225_ _448_/Q _463_/Q VGND VGND VPWR VPWR _227_/A sky130_fd_sc_hd__and2_2
+Xringosc.dstage\[11\].id.delayenb1 ringosc.dstage\[11\].id.delayenb1/A _414_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[11\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_225_ _204_/Y _205_/X div[4] VGND VGND VPWR VPWR _237_/B sky130_fd_sc_hd__o21a_2
-X_208_ _208_/A _208_/B VGND VGND VPWR VPWR _209_/B sky130_fd_sc_hd__nor2_2
-XANTENNA__302__A2 ext_trim[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_14_69 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XFILLER_0_82 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+XANTENNA__352__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__369__A2 ext_trim[9] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XPHY_35 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_13 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+XFILLER_9_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_24 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_387_ _401_/CLK _387_/D _364_/Y VGND VGND VPWR VPWR _387_/Q sky130_fd_sc_hd__dfrtp_2
-X_310_ dco ext_trim[8] _294_/C _303_/X VGND VGND VPWR VPWR _310_/X sky130_fd_sc_hd__a22o_2
-XANTENNA__360__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[2\].id.delayen0 ringosc.dstage\[2\].id.delayen0/A _299_/X VGND VGND
-+ VPWR VPWR ringosc.dstage\[2\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
+X_387_ _393_/A _387_/B VGND VGND VPWR VPWR _403_/B sky130_fd_sc_hd__or2_2
+X_456_ _467_/CLK _456_/D _431_/Y VGND VGND VPWR VPWR _456_/Q sky130_fd_sc_hd__dfrtp_2
+X_310_ _316_/A _315_/A _309_/Y VGND VGND VPWR VPWR _310_/Y sky130_fd_sc_hd__a21oi_2
+X_439_ _441_/A _441_/B VGND VGND VPWR VPWR _439_/Y sky130_fd_sc_hd__nor2_2
+X_241_ _241_/A _241_/B _241_/C VGND VGND VPWR VPWR _241_/Y sky130_fd_sc_hd__nand3_2
 Xringosc.iss.const1 VGND VGND VPWR VPWR ringosc.iss.const1/HI ringosc.iss.const1/LO
 + sky130_fd_sc_hd__conb_1
-X_241_ _390_/Q _389_/Q VGND VGND VPWR VPWR _248_/B sky130_fd_sc_hd__nand2_2
-XANTENNA__355__A enable VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__341__B1 ext_trim[17] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__350__B1 ext_trim[22] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_224_ _223_/A _236_/B _226_/A _217_/B _217_/C VGND VGND VPWR VPWR _224_/Y sky130_fd_sc_hd__a2111oi_2
+Xringosc.dstage\[2\].id.delayen0 ringosc.dstage\[2\].id.delayen0/A _353_/X VGND VGND
++ VPWR VPWR ringosc.dstage\[2\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
+X_224_ _413_/B VGND VGND VPWR VPWR _363_/B sky130_fd_sc_hd__inv_2
+XFILLER_6_122 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_8_38 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XFILLER_17_69 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[6\].id.delayenb0 ringosc.dstage\[6\].id.delayenb1/A _306_/X VGND
+Xringosc.dstage\[6\].id.delayenb0 ringosc.dstage\[6\].id.delayenb1/A _362_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[6\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
 Xringosc.dstage\[11\].id.delaybuf0 ringosc.dstage\[10\].id.delayen0/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[11\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
-X_207_ div[4] _204_/Y _206_/Y _190_/A VGND VGND VPWR VPWR _207_/X sky130_fd_sc_hd__o211a_2
-XANTENNA__363__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_6_82 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
 XPHY_36 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__358__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XPHY_14 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_25 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_17_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_386_ _401_/CLK _386_/D _363_/Y VGND VGND VPWR VPWR _386_/Q sky130_fd_sc_hd__dfrtp_2
-Xringosc.dstage\[2\].id.delayen1 ringosc.dstage\[2\].id.delayen1/A _334_/X VGND VGND
+X_386_ _388_/B _384_/Y _385_/X ext_trim[15] _370_/X VGND VGND VPWR VPWR _386_/X sky130_fd_sc_hd__a32o_2
+X_455_ _467_/CLK _455_/D _430_/Y VGND VGND VPWR VPWR _455_/Q sky130_fd_sc_hd__dfrtp_2
+X_240_ _254_/A _240_/B VGND VGND VPWR VPWR _241_/C sky130_fd_sc_hd__or2_2
+Xringosc.dstage\[2\].id.delayen1 ringosc.dstage\[2\].id.delayen1/A _386_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[2\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-X_240_ _265_/A _347_/B VGND VGND VPWR VPWR _328_/A sky130_fd_sc_hd__nor2_2
-XANTENNA__355__B resetb VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_369_ dco _378_/B VGND VGND VPWR VPWR _369_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__350__B2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_223_ _223_/A _223_/B VGND VGND VPWR VPWR _236_/B sky130_fd_sc_hd__nand2_2
-XANTENNA__371__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__341__B2 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_17_26 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XANTENNA__366__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__314__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-Xringosc.dstage\[6\].id.delayenb1 ringosc.dstage\[6\].id.delayenb1/A _343_/X VGND
+X_369_ _367_/X ext_trim[9] _359_/X _368_/X VGND VGND VPWR VPWR _369_/X sky130_fd_sc_hd__a22o_2
+X_438_ _441_/A _441_/B VGND VGND VPWR VPWR _438_/Y sky130_fd_sc_hd__nor2_2
+XANTENNA__414__A2 ext_trim[24] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_223_ _458_/Q VGND VGND VPWR VPWR _413_/B sky130_fd_sc_hd__buf_2
+XFILLER_6_112 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+Xringosc.dstage\[6\].id.delayenb1 ringosc.dstage\[6\].id.delayenb1/A _399_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[6\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
-X_206_ _206_/A _206_/B VGND VGND VPWR VPWR _206_/Y sky130_fd_sc_hd__nand2_2
 Xringosc.dstage\[11\].id.delaybuf1 ringosc.dstage\[11\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[11\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-XANTENNA__305__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__214__B1 div[3] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_14_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_0_118 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XFILLER_18_80 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_37 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XANTENNA__374__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 XPHY_15 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_26 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_385_ _401_/CLK _385_/D _362_/Y VGND VGND VPWR VPWR _385_/Q sky130_fd_sc_hd__dfrtp_2
-Xringosc.iss.delayen0 ringosc.iss.delayen0/A _317_/X VGND VGND VPWR VPWR ringosc.ibufp00/A
+Xringosc.iss.delayen0 ringosc.iss.delayen0/A _377_/X VGND VGND VPWR VPWR ringosc.ibufp00/A
 + sky130_fd_sc_hd__einvp_2
-XANTENNA__369__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_299_ dco ext_trim[2] _303_/B _294_/C VGND VGND VPWR VPWR _299_/X sky130_fd_sc_hd__a22o_2
-X_368_ dco _378_/B VGND VGND VPWR VPWR _368_/Y sky130_fd_sc_hd__nor2_2
-X_222_ div[1] _219_/B _235_/B div[0] VGND VGND VPWR VPWR _223_/B sky130_fd_sc_hd__o22a_2
-XFILLER_17_49 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_205_ _206_/A _206_/B VGND VGND VPWR VPWR _205_/X sky130_fd_sc_hd__and2_2
-XANTENNA__305__A2 ext_trim[5] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__377__A dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XANTENNA__299__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_385_ _413_/B _385_/B VGND VGND VPWR VPWR _385_/X sky130_fd_sc_hd__or2_2
+X_454_ _467_/CLK _454_/D _429_/Y VGND VGND VPWR VPWR _454_/Q sky130_fd_sc_hd__dfrtp_2
+XANTENNA__279__A div[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_368_ _385_/B _374_/B _376_/B _289_/B VGND VGND VPWR VPWR _368_/X sky130_fd_sc_hd__o22a_2
+X_437_ _441_/A _441_/B VGND VGND VPWR VPWR _437_/Y sky130_fd_sc_hd__nor2_2
+X_299_ _298_/A _298_/B _319_/B VGND VGND VPWR VPWR _299_/Y sky130_fd_sc_hd__o21ai_2
+X_222_ _459_/Q VGND VGND VPWR VPWR _413_/C sky130_fd_sc_hd__buf_2
+XANTENNA__399__A2 ext_trim[19] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__232__A1 div[1] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XANTENNA__232__B2 div[0] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
 Xringosc.dstage\[6\].id.delaybuf0 ringosc.ibufp10/A VGND VGND VPWR VPWR ringosc.dstage\[6\].id.delayenb1/A
 + sky130_fd_sc_hd__clkbuf_2
-Xringosc.dstage\[2\].id.delayenb0 ringosc.dstage\[2\].id.delayenb1/A _299_/X VGND
+Xringosc.dstage\[2\].id.delayenb0 ringosc.dstage\[2\].id.delayenb1/A _353_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[2\].id.delayen0/Z sky130_fd_sc_hd__einvn_8
 Xringosc.dstage\[9\].id.delayint0 ringosc.dstage\[9\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[9\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
 Xringosc.dstage\[10\].id.delayint0 ringosc.dstage\[10\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[10\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
 XPHY_38 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-XFILLER_6_95 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_4
 XPHY_16 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_27 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_384_ _401_/CLK _384_/D _361_/Y VGND VGND VPWR VPWR _384_/Q sky130_fd_sc_hd__dfrtp_2
-Xringosc.iss.delayen1 ringosc.iss.delayen1/A _354_/X VGND VGND VPWR VPWR ringosc.iss.delayen1/Z
+Xringosc.iss.delayen1 ringosc.iss.delayen1/A _415_/X VGND VGND VPWR VPWR ringosc.iss.delayen1/Z
 + sky130_fd_sc_hd__einvp_2
-X_298_ _390_/Q _347_/B _298_/C VGND VGND VPWR VPWR _298_/X sky130_fd_sc_hd__or3_2
-XFILLER_9_111 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_367_ dco _378_/B VGND VGND VPWR VPWR _367_/Y sky130_fd_sc_hd__nor2_2
-X_221_ _221_/A _221_/B VGND VGND VPWR VPWR _235_/B sky130_fd_sc_hd__nand2_2
-X_204_ _206_/A _206_/B VGND VGND VPWR VPWR _204_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__299__A2 ext_trim[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_453_ _467_/CLK _453_/D _428_/Y VGND VGND VPWR VPWR _453_/Q sky130_fd_sc_hd__dfrtp_2
+X_384_ _388_/A dco VGND VGND VPWR VPWR _384_/Y sky130_fd_sc_hd__nor2_2
+X_367_ _433_/A VGND VGND VPWR VPWR _367_/X sky130_fd_sc_hd__buf_2
+X_436_ _441_/A _441_/B VGND VGND VPWR VPWR _436_/Y sky130_fd_sc_hd__nor2_2
+X_298_ _298_/A _298_/B VGND VGND VPWR VPWR _298_/X sky130_fd_sc_hd__and2_2
+X_221_ _221_/A VGND VGND VPWR VPWR _463_/D sky130_fd_sc_hd__buf_2
+X_419_ _423_/A _423_/B VGND VGND VPWR VPWR _419_/Y sky130_fd_sc_hd__nor2_2
+XFILLER_9_84 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
 Xringosc.dstage\[6\].id.delaybuf1 ringosc.dstage\[6\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[6\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-Xringosc.dstage\[2\].id.delayenb1 ringosc.dstage\[2\].id.delayenb1/A _334_/X VGND
+Xringosc.dstage\[2\].id.delayenb1 ringosc.dstage\[2\].id.delayenb1/A _386_/X VGND
 + VGND VPWR VPWR ringosc.dstage\[2\].id.delayen1/Z sky130_fd_sc_hd__einvn_4
+XFILLER_6_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
 XPHY_17 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_28 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_39 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
-X_383_ _401_/CLK _383_/D _360_/Y VGND VGND VPWR VPWR _383_/Q sky130_fd_sc_hd__dfrtp_2
-XANTENNA__353__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_297_ _390_/Q _303_/B VGND VGND VPWR VPWR _297_/X sky130_fd_sc_hd__or2_2
-X_366_ dco _378_/B VGND VGND VPWR VPWR _366_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__326__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_220_ _382_/Q _397_/Q VGND VGND VPWR VPWR _221_/B sky130_fd_sc_hd__or2_2
-X_349_ _390_/Q _349_/B VGND VGND VPWR VPWR _349_/X sky130_fd_sc_hd__or2_2
-XANTENNA__317__A1 dco VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_383_ _367_/X ext_trim[14] _359_/X _382_/X VGND VGND VPWR VPWR _383_/X sky130_fd_sc_hd__a22o_2
+X_452_ _467_/CLK _452_/D _427_/Y VGND VGND VPWR VPWR _452_/Q sky130_fd_sc_hd__dfrtp_2
+X_366_ _444_/A ext_trim[8] _350_/C _358_/X VGND VGND VPWR VPWR _366_/X sky130_fd_sc_hd__a22o_2
+X_435_ _441_/A _441_/B VGND VGND VPWR VPWR _435_/Y sky130_fd_sc_hd__nor2_2
+X_297_ _413_/C _316_/A VGND VGND VPWR VPWR _298_/B sky130_fd_sc_hd__xnor2_2
+XFILLER_22_29 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+X_220_ _332_/A _463_/Q _333_/S VGND VGND VPWR VPWR _221_/A sky130_fd_sc_hd__mux2_2
+X_418_ _423_/A _423_/B VGND VGND VPWR VPWR _418_/Y sky130_fd_sc_hd__nor2_2
+X_349_ _349_/A VGND VGND VPWR VPWR _350_/C sky130_fd_sc_hd__buf_2
 XFILLER_3_118 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_203_ _192_/Y _211_/A _211_/B _210_/B VGND VGND VPWR VPWR _206_/B sky130_fd_sc_hd__a31o_2
-Xringosc.iss.ctrlen0 _378_/B _317_/X VGND VGND VPWR VPWR ringosc.iss.ctrlen0/X sky130_fd_sc_hd__or2_2
-XFILLER_18_72 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-Xringosc.dstage\[2\].id.delaybuf0 ringosc.dstage\[1\].id.delayen0/Z VGND VGND VPWR
-+ VPWR ringosc.dstage\[2\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
+XFILLER_0_98 VGND VGND VPWR VPWR sky130_ef_sc_hd__decap_12
+XFILLER_0_76 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
+Xringosc.iss.ctrlen0 _423_/B _377_/X VGND VGND VPWR VPWR ringosc.iss.ctrlen0/X sky130_fd_sc_hd__or2_2
+XFILLER_15_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
 XPHY_18 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 XPHY_29 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+Xringosc.dstage\[2\].id.delaybuf0 ringosc.dstage\[1\].id.delayen0/Z VGND VGND VPWR
++ VPWR ringosc.dstage\[2\].id.delayenb1/A sky130_fd_sc_hd__clkbuf_2
 Xringosc.dstage\[5\].id.delayint0 ringosc.dstage\[5\].id.delayen1/Z VGND VGND VPWR
 + VPWR ringosc.dstage\[5\].id.delayen0/A sky130_fd_sc_hd__clkinv_1
-X_382_ _401_/CLK _382_/D _359_/Y VGND VGND VPWR VPWR _382_/Q sky130_fd_sc_hd__dfrtp_2
-X_296_ _324_/A dco VGND VGND VPWR VPWR _296_/Y sky130_fd_sc_hd__nor2_2
-XANTENNA__353__A2 ext_trim[24] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_365_ dco _378_/B VGND VGND VPWR VPWR _365_/Y sky130_fd_sc_hd__nor2_2
-XFILLER_9_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_3_76 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_2
-XANTENNA__326__A2 ext_trim[14] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-XFILLER_12_85 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_348_ dco ext_trim[21] _336_/X _347_/X VGND VGND VPWR VPWR _348_/X sky130_fd_sc_hd__a22o_2
-XANTENNA__317__A2 ext_trim[12] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
-X_279_ _383_/Q _382_/Q _384_/Q VGND VGND VPWR VPWR _280_/B sky130_fd_sc_hd__a21oi_2
-X_202_ _218_/A _218_/B _208_/B _197_/X VGND VGND VPWR VPWR _211_/B sky130_fd_sc_hd__a211o_2
-Xringosc.dstage\[7\].id.delayen0 ringosc.dstage\[7\].id.delayen0/A _309_/X VGND VGND
+X_451_ _467_/CLK _451_/D _426_/Y VGND VGND VPWR VPWR _451_/Q sky130_fd_sc_hd__dfrtp_2
+X_382_ _413_/C _363_/B _380_/X _381_/Y VGND VGND VPWR VPWR _382_/X sky130_fd_sc_hd__o211a_2
+XFILLER_15_51 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+XANTENNA__362__A2 ext_trim[6] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_365_ _444_/A ext_trim[7] _390_/A _364_/X VGND VGND VPWR VPWR _365_/X sky130_fd_sc_hd__a22o_2
+X_434_ _444_/B VGND VGND VPWR VPWR _441_/B sky130_fd_sc_hd__buf_2
+X_296_ _302_/A _305_/A _305_/B _388_/B _316_/A VGND VGND VPWR VPWR _298_/A sky130_fd_sc_hd__a32o_2
+XANTENNA__353__A2 ext_trim[2] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+XFILLER_12_41 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_279_ div[0] _279_/B VGND VGND VPWR VPWR _280_/A sky130_fd_sc_hd__and2_2
+XANTENNA__262__A1 div[4] VGND VGND VPWR VPWR sky130_fd_sc_hd__diode_2
+X_417_ _444_/B VGND VGND VPWR VPWR _423_/B sky130_fd_sc_hd__buf_2
+X_348_ dco _361_/C VGND VGND VPWR VPWR _349_/A sky130_fd_sc_hd__and2b_2
+Xringosc.dstage\[7\].id.delayen0 ringosc.dstage\[7\].id.delayen0/A _365_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[7\].id.delayen0/Z sky130_fd_sc_hd__einvp_2
-XPHY_19 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
 Xringosc.dstage\[2\].id.delaybuf1 ringosc.dstage\[2\].id.delayenb1/A VGND VGND VPWR
 + VPWR ringosc.dstage\[2\].id.delayen1/A sky130_fd_sc_hd__clkbuf_1
-X_381_ _401_/CLK _381_/D _358_/Y VGND VGND VPWR VPWR _381_/Q sky130_fd_sc_hd__dfrtp_2
-X_295_ dco ext_trim[1] _336_/A VGND VGND VPWR VPWR _295_/X sky130_fd_sc_hd__a21o_2
-XFILLER_3_99 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_364_ dco _378_/B VGND VGND VPWR VPWR _364_/Y sky130_fd_sc_hd__nor2_2
-XFILLER_9_125 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_347_ _390_/Q _347_/B _347_/C VGND VGND VPWR VPWR _347_/X sky130_fd_sc_hd__or3_2
-X_278_ _386_/Q _278_/B VGND VGND VPWR VPWR _284_/C sky130_fd_sc_hd__nand2_2
-XFILLER_12_75 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_3_109 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_201_ _218_/A _218_/B _197_/X VGND VGND VPWR VPWR _209_/A sky130_fd_sc_hd__a21o_2
-Xringosc.dstage\[11\].id.delayen0 ringosc.dstage\[11\].id.delayen0/A _316_/X VGND
+XPHY_19 VGND VGND VPWR VPWR sky130_fd_sc_hd__decap_3
+X_450_ _467_/CLK _450_/D _423_/Y VGND VGND VPWR VPWR _450_/Q sky130_fd_sc_hd__dfrtp_2
+X_381_ _413_/C _393_/A _392_/B VGND VGND VPWR VPWR _381_/Y sky130_fd_sc_hd__o21ai_2
+X_433_ _433_/A VGND VGND VPWR VPWR _441_/A sky130_fd_sc_hd__buf_2
+X_364_ _385_/B _387_/B VGND VGND VPWR VPWR _364_/X sky130_fd_sc_hd__or2_2
+XFILLER_3_55 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_295_ _395_/A _313_/A _313_/B _385_/B _291_/B VGND VGND VPWR VPWR _305_/B sky130_fd_sc_hd__a32o_2
+XFILLER_10_135 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_347_ _358_/B VGND VGND VPWR VPWR _376_/B sky130_fd_sc_hd__buf_2
+X_278_ _278_/A _278_/B _278_/C VGND VGND VPWR VPWR _281_/A sky130_fd_sc_hd__or3_2
+XFILLER_5_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_416_ enable resetb VGND VGND VPWR VPWR _444_/B sky130_fd_sc_hd__nand2_2
+Xringosc.dstage\[11\].id.delayen0 ringosc.dstage\[11\].id.delayen0/A _375_/X VGND
 + VGND VPWR VPWR ringosc.iss.delayenb1/A sky130_fd_sc_hd__einvp_2
-Xringosc.dstage\[7\].id.delayen1 ringosc.dstage\[7\].id.delayen1/A _346_/X VGND VGND
+Xringosc.dstage\[7\].id.delayen1 ringosc.dstage\[7\].id.delayen1/A _407_/X VGND VGND
 + VPWR VPWR ringosc.dstage\[7\].id.delayen1/Z sky130_fd_sc_hd__einvp_2
-XFILLER_20_97 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_17_108 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-XFILLER_15_75 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
-X_380_ _401_/CLK _380_/D _357_/Y VGND VGND VPWR VPWR _380_/Q sky130_fd_sc_hd__dfrtp_2
+XFILLER_20_3 VGND VGND VPWR VPWR sky130_fd_sc_hd__fill_1
+X_380_ _413_/B _385_/B _344_/C _388_/A VGND VGND VPWR VPWR _380_/X sky130_fd_sc_hd__a211o_2
 .ends
 
