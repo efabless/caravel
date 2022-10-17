@@ -56,6 +56,7 @@ module digital_pll(
     assign itrim = (dco == 1'b0) ? otrim : ext_trim;
     assign creset = (dco == 1'b0) ? ireset : 1'b1;
 
+    (* keep *)
     ring_osc2x13 ringosc (
         .reset(ireset),
         .trim(itrim),
