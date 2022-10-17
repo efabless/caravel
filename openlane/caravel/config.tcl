@@ -57,7 +57,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	"
 
 set ::env(EXTRA_LEFS) "\
-	$::env(DESIGN_DIR)/caravel_power_routing-shifted.lef \
+	$lef_root/caravel_power_routing.lef \
 	$lef_root/chip_io.lef \
 	$lef_root/user_project_wrapper.lef \
 	$lef_root/mgmt_protect.lef \
@@ -76,7 +76,7 @@ set ::env(EXTRA_LEFS) "\
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$::env(DESIGN_DIR)/caravel_power_routing-shifted.gds \
+    $gds_root/caravel_power_routing.gds \
     $gds_root/buff_flash_clkrst.gds \
     $gds_root/gpio_signal_buffering.gds \
 	$gds_root/chip_io.gds \
@@ -164,6 +164,6 @@ set ::env(GLB_RT_ADJUSTMENT) "0"
 set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
 set ::env(GLB_RT_L2_ADJUSTMENT) "0.2"
 set ::env(GLB_RT_L3_ADJUSTMENT) "0.45"
-set ::env(GLB_RT_L4_ADJUSTMENT) "0.45"
+set ::env(GLB_RT_L4_ADJUSTMENT) "0.2"
 set ::env(GLB_RT_L5_ADJUSTMENT) "0.45"
 set ::env(GLB_RT_L6_ADJUSTMENT) "0"
