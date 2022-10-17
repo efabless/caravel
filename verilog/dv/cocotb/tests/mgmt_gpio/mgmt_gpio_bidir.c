@@ -16,6 +16,7 @@
  */
 
 #include <defs.h>
+#include <stub.c>
 
 // --------------------------------------------------------
 
@@ -55,6 +56,7 @@ void main()
 		reg_gpio_out = 0;
 	}
     reg_debug_2 = 0xFF; //finish test
+    print("adding a very very long delay because cpu produces X's when code finish and this break the simulation");
 
 
 }
