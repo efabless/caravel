@@ -1987,7 +1987,7 @@ module gpio_signal_buffering(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf, mg
     .VGND(vssd),
     .VNB(vssd),
     .VPB(vccd),
-    .VPWR(vccd),
+    .VPWR(vccd)
   );
 
   /* End of hand-editing */
