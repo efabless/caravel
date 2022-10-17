@@ -30,43 +30,23 @@ void main()
 
     reg_mprj_io_6 = GPIO_MODE_MGMT_STD_OUTPUT;
     reg_mprj_io_5 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
+    reg_mprj_io_0 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
 
-    // Set clock to 64 kbaud and enable the UART.  It is important to do this
-    // before applying the configuration, or else the Tx line initializes as
-    // zero, which indicates the start of a byte to the receiver.
+    (*(volatile uint32_t*) CSR_DEBUG_MODE_OUT_ADDR ) = 1; // enable debug mode
 
 
     // Now, apply the configuration
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
+
     // reg_uart_enable = 1;
     // start of the test
     reg_debug_1 = 0xAA;
+
     // very long wait
-    for (j = 0; j < 160; j++);
-    for (j = 0; j < 160; j++);
-    for (j = 0; j < 160; j++);
+    for (j = 0; j < 1600; j++);
+    for (j = 0; j < 1600; j++);
+    for (j = 0; j < 1600; j++);
 
 
-    // Set clock to 64 kbaud and enable the UART.  It is important to do this
-    // before applying the configuration, or else the Tx line initializes as
-    // zero, which indicates the start of a byte to the receiver.
-
-//     // these instruction work without using interrupt, they seem to be timing dependent
-//    reg_uart_enable = 1;
-//    reg_debug_irq_en = 1;
-//    reg_reset = 1;
-
-
-//     irq_setmask(0);
-// 	irq_setie(1);
-// 	irq_setmask(irq_getmask() | (1 << USER_IRQ_3_INTERRUPT));
-
-//     for (j = 0; j < 500; j++);
-
-// //    reg_uart_data = 0xab;
-
-//     // Allow transmission to complete before signalling that the program
-//     // has ended.
-//     for (j = 0; j < 160; j++);
 }
