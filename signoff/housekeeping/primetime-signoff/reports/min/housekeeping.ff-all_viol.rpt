@@ -1,0 +1,41 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : housekeeping
+Version: T-2022.03-SP3
+Date   : Sun Oct 16 19:45:32 2022
+****************************************
+
+
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   output251/X                0.1740         0.2140        -0.0401  (VIOLATED)
+   output250/X                0.1740         0.2123        -0.0383  (VIOLATED)
+   output219/X                0.1740         0.2120        -0.0381  (VIOLATED)
+   output218/X                0.1740         0.2110        -0.0370  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   pad_flash_clk              0.7500         1.8557        -1.1057  (VIOLATED)
+   output251/X                0.7500         1.8556        -1.1056  (VIOLATED)
+   output250/X                0.7500         1.8445        -1.0945  (VIOLATED)
+   mgmt_gpio_out[9]           0.7500         1.8421        -1.0921  (VIOLATED)
+   output219/X                0.7500         1.8419        -1.0919  (VIOLATED)
+   mgmt_gpio_out[15]          0.7500         1.8398        -1.0898  (VIOLATED)
+   mgmt_gpio_out[14]          0.7500         1.8129        -1.0629  (VIOLATED)
+   output218/X                0.7500         1.8129        -1.0629  (VIOLATED)
+
+
+1

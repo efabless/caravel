@@ -1,0 +1,47 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : housekeeping
+Version: T-2022.03-SP3
+Date   : Sun Oct 16 19:44:49 2022
+****************************************
+
+
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   output251/X                0.1740         0.2145        -0.0405  (VIOLATED)
+   output250/X                0.1740         0.2125        -0.0385  (VIOLATED)
+   output219/X                0.1740         0.2122        -0.0383  (VIOLATED)
+   output218/X                0.1740         0.2111        -0.0371  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   pad_flash_clk              0.7500         1.8635        -1.1135  (VIOLATED)
+   output251/X                0.7500         1.8633        -1.1133  (VIOLATED)
+   output250/X                0.7500         1.8529        -1.1029  (VIOLATED)
+   output219/X                0.7500         1.8501        -1.1001  (VIOLATED)
+   mgmt_gpio_out[9]           0.7500         1.8475        -1.0975  (VIOLATED)
+   mgmt_gpio_out[15]          0.7500         1.8449        -1.0949  (VIOLATED)
+   output218/X                0.7500         1.8330        -1.0830  (VIOLATED)
+   mgmt_gpio_out[14]          0.7500         1.8290        -1.0790  (VIOLATED)
+   fanout469/A                0.7500         0.7754        -0.0254  (VIOLATED)
+   _5440_/A0                  0.7500         0.7753        -0.0253  (VIOLATED)
+   ANTENNA_189/DIODE          0.7500         0.7752        -0.0252  (VIOLATED)
+   fanout471/A                0.7500         0.7752        -0.0252  (VIOLATED)
+   _5287_/A0                  0.7500         0.7737        -0.0237  (VIOLATED)
+   hold565/X                  0.7500         0.7736        -0.0236  (VIOLATED)
+
+
+1

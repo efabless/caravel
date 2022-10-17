@@ -1,0 +1,10 @@
+
+set_propagated_clock [get_clocks core/core_clk];
+
+
+set_timing_derate 1.0 -cell_check -early [get_cells core]
+set_timing_derate 1.0 -cell_check -late [get_cells core]
+set_timing_derate 1.0 -cell_delay -early [get_cells core] 
+set_timing_derate 1.0 -cell_delay -late [get_cells core] 
+set_timing_derate 0.0 -increment -cell_delay -early [get_cells core]
+set_timing_derate 0.0 -increment -cell_delay -late [get_cells core]

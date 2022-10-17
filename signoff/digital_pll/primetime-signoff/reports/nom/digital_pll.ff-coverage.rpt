@@ -1,0 +1,101 @@
+****************************************
+Report : analysis_coverage
+	-status_details {untested}
+	-sort_by slack
+Design : digital_pll
+Version: T-2022.03-SP3
+Date   : Sun Oct 16 19:37:51 2022
+****************************************
+
+Type of Check         Total              Met         Violated         Untested
+--------------------------------------------------------------------------------
+setup                    23        22 ( 96%)         0 (  0%)         1 (  4%)
+hold                     23        22 ( 96%)         0 (  0%)         1 (  4%)
+recovery                 23         0 (  0%)         0 (  0%)        23 (100%)
+removal                  23         0 (  0%)         0 (  0%)        23 (100%)
+min_pulse_width          69        46 ( 67%)         0 (  0%)        23 ( 33%)
+out_setup                 2         0 (  0%)         0 (  0%)         2 (100%)
+out_hold                  2         0 (  0%)         0 (  0%)         2 (100%)
+--------------------------------------------------------------------------------
+All Checks              165        90 ( 55%)         0 (  0%)        75 ( 45%)
+
+
+Constrained                  Related             Check
+Pin                          Pin       Clock     Type         Slack  Reason
+--------------------------------------------------------------------------------
+_380_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_380_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_380_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_381_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_381_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_381_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_396_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_396_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_396_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_397_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_397_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_397_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_398_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_398_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_398_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_399_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_399_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_399_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_379_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_379_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_379_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_401_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_401_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_401_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_394_/D                      CLK(rise) pll_control_clock hold untested no_startpoint_clock
+_394_/D                      CLK(rise) pll_control_clock setup untested no_startpoint_clock
+_394_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_394_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_394_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_400_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_400_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_400_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_395_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_395_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_395_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_386_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_386_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_386_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_385_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_385_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_385_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_382_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_382_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_382_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_384_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_384_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_384_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_383_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_383_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_383_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_389_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_389_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_389_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_388_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_388_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_388_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_391_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_391_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_391_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_387_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_387_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_387_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_392_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_392_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_392_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_393_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_393_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_393_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+_390_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_390_/RESET_B(rise)          CLK(rise) pll_control_clock recovery untested no_startpoint_clock
+_390_/RESET_B(rise)          CLK(rise) pll_control_clock removal untested no_startpoint_clock
+clockp[0]                    -         -         out_hold  untested  no_endpoint_clock
+clockp[0]                    -         -         out_setup untested  no_endpoint_clock
+clockp[1]                    -         -         out_hold  untested  no_endpoint_clock
+clockp[1]                    -         -         out_setup untested  no_endpoint_clock
+1

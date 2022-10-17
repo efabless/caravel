@@ -1,0 +1,91 @@
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-nets
+	-nworst 10
+	-slack_lesser_than 10.0000
+	-max_paths 10000
+	-transition_time
+	-capacitance
+	-sort_by slack
+	-include_hierarchical_pins
+Design : housekeeping
+Version: T-2022.03-SP3
+Date   : Sun Oct 16 19:45:12 2022
+****************************************
+
+
+  Startpoint: wb_clk_i (clock source 'wb_clk_i')
+  Endpoint: mgmt_gpio_out[14]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                              Fanout    Cap      Trans       Incr       Path
+  ----------------------------------------------------------------------------------------------------
+  clock wb_clk_i (fall edge)                                                     12.5000    12.5000
+  clock source latency                                                            0.0000    12.5000
+  wb_clk_i (in)                                                        0.0000     0.0000 &  12.5000 f
+  wb_clk_i (net)                                        1   0.0742 
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                     0.0392     0.1173 &  12.6173 f
+  clknet_0_wb_clk_i (net)                               2   0.0406 
+  clkbuf_1_1_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_8)                  0.0232     0.0957 &  12.7130 f
+  clknet_1_1_0_wb_clk_i (net)                           1   0.0100 
+  clkbuf_1_1_1_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_8)                  0.0436     0.1049 &  12.8179 f
+  clknet_1_1_1_wb_clk_i (net)                           2   0.0365 
+  clkbuf_2_3_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_8)                  0.0286     0.1042 &  12.9221 f
+  clknet_2_3_0_wb_clk_i (net)                           2   0.0181 
+  clkbuf_3_6_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_8)                  0.1037     0.1521 &  13.0741 f
+  clknet_3_6_0_wb_clk_i (net)                          16   0.1242 
+  _3937_/X (sky130_fd_sc_hd__mux2_1)                                   0.0978     0.2540 &  13.3281 f
+  net218 (net)                                          1   0.0201 
+  output218/X (sky130_fd_sc_hd__clkbuf_1)                              0.8090     0.6795 &  14.0076 f
+  mgmt_gpio_out[14] (net)                               1   0.2112 
+  mgmt_gpio_out[14] (out)                                              0.8094     0.0103 &  14.0179 f
+  data arrival time                                                                         14.0179
+
+  clock wb_clk_i (rise edge)                                                     25.0000    25.0000
+  clock reconvergence pessimism                                                   0.0000    25.0000
+  clock uncertainty                                                              -0.1000    24.9000
+  output external delay                                                          -4.0000    20.9000
+  data required time                                                                        20.9000
+  ----------------------------------------------------------------------------------------------------
+  data required time                                                                        20.9000
+  data arrival time                                                                        -14.0179
+  ----------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                6.8821
+
+
+  Startpoint: user_clock (clock source 'user_clock')
+  Endpoint: mgmt_gpio_out[15]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                  Fanout    Cap      Trans       Incr       Path
+  ----------------------------------------------------------------------------------------
+  clock user_clock (fall edge)                                       12.5000    12.5000
+  clock source latency                                                0.0000    12.5000
+  user_clock (in)                                          0.0000     0.0000 &  12.5000 f
+  user_clock (net)                         14   0.1633 
+  _3936_/X (sky130_fd_sc_hd__mux2_1)                       0.0394     0.2387 &  12.7387 f
+  net219 (net)                              1   0.0029 
+  output219/X (sky130_fd_sc_hd__clkbuf_1)                  0.8117     0.6624 &  13.4011 f
+  mgmt_gpio_out[15] (net)                   1   0.2125 
+  mgmt_gpio_out[15] (out)                                  0.8121     0.0115 &  13.4127 f
+  data arrival time                                                             13.4127
+
+  clock wb_clk_i (rise edge)                                         25.0000    25.0000
+  clock reconvergence pessimism                                       0.0000    25.0000
+  clock uncertainty                                                  -0.1000    24.9000
+  output external delay                                              -4.0000    20.9000
+  data required time                                                            20.9000
+  ----------------------------------------------------------------------------------------
+  data required time                                                            20.9000
+  data arrival time                                                            -13.4127
+  ----------------------------------------------------------------------------------------
+  slack (MET)                                                                    7.4873
+
+
+1

@@ -1,0 +1,29 @@
+****************************************
+Report : analysis_coverage
+	-status_details {untested}
+	-sort_by slack
+Design : mgmt_protect
+Version: T-2022.03-SP3
+Date   : Mon Oct 17 01:44:02 2022
+****************************************
+
+Type of Check         Total              Met         Violated         Untested
+--------------------------------------------------------------------------------
+out_setup               498       494 ( 99%)         0 (  0%)         4 (  1%)
+out_hold                498       494 ( 99%)         0 (  0%)         4 (  1%)
+--------------------------------------------------------------------------------
+All Checks              996       988 ( 99%)         0 (  0%)         8 (  1%)
+
+
+Constrained                  Related             Check
+Pin                          Pin       Clock     Type         Slack  Reason
+--------------------------------------------------------------------------------
+user1_vdd_powergood          -         v_clk     out_hold  untested  no_paths
+user1_vdd_powergood          -         v_clk     out_setup untested  no_paths
+user2_vdd_powergood          -         v_clk     out_hold  untested  no_paths
+user2_vdd_powergood          -         v_clk     out_setup untested  no_paths
+user1_vcc_powergood          -         v_clk     out_hold  untested  no_paths
+user1_vcc_powergood          -         v_clk     out_setup untested  no_paths
+user2_vcc_powergood          -         v_clk     out_hold  untested  no_paths
+user2_vcc_powergood          -         v_clk     out_setup untested  no_paths
+1
