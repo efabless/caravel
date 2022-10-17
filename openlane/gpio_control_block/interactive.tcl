@@ -107,7 +107,7 @@ run_antenna_check
 run_lef_cvc
 calc_total_runtime
 save_final_views
-save_final_views -save_path .. -tag $::env(RUN_OPENLANE_RUN_TAG)
+save_final_views -save_path .. -tag $::env(OPENLANE_RUN_TAG)
 save_state
 generate_final_summary_report
 check_timing_violations
