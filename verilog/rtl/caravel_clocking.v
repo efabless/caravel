@@ -1,5 +1,5 @@
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
-//
+// :))))
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -62,7 +62,7 @@ module caravel_clocking(
     end
 
     // Apply PLL clock divider
-
+    /*
     clock_div #(
 	.SIZE(3)
     ) divider (
@@ -71,9 +71,9 @@ module caravel_clocking(
 	.N(sel),
 	.resetb(resetb)
     ); 
-
+    */
     // Secondary PLL clock divider for user space access
-
+    /*
     clock_div #(
 	.SIZE(3)
     ) divider2 (
@@ -82,13 +82,16 @@ module caravel_clocking(
 	.N(sel2),
 	.resetb(resetb)
     ); 
-
+    */
 
     // Multiplex the clock output
 
     assign core_ext_clk = (use_pll_first) ? ext_clk_syncd : ext_clk;
-    assign core_clk = (use_pll_second) ? pll_clk_divided : core_ext_clk;
-    assign user_clk = (use_pll_second) ? pll_clk90_divided : core_ext_clk;
+    //assign core_clk = (use_pll_second) ? pll_clk_divided : core_ext_clk;
+    //assign user_clk = (use_pll_second) ? pll_clk90_divided : core_ext_clk;
+    assign core_clk = ext_clk;
+    assign user_clk = ext_clk;
+
 
     // Reset assignment.  "reset" comes from POR, while "ext_reset"
     // comes from standalone SPI (and is normally zero unless

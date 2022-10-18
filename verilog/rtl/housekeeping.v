@@ -222,6 +222,17 @@ module housekeeping #(
      */
     reg [23:0] mgmt_gpio_data_buf;
 
+    reg serial_busy;
+    wire spi_is_enabled;
+    wire spi_is_active;
+    wire spi_is_busy;
+
+
+    wire [11:0] mfgr_id;
+    wire [7:0]  prod_id;
+    wire [31:0] mask_rev;
+
+
     wire usr1_vcc_pwrgood;
     wire usr2_vcc_pwrgood;
     wire usr1_vdd_pwrgood;
@@ -771,9 +782,9 @@ module housekeeping #(
     // indicating that the SPI will read or write a byte on the next SCK
     // transition.
 
-    wire spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
-    wire spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
-    wire spi_is_busy = spi_is_active && (rdstb || wrstb);
+    assign spi_is_enabled = (~gpio_configure[3][INP_DIS]) & (~hkspi_disable);
+    assign spi_is_active = spi_is_enabled && (mgmt_gpio_in[3] == 1'b0);
+    assign spi_is_busy = spi_is_active && (rdstb || wrstb);
 
     // GPIO data handling to and from the management SoC
 
@@ -869,12 +880,11 @@ module housekeeping #(
     reg serial_clock_pre;
     reg serial_resetn_pre;
     reg serial_load_pre;
-    reg serial_busy;
-    wire serial_data_1;
-    wire serial_data_2;
-    wire serial_clock;
-    wire serial_resetn;
-    wire serial_load;
+    //wire serial_data_1;
+    //wire serial_data_2;
+    //wire serial_clock;
+    //wire serial_resetn;
+    //wire serial_load;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_1;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_2;
 
@@ -979,10 +989,6 @@ module housekeeping #(
     end
 
     // SPI Identification
-
-    wire [11:0] mfgr_id;
-    wire [7:0]  prod_id;
-    wire [31:0] mask_rev;
 
     assign mfgr_id = 12'h456;		// Hard-coded
     assign prod_id = 8'h11;		// Hard-coded
