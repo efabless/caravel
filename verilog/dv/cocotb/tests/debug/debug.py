@@ -19,7 +19,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def debug(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=375862)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=33840)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -82,7 +82,7 @@ async def uart_get_char(caravelEnv):
 async def wb_write(caravelEnv,addr,data):
     addr_bits = bin(addr)[2:].zfill(32)[::-1]
     data_bits = bin(data)[2:].zfill(32)[::-1]
-    cocotb.log.info(f"[TEST] address bits = {addr_bits} {type(addr_bits)}")
+    cocotb.log.debug(f"[TEST] address bits = {addr_bits} {type(addr_bits)}")
     await uart_send_char(caravelEnv, '10000000') # write cmd
     await uart_send_char(caravelEnv, '10000000') # size
     await uart_send_char(caravelEnv, addr_bits[24:32]) 
