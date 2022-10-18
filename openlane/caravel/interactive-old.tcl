@@ -88,7 +88,7 @@ add_macro_placement spare_logic\\\[2\\\] 3204.37 1102.96 N
 #add_macro_placement spare_logic\\\[3\\\] 2943.16 1162.64 N
 add_macro_placement spare_logic\\\[3\\\] 2893.16 1162.64 N
 
-add_macro_placement clock_ctrl 3133.820 316.420 N
+add_macro_placement clock_ctrl 3133.820 276.420 N
 #add_macro_placement clocking 1028.730 27.440 N
 # west
 set west_x 38.155
