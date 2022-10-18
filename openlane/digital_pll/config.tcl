@@ -31,17 +31,17 @@ set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc
 set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list
 
 ## Floorplan
-set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/digital_pll.def
+set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 75 75"
+set ::env(DIE_AREA) "0 0 100 75"
 
 set ::env(TOP_MARGIN_MULT) 2
 set ::env(BOTTOM_MARGIN_MULT) 2
 
 set ::env(DIODE_PADDING) 0
-set ::env(DPL_CELL_PADDING) 0
-set ::env(DRT_CELL_PADDING)  0
+set ::env(DPL_CELL_PADDING) 2
+set ::env(DRT_CELL_PADDING) 4
 
 ## PDN 
 set ::env(FP_PDN_VPITCH) 40
@@ -53,7 +53,7 @@ set ::env(FP_PDN_VSPACING) 18.4
 ## Placement
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(PL_TARGET_DENSITY) 0.96
+set ::env(PL_TARGET_DENSITY) 0.68
 
 ## Routing 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
