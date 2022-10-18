@@ -22,8 +22,7 @@ exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/caravel_c
 
 run_synthesis
 init_floorplan
-place_io
-apply_def_template
+place_io_ol
 tap_decap_or
 run_power_grid_generation
 global_placement_or
