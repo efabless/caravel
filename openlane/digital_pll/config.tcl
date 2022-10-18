@@ -22,11 +22,13 @@ set ::env(CLOCK_TREE_SYNTH) 0
 
 # Synthesis
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
-set ::env(SYNTH_MAX_FANOUT) 6
-set ::env(SYNTH_BUFFERING) 0
+set ::env(SYNTH_MAX_FANOUT) 7
+set ::env(SYNTH_BUFFERING) 1
 set ::env(SYNTH_SIZING) 0
 
 set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc 
+
+set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list
 
 ## Floorplan
 set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/digital_pll.def
@@ -51,7 +53,7 @@ set ::env(FP_PDN_VSPACING) 18.4
 ## Placement
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(PL_TARGET_DENSITY) 0.9
+set ::env(PL_TARGET_DENSITY) 0.94
 
 ## Routing 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0

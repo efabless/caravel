@@ -303,8 +303,8 @@ module caravel (
 
 		gpio_signal_buffering sigbuf (
 		`ifdef USE_POWER_PINS
-			.vccd(vccd),
-			.vssd(vssd),
+			.vccd(vccd_core),
+			.vssd(vssd_core),
 		`endif
 		.mgmt_io_in_unbuf(mgmt_io_in[37:7]),
 		.mgmt_io_out_unbuf(mgmt_io_out_hk[37:7]),
@@ -361,7 +361,7 @@ module caravel (
 	.flash_io0(flash_io0),
 	.flash_io1(flash_io1),
 	// SoC Core Interface
-	.porb_h(porb_h_buf),
+	.porb_h(porb_h),
 	.por(por_l_buf),
 	.resetb_core_h(rstb_h),
 	.clock_core(clock_core),
@@ -472,6 +472,10 @@ module caravel (
     wire 	clk_passthru;
     wire 	resetn_passthru;
 
+	// NC passthru signal porb_h 
+	wire porb_h_in_nc;
+	wire porb_h_out_nc;
+
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
@@ -489,8 +493,8 @@ module caravel (
 	.serial_data_2_out(mprj_io_loader_data_2_buf),
 	.rstb_l_in(rstb_l),
 	.rstb_l_out(rstb_l_buf),
-	.porb_h_in(porb_h),
-	.porb_h_out(porb_h_buf),
+	.porb_h_in(porb_h_in_nc),
+	.porb_h_out(porb_h_out_nc),
 	.por_l_in(por_l),
 	.por_l_out(por_l_buf),
 
@@ -1618,6 +1622,11 @@ module caravel (
 
     `ifdef TOP_ROUTING
     caravel_power_routing caravel_power_routing();
+    copyright_block copyright_block();
+    caravel_logo caravel_logo();
+    caravel_motto caravel_motto();
+    open_source open_source();
+    user_id_textblock user_id_textblock();
     `endif
 
 endmodule
