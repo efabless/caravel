@@ -11,9 +11,8 @@ magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc << E
 drc off
 gds read ./gds/caravel_power_routing.gds
 load caravel_power_routing
-select top cell
 property FIXED_BBOX "0 0 717600 1037600"
-save ./mag/caravel_power_routing.mag
 lef write ./lef/caravel_power_routing.lef
+save ./mag/caravel_power_routing.mag
 EOF
 exit 0
