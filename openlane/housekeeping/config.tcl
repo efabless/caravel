@@ -51,8 +51,9 @@ set ::env(FP_PIN_ORDER_CFG) [glob $::env(DESIGN_DIR)/pin_order.cfg]
 set ::env(FP_IO_MIN_DISTANCE) 2
 
 set ::env(CELL_PAD) 0
-set ::env(FP_PDN_HPITCH) 153.18
-set ::env(FP_PDN_HSPACING) 74.99
+set ::env(FP_PDN_HPITCH) 78.2
+set ::env(FP_PDN_VPITCH) 76.8
+set ::env(FP_PDN_HSPACING) 37.5
 set ::env(FP_PDN_HOFFSET) 16.41
 
 ## Placement
