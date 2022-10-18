@@ -139,8 +139,9 @@ class RunTest:
         Path(f'{self.sim_path}/{self.passed}').touch()
         #delete wave when passed
         if self.passed == "passed" and zip_waves:
-            test_location = f'{self.cocotb_path}/{self.sim_path}'
-            os.system(f'zip -m  {test_location}/waves_logs.zip  {test_location}/*.log {test_location}/*.vpd {test_location}/*.vcd')
+            os.chdir(f'{self.cocotb_path}/{self.sim_path}')
+            os.system(f'zip -m waves_logs.zip analysis.log test.log *.vpd *.vcd')
+            self.cd_cocotb()
         if os.path.exists(f"{self.cocotb_path}/sdfAnnotateInfo"):
             shutil.move(f"{self.cocotb_path}/sdfAnnotateInfo", f"{self.sim_path}/sdfAnnotateInfo")
         shutil.copyfile(f'{self.cocotb_path}/hex_files/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
