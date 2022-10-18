@@ -16,7 +16,7 @@ import shutil
 iverilog = True
 vcs = False
 coverage = False
-remove_waves = True
+zip_waves = True
 
 def go_up(path, n):
     for i in range(n):
@@ -138,10 +138,10 @@ class RunTest:
         self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         #delete wave when passed
-        if self.passed == "passed" and remove_waves:
-             os.system(f'rm {self.cocotb_path}/{self.sim_path}*.vpd')
-             os.system(f'rm {self.cocotb_path}/{self.sim_path}*.vcd')
-        os.system("rm AN.DB/ cm.log results.xml ucli.key  -rf")
+        if self.passed == "passed" and zip_waves:
+            os.chdir(f'{self.cocotb_path}/{self.sim_path}')
+            os.system(f'zip -m waves_logs.zip analysis.log test.log *.vpd *.vcd')
+            self.cd_cocotb()
         if os.path.exists(f"{self.cocotb_path}/sdfAnnotateInfo"):
             shutil.move(f"{self.cocotb_path}/sdfAnnotateInfo", f"{self.sim_path}/sdfAnnotateInfo")
         shutil.copyfile(f'{self.cocotb_path}/hex_files/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
@@ -411,7 +411,7 @@ parser.add_argument('-maxerr', help='max number of errors for every test before 
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
 parser.add_argument('-cov',action='store_true', help='enable code coverage')
 parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
-parser.add_argument('-keep_pass_wave',action='store_true', help='Normally the waves of passed tests would be removed using this option will not remove them ')
+parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the waves and logs of passed tests would be zipped. Using this option they wouldn\'t be zipped')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -422,8 +422,8 @@ if args.sim == None:
     args.sim= ["RTL"]
 if args.corner == None: 
     args.corner= ["nom-t"]
-if args.keep_pass_wave: 
-    remove_waves = False
+if args.keep_pass_unzip: 
+    zip_waves = False
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 
