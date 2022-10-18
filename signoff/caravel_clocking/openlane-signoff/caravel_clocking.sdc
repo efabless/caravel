@@ -1,6 +1,6 @@
 ###############################################################################
 # Created by write_sdc
-# Fri Oct 14 12:15:45 2022
+# Tue Oct 18 12:56:03 2022
 ###############################################################################
 current_design caravel_clocking
 ###############################################################################
@@ -18,7 +18,7 @@ create_clock -name pll_clk90 -period 6.6667 [get_ports {pll_clk90}]
 set_clock_transition 0.1000 [get_clocks {pll_clk90}]
 set_clock_uncertainty 0.2000 pll_clk90
 set_propagated_clock [get_clocks {pll_clk90}]
-create_generated_clock -name core_clk -source [get_pins {_210_/X}] -divide_by 1 [get_ports {core_clk}]
+create_generated_clock -name core_clk -source [get_pins {_206_/X}] -divide_by 1 [get_ports {core_clk}]
 set_clock_transition 0.1000 [get_clocks {core_clk}]
 set_clock_uncertainty 0.2000 core_clk
 set_propagated_clock [get_clocks {core_clk}]
