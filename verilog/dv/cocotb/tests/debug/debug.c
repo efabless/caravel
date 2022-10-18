@@ -32,14 +32,12 @@ void main()
     reg_mprj_io_5 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
     reg_mprj_io_0 = GPIO_MODE_MGMT_STD_INPUT_NOPULL;
 
-    (*(volatile uint32_t*) CSR_DEBUG_MODE_OUT_ADDR ) = 1; // enable debug mode
-
-
     // Now, apply the configuration
     reg_mprj_xfer = 1;
     while (reg_mprj_xfer == 1);
+    
+    (*(volatile uint32_t*) CSR_DEBUG_MODE_OUT_ADDR ) = 1; // enable debug mode
 
-    // reg_uart_enable = 1;
     // start of the test
     reg_debug_1 = 0xAA;
 
