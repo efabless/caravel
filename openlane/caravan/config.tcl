@@ -57,9 +57,19 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/spare_logic_block.v\
 	$verilog_root/rtl/user_id_programming.v \
 	$verilog_root/rtl/xres_buf.v \
+	$verilog_root/rtl/caravan_logo.v \
+	$verilog_root/rtl/caravan_motto.v \
+	$verilog_root/rtl/copyright_block_a.v \
+	$verilog_root/rtl/open_source.v \
+	$verilog_root/rtl/user_id_textblock.v \
 	"
 
 set ::env(EXTRA_LEFS) "\
+	$lef_root/caravan_logo-stub.lef \
+	$lef_root/caravan_motto-stub.lef \
+	$lef_root/copyright_block_a-stub.lef \
+	$lef_root/open_source-stub.lef \
+	$lef_root/user_id_textblock-stub.lef \
 	$lef_root/buff_flash_clkrst.lef\
 	$lef_root/caravan_power_routing.lef\
 	$lef_root/caravel_clocking.lef \
@@ -79,6 +89,11 @@ set ::env(EXTRA_LEFS) "\
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
+	$gds_root/caravan_logo.gds \
+	$gds_root/caravan_motto.gds \
+	$gds_root/copyright_block_a.gds \
+	$gds_root/open_source.gds \
+	$gds_root/user_id_textblock.gds \
 	$gds_root/caravel_clocking.gds \
 	$gds_root/chip_io_alt.gds \
 	$gds_root/digital_pll.gds \

@@ -51,8 +51,13 @@ set soc_x 260.170
 set soc_y 265.010
 
 add_macro_placement caravan_power_routing 0 0 N
+add_macro_placement user_id_textblock 481.36000 34.45000 N
+add_macro_placement copyright_block_a 747.91000 81.49000 N
+add_macro_placement open_source 1030.37000 11.68000 N
+add_macro_placement caravan_logo 1276.50000 30.16000 N
+add_macro_placement caravan_motto -272.80000 -0.26000 N
 add_macro_placement sigbuf 0 0 N
-#add_macro_placement flash_clkrst_buffers 2292 238 N
+add_macro_placement flash_clkrst_buffers 2292 238 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
 add_macro_placement housekeeping 2962.17 500.010 N

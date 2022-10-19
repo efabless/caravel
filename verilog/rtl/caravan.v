@@ -256,6 +256,71 @@ module caravan (
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
+	// Flash buffered signals
+    wire flash_clk_frame_buf;
+    wire flash_csb_frame_buf;
+    wire flash_clk_ieb_buf, flash_csb_ieb_buf;
+    wire flash_io0_oeb_buf, flash_io1_oeb_buf;
+    wire flash_io0_ieb_buf, flash_io1_ieb_buf;
+    wire flash_io0_do_buf,  flash_io1_do_buf;
+    wire flash_io0_di_buf,  flash_io1_di_buf;
+
+	// Clock and reset buffered signals
+	wire caravel_clk_buf;
+	wire caravel_rstn_buf;
+	wire clock_core_buf;
+
+	// SoC pass through buffered signals
+	wire mprj_io_loader_clock_buf;
+	wire mprj_io_loader_strobe_buf;
+	wire mprj_io_loader_resetn_buf;
+	wire mprj_io_loader_data_2_buf;
+	wire rstb_l_buf;
+	wire por_l_buf;
+	wire porb_h_buf;
+
+	// top-level buffers
+	buff_flash_clkrst flash_clkrst_buffers (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd_core),
+	    .VGND(vssd_core),
+	`endif
+	.in_n({
+		caravel_clk,
+		caravel_rstn,
+		flash_clk_frame, 
+		flash_csb_frame, 
+		flash_clk_oeb, 
+		flash_csb_oeb, 
+		flash_io0_oeb, 
+		flash_io1_oeb,
+		flash_io0_ieb, 
+		flash_io1_ieb,
+		flash_io0_do,  
+		flash_io1_do }), 
+	.in_s({
+		clock_core,
+		flash_io1_di, 
+		flash_io0_di }),
+	.out_s({ 
+		caravel_clk_buf,
+		caravel_rstn_buf,
+		flash_clk_frame_buf, 
+		flash_csb_frame_buf, 
+		flash_clk_oeb_buf, 
+		flash_csb_oeb_buf, 
+		flash_io0_oeb_buf, 
+		flash_io1_oeb_buf,
+		flash_io0_ieb_buf, 
+		flash_io1_ieb_buf,
+		flash_io0_do_buf,  
+		flash_io1_do_buf }), 
+	.out_n({
+		clock_core_buf,
+		flash_io1_di_buf, 
+		flash_io0_di_buf })
+	);
+
 `ifdef NO_TOP_LEVEL_BUFFERING
     assign mgmt_io_in_hk = mgmt_io_in;
     assign mgmt_io_out = mgmt_io_out_hk;
@@ -308,23 +373,23 @@ module caravan (
 		.vccd2_pad	(vccd2),		// User area 2 1.8V supply
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
-        .vddio	(vddio_core),
-        .vssio	(vssio_core),
-        .vdda	(vdda_core),
-        .vssa	(vssa_core),
-        .vccd	(vccd_core),
-        .vssd	(vssd_core),
-        .vdda1	(vdda1_core),
-        .vdda2	(vdda2_core),
-        .vssa1	(vssa1_core),
-        .vssa2	(vssa2_core),
-        .vccd1	(vccd1_core),
-        .vccd2	(vccd2_core),
-        .vssd1	(vssd1_core),
-        .vssd2	(vssd2_core),
 	`endif
 	
 	// Core Side Pins
+	.vddio	(vddio_core),
+	.vssio	(vssio_core),
+	.vdda	(vdda_core),
+	.vssa	(vssa_core),
+	.vccd	(vccd_core),
+	.vssd	(vssd_core),
+	.vdda1	(vdda1_core),
+	.vdda2	(vdda2_core),
+	.vssa1	(vssa1_core),
+	.vssa2	(vssa2_core),
+	.vccd1	(vccd1_core),
+	.vccd2	(vccd2_core),
+	.vssd1	(vssd1_core),
+	.vssd2	(vssd2_core),
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -335,7 +400,7 @@ module caravan (
 	.flash_io1(flash_io1),
 	// SoC Core Interface
 	.porb_h(porb_h),
-	.por(por_l),
+	.por(por_l_buf),
 	.resetb_core_h(rstb_h),
 	.clock_core(clock_core),
 	.gpio_out_core(gpio_out_core),
@@ -344,16 +409,16 @@ module caravan (
 	.gpio_mode1_core(gpio_mode1_core),
 	.gpio_outenb_core(gpio_outenb_core),
 	.gpio_inenb_core(gpio_inenb_core),
-	.flash_csb_core(flash_csb_frame),
-	.flash_clk_core(flash_clk_frame),
-	.flash_csb_oeb_core(flash_csb_oeb),
-	.flash_clk_oeb_core(flash_clk_oeb),
-	.flash_io0_oeb_core(flash_io0_oeb),
-	.flash_io1_oeb_core(flash_io1_oeb),
-	.flash_io0_ieb_core(flash_io0_ieb),
-	.flash_io1_ieb_core(flash_io1_ieb),
-	.flash_io0_do_core(flash_io0_do),
-	.flash_io1_do_core(flash_io1_do),
+	.flash_csb_core(flash_csb_frame_buf),
+	.flash_clk_core(flash_clk_frame_buf),
+	.flash_csb_oeb_core(flash_csb_oeb_buf),
+	.flash_clk_oeb_core(flash_clk_oeb_buf),
+	.flash_io0_oeb_core(flash_io0_oeb_buf),
+	.flash_io1_oeb_core(flash_io1_oeb_buf),
+	.flash_io0_ieb_core(flash_io0_ieb_buf),
+	.flash_io1_ieb_core(flash_io1_ieb_buf),
+	.flash_io0_do_core(flash_io0_do_buf),
+	.flash_io1_do_core(flash_io1_do_buf),
 	.flash_io0_di_core(flash_io0_di),
 	.flash_io1_di_core(flash_io1_di),
 	.mprj_io_one(mprj_io_one),
@@ -459,12 +524,12 @@ module caravan (
 	`endif
 
 	// Clocks and reset
-       	.core_clk(caravel_clk),
-       	.core_rstn(caravel_rstn),
+    .core_clk(caravel_clk_buf),
+	.core_rstn(caravel_rstn_buf),
 
     // Pass thru Clock and reset
-	.clk_in(caravel_clk),
-	.resetn_in(caravel_rstn),
+	.clk_in(caravel_clk_buf),
+	.resetn_in(caravel_rstn_buf),
 	.clk_out(clk_passthru),
 	.resetn_out(resetn_passthru),
 
@@ -677,7 +742,7 @@ module caravan (
 					 mprj_io_loader_data_1};
     // Note that serial_link_2 is backwards compared to serial_link_1, so it
     // shifts in the other direction.
-    assign gpio_serial_link_2_shifted = {mprj_io_loader_data_2,
+    assign gpio_serial_link_2_shifted = {mprj_io_loader_data_2_buf,
 					 gpio_serial_link_2[`MPRJ_IO_PADS_2
 					-`ANALOG_PADS_2-1:1]};
 
@@ -697,15 +762,15 @@ module caravan (
 
     assign gpio_clock_1_shifted = {gpio_clock_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
 				mprj_io_loader_clock};
-    assign gpio_clock_2_shifted = {mprj_io_loader_clock,
+    assign gpio_clock_2_shifted = {mprj_io_loader_clock_buf,
 				gpio_clock_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
     assign gpio_resetn_1_shifted = {gpio_resetn_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
 				mprj_io_loader_resetn};
-    assign gpio_resetn_2_shifted = {mprj_io_loader_resetn,
+    assign gpio_resetn_2_shifted = {mprj_io_loader_resetn_buf,
 				gpio_resetn_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
     assign gpio_load_1_shifted = {gpio_load_1[`MPRJ_IO_PADS_1-`ANALOG_PADS_1-2:0],
 				mprj_io_loader_strobe};
-    assign gpio_load_2_shifted = {mprj_io_loader_strobe,
+    assign gpio_load_2_shifted = {mprj_io_loader_strobe_buf,
 				gpio_load_2[`MPRJ_IO_PADS_2-`ANALOG_PADS_2-1:1]};
 
     wire [2:0] spi_pll_sel;
@@ -721,10 +786,10 @@ module caravan (
 	    .VGND(vssd_core),
 	`endif
 	.ext_clk_sel(ext_clk_sel),
-	.ext_clk(clock_core),
+	.ext_clk(clock_core_buf),
 	.pll_clk(pll_clk),
 	.pll_clk90(pll_clk90),
-	.resetb(rstb_l),
+	.resetb(rstb_l_buf),
 	.sel(spi_pll_sel),
 	.sel2(spi_pll90_sel),
 	.ext_reset(ext_reset),  // From housekeeping SPI
@@ -740,9 +805,9 @@ module caravan (
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
-	.resetb(rstb_l),
+	.resetb(rstb_l_buf),
 	.enable(spi_pll_ena),
-	.osc(clock_core),
+	.osc(clock_core_buf),
 	.clockp({pll_clk, pll_clk90}),
 	.div(spi_pll_div),
 	.dco(spi_pll_dco_ena),
@@ -843,8 +908,8 @@ module caravan (
 	.pad_flash_io1_ieb(flash_io1_ieb),
 	.pad_flash_io0_do(flash_io0_do),
 	.pad_flash_io1_do(flash_io1_do),
-	.pad_flash_io0_di(flash_io0_di),
-	.pad_flash_io1_di(flash_io1_di),
+	.pad_flash_io0_di(flash_io0_di_buf),
+	.pad_flash_io1_di(flash_io1_di_buf),
 
 `ifdef USE_SRAM_RO_INTERFACE
 	.sram_ro_clk(hkspi_sram_clk),
@@ -1484,6 +1549,11 @@ module caravan (
 
     `ifdef TOP_ROUTING
     caravan_power_routing caravan_power_routing();
+    caravan_motto caravan_motto();
+    caravan_logo caravan_logo();
+    copyright_block_a copyright_block_a();
+    user_id_textblock user_id_textblock();
+    open_source open_source();
     `endif
 
 endmodule
