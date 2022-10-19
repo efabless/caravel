@@ -251,13 +251,12 @@ module caravan (
     wire flash_clk_frame;
     wire flash_csb_frame;
     wire flash_clk_oeb, flash_csb_oeb;
-    wire flash_clk_ieb, flash_csb_ieb;
     wire flash_io0_oeb, flash_io1_oeb;
     wire flash_io0_ieb, flash_io1_ieb;
     wire flash_io0_do,  flash_io1_do;
     wire flash_io0_di,  flash_io1_di;
 
-`ifndef NO_TOP_LEVEL_BUFFERING
+`ifdef NO_TOP_LEVEL_BUFFERING
     assign mgmt_io_in_hk = mgmt_io_in;
     assign mgmt_io_out = mgmt_io_out_hk;
     assign mgmt_io_oeb = mgmt_io_oeb_hk;
@@ -267,7 +266,7 @@ module caravan (
     assign mgmt_io_out[6:0] = mgmt_io_out_hk[6:0];
     assign mgmt_io_oeb[34:0] = mgmt_io_oeb_hk[34:0];
 
-    /* The following are no-connects in caravan (no associated GPIO)
+    /* The following are no-connects in caravan (no associated GPIO) */
     assign mgmt_io_in_hk[24:14] = mgmt_io_in[24:14];
     assign mgmt_io_out[24:14] = mgmt_io_out_hk[24:14];
 
@@ -309,23 +308,23 @@ module caravan (
 		.vccd2_pad	(vccd2),		// User area 2 1.8V supply
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
+        .vddio	(vddio_core),
+        .vssio	(vssio_core),
+        .vdda	(vdda_core),
+        .vssa	(vssa_core),
+        .vccd	(vccd_core),
+        .vssd	(vssd_core),
+        .vdda1	(vdda1_core),
+        .vdda2	(vdda2_core),
+        .vssa1	(vssa1_core),
+        .vssa2	(vssa2_core),
+        .vccd1	(vccd1_core),
+        .vccd2	(vccd2_core),
+        .vssd1	(vssd1_core),
+        .vssd2	(vssd2_core),
 	`endif
 	
 	// Core Side Pins
-	.vddio	(vddio_core),
-	.vssio	(vssio_core),
-	.vdda	(vdda_core),
-	.vssa	(vssa_core),
-	.vccd	(vccd_core),
-	.vssd	(vssd_core),
-	.vdda1	(vdda1_core),
-	.vdda2	(vdda2_core),
-	.vssa1	(vssa1_core),
-	.vssa2	(vssa2_core),
-	.vccd1	(vccd1_core),
-	.vccd2	(vccd2_core),
-	.vssd1	(vssd1_core),
-	.vssd2	(vssd2_core),
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
@@ -351,8 +350,6 @@ module caravan (
 	.flash_clk_oeb_core(flash_clk_oeb),
 	.flash_io0_oeb_core(flash_io0_oeb),
 	.flash_io1_oeb_core(flash_io1_oeb),
-	.flash_csb_ieb_core(flash_csb_ieb),
-	.flash_clk_ieb_core(flash_clk_ieb),
 	.flash_io0_ieb_core(flash_io0_ieb),
 	.flash_io1_ieb_core(flash_io1_ieb),
 	.flash_io0_do_core(flash_io0_do),
@@ -1484,6 +1481,10 @@ module caravan (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
+
+    `ifdef TOP_ROUTING
+    caravan_power_routing caravan_power_routing();
+    `endif
 
 endmodule
 // `default_nettype wire

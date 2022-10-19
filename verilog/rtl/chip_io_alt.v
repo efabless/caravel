@@ -91,8 +91,6 @@ module chip_io_alt #(
 	input  flash_clk_oeb_core,
 	input  flash_io0_oeb_core,
 	input  flash_io1_oeb_core,
-	input  flash_csb_ieb_core,
-	input  flash_clk_ieb_core,
 	input  flash_io0_ieb_core,
 	input  flash_io1_ieb_core,
 	input  flash_io0_do_core,
@@ -372,7 +370,7 @@ module chip_io_alt #(
     	// free reset.
 
 	wire xresloop;
-	wire xres_zero_loop
+	wire xres_zero_loop;
 	sky130_fd_io__top_xres4v2 resetb_pad (
 		`MGMT_ABUTMENT_PINS
 		`ifndef	TOP_ROUTING
