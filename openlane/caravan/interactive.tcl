@@ -50,24 +50,26 @@ set mprj_y 1393.590
 set soc_x 260.170
 set soc_y 265.010
 
-add_macro_placement fake_caravan_power_routing 0 0 N
+add_macro_placement caravan_power_routing 0 0 N
+add_macro_placement sigbuf 0 0 N
+#add_macro_placement flash_clkrst_buffers 2292 238 N
 add_macro_placement padframe 0 0 N
 add_macro_placement soc $soc_x $soc_y N
-add_macro_placement housekeeping 3032.170 500.010 N
+add_macro_placement housekeeping 2962.17 500.010 N
 add_macro_placement mprj $mprj_x $mprj_y N
-add_macro_placement mgmt_buffers 960.900 1160.180 N
+add_macro_placement mgmt_buffers 640.900 1160.180 N
 # add_macro_placement mgmt_buffers 1060.850 1234.090 N
 add_macro_placement rstb_level 708.550 235.440 S
 add_macro_placement user_id_value 3283.120 440.630 N
 add_macro_placement por 3250.730 234.721 MX
 add_macro_placement pll 3140.730 404.721 N
 
-add_macro_placement clock_ctrl 3108.42000 318.04000 N
+add_macro_placement clock_ctrl 3133.820 276.420 N
 
 add_macro_placement spare_logic\\\[0\\\] 443.16 1162.64 N
-add_macro_placement spare_logic\\\[1\\\] 843.16 1162.64 N
+add_macro_placement spare_logic\\\[1\\\] 543.16 1162.64 N
 add_macro_placement spare_logic\\\[2\\\] 3204.37 1102.96 N
-add_macro_placement spare_logic\\\[3\\\] 2143.16 1162.64 N
+add_macro_placement spare_logic\\\[3\\\] 2893.16 1162.64 N
 
 
 # west
@@ -108,25 +110,25 @@ add_macro_placement "gpio_control_in_2\\\[2\\\]" $west_x 3595.000 R0
 add_macro_placement "gpio_defaults_block_26" [expr $west_x + 3.6815559] [expr 3811.000 + 65] R0
 add_macro_placement "gpio_control_in_2\\\[1\\\]" $west_x 3811.000 R0
 
-add_macro_placement "gpio_defaults_block_14" [expr $west_x + 3.6815559] [expr 4027.000 + 65] R0
+add_macro_placement "gpio_defaults_block_25" [expr $west_x + 3.6815559] [expr 4027.000 + 65] R0
 add_macro_placement "gpio_control_in_2\\\[0\\\]" $west_x 4027.000 R0
 
 # east
 set east_x 3381.015
 
-add_macro_placement "gpio_defaults_block_0\\\[0\\\]" [expr $east_x+136.320042674] [expr 605 + 65] FN
+add_macro_placement "gpio_defaults_block_0" [expr $east_x+136.320042674] [expr 605 + 65] FN
 add_macro_placement "gpio_control_bidir_1\\\[0\\\]" $east_x 605.000 MY
 
-add_macro_placement "gpio_defaults_block_0\\\[1\\\]" [expr $east_x+136.320042674] [expr 831 + 65] FN
+add_macro_placement "gpio_defaults_block_1" [expr $east_x+136.320042674] [expr 831 + 65] FN
 add_macro_placement "gpio_control_bidir_1\\\[1\\\]" $east_x 831.000 MY
 
-add_macro_placement "gpio_defaults_block_2\\\[0\\\]" [expr $east_x+136.320042674] [expr 1056 + 65] FN
+add_macro_placement "gpio_defaults_block_2" [expr $east_x+136.320042674] [expr 1056 + 65] FN
 add_macro_placement "gpio_control_in_1a\\\[0\\\]" $east_x 1056.000 MY
 
-add_macro_placement "gpio_defaults_block_2\\\[1\\\]" [expr $east_x+136.320042674] [expr 1282 + 65] FN
+add_macro_placement "gpio_defaults_block_3" [expr $east_x+136.320042674] [expr 1282 + 65] FN
 add_macro_placement "gpio_control_in_1a\\\[1\\\]" $east_x 1282.000 MY
 
-add_macro_placement "gpio_defaults_block_2\\\[2\\\]" [expr $east_x+136.320042674] [expr 1507 + 65] FN
+add_macro_placement "gpio_defaults_block_4" [expr $east_x+136.320042674] [expr 1507 + 65] FN
 add_macro_placement "gpio_control_in_1a\\\[2\\\]" $east_x 1507.000 MY
 
 add_macro_placement "gpio_defaults_block_5" [expr $east_x+136.320042674] [expr 1732 + 65] FN
@@ -194,19 +196,18 @@ set ::env(GLB_RT_OBS) "\
 	met5 $mgmt_area_obs,\
 	$wrapper_obs"
 
-try_catch python3 $::env(SCRIPTS_DIR)/add_def_obstructions.py \
+try_catch openroad -python $::env(SCRIPTS_DIR)/add_def_obstructions.py \
 	--input-def $::env(CURRENT_DEF) \
 	--lef $::env(MERGED_LEF) \
 	--obstructions $::env(GLB_RT_OBS) \
 	--output [file rootname $::env(CURRENT_DEF)].obs.def |& tee $::env(TERMINAL_OUTPUT) $::env(LOG_DIR)/obs.log
 
 set_def [file rootname $::env(CURRENT_DEF)].obs.def
+
 li1_hack_start
 global_routing
 detailed_routing
 li1_hack_end
-exec sed -i "/.*fake_caravan_power_routing.*/d" $::env(CURRENT_DEF)
-puts "\[INTERATCIVE\] removed fake_caravan_power_routing from $::env(CURRENT_DEF)"
 
 label_macro_pins\
 	-lef $::env(TMP_DIR)/lvs.lef\
@@ -220,15 +221,13 @@ label_macro_pins\
 
 run_magic
 
-run_magic_spice_export
+save_views\
+    -def_path $::env(tritonRoute_result_file_tag).def \
+    -gds_path $::env(magic_result_file_tag).gds \
+    -mag_path $::env(magic_result_file_tag).mag \
+    -verilog_path $::env(TMP_DIR)/lvs.v \
+    -save_path $save_path \
+    -tag caravan
 
-save_views       -lef_path $::env(magic_result_file_tag).lef \
-                 -def_path $::env(tritonRoute_result_file_tag).def \
-                 -gds_path $::env(magic_result_file_tag).gds \
-                 -mag_path $::env(magic_result_file_tag).mag \
-				 -verilog_path $::env(TMP_DIR)/lvs.v \
-				 -spice_path $::env(magic_result_file_tag).spice \
-                 -save_path $save_path \
-                 -tag $::env(RUN_TAG)
+exit
 
-run_lvs $::env(magic_result_file_tag).spice $::env(TMP_DIR)/lvs.v
