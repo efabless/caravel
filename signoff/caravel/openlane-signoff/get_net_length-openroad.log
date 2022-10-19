@@ -1,0 +1,37 @@
+[?1034hopenroad> read_lef /home/kareem_farid/caravel/openlane/caravel/runs/22_0_18_13_55/tmp/merged.lef
+[ERROR ORD-0001] /home/kareem_farid/caravel/openlane/caravel/runs/22_0_18_13_55/tmp/merged.lef does not exist.
+ORD-0001
+while evaluating {read_lef /home/kareem_farid/caravel/openlane/caravel/runs/22_0_18_13_55/tmp/merged.lef}
+openroad> read_def ./def/caravel.def
+[ERROR ORD-0005] No technology has been read.
+ORD-0005
+while evaluating {read_def ./def/caravel.def}
+openroad> variable odb_block [[[::ord::get_db] getChip] getBlock]
+invalid command name "NULL"
+while evaluating {variable odb_block [[[::ord::get_db] getChip] getBlock]}
+openroad> set odb_nets [odb::dbBlock_getNets $::odb_block]
+can't read "::odb_block": no such variable
+while evaluating {set odb_nets [odb::dbBlock_getNets $::odb_block]}
+openroad> set fp [open "./signoff/caravel/openlane-signoff/wire-length.txt" w]
+file5
+openroad> foreach net $odb_nets {
+...>     set net_name [odb::dbNet_getName $net]
+...>     set wire [odb::dbNet_getWire $net]
+...>     if {$wire != "NULL"} {
+...>         set wire_length [odb::dbWire_getLength $wire]
+...>         set wire_length [expr $wire_length / 1000.0]
+...>         puts $fp "$net_name $wire_length"
+...>     }
+...> }
+can't read "odb_nets": no such variable
+while evaluating {foreach net $odb_nets {
+    set net_name [odb::dbNet_getName $net]
+    set wire [odb::dbNet_getWire $net]
+    if {$wire != "NULL"} {
+        set wire_length [odb::dbWire_getLength $wire]
+        set wire_length [expr $wire_length / 1000.0]
+        puts $fp "$net_name $wire_length"
+    }
+}}
+openroad> close $fp
+openroad> 
