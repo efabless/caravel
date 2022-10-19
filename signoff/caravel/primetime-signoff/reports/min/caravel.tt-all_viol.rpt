@@ -1,0 +1,57 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravel
+Version: T-2022.03-SP3
+Date   : Tue Oct 18 15:43:50 2022
+****************************************
+
+
+
+
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   soc/_32090_/Q              0.1621         0.1803        -0.0182  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   padframe/mgmt_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   padframe/user1_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   padframe/user2_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   padframe/mgmt_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/mgmt_vdda_hvclamp_pad/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/mgmt_vssa_hvclamp_pad/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vdda_hvclamp_pad[0]/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vdda_hvclamp_pad[1]/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vssa_hvclamp_pad[0]/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vssa_hvclamp_pad[1]/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vdda_hvclamp_pad/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vssa_hvclamp_pad/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   soc/_25762_/A3             1.5000         1.7211        -0.2211  (VIOLATED)
+   soc/ANTENNA__25762__A3/DIODE   1.5000     1.7211        -0.2211  (VIOLATED)
+   soc/_25763_/A3             1.5000         1.7211        -0.2211  (VIOLATED)
+   soc/ANTENNA__25763__A3/DIODE   1.5000     1.7211        -0.2211  (VIOLATED)
+   soc/_27196_/B              1.5000         1.7211        -0.2211  (VIOLATED)
+   soc/ANTENNA__27196__B/DIODE   1.5000      1.7211        -0.2211  (VIOLATED)
+   soc/_32090_/Q              1.4980         1.7177        -0.2198  (VIOLATED)
+   soc/ANTENNA__27193__A/DIODE   1.5000      1.7177        -0.2177  (VIOLATED)
+   soc/ANTENNA__27194__D_N/DIODE   1.5000    1.7177        -0.2177  (VIOLATED)
+   soc/_27193_/A              1.5000         1.7177        -0.2177  (VIOLATED)
+   soc/_27194_/D_N            1.5000         1.7177        -0.2177  (VIOLATED)
+
+
+1

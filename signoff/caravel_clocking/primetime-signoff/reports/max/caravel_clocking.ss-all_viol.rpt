@@ -1,0 +1,79 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravel_clocking
+Version: T-2022.03-SP3
+Date   : Tue Oct 18 15:38:05 2022
+****************************************
+
+
+   max_delay/setup ('pll_clk' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _427_/D                                                 -1.9802  (VIOLATED)
+   _425_/D                                                 -1.9793  (VIOLATED)
+   _426_/D                                                 -1.5583  (VIOLATED)
+   _421_/D                                                 -0.5634  (VIOLATED)
+   _423_/D                                                 -0.5125  (VIOLATED)
+   _422_/D                                                 -0.1438  (VIOLATED)
+
+   max_delay/setup ('pll_clk90' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _452_/D                                                 -1.9989  (VIOLATED)
+   _450_/D                                                 -1.9909  (VIOLATED)
+   _451_/D                                                 -1.5672  (VIOLATED)
+   _448_/D                                                 -0.5589  (VIOLATED)
+   _446_/D                                                 -0.4255  (VIOLATED)
+   _447_/D                                                 -0.2108  (VIOLATED)
+   _449_/D                                                 -0.1782  (VIOLATED)
+
+
+   min_delay/hold ('clock_gating_default' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _308_/A1                                                -4.9160  (VIOLATED)
+   _304_/A1                                                -4.9097  (VIOLATED)
+   _304_/A3                                                -4.8188  (VIOLATED)
+   _308_/A3                                                -4.7671  (VIOLATED)
+   _301_/A_N                                               -4.1797  (VIOLATED)
+   _305_/A_N                                               -4.1499  (VIOLATED)
+
+
+
+   clock_gating_hold
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _308_/A1                                                -4.9160  (VIOLATED)
+   _304_/A1                                                -4.9097  (VIOLATED)
+   _304_/A3                                                -4.8188  (VIOLATED)
+   _308_/A3                                                -4.7671  (VIOLATED)
+   _301_/A_N                                               -4.1797  (VIOLATED)
+   _305_/A_N                                               -4.1499  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   _212_/S                    0.7500         0.9738        -0.2238  (VIOLATED)
+   _214_/S                    0.7500         0.9738        -0.2238  (VIOLATED)
+   _216_/S                    0.7500         0.9738        -0.2238  (VIOLATED)
+   _284_/A1                   0.7500         0.9738        -0.2238  (VIOLATED)
+   _285_/A1                   0.7500         0.9738        -0.2238  (VIOLATED)
+   _277_/Y                    0.7500         0.9738        -0.2238  (VIOLATED)
+   _229_/S                    0.7500         0.9533        -0.2033  (VIOLATED)
+   _231_/S                    0.7500         0.9533        -0.2033  (VIOLATED)
+   _233_/S                    0.7500         0.9533        -0.2033  (VIOLATED)
+   _269_/A1                   0.7500         0.9533        -0.2033  (VIOLATED)
+   _270_/A1                   0.7500         0.9533        -0.2033  (VIOLATED)
+   _262_/Y                    0.7500         0.9533        -0.2033  (VIOLATED)
+
+
+1
