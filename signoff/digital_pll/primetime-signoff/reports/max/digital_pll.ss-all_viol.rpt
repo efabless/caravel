@@ -1,0 +1,30 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : digital_pll
+Version: T-2022.03-SP3
+Date   : Tue Oct 18 15:35:42 2022
+****************************************
+
+
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   ringosc.iss.reseten0/Z     0.7500         1.8259        -1.0759  (VIOLATED)
+   ringosc.ibufp00/A          0.7500         1.8241        -1.0741  (VIOLATED)
+   ANTENNA_ringosc.ibufp00_A/DIODE   0.7500   1.8241       -1.0741  (VIOLATED)
+   ringosc.dstage[0].id.delaybuf0/A   0.7500   1.8237      -1.0737  (VIOLATED)
+   ANTENNA_ringosc.dstage[0].id.delaybuf0_A/DIODE   0.7500   1.8237  -1.0737 (VIOLATED)
+   ringosc.iss.delayen0/Z     0.7500         1.0418        -0.2918  (VIOLATED)
+   ringosc.dstage[11].id.delayen0/Z   0.7500   1.0416      -0.2916  (VIOLATED)
+   ringosc.iss.delayenb0/A    0.7500         1.0401        -0.2901  (VIOLATED)
+   ringosc.iss.delayenb1/A    0.7500         1.0398        -0.2898  (VIOLATED)
+   ringosc.iss.delaybuf0/A    0.7500         1.0396        -0.2896  (VIOLATED)
+
+
+1
