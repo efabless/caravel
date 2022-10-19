@@ -163,7 +163,7 @@ class RunTest:
 
     def hex_generate(self):
         tests_use_dff2 = ["mem_dff"]
-        tests_use_dff = ["mem_dff2"]
+        tests_use_dff = ["mem_dff2","debug"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()

@@ -35,7 +35,7 @@ async def debug(dut):
     # caravelEnv.drive_gpio_in((0,0),1) # IO[0] affects the uart selecting btw system and debug
     cocotb.log.info(f"[TEST] Start debug test")  
     # send random data to address 30'h00400024 and expect to recieve the same data back it back
-    dff_address = random.randint(0x00000400, 0x00000600)
+    dff_address = random.randint(0x00000400, 0x00000600) & 0xFFFFFFFC
     data = random.getrandbits(32)
     address = dff_address >>2 # address has to be shifted
     # data = 0xFFFFFFF0
