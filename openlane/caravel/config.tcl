@@ -177,7 +177,7 @@ set ::env(TECH_LEF) $::env(DESIGN_DIR)/sky130_fd_sc_hd.tlef
 
 set ::env(GLB_RT_ADJUSTMENT) "0"
 set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
-set ::env(GLB_RT_L2_ADJUSTMENT) "0.2"
+set ::env(GLB_RT_L2_ADJUSTMENT) "0.3"
 set ::env(GLB_RT_L3_ADJUSTMENT) "0.45"
 set ::env(GLB_RT_L4_ADJUSTMENT) "0.2"
 set ::env(GLB_RT_L5_ADJUSTMENT) "0.45"
