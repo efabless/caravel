@@ -12,7 +12,8 @@ import random
 from pathlib import Path
 import shutil
 from subprocess import PIPE, run
-
+import threading
+import time
 
 iverilog = True
 vcs = False
@@ -67,14 +68,21 @@ class RunTest:
         self.sim_path = f"sim/{os.getenv('RUNTAG')}/{test_dir}/"
         terminal_log=f"{self.sim_path}/fullTerminal.log"
         test_log=f"{self.sim_path}/{self.test_name}.log"
-        self.full_terminal = open(test_log, "w")
+        self.test_log=open(test_log, "w")
+        self.full_file=f"{self.sim_path}/full.log"
+        self.full_terminal = open(self.full_file, "w")
         
     def runTest(self):
+        self.full_test_name = f"{self.sim_type}-{self.test_name}"
+        if (self.sim_type=="GL_SDF"):
+            self.full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
+        os.environ["TESTFULLNAME"] = f"{self.full_test_name}"
         if (iverilog):return self.runTest_iverilog()
         elif(vcs): return self.runTest_vcs()
 
     # iverilog function
     def runTest_iverilog(self):
+        print(f"Start running test: {self.sim_type}-{self.test_name}")
         CARAVEL_ROOT = os.getenv('CARAVEL_ROOT')
         CARAVEL_VERILOG_PATH  = os.getenv('CARAVEL_VERILOG_PATH')
         MCW_ROOT = os.getenv('MCW_ROOT')
@@ -86,12 +94,39 @@ class RunTest:
         ERRORMAX = os.getenv('ERRORMAX')
         PDK_ROOT = os.getenv('PDK_ROOT')
         PDK = os.getenv('PDK')
-        env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK}"
-        print(f"Start running test: {self.sim_type}-{self.test_name}")
-        command = f"TestName={self.test_name} SIM={self.sim_type} make cocotb  >> {self.full_terminal.name} "
-        os.system(f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {command}'")
-        self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
+        TESTFULLNAME = os.getenv('TESTFULLNAME')
+        env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
+        macros = f'-DFUNCTIONAL -DSIM=\\\"{self.sim_type}\\\"  -DUSE_POWER_PINS -DUNIT_DELAY=#1 -DMAIN_PATH=\\\"{self.cocotb_path}\\\" -DIVERILOG -DTESTNAME=\\\"{self.test_name}\\\" -DTAG=\\\"{RUNTAG}\\\" '
+        if self.test_name == "la":
+            macros = f'{macros} -DLA_TESTING'
+        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
+            macros = f'{macros} -DGPIO_TESTING'
+        if(self.sim_type=="RTL"): 
+            includes = f"-f {VERILOG_PATH}/includes/includes.rtl.caravel"
+        elif(self.sim_type=="GL"): 
+            macros = f'{macros}  -DGL'
+            includes = f"-f {VERILOG_PATH}/includes/includes.gl.caravel"
+        elif(self.sim_type=="GLSDF"): 
+            print(f"iverilog can't run SDF for test {self.test_name} Please use anothor simulator like cvc" )
+            return
+        
+        iverilog_command = (f"iverilog -Ttyp {macros} {includes}  -o {self.sim_path}/sim.vvp"
+                            f" {CARAVEL_PATH}/rtl/__user_project_wrapper.v {CARAVEL_PATH}/rtl/__user_project_gpio_example.v {CARAVEL_PATH}/rtl/__user_project_la_example.v  caravel_top.sv"
+                            f" && TESTCASE={self.test_name} MODULE=caravel_tests vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus {self.sim_path}/sim.vvp")
+        docker_command = f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {iverilog_command}' >> {self.full_file}"
+        self.full_terminal = open(self.full_file, "a")
+        self.full_terminal.write(f"docker command for running iverilog and cocotb:\n% ")
+        self.full_terminal.write(os.path.expandvars(docker_command)+"\n")
+        self.full_terminal.close()
+        
+        os.system(docker_command)
+        self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
+        if self.passed == "passed": 
+            print(f"Test: {self.sim_type}-{self.test_name} passed")
+        else : 
+            print(f"Test: {self.sim_type}-{self.test_name} Failed please check logs under {self.sim_path}")
+
 
     # vcs function      
     def runTest_vcs(self):
@@ -104,7 +139,6 @@ class RunTest:
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.list\\\" '
         else: 
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
-        full_test_name = f"{self.sim_type}-{self.test_name}"
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
@@ -119,7 +153,6 @@ class RunTest:
             # os.makedirs(f"annotation_logs",exist_ok=True)
             dirs = f"{dirs}  +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
             # +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime-signoff/\\\"
-            full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         elif(self.sim_type=="GL"): 
             macros = f'{macros}  +define+GL  +define+SIM=GL'
         elif (self.sim_type=="RTL"): 
@@ -132,11 +165,10 @@ class RunTest:
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
-        os.environ["TESTFULLNAME"] = f"{full_test_name}"
 
-        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
-        self.passed = search_str(self.full_terminal.name,"Test passed with (0)criticals (0)errors")
+        self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         #delete wave when passed
         if self.passed == "passed" and zip_waves:
@@ -192,9 +224,11 @@ class RunTest:
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
        
         hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
-        self.full_terminal.write(os.path.expandvars(elf_command)+"\n"+"\n")
-        self.full_terminal.write(os.path.expandvars(hex_command)+"\n"+"\n")
-        self.full_terminal.write(os.path.expandvars(sed_command)+"\n"+"\n")
+        self.full_terminal.write("elf file generation command:\n% ")
+        self.full_terminal.write(os.path.expandvars(elf_command)+"\n")
+        self.full_terminal.write("hex file generation command:\n% ")
+        self.full_terminal.write(os.path.expandvars(hex_command)+"\n% ")
+        self.full_terminal.write(os.path.expandvars(sed_command)+"\n")
         self.cd_cocotb()
         self.full_terminal.close()
         if hex_gen_state != 0 :
@@ -307,30 +341,44 @@ class RunRegression:
         self.unknown_tests +=1
 
     def run_regression(self):
+        threads = list()
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items(): # TODO: add multithreading or multiprocessing here
-                for corner,status in corners.items(): # TODO: add multithreading or multiprocessing here
-                    start_time = datetime.now()
-                    self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                    self.tests[test][sim_type][corner]["duration"] = "-"
-                    self.tests[test][sim_type][corner]["status"] = "running"
-                    self.update_reg_log()
-                    test_run = RunTest(test,sim_type,corner)
-                    self.tests[test][sim_type][corner]["status"] = "done"
-                    self.tests[test][sim_type][corner]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
-                    self.tests[test][sim_type][corner]["duration"] = ("%.10s" % (datetime.now() - start_time))
-                    self.tests[test][sim_type][corner]["pass"]= test_run.passed
-                    if test_run.passed == "passed":
-                        self.passed_tests +=1
-                    elif test_run.passed == "failed":
-                        self.failed_tests +=1
-                    self.unknown_tests -=1
-                    self.update_reg_log()
-            
+                for corner,status in corners.items():
+                    if iverilog: #threading
+                        # x = threading.Thread(target=self.test_run_function,args=(test,sim_type,corner))
+                        # threads.append(x)
+                        # x.start()
+                        # time.sleep(10)
+                        self.test_run_function(test,sim_type,corner)
+                    else: 
+                        self.test_run_function(test,sim_type,corner)
+        for index, thread in enumerate(threads):
+            thread.join()
+
         if coverage:
             self.generate_cov()
         #TODO: add send mail here
     
+    def test_run_function(self,test,sim_type,corner):
+        start_time = datetime.now()
+        self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
+        self.tests[test][sim_type][corner]["duration"] = "-"
+        self.tests[test][sim_type][corner]["status"] = "running"
+        self.update_reg_log()
+        test_run = RunTest(test,sim_type,corner,)
+        self.tests[test][sim_type][corner]["status"] = "done"
+        self.tests[test][sim_type][corner]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
+        self.tests[test][sim_type][corner]["duration"] = ("%.10s" % (datetime.now() - start_time))
+        self.tests[test][sim_type][corner]["pass"]= test_run.passed
+        if test_run.passed == "passed":
+            self.passed_tests +=1
+        elif test_run.passed == "failed":
+            self.failed_tests +=1
+        self.unknown_tests -=1
+        self.update_reg_log()
+
+
     def generate_cov(self):
         os.chdir(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}")
         os.system(f"urg -dir RTL*/*.vdb -format both -show tests -report coverageRTL/")
