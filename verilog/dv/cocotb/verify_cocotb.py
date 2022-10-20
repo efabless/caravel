@@ -5,7 +5,6 @@ import json
 import sys
 import os
 from pathlib import Path
-import json
 from fnmatch import fnmatch
 from datetime import datetime
 import random

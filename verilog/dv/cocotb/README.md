@@ -12,15 +12,10 @@ Prerequisites
 
 - Docker: [Linux](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux&utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) ||  [Windows](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) || [Mac with Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header) || [Mac with M1 Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=header)
 - Python 3.6+ with PIP
-- cocotb 
-```
-  apt update && apt install python3 python3-pip
-  pip3 install cocotb
-  pip3 install cocotb_coverage
-  pip3 install coverage
-  pip3 install cocotb-bus
-```
+- ```docker pull efabless/dv:cocotb```
 - iverilog or vcs 
+- export CARAVEL_ROOT= \<caravel repo root\>
+- export MCW_ROOT= \<caravel_mgmt_soc_litex repo root\>
 
 run a test  
 =============================
@@ -29,48 +24,44 @@ run a test
 
 ```
   -h, --help            show this help message and exit
-  
   -regression REGRESSION, -r REGRESSION
                         name of regression can found in tests.json
-                        
+
   -test TEST [TEST ...], -t TEST [TEST ...]
                         name of test if no --sim provided RTL will be run
                         <takes list as input>
-                        
+
   -sim SIM [SIM ...]    Simulation type to be run RTL,GL&GL_SDF provided only
                         when run -test <takes list as input>
-                        
+
   -testlist TESTLIST, -tl TESTLIST
                         path of testlist to be run
-                        
+
   -tag TAG              provide tag of the run default would be regression
                         name and if no regression is provided would be
                         run_<random float>_<timestamp>_
-                        
+
   -maxerr MAXERR        max number of errors for every test before simulation
                         breaks default = 3
-                        
+
   -vcs, -v              use vcs as compiler if not used iverilog would be used
-  
-  -cov, -c              enable code coverage
+
+  -cov                  enable code coverage
+
+  -corner CORNER [CORNER ...], -c CORNER [CORNER ...]
+                        Corner type in case of GL_SDF run has to be provided
+
+  -keep_pass_unzip      Normally the waves and logs of passed tests would be
+                        zipped. Using this option they wouldn't be zipped
                         
 ```
-
+Refer to [examples](doc/commands_example/README.md) 
 
 Tests 
 ===============
 
-Refer to [tests.json](tests.json) for tests list
+Refer to [tests doc](doc/tests/README.md) for tests list
 
-Directories names fixed for now
-===============
->repo
->>caravel_mgmt_soc_litex/
-
->>caravel
->>>verilog
->>>>dv
->>>>cocotb
 
 cocotb directory tree
 ===============
@@ -90,3 +81,7 @@ cocotb directory tree
 └── wb_models -> contains checkers and models for some caravel blocks 
 
 ```
+
+How to debug
+===============
+` TO BE ADDED`
