@@ -1,4 +1,3 @@
-from email.headerregistry import Address
 import random
 import cocotb
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles,Timer

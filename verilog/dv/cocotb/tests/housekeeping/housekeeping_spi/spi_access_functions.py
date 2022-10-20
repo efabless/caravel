@@ -16,6 +16,26 @@ async def read_reg_spi(caravelEnv,address):
     await caravelEnv.disable_csb()
     return data
 
+async def write_reg_spi_nbytes(caravelEnv,address,data,n_bytes):
+    write_command = 0x2 << 6 | n_bytes << 3 
+    print(f"command = {hex(write_command)}")
+    await caravelEnv.enable_csb()
+    await caravelEnv.hk_write_byte(write_command) # Write n byte command
+    await caravelEnv.hk_write_byte(address) # Address (register 19 = GPIO bit-bang control)
+    for byte in data:
+        await caravelEnv.hk_write_byte(byte) # Data = 0x01 (enable bit-bang mode)
+    await caravelEnv.disable_csb()
+
+
+async def read_reg_spi_nbytes(caravelEnv,address,n_bytes):
+    data =[]
+    await caravelEnv.enable_csb()
+    await caravelEnv.hk_write_byte(0x40) # read stream command
+    await caravelEnv.hk_write_byte(address) # Address 
+    for i in range(n_bytes):
+        data.append(await caravelEnv.hk_read_byte()) # Data = 0x01 (enable bit-bang mode)
+    await caravelEnv.disable_csb()
+    return data
 
 async def reg_spi_user_pass_thru(caravelEnv,command,address):
     await caravelEnv.enable_csb()

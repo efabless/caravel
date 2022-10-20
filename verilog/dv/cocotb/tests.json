@@ -183,7 +183,7 @@
             "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
-            "description":""}
+            "description":"use caravel in debug mode and check reading and writing from dff2 RAM"}
         ,"spi_master_rd" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
@@ -311,6 +311,12 @@
             "GL":[],
             "GL_SDF":[],
             "description":"hello world test"}
+        ,"spi_rd_wr_nbyte" :{"level":3, 
+            "SW":false,
+            "RTL":[],
+            "GL":[],
+            "GL_SDF":[],
+            "description":"try housekeeping spi Write and Read in n-byte mode "}
 
     }
 }
