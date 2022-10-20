@@ -267,7 +267,7 @@ module caravan (
     assign mgmt_io_out[6:0] = mgmt_io_out_hk[6:0];
     assign mgmt_io_oeb[34:0] = mgmt_io_oeb_hk[34:0];
 
-    /* The following are no-connects in caravan (no associated GPIO)
+    /* The following are no-connects in caravan (no associated GPIO) */
     assign mgmt_io_in_hk[24:14] = mgmt_io_in[24:14];
     assign mgmt_io_out[24:14] = mgmt_io_out_hk[24:14];
 
