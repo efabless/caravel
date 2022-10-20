@@ -8,258 +8,344 @@ MACRO gpio_control_block
   ORIGIN 0.000 0.000 ;
   SIZE 170.000 BY 65.000 ;
   PIN gpio_defaults[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 4.690 61.000 4.970 65.000 ;
     END
   END gpio_defaults[0]
   PIN gpio_defaults[10]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 27.690 61.000 27.970 65.000 ;
     END
   END gpio_defaults[10]
   PIN gpio_defaults[11]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 29.990 61.000 30.270 65.000 ;
     END
   END gpio_defaults[11]
   PIN gpio_defaults[12]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 32.290 61.000 32.570 65.000 ;
     END
   END gpio_defaults[12]
   PIN gpio_defaults[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 6.990 61.000 7.270 65.000 ;
     END
   END gpio_defaults[1]
   PIN gpio_defaults[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 9.290 61.000 9.570 65.000 ;
     END
   END gpio_defaults[2]
   PIN gpio_defaults[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 11.590 61.000 11.870 65.000 ;
     END
   END gpio_defaults[3]
   PIN gpio_defaults[4]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 13.890 61.000 14.170 65.000 ;
     END
   END gpio_defaults[4]
   PIN gpio_defaults[5]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 16.190 61.000 16.470 65.000 ;
     END
   END gpio_defaults[5]
   PIN gpio_defaults[6]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 18.490 61.000 18.770 65.000 ;
     END
   END gpio_defaults[6]
   PIN gpio_defaults[7]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 20.790 61.000 21.070 65.000 ;
     END
   END gpio_defaults[7]
   PIN gpio_defaults[8]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 23.090 61.000 23.370 65.000 ;
     END
   END gpio_defaults[8]
   PIN gpio_defaults[9]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met2 ;
         RECT 25.390 61.000 25.670 65.000 ;
     END
   END gpio_defaults[9]
   PIN mgmt_gpio_in
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 4.120 170.000 4.720 ;
     END
   END mgmt_gpio_in
   PIN mgmt_gpio_oeb
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 8.200 170.000 8.800 ;
     END
   END mgmt_gpio_oeb
   PIN mgmt_gpio_out
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 10.240 170.000 10.840 ;
     END
   END mgmt_gpio_out
   PIN one
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 6.160 170.000 6.760 ;
     END
   END one
   PIN pad_gpio_ana_en
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 12.280 170.000 12.880 ;
     END
   END pad_gpio_ana_en
   PIN pad_gpio_ana_pol
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 14.320 170.000 14.920 ;
     END
   END pad_gpio_ana_pol
   PIN pad_gpio_ana_sel
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 16.360 170.000 16.960 ;
     END
   END pad_gpio_ana_sel
   PIN pad_gpio_dm[0]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 18.400 170.000 19.000 ;
     END
   END pad_gpio_dm[0]
   PIN pad_gpio_dm[1]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 20.440 170.000 21.040 ;
     END
   END pad_gpio_dm[1]
   PIN pad_gpio_dm[2]
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 22.480 170.000 23.080 ;
     END
   END pad_gpio_dm[2]
   PIN pad_gpio_holdover
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 24.520 170.000 25.120 ;
     END
   END pad_gpio_holdover
   PIN pad_gpio_ib_mode_sel
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 26.560 170.000 27.160 ;
     END
   END pad_gpio_ib_mode_sel
   PIN pad_gpio_in
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 28.600 170.000 29.200 ;
     END
   END pad_gpio_in
   PIN pad_gpio_inenb
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 30.640 170.000 31.240 ;
     END
   END pad_gpio_inenb
   PIN pad_gpio_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 32.680 170.000 33.280 ;
     END
   END pad_gpio_out
   PIN pad_gpio_outenb
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 34.720 170.000 35.320 ;
     END
   END pad_gpio_outenb
   PIN pad_gpio_slow_sel
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 36.760 170.000 37.360 ;
     END
   END pad_gpio_slow_sel
   PIN pad_gpio_vtrip_sel
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 38.800 170.000 39.400 ;
     END
   END pad_gpio_vtrip_sel
   PIN resetn
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 40.840 170.000 41.440 ;
     END
   END resetn
   PIN resetn_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 42.880 170.000 43.480 ;
     END
   END resetn_out
   PIN serial_clock
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 44.920 170.000 45.520 ;
     END
   END serial_clock
   PIN serial_clock_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 46.960 170.000 47.560 ;
     END
   END serial_clock_out
   PIN serial_data_in
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 49.000 170.000 49.600 ;
     END
   END serial_data_in
   PIN serial_data_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 51.040 170.000 51.640 ;
     END
   END serial_data_out
   PIN serial_load
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 53.080 170.000 53.680 ;
     END
   END serial_load
   PIN serial_load_out
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 55.120 170.000 55.720 ;
     END
   END serial_load_out
   PIN user_gpio_in
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 57.160 170.000 57.760 ;
     END
   END user_gpio_in
   PIN user_gpio_oeb
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 59.200 170.000 59.800 ;
     END
   END user_gpio_oeb
   PIN user_gpio_out
+    DIRECTION INPUT ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 61.240 170.000 61.840 ;
     END
   END user_gpio_out
   PIN vccd
+    DIRECTION INOUT ;
+    USE POWER ;
     PORT
       LAYER met4 ;
         RECT 12.800 2.480 14.400 60.080 ;
@@ -286,6 +372,8 @@ MACRO gpio_control_block
     END
   END vccd
   PIN vccd1
+    DIRECTION INOUT ;
+    USE POWER ;
     PORT
       LAYER met4 ;
         RECT 17.800 2.480 19.400 60.080 ;
@@ -308,6 +396,8 @@ MACRO gpio_control_block
     END
   END vccd1
   PIN vssd
+    DIRECTION INOUT ;
+    USE GROUND ;
     PORT
       LAYER met4 ;
         RECT 25.300 2.480 26.900 60.080 ;
@@ -326,6 +416,8 @@ MACRO gpio_control_block
     END
   END vssd
   PIN vssd1
+    DIRECTION INOUT ;
+    USE GROUND ;
     PORT
       LAYER met4 ;
         RECT 30.300 2.480 31.900 60.080 ;
@@ -344,6 +436,8 @@ MACRO gpio_control_block
     END
   END vssd1
   PIN zero
+    DIRECTION OUTPUT TRISTATE ;
+    USE SIGNAL ;
     PORT
       LAYER met3 ;
         RECT 70.000 2.080 170.000 2.680 ;

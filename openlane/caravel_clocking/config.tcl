@@ -36,11 +36,13 @@ set ::env(SYNTH_BUFFERING) 0
 
 set ::env(BASE_SDC_FILE) $::env(DESIGN_DIR)/base.sdc 
 
+set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
+
 set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list 
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 100 60"
+set ::env(DIE_AREA) "0 0 100 100"
 
 set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/caravel_clocking.def
 
@@ -51,8 +53,8 @@ set ::env(BOTTOM_MARGIN_MULT) 2
 set ::env(TOP_MARGIN_MULT) "2"
 set ::env(BOTTOM_MARGIN_MULT) "1"
 
-set ::env(DPL_CELL_PADDING) 0
-set ::env(GPL_CELL_PADDING) 0
+set ::env(DPL_CELL_PADDING) 2
+set ::env(GPL_CELL_PADDING) 4
 set ::env(DIODE_PADDING) 0
 
 ## PDN
@@ -60,12 +62,12 @@ set ::env(FP_PDN_HPITCH) 16.9
 set ::env(FP_PDN_VPITCH) 15.5
 set ::env(FP_PDN_HSPACING) 6.85
 set ::env(FP_PDN_VSPACING) 6.15
-set ::env(FP_PDN_HOFFSET) 13.69
-set ::env(FP_PDN_VOFFSET) 15.4
+set ::env(FP_PDN_HOFFSET) 5.73
+set ::env(FP_PDN_VOFFSET) 7.63
 # vertical 21.29 15.61
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.9
+set ::env(PL_TARGET_DENSITY) 0.62
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1

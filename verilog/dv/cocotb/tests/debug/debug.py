@@ -19,7 +19,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def debug(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=375862)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=33840)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -35,7 +35,7 @@ async def debug(dut):
     # caravelEnv.drive_gpio_in((0,0),1) # IO[0] affects the uart selecting btw system and debug
     cocotb.log.info(f"[TEST] Start debug test")  
     # send random data to address 30'h00400024 and expect to recieve the same data back it back
-    dff_address = random.randint(0x00000400, 0x00000600)
+    dff_address = random.randint(0x00000400, 0x00000600) & 0xFFFFFFFC
     data = random.getrandbits(32)
     address = dff_address >>2 # address has to be shifted
     # data = 0xFFFFFFF0
@@ -82,7 +82,7 @@ async def uart_get_char(caravelEnv):
 async def wb_write(caravelEnv,addr,data):
     addr_bits = bin(addr)[2:].zfill(32)[::-1]
     data_bits = bin(data)[2:].zfill(32)[::-1]
-    cocotb.log.info(f"[TEST] address bits = {addr_bits} {type(addr_bits)}")
+    cocotb.log.debug(f"[TEST] address bits = {addr_bits} {type(addr_bits)}")
     await uart_send_char(caravelEnv, '10000000') # write cmd
     await uart_send_char(caravelEnv, '10000000') # size
     await uart_send_char(caravelEnv, addr_bits[24:32]) 

@@ -77,15 +77,24 @@ def run_lvs(
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )
-
-    lvs_cmd = [
-        "bash",
-        "./run_full_lvs",
-        f"{design}",
-        f"{caravel_root}/verilog/gl/{design}.v",
-        f"{design}",
-        f"{caravel_root}/gds/{design}.gds",
-    ]
+    if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+        lvs_cmd = [
+            "bash",
+            "./run_full_lvs",
+            f"{design}",
+            f"{mcw_root}/verilog/gl/{design}.v",
+            f"{design}",
+            f"{mcw_root}/gds/{design}.gds",
+        ]
+    else:
+        lvs_cmd = [
+            "bash",
+            "./run_full_lvs",
+            f"{design}",
+            f"{caravel_root}/verilog/gl/{design}.v",
+            f"{design}",
+            f"{caravel_root}/gds/{design}.gds",
+        ]
     p1 = subprocess.Popen(
         lvs_cmd,
         env=myenv,
@@ -209,7 +218,7 @@ def check_errors(
             lvs_summary_report.write("LVS reports:\n")
             lvs_summary_report.write("    net count difference = " + str(failures[5]) + "\n")
             lvs_summary_report.write(
-                "    device count difference = " + str(failures[6] + "\n")
+                "    device count difference = " + str(failures[6]) + "\n"
             )
             lvs_summary_report.write("    unmatched nets = " + str(failures[1]) + "\n")
             lvs_summary_report.write("    unmatched devices = " + str(failures[2]) + "\n")
@@ -498,26 +507,27 @@ if __name__ == "__main__":
             if out:
                 ver_log.write(out)
 
-    if lvs and drc and sta:
-        out, err = sta_p.communicate()
-        sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
-        if err:
-            logging.error(err)
-            sta_log.write(err)
+    # if lvs and drc and sta:
+    #     out, err = sta_p.communicate()
+    #     sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
+    #     if err:
+    #         logging.error(err)
+    #         sta_log.write(err)
 
-        drc_p1.wait()
-        lvs_p1.wait()
-    if lvs:
-        lvs_p1.wait()
-    if drc:
-        drc_p1.wait()
+    #     drc_p1.wait()
+    #     lvs_p1.wait()
     if sta:
         out, err = sta_p.communicate()
         sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
         if err:
             logging.error(err)
             sta_log.write(err)
-
+        sta_log.close()
+    if lvs:
+        lvs_p1.wait()
+    if drc:
+        drc_p1.wait()
+    
     if antenna:
         out, err = ant.communicate()
         ant_rep = open(f"{signoff_dir}/{design}/standalone_pvr/antenna-vios.report", "w")
@@ -526,6 +536,7 @@ if __name__ == "__main__":
             ant_rep.write(err.decode())
         if out:
             ant_rep.write(out.decode())
+        ant_rep.close()
 
     check_errors(
         caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna

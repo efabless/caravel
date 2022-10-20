@@ -1,7 +1,25 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1665957051
+timestamp 1666028385
+<< checkpaint >>
+rect 165632 994275 171908 998523
+rect 415268 994600 419152 998848
+rect 660669 994518 668141 998766
+rect 39061 884070 43309 892738
+rect 674265 719114 678513 728978
+rect 39086 595648 43334 611492
+rect 674265 437914 678513 454954
+rect 39108 333283 43356 353911
+rect 674044 204426 676648 204432
+rect 674044 204390 676662 204426
+rect 674044 204362 676816 204390
+rect 674044 201738 676890 204362
+rect 132502 41029 160306 45277
+rect 427902 41029 455706 45277
+rect 674044 41260 676816 201738
+rect 674156 41161 676816 41260
+rect -1260 -1260 1261 1261
 << locali >>
 rect 416588 996667 416806 996673
 rect 661989 996585 662207 996591
@@ -2770,16 +2788,20 @@ rect 483772 42552 506912 42580
 rect 506940 42744 675052 42772
 rect 506940 42524 506968 42744
 rect 675192 42660 675220 231888
+rect 675360 203172 675388 232090
 rect 483716 42496 506968 42524
 rect 507108 42632 675220 42660
+rect 675304 203144 675388 203172
 rect 507108 42468 507136 42632
-rect 675360 42548 675388 232090
+rect 675304 42548 675332 203144
+rect 675528 203086 675556 232290
 rect 483548 42440 507136 42468
-rect 507276 42520 675388 42548
+rect 507276 42520 675332 42548
+rect 675416 203058 675556 203086
 rect 507276 42412 507304 42520
-rect 675528 42449 675556 232290
+rect 675416 42449 675444 203058
 rect 483380 42384 507304 42412
-rect 507444 42421 675556 42449
+rect 507444 42421 675444 42449
 rect 507444 42356 507472 42421
 rect 483212 42328 507472 42356
 << via1 >>
@@ -9673,34 +9695,14 @@ timestamp 1663859327
 transform -1 0 159008 0 1 43425
 box -38 -48 130 592
 << labels >>
-flabel metal3 418245 997803 418551 997897 0 FreeSans 400 0 0 0 vccd
-port 136 nsew power input
-flabel metal3 417057 997799 417363 997893 0 FreeSans 400 0 0 0 vssd
-port 135 nsew ground input
-flabel metal3 169809 997465 170115 997559 0 FreeSans 400 0 0 0 vccd
-port 136 nsew power input
-flabel metal3 168616 997465 168922 997559 0 FreeSans 400 0 0 0 vssd
-port 135 nsew ground input
 flabel metal1 171829 995401 172109 995429 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[12]
 port 50 nsew signal input
 flabel metal1 171030 994953 171310 994981 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[14]
 port 53 nsew signal input
 flabel metal1 171431 995177 171711 995205 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[13]
 port 52 nsew signal input
-flabel metal3 663663 997712 663969 997806 0 FreeSans 400 0 0 0 vssd
-port 135 nsew ground input
-flabel metal3 664858 997701 665164 997795 0 FreeSans 400 0 0 0 vccd
-port 136 nsew power input
-flabel metal3 677462 446931 677552 447228 0 FreeSans 400 90 0 0 vccd
-port 136 nsew power input
-flabel metal3 677464 448130 677554 448427 0 FreeSans 400 90 0 0 vssd
-port 135 nsew ground input
 flabel metal1 660323 995107 660632 995135 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[10]
 port 4 nsew signal input
-flabel metal3 677461 723330 677551 723627 0 FreeSans 400 90 0 0 vccd
-port 136 nsew power input
-flabel metal3 677470 724527 677560 724824 0 FreeSans 400 90 0 0 vssd
-port 135 nsew ground input
 flabel metal1 660723 994883 661032 994911 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[9]
 port 5 nsew signal input
 flabel metal1 661123 994659 661432 994687 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[8]
@@ -9721,14 +9723,6 @@ flabel metal1 673288 454768 673316 455055 0 FreeSans 288 90 0 0 mgmt_io_in_unbuf
 port 16 nsew signal input
 flabel metal1 673512 455168 673540 455455 0 FreeSans 288 90 0 0 mgmt_io_in_unbuf[3]
 port 15 nsew signal input
-flabel metal3 147432 41997 147738 42091 0 FreeSans 400 0 0 0 vssd
-port 135 nsew ground input
-flabel metal3 146226 41997 146532 42091 0 FreeSans 400 0 0 0 vccd
-port 136 nsew power input
-flabel metal3 441644 41978 441950 42072 0 FreeSans 400 0 0 0 vssd
-port 135 nsew ground input
-flabel metal3 440451 41984 440757 42078 0 FreeSans 400 0 0 0 vccd
-port 136 nsew power input
 flabel metal1 131123 45048 131374 45076 0 FreeSans 288 0 0 0 mgmt_io_out_buf[27]
 port 83 nsew signal output
 flabel metal1 131523 44880 131774 44908 0 FreeSans 288 0 0 0 mgmt_io_out_buf[28]
@@ -9739,18 +9733,6 @@ flabel metal1 132323 44544 132574 44572 0 FreeSans 288 0 0 0 mgmt_io_out_buf[30]
 port 86 nsew signal output
 flabel metal1 44055 611295 44083 611556 0 FreeSans 288 90 0 0 mgmt_io_out_buf[20]
 port 65 nsew signal output
-flabel metal3 40074 346985 40164 347282 0 FreeSans 400 90 0 0 vssd
-port 135 nsew ground input
-flabel metal3 40076 345792 40166 346089 0 FreeSans 400 90 0 0 vccd
-port 136 nsew power input
-flabel metal3 40053 604641 40143 604938 0 FreeSans 400 90 0 0 vssd
-port 135 nsew ground input
-flabel metal3 40053 603440 40143 603737 0 FreeSans 400 90 0 0 vccd
-port 136 nsew power input
-flabel metal3 40025 889407 40115 889704 0 FreeSans 400 90 0 0 vssd
-port 135 nsew ground input
-flabel metal3 40022 888213 40112 888510 0 FreeSans 400 90 0 0 vccd
-port 136 nsew power input
 flabel metal1 42963 892082 42991 892317 0 FreeSans 288 90 0 0 mgmt_io_out_buf[15]
 port 58 nsew signal output
 flabel metal1 43187 891682 43215 891917 0 FreeSans 288 90 0 0 mgmt_io_out_buf[16]
@@ -9973,6 +9955,46 @@ flabel metal1 131751 44796 132002 44824 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[28
 port 89 nsew signal input
 flabel metal1 131351 44964 131602 44992 0 FreeSans 288 0 0 0 mgmt_io_in_unbuf[27]
 port 90 nsew signal input
+flabel metal3 440451 41984 440757 42078 0 FreeSans 400 0 0 0 vccd
+port 136 nsew power input
+flabel metal3 441644 41978 441950 42072 0 FreeSans 400 0 0 0 vssd
+port 135 nsew ground input
+flabel metal3 677462 446931 677552 447228 0 FreeSans 400 90 0 0 vccd
+port 136 nsew power input
+flabel metal3 677464 448130 677554 448427 0 FreeSans 400 90 0 0 vssd
+port 135 nsew ground input
+flabel metal3 677461 723330 677551 723627 0 FreeSans 400 90 0 0 vccd
+port 136 nsew power input
+flabel metal3 677470 724527 677560 724824 0 FreeSans 400 90 0 0 vssd
+port 135 nsew ground input
+flabel metal3 664858 997701 665164 997795 0 FreeSans 400 0 0 0 vccd
+port 136 nsew ground input
+flabel metal3 663663 997712 663969 997806 0 FreeSans 400 0 0 0 vssd
+port 135 nsew power input
+flabel metal3 418245 997803 418551 997897 0 FreeSans 400 0 0 0 vccd
+port 136 nsew ground input
+flabel metal3 417057 997799 417363 997893 0 FreeSans 400 0 0 0 vssd
+port 135 nsew power input
+flabel metal3 169809 997465 170115 997559 0 FreeSans 400 0 0 0 vccd
+port 136 nsew ground input
+flabel metal3 168616 997465 168922 997559 0 FreeSans 400 0 0 0 vssd
+port 135 nsew power input
+flabel metal3 40022 888213 40112 888510 0 FreeSans 400 90 0 0 vccd
+port 136 nsew ground input
+flabel metal3 40025 889407 40115 889704 0 FreeSans 400 90 0 0 vssd
+port 135 nsew power input
+flabel metal3 40053 603440 40143 603737 0 FreeSans 400 90 0 0 vccd
+port 136 nsew ground input
+flabel metal3 40053 604641 40143 604938 0 FreeSans 400 90 0 0 vssd
+port 135 nsew power input
+flabel metal3 40076 345792 40166 346089 0 FreeSans 400 90 0 0 vccd
+port 136 nsew ground input
+flabel metal3 40074 346985 40164 347282 0 FreeSans 400 90 0 0 vssd
+port 135 nsew power input
+flabel metal3 146226 41997 146532 42091 0 FreeSans 400 0 0 0 vccd9
+port 136 nsew power input
+flabel metal3 147432 41997 147738 42091 0 FreeSans 400 0 0 0 vssd9
+port 135 nsew ground input
 << properties >>
 string FIXED_BBOX 0 0 717600 1037600
 << end >>

@@ -11,6 +11,7 @@ from datetime import datetime
 import random
 from pathlib import Path
 import shutil
+from subprocess import PIPE, run
 
 
 iverilog = True
@@ -162,7 +163,7 @@ class RunTest:
 
     def hex_generate(self):
         tests_use_dff2 = ["mem_dff"]
-        tests_use_dff = ["mem_dff2"]
+        tests_use_dff = ["mem_dff2","debug"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()
@@ -236,6 +237,7 @@ class RunRegression:
             type_arg = "RTL"
         self.type_arg = type_arg
         self.write_command_log()
+        self.write_git_log()
         with open('tests.json') as f:
             self.tests_json = json.load(f)
             self.tests_json = self.tests_json["Tests"]
@@ -353,7 +355,20 @@ class RunRegression:
         f = open(file_name, "w")
         f.write(f"{' '.join(sys.argv)}")
         f.close()
+  
+    def write_git_log(self):
+        file_name=f"sim/{os.getenv('RUNTAG')}/git_show.log"
+        f = open(file_name, "w")
+        # status, output = commands.getstatusoutput("git show")
+        f.write( f"Repo: {run('basename -s .git `git config --get remote.origin.url`', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout}")
+        f.write( f"Branch name: {run('git symbolic-ref --short HEAD', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout}")
+        f.write( run('git show --quiet HEAD', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout)
+        MCW_ROOT = f"MCW_ROOT"
 
+        f.write( f"\n\nRepo: {run(f'cd {os.getenv(MCW_ROOT)};basename -s .git `git config --get remote.origin.url`', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout}")
+        f.write( f"Branch name: {run(f'cd {os.getenv(MCW_ROOT)};git symbolic-ref --short HEAD', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout}")
+        f.write( run(f'cd {os.getenv(MCW_ROOT)};git show --quiet HEAD', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout)
+        f.close()
 class main():
     def __init__(self,args) -> None:
         self.regression = args.regression
