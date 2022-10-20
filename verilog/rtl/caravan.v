@@ -373,23 +373,23 @@ module caravan (
 		.vccd2_pad	(vccd2),		// User area 2 1.8V supply
 		.vssd1_pad	(vssd1),		// User area 1 digital ground
 		.vssd2_pad	(vssd2),		// User area 2 digital ground
+        .vddio	(vddio_core),
+        .vssio	(vssio_core),
+        .vdda	(vdda_core),
+        .vssa	(vssa_core),
+        .vccd	(vccd_core),
+        .vssd	(vssd_core),
+        .vdda1	(vdda1_core),
+        .vdda2	(vdda2_core),
+        .vssa1	(vssa1_core),
+        .vssa2	(vssa2_core),
+        .vccd1	(vccd1_core),
+        .vccd2	(vccd2_core),
+        .vssd1	(vssd1_core),
+        .vssd2	(vssd2_core),
 	`endif
 	
 	// Core Side Pins
-	.vddio	(vddio_core),
-	.vssio	(vssio_core),
-	.vdda	(vdda_core),
-	.vssa	(vssa_core),
-	.vccd	(vccd_core),
-	.vssd	(vssd_core),
-	.vdda1	(vdda1_core),
-	.vdda2	(vdda2_core),
-	.vssa1	(vssa1_core),
-	.vssa2	(vssa2_core),
-	.vccd1	(vccd1_core),
-	.vccd2	(vccd2_core),
-	.vssd1	(vssd1_core),
-	.vssd2	(vssd2_core),
 	.gpio(gpio),
 	.mprj_io(mprj_io),
 	.clock(clock),
