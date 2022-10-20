@@ -51,6 +51,7 @@ set soc_x 260.170
 set soc_y 265.010
 
 add_macro_placement caravan_power_routing 0 0 N
+add_macro_placement caravan_signal_routing 0 0 N
 add_macro_placement user_id_textblock 481.36000 34.45000 N
 add_macro_placement copyright_block_a 747.91000 81.49000 N
 add_macro_placement open_source 1030.37000 11.68000 N
@@ -227,7 +228,7 @@ label_macro_pins\
 run_magic
 
 save_views\
-    -def_path $::env(tritonRoute_result_file_tag).def \
+    -def_path $::env(CURRENT_DEF) \
     -gds_path $::env(magic_result_file_tag).gds \
     -mag_path $::env(magic_result_file_tag).mag \
     -verilog_path $::env(TMP_DIR)/lvs.v \

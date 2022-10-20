@@ -61,24 +61,26 @@
 /*--------------------------------------------------------------*/
 
 module caravan (
-    inout vddio,	// Common 3.3V padframe/ESD power
-    inout vddio_2,	// Common 3.3V padframe/ESD power
-    inout vssio,	// Common padframe/ESD ground
-    inout vssio_2,	// Common padframe/ESD ground
-    inout vdda,		// Management 3.3V power
-    inout vssa,		// Common analog ground
-    inout vccd,		// Management/Common 1.8V power
-    inout vssd,		// Common digital ground
-    inout vdda1,	// User area 1 3.3V power
-    inout vdda1_2,	// User area 1 3.3V power
-    inout vdda2,	// User area 2 3.3V power
-    inout vssa1,	// User area 1 analog ground
-    inout vssa1_2,	// User area 1 analog ground
-    inout vssa2,	// User area 2 analog ground
-    inout vccd1,	// User area 1 1.8V power
-    inout vccd2,	// User area 2 1.8V power
-    inout vssd1,	// User area 1 digital ground
-    inout vssd2,	// User area 2 digital ground
+    `ifndef TOP_ROUTING
+        inout vddio,	// Common 3.3V padframe/ESD power
+        inout vddio_2,	// Common 3.3V padframe/ESD power
+        inout vssio,	// Common padframe/ESD ground
+        inout vssio_2,	// Common padframe/ESD ground
+        inout vdda,		// Management 3.3V power
+        inout vssa,		// Common analog ground
+        inout vccd,		// Management/Common 1.8V power
+        inout vssd,		// Common digital ground
+        inout vdda1,	// User area 1 3.3V power
+        inout vdda1_2,	// User area 1 3.3V power
+        inout vdda2,	// User area 2 3.3V power
+        inout vssa1,	// User area 1 analog ground
+        inout vssa1_2,	// User area 1 analog ground
+        inout vssa2,	// User area 2 analog ground
+        inout vccd1,	// User area 1 1.8V power
+        inout vccd2,	// User area 2 1.8V power
+        inout vssd1,	// User area 1 digital ground
+        inout vssd2,	// User area 2 digital ground
+    `endif
 
     inout gpio,			// Used for external LDO control
     inout [`MPRJ_IO_PADS-1:0] mprj_io,
@@ -710,7 +712,11 @@ module caravan (
 	.io_in_3v3 (user_io_in_3v3),
     	.io_out(user_io_out),
     	.io_oeb(user_io_oeb),
-	.io_analog(user_analog),
+    `ifndef TOP_ROUTING
+        .io_analog(user_analog),
+        .io_clamp_high(user_clamp_high),
+        .io_clamp_low(user_clamp_low),
+    `endif
 	.gpio_analog(user_gpio_analog),
 	.gpio_noesd(user_gpio_noesd),
 
@@ -720,8 +726,6 @@ module caravan (
 	.la_oenb(la_oenb_user),
 
 	// User-accessible power supply clamps
-	.io_clamp_high(user_clamp_high),
-	.io_clamp_low(user_clamp_low),
 
 	// Independent clock
 	.user_clock2(mprj_clock2),
@@ -1548,12 +1552,13 @@ module caravan (
     );
 
     `ifdef TOP_ROUTING
-    caravan_power_routing caravan_power_routing();
-    caravan_motto caravan_motto();
-    caravan_logo caravan_logo();
-    copyright_block_a copyright_block_a();
-    user_id_textblock user_id_textblock();
-    open_source open_source();
+        caravan_power_routing caravan_power_routing();
+        caravan_signal_routing caravan_signal_routing();
+        caravan_motto caravan_motto();
+        caravan_logo caravan_logo();
+        copyright_block_a copyright_block_a();
+        user_id_textblock user_id_textblock();
+        open_source open_source();
     `endif
 
 endmodule

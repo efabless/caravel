@@ -46,6 +46,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$verilog_root/rtl/buff_flash_clkrst.v \
 	$verilog_root/rtl/caravan_power_routing.v \
 	$verilog_root/rtl/caravel_clocking.v \
+	$verilog_root/rtl/caravan_signal_routing.v \
 	$verilog_root/rtl/chip_io_alt.v \
 	$verilog_root/rtl/digital_pll.v \
 	$verilog_root/rtl/gpio_control_block.v \
@@ -65,6 +66,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	"
 
 set ::env(EXTRA_LEFS) "\
+	$lef_root/caravan_signal_routing.lef \
 	$lef_root/caravan_logo-stub.lef \
 	$lef_root/caravan_motto-stub.lef \
 	$lef_root/copyright_block_a-stub.lef \
@@ -89,6 +91,7 @@ set ::env(EXTRA_LEFS) "\
 	"
 
 set ::env(EXTRA_GDS_FILES) "\
+	$gds_root/caravan_signal_routing.gds \
 	$gds_root/caravan_logo.gds \
 	$gds_root/caravan_motto.gds \
 	$gds_root/copyright_block_a.gds \
@@ -143,7 +146,7 @@ set ::env(GLB_RT_MAXLAYER) 6
 
 set ::env(GLB_RT_ADJUSTMENT) "0"
 set ::env(GLB_RT_L1_ADJUSTMENT) "0.99"
-set ::env(GLB_RT_L2_ADJUSTMENT) "0.2"
+set ::env(GLB_RT_L2_ADJUSTMENT) "0.15"
 set ::env(GLB_RT_L3_ADJUSTMENT) "0.45"
 set ::env(GLB_RT_L4_ADJUSTMENT) "0.45"
 set ::env(GLB_RT_L5_ADJUSTMENT) "0.45"
