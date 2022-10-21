@@ -239,7 +239,6 @@ module caravan (
     // Flash SPI communication (managment SoC to housekeeping)
     wire flash_clk_core,     flash_csb_core;
     wire flash_clk_oeb_core, flash_csb_oeb_core;
-    wire flash_clk_ieb_core, flash_csb_ieb_core;
     wire flash_io0_oeb_core, flash_io1_oeb_core;
     wire flash_io2_oeb_core, flash_io3_oeb_core;
     wire flash_io0_ieb_core, flash_io1_ieb_core;
@@ -261,7 +260,6 @@ module caravan (
 	// Flash buffered signals
     wire flash_clk_frame_buf;
     wire flash_csb_frame_buf;
-    wire flash_clk_ieb_buf, flash_csb_ieb_buf;
     wire flash_io0_oeb_buf, flash_io1_oeb_buf;
     wire flash_io0_ieb_buf, flash_io1_ieb_buf;
     wire flash_io0_do_buf,  flash_io1_do_buf;
@@ -342,7 +340,7 @@ module caravan (
 	    .vccd(vccd_core),
 	    .vssd(vssd_core),
 	`endif
-	.mgmt_io_in_unbuf(mgmt_io_in[37:7]),
+	.mgmt_io_in_unbuf({mgmt_io_in[37:25],mgmt_io_in[13:7]}),
 	.mgmt_io_out_unbuf({mgmt_io_out_hk[37:25],mgmt_io_out_hk[13:7]}),
 	.mgmt_io_oeb_unbuf(mgmt_io_oeb_hk[37:35]),
 	.mgmt_io_in_buf({mgmt_io_in_hk[37:25],mgmt_io_in_hk[13:7]}),
@@ -488,8 +486,8 @@ module caravan (
     wire [3:0]  mprj_sel_o_user;
     wire [31:0] mprj_adr_o_user;
     wire [31:0] mprj_dat_o_user;
-    wire 	mprj_ack_i_user;
     wire [31:0]	mprj_dat_i_user;
+    wire 	mprj_ack_i_user;
 
     // Mask revision
     wire [31:0] mask_rev;
@@ -519,14 +517,33 @@ module caravan (
     wire 	clk_passthru;
     wire 	resetn_passthru;
 
+    // NC passthru signal porb_h
+    wire porb_h_out_nc;
+
     mgmt_core_wrapper soc (
 	`ifdef USE_POWER_PINS
 	    .VPWR(vccd_core),
 	    .VGND(vssd_core),
 	`endif
 
-	// Clocks and reset
-    .core_clk(caravel_clk_buf),
+	// SoC pass through buffered signals
+	.serial_clock_in(mprj_io_loader_clock),
+	.serial_clock_out(mprj_io_loader_clock_buf),
+	.serial_load_in(mprj_io_loader_strobe),
+	.serial_load_out(mprj_io_loader_strobe_buf),
+	.serial_resetn_in(mprj_io_loader_resetn),
+	.serial_resetn_out(mprj_io_loader_resetn_buf),
+	.serial_data_2_in(mprj_io_loader_data_2),
+	.serial_data_2_out(mprj_io_loader_data_2_buf),
+	.rstb_l_in(rstb_l),
+	.rstb_l_out(rstb_l_buf),
+	.porb_h_in(por_l),		// NOTE: purposefully tied off to por_l_in
+	.porb_h_out(porb_h_out_nc),
+	.por_l_in(por_l),
+	.por_l_out(por_l_buf),
+
+	// Clock and reset
+	.core_clk(caravel_clk_buf),
 	.core_rstn(caravel_rstn_buf),
 
     // Pass thru Clock and reset
@@ -645,9 +662,10 @@ module caravan (
 	.mprj_sel_o_core(mprj_sel_o_core),
 	.mprj_adr_o_core(mprj_adr_o_core),
 	.mprj_dat_o_core(mprj_dat_o_core),
-	.mprj_dat_i_core(mprj_dat_i_core),
 	.mprj_ack_i_core(mprj_ack_i_core),
+	.mprj_dat_i_core(mprj_dat_i_core),
 	.user_irq_core(user_irq_core),
+	.user_irq_ena(user_irq_ena),
 	.la_data_out_core(la_data_out_user),
 	.la_data_out_mprj(la_data_out_mprj),
 	.la_data_in_core(la_data_in_user),
@@ -655,7 +673,6 @@ module caravan (
 	.la_oenb_mprj(la_oenb_mprj),
 	.la_oenb_core(la_oenb_user),
 	.la_iena_mprj(la_iena_mprj),
-	.user_irq_ena(user_irq_ena),
 
 	.user_clock(mprj_clock),
 	.user_clock2(mprj_clock2),
