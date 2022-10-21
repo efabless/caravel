@@ -183,7 +183,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
 	    pass_thru_mgmt <= 1'b0;
 	    pass_thru_mgmt_delay <= 1'b0;
 	    pre_pass_thru_mgmt <= 1'b0;
-	    pass_thru_user = 1'b0;
+	    pass_thru_user <= 1'b0;
 	    pass_thru_user_delay <= 1'b0;
 	    pre_pass_thru_user <= 1'b0;
         end else begin

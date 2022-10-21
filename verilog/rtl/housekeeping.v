@@ -254,6 +254,12 @@ module housekeeping #(
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
 
+    wire serial_data_1;
+    wire serial_data_2;
+    wire serial_clock;
+    wire serial_resetn;
+    wire serial_load;
+
 // Output clock signals buffer wires
 wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff, pad_flash_clk_prebuff;
 
@@ -912,11 +918,6 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     reg serial_clock_pre;
     reg serial_resetn_pre;
     reg serial_load_pre;
-    wire serial_data_1;
-    wire serial_data_2;
-    wire serial_clock;
-    wire serial_resetn;
-    wire serial_load;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_1;
     reg [IO_CTRL_BITS-1:0] serial_data_staging_2;
 
