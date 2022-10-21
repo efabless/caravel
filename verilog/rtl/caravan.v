@@ -168,6 +168,7 @@ module caravan (
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_one;
+    wire [7:0] mprj_io_zero;
 
     // User Project Control (user-facing)
     // 27 GPIO bidirectional with in/out/oeb and a 3.3V copy of the input
@@ -336,8 +337,18 @@ module caravan (
     assign mgmt_io_out[6:0] = mgmt_io_out_hk[6:0];
     assign mgmt_io_oeb[34:0] = mgmt_io_oeb_hk[34:0];
 
+    /* The following are tied to ground through the zero value	*/
+    /* outputs of the closest GPIO control blocks.  Tie two 	*/
+    /* inputs to one zero value output so that the wires from	*/
+    /* the GPIOs to housekeeping don't get too long.		*/
+    assign mgmt_io_in_hk[24:14] = {mprj_io_zero[5],
+		mprj_io_zero[4], mprj_io_zero[4],
+		mprj_io_zero[3], mprj_io_zero[3],
+		mprj_io_zero[2], mprj_io_zero[2],
+		mprj_io_zero[1], mprj_io_zero[1],
+		mprj_io_zero[0], mprj_io_zero[0]};
+
     /* The following are no-connects in caravan (no associated GPIO) */
-    assign mgmt_io_in_hk[24:14] = mgmt_io_in[24:14];
     assign mgmt_io_out[24:14] = mgmt_io_out_hk[24:14];
 
     gpio_signal_buffering_alt sigbuf (
@@ -1265,7 +1276,7 @@ module caravan (
 	.mgmt_gpio_oeb(mgmt_io_oeb[1:0]),
 
         .one(mprj_io_one[1:0]),
-        .zero(),
+        .zero(mprj_io_zero[1:0]),
 
     	// Serial data chain for pad configuration
     	.serial_data_in(gpio_serial_link_1_shifted[1:0]),
@@ -1319,9 +1330,8 @@ module caravan (
 	.mgmt_gpio_out(mgmt_io_out[7:2]),
 	.mgmt_gpio_oeb(mprj_io_one[7:2]),
 
-
         .one(mprj_io_one[7:2]),
-        .zero(),
+        .zero(mprj_io_zero[7:2]),
 
     	// Serial data chain for pad configuration
     	.serial_data_in(gpio_serial_link_1_shifted[7:2]),
