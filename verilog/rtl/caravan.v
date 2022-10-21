@@ -1476,9 +1476,8 @@ module caravan (
 
  	.mgmt_gpio_in(mgmt_io_in[(`DIG2_TOP-3):`DIG2_BOT]),
  	.mgmt_gpio_out(mgmt_io_out[(`DIG2_TOP-3):`DIG2_BOT]),
-	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
-
-        .one(mprj_io_one[(`MPRJ_IO_PADS_2-`ANALOG_PADS_2-4):0]),
+	.mgmt_gpio_oeb(mprj_io_one[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
+	.one(mprj_io_one[(`MPRJ_DIG_PADS-4):(`MPRJ_IO_PADS_1-`ANALOG_PADS_1)]),
         .zero(),
 
     	// Serial data chain for pad configuration
