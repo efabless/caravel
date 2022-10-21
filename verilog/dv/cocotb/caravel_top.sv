@@ -74,8 +74,11 @@ end
     wire flash_io1_tb;
 
 
-	
+`ifdef CARAVAN
+caravan uut (
+`else
 caravel uut (
+`endif
 		.vddio	  (vddio_tb),
 		.vddio_2  (vddio_2_tb),		
 		.vssio	  (vssio_tb),

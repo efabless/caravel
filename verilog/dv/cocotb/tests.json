@@ -4,8 +4,8 @@
         "_comment1" :"GL regressions run this test in gatelevel, GL_SDF regression run this test with SDF included"
         ,"gpio_all_i" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as mgmt input using automatic approach firmware and check them"}
 
@@ -30,15 +30,15 @@
         
         ,"gpio_all_i_user" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","setup","r_caravan_rtl","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as user input using automatic approach firmware and check them"}
 
         ,"gpio_all_i_pu" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","setup","r_caravan_rtl","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as mgmt input pull up using automatic approach firmware and check them"}
 
@@ -51,15 +51,15 @@
 
         ,"gpio_all_i_pd" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","setup","r_caravan_rtl","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as mgmt input pull down using automatic approach firmware and check them"}
 
         ,"gpio_all_i_pd_user" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as user input pull down using automatic approach firmware and check them"}
 
@@ -72,8 +72,8 @@
 
         ,"gpio_all_o" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","setup","r_caravan_rtl","gpio_rtl","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","gpio_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"configure all gpios as mgmt output using automatic approach firmware and check them"}
 
@@ -85,8 +85,8 @@
             "description":"configure all gpios as user output using automatic approach firmware and check them"}
         ,"hk_regs_wr_wb_cpu" :{"level":0, 
             "SW":false,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"bit bash test for housekeeping registers"}
         ,"IRQ_timer" :{"level":2, 
@@ -125,8 +125,8 @@
             "description":"Same as bitbang_cpu_all_i but configure the gpio using the SPI not the firmware"}
         ,"hk_regs_wr_spi" :{"level":0, 
             "SW":false,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"write then read(the written value) from random housekeeping registers through the SPI housekeeping"}
 
@@ -207,8 +207,8 @@
 
         ,"mgmt_gpio_bidir" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"send random number of blinks through mgmt_gpio and expect to recieve the same number back "}    
 
