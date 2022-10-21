@@ -1,11 +1,12 @@
 ### Digital PLL Signoff SDC
-### Rev 1
-### Date: 13/10/2022
+### Rev 2
+### Date: 17/10/2022
 
+set pll_clk_t 11.76
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name pll_control_clock -period 6.6667 [get_pins {ringosc.ibufp01/Y}]
+create_clock -name pll_control_clock -period $pll_clk_t [get_pins {ringosc.ibufp01/Y}]
 set_clock_transition 0.1000 [get_clocks {pll_control_clock}]
 set_clock_uncertainty 0.100 pll_control_clock
 set_input_delay 1.0000 -add_delay [get_ports {dco}]

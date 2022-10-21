@@ -1,7 +1,8 @@
 ### Caravel Clocking Signoff SDC
-### Rev 1
-### Date: 13/10/2022
+### Rev 2
+### Date: 17/10/2022
 
+set pll_clk_t 11.76
 ###############################################################################
 # Timing Constraints
 ###############################################################################
@@ -9,11 +10,11 @@ create_clock -name ext_clk -period 25.0000 [get_ports {ext_clk}]
 set_clock_transition 0.1000 [get_clocks {ext_clk}]
 set_clock_uncertainty 0.1000 ext_clk
 set_propagated_clock [get_clocks {ext_clk}]
-create_clock -name pll_clk -period 6.6667 [get_ports {pll_clk}]
+create_clock -name pll_clk -period $pll_clk_t [get_ports {pll_clk}]
 set_clock_transition 0.1000 [get_clocks {pll_clk}]
 set_clock_uncertainty 0.1000 pll_clk
 set_propagated_clock [get_clocks {pll_clk}]
-create_clock -name pll_clk90 -period 6.6667 [get_ports {pll_clk90}]
+create_clock -name pll_clk90 -period $pll_clk_t [get_ports {pll_clk90}]
 set_clock_transition 0.1000 [get_clocks {pll_clk90}]
 set_clock_uncertainty 0.1000 pll_clk90
 set_propagated_clock [get_clocks {pll_clk90}]
@@ -45,3 +46,11 @@ set_load -pin_load 0.2000 [get_ports {user_clk}]
 ###############################################################################
 set_max_transition 0.7500 [current_design]
 set_max_fanout 7.0000 [current_design]
+
+
+set_case_analysis 0 [get_ports sel[0]]
+set_case_analysis 0 [get_ports sel[1]]
+set_case_analysis 0 [get_ports sel[2]]
+set_case_analysis 0 [get_ports sel2[0]]
+set_case_analysis 0 [get_ports sel2[1]]
+set_case_analysis 0 [get_ports sel2[2]]
