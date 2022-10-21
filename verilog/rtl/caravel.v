@@ -244,6 +244,12 @@ module caravel (
 	wire por_l_buf;
 	wire porb_h_buf;
 	
+
+    // SoC core
+    wire caravel_clk;
+    wire caravel_clk2;
+    wire caravel_rstn;
+	
 	// top-level buffers
 	buff_flash_clkrst flash_clkrst_buffers (
 	`ifdef USE_POWER_PINS
@@ -399,10 +405,6 @@ module caravel (
 	.mprj_analog_io(user_analog_io)
     );
 
-    // SoC core
-    wire caravel_clk;
-    wire caravel_clk2;
-    wire caravel_rstn;
 
     // Logic analyzer signals
     wire [127:0] la_data_in_user;  // From CPU to MPRJ

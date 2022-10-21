@@ -367,16 +367,8 @@ MACRO caravel
         RECT 683.565 35.715 720.750 91.545 ;
     END
   END resetb
-  PIN vccd
-    DIRECTION INOUT ;
-    USE POWER ;
-    PORT
-      LAYER met5 ;
-        RECT 30.835 350.270 98.100 404.670 ;
-    END
-  END vccd
   PIN vccd1
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -384,7 +376,7 @@ MACRO caravel
     END
   END vccd1
   PIN vccd2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -392,7 +384,7 @@ MACRO caravel
     END
   END vccd2
   PIN vdda
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -400,7 +392,7 @@ MACRO caravel
     END
   END vdda
   PIN vdda1
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -408,7 +400,7 @@ MACRO caravel
     END
   END vdda1
   PIN vdda1_2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -416,7 +408,7 @@ MACRO caravel
     END
   END vdda1_2
   PIN vdda2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -424,7 +416,7 @@ MACRO caravel
     END
   END vdda2
   PIN vddio
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -432,7 +424,7 @@ MACRO caravel
     END
   END vddio
   PIN vddio_2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE POWER ;
     PORT
       LAYER met5 ;
@@ -440,7 +432,7 @@ MACRO caravel
     END
   END vddio_2
   PIN vssa
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -448,7 +440,7 @@ MACRO caravel
     END
   END vssa
   PIN vssa1
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -456,7 +448,7 @@ MACRO caravel
     END
   END vssa1
   PIN vssa1_2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -464,23 +456,15 @@ MACRO caravel
     END
   END vssa1_2
   PIN vssa2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
         RECT 34.055 4145.050 94.880 4205.890 ;
     END
   END vssa2
-  PIN vssd
-    DIRECTION INOUT ;
-    USE GROUND ;
-    PORT
-      LAYER met5 ;
-        RECT 1216.330 30.835 1270.730 98.100 ;
-    END
-  END vssd
   PIN vssd1
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -488,7 +472,7 @@ MACRO caravel
     END
   END vssd1
   PIN vssd2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -496,7 +480,7 @@ MACRO caravel
     END
   END vssd2
   PIN vssio
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
@@ -504,13 +488,29 @@ MACRO caravel
     END
   END vssio
   PIN vssio_2
-    DIRECTION INOUT ;
+    DIRECTION INPUT ;
     USE GROUND ;
     PORT
       LAYER met5 ;
         RECT 1674.050 5093.120 1734.890 5153.945 ;
     END
   END vssio_2
+  PIN vccd
+    DIRECTION INPUT ;
+    USE POWER ;
+    PORT
+      LAYER met5 ;
+        RECT 30.835 350.270 98.100 404.670 ;
+    END
+  END vccd
+  PIN vssd
+    DIRECTION INPUT ;
+    USE GROUND ;
+    PORT
+      LAYER met5 ;
+        RECT 1216.330 30.835 1270.730 98.100 ;
+    END
+  END vssd
   OBS
       LAYER li1 ;
         RECT 0.220 0.220 3587.780 5187.705 ;

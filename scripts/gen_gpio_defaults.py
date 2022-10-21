@@ -158,7 +158,10 @@ if __name__ == '__main__':
                     if tokens[0] == '`define':
                         if tokens[2][0] == '`':
                             # If definition is nested, substitute value.
-                            tokens[2] = kvpairs[tokens[2]]
+                            try:
+                                tokens[2] = kvpairs[tokens[2]]
+                            except:
+                                print('Error:  Used unknown definition ' + tokens[2])
                         kvpairs['`' + tokens[1]] = tokens[2]
     else:
         print('Error:  No user_defines.v file found.')
