@@ -279,6 +279,11 @@ module caravan (
 	wire por_l_buf;
 	wire porb_h_buf;
 
+    // SoC core
+    wire caravel_clk;
+    wire caravel_clk2;
+    wire caravel_rstn;
+	
 	// top-level buffers
 	buff_flash_clkrst flash_clkrst_buffers (
 	`ifdef USE_POWER_PINS
@@ -442,10 +447,7 @@ module caravan (
 	.mprj_clamp_low(user_clamp_low)
     );
 
-    // SoC core
-    wire caravel_clk;
-    wire caravel_clk2;
-    wire caravel_rstn;
+
 
     wire [7:0] spi_ro_config_core;
 
