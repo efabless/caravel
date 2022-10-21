@@ -18,7 +18,7 @@ iverilog = True
 vcs = False
 coverage = False
 zip_waves = True
-
+caravan = False 
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -108,9 +108,13 @@ class RunTest:
         elif(self.sim_type=="GLSDF"): 
             print(f"iverilog can't run SDF for test {self.test_name} Please use anothor simulator like cvc" )
             return
-        
+        user_project = f"{CARAVEL_PATH}/rtl/__user_project_wrapper.v {CARAVEL_PATH}/rtl/__user_project_gpio_example.v {CARAVEL_PATH}/rtl/__user_project_la_example.v"
+        if caravan:
+            print ("Use caravan")
+            macros = f'-DCARAVAN {macros} '
+            user_project = f"{CARAVEL_PATH}/rtl/__user_analog_project_wrapper.v"
         iverilog_command = (f"iverilog -Ttyp {macros} {includes}  -o {self.sim_path}/sim.vvp"
-                            f" {CARAVEL_PATH}/rtl/__user_project_wrapper.v {CARAVEL_PATH}/rtl/__user_project_gpio_example.v {CARAVEL_PATH}/rtl/__user_project_la_example.v  caravel_top.sv"
+                            f" {user_project}  caravel_top.sv"
                             f" && TESTCASE={self.test_name} MODULE=caravel_tests vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus {self.sim_path}/sim.vvp")
         docker_command = f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {iverilog_command}' >> {self.full_file}"
         self.full_terminal = open(self.full_file, "a")
@@ -474,6 +478,7 @@ parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler i
 parser.add_argument('-cov',action='store_true', help='enable code coverage')
 parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
 parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the waves and logs of passed tests would be zipped. Using this option they wouldn\'t be zipped')
+parser.add_argument('-caravan',action='store_true', help='simulate caravan instead of caravel')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -486,6 +491,8 @@ if args.corner == None:
     args.corner= ["nom-t"]
 if args.keep_pass_unzip: 
     zip_waves = False
+if args.caravan: 
+    caravan = True
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 
