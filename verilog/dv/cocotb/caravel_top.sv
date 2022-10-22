@@ -371,4 +371,6 @@ reg [7:0] DM_INIT = `ifdef DM_INIT `DM_INIT `else 0 `endif;
 
 reg GL = `ifdef GL 1 `else 0 `endif;
 
+reg CARAVAN = `ifdef CARAVAN 1 `else 0 `endif;
+
 endmodule

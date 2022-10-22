@@ -74,6 +74,7 @@ def fill_macros(macros_hdl):
     Macros['MPRJ_IO_PADS_2'] = macros_hdl.MPRJ_IO_PADS_2.value.integer
     Macros['MPRJ_IO_PADS']   = macros_hdl.MPRJ_IO_PADS.value.integer
     Macros['GL']     = macros_hdl.GL.value.integer
+    Macros['CARAVAN']     = macros_hdl.CARAVAN.value.integer
 
 
 
