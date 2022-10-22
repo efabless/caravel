@@ -1037,6 +1037,21 @@ module gpio_signal_buffering_alt(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf
     .VPWR(vccd),
     .X(\buf_in[10] )
   );
+
+  /* NOTE:  Hand-edited to insert the decap_12 cells    */
+  /* WARNING:  Hand-edited gate level netlist!          */
+  /* Fortunately, decap cells are trivial so the change */
+  /* is pretty low-risk.                                */
+
+  sky130_ef_sc_hd__decap_12 sigbuf_decaps [59:0] (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+
+  /* End of hand-editing */
+
   assign \buf_in[98]  = mgmt_io_oeb_unbuf[1];
   assign \buf_in[96]  = mgmt_io_oeb_unbuf[0];
   assign \buf_in[94]  = mgmt_io_out_unbuf[19];
