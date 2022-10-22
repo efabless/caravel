@@ -134,6 +134,7 @@ class RunTest:
     # vcs function      
     def runTest_vcs(self):
         print(f"Start running test: {self.sim_type}-{self.test_name}")
+        CARAVEL_PATH = os.getenv('CARAVEL_PATH')
         PDK_ROOT = os.getenv('PDK_ROOT')
         PDK = os.getenv('PDK')
         VERILOG_PATH = os.getenv('VERILOG_PATH')
@@ -168,8 +169,12 @@ class RunTest:
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
-
-        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs} {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        # user_project = f"-v {CARAVEL_PATH}/rtl/__user_project_wrapper.v"
+        # if caravan:
+        #     print ("Use caravan")
+        #     macros = f'+define+CARAVAN {macros} '
+        #     user_project = f"-v {CARAVEL_PATH}/rtl/__user_analog_project_wrapper.v"
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {dirs}  {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
