@@ -44,7 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-5e
+MPW_TAG ?= mpw-7c
 
 # PDK switch varient
 export PDK?=sky130A
@@ -85,10 +85,10 @@ STD_CELL_LIBRARY ?= sky130_fd_sc_hd
 SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
-SKYWATER_COMMIT ?= c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
-OPEN_PDKS_COMMIT ?= 05af1d05227419f0955cd98610351f4680575b95
+SKYWATER_COMMIT ?= f70d8ca46961ff92719d8870a18a076370b85f6c
+OPEN_PDKS_COMMIT ?= a56526bfe45971322526978132b059d43ddd3a02
 # = 1.0.303
-PDK_MAGIC_COMMIT ?= fe2eb6d3906ed15ade0e7a51daea80dd4e3846e2
+PDK_MAGIC_COMMIT ?= 085131b090cb511d785baf52a10cf6df8a657d44
 # = 8.3.294
 
 .DEFAULT_GOAL := ship
@@ -1286,10 +1286,7 @@ sky130:
 		efabless/openlane-tools:magic-$(PDK_MAGIC_COMMIT)-centos-7\
 		sh -c "\
 			cd $(PDK_ROOT)/open_pdks && \
-			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk/libraries --enable-sram-sky130 && \
-			cd sky130 && \
-			make veryclean && \
-			make prerequisites && \
+			./configure --enable-sky130-pdk=$(PDK_ROOT)/skywater-pdk --enable-sram-sky130 && \
 			make && \
 			make SHARED_PDKS_PATH=$(PDK_ROOT) install && \
 			make clean \

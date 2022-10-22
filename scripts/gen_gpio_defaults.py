@@ -158,7 +158,10 @@ if __name__ == '__main__':
                     if tokens[0] == '`define':
                         if tokens[2][0] == '`':
                             # If definition is nested, substitute value.
-                            tokens[2] = kvpairs[tokens[2]]
+                            try:
+                                tokens[2] = kvpairs[tokens[2]]
+                            except:
+                                print('Error:  Used unknown definition ' + tokens[2])
                         kvpairs['`' + tokens[1]] = tokens[2]
     else:
         print('Error:  No user_defines.v file found.')
@@ -172,7 +175,7 @@ if __name__ == '__main__':
     kvpairs["`USER_CONFIG_GPIO_0_INIT"] = "13'h1803"
     kvpairs["`USER_CONFIG_GPIO_1_INIT"] = "13'h1803"
     kvpairs["`USER_CONFIG_GPIO_2_INIT"] = "13'h0403"
-    kvpairs["`USER_CONFIG_GPIO_3_INIT"] = "13'h0403"
+    kvpairs["`USER_CONFIG_GPIO_3_INIT"] = "13'h0801"
     kvpairs["`USER_CONFIG_GPIO_4_INIT"] = "13'h0403"
 
     # Generate zero and one coordinates for each via

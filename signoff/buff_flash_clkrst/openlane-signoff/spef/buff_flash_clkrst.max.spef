@@ -1,0 +1,619 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "buff_flash_clkrst"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "OpenRCX"
+*PROGRAM "Parallel Extraction"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*3 in_n[0]
+*4 in_n[10]
+*5 in_n[11]
+*6 in_n[1]
+*7 in_n[2]
+*8 in_n[3]
+*9 in_n[4]
+*10 in_n[5]
+*11 in_n[6]
+*12 in_n[7]
+*13 in_n[8]
+*14 in_n[9]
+*15 in_s[0]
+*16 in_s[1]
+*17 in_s[2]
+*18 out_n[0]
+*19 out_n[1]
+*20 out_n[2]
+*21 out_s[0]
+*22 out_s[10]
+*23 out_s[11]
+*24 out_s[1]
+*25 out_s[2]
+*26 out_s[3]
+*27 out_s[4]
+*28 out_s[5]
+*29 out_s[6]
+*30 out_s[7]
+*31 out_s[8]
+*32 out_s[9]
+*33 BUF\[0\]
+*34 BUF\[10\]
+*35 BUF\[11\]
+*36 BUF\[12\]
+*37 BUF\[13\]
+*38 BUF\[14\]
+*39 BUF\[1\]
+*40 BUF\[2\]
+*41 BUF\[3\]
+*42 BUF\[4\]
+*43 BUF\[5\]
+*44 BUF\[6\]
+*45 BUF\[7\]
+*46 BUF\[8\]
+*47 BUF\[9\]
+*48 FILLER_0_19
+*49 FILLER_0_27
+*50 FILLER_0_29
+*51 FILLER_0_3
+*52 FILLER_0_41
+*53 FILLER_0_54
+*54 FILLER_0_57
+*55 FILLER_0_7
+*56 FILLER_0_70
+*57 FILLER_0_74
+*58 FILLER_1_17
+*59 FILLER_1_3
+*60 FILLER_1_32
+*61 FILLER_1_47
+*62 FILLER_1_55
+*63 FILLER_1_57
+*64 FILLER_1_70
+*65 FILLER_1_74
+*66 FILLER_2_26
+*67 FILLER_2_29
+*68 FILLER_2_3
+*69 FILLER_2_52
+*70 FILLER_2_67
+*71 FILLER_3_15
+*72 FILLER_3_27
+*73 FILLER_3_3
+*74 FILLER_3_42
+*75 FILLER_3_54
+*76 FILLER_3_57
+*77 FILLER_3_70
+*78 FILLER_3_74
+*79 FILLER_4_19
+*80 FILLER_4_27
+*81 FILLER_4_29
+*82 FILLER_4_3
+*83 FILLER_4_41
+*84 FILLER_4_53
+*85 FILLER_4_57
+*86 FILLER_4_7
+*87 FILLER_4_70
+*88 FILLER_4_74
+*89 PHY_0
+*90 PHY_1
+*91 PHY_2
+*92 PHY_3
+*93 PHY_4
+*94 PHY_5
+*95 PHY_6
+*96 PHY_7
+*97 PHY_8
+*98 PHY_9
+*99 TAP_10
+*100 TAP_11
+*101 TAP_12
+*102 TAP_13
+*103 TAP_14
+*104 TAP_15
+*105 TAP_16
+
+*PORTS
+in_n[0] I
+in_n[10] I
+in_n[11] I
+in_n[1] I
+in_n[2] I
+in_n[3] I
+in_n[4] I
+in_n[5] I
+in_n[6] I
+in_n[7] I
+in_n[8] I
+in_n[9] I
+in_s[0] I
+in_s[1] I
+in_s[2] I
+out_n[0] O
+out_n[1] O
+out_n[2] O
+out_s[0] O
+out_s[10] O
+out_s[11] O
+out_s[1] O
+out_s[2] O
+out_s[3] O
+out_s[4] O
+out_s[5] O
+out_s[6] O
+out_s[7] O
+out_s[8] O
+out_s[9] O
+
+*D_NET *3 0.000809487
+*CONN
+*P in_n[0] I
+*I *41:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[0] 0.000321834
+2 *41:A 0.000321834
+3 *41:A out_n[2] 0.000165819
+4 *41:A *42:A 0
+*RES
+1 in_n[0] *41:A 45.8093 
+*END
+
+*D_NET *4 0.00058245
+*CONN
+*P in_n[10] I
+*I *37:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[10] 0.000262561
+2 *37:A 0.000262561
+3 *37:A *5:16 0
+4 *37:A *14:10 0
+5 *37:A *22:9 5.73288e-05
+*RES
+1 in_n[10] *37:A 43.51 
+*END
+
+*D_NET *5 0.00314715
+*CONN
+*P in_n[11] I
+*I *38:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[11] 0.00125418
+2 *38:A 0
+3 *5:16 0.00125418
+4 *5:16 out_s[10] 0
+5 *5:16 out_s[9] 0.000140259
+6 *5:16 *14:10 0.000186606
+7 *5:16 *23:7 0.000311915
+8 *37:A *5:16 0
+*RES
+1 in_n[11] *5:16 41.825 
+2 *5:16 *38:A 23 
+*END
+
+*D_NET *6 0.00149003
+*CONN
+*P in_n[1] I
+*I *42:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[1] 0.00032827
+2 *42:A 0.00032827
+3 *42:A out_s[0] 7.66085e-05
+4 *42:A *7:10 0.000756884
+5 *41:A *42:A 0
+*RES
+1 in_n[1] *42:A 48.3779 
+*END
+
+*D_NET *7 0.00223276
+*CONN
+*P in_n[2] I
+*I *43:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[2] 0.00069966
+2 *43:A 0
+3 *7:10 0.00069966
+4 *7:10 out_s[0] 0
+5 *7:10 out_s[1] 7.03766e-05
+6 *7:10 out_s[2] 6.17437e-06
+7 *7:10 *44:A 0
+8 *42:A *7:10 0.000756884
+*RES
+1 in_n[2] *7:10 30.9707 
+2 *7:10 *43:A 23 
+*END
+
+*D_NET *8 0.000770166
+*CONN
+*P in_n[3] I
+*I *44:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[3] 0.000385083
+2 *44:A 0.000385083
+3 *44:A *9:9 0
+4 *7:10 *44:A 0
+*RES
+1 in_n[3] *44:A 45.8093 
+*END
+
+*D_NET *9 0.00142628
+*CONN
+*P in_n[4] I
+*I *45:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[4] 0.000615049
+2 *45:A 0
+3 *9:9 0.000615049
+4 *9:9 out_s[3] 0.000196178
+5 *9:9 *46:A 0
+6 *44:A *9:9 0
+*RES
+1 in_n[4] *9:9 28.4436 
+2 *9:9 *45:A 23 
+*END
+
+*D_NET *10 0.00113314
+*CONN
+*P in_n[5] I
+*I *46:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[5] 0.000566572
+2 *46:A 0.000566572
+3 *9:9 *46:A 0
+*RES
+1 in_n[5] *46:A 49.3307 
+*END
+
+*D_NET *11 0.00188726
+*CONN
+*P in_n[6] I
+*I *47:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[6] 0.00049832
+2 *47:A 0
+3 *11:10 0.00049832
+4 *11:10 *12:8 0.000748939
+5 *11:10 *29:7 0.000141677
+*RES
+1 in_n[6] *11:10 28.3814 
+2 *11:10 *47:A 23 
+*END
+
+*D_NET *12 0.00204954
+*CONN
+*P in_n[7] I
+*I *34:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[7] 0.000567827
+2 *34:A 0
+3 *12:8 0.000567827
+4 *12:8 out_s[6] 3.67805e-05
+5 *12:8 out_s[8] 0
+6 *12:8 *35:A 0
+7 *12:8 *30:7 0.000128169
+8 *11:10 *12:8 0.000748939
+*RES
+1 in_n[7] *12:8 29.3964 
+2 *12:8 *34:A 23 
+*END
+
+*D_NET *13 0.000912246
+*CONN
+*P in_n[8] I
+*I *35:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[8] 0.000453036
+2 *35:A 0.000453036
+3 *35:A *14:10 0
+4 *35:A *31:7 6.17437e-06
+5 *12:8 *35:A 0
+*RES
+1 in_n[8] *35:A 46.5757 
+*END
+
+*D_NET *14 0.00209477
+*CONN
+*P in_n[9] I
+*I *36:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_n[9] 0.000902356
+2 *36:A 0
+3 *14:10 0.000902356
+4 *14:10 out_s[10] 0
+5 *14:10 *23:7 0.000103447
+6 *35:A *14:10 0
+7 *37:A *14:10 0
+8 *5:16 *14:10 0.000186606
+*RES
+1 in_n[9] *14:10 33.0629 
+2 *14:10 *36:A 23 
+*END
+
+*D_NET *15 0.000609775
+*CONN
+*P in_s[0] I
+*I *33:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_s[0] 0.000254485
+2 *33:A 0.000254485
+3 *33:A *16:12 0
+4 *33:A *18:7 0.000100805
+*RES
+1 in_s[0] *33:A 42.7643 
+*END
+
+*D_NET *16 0.00215843
+*CONN
+*P in_s[1] I
+*I *39:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_s[1] 0.000669693
+2 *39:A 0
+3 *16:12 0.000669693
+4 *16:12 out_n[0] 0.000819045
+5 *16:12 out_n[2] 0
+6 *16:12 *40:A 0
+7 *33:A *16:12 0
+*RES
+1 in_s[1] *16:12 30.8464 
+2 *16:12 *39:A 23 
+*END
+
+*D_NET *17 0.000791768
+*CONN
+*P in_s[2] I
+*I *40:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 in_s[2] 0.000395884
+2 *40:A 0.000395884
+3 *40:A out_s[0] 0
+4 *16:12 *40:A 0
+*RES
+1 in_s[2] *40:A 45.3329 
+*END
+
+*D_NET *18 0.00275982
+*CONN
+*P out_n[0] O
+*I *33:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_n[0] 0.000649033
+2 *33:X 0.000270953
+3 *18:7 0.000919986
+4 out_n[0] out_n[1] 0
+5 out_n[0] out_n[2] 0
+6 *33:A *18:7 0.000100805
+7 *16:12 out_n[0] 0.000819045
+*RES
+1 *33:X *18:7 42.9093 
+2 *18:7 out_n[0] 16.4886 
+*END
+
+*D_NET *19 0.000996874
+*CONN
+*P out_n[1] O
+*I *39:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_n[1] 0.000351055
+2 *39:X 0.000351055
+3 out_n[1] out_n[2] 0.000294763
+4 out_n[0] out_n[1] 0
+*RES
+1 *39:X out_n[1] 45.395 
+*END
+
+*D_NET *20 0.00183616
+*CONN
+*P out_n[2] O
+*I *40:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_n[2] 0.000507504
+2 *40:X 0.000180283
+3 *20:7 0.000687787
+4 out_n[2] out_s[0] 0
+5 out_n[0] out_n[2] 0
+6 out_n[1] out_n[2] 0.000294763
+7 *41:A out_n[2] 0.000165819
+8 *16:12 out_n[2] 0
+*RES
+1 *40:X *20:7 40.5271 
+2 *20:7 out_n[2] 12.4907 
+*END
+
+*D_NET *21 0.00163663
+*CONN
+*P out_s[0] O
+*I *41:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[0] 0.000548786
+2 *41:X 6.80678e-05
+3 *21:7 0.000616853
+4 out_s[0] out_s[1] 0.00032632
+5 out_s[0] out_s[2] 0
+6 out_n[2] out_s[0] 0
+7 *40:A out_s[0] 0
+8 *42:A out_s[0] 7.66085e-05
+9 *7:10 out_s[0] 0
+*RES
+1 *41:X *21:7 39.0979 
+2 *21:7 out_s[0] 14.935 
+*END
+
+*D_NET *22 0.0022753
+*CONN
+*P out_s[10] O
+*I *37:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[10] 0.000810796
+2 *37:X 0.000298189
+3 *22:9 0.00110899
+4 out_s[10] out_s[11] 0
+5 out_s[10] out_s[9] 0
+6 *37:A *22:9 5.73288e-05
+7 *5:16 out_s[10] 0
+8 *14:10 out_s[10] 0
+*RES
+1 *37:X *22:9 42.93 
+2 *22:9 out_s[10] 14.3964 
+*END
+
+*D_NET *23 0.00285697
+*CONN
+*P out_s[11] O
+*I *38:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[11] 0.000131317
+2 *38:X 0.00101936
+3 *23:7 0.00115068
+4 *23:7 out_s[9] 0.000140259
+5 out_s[10] out_s[11] 0
+6 *5:16 *23:7 0.000311915
+7 *14:10 *23:7 0.000103447
+*RES
+1 *38:X *23:7 37.4586 
+2 *23:7 out_s[11] 17.3614 
+*END
+
+*D_NET *24 0.00157731
+*CONN
+*P out_s[1] O
+*I *42:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[1] 0.00047529
+2 *42:X 0.00047529
+3 out_s[1] out_s[2] 0.000230031
+4 out_s[1] out_s[3] 0
+5 out_s[0] out_s[1] 0.00032632
+6 *7:10 out_s[1] 7.03766e-05
+*RES
+1 *42:X out_s[1] 49.8279 
+*END
+
+*D_NET *25 0.00106966
+*CONN
+*P out_s[2] O
+*I *43:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[2] 0.000416727
+2 *43:X 0.000416727
+3 out_s[2] out_s[3] 0
+4 out_s[0] out_s[2] 0
+5 out_s[1] out_s[2] 0.000230031
+6 *7:10 out_s[2] 6.17437e-06
+*RES
+1 *43:X out_s[2] 48.875 
+*END
+
+*D_NET *26 0.00157855
+*CONN
+*P out_s[3] O
+*I *44:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[3] 0.000532775
+2 *44:X 0.000158411
+3 *26:7 0.000691186
+4 out_s[3] out_s[4] 0
+5 out_s[3] out_s[5] 0
+6 out_s[1] out_s[3] 0
+7 out_s[2] out_s[3] 0
+8 *9:9 out_s[3] 0.000196178
+*RES
+1 *44:X *26:7 40.5271 
+2 *26:7 out_s[3] 11.5171 
+*END
+
+*D_NET *27 0.000935888
+*CONN
+*P out_s[4] O
+*I *45:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[4] 0.0004112
+2 *45:X 0.0004112
+3 out_s[4] out_s[5] 0.000113488
+4 out_s[3] out_s[4] 0
+*RES
+1 *45:X out_s[4] 46.7 
+*END
+
+*D_NET *28 0.00124869
+*CONN
+*P out_s[5] O
+*I *46:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[5] 0.000567599
+2 *46:X 0.000567599
+3 out_s[5] out_s[6] 0
+4 out_s[3] out_s[5] 0
+5 out_s[4] out_s[5] 0.000113488
+*RES
+1 *46:X out_s[5] 48.875 
+*END
+
+*D_NET *29 0.00207606
+*CONN
+*P out_s[6] O
+*I *47:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[6] 0.000503989
+2 *47:X 0.000404635
+3 *29:7 0.000908623
+4 out_s[6] out_s[7] 8.03508e-05
+5 out_s[5] out_s[6] 0
+6 *11:10 *29:7 0.000141677
+7 *12:8 out_s[6] 3.67805e-05
+*RES
+1 *47:X *29:7 44.3386 
+2 *29:7 out_s[6] 9.59071 
+*END
+
+*D_NET *30 0.0014735
+*CONN
+*P out_s[7] O
+*I *34:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[7] 0.00028451
+2 *34:X 0.00034798
+3 *30:7 0.00063249
+4 out_s[7] out_s[8] 0
+5 out_s[6] out_s[7] 8.03508e-05
+6 *12:8 *30:7 0.000128169
+*RES
+1 *34:X *30:7 44.3386 
+2 *30:7 out_s[7] 5.88286 
+*END
+
+*D_NET *31 0.00179676
+*CONN
+*P out_s[8] O
+*I *35:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[8] 0.000680814
+2 *35:X 0.000193091
+3 *31:7 0.000873905
+4 out_s[8] out_s[9] 4.27783e-05
+5 out_s[7] out_s[8] 0
+6 *35:A *31:7 6.17437e-06
+7 *12:8 out_s[8] 0
+*RES
+1 *35:X *31:7 41.0036 
+2 *31:7 out_s[8] 12.76 
+*END
+
+*D_NET *32 0.000667532
+*CONN
+*P out_s[9] O
+*I *36:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 out_s[9] 0.000172118
+2 *36:X 0.000172118
+3 out_s[10] out_s[9] 0
+4 out_s[8] out_s[9] 4.27783e-05
+5 *5:16 out_s[9] 0.000140259
+6 *23:7 out_s[9] 0.000140259
+*RES
+1 *36:X out_s[9] 42.2879 
+*END

@@ -121,4 +121,33 @@ module user_analog_project_wrapper (
 // Dummy assignment so that we can take it through the openlane flow
 assign io_out = io_in;
 
+// splitting the address space to user address space and debug address space 
+// debug address space are the last 2 registers of user_project_wrapper address space
+wire wbs_cyc_i_user;
+wire  wbs_ack_o_user;
+wire [31:0] wbs_dat_o_user;
+
+wire  wbs_cyc_i_debug;
+wire wbs_ack_o_debug;
+wire [31:0] wbs_dat_o_debug;
+
+assign wbs_cyc_i_user  = (wbs_adr_i[31:3] != 29'h601FFFF) ? wbs_cyc_i : 0; 
+assign wbs_cyc_i_debug = (wbs_adr_i[31:3] == 29'h601FFFF) ? wbs_cyc_i : 0; 
+assign wbs_ack_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_ack_o_debug : wbs_ack_o_user; 
+assign wbs_dat_o = (wbs_adr_i[31:3] == 28'h601FFFF) ? wbs_dat_o_debug : wbs_dat_o_user; 
+assign wbs_ack_o_user = 0;
+
+debug_regs debug(
+    .wb_clk_i(wb_clk_i),
+    .wb_rst_i(wb_rst_i),
+    .wbs_cyc_i(wbs_cyc_i_debug),
+    .wbs_stb_i(wbs_stb_i),
+    .wbs_we_i(wbs_we_i),
+    .wbs_sel_i(wbs_sel_i),
+    .wbs_adr_i(wbs_adr_i),
+    .wbs_dat_i(wbs_dat_i),
+    .wbs_ack_o(wbs_ack_o_debug),
+    .wbs_dat_o(wbs_dat_o_debug)
+);
+
 endmodule	// user_analog_project_wrapper
