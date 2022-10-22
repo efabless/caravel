@@ -2508,6 +2508,14 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   wire \mprj_io_vtrip_sel[7] ;
   wire \mprj_io_vtrip_sel[8] ;
   wire \mprj_io_vtrip_sel[9] ;
+  wire \mprj_io_zero[0] ;
+  wire \mprj_io_zero[1] ;
+  wire \mprj_io_zero[2] ;
+  wire \mprj_io_zero[3] ;
+  wire \mprj_io_zero[4] ;
+  wire \mprj_io_zero[5] ;
+  wire \mprj_io_zero[6] ;
+  wire \mprj_io_zero[7] ;
   wire mprj_reset;
   wire \mprj_sel_o_core[0] ;
   wire \mprj_sel_o_core[1] ;
@@ -3024,7 +3032,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[14] )
   );
   gpio_control_block \gpio_control_bidir_1[1]  (
     .gpio_defaults({ \gpio_defaults[25] , \gpio_defaults[24] , \gpio_defaults[23] , \gpio_defaults[22] , \gpio_defaults[21] , \gpio_defaults[20] , \gpio_defaults[19] , \gpio_defaults[18] , \gpio_defaults[17] , \gpio_defaults[16] , \gpio_defaults[15] , \gpio_defaults[14] , \gpio_defaults[13]  }),
@@ -3059,7 +3067,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[16] )
   );
   gpio_control_block \gpio_control_bidir_2[0]  (
     .gpio_defaults({ \gpio_defaults[324] , \gpio_defaults[323] , \gpio_defaults[322] , \gpio_defaults[321] , \gpio_defaults[320] , \gpio_defaults[319] , \gpio_defaults[318] , \gpio_defaults[317] , \gpio_defaults[316] , \gpio_defaults[315] , \gpio_defaults[314] , \gpio_defaults[313] , \gpio_defaults[312]  }),
@@ -3409,7 +3417,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[18] )
   );
   gpio_control_block \gpio_control_in_1a[1]  (
     .gpio_defaults({ \gpio_defaults[51] , \gpio_defaults[50] , \gpio_defaults[49] , \gpio_defaults[48] , \gpio_defaults[47] , \gpio_defaults[46] , \gpio_defaults[45] , \gpio_defaults[44] , \gpio_defaults[43] , \gpio_defaults[42] , \gpio_defaults[41] , \gpio_defaults[40] , \gpio_defaults[39]  }),
@@ -3444,7 +3452,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[20] )
   );
   gpio_control_block \gpio_control_in_1a[2]  (
     .gpio_defaults({ \gpio_defaults[64] , \gpio_defaults[63] , \gpio_defaults[62] , \gpio_defaults[61] , \gpio_defaults[60] , \gpio_defaults[59] , \gpio_defaults[58] , \gpio_defaults[57] , \gpio_defaults[56] , \gpio_defaults[55] , \gpio_defaults[54] , \gpio_defaults[53] , \gpio_defaults[52]  }),
@@ -3479,7 +3487,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[22] )
   );
   gpio_control_block \gpio_control_in_1a[3]  (
     .gpio_defaults({ \gpio_defaults[77] , \gpio_defaults[76] , \gpio_defaults[75] , \gpio_defaults[74] , \gpio_defaults[73] , \gpio_defaults[72] , \gpio_defaults[71] , \gpio_defaults[70] , \gpio_defaults[69] , \gpio_defaults[68] , \gpio_defaults[67] , \gpio_defaults[66] , \gpio_defaults[65]  }),
@@ -3514,7 +3522,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mgmt_io_in_hk[24] )
   );
   gpio_control_block \gpio_control_in_1a[4]  (
     .gpio_defaults({ \gpio_defaults[90] , \gpio_defaults[89] , \gpio_defaults[88] , \gpio_defaults[87] , \gpio_defaults[86] , \gpio_defaults[85] , \gpio_defaults[84] , \gpio_defaults[83] , \gpio_defaults[82] , \gpio_defaults[81] , \gpio_defaults[80] , \gpio_defaults[79] , \gpio_defaults[78]  }),
@@ -3549,7 +3557,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mprj_io_zero[6] )
   );
   gpio_control_block \gpio_control_in_1a[5]  (
     .gpio_defaults({ \gpio_defaults[103] , \gpio_defaults[102] , \gpio_defaults[101] , \gpio_defaults[100] , \gpio_defaults[99] , \gpio_defaults[98] , \gpio_defaults[97] , \gpio_defaults[96] , \gpio_defaults[95] , \gpio_defaults[94] , \gpio_defaults[93] , \gpio_defaults[92] , \gpio_defaults[91]  }),
@@ -3584,14 +3592,14 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vccd1(vccd1_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .zero()
+    .zero(\mprj_io_zero[7] )
   );
   gpio_control_block \gpio_control_in_2[0]  (
     .gpio_defaults({ \gpio_defaults[194] , \gpio_defaults[193] , \gpio_defaults[192] , \gpio_defaults[191] , \gpio_defaults[190] , \gpio_defaults[189] , \gpio_defaults[188] , \gpio_defaults[187] , \gpio_defaults[186] , \gpio_defaults[185] , \gpio_defaults[184] , \gpio_defaults[183] , \gpio_defaults[182]  }),
     .mgmt_gpio_in(\mgmt_io_in[25] ),
-    .mgmt_gpio_oeb(\mprj_io_one[0] ),
+    .mgmt_gpio_oeb(\mprj_io_one[14] ),
     .mgmt_gpio_out(\mgmt_io_out[25] ),
-    .one(\mprj_io_one[0] ),
+    .one(\mprj_io_one[14] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[14] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[14] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[14] ),
@@ -3624,9 +3632,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[1]  (
     .gpio_defaults({ \gpio_defaults[207] , \gpio_defaults[206] , \gpio_defaults[205] , \gpio_defaults[204] , \gpio_defaults[203] , \gpio_defaults[202] , \gpio_defaults[201] , \gpio_defaults[200] , \gpio_defaults[199] , \gpio_defaults[198] , \gpio_defaults[197] , \gpio_defaults[196] , \gpio_defaults[195]  }),
     .mgmt_gpio_in(\mgmt_io_in[26] ),
-    .mgmt_gpio_oeb(\mprj_io_one[1] ),
+    .mgmt_gpio_oeb(\mprj_io_one[15] ),
     .mgmt_gpio_out(\mgmt_io_out[26] ),
-    .one(\mprj_io_one[1] ),
+    .one(\mprj_io_one[15] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[15] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[15] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[15] ),
@@ -3659,9 +3667,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[2]  (
     .gpio_defaults({ \gpio_defaults[220] , \gpio_defaults[219] , \gpio_defaults[218] , \gpio_defaults[217] , \gpio_defaults[216] , \gpio_defaults[215] , \gpio_defaults[214] , \gpio_defaults[213] , \gpio_defaults[212] , \gpio_defaults[211] , \gpio_defaults[210] , \gpio_defaults[209] , \gpio_defaults[208]  }),
     .mgmt_gpio_in(\mgmt_io_in[27] ),
-    .mgmt_gpio_oeb(\mprj_io_one[2] ),
+    .mgmt_gpio_oeb(\mprj_io_one[16] ),
     .mgmt_gpio_out(\mgmt_io_out[27] ),
-    .one(\mprj_io_one[2] ),
+    .one(\mprj_io_one[16] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[16] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[16] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[16] ),
@@ -3694,9 +3702,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[3]  (
     .gpio_defaults({ \gpio_defaults[233] , \gpio_defaults[232] , \gpio_defaults[231] , \gpio_defaults[230] , \gpio_defaults[229] , \gpio_defaults[228] , \gpio_defaults[227] , \gpio_defaults[226] , \gpio_defaults[225] , \gpio_defaults[224] , \gpio_defaults[223] , \gpio_defaults[222] , \gpio_defaults[221]  }),
     .mgmt_gpio_in(\mgmt_io_in[28] ),
-    .mgmt_gpio_oeb(\mprj_io_one[3] ),
+    .mgmt_gpio_oeb(\mprj_io_one[17] ),
     .mgmt_gpio_out(\mgmt_io_out[28] ),
-    .one(\mprj_io_one[3] ),
+    .one(\mprj_io_one[17] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[17] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[17] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[17] ),
@@ -3729,9 +3737,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[4]  (
     .gpio_defaults({ \gpio_defaults[246] , \gpio_defaults[245] , \gpio_defaults[244] , \gpio_defaults[243] , \gpio_defaults[242] , \gpio_defaults[241] , \gpio_defaults[240] , \gpio_defaults[239] , \gpio_defaults[238] , \gpio_defaults[237] , \gpio_defaults[236] , \gpio_defaults[235] , \gpio_defaults[234]  }),
     .mgmt_gpio_in(\mgmt_io_in[29] ),
-    .mgmt_gpio_oeb(\mprj_io_one[4] ),
+    .mgmt_gpio_oeb(\mprj_io_one[18] ),
     .mgmt_gpio_out(\mgmt_io_out[29] ),
-    .one(\mprj_io_one[4] ),
+    .one(\mprj_io_one[18] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[18] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[18] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[18] ),
@@ -3764,9 +3772,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[5]  (
     .gpio_defaults({ \gpio_defaults[259] , \gpio_defaults[258] , \gpio_defaults[257] , \gpio_defaults[256] , \gpio_defaults[255] , \gpio_defaults[254] , \gpio_defaults[253] , \gpio_defaults[252] , \gpio_defaults[251] , \gpio_defaults[250] , \gpio_defaults[249] , \gpio_defaults[248] , \gpio_defaults[247]  }),
     .mgmt_gpio_in(\mgmt_io_in[30] ),
-    .mgmt_gpio_oeb(\mprj_io_one[5] ),
+    .mgmt_gpio_oeb(\mprj_io_one[19] ),
     .mgmt_gpio_out(\mgmt_io_out[30] ),
-    .one(\mprj_io_one[5] ),
+    .one(\mprj_io_one[19] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[19] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[19] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[19] ),
@@ -3799,9 +3807,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[6]  (
     .gpio_defaults({ \gpio_defaults[272] , \gpio_defaults[271] , \gpio_defaults[270] , \gpio_defaults[269] , \gpio_defaults[268] , \gpio_defaults[267] , \gpio_defaults[266] , \gpio_defaults[265] , \gpio_defaults[264] , \gpio_defaults[263] , \gpio_defaults[262] , \gpio_defaults[261] , \gpio_defaults[260]  }),
     .mgmt_gpio_in(\mgmt_io_in[31] ),
-    .mgmt_gpio_oeb(\mprj_io_one[6] ),
+    .mgmt_gpio_oeb(\mprj_io_one[20] ),
     .mgmt_gpio_out(\mgmt_io_out[31] ),
-    .one(\mprj_io_one[6] ),
+    .one(\mprj_io_one[20] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[20] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[20] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[20] ),
@@ -3834,9 +3842,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[7]  (
     .gpio_defaults({ \gpio_defaults[285] , \gpio_defaults[284] , \gpio_defaults[283] , \gpio_defaults[282] , \gpio_defaults[281] , \gpio_defaults[280] , \gpio_defaults[279] , \gpio_defaults[278] , \gpio_defaults[277] , \gpio_defaults[276] , \gpio_defaults[275] , \gpio_defaults[274] , \gpio_defaults[273]  }),
     .mgmt_gpio_in(\mgmt_io_in[32] ),
-    .mgmt_gpio_oeb(\mprj_io_one[7] ),
+    .mgmt_gpio_oeb(\mprj_io_one[21] ),
     .mgmt_gpio_out(\mgmt_io_out[32] ),
-    .one(\mprj_io_one[7] ),
+    .one(\mprj_io_one[21] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[21] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[21] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[21] ),
@@ -3869,9 +3877,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[8]  (
     .gpio_defaults({ \gpio_defaults[298] , \gpio_defaults[297] , \gpio_defaults[296] , \gpio_defaults[295] , \gpio_defaults[294] , \gpio_defaults[293] , \gpio_defaults[292] , \gpio_defaults[291] , \gpio_defaults[290] , \gpio_defaults[289] , \gpio_defaults[288] , \gpio_defaults[287] , \gpio_defaults[286]  }),
     .mgmt_gpio_in(\mgmt_io_in[33] ),
-    .mgmt_gpio_oeb(\mprj_io_one[8] ),
+    .mgmt_gpio_oeb(\mprj_io_one[22] ),
     .mgmt_gpio_out(\mgmt_io_out[33] ),
-    .one(\mprj_io_one[8] ),
+    .one(\mprj_io_one[22] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[22] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[22] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[22] ),
@@ -3904,9 +3912,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   gpio_control_block \gpio_control_in_2[9]  (
     .gpio_defaults({ \gpio_defaults[311] , \gpio_defaults[310] , \gpio_defaults[309] , \gpio_defaults[308] , \gpio_defaults[307] , \gpio_defaults[306] , \gpio_defaults[305] , \gpio_defaults[304] , \gpio_defaults[303] , \gpio_defaults[302] , \gpio_defaults[301] , \gpio_defaults[300] , \gpio_defaults[299]  }),
     .mgmt_gpio_in(\mgmt_io_in[34] ),
-    .mgmt_gpio_oeb(\mprj_io_one[9] ),
+    .mgmt_gpio_oeb(\mprj_io_one[23] ),
     .mgmt_gpio_out(\mgmt_io_out[34] ),
-    .one(\mprj_io_one[9] ),
+    .one(\mprj_io_one[23] ),
     .pad_gpio_ana_en(\mprj_io_analog_en[23] ),
     .pad_gpio_ana_pol(\mprj_io_analog_pol[23] ),
     .pad_gpio_ana_sel(\mprj_io_analog_sel[23] ),
@@ -4080,7 +4088,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .debug_out(debug_out),
     .irq({ \irq_spi[2] , \irq_spi[1] , \irq_spi[0]  }),
     .mask_rev_in({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  }),
-    .mgmt_gpio_in({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in[24] , \mgmt_io_in[23] , \mgmt_io_in[22] , \mgmt_io_in[21] , \mgmt_io_in[20] , \mgmt_io_in[19] , \mgmt_io_in[18] , \mgmt_io_in[17] , \mgmt_io_in[16] , \mgmt_io_in[15] , \mgmt_io_in[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7] , \mgmt_io_in[6] , \mgmt_io_in[5] , \mgmt_io_in[4] , \mgmt_io_in[3] , \mgmt_io_in[2] , \mgmt_io_in[1] , \mgmt_io_in[0]  }),
+    .mgmt_gpio_in({ \mgmt_io_in_hk[37] , \mgmt_io_in_hk[36] , \mgmt_io_in_hk[35] , \mgmt_io_in_hk[34] , \mgmt_io_in_hk[33] , \mgmt_io_in_hk[32] , \mgmt_io_in_hk[31] , \mgmt_io_in_hk[30] , \mgmt_io_in_hk[29] , \mgmt_io_in_hk[28] , \mgmt_io_in_hk[27] , \mgmt_io_in_hk[26] , \mgmt_io_in_hk[25] , \mgmt_io_in_hk[24] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[22] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[20] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[18] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[16] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[14] , \mgmt_io_in_hk[13] , \mgmt_io_in_hk[12] , \mgmt_io_in_hk[11] , \mgmt_io_in_hk[10] , \mgmt_io_in_hk[9] , \mgmt_io_in_hk[8] , \mgmt_io_in_hk[7] , \mgmt_io_in[6] , \mgmt_io_in[5] , \mgmt_io_in[4] , \mgmt_io_in[3] , \mgmt_io_in[2] , \mgmt_io_in[1] , \mgmt_io_in[0]  }),
     .mgmt_gpio_oeb({ \mgmt_io_oeb_hk[37] , \mgmt_io_oeb_hk[36] , \mgmt_io_oeb_hk[35] , \mgmt_io_oeb[34] , \mgmt_io_oeb[33] , \mgmt_io_oeb[32] , \mgmt_io_oeb[31] , \mgmt_io_oeb[30] , \mgmt_io_oeb[29] , \mgmt_io_oeb[28] , \mgmt_io_oeb[27] , \mgmt_io_oeb[26] , \mgmt_io_oeb[25] , \mgmt_io_oeb[24] , \mgmt_io_oeb[23] , \mgmt_io_oeb[22] , \mgmt_io_oeb[21] , \mgmt_io_oeb[20] , \mgmt_io_oeb[19] , \mgmt_io_oeb[18] , \mgmt_io_oeb[17] , \mgmt_io_oeb[16] , \mgmt_io_oeb[15] , \mgmt_io_oeb[14] , \mgmt_io_oeb[13] , \mgmt_io_oeb[12] , \mgmt_io_oeb[11] , \mgmt_io_oeb[10] , \mgmt_io_oeb[9] , \mgmt_io_oeb[8] , \mgmt_io_oeb[7] , \mgmt_io_oeb[6] , \mgmt_io_oeb[5] , \mgmt_io_oeb[4] , \mgmt_io_oeb[3] , \mgmt_io_oeb[2] , \mgmt_io_oeb[1] , \mgmt_io_oeb[0]  }),
     .mgmt_gpio_out({ \mgmt_io_out_hk[37] , \mgmt_io_out_hk[36] , \mgmt_io_out_hk[35] , \mgmt_io_out_hk[34] , \mgmt_io_out_hk[33] , \mgmt_io_out_hk[32] , \mgmt_io_out_hk[31] , \mgmt_io_out_hk[30] , \mgmt_io_out_hk[29] , \mgmt_io_out_hk[28] , \mgmt_io_out_hk[27] , \mgmt_io_out_hk[26] , \mgmt_io_out_hk[25] , \mgmt_io_out[24] , \mgmt_io_out[23] , \mgmt_io_out[22] , \mgmt_io_out[21] , \mgmt_io_out[20] , \mgmt_io_out[19] , \mgmt_io_out[18] , \mgmt_io_out[17] , \mgmt_io_out[16] , \mgmt_io_out[15] , \mgmt_io_out[14] , \mgmt_io_out_hk[13] , \mgmt_io_out_hk[12] , \mgmt_io_out_hk[11] , \mgmt_io_out_hk[10] , \mgmt_io_out_hk[9] , \mgmt_io_out_hk[8] , \mgmt_io_out_hk[7] , \mgmt_io_out[6] , \mgmt_io_out[5] , \mgmt_io_out[4] , \mgmt_io_out[3] , \mgmt_io_out[2] , \mgmt_io_out[1] , \mgmt_io_out[0]  }),
     .pad_flash_clk(flash_clk_frame),
@@ -4486,43 +4494,6 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .VPWR(vccd_core),
     .mask_rev({ \mask_rev[31] , \mask_rev[30] , \mask_rev[29] , \mask_rev[28] , \mask_rev[27] , \mask_rev[26] , \mask_rev[25] , \mask_rev[24] , \mask_rev[23] , \mask_rev[22] , \mask_rev[21] , \mask_rev[20] , \mask_rev[19] , \mask_rev[18] , \mask_rev[17] , \mask_rev[16] , \mask_rev[15] , \mask_rev[14] , \mask_rev[13] , \mask_rev[12] , \mask_rev[11] , \mask_rev[10] , \mask_rev[9] , \mask_rev[8] , \mask_rev[7] , \mask_rev[6] , \mask_rev[5] , \mask_rev[4] , \mask_rev[3] , \mask_rev[2] , \mask_rev[1] , \mask_rev[0]  })
   );
-  assign \gpio_serial_link_2_shifted[11]  = \gpio_serial_link_2[12] ;
-  assign \gpio_serial_link_2_shifted[10]  = \gpio_serial_link_2[11] ;
-  assign \gpio_serial_link_2_shifted[9]  = \gpio_serial_link_2[10] ;
-  assign \gpio_serial_link_2_shifted[8]  = \gpio_serial_link_2[9] ;
-  assign \gpio_serial_link_2_shifted[7]  = \gpio_serial_link_2[8] ;
-  assign \gpio_serial_link_2_shifted[6]  = \gpio_serial_link_2[7] ;
-  assign \gpio_serial_link_2_shifted[5]  = \gpio_serial_link_2[6] ;
-  assign \gpio_serial_link_2_shifted[4]  = \gpio_serial_link_2[5] ;
-  assign \gpio_serial_link_2_shifted[3]  = \gpio_serial_link_2[4] ;
-  assign \gpio_serial_link_2_shifted[2]  = \gpio_serial_link_2[3] ;
-  assign \gpio_serial_link_2_shifted[1]  = \gpio_serial_link_2[2] ;
-  assign \gpio_serial_link_2_shifted[0]  = \gpio_serial_link_2[1] ;
-  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
-  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
-  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
-  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
-  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
-  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
-  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
-  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
-  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
-  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
-  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
-  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
-  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
-  assign \gpio_clock_2_shifted[11]  = \gpio_clock_2[12] ;
-  assign \gpio_clock_2_shifted[10]  = \gpio_clock_2[11] ;
-  assign \gpio_clock_2_shifted[9]  = \gpio_clock_2[10] ;
-  assign \gpio_clock_2_shifted[8]  = \gpio_clock_2[9] ;
-  assign \gpio_clock_2_shifted[7]  = \gpio_clock_2[8] ;
-  assign \gpio_clock_2_shifted[6]  = \gpio_clock_2[7] ;
-  assign \gpio_clock_2_shifted[5]  = \gpio_clock_2[6] ;
-  assign \gpio_clock_2_shifted[4]  = \gpio_clock_2[5] ;
-  assign \gpio_clock_2_shifted[3]  = \gpio_clock_2[4] ;
-  assign \gpio_clock_2_shifted[2]  = \gpio_clock_2[3] ;
-  assign \gpio_clock_2_shifted[1]  = \gpio_clock_2[2] ;
-  assign \gpio_clock_2_shifted[0]  = \gpio_clock_2[1] ;
   assign \gpio_load_1_shifted[13]  = \gpio_load_1[12] ;
   assign \gpio_load_1_shifted[12]  = \gpio_load_1[11] ;
   assign \gpio_load_1_shifted[11]  = \gpio_load_1[10] ;
@@ -4536,18 +4507,101 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \gpio_load_1_shifted[3]  = \gpio_load_1[2] ;
   assign \gpio_load_1_shifted[2]  = \gpio_load_1[1] ;
   assign \gpio_load_1_shifted[1]  = \gpio_load_1[0] ;
-  assign \gpio_resetn_2_shifted[11]  = \gpio_resetn_2[12] ;
-  assign \gpio_resetn_2_shifted[10]  = \gpio_resetn_2[11] ;
-  assign \gpio_resetn_2_shifted[9]  = \gpio_resetn_2[10] ;
-  assign \gpio_resetn_2_shifted[8]  = \gpio_resetn_2[9] ;
-  assign \gpio_resetn_2_shifted[7]  = \gpio_resetn_2[8] ;
-  assign \gpio_resetn_2_shifted[6]  = \gpio_resetn_2[7] ;
-  assign \gpio_resetn_2_shifted[5]  = \gpio_resetn_2[6] ;
-  assign \gpio_resetn_2_shifted[4]  = \gpio_resetn_2[5] ;
-  assign \gpio_resetn_2_shifted[3]  = \gpio_resetn_2[4] ;
-  assign \gpio_resetn_2_shifted[2]  = \gpio_resetn_2[3] ;
-  assign \gpio_resetn_2_shifted[1]  = \gpio_resetn_2[2] ;
-  assign \gpio_resetn_2_shifted[0]  = \gpio_resetn_2[1] ;
+  assign \gpio_load_2_shifted[11]  = \gpio_load_2[12] ;
+  assign \gpio_load_2_shifted[10]  = \gpio_load_2[11] ;
+  assign \gpio_load_2_shifted[9]  = \gpio_load_2[10] ;
+  assign \gpio_load_2_shifted[8]  = \gpio_load_2[9] ;
+  assign \gpio_load_2_shifted[7]  = \gpio_load_2[8] ;
+  assign \gpio_load_2_shifted[6]  = \gpio_load_2[7] ;
+  assign \gpio_load_2_shifted[5]  = \gpio_load_2[6] ;
+  assign \gpio_load_2_shifted[4]  = \gpio_load_2[5] ;
+  assign \gpio_load_2_shifted[3]  = \gpio_load_2[4] ;
+  assign \gpio_load_2_shifted[2]  = \gpio_load_2[3] ;
+  assign \gpio_load_2_shifted[1]  = \gpio_load_2[2] ;
+  assign \gpio_load_2_shifted[0]  = \gpio_load_2[1] ;
+  assign \user_io_in_3v3[26]  = \mprj_io_in_3v3[26] ;
+  assign \user_io_in_3v3[25]  = \mprj_io_in_3v3[25] ;
+  assign \user_io_in_3v3[24]  = \mprj_io_in_3v3[24] ;
+  assign \user_io_in_3v3[23]  = \mprj_io_in_3v3[23] ;
+  assign \user_io_in_3v3[22]  = \mprj_io_in_3v3[22] ;
+  assign \user_io_in_3v3[21]  = \mprj_io_in_3v3[21] ;
+  assign \user_io_in_3v3[20]  = \mprj_io_in_3v3[20] ;
+  assign \user_io_in_3v3[19]  = \mprj_io_in_3v3[19] ;
+  assign \user_io_in_3v3[18]  = \mprj_io_in_3v3[18] ;
+  assign \user_io_in_3v3[17]  = \mprj_io_in_3v3[17] ;
+  assign \user_io_in_3v3[16]  = \mprj_io_in_3v3[16] ;
+  assign \user_io_in_3v3[15]  = \mprj_io_in_3v3[15] ;
+  assign \user_io_in_3v3[14]  = \mprj_io_in_3v3[14] ;
+  assign \user_io_in_3v3[13]  = \mprj_io_in_3v3[13] ;
+  assign \user_io_in_3v3[12]  = \mprj_io_in_3v3[12] ;
+  assign \user_io_in_3v3[11]  = \mprj_io_in_3v3[11] ;
+  assign \user_io_in_3v3[10]  = \mprj_io_in_3v3[10] ;
+  assign \user_io_in_3v3[9]  = \mprj_io_in_3v3[9] ;
+  assign \user_io_in_3v3[8]  = \mprj_io_in_3v3[8] ;
+  assign \user_io_in_3v3[7]  = \mprj_io_in_3v3[7] ;
+  assign \user_io_in_3v3[6]  = \mprj_io_in_3v3[6] ;
+  assign \user_io_in_3v3[5]  = \mprj_io_in_3v3[5] ;
+  assign \user_io_in_3v3[4]  = \mprj_io_in_3v3[4] ;
+  assign \user_io_in_3v3[3]  = \mprj_io_in_3v3[3] ;
+  assign \user_io_in_3v3[2]  = \mprj_io_in_3v3[2] ;
+  assign \user_io_in_3v3[1]  = \mprj_io_in_3v3[1] ;
+  assign \user_io_in_3v3[0]  = \mprj_io_in_3v3[0] ;
+  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
+  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
+  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
+  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
+  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
+  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
+  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
+  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
+  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
+  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
+  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
+  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
+  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
+  assign \gpio_clock_2_shifted[11]  = \gpio_clock_2[12] ;
+  assign \gpio_clock_2_shifted[10]  = \gpio_clock_2[11] ;
+  assign \gpio_clock_2_shifted[9]  = \gpio_clock_2[10] ;
+  assign \gpio_clock_2_shifted[8]  = \gpio_clock_2[9] ;
+  assign \gpio_clock_2_shifted[7]  = \gpio_clock_2[8] ;
+  assign \gpio_clock_2_shifted[6]  = \gpio_clock_2[7] ;
+  assign \gpio_clock_2_shifted[5]  = \gpio_clock_2[6] ;
+  assign \gpio_clock_2_shifted[4]  = \gpio_clock_2[5] ;
+  assign \gpio_clock_2_shifted[3]  = \gpio_clock_2[4] ;
+  assign \gpio_clock_2_shifted[2]  = \gpio_clock_2[3] ;
+  assign \gpio_clock_2_shifted[1]  = \gpio_clock_2[2] ;
+  assign \gpio_clock_2_shifted[0]  = \gpio_clock_2[1] ;
+  assign \mgmt_io_out_hk[24]  = \mgmt_io_out[24] ;
+  assign \mgmt_io_out_hk[23]  = \mgmt_io_out[23] ;
+  assign \mgmt_io_out_hk[22]  = \mgmt_io_out[22] ;
+  assign \mgmt_io_out_hk[21]  = \mgmt_io_out[21] ;
+  assign \mgmt_io_out_hk[20]  = \mgmt_io_out[20] ;
+  assign \mgmt_io_out_hk[19]  = \mgmt_io_out[19] ;
+  assign \mgmt_io_out_hk[18]  = \mgmt_io_out[18] ;
+  assign \mgmt_io_out_hk[17]  = \mgmt_io_out[17] ;
+  assign \mgmt_io_out_hk[16]  = \mgmt_io_out[16] ;
+  assign \mgmt_io_out_hk[15]  = \mgmt_io_out[15] ;
+  assign \mgmt_io_out_hk[14]  = \mgmt_io_out[14] ;
+  assign \mgmt_io_out_hk[6]  = \mgmt_io_out[6] ;
+  assign \mgmt_io_out_hk[5]  = \mgmt_io_out[5] ;
+  assign \mgmt_io_out_hk[4]  = \mgmt_io_out[4] ;
+  assign \mgmt_io_out_hk[3]  = \mgmt_io_out[3] ;
+  assign \mgmt_io_out_hk[2]  = \mgmt_io_out[2] ;
+  assign \mgmt_io_out_hk[1]  = \mgmt_io_out[1] ;
+  assign \mgmt_io_out_hk[0]  = \mgmt_io_out[0] ;
+  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
+  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
+  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
+  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
+  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
+  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
+  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
+  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
+  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
+  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
+  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
+  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
+  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
   assign \mgmt_io_oeb_hk[34]  = \mgmt_io_oeb[34] ;
   assign \mgmt_io_oeb_hk[33]  = \mgmt_io_oeb[33] ;
   assign \mgmt_io_oeb_hk[32]  = \mgmt_io_oeb[32] ;
@@ -4583,55 +4637,54 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \mgmt_io_oeb_hk[2]  = \mgmt_io_oeb[2] ;
   assign \mgmt_io_oeb_hk[1]  = \mgmt_io_oeb[1] ;
   assign \mgmt_io_oeb_hk[0]  = \mgmt_io_oeb[0] ;
-  assign \gpio_load_2_shifted[11]  = \gpio_load_2[12] ;
-  assign \gpio_load_2_shifted[10]  = \gpio_load_2[11] ;
-  assign \gpio_load_2_shifted[9]  = \gpio_load_2[10] ;
-  assign \gpio_load_2_shifted[8]  = \gpio_load_2[9] ;
-  assign \gpio_load_2_shifted[7]  = \gpio_load_2[8] ;
-  assign \gpio_load_2_shifted[6]  = \gpio_load_2[7] ;
-  assign \gpio_load_2_shifted[5]  = \gpio_load_2[6] ;
-  assign \gpio_load_2_shifted[4]  = \gpio_load_2[5] ;
-  assign \gpio_load_2_shifted[3]  = \gpio_load_2[4] ;
-  assign \gpio_load_2_shifted[2]  = \gpio_load_2[3] ;
-  assign \gpio_load_2_shifted[1]  = \gpio_load_2[2] ;
-  assign \gpio_load_2_shifted[0]  = \gpio_load_2[1] ;
-  assign \gpio_clock_1_shifted[13]  = \gpio_clock_1[12] ;
-  assign \gpio_clock_1_shifted[12]  = \gpio_clock_1[11] ;
-  assign \gpio_clock_1_shifted[11]  = \gpio_clock_1[10] ;
-  assign \gpio_clock_1_shifted[10]  = \gpio_clock_1[9] ;
-  assign \gpio_clock_1_shifted[9]  = \gpio_clock_1[8] ;
-  assign \gpio_clock_1_shifted[8]  = \gpio_clock_1[7] ;
-  assign \gpio_clock_1_shifted[7]  = \gpio_clock_1[6] ;
-  assign \gpio_clock_1_shifted[6]  = \gpio_clock_1[5] ;
-  assign \gpio_clock_1_shifted[5]  = \gpio_clock_1[4] ;
-  assign \gpio_clock_1_shifted[4]  = \gpio_clock_1[3] ;
-  assign \gpio_clock_1_shifted[3]  = \gpio_clock_1[2] ;
-  assign \gpio_clock_1_shifted[2]  = \gpio_clock_1[1] ;
-  assign \gpio_clock_1_shifted[1]  = \gpio_clock_1[0] ;
-  assign \gpio_resetn_1_shifted[13]  = \gpio_resetn_1[12] ;
-  assign \gpio_resetn_1_shifted[12]  = \gpio_resetn_1[11] ;
-  assign \gpio_resetn_1_shifted[11]  = \gpio_resetn_1[10] ;
-  assign \gpio_resetn_1_shifted[10]  = \gpio_resetn_1[9] ;
-  assign \gpio_resetn_1_shifted[9]  = \gpio_resetn_1[8] ;
-  assign \gpio_resetn_1_shifted[8]  = \gpio_resetn_1[7] ;
-  assign \gpio_resetn_1_shifted[7]  = \gpio_resetn_1[6] ;
-  assign \gpio_resetn_1_shifted[6]  = \gpio_resetn_1[5] ;
-  assign \gpio_resetn_1_shifted[5]  = \gpio_resetn_1[4] ;
-  assign \gpio_resetn_1_shifted[4]  = \gpio_resetn_1[3] ;
-  assign \gpio_resetn_1_shifted[3]  = \gpio_resetn_1[2] ;
-  assign \gpio_resetn_1_shifted[2]  = \gpio_resetn_1[1] ;
-  assign \gpio_resetn_1_shifted[1]  = \gpio_resetn_1[0] ;
-  assign \mgmt_io_in_hk[24]  = \mgmt_io_in[24] ;
-  assign \mgmt_io_in_hk[23]  = \mgmt_io_in[23] ;
-  assign \mgmt_io_in_hk[22]  = \mgmt_io_in[22] ;
-  assign \mgmt_io_in_hk[21]  = \mgmt_io_in[21] ;
-  assign \mgmt_io_in_hk[20]  = \mgmt_io_in[20] ;
-  assign \mgmt_io_in_hk[19]  = \mgmt_io_in[19] ;
-  assign \mgmt_io_in_hk[18]  = \mgmt_io_in[18] ;
-  assign \mgmt_io_in_hk[17]  = \mgmt_io_in[17] ;
-  assign \mgmt_io_in_hk[16]  = \mgmt_io_in[16] ;
-  assign \mgmt_io_in_hk[15]  = \mgmt_io_in[15] ;
-  assign \mgmt_io_in_hk[14]  = \mgmt_io_in[14] ;
+  assign \gpio_serial_link_2_shifted[11]  = \gpio_serial_link_2[12] ;
+  assign \gpio_serial_link_2_shifted[10]  = \gpio_serial_link_2[11] ;
+  assign \gpio_serial_link_2_shifted[9]  = \gpio_serial_link_2[10] ;
+  assign \gpio_serial_link_2_shifted[8]  = \gpio_serial_link_2[9] ;
+  assign \gpio_serial_link_2_shifted[7]  = \gpio_serial_link_2[8] ;
+  assign \gpio_serial_link_2_shifted[6]  = \gpio_serial_link_2[7] ;
+  assign \gpio_serial_link_2_shifted[5]  = \gpio_serial_link_2[6] ;
+  assign \gpio_serial_link_2_shifted[4]  = \gpio_serial_link_2[5] ;
+  assign \gpio_serial_link_2_shifted[3]  = \gpio_serial_link_2[4] ;
+  assign \gpio_serial_link_2_shifted[2]  = \gpio_serial_link_2[3] ;
+  assign \gpio_serial_link_2_shifted[1]  = \gpio_serial_link_2[2] ;
+  assign \gpio_serial_link_2_shifted[0]  = \gpio_serial_link_2[1] ;
+  assign \mprj_io_zero[5]  = \mgmt_io_in_hk[24] ;
+  assign \mprj_io_zero[4]  = \mgmt_io_in_hk[22] ;
+  assign \mprj_io_zero[3]  = \mgmt_io_in_hk[20] ;
+  assign \mprj_io_zero[2]  = \mgmt_io_in_hk[18] ;
+  assign \mprj_io_zero[1]  = \mgmt_io_in_hk[16] ;
+  assign \mprj_io_zero[0]  = \mgmt_io_in_hk[14] ;
+  assign \gpio_resetn_2_shifted[11]  = \gpio_resetn_2[12] ;
+  assign \gpio_resetn_2_shifted[10]  = \gpio_resetn_2[11] ;
+  assign \gpio_resetn_2_shifted[9]  = \gpio_resetn_2[10] ;
+  assign \gpio_resetn_2_shifted[8]  = \gpio_resetn_2[9] ;
+  assign \gpio_resetn_2_shifted[7]  = \gpio_resetn_2[8] ;
+  assign \gpio_resetn_2_shifted[6]  = \gpio_resetn_2[7] ;
+  assign \gpio_resetn_2_shifted[5]  = \gpio_resetn_2[6] ;
+  assign \gpio_resetn_2_shifted[4]  = \gpio_resetn_2[5] ;
+  assign \gpio_resetn_2_shifted[3]  = \gpio_resetn_2[4] ;
+  assign \gpio_resetn_2_shifted[2]  = \gpio_resetn_2[3] ;
+  assign \gpio_resetn_2_shifted[1]  = \gpio_resetn_2[2] ;
+  assign \gpio_resetn_2_shifted[0]  = \gpio_resetn_2[1] ;
+  assign \gpio_serial_link_1_shifted[13]  = \gpio_serial_link_1[12] ;
+  assign \gpio_serial_link_1_shifted[12]  = \gpio_serial_link_1[11] ;
+  assign \gpio_serial_link_1_shifted[11]  = \gpio_serial_link_1[10] ;
+  assign \gpio_serial_link_1_shifted[10]  = \gpio_serial_link_1[9] ;
+  assign \gpio_serial_link_1_shifted[9]  = \gpio_serial_link_1[8] ;
+  assign \gpio_serial_link_1_shifted[8]  = \gpio_serial_link_1[7] ;
+  assign \gpio_serial_link_1_shifted[7]  = \gpio_serial_link_1[6] ;
+  assign \gpio_serial_link_1_shifted[6]  = \gpio_serial_link_1[5] ;
+  assign \gpio_serial_link_1_shifted[5]  = \gpio_serial_link_1[4] ;
+  assign \gpio_serial_link_1_shifted[4]  = \gpio_serial_link_1[3] ;
+  assign \gpio_serial_link_1_shifted[3]  = \gpio_serial_link_1[2] ;
+  assign \gpio_serial_link_1_shifted[2]  = \gpio_serial_link_1[1] ;
+  assign \gpio_serial_link_1_shifted[1]  = \gpio_serial_link_1[0] ;
+  assign \mgmt_io_in_hk[23]  = \mgmt_io_in_hk[22] ;
+  assign \mgmt_io_in_hk[21]  = \mgmt_io_in_hk[20] ;
+  assign \mgmt_io_in_hk[19]  = \mgmt_io_in_hk[18] ;
+  assign \mgmt_io_in_hk[17]  = \mgmt_io_in_hk[16] ;
+  assign \mgmt_io_in_hk[15]  = \mgmt_io_in_hk[14] ;
   assign \mgmt_io_in_hk[6]  = \mgmt_io_in[6] ;
   assign \mgmt_io_in_hk[5]  = \mgmt_io_in[5] ;
   assign \mgmt_io_in_hk[4]  = \mgmt_io_in[4] ;
@@ -4639,51 +4692,6 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   assign \mgmt_io_in_hk[2]  = \mgmt_io_in[2] ;
   assign \mgmt_io_in_hk[1]  = \mgmt_io_in[1] ;
   assign \mgmt_io_in_hk[0]  = \mgmt_io_in[0] ;
-  assign \mgmt_io_out_hk[24]  = \mgmt_io_out[24] ;
-  assign \mgmt_io_out_hk[23]  = \mgmt_io_out[23] ;
-  assign \mgmt_io_out_hk[22]  = \mgmt_io_out[22] ;
-  assign \mgmt_io_out_hk[21]  = \mgmt_io_out[21] ;
-  assign \mgmt_io_out_hk[20]  = \mgmt_io_out[20] ;
-  assign \mgmt_io_out_hk[19]  = \mgmt_io_out[19] ;
-  assign \mgmt_io_out_hk[18]  = \mgmt_io_out[18] ;
-  assign \mgmt_io_out_hk[17]  = \mgmt_io_out[17] ;
-  assign \mgmt_io_out_hk[16]  = \mgmt_io_out[16] ;
-  assign \mgmt_io_out_hk[15]  = \mgmt_io_out[15] ;
-  assign \mgmt_io_out_hk[14]  = \mgmt_io_out[14] ;
-  assign \mgmt_io_out_hk[6]  = \mgmt_io_out[6] ;
-  assign \mgmt_io_out_hk[5]  = \mgmt_io_out[5] ;
-  assign \mgmt_io_out_hk[4]  = \mgmt_io_out[4] ;
-  assign \mgmt_io_out_hk[3]  = \mgmt_io_out[3] ;
-  assign \mgmt_io_out_hk[2]  = \mgmt_io_out[2] ;
-  assign \mgmt_io_out_hk[1]  = \mgmt_io_out[1] ;
-  assign \mgmt_io_out_hk[0]  = \mgmt_io_out[0] ;
-  assign \user_io_in_3v3[26]  = \mprj_io_in_3v3[26] ;
-  assign \user_io_in_3v3[25]  = \mprj_io_in_3v3[25] ;
-  assign \user_io_in_3v3[24]  = \mprj_io_in_3v3[24] ;
-  assign \user_io_in_3v3[23]  = \mprj_io_in_3v3[23] ;
-  assign \user_io_in_3v3[22]  = \mprj_io_in_3v3[22] ;
-  assign \user_io_in_3v3[21]  = \mprj_io_in_3v3[21] ;
-  assign \user_io_in_3v3[20]  = \mprj_io_in_3v3[20] ;
-  assign \user_io_in_3v3[19]  = \mprj_io_in_3v3[19] ;
-  assign \user_io_in_3v3[18]  = \mprj_io_in_3v3[18] ;
-  assign \user_io_in_3v3[17]  = \mprj_io_in_3v3[17] ;
-  assign \user_io_in_3v3[16]  = \mprj_io_in_3v3[16] ;
-  assign \user_io_in_3v3[15]  = \mprj_io_in_3v3[15] ;
-  assign \user_io_in_3v3[14]  = \mprj_io_in_3v3[14] ;
-  assign \user_io_in_3v3[13]  = \mprj_io_in_3v3[13] ;
-  assign \user_io_in_3v3[12]  = \mprj_io_in_3v3[12] ;
-  assign \user_io_in_3v3[11]  = \mprj_io_in_3v3[11] ;
-  assign \user_io_in_3v3[10]  = \mprj_io_in_3v3[10] ;
-  assign \user_io_in_3v3[9]  = \mprj_io_in_3v3[9] ;
-  assign \user_io_in_3v3[8]  = \mprj_io_in_3v3[8] ;
-  assign \user_io_in_3v3[7]  = \mprj_io_in_3v3[7] ;
-  assign \user_io_in_3v3[6]  = \mprj_io_in_3v3[6] ;
-  assign \user_io_in_3v3[5]  = \mprj_io_in_3v3[5] ;
-  assign \user_io_in_3v3[4]  = \mprj_io_in_3v3[4] ;
-  assign \user_io_in_3v3[3]  = \mprj_io_in_3v3[3] ;
-  assign \user_io_in_3v3[2]  = \mprj_io_in_3v3[2] ;
-  assign \user_io_in_3v3[1]  = \mprj_io_in_3v3[1] ;
-  assign \user_io_in_3v3[0]  = \mprj_io_in_3v3[0] ;
   assign mprj_io_loader_data_2_buf = \gpio_serial_link_2_shifted[12] ;
   assign mprj_io_loader_resetn_buf = \gpio_resetn_2_shifted[12] ;
   assign mprj_io_loader_strobe_buf = \gpio_load_2_shifted[12] ;
