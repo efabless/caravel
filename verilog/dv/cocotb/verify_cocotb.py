@@ -34,7 +34,7 @@ def search_str(file_path, word):
         else:
             return "failed"
 
-def change_dff(str,new_str,file_path):
+def change_str(str,new_str,file_path):
     # Read in the file
     with open(file_path, 'r') as file :
         filedata = file.read()
@@ -140,7 +140,9 @@ class RunTest:
         VERILOG_PATH = os.getenv('VERILOG_PATH')
         dirs = f'+incdir+\\\"{PDK_ROOT}/{PDK}\\\" '
         if self.sim_type == "RTL":
-            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/rtl_caravel_vcs.list\\\" '
+            shutil.copyfile(f'{VERILOG_PATH}/includes/rtl_caravel_vcs.v', f"{self.cocotb_path}/includes.v")
+            change_str(str="\"caravel_mgmt_soc_litex/verilog",new_str=f"\"{VERILOG_PATH}",file_path=f"{self.cocotb_path}/includes.v")
+            change_str(str="\"caravel/verilog",new_str=f"\"{CARAVEL_PATH}",file_path=f"{self.cocotb_path}/includes.v")
         else: 
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
         macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
@@ -178,6 +180,7 @@ class RunTest:
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
+        os.system("rm -rf AN.DB ucli.key core") # delete vcs additional files
         #delete wave when passed
         if self.passed == "passed" and zip_waves:
             os.chdir(f'{self.cocotb_path}/{self.sim_path}')
@@ -248,14 +251,14 @@ class RunTest:
         new_LINKER_SCRIPT = f"{self.cocotb_path}/{self.sim_path}/sections.lds"
         shutil.copyfile(LINKER_SCRIPT, new_LINKER_SCRIPT)
         if ram == "dff2":  
-            change_dff(str="> dff ",new_str="> dff2 ",file_path=new_LINKER_SCRIPT)
-            change_dff(str="> dff\n",new_str="> dff2\n",file_path=new_LINKER_SCRIPT)
-            change_dff(str="ORIGIN(dff)",new_str="ORIGIN(dff2)",file_path=new_LINKER_SCRIPT)
-            change_dff(str="LENGTH(dff)",new_str="LENGTH(dff2)",file_path=new_LINKER_SCRIPT)
+            change_str(str="> dff ",new_str="> dff2 ",file_path=new_LINKER_SCRIPT)
+            change_str(str="> dff\n",new_str="> dff2\n",file_path=new_LINKER_SCRIPT)
+            change_str(str="ORIGIN(dff)",new_str="ORIGIN(dff2)",file_path=new_LINKER_SCRIPT)
+            change_str(str="LENGTH(dff)",new_str="LENGTH(dff2)",file_path=new_LINKER_SCRIPT)
         elif ram == "dff":
-            change_dff(str="> dff2 ",new_str="> dff ",file_path=new_LINKER_SCRIPT)
-            change_dff(str="ORIGIN(dff2)",new_str="ORIGIN(dff)",file_path=new_LINKER_SCRIPT)
-            change_dff(str="LENGTH(dff2)",new_str="LENGTH(dff)",file_path=new_LINKER_SCRIPT)
+            change_str(str="> dff2 ",new_str="> dff ",file_path=new_LINKER_SCRIPT)
+            change_str(str="ORIGIN(dff2)",new_str="ORIGIN(dff)",file_path=new_LINKER_SCRIPT)
+            change_str(str="LENGTH(dff2)",new_str="LENGTH(dff)",file_path=new_LINKER_SCRIPT)
         else: 
             print(f"ERROR: wrong trype of ram {ram} need to be used for now the oldy rams that can be used for flashing and data are dff and dff2")
             sys.exit()
@@ -390,8 +393,8 @@ class RunRegression:
     def generate_cov(self):
         os.chdir(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}")
         os.system(f"urg -dir RTL*/*.vdb -format both -show tests -report coverageRTL/")
-        os.system(f"urg -dir GL*/*.vdb -format both -show tests -report coverageGL/")
-        os.system(f"urg -dir SDF*/*.vdb -format both -show tests -report coverageSDF/")
+        # os.system(f"urg -dir GL*/*.vdb -format both -show tests -report coverageGL/")
+        # os.system(f"urg -dir SDF*/*.vdb -format both -show tests -report coverageSDF/")
         os.chdir(self.cocotb_path)
 
     def update_reg_log(self):
