@@ -5151,7 +5151,7 @@ module caravel(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .mprj_we_o(mprj_we_o_core),
     .por_l_in(por_l),
     .por_l_out(por_l_buf),
-    .porb_h_in(porb_h_in_nc),
+    .porb_h_in(por_l),
     .porb_h_out(porb_h_out_nc),
     .qspi_enabled(qspi_enabled),
     .resetn_in(caravel_rstn_buf),
