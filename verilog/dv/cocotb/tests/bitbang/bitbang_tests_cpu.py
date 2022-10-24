@@ -15,7 +15,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_o(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=2075459)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1842534)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -57,7 +57,7 @@ async def bitbang_cpu_all_o(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_10(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=1581680)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1452270)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -104,7 +104,7 @@ def shift(gpio,shift_type):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_01(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=2863378)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1452269)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -131,7 +131,7 @@ async def bitbang_cpu_all_01(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_0011(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=5963970)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1402860)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -158,7 +158,7 @@ async def bitbang_cpu_all_0011(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_1100(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=5962067)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1402426)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -214,7 +214,7 @@ def shift_2(gpio,shift_type):
 @cocotb.test()
 @repot_test
 async def bitbang_cpu_all_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=1691295)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1641382)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -264,7 +264,7 @@ async def bitbang_cpu_all_i(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_spi_o(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=2639757)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=294252)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -329,7 +329,7 @@ async def bitbang_spi_o(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_spi_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=11156703)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=55417)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
