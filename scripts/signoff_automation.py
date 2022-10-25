@@ -11,11 +11,12 @@ import glob
 import run_pt_sta
 
 
-def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
+def build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, design):
     os.environ["CARAVEL_ROOT"] = caravel_root
     os.environ["MCW_ROOT"] = mcw_root
     os.environ["PDK_ROOT"] = pdk_root
     os.environ["PDK"] = pdk_env
+    os.environ["DESIGN"] = design
 
     gpio_defaults_cmd = ["python3", f"scripts/gen_gpio_defaults.py"]
     build_cmd = [
@@ -26,13 +27,12 @@ def build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env):
         f"{pdk_root}/{pdk_env}/libs.tech/magic/{pdk_env}.magicrc",
         "tech-files/build.tcl",
     ]
-    log_file_path = f"{log_dir}/build_caravel.log"
+    log_file_path = f"{log_dir}/build_{design}.log"
     with open(log_file_path, "w") as build_log:
         subprocess.run(
             gpio_defaults_cmd, cwd=caravel_root, stderr=build_log, stdout=build_log
         )
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
-
 
 def run_drc(design_root, log_dir, signoff_dir, pdk_root, design):
     klayout_drc_cmd = [
@@ -430,9 +430,9 @@ if __name__ == "__main__":
         if not os.path.exists(design_root):
             logging.error(f"can't find {design}.gds file")
 
-    if design == "caravel":
-        logging.info("Building caravel...")
-        build_caravel(caravel_root, mcw_root, pdk_root, log_dir, pdk_env)
+    if design == "caravel" or design == "caravan":
+        logging.info(f"Building {design} ...")
+        build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, design)
     else:
         logging.info(f"running checks on {design}")
 
