@@ -1,0 +1,136 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravan
+Version: T-2022.03-SP3
+Date   : Tue Oct 25 06:48:04 2022
+****************************************
+
+
+
+
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   soc/_32090_/Q              0.1621         0.2063        -0.0443  (VIOLATED)
+   soc/hold575/X              0.1547         0.1746        -0.0199  (VIOLATED)
+   soc/core.RAM128/Do0MUX.M[0].MUX[7]/X   0.1611   0.1727  -0.0116  (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   padframe/mgmt_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   padframe/user1_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   padframe/user2_vssd_lvclamp_pad/VSSD_PAD   1.0000   2.0000  -1.0000 (VIOLATED)
+   soc/_25762_/A3             1.5000         2.0048        -0.5048  (VIOLATED)
+   soc/ANTENNA__25762__A3/DIODE   1.5000     2.0047        -0.5047  (VIOLATED)
+   soc/_25763_/A3             1.5000         2.0046        -0.5046  (VIOLATED)
+   soc/ANTENNA__25763__A3/DIODE   1.5000     2.0045        -0.5045  (VIOLATED)
+   soc/ANTENNA__27196__B/DIODE   1.5000      2.0045        -0.5045  (VIOLATED)
+   soc/_27196_/B              1.5000         2.0045        -0.5045  (VIOLATED)
+   padframe/mgmt_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/mgmt_vdda_hvclamp_pad/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/mgmt_vssa_hvclamp_pad/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vdda_hvclamp_pad[0]/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vdda_hvclamp_pad[1]/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vssa_hvclamp_pad[0]/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user1_vssa_hvclamp_pad[1]/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vccd_lvclamp_pad/VCCD_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vdda_hvclamp_pad/VDDA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   padframe/user2_vssa_hvclamp_pad/VSSA_PAD   1.5000   2.0000  -0.5000 (VIOLATED)
+   soc/_32090_/Q              1.4980         1.9906        -0.4927  (VIOLATED)
+   soc/_27194_/D_N            1.5000         1.9918        -0.4918  (VIOLATED)
+   soc/_27193_/A              1.5000         1.9917        -0.4917  (VIOLATED)
+   soc/ANTENNA__27194__D_N/DIODE   1.5000    1.9917        -0.4917  (VIOLATED)
+   soc/ANTENNA__27193__A/DIODE   1.5000      1.9917        -0.4917  (VIOLATED)
+   soc/ANTENNA_1861/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1858/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1857/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1856/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1855/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1854/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1859/DIODE     1.5000         1.7531        -0.2531  (VIOLATED)
+   soc/ANTENNA_1860/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1845/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1843/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1841/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA__24854__B/DIODE   1.5000      1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1838/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/_24854_/B              1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1839/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1840/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1842/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/ANTENNA_1844/DIODE     1.5000         1.7530        -0.2530  (VIOLATED)
+   soc/hold575/X              1.4951         1.7460        -0.2510  (VIOLATED)
+   soc/ANTENNA_1847/DIODE     1.5000         1.7483        -0.2483  (VIOLATED)
+   soc/ANTENNA_1853/DIODE     1.5000         1.7480        -0.2480  (VIOLATED)
+   soc/ANTENNA_1851/DIODE     1.5000         1.7479        -0.2479  (VIOLATED)
+   soc/ANTENNA_1849/DIODE     1.5000         1.7479        -0.2479  (VIOLATED)
+   soc/ANTENNA_1848/DIODE     1.5000         1.7467        -0.2467  (VIOLATED)
+   soc/ANTENNA_1846/DIODE     1.5000         1.7467        -0.2467  (VIOLATED)
+   soc/ANTENNA_1850/DIODE     1.5000         1.7467        -0.2467  (VIOLATED)
+   soc/ANTENNA_1852/DIODE     1.5000         1.7467        -0.2467  (VIOLATED)
+   soc/ANTENNA_output511_A/DIODE   1.5000    1.6989        -0.1989  (VIOLATED)
+   soc/ANTENNA_1982/DIODE     1.5000         1.6989        -0.1989  (VIOLATED)
+   soc/ANTENNA_1983/DIODE     1.5000         1.6989        -0.1989  (VIOLATED)
+   soc/ANTENNA_855/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA_856/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA_857/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA_858/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA_859/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA_860/DIODE      1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/ANTENNA__17304__B1/DIODE   1.5000     1.6129        -0.1129  (VIOLATED)
+   soc/_17304_/B1             1.5000         1.6129        -0.1129  (VIOLATED)
+   soc/core.RAM128/Do0MUX.M[0].MUX[7]/X   1.5064   1.6129  -0.1066  (VIOLATED)
+   soc/_27097_/A1             1.5000         1.5397        -0.0397  (VIOLATED)
+   soc/ANTENNA__27097__A1/DIODE   1.5000     1.5397        -0.0397  (VIOLATED)
+   soc/_26815_/B              1.5000         1.5397        -0.0397  (VIOLATED)
+   soc/ANTENNA__26815__B/DIODE   1.5000      1.5397        -0.0397  (VIOLATED)
+   soc/_19606_/A              1.5000         1.5397        -0.0397  (VIOLATED)
+   soc/ANTENNA__19606__A/DIODE   1.5000      1.5397        -0.0397  (VIOLATED)
+   soc/ANTENNA__19690__A/DIODE   1.5000      1.5390        -0.0390  (VIOLATED)
+   soc/ANTENNA__20104__B/DIODE   1.5000      1.5343        -0.0343  (VIOLATED)
+   soc/_20104_/B              1.5000         1.5343        -0.0343  (VIOLATED)
+   soc/_19690_/A              1.5000         1.5340        -0.0340  (VIOLATED)
+   soc/ANTENNA__24061__A1/DIODE   1.5000     1.5333        -0.0333  (VIOLATED)
+   soc/_24061_/A1             1.5000         1.5333        -0.0333  (VIOLATED)
+   soc/_20171_/B              1.5000         1.5317        -0.0317  (VIOLATED)
+   soc/ANTENNA__20171__B/DIODE   1.5000      1.5317        -0.0317  (VIOLATED)
+   soc/_19762_/A              1.5000         1.5164        -0.0164  (VIOLATED)
+   soc/ANTENNA__19762__A/DIODE   1.5000      1.5162        -0.0162  (VIOLATED)
+   soc/ANTENNA_605/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_606/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_604/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_602/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_600/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA__24138__A2/DIODE   1.5000     1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_597/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_596/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_598/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/_24138_/A2             1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_599/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_601/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_603/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_610/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_611/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_615/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_609/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_608/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_607/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_614/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_612/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+   soc/ANTENNA_613/DIODE      1.5000         1.5128        -0.0128  (VIOLATED)
+
+
+1
