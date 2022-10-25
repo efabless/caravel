@@ -64,8 +64,13 @@ async def bitbang_cpu_all_10(dut):
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0xFF)
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
-    
+    if  Macros['CARAVAN']:
+        gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]")
+
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
+    if  Macros['CARAVAN']:
+        gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")    
+    
     type = True # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
@@ -111,8 +116,13 @@ async def bitbang_cpu_all_01(dut):
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0xFF)
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
-    
+    if  Macros['CARAVAN']:
+        gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]")
+
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
+    if  Macros['CARAVAN']:
+        gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")  
+
     type = False # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
@@ -138,8 +148,13 @@ async def bitbang_cpu_all_0011(dut):
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0xFF)
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
-    
+    if  Macros['CARAVAN']:
+        gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]")
+
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
+    if  Macros['CARAVAN']:
+        gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")  
+
     type = 2 # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
@@ -165,8 +180,12 @@ async def bitbang_cpu_all_1100(dut):
     uut = dut.uut
     await wait_reg1(cpu,caravelEnv,0xFF)
     gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]","gpio_control_in_1[6]","gpio_control_in_1[7]","gpio_control_in_1[8]","gpio_control_in_1[9]","gpio_control_in_1[10]")
-    
+    if  Macros['CARAVAN']:
+        gpios_l = ("gpio_control_bidir_1[0]","gpio_control_bidir_1[1]","gpio_control_in_1a[0]","gpio_control_in_1a[1]","gpio_control_in_1a[2]","gpio_control_in_1a[3]","gpio_control_in_1a[4]","gpio_control_in_1a[5]","gpio_control_in_1[0]","gpio_control_in_1[1]","gpio_control_in_1[2]","gpio_control_in_1[3]","gpio_control_in_1[4]","gpio_control_in_1[5]")
+
     gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_in_2[10]","gpio_control_in_2[11]","gpio_control_in_2[12]","gpio_control_in_2[13]","gpio_control_in_2[14]","gpio_control_in_2[15]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")
+    if  Macros['CARAVAN']:
+        gpios_h= ("gpio_control_in_2[0]","gpio_control_in_2[1]","gpio_control_in_2[2]","gpio_control_in_2[3]","gpio_control_in_2[4]","gpio_control_in_2[5]","gpio_control_in_2[6]","gpio_control_in_2[7]","gpio_control_in_2[8]","gpio_control_in_2[9]","gpio_control_bidir_2[0]","gpio_control_bidir_2[1]","gpio_control_bidir_2[2]")  
     type = 0 # type of shifting 01 or 10
     for gpio in gpios_l:
         if not Macros['GL']:
