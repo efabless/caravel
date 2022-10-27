@@ -98,7 +98,7 @@ set ::env(GRT_OVERFLOW_ITERS) 280
 set ::env(GRT_ALLOW_CONGESTION) 1
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 250
+set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 320
 
 ## prevent routing near the PDN to prevent DRCs at top-level
 set ::env(GRT_OBS) "met4 60.970 0.000 63.870 160.000, \
@@ -199,7 +199,7 @@ set ::env(MAGIC_EXT_USE_GDS) 0
 set ::env(RSZ_DONT_TOUCH_RX) {la_data_out_core\[.*\]|mprj_ack_i_user|mprj_dat_i_user\[.*\]|user_irq_core\[.*\]}
 
 ## Antenna 
-set ::env(DIODE_INSERTION_STRATEGY) 6
+set ::env(DIODE_INSERTION_STRATEGY) 3
 set ::env(GRT_ANT_ITERS) 50
 set ::env(GRT_MAX_DIODE_INS_ITERS) 50
 # set ::env(USE_ARC_ANTENNA_CHECK) 0
