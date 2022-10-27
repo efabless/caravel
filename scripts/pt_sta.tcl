@@ -62,12 +62,12 @@ if {\
 
     # Reading parasitics based on the RC corner specified
     proc read_spefs {design rc_corner} {
-      if {$design == "caravel"} {
+      if {$design == "caravel" | $design == "caravan"} {
         set spef_mapping(flash_clkrst_buffers)                     $::env(CARAVEL_ROOT)/signoff/buff_flash_clkrst/openlane-signoff/buff_flash_clkrst.${rc_corner}.spef
         set spef_mapping(mprj)                                     $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
        
         # add your module name instantiated in user_project_wrapper here
-        # set spef_mapping(mprj/<instance name>)                     $::env(UPRJ_ROOT)/signoff/<design name>/openlane-signoff/spef/<design name>.${rc_corner}.spef
+        set spef_mapping(mprj/mprj)                                $::env(UPRJ_ROOT)/signoff/user_project_example/openlane-signoff/spef/user_project_example.${rc_corner}.spef
 
         set spef_mapping(rstb_level)                               $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/xres_buf.${rc_corner}.spef
         set spef_mapping(padframe)                                 $::env(CARAVEL_ROOT)/signoff/chip_io/chip_io.${rc_corner}.spef
@@ -79,6 +79,11 @@ if {\
         set spef_mapping(padframe/\constant_value_inst[5])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
         set spef_mapping(padframe/\constant_value_inst[6])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
         
+        set spef_mapping(\spare_logic[0])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
+        set spef_mapping(\spare_logic[1])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
+        set spef_mapping(\spare_logic[2])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
+        set spef_mapping(\spare_logic[3])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
+
         set spef_mapping(housekeeping)                             $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
         set spef_mapping(pll)                                      $::env(CARAVEL_ROOT)/signoff/digital_pll/openlane-signoff/spef/digital_pll.${rc_corner}.spef
         set spef_mapping(clock_ctrl)                               $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.${rc_corner}.spef
@@ -207,6 +212,12 @@ if {\
         set spef_mapping(gpio_defaults_block_7)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
         set spef_mapping(gpio_defaults_block_8)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
         set spef_mapping(gpio_defaults_block_9)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
+        
+        if {$design == "caravan"} {
+          set spef_mapping(padframe)                               $::env(CARAVEL_ROOT)/signoff/chip_io_alt/chip_io_alt.${rc_corner}.spef
+          set spef_mapping(mprj)                                   $::env(UPRJ_ROOT)/signoff/user_analog_project_wrapper/openlane-signoff/spef/user_analog_project_wrapper.${rc_corner}.spef
+        }
+
       } elseif {$design == "mgmt_core_wrapper"} {
         set spef_mapping(\core.RAM128)                             $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
         set spef_mapping(\core.RAM256)                             $::env(MCW_ROOT)/signoff/RAM512/openlane-signoff/spef/RAM512.${rc_corner}.spef
@@ -229,6 +240,7 @@ if {\
       }
 
     }
+    
     proc report_results {design rc_corner proc_corner} {
       report_global_timing -separate_all_groups -significant_digits 4 > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-global.rpt
       report_analysis_coverage -significant_digits 4 -nosplit -status_details {untested} > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-coverage.rpt
@@ -241,7 +253,7 @@ if {\
       report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
       -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-max_timing.rpt
 
-      if {$design == "caravel"} {
+      if {$design == "caravel" | $design == "caravan"} {
         report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-min_timing.rpt
         
@@ -261,13 +273,19 @@ if {\
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-min_timing.rpt
 
         report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
 
         report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
-        -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
+        -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
 
         report_case_analysis -nosplit > $::env(OUT_DIR)/reports/${design}.case_analysis.rpt
         report_exceptions -nosplit > $::env(OUT_DIR)/reports/${design}.false_paths.rpt
+
+        report_timing -delay min -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-min_timing.rpt
+
+        report_timing -delay max -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-max_timing.rpt
       }
 
       write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/sdf/${rc_corner}/${design}.${proc_corner}${proc_corner}.sdf
