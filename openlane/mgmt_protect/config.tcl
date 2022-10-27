@@ -81,22 +81,24 @@ set ::env(FP_PDN_MACRO_HOOKS) "\
 set ::env(FP_PDN_SKIPTRIM) 0
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.09
+set ::env(PL_TARGET_DENSITY) 0.095
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 320
 
 set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 25
+set ::env(PL_TIME_DRIVEN) 0
+set ::env(PL_ROUTABILITY_DRIVEN) 1
 
 ## Routing 
 set ::env(RT_MIN_LAYER) "met1"
 set ::env(RT_MAX_LAYER) "met4"
-set ::env(GRT_ADJUSTMENT) 0.05
+set ::env(GRT_ADJUSTMENT) 0.3
 set ::env(GRT_OVERFLOW_ITERS) 280
 set ::env(GRT_ALLOW_CONGESTION) 1
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 320
+set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 250
 
 ## prevent routing near the PDN to prevent DRCs at top-level
 set ::env(GRT_OBS) "met4 60.970 0.000 63.870 160.000, \
@@ -197,7 +199,7 @@ set ::env(MAGIC_EXT_USE_GDS) 0
 set ::env(RSZ_DONT_TOUCH_RX) {la_data_out_core\[.*\]|mprj_ack_i_user|mprj_dat_i_user\[.*\]|user_irq_core\[.*\]}
 
 ## Antenna 
-set ::env(DIODE_INSERTION_STRATEGY) 3
+set ::env(DIODE_INSERTION_STRATEGY) 6
 set ::env(GRT_ANT_ITERS) 50
 set ::env(GRT_MAX_DIODE_INS_ITERS) 50
 # set ::env(USE_ARC_ANTENNA_CHECK) 0
