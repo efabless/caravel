@@ -18,7 +18,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=700,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=611,num_error=INFINITY)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
@@ -70,7 +70,7 @@ async def hk_regs_wr_wb(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb_cpu(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=198243,num_error=INFINITY)    
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=182983,num_error=INFINITY)    
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -98,7 +98,7 @@ async def hk_regs_wr_wb_cpu(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_spi(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1851,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)
@@ -113,7 +113,7 @@ async def hk_regs_wr_spi(dut):
         if address in [111,36,10]: # 111 is for Housekeeping SPI disable, writing 1 to this address will disable the SPI and 36 is for mprj_io[03] changing bit 3 of this register would disable the spi by deassert spi_is_enabled and 10 0xa cpu irq is self resetting 
             continue
         # address = int(key,16)
-        if  address in [0x69,0x6A,0x6B,0x6C,0x6D]: # skip testing reg_mprj_datal and reg_mprj_datah because when reading them it's getting the gpio input value
+        if  address in [0x69,0x6A,0x6B,0x6C,0x6D,0x13]: # skip testing reg_mprj_datal and reg_mprj_datah because when reading them it's getting the gpio input value and xfer 
             continue
         data_in = random.getrandbits(bits_num)
         cocotb.log.info(f"[TEST] Writing {bin(data_in)} to reg [{regs[mem][key][0][0]}] address {hex(address)} through SPI")
@@ -157,7 +157,7 @@ async def hk_regs_wr_spi(dut):
 @cocotb.test()
 @repot_test
 async def hk_regs_rst_spi(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=100000,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=2879,num_error=INFINITY)
 
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
         regs = json.load(f)

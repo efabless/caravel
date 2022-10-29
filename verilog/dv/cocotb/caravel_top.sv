@@ -1,5 +1,9 @@
 `timescale 1 ns / 1 ps
 `ifdef VCS
+`ifndef GL
+	`include "includes.v" // in case of RTL coverage is needed and it doesn't work correctly without include files by this way
+`endif // ~ GL
+
 `ifndef ENABLE_SDF
 	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
 	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
@@ -14,7 +18,7 @@
 	`include "cvc-pdk/sky130_fd_sc_hd.v"
 	`include "cvc-pdk/primitives_hvl.v"
 	`include "cvc-pdk/sky130_fd_sc_hvl.v"
-`endif // ENABLE_SDF
+`endif // ~ ENABLE_SDF
 `endif // VCS
 
 module caravel_top ;

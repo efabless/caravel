@@ -19,7 +19,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def uart_tx(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=375862)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=346140)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -62,7 +62,7 @@ async def start_of_tx(caravelEnv):
 @cocotb.test()
 @repot_test
 async def uart_rx(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=104029)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=98315)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -132,7 +132,7 @@ async def uart_check_char_recieved(caravelEnv,cpu):
 @cocotb.test()
 @repot_test
 async def uart_loopback(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=216756)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=199021)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

@@ -13,7 +13,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def mem_dff2(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=1426536)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=1309819)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -38,7 +38,7 @@ async def mem_dff2(dut):
 @cocotb.test()
 @repot_test
 async def mem_dff(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=2378120)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=2096205)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
