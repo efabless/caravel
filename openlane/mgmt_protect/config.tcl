@@ -81,17 +81,19 @@ set ::env(FP_PDN_MACRO_HOOKS) "\
 set ::env(FP_PDN_SKIPTRIM) 0
 
 ## Placement 
-set ::env(PL_TARGET_DENSITY) 0.09
+set ::env(PL_TARGET_DENSITY) 0.095
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 320
 
 set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 25
+set ::env(PL_TIME_DRIVEN) 0
+set ::env(PL_ROUTABILITY_DRIVEN) 1
 
 ## Routing 
 set ::env(RT_MIN_LAYER) "met1"
 set ::env(RT_MAX_LAYER) "met4"
-set ::env(GRT_ADJUSTMENT) 0.05
+set ::env(GRT_ADJUSTMENT) 0.3
 set ::env(GRT_OVERFLOW_ITERS) 280
 set ::env(GRT_ALLOW_CONGESTION) 1
 
