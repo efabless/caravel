@@ -1,6 +1,6 @@
 ### Caravel Signoff SDC
-### Rev 2
-### Date: 14/10/2022
+### Rev 3
+### Date: 28/10/2022
 
 ## MASTER CLOCKS
 create_clock -name clk -period 25 [get_ports {clock}] 
@@ -9,6 +9,8 @@ create_clock -name hkspi_clk -period 100 [get_pins {housekeeping/mgmt_gpio_in[4]
 create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock}]
 create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]
 # hk_serial_clk period is x2 core clock
+
+set_clock_uncertainty 0.1000 [get_clocks {clk hkspi_clk hk_serial_clk hk_serial_load}]
 
 set_clock_groups \
    -name clock_group \
@@ -91,20 +93,15 @@ set_max_fanout 12 [current_design]
 set_case_analysis 0 [get_pins housekeeping/_3936_/S]
 set_case_analysis 0 [get_pins housekeeping/_3937_/S]
 
-# Add case analysis for pads DM[2]==1'b1 & DM[1]==1'b1 & DM[0]==1'b0
+# Add case analysis for pads DM[2]==1'b1 & DM[1]==1'b1 & DM[0]==1'b0 to be outputs
 
-set_case_analysis 1 [get_pins padframe/*_pad/DM[2]]
-set_case_analysis 1 [get_pins padframe/*_pad/DM[1]]
-set_case_analysis 0 [get_pins padframe/*_pad/DM[0]]
-set_case_analysis 0 [get_pins padframe/*_pad/SLOW]
-set_case_analysis 0 [get_pins padframe/*_pad/ANALOG_EN]
+set_case_analysis 1 [get_pins padframe/*_pad*/DM[2]]
+set_case_analysis 1 [get_pins padframe/*_pad*/DM[1]]
+set_case_analysis 0 [get_pins padframe/*_pad*/DM[0]]
+set_case_analysis 0 [get_pins padframe/*_pad*/SLOW]
+set_case_analysis 0 [get_pins padframe/*_pad*/ANALOG_EN]
 
-set_case_analysis 1 [get_pins padframe/*_io_pad*/DM[2]]
-set_case_analysis 1 [get_pins padframe/*_io_pad*/DM[1]]
-set_case_analysis 0 [get_pins padframe/*_io_pad*/DM[0]]
-set_case_analysis 0 [get_pins padframe/*_io_pad*/SLOW]
-set_case_analysis 0 [get_pins padframe/*_io_pad*/ANALOG_EN]
-
+# the following pads are set as inputs
 set_case_analysis 0 [get_pins padframe/*area1_io_pad[4]/DM[2]]
 set_case_analysis 0 [get_pins padframe/*area1_io_pad[4]/DM[1]]
 set_case_analysis 1 [get_pins padframe/*area1_io_pad[4]/DM[0]]
@@ -120,6 +117,11 @@ set_case_analysis 1 [get_pins padframe/clock_pad/DM[0]]
 
 ## FALSE PATHS (ASYNCHRONOUS INPUTS)
 set_false_path -from [get_ports {resetb}]
+
+# set_false_path -from [get_ports mprj_io[*]] -through [get_pins housekeeping/mgmt_gpio_in[*]]
+# reset_path -from [get_ports mprj_io[4]] 
+# reset_path -from [get_ports mprj_io[2]] 
+#reset_path is not supported in PT read_sdc ^
 
 set_false_path -from [get_ports mprj_io[0]] -through [get_pins housekeeping/mgmt_gpio_in[0]]
 set_false_path -from [get_ports mprj_io[1]] -through [get_pins housekeeping/mgmt_gpio_in[1]]
@@ -160,19 +162,45 @@ set_false_path -from [get_ports mprj_io[37]] -through [get_pins housekeeping/mgm
 
 set_false_path -from [get_ports mprj_io[*]] -through [get_pins housekeeping/mgmt_gpio_out[*]]
 set_false_path -from [get_ports mprj_io[*]] -through [get_pins housekeeping/mgmt_gpio_oeb[*]]
-
-# reset_path -from [get_ports mprj_io[4]] 
-# reset_path -from [get_ports mprj_io[2]] 
-
 set_false_path -from [get_ports gpio]
-#set_false_path -through [get_nets mprj_io_inp_dis[*]]
-# set_timing_derate -early 1
-# set_timing_derate -late 1
 
-# TODO set this as parameter
-set cap_load 10
-puts "\[INFO\]: Setting load to: $cap_load"
-set_load $cap_load [all_outputs]
+# add loads for output ports (pads)
+set min_cap 5
+set max_cap 10
+puts "\[INFO\]: Cap load range: $min_cap : $max_cap"
+# set_load 10 [all_outputs]
+set_load -min $min_cap [all_outputs] 
+set_load -max $max_cap [all_outputs] 
 
-#add input transition for the inputs pins
-set_input_transition 2 [all_inputs]
+#add input transition for the inputs ports (pads)
+# set_input_transition 2 [all_inputs]
+#add exception for power pads as 2ns on them results in max_tran violations (false viol)
+# set_input_transition 2 [remove_from_collection [all_inputs] [get_ports v*]] 
+# remove_from_collection is not supported in PT read_sdc ^
+# set_input_transition 2 [all_inputs] 
+# set_input_transition 0 [get_ports v*]
+
+set min_in_tran 1
+set max_in_tran 4
+puts "\[INFO\]: Input transition range: $min_in_tran : $max_in_tran"
+set_input_transition -min $min_in_tran [all_inputs] 
+set_input_transition -min 0 [get_ports v*]
+set_input_transition -max $max_in_tran [all_inputs]
+set_input_transition -max 0 [get_ports v*]
+
+# check ocv table (not provided) -- maybe try 8% 
+set derate 0.0375
+puts "\[INFO\]: Setting derate factor to: [expr $derate * 100] %"
+set_timing_derate -early [expr 1-$derate]
+set_timing_derate -late [expr 1+$derate]
+
+# add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
+# apply the constraint to hd cells at the ss corner only
+# if {$::env(PROC_CORNER) == "s"} {
+#    set max_tran 1.5
+#    set_max_transition $max_tran [get_pins -of_objects [get_cells -filter {ref_name=~sky130_fd_sc_hd*}]]
+#    set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+#    set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+#    puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+# }
+# -filter not supported in PT read_sdc ^
