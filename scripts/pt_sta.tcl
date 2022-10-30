@@ -58,6 +58,16 @@ if {\
       read_sdc $::env(MCW_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
     } else {
       read_sdc $::env(CARAVEL_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
+      # -filter is supported by PT but not in the read_sdc  
+      # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
+      # apply the constraint to hd cells at the ss corner on caravel/caravan 
+      if {$::env(PROC_CORNER) == "s" & $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
+        set max_tran 1.5
+        puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+        puts "For HD cells in the hierarchy of $::env(DESIGN)"
+        set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+        set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+      } 
     }
 
     # Reading parasitics based on the RC corner specified
@@ -230,13 +240,13 @@ if {\
       }
 
       foreach key [array names spef_mapping] {
-        read_parasitics -path $key $spef_mapping($key)
+        read_parasitics -keep_capacitive_coupling -path $key $spef_mapping($key)
       }
 
       if {$design == "mgmt_core_wrapper" | $design == "RAM128" | $design == "RAM256"} {
-        read_parasitics -verbose $::env(MCW_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
+        read_parasitics -keep_capacitive_coupling -verbose $::env(MCW_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
       } else {
-        read_parasitics -verbose $::env(CARAVEL_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
+        read_parasitics -keep_capacitive_coupling -verbose $::env(CARAVEL_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
       }
 
     }
@@ -247,45 +257,47 @@ if {\
 
       report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-all_viol.rpt
 
-      report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+      report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
       -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-min_timing.rpt
       
-      report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+      report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
       -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-max_timing.rpt
 
       if {$design == "caravel" | $design == "caravan"} {
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
+        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-min_timing.rpt
         
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group clk \
+        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-max_timing.rpt
         
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
+        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-min_timing.rpt
         
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hk_serial_clk \
+        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-max_timing.rpt
 
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hkspi_clk \
+        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-max_timing.rpt
 
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit -group hkspi_clk \
+        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-min_timing.rpt
 
-        report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
 
-        report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
 
         report_case_analysis -nosplit > $::env(OUT_DIR)/reports/${design}.case_analysis.rpt
         report_exceptions -nosplit > $::env(OUT_DIR)/reports/${design}.false_paths.rpt
 
-        report_timing -delay min -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        report_timing -delay min -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-min_timing.rpt
 
-        report_timing -delay max -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -nosplit \
+        report_timing -delay max -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-max_timing.rpt
+
+        report_si_bottleneck -significant_digits 4 -nosplit -slack_lesser_than 10 -all_nets > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-si_bottleneck.rpt
       }
 
       write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/sdf/${rc_corner}/${design}.${proc_corner}${proc_corner}.sdf
@@ -303,6 +315,7 @@ if {\
       extract_model -output $::env(OUT_DIR)/lib/${rc_corner}/${design}.${proc_corner}${proc_corner} -format {db lib} -test_design
     }
 
+    set si_enable_analysis TRUE
     read_spefs $::env(DESIGN) $::env(RC_CORNER)
     update_timing
     report_results $::env(DESIGN) $::env(RC_CORNER) $::env(PROC_CORNER)
