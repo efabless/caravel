@@ -14,7 +14,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def bitbang_no_cpu_all_o(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=10206)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=9373)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     await cpu.drive_data2address(reg.get_addr('reg_mprj_io_37'),GPIO_MODE.GPIO_MODE_MGMT_STD_OUTPUT.value) 
@@ -129,7 +129,7 @@ async def bitbang_no_cpu_all_o(dut):
 @cocotb.test()
 @repot_test
 async def bitbang_no_cpu_all_i(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=8005)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=7351)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     await cpu.drive_data2address(reg.get_addr('reg_mprj_io_37'),GPIO_MODE.GPIO_MODE_MGMT_STD_INPUT.value) 
