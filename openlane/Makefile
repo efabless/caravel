@@ -37,10 +37,8 @@ openlane_cmd_regression = "cd /openlane && ./run_designs.py \
 													 $$(realpath ./$*)"
 
 docker_mounts = \
-	-v $$(realpath $(PWD)/..):$$(realpath $(PWD)/..) \
 	-v $(PDK_ROOT):$(PDK_ROOT) \
 	-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
-	-v $(PWD):$(PWD) \
 	-v $(HOME):$(HOME)
 
 docker_env = \
@@ -84,18 +82,32 @@ $(designs) : % : ./%/config.tcl
 ifneq (,$(wildcard ./$(MAKECMDGOALS)/interactive.tcl)))
 	$(docker_run) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd_interactive)
+	gzip -n9fk $(CARAVEL_ROOT)/gds/$*.gds
 else
 	# $(MAKECMDGOALS)
 	mkdir -p ./$*/runs/$(OPENLANE_RUN_TAG) 
-	rm -rf ./$*/runs/$*
-	ln -s $$(realpath ./$*/runs/$(OPENLANE_RUN_TAG)) ./$*/runs/$*
 	$(docker_run) \
 		$(OPENLANE_IMAGE_NAME) sh -c $(openlane_cmd)
+	rm -rf ./$*/runs/$*
+	ln -s $$(realpath ./$*/runs/$(OPENLANE_RUN_TAG)) ./$*/runs/$*
+	mkdir -p $(CARAVEL_ROOT)/spef/$*
 endif
 	@mkdir -p ../signoff/$*/
-	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/OPENLANE_VERSION ../signoff/$*/
+	@{ [ -e ./$*/runs/$(OPENLANE_RUN_TAG)/OPENLANE_VERSION ] && cp ./$*/runs/$(OPENLANE_RUN_TAG)/OPENLANE_VERSION ../signoff/$*/; } || echo "OPENLANE_VERSION file not found"
 	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/PDK_SOURCES ../signoff/$*/
 	@cp ./$*/runs/$(OPENLANE_RUN_TAG)/reports/*.csv ../signoff/$*/
+
+	rm -rf $(CARAVEL_ROOT)/signoff/$*/openlane-signoff
+	mkdir -p $(CARAVEL_ROOT)/signoff/$*/openlane-signoff
+	mkdir -p $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/spef
+	mkdir -p $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/sdf
+	mv $(CARAVEL_ROOT)/spef/multicorner/$** $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/spef/ || true
+	mv $(CARAVEL_ROOT)/sdf/multicorner/* $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/sdf || true
+	mv $(CARAVEL_ROOT)/sdc/$*.sdc $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/ || true
+	cp ./$*/runs/$(OPENLANE_RUN_TAG)/logs/signoff/* $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/ || true
+	cp ./$*/runs/$(OPENLANE_RUN_TAG)/config.tcl $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/ || true
+	cp ./$*/runs/$(OPENLANE_RUN_TAG)/reports/signoff/* $(CARAVEL_ROOT)/signoff/$*/openlane-signoff/ || true
+	gzip -n9fk $(CARAVEL_ROOT)/gds/$*.gds
 
 .PHONY: openlane
 openlane: check-openlane-env

@@ -156,3 +156,4 @@ set ::env(DRC_EXCLUDE_CELL_LIST_OPT) $::env(DESIGN_DIR)/drc_exclude_list.txt
 set ::env(RSZ_DONT_TOUCH) "user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*"
 set ::env(FP_PDN_SKIPTRIM) 1
 set ::env(MAGIC_NO_DEF_BLOCKAGES) 1
+set ::env(MAGIC_DEF_LABELS) 0

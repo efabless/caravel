@@ -1,10 +1,10 @@
 # Run configs
-set ::env(PDK_ROOT) {/home/kareem_farid/caravel/deps/openlane-new/pdk}
-set ::env(BASE_SDC_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/base.sdc}
+set ::env(PDK_ROOT) {/media/karim/Elements/work/pdk}
+set ::env(BASE_SDC_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/base.sdc}
 set ::env(BOTTOM_MARGIN_MULT) {1}
-set ::env(CARRY_SELECT_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v}
-set ::env(CELLS_LEF) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
-set ::env(CELLS_LEF_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
+set ::env(CARRY_SELECT_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v}
+set ::env(CELLS_LEF) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
+set ::env(CELLS_LEF_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
 set ::env(CELL_CLK_PORT) {CLK}
 set ::env(CELL_PAD_EXCLUDE) {sky130_fd_sc_hd__tap* sky130_fd_sc_hd__decap* sky130_ef_sc_hd__decap* sky130_fd_sc_hd__fill*}
 set ::env(CHECK_ASSIGN_STATEMENTS) {0}
@@ -17,7 +17,7 @@ set ::env(CLOCK_PERIOD) {50}
 set ::env(CLOCK_PORT) {serial_clock}
 set ::env(CLOCK_TREE_SYNTH) {1}
 set ::env(CLOCK_WIRE_RC_LAYER) {met5}
-set ::env(CONFIGS) {general.tcl checkers.tcl synthesis.tcl floorplan.tcl cts.tcl placement.tcl routing.tcl extraction.tcl lvs.tcl}
+set ::env(CONFIGS) {general.tcl checkers.tcl synthesis.tcl floorplan.tcl cts.tcl placement.tcl routing.tcl extraction.tcl}
 set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4 sky130_fd_sc_hd__clkbuf_2}
 set ::env(CTS_CLK_MAX_WIRE_LENGTH) {0}
 set ::env(CTS_DISABLE_POST_PROCESSING) {0}
@@ -32,12 +32,12 @@ set ::env(CTS_SQR_RES) {0.125}
 set ::env(CTS_TARGET_SKEW) {200}
 set ::env(CTS_TECH_DIR) {N/A}
 set ::env(CTS_TOLERANCE) {100}
-set ::env(CVC_SCRIPTS_DIR) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc}
+set ::env(CVC_SCRIPTS_DIR) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/cvc}
 set ::env(DATA_WIRE_RC_LAYER) {met2}
 set ::env(DECAP_CELL) {sky130_fd_sc_hd__decap_12 sky130_fd_sc_hd__decap_8 sky130_fd_sc_hd__decap_6 sky130_fd_sc_hd__decap_4 sky130_fd_sc_hd__decap_3}
 set ::env(DEFAULT_MAX_TRAN) {0.75}
 set ::env(DEF_UNITS_PER_MICRON) {1000}
-set ::env(DESIGN_CONFIG) {/home/kareem_farid/caravel/openlane/gpio_control_block/config.tcl}
+set ::env(DESIGN_CONFIG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/config.tcl}
 set ::env(DESIGN_IS_CORE) {1}
 set ::env(DESIGN_NAME) {gpio_control_block}
 set ::env(DETAILED_ROUTER) {tritonroute}
@@ -47,21 +47,21 @@ set ::env(DIODE_CELL_PIN) {DIODE}
 set ::env(DIODE_INSERTION_STRATEGY) {4}
 set ::env(DIODE_PADDING) {0}
 set ::env(DPL_CELL_PADDING) {0}
-set ::env(DRC_EXCLUDE_CELL_LIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/drc_exclude_list.txt}
-set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/home/kareem_farid/caravel/openlane/gpio_control_block/drc_exclude_list.txt}
+set ::env(DRC_EXCLUDE_CELL_LIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/drc_exclude_list.txt}
+set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/drc_exclude_list.txt}
 set ::env(DRT_OPT_ITERS) {64}
 set ::env(ECO_ENABLE) {0}
 set ::env(ECO_FINISH) {0}
 set ::env(ECO_ITER) {0}
 set ::env(ECO_SKIP_PIN) {1}
-set ::env(EXTRA_GDS_FILES) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../gds/gpio_logic_high.gds}
-set ::env(EXTRA_LEFS) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../lef/gpio_logic_high.lef}
+set ::env(EXTRA_GDS_FILES) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../gds/gpio_logic_high.gds}
+set ::env(EXTRA_LEFS) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../lef/gpio_logic_high.lef}
 set ::env(FAKEDIODE_CELL) {sky130_ef_sc_hd__fakediode_2}
 set ::env(FILL_CELL) {sky130_fd_sc_hd__fill*}
 set ::env(FILL_INSERTION) {1}
 set ::env(FP_ASPECT_RATIO) {1}
 set ::env(FP_CORE_UTIL) {50}
-set ::env(FP_DEF_TEMPLATE) {/home/kareem_farid/caravel/openlane/gpio_control_block/template/gpio_control_block.def}
+set ::env(FP_DEF_TEMPLATE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/template/gpio_control_block.def}
 set ::env(FP_ENDCAP_CELL) {sky130_fd_sc_hd__decap_3}
 set ::env(FP_IO_HEXTEND) {-1}
 set ::env(FP_IO_HLAYER) {met3}
@@ -109,11 +109,11 @@ set ::env(FP_TAPCELL_DIST) {13}
 set ::env(FP_TAP_HORIZONTAL_HALO) {2}
 set ::env(FP_TAP_VERTICAL_HALO) {2}
 set ::env(FP_WELLTAP_CELL) {sky130_fd_sc_hd__tapvpwrvgnd_1}
-set ::env(FULL_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_map.v}
-set ::env(GDS_FILES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
-set ::env(GDS_FILES_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
+set ::env(FULL_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_map.v}
+set ::env(GDS_FILES) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
+set ::env(GDS_FILES_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GENERATE_FINAL_SUMMARY_REPORT) {1}
-set ::env(GLB_CFG_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/config.tcl}
+set ::env(GLB_CFG_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/config.tcl}
 set ::env(GLB_OPTIMIZE_MIRRORING) {1}
 set ::env(GLB_RESIZER_ALLOW_SETUP_VIOS) {0}
 set ::env(GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT) {50}
@@ -127,9 +127,9 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) {1}
 set ::env(GLOBAL_ROUTER) {fastroute}
 set ::env(GND_NETS) {vssd vssd1}
 set ::env(GND_PIN) {VGND}
-set ::env(GPIO_PADS_LEF) { /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef }
-set ::env(GPIO_PADS_LEF_CORE_SIDE) { /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_fd_io_core.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_ef_io_core.lef }
-set ::env(GPIO_PADS_VERILOG) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/verilog/sky130_fd_io/sky130_ef_io.v}
+set ::env(GPIO_PADS_LEF) { /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef }
+set ::env(GPIO_PADS_LEF_CORE_SIDE) { /media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_fd_io_core.lef /media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_ef_io_core.lef }
+set ::env(GPIO_PADS_VERILOG) {/media/karim/Elements/work/pdk/sky130A/libs.ref/verilog/sky130_fd_io/sky130_ef_io.v}
 set ::env(GPL_CELL_PADDING) {0}
 set ::env(GRT_ADJUSTMENT) {0.05}
 set ::env(GRT_ALLOW_CONGESTION) {0}
@@ -153,24 +153,26 @@ set ::env(GRT_OBS) {
 set ::env(GRT_OVERFLOW_ITERS) {50}
 set ::env(IO_PCT) {0.2}
 set ::env(KLAYOUT_DRC_KLAYOUT_GDS) {0}
-set ::env(KLAYOUT_DRC_TECH_SCRIPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/drc/sky130A_mr.drc}
-set ::env(KLAYOUT_PROPERTIES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyp}
-set ::env(KLAYOUT_TECH) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyt}
+set ::env(KLAYOUT_DRC_TECH_SCRIPT) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/drc/sky130A_mr.drc}
+set ::env(KLAYOUT_PROPERTIES) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyp}
+set ::env(KLAYOUT_TECH) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyt}
 set ::env(KLAYOUT_XOR_GDS) {1}
 set ::env(KLAYOUT_XOR_XML) {1}
 set ::env(LEC_ENABLE) {0}
 set ::env(LEFT_MARGIN_MULT) {10}
-set ::env(LIB_FASTEST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}
-set ::env(LIB_SLOWEST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
-set ::env(LIB_SLOWEST_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
-set ::env(LIB_SYNTH) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LIB_TYPICAL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LOGS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs}
+set ::env(LIB_FASTEST) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}
+set ::env(LIB_SLOWEST) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
+set ::env(LIB_SLOWEST_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
+set ::env(LIB_SYNTH) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(LIB_TYPICAL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(LOGS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs}
 set ::env(LVS_CONNECT_BY_LABEL) {0}
 set ::env(LVS_INSERT_POWER_PINS) {1}
 set ::env(MACRO_BLOCKAGES_LAYER) {li1 met1 met2 met3 met4}
-set ::env(MACRO_PLACEMENT_CFG) {/home/kareem_farid/caravel/openlane/gpio_control_block/macro_placement.cfg}
+set ::env(MACRO_PLACEMENT_CFG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/macro_placement.cfg}
 set ::env(MAGIC_CONVERT_DRC_TO_RDB) {1}
+set ::env(MAGIC_DEF_LABELS) {0}
+set ::env(MAGIC_DEF_NO_BLOCKAGES) {1}
 set ::env(MAGIC_DISABLE_HIER_GDS) {1}
 set ::env(MAGIC_DRC_USE_GDS) {1}
 set ::env(MAGIC_EXT_USE_GDS) {0}
@@ -178,23 +180,23 @@ set ::env(MAGIC_GENERATE_GDS) {1}
 set ::env(MAGIC_GENERATE_LEF) {1}
 set ::env(MAGIC_GENERATE_MAGLEF) {1}
 set ::env(MAGIC_INCLUDE_GDS_POINTERS) {0}
-set ::env(MAGIC_MAGICRC) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/magic/sky130A.magicrc}
+set ::env(MAGIC_MAGICRC) {/media/karim/Elements/work/pdk/sky130A/libs.tech/magic/sky130A.magicrc}
 set ::env(MAGIC_NO_DEF_BLOCKAGES) {1}
 set ::env(MAGIC_PAD) {0}
-set ::env(MAGIC_TECH_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/magic/sky130A.tech}
+set ::env(MAGIC_TECH_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/magic/sky130A.tech}
 set ::env(MAGIC_WRITE_FULL_LEF) {0}
 set ::env(MAGIC_ZEROIZE_ORIGIN) {0}
-set ::env(NETGEN_SETUP_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl}
-set ::env(NO_SYNTH_CELL_LIST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/no_synth.cells}
+set ::env(NETGEN_SETUP_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl}
+set ::env(NO_SYNTH_CELL_LIST) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/no_synth.cells}
 set ::env(OPENLANE_VERBOSE) {0}
-set ::env(PDKPATH) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A}
-set ::env(PDN_CFG) {/home/kareem_farid/caravel/openlane/gpio_control_block/pdn.tcl}
+set ::env(PDKPATH) {/media/karim/Elements/work/pdk/sky130A}
+set ::env(PDN_CFG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/pdn.tcl}
 set ::env(PLACE_SITE) {unithd}
 set ::env(PLACE_SITE_HEIGHT) {2.720}
 set ::env(PLACE_SITE_WIDTH) {0.460}
 set ::env(PL_BASIC_PLACEMENT) {0}
 set ::env(PL_ESTIMATE_PARASITICS) {1}
-set ::env(PL_LIB) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(PL_LIB) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
 set ::env(PL_MACRO_CHANNEL) {0 0}
 set ::env(PL_MACRO_HALO) {0 0}
 set ::env(PL_MAX_DISPLACEMENT_X) {500}
@@ -235,21 +237,23 @@ set ::env(RCX_CORNER_COUNT) {1}
 set ::env(RCX_COUPLING_THRESHOLD) {0.1}
 set ::env(RCX_MAX_RESISTANCE) {50}
 set ::env(RCX_MERGE_VIA_WIRE_RES) {1}
-set ::env(RCX_RULES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre}
-set ::env(RCX_RULES_MAX) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
-set ::env(RCX_RULES_MIN) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
-set ::env(REPORTS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports}
-set ::env(RESULTS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results}
+set ::env(RCX_RULES) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre}
+set ::env(RCX_RULES_MAX) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
+set ::env(RCX_RULES_MIN) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
+set ::env(REPORTS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports}
+set ::env(RESULTS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results}
 set ::env(RE_BUFFER_CELL) {sky130_fd_sc_hd__buf_4}
 set ::env(RIGHT_MARGIN_MULT) {256}
-set ::env(RIPPLE_CARRY_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
+set ::env(RIPPLE_CARRY_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
 set ::env(ROOT_CLK_BUFFER) {sky130_fd_sc_hd__clkbuf_16}
 set ::env(ROUTING_CORES) {2}
 set ::env(RSZ_DONT_TOUCH) {user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*}
+set ::env(RSZ_DONT_TOUCH_RX) {$^}
+set ::env(RSZ_USE_OLD_REMOVER) {0}
 set ::env(RT_MAX_LAYER) {met5}
 set ::env(RT_MIN_LAYER) {met1}
 set ::env(RUN_CVC) {1}
-set ::env(RUN_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50}
+set ::env(RUN_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06}
 set ::env(RUN_DRT) {1}
 set ::env(RUN_IRDROP_REPORT) {1}
 set ::env(RUN_KLAYOUT) {1}
@@ -258,17 +262,18 @@ set ::env(RUN_KLAYOUT_XOR) {1}
 set ::env(RUN_LVS) {1}
 set ::env(RUN_MAGIC) {1}
 set ::env(RUN_MAGIC_DRC) {1}
-set ::env(RUN_SIMPLE_CTS) {0}
 set ::env(RUN_SPEF_EXTRACTION) {1}
-set ::env(RUN_TAG) {22_10_18_13_50}
+set ::env(RUN_TAG) {22_10_30_16_06}
+set ::env(SCLPATH) {/media/karim/Elements/work/pdk/sky130A/sky130_fd_sc_hd}
 set ::env(SPEF_EXTRACTOR) {openrcx}
-set ::env(START_TIME) {2022.10.18_20.50.18}
+set ::env(START_TIME) {2022.10.30_14.06.05}
 set ::env(STA_REPORT_POWER) {1}
+set ::env(STA_WRITE_LIB) {1}
 set ::env(STD_CELL_GROUND_PINS) {VGND VNB}
 set ::env(STD_CELL_LIBRARY) {sky130_fd_sc_hd}
-set ::env(STD_CELL_LIBRARY_CDL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
+set ::env(STD_CELL_LIBRARY_CDL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
 set ::env(STD_CELL_LIBRARY_OPT) {sky130_fd_sc_hd}
-set ::env(STD_CELL_LIBRARY_OPT_CDL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
+set ::env(STD_CELL_LIBRARY_OPT_CDL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
 set ::env(STD_CELL_POWER_PINS) {VPWR VPB}
 set ::env(SYNTH_ADDER_TYPE) {YOSYS}
 set ::env(SYNTH_BIN) {yosys}
@@ -278,13 +283,14 @@ set ::env(SYNTH_CLOCK_TRANSITION) {0.15}
 set ::env(SYNTH_CLOCK_UNCERTAINTY) {0.25}
 set ::env(SYNTH_DRIVING_CELL) {sky130_fd_sc_hd__inv_2}
 set ::env(SYNTH_DRIVING_CELL_PIN) {Y}
-set ::env(SYNTH_EXTRA_MAPPING_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/yosys_mapping.v}
+set ::env(SYNTH_ELABORATE_ONLY) {0}
+set ::env(SYNTH_EXTRA_MAPPING_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/yosys_mapping.v}
 set ::env(SYNTH_FLAT_TOP) {0}
-set ::env(SYNTH_LATCH_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v}
+set ::env(SYNTH_LATCH_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v}
 set ::env(SYNTH_MAX_FANOUT) {10}
 set ::env(SYNTH_MIN_BUF_PORT) {sky130_fd_sc_hd__buf_2 A X}
-set ::env(SYNTH_MUX4_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux4_map.v}
-set ::env(SYNTH_MUX_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux2_map.v}
+set ::env(SYNTH_MUX4_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux4_map.v}
+set ::env(SYNTH_MUX_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux2_map.v}
 set ::env(SYNTH_NO_FLAT) {0}
 set ::env(SYNTH_READ_BLACKBOX_LIB) {1}
 set ::env(SYNTH_SCRIPT) {/openlane/scripts/yosys/synth.tcl}
@@ -294,71 +300,70 @@ set ::env(SYNTH_STRATEGY) {AREA 0}
 set ::env(SYNTH_TIEHI_PORT) {sky130_fd_sc_hd__conb_1 HI}
 set ::env(SYNTH_TIELO_PORT) {sky130_fd_sc_hd__conb_1 LO}
 set ::env(SYNTH_TIMING_DERATE) {0.05}
-set ::env(SYNTH_TOP_LEVEL) {0}
 set ::env(SYNTH_USE_PG_PINS_DEFINES) {USE_POWER_PINS}
 set ::env(TAKE_LAYOUT_SCROT) {0}
 set ::env(TAP_DECAP_INSERTION) {1}
-set ::env(TECH_LEF) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
-set ::env(TECH_LEF_MAX) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef}
-set ::env(TECH_LEF_MIN) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef}
-set ::env(TECH_LEF_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
+set ::env(TECH_LEF) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
+set ::env(TECH_LEF_MAX) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef}
+set ::env(TECH_LEF_MIN) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef}
+set ::env(TECH_LEF_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
 set ::env(TERMINAL_OUTPUT) {/dev/null}
-set ::env(TMP_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp}
+set ::env(TMP_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp}
 set ::env(TOP_MARGIN_MULT) {1}
-set ::env(TRACKS_INFO_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
-set ::env(TRISTATE_BUFFER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
-set ::env(UNBUFFER_NETS) {^$}
+set ::env(TRACKS_INFO_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
+set ::env(TRISTATE_BUFFER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
 set ::env(USE_ARC_ANTENNA_CHECK) {1}
 set ::env(USE_GPIO_PADS) {0}
 set ::env(VDD_NETS) {vccd vccd1}
 set ::env(VDD_PIN) {VPWR}
-set ::env(VERILOG_FILES) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/defines.v /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/gpio_control_block.v}
-set ::env(VERILOG_FILES_BLACKBOX) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/gpio_logic_high.v}
+set ::env(VERILOG_FILES) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/defines.v /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/gpio_control_block.v}
+set ::env(VERILOG_FILES_BLACKBOX) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/gpio_logic_high.v}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
-set ::env(cts_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/cts}
-set ::env(cts_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/cts}
-set ::env(cts_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/cts}
-set ::env(cts_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/cts}
-set ::env(eco_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/eco}
-set ::env(eco_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/eco}
-set ::env(eco_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/eco}
-set ::env(eco_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/eco}
-set ::env(floorplan_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/floorplan}
-set ::env(floorplan_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/floorplan}
-set ::env(floorplan_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/floorplan}
-set ::env(floorplan_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/floorplan}
-set ::env(placement_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/placement}
-set ::env(placement_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/placement}
-set ::env(placement_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/placement}
-set ::env(placement_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/placement}
-set ::env(routing_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/routing}
-set ::env(routing_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/routing}
-set ::env(routing_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing}
-set ::env(routing_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing}
-set ::env(signoff_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/signoff}
-set ::env(signoff_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/signoff}
-set ::env(signoff_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/signoff}
-set ::env(signoff_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff}
-set ::env(synthesis_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/synthesis}
-set ::env(synthesis_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/synthesis}
-set ::env(synthesis_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/synthesis}
-set ::env(synthesis_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis}
+set ::env(cts_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/cts}
+set ::env(cts_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/cts}
+set ::env(cts_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/cts}
+set ::env(cts_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/cts}
+set ::env(eco_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/eco}
+set ::env(eco_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/eco}
+set ::env(eco_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/eco}
+set ::env(eco_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/eco}
+set ::env(floorplan_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/floorplan}
+set ::env(floorplan_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/floorplan}
+set ::env(floorplan_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/floorplan}
+set ::env(floorplan_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/floorplan}
+set ::env(placement_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/placement}
+set ::env(placement_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/placement}
+set ::env(placement_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/placement}
+set ::env(placement_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/placement}
+set ::env(routing_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/routing}
+set ::env(routing_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/routing}
+set ::env(routing_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing}
+set ::env(routing_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing}
+set ::env(signoff_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/signoff}
+set ::env(signoff_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/signoff}
+set ::env(signoff_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/signoff}
+set ::env(signoff_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff}
+set ::env(synthesis_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/synthesis}
+set ::env(synthesis_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/synthesis}
+set ::env(synthesis_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/synthesis}
+set ::env(synthesis_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis}
 set ::env(SYNTH_MAX_TRAN) {0.75}
-set ::env(CURRENT_DEF) /home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.def
-set ::env(CURRENT_GUIDE) /home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/23-global.guide
-set ::env(CURRENT_INDEX) 41
-set ::env(CURRENT_NETLIST) /home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff/36-powered_netlist.v
-set ::env(PREV_NETLIST) /home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/25-detailed.v
-set ::env(PDK_ROOT) {/home/kareem_farid/caravel/deps/openlane-new/pdk}
-set ::env(ANTENNA_VIOLATOR_LIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/signoff/41-antenna_violators.rpt}
-set ::env(BASE_SDC_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/base.sdc}
+set ::env(CURRENT_INDEX) 37
+set ::env(CURRENT_DEF) /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/gpio_control_block.def
+set ::env(CURRENT_GUIDE) /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing/18-global.guide
+set ::env(CURRENT_NETLIST) /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff/32-gpio_control_block.nl.v
+set ::env(CURRENT_POWERED_NETLIST) {0}
+set ::env(CURRENT_ODB) /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/gpio_control_block.odb
+set ::env(PDK_ROOT) {/media/karim/Elements/work/pdk}
+set ::env(ANTENNA_VIOLATOR_LIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/signoff/37-antenna_violators.rpt}
+set ::env(BASE_SDC_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/base.sdc}
 set ::env(BASIC_PREP_COMPLETE) {1}
 set ::env(BOTTOM_MARGIN_MULT) {1}
-set ::env(CARAVEL_ROOT) {/home/kareem_farid/caravel}
-set ::env(CARRY_SELECT_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v}
-set ::env(CELLS_LEF) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
-set ::env(CELLS_LEF_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
+set ::env(CARAVEL_ROOT) {/media/karim/Elements/work/caravel-new}
+set ::env(CARRY_SELECT_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v}
+set ::env(CELLS_LEF) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
+set ::env(CELLS_LEF_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
 set ::env(CELL_CLK_PORT) {CLK}
 set ::env(CELL_PAD_EXCLUDE) {sky130_fd_sc_hd__tap* sky130_fd_sc_hd__decap* sky130_ef_sc_hd__decap* sky130_fd_sc_hd__fill*}
 set ::env(CHECK_ASSIGN_STATEMENTS) {0}
@@ -372,7 +377,7 @@ set ::env(CLOCK_PERIOD) {50}
 set ::env(CLOCK_PORT) {serial_clock}
 set ::env(CLOCK_TREE_SYNTH) {1}
 set ::env(CLOCK_WIRE_RC_LAYER) {met5}
-set ::env(CONFIGS) {general.tcl checkers.tcl synthesis.tcl floorplan.tcl cts.tcl placement.tcl routing.tcl extraction.tcl lvs.tcl}
+set ::env(CONFIGS) {general.tcl checkers.tcl synthesis.tcl floorplan.tcl cts.tcl placement.tcl routing.tcl extraction.tcl}
 set ::env(CORE_AREA) {4.6 2.72 51.98 59.84}
 set ::env(CORE_HEIGHT) {57.12}
 set ::env(CORE_WIDTH) {47.38}
@@ -390,21 +395,25 @@ set ::env(CTS_SQR_RES) {0.125}
 set ::env(CTS_TARGET_SKEW) {200}
 set ::env(CTS_TECH_DIR) {N/A}
 set ::env(CTS_TOLERANCE) {100}
-set ::env(CURRENT_DEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.def}
-set ::env(CURRENT_GDS) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/signoff/gpio_control_block.gds}
-set ::env(CURRENT_GUIDE) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/23-global.guide}
-set ::env(CURRENT_INDEX) {41}
-set ::env(CURRENT_NETLIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff/36-powered_netlist.v}
-set ::env(CURRENT_SDC) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/17-resizer_timing.sdc}
-set ::env(CURRENT_SDF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.sdf}
-set ::env(CURRENT_SPEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.nom.spef}
-set ::env(CVC_SCRIPTS_DIR) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/cvc}
+set ::env(CURRENT_DEF) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff/32-gpio_control_block.p.def}
+set ::env(CURRENT_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing}
+set ::env(CURRENT_GDS) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/signoff/gpio_control_block.gds}
+set ::env(CURRENT_GUIDE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing/18-global.guide}
+set ::env(CURRENT_INDEX) {37}
+set ::env(CURRENT_LIB) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/mca/process_corner_nom/gpio_control_block.lib}
+set ::env(CURRENT_NETLIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff/32-gpio_control_block.nl.v}
+set ::env(CURRENT_ODB) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/gpio_control_block.odb}
+set ::env(CURRENT_POWERED_NETLIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff/32-gpio_control_block.pnl.v}
+set ::env(CURRENT_SDC) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/14-gpio_control_block.sdc}
+set ::env(CURRENT_SDF) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/mca/process_corner_nom/gpio_control_block.sdf}
+set ::env(CURRENT_SPEF) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/mca/process_corner_nom/gpio_control_block.spef}
+set ::env(CVC_SCRIPTS_DIR) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/cvc}
 set ::env(DATA_WIRE_RC_LAYER) {met2}
 set ::env(DECAP_CELL) {sky130_fd_sc_hd__decap_12 sky130_fd_sc_hd__decap_8 sky130_fd_sc_hd__decap_6 sky130_fd_sc_hd__decap_4 sky130_fd_sc_hd__decap_3}
 set ::env(DEFAULT_MAX_TRAN) {0.75}
 set ::env(DEF_UNITS_PER_MICRON) {1000}
-set ::env(DESIGN_CONFIG) {/home/kareem_farid/caravel/openlane/gpio_control_block/config.tcl}
-set ::env(DESIGN_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block}
+set ::env(DESIGN_CONFIG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/config.tcl}
+set ::env(DESIGN_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block}
 set ::env(DESIGN_IS_CORE) {1}
 set ::env(DESIGN_NAME) {gpio_control_block}
 set ::env(DETAILED_ROUTER) {tritonroute}
@@ -415,22 +424,22 @@ set ::env(DIODE_INSERTION_STRATEGY) {4}
 set ::env(DIODE_PADDING) {0}
 set ::env(DONT_USE_CELLS) { sky130_fd_sc_hd__clkdlybuf4s15_1 sky130_fd_sc_hd__clkdlybuf4s18_1 sky130_fd_sc_hd__lpflow_bleeder_1 sky130_fd_sc_hd__lpflow_clkbufkapwr_1 sky130_fd_sc_hd__lpflow_clkbufkapwr_16 sky130_fd_sc_hd__lpflow_clkbufkapwr_2 sky130_fd_sc_hd__lpflow_clkbufkapwr_4 sky130_fd_sc_hd__lpflow_clkbufkapwr_8 sky130_fd_sc_hd__lpflow_clkinvkapwr_1 sky130_fd_sc_hd__lpflow_clkinvkapwr_16 sky130_fd_sc_hd__lpflow_clkinvkapwr_2 sky130_fd_sc_hd__lpflow_clkinvkapwr_4 sky130_fd_sc_hd__lpflow_clkinvkapwr_8 sky130_fd_sc_hd__lpflow_decapkapwr_12 sky130_fd_sc_hd__lpflow_decapkapwr_3 sky130_fd_sc_hd__lpflow_decapkapwr_4 sky130_fd_sc_hd__lpflow_decapkapwr_6 sky130_fd_sc_hd__lpflow_decapkapwr_8 sky130_fd_sc_hd__lpflow_inputiso0n_1 sky130_fd_sc_hd__lpflow_inputiso0p_1 sky130_fd_sc_hd__lpflow_inputiso1n_1 sky130_fd_sc_hd__lpflow_inputiso1p_1 sky130_fd_sc_hd__lpflow_inputisolatch_1 sky130_fd_sc_hd__lpflow_isobufsrc_1 sky130_fd_sc_hd__lpflow_isobufsrc_16 sky130_fd_sc_hd__lpflow_isobufsrc_2 sky130_fd_sc_hd__lpflow_isobufsrc_4 sky130_fd_sc_hd__lpflow_isobufsrc_8 sky130_fd_sc_hd__lpflow_isobufsrckapwr_16 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_1 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_2 sky130_fd_sc_hd__lpflow_lsbuf_lh_hl_isowell_tap_4 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_4 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_1 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_2 sky130_fd_sc_hd__lpflow_lsbuf_lh_isowell_tap_4  }
 set ::env(DPL_CELL_PADDING) {0}
-set ::env(DRC_EXCLUDE_CELL_LIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/drc_exclude_list.txt}
-set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/home/kareem_farid/caravel/openlane/gpio_control_block/drc_exclude_list.txt}
+set ::env(DRC_EXCLUDE_CELL_LIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/drc_exclude_list.txt}
+set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/drc_exclude_list.txt}
 set ::env(DRT_OPT_ITERS) {64}
 set ::env(ECO_ENABLE) {0}
 set ::env(ECO_FINISH) {0}
 set ::env(ECO_ITER) {0}
 set ::env(ECO_SKIP_PIN) {1}
-set ::env(EXTRA_GDS_FILES) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../gds/gpio_logic_high.gds}
-set ::env(EXTRA_LEFS) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../lef/gpio_logic_high.lef}
-set ::env(EXT_NETLIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/signoff/gpio_control_block.spice}
+set ::env(EXTRA_GDS_FILES) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../gds/gpio_logic_high.gds}
+set ::env(EXTRA_LEFS) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../lef/gpio_logic_high.lef}
+set ::env(EXT_NETLIST) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/signoff/gpio_control_block.spice}
 set ::env(FAKEDIODE_CELL) {sky130_ef_sc_hd__fakediode_2}
 set ::env(FILL_CELL) {sky130_fd_sc_hd__fill*}
 set ::env(FILL_INSERTION) {1}
 set ::env(FP_ASPECT_RATIO) {1}
 set ::env(FP_CORE_UTIL) {50}
-set ::env(FP_DEF_TEMPLATE) {/home/kareem_farid/caravel/openlane/gpio_control_block/template/gpio_control_block.def}
+set ::env(FP_DEF_TEMPLATE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/template/gpio_control_block.def}
 set ::env(FP_ENDCAP_CELL) {sky130_fd_sc_hd__decap_3}
 set ::env(FP_IO_HEXTEND) {-1}
 set ::env(FP_IO_HLAYER) {met3}
@@ -478,11 +487,11 @@ set ::env(FP_TAPCELL_DIST) {13}
 set ::env(FP_TAP_HORIZONTAL_HALO) {2}
 set ::env(FP_TAP_VERTICAL_HALO) {2}
 set ::env(FP_WELLTAP_CELL) {sky130_fd_sc_hd__tapvpwrvgnd_1}
-set ::env(FULL_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_map.v}
-set ::env(GDS_FILES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
-set ::env(GDS_FILES_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
+set ::env(FULL_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_map.v}
+set ::env(GDS_FILES) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
+set ::env(GDS_FILES_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GENERATE_FINAL_SUMMARY_REPORT) {1}
-set ::env(GLB_CFG_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/config.tcl}
+set ::env(GLB_CFG_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/config.tcl}
 set ::env(GLB_OPTIMIZE_MIRRORING) {1}
 set ::env(GLB_RESIZER_ALLOW_SETUP_VIOS) {0}
 set ::env(GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT) {50}
@@ -497,9 +506,9 @@ set ::env(GLOBAL_ROUTER) {fastroute}
 set ::env(GND_NET) {vssd}
 set ::env(GND_NETS) {vssd vssd1}
 set ::env(GND_PIN) {vssd}
-set ::env(GPIO_PADS_LEF) { /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef }
-set ::env(GPIO_PADS_LEF_CORE_SIDE) { /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_fd_io_core.lef /home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_ef_io_core.lef }
-set ::env(GPIO_PADS_VERILOG) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/verilog/sky130_fd_io/sky130_ef_io.v}
+set ::env(GPIO_PADS_LEF) { /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_fd_io.lef /media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_io/lef/sky130_ef_io.lef }
+set ::env(GPIO_PADS_LEF_CORE_SIDE) { /media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_fd_io_core.lef /media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/custom_cells/lef/sky130_ef_io_core.lef }
+set ::env(GPIO_PADS_VERILOG) {/media/karim/Elements/work/pdk/sky130A/libs.ref/verilog/sky130_fd_io/sky130_ef_io.v}
 set ::env(GPL_CELL_PADDING) {0}
 set ::env(GRT_ADJUSTMENT) {0.05}
 set ::env(GRT_ALLOW_CONGESTION) {0}
@@ -522,73 +531,75 @@ set ::env(GRT_OBS) {
 	met1 120 0 170 65}
 set ::env(GRT_OVERFLOW_ITERS) {50}
 set ::env(HOME) {/}
-set ::env(HOSTNAME) {418daf2eb26e}
-set ::env(INPUT_DEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff/36-powered_def.def}
+set ::env(HOSTNAME) {08a33b9517ed}
 set ::env(IO_PCT) {0.2}
 set ::env(KLAYOUT_DRC_KLAYOUT_GDS) {0}
-set ::env(KLAYOUT_DRC_TECH_SCRIPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/drc/sky130A_mr.drc}
-set ::env(KLAYOUT_PROPERTIES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyp}
-set ::env(KLAYOUT_TECH) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyt}
+set ::env(KLAYOUT_DRC_TECH_SCRIPT) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/drc/sky130A_mr.drc}
+set ::env(KLAYOUT_PROPERTIES) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyp}
+set ::env(KLAYOUT_TECH) {/media/karim/Elements/work/pdk/sky130A/libs.tech/klayout/tech/sky130A.lyt}
 set ::env(KLAYOUT_XOR_GDS) {1}
 set ::env(KLAYOUT_XOR_XML) {1}
 set ::env(LANG) {en_US.UTF-8}
-set ::env(LAST_TIMING_REPORT_TAG) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/signoff/32-rcx_sta}
+set ::env(LAST_TIMING_REPORT_TAG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/signoff/29-rcx_sta}
 set ::env(LC_ALL) {en_US.UTF-8}
 set ::env(LC_CTYPE) {en_US.UTF-8}
 set ::env(LD_LIBRARY_PATH) {/build//lib:/build//lib/Linux-x86_64:}
 set ::env(LEC_ENABLE) {0}
 set ::env(LEFT_MARGIN_MULT) {10}
-set ::env(LIB_CTS) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/cts/cts.lib}
-set ::env(LIB_FASTEST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}
-set ::env(LIB_RESIZER_OPT) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis/resizer_sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LIB_SLOWEST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
-set ::env(LIB_SLOWEST_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
-set ::env(LIB_SYNTH) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis/trimmed.lib}
-set ::env(LIB_SYNTH_COMPLETE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LIB_SYNTH_COMPLETE_NO_PG) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis/2-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib}
-set ::env(LIB_SYNTH_MERGED) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis/merged.lib}
-set ::env(LIB_SYNTH_NO_PG) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis/2-trimmed.no_pg.lib}
-set ::env(LIB_TYPICAL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LOGS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs}
+set ::env(LIB_CTS) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/cts/cts.lib}
+set ::env(LIB_FASTEST) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}
+set ::env(LIB_SLOWEST) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
+set ::env(LIB_SLOWEST_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
+set ::env(LIB_SYNTH) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis/trimmed.lib}
+set ::env(LIB_SYNTH_COMPLETE) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(LIB_SYNTH_COMPLETE_NO_PG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis/2-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib}
+set ::env(LIB_SYNTH_MERGED) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis/merged.lib}
+set ::env(LIB_SYNTH_NO_PG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis/2-trimmed.no_pg.lib}
+set ::env(LIB_TYPICAL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(LOGS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs}
 set ::env(LVS_CONNECT_BY_LABEL) {0}
 set ::env(LVS_INSERT_POWER_PINS) {1}
 set ::env(MACRO_BLOCKAGES_LAYER) {li1 met1 met2 met3 met4}
-set ::env(MACRO_PLACEMENT_CFG) {/home/kareem_farid/caravel/openlane/gpio_control_block/macro_placement.cfg}
+set ::env(MACRO_PLACEMENT_CFG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/macro_placement.cfg}
 set ::env(MAGIC_CONVERT_DRC_TO_RDB) {1}
+set ::env(MAGIC_DEF_LABELS) {0}
+set ::env(MAGIC_DEF_NO_BLOCKAGES) {1}
 set ::env(MAGIC_DISABLE_HIER_GDS) {1}
 set ::env(MAGIC_DRC_USE_GDS) {1}
 set ::env(MAGIC_EXT_USE_GDS) {0}
-set ::env(MAGIC_GDS) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/signoff/gpio_control_block.magic.gds}
+set ::env(MAGIC_GDS) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/signoff/gpio_control_block.magic.gds}
 set ::env(MAGIC_GENERATE_GDS) {1}
 set ::env(MAGIC_GENERATE_LEF) {1}
 set ::env(MAGIC_GENERATE_MAGLEF) {1}
 set ::env(MAGIC_INCLUDE_GDS_POINTERS) {0}
-set ::env(MAGIC_MAGICRC) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/magic/sky130A.magicrc}
+set ::env(MAGIC_MAGICRC) {/media/karim/Elements/work/pdk/sky130A/libs.tech/magic/sky130A.magicrc}
 set ::env(MAGIC_NO_DEF_BLOCKAGES) {1}
 set ::env(MAGIC_PAD) {0}
-set ::env(MAGIC_TECH_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/magic/sky130A.tech}
+set ::env(MAGIC_TECH_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/magic/sky130A.tech}
 set ::env(MAGIC_WRITE_FULL_LEF) {0}
 set ::env(MAGIC_ZEROIZE_ORIGIN) {0}
 set ::env(MAGTYPE) {maglef}
 set ::env(MANPATH) {/build//share/man:}
 set ::env(MAX_METAL_LAYER) {6}
-set ::env(MERGED_LEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/merged.nom.lef}
-set ::env(MERGED_LEF_MAX) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/merged.max.lef}
-set ::env(MERGED_LEF_MIN) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/merged.min.lef}
+set ::env(MC_SDF_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/mca/sdf}
+set ::env(MC_SPEF_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing/mca/spef}
+set ::env(MERGED_LEF) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/merged.nom.lef}
+set ::env(MERGED_LEF_MAX) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/merged.max.lef}
+set ::env(MERGED_LEF_MIN) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/merged.min.lef}
 set ::env(MISMATCHES_OK) {1}
-set ::env(NETGEN_SETUP_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl}
-set ::env(NO_SYNTH_CELL_LIST) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/no_synth.cells}
+set ::env(NETGEN_SETUP_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl}
+set ::env(NO_SYNTH_CELL_LIST) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/no_synth.cells}
 set ::env(OPENLANE_ROOT) {/openlane}
-set ::env(OPENLANE_RUN_TAG) {22_10_18_13_50}
+set ::env(OPENLANE_RUN_TAG) {22_10_30_16_06}
 set ::env(OPENLANE_VERBOSE) {0}
-set ::env(OPENLANE_VERSION) {37faafee20ec76a349fb817d7a75ed26d94be904}
+set ::env(OPENLANE_VERSION) {41ed0036c3dc77961a34005fc7e4494881f0a07f}
 set ::env(OPENROAD) {/build/}
 set ::env(OPENROAD_BIN) {openroad}
 set ::env(PATH) {/openlane:/openlane/scripts:/build//bin:/build//bin/Linux-x86_64:/build//pdn/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin}
 set ::env(PDK) {sky130A}
-set ::env(PDKPATH) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A}
-set ::env(PDK_ROOT) {/home/kareem_farid/caravel/deps/openlane-new/pdk}
-set ::env(PDN_CFG) {/home/kareem_farid/caravel/openlane/gpio_control_block/pdn.tcl}
+set ::env(PDKPATH) {/media/karim/Elements/work/pdk/sky130A}
+set ::env(PDK_ROOT) {/media/karim/Elements/work/pdk}
+set ::env(PDN_CFG) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/pdn.tcl}
 set ::env(PLACE_SITE) {unithd}
 set ::env(PLACE_SITE_HEIGHT) {2.720}
 set ::env(PLACE_SITE_WIDTH) {0.460}
@@ -596,7 +607,7 @@ set ::env(PL_BASIC_PLACEMENT) {0}
 set ::env(PL_ESTIMATE_PARASITICS) {1}
 set ::env(PL_INIT_COEFF) {0.00002}
 set ::env(PL_IO_ITER) {5}
-set ::env(PL_LIB) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(PL_LIB) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
 set ::env(PL_MACRO_CHANNEL) {0 0}
 set ::env(PL_MACRO_HALO) {0 0}
 set ::env(PL_MAX_DISPLACEMENT_X) {500}
@@ -622,10 +633,9 @@ set ::env(PL_ROUTABILITY_DRIVEN) {1}
 set ::env(PL_SKIP_INITIAL_PLACEMENT) {0}
 set ::env(PL_TARGET_DENSITY) {0.95}
 set ::env(PL_TIME_DRIVEN) {1}
-set ::env(PREV_NETLIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/25-detailed.v}
 set ::env(PRIMARY_SIGNOFF_TOOL) {magic}
 set ::env(PROCESS) {130}
-set ::env(PWD) {/home/kareem_farid/caravel/openlane}
+set ::env(PWD) {/media/karim/Elements/work/caravel-new}
 set ::env(QUIT_ON_HOLD_VIOLATIONS) {1}
 set ::env(QUIT_ON_ILLEGAL_OVERLAPS) {1}
 set ::env(QUIT_ON_LVS_ERROR) {1}
@@ -637,26 +647,27 @@ set ::env(RCX_CC_MODEL) {10}
 set ::env(RCX_CONTEXT_DEPTH) {5}
 set ::env(RCX_CORNER_COUNT) {1}
 set ::env(RCX_COUPLING_THRESHOLD) {0.1}
-set ::env(RCX_LEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/merged.nom.lef}
-set ::env(RCX_LIB) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
 set ::env(RCX_MAX_RESISTANCE) {50}
 set ::env(RCX_MERGE_VIA_WIRE_RES) {1}
-set ::env(RCX_RULES) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre}
-set ::env(RCX_RULESET) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre}
-set ::env(RCX_RULES_MAX) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
-set ::env(RCX_RULES_MIN) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
-set ::env(REPORTS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports}
-set ::env(RESULTS_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results}
+set ::env(RCX_RULES) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.calibre}
+set ::env(RCX_RULES_MAX) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
+set ::env(RCX_RULES_MIN) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
+set ::env(RCX_SDC_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/14-gpio_control_block.sdc}
+set ::env(REPORTS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports}
+set ::env(RESULTS_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results}
 set ::env(RE_BUFFER_CELL) {sky130_fd_sc_hd__buf_4}
 set ::env(RIGHT_MARGIN_MULT) {256}
-set ::env(RIPPLE_CARRY_ADDER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
+set ::env(RIPPLE_CARRY_ADDER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
 set ::env(ROOT_CLK_BUFFER) {sky130_fd_sc_hd__clkbuf_16}
 set ::env(ROUTING_CORES) {2}
 set ::env(RSZ_DONT_TOUCH) {user_gpio_out user_gpio_oeb serial_clock_out serial_load_out gpio_defaults*}
+set ::env(RSZ_DONT_TOUCH_RX) {\$^}
+set ::env(RSZ_LIB) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis/resizer_sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(RSZ_USE_OLD_REMOVER) {0}
 set ::env(RT_MAX_LAYER) {met5}
 set ::env(RT_MIN_LAYER) {met1}
 set ::env(RUN_CVC) {1}
-set ::env(RUN_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50}
+set ::env(RUN_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06}
 set ::env(RUN_DRT) {1}
 set ::env(RUN_IRDROP_REPORT) {1}
 set ::env(RUN_KLAYOUT) {1}
@@ -665,29 +676,22 @@ set ::env(RUN_KLAYOUT_XOR) {1}
 set ::env(RUN_LVS) {1}
 set ::env(RUN_MAGIC) {1}
 set ::env(RUN_MAGIC_DRC) {1}
-set ::env(RUN_SIMPLE_CTS) {0}
 set ::env(RUN_SPEF_EXTRACTION) {1}
 set ::env(RUN_STANDALONE) {1}
-set ::env(RUN_TAG) {22_10_18_13_50}
-set ::env(SAVE_DEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.def}
-set ::env(SAVE_GUIDE) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/23-global.guide}
-set ::env(SAVE_NETLIST) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff/36-powered_netlist.v}
-set ::env(SAVE_SDC) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/17-resizer_timing.sdc}
-set ::env(SAVE_SDF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.sdf}
-set ::env(SAVE_SPEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block.nom.spef}
+set ::env(RUN_TAG) {22_10_30_16_06}
+set ::env(SCLPATH) {/media/karim/Elements/work/pdk/sky130A/sky130_fd_sc_hd}
 set ::env(SCRIPTS_DIR) {/openlane/scripts}
 set ::env(SHLVL) {1}
 set ::env(SPEF_EXTRACTOR) {openrcx}
-set ::env(SPEF_PREFIX) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing/gpio_control_block}
-set ::env(START_TIME) {2022.10.18_20.50.18}
-set ::env(STA_LEF) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/merged.nom.lef}
+set ::env(START_TIME) {2022.10.30_14.06.05}
 set ::env(STA_PRE_CTS) {0}
 set ::env(STA_REPORT_POWER) {1}
+set ::env(STA_WRITE_LIB) {1}
 set ::env(STD_CELL_GROUND_PINS) {VGND VNB}
 set ::env(STD_CELL_LIBRARY) {sky130_fd_sc_hd}
-set ::env(STD_CELL_LIBRARY_CDL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
+set ::env(STD_CELL_LIBRARY_CDL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
 set ::env(STD_CELL_LIBRARY_OPT) {sky130_fd_sc_hd}
-set ::env(STD_CELL_LIBRARY_OPT_CDL) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
+set ::env(STD_CELL_LIBRARY_OPT_CDL) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/cdl/sky130_fd_sc_hd.cdl}
 set ::env(STD_CELL_POWER_PINS) {VPWR VPB}
 set ::env(SYNTH_ADDER_TYPE) {YOSYS}
 set ::env(SYNTH_BIN) {yosys}
@@ -698,14 +702,15 @@ set ::env(SYNTH_CLOCK_UNCERTAINTY) {0.25}
 set ::env(SYNTH_DEFINES) {USE_POWER_PINS}
 set ::env(SYNTH_DRIVING_CELL) {sky130_fd_sc_hd__inv_2}
 set ::env(SYNTH_DRIVING_CELL_PIN) {Y}
-set ::env(SYNTH_EXTRA_MAPPING_FILE) {/home/kareem_farid/caravel/openlane/gpio_control_block/yosys_mapping.v}
+set ::env(SYNTH_ELABORATE_ONLY) {0}
+set ::env(SYNTH_EXTRA_MAPPING_FILE) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/yosys_mapping.v}
 set ::env(SYNTH_FLAT_TOP) {0}
-set ::env(SYNTH_LATCH_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v}
+set ::env(SYNTH_LATCH_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v}
 set ::env(SYNTH_MAX_FANOUT) {10}
 set ::env(SYNTH_MAX_TRAN) {0.75}
 set ::env(SYNTH_MIN_BUF_PORT) {sky130_fd_sc_hd__buf_2 A X}
-set ::env(SYNTH_MUX4_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux4_map.v}
-set ::env(SYNTH_MUX_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux2_map.v}
+set ::env(SYNTH_MUX4_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux4_map.v}
+set ::env(SYNTH_MUX_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/mux2_map.v}
 set ::env(SYNTH_NO_FLAT) {0}
 set ::env(SYNTH_OPT) {0}
 set ::env(SYNTH_READ_BLACKBOX_LIB) {1}
@@ -716,66 +721,64 @@ set ::env(SYNTH_STRATEGY) {AREA 0}
 set ::env(SYNTH_TIEHI_PORT) {sky130_fd_sc_hd__conb_1 HI}
 set ::env(SYNTH_TIELO_PORT) {sky130_fd_sc_hd__conb_1 LO}
 set ::env(SYNTH_TIMING_DERATE) {0.05}
-set ::env(SYNTH_TOP_LEVEL) {0}
 set ::env(SYNTH_USE_PG_PINS_DEFINES) {USE_POWER_PINS}
 set ::env(TAKE_LAYOUT_SCROT) {0}
 set ::env(TAP_DECAP_INSERTION) {1}
 set ::env(TCLLIBPATH) {/usr/share/tcl8.5 /usr/lib64/tcl8.5 /usr/lib64/tk8.5 /usr/share/tk8.5 /openlane/scripts/ /usr/share/tcl8.5/tcllib-1.14}
-set ::env(TECH_LEF) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
-set ::env(TECH_LEF_MAX) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef}
-set ::env(TECH_LEF_MIN) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef}
-set ::env(TECH_LEF_OPT) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
+set ::env(TECH_LEF) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
+set ::env(TECH_LEF_MAX) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef}
+set ::env(TECH_LEF_MIN) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef}
+set ::env(TECH_LEF_OPT) {/media/karim/Elements/work/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
 set ::env(TECH_METAL_LAYERS) {li1 met1 met2 met3 met4 met5}
 set ::env(TERM) {xterm}
 set ::env(TERMINAL_OUTPUT) {/dev/null}
-set ::env(TMP_DIR) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp}
+set ::env(TMP_DIR) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp}
 set ::env(TOP_MARGIN_MULT) {1}
-set ::env(TRACKS_INFO_FILE) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
-set ::env(TRACKS_INFO_FILE_PROCESSED) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing/config.tracks}
-set ::env(TRISTATE_BUFFER_MAP) {/home/kareem_farid/caravel/deps/openlane-new/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
+set ::env(TRACKS_INFO_FILE) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
+set ::env(TRACKS_INFO_FILE_PROCESSED) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing/config.tracks}
+set ::env(TRISTATE_BUFFER_MAP) {/media/karim/Elements/work/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
 set ::env(UNBUFFER_NETS) {serial_clock_out_buffered|serial_load_out_buffered}
 set ::env(USE_ARC_ANTENNA_CHECK) {1}
 set ::env(USE_GPIO_PADS) {0}
-set ::env(VCHECK_OUTPUT) {The version of open_pdks used in building the PDK does not match the version OpenLane was tested on (installed: de752ec0ba4da0ecb1fbcd309eeec4993d88f5bc, tested: fa87f8f4bbcc7255b6f0c0fb506960f531ae2392)
-This may introduce some issues. You may want to re-install the PDK by invoking `make pdk`.}
+set ::env(VCHECK_OUTPUT) {}
 set ::env(VDD_NET) {vccd}
 set ::env(VDD_NETS) {vccd vccd1}
 set ::env(VDD_PIN) {vccd}
-set ::env(VERILOG_FILES) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/defines.v /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/gpio_control_block.v}
-set ::env(VERILOG_FILES_BLACKBOX) { /home/kareem_farid/caravel/openlane/gpio_control_block/../../verilog/rtl/gpio_logic_high.v}
+set ::env(VERILOG_FILES) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/defines.v /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/gpio_control_block.v}
+set ::env(VERILOG_FILES_BLACKBOX) { /media/karim/Elements/work/caravel-new/openlane/gpio_control_block/../../verilog/rtl/gpio_logic_high.v}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
 set ::env(_) {/openlane/flow.tcl}
-set ::env(cts_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/cts}
-set ::env(cts_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/cts}
-set ::env(cts_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/cts}
-set ::env(cts_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/cts}
-set ::env(drc_prefix) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/signoff/drc}
-set ::env(eco_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/eco}
-set ::env(eco_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/eco}
-set ::env(eco_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/eco}
-set ::env(eco_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/eco}
-set ::env(floorplan_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/floorplan}
-set ::env(floorplan_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/floorplan}
-set ::env(floorplan_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/floorplan}
-set ::env(floorplan_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/floorplan}
-set ::env(fp_report_prefix) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/floorplan/3-initial_fp}
-set ::env(placement_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/placement}
-set ::env(placement_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/placement}
-set ::env(placement_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/placement}
-set ::env(placement_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/placement}
-set ::env(routing_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/routing}
-set ::env(routing_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/routing}
-set ::env(routing_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/routing}
-set ::env(routing_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/routing}
-set ::env(signoff_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/signoff}
-set ::env(signoff_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/signoff}
-set ::env(signoff_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/signoff}
-set ::env(signoff_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/signoff}
-set ::env(synth_report_prefix) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/synthesis/2-synthesis}
-set ::env(synthesis_logs) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/logs/synthesis}
-set ::env(synthesis_reports) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/reports/synthesis}
-set ::env(synthesis_results) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/results/synthesis}
-set ::env(synthesis_tmpfiles) {/home/kareem_farid/caravel/openlane/gpio_control_block/runs/22_10_18_13_50/tmp/synthesis}
-set ::env(timer_end) {1666126300}
-set ::env(timer_start) {1666126218}
+set ::env(cts_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/cts}
+set ::env(cts_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/cts}
+set ::env(cts_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/cts}
+set ::env(cts_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/cts}
+set ::env(drc_prefix) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/signoff/drc}
+set ::env(eco_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/eco}
+set ::env(eco_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/eco}
+set ::env(eco_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/eco}
+set ::env(eco_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/eco}
+set ::env(floorplan_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/floorplan}
+set ::env(floorplan_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/floorplan}
+set ::env(floorplan_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/floorplan}
+set ::env(floorplan_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/floorplan}
+set ::env(fp_report_prefix) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/floorplan/3-initial_fp}
+set ::env(placement_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/placement}
+set ::env(placement_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/placement}
+set ::env(placement_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/placement}
+set ::env(placement_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/placement}
+set ::env(routing_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/routing}
+set ::env(routing_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/routing}
+set ::env(routing_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/routing}
+set ::env(routing_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/routing}
+set ::env(signoff_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/signoff}
+set ::env(signoff_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/signoff}
+set ::env(signoff_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/signoff}
+set ::env(signoff_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/signoff}
+set ::env(synth_report_prefix) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/synthesis/2-synthesis}
+set ::env(synthesis_logs) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/logs/synthesis}
+set ::env(synthesis_reports) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/reports/synthesis}
+set ::env(synthesis_results) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/results/synthesis}
+set ::env(synthesis_tmpfiles) {/media/karim/Elements/work/caravel-new/openlane/gpio_control_block/runs/22_10_30_16_06/tmp/synthesis}
+set ::env(timer_end) {1667138853}
+set ::env(timer_start) {1667138765}

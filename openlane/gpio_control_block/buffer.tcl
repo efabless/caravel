@@ -12,25 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-foreach lib $::env(LIB_RESIZER_OPT) {
-    read_liberty $lib
-}
-
-if { [info exists ::env(EXTRA_LIBS) ] } {
-    foreach lib $::env(EXTRA_LIBS) {
-        read_liberty $lib
-    }
-}
-
-if {[catch {read_lef $::env(MERGED_LEF)} errmsg]} {
-    puts stderr $errmsg
-    exit 1
-}
-
-if {[catch {read_def $::env(CURRENT_DEF)} errmsg]} {
-    puts stderr $errmsg
-    exit 1
-}
+source $::env(SCRIPTS_DIR)/openroad/common/io.tcl
+read
 source $::env(SCRIPTS_DIR)/openroad/insert_buffer.tcl
 puts "inserting buffer on serial_clock_out"
 set serial_clock_out_instance [get_property [get_cells -of_objects serial_clock_out] name]
@@ -50,4 +33,4 @@ puts "inserting buffer on zero"
 set const_instance [get_property [get_cells -of_objects zero] name]
 insert_buffer ${const_instance}/LO ITerm sky130_fd_sc_hd__buf_16 zero_buffered zero_buffer
 
-write_def $::env(SAVE_DEF)
+write

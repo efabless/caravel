@@ -56,8 +56,8 @@ proc custom_run_placement {args} {
 
 variable SCRIPT_DIR [file dirname [file normalize [info script]]]
 prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overwrite -verbose 0
-exec rm -rf $SCRIPT_DIR/runs/gpio_control_block_interactive
-exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/gpio_control_block_interactive
+exec rm -rf $SCRIPT_DIR/runs/gpio_control_block
+exec ln -sf $SCRIPT_DIR/runs/$::env(OPENLANE_RUN_TAG) $SCRIPT_DIR/runs/gpio_control_block
 run_synthesis
 
 init_floorplan
@@ -71,18 +71,32 @@ run_power_grid_generation
 
 set dont_use_old $::env(DONT_USE_CELLS)
 global_placement_or
-set ::env(DONT_USE_CELLS) "$::env(DONT_USE_CELLS) sky130_fd_sc_hd__buf_1"
+set ::env(DONT_USE_CELLS) "$::env(DONT_USE_CELLS) 
+sky130_fd_sc_hd__buf_1 
+sky130_fd_sc_hd__bufbuf_1
+sky130_fd_sc_hd__bufinv_1
+sky130_fd_sc_hd__clkbuf_1
+sky130_fd_sc_hd__clkdlybuf4s15_1
+sky130_fd_sc_hd__clkdlybuf4s18_1
+sky130_fd_sc_hd__clkdlybuf4s25_1
+sky130_fd_sc_hd__clkdlybuf4s50_1
+sky130_fd_sc_hd__clkinv_1
+sky130_fd_sc_hd__dlygate4sd1_1
+sky130_fd_sc_hd__dlygate4sd2_1
+sky130_fd_sc_hd__dlygate4sd3_1
+sky130_fd_sc_hd__dlymetal6s2s_1
+sky130_fd_sc_hd__dlymetal6s4s_1
+sky130_fd_sc_hd__dlymetal6s6s_1"
 run_resizer_design
 set ::env(DONT_USE_CELLS) "$dont_use_old"
 
-set ::env(SAVE_DEF) [index_file $::env(placement_tmpfiles)/buffer_insert.def]
-run_openroad_script $SCRIPT_DIR/buffer.tcl -indexed_log [index_file $::env(placement_logs)/buffer_insert.log]
-set_def $::env(SAVE_DEF)
-write_verilog [index_file $::env(placement_tmpfiles)/buffer_insert.v] -log $::env(placement_logs)/write_verilog_buffer.log
+set log "$::env(placement_logs)/buffer_insert.log"
+run_openroad_script $SCRIPT_DIR/buffer.tcl \
+    -indexed_log $log\
+    -save "to=$::env(placement_results),name=buffer_insert,def,odb,netlist,powered_netlist"
 set ::env(UNBUFFER_NETS) "serial_clock_out_buffered|serial_load_out_buffered"
-write_verilog [index_file $::env(placement_tmpfiles)/buffer_remove.v] -log $::env(placement_logs)/write_verilog_buffer_remove.log
 
-detailed_placement_or -def $::env(CURRENT_DEF) -log $::env(placement_logs)/detailed.log
+detailed_placement_or
 run_cts
 remove_buffers_from_nets
 run_resizer_timing_routing
@@ -107,7 +121,7 @@ run_antenna_check
 run_lef_cvc
 calc_total_runtime
 save_final_views
-save_final_views -save_path .. -tag $::env(OPENLANE_RUN_TAG)
+save_final_views -save_path $::env(CARAVEL_ROOT) -tag $::env(OPENLANE_RUN_TAG)
 save_state
 generate_final_summary_report
 check_timing_violations

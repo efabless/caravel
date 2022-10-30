@@ -1,0 +1,90 @@
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+max slew
+
+Pin                                    Limit    Slew   Slack
+------------------------------------------------------------
+clkbuf_0_serial_clock/A                 1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_clkbuf_0_serial_clock_A/DIODE    1.25    5.00   -3.75 (VIOLATED)
+input19/A                               1.25    5.00   -3.75 (VIOLATED)
+input17/A                               1.25    5.00   -3.75 (VIOLATED)
+input18/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input18_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input16_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input16/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input19_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input17_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input20/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input20_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+clkbuf_0_serial_load/A                  1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input9_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input9/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_clkbuf_0_serial_load_A/DIODE    1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input15_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input5_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input15/A                               1.25    5.00   -3.75 (VIOLATED)
+input5/A                                1.25    5.00   -3.75 (VIOLATED)
+input6/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input6_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input4/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input10_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input13/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input13_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input10/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input7_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input14/A                               1.25    5.00   -3.75 (VIOLATED)
+input1/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input14_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input4_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input1_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input12/A                               1.25    5.00   -3.75 (VIOLATED)
+input2/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input11_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input11/A                               1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input2_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input8_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input3_A/DIODE                  1.25    5.00   -3.75 (VIOLATED)
+input3/A                                1.25    5.00   -3.75 (VIOLATED)
+ANTENNA_input12_A/DIODE                 1.25    5.00   -3.75 (VIOLATED)
+input8/A                                1.25    5.00   -3.75 (VIOLATED)
+input7/A                                1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[0]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[10]                       1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[11]                       1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[12]                       1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[1]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[2]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[3]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[4]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[5]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[6]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[7]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[8]                        1.25    5.00   -3.75 (VIOLATED)
+gpio_defaults[9]                        1.25    5.00   -3.75 (VIOLATED)
+mgmt_gpio_oeb                           1.25    5.00   -3.75 (VIOLATED)
+mgmt_gpio_out                           1.25    5.00   -3.75 (VIOLATED)
+pad_gpio_in                             1.25    5.00   -3.75 (VIOLATED)
+resetn                                  1.25    5.00   -3.75 (VIOLATED)
+serial_clock                            1.25    5.00   -3.75 (VIOLATED)
+serial_data_in                          1.25    5.00   -3.75 (VIOLATED)
+serial_load                             1.25    5.00   -3.75 (VIOLATED)
+user_gpio_oeb                           1.25    5.00   -3.75 (VIOLATED)
+user_gpio_out                           1.25    5.00   -3.75 (VIOLATED)
+
+max fanout
+
+Pin                                   Limit Fanout  Slack
+---------------------------------------------------------
+fanout42/X                                7     14     -7 (VIOLATED)
+clkbuf_1_0__f_serial_clock/X              7     10     -3 (VIOLATED)
+fanout43/X                                7     10     -3 (VIOLATED)
+clkbuf_1_0__f_serial_load/X               7      8        (VIOLATED)
+
+
+===========================================================================
+max slew violation count 66
+max fanout violation count 4
+max cap violation count 0
+============================================================================
