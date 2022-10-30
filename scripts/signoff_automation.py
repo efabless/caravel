@@ -259,14 +259,14 @@ def check_errors(
                     logging.info(f"{log_name} STA:    Passed")
                     f.write(f"{log_name} STA:    Passed\n")
                 elif "max_transition and max_capacitance" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_tran & max_cap)")
-                    f.write(f"{log_name} STA:    Passed (max_tran & max_cap)\n")
+                    logging.info(f"{log_name} STA:    Passed (except: max_tran & max_cap)")
+                    f.write(f"{log_name} STA:    Passed (except: max_tran & max_cap)\n")
                 elif "max_transition" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_tran)")
-                    f.write(f"{log_name} STA:    Passed (max_tran)\n")
+                    logging.info(f"{log_name} STA:    Passed (except: max_tran)")
+                    f.write(f"{log_name} STA:    Passed (except: max_tran)\n")
                 elif "max_capacitance" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_cap)")
-                    f.write(f"{log_name} STA:    Passed (max_cap)\n")
+                    logging.info(f"{log_name} STA:    Passed (except: max_cap)")
+                    f.write(f"{log_name} STA:    Passed (except: max_cap)\n")
                 else:
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
