@@ -35,3 +35,7 @@ After applying `scripts/create_top_pins.sh` on `caravel.mag`, the views have a p
 The eco'd views have postfix `-eco`
 
 After running tapeout scripts on `caravel.mag`, the views have a postfix `-signoff`
+
+`caravel-signoff.gds` was generated on two steps, running `scripts/gen_gpio_defaults.py` first to add the default blocks, then running `make ship` to generate the gds view for mag views.
+
+LVL on `caravel-signoff.gds` and `caravel.gds` shows only differences in the mcon layer in the gpio_defaults
