@@ -61,13 +61,15 @@ if {\
       # -filter is supported by PT but not in the read_sdc  
       # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
       # apply the constraint to hd cells at the ss corner on caravel/caravan 
-      if {$::env(PROC_CORNER) == "s" & $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
-        set max_tran 1.5
-        puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
-        puts "For HD cells in the hierarchy of $::env(DESIGN)"
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
-      } 
+      if { $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
+        if { $::env(PROC_CORNER) == "s" } {
+          set max_tran 1.5
+          puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+          puts "For HD cells in the hierarchy of $::env(DESIGN)"
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+        } 
+      }
     }
 
     # Reading parasitics based on the RC corner specified
@@ -15756,8 +15758,8 @@ Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', T
 Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', The pin 'AMUXBUS_B' does not have a internal_power group. (LBDB-607)
 Technology library 'sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50' read successfully
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM128.v'
-Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hd_ff_1.95v_-40C.lib'
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM256.v'
+Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hd_ff_1.95v_-40C.lib'
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/mgmt_core_wrapper.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/housekeeping.v'
@@ -15790,27 +15792,27 @@ Loading verilog file '/home/passant/caravel/verilog/gl/gpio_logic_high.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/xres_buf.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/constant_block.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect_hv.v'
-Loading db file '/tmp/_pt1r78h16F/1.db'
+Loading db file '/tmp/_pt1rBrkfbC/1.db'
 Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_ff_5.5v_-40C.lib'
-Loading db file '/tmp/_pt1rw59gTw/1.db'
+Loading db file '/tmp/_pt1rEH6n3n/1.db'
 Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_ff_5.5v_lowhv_5.5v_lv_1.95v_-40C.lib'
-Loading db file '/tmp/_pt1rtEyVYF/1.db'
+Loading db file '/tmp/_pt1rlsNqls/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1r8Pr9CV/1.db'
+Loading db file '/tmp/_pt1rkhULbD/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rhd8XyJ/1.db'
+Loading db file '/tmp/_pt1r5buffm/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1r4NG1lY/1.db'
+Loading db file '/tmp/_pt1r2vgz9v/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rFs4WRk/1.db'
+Loading db file '/tmp/_pt1rhLNGNN/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1r0Ez89K/1.db'
+Loading db file '/tmp/_pt1r8T4je9/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rRZWGef/1.db'
+Loading db file '/tmp/_pt1r9CaTqy/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rKNep7M/1.db'
+Loading db file '/tmp/_pt1rKH8lp1/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rXEe1Mo/1.db'
+Loading db file '/tmp/_pt1rHluO9x/1.db'
 Linking design caravel...
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
@@ -16002,24 +16004,24 @@ Information: Log for 'read_parasitics command' will be generated in 'parasitics_
 Information: Setting rc_cache_min_max_rise_fall_ceff to TRUE. (XTALK-015)
 Information: Building multi voltage information for entire design. (MV-022)
 Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
-Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[0], setting resolved logic value 0 on pin padframe/flash_io1_pad/DM[0]. (PTE-042)
 Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[1], setting resolved logic value 1 on pin padframe/flash_io1_pad/DM[1]. (PTE-042)
 Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[2], setting resolved logic value 1 on pin padframe/flash_io1_pad/DM[2]. (PTE-042)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/A0 and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/S and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/A1 and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/S and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
+Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[0], setting resolved logic value 0 on pin padframe/flash_io1_pad/DM[0]. (PTE-042)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/A2 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/B1 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/A1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/B1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/A1 and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/S and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/A0 and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/S and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A2 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/B1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/A2 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/B1 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/A0 and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/S and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/A1 and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/S and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/A0 and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/S and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
 Information: Inferring 1 clock-gating checks. (PTE-017)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16076,7 +16078,7 @@ Information: Number of nets evaluated in the previous iteration: 61201. (XTALK-1
 Report : write_sdf /home/passant/caravel/signoff/caravel/primetime-signoff/sdf/min/caravel.ff.sdf
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Sun Oct 30 07:14:44 2022
+Date   : Mon Oct 31 15:00:48 2022
 ****************************************
 
 Warning: Clock 'hkspi_clk'has source on hierachical pin 'housekeeping/mgmt_gpio_in[4]'. Consider moving to: gpio_control_in_1a[2]/output6/X
@@ -16095,7 +16097,7 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Information: For model extraction, min_period and min_pulse_width arcs are extracted at the context slew. (MEXT-105)
-Information: Elapsed time for model extraction: 4 seconds (MEXT-096)
+Information: Elapsed time for model extraction: 3 seconds (MEXT-096)
 Wrote the LIB file /home/passant/caravel/signoff/caravel/primetime-signoff/lib/min/caravel.ff.lib
 Wrote model to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/min/caravel.ff_lib.db'
 Wrote test design to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/min/caravel.ff_test.db'
@@ -16110,9 +16112,9 @@ PARA-040    Warning            316487       316087
 LNK-043     Information        190992       190892
 SVR-2       Information             2            2
 Total 5 types of messages are suppressed
-Maximum memory usage for this session: 2788.69 MB
-CPU usage for this session: 209 seconds 
-Elapsed time for this session: 79 seconds
+Maximum memory usage for this session: 2814.35 MB
+CPU usage for this session: 212 seconds 
+Elapsed time for this session: 80 seconds
 Diagnostics summary: 164 warnings, 121 informationals
 
 Thank you for using pt_shell!

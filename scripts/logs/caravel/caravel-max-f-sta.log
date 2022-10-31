@@ -61,13 +61,15 @@ if {\
       # -filter is supported by PT but not in the read_sdc  
       # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
       # apply the constraint to hd cells at the ss corner on caravel/caravan 
-      if {$::env(PROC_CORNER) == "s" & $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
-        set max_tran 1.5
-        puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
-        puts "For HD cells in the hierarchy of $::env(DESIGN)"
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
-      } 
+      if { $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
+        if { $::env(PROC_CORNER) == "s" } {
+          set max_tran 1.5
+          puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+          puts "For HD cells in the hierarchy of $::env(DESIGN)"
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+        } 
+      }
     }
 
     # Reading parasitics based on the RC corner specified
@@ -15756,8 +15758,8 @@ Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', T
 Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', The pin 'AMUXBUS_B' does not have a internal_power group. (LBDB-607)
 Technology library 'sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50' read successfully
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM128.v'
-Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM256.v'
 Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hd_ff_1.95v_-40C.lib'
+Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM256.v'
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/mgmt_core_wrapper.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/housekeeping.v'
@@ -15790,27 +15792,27 @@ Loading verilog file '/home/passant/caravel/verilog/gl/gpio_logic_high.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/xres_buf.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/constant_block.v'
 Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect_hv.v'
-Loading db file '/tmp/_pt1rpa3YQ8/1.db'
+Loading db file '/tmp/_pt1rGWiH59/1.db'
 Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_ff_5.5v_-40C.lib'
-Loading db file '/tmp/_pt1rwzahxP/1.db'
+Loading db file '/tmp/_pt1rOGPLcH/1.db'
 Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_ff_5.5v_lowhv_5.5v_lv_1.95v_-40C.lib'
-Loading db file '/tmp/_pt1rZIdNCO/1.db'
+Loading db file '/tmp/_pt1r4bpoyw/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ff_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rcbavfU/1.db'
+Loading db file '/tmp/_pt1rSNKoqs/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ff_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rf63thy/1.db'
+Loading db file '/tmp/_pt1r6neTzW/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rwkLoeD/1.db'
+Loading db file '/tmp/_pt1rYvazDR/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rFBcQSP/1.db'
+Loading db file '/tmp/_pt1rei7BrU/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rCwxnh6/1.db'
+Loading db file '/tmp/_pt1r2ndD10/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rhTqGqq/1.db'
+Loading db file '/tmp/_pt1ryhm9mb/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib'
-Loading db file '/tmp/_pt1rYzgtmO/1.db'
+Loading db file '/tmp/_pt1rmxgfup/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib'
-Loading db file '/tmp/_pt1rBz493f/1.db'
+Loading db file '/tmp/_pt1rKsCcnH/1.db'
 Linking design caravel...
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
@@ -16007,36 +16009,36 @@ Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[1], setting reso
 Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[2], setting resolved logic value 1 on pin padframe/flash_io1_pad/DM[2]. (PTE-042)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/A1 and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/S and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/A0 and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/S and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/A2 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/B1 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/A1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
+Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/B1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/A1 and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/S and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/A0 and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/S and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A2 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/B1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/A1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/B1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/A1 and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/S and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/A0 and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/S and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/A2 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/B1 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
 Information: Inferring 1 clock-gating checks. (PTE-017)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28652_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28655_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28652_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28652_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28655_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28652_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28662_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28662_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28665_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28665_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28666_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28666_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28671_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28672_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28671_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28671_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28672_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28671_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28648_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_28648_/CLK-->Q (max rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_32040_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16067,10 +16069,10 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2026/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_8) soc/fanout2042/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_8) soc/fanout2042/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2059/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2058/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2059/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2059/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2058/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2059/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2065/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2065/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout2071/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16089,10 +16091,10 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1734/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1783/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1783/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1782/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1782/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1804/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1804/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1805/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16100,8 +16102,8 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1942/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1942/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1951/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1951/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1935/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1951/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1935/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1985/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/fanout1985/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16128,7 +16130,7 @@ Information: Number of nets evaluated in the previous iteration: 61241. (XTALK-1
 Report : write_sdf /home/passant/caravel/signoff/caravel/primetime-signoff/sdf/max/caravel.ff.sdf
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Sun Oct 30 07:13:24 2022
+Date   : Mon Oct 31 14:59:27 2022
 ****************************************
 
 Warning: Clock 'hkspi_clk'has source on hierachical pin 'housekeeping/mgmt_gpio_in[4]'. Consider moving to: gpio_control_in_1a[2]/output6/X
@@ -16152,10 +16154,10 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (min rising positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_32040_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16181,10 +16183,10 @@ Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (max rising positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__clkbuf_16) gpio_control_in_1[5]/serial_load_out_buffer/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/input58/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__buf_12) housekeeping/output245/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__ff_1.95v_-40C/sky130_fd_sc_hd__dfxtp_4) soc/_32040_/CLK-->Q (min rising & falling rising_edge) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
@@ -16201,7 +16203,7 @@ Information: Elapsed time for model extraction: 4 seconds (MEXT-096)
 Wrote the LIB file /home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.ff.lib
 Wrote model to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.ff_lib.db'
 Wrote test design to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.ff_test.db'
-Information: Elapsed time for lib file writing: 1 seconds (MEXT-096)
+Information: Elapsed time for lib file writing: 0 seconds (MEXT-096)
 Information: Defining new variable 'verilog'. (CMD-041)
 Suppressed Messages Summary:
 Id          Severity      Occurrences   Suppressed
@@ -16213,7 +16215,7 @@ RC-009      Warning               752          594
 LNK-043     Information        190992       190892
 SVR-2       Information             2            2
 Total 6 types of messages are suppressed
-Maximum memory usage for this session: 2786.81 MB
+Maximum memory usage for this session: 2813.55 MB
 CPU usage for this session: 212 seconds 
 Elapsed time for this session: 79 seconds
 Diagnostics summary: 266 warnings, 121 informationals
