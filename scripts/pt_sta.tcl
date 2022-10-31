@@ -61,13 +61,15 @@ if {\
       # -filter is supported by PT but not in the read_sdc  
       # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
       # apply the constraint to hd cells at the ss corner on caravel/caravan 
-      if { $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" & $::env(PROC_CORNER) == "s" } {
-        set max_tran 1.5
-        puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
-        puts "For HD cells in the hierarchy of $::env(DESIGN)"
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
-        set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
-      } 
+      if { $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
+        if { $::env(PROC_CORNER) == "s" } {
+          set max_tran 1.5
+          puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+          puts "For HD cells in the hierarchy of $::env(DESIGN)"
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+          set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+        } 
+      }
     }
 
     # Reading parasitics based on the RC corner specified
