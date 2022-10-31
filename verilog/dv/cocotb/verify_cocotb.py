@@ -13,12 +13,17 @@ import shutil
 from subprocess import PIPE, run
 import threading
 import time
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import socket
 
 iverilog = True
 vcs = False
 coverage = False
 zip_waves = True
 caravan = False 
+html_mail =f""
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -399,15 +404,27 @@ class RunRegression:
         os.chdir(self.cocotb_path)
 
     def update_reg_log(self):
+        global html_mail
+        html_mail =f"<h2>Tests Table:</h2><table border=2 bgcolor=#D6EEEE>"
         file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
         f = open(file_name, "w")
         f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
+        html_mail += f"<th>Test</th> <th>status</th> <th>duration</th> <th>p/f</th> <tr> "
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():
                     new_test_name= f"{sim_type}-{test}-{corner}"
                     f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
+                    if status['pass'] == "passed":
+                        html_mail += f"<th>{new_test_name}</th> <th>{status['status']} </th> <th>{status['duration']}</th> <th  style='background-color:#16EC0C'> {status['pass']} </th> <tr> "
+                    else:
+                        html_mail += f"<th>{new_test_name}</th> <th>{status['status']} </th> <th>{status['duration']}</th> <th style='background-color:#E50E0E'> {status['pass']} </th> <tr> "
+        html_mail += "</table>"
+
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown  ({('%.10s' % (datetime.now() - self.total_start_time))})time consumed ")
+        html_mail += (f"<h2>Total status Table:</h2><table border=2 bgcolor=#D6EEEE><th>Passed</th> <th>failed</th> <th>unknown</th> <th>duration</th> <tr>"
+                      f"<th style='background-color:#16EC0C' >{self.passed_tests}</th> <th style='background-color:#E50E0E' >{self.failed_tests} </th> "
+                      f"<th style='background-color:#14E5F2'>{self.unknown_tests}</th> <th>{('%.10s' % (datetime.now() - self.total_start_time))}</th> <tr></table>")
         f.close()
     
     def write_command_log(self):
@@ -442,6 +459,8 @@ class main():
         self.set_tag()
         self.def_env_vars()
         RunRegression(self.regression,self.test,self.sim,self.testlist,self.corner)
+        if args.emailto is not None:
+            self.send_mail(args.emailto)
 
     def check_valid_args(self):
         if all(v is  None for v in [self.regression, self.test, self.testlist]):
@@ -472,7 +491,46 @@ class main():
         os.environ["FIRMWARE_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog/dv/firmware"
         os.environ["RUNTAG"] = f"{self.TAG}"
         os.environ["ERRORMAX"] = f"{self.maxerr}"
+    
+    def send_mail(self,mails):
+        #get commits 
+        showlog = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb/sim/{self.TAG}/git_show.log"
+        with open(showlog, 'rb') as fp:
+            first_commit = True
+            for line in fp:
+                if fnmatch(str(line,"utf-8"),"commit*"):
+                    for word in line.split():
+                        if first_commit:
+                            caravel_commit = str(word,"utf-8")
+                        else: 
+                            mgmt_commit = str(word,"utf-8")
+                    first_commit = False
 
+
+        tag = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb/sim/{self.TAG}"
+        mail_sub = ("<!DOCTYPE html><html><head><style>table {border-collapse: collapse;width: 50%;} th, td {text-align: left;padding: 8px;} tr:nth-child(even) {background-color: #D6EEEE;}"
+                    f"</style></head><body><h2>Run info:</h2> <table border=2 bgcolor=#D6EEEE> "
+                    f"<th>location</th> <th><strong>{socket.gethostname()}</strong>:{tag}</th> <tr>  "
+                    f"<th> caravel commit</th> <th><a href='https://github.com/efabless/caravel/commit/{caravel_commit}'>{caravel_commit}<a></th> <tr>  " 
+                    f"<th>caravel_mgmt_soc_litex commit</th> <th><a href='https://github.com/efabless/caravel_mgmt_soc_litex/commit/{mgmt_commit}'>{mgmt_commit}<a></th> <tr> </table> ") 
+        mail_sub += html_mail
+        mail_sub += f"<p>best regards, </p></body></html>"
+        # print(mail_sub)
+        msg = MIMEMultipart("alternative", None, [ MIMEText(mail_sub,'html')])
+        msg['Subject'] = f'{self.TAG} run results'
+        msg['From'] = "verification@efabless.com"
+        msg['To'] = mails[0]
+        docker = False
+        if docker: 
+            mail_command = f'echo "{mail_sub}" | mail -a "Content-type: text/html;" -s "{msg["Subject"]}" {mails[0]}'
+            docker_command = f"docker run -it efabless/dv:mail sh -c '{mail_command}'"
+            print(docker_command)
+            os.system(docker_command)
+        else:
+            # Send the message via our own SMTP server.
+            s = smtplib.SMTP('localhost')
+            s.send_message(msg)
+            s.quit()
 
 
 import argparse
@@ -488,6 +546,7 @@ parser.add_argument('-cov',action='store_true', help='enable code coverage')
 parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
 parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the waves and logs of passed tests would be zipped. Using this option they wouldn\'t be zipped')
 parser.add_argument('-caravan',action='store_true', help='simulate caravan instead of caravel')
+parser.add_argument('-emailto','-mail', nargs='+' ,help='mails to send results to when results finish')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
