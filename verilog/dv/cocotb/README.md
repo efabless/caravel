@@ -16,6 +16,8 @@ Prerequisites
 - iverilog or vcs 
 - export CARAVEL_ROOT= \<caravel repo root\>
 - export MCW_ROOT= \<caravel_mgmt_soc_litex repo root\>
+- export PDK_ROOT= \<PDK repo root\>
+- export PDK= \<PDK variant sky130A,sky130B,.... \>
 
 run a test  
 =============================

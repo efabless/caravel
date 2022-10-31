@@ -12,26 +12,26 @@
             "SW":true,
             "RTL":["r_caravan_rtl"],
             "GL":["r_caravan_gl"],
-            "GL_SDF":[],
+            "GL_SDF":["r_caravan_sdf"],
             "description":"configure all gpios as mgmt input using automatic approach firmware and check them for caravan"}
 
         ,"hk_disable" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"check Housekeeping SPI disable register is working"}
         ,"uart_rx" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"test uart reception"}
         ,"hk_regs_rst_spi" :{"level":0, 
             "SW":false,
             "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"check reset value of house keeping registers by reading them trough the spi housekeeping"}
         
         ,"gpio_all_i_user" :{"level":0, 
@@ -53,7 +53,7 @@
             "SW":true,
             "RTL":["r_caravan_rtl"],
             "GL":["r_caravan_gl"],
-            "GL_SDF":[],
+            "GL_SDF":["r_caravan_sdf"],
             "description":"configure all gpios as mgmt input pull up using automatic approach firmware and check them for caravan"}
 
         ,"gpio_all_i_pu_user" :{"level":0, 
@@ -73,7 +73,7 @@
             "SW":true,
             "RTL":["r_caravan_rtl"],
             "GL":["r_caravan_gl"],
-            "GL_SDF":[],
+            "GL_SDF":["r_caravan_sdf"],
             "description":"configure all gpios as mgmt input pull down using automatic approach firmware and check them for caravan"}
 
         ,"gpio_all_i_pd_user" :{"level":0, 
@@ -101,7 +101,7 @@
             "SW":true,
             "RTL":["r_caravan_rtl"],
             "GL":["r_caravan_gl"],
-            "GL_SDF":[],
+            "GL_SDF":["r_caravan_sdf"],
             "description":"configure all gpios as mgmt output using automatic approach firmware and check them for caravan"}
 
         ,"gpio_all_o_user" :{"level":0, 
@@ -114,7 +114,7 @@
             "SW":false,
             "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"bit bash test for housekeeping registers"}
         ,"IRQ_timer" :{"level":2, 
             "SW":true,
@@ -139,9 +139,9 @@
 
         ,"mgmt_gpio_out" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"tests blinking of mgmt gpio bit as an output"} 
 
         ,"bitbang_spi_i" :{"level":0, 
@@ -154,75 +154,75 @@
             "SW":false,
             "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"write then read(the written value) from random housekeeping registers through the SPI housekeeping"}
 
         ,"IRQ_external" :{"level":2, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"test external interrupt by mprj 7"}  
         
         ,"IRQ_uart" :{"level":2, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"test timer0 interrupt"}     
          
         ,"mgmt_gpio_in" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"tests blinking of mgmt gpio bit as an output"}     
         
         ,"timer0_oneshot" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"check timer0 oneshot mode"} 
 
         ,"uart_loopback" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"test uart in loopback mode input and output is shorted"}
 
         ,"timer0_periodic" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"check timer0 periodic mode"}
 
         ,"uart_tx" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"test uart transmit"}
         ,"debug" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"use caravel in debug mode and check reading and writing from dff2 RAM"}
         ,"spi_master_rd" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"using SPI master for reading from external memory"}
 
         ,"user_pass_thru_rd" :{"level":0, 
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"use the housekeeping spi in user pass thru mode to read from external mem"}
     
         ,"clock_redirect" :{"level":0, 
@@ -236,13 +236,13 @@
             "SW":true,
             "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
             "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"send random number of blinks through mgmt_gpio and expect to recieve the same number back "}    
 
         ,"la" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","r_caravan_rtl","setup","nightly","weekly","tape_out"],
-            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "RTL":["r_rtl","setup","nightly","weekly","tape_out"],
+            "GL":["r_gl","nightly","weekly","tape_out"],
             "GL_SDF":["r_sdf","weekly","tape_out"],
             "description":"check logic analyzer input and output enable"}
 
@@ -269,50 +269,50 @@
 
         ,"mem_dff" :{"level":2, 
             "SW":true,
-            "RTL":["r_rtl","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"Memory stress for all space of dff"}
 
         ,"bitbang_cpu_all_01" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"shift all the register with 01"}
 
         ,"mem_dff2" :{"level":2, 
             "SW":true,
-            "RTL":["r_rtl","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"Memory stress for all space of dff2"}
         
         ,"bitbang_cpu_all_10" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"shift all the register with 10"}
 
         ,"bitbang_cpu_all_1100" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"shift all the register with 1100"}
 
         ,"bitbang_cpu_all_0011" :{"level":0, 
             "SW":true,
-            "RTL":["r_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
-            "GL":["r_gl","push_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","setup","push","push_gl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","push_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"shift all the register with 0011"}
         ,"cpu_stress" :{"level":2, 
             "SW":true,
-            "RTL":["r_rtl","nightly","weekly","tape_out"],
-            "GL":["r_gl","nightly","weekly","tape_out"],
-            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "RTL":["r_rtl","r_caravan_rtl","nightly","weekly","tape_out"],
+            "GL":["r_gl","r_caravan_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","r_caravan_sdf","weekly","tape_out"],
             "description":"stress the cpu with heavy processing"}
         ,"bitbang_no_cpu_all_o" :{"level":0, 
             "SW":false,
@@ -344,6 +344,12 @@
             "GL":[],
             "GL_SDF":[],
             "description":"try housekeeping spi Write and Read in n-byte mode "}
+        ,"cpu_reset" :{"level":3, 
+            "SW":true,
+            "RTL":["r_rtl","nightly","weekly","tape_out"],
+            "GL":["r_gl","nightly","weekly","tape_out"],
+            "GL_SDF":["r_sdf","weekly","tape_out"],
+            "description":"test cpu reset register inside the housekeeping "}
 
     }
 }

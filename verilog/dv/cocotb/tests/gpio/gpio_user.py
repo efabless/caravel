@@ -73,7 +73,7 @@ async def gpio_all_o_user(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i_user(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=56694)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=498255)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -155,7 +155,7 @@ async def gpio_all_i_user(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i_pu_user(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=56875,num_error=2000)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -257,7 +257,7 @@ async def gpio_all_i_pu_user(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_i_pd_user(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=58961,num_error=2000)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=54138,num_error=2000)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -361,7 +361,7 @@ async def gpio_all_i_pd_user(dut):
 @cocotb.test()
 @repot_test
 async def gpio_all_bidir_user(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=290455)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=266662)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

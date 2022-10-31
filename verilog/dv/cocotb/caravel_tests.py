@@ -45,7 +45,7 @@ from tests.uart.uart import *
 from tests.spi_master.spi_master import *
 from tests.logicAnalyzer.la import *
 from tests.debug.debug import *
-
+from tests.cpu.cpu_reset import *
 
 # archive tests
 @cocotb.test()

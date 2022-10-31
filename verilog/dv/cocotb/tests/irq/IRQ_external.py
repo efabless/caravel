@@ -17,7 +17,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def IRQ_external(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=164360)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=155225)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()

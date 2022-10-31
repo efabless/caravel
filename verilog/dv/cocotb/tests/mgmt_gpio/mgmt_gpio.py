@@ -15,7 +15,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def mgmt_gpio_out(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=99562)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=91385)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -63,7 +63,7 @@ async def mgmt_gpio_out(dut):
 @cocotb.test()
 @repot_test
 async def mgmt_gpio_in(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=326525)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=277033)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -112,11 +112,11 @@ async def mgmt_gpio_in(dut):
 @cocotb.test()
 @repot_test
 async def mgmt_gpio_bidir(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=243058)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=194697)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
-    cocotb.log.info(f"[TEST] Start mgmt_gpio_in test")  
+    cocotb.log.info(f"[TEST] Start mgmt_gpio_bidir test")  
     phases_fails = 3
     phases_passes = 0 
     pass_list = (0x1B,0x2B,0xFF)
