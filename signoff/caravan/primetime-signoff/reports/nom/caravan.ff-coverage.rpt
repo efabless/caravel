@@ -4,7 +4,7 @@ Report : analysis_coverage
 	-sort_by slack
 Design : caravan
 Version: T-2022.03-SP3
-Date   : Tue Oct 25 06:51:42 2022
+Date   : Sun Oct 30 14:33:43 2022
 ****************************************
 
 Type of Check         Total              Met         Violated         Untested
@@ -1882,12 +1882,8 @@ housekeeping/_7097_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
 housekeeping/_7098_/SET_B(low) - -     min_pulse_width -   untested  no_clock
 housekeeping/_7098_/SET_B(rise) CLK(rise) clk recovery -   untested  no_paths
 housekeeping/_7098_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
-soc/_32562_/D        CLK(rise) clk     hold    -           untested  false_paths
-soc/_32562_/D        CLK(rise) clk     setup   -           untested  false_paths
 soc/_32563_/D        CLK(rise) clk     hold    -           untested  false_paths
 soc/_32563_/D        CLK(rise) clk     setup   -           untested  false_paths
-soc/_32574_/D        CLK(rise) clk     hold    -           untested  false_paths
-soc/_32574_/D        CLK(rise) clk     setup   -           untested  false_paths
 housekeeping/_6506_/SET_B(low) - -     min_pulse_width -   untested  no_clock
 housekeeping/_6506_/SET_B(rise) CLK(rise) clk recovery -   untested  no_paths
 housekeeping/_6506_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
@@ -2982,6 +2978,10 @@ gpio_control_bidir_2[2]/_106_/RESET_B(low) - - min_pulse_width - untested consta
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) CLK_N(fall) - recovery - untested constant_disabled
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) CLK_N(fall) - removal - untested constant_disabled
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) SET_B(rise) - setup - untested constant_disabled
+soc/_32562_/D        CLK(rise) clk     hold    -           untested  false_paths
+soc/_32562_/D        CLK(rise) clk     setup   -           untested  false_paths
+soc/_32574_/D        CLK(rise) clk     hold    -           untested  false_paths
+soc/_32574_/D        CLK(rise) clk     setup   -           untested  false_paths
 housekeeping/_7130_/RESET_B(low) - -   min_pulse_width -   untested  no_clock
 housekeeping/_7130_/RESET_B(rise) CLK(rise) clk recovery - untested  no_paths
 housekeeping/_7130_/RESET_B(rise) CLK(rise) clk removal -  untested  no_paths
