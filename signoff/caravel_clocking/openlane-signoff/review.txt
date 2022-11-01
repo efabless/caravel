@@ -1,0 +1,31 @@
+Max transition on internal signals: 1.25ns
+Hold WNS (F2F): 0.00
+Setup WNS (F2F): -0.52 (ss-max)
+
+lvs clean: Y
+drc clean: Y
+cvc clean: Y
+Antenna Violations: 0
+Antenna Violations (400-500): 0
+Antenna Violations (500-800): 0
+Antenna Violations (800-1000): 0
+
+non-physical cells: 1530 - 1216 = 314
+decap cell count: 460
+% decap: 460 / 1530  * 100 = 30.1%
+max ir drop:  8.10e-10 V
+
+Verilog "assign" in the netlist: N
+Does the netlist show cells from different libraries: N
+Does the macro have mixed power domains powered cells: N
+Any internal macros with floating input ports: N
+Output ports not connected to any logic inside the macro: N
+Input ports not connected to any logic inside the macro: N
+Tri-state cells are connected directly to output ports: N
+Analog Signals are not digitally buffered: N
+Output ports are properly buffred (>=buf_4): Y
+buffer cells count: 49
+logic cells that are not buffers count: 265
+buf_1 & buf_2 cells count: 12
+0.5mm or longer wire count: 0
+
