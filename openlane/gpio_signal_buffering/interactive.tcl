@@ -18,7 +18,11 @@ set script_dir [file dirname [file normalize [info script]]]
 set save_path $script_dir/../..
 
 # FOR LVS AND CREATING PORT LABELS
-prep -design $script_dir -tag gpio_signal_buffering_lvs -overwrite
+prep -design $script_dir -tag $::env(OPENLANE_RUN_TAG) -overwrite
+
+exec rm -rf $::env(CARAVEL_ROOT)/openlane/gpio_signal_buffering/runs/gpio_signal_buffering
+exec ln -sf $::env(CARAVEL_ROOT)/openlane/gpio_signal_buffering/runs/$::env(OPENLANE_RUN_TAG) \
+    $::env(CARAVEL_ROOT)/openlane/gpio_signal_buffering/runs/gpio_signal_buffering
 
 verilog_elaborate -log $::env(synthesis_logs)/synthesis.log
 #init_floorplan

@@ -409,6 +409,612 @@ module gpio_signal_buffering(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf, mg
   wire vccd;
   input vssd;
   wire vssd;
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[0]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[100]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[10]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[11]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[12]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[13]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[14]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[15]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[16]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[17]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[18]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[19]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[1]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[20]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[21]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[22]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[23]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[24]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[25]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[26]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[27]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[28]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[29]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[2]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[30]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[31]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[32]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[33]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[34]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[35]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[36]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[37]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[38]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[39]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[3]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[40]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[41]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[42]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[43]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[44]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[45]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[46]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[47]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[48]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[49]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[4]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[50]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[51]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[52]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[53]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[54]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[55]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[56]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[57]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[58]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[59]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[5]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[60]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[61]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[62]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[63]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[64]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[65]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[66]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[67]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[68]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[69]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[6]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[70]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[71]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[72]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[73]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[74]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[75]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[76]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[77]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[78]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[79]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[7]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[80]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[81]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[82]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[83]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[84]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[85]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[86]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[87]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[88]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[89]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[8]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[90]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[91]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[92]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[93]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[94]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[95]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[96]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[97]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[98]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[99]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[9]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
   sky130_fd_sc_hd__buf_8 \signal_buffers[0]  (
     .A(mgmt_io_in_unbuf[0]),
     .VGND(vssd),
@@ -1977,21 +2583,6 @@ module gpio_signal_buffering(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf, mg
     .VPWR(vccd),
     .X(\buf_out[9] )
   );
-
-  /* NOTE:  Hand-edited to insert the decap_12 cells	*/
-  /* WARNING:  Hand-edited gate level netlist!		*/
-  /* Fortunately, decap cells are trivial so the change	*/
-  /* is pretty low-risk.				*/
-
-  sky130_ef_sc_hd__decap_12 sigbuf_decaps [100:0] (
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd)
-  );
-
-  /* End of hand-editing */
-
   assign \buf_out[192]  = \buf_in[193] ;
   assign \buf_out[190]  = \buf_in[191] ;
   assign \buf_out[188]  = \buf_in[189] ;

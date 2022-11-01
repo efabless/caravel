@@ -221,6 +221,366 @@ module gpio_signal_buffering_alt(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf
   wire vccd;
   input vssd;
   wire vssd;
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[0]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[10]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[11]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[12]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[13]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[14]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[15]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[16]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[17]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[18]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[19]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[1]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[20]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[21]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[22]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[23]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[24]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[25]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[26]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[27]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[28]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[29]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[2]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[30]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[31]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[32]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[33]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[34]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[35]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[36]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[37]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[38]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[39]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[3]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[40]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[41]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[42]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[43]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[44]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[45]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[46]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[47]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[48]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[49]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[4]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[50]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[51]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[52]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[53]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[54]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[55]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[56]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[57]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[58]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[59]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[5]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[6]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[7]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[8]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
+  sky130_ef_sc_hd__decap_12 \sigbuf_decaps[9]  (
+    .VGND(vssd),
+    .VNB(vssd),
+    .VPB(vccd),
+    .VPWR(vccd)
+  );
   sky130_fd_sc_hd__buf_8 \signal_buffers[0]  (
     .A(mgmt_io_in_unbuf[0]),
     .VGND(vssd),
@@ -1037,21 +1397,6 @@ module gpio_signal_buffering_alt(vccd, vssd, mgmt_io_in_unbuf, mgmt_io_out_unbuf
     .VPWR(vccd),
     .X(\buf_in[10] )
   );
-
-  /* NOTE:  Hand-edited to insert the decap_12 cells    */
-  /* WARNING:  Hand-edited gate level netlist!          */
-  /* Fortunately, decap cells are trivial so the change */
-  /* is pretty low-risk.                                */
-
-  sky130_ef_sc_hd__decap_12 sigbuf_decaps [59:0] (
-    .VGND(vssd),
-    .VNB(vssd),
-    .VPB(vccd),
-    .VPWR(vccd)
-  );
-
-  /* End of hand-editing */
-
   assign \buf_in[98]  = mgmt_io_oeb_unbuf[1];
   assign \buf_in[96]  = mgmt_io_oeb_unbuf[0];
   assign \buf_in[94]  = mgmt_io_out_unbuf[19];
