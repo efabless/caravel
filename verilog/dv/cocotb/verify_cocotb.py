@@ -568,3 +568,14 @@ main(args)
 
 
 
+
+"""
+verilator_command = (f"verilator {macros} --vpi --public-flat-rw --prefix Vtop"
+                            f" -LDFLAGS \"-Wl,-rpath,$(cocotb-config --prefix)/cocotb/libs"
+                            f"-L$(cocotb-config --prefix)/cocotb/libs -lcocotbvpi_verilator -lgpi -lcocotb -lgpilog -lcocotbutils \" $(cocotb-config --share)/lib/verilator/verilator.cpp "
+                            f"-y {VERILOG_PATH}/includes/includes.rtl.caravel  --cc -o sim_build/sim.vvp caravel_top.sv")
+
+
+
+
+"""
