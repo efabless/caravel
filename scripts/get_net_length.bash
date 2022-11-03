@@ -3,6 +3,7 @@
 # usage get_net_length.bash merged.lef design.def wire_length.txt
 set -u
 {
+    echo "logging to $(dirname $3)/get_net_length-openroad.log"
     openroad -exit -no_splash <<EOF
 read_lef $1
 read_def $2
