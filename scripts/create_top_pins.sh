@@ -38,6 +38,26 @@ foreach pin \$pins {
     setlabel size 10um
     setlabel just c
 }
+# Copy up core power supply names from the power routing subcell
+set labels {vccd_core vssd_core vdda_core vssa_core \
+	vccd1_core vssd1_core vccd2_core vssd2_core \
+	vdda1_core vssa1_core vdda2_core vssa2_core}
+foreach label \$labels {
+    goto caravel_power_routing/\$label
+    paint m5
+    select area labels
+    copy n 0
+    port remove
+}
+# vddio_core and vssio_core do not exist outside of the padframe
+# ring, and are not labeled in caravel_power_routing.
+box values 201um 170.2um 219um 173.5um
+paint m5
+label vssio_core FreeSans 3um 0 0 0 c m5
+box values 201um 176.3um 219um 179.4um
+paint m5
+label vddio_core FreeSans 3um 0 0 0 c m5
+
 writeall force caravel
 
 load caravan
@@ -52,6 +72,22 @@ foreach pin \$pins {
     setlabel size 10um
     setlabel just c
 }
+foreach label \$labels {
+    goto caravan_power_routing/\$label
+    paint m5
+    select area labels
+    copy n 0
+    port remove
+}
+# vddio_core and vssio_core do not exist outside of the padframe
+# ring, and are not labeled in caravel_power_routing.
+box values 201um 170.2um 219um 173.5um
+paint m5
+label vssio_core FreeSans 3um 0 0 0 c m5
+box values 201um 176.3um 219um 179.4um
+paint m5
+label vddio_core FreeSans 3um 0 0 0 c m5
+
 writeall force caravan
 
 quit -noprompt
