@@ -38,6 +38,16 @@ def search_str(file_path, word):
             return "passed"
         else:
             return "failed"
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 def change_str(str,new_str,file_path):
     # Read in the file
@@ -86,7 +96,7 @@ class RunTest:
 
     # iverilog function
     def runTest_iverilog(self):
-        print(f"Start running test: {self.sim_type}-{self.test_name}")
+        print(f"Start running test: {bcolors.OKBLUE}{self.sim_type}-{self.test_name}{bcolors.ENDC}")
         CARAVEL_ROOT = os.getenv('CARAVEL_ROOT')
         CARAVEL_VERILOG_PATH  = os.getenv('CARAVEL_VERILOG_PATH')
         MCW_ROOT = os.getenv('MCW_ROOT')
@@ -131,14 +141,14 @@ class RunTest:
         self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
         Path(f'{self.sim_path}/{self.passed}').touch()
         if self.passed == "passed": 
-            print(f"Test: {self.sim_type}-{self.test_name} passed")
+            print(f"{bcolors.OKGREEN }Test: {self.sim_type}-{self.test_name} has passed{bcolors.ENDC}")
         else : 
-            print(f"Test: {self.sim_type}-{self.test_name} Failed please check logs under {self.sim_path}")
+            print(f"{bcolors.FAIL }Test: {self.sim_type}-{self.test_name} has Failed please check logs under {bcolors.ENDC}{bcolors.OKCYAN }{self.sim_path}{bcolors.ENDC}")
 
 
     # vcs function      
     def runTest_vcs(self):
-        print(f"Start running test: {self.sim_type}-{self.test_name}")
+        print(f"Start running test: {bcolors.OKGREEN  } {self.sim_type}-{self.test_name} {bcolors.ENDC}")
         CARAVEL_PATH = os.getenv('CARAVEL_PATH')
         PDK_ROOT = os.getenv('PDK_ROOT')
         PDK = os.getenv('PDK')
