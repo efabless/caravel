@@ -48,6 +48,7 @@ optional arguments:
   ````
 ## Reports and logs
 
-Reports can be found `$CARAVEL_ROOT/signoff/<design_name>/`
+Reports can be found at `$CARAVEL_ROOT/signoff/<design_name>/`
 
-Logs can be found at `$CARAVEL_ROOT/scripts/logs/`
+Logs can be found at `$CARAVEL_ROOT/signoff/<design_name>/standalone_pvr/logs` and `$CARAVEL_ROOT/signoff/<design_name>/primetime-signoff/logs`
+> If the design is related to the Management Core SoC, `$CARAVEL_ROOT` is replaced by `$MCW_ROOT` for the reports and logs
