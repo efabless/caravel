@@ -112,7 +112,7 @@ async def mgmt_gpio_in(dut):
 @cocotb.test()
 @repot_test
 async def mgmt_gpio_bidir(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=194697)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=223191)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -139,7 +139,6 @@ async def mgmt_gpio_bidir(dut):
     cocotb.log.info(f"[TEST] waiting for {num_blinks} blinks ")
     recieved_blinks = 0
     while True:
-        cocotb.log.info(f"[TEST] here 0 ")
         if cpu.read_debug_reg2() == 0xFF:  #test finish
             break
         while (True):
@@ -147,7 +146,6 @@ async def mgmt_gpio_bidir(dut):
                 break
             if cpu.read_debug_reg2() == 0xFF:  #test finish
                 break
-            cocotb.log.info(f"[TEST] here 1 ")
             await ClockCycles(caravelEnv.clk,10) 
         while (True):
             if caravelEnv.monitor_mgmt_gpio() == 1: 
@@ -155,7 +153,6 @@ async def mgmt_gpio_bidir(dut):
                 break
             if cpu.read_debug_reg2() == 0xFF:  #test finish
                 break
-            cocotb.log.info(f"[TEST] here 2 ")
             await ClockCycles(caravelEnv.clk,10) 
         await ClockCycles(caravelEnv.clk,1) 
         

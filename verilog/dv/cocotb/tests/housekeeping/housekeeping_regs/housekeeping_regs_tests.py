@@ -18,7 +18,7 @@ reg = Regs()
 @cocotb.test()
 @repot_test
 async def hk_regs_wr_wb(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=611,num_error=INFINITY)
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=678,num_error=INFINITY)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     with open('wb_models/housekeepingWB/HK_regs.json') as f:
