@@ -37,12 +37,12 @@ openlane_cmd_regression = "cd /openlane && ./run_designs.py \
 													 $$(realpath ./$*)"
 
 docker_mounts = \
-	-v $(PDK_ROOT):$(PDK_ROOT) \
+	-v $(PDK_ROOT):/pdk \
 	-v $(CARAVEL_ROOT):$(CARAVEL_ROOT) \
 	-v $(HOME):$(HOME)
 
 docker_env = \
-	-e PDK_ROOT=$(PDK_ROOT) \
+	-e PDK_ROOT=/pdk \
 	-e PDK=$(PDK) \
 	-e MISMATCHES_OK=1 \
 	-e CARAVEL_ROOT=$(CARAVEL_ROOT) \
