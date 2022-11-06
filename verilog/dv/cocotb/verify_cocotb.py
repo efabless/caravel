@@ -110,11 +110,14 @@ class RunTest:
         PDK = os.getenv('PDK')
         TESTFULLNAME = os.getenv('TESTFULLNAME')
         env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
-        macros = f'-DFUNCTIONAL -DSIM=\\\"{self.sim_type}\\\"  -DUSE_POWER_PINS -DUNIT_DELAY=#1 -DMAIN_PATH=\\\"{self.cocotb_path}\\\" -DIVERILOG -DTESTNAME=\\\"{self.test_name}\\\" -DTAG=\\\"{RUNTAG}\\\" '
+        macros = f'-DFUNCTIONAL -DSIM=\\\"{self.sim_type}\\\"  -DUSE_POWER_PINS -DUNIT_DELAY=#1 -DMAIN_PATH=\\\"{self.cocotb_path}\\\" -DIVERILOG -DTESTNAME=\\\"{self.test_name}\\\" -DTAG=\\\"{RUNTAG}\\\" -DCOCOTB_SIM'
         if self.test_name == "la":
             macros = f'{macros} -DLA_TESTING'
         if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
             macros = f'{macros} -DGPIO_TESTING'
+        if self.test_name == "user_address_space":
+            macros = macros.replace('-DCOCOTB_SIM',' ')
+            macros = f'{macros} -DADDR_SPACE_TESTING -v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v'
         if(self.sim_type=="RTL"): 
             includes = f"-f {VERILOG_PATH}/includes/includes.rtl.caravel"
         elif(self.sim_type=="GL"): 
@@ -142,6 +145,10 @@ class RunTest:
         Path(f'{self.sim_path}/{self.passed}').touch()
         if self.passed == "passed": 
             print(f"{bcolors.OKGREEN }Test: {self.sim_type}-{self.test_name} has passed{bcolors.ENDC}")
+            if zip_waves:
+                os.chdir(f'{self.cocotb_path}/{self.sim_path}')
+                os.system(f'zip -m waves_logs.zip  sim.vvp full.log *.vcd')
+                self.cd_cocotb()
         else : 
             print(f"{bcolors.FAIL }Test: {self.sim_type}-{self.test_name} has Failed please check logs under {bcolors.ENDC}{bcolors.OKCYAN }{self.sim_path}{bcolors.ENDC}")
 
@@ -160,11 +167,14 @@ class RunTest:
             change_str(str="\"caravel/verilog",new_str=f"\"{CARAVEL_PATH}",file_path=f"{self.cocotb_path}/includes.v")
         else: 
             dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
-        macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS '
+        macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS +define+COCOTB_SIM'
         if self.test_name == "la":
             macros = f'{macros} +define+LA_TESTING'
         if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
             macros = f'{macros} +define+GPIO_TESTING'
+        if self.test_name == "user_address_space":
+            macros = macros.replace('+define+COCOTB_SIM',' ')
+            macros = f'{macros} +define+ADDR_SPACE_TESTING -v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v'
         # shutil.copyfile(f'{self.test_full_dir}/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
         #     shutil.copyfile(f'{self.test_full_dir}/test_data',f'{self.sim_path}/test_data')
