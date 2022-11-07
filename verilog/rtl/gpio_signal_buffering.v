@@ -479,7 +479,7 @@ module gpio_signal_buffering (
 	    .VPWR(vccd),
 	    .VGND(vssd),
 	    .VPB(vccd),
-	    .VNB(vssd),
+	    .VNB(vssd)
 	`endif
   );
 

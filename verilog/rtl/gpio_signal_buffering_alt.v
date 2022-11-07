@@ -332,7 +332,7 @@ module gpio_signal_buffering_alt (
         .VPWR(vccd),
         .VGND(vssd),
         .VPB(vccd),
-        .VNB(vssd),
+        .VNB(vssd)
     `endif
     );
 
