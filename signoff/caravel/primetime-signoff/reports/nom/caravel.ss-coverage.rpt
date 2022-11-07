@@ -4,12 +4,12 @@ Report : analysis_coverage
 	-sort_by slack
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Tue Oct 18 15:44:33 2022
+Date   : Sun Oct 30 12:30:25 2022
 ****************************************
 
 Type of Check         Total              Met         Violated         Untested
 --------------------------------------------------------------------------------
-setup                 21651     18417 ( 85%)       279 (  1%)      2955 ( 14%)
+setup                 21651     17718 ( 82%)       978 (  5%)      2955 ( 14%)
 hold                  21257     18696 ( 88%)         0 (  0%)      2561 ( 12%)
 recovery               2347        74 (  3%)         0 (  0%)      2273 ( 97%)
 removal                2347        74 (  3%)         0 (  0%)      2273 ( 97%)
@@ -19,7 +19,7 @@ clock_gating_hold      1537      1536 (100%)         0 (  0%)         1 (  0%)
 out_setup                 4         0 (  0%)         3 ( 75%)         1 ( 25%)
 out_hold                  4         3 ( 75%)         0 (  0%)         1 ( 25%)
 --------------------------------------------------------------------------------
-All Checks            80933     66444 ( 82%)      1818 (  2%)     12671 ( 16%)
+All Checks            80933     65745 ( 81%)      2517 (  3%)     12671 ( 16%)
 
 
 Constrained          Related           Check
@@ -2487,12 +2487,8 @@ housekeeping/_7097_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
 housekeeping/_7098_/SET_B(low) - -     min_pulse_width -   untested  no_clock
 housekeeping/_7098_/SET_B(rise) CLK(rise) clk recovery -   untested  no_paths
 housekeeping/_7098_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
-soc/_32562_/D        CLK(rise) clk     hold    -           untested  false_paths
-soc/_32562_/D        CLK(rise) clk     setup   -           untested  false_paths
 soc/_32563_/D        CLK(rise) clk     hold    -           untested  false_paths
 soc/_32563_/D        CLK(rise) clk     setup   -           untested  false_paths
-soc/_32574_/D        CLK(rise) clk     hold    -           untested  false_paths
-soc/_32574_/D        CLK(rise) clk     setup   -           untested  false_paths
 housekeeping/_6506_/SET_B(low) - -     min_pulse_width -   untested  no_clock
 housekeeping/_6506_/SET_B(rise) CLK(rise) clk recovery -   untested  no_paths
 housekeeping/_6506_/SET_B(rise) CLK(rise) clk removal -    untested  no_paths
@@ -3587,6 +3583,10 @@ gpio_control_bidir_2[2]/_106_/RESET_B(low) - - min_pulse_width - untested consta
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) CLK_N(fall) - recovery - untested constant_disabled
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) CLK_N(fall) - removal - untested constant_disabled
 gpio_control_bidir_2[2]/_106_/RESET_B(rise) SET_B(rise) - setup - untested constant_disabled
+soc/_32562_/D        CLK(rise) clk     hold    -           untested  false_paths
+soc/_32562_/D        CLK(rise) clk     setup   -           untested  false_paths
+soc/_32574_/D        CLK(rise) clk     hold    -           untested  false_paths
+soc/_32574_/D        CLK(rise) clk     setup   -           untested  false_paths
 housekeeping/_7130_/RESET_B(low) - -   min_pulse_width -   untested  no_clock
 housekeeping/_7130_/RESET_B(rise) CLK(rise) clk recovery - untested  no_paths
 housekeeping/_7130_/RESET_B(rise) CLK(rise) clk removal -  untested  no_paths

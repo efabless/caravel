@@ -41,13 +41,14 @@ optional arguments:
   -a, --all                     run all checks
 ````
 ### How to run Caravel top-level STA including user project wrapper
-1. edit in [pt_sta.tcl](https://github.com/efabless/caravel/blob/caravel_redesign/scripts/pt_sta.tcl#L69) the spef mapping section to add the user project module instantiated in user project wrapper
+1. edit in [spef_mapping.tcl](./spef_mapping.tcl#L3) to add mapping of the modules instantiated in user_project_wrapper/user_analog_project_wrapper to their `spef`. this is required to enable hierarchical parasitic annotation.
 2. run the command
   ````
   python3 signoff_automation.py -d caravel -sta
   ````
 ## Reports and logs
 
-Reports can be found `$CARAVEL_ROOT/signoff/<design_name>/`
+Reports can be found at `$CARAVEL_ROOT/signoff/<design_name>/`
 
-Logs can be found at `$CARAVEL_ROOT/scripts/logs/`
+Logs can be found at `$CARAVEL_ROOT/signoff/<design_name>/standalone_pvr/logs` and `$CARAVEL_ROOT/signoff/<design_name>/primetime-signoff/logs`
+> If the design is related to the Management Core SoC, `$CARAVEL_ROOT` is replaced by `$MCW_ROOT` for the reports and logs

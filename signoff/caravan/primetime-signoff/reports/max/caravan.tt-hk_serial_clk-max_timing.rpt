@@ -1,7 +1,9 @@
+Warning: Derate summary report may not match the output of report_timing without timing derates applied. (UITE-447)
 ****************************************
 Report : timing
 	-path_type full_clock_expanded
 	-delay_type max
+	-input_pins
 	-nets
 	-nworst 10
 	-slack_lesser_than 10.0000
@@ -9,11 +11,13 @@ Report : timing
 	-group hk_serial_clk
 	-transition_time
 	-capacitance
+	-crosstalk_delta
+	-derate
 	-sort_by slack
 	-include_hierarchical_pins
 Design : caravan
 Version: T-2022.03-SP3
-Date   : Tue Oct 25 06:48:17 2022
+Date   : Sun Oct 30 14:27:13 2022
 ****************************************
 
 No paths with slack less than 10.0000.

@@ -2,7 +2,7 @@
 Report : exceptions
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Tue Oct 18 15:49:00 2022
+Date   : Sun Oct 30 12:37:26 2022
 ****************************************
 
 Reasons :   f  invalid start points
@@ -14,11 +14,44 @@ Legend :    i  ignore clock latency in path delay
 From            Through          To               Setup      Hold       Ignored
 --------------------------------------------------------------------------------
 
+resetb          *                *                FALSE      FALSE      
 mprj_io[0]      housekeeping/mgmt_gpio_in[0]  *   FALSE      FALSE      
 mprj_io[1]      housekeeping/mgmt_gpio_in[1]  *   FALSE      FALSE      
 mprj_io[3]      housekeeping/mgmt_gpio_in[3]  *   FALSE      FALSE      
 mprj_io[5]      housekeeping/mgmt_gpio_in[5]  *   FALSE      FALSE      
 mprj_io[6]      housekeeping/mgmt_gpio_in[6]  *   FALSE      FALSE      
+mprj_io[7]      housekeeping/mgmt_gpio_in[7]  *   FALSE      FALSE      
+mprj_io[8]      housekeeping/mgmt_gpio_in[8]  *   FALSE      FALSE      
+mprj_io[9]      housekeeping/mgmt_gpio_in[9]  *   FALSE      FALSE      
+mprj_io[10]     housekeeping/mgmt_gpio_in[10]  *  FALSE      FALSE      
+mprj_io[11]     housekeeping/mgmt_gpio_in[11]  *  FALSE      FALSE      
+mprj_io[12]     housekeeping/mgmt_gpio_in[12]  *  FALSE      FALSE      
+mprj_io[13]     housekeeping/mgmt_gpio_in[13]  *  FALSE      FALSE      
+mprj_io[14]     housekeeping/mgmt_gpio_in[14]  *  FALSE      FALSE      
+mprj_io[15]     housekeeping/mgmt_gpio_in[15]  *  FALSE      FALSE      
+mprj_io[16]     housekeeping/mgmt_gpio_in[16]  *  FALSE      FALSE      
+mprj_io[17]     housekeeping/mgmt_gpio_in[17]  *  FALSE      FALSE      
+mprj_io[18]     housekeeping/mgmt_gpio_in[18]  *  FALSE      FALSE      
+mprj_io[19]     housekeeping/mgmt_gpio_in[19]  *  FALSE      FALSE      
+mprj_io[20]     housekeeping/mgmt_gpio_in[20]  *  FALSE      FALSE      
+mprj_io[21]     housekeeping/mgmt_gpio_in[21]  *  FALSE      FALSE      
+mprj_io[22]     housekeeping/mgmt_gpio_in[22]  *  FALSE      FALSE      
+mprj_io[23]     housekeeping/mgmt_gpio_in[23]  *  FALSE      FALSE      
+mprj_io[24]     housekeeping/mgmt_gpio_in[24]  *  FALSE      FALSE      
+mprj_io[25]     housekeeping/mgmt_gpio_in[25]  *  FALSE      FALSE      
+mprj_io[26]     housekeeping/mgmt_gpio_in[26]  *  FALSE      FALSE      
+mprj_io[27]     housekeeping/mgmt_gpio_in[27]  *  FALSE      FALSE      
+mprj_io[28]     housekeeping/mgmt_gpio_in[28]  *  FALSE      FALSE      
+mprj_io[29]     housekeeping/mgmt_gpio_in[29]  *  FALSE      FALSE      
+mprj_io[30]     housekeeping/mgmt_gpio_in[30]  *  FALSE      FALSE      
+mprj_io[31]     housekeeping/mgmt_gpio_in[31]  *  FALSE      FALSE      
+mprj_io[32]     housekeeping/mgmt_gpio_in[32]  *  FALSE      FALSE      
+mprj_io[33]     housekeeping/mgmt_gpio_in[33]  *  FALSE      FALSE      
+mprj_io[34]     housekeeping/mgmt_gpio_in[34]  *  FALSE      FALSE      
+mprj_io[35]     housekeeping/mgmt_gpio_in[35]  *  FALSE      FALSE      
+mprj_io[36]     housekeeping/mgmt_gpio_in[36]  *  FALSE      FALSE      
+mprj_io[37]     housekeeping/mgmt_gpio_in[37]  *  FALSE      FALSE      
+{ mprj_io[37] mprj_io[36] mprj_io[35] mprj_io[34] mprj_io[33] mprj_io[32] mprj_io[31] mprj_io[30] mprj_io[29] mprj_io[28] mprj_io[27] mprj_io[26] mprj_io[25] mprj_io[24] mprj_io[23] mprj_io[22] mprj_io[21] mprj_io[20] mprj_io[19] mprj_io[18] mprj_io[17] mprj_io[16] mprj_io[15] mprj_io[14] mprj_io[13] mprj_io[12] mprj_io[11] mprj_io[10] mprj_io[9] mprj_io[8] mprj_io[7] mprj_io[6] mprj_io[5] mprj_io[4] mprj_io[3] mprj_io[2] mprj_io[1] mprj_io[0] } { housekeeping/mgmt_gpio_out[37] housekeeping/mgmt_gpio_out[36] housekeeping/mgmt_gpio_out[35] housekeeping/mgmt_gpio_out[34] housekeeping/mgmt_gpio_out[33] housekeeping/mgmt_gpio_out[32] housekeeping/mgmt_gpio_out[31] housekeeping/mgmt_gpio_out[30] housekeeping/mgmt_gpio_out[29] housekeeping/mgmt_gpio_out[28] housekeeping/mgmt_gpio_out[27] housekeeping/mgmt_gpio_out[26] housekeeping/mgmt_gpio_out[25] housekeeping/mgmt_gpio_out[24] housekeeping/mgmt_gpio_out[23] housekeeping/mgmt_gpio_out[22] housekeeping/mgmt_gpio_out[21] housekeeping/mgmt_gpio_out[20] housekeeping/mgmt_gpio_out[19] housekeeping/mgmt_gpio_out[18] housekeeping/mgmt_gpio_out[17] housekeeping/mgmt_gpio_out[16] housekeeping/mgmt_gpio_out[15] housekeeping/mgmt_gpio_out[14] housekeeping/mgmt_gpio_out[13] housekeeping/mgmt_gpio_out[12] housekeeping/mgmt_gpio_out[11] housekeeping/mgmt_gpio_out[10] housekeeping/mgmt_gpio_out[9] housekeeping/mgmt_gpio_out[8] housekeeping/mgmt_gpio_out[7] housekeeping/mgmt_gpio_out[6] housekeeping/mgmt_gpio_out[5] housekeeping/mgmt_gpio_out[4] housekeeping/mgmt_gpio_out[3] housekeeping/mgmt_gpio_out[2] housekeeping/mgmt_gpio_out[1] housekeeping/mgmt_gpio_out[0] }  * FALSE FALSE po
 gpio            *                *                FALSE      FALSE      
 
 1

@@ -5,7 +5,7 @@
 ###############################################################################
 # Timing Constraints
 ###############################################################################
-create_clock -name v_clk -period 10
+create_clock -name v_clk -period 25
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_clk}]
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_clk2}]
 set_input_delay 1.0000 -clock [get_clocks {v_clk}] -add_delay [get_ports {caravel_rstn}]

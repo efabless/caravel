@@ -43,7 +43,7 @@ def run_drc(design_root, log_dir, signoff_dir, pdk_root, design):
         "-l",
         f"{log_dir}",
         "-s",
-        f"{signoff_dir}",
+        f"{signoff_dir}/{design}/standalone_pvr",
         "-d",
         f"{design}",
     ]
@@ -160,7 +160,7 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
         "-d",
         f"{design}",
         "-o",
-        f"{signoff_dir}/{design}",
+        f"{signoff_dir}/{design}/primetime-signoff",
         "-l",
         f"{log_dir}",
     ]
@@ -212,6 +212,7 @@ def check_errors(
         lvs_summary_report = open(
             os.path.join(signoff_dir, f"{design}/standalone_pvr/lvs_summary.rpt"), "w"
         )
+        lvs_sum_rep = os.path.join(signoff_dir, f"{design}/standalone_pvr/lvs_summary.rpt")
         lvs_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/{design}.lvs.json")
         failures = count_lvs.count_LVS_failures(lvs_report)
         if failures[0] > 0:
@@ -226,7 +227,7 @@ def check_errors(
             lvs_summary_report.write("    property failures = " + str(failures[4]) + "\n")
             logging.error(f"LVS on {design} failed")
             logging.info(f"Find full report at {lvs_report}")
-            logging.info(f"Find summary report at {lvs_summary_report}")
+            logging.info(f"Find summary report at {lvs_sum_rep}")
             f.write("Layout Vs Schematic:    Failed\n")
         else:
             lvs_summary_report.write("Layout Vs Schematic Passed")
@@ -249,7 +250,7 @@ def check_errors(
                     f.write(f"{sim} simulations:    Failed\n")
 
     if sta:
-        sta_logs = glob.glob(f"{log_dir}/{design}/{design}-*sta.log")
+        sta_logs = glob.glob(f"{sta_log_dir}/{design}-*sta.log")
         for l in sta_logs:
             with open(l) as rep:
                 log_name = l.split("/")[-1]
@@ -259,14 +260,17 @@ def check_errors(
                     logging.info(f"{log_name} STA:    Passed")
                     f.write(f"{log_name} STA:    Passed\n")
                 elif "max_transition and max_capacitance" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_tran & max_cap)")
-                    f.write(f"{log_name} STA:    Passed (max_tran & max_cap)\n")
+                    logging.info(lines[-1])
+                    logging.info(f"{log_name} STA:    Passed (except: max_tran & max_cap)")
+                    f.write(f"{log_name} STA:    Passed (except: max_tran & max_cap)\n")
                 elif "max_transition" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_tran)")
-                    f.write(f"{log_name} STA:    Passed (max_tran)\n")
+                    logging.info(lines[-1])
+                    logging.info(f"{log_name} STA:    Passed (except: max_tran)")
+                    f.write(f"{log_name} STA:    Passed (except: max_tran)\n")
                 elif "max_capacitance" in lines[-1]:
-                    logging.info(f"{log_name} STA:    Passed (max_cap)")
-                    f.write(f"{log_name} STA:    Passed (max_cap)\n")
+                    logging.info(lines[-1])
+                    logging.info(f"{log_name} STA:    Passed (except: max_cap)")
+                    f.write(f"{log_name} STA:    Passed (except: max_cap)\n")
                 else:
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
@@ -388,7 +392,6 @@ if __name__ == "__main__":
 
     pdk_root = os.getenv("PDK_ROOT")
     pdk_env = os.getenv("PDK")
-    log_dir = os.path.join(caravel_root, "scripts/logs")
     signoff_dir = os.path.join(caravel_root, "signoff")
     lvs_root = os.path.join(caravel_root, "scripts/extra_be_checks")
     drc = args.drc_check
@@ -401,15 +404,18 @@ if __name__ == "__main__":
     sta = args.primetime_sta
     design = args.design
     antenna = args.antenna
+    log_dir = os.path.join(signoff_dir, f"{design}/standalone_pvr/logs")
+
     if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
         signoff_dir = os.path.join(mcw_root, "signoff")
+        log_dir = os.path.join(signoff_dir, f"{design}/standalone_pvr/logs")
 
-    if not os.path.exists(f"{log_dir}"):
-        os.makedirs(f"{log_dir}")
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
     if not os.path.exists(f"{signoff_dir}/{design}/standalone_pvr"):
         os.makedirs(f"{signoff_dir}/{design}/standalone_pvr")
+    if not os.path.exists(f"{log_dir}"):
+        os.makedirs(f"{log_dir}")
 
     if lvs or drc or antenna:
         if glob.glob(f"{caravel_root}/gds/*.gz"):
@@ -462,12 +468,18 @@ if __name__ == "__main__":
         logging.info(f"Running LVS on {design}")
 
     if sta:
+        if not os.path.exists(f"{signoff_dir}/{design}/primetime-signoff"):
+            os.makedirs(f"{signoff_dir}/{design}/primetime-signoff")
+        sta_log_dir = os.path.join(signoff_dir, f"{design}/primetime-signoff/logs")
+        if not os.path.exists(f"{sta_log_dir}"):
+            os.makedirs(f"{sta_log_dir}")
+
         logging.info(f"Running PrimeTime STA all corners on {design}")
         sta_p = run_sta(
             caravel_root,
             mcw_root,
             f"{caravel_root}/scripts/pt_libs",
-            log_dir,
+            sta_log_dir,
             signoff_dir,
             design,
         )
@@ -518,11 +530,13 @@ if __name__ == "__main__":
     #     lvs_p1.wait()
     if sta:
         out, err = sta_p.communicate()
-        sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
+        sta_log = open(f"{sta_log_dir}/PT_STA_{design}.log", "w")
         if err:
             logging.error(err)
             sta_log.write(err)
-        sta_log.close()
+            sta_log.close()
+        else:
+            os.remove(f"{sta_log_dir}/PT_STA_{design}.log")
     if lvs:
         lvs_p1.wait()
     if drc:

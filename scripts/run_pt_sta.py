@@ -53,11 +53,11 @@ def run_sta (
 
     # PrimeTime command
     PT_tcl = f"{SCRIPT_DIR}/pt_sta.tcl"
-    pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log"
+    pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log"
     os.system(pt_command)
-    # Check if there exists any violations
+    # Check if there are any violations
     sta_pass=search_viol(f"{output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-    log = open(f"{log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
+    log = open(f"{log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
     if sta_pass == "pass":
         print (f"STA run Passed!")
         log.write(f"STA run Passed!")
@@ -90,11 +90,11 @@ def run_sta (
                 print(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
                 log.write(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
             elif sta_pass== "no cons":
-                print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
             else:
-                print(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                print(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                log.write(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
     log.close()
 
 # Check the required env variables
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--logs_dir",
-        help="output directory",
+        help="log directory",
         required=True
     )
     parser.add_argument(
@@ -206,7 +206,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    output = os.path.abspath(os.path.join(args.output_dir,"primetime-signoff"))
+    output = os.path.abspath(args.output_dir)
     log = os.path.abspath(args.logs_dir)
 
     try:
@@ -217,12 +217,6 @@ if __name__ == "__main__":
 
     try:
         os.makedirs(log)
-    except FileExistsError:
-        # directory already exists
-        pass
-
-    try:
-        os.makedirs(os.path.join(log,args.design))
     except FileExistsError:
         # directory already exists
         pass
