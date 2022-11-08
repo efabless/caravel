@@ -1,13 +1,7 @@
-from audioop import add
-from ctypes import BigEndianStructure
-from operator import truediv
-from cocotb import top
 import cocotb
 from cocotb.binary import BinaryValue
 from cocotb.triggers import Timer, RisingEdge, ReadOnly
 import fnmatch
-import copy
-import logging
 from cocotb.result import TestFailure
 from cocotb_coverage.coverage import *
 
@@ -27,9 +21,7 @@ class HK_models():
         self.input_dis        =3
         self.regs_full_list() 
         self.intial_cov() 
-        
-
-                                                                             
+                                                                        
     """model for the wishbone interface with housekeeping"""
     def wishbone_model(self,trans):
         clock_signal = trans["_clk"]["signal"]
@@ -112,7 +104,7 @@ class HK_models():
             output["SDO"]["val"] = self._getReadData()
             self.exp_out_spi.append(output)
         elif self.spi_mode[0] == "read/write": 
-            output["SDO"]["val"] = self._getReadData()
+            output["SDO"]["val"] = self._ReadWriteMode()
             self.exp_out_spi.append(output)
         elif self.spi_mode[0] == "noOP": 
             self._setWriteData(trans['SDI']['val'].binstr)
@@ -183,6 +175,17 @@ class HK_models():
             else: self.spi_mode_cov('write') 
             self.spi_mode[2] += 1 # stream number
 
+
+    def _ReadWriteMode(self,bit): #TODO: add these cases expected values
+        # return if write is write n-bytes command and number of bytes exceeds the required
+        if self.command_spi[5:7] == ['0','0']: # Simultaneous Read/Write in streaming mode
+            self._setWriteData(bit)
+            return self._getReadData()
+        elif self.command_spi[5:7] != ['1','0']: # Pass-through (management) Read/Write in streaming mode
+            self.spi_mode_cov('Pass-m')
+        elif self.spi_mode_cov == ['1','1']:
+            self.spi_mode_cov('Pass-u')
+        return 0
 
     def _getReadData(self):
         # return if write is write n-bytes command and number of bytes exceeds the required

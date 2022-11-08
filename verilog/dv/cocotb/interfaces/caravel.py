@@ -6,7 +6,6 @@ import cocotb.log
 import cocotb.simulator
 from cocotb.handle import SimHandleBase
 from cocotb.handle import Force
-from cocotb_coverage.coverage import *
 from cocotb.binary import BinaryValue
 import enum
 from cocotb.handle import (
@@ -33,13 +32,6 @@ def gpio_mode(gpios_values:list):
             gpios.append((gpio,gpio_value))
     cocotb.log.info(f'[caravel][gpio_mode] gpios {gpios}')
     return gpios
-
-Carvel_Coverage = coverage_section (
-
-  CoverPoint("top.caravel.gpio", vname="gpios mode", xf = lambda gpio ,gpio_mode: (gpio,gpio_mode) ,
-  bins = list(product(range(38),[e.name for e in GPIO_MODE])))
-
-)
 
 class Caravel_env:
     def __init__(self,dut:SimHandleBase):
@@ -160,7 +152,6 @@ class Caravel_env:
         for array in gpios_values:
             gpio_value = array[1]
             for gpio in array[0]:
-                self.cov_configure_gpios(gpio,gpio_value.name)
                 gpio_defaults[size - (gpio*13 + 12): size -gpio*13] = gpio_value.value
                 #cocotb.log.info(f' [caravel] gpio_defaults[{size - (gpio*13 + 12)}:{size -gpio*13}] = {gpio_value.value} ')
         self.caravel_hdl.gpio_defaults.value = gpio_defaults
@@ -183,18 +174,11 @@ class Caravel_env:
         for array in gpios_values:
             gpio_value = array[1]
             for gpio in array[0]:
-                self.cov_configure_gpios(gpio,gpio_value.name)
                 self.gpio_control_reg_write(control_modules[gpio],gpio_value.value) # for control blocks regs
                 self.caravel_hdl.housekeeping.gpio_configure[gpio].value = gpio_value.value # for house keeping regs
         cocotb.log.info(f' [caravel] finish configuring gpios, the curret gpios value: ')
         self.print_gpios_ctrl_val()    
         self.print_gpios_HW_val()
-
-    """dummy function for coverage sampling"""
-    @Carvel_Coverage
-    def cov_configure_gpios(self,gpio,gpio_mode):
-        cocotb.log.debug(f' [caravel] gpio [{gpio}] = {gpio_mode} ')
-        pass
 
     def print_gpios_default_val(self,print=1):
         gpio_defaults = self.caravel_hdl.gpio_defaults.value

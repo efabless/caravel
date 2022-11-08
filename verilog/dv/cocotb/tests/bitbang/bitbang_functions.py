@@ -265,7 +265,7 @@ async def load_spi(caravelEnv):
     await caravelEnv.enable_csb()
     await caravelEnv.hk_write_byte(0x80) # Write stream command
     await caravelEnv.hk_write_byte(0x13) # Address (register 19 = GPIO bit-bang control)
-    await caravelEnv.hk_write_byte(0x16) # 00
+    await caravelEnv.hk_write_byte(0x06) # 00
     await caravelEnv.disable_csb()
 
 """right output left input"""

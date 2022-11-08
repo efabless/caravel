@@ -1,0 +1,57 @@
+{ 
+    "mapping":{ "0": "gpio_control_bidir_1[0]",
+                "1": "gpio_control_bidir_1[1]",
+                "2": "gpio_control_in_1a[0]",
+                "3": "gpio_control_in_1a[1]",
+                "4": "gpio_control_in_1a[2]",
+                "5": "gpio_control_in_1a[3]",
+                "6": "gpio_control_in_1a[4]",
+                "7": "gpio_control_in_1a[5]",
+                "8": "gpio_control_in_1[0]",
+                "9": "gpio_control_in_1[1]",
+                "10": "gpio_control_in_1[2]",
+                "11": "gpio_control_in_1[3]",
+                "12": "gpio_control_in_1[4]",
+                "13": "gpio_control_in_1[5]",
+                "14": "gpio_control_in_1[6]",
+                "15": "gpio_control_in_1[7]",
+                "16": "gpio_control_in_1[8]",
+                "17": "gpio_control_in_1[9]",
+                "18": "gpio_control_in_1[10]",
+                "19": "gpio_control_in_2[0]",
+                "20": "gpio_control_in_2[1]",
+                "21": "gpio_control_in_2[2]",
+                "22": "gpio_control_in_2[3]",
+                "23": "gpio_control_in_2[4]",
+                "24": "gpio_control_in_2[5]",
+                "25": "gpio_control_in_2[6]",
+                "26": "gpio_control_in_2[7]",
+                "27": "gpio_control_in_2[8]",
+                "28": "gpio_control_in_2[9]",
+                "29": "gpio_control_in_2[10]",
+                "30": "gpio_control_in_2[11]",
+                "31": "gpio_control_in_2[12]",
+                "32": "gpio_control_in_2[13]",
+                "33": "gpio_control_in_2[14]",
+                "34": "gpio_control_in_2[15]",
+                "35": "gpio_control_bidir_2[0]",
+                "36": "gpio_control_bidir_2[1]",
+                "37": "gpio_control_bidir_2[2]"
+                },
+    "serial_if":{
+        "inputs":{
+            "reset":         {"signal":"resetn","val":0},
+            "clock":          {"signal":"serial_clock","val":0},
+            "data":           {"signal":"serial_data_in","val":0},
+            "load":           {"signal":"serial_load","val":0}
+        },
+        "outputs":{
+            "reset":         {"signal":"resetn_out","val":0},
+            "clock":          {"signal":"serial_clock_out","val":0},
+            "data":           {"signal":"serial_load_out","val":0},
+            "load":           {"signal":"serial_load_out","val":0}
+
+        }
+    }, 
+    "default_if": {"inputs":{"defaults":{"signal":"gpio_defaults","val":0}}}
+} 
