@@ -26,7 +26,7 @@ class GPIO_models():
             
             if load == "1": 
                 self.gpio_configuration =  self.shift_array
-                cocotb.log.info(f"[GPIO_models][serial_model][{self.name}] loaded value = {self.gpio_configuration} string {''.join(self.gpio_configuration)} hex = {hex(int(''.join(self.gpio_configuration),2))}")
+                cocotb.log.debug(f"[GPIO_models][serial_model][{self.name}] loaded value = {self.gpio_configuration} string {''.join(self.gpio_configuration)} hex = {hex(int(''.join(self.gpio_configuration),2))}")
                 try:
                     gpio_config = GPIO_MODE(int(''.join(self.gpio_configuration),2)).name
                 except: 
@@ -34,7 +34,7 @@ class GPIO_models():
                 self.gpio_config_cov(gpio_config)
             else: 
                 self.shift_array.append(trans["data"]["val"])
-                cocotb.log.info(f"[GPIO_models][serial_model][{self.name}] shifted value = {self.shift_array}")
+                cocotb.log.debug(f"[GPIO_models][serial_model][{self.name}] shifted value = {self.shift_array}")
 
     """model for the default inside gpio_control_block"""
     def default_model(self,trans):

@@ -54,7 +54,7 @@ class SerialMonitor(Monitor):
 
             for key2,signal in self.interfaces.items():
                     signal['val'] = self.block_path._id(signal['signal'],False).value.binstr
-            cocotb.log.info(f"[SerialMonitor][{self.name}] interface = {self.interfaces}")
+            cocotb.log.debug(f"[SerialMonitor][{self.name}] interface = {self.interfaces}")
             self._recv(self.interfaces)
 
     async def wait_clock_load(self,signal):

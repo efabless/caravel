@@ -39,12 +39,8 @@ class GPIO_ctrlWB:
             self.gpio_hdl = self.caravel_hdl._id(mapping[f'{self.gpio_num}'],False)
             self.serial_if = json_f["serial_if"]
             self.default_if = json_f["default_if"]
-            # print (mapping)
-            print (self.serial_if)
-            print (self.gpio_name)
-            print (self.gpio_name)
-            print (self.gpio_name)
-    
+        
+        
     """initialize all models needed"""    
     def setupModels(self):
         self.gpio_model = GPIO_models(f"{self.gpio_name}")

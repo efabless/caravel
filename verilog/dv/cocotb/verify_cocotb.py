@@ -17,6 +17,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
+import logging 
 
 iverilog = True
 vcs = False
@@ -394,9 +395,11 @@ class RunRegression:
             thread.join()
 
         if coverage:
-            self.generate_cov()
-        #TODO: add send mail here
-    
+            if vcs:
+                self.generate_cov()
+            #merge functional coverage
+            os.system(f"docker run -it -v {self.cocotb_path}:{self.cocotb_path}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && python3 scripts/merge_coverage.py -p {self.cocotb_path}/sim/{os.getenv('RUNTAG')}'")
+                
     def test_run_function(self,test,sim_type,corner):
         start_time = datetime.now()
         self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
