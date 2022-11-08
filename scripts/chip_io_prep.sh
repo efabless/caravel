@@ -10,6 +10,7 @@
 # magic layout.
 #
 # Written by Tim Edwards for MPW-7  10/11/2022
+# Updated/fixed 11/08/2022
 #-------------------------------------------------------------------
 
 echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
@@ -17,8 +18,10 @@ echo ${PDK:=sky130A} > /dev/null
 
 # Generate DEF of chip_io
 echo "Generating DEF view of chip_io"
-magic -d OGL -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
+magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 load chip_io
+select top cell
+expand
 property flatten true
 flatten -doproperty chip_io_flat
 load chip_io_flat
@@ -28,6 +31,19 @@ select top cell
 extract do local
 extract no all
 extract all
+# Declare all signals to be SPECIALNETS
+set globals(vccd) 1
+set globals(vssd) 1
+set globals(vddio) 1
+set globals(vssio) 1
+set globals(vdda1) 1
+set globals(vssa1) 1
+set globals(vccd1) 1
+set globals(vssd1) 1
+set globals(vdda2) 1
+set globals(vssa2) 1
+set globals(vccd2) 1
+set globals(vssd2) 1
 def write chip_io
 quit -noprompt
 EOF
@@ -36,8 +52,10 @@ rm *.ext
 
 # Generate DEF of chip_io_alt
 echo "Generating DEF view of chip_io_alt"
-magic -d OGL -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
+magic -dnull -noconsole -rcfile ${PDK_ROOT}/${PDK}/libs.tech/magic/${PDK}.magicrc << EOF
 load chip_io_alt
+select top cell
+expand
 property flatten true
 flatten -doproperty chip_io_alt_flat
 load chip_io_alt_flat
@@ -47,6 +65,19 @@ select top cell
 extract do local
 extract no all
 extract all
+# Declare all signals to be SPECIALNETS
+set globals(vccd) 1
+set globals(vssd) 1
+set globals(vddio) 1
+set globals(vssio) 1
+set globals(vdda1) 1
+set globals(vssa1) 1
+set globals(vccd1) 1
+set globals(vssd1) 1
+set globals(vdda2) 1
+set globals(vssa2) 1
+set globals(vccd2) 1
+set globals(vssd2) 1
 def write chip_io_alt
 quit -noprompt
 EOF
