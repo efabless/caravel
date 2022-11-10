@@ -37,7 +37,7 @@ async def test_configure(dut,timeout_cycles=1000000,clk=25,timeout_precision=0.2
     await ClockCycles(caravelEnv.clk, 10)
     coverage = Macros['COVERAGE']
     checker = Macros['CHECKERS']
-    if coverage and checker:
+    if checker:
         HK_whiteBox(dut,checkers=True)
         GPIOs_ctrlWB(dut,checkers=True)
     elif coverage: 
@@ -74,7 +74,8 @@ def repot_test(func):
         cocotb.log.addHandler(handler) 
         ## call test 
         await func(*args, **kwargs)
-        coverage_db.export_to_xml(filename=f"sim/{RUNTAG}/{TESTFULLNAME}/coverage.xml")
+        if Macros['COVERAGE'] or Macros['CHECKERS']:
+            coverage_db.export_to_xml(filename=f"sim/{RUNTAG}/{TESTFULLNAME}/coverage.xml")
         ## report after finish simulation
         msg = f'with ({cocotb.log.critical.counter})criticals ({cocotb.log.error.counter})errors ({cocotb.log.warning.counter})warnings '
         if cocotb.log.error.counter > 0 or cocotb.log.critical.counter >0:

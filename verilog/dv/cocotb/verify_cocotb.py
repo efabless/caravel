@@ -557,7 +557,7 @@ class main():
         msg = MIMEMultipart("alternative", None, [ MIMEText(mail_sub,'html')])
         msg['Subject'] = f'{self.TAG} run results'
         msg['From'] = "verification@efabless.com"
-        msg['To'] = mails[0]
+        msg['To'] = ", ".join(mails)
         docker = False
         if docker: 
             mail_command = f'echo "{mail_sub}" | mail -a "Content-type: text/html;" -s "{msg["Subject"]}" {mails[0]}'
