@@ -34,8 +34,8 @@ async def test_configure(dut,timeout_cycles=1000000,clk=25,timeout_precision=0.2
     cocotb.start_soon(clock.start())  # Start the clock
     await caravelEnv.start_up()
     await ClockCycles(caravelEnv.clk, 10)
-    # HK_whiteBox(dut)
-    GPIOs_ctrlWB(dut)
+    # HK_whiteBox(dut,checkers=True)
+    # GPIOs_ctrlWB(dut,checkers=True)
     return caravelEnv,clock
     
 class CallCounted:

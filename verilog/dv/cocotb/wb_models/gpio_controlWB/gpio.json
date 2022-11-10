@@ -38,20 +38,49 @@
                 "36": "gpio_control_bidir_2[1]",
                 "37": "gpio_control_bidir_2[2]"
                 },
+
     "serial_if":{
         "inputs":{
-            "reset":         {"signal":"resetn","val":0},
-            "clock":          {"signal":"serial_clock","val":0},
-            "data":           {"signal":"serial_data_in","val":0},
-            "load":           {"signal":"serial_load","val":0}
+            "reset":           {"signal":"resetn","val":0},
+            "clock":           {"signal":"serial_clock","val":0},
+            "data":            {"signal":"serial_data_in","val":0},
+            "load":            {"signal":"serial_load","val":0}
         },
         "outputs":{
-            "reset":         {"signal":"resetn_out","val":0},
-            "clock":          {"signal":"serial_clock_out","val":0},
-            "data":           {"signal":"serial_load_out","val":0},
-            "load":           {"signal":"serial_load_out","val":0}
+            "reset":           {"signal":"resetn_out","val":0},
+            "clock":           {"signal":"serial_clock_out","val":0},
+            "data":            {"signal":"serial_data_out","val":0},
+            "load":            {"signal":"serial_load_out","val":0}
 
         }
     }, 
-    "default_if": {"inputs":{"defaults":{"signal":"gpio_defaults","val":0}}}
+
+    "default_if": {"inputs":{"defaults":{"signal":"gpio_defaults","val":0}}},
+
+    "mgmt_gpio_if":{
+        "inputs":{
+            "mgmt":        {"signal":"mgmt_gpio_out","val":0},
+            "mgmt_oeb":        {"signal":"mgmt_gpio_oeb","val":0}
+        },
+        "outputs":{
+            "mgmt":         {"signal":"mgmt_gpio_in","val":0}
+        }
+    }, 
+    "user_gpio_if":{
+        "inputs":{
+            "user":        {"signal":"user_gpio_out","val":0},
+            "user_oeb":        {"signal":"user_gpio_oeb","val":0}
+        },
+        "outputs":{
+            "user":         {"signal":"user_gpio_in","val":0}
+        }
+    }, 
+    "pad_gpio_if":{
+        "inputs":{
+            "pad":        {"signal":"pad_gpio_in","val":0}
+        },
+        "outputs":{
+            "pad":         {"signal":"pad_gpio_out","val":0}
+        }
+    }
 } 
