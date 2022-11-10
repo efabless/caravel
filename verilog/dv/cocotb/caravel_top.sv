@@ -377,4 +377,6 @@ reg GL = `ifdef GL 1 `else 0 `endif;
 
 reg CARAVAN = `ifdef CARAVAN 1 `else 0 `endif;
 
+reg CHECKERS = `ifdef CHECKERS 1 `else 0 `endif;
+reg COVERAGE = `ifdef COVERAGE 1 `else 0 `endif;
 endmodule

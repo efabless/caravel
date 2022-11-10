@@ -22,6 +22,7 @@ import logging
 iverilog = True
 vcs = False
 coverage = False
+checkers = False
 zip_waves = True
 caravan = False 
 html_mail =f""
@@ -95,6 +96,49 @@ class RunTest:
         if (iverilog):return self.runTest_iverilog()
         elif(vcs): return self.runTest_vcs()
 
+    def caravel_macros(self,is_vcs=False):
+        macroslist = ["FUNCTIONAL",f'SIM=\\\"{self.sim_type}\\\"',"USE_POWER_PINS","UNIT_DELAY=#1",f'MAIN_PATH=\\\"{self.cocotb_path}\\\"']
+        macroslist.extend([f'TESTNAME=\\\"{self.test_name}\\\"',f'TAG=\\\"{os.getenv("RUNTAG")}\\\"',"COCOTB_SIM",f'FTESTNAME=\\\"{self.full_test_name}\\\"'])
+        
+        if self.test_name == "la":
+            macroslist.append ('LA_TESTING')
+        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
+            macros = 'GPIO_TESTING'
+        if self.test_name == "user_address_space":
+            macroslist.remove('COCOTB_SIM') # using debug register in this test isn't needed
+            macroslist.append('ADDR_SPACE_TESTING')
+        
+        if(self.sim_type=="GL"):
+            macroslist.append('GL')
+        elif(self.sim_type=="GLSDF"):
+            macroslist.extend('ENABLE_SDF','GL_SDF','GL',f'SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\"',f'CORNER=\\\"{self.corner[0:3]}\\\"')
+        
+        if caravan:
+            print ("Use caravan")
+            macroslist.append(f'CARAVAN')
+        
+        if coverage:
+            macroslist.append(f'COVERAGE')
+        if checkers:
+            macroslist.append(f'CHECKERS')
+
+        if not is_vcs:
+            macroslist.append(f'IVERILOG')
+        else: 
+            macroslist.append(f'VCS')
+
+        if not is_vcs:
+            macros = ' -D'.join(macroslist)
+            macros = f'-D{macros}'
+            return macros
+            print(macros)
+            sys.exit()
+        else: 
+            macros = ' +define+'.join(macroslist)
+            macros = f'+define+{macros}'
+            return macros
+            print(macros)
+            sys.exit()
     # iverilog function
     def runTest_iverilog(self):
         print(f"Start running test: {bcolors.OKBLUE}{self.sim_type}-{self.test_name}{bcolors.ENDC}")
@@ -111,28 +155,17 @@ class RunTest:
         PDK = os.getenv('PDK')
         TESTFULLNAME = os.getenv('TESTFULLNAME')
         env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
-        macros = f'-DFUNCTIONAL -DSIM=\\\"{self.sim_type}\\\"  -DUSE_POWER_PINS -DUNIT_DELAY=#1 -DMAIN_PATH=\\\"{self.cocotb_path}\\\" -DIVERILOG -DTESTNAME=\\\"{self.test_name}\\\" -DTAG=\\\"{RUNTAG}\\\" -DCOCOTB_SIM'
-        if self.test_name == "la":
-            macros = f'{macros} -DLA_TESTING'
-        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
-            macros = f'{macros} -DGPIO_TESTING'
-        if self.test_name == "user_address_space":
-            macros = macros.replace('-DCOCOTB_SIM',' ')
-            macros = f'{macros} -DADDR_SPACE_TESTING -v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v'
         if(self.sim_type=="RTL"): 
-            includes = f"-f {VERILOG_PATH}/includes/includes.rtl.caravel"
+            includes = f" -f {VERILOG_PATH}/includes/includes.rtl.caravel"
         elif(self.sim_type=="GL"): 
-            macros = f'{macros}  -DGL'
             includes = f"-f {VERILOG_PATH}/includes/includes.gl.caravel"
         elif(self.sim_type=="GLSDF"): 
             print(f"iverilog can't run SDF for test {self.test_name} Please use anothor simulator like cvc" )
             return
-        user_project = f"{CARAVEL_PATH}/rtl/__user_project_wrapper.v {CARAVEL_PATH}/rtl/__user_project_gpio_example.v {CARAVEL_PATH}/rtl/__user_project_la_example.v"
+        user_project = f"{CARAVEL_PATH}/rtl/__user_project_wrapper.v {CARAVEL_PATH}/rtl/__user_project_gpio_example.v {CARAVEL_PATH}/rtl/__user_project_la_example.v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v"
         if caravan:
-            print ("Use caravan")
-            macros = f'-DCARAVAN {macros} '
             user_project = f"{CARAVEL_PATH}/rtl/__user_analog_project_wrapper.v"
-        iverilog_command = (f"iverilog -Ttyp {macros} {includes}  -o {self.sim_path}/sim.vvp"
+        iverilog_command = (f"iverilog -Ttyp {self.caravel_macros()} {includes}  -o {self.sim_path}/sim.vvp"
                             f" {user_project}  caravel_top.sv"
                             f" && TESTCASE={self.test_name} MODULE=caravel_tests vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus {self.sim_path}/sim.vvp")
         docker_command = f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {iverilog_command}' >> {self.full_file}"
@@ -167,42 +200,24 @@ class RunTest:
             change_str(str="\"caravel_mgmt_soc_litex/verilog",new_str=f"\"{VERILOG_PATH}",file_path=f"{self.cocotb_path}/includes.v")
             change_str(str="\"caravel/verilog",new_str=f"\"{CARAVEL_PATH}",file_path=f"{self.cocotb_path}/includes.v")
         else: 
-            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '
-        macros = f'+define+FUNCTIONAL +define+USE_POWER_PINS +define+UNIT_DELAY=#1 +define+MAIN_PATH=\\\"{self.cocotb_path}\\\" +define+VCS +define+COCOTB_SIM'
-        if self.test_name == "la":
-            macros = f'{macros} +define+LA_TESTING'
-        if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
-            macros = f'{macros} +define+GPIO_TESTING'
-        if self.test_name == "user_address_space":
-            macros = macros.replace('+define+COCOTB_SIM',' ')
-            macros = f'{macros} +define+ADDR_SPACE_TESTING -v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v'
+            dirs = f' {dirs} -f \\\"{VERILOG_PATH}/includes/gl_caravel_vcs.list\\\" '      
         # shutil.copyfile(f'{self.test_full_dir}/{self.test_name}.hex',f'{self.sim_path}/{self.test_name}.hex')
         # if os.path.exists(f'{self.test_full_dir}/test_data'):
         #     shutil.copyfile(f'{self.test_full_dir}/test_data',f'{self.sim_path}/test_data')
-        if (self.sim_type=="GL_SDF"):
-            macros = f'{macros} +define+ENABLE_SDF +define+SIM=GL_SDF +define+GL +define+SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\" +define+CORNER=\\\"{self.corner[0:3]}\\\"'
             # corner example is corner nom-t so `SDF_POSTFIX = tt and `CORNER = nom
             # os.makedirs(f"annotation_logs",exist_ok=True)
             dirs = f"{dirs}  +incdir+\\\"{os.getenv('MCW_ROOT')}/verilog/\\\" "
             # +incdir+\\\"{os.getenv('CARAVEL_ROOT')}/signoff/caravel/primetime-signoff/\\\"
-        elif(self.sim_type=="GL"): 
-            macros = f'{macros}  +define+GL  +define+SIM=GL'
-        elif (self.sim_type=="RTL"): 
-            macros = f'{macros} +define+SIM=\\\"RTL\\\"'
-        else: 
-            print(f"Fatal: incorrect simulation type {self.sim_type}")
         coverage_command = ""
         if coverage: 
             coverage_command = "-cm line+tgl+cond+fsm+branch+assert"
         os.environ["TESTCASE"] = f"{self.test_name}"
         os.environ["MODULE"] = f"caravel_tests"
         os.environ["SIM"] = self.sim_type
-        user_project = f"-v {CARAVEL_PATH}/rtl/__user_project_wrapper.v"
+        user_project = f"-v {CARAVEL_PATH}/rtl/__user_project_wrapper.v -v {CARAVEL_PATH}/rtl/__user_project_addr_space_project.v"
         if caravan:
-            print ("Use caravan")
-            macros = f'+define+CARAVAN {macros} '
             user_project = f"-v {CARAVEL_PATH}/rtl/__user_analog_project_wrapper.v"
-        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {user_project} {dirs}  {macros} +define+TESTNAME=\\\"{self.test_name}\\\" +define+FTESTNAME=\\\"{self.full_test_name}\\\" +define+TAG=\\\"{os.getenv('RUNTAG')}\\\" -l {self.sim_path}/analysis.log -o {self.sim_path} ")
+        os.system(f"vlogan -full64  -sverilog +error+30 caravel_top.sv {user_project} {dirs}  {self.caravel_macros(True)}   -l {self.sim_path}/analysis.log -o {self.sim_path} ")
 
         os.system(f"vcs +lint=TFIPC-L {coverage_command} +error+30 -R -diag=sdf:verbose +sdfverbose +neg_tchk -debug_access -full64  -l {self.sim_path}/test.log  caravel_top -Mdir={self.sim_path}/csrc -o {self.sim_path}/simv +vpi -P pli.tab -load $(cocotb-config --lib-name-path vpi vcs)")
         self.passed = search_str(self.test_log.name,"Test passed with (0)criticals (0)errors")
@@ -566,6 +581,7 @@ parser.add_argument('-tag', help='provide tag of the run default would be regres
 parser.add_argument('-maxerr', help='max number of errors for every test before simulation breaks default = 3')
 parser.add_argument('-vcs','-v',action='store_true', help='use vcs as compiler if not used iverilog would be used')
 parser.add_argument('-cov',action='store_true', help='enable code coverage')
+parser.add_argument('-checkers_en',action='store_true', help='enable whitebox models checkers and coverage no need to use -cov ')
 parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_SDF run has to be provided')
 parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the waves and logs of passed tests would be zipped. Using this option they wouldn\'t be zipped')
 parser.add_argument('-caravan',action='store_true', help='simulate caravan instead of caravel')
@@ -575,6 +591,9 @@ if (args.vcs) :
     iverilog = False
     vcs = True
 if args.cov: 
+    coverage = True
+if args.checkers_en: 
+    checkers = True
     coverage = True
 if args.sim == None: 
     args.sim= ["RTL"]

@@ -16,6 +16,7 @@ from tests.common_functions.Timeout import Timeout
 import os
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
 from cocotb_coverage.coverage import *
+from interfaces.common import Macros
 
 """configure the test log file location and log verbosity 
    configure the test clock 
@@ -34,8 +35,14 @@ async def test_configure(dut,timeout_cycles=1000000,clk=25,timeout_precision=0.2
     cocotb.start_soon(clock.start())  # Start the clock
     await caravelEnv.start_up()
     await ClockCycles(caravelEnv.clk, 10)
-    # HK_whiteBox(dut,checkers=True)
-    # GPIOs_ctrlWB(dut,checkers=True)
+    coverage = Macros['COVERAGE']
+    checker = Macros['CHECKERS']
+    if coverage and checker:
+        HK_whiteBox(dut,checkers=True)
+        GPIOs_ctrlWB(dut,checkers=True)
+    elif coverage: 
+        HK_whiteBox(dut)
+        GPIOs_ctrlWB(dut)
     return caravelEnv,clock
     
 class CallCounted:
