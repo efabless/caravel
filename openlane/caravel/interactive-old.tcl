@@ -195,7 +195,10 @@ set user_project_wrapper_obs [list [expr $mprj_x-$gap] [expr $mprj_y-$gap] [expr
 set user_project_wrapper_core_ring_obs [list [expr $mprj_x-43.63] [expr $mprj_y-38.34] [expr $mprj_x+2963.25] [expr $mprj_y+$gap+3557.96]]
 
 # add routing obstructions on the management area 
-set mgmt_area_obs [list $soc_x $soc_y [expr $soc_x+2620] [expr $soc_y+820]]
+set soc_width 2621.26000
+set soc_height 820.00000
+set mgmt_area_obs [list $soc_x $soc_y [expr $soc_x+$soc_width] [expr $soc_y+$soc_height]]
+set mgmt_area_obs_pins [list [expr $soc_x + 0.5] [expr $soc_y + 0.5] [expr $soc_x+$soc_width-0.5] [expr $soc_y+$soc_height-0.5]]
 
 set routing_vio_obs [list 106.26803 2098.54857 108.85254 2096.63000]
 
@@ -205,6 +208,10 @@ set ::env(GLB_RT_OBS) "
 	met3 $user_project_wrapper_obs,\
 	met4 $user_project_wrapper_core_ring_obs,\
 	met4 $mgmt_area_obs,\
+	met1 $mgmt_area_obs,\
+	met2 $mgmt_area_obs,\
+	met3 $mgmt_area_obs_pins,\
+	met2 $mgmt_area_obs_pins,\
 	met5 $user_project_wrapper_core_ring_obs,\
 	met5 $mgmt_area_obs"
 
