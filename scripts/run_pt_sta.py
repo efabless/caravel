@@ -89,9 +89,12 @@ def run_sta (
             elif sta_pass == "viol":
                 print(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
                 log.write(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-            elif sta_pass== "no cons":
-                print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+            elif sta_pass == "no cons":
+                print(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                log.write(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+            elif sta_pass == "spef":
+                print(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
+                log.write(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
             else:
                 print(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
                 log.write(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
@@ -134,14 +137,27 @@ def check_env_vars():
 def search_viol(
     report_path: str
 ):
+    proc_corner = report_path[-12]
+    rc_corner = os.path.basename(os.path.dirname(report_path))
+    log_path = report_path.replace(f"/reports/{rc_corner}/", "/logs/")
+    log_path = log_path.replace(f".{proc_corner}{proc_corner}-global.rpt", f"-{rc_corner}-{proc_corner}-sta.log")
+    with open(log_path, 'r') as report:
+        data = report.read()
+        if "Could not auto-link design" in data:
+            return "no link"
+        elif "Error: Errors reading SDC file:" in data:
+            return "no cons"
+    log_path = log_path.replace(f"{proc_corner}-sta", f"parasitics")
+    with open(log_path, 'r') as report:
+        data = report.read()
+        if "Error: Cannot open file" in data:
+            return "spef"
     with open(report_path, 'r') as report:
         data = report.read()
-        if "Setup violations" in data:
-            return "setup"
-        elif "Hold violations" in data:
+        if "Hold violations" in data:
             return "hold"
-        elif "Could not auto-link design" in data:
-            return "no link"
+        elif "Setup violations" in data:
+            return "setup"
     report_path = report_path.replace("global", "all_viol")
     with open(report_path, 'r') as report:
         data = report.read()
@@ -153,11 +169,6 @@ def search_viol(
             return "max_cap"
         elif "VIOLATED" in data:
             return "viol"
-    report_path = report_path.replace("all_viol", "min_timing")
-    with open(report_path, 'r') as report:
-        data = report.read()
-        if "No constrained paths" in data:
-            return "no cons"
         else:
             return "pass"
 

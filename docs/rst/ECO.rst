@@ -26,12 +26,21 @@ ECOs were done on top level caravel for several reasons
 
 1. `porb_h_in` shorted with `por_l_in` because it was a floating wire
 2. `mgmt_gpio_oeb` was not shorted with `mprj_io_one` in some instances of `gpio_control_block`, this is due to an issue with the router
-3. To get caravel device level LVS clean, mask layer in the IO cells in the library needed modifications, can be found in `gds/caravel+io.gds`
 
-The non-eco'd views coming out of OpenLane is postfixed by `-openlane`, for example: `gds/caravel-openlane.gds.gz`
+The flow to generate caravel top level:
+=======================================
 
-After applying `scripts/create_top_pins.sh` on `caravel.mag`, the views have a postfix `-with-labels`
+==================================================== ============================== ============================= ==========
+Flow                                                 Input Filename                 Output Filename               Tool
+==================================================== ============================== ============================= ==========
+def to mag                                           caravel.def                    caravel-openlane.mag          OpenLane
+create_top_pins.sh                                   caravel-openlane.mag           caravel-with-label.mag        magic
+ECO to gpio_control_block to fix LVS issue           caravel-with-label.mag         caravel-eco-gpio_control.mag  magic GUI
+mag to GDS (build script)                            caravel-eco-gpio_control.mag   caravel-eco-gpio_control.gds  magic
+ECO to gpio_control_block to fix LVS issue           caravel-eco-gpio_control.gds   caravel-eco-gpio_antenna.gds  klayout
+GDS to mag                                           caravel-eco-gpio_antenna.gds   caravel-eco-antenna.mag       magic
+gen_gpio_defaults.py                                 caravel-eco-antenna.mag        caravel-signoff.mag           python
+mag to GDS (build script)                            caravel-signoff.mag            caravel-signoff.gds           magic
+==================================================== ============================== ============================= ==========
 
-The eco'd views have postfix `-eco`
-
-After running tapeout scripts on `caravel.mag`, the views have a postfix `-signoff`
+**NOTE: caravel-eco-antenna.mag is the same as caravel.mag (this is for tracebility issues)**
