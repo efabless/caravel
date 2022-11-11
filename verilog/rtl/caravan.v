@@ -43,7 +43,7 @@
 /* The pads are still designated as mprj_io[37:0] around the	*/
 /* padframe.  The SoC core remains the same, so the programming	*/
 /* of the digital signals remains the same, but the values for	*/
-/* GPIO 15-25 are not used.					*/
+/* GPIO 14-24 (indexed from 0) are not used.			*/
 /*--------------------------------------------------------------*/
 
 `define DIG2_TOP (`MPRJ_IO_PADS - 1)
