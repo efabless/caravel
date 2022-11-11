@@ -111,8 +111,8 @@ class RunTest:
         
         if(self.sim_type=="GL"):
             macroslist.append('GL')
-        elif(self.sim_type=="GLSDF"):
-            macroslist.extend('ENABLE_SDF','GL_SDF','GL',f'SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\"',f'CORNER=\\\"{self.corner[0:3]}\\\"')
+        elif(self.sim_type=="GL_SDF"):
+            macroslist.extend(['ENABLE_SDF','GL_SDF','GL',f'SDF_POSTFIX=\\\"{self.corner[-1]}{self.corner[-1]}\\\"',f'CORNER=\\\"{self.corner[0:3]}\\\"'])
         
         if caravan:
             print ("Use caravan")
