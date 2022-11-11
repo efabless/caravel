@@ -131,7 +131,7 @@ readnet verilog $CARAVEL_ROOT/verilog/gl/caravel-signoff.v \$circuit2
 set cells1 [cells list -all \$circuit1]
 set cells2 [cells list -all \$circuit2]
 foreach cell \$cells1 {
-    if {[regexp "\\[A-Z\\]\\[A-Z\\]_(.+)" \$cell match cellname]} {
+    if {[regexp ".._(.+)" \$cell match cellname]} {
         if {([lsearch \$cells2 \$cell] < 0) && ([lsearch \$cells2 \$cellname] >= 0) && ([lsearch \$cells1 \$cellname] < 0)} {
             equate classes "\$circuit1 \$cell" "\$circuit2 \$cellname"
             puts stdout "Matching pins of \$cell in circuit 1 and \$cellname in circuit 2"
@@ -139,7 +139,7 @@ foreach cell \$cells1 {
         }
     }
     # Ignore fill cells in standard cell sets that have two-letter prefixes.
-    if {[regexp {\\[A-Z\\]\\[A-Z\\]_sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
+    if {[regexp {.._sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
 	ignore class "\$circuit1 \$cell"
     }
 }
@@ -151,7 +151,7 @@ EOF
 
 export NETGEN_COLUMNS=90
 export MAGIC_EXT_USE_GDS=1
-netgen -batch source netgenD.tcl >& caravel_3_lvs.log
+netgen -batch source netgenD.tcl 2>&1 | tee caravel_3_lvs.log
 rm netgenD.tcl
 
 exit 0
