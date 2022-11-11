@@ -31,12 +31,12 @@ SPLIT_FILES := $(shell find . -type f -name "*.$(ARCHIVE_EXT).00.split")
 SPLIT_FILES_SOURCES := $(basename $(basename $(basename $(SPLIT_FILES))))
 
 # Needed to uncompress the existing archives
-ARCHIVES := $(shell find . -type f -not -path "./signoff/*" -name "*.$(ARCHIVE_EXT)")
+ARCHIVES := $(shell find . -type f -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -name "*.$(ARCHIVE_EXT)")
 ARCHIVE_SOURCES := $(basename $(ARCHIVES))
 
 # Needed to compress and split files/archives that are too large
 LARGE_FILES := $(shell find ./gds -type f -name "*.gds")
-LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./signoff/*" -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
+LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
 LARGE_FILES_GZ := $(addsuffix .$(ARCHIVE_EXT), $(LARGE_FILES))
 LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
