@@ -260,21 +260,26 @@ def check_errors(
                     logging.info(f"{log_name} STA:    Passed")
                     f.write(f"{log_name} STA:    Passed\n")
                 elif "max_transition and max_capacitance" in lines[-1]:
-                    logging.info(lines[-1])
+                    logging.warning(lines[-1])
                     logging.info(f"{log_name} STA:    Passed (except: max_tran & max_cap)")
                     f.write(f"{log_name} STA:    Passed (except: max_tran & max_cap)\n")
                 elif "max_transition" in lines[-1]:
-                    logging.info(lines[-1])
+                    logging.warning(lines[-1])
                     logging.info(f"{log_name} STA:    Passed (except: max_tran)")
                     f.write(f"{log_name} STA:    Passed (except: max_tran)\n")
                 elif "max_capacitance" in lines[-1]:
-                    logging.info(lines[-1])
+                    logging.warning(lines[-1])
                     logging.info(f"{log_name} STA:    Passed (except: max_cap)")
                     f.write(f"{log_name} STA:    Passed (except: max_cap)\n")
                 else:
                     logging.error(lines[-1])
                     logging.error(f"{log_name} STA:    Failed")
-                    f.write(f"{log_name} STA:    Failed\n")
+                    if "setup" in lines[-1]:
+                        f.write(f"{log_name} STA:    Failed (setup)\n")
+                    elif "hold" in lines[-1]:
+                        f.write(f"{log_name} STA:    Failed (hold)\n")
+                    else:
+                        f.write(f"{log_name} STA:    Failed (" + lines[-1].split(" failed")[0] + ")\n")
 
     if antenna:
         antenna_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/antenna-vios.report")

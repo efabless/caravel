@@ -8,15 +8,15 @@ if {$design == "caravel" | $design == "caravan"} {
     }
 
     # add spefs of modules instantiated in user_project_wrapper/user_analog_project_wrapper here
-    set spef_mapping(mprj/mprj)                                $::env(UPRJ_ROOT)/signoff/user_project_example/openlane-signoff/spef/user_project_example.${rc_corner}.spef
-
+    set spef_mapping(mprj/mprj)                                $::env(UPRJ_ROOT)/signoff/user_proj_example/openlane-signoff/spef/user_proj_example.${rc_corner}.spef
+    
     #caravel/caravan macros
-    set spef_mapping(flash_clkrst_buffers)                     $::env(CARAVEL_ROOT)/signoff/buff_flash_clkrst/openlane-signoff/buff_flash_clkrst.${rc_corner}.spef
-    set spef_mapping(rstb_level)                               $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/xres_buf.${rc_corner}.spef
+    set spef_mapping(flash_clkrst_buffers)                     $::env(CARAVEL_ROOT)/signoff/buff_flash_clkrst/openlane-signoff/spef/buff_flash_clkrst.${rc_corner}.spef
+    set spef_mapping(rstb_level)                               $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/spef/xres_buf.${rc_corner}.spef
 
-    set spef_mapping(padframe)                                 $::env(CARAVEL_ROOT)/signoff/chip_io/chip_io.${rc_corner}.spef
+    set spef_mapping(padframe)                                 $::env(CARAVEL_ROOT)/signoff/chip_io/openlane-signoff/spef/chip_io.${rc_corner}.spef
     if {$design == "caravan"} {
-        set spef_mapping(padframe)                             $::env(CARAVEL_ROOT)/signoff/chip_io_alt/chip_io_alt.${rc_corner}.spef
+        set spef_mapping(padframe)                             $::env(CARAVEL_ROOT)/signoff/chip_io_alt/openlane-signoff/spef/chip_io_alt.${rc_corner}.spef
     }
     set spef_mapping(padframe/\constant_value_inst[0])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
     set spef_mapping(padframe/\constant_value_inst[1])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
@@ -40,8 +40,8 @@ if {$design == "caravel" | $design == "caravan"} {
     set spef_mapping(mgmt_buffers/mprj2_logic_high_inst)       $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
 
     set spef_mapping(soc)                                      $::env(MCW_ROOT)/signoff/mgmt_core_wrapper/openlane-signoff/spef/mgmt_core_wrapper.${rc_corner}.spef
-    set spef_mapping(soc/\core.RAM256)                         $::env(MCW_ROOT)/signoff/RAM256/spef/openlane-signoff/spef/RAM256.${rc_corner}.spef
-    set spef_mapping(soc/\core.RAM128)                         $::env(MCW_ROOT)/signoff/RAM128/spef/openlane-signoff/spef/RAM128.${rc_corner}.spef
+    set spef_mapping(soc/\core.RAM256)                         $::env(MCW_ROOT)/signoff/RAM256/openlane-signoff/spef/RAM256.${rc_corner}.spef
+    set spef_mapping(soc/\core.RAM128)                         $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
 
     set spef_mapping(\gpio_control_bidir_1[0])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
     set spef_mapping(\gpio_control_bidir_1[1])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
@@ -159,10 +159,12 @@ if {$design == "caravel" | $design == "caravan"} {
     set spef_mapping(gpio_defaults_block_7)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
     set spef_mapping(gpio_defaults_block_8)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
     set spef_mapping(gpio_defaults_block_9)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
+    
+    set spef_mapping(sigbuf)                                   $::env(CARAVEL_ROOT)/signoff/gpio_signal_buffering/openlane-signoff/spef/gpio_signal_buffering.${rc_corner}.spef
 
 } elseif {$design == "mgmt_core_wrapper"} {
     set spef_mapping(\core.RAM128)                             $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
-    set spef_mapping(\core.RAM256)                             $::env(MCW_ROOT)/signoff/RAM512/openlane-signoff/spef/RAM512.${rc_corner}.spef
+    set spef_mapping(\core.RAM256)                             $::env(MCW_ROOT)/signoff/RAM256/openlane-signoff/spef/RAM256.${rc_corner}.spef
 } elseif {$design == "gpio_control_block"} {
     set spef_mapping(gpio_logic_high)                          $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
 } elseif {$design == "mgmt_protect"} {
@@ -170,3 +172,4 @@ if {$design == "caravel" | $design == "caravan"} {
     set spef_mapping(mprj_logic_high_inst)                     $::env(CARAVEL_ROOT)/signoff/mprj_logic_high/openlane-signoff/spef/mprj_logic_high.${rc_corner}.spef
     set spef_mapping(mprj2_logic_high_inst)                    $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
 }
+puts "\[INFO\]: Spef mapping done"
