@@ -14,6 +14,8 @@ if {\
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib \
       "
     } elseif {$::env(PROC_CORNER) == "f"} {
       set link_path "* $::env(PT_LIB_ROOT)/scs130hd_ff_1.95v_-40C.lib \
@@ -27,10 +29,13 @@ if {\
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ff_n40C_1v95_5v50.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ff_n40C_1v95_5v50_5v50.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ff_n40C_1v95_5v50.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ff_n40C_1v95_5v50_5v50.lib \
       "
     } elseif {$::env(PROC_CORNER) == "s"} {
       set link_path "* $::env(PT_LIB_ROOT)/scs130hd_ss_1.40v_100C.lib \
       $::env(PT_LIB_ROOT)/scs130hvl_ss_3.00v_100C.lib \
+      $::env(PT_LIB_ROOT)/scs130hvl_ss_3.00v_lowhv_1.65v_lv_1.6v_150C.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_ss_ss_100C_1v60_3v00.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_wrapped_ss_ss_100C_1v60_3v00.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
@@ -39,6 +44,8 @@ if {\
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_ss_100C_1v60_3v00.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_ss_100C_1v60_3v00_3v00.lib \
       $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_ss_100C_1v60_3v00.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
+      $::env(PDK_ROOT)/$::env(PDK)/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_ss_100C_1v60_3v00_3v00.lib \
       "
     }
 
@@ -58,199 +65,33 @@ if {\
       read_sdc $::env(MCW_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
     } else {
       read_sdc $::env(CARAVEL_ROOT)/signoff/$::env(DESIGN)/$::env(DESIGN).sdc
-      # -filter is supported by PT but not in the read_sdc  
-      # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
-      # apply the constraint to hd cells at the ss corner on caravel/caravan 
-      if { $::env(DESIGN) == "caravel" | $::env(DESIGN) == "caravan" } {
-        if { $::env(PROC_CORNER) == "s" } {
-          set max_tran 1.5
-          puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
-          puts "For HD cells in the hierarchy of $::env(DESIGN)"
-          set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
-          set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
-        } 
-      }
     }
+    # -filter is supported by PT but not in the read_sdc  
+    # add max_tran constraint as the default max_tran of the ss hd SCL is 10 so the violations are not caught in ss corners
+    # apply the constraint to hd cells at the ss corner 
+    if { $::env(PROC_CORNER) == "s" } {
+      set max_tran 1.5
+      puts "\[INFO\]: Setting maximum transition of HD cells in slow process corner to: $max_tran"
+      puts "For HD cells in the hierarchy of $::env(DESIGN)"
+      set_max_transition $max_tran [get_pins -of_objects [get_cells -filter {ref_name=~sky130_fd_sc_hd*}]]
+      set_max_transition $max_tran [get_pins -of_objects [get_cells */* -filter {ref_name=~sky130_fd_sc_hd*}]]
+      set_max_transition $max_tran [get_pins -of_objects [get_cells */*/* -filter {ref_name=~sky130_fd_sc_hd*}]]
+    } 
+    
 
     # Reading parasitics based on the RC corner specified
     proc read_spefs {design rc_corner} {
-      if {$design == "caravel" | $design == "caravan"} {
-        set spef_mapping(flash_clkrst_buffers)                     $::env(CARAVEL_ROOT)/signoff/buff_flash_clkrst/openlane-signoff/buff_flash_clkrst.${rc_corner}.spef
-        set spef_mapping(mprj)                                     $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
-       
-        # add your module name instantiated in user_project_wrapper here
-        set spef_mapping(mprj/mprj)                                $::env(UPRJ_ROOT)/signoff/user_project_example/openlane-signoff/spef/user_project_example.${rc_corner}.spef
-
-        set spef_mapping(rstb_level)                               $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/xres_buf.${rc_corner}.spef
-        set spef_mapping(padframe)                                 $::env(CARAVEL_ROOT)/signoff/chip_io/chip_io.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[0])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[1])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[2])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[3])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[4])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[5])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        set spef_mapping(padframe/\constant_value_inst[6])         $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
-        
-        set spef_mapping(\spare_logic[0])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
-        set spef_mapping(\spare_logic[1])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
-        set spef_mapping(\spare_logic[2])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
-        set spef_mapping(\spare_logic[3])                          $::env(CARAVEL_ROOT)/signoff/spare_logic_block/openlane-signoff/spef/spare_logic_block.${rc_corner}.spef
-
-        set spef_mapping(housekeeping)                             $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
-        set spef_mapping(pll)                                      $::env(CARAVEL_ROOT)/signoff/digital_pll/openlane-signoff/spef/digital_pll.${rc_corner}.spef
-        set spef_mapping(clock_ctrl)                               $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.${rc_corner}.spef
-        set spef_mapping(mgmt_buffers)                             $::env(CARAVEL_ROOT)/signoff/mgmt_protect/openlane-signoff/spef/mgmt_protect.${rc_corner}.spef
-        set spef_mapping(mgmt_buffers/powergood_check)             $::env(CARAVEL_ROOT)/signoff/mgmt_protect_hv/openlane-signoff/spef/mgmt_protect_hv.${rc_corner}.spef
-        set spef_mapping(mgmt_buffers/mprj_logic_high_inst)        $::env(CARAVEL_ROOT)/signoff/mprj_logic_high/openlane-signoff/spef/mprj_logic_high.${rc_corner}.spef
-        set spef_mapping(mgmt_buffers/mprj2_logic_high_inst)       $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
-        
-        set spef_mapping(soc)                                      $::env(MCW_ROOT)/signoff/mgmt_core_wrapper/openlane-signoff/spef/mgmt_core_wrapper.${rc_corner}.spef
-        set spef_mapping(soc/\core.RAM256)                         $::env(MCW_ROOT)/signoff/RAM256/spef/openlane-signoff/spef/RAM256.${rc_corner}.spef
-        set spef_mapping(soc/\core.RAM128)                         $::env(MCW_ROOT)/signoff/RAM128/spef/openlane-signoff/spef/RAM128.${rc_corner}.spef
-        
-        set spef_mapping(\gpio_control_bidir_1[0])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_1[1])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[0])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[1])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[2])                 $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[0])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[10])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[1])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[2])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[3])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[4])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[5])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[6])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[7])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[8])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[9])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[0])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[1])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[2])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[3])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[4])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[5])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[0])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[10])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[11])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[12])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[13])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[14])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[15])                   $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[1])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[2])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[3])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[4])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[5])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[6])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[7])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[8])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[9])                    $::env(CARAVEL_ROOT)/signoff/gpio_control_block/openlane-signoff/spef/gpio_control_block.${rc_corner}.spef
-
-        set spef_mapping(\gpio_control_bidir_1[0]/gpio_logic_high) $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_1[1]/gpio_logic_high) $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[0]/gpio_logic_high) $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[1]/gpio_logic_high) $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_bidir_2[2]/gpio_logic_high) $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[0]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[10]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[1]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[2]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[3]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[4]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[5]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[6]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[7]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[8]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1[9]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[0]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[1]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[2]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[3]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[4]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_1a[5]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[0]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[10]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[11]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[12]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[13]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[14]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[15]/gpio_logic_high)   $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[1]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[2]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[3]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[4]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[5]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[6]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[7]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[8]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-        set spef_mapping(\gpio_control_in_2[9]/gpio_logic_high)    $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-
-        set spef_mapping(gpio_defaults_block_0)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_1803/openlane-signoff/spef/gpio_defaults_block_1803.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_1)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_1803/openlane-signoff/spef/gpio_defaults_block_1803.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_3)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0801/openlane-signoff/spef/gpio_defaults_block_0801.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_10)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_10)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_11)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_12)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_13)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_14)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_15)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_16)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_17)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_18)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_19)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_2)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_20)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_21)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_22)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_23)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_24)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_25)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_26)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_27)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_28)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_29)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_30)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_31)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_32)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_33)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_35)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_36)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_37)                   $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_4)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_5)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_6)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_7)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_8)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        set spef_mapping(gpio_defaults_block_9)                    $::env(CARAVEL_ROOT)/signoff/gpio_defaults_block_0403/openlane-signoff/spef/gpio_defaults_block_0403.${rc_corner}.spef
-        
-        if {$design == "caravan"} {
-          set spef_mapping(padframe)                               $::env(CARAVEL_ROOT)/signoff/chip_io_alt/chip_io_alt.${rc_corner}.spef
-          set spef_mapping(mprj)                                   $::env(UPRJ_ROOT)/signoff/user_analog_project_wrapper/openlane-signoff/spef/user_analog_project_wrapper.${rc_corner}.spef
-        }
-
-      } elseif {$design == "mgmt_core_wrapper"} {
-        set spef_mapping(\core.RAM128)                             $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
-        set spef_mapping(\core.RAM256)                             $::env(MCW_ROOT)/signoff/RAM512/openlane-signoff/spef/RAM512.${rc_corner}.spef
-      } elseif {$design == "gpio_control_block"} {
-        set spef_mapping(gpio_logic_high)                          $::env(CARAVEL_ROOT)/signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.${rc_corner}.spef
-      } elseif {$design == "mgmt_protect"} {
-        set spef_mapping(powergood_check)                          $::env(CARAVEL_ROOT)/signoff/mgmt_protect_hv/openlane-signoff/spef/mgmt_protect_hv.${rc_corner}.spef
-        set spef_mapping(mprj_logic_high_inst)                     $::env(CARAVEL_ROOT)/signoff/mprj_logic_high/openlane-signoff/spef/mprj_logic_high.${rc_corner}.spef
-        set spef_mapping(mprj2_logic_high_inst)                    $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
-      }
-
+      source ./spef_mapping.tcl
       foreach key [array names spef_mapping] {
         read_parasitics -keep_capacitive_coupling -path $key $spef_mapping($key)
       }
-
+      # add -complete_with wlm to let PT complete incomplete RC networks errors at the top-level
       if {$design == "mgmt_core_wrapper" | $design == "RAM128" | $design == "RAM256"} {
-        read_parasitics -keep_capacitive_coupling -verbose $::env(MCW_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
+        read_parasitics -keep_capacitive_coupling -verbose $::env(MCW_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -complete_with wlm -pin_cap_included 
       } else {
-        read_parasitics -keep_capacitive_coupling -verbose $::env(CARAVEL_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -pin_cap_included
+        read_parasitics -keep_capacitive_coupling -verbose $::env(CARAVEL_ROOT)/signoff/${design}/openlane-signoff/spef/${design}.${rc_corner}.spef -complete_with wlm -pin_cap_included
       }
-
+      report_annotated_parasitics
     }
     
     proc report_results {design rc_corner proc_corner} {
@@ -259,47 +100,53 @@ if {\
 
       report_constraint -all_violators -significant_digits 4 -nosplit > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-all_viol.rpt
 
-      report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+      report_timing -unique_pins -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
       -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-min_timing.rpt
       
-      report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+      report_timing -unique_pins -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
       -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-max_timing.rpt
 
+      report_si_bottleneck -significant_digits 4 -nosplit -slack_lesser_than 10 -all_nets > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-si_bottleneck.rpt
+
       if {$design == "caravel" | $design == "caravan"} {
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
+        report_timing -unique_pins -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-min_timing.rpt
         
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
+        report_timing -unique_pins -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-clk-max_timing.rpt
         
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
+        report_timing -unique_pins -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-min_timing.rpt
         
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
+        report_timing -unique_pins -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hk_serial_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hk_serial_clk-max_timing.rpt
 
-        report_timing -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
+        report_timing -unique_pins -delay max -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-max_timing.rpt
 
-        report_timing -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
+        report_timing -unique_pins -delay min -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit -group hkspi_clk \
         -max_paths 10000 -nworst 10 -slack_lesser_than 10 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-hkspi_clk-min_timing.rpt
 
-        report_timing -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        report_timing -unique_pins -delay min -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-min_timing.rpt
 
-        report_timing -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        report_timing -unique_pins -delay max -through [get_cells soc] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 10 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-soc-max_timing.rpt
 
         report_case_analysis -nosplit > $::env(OUT_DIR)/reports/${design}.case_analysis.rpt
         report_exceptions -nosplit > $::env(OUT_DIR)/reports/${design}.false_paths.rpt
 
-        report_timing -delay min -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        report_timing -unique_pins -delay min -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-min_timing.rpt
 
-        report_timing -delay max -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        report_timing -unique_pins -delay max -through [get_cells mprj] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
         -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-mprj-max_timing.rpt
 
-        report_si_bottleneck -significant_digits 4 -nosplit -slack_lesser_than 10 -all_nets > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-si_bottleneck.rpt
+        # report_timing -unique_pins -delay max -through [get_cells sigbuf] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        # -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-sigbuf-max_timing.rpt
+
+        # report_timing -unique_pins -delay min -through [get_cells sigbuf] -path_type full_clock_expanded -transition_time -capacitance -nets -crosstalk_delta -derate -nosplit \
+        # -max_paths 10000 -nworst 5 -slack_lesser_than 100 -significant_digits 4 -include_hierarchical_pins > $::env(OUT_DIR)/reports/${rc_corner}/${design}.${proc_corner}${proc_corner}-sigbuf-min_timing.rpt
       }
 
       write_sdf -version 3.0 -significant_digits 4 $::env(OUT_DIR)/sdf/${rc_corner}/${design}.${proc_corner}${proc_corner}.sdf
@@ -314,10 +161,13 @@ if {\
       set extract_model_use_conservative_current_slew true
       set extract_model_enable_report_delay_calculation true
       set extract_model_with_clock_latency_arcs true
-      extract_model -output $::env(OUT_DIR)/lib/${rc_corner}/${design}.${proc_corner}${proc_corner} -format {db lib} -test_design
+      extract_model -output $::env(OUT_DIR)/lib/${rc_corner}/${design}.${proc_corner}${proc_corner} -format {lib} 
     }
-
+    # set timing_report_unconstrained_paths TRUE
+    set parasitics_log_file $::env(OUT_DIR)/logs/$::env(DESIGN)-$::env(RC_CORNER)-parasitics.log
     set si_enable_analysis TRUE
+    # set si_enable_analysis FALSE
+    set sh_message_limit 1500
     read_spefs $::env(DESIGN) $::env(RC_CORNER)
     update_timing
     report_results $::env(DESIGN) $::env(RC_CORNER) $::env(PROC_CORNER)
@@ -329,40 +179,44 @@ if {\
   exit 1
 }
 list of verilog files:
-/home/passant/caravel/verilog/gl/user_id_programming.v
-/home/passant/caravel/verilog/gl/gpio_control_block.v
-/home/passant/caravel/verilog/gl/mprj_logic_high.v
-/home/passant/caravel/verilog/gl/gpio_defaults_block_1803.v
-/home/passant/caravel/verilog/gl/housekeeping.v
-/home/passant/caravel/verilog/gl/caravel_clocking.v
-/home/passant/caravel/verilog/gl/chip_io_alt.v
-/home/passant/caravel/verilog/gl/gpio_defaults_block_0403.v
-/home/passant/caravel/verilog/gl/gpio_defaults_block_0801.v
-/home/passant/caravel/verilog/gl/buff_flash_clkrst.v
-/home/passant/caravel/verilog/gl/caravel.v
-/home/passant/caravel/verilog/gl/__user_project_wrapper.v
-/home/passant/caravel/verilog/gl/caravan.v
-/home/passant/caravel/verilog/gl/gpio_signal_buffering_alt.v
-/home/passant/caravel/verilog/gl/gpio_defaults_block.v
-/home/passant/caravel/verilog/gl/spare_logic_block.v
-/home/passant/caravel/verilog/gl/mprj2_logic_high.v
-/home/passant/caravel/verilog/gl/mgmt_protect_hv.v
-/home/passant/caravel/verilog/gl/gpio_signal_buffering.v
-/home/passant/caravel/verilog/gl/gpio_logic_high.v
-/home/passant/caravel/verilog/gl/constant_block.v
-/home/passant/caravel/verilog/gl/__user_analog_project_wrapper.v
-/home/passant/caravel/verilog/gl/mgmt_protect.v
-/home/passant/caravel/verilog/gl/xres_buf.v
-/home/passant/caravel/verilog/gl/chip_io.v
-/home/passant/caravel/verilog/gl/digital_pll.v
+/home/passant/caravel_final/verilog/gl/user_id_programming.v
+/home/passant/caravel_final/verilog/gl/gpio_control_block.v
+/home/passant/caravel_final/verilog/gl/mprj_logic_high.v
+/home/passant/caravel_final/verilog/gl/gpio_defaults_block_1803.v
+/home/passant/caravel_final/verilog/gl/housekeeping.v
+/home/passant/caravel_final/verilog/gl/caravel_clocking.v
+/home/passant/caravel_final/verilog/gl/chip_io_alt.v
+/home/passant/caravel_final/verilog/gl/gpio_defaults_block_0403.v
+/home/passant/caravel_final/verilog/gl/gpio_defaults_block_0801.v
+/home/passant/caravel_final/verilog/gl/buff_flash_clkrst.v
+/home/passant/caravel_final/verilog/gl/caravel.v
+/home/passant/caravel_final/verilog/gl/caravan-signoff.v
+/home/passant/caravel_final/verilog/gl/__user_project_wrapper.v
+/home/passant/caravel_final/verilog/gl/caravan.v
+/home/passant/caravel_final/verilog/gl/caravel-signoff.v
+/home/passant/caravel_final/verilog/gl/gpio_signal_buffering_alt.v
+/home/passant/caravel_final/verilog/gl/gpio_defaults_block.v
+/home/passant/caravel_final/verilog/gl/spare_logic_block.v
+/home/passant/caravel_final/verilog/gl/mprj2_logic_high.v
+/home/passant/caravel_final/verilog/gl/mgmt_protect_hv.v
+/home/passant/caravel_final/verilog/gl/gpio_signal_buffering.v
+/home/passant/caravel_final/verilog/gl/gpio_logic_high.v
+/home/passant/caravel_final/verilog/gl/constant_block.v
+/home/passant/caravel_final/verilog/gl/__user_analog_project_wrapper.v
+/home/passant/caravel_final/verilog/gl/mgmt_protect.v
+/home/passant/caravel_final/verilog/gl/xres_buf.v
+/home/passant/caravel_final/verilog/gl/chip_io.v
+/home/passant/caravel_final/verilog/gl/digital_pll.v
 /home/passant/caravel_mgmt_soc_litex/verilog/gl/mgmt_core_wrapper.v
 /home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM128.v
 /home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM256.v
 /home/passant/caravel_user_project/verilog/gl/user_project_wrapper.v
+/home/passant/caravel_user_project/verilog/gl/user_proj_example.v
+/home/passant/caravel_user_project/verilog/gl/user_analog_project_wrapper.v
 Information: current_design won't return any data before link (DES-071)
 Beginning read_lib...
 Using exec: /tools/snps/lc/T-2022.03-SP3/linux64/lc/bin/lc_shell_exec
-Reading '/home/passant/caravel/scripts/pt_libs/scs130hd_tt_1.80v_25C.lib' ...
+Reading '/home/passant/caravel_final/scripts/pt_libs/scs130hd_tt_1.80v_25C.lib' ...
 Warning: Line 10, No default 'normalized_driver_waveform" group defined in 'library'. (LBDB-788)
 Warning: Line 10, The 'internal_power_calculation' attribute in char_config group is required for NLPM library. 
 	No default can be applied to this attribute. (LBDB-366)
@@ -4042,7 +3896,7 @@ Warning: Line 165112, Cell 'sky130_fd_sc_hd__sedfxtp_4', The 'sky130_fd_sc_hd__s
 Technology library 'sky130_fd_sc_hd__tt_1.80v_25C' read successfully
 Beginning read_lib...
 Using exec: /tools/snps/lc/T-2022.03-SP3/linux64/lc/bin/lc_shell_exec
-Reading '/home/passant/caravel/scripts/pt_libs/scs130hvl_tt_3.3v_25C.lib' ...
+Reading '/home/passant/caravel_final/scripts/pt_libs/scs130hvl_tt_3.3v_25C.lib' ...
 Warning: Line 43, No default 'normalized_driver_waveform" group defined in 'library'. (LBDB-788)
 Warning: Line 43, The 'internal_power_calculation' attribute in char_config group is required for NLPM library. 
 	No default can be applied to this attribute. (LBDB-366)
@@ -4536,7 +4390,7 @@ Information: Line 33232, Cell 'sky130_fd_sc_hvl__sdlxtp_1', Complex function seq
 Technology library 'sky130_fd_sc_hvl__tt_3.3v_25C' read successfully
 Beginning read_lib...
 Using exec: /tools/snps/lc/T-2022.03-SP3/linux64/lc/bin/lc_shell_exec
-Reading '/home/passant/caravel/scripts/pt_libs/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib' ...
+Reading '/home/passant/caravel_final/scripts/pt_libs/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib' ...
 Warning: Line 26, No default 'normalized_driver_waveform" group defined in 'library'. (LBDB-788)
 Warning: Line 26, The 'internal_power_calculation' attribute in char_config group is required for NLPM library. 
 	No default can be applied to this attribute. (LBDB-366)
@@ -5435,62 +5289,98 @@ Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', T
 Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', The port 'AMUXBUS_B' does not have the attribute 'fall_capacitance_range' specified. The value (0.071586, 0.071586) will be assigned to the attribute. (LBDB-1054)
 Warning: Line 171, Cell 'sky130_ef_io__vssd_lvc_clamped_pad', pin 'AMUXBUS_B', The pin 'AMUXBUS_B' does not have a internal_power group. (LBDB-607)
 Technology library 'sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30' read successfully
+Beginning read_lib...
+Using exec: /tools/snps/lc/T-2022.03-SP3/linux64/lc/bin/lc_shell_exec
+Reading '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib' ...
+Information: Line 59, The 'always_on' attribute for pin group is official liberty syntax/already defined, this user define syntax is ignored. (LBDB-29)
+Warning: Line 18, Overwrite 'nom_temperature' by default 'temperature' value 25.000000 defined
+	in 'operating_conditions'.  (LBDB-750)
+Warning: Line 159, Cell 'sky130_ef_io__vddio_hvc_clamped_pad', pin 'VDDIO_PAD', The pin 'VDDIO_PAD' does not have a internal_power group. (LBDB-607)
+Warning: Line 159, Cell 'sky130_ef_io__vddio_hvc_clamped_pad', pin 'VDDIO_PAD', The 'VDDIO_PAD' pad pin is missing a 'drive_current' attribute. (LBDB-205)
+Warning: Line 168, Cell 'sky130_ef_io__vddio_hvc_clamped_pad', pin 'AMUXBUS_A', The pin 'AMUXBUS_A' does not have a internal_power group. (LBDB-607)
+Warning: Line 176, Cell 'sky130_ef_io__vddio_hvc_clamped_pad', pin 'AMUXBUS_B', The pin 'AMUXBUS_B' does not have a internal_power group. (LBDB-607)
+Technology library 'sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30' read successfully
+Beginning read_lib...
+Using exec: /tools/snps/lc/T-2022.03-SP3/linux64/lc/bin/lc_shell_exec
+Reading '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib' ...
+Information: Line 59, The 'always_on' attribute for pin group is official liberty syntax/already defined, this user define syntax is ignored. (LBDB-29)
+Warning: Line 18, Overwrite 'nom_temperature' by default 'temperature' value 25.000000 defined
+	in 'operating_conditions'.  (LBDB-750)
+Warning: Line 159, Cell 'sky130_ef_io__vssio_hvc_clamped_pad', pin 'VSSIO_PAD', The pin 'VSSIO_PAD' does not have a internal_power group. (LBDB-607)
+Warning: Line 159, Cell 'sky130_ef_io__vssio_hvc_clamped_pad', pin 'VSSIO_PAD', The 'VSSIO_PAD' pad pin is missing a 'drive_current' attribute. (LBDB-205)
+Warning: Line 168, Cell 'sky130_ef_io__vssio_hvc_clamped_pad', pin 'AMUXBUS_A', The pin 'AMUXBUS_A' does not have a internal_power group. (LBDB-607)
+Warning: Line 176, Cell 'sky130_ef_io__vssio_hvc_clamped_pad', pin 'AMUXBUS_B', The pin 'AMUXBUS_B' does not have a internal_power group. (LBDB-607)
+Technology library 'sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30' read successfully
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM128.v'
-Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hd_tt_1.80v_25C.lib'
+Loading db file '/home/passant/caravel_final/scripts/pt_libs/scs130hd_tt_1.80v_25C.lib'
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/mgmt_core_wrapper.v'
 Loading verilog file '/home/passant/caravel_mgmt_soc_litex/verilog/gl/RAM256.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/housekeeping.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/caravel.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/caravan.v'
+Loading verilog file '/home/passant/caravel_user_project/verilog/gl/user_proj_example.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/mgmt_protect.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/housekeeping.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/caravel.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/caravel-signoff.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/caravan-signoff.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/caravan.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/caravel_clocking.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/digital_pll.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/chip_io.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/chip_io_alt.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/mprj_logic_high.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_signal_buffering.v'
+Error: Expected '(' but found '['
+	at line 1986 in '/home/passant/caravel_final/verilog/gl/gpio_signal_buffering.v'. (SVR-4)
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_control_block.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_signal_buffering_alt.v'
+Error: Expected '(' but found '['
+	at line 1046 in '/home/passant/caravel_final/verilog/gl/gpio_signal_buffering_alt.v'. (SVR-4)
+Loading verilog file '/home/passant/caravel_final/verilog/gl/spare_logic_block.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/user_id_programming.v'
 Loading verilog file '/home/passant/caravel_user_project/verilog/gl/user_project_wrapper.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/caravel_clocking.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/digital_pll.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/chip_io.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/chip_io_alt.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/mprj_logic_high.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_signal_buffering.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_control_block.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_signal_buffering_alt.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/spare_logic_block.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/user_id_programming.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/buff_flash_clkrst.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_defaults_block_1803.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_defaults_block_0403.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_defaults_block_0801.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_defaults_block.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/mprj2_logic_high.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/__user_analog_project_wrapper.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/buff_flash_clkrst.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_defaults_block_1803.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_defaults_block_0403.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_defaults_block_0801.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_defaults_block.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/mprj2_logic_high.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/__user_analog_project_wrapper.v'
 Error: Expected ',' or ')' but found 'U'
-	at line 29 in '/home/passant/caravel/verilog/gl/__user_analog_project_wrapper.v'. (SVR-4)
-Loading verilog file '/home/passant/caravel/verilog/gl/__user_project_wrapper.v'
+	at line 29 in '/home/passant/caravel_final/verilog/gl/__user_analog_project_wrapper.v'. (SVR-4)
+Loading verilog file '/home/passant/caravel_final/verilog/gl/__user_project_wrapper.v'
 Error: Expected '(' but found '#'
-	at line 32 in '/home/passant/caravel/verilog/gl/__user_project_wrapper.v'. (SVR-4)
-Loading verilog file '/home/passant/caravel/verilog/gl/gpio_logic_high.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/xres_buf.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/constant_block.v'
-Loading verilog file '/home/passant/caravel/verilog/gl/mgmt_protect_hv.v'
-Loading db file '/tmp/_pt1rFoPDlL/1.db'
-Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_tt_3.3v_25C.lib'
-Loading db file '/tmp/_pt1rvlkFZa/1.db'
-Loading db file '/home/passant/caravel/scripts/pt_libs/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib'
-Loading db file '/tmp/_pt1rLl9YQQ/1.db'
+	at line 32 in '/home/passant/caravel_final/verilog/gl/__user_project_wrapper.v'. (SVR-4)
+Loading verilog file '/home/passant/caravel_final/verilog/gl/gpio_logic_high.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/xres_buf.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/constant_block.v'
+Loading verilog file '/home/passant/caravel_final/verilog/gl/mgmt_protect_hv.v'
+Loading verilog file '/home/passant/caravel_user_project/verilog/gl/user_analog_project_wrapper.v'
+Loading db file '/tmp/_pt1rJ0cr2Z/1.db'
+Loading db file '/home/passant/caravel_final/scripts/pt_libs/scs130hvl_tt_3.3v_25C.lib'
+Loading db file '/tmp/_pt1rYxogdt/1.db'
+Loading db file '/home/passant/caravel_final/scripts/pt_libs/scs130hvl_tt_3.3v_lowhv_3.3v_lv_1.8v_25C.lib'
+Loading db file '/tmp/_pt1rfGMRec/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_fd_io__top_xres4v2_tt_tt_025C_1v80_3v30.lib'
-Loading db file '/tmp/_pt1rpwytEC/1.db'
+Loading db file '/tmp/_pt1razWzZ0/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__gpiov2_pad_tt_tt_025C_1v80_3v30.lib'
-Loading db file '/tmp/_pt1rlCKcDs/1.db'
+Loading db file '/tmp/_pt1rZXlsJT/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib'
-Loading db file '/tmp/_pt1rzTGsbn/1.db'
+Loading db file '/tmp/_pt1ruk5WUQ/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vdda_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib'
-Loading db file '/tmp/_pt1rTOD3Wl/1.db'
+Loading db file '/tmp/_pt1rbBgOqS/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssa_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib'
-Loading db file '/tmp/_pt1rr4zmzo/1.db'
+Loading db file '/tmp/_pt1r8A01QX/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped3_pad_tt_025C_1v80_3v30.lib'
-Loading db file '/tmp/_pt1rbYg8Yu/1.db'
+Loading db file '/tmp/_pt1r99SCk7/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vccd_lvc_clamped3_pad_tt_025C_1v80_3v30_3v30.lib'
-Loading db file '/tmp/_pt1r5vjZeF/1.db'
+Loading db file '/tmp/_pt1rIzYDJk/1.db'
 Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssd_lvc_clamped_pad_tt_025C_1v80_3v30.lib'
-Loading db file '/tmp/_pt1rrzqCxT/1.db'
+Loading db file '/tmp/_pt1rrx6aTB/1.db'
+Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vddio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib'
+Loading db file '/tmp/_pt1rOgrdOW/1.db'
+Loading db file '/home/passant/OpenLane/pdks/sky130A/libs.ref/sky130_fd_io/lib/sky130_ef_io__vssio_hvc_clamped_pad_tt_025C_1v80_3v30_3v30.lib'
+Loading db file '/tmp/_pt1rD6Vxtl/1.db'
+Warning: Ignoring caravan in verilog file /home/passant/caravel_final/verilog/gl/caravan.v, as another module with same name is read already. (LNK-067)
+Warning: Ignoring caravel in verilog file /home/passant/caravel_final/verilog/gl/caravel-signoff.v, as another module with same name is read already. (LNK-067)
 Linking design caravel...
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
@@ -5534,18 +5424,21 @@ Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. 
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_8' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_ef_io__corner_pad' in 'caravel'. (LNK-005)
-Warning: Unable to resolve reference to 'sky130_ef_io__vssio_hvc_clamped_pad' in 'caravel'. (LNK-005)
-Warning: Unable to resolve reference to 'sky130_ef_io__vddio_hvc_clamped_pad' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hvl__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hvl__fill_2' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_2' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_ef_sc_hd__decap_12' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
+Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_2' in 'caravel'. (LNK-005)
+Warning: Unable to resolve reference to 'sky130_ef_sc_hd__decap_12' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
+Warning: Unable to resolve reference to 'sky130_ef_sc_hd__decap_12' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_2' in 'caravel'. (LNK-005)
+Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
+Warning: Unable to resolve reference to 'gpio_signal_buffering' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_ef_sc_hd__decap_12' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
@@ -5554,10 +5447,7 @@ Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_2' in 'caravel'. 
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__fill_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_fd_sc_hd__tapvpwrvgnd_1' in 'caravel'. (LNK-005)
 Warning: Unable to resolve reference to 'sky130_ef_sc_hd__decap_12' in 'caravel'. (LNK-005)
-Information: Creating black box for padframe/mgmt_vssio_hvclamp_pad[0]/sky130_ef_io__vssio_hvc_clamped_pad... (LNK-043)
-Information: Creating black box for padframe/mgmt_vddio_hvclamp_pad[0]/sky130_ef_io__vddio_hvc_clamped_pad... (LNK-043)
-Information: Creating black box for padframe/mgmt_vssio_hvclamp_pad[1]/sky130_ef_io__vssio_hvc_clamped_pad... (LNK-043)
-Information: Creating black box for padframe/mgmt_vddio_hvclamp_pad[1]/sky130_ef_io__vddio_hvc_clamped_pad... (LNK-043)
+Information: Creating black box for sigbuf/gpio_signal_buffering... (LNK-043)
 Information: Creating black box for padframe/mgmt_corner[1]/sky130_ef_io__corner_pad... (LNK-043)
 Information: Creating black box for padframe/user2_corner/sky130_ef_io__corner_pad... (LNK-043)
 Information: Creating black box for padframe/mgmt_corner[0]/sky130_ef_io__corner_pad... (LNK-043)
@@ -5654,15 +5544,20 @@ Information: Creating black box for spare_logic[0]/FILLER_10_27/sky130_fd_sc_hd_
 Information: Creating black box for spare_logic[0]/FILLER_9_69/sky130_fd_sc_hd__fill_1... (LNK-043)
 Information: Creating black box for gpio_defaults_block_26/FILLER_0_9/sky130_fd_sc_hd__fill_1... (LNK-043)
 Information: Creating black box for gpio_defaults_block_26/FILLER_0_29/sky130_fd_sc_hd__fill_1... (LNK-043)
-Removed 246313 unconnected cells and blackboxes.
-Information: Removing 28 unneeded designs..... (LNK-034)
-Information: Module 'chip_io_alt' in file '/home/passant/caravel/verilog/gl/chip_io_alt.v' is not used in the current design.  (LNK-039)
-Information: Module 'caravan' in file '/home/passant/caravel/verilog/gl/caravan.v' is not used in the current design.  (LNK-039)
-Information: Module 'gpio_signal_buffering_alt' in file '/home/passant/caravel/verilog/gl/gpio_signal_buffering_alt.v' is not used in the current design.  (LNK-039)
-Information: Module 'gpio_defaults_block' in file '/home/passant/caravel/verilog/gl/gpio_defaults_block.v' is not used in the current design.  (LNK-039)
+Information: Creating black box for gpio_defaults_block_26/FILLER_2_61/sky130_fd_sc_hd__fill_1... (LNK-043)
+Information: Creating black box for gpio_defaults_block_26/FILLER_2_27/sky130_fd_sc_hd__fill_1... (LNK-043)
+Information: Creating black box for gpio_defaults_block_26/FILLER_0_55/sky130_fd_sc_hd__fill_1... (LNK-043)
+Removed 243427 unconnected cells and blackboxes.
+Information: Removing 29 unneeded designs..... (LNK-034)
+Information: Module 'chip_io_alt' in file '/home/passant/caravel_final/verilog/gl/chip_io_alt.v' is not used in the current design.  (LNK-039)
+Information: Module 'caravan' in file '/home/passant/caravel_final/verilog/gl/caravan-signoff.v' is not used in the current design.  (LNK-039)
+Information: Module 'caravan' in file '/home/passant/caravel_final/verilog/gl/caravan.v' is not used in the current design.  (LNK-039)
+Information: Module 'caravel' in file '/home/passant/caravel_final/verilog/gl/caravel-signoff.v' is not used in the current design.  (LNK-039)
+Information: Module 'gpio_defaults_block' in file '/home/passant/caravel_final/verilog/gl/gpio_defaults_block.v' is not used in the current design.  (LNK-039)
+Information: Module 'user_analog_project_wrapper' in file '/home/passant/caravel_user_project/verilog/gl/user_analog_project_wrapper.v' is not used in the current design.  (LNK-039)
 Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
 Design 'caravel' was successfully linked.
-Information: There are 121319 leaf cells, ports, hiers and 75234 nets in the design (LNK-047)
+Information: There are 142438 leaf cells, ports, hiers and 72726 nets in the design (LNK-047)
 
 Reading SDC version 2.1...
 Warning: Creating a clock on internal pin 'housekeeping/mgmt_gpio_in[4]'. (UITE-130)
@@ -5677,8 +5572,11 @@ Warning: Creating 'clock' on a hierarchical pin 'housekeeping/serial_load'. (UIT
 [INFO]: Input transition range: 1 : 4
 [INFO]: Setting derate factor to: 3.75 %
 1
+[INFO]: Spef mapping done
 Information: Checked out license 'PrimeTime-SI' (PT-019)
-Information: Log for 'read_parasitics command' will be generated in 'parasitics_command.log'. (PARA-107)
+Information: Log for 'read_parasitics command' will be generated in '/home/passant/caravel_final/signoff/caravel/primetime-signoff/logs/caravel-max-parasitics.log'. (PARA-107)
+Error: All instance paths in the -path option should correspond to valid and same sub-design. (PARA-097)
+Information: Log for 'report_annotated_parasitics command' will be generated in '/home/passant/caravel_final/signoff/caravel/primetime-signoff/logs/caravel-max-parasitics.log'. (PARA-107)
 Information: Setting rc_cache_min_max_rise_fall_ceff to TRUE. (XTALK-015)
 Information: Building multi voltage information for entire design. (MV-022)
 Warning: Some timing arcs have been disabled for breaking timing loops or because of constant propagation. Use the 'report_disable_timing' command to get the list of these disabled timing arcs. (PTE-003)
@@ -5687,128 +5585,44 @@ Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[1], setting reso
 Warning: Conflicted logic driving pin padframe/flash_io1_pad/DM[2], setting resolved logic value 1 on pin padframe/flash_io1_pad/DM[2]. (PTE-042)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/A0 and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3945_/S and housekeeping/_3945_/A1 of cell housekeeping/_3945_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/A1 and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
-Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/S and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/A1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_066_/B1 and gpio_control_in_1[1]/_066_/A2 of cell gpio_control_in_1[1]/_066_. (PTE-060)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/A1 and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
 Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_206_/S and clock_ctrl/_206_/A0 of cell clock_ctrl/_206_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/A2 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins gpio_control_in_1[1]/_065_/B1 and gpio_control_in_1[1]/_065_/A1 of cell gpio_control_in_1[1]/_065_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/A0 and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
-Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3927_/S and housekeeping/_3927_/A1 of cell housekeeping/_3927_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/A2 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
 Warning: No clock-gating check is inferred for clock hkspi_clk at pins housekeeping/_3942_/B1 and housekeeping/_3942_/B2 of cell housekeeping/_3942_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/A1 and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
+Warning: No clock-gating check is inferred for clock clk at pins clock_ctrl/_205_/S and clock_ctrl/_205_/A0 of cell clock_ctrl/_205_. (PTE-060)
 Information: Inferring 1 clock-gating checks. (PTE-017)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1952/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1952/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1998/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1998/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2020/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2020/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2026/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2026/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2058/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2058/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2071/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2071/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2077/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2077/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2085/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout2085/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__clkinv_16) soc/_14072_/A-->Y (min rising & falling negative_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__clkinv_16) soc/_14072_/A-->Y (max rising & falling negative_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1734/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1734/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1789/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1805/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1805/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1951/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1951/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1988/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1988/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__clkinv_16) soc/_14079_/A-->Y (min rising & falling negative_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__clkinv_16) soc/_14079_/A-->Y (max rising & falling negative_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1642/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1642/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1676/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1676/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1678/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1678/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1680/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1680/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1685/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1685/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1687/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1687/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1689/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1689/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1691/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1691/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1693/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1693/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1695/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1695/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1699/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1699/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1703/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1703/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1705/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1705/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1707/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1707/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1732/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1732/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1741/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1741/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1748/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1748/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1753/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1753/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1755/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1755/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1797/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1797/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1854/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1854/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1647/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1647/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1767/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1767/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1772/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1772/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1784/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1784/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1793/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1793/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1796/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1796/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1829/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1829/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1852/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1852/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1429/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1421/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1429/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1421/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1465/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1465/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1470/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/fanout1470/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_8) soc/wire3507/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_8) soc/wire3507/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire3679/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire3679/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire3956/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire3956/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2833/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2833/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2599/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2599/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2696/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2696/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2717/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2724/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2717/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2724/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2741/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2741/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2406/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire2406/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1292/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
+Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1292/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Information: Starting crosstalk aware timing iteration 1. (XTALK-001)
 Information: Starting crosstalk aware timing iteration 2. (XTALK-001)
-Information: Number of nets evaluated in the previous iteration: 61038. (XTALK-105)
+Information: Number of nets evaluated in the previous iteration: 60254. (XTALK-105)
 ****************************************
-Report : write_sdf /home/passant/caravel/signoff/caravel/primetime-signoff/sdf/max/caravel.tt.sdf
+Report : write_sdf /home/passant/caravel_final/signoff/caravel/primetime-signoff/sdf/max/caravel.tt.sdf
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Mon Oct 31 14:51:38 2022
+Date   : Thu Nov 10 14:47:30 2022
 ****************************************
 
 Warning: Clock 'hkspi_clk'has source on hierachical pin 'housekeeping/mgmt_gpio_in[4]'. Consider moving to: gpio_control_in_1a[2]/output6/X
@@ -5818,44 +5632,24 @@ Warning: Clock 'hk_serial_clk'has source on hierachical pin 'housekeeping/serial
 Warning: Clock 'hk_serial_load'has source on hierachical pin 'housekeeping/serial_load'. Consider moving to: housekeeping/output306/X
  (MEXT-20)
 Warning: Variable si_filter_keep_all_port_aggressors is set to FALSE (MEXT-80)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/_32602_/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/input213/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (min rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
-Warning: The drive-resistance for the timing arc (sky130_fd_sc_hd__tt_1.80v_25C/sky130_fd_sc_hd__buf_12) soc/wire1964/A-->X (max rising & falling positive_unate) is much less than the network impedance to ground; PrimeTime has adjusted the drive-resistance to improve accuracy. (RC-009)
 Information: For model extraction, min_period and min_pulse_width arcs are extracted at the context slew. (MEXT-105)
-Information: Elapsed time for model extraction: 5 seconds (MEXT-096)
-Wrote the LIB file /home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.tt.lib
-Wrote model to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.tt_lib.db'
-Wrote test design to '/home/passant/caravel/signoff/caravel/primetime-signoff/lib/max/caravel.tt_test.db'
+Information: Elapsed time for model extraction: 4 seconds (MEXT-096)
+Wrote the LIB file /home/passant/caravel_final/signoff/caravel/primetime-signoff/lib/max/caravel.tt.lib
 Information: Elapsed time for lib file writing: 0 seconds (MEXT-096)
 Information: Defining new variable 'verilog'. (CMD-041)
 Suppressed Messages Summary:
 Id          Severity      Occurrences   Suppressed
 -------------------------------------------------------------------------------
-PARA-006    Error                1287         1187
-DB-1        Error                  12           12
-PARA-040    Warning            332531       332131
-RC-009      Warning               394          278
-LNK-043     Information        190992       190892
-SVR-2       Information             2            2
-Total 6 types of messages are suppressed
-Maximum memory usage for this session: 2826.76 MB
-CPU usage for this session: 220 seconds 
-Elapsed time for this session: 76 seconds
-Diagnostics summary: 224 warnings, 121 informationals
+DB-1        Error                  14           14
+PARA-040    Warning            505782       500560
+LNK-043     Information        182095       181995
+SVR-2       Information             4            4
+Total 4 types of messages are suppressed
+Maximum memory usage for this session: 3077.63 MB
+CPU usage for this session: 241 seconds 
+Elapsed time for this session: 81 seconds
+Diagnostics summary: 1 error, 129 warnings, 124 informationals
 
 Thank you for using pt_shell!
-STA run Passed!
-There are max_transition and max_capacitance violations. check report: /home/passant/caravel/signoff/caravel/primetime-signoff/reports/max/caravel.tt-all_viol.rpt
+STA run Failed!
+Reading parasitics failed. check log: /home/passant/caravel_final/signoff/caravel/primetime-signoff/logs/caravel-max-parasitics.log
