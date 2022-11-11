@@ -1,0 +1,354 @@
+CVC: Log output to /home/kanobailey/mpw-7/caravel_lvs/work/caravel.cvc.log
+CVC: Error output to /home/kanobailey/mpw-7/caravel_lvs/work/caravel.cvc.error.gz
+CVC: Debug output to /home/kanobailey/mpw-7/caravel_lvs/work/caravel.cvc.debug.gz
+CVC: Circuit Validation Check  Version 1.1.4
+CVC: Start: Fri Nov 11 03:50:54 2022
+
+Using the following parameters for CVC (Circuit Validation Check) from /home/kanobailey/mpw-7/caravel_extra_be_checks/cvc/cvcrc.sky130B
+CVC_TOP = 'caravel'
+CVC_NETLIST = '/home/kanobailey/mpw-7/caravel_lvs/work/caravel.ext/caravel.cdl.gz'
+CVC_MODE = 'caravel'
+CVC_MODEL_FILE = '/home/kanobailey/mpw-7/caravel_extra_be_checks/cvc/cvc.sky130B.models'
+CVC_POWER_FILE = '/home/kanobailey/mpw-7/caravel_lvs/work/caravel.power'
+CVC_FUSE_FILE = ''
+CVC_REPORT_FILE = '/home/kanobailey/mpw-7/caravel_lvs/work/caravel.cvc.log'
+CVC_REPORT_TITLE = 'CVC caravel'
+CVC_CIRCUIT_ERROR_LIMIT = '100'
+CVC_SEARCH_LIMIT = '100'
+CVC_LEAK_LIMIT = '0.0002'
+CVC_SOI = 'false'
+CVC_SCRC = 'false'
+CVC_VTH_GATES = 'false'
+CVC_MIN_VTH_GATES = 'false'
+CVC_IGNORE_VTH_FLOATING = 'false'
+CVC_IGNORE_NO_LEAK_FLOATING = 'false'
+CVC_LEAK_OVERVOLTAGE = 'true'
+CVC_LOGIC_DIODES = 'false'
+CVC_ANALOG_GATES = 'true'
+CVC_BACKUP_RESULTS = 'false'
+CVC_MOS_DIODE_ERROR_THRESHOLD = '0'
+CVC_SHORT_ERROR_THRESHOLD = '0'
+CVC_BIAS_ERROR_THRESHOLD = '0'
+CVC_FORWARD_ERROR_THRESHOLD = '0'
+CVC_FLOATING_ERROR_THRESHOLD = '0'
+CVC_GATE_ERROR_THRESHOLD = '0'
+CVC_LEAK?_ERROR_THRESHOLD = '0'
+CVC_EXPECTED_ERROR_THRESHOLD = '0'
+CVC_OVERVOLTAGE_ERROR_THRESHOLD = '0'
+CVC_PARALLEL_CIRCUIT_PORT_LIMIT = '0'
+CVC_CELL_ERROR_LIMIT_FILE = ''
+CVC_CELL_CHECKSUM_FILE = ''
+CVC_LARGE_CIRCUIT_SIZE = '10000000'
+CVC_NET_CHECK_FILE = ''
+CVC_MODEL_CHECK_FILE = ''
+End of parameters
+
+CVC: Reading device model settings...
+CVC: Reading power settings...
+CVC: Parsing netlist /home/kanobailey/mpw-7/caravel_lvs/work/caravel.ext/caravel.cdl.gz
+Cdl fixed data size 10363230
+Usage CDL: Time: 2  Memory: 145352  I/O: 8  Swap: 0
+CVC: Counting and linking...
+CVC: Assigning IDs ...
+Usage DB: Time: 3  Memory: 187708  I/O: 8  Swap: 0
+CVC: 282564(282564) instances, 458861(458861) nets, 1605019(1605019) devices.
+CVC: Setting models ...
+Setting model tolerances...
+CVC: Shorting switches...
+	Shorted 0 short
+	Shorted 0 sky130_fd_pr__res_generic_l1
+	Shorted 5756 sky130_fd_pr__res_generic_m1
+	Shorted 3510 sky130_fd_pr__res_generic_m2
+	Shorted 104 sky130_fd_pr__res_generic_m3
+	Shorted 44 sky130_fd_pr__res_generic_m4
+
+INFO: Short between same power definitions ignored at /Xpadframe(chip_io)/Xuser1_vssa_hvclamp_pad\[0\](sky130_ef_io__vssa_hvc_clamped_pad)/R0 net vssa1_2 <-> vssa1
+
+INFO: Short between same power definitions ignored at /Xpadframe(chip_io)/Xuser1_vdda_hvclamp_pad\[1\](sky130_ef_io__vdda_hvc_clamped_pad)/R0 net vdda1 <-> vdda1_2
+
+INFO: Short between same power definitions ignored at /Xpadframe(chip_io)/Xmgmt_vssio_hvclamp_pad\[0\](sky130_ef_io__vssio_hvc_clamped_pad)/R0 net vssio_2 <-> vssio
+
+INFO: Short between same power definitions ignored at /Xpadframe(chip_io)/Xmgmt_vddio_hvclamp_pad\[1\](sky130_ef_io__vddio_hvc_clamped_pad)/R0 net vddio <-> vddio_2
+	Shorted 18 sky130_fd_pr__res_generic_m5
+Setting instance power...
+
+ModelList> filename /home/kanobailey/mpw-7/caravel_extra_be_checks/cvc/cvc.sky130B.models
+ Model> sky130_fd_pr__cap_mim_m3_1         1 C->capacitor  Parameters>
+ Model> sky130_fd_pr__cap_mim_m3_2         1 C->capacitor  Parameters>
+ Model> sky130_fd_pr__cap_var         0 C->capacitor  Parameters>
+ Model> sky130_fd_pr__cap_var_lvt         0 C->capacitor  Parameters>
+ Model> condiode           0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pd2nw_05v5        48 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pd2nw_05v5_lvt         0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pd2nw_11v0         0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pw2nd_05v5     67567 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pw2nd_05v5_nvt         0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__diode_pw2nd_11v0         1 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__model__parasitic__diode_ps2dn         0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__model__parasitic__diode_ps2nw         0 D->diode      Parameters> Diodes> 1-2
+ Model> sky130_fd_pr__model__parasitic__diode_pw2dn         0 D->diode      Parameters> Diodes> 1-2
+ Model> nfet_01v8          0 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
+ Model> pfet_01v8_hvt         0 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_bs_flash__special_sonosfet_star         0 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__esd_nfet_g5v0d10v5        92 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__nfet_01v8    725249 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__nfet_01v8_lvt      5632 M->nmos       Parameters> Vth=0.1 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__nfet_03v3_nvt         0 M->nmos       Parameters> Vth=0.2 Vds=3.3 Vgs=3.3 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__nfet_05v0_nvt      5636 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__nfet_g5v0d10v5     32507 M->nmos       Parameters> Vth=0.2 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__pfet_01v8      1340 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_pr__pfet_01v8_hvt    722131 M->pmos       Parameters> Vth=-0.3 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_pr__pfet_01v8_lvt         0 M->pmos       Parameters> Vth=-0.1 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_pr__pfet_g5v0d10v5     30995 M->pmos       Parameters> Vth=-0.2 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_pr__special_nfet_latch         0 M->nmos       Parameters> Vth=0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 4-1 4-3
+ Model> sky130_fd_pr__special_pfet_pass         0 M->pmos       Parameters> Vth=-0.2 Vds=1.8 Vgs=1.8 R=L/W*7000 Diodes> 1-4 3-4
+ Model> sky130_fd_pr__pnp_05v5         0 Q->bipolar    Parameters>
+ Model> short              0 R->switch_on  Parameters>
+ Model> sky130_fd_pr__reram_reram_cell         0 R->resistor   Parameters> R=10
+ Model> sky130_fd_pr__res_generic_l1         0 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_m1      5756 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_m2      3510 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_m3       104 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_m4        44 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_m5        18 R->switch_on  Parameters>
+ Model> sky130_fd_pr__res_generic_nd        72 R->resistor   Parameters> R=l/w*120
+ Model> sky130_fd_pr__res_generic_nd__hv         2 R->resistor   Parameters> R=l/w*114
+ Model> sky130_fd_pr__res_generic_pd__hv         1 R->resistor   Parameters> R=l/w*191
+ Model> sky130_fd_pr__res_generic_po      4284 R->resistor   Parameters> R=l/w*48
+ Model> sky130_fd_pr__res_high_po         0 R->resistor   Parameters> R=l/w*2000
+ Model> sky130_fd_pr__res_xhigh_po        28 R->resistor   Parameters> R=l/w*2000
+ModelList> end
+
+Power List> filename /home/kanobailey/mpw-7/caravel_lvs/work/caravel.power
+ vccd power 1.8 -> 1.8 power
+ vccd1 power 1.8 -> 1.8 power
+ vccd2 power 1.8 -> 1.8 power
+ vdda power 3.3 -> 3.3 power
+ vdda1 power 3.3 -> 3.3 power
+ vdda1_2 power 3.3 -> 3.3 power
+ vdda2 power 3.3 -> 3.3 power
+ vddio power 3.3 -> 3.3 power
+ vddio_2 power 3.3 -> 3.3 power
+ vssa power 0.0 -> 0.0 power
+ vssa1 power 0.0 -> 0.0 power
+ vssa1_2 power 0.0 -> 0.0 power
+ vssa2 power 0.0 -> 0.0 power
+ vssd power 0.0 -> 0.0 power
+ vssd1 power 0.0 -> 0.0 power
+ vssd2 power 0.0 -> 0.0 power
+ vssio power 0.0 -> 0.0 power
+ vssio_2 power 0.0 -> 0.0 power
+> expected values
+> macros
+Power List> end
+
+CVC: Linking devices...
+Usage EQUIV: Time: 3  Memory: 323520  I/O: 16  Swap: 0
+Power nets 36
+Hash dump:parameter->resistance map
+Contains 79 buckets, 153 elements
+Element count 0, 7
+Element count 1, 23
+Element count 2, 24
+Element count 3, 18
+Element count 4, 7
+Unused hash: 0.09, average depth 2.57
+Hash dump:text->circuit map
+Contains 337 buckets, 459 elements
+Element count 0, 87
+Element count 1, 121
+Element count 2, 67
+Element count 3, 46
+Element count 4, 14
+Element count 5, 2
+Unused hash: 0.26, average depth 2.35
+Hash dump:string->text map
+Contains 218971 buckets, 321778 elements
+Element count 0, 50405
+Element count 1, 74007
+Element count 2, 54505
+Element count 3, 26361
+Element count 4, 9890
+Element count 5, 2894
+Element count 6, 736
+Element count 7, 154
+Element count 8, 17
+Element count 9, 2
+Unused hash: 0.23, average depth 2.47
+CVC: Shorting non conducting resistors...
+CVC: Calculating resistor voltages...
+Usage RES: Time: 3  Memory: 323520  I/O: 24  Swap: 0
+Power nets 61
+CVC: Calculating min/max voltages...
+Processing trivial nets found 160322 trivial nets
+WARNING: unknown max gate at net->device: /mprj/io_oeb[19] -> /Xgpio_control_in_2\[0\](gpio_control_block)/X_061_(sky130_fd_sc_hd__mux2_4)/MX13
+WARNING: unknown max gate at net->device: /mprj/la_data_out[25] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[25\](sky130_fd_sc_hd__nand2_2)/MX4
+WARNING: unknown max gate at net->device: /mprj/la_data_out[99] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[99\](sky130_fd_sc_hd__nand2_1)/MX1
+WARNING: unknown max gate at net->device: /mprj/wbs_dat_o[8] -> /Xmgmt_buffers(mgmt_protect)/Xuser_wb_dat_gates\[8\](sky130_fd_sc_hd__nand2_8)/MX31
+WARNING: unknown max gate at net->device: /mprj/la_data_out[18] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[18\](sky130_fd_sc_hd__nand2_4)/MX1
+WARNING: unknown min gate at net->device: /mprj/io_oeb[19] -> /Xgpio_control_in_2\[0\](gpio_control_block)/X_061_(sky130_fd_sc_hd__mux2_4)/MX5
+CVC: Ignoring invalid calculations...
+CVC:   Removed 93 calculations
+Copying master nets
+CVC: Ignoring non-conducting devices...
+CVC:   Ignored 0 devices
+Usage MIN/MAX1: Time: 6  Memory: 336712  I/O: 24  Swap: 0
+Power nets 170305
+! Checking forward bias diode errors: 
+
+! Checking nmos source/drain vs bias errors: 
+
+! Checking nmos gate vs source errors: 
+
+! Checking pmos source/drain vs bias errors: 
+
+! Checking pmos gate vs source errors: 
+
+Usage ERROR: Time: 7  Memory: 336712  I/O: 232  Swap: 0
+CVC: Propagating Simulation voltages 1...
+Usage SIM1: Time: 7  Memory: 347068  I/O: 232  Swap: 0
+Power nets 170305
+CVC: Propagating Simulation voltages 3...
+Usage SIM2: Time: 8  Memory: 351224  I/O: 232  Swap: 0
+Power nets 170305
+Added 0 latch voltages
+CVC: Calculating min/max voltages...
+Processing trivial nets found 158950 trivial nets
+WARNING: unknown max gate at net->device: /mprj/io_oeb[19] -> /Xgpio_control_in_2\[0\](gpio_control_block)/X_061_(sky130_fd_sc_hd__mux2_4)/MX13
+WARNING: unknown max gate at net->device: /mprj/la_data_out[25] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[25\](sky130_fd_sc_hd__nand2_2)/MX4
+WARNING: unknown max gate at net->device: /mprj/la_data_out[99] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[99\](sky130_fd_sc_hd__nand2_1)/MX1
+WARNING: unknown max gate at net->device: /mprj/wbs_dat_o[8] -> /Xmgmt_buffers(mgmt_protect)/Xuser_wb_dat_gates\[8\](sky130_fd_sc_hd__nand2_8)/MX31
+WARNING: unknown max gate at net->device: /mprj/la_data_out[18] -> /Xmgmt_buffers(mgmt_protect)/Xuser_to_mprj_in_gates\[18\](sky130_fd_sc_hd__nand2_4)/MX1
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[13\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[13\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_clk_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_clk_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[9\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[9\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[9\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[9\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_io0_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_io0_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[15\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[15\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[0\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[0\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[0\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[0\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[10\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[10\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[17\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[17\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[2\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[2\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[2\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[2\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[12\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[12\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[4\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[4\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[4\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[4\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[14\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[14\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_io1_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_io1_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[10\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[10\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[6\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[6\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_csb_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xflash_csb_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[6\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[6\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[16\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[16\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[12\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[12\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[8\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[8\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[8\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[8\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[18\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[18\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[14\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[14\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[16\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[16\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xgpio_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xgpio_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[1\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[1\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[1\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[1\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[11\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[11\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[18\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[18\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[3\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[3\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[3\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[3\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[13\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[13\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[5\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[5\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[5\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[5\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[15\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[15\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[11\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[11\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[7\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area1_io_pad\[7\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[7\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[7\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[17\](sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xmprj_pads.area2_io_pad\[17\](sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xclock_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX1599 expected/found 400/3300
+WARNING: Max voltage already set for (sky130_ef_io__gpiov2_pad_wrapped)/a_4771_7457# at /Xpadframe(chip_io)/Xclock_pad(sky130_ef_io__gpiov2_pad_wrapped)/MX668 expected/found 400/3300
+WARNING: unknown min gate at net->device: /mprj/io_oeb[19] -> /Xgpio_control_in_2\[0\](gpio_control_block)/X_061_(sky130_fd_sc_hd__mux2_4)/MX5
+CVC: Ignoring invalid calculations...
+CVC:   Removed 601 calculations
+Copying master nets
+CVC: Ignoring non-conducting devices...
+CVC:   Ignored 92 devices
+Usage MIN/MAX2: Time: 11  Memory: 364160  I/O: 272  Swap: 0
+Power nets 336856
+! Checking overvoltage errors
+
+! Checking nmos possible leak errors: 
+
+! Checking pmos possible leak errors: 
+
+! Checking mos floating input errors:
+
+! Checking expected values:
+
+CVC: Error Counts
+CVC: Fuse Problems:         0
+CVC: Min Voltage Conflicts: 0
+CVC: Max Voltage Conflicts: 88
+CVC: Leaks:                 4
+CVC: LDD drain->source:     0
+CVC: HI-Z Inputs:           1734
+CVC: Forward Bias Diodes:   0
+CVC: NMOS Source vs Bulk:   616
+CVC: NMOS Gate vs Source:   5633
+CVC: NMOS Possible Leaks:   0
+CVC: PMOS Source vs Bulk:   4
+CVC: PMOS Gate vs Source:   3
+CVC: PMOS Possible Leaks:   0
+CVC: Overvoltage-VBG:       0
+CVC: Overvoltage-VBS:       0
+CVC: Overvoltage-VDS:       0
+CVC: Overvoltage-VGS:       0
+CVC: Model errors:          0
+CVC: Unexpected voltage :   0
+CVC: Total:                 8082
+Usage Total: Time: 12  Memory: 364684  I/O: 376  Swap: 0
+Virtual net update/access 6796265/157650023
+CVC: Log output to /home/kanobailey/mpw-7/caravel_lvs/work/caravel.cvc.log
+CVC: End: Fri Nov 11 03:51:08 2022
+
+Runtime: 0:00:14 (hh:mm:ss)
