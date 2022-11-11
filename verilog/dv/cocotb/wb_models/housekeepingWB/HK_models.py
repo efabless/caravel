@@ -123,7 +123,7 @@ class HK_models():
 
     def _setCommand(self,bit):
         if bit not in ['0','1']: 
-            cocotb.log.warning(f"[HK_models][_setCommand] incorrect bit size bit = {bit}") 
+            cocotb.log.debug(f"[HK_models][_setCommand] incorrect bit size bit = {bit}") 
         self.command_spi[self.spi_mode[1]] = bit
         self.spi_mode[1] += 1 
         self.spi_mode[2] = 0 # stream number 
@@ -133,7 +133,7 @@ class HK_models():
 
     def _setAddress(self,bit):
         if bit not in ['0','1']: 
-            cocotb.log.warning(f"[HK_models][_setAddress] incorrect bit size bit = {bit}") 
+            cocotb.log.debug(f"[HK_models][_setAddress] incorrect bit size bit = {bit}") 
         self.address_spi[self.spi_mode[1]] = bit
         self.spi_mode[1] += 1 
         self.spi_mode[2] = 0 # stream number 
@@ -150,7 +150,7 @@ class HK_models():
 
     def _setWriteData(self,bit):
         if bit not in ['0','1']: 
-            cocotb.log.warning(f"[HK_models][_setWriteData] incorrect bit size bit = {bit}") 
+            cocotb.log.debug(f"[HK_models][_setWriteData] incorrect bit size bit = {bit}") 
         # return if write is write n-bytes command and number of bytes exceeds the required
         if self.command_spi[2:5] != ['0','0','0']:
             self.spi_mode_cov('write-n')
@@ -306,7 +306,7 @@ class HK_models():
                 if "{0:#0{1}x}".format(int(address[size-12:],2),4)  in memory:
                     cocotb.log.debug(f'[HK_models][_valid_address] base address={hex(int(base_addr,2))} key {key}')
                     return True, [key,"{0:#0{1}x}".format(int(address[size-12:],2),4)]
-        cocotb.log.warning(f"[HK_models][_valid_address] address {hex(int(address,2))} used for access housekeeping memory isn't valid")
+        cocotb.log.debug(f"[HK_models][_valid_address] address {hex(int(address,2))} used for access housekeeping memory isn't valid")
         return False, None
 
     """return false if the address isn't exist inside housekeeping if the address exist return true and the key of address in JSON file"""    
@@ -320,7 +320,7 @@ class HK_models():
                 for field in reg:
                     if field[7] == address: 
                         return True,[key,key2]
-        cocotb.log.warning(f"[HK_models][_valid_address_spi] address {hex(address)} for SPI housekeeping isn't valid")
+        cocotb.log.debug(f"[HK_models][_valid_address_spi] address {hex(address)} for SPI housekeeping isn't valid")
         return False, None
 
 

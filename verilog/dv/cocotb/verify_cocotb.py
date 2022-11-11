@@ -26,6 +26,7 @@ checkers = False
 zip_waves = True
 caravan = False 
 html_mail =f""
+tests_pass = "Pass:"
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -103,7 +104,7 @@ class RunTest:
         if self.test_name == "la":
             macroslist.append ('LA_TESTING')
         if self.test_name in ["gpio_all_o_user","gpio_all_i_user","gpio_all_i_pu_user","gpio_all_i_pd_user","gpio_all_bidir_user"]:
-            macros = 'GPIO_TESTING'
+            macroslist.append ('GPIO_TESTING')
         if self.test_name == "user_address_space":
             macroslist.remove('COCOTB_SIM') # using debug register in this test isn't needed
             macroslist.append('ADDR_SPACE_TESTING')
@@ -430,6 +431,8 @@ class RunRegression:
             self.passed_tests +=1
         elif test_run.passed == "failed":
             self.failed_tests +=1
+            global tests_pass
+            tests_pass = "Fail:"
         self.unknown_tests -=1
         self.update_reg_log()
 
@@ -447,16 +450,16 @@ class RunRegression:
         file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
         f = open(file_name, "w")
         f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
-        html_mail += f"<th>Test</th> <th>status</th> <th>duration</th> <th>p/f</th> <tr> "
+        html_mail += f"<th>Test</th> <th>duration</th> <th>status</th> <tr> "
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():
                     new_test_name= f"{sim_type}-{test}-{corner}"
                     f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
                     if status['pass'] == "passed":
-                        html_mail += f"<th>{new_test_name}</th> <th>{status['status']} </th> <th>{status['duration']}</th> <th  style='background-color:#16EC0C'> {status['pass']} </th> <tr> "
+                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#16EC0C'> {status['pass']} </th> <tr> "
                     else:
-                        html_mail += f"<th>{new_test_name}</th> <th>{status['status']} </th> <th>{status['duration']}</th> <th style='background-color:#E50E0E'> {status['pass']} </th> <tr> "
+                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#E50E0E'> {status['pass']} </th> <tr> "
         html_mail += "</table>"
 
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown  ({('%.10s' % (datetime.now() - self.total_start_time))})time consumed ")
@@ -546,16 +549,16 @@ class main():
 
 
         tag = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb/sim/{self.TAG}"
-        mail_sub = ("<!DOCTYPE html><html><head><style>table {border-collapse: collapse;width: 50%;} th, td {text-align: left;padding: 8px;} tr:nth-child(even) {background-color: #D6EEEE;}"
+        mail_sub = ("<html><head><style>table {border-collapse: collapse;width: 50%;} th, td {text-align: left;padding: 8px;} tr:nth-child(even) {background-color: #D6EEEE;}"
                     f"</style></head><body><h2>Run info:</h2> <table border=2 bgcolor=#D6EEEE> "
                     f"<th>location</th> <th><strong>{socket.gethostname()}</strong>:{tag}</th> <tr>  "
                     f"<th> caravel commit</th> <th><a href='https://github.com/efabless/caravel/commit/{caravel_commit}'>{caravel_commit}<a></th> <tr>  " 
                     f"<th>caravel_mgmt_soc_litex commit</th> <th><a href='https://github.com/efabless/caravel_mgmt_soc_litex/commit/{mgmt_commit}'>{mgmt_commit}<a></th> <tr> </table> ") 
         mail_sub += html_mail
         mail_sub += f"<p>best regards, </p></body></html>"
-        # print(mail_sub)
+        print(mail_sub)
         msg = MIMEMultipart("alternative", None, [ MIMEText(mail_sub,'html')])
-        msg['Subject'] = f'{self.TAG} run results'
+        msg['Subject'] = f'{tests_pass} {self.TAG} run results'
         msg['From'] = "verification@efabless.com"
         msg['To'] = ", ".join(mails)
         docker = False
