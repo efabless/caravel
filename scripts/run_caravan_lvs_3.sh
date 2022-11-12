@@ -88,7 +88,7 @@ EOF
 rm -f *.ext
 fi
 
-cat > netgenD.tcl << EOF
+cat > netgenE.tcl << EOF
 puts stdout "Reading netlist caravan.spice"
 set circuit1 [readnet spice $CARAVEL_ROOT/spi/lvs/caravan.spice]
 puts stdout "Reading SPICE netlists of I/O"
@@ -128,11 +128,11 @@ readnet verilog $LITEX_ROOT/verilog/gl/mgmt_core_wrapper.v \$circuit2
 puts stdout "Reading top gate-level verilog module"
 readnet verilog $CARAVEL_ROOT/verilog/gl/caravan-signoff.v \$circuit2
 
-# Cells in management core wrapper (layout) are prefixed with RL_ or KF_
+# Cells in management core wrapper (layout) are prefixed with unique 2-letter prefix
 set cells1 [cells list -all \$circuit1]
 set cells2 [cells list -all \$circuit2]
 foreach cell \$cells1 {
-    if {[regexp "\\[A-Z\\]\\[A-Z\\]_(.+)" \$cell match cellname]} {
+    if {[regexp {.._(.+)} \$cell match cellname]} {
         if {([lsearch \$cells2 \$cell] < 0) && ([lsearch \$cells2 \$cellname] >= 0) && ([lsearch \$cells1 \$cellname] < 0)} {
             equate classes "\$circuit1 \$cell" "\$circuit2 \$cellname"
             puts stdout "Matching pins of \$cell in circuit 1 and \$cellname in circuit 2"
@@ -140,7 +140,7 @@ foreach cell \$cells1 {
         }
     }
     # Ignore fill cells in standard cell sets that have two-letter prefixes.
-    if {[regexp {\\[A-Z\\]\\[A-Z\\]_sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
+    if {[regexp {.._sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
 	ignore class "\$circuit1 \$cell"
     }
 }
@@ -152,7 +152,7 @@ EOF
 
 export NETGEN_COLUMNS=90
 export MAGIC_EXT_USE_GDS=1
-netgen -batch source netgenD.tcl >& caravan_3_lvs.log
-rm netgenD.tcl
+netgen -batch source netgenE.tcl 2>&1 | tee caravan_3_lvs.log
+rm netgenE.tcl
 
 exit 0
