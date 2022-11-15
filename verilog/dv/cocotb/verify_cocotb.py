@@ -29,6 +29,7 @@ caravan = False
 html_mail =f""
 tests_pass = "Pass:"
 SEED = None
+wave_gen = True
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -145,7 +146,10 @@ class RunTest:
         
         if caravan:
             print ("Use caravan")
-            macroslist.append(f'CARAVAN')
+            macroslist.append(f'CARAVAN') 
+
+        if wave_gen:
+            macroslist.append(f'WAVE_GEN')
         
         if coverage:
             macroslist.append(f'COVERAGE')
@@ -634,6 +638,7 @@ parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the w
 parser.add_argument('-caravan',action='store_true', help='simulate caravan instead of caravel')
 parser.add_argument('-emailto','-mail', nargs='+' ,help='mails to send results to when results finish')
 parser.add_argument('-seed' ,help='run with specific seed')
+parser.add_argument('-no_wave',action='store_true', help='disable dumping waves')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -653,6 +658,9 @@ if args.caravan:
     caravan = True
 if args.seed != None: 
     SEED = args.seed
+if args.no_wave: 
+    wave_gen = False
+    
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 

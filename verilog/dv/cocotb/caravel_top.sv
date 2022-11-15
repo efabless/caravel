@@ -25,6 +25,7 @@ module caravel_top ;
 
 // parameter FILENAME = {"hex_files/",`TESTNAME,".hex"};
 parameter FILENAME={"hex_files/",`TESTNAME,".hex"};
+`ifdef WAVE_GEN 
 initial begin
 	`ifdef VCS
 		`ifdef ENABLE_SDF
@@ -38,6 +39,7 @@ initial begin
 		$dumpvars (0, caravel_top);
 	`endif
 end
+`endif // WAVE_GEN
 	`ifdef VCS
 	`ifdef ENABLE_SDF
 		`include "sdf_includes.v"
