@@ -18,6 +18,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
 import logging 
+import xml.etree.ElementTree as ET
 
 iverilog = True
 vcs = False
@@ -95,8 +96,19 @@ class RunTest:
         if (self.sim_type=="GL_SDF"):
             self.full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         os.environ["TESTFULLNAME"] = f"{self.full_test_name}"
-        if (iverilog):return self.runTest_iverilog()
-        elif(vcs): return self.runTest_vcs()
+        if (iverilog): self.runTest_iverilog()
+        elif(vcs): self.runTest_vcs()
+        self.get_seed()
+
+
+
+    def get_seed(self):
+        self.seed = "unknown"
+        seed_tree = ET.parse(f'{self.sim_path}/seed.xml')
+        root = seed_tree.getroot()
+        for property in root.iter('property'):
+            if property.attrib["name"] == "random_seed":
+                self.seed = property.attrib["value"]
 
     def caravel_macros(self,is_vcs=False):
         macroslist = ["FUNCTIONAL",f'SIM=\\\"{self.sim_type}\\\"',"USE_POWER_PINS","UNIT_DELAY=#1",f'MAIN_PATH=\\\"{self.cocotb_path}\\\"']
@@ -394,6 +406,7 @@ class RunRegression:
         self.tests[test_name][sim_type][corner]["endtime"]= "-"
         self.tests[test_name][sim_type][corner]["duration"] = "-"
         self.tests[test_name][sim_type][corner]["pass"]= "-"
+        self.tests[test_name][sim_type][corner]["seed"]= "-"
         self.unknown_tests +=1
 
     def run_regression(self):
@@ -428,12 +441,14 @@ class RunRegression:
         self.tests[test][sim_type][corner]["starttime"] = datetime.now().strftime("%H:%M:%S(%a)")
         self.tests[test][sim_type][corner]["duration"] = "-"
         self.tests[test][sim_type][corner]["status"] = "running"
+        self.tests[test][sim_type][corner]["seed"] = "-"
         self.update_reg_log()
         test_run = RunTest(test,sim_type,corner,)
         self.tests[test][sim_type][corner]["status"] = "done"
         self.tests[test][sim_type][corner]["endtime"] = datetime.now().strftime("%H:%M:%S(%a)")
         self.tests[test][sim_type][corner]["duration"] = ("%.10s" % (datetime.now() - start_time))
         self.tests[test][sim_type][corner]["pass"]= test_run.passed
+        self.tests[test][sim_type][corner]["seed"]= test_run.seed
         if test_run.passed == "passed":
             self.passed_tests +=1
         elif test_run.passed == "failed":
@@ -456,17 +471,17 @@ class RunRegression:
         html_mail =f"<h2>Tests Table:</h2><table border=2 bgcolor=#D6EEEE>"
         file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
         f = open(file_name, "w")
-        f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<5}\n")
-        html_mail += f"<th>Test</th> <th>duration</th> <th>status</th> <tr> "
+        f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<8} {'seed':<10} \n")
+        html_mail += f"<th>Test</th> <th>duration</th> <th>status</th> <th>seed</th> <tr> "
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():
                     new_test_name= f"{sim_type}-{test}-{corner}"
-                    f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<5}\n")
+                    f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<8} {status['seed']:<10}\n")
                     if status['pass'] == "passed":
-                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#16EC0C'> {status['pass']} </th> <tr> "
+                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#16EC0C'> {status['pass']} </th><th>{status['seed']}</th><tr>"
                     else:
-                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#E50E0E'> {status['pass']} </th> <tr> "
+                        html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#E50E0E'> {status['pass']} </th><th>{status['seed']}</th><tr>"
         html_mail += "</table>"
 
         f.write(f"\n\nTotal: ({self.passed_tests})passed ({self.failed_tests})failed ({self.unknown_tests})unknown  ({('%.10s' % (datetime.now() - self.total_start_time))})time consumed ")
