@@ -20,6 +20,7 @@ set ::env(DESIGN_NAME) gpio_signal_buffering
 set ::env(VERILOG_FILES) "\
 	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v
 	$::env(DESIGN_DIR)/../../verilog/rtl/gpio_signal_buffering.v"
+set ::env(VERILOG_FILES_BLACKBOX) "$::env(DESIGN_DIR)/sky130_ef_sc_hd__decap_12-stub.v"
 
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 set ::env(SYNTH_DEFINES) "USE_POWER_PINS"
