@@ -52,7 +52,7 @@ class GPIO_models():
         self.shift_array = deque([0]*13,  maxlen=13)
         self.gpio_configuration = deque(defaults,  maxlen=13)
         cocotb.log.debug(f"[GPIO_models][default_model][{self.name}] default value = {self.gpio_configuration}")
-        # self.gpio_config_cov(self.gpio_configuration)
+        self.gpio_config_cov(["0","0","0","0"]) # buffer value to initalize the coverages
         # sys.exit()
 
     def pad_in_model(self,trans):

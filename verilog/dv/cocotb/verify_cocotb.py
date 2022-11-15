@@ -91,6 +91,7 @@ class RunTest:
         
     def runTest(self):
         self.full_test_name = f"{self.sim_type}-{self.test_name}"
+        os.environ["COCOTB_RESULTS_FILE"] = f"{self.sim_path}/seed.xml"
         if (self.sim_type=="GL_SDF"):
             self.full_test_name =  f"{self.sim_type}-{self.test_name}-{self.corner}"
         os.environ["TESTFULLNAME"] = f"{self.full_test_name}"
@@ -155,7 +156,8 @@ class RunTest:
         PDK_ROOT = os.getenv('PDK_ROOT')
         PDK = os.getenv('PDK')
         TESTFULLNAME = os.getenv('TESTFULLNAME')
-        env_vars = f"-e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
+        COCOTB_RESULTS_FILE = os.getenv('COCOTB_RESULTS_FILE')
+        env_vars = f"-e COCOTB_RESULTS_FILE={COCOTB_RESULTS_FILE} -e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
         if(self.sim_type=="RTL"): 
             includes = f" -f {VERILOG_PATH}/includes/includes.rtl.caravel"
         elif(self.sim_type=="GL"): 
@@ -169,7 +171,7 @@ class RunTest:
         iverilog_command = (f"iverilog -Ttyp {self.caravel_macros()} {includes}  -o {self.sim_path}/sim.vvp"
                             f" {user_project}  caravel_top.sv"
                             f" && TESTCASE={self.test_name} MODULE=caravel_tests vvp -M $(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus {self.sim_path}/sim.vvp")
-        docker_command = f"docker run -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {iverilog_command}' >> {self.full_file}"
+        docker_command = f"docker run -u $(id -u $USER):$(id -g $USER) -it {env_vars} -v {os.getenv('CARAVEL_ROOT')}:{os.getenv('CARAVEL_ROOT')} -v {os.getenv('MCW_ROOT')}:{os.getenv('MCW_ROOT')} -v {os.getenv('PDK_ROOT')}:{os.getenv('PDK_ROOT')}   efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && {iverilog_command}' >> {self.full_file}"
         self.full_terminal = open(self.full_file, "a")
         self.full_terminal.write(f"docker command for running iverilog and cocotb:\n% ")
         self.full_terminal.write(os.path.expandvars(docker_command)+"\n")
@@ -277,7 +279,7 @@ class RunTest:
         hex_command = f"{GCC_PATH}/{GCC_PREFIX}-objcopy -O verilog {elf_out} {hex_file} "
         sed_command = f"sed -ie 's/@10/@00/g' {hex_file}"
        
-        hex_gen_state = os.system(f"docker run -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
+        hex_gen_state = os.system(f"docker run -u $(id -u $USER):$(id -g $USER) -it -v {go_up(self.cocotb_path,4)}:{go_up(self.cocotb_path,4)}  efabless/dv:latest sh -c 'cd {test_dir} && {elf_command} && {hex_command} && {sed_command} '")
         self.full_terminal.write("elf file generation command:\n% ")
         self.full_terminal.write(os.path.expandvars(elf_command)+"\n")
         self.full_terminal.write("hex file generation command:\n% ")
@@ -414,7 +416,12 @@ class RunRegression:
             if vcs:
                 self.generate_cov()
             #merge functional coverage
-            os.system(f"docker run -it -v {self.cocotb_path}:{self.cocotb_path}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && python3 scripts/merge_coverage.py -p {self.cocotb_path}/sim/{os.getenv('RUNTAG')}'")
+            merge_fun_cov_command = f"docker run -it -u $(id -u $USER):$(id -g $USER) -v {self.cocotb_path}:{self.cocotb_path}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && python3 scripts/merge_coverage.py -p {self.cocotb_path}/sim/{os.getenv('RUNTAG')}'"
+            self.full_terminal = open(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}/command.log", "a")
+            self.full_terminal.write(f"\n\ndocker command for merge functional coverage:\n% ")
+            self.full_terminal.write(os.path.expandvars(merge_fun_cov_command)+"\n")
+            self.full_terminal.close()
+            os.system(merge_fun_cov_command)
                 
     def test_run_function(self,test,sim_type,corner):
         start_time = datetime.now()
@@ -471,6 +478,7 @@ class RunRegression:
     def write_command_log(self):
         file_name=f"sim/{os.getenv('RUNTAG')}/command.log"
         f = open(file_name, "w")
+        f.write(f"command used to run this sim:\n% ")
         f.write(f"{' '.join(sys.argv)}")
         f.close()
   
@@ -556,7 +564,7 @@ class main():
                     f"<th>caravel_mgmt_soc_litex commit</th> <th><a href='https://github.com/efabless/caravel_mgmt_soc_litex/commit/{mgmt_commit}'>{mgmt_commit}<a></th> <tr> </table> ") 
         mail_sub += html_mail
         mail_sub += f"<p>best regards, </p></body></html>"
-        print(mail_sub)
+        # print(mail_sub)
         msg = MIMEMultipart("alternative", None, [ MIMEText(mail_sub,'html')])
         msg['Subject'] = f'{tests_pass} {self.TAG} run results'
         msg['From'] = "verification@efabless.com"
@@ -564,7 +572,7 @@ class main():
         docker = False
         if docker: 
             mail_command = f'echo "{mail_sub}" | mail -a "Content-type: text/html;" -s "{msg["Subject"]}" {mails[0]}'
-            docker_command = f"docker run -it efabless/dv:mail sh -c '{mail_command}'"
+            docker_command = f"docker run -it -u $(id -u $USER):$(id -g $USER) efabless/dv:mail sh -c '{mail_command}'"
             print(docker_command)
             os.system(docker_command)
         else:

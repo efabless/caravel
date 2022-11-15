@@ -75,7 +75,7 @@ def repot_test(func):
         ## call test 
         await func(*args, **kwargs)
         if Macros['COVERAGE'] or Macros['CHECKERS']:
-            coverage_db.export_to_xml(filename=f"sim/{RUNTAG}/{TESTFULLNAME}/coverage.xml")
+            coverage_db.export_to_yaml(filename=f"sim/{RUNTAG}/{TESTFULLNAME}/coverage.ylm")
         ## report after finish simulation
         msg = f'with ({cocotb.log.critical.counter})criticals ({cocotb.log.error.counter})errors ({cocotb.log.warning.counter})warnings '
         if cocotb.log.error.counter > 0 or cocotb.log.critical.counter >0:
