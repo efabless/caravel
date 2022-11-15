@@ -30,6 +30,7 @@ html_mail =f""
 tests_pass = "Pass:"
 SEED = None
 wave_gen = True
+sdf_setup = False
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -150,6 +151,9 @@ class RunTest:
 
         if wave_gen:
             macroslist.append(f'WAVE_GEN')
+
+        if sdf_setup:
+            macroslist.append(f'MAX_SDF')
         
         if coverage:
             macroslist.append(f'COVERAGE')
@@ -639,6 +643,7 @@ parser.add_argument('-caravan',action='store_true', help='simulate caravan inste
 parser.add_argument('-emailto','-mail', nargs='+' ,help='mails to send results to when results finish')
 parser.add_argument('-seed' ,help='run with specific seed')
 parser.add_argument('-no_wave',action='store_true', help='disable dumping waves')
+parser.add_argument('-sdf_setup',action='store_true', help='targeting setup violations by taking the sdf mamximum values')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -660,6 +665,8 @@ if args.seed != None:
     SEED = args.seed
 if args.no_wave: 
     wave_gen = False
+if args.sdf_setup: 
+    sdf_setup = True
     
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
