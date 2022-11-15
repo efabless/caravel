@@ -28,6 +28,7 @@ zip_waves = True
 caravan = False 
 html_mail =f""
 tests_pass = "Pass:"
+SEED = None
 def go_up(path, n):
     for i in range(n):
         path = os.path.dirname(path)
@@ -70,6 +71,7 @@ class RunTest:
         self.test_name = test_name
         self.sim_type  = sim
         self.corner  = corner
+        self.tag = os.getenv('RUNTAG')
         self.create_log_file()
         self.hex_generate()
         self.runTest()
@@ -77,13 +79,13 @@ class RunTest:
     # create and open full terminal log to be able to use it before run the test
     def create_log_file(self):
         self.cd_cocotb()
-        os.chdir(f"sim/{os.getenv('RUNTAG')}")
+        os.chdir(f"sim/{self.tag}")
         test_dir = f"{self.sim_type}-{self.test_name}"
         if (self.sim_type == "GL_SDF"):
             test_dir = f'{test_dir}-{self.corner}'
         os.makedirs(f"{test_dir}",exist_ok=True)
         self.cd_cocotb()
-        self.sim_path = f"sim/{os.getenv('RUNTAG')}/{test_dir}/"
+        self.sim_path = f"sim/{self.tag}/{test_dir}/"
         terminal_log=f"{self.sim_path}/fullTerminal.log"
         test_log=f"{self.sim_path}/{self.test_name}.log"
         self.test_log=open(test_log, "w")
@@ -99,7 +101,7 @@ class RunTest:
         if (iverilog): self.runTest_iverilog()
         elif(vcs): self.runTest_vcs()
         self.get_seed()
-
+        self.set_rerun_script()
 
 
     def get_seed(self):
@@ -109,6 +111,20 @@ class RunTest:
         for property in root.iter('property'):
             if property.attrib["name"] == "random_seed":
                 self.seed = property.attrib["value"]
+
+    def set_rerun_script(self):
+        command = f"python3 verify_cocotb.py -t {self.test_name} -sim {self.sim_type} -corner {self.corner} -keep_pass_unzip -tag {self.tag}/{self.full_test_name}/rerun -seed {self.seed}"
+        if vcs : command +=" -v "
+        if coverage: command += " -cov "
+        if checkers: command += " -checkers_en "
+        if caravan: command += " -caravan "
+        shutil.copyfile(f'{self.cocotb_path}/scripts/rerun_script_tamplate.py', f"{self.sim_path}/rerun.py")
+        change_str(str="replace by test command",new_str=f"{command}",file_path=f"{self.sim_path}/rerun.py")
+        change_str(str="replace by cocotb path",new_str=f"{self.cocotb_path}",file_path=f"{self.sim_path}/rerun.py")
+        change_str(str="replace by mgmt Root",new_str=f"{os.getenv('MCW_ROOT')}",file_path=f"{self.sim_path}/rerun.py")
+        change_str(str="replace by caravel Root",new_str=f"{os.getenv('CARAVEL_ROOT')}",file_path=f"{self.sim_path}/rerun.py")
+        change_str(str="replace by orignal rerun script",new_str=f"{self.sim_path}/rerun.py",file_path=f"{self.sim_path}/rerun.py")
+        change_str(str="replace by new rerun script",new_str=f"{self.sim_path}rerun/{self.full_test_name}/rerun.py",file_path=f"{self.sim_path}/rerun.py")
 
     def caravel_macros(self,is_vcs=False):
         macroslist = ["FUNCTIONAL",f'SIM=\\\"{self.sim_type}\\\"',"USE_POWER_PINS","UNIT_DELAY=#1",f'MAIN_PATH=\\\"{self.cocotb_path}\\\"']
@@ -163,13 +179,15 @@ class RunTest:
         CARAVEL_PATH = os.getenv('CARAVEL_PATH')
         USER_PROJECT_VERILOG  = os.getenv('USER_PROJECT_VERILOG')
         FIRMWARE_PATH = os.getenv('FIRMWARE_PATH')
-        RUNTAG = os.getenv('RUNTAG')
+        RUNTAG = self.tag
         ERRORMAX = os.getenv('ERRORMAX')
         PDK_ROOT = os.getenv('PDK_ROOT')
         PDK = os.getenv('PDK')
         TESTFULLNAME = os.getenv('TESTFULLNAME')
         COCOTB_RESULTS_FILE = os.getenv('COCOTB_RESULTS_FILE')
         env_vars = f"-e COCOTB_RESULTS_FILE={COCOTB_RESULTS_FILE} -e {CARAVEL_ROOT} -e CARAVEL_VERILOG_PATH={CARAVEL_VERILOG_PATH} -e MCW_ROOT={MCW_ROOT} -e VERILOG_PATH={VERILOG_PATH} -e CARAVEL_PATH={CARAVEL_PATH} -e USER_PROJECT_VERILOG={USER_PROJECT_VERILOG} -e FIRMWARE_PATH={FIRMWARE_PATH} -e RUNTAG={RUNTAG} -e ERRORMAX={ERRORMAX} -e PDK_ROOT={PDK_ROOT} -e PDK={PDK} -e TESTFULLNAME={TESTFULLNAME}"
+        if SEED != None:
+            env_vars += f" -e RANDOM_SEED={SEED} "
         if(self.sim_type=="RTL"): 
             includes = f" -f {VERILOG_PATH}/includes/includes.rtl.caravel"
         elif(self.sim_type=="GL"): 
@@ -335,6 +353,7 @@ class RunRegression:
         self.testlist_arg = testlist
         self.corners = corner
         self.total_start_time = datetime.now()
+        self.tag = os.getenv('RUNTAG')
         if type_arg is None:
             type_arg = "RTL"
         self.type_arg = type_arg
@@ -378,20 +397,20 @@ class RunRegression:
                                 if sim_type =="GL_SDF": 
                                     for corner in self.corners: 
                                         self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
-                                else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
+                                else: self.add_new_test(test_name=test,sim_type = sim_type,corner = self.corners[0])
                         else:
                             if sim_type =="GL_SDF": 
                                 for corner in self.corners: 
                                     self.add_new_test(test_name=test,sim_type = sim_type, corner = corner)
-                            else: self.add_new_test(test_name=test,sim_type = sim_type,corner = "-")
+                            else: self.add_new_test(test_name=test,sim_type = sim_type,corner = self.corners[0])
 
             else:
                 if self.test_arg in self.tests_json:
                     if isinstance(self.type_arg,list):
                         for sim_type in self.type_arg:
-                            self.add_new_test(test_name=self.test_arg,sim_type = sim_type)
+                            self.add_new_test(test_name=self.test_arg,sim_type = sim_type,corner = self.corners[0])
                     else:
-                        self.add_new_test(test_name=self.test_arg,sim_type = self.type_arg)
+                        self.add_new_test(test_name=self.test_arg,sim_type = self.type_arg,corner = self.corners[0])
         # testlist TODO: add logic for test list
         if self.testlist_arg is not None:
             print(f'fatal: code for test list isnt added yet')
@@ -429,8 +448,8 @@ class RunRegression:
             if vcs:
                 self.generate_cov()
             #merge functional coverage
-            merge_fun_cov_command = f"docker run -it -u $(id -u $USER):$(id -g $USER) -v {self.cocotb_path}:{self.cocotb_path}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && python3 scripts/merge_coverage.py -p {self.cocotb_path}/sim/{os.getenv('RUNTAG')}'"
-            self.full_terminal = open(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}/command.log", "a")
+            merge_fun_cov_command = f"docker run -it -u $(id -u $USER):$(id -g $USER) -v {self.cocotb_path}:{self.cocotb_path}  efabless/dv:cocotb sh -c 'cd {self.cocotb_path} && python3 scripts/merge_coverage.py -p {self.cocotb_path}/sim/{self.tag}'"
+            self.full_terminal = open(f"{self.cocotb_path}/sim/{self.tag}/command.log", "a")
             self.full_terminal.write(f"\n\ndocker command for merge functional coverage:\n% ")
             self.full_terminal.write(os.path.expandvars(merge_fun_cov_command)+"\n")
             self.full_terminal.close()
@@ -460,7 +479,7 @@ class RunRegression:
 
 
     def generate_cov(self):
-        os.chdir(f"{self.cocotb_path}/sim/{os.getenv('RUNTAG')}")
+        os.chdir(f"{self.cocotb_path}/sim/{self.tag}")
         os.system(f"urg -dir RTL*/*.vdb -format both -show tests -report coverageRTL/")
         # os.system(f"urg -dir GL*/*.vdb -format both -show tests -report coverageGL/")
         # os.system(f"urg -dir SDF*/*.vdb -format both -show tests -report coverageSDF/")
@@ -469,7 +488,7 @@ class RunRegression:
     def update_reg_log(self):
         global html_mail
         html_mail =f"<h2>Tests Table:</h2><table border=2 bgcolor=#D6EEEE>"
-        file_name=f"sim/{os.getenv('RUNTAG')}/runs.log"
+        file_name=f"sim/{self.tag}/runs.log"
         f = open(file_name, "w")
         f.write(f"{'Test':<33} {'status':<10} {'start':<15} {'end':<15} {'duration':<13} {'p/f':<8} {'seed':<10} \n")
         html_mail += f"<th>Test</th> <th>duration</th> <th>status</th> <th>seed</th> <tr> "
@@ -491,14 +510,14 @@ class RunRegression:
         f.close()
     
     def write_command_log(self):
-        file_name=f"sim/{os.getenv('RUNTAG')}/command.log"
+        file_name=f"sim/{self.tag}/command.log"
         f = open(file_name, "w")
         f.write(f"command used to run this sim:\n% ")
         f.write(f"{' '.join(sys.argv)}")
         f.close()
   
     def write_git_log(self):
-        file_name=f"sim/{os.getenv('RUNTAG')}/git_show.log"
+        file_name=f"sim/{self.tag}/git_show.log"
         f = open(file_name, "w")
         # status, output = commands.getstatusoutput("git show")
         f.write( f"Repo: {run('basename -s .git `git config --get remote.origin.url`', stdout=PIPE, stderr=PIPE, universal_newlines=True, shell=True).stdout}")
@@ -555,6 +574,8 @@ class main():
         os.environ["FIRMWARE_PATH"] = f"{os.getenv('MCW_ROOT')}/verilog/dv/firmware"
         os.environ["RUNTAG"] = f"{self.TAG}"
         os.environ["ERRORMAX"] = f"{self.maxerr}"
+        if SEED != None:
+            os.environ["RANDOM_SEED"] = f"{SEED}"
     
     def send_mail(self,mails):
         #get commits 
@@ -612,6 +633,7 @@ parser.add_argument('-corner','-c', nargs='+' ,help='Corner type in case of GL_S
 parser.add_argument('-keep_pass_unzip',action='store_true', help='Normally the waves and logs of passed tests would be zipped. Using this option they wouldn\'t be zipped')
 parser.add_argument('-caravan',action='store_true', help='simulate caravan instead of caravel')
 parser.add_argument('-emailto','-mail', nargs='+' ,help='mails to send results to when results finish')
+parser.add_argument('-seed' ,help='run with specific seed')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -629,6 +651,8 @@ if args.keep_pass_unzip:
     zip_waves = False
 if args.caravan: 
     caravan = True
+if args.seed != None: 
+    SEED = args.seed
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 
