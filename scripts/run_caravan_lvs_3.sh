@@ -132,15 +132,18 @@ readnet verilog $CARAVEL_ROOT/verilog/gl/caravan-signoff.v \$circuit2
 set cells1 [cells list -all \$circuit1]
 set cells2 [cells list -all \$circuit2]
 foreach cell \$cells1 {
-    if {[regexp {.._(.+)} \$cell match cellname]} {
-        if {([lsearch \$cells2 \$cell] < 0) && ([lsearch \$cells2 \$cellname] >= 0) && ([lsearch \$cells1 \$cellname] < 0)} {
+    if {[regexp {[A-Z][A-Z0-9]_(.+)} \$cell match cellname]} {
+        if {([lsearch \$cells2 \$cell] < 0) && ([lsearch \$cells2 \$cellname] >= 0)} { 
             equate classes "\$circuit1 \$cell" "\$circuit2 \$cellname"
-            puts stdout "Matching pins of \$cell in circuit 1 and \$cellname in circuit 2"
-            equate pins "\$circuit1 \$cell" "\$circuit2 \$cellname"
+            puts stdout "Matching cells \$cell in circuit 1 and \$cellname in circuit 2"
+	    if ([lsearch \$cells1 \$cellname] >= 0)} {
+                equate classes "\$circuit1 \$cellname" "\$circuit2 \$cellname"
+                puts stdout "Matching cells \$cellname in circuit 1 and \$cellname in circuit 2"
+	    }
         }
     }
     # Ignore fill cells in standard cell sets that have two-letter prefixes.
-    if {[regexp {.._sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
+    if {[regexp {[A-Z][A-Z0-9]_sky130_fd_sc_[^_]+__fill_[[:digit:]]+} \$cell match]} {
 	ignore class "\$circuit1 \$cell"
     }
 }
