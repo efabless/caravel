@@ -474,4 +474,13 @@ module gpio_signal_buffering (
     assign buf_in[195] = buf_out[194];
     assign mgmt_io_oeb_buf[2] = buf_out[195];
 
+  sky130_ef_sc_hd__decap_12 sigbuf_decaps [100:0] (
+	`ifdef USE_POWER_PINS
+	    .VPWR(vccd),
+	    .VGND(vssd),
+	    .VPB(vccd),
+	    .VNB(vssd)
+	`endif
+  );
+
 endmodule

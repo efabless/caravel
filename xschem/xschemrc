@@ -31,14 +31,9 @@ set XSCHEM_LIBRARY_PATH {}
 append XSCHEM_LIBRARY_PATH ${XSCHEM_SHAREDIR}/xschem_library
 #### include skywater libraries. Here i use [pwd]. This works if i start xschem from here.
 append XSCHEM_LIBRARY_PATH :$env(PWD)
-append XSCHEM_LIBRARY_PATH :/usr/share/pdk/$env(PDK)/libs.tech/xschem
-# append XSCHEM_LIBRARY_PATH :/mnt/sda7/home/schippes/pdks/$env(PDK)/libs.tech/xschem
+# append XSCHEM_LIBRARY_PATH :/mnt/sda7/home/schippes/pdks/sky130A/libs.tech/xschem
 #### add ~/.xschem/xschem_library (USER_CONF_DIR is normally ~/.xschem)
 append XSCHEM_LIBRARY_PATH :$USER_CONF_DIR/xschem_library 
-
-if {[catch {set PDKPATH $env(PDKPATH)}]} {
-    set PDKPATH "/usr/local/share/pdk/$env(PDK)"
-}
 
 ###########################################################################
 #### SET CUSTOM COLORS FOR XSCHEM LIBRARIES MATCHING CERTAIN PATTERNS
@@ -66,7 +61,22 @@ set XSCHEM_START_WINDOW {sky130_tests/top.sch}
 ###########################################################################
 #### If unset $USER_CONF_DIR/simulations is assumed (normally ~/.xschem/simulations) 
 # set netlist_dir $env(HOME)/.xschem/simulations
-set netlist_dir .
+
+###########################################################################
+#### NETLIST AND HIERARCHICAL PRINT EXCLUDE PATTERNS
+###########################################################################
+#### xschem_libs is a list of patterns of cells to exclude from netlisting.
+#### Matching is done as regular expression on full cell path
+#### Example:
+#### set xschem_libs { {/cmoslib/} {/analoglib/.*pass} buffer }
+#### in this case all schematic cells of directory cmoslib and cells containing
+#### /analoglib/...pass and buffer will be excluded from netlisting
+#### default value: empty
+# set xschem_libs {}
+#### noprint_libs is a list with same rules as for xschem_libs. This
+#### variable controls hierarchical print
+#### default value: empty
+# set noprint_libs {}
 
 ###########################################################################
 #### CHANGE DEFAULT [] WITH SOME OTHER CHARACTERS FOR BUSSED SIGNALS 
@@ -84,7 +94,6 @@ set netlist_dir .
 # set netlist_type spice
 
 #### Some netlisting options (these are the defaults)
-# set hspice_netlist 1
 # set verilog_2001 1
 
 #### to use a fixed line with set change_lw to 0 and set some value to line_width
@@ -112,6 +121,10 @@ set netlist_dir .
 #### if set to 1 continue drawing lines / wires after click
 #### default: 0
 # set persistent_command 1
+
+#### if set to 1 a wire is inserted when separating components that are
+#### connected by pins. Default: not enabled (0)
+# set connect_by_kissing 1
 
 #### if set to 1 automatically join/trim wires while editing
 #### this may slow down on rally big designs. Can be disabled via menu 
@@ -142,6 +155,17 @@ set netlist_dir .
 # set to_pdf ps2pdf
 set to_pdf {ps2pdf -dAutoRotatePages=/None}
 
+###########################################################################
+#### UNDO: SAVE ON DISK OR KEEP IN MEMORY
+###########################################################################
+#### Alloved: 'disk'or 'memory'. 
+#### Saving undo on disk is safer but slower on extremely big schematics.
+#### In most cases you won't notice any delay. Undo on disk allows previous
+#### state recovery in case of crashes. In-memory undo is extremely fast
+#### but should a crash occur everything is lost.
+#### It is highly recommended to keep undo on disk.
+#### Default: disk
+# set undo_type disk
 
 ###########################################################################
 #### CUSTOM GRID / SNAP VALUE SETTINGS
@@ -232,14 +256,6 @@ set to_pdf {ps2pdf -dAutoRotatePages=/None}
 # set show_infowindow 0
 
 ###########################################################################
-#### CONFIGURE COMPUTER FARM JOB REDIRECTORS FOR SIMULATIONS
-###########################################################################
-#### RTDA NC
-# set computerfarm {nc run -Il}
-#### LSF BSUB
-# set computerfarm {bsub -Is}
-
-###########################################################################
 #### TCP CONNECTION WITH GAW
 ###########################################################################
 #### set gaw address for socket connection: {host port}
@@ -258,34 +274,102 @@ set to_pdf {ps2pdf -dAutoRotatePages=/None}
 #### set bespice wave listening port; default: not enabled
 set bespice_listen_port 2022
 
-
-
-###########################################################################
-#### UTILE SPICE STIMULI DESCRIPTION LANGUAGE AND TRANSLATOR
-###########################################################################
-#### default paths are set as shown here: 
-# set utile_gui_path ${XSCHEM_SHAREDIR}/utile/utile3
-# set utile_cmd_path ${XSCHEM_SHAREDIR}/utile/utile
-
 ###########################################################################
 #### TCL FILES TO LOAD AT STARTUP
 ###########################################################################
 #### list of tcl files to preload.
 # lappend tcl_files ${XSCHEM_SHAREDIR}/change_index.tcl
 lappend tcl_files ${XSCHEM_SHAREDIR}/ngspice_backannotate.tcl
-lappend tcl_files ${PDKPATH}/libs.tech/xschem/scripts/sky130_models.tcl
+
 ###########################################################################
 #### XSCHEM TOOLBAR
 ###########################################################################
 #### default: not enabled.
-# set toolbar_visible 1
+set toolbar_visible 1
 # set toolbar_horiz   1
+
+###########################################################################
+#### TABBED WINDOWS
+###########################################################################
+# default: not enabled. Interface can be changed runtime if only one window 
+# or tab is open.
+set tabbed_interface 1
+
+###########################################################################
+#### CASE INSENSITIVE SYMBOL LOOKUP
+###########################################################################
+## this option might be useful on filesystems that are case insensitive and
+## on designs ported from windows where case of file names does not matter.
+## if this option is set symbol lookup will be case insensitive,
+## so a symbol reference 'AMPLI.SYM' will match with 'ampli.sym' or
+## Amply.sym on disk. File system must be case insensitive for this to work,
+## like FAT32 or NTFS.
+## Do not set this option if you don't know what you are doing.
+## Default: not enabled (0)
+# set case_insensitive 1
+
+###########################################################################
+#### HIDE GRAPHS IF NO SPICE DATA LOADED
+###########################################################################
+## if enabled graphs will be hidden if no data is loaded.
+## default: not enabled (0)
+# set hide_empty_graphs 0
+
+###########################################################################
+#### SHOW HIDDEN TEXTS
+###########################################################################
+## This option shows text objects even if they have attribute 'hide=true' set
+## default: 0 (not set) 
+# set show_hidden_texts 1
+
+###########################################################################
+#### LIVE BACKANNOTATION OF DATA AT CURSOR 2 (B) POSITION
+###########################################################################
+## if enabled will backannotate values in schematic at cursor 'b' position
+## in graph. Default: not enabled (0)
+# set live_cursor2_backannotate 1
 
 ###########################################################################
 #### SKYWATER PDK SPECIFIC VARIABLES
 ###########################################################################
 
-## (spice patched) skywater-pdk install
-## opencircuitdesign pdks install. You need to change these to point to your open_pdks installation
-set SKYWATER_MODELS $env(PDKPATH)/libs.tech/ngspice
-set SKYWATER_STDCELLS $env(PDKPATH)/libs.ref/sky130_fd_sc_hd/spice
+## check if env var PDK_ROOT exists, and use it for building open_pdks paths
+if { [info exists env(PDK_ROOT)] && $env(PDK_ROOT) ne {} } {
+  ## found variable, set tcl PDK_ROOT var
+  if {![file isdir $env(PDK_ROOT)]} {
+    puts stderr "Warning: PDK_ROOT environment variable is set but path not found on the system."
+  }
+  set PDK_ROOT $env(PDK_ROOT)
+} else {
+  ## not existing or empty. 
+  puts stderr "Warning: PDK_ROOT env. var. not found or empty, trying to find an open_pdks install"
+  if {[file isdir /usr/share/pdk]} {set PDK_ROOT /usr/share/pdk
+  } elseif {[file isdir /usr/local/share/pdk]} {set PDK_ROOT /usr/local/share/pdk
+  } elseif {[file isdir $env(HOME)/share/pdk]} {set PDK_ROOT $env(HOME)/share/pdk
+  } else {
+    puts stderr {No open_pdks installation found, set PDK_ROOT env. var. and restart xschem}
+  }
+}
+
+if {[info exists PDK_ROOT]} {
+  ## get process variant
+  if {[info exists env(PDK)]} {
+    set PDK $env(PDK)
+  } else {
+    set PDK sky130A
+  }
+  set SKYWATER_MODELS ${PDK_ROOT}/${PDK}/libs.tech/ngspice
+  set SKYWATER_STDCELLS ${PDK_ROOT}/${PDK}/libs.ref/sky130_fd_sc_hd/spice
+  puts stderr "open_pdks installation: using $PDK_ROOT"
+  puts stderr "SKYWATER_MODELS: $SKYWATER_MODELS"
+  puts stderr "SKYWATER_STDCELLS: $SKYWATER_STDCELLS"
+}
+
+
+# open_pdks specific:
+# Set variables after ${PDK_ROOT} is known
+# This overrides some of the variables set above.
+
+set XSCHEM_START_WINDOW ${PDK_ROOT}/${PDK}/libs.tech/xschem/sky130_tests/top.sch
+append XSCHEM_LIBRARY_PATH :${PDK_ROOT}/${PDK}/libs.tech/xschem
+

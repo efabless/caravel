@@ -53,11 +53,11 @@ def run_sta (
 
     # PrimeTime command
     PT_tcl = f"{SCRIPT_DIR}/pt_sta.tcl"
-    pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log"
+    pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log"
     os.system(pt_command)
-    # Check if there exists any violations
+    # Check if there are any violations
     sta_pass=search_viol(f"{output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-    log = open(f"{log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
+    log = open(f"{log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
     if sta_pass == "pass":
         print (f"STA run Passed!")
         log.write(f"STA run Passed!")
@@ -89,12 +89,15 @@ def run_sta (
             elif sta_pass == "viol":
                 print(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
                 log.write(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-            elif sta_pass== "no cons":
-                print(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Reading constraints SDC file failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+            elif sta_pass == "no cons":
+                print(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                log.write(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+            elif sta_pass == "spef":
+                print(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
+                log.write(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
             else:
-                print(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Linking failed. check log: {log_dir}/{design}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                print(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                log.write(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
     log.close()
 
 # Check the required env variables
@@ -134,14 +137,27 @@ def check_env_vars():
 def search_viol(
     report_path: str
 ):
+    proc_corner = report_path[-12]
+    rc_corner = os.path.basename(os.path.dirname(report_path))
+    log_path = report_path.replace(f"/reports/{rc_corner}/", "/logs/")
+    log_path = log_path.replace(f".{proc_corner}{proc_corner}-global.rpt", f"-{rc_corner}-{proc_corner}-sta.log")
+    with open(log_path, 'r') as report:
+        data = report.read()
+        if "Could not auto-link design" in data:
+            return "no link"
+        elif "Error: Errors reading SDC file:" in data:
+            return "no cons"
+    log_path = log_path.replace(f"{proc_corner}-sta", f"parasitics")
+    with open(log_path, 'r') as report:
+        data = report.read()
+        if "Error: Cannot open file" in data:
+            return "spef"
     with open(report_path, 'r') as report:
         data = report.read()
-        if "Setup violations" in data:
-            return "setup"
-        elif "Hold violations" in data:
+        if "Hold violations" in data:
             return "hold"
-        elif "Could not auto-link design" in data:
-            return "no link"
+        elif "Setup violations" in data:
+            return "setup"
     report_path = report_path.replace("global", "all_viol")
     with open(report_path, 'r') as report:
         data = report.read()
@@ -153,11 +169,6 @@ def search_viol(
             return "max_cap"
         elif "VIOLATED" in data:
             return "viol"
-    report_path = report_path.replace("all_viol", "min_timing")
-    with open(report_path, 'r') as report:
-        data = report.read()
-        if "No constrained paths" in data:
-            return "no cons"
         else:
             return "pass"
 
@@ -180,7 +191,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-l",
         "--logs_dir",
-        help="output directory",
+        help="log directory",
         required=True
     )
     parser.add_argument(
@@ -206,7 +217,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    output = os.path.abspath(os.path.join(args.output_dir,"primetime-signoff"))
+    output = os.path.abspath(args.output_dir)
     log = os.path.abspath(args.logs_dir)
 
     try:
@@ -217,12 +228,6 @@ if __name__ == "__main__":
 
     try:
         os.makedirs(log)
-    except FileExistsError:
-        # directory already exists
-        pass
-
-    try:
-        os.makedirs(os.path.join(log,args.design))
     except FileExistsError:
         # directory already exists
         pass

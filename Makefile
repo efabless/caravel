@@ -31,12 +31,12 @@ SPLIT_FILES := $(shell find . -type f -name "*.$(ARCHIVE_EXT).00.split")
 SPLIT_FILES_SOURCES := $(basename $(basename $(basename $(SPLIT_FILES))))
 
 # Needed to uncompress the existing archives
-ARCHIVES := $(shell find . -type f -name "*.$(ARCHIVE_EXT)")
+ARCHIVES := $(shell find . -type f -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -name "*.$(ARCHIVE_EXT)")
 ARCHIVE_SOURCES := $(basename $(ARCHIVES))
 
 # Needed to compress and split files/archives that are too large
 LARGE_FILES := $(shell find ./gds -type f -name "*.gds")
-LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
+LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
 LARGE_FILES_GZ := $(addsuffix .$(ARCHIVE_EXT), $(LARGE_FILES))
 LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
@@ -44,7 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-7e
+MPW_TAG ?= mpw-7f
 
 # PDK switch varient
 export PDK?=sky130A
@@ -86,7 +86,7 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= f70d8ca46961ff92719d8870a18a076370b85f6c
-OPEN_PDKS_COMMIT ?= a56526bfe45971322526978132b059d43ddd3a02
+OPEN_PDKS_COMMIT ?= 0059588eebfc704681dc2368bd1d33d96281d10f
 # = 1.0.303
 PDK_MAGIC_COMMIT ?= 085131b090cb511d785baf52a10cf6df8a657d44
 # = 8.3.294

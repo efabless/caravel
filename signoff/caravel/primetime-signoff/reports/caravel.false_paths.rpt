@@ -2,7 +2,7 @@
 Report : exceptions
 Design : caravel
 Version: T-2022.03-SP3
-Date   : Tue Oct 18 15:49:00 2022
+Date   : Thu Nov 10 14:57:16 2022
 ****************************************
 
 Reasons :   f  invalid start points
@@ -14,6 +14,7 @@ Legend :    i  ignore clock latency in path delay
 From            Through          To               Setup      Hold       Ignored
 --------------------------------------------------------------------------------
 
+resetb          *                *                FALSE      FALSE      
 mprj_io[0]      housekeeping/mgmt_gpio_in[0]  *   FALSE      FALSE      
 mprj_io[1]      housekeeping/mgmt_gpio_in[1]  *   FALSE      FALSE      
 mprj_io[3]      housekeeping/mgmt_gpio_in[3]  *   FALSE      FALSE      
