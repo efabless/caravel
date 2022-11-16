@@ -31,11 +31,6 @@ clk = import_module(config_file).clock
 max_error = import_module(config_file).max_err
 
 async def test_configure(dut,timeout_cycles=1000000,clk=clk,timeout_precision=0.2,num_error=max_error):
-    print(clk)
-    print(clk)
-    print(clk)
-    print(clk)
-    print(clk)
     caravelEnv = caravel.Caravel_env(dut)
     Timeout(caravelEnv.clk,timeout_cycles,timeout_precision)
     if os.getenv('ERRORMAX') != 'None': 

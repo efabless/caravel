@@ -12,8 +12,8 @@ from interfaces.caravel import GPIO_MODE
 reg = Regs()
 @cocotb.test()
 @repot_test
-async def mem_dff2(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=1309819)
+async def mem_dff2_W(dut):
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=11309819)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -32,13 +32,13 @@ async def mem_dff2(dut):
             elif reg1 in fail_list:  # pass phase
                 cocotb.log.error(f"[TEST] failed access address {hex(0x00000400 + cpu.read_debug_reg2())}")     
                 break
-        await ClockCycles(caravelEnv.clk,100) 
+        await ClockCycles(caravelEnv.clk,1000) 
 
 
 @cocotb.test()
 @repot_test
-async def mem_dff(dut):
-    caravelEnv,clock = await test_configure(dut,timeout_cycles=2096205)
+async def mem_dff_W(dut):
+    caravelEnv,clock = await test_configure(dut,timeout_cycles=12096205)
     cpu = RiskV(dut)
     cpu.cpu_force_reset()
     cpu.cpu_release_reset()
@@ -55,6 +55,6 @@ async def mem_dff(dut):
             elif reg1 in fail_list:  # pass phase
                 cocotb.log.error(f"[TEST] failed access address {hex(0x00000400 + cpu.read_debug_reg2())}")     
                 break 
-        await ClockCycles(caravelEnv.clk,100) 
+        await ClockCycles(caravelEnv.clk,1000) 
     
    
