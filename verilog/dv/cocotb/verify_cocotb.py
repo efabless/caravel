@@ -539,16 +539,18 @@ class RunRegression:
         f.close()
 class main():
     def __init__(self,args) -> None:
-        self.regression = args.regression
-        self.test       = args.test
-        self.testlist   = args.testlist
-        self.sim       = args.sim
-        self.tag        = args.tag
-        self.corner        = args.corner
-        self.maxerr        = args.maxerr
+        self.regression   = args.regression
+        self.test         = args.test
+        self.testlist     = args.testlist
+        self.sim          = args.sim
+        self.tag          = args.tag
+        self.corner       = args.corner
+        self.maxerr       = args.maxerr
+        self.clk          = args.clk
         self.check_valid_args()
         self.set_tag()
         self.def_env_vars()
+        self.set_rerun_script()
         RunRegression(self.regression,self.test,self.sim,self.testlist,self.corner)
         if args.emailto is not None:
             self.send_mail(args.emailto)
@@ -584,7 +586,12 @@ class main():
         os.environ["ERRORMAX"] = f"{self.maxerr}"
         if SEED != None:
             os.environ["RANDOM_SEED"] = f"{SEED}"
-    
+    def set_rerun_script(self):
+        new_config_path = f'{os.getenv("CARAVEL_ROOT")}/verilog/dv/cocotb/sim/{self.TAG}/configs.py'
+        shutil.copyfile(f'{os.getenv("CARAVEL_ROOT")}/verilog/dv/cocotb/scripts/config_script_tamplate.py', new_config_path)
+        change_str(str="replace by clock",new_str=self.clk,file_path=new_config_path)
+        change_str(str="replace by max number of errer",new_str=self.maxerr,file_path=new_config_path)
+
     def send_mail(self,mails):
         #get commits 
         showlog = f"{os.getenv('CARAVEL_ROOT')}/verilog/dv/cocotb/sim/{self.TAG}/git_show.log"
@@ -644,6 +651,7 @@ parser.add_argument('-emailto','-mail', nargs='+' ,help='mails to send results t
 parser.add_argument('-seed' ,help='run with specific seed')
 parser.add_argument('-no_wave',action='store_true', help='disable dumping waves')
 parser.add_argument('-sdf_setup',action='store_true', help='targeting setup violations by taking the sdf mamximum values')
+parser.add_argument('-clk', help='define the clock period in ns default = 25 ns')
 args = parser.parse_args()
 if (args.vcs) : 
     iverilog = False
@@ -667,7 +675,10 @@ if args.no_wave:
     wave_gen = False
 if args.sdf_setup: 
     sdf_setup = True
-    
+if args.clk == None:
+    args.clk = "25"
+if args.maxerr == None:
+    args.maxerr ="3"
 print(f"regression:{args.regression}, test:{args.test}, testlist:{args.testlist} sim: {args.sim}")
 main(args)
 

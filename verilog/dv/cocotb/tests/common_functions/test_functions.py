@@ -17,7 +17,8 @@ import os
 from cocotb.triggers import FallingEdge,RisingEdge,ClockCycles
 from cocotb_coverage.coverage import *
 from interfaces.common import Macros
-
+from importlib import import_module
+ 
 """configure the test log file location and log verbosity 
    configure the test clock 
    configure the test timeout 
@@ -25,7 +26,16 @@ from interfaces.common import Macros
    start up the test connecting power vdd to the design then reset and disable the CSB bit 
    return the caravel environmnet with clock and start up
 """
-async def test_configure(dut,timeout_cycles=1000000,clk=25,timeout_precision=0.2,num_error=3):
+config_file = f"sim.{os.getenv('RUNTAG')}.configs"
+clk = import_module(config_file).clock
+max_error = import_module(config_file).max_err
+
+async def test_configure(dut,timeout_cycles=1000000,clk=clk,timeout_precision=0.2,num_error=max_error):
+    print(clk)
+    print(clk)
+    print(clk)
+    print(clk)
+    print(clk)
     caravelEnv = caravel.Caravel_env(dut)
     Timeout(caravelEnv.clk,timeout_cycles,timeout_precision)
     if os.getenv('ERRORMAX') != 'None': 
@@ -82,7 +92,6 @@ def repot_test(func):
             raise cocotb.result.TestComplete(f'Test failed {msg}')
         else: 
             raise cocotb.result.TestComplete(f'Test passed {msg}')
-        return retval
     return wrapper_func
 
 async def max_num_error(num_error,clk):
