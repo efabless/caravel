@@ -288,8 +288,8 @@ class RunTest:
         return (test_path)
 
     def hex_generate(self):
-        tests_use_dff2 = ["mem_dff"]
-        tests_use_dff = ["mem_dff2","debug"]
+        tests_use_dff2 = ["mem_dff_W","mem_dff_HW","mem_dff_B"]
+        tests_use_dff = ["mem_dff2_W","mem_dff2_HW","mem_dff2_B","debug"]
         #open docker 
         test_path =self.test_path()
         self.cd_make()
@@ -503,7 +503,9 @@ class RunRegression:
         for test,sim_types in self.tests.items():
             for sim_type,corners in sim_types.items():
                 for corner,status in corners.items():
-                    new_test_name= f"{sim_type}-{test}-{corner}"
+                    new_test_name= f"{sim_type}-{test}"
+                    if sim_type =="GL_SDF":
+                        new_test_name= f"{sim_type}-{test}-{corner}"
                     f.write(f"{new_test_name:<33} {status['status']:<10} {status['starttime']:<15} {status['endtime']:<15} {status['duration']:<13} {status['pass']:<8} {status['seed']:<10}\n")
                     if status['pass'] == "passed":
                         html_mail += f"<th>{new_test_name}</th><th>{status['duration']}</th> <th style='background-color:#16EC0C'> {status['pass']} </th><th>{status['seed']}</th><tr>"
