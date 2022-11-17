@@ -37,6 +37,8 @@ for test,test_elements in tests_json.items():
         tests["la"][test] = test_elements["description"]
     elif fnmatch(test,"*pll*"):
         tests["pll"][test] = test_elements["description"]
+    elif fnmatch(test,"*shifting*"):
+        tests["shifting"][test] = test_elements["description"]
     else: 
         tests["general"][test] = test_elements["description"]
 
