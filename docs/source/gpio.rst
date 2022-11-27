@@ -184,11 +184,12 @@ Base address: ``0xf0002804``
 .. note::
 
 To set managment gpio in input pull-up or pull-down state. following conditions should be satisfied 
-*  ``reg_gpio_mode0`` or ``reg_gpio_mode1`` == 1 
-*  ``reg_gpio_oe`` == 1 
-*  ``reg_gpio_ien`` == 1 
-* To use pull-up  ``reg_gpio_data_out`` == 1
-* To use pull-down  ``reg_gpio_data_out`` == 0
+
+*  ``reg_gpio_mode0 or reg_gpio_mode1 == 1``
+*  ``reg_gpio_oe == 1``
+*  ``reg_gpio_ien == 1``
+* To use pull-up  ``reg_gpio_data_out == 1``
+* To use pull-down  ``reg_gpio_data_out == 0``
 
 User project area GPIO
 ~~~~~~~~~~~~~~~~~~~~~~
