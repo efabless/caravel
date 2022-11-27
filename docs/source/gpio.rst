@@ -59,10 +59,10 @@ Register descriptions
       - GPIO output enable (`0 = output disable`, `1 = output enable`)
     * - :ref:`reg_gpio_mode1`
       - ``0xf0002800``
-      - GPIO mode1 (`0 = none`, `1 = pullup`)
+      - GPIO mode1 (`0 = dm[1:2] = 2b00`, `1 = dm[1:2] = 2b11`)
     * - :ref:`reg_gpio_mode0`
       - ``0xf0002804``
-      - GPIO mode0 (`0 = none`, `1 = pulldown`)
+      - GPIO mode0 (`0 = dm[0] = 1b0`, `1 = dm[0] = 1b1`)
 
 .. note::
 
@@ -159,7 +159,8 @@ Base address: ``0x21000008``
 
 |
 
-* writing 1 to this register while ``reg_gpio_mode0=0`` puts channel at pull-up state
+* writing 1 to this register write managment GPIO dm[1:2] = 2'd11 
+* writing 0 to this register write managment GPIO dm[1:2] = 2'd0 
 
 
 .. _reg_gpio_mode0:
@@ -177,8 +178,17 @@ Base address: ``0xf0002804``
 
 |
 
-* writing 1 to this register while ``reg_gpio_mode1=0`` puts channel at pull-down state
+* writing 1 to this register write managment GPIO dm[0] = 1'd1
+* writing 0 to this register write managment GPIO dm[0] = 1'd0 
 
+.. note::
+
+To set managment gpio in input pull-up or pull-down state. following conditions should be satisfied 
+*  ``reg_gpio_mode0`` or ``reg_gpio_mode1`` == 1 
+*  ``reg_gpio_oe`` == 1 
+*  ``reg_gpio_ien`` == 1 
+* To use pull-up  ``reg_gpio_data_out`` == 1
+* To use pull-down  ``reg_gpio_data_out`` == 0
 
 User project area GPIO
 ~~~~~~~~~~~~~~~~~~~~~~
