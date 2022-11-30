@@ -204,7 +204,7 @@ User project area GPIO
 User project area GPIO ``mprj_io[37:0]`` configure registers
 ------------------------------------------------------------
 
-Each of 38 ``mprj_io`` GPIOs has a configuration register.
+Each of 38 ``mprj_io`` GPIOs has a configuration register inside housekeeping.
 
 .. csv-table:: Base addresses for ``mprj_io`` configuration registers
     :name: reg_mprj_io_configure_addresses
@@ -214,58 +214,58 @@ Each of 38 ``mprj_io`` GPIOs has a configuration register.
 
     User project area GPIO ; Address
 
-    ``mprj_io[00]`` ; ``0x2600000c``
-    ``mprj_io[01]`` ; ``0x26000010``
-    ``mprj_io[02]`` ; ``0x26000014``
-    ``mprj_io[03]`` ; ``0x26000018``
-    ``mprj_io[04]`` ; ``0x2600001c``
-    ``mprj_io[05]`` ; ``0x26000020``
-    ``mprj_io[06]`` ; ``0x26000024``
-    ``mprj_io[07]`` ; ``0x26000028``
-    ``mprj_io[08]`` ; ``0x2600002c``
-    ``mprj_io[09]`` ; ``0x26000030``
-    ``mprj_io[10]`` ; ``0x26000034``
-    ``mprj_io[11]`` ; ``0x26000038``
-    ``mprj_io[12]`` ; ``0x2600003c``
-    ``mprj_io[13]`` ; ``0x26000040``
-    ``mprj_io[14]`` ; ``0x26000044``
-    ``mprj_io[15]`` ; ``0x26000048``
-    ``mprj_io[16]`` ; ``0x2600004c``
-    ``mprj_io[17]`` ; ``0x26000050``
-    ``mprj_io[18]`` ; ``0x26000054``
-    ``mprj_io[19]`` ; ``0x26000058``
-    ``mprj_io[20]`` ; ``0x2600005c``
-    ``mprj_io[21]`` ; ``0x26000060``
-    ``mprj_io[22]`` ; ``0x26000064``
-    ``mprj_io[23]`` ; ``0x26000068``
-    ``mprj_io[24]`` ; ``0x2600006c``
-    ``mprj_io[25]`` ; ``0x26000070``
-    ``mprj_io[26]`` ; ``0x26000074``
-    ``mprj_io[27]`` ; ``0x26000078``
-    ``mprj_io[28]`` ; ``0x2600007c``
-    ``mprj_io[29]`` ; ``0x26000080``
-    ``mprj_io[30]`` ; ``0x26000084``
-    ``mprj_io[31]`` ; ``0x26000088``
-    ``mprj_io[32]`` ; ``0x2600008c``
-    ``mprj_io[33]`` ; ``0x26000090``
-    ``mprj_io[34]`` ; ``0x26000094``
-    ``mprj_io[35]`` ; ``0x26000098``
-    ``mprj_io[36]`` ; ``0x2600009c``
-    ``mprj_io[37]`` ; ``0x260000a0``
+    ``mprj_io[00]`` ; ``0x26000024``
+    ``mprj_io[01]`` ; ``0x26000028``
+    ``mprj_io[02]`` ; ``0x2600002c``
+    ``mprj_io[03]`` ; ``0x26000030``
+    ``mprj_io[04]`` ; ``0x26000034``
+    ``mprj_io[05]`` ; ``0x26000038``
+    ``mprj_io[06]`` ; ``0x2600003c``
+    ``mprj_io[07]`` ; ``0x26000040``
+    ``mprj_io[08]`` ; ``0x26000044``
+    ``mprj_io[09]`` ; ``0x26000048``
+    ``mprj_io[10]`` ; ``0x2600004c``
+    ``mprj_io[11]`` ; ``0x26000050``
+    ``mprj_io[12]`` ; ``0x26000054``
+    ``mprj_io[13]`` ; ``0x26000058``
+    ``mprj_io[14]`` ; ``0x2600005c``
+    ``mprj_io[15]`` ; ``0x26000060``
+    ``mprj_io[16]`` ; ``0x26000064``
+    ``mprj_io[17]`` ; ``0x26000068``
+    ``mprj_io[18]`` ; ``0x2600006c``
+    ``mprj_io[19]`` ; ``0x26000070``
+    ``mprj_io[20]`` ; ``0x26000074``
+    ``mprj_io[21]`` ; ``0x26000078``
+    ``mprj_io[22]`` ; ``0x2600007c``
+    ``mprj_io[23]`` ; ``0x26000080``
+    ``mprj_io[24]`` ; ``0x26000084``
+    ``mprj_io[25]`` ; ``0x26000088``
+    ``mprj_io[26]`` ; ``0x2600008c``
+    ``mprj_io[27]`` ; ``0x26000090``
+    ``mprj_io[28]`` ; ``0x26000094``
+    ``mprj_io[29]`` ; ``0x26000098``
+    ``mprj_io[30]`` ; ``0x2600009c``
+    ``mprj_io[31]`` ; ``0x260000a0``
+    ``mprj_io[32]`` ; ``0x260000a4``
+    ``mprj_io[33]`` ; ``0x260000a8``
+    ``mprj_io[34]`` ; ``0x260000ac``
+    ``mprj_io[35]`` ; ``0x260000b0``
+    ``mprj_io[36]`` ; ``0x260000b4``
+    ``mprj_io[37]`` ; ``0x260000b8``
 
 .. wavedrom::
 
      { "reg": [
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
-         {"bits": 1, "type": 2},
+         {"name": "MGMT_EN","bits": 1, "type": 2},
+         {"name": "OEB","bits": 1, "type": 2},
+         {"name": "HLDH","bits": 1, "type": 2},
+         {"name": "INP_DIS","bits": 1, "type": 2},
+         {"name": "MOD_SEL","bits": 1, "type": 2},
+         {"name": "AN_EN","bits": 1, "type": 2},
+         {"name": "AN_SEL","bits": 1, "type": 2},
+         {"name": "AN_POL","bits": 1, "type": 2},
+         {"name": "SLOW","bits": 1, "type": 2},
+         {"name": "TRIP","bits": 1, "type": 2},
          {"name": "mode", "bits": 3, "type": 1},
          {"bits": 19, "type": 1}]
      }
@@ -274,7 +274,10 @@ Each of 38 ``mprj_io`` GPIOs has a configuration register.
 
 .. todo:: Missing default values
 
-.. todo:: Missing setting descriptions
+.. note::
+
+To configure the gpios with the values in housekeeping configuration registers, write ``1`` to ``bit 0`` of ``reg_mprj_xfer (0x26000000)``. 
+``bit 0`` will self-reset to ``0`` when configuration finished.
 
 .. list-table:: ``mprj_io[i]`` control register descriptions
     :name: reg_mprj_io_configure_description
