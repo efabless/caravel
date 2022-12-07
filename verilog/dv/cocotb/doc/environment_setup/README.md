@@ -1,7 +1,7 @@
 # Environment setup
 
 In order to run the verification simulation you need to set up the Caravel environment.
-To do so clone [Caravel](https://github.com/efabless/caravel) and [Caravel management SoC](https://github.com/efabless/caravel_mgmt_soc_litex).
+To do so, clone [Caravel](https://github.com/efabless/caravel) and the [Caravel management SoC](https://github.com/efabless/caravel_mgmt_soc_litex).
 
 ```
 mkdir caravel_verification
@@ -10,7 +10,8 @@ mkdir pdks
 git clone https://github.com/efabless/caravel
 git clone https://github.com/efabless/caravel_mgmt_soc_litex
 ```
-Once the repositories are cloned, set the environment variables:
+
+Once the repositories are cloned, set the following environment variables:
 
 ```
 export PDK_ROOT=$(pwd)/pdks
@@ -19,12 +20,12 @@ export CARAVEL_ROOT=$(pwd)/caravel
 export PDK=sky130A #or SKY130B
 ```
 
-The next step is PDK installation.
-This can be done using Makefile from the Caravel repository:
+The next step is installing the PDK.
+This can be done using the Makefile from the Caravel repository:
 
 ```
 cd caravel
 make pdk
 ```
 
-Once all the above settings are set and prerequisites in place, you can run the simulations.
+Once all the above settings are set and the prerequisites in place, you can run the simulations.
