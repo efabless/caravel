@@ -19,6 +19,8 @@ Prerequisites
 - export PDK_ROOT= \<PDK repo root\>
 - export PDK= \<PDK variant sky130A,sky130B,.... \>
 
+Refer to [environment setup guide](doc/commands_example/README.md) for more information on how to set up Caravel environment.
+
 run a test  
 =============================
 
