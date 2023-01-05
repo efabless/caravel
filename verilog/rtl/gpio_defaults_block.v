@@ -34,7 +34,6 @@ module gpio_defaults_block #(
 `endif
     output [12:0] gpio_defaults
 );
-    wire [12:0] gpio_defaults;
     wire [12:0] gpio_defaults_high;
     wire [12:0] gpio_defaults_low;
 
