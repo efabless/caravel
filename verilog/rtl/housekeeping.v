@@ -329,6 +329,7 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     `define WBBD_SETUP3	4'h7	/* Apply address and data for byte 4 of 4 */
     `define WBBD_RW3	4'h8	/* Latch data for byte 4 of 4 */
     `define WBBD_DONE	4'h9	/* Send ACK back to wishbone */
+    `define WBBD_RESET	4'ha	/* Clock once to reset the transfer bit */
 
     assign sys_select = (wb_adr_i[31:8] == SYS_BASE_ADR[31:8]);
     assign gpio_select = (wb_adr_i[31:8] == GPIO_BASE_ADR[31:8]);
@@ -646,6 +647,7 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
 	end else begin
 	    case (wbbd_state)
 		`WBBD_IDLE: begin
+		    wbbd_sck <= 1'b0;
 		    wbbd_busy <= 1'b0;
 		    if ((sys_select | gpio_select | spi_select) &&
 	    	    		 wb_cyc_i && wb_stb_i) begin
@@ -733,6 +735,13 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
 		    wbbd_busy <= 1'b1;
 		    wbbd_sck <= 1'b0;
 		    wb_ack_o <= 1'b0;	// Reset for next access
+		    wbbd_write <= 1'b0;
+		    wbbd_state <= `WBBD_RESET;
+		end
+		`WBBD_RESET: begin
+		    wbbd_busy <= 1'b1;
+		    wbbd_sck <= 1'b1;
+		    wb_ack_o <= 1'b0;
 		    wbbd_write <= 1'b0;
 		    wbbd_state <= `WBBD_IDLE;
 		end
