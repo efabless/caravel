@@ -39,17 +39,8 @@ module spare_logic_block (
 
     wire [3:0] spare_logic_nc;
 
-    wire [3:0] spare_xi;
-    wire       spare_xib;
-    wire [1:0] spare_xna;
-    wire [1:0] spare_xno;
-    wire [1:0] spare_xmx;
-    wire [1:0] spare_xfq;
-    wire [1:0] spare_xfqn;
-
     wire [26:0] spare_logic1;
     wire [26:0] spare_logic0;
-    wire [26:0] spare_xz;
 
     // Rename the logic0 outputs at the block pins.
     assign spare_xz = spare_logic0;

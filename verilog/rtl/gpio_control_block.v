@@ -77,7 +77,7 @@ module gpio_control_block #(
 
     // Serial data chain for pad configuration
     input  	 serial_data_in,
-    output 	 serial_data_out,
+    output reg   serial_data_out,
 
     // User-facing signals
     input        user_gpio_out,		// User space to pad
@@ -130,27 +130,10 @@ module gpio_control_block #(
     reg	 	gpio_ana_sel;
     reg	 	gpio_ana_pol;
 
-    /* Derived output values */
-    wire	pad_gpio_holdover;
-    wire	pad_gpio_slow_sel;
-    wire	pad_gpio_vtrip_sel;
-    wire      	pad_gpio_inenb;
-    wire       	pad_gpio_ib_mode_sel;
-    wire	pad_gpio_ana_en;
-    wire	pad_gpio_ana_sel;
-    wire	pad_gpio_ana_pol;
-    wire [2:0]  pad_gpio_dm;
-    wire        pad_gpio_outenb;
-    wire	pad_gpio_out;
-    wire	pad_gpio_in;
     wire	one_unbuf;
     wire	zero_unbuf;
-    wire	one;
-    wire	zero;
 
-    wire user_gpio_in;
     wire gpio_logic1;
-    reg serial_data_out;
 
     /* Serial shift for the above (latched) values */
     reg [PAD_CTRL_BITS-1:0] shift_register;

@@ -74,20 +74,20 @@ module housekeeping #(
     input wb_we_i,
     input wb_cyc_i,
     input wb_stb_i,
-    output wb_ack_o,
-    output [31:0] wb_dat_o,
+    output reg wb_ack_o,
+    output reg [31:0] wb_dat_o,
 
     // Primary reset
     input porb,
 
     // Clocking control parameters
-    output pll_ena,
-    output pll_dco_ena,
-    output [4:0] pll_div,
-    output [2:0] pll_sel,
-    output [2:0] pll90_sel,
-    output [25:0] pll_trim,
-    output pll_bypass,
+    output reg pll_ena,
+    output reg pll_dco_ena,
+    output reg [4:0] pll_div,
+    output reg [2:0] pll_sel,
+    output reg [2:0] pll90_sel,
+    output reg [25:0] pll_trim,
+    output reg pll_bypass,
 
     // Module enable status from SoC
     input  qspi_enabled,	// Flash SPI is in quad mode
@@ -123,7 +123,7 @@ module housekeeping #(
     output [`MPRJ_IO_PADS-1:0] mgmt_gpio_oeb,
 
     // Power control output (reserved for future use with LDOs)
-    output [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out,
+    output reg [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out,
 
     // CPU trap state status (for system monitoring)
     input trap,
@@ -187,13 +187,6 @@ module housekeeping #(
     localparam OEB = 1;		// Offset of output enable (bar) in shift register
     localparam INP_DIS = 3;	// Offset of input disable in shift register
 
-    reg [25:0] pll_trim;
-    reg [4:0] pll_div;
-    reg [2:0] pll_sel;
-    reg [2:0] pll90_sel;
-    reg pll_dco_ena;
-    reg pll_ena;
-    reg pll_bypass;
     reg reset_reg;
     reg irq_spi;
     reg serial_bb_clock;
@@ -219,25 +212,17 @@ module housekeeping #(
 
     reg [IO_CTRL_BITS-1:0] gpio_configure [`MPRJ_IO_PADS-1:0];
     reg [`MPRJ_IO_PADS-1:0] mgmt_gpio_data;
-    reg [`MPRJ_PWR_PADS-1:0] pwr_ctrl_out;
 
     /* mgmt_gpio_data_buf holds the lower bits during a back-door
      * write to GPIO data so that all 32 bits can update at once.
      */
     reg [23:0] mgmt_gpio_data_buf;
 
-    wire usr1_vcc_pwrgood;
-    wire usr2_vcc_pwrgood;
-    wire usr1_vdd_pwrgood;
-    wire usr2_vdd_pwrgood;
 
     wire [7:0] odata;
     wire [7:0] idata;
     wire [7:0] iaddr;
 
-    wire [2:0] irq;
-
-    wire trap;
     wire rdstb;
     wire wrstb;
     wire pass_thru_mgmt;		// Mode detected by housekeeping_spi
@@ -254,11 +239,6 @@ module housekeeping #(
     wire	cwstb;	// Combination of SPI write strobe and back door write strobe
     wire	csclk;	// Combination of SPI SCK and back door access trigger
 
-    wire serial_data_1;
-    wire serial_data_2;
-    wire serial_clock;
-    wire serial_resetn;
-    wire serial_load;
 
 // Output clock signals buffer wires
 wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff, pad_flash_clk_prebuff;
@@ -267,9 +247,6 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
 `ifdef USE_SRAM_RO_INTERFACE
     wire [31:0] sram_ro_data;
 `endif
-
-    // Housekeeping side 3-wire interface to GPIOs (see below)
-    wire [`MPRJ_IO_PADS-1:0] mgmt_gpio_out;
 
     // Pass-through mode handling.  Signals may only be applied when the
     // core processor is in reset.
@@ -335,8 +312,6 @@ wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_15_prebuff
     reg  	wbbd_sck;	/* wishbone access trigger (back-door clock) */
     reg  	wbbd_write;	/* wishbone write trigger (back-door strobe) */
     reg		wbbd_busy;	/* Raised during a wishbone read or write */
-    reg		wb_ack_o;	/* acknowledge signal back to wishbone bus */
-    reg [31:0]	wb_dat_o;	/* data output to wishbone bus */
 
     // This defines a state machine that accesses the SPI registers through
     // the back door wishbone interface.  The process is relatively slow

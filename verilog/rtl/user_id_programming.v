@@ -28,7 +28,6 @@ module user_id_programming #(
 `endif
     output [31:0] mask_rev
 );
-    wire [31:0] mask_rev;
     wire [31:0] user_proj_id_high;
     wire [31:0] user_proj_id_low;
 
