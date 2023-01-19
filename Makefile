@@ -46,6 +46,8 @@ MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
 MPW_TAG ?= mpw-8c
 
+PYTHON_BIN ?= python3
+
 # PDK switch varient
 export PDK?=sky130A
 
@@ -1231,7 +1233,11 @@ $(error Please install python 3.6+)
 endif
 
 install-volare:
-	python3 -m pip install --upgrade volare
+	rm -rf ./venv
+	$(PYTHON_BIN) -m venv ./venv
+	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir pip
+	touch $@
+	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir volare
 
 
 ###########################################################################
