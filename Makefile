@@ -1225,13 +1225,14 @@ endif
 
 .PHONY: pdk-with-volare
 pdk-with-volare: check-python install-volare 
-	@volare enable ${OPEN_PDKS_COMMIT}
+	./venv/bin/volare enable ${OPEN_PDKS_COMMIT}
 
 check-python:
 ifeq ($(shell which python3),)
 $(error Please install python 3.6+)
 endif
 
+.PHONY: install-volare
 install-volare:
 	rm -rf ./venv
 	$(PYTHON_BIN) -m venv ./venv
