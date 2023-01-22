@@ -1237,7 +1237,6 @@ install-volare:
 	rm -rf ./venv
 	$(PYTHON_BIN) -m venv ./venv
 	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir pip
-	touch $@
 	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir volare
 
 
