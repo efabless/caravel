@@ -21,6 +21,7 @@ module caravel_clocking(
     input VPWR,
     input VGND,
 `endif
+    input porb,		// Master (negative sense) reset from power-on-reset
     input resetb, 	// Master (negative sense) reset
     input ext_clk_sel,	// 0=use PLL clock, 1=use external (pad) clock
     input ext_clk,	// External pad (slow) clock
@@ -43,13 +44,16 @@ module caravel_clocking(
     reg	 ext_clk_syncd_pre;
     reg	 ext_clk_syncd;
 
+    wire resetb_async;
+
     assign pll_clk_sel = ~ext_clk_sel;
 
+    assign resetb_async = porb & resetb & (!ext_reset);
     // Note that this implementation does not guard against switching to
     // the PLL clock if the PLL clock is not present.
 
-    always @(posedge pll_clk or negedge resetb) begin
-	if (resetb == 1'b0) begin
+    always @(posedge pll_clk or negedge resetb_async) begin
+	if (resetb_async == 1'b0) begin
 	    use_pll_first <= 1'b0;
 	    use_pll_second <= 1'b0;
 	    ext_clk_syncd <= 1'b0;
@@ -69,7 +73,7 @@ module caravel_clocking(
 	.in(pll_clk),
 	.out(pll_clk_divided),
 	.N(sel),
-	.resetb(resetb)
+	.resetb(resetb_async)
     ); 
 
     // Secondary PLL clock divider for user space access
@@ -80,7 +84,7 @@ module caravel_clocking(
 	.in(pll_clk90),
 	.out(pll_clk90_divided),
 	.N(sel2),
-	.resetb(resetb)
+	.resetb(resetb_async)
     ); 
 
 
@@ -97,15 +101,15 @@ module caravel_clocking(
     // Staged-delay reset
     reg [2:0] reset_delay;
 
-    always @(negedge core_clk or negedge resetb) begin
-        if (resetb == 1'b0) begin
+    always @(negedge core_clk or negedge resetb_async) begin
+        if (resetb_async == 1'b0) begin
         reset_delay <= 3'b111;
         end else begin
         reset_delay <= {1'b0, reset_delay[2:1]};
         end
     end
 
-    assign resetb_sync = ~(reset_delay[0] | ext_reset);
+    assign resetb_sync = ~reset_delay[0];
 
 endmodule
 `default_nettype wire
