@@ -1413,7 +1413,7 @@ module caravel_core (
 
     // Four spare logic blocks above the processor and one per GPIO
     // control block.
-    spare_logic_block spare_logic [`NUM_SPARE_BLOCKS-1:0] (
+(* keep *) spare_logic_block spare_logic [`NUM_SPARE_BLOCKS-1:0] (
 	`ifdef USE_POWER_PINS
 		.vccd(vccd),
 		.vssd(vssd),
