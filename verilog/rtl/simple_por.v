@@ -30,25 +30,18 @@ module simple_por(
 
     wire mid;
     reg inode;
-
+    parameter PoR_DURATION = 500;
     // This is a behavioral model!  Actual circuit is a resitor dumping
     // current (slowly) from vdd3v3 onto a capacitor, and this fed into
     // two schmitt triggers for strong hysteresis/glitch tolerance.
 
     initial begin
-	inode <= 1'b0; 
+        inode = 1'bx;
+        @(posedge vdd3v3); 
+        inode = 1'b0; 
+        #PoR_DURATION;
+        inode = 1'b1; 
     end 
-
-    // Emulate current source on capacitor as a 500ns delay either up or
-    // down.  Note that this is sped way up for verilog simulation;  the
-    // actual circuit is set to a 15ms delay.
-
-    always @(posedge vdd3v3) begin
-	#500 inode <= 1'b1;
-    end
-    always @(negedge vdd3v3) begin
-	#500 inode <= 1'b0;
-    end
 
     // Instantiate two shmitt trigger buffers in series
 
