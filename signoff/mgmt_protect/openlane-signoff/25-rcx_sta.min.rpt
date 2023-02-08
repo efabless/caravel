@@ -1,0 +1,184 @@
+
+===========================================================================
+report_checks -path_delay min (Hold)
+============================================================================
+Startpoint: la_data_out_core[0] (input port clocked by v_clk)
+Endpoint: la_data_in_mprj[0] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 v input external delay
+                  0.00    0.00    1.00 v la_data_out_core[0] (in)
+     2    0.07                           la_data_out_core[0] (net)
+                  0.03    0.01    1.01 v user_to_mprj_in_gates[0]/A (sky130_fd_sc_hd__nand2_2)
+                  0.07    0.07    1.08 ^ user_to_mprj_in_gates[0]/Y (sky130_fd_sc_hd__nand2_2)
+     1    0.01                           la_data_in_mprj_bar[0] (net)
+                  0.07    0.00    1.08 ^ _147_/A (sky130_fd_sc_hd__inv_2)
+                  0.04    0.05    1.13 v _147_/Y (sky130_fd_sc_hd__inv_2)
+     1    0.01                           net591 (net)
+                  0.04    0.00    1.13 v output591/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.21    1.35 v output591/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           la_data_in_mprj[0] (net)
+                  0.14    0.00    1.35 v la_data_in_mprj[0] (out)
+                                  1.35   data arrival time
+
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                         -1.00   -1.00   output external delay
+                                 -1.00   data required time
+-----------------------------------------------------------------------------
+                                 -1.00   data required time
+                                 -1.35   data arrival time
+-----------------------------------------------------------------------------
+                                  2.35   slack (MET)
+
+
+Startpoint: la_data_out_core[6] (input port clocked by v_clk)
+Endpoint: la_data_in_mprj[6] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 v input external delay
+                  0.00    0.00    1.00 v la_data_out_core[6] (in)
+     2    0.07                           la_data_out_core[6] (net)
+                  0.01    0.01    1.01 v user_to_mprj_in_gates[6]/A (sky130_fd_sc_hd__nand2_1)
+                  0.09    0.08    1.09 ^ user_to_mprj_in_gates[6]/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.01                           la_data_in_mprj_bar[6] (net)
+                  0.09    0.00    1.09 ^ _153_/A (sky130_fd_sc_hd__inv_2)
+                  0.04    0.05    1.14 v _153_/Y (sky130_fd_sc_hd__inv_2)
+     1    0.01                           net685 (net)
+                  0.04    0.00    1.14 v output685/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.21    1.35 v output685/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           la_data_in_mprj[6] (net)
+                  0.14    0.00    1.36 v la_data_in_mprj[6] (out)
+                                  1.36   data arrival time
+
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                         -1.00   -1.00   output external delay
+                                 -1.00   data required time
+-----------------------------------------------------------------------------
+                                 -1.00   data required time
+                                 -1.36   data arrival time
+-----------------------------------------------------------------------------
+                                  2.36   slack (MET)
+
+
+Startpoint: la_data_out_core[5] (input port clocked by v_clk)
+Endpoint: la_data_in_mprj[5] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 v input external delay
+                  0.00    0.00    1.00 v la_data_out_core[5] (in)
+     2    0.08                           la_data_out_core[5] (net)
+                  0.01    0.01    1.01 v user_to_mprj_in_gates[5]/A (sky130_fd_sc_hd__nand2_1)
+                  0.09    0.08    1.08 ^ user_to_mprj_in_gates[5]/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.01                           la_data_in_mprj_bar[5] (net)
+                  0.09    0.00    1.08 ^ _152_/A (sky130_fd_sc_hd__inv_2)
+                  0.04    0.06    1.14 v _152_/Y (sky130_fd_sc_hd__inv_2)
+     1    0.01                           net674 (net)
+                  0.04    0.00    1.14 v output674/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.22    1.36 v output674/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           la_data_in_mprj[5] (net)
+                  0.14    0.00    1.36 v la_data_in_mprj[5] (out)
+                                  1.36   data arrival time
+
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                         -1.00   -1.00   output external delay
+                                 -1.00   data required time
+-----------------------------------------------------------------------------
+                                 -1.00   data required time
+                                 -1.36   data arrival time
+-----------------------------------------------------------------------------
+                                  2.36   slack (MET)
+
+
+Startpoint: la_data_out_core[4] (input port clocked by v_clk)
+Endpoint: la_data_in_mprj[4] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 v input external delay
+                  0.00    0.00    1.00 v la_data_out_core[4] (in)
+     2    0.07                           la_data_out_core[4] (net)
+                  0.02    0.01    1.01 v user_to_mprj_in_gates[4]/A (sky130_fd_sc_hd__nand2_2)
+                  0.08    0.07    1.08 ^ user_to_mprj_in_gates[4]/Y (sky130_fd_sc_hd__nand2_2)
+     1    0.01                           la_data_in_mprj_bar[4] (net)
+                  0.08    0.00    1.09 ^ _151_/A (sky130_fd_sc_hd__inv_2)
+                  0.04    0.06    1.14 v _151_/Y (sky130_fd_sc_hd__inv_2)
+     1    0.01                           net663 (net)
+                  0.04    0.00    1.14 v output663/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.22    1.36 v output663/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           la_data_in_mprj[4] (net)
+                  0.14    0.00    1.36 v la_data_in_mprj[4] (out)
+                                  1.36   data arrival time
+
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                         -1.00   -1.00   output external delay
+                                 -1.00   data required time
+-----------------------------------------------------------------------------
+                                 -1.00   data required time
+                                 -1.36   data arrival time
+-----------------------------------------------------------------------------
+                                  2.36   slack (MET)
+
+
+Startpoint: user_irq_core[0] (input port clocked by v_clk)
+Endpoint: user_irq[0] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 v input external delay
+                  0.00    0.00    1.00 v user_irq_core[0] (in)
+     2    0.02                           user_irq_core[0] (net)
+                  0.00    0.00    1.00 v user_irq_gates[0]/A (sky130_fd_sc_hd__nand2_2)
+                  0.07    0.06    1.06 ^ user_irq_gates[0]/Y (sky130_fd_sc_hd__nand2_2)
+     1    0.01                           user_irq_bar[0] (net)
+                  0.07    0.00    1.06 ^ _111_/A (sky130_fd_sc_hd__clkinv_2)
+                  0.06    0.08    1.14 v _111_/Y (sky130_fd_sc_hd__clkinv_2)
+     1    0.01                           net957 (net)
+                  0.06    0.00    1.14 v output957/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.23    1.37 v output957/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           user_irq[0] (net)
+                  0.14    0.00    1.37 v user_irq[0] (out)
+                                  1.37   data arrival time
+
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                         -1.00   -1.00   output external delay
+                                 -1.00   data required time
+-----------------------------------------------------------------------------
+                                 -1.00   data required time
+                                 -1.37   data arrival time
+-----------------------------------------------------------------------------
+                                  2.37   slack (MET)
+
+

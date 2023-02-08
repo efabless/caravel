@@ -1,0 +1,349 @@
+
+===========================================================================
+report_checks -path_delay max (Setup)
+============================================================================
+Startpoint: mprj_iena_wb (input port clocked by v_clk)
+Endpoint: mprj_dat_i_core[2] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 ^ input external delay
+                  0.00    0.00    1.00 ^ mprj_iena_wb (in)
+     2    0.01                           mprj_iena_wb (net)
+                  0.00    0.00    1.00 ^ input453/A (sky130_fd_sc_hd__buf_8)
+                  0.06    0.10    1.10 ^ input453/X (sky130_fd_sc_hd__buf_8)
+     2    0.03                           net453 (net)
+                  0.06    0.00    1.10 ^ wire1277/A (sky130_fd_sc_hd__buf_6)
+                  0.18    0.20    1.30 ^ wire1277/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net1277 (net)
+                  0.18    0.01    1.31 ^ _294_/B (sky130_fd_sc_hd__and2_4)
+                  0.06    0.19    1.50 ^ _294_/X (sky130_fd_sc_hd__and2_4)
+     1    0.02                           wb_in_enable (net)
+                  0.06    0.00    1.50 ^ wire1249/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.19    1.69 ^ wire1249/X (sky130_fd_sc_hd__buf_6)
+     2    0.08                           net1249 (net)
+                  0.17    0.01    1.71 ^ wire1248/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.24    1.95 ^ wire1248/X (sky130_fd_sc_hd__buf_8)
+    16    0.13                           net1248 (net)
+                  0.22    0.02    1.97 ^ max_cap1247/A (sky130_fd_sc_hd__buf_8)
+                  0.10    0.19    2.16 ^ max_cap1247/X (sky130_fd_sc_hd__buf_8)
+    12    0.06                           net1247 (net)
+                  0.10    0.01    2.17 ^ max_cap1246/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.33 ^ max_cap1246/X (sky130_fd_sc_hd__buf_8)
+    12    0.07                           net1246 (net)
+                  0.11    0.01    2.34 ^ wire1245/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.51 ^ wire1245/X (sky130_fd_sc_hd__buf_8)
+     5    0.07                           net1245 (net)
+                  0.11    0.00    2.51 ^ max_cap1244/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.23    2.75 ^ max_cap1244/X (sky130_fd_sc_hd__buf_8)
+     6    0.13                           net1244 (net)
+                  0.21    0.01    2.76 ^ user_wb_dat_gates[2]/B (sky130_fd_sc_hd__nand2_8)
+                  0.13    0.15    2.91 v user_wb_dat_gates[2]/Y (sky130_fd_sc_hd__nand2_8)
+     2    0.08                           mprj_dat_i_core_bar[2] (net)
+                  0.13    0.01    2.92 v wire1001/A (sky130_fd_sc_hd__buf_8)
+                  0.09    0.21    3.12 v wire1001/X (sky130_fd_sc_hd__buf_8)
+     2    0.12                           net1001 (net)
+                  0.10    0.02    3.14 v _116_/A (sky130_fd_sc_hd__clkinv_8)
+                  0.07    0.10    3.24 ^ _116_/Y (sky130_fd_sc_hd__clkinv_8)
+     2    0.06                           net903 (net)
+                  0.08    0.01    3.25 ^ wire984/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.18    3.43 ^ wire984/X (sky130_fd_sc_hd__buf_8)
+     2    0.09                           net984 (net)
+                  0.14    0.01    3.44 ^ output903/A (sky130_fd_sc_hd__buf_8)
+                  0.32    0.32    3.76 ^ output903/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           mprj_dat_i_core[2] (net)
+                  0.32    0.00    3.76 ^ mprj_dat_i_core[2] (out)
+                                  3.76   data arrival time
+
+                  0.00   10.00   10.00   clock v_clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                          0.00   10.00   clock reconvergence pessimism
+                         -1.00    9.00   output external delay
+                                  9.00   data required time
+-----------------------------------------------------------------------------
+                                  9.00   data required time
+                                 -3.76   data arrival time
+-----------------------------------------------------------------------------
+                                  5.24   slack (MET)
+
+
+Startpoint: mprj_iena_wb (input port clocked by v_clk)
+Endpoint: mprj_dat_i_core[4] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 ^ input external delay
+                  0.00    0.00    1.00 ^ mprj_iena_wb (in)
+     2    0.01                           mprj_iena_wb (net)
+                  0.00    0.00    1.00 ^ input453/A (sky130_fd_sc_hd__buf_8)
+                  0.06    0.10    1.10 ^ input453/X (sky130_fd_sc_hd__buf_8)
+     2    0.03                           net453 (net)
+                  0.06    0.00    1.10 ^ wire1277/A (sky130_fd_sc_hd__buf_6)
+                  0.18    0.20    1.30 ^ wire1277/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net1277 (net)
+                  0.18    0.01    1.31 ^ _294_/B (sky130_fd_sc_hd__and2_4)
+                  0.06    0.19    1.50 ^ _294_/X (sky130_fd_sc_hd__and2_4)
+     1    0.02                           wb_in_enable (net)
+                  0.06    0.00    1.50 ^ wire1249/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.19    1.69 ^ wire1249/X (sky130_fd_sc_hd__buf_6)
+     2    0.08                           net1249 (net)
+                  0.17    0.01    1.71 ^ wire1248/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.24    1.95 ^ wire1248/X (sky130_fd_sc_hd__buf_8)
+    16    0.13                           net1248 (net)
+                  0.22    0.02    1.97 ^ max_cap1247/A (sky130_fd_sc_hd__buf_8)
+                  0.10    0.19    2.16 ^ max_cap1247/X (sky130_fd_sc_hd__buf_8)
+    12    0.06                           net1247 (net)
+                  0.10    0.01    2.17 ^ max_cap1246/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.33 ^ max_cap1246/X (sky130_fd_sc_hd__buf_8)
+    12    0.07                           net1246 (net)
+                  0.11    0.01    2.34 ^ wire1245/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.51 ^ wire1245/X (sky130_fd_sc_hd__buf_8)
+     5    0.07                           net1245 (net)
+                  0.11    0.00    2.51 ^ max_cap1244/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.23    2.75 ^ max_cap1244/X (sky130_fd_sc_hd__buf_8)
+     6    0.13                           net1244 (net)
+                  0.21    0.01    2.75 ^ user_wb_dat_gates[4]/B (sky130_fd_sc_hd__nand2_8)
+                  0.13    0.15    2.90 v user_wb_dat_gates[4]/Y (sky130_fd_sc_hd__nand2_8)
+     2    0.08                           mprj_dat_i_core_bar[4] (net)
+                  0.13    0.01    2.91 v wire997/A (sky130_fd_sc_hd__buf_8)
+                  0.08    0.20    3.10 v wire997/X (sky130_fd_sc_hd__buf_8)
+     2    0.09                           net997 (net)
+                  0.08    0.01    3.12 v _118_/A (sky130_fd_sc_hd__clkinv_8)
+                  0.07    0.08    3.20 ^ _118_/Y (sky130_fd_sc_hd__clkinv_8)
+     2    0.05                           net907 (net)
+                  0.07    0.01    3.21 ^ wire982/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.20    3.40 ^ wire982/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net982 (net)
+                  0.18    0.02    3.42 ^ output907/A (sky130_fd_sc_hd__buf_8)
+                  0.32    0.33    3.75 ^ output907/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           mprj_dat_i_core[4] (net)
+                  0.32    0.00    3.76 ^ mprj_dat_i_core[4] (out)
+                                  3.76   data arrival time
+
+                  0.00   10.00   10.00   clock v_clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                          0.00   10.00   clock reconvergence pessimism
+                         -1.00    9.00   output external delay
+                                  9.00   data required time
+-----------------------------------------------------------------------------
+                                  9.00   data required time
+                                 -3.76   data arrival time
+-----------------------------------------------------------------------------
+                                  5.24   slack (MET)
+
+
+Startpoint: mprj_iena_wb (input port clocked by v_clk)
+Endpoint: mprj_dat_i_core[0] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 ^ input external delay
+                  0.00    0.00    1.00 ^ mprj_iena_wb (in)
+     2    0.01                           mprj_iena_wb (net)
+                  0.00    0.00    1.00 ^ input453/A (sky130_fd_sc_hd__buf_8)
+                  0.06    0.10    1.10 ^ input453/X (sky130_fd_sc_hd__buf_8)
+     2    0.03                           net453 (net)
+                  0.06    0.00    1.10 ^ wire1277/A (sky130_fd_sc_hd__buf_6)
+                  0.18    0.20    1.30 ^ wire1277/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net1277 (net)
+                  0.18    0.01    1.31 ^ _294_/B (sky130_fd_sc_hd__and2_4)
+                  0.06    0.19    1.50 ^ _294_/X (sky130_fd_sc_hd__and2_4)
+     1    0.02                           wb_in_enable (net)
+                  0.06    0.00    1.50 ^ wire1249/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.19    1.69 ^ wire1249/X (sky130_fd_sc_hd__buf_6)
+     2    0.08                           net1249 (net)
+                  0.17    0.01    1.71 ^ wire1248/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.24    1.95 ^ wire1248/X (sky130_fd_sc_hd__buf_8)
+    16    0.13                           net1248 (net)
+                  0.22    0.02    1.97 ^ max_cap1247/A (sky130_fd_sc_hd__buf_8)
+                  0.10    0.19    2.16 ^ max_cap1247/X (sky130_fd_sc_hd__buf_8)
+    12    0.06                           net1247 (net)
+                  0.10    0.01    2.17 ^ max_cap1246/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.33 ^ max_cap1246/X (sky130_fd_sc_hd__buf_8)
+    12    0.07                           net1246 (net)
+                  0.11    0.01    2.34 ^ wire1245/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.51 ^ wire1245/X (sky130_fd_sc_hd__buf_8)
+     5    0.07                           net1245 (net)
+                  0.11    0.00    2.51 ^ max_cap1244/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.23    2.75 ^ max_cap1244/X (sky130_fd_sc_hd__buf_8)
+     6    0.13                           net1244 (net)
+                  0.21    0.01    2.76 ^ user_wb_dat_gates[0]/B (sky130_fd_sc_hd__nand2_8)
+                  0.13    0.14    2.90 v user_wb_dat_gates[0]/Y (sky130_fd_sc_hd__nand2_8)
+     2    0.08                           mprj_dat_i_core_bar[0] (net)
+                  0.13    0.02    2.92 v wire1030/A (sky130_fd_sc_hd__buf_8)
+                  0.08    0.20    3.12 v wire1030/X (sky130_fd_sc_hd__buf_8)
+     2    0.11                           net1030 (net)
+                  0.10    0.03    3.15 v _114_/A (sky130_fd_sc_hd__clkinv_8)
+                  0.07    0.09    3.24 ^ _114_/Y (sky130_fd_sc_hd__clkinv_8)
+     2    0.05                           net881 (net)
+                  0.07    0.01    3.25 ^ wire986/A (sky130_fd_sc_hd__buf_6)
+                  0.14    0.18    3.42 ^ wire986/X (sky130_fd_sc_hd__buf_6)
+     2    0.07                           net986 (net)
+                  0.14    0.00    3.43 ^ output881/A (sky130_fd_sc_hd__buf_8)
+                  0.32    0.32    3.75 ^ output881/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           mprj_dat_i_core[0] (net)
+                  0.32    0.00    3.75 ^ mprj_dat_i_core[0] (out)
+                                  3.75   data arrival time
+
+                  0.00   10.00   10.00   clock v_clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                          0.00   10.00   clock reconvergence pessimism
+                         -1.00    9.00   output external delay
+                                  9.00   data required time
+-----------------------------------------------------------------------------
+                                  9.00   data required time
+                                 -3.75   data arrival time
+-----------------------------------------------------------------------------
+                                  5.25   slack (MET)
+
+
+Startpoint: mprj_iena_wb (input port clocked by v_clk)
+Endpoint: mprj_dat_i_core[3] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 ^ input external delay
+                  0.00    0.00    1.00 ^ mprj_iena_wb (in)
+     2    0.01                           mprj_iena_wb (net)
+                  0.00    0.00    1.00 ^ input453/A (sky130_fd_sc_hd__buf_8)
+                  0.06    0.10    1.10 ^ input453/X (sky130_fd_sc_hd__buf_8)
+     2    0.03                           net453 (net)
+                  0.06    0.00    1.10 ^ wire1277/A (sky130_fd_sc_hd__buf_6)
+                  0.18    0.20    1.30 ^ wire1277/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net1277 (net)
+                  0.18    0.01    1.31 ^ _294_/B (sky130_fd_sc_hd__and2_4)
+                  0.06    0.19    1.50 ^ _294_/X (sky130_fd_sc_hd__and2_4)
+     1    0.02                           wb_in_enable (net)
+                  0.06    0.00    1.50 ^ wire1249/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.19    1.69 ^ wire1249/X (sky130_fd_sc_hd__buf_6)
+     2    0.08                           net1249 (net)
+                  0.17    0.01    1.71 ^ wire1248/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.24    1.95 ^ wire1248/X (sky130_fd_sc_hd__buf_8)
+    16    0.13                           net1248 (net)
+                  0.22    0.02    1.97 ^ max_cap1247/A (sky130_fd_sc_hd__buf_8)
+                  0.10    0.19    2.16 ^ max_cap1247/X (sky130_fd_sc_hd__buf_8)
+    12    0.06                           net1247 (net)
+                  0.10    0.01    2.17 ^ max_cap1246/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.33 ^ max_cap1246/X (sky130_fd_sc_hd__buf_8)
+    12    0.07                           net1246 (net)
+                  0.11    0.01    2.34 ^ wire1245/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.51 ^ wire1245/X (sky130_fd_sc_hd__buf_8)
+     5    0.07                           net1245 (net)
+                  0.11    0.00    2.51 ^ max_cap1244/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.23    2.75 ^ max_cap1244/X (sky130_fd_sc_hd__buf_8)
+     6    0.13                           net1244 (net)
+                  0.21    0.01    2.76 ^ user_wb_dat_gates[3]/B (sky130_fd_sc_hd__nand2_8)
+                  0.13    0.15    2.91 v user_wb_dat_gates[3]/Y (sky130_fd_sc_hd__nand2_8)
+     2    0.09                           mprj_dat_i_core_bar[3] (net)
+                  0.14    0.02    2.93 v wire998/A (sky130_fd_sc_hd__buf_8)
+                  0.07    0.20    3.12 v wire998/X (sky130_fd_sc_hd__buf_8)
+     2    0.09                           net998 (net)
+                  0.08    0.02    3.14 v _117_/A (sky130_fd_sc_hd__clkinv_8)
+                  0.06    0.08    3.23 ^ _117_/Y (sky130_fd_sc_hd__clkinv_8)
+     2    0.05                           net906 (net)
+                  0.07    0.01    3.24 ^ wire983/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.17    3.41 ^ wire983/X (sky130_fd_sc_hd__buf_8)
+     2    0.08                           net983 (net)
+                  0.14    0.01    3.42 ^ output906/A (sky130_fd_sc_hd__buf_8)
+                  0.32    0.32    3.74 ^ output906/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           mprj_dat_i_core[3] (net)
+                  0.32    0.01    3.74 ^ mprj_dat_i_core[3] (out)
+                                  3.74   data arrival time
+
+                  0.00   10.00   10.00   clock v_clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                          0.00   10.00   clock reconvergence pessimism
+                         -1.00    9.00   output external delay
+                                  9.00   data required time
+-----------------------------------------------------------------------------
+                                  9.00   data required time
+                                 -3.74   data arrival time
+-----------------------------------------------------------------------------
+                                  5.26   slack (MET)
+
+
+Startpoint: mprj_iena_wb (input port clocked by v_clk)
+Endpoint: mprj_dat_i_core[1] (output port clocked by v_clk)
+Path Group: v_clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock v_clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.00    1.00 ^ input external delay
+                  0.00    0.00    1.00 ^ mprj_iena_wb (in)
+     2    0.01                           mprj_iena_wb (net)
+                  0.00    0.00    1.00 ^ input453/A (sky130_fd_sc_hd__buf_8)
+                  0.06    0.10    1.10 ^ input453/X (sky130_fd_sc_hd__buf_8)
+     2    0.03                           net453 (net)
+                  0.06    0.00    1.10 ^ wire1277/A (sky130_fd_sc_hd__buf_6)
+                  0.18    0.20    1.30 ^ wire1277/X (sky130_fd_sc_hd__buf_6)
+     2    0.09                           net1277 (net)
+                  0.18    0.01    1.31 ^ _294_/B (sky130_fd_sc_hd__and2_4)
+                  0.06    0.19    1.50 ^ _294_/X (sky130_fd_sc_hd__and2_4)
+     1    0.02                           wb_in_enable (net)
+                  0.06    0.00    1.50 ^ wire1249/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.19    1.69 ^ wire1249/X (sky130_fd_sc_hd__buf_6)
+     2    0.08                           net1249 (net)
+                  0.17    0.01    1.71 ^ wire1248/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.24    1.95 ^ wire1248/X (sky130_fd_sc_hd__buf_8)
+    16    0.13                           net1248 (net)
+                  0.22    0.02    1.97 ^ max_cap1247/A (sky130_fd_sc_hd__buf_8)
+                  0.10    0.19    2.16 ^ max_cap1247/X (sky130_fd_sc_hd__buf_8)
+    12    0.06                           net1247 (net)
+                  0.10    0.01    2.17 ^ max_cap1246/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.33 ^ max_cap1246/X (sky130_fd_sc_hd__buf_8)
+    12    0.07                           net1246 (net)
+                  0.11    0.01    2.34 ^ wire1245/A (sky130_fd_sc_hd__buf_8)
+                  0.11    0.17    2.51 ^ wire1245/X (sky130_fd_sc_hd__buf_8)
+     5    0.07                           net1245 (net)
+                  0.11    0.00    2.51 ^ max_cap1244/A (sky130_fd_sc_hd__buf_8)
+                  0.21    0.23    2.75 ^ max_cap1244/X (sky130_fd_sc_hd__buf_8)
+     6    0.13                           net1244 (net)
+                  0.21    0.01    2.76 ^ user_wb_dat_gates[1]/B (sky130_fd_sc_hd__nand2_8)
+                  0.12    0.14    2.89 v user_wb_dat_gates[1]/Y (sky130_fd_sc_hd__nand2_8)
+     2    0.08                           mprj_dat_i_core_bar[1] (net)
+                  0.13    0.02    2.91 v wire1019/A (sky130_fd_sc_hd__buf_8)
+                  0.08    0.20    3.11 v wire1019/X (sky130_fd_sc_hd__buf_8)
+     2    0.10                           net1019 (net)
+                  0.09    0.02    3.13 v _115_/A (sky130_fd_sc_hd__clkinv_8)
+                  0.07    0.09    3.22 ^ _115_/Y (sky130_fd_sc_hd__clkinv_8)
+     2    0.05                           net892 (net)
+                  0.07    0.01    3.23 ^ wire985/A (sky130_fd_sc_hd__buf_6)
+                  0.14    0.17    3.40 ^ wire985/X (sky130_fd_sc_hd__buf_6)
+     2    0.07                           net985 (net)
+                  0.14    0.01    3.41 ^ output892/A (sky130_fd_sc_hd__buf_8)
+                  0.32    0.32    3.73 ^ output892/X (sky130_fd_sc_hd__buf_8)
+     1    0.20                           mprj_dat_i_core[1] (net)
+                  0.32    0.00    3.74 ^ mprj_dat_i_core[1] (out)
+                                  3.74   data arrival time
+
+                  0.00   10.00   10.00   clock v_clk (rise edge)
+                          0.00   10.00   clock network delay (ideal)
+                          0.00   10.00   clock reconvergence pessimism
+                         -1.00    9.00   output external delay
+                                  9.00   data required time
+-----------------------------------------------------------------------------
+                                  9.00   data required time
+                                 -3.74   data arrival time
+-----------------------------------------------------------------------------
+                                  5.26   slack (MET)
+
+
