@@ -15,16 +15,18 @@
 
 ## This should be changed to point at Caravel root
 set ::env(CARAVEL_ROOT) $::env(DESIGN_DIR)/../..
-set ::env(STA_WRITE_LIB) 0
+set ::env(STA_WRITE_LIB) 1
+set ::env(DESIGN_IS_CORE) 0
 
 set ::env(DESIGN_NAME) "housekeeping"
 set ::env(ROUTING_CORES) 12
 set ::env(RUN_KLAYOUT) 0
 set ::env(PDK) "sky130A"
 
-set ::env(VERILOG_FILES) "$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-            $::env(CARAVEL_ROOT)/verilog/rtl/housekeeping.v \
-            $::env(CARAVEL_ROOT)/verilog/rtl/housekeeping_spi.v"
+set ::env(VERILOG_FILES) "\
+	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
+    $::env(DESIGN_DIR)/../../verilog/rtl/housekeeping_spi.v\
+    $::env(DESIGN_DIR)/../../verilog/rtl/housekeeping.v"
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_NET) "wb_clk_i csclk mgmt_gpio_in\[4\]"
@@ -32,11 +34,12 @@ set ::env(CLOCK_TREE_SYNTH) 1
 
 
 set ::env(BASE_SDC_FILE) [glob $::env(DESIGN_DIR)/base.sdc]
+set ::env(RCX_SDC_FILE) [glob $::env(DESIGN_DIR)/signoff.sdc]
 
 ## Synthesis 
 set ::env(NO_SYNTH_CELL_LIST) [glob $::env(DESIGN_DIR)/no_synth.list] 
 # set ::env(DRC_EXCLUDE_CELL_LIST) [glob $::env(DESIGN_DIR)/drc_exclude.list] 
-set ::env(SYNTH_STRATEGY) "AREA 0"
+set ::env(SYNTH_STRATEGY) "DELAY 0"
 
 set ::env(SYNTH_MAX_FANOUT) 20
 set ::env(SYNTH_BUFFERING) 0
@@ -44,13 +47,15 @@ set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 370.230 550.950"
+set ::env(DIE_AREA) "0 0 380.230 550.950"
 
 set ::env(FP_PIN_ORDER_CFG) [glob $::env(DESIGN_DIR)/pin_order.cfg]
 
 set ::env(FP_IO_MIN_DISTANCE) 2
 
 set ::env(CELL_PAD) 0
+
+set ::env(FP_PDN_CORE_RING) 0
 set ::env(FP_PDN_HPITCH) 78.2
 set ::env(FP_PDN_VPITCH) 76.8
 set ::env(FP_PDN_HSPACING) 37.5
@@ -77,6 +82,8 @@ set ::env(GLB_ADJUSTMENT) 0.2
 set ::env(GLB_OVERFLOW_ITERS) 100
 set ::env(GRT_ALLOW_CONGESTION) 1
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
+set ::env(RT_MAX_LAYER) met4
+set ::env(DRT_MAX_LAYER) met4
 
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.4
 # set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 250

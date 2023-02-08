@@ -116,8 +116,8 @@ set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
 set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
 
 ## CLOCK UNCERTAINITY
-set wb_clk_uncer 0.2
-set sck_clk_uncer 0.2
+set wb_clk_uncer 0.28
+set sck_clk_uncer 0.28
 
 puts "\[INFO\]: Setting WB clock uncertainity to: $wb_clk_uncer"
 puts "\[INFO\]: Setting SCK clock uncertainity to: $sck_clk_uncer"
