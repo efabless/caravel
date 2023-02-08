@@ -1,0 +1,2648 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "mprj_io_buffer"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "OpenRCX"
+*PROGRAM "Parallel Extraction"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*3 mgmt_gpio_in[0]
+*4 mgmt_gpio_in[10]
+*5 mgmt_gpio_in[11]
+*6 mgmt_gpio_in[12]
+*7 mgmt_gpio_in[13]
+*8 mgmt_gpio_in[14]
+*9 mgmt_gpio_in[15]
+*10 mgmt_gpio_in[16]
+*11 mgmt_gpio_in[17]
+*12 mgmt_gpio_in[18]
+*13 mgmt_gpio_in[1]
+*14 mgmt_gpio_in[2]
+*15 mgmt_gpio_in[3]
+*16 mgmt_gpio_in[4]
+*17 mgmt_gpio_in[5]
+*18 mgmt_gpio_in[6]
+*19 mgmt_gpio_in[7]
+*20 mgmt_gpio_in[8]
+*21 mgmt_gpio_in[9]
+*22 mgmt_gpio_in_buf[0]
+*23 mgmt_gpio_in_buf[10]
+*24 mgmt_gpio_in_buf[11]
+*25 mgmt_gpio_in_buf[12]
+*26 mgmt_gpio_in_buf[13]
+*27 mgmt_gpio_in_buf[14]
+*28 mgmt_gpio_in_buf[15]
+*29 mgmt_gpio_in_buf[16]
+*30 mgmt_gpio_in_buf[17]
+*31 mgmt_gpio_in_buf[18]
+*32 mgmt_gpio_in_buf[1]
+*33 mgmt_gpio_in_buf[2]
+*34 mgmt_gpio_in_buf[3]
+*35 mgmt_gpio_in_buf[4]
+*36 mgmt_gpio_in_buf[5]
+*37 mgmt_gpio_in_buf[6]
+*38 mgmt_gpio_in_buf[7]
+*39 mgmt_gpio_in_buf[8]
+*40 mgmt_gpio_in_buf[9]
+*41 mgmt_gpio_oeb[0]
+*42 mgmt_gpio_oeb[1]
+*43 mgmt_gpio_oeb[2]
+*44 mgmt_gpio_oeb_buf[0]
+*45 mgmt_gpio_oeb_buf[1]
+*46 mgmt_gpio_oeb_buf[2]
+*47 mgmt_gpio_out[0]
+*48 mgmt_gpio_out[10]
+*49 mgmt_gpio_out[11]
+*50 mgmt_gpio_out[12]
+*51 mgmt_gpio_out[13]
+*52 mgmt_gpio_out[14]
+*53 mgmt_gpio_out[15]
+*54 mgmt_gpio_out[16]
+*55 mgmt_gpio_out[17]
+*56 mgmt_gpio_out[18]
+*57 mgmt_gpio_out[1]
+*58 mgmt_gpio_out[2]
+*59 mgmt_gpio_out[3]
+*60 mgmt_gpio_out[4]
+*61 mgmt_gpio_out[5]
+*62 mgmt_gpio_out[6]
+*63 mgmt_gpio_out[7]
+*64 mgmt_gpio_out[8]
+*65 mgmt_gpio_out[9]
+*66 mgmt_gpio_out_buf[0]
+*67 mgmt_gpio_out_buf[10]
+*68 mgmt_gpio_out_buf[11]
+*69 mgmt_gpio_out_buf[12]
+*70 mgmt_gpio_out_buf[13]
+*71 mgmt_gpio_out_buf[14]
+*72 mgmt_gpio_out_buf[15]
+*73 mgmt_gpio_out_buf[16]
+*74 mgmt_gpio_out_buf[17]
+*75 mgmt_gpio_out_buf[18]
+*76 mgmt_gpio_out_buf[1]
+*77 mgmt_gpio_out_buf[2]
+*78 mgmt_gpio_out_buf[3]
+*79 mgmt_gpio_out_buf[4]
+*80 mgmt_gpio_out_buf[5]
+*81 mgmt_gpio_out_buf[6]
+*82 mgmt_gpio_out_buf[7]
+*83 mgmt_gpio_out_buf[8]
+*84 mgmt_gpio_out_buf[9]
+*85 ANTENNA_BUF\[0\]_A
+*86 ANTENNA_BUF\[10\]_A
+*87 ANTENNA_BUF\[11\]_A
+*88 ANTENNA_BUF\[12\]_A
+*89 ANTENNA_BUF\[13\]_A
+*90 ANTENNA_BUF\[14\]_A
+*91 ANTENNA_BUF\[15\]_A
+*92 ANTENNA_BUF\[16\]_A
+*93 ANTENNA_BUF\[17\]_A
+*94 ANTENNA_BUF\[18\]_A
+*95 ANTENNA_BUF\[19\]_A
+*96 ANTENNA_BUF\[1\]_A
+*97 ANTENNA_BUF\[20\]_A
+*98 ANTENNA_BUF\[21\]_A
+*99 ANTENNA_BUF\[22\]_A
+*100 ANTENNA_BUF\[23\]_A
+*101 ANTENNA_BUF\[24\]_A
+*102 ANTENNA_BUF\[25\]_A
+*103 ANTENNA_BUF\[26\]_A
+*104 ANTENNA_BUF\[27\]_A
+*105 ANTENNA_BUF\[28\]_A
+*106 ANTENNA_BUF\[29\]_A
+*107 ANTENNA_BUF\[2\]_A
+*108 ANTENNA_BUF\[30\]_A
+*109 ANTENNA_BUF\[31\]_A
+*110 ANTENNA_BUF\[32\]_A
+*111 ANTENNA_BUF\[33\]_A
+*112 ANTENNA_BUF\[34\]_A
+*113 ANTENNA_BUF\[35\]_A
+*114 ANTENNA_BUF\[36\]_A
+*115 ANTENNA_BUF\[37\]_A
+*116 ANTENNA_BUF\[38\]_A
+*117 ANTENNA_BUF\[39\]_A
+*118 ANTENNA_BUF\[3\]_A
+*119 ANTENNA_BUF\[40\]_A
+*120 ANTENNA_BUF\[4\]_A
+*121 ANTENNA_BUF\[5\]_A
+*122 ANTENNA_BUF\[6\]_A
+*123 ANTENNA_BUF\[7\]_A
+*124 ANTENNA_BUF\[8\]_A
+*125 ANTENNA_BUF\[9\]_A
+*126 BUF\[0\]
+*127 BUF\[10\]
+*128 BUF\[11\]
+*129 BUF\[12\]
+*130 BUF\[13\]
+*131 BUF\[14\]
+*132 BUF\[15\]
+*133 BUF\[16\]
+*134 BUF\[17\]
+*135 BUF\[18\]
+*136 BUF\[19\]
+*137 BUF\[1\]
+*138 BUF\[20\]
+*139 BUF\[21\]
+*140 BUF\[22\]
+*141 BUF\[23\]
+*142 BUF\[24\]
+*143 BUF\[25\]
+*144 BUF\[26\]
+*145 BUF\[27\]
+*146 BUF\[28\]
+*147 BUF\[29\]
+*148 BUF\[2\]
+*149 BUF\[30\]
+*150 BUF\[31\]
+*151 BUF\[32\]
+*152 BUF\[33\]
+*153 BUF\[34\]
+*154 BUF\[35\]
+*155 BUF\[36\]
+*156 BUF\[37\]
+*157 BUF\[38\]
+*158 BUF\[39\]
+*159 BUF\[3\]
+*160 BUF\[40\]
+*161 BUF\[4\]
+*162 BUF\[5\]
+*163 BUF\[6\]
+*164 BUF\[7\]
+*165 BUF\[8\]
+*166 BUF\[9\]
+*167 FILLER_0_11
+*168 FILLER_0_26
+*169 FILLER_0_29
+*170 FILLER_0_3
+*171 FILLER_0_43
+*172 FILLER_0_49
+*173 FILLER_0_55
+*174 FILLER_0_57
+*175 FILLER_0_70
+*176 FILLER_10_20
+*177 FILLER_10_26
+*178 FILLER_10_29
+*179 FILLER_10_3
+*180 FILLER_10_44
+*181 FILLER_10_52
+*182 FILLER_10_55
+*183 FILLER_10_70
+*184 FILLER_11_14
+*185 FILLER_11_29
+*186 FILLER_11_3
+*187 FILLER_11_35
+*188 FILLER_11_41
+*189 FILLER_11_51
+*190 FILLER_11_55
+*191 FILLER_11_57
+*192 FILLER_11_70
+*193 FILLER_11_8
+*194 FILLER_12_24
+*195 FILLER_12_29
+*196 FILLER_12_3
+*197 FILLER_12_42
+*198 FILLER_12_50
+*199 FILLER_12_62
+*200 FILLER_12_68
+*201 FILLER_12_9
+*202 FILLER_13_19
+*203 FILLER_13_23
+*204 FILLER_13_26
+*205 FILLER_13_29
+*206 FILLER_13_3
+*207 FILLER_13_42
+*208 FILLER_13_50
+*209 FILLER_13_54
+*210 FILLER_13_57
+*211 FILLER_13_7
+*212 FILLER_13_70
+*213 FILLER_1_24
+*214 FILLER_1_3
+*215 FILLER_1_39
+*216 FILLER_1_54
+*217 FILLER_1_57
+*218 FILLER_1_70
+*219 FILLER_1_9
+*220 FILLER_2_11
+*221 FILLER_2_26
+*222 FILLER_2_29
+*223 FILLER_2_3
+*224 FILLER_2_42
+*225 FILLER_2_46
+*226 FILLER_2_49
+*227 FILLER_2_55
+*228 FILLER_2_70
+*229 FILLER_3_16
+*230 FILLER_3_3
+*231 FILLER_3_35
+*232 FILLER_3_50
+*233 FILLER_3_57
+*234 FILLER_3_70
+*235 FILLER_4_11
+*236 FILLER_4_26
+*237 FILLER_4_29
+*238 FILLER_4_3
+*239 FILLER_4_42
+*240 FILLER_4_46
+*241 FILLER_4_49
+*242 FILLER_4_55
+*243 FILLER_4_70
+*244 FILLER_5_11
+*245 FILLER_5_17
+*246 FILLER_5_23
+*247 FILLER_5_3
+*248 FILLER_5_38
+*249 FILLER_5_53
+*250 FILLER_5_57
+*251 FILLER_5_70
+*252 FILLER_6_11
+*253 FILLER_6_26
+*254 FILLER_6_29
+*255 FILLER_6_3
+*256 FILLER_6_42
+*257 FILLER_6_46
+*258 FILLER_6_49
+*259 FILLER_6_55
+*260 FILLER_6_70
+*261 FILLER_7_12
+*262 FILLER_7_18
+*263 FILLER_7_24
+*264 FILLER_7_3
+*265 FILLER_7_39
+*266 FILLER_7_54
+*267 FILLER_7_57
+*268 FILLER_7_70
+*269 FILLER_7_9
+*270 FILLER_8_11
+*271 FILLER_8_14
+*272 FILLER_8_20
+*273 FILLER_8_26
+*274 FILLER_8_29
+*275 FILLER_8_3
+*276 FILLER_8_42
+*277 FILLER_8_48
+*278 FILLER_8_52
+*279 FILLER_8_55
+*280 FILLER_8_7
+*281 FILLER_8_70
+*282 FILLER_9_15
+*283 FILLER_9_3
+*284 FILLER_9_30
+*285 FILLER_9_36
+*286 FILLER_9_42
+*287 FILLER_9_48
+*288 FILLER_9_54
+*289 FILLER_9_57
+*290 FILLER_9_70
+*291 FILLER_9_9
+*292 PHY_0
+*293 PHY_1
+*294 PHY_10
+*295 PHY_11
+*296 PHY_12
+*297 PHY_13
+*298 PHY_14
+*299 PHY_15
+*300 PHY_16
+*301 PHY_17
+*302 PHY_18
+*303 PHY_19
+*304 PHY_2
+*305 PHY_20
+*306 PHY_21
+*307 PHY_22
+*308 PHY_23
+*309 PHY_24
+*310 PHY_25
+*311 PHY_26
+*312 PHY_27
+*313 PHY_3
+*314 PHY_4
+*315 PHY_5
+*316 PHY_6
+*317 PHY_7
+*318 PHY_8
+*319 PHY_9
+*320 TAP_28
+*321 TAP_29
+*322 TAP_30
+*323 TAP_31
+*324 TAP_32
+*325 TAP_33
+*326 TAP_34
+*327 TAP_35
+*328 TAP_36
+*329 TAP_37
+*330 TAP_38
+*331 TAP_39
+*332 TAP_40
+*333 TAP_41
+*334 TAP_42
+*335 TAP_43
+
+*PORTS
+mgmt_gpio_in[0] I
+mgmt_gpio_in[10] I
+mgmt_gpio_in[11] I
+mgmt_gpio_in[12] I
+mgmt_gpio_in[13] I
+mgmt_gpio_in[14] I
+mgmt_gpio_in[15] I
+mgmt_gpio_in[16] I
+mgmt_gpio_in[17] I
+mgmt_gpio_in[18] I
+mgmt_gpio_in[1] I
+mgmt_gpio_in[2] I
+mgmt_gpio_in[3] I
+mgmt_gpio_in[4] I
+mgmt_gpio_in[5] I
+mgmt_gpio_in[6] I
+mgmt_gpio_in[7] I
+mgmt_gpio_in[8] I
+mgmt_gpio_in[9] I
+mgmt_gpio_in_buf[0] O
+mgmt_gpio_in_buf[10] O
+mgmt_gpio_in_buf[11] O
+mgmt_gpio_in_buf[12] O
+mgmt_gpio_in_buf[13] O
+mgmt_gpio_in_buf[14] O
+mgmt_gpio_in_buf[15] O
+mgmt_gpio_in_buf[16] O
+mgmt_gpio_in_buf[17] O
+mgmt_gpio_in_buf[18] O
+mgmt_gpio_in_buf[1] O
+mgmt_gpio_in_buf[2] O
+mgmt_gpio_in_buf[3] O
+mgmt_gpio_in_buf[4] O
+mgmt_gpio_in_buf[5] O
+mgmt_gpio_in_buf[6] O
+mgmt_gpio_in_buf[7] O
+mgmt_gpio_in_buf[8] O
+mgmt_gpio_in_buf[9] O
+mgmt_gpio_oeb[0] I
+mgmt_gpio_oeb[1] I
+mgmt_gpio_oeb[2] I
+mgmt_gpio_oeb_buf[0] O
+mgmt_gpio_oeb_buf[1] O
+mgmt_gpio_oeb_buf[2] O
+mgmt_gpio_out[0] I
+mgmt_gpio_out[10] I
+mgmt_gpio_out[11] I
+mgmt_gpio_out[12] I
+mgmt_gpio_out[13] I
+mgmt_gpio_out[14] I
+mgmt_gpio_out[15] I
+mgmt_gpio_out[16] I
+mgmt_gpio_out[17] I
+mgmt_gpio_out[18] I
+mgmt_gpio_out[1] I
+mgmt_gpio_out[2] I
+mgmt_gpio_out[3] I
+mgmt_gpio_out[4] I
+mgmt_gpio_out[5] I
+mgmt_gpio_out[6] I
+mgmt_gpio_out[7] I
+mgmt_gpio_out[8] I
+mgmt_gpio_out[9] I
+mgmt_gpio_out_buf[0] O
+mgmt_gpio_out_buf[10] O
+mgmt_gpio_out_buf[11] O
+mgmt_gpio_out_buf[12] O
+mgmt_gpio_out_buf[13] O
+mgmt_gpio_out_buf[14] O
+mgmt_gpio_out_buf[15] O
+mgmt_gpio_out_buf[16] O
+mgmt_gpio_out_buf[17] O
+mgmt_gpio_out_buf[18] O
+mgmt_gpio_out_buf[1] O
+mgmt_gpio_out_buf[2] O
+mgmt_gpio_out_buf[3] O
+mgmt_gpio_out_buf[4] O
+mgmt_gpio_out_buf[5] O
+mgmt_gpio_out_buf[6] O
+mgmt_gpio_out_buf[7] O
+mgmt_gpio_out_buf[8] O
+mgmt_gpio_out_buf[9] O
+
+*D_NET *3 0.0131077
+*CONN
+*P mgmt_gpio_in[0] I
+*I *140:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *99:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[0] 0.00114518
+2 *140:A 0
+3 *99:DIODE 0.000976299
+4 *3:28 0.000417675
+5 *3:17 0.00181239
+6 *3:10 0.00194905
+7 *3:9 0.00184046
+8 *99:DIODE *163:A 0.000139586
+9 *99:DIODE *64:20 0.000100061
+10 *99:DIODE *81:7 7.45414e-05
+11 *3:9 mgmt_gpio_out_buf[0] 0.000332269
+12 *3:9 mgmt_gpio_out_buf[1] 0
+13 *3:9 *13:13 0
+14 *3:9 *53:14 0.000976185
+15 *3:17 *144:A 0.000356252
+16 *3:17 *48:11 0.000323822
+17 *3:17 *68:16 0.000100543
+18 *3:17 *80:11 0.00032159
+19 *3:28 *13:28 0.000886349
+20 *3:28 *41:11 9.84794e-05
+21 *3:28 *51:12 7.87053e-05
+22 *3:28 *52:8 0.00117826
+*RES
+1 mgmt_gpio_in[0] *3:9 42.405 
+2 *3:9 *3:10 7.76786 
+3 *3:10 *3:17 43.5679 
+4 *3:17 *99:DIODE 37.9143 
+5 *3:10 *3:28 46.7371 
+6 *3:28 *140:A 23 
+*END
+
+*D_NET *4 0.00294867
+*CONN
+*P mgmt_gpio_in[10] I
+*I *110:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *151:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[10] 0.000554307
+2 *110:DIODE 0
+3 *151:A 0
+4 *4:19 0.000101428
+5 *4:8 0.000655735
+6 *4:8 mgmt_gpio_out_buf[10] 0.000476517
+7 *4:8 mgmt_gpio_out_buf[11] 0.000171435
+8 *4:8 *21:14 0.000358906
+9 *4:8 *24:7 0.000218166
+10 *4:19 mgmt_gpio_out_buf[7] 0.000138718
+11 *4:19 *19:10 0.000138718
+12 *4:19 *21:14 9.41704e-05
+13 *4:19 *24:7 4.05745e-05
+*RES
+1 mgmt_gpio_in[10] *4:8 30.4114 
+2 *4:8 *151:A 23 
+3 *4:8 *4:19 33.0036 
+4 *4:19 *110:DIODE 23 
+*END
+
+*D_NET *5 0.00165848
+*CONN
+*P mgmt_gpio_in[11] I
+*I *111:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *152:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[11] 0.00029353
+2 *111:DIODE 0.000122346
+3 *152:A 0.000115123
+4 *5:7 0.000530999
+5 *152:A mgmt_gpio_out_buf[11] 8.89816e-05
+6 *152:A *8:10 0
+7 *5:7 mgmt_gpio_out_buf[11] 0.000493655
+8 *5:7 mgmt_gpio_out_buf[12] 0
+9 *5:7 *155:A 1.38508e-05
+10 *5:7 *8:10 0
+*RES
+1 mgmt_gpio_in[11] *5:7 7.685 
+2 *5:7 *152:A 40.2993 
+3 *5:7 *111:DIODE 39.5743 
+*END
+
+*D_NET *6 0.00305205
+*CONN
+*P mgmt_gpio_in[12] I
+*I *153:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *112:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[12] 0.000354059
+2 *153:A 0.000184087
+3 *112:DIODE 0.00023186
+4 *6:5 0.000770006
+5 *112:DIODE mgmt_gpio_out_buf[12] 0.000139647
+6 *112:DIODE mgmt_gpio_out_buf[13] 4.83778e-05
+7 *6:5 mgmt_gpio_out_buf[12] 0.000999992
+8 *6:5 mgmt_gpio_out_buf[13] 0.000324017
+*RES
+1 mgmt_gpio_in[12] *6:5 13.2779 
+2 *6:5 *112:DIODE 41.9564 
+3 *6:5 *153:A 41.0036 
+*END
+
+*D_NET *7 0.00332323
+*CONN
+*P mgmt_gpio_in[13] I
+*I *113:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *154:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[13] 0.00115413
+2 *113:DIODE 0
+3 *154:A 0.000173712
+4 *7:10 0.00132784
+5 *154:A *20:10 9.64943e-05
+6 *154:A *27:7 0.000170212
+7 *7:10 mgmt_gpio_out_buf[12] 0
+8 *7:10 mgmt_gpio_out_buf[13] 0.000290983
+9 *7:10 *27:7 0.000109851
+*RES
+1 mgmt_gpio_in[13] *7:10 31.9236 
+2 *7:10 *154:A 26.9771 
+3 *7:10 *113:DIODE 23 
+*END
+
+*D_NET *8 0.00149894
+*CONN
+*P mgmt_gpio_in[14] I
+*I *155:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *114:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[14] 0.000236807
+2 *155:A 0.000132171
+3 *114:DIODE 0
+4 *8:10 0.000196376
+5 *8:5 0.000565354
+6 *155:A mgmt_gpio_out_buf[12] 0
+7 *155:A mgmt_gpio_out_buf[14] 1.47988e-05
+8 *155:A mgmt_gpio_out_buf[15] 3.67573e-06
+9 *8:5 mgmt_gpio_out_buf[14] 8.78798e-05
+10 *8:5 mgmt_gpio_out_buf[15] 8.14568e-05
+11 *8:10 mgmt_gpio_out_buf[11] 0
+12 *8:10 mgmt_gpio_out_buf[12] 0.000166573
+13 *152:A *8:10 0
+14 *5:7 *155:A 1.38508e-05
+15 *5:7 *8:10 0
+*RES
+1 mgmt_gpio_in[14] *8:5 0.9296 
+2 *8:5 *8:10 27.5468 
+3 *8:10 *114:DIODE 23 
+4 *8:5 *155:A 46.9009 
+*END
+
+*D_NET *9 0.00165254
+*CONN
+*P mgmt_gpio_in[15] I
+*I *156:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *115:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[15] 0.000474735
+2 *156:A 0.000220257
+3 *115:DIODE 0
+4 *9:11 0.000694992
+5 *9:11 mgmt_gpio_out_buf[11] 0
+6 *9:11 mgmt_gpio_out_buf[12] 9.98109e-05
+7 *9:11 mgmt_gpio_out_buf[15] 7.87398e-05
+8 *9:11 mgmt_gpio_out_buf[16] 8.40031e-05
+*RES
+1 mgmt_gpio_in[15] *9:11 28.7012 
+2 *9:11 *115:DIODE 23 
+3 *9:11 *156:A 26.8529 
+*END
+
+*D_NET *10 0.00405834
+*CONN
+*P mgmt_gpio_in[16] I
+*I *157:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *116:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[16] 0.00123737
+2 *157:A 0.000329305
+3 *116:DIODE 0
+4 *10:11 0.00156668
+5 *157:A *25:8 0.000215263
+6 *10:11 mgmt_gpio_out_buf[10] 0
+7 *10:11 mgmt_gpio_out_buf[16] 0.000173923
+8 *10:11 mgmt_gpio_out_buf[17] 8.0091e-05
+9 *10:11 mgmt_gpio_out_buf[9] 0.000185284
+10 *10:11 *11:11 0.000170927
+11 *10:11 *25:8 5.12254e-05
+12 *10:11 *73:14 4.82774e-05
+*RES
+1 mgmt_gpio_in[16] *10:11 31.6524 
+2 *10:11 *116:DIODE 23 
+3 *10:11 *157:A 27.93 
+*END
+
+*D_NET *11 0.0046552
+*CONN
+*P mgmt_gpio_in[17] I
+*I *158:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *117:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[17] 0.00141361
+2 *158:A 5.68368e-05
+3 *117:DIODE 0.000203142
+4 *11:11 0.00167359
+5 *11:11 mgmt_gpio_oeb_buf[0] 0.000207234
+6 *11:11 mgmt_gpio_out_buf[10] 0
+7 *11:11 mgmt_gpio_out_buf[11] 0
+8 *11:11 mgmt_gpio_out_buf[18] 0.000160137
+9 *11:11 mgmt_gpio_out_buf[9] 5.35872e-06
+10 *11:11 *163:A 8.02348e-05
+11 *11:11 *42:20 0
+12 *11:11 *62:5 0.000541467
+13 *11:11 *63:25 6.42902e-05
+14 *11:11 *64:20 7.22066e-05
+15 *11:11 *73:14 6.17437e-06
+16 *10:11 *11:11 0.000170927
+*RES
+1 mgmt_gpio_in[17] *11:11 39.3137 
+2 *11:11 *117:DIODE 25.5271 
+3 *11:11 *158:A 24.2014 
+*END
+
+*D_NET *12 0.00890146
+*CONN
+*P mgmt_gpio_in[18] I
+*I *119:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *160:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[18] 0.000482295
+2 *119:DIODE 0
+3 *160:A 2.43873e-05
+4 *12:41 0.000638182
+5 *12:35 0.00113402
+6 *12:28 0.00141785
+7 *12:11 0.00142869
+8 *12:11 mgmt_gpio_oeb_buf[1] 0.000105175
+9 *12:11 mgmt_gpio_oeb_buf[2] 8.40031e-05
+10 *12:11 *93:DIODE 7.82513e-05
+11 *12:11 *57:7 0
+12 *12:11 *59:12 0.000125375
+13 *12:28 *93:DIODE 0.000131865
+14 *12:28 *135:A 0
+15 *12:28 *31:7 0.000359813
+16 *12:28 *50:16 0.000238714
+17 *12:28 *56:26 0
+18 *12:28 *63:25 0
+19 *12:28 *64:8 0.000131092
+20 *12:28 *74:12 0.000150411
+21 *12:35 mgmt_gpio_out_buf[7] 0.000219882
+22 *12:35 *125:DIODE 2.81066e-05
+23 *12:35 *43:23 7.93269e-05
+24 *12:35 *48:11 0
+25 *12:41 mgmt_gpio_in_buf[17] 0.000185686
+26 *12:41 mgmt_gpio_out_buf[7] 0.00119782
+27 *12:41 mgmt_gpio_out_buf[8] 8.3507e-05
+28 *12:41 *19:10 0.000271906
+29 *12:41 *56:32 0.000145926
+30 *12:41 *64:8 0.000141879
+31 *12:41 *74:12 1.72928e-05
+*RES
+1 mgmt_gpio_in[18] *12:11 29.5298 
+2 *12:11 *160:A 23.4971 
+3 *12:11 *12:28 48.6636 
+4 *12:28 *12:35 37.0636 
+5 *12:35 *12:41 48.995 
+6 *12:41 *119:DIODE 23 
+*END
+
+*D_NET *13 0.0110172
+*CONN
+*P mgmt_gpio_in[1] I
+*I *100:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *141:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[1] 0.000602508
+2 *100:DIODE 0.000563965
+3 *141:A 0
+4 *13:28 0.000822579
+5 *13:19 0.00200596
+6 *13:13 0.00122192
+7 *100:DIODE *90:DIODE 0.000231039
+8 *100:DIODE *14:10 0.000231039
+9 *100:DIODE *54:28 4.50767e-05
+10 *100:DIODE *73:14 0.000328304
+11 *13:13 mgmt_gpio_in_buf[8] 0.00034544
+12 *13:13 mgmt_gpio_out_buf[1] 0.00104945
+13 *13:13 mgmt_gpio_out_buf[2] 5.41706e-05
+14 *13:13 *71:16 0.000103089
+15 *13:19 mgmt_gpio_out_buf[4] 0
+16 *13:19 *91:DIODE 0.000479804
+17 *13:19 *14:13 0
+18 *13:19 *15:10 0.000106001
+19 *13:19 *53:14 0.000163466
+20 *13:28 mgmt_gpio_out_buf[3] 0.000260853
+21 *13:28 mgmt_gpio_out_buf[4] 0
+22 *13:28 *102:DIODE 0.000191157
+23 *13:28 *14:13 0
+24 *13:28 *15:10 0.000389224
+25 *13:28 *15:17 0.000728597
+26 *13:28 *51:12 0.000108349
+27 *13:28 *52:8 4.38808e-05
+28 *13:28 *55:8 5.50049e-05
+29 *3:9 *13:13 0
+30 *3:28 *13:28 0.000886349
+*RES
+1 mgmt_gpio_in[1] *13:13 46.3229 
+2 *13:13 *13:19 38.845 
+3 *13:19 *13:28 39.5464 
+4 *13:28 *141:A 23 
+5 *13:19 *100:DIODE 49.1029 
+*END
+
+*D_NET *14 0.00951511
+*CONN
+*P mgmt_gpio_in[2] I
+*I *101:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *142:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[2] 0.000993745
+2 *101:DIODE 0.000457837
+3 *142:A 0
+4 *14:24 0.000773084
+5 *14:20 0.00108728
+6 *14:13 0.000878
+7 *14:10 0.00109971
+8 *101:DIODE *54:28 0.000262694
+9 *101:DIODE *73:14 0.000132547
+10 *14:10 mgmt_gpio_out_buf[2] 0
+11 *14:10 mgmt_gpio_out_buf[3] 0.00111578
+12 *14:10 *90:DIODE 2.02872e-05
+13 *14:10 *19:21 0
+14 *14:10 *52:8 6.70361e-05
+15 *14:13 mgmt_gpio_out_buf[4] 0.000123041
+16 *14:20 mgmt_gpio_out_buf[4] 0.000192077
+17 *14:20 *146:A 1.24376e-05
+18 *14:20 *18:16 2.42041e-05
+19 *14:24 *102:DIODE 9.28888e-05
+20 *14:24 *103:DIODE 0.00019747
+21 *14:24 *16:5 0.00054991
+22 *14:24 *31:15 0
+23 *14:24 *43:23 0.000273511
+24 *14:24 *49:21 3.71611e-05
+25 *14:24 *50:8 7.10099e-05
+26 *14:24 *57:14 0.00026506
+27 *14:24 *68:16 0.000275432
+28 *14:24 *73:8 0.000141888
+29 *14:24 *79:7 0.000139982
+30 *100:DIODE *14:10 0.000231039
+31 *13:19 *14:13 0
+32 *13:28 *14:13 0
+*RES
+1 mgmt_gpio_in[2] *14:10 35.0929 
+2 *14:10 *14:13 16.9057 
+3 *14:13 *14:20 34.1843 
+4 *14:20 *14:24 36.1286 
+5 *14:24 *142:A 23 
+6 *14:13 *101:DIODE 43.8621 
+*END
+
+*D_NET *15 0.00749761
+*CONN
+*P mgmt_gpio_in[3] I
+*I *143:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *102:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[3] 0.000977756
+2 *143:A 0
+3 *102:DIODE 0.000478972
+4 *15:17 0.000968352
+5 *15:10 0.00146714
+6 *102:DIODE *51:12 0.000188325
+7 *102:DIODE *79:7 0.000116564
+8 *15:10 mgmt_gpio_in_buf[18] 0
+9 *15:10 mgmt_gpio_out_buf[3] 0.000309917
+10 *15:10 mgmt_gpio_out_buf[4] 0
+11 *15:10 *40:6 0.000872414
+12 *15:10 *73:8 9.5877e-05
+13 *15:17 mgmt_gpio_out_buf[4] 0
+14 *15:17 *51:12 0.000514429
+15 *13:19 *15:10 0.000106001
+16 *13:28 *102:DIODE 0.000191157
+17 *13:28 *15:10 0.000389224
+18 *13:28 *15:17 0.000728597
+19 *14:24 *102:DIODE 9.28888e-05
+*RES
+1 mgmt_gpio_in[3] *15:10 37.8686 
+2 *15:10 *15:17 28.0086 
+3 *15:17 *102:DIODE 45.9957 
+4 *15:17 *143:A 38 
+*END
+
+*D_NET *16 0.00653241
+*CONN
+*P mgmt_gpio_in[4] I
+*I *144:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *103:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[4] 0.000793042
+2 *144:A 0.0001703
+3 *103:DIODE 0.000195775
+4 *16:5 0.00115912
+5 *103:DIODE mgmt_gpio_out_buf[4] 1.22803e-05
+6 *103:DIODE *43:23 3.7122e-06
+7 *103:DIODE *49:16 1.0119e-05
+8 *103:DIODE *49:21 0.000169674
+9 *103:DIODE *57:14 3.7122e-06
+10 *16:5 mgmt_gpio_in_buf[16] 0.000125342
+11 *16:5 mgmt_gpio_out_buf[4] 0.00194284
+12 *16:5 mgmt_gpio_out_buf[5] 0
+13 *16:5 *18:16 0.000770215
+14 *16:5 *26:16 1.96907e-05
+15 *16:5 *73:8 5.2949e-05
+16 *3:17 *144:A 0.000356252
+17 *14:24 *103:DIODE 0.00019747
+18 *14:24 *16:5 0.00054991
+*RES
+1 mgmt_gpio_in[4] *16:5 26.6593 
+2 *16:5 *103:DIODE 42.1843 
+3 *16:5 *144:A 41.9564 
+*END
+
+*D_NET *17 0.00610936
+*CONN
+*P mgmt_gpio_in[5] I
+*I *104:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *145:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[5] 0.000795403
+2 *104:DIODE 0
+3 *145:A 0.000319669
+4 *17:20 0.00104262
+5 *17:15 0.00151835
+6 *145:A *78:7 0.000525608
+7 *17:15 mgmt_gpio_out_buf[5] 0.000208689
+8 *17:15 mgmt_gpio_out_buf[6] 0.000202041
+9 *17:15 mgmt_gpio_out_buf[7] 0
+10 *17:15 *18:12 2.10797e-06
+11 *17:15 *19:10 8.26807e-05
+12 *17:15 *23:8 0.000118375
+13 *17:15 *25:8 2.11066e-05
+14 *17:15 *26:16 0
+15 *17:15 *28:8 8.76184e-05
+16 *17:15 *29:12 0.000207079
+17 *17:15 *80:11 0.000281912
+18 *17:20 mgmt_gpio_out_buf[6] 9.6946e-05
+19 *17:20 mgmt_gpio_out_buf[7] 0
+20 *17:20 *23:8 0.00021552
+21 *17:20 *48:11 0.000318862
+22 *17:20 *78:7 6.47751e-05
+*RES
+1 mgmt_gpio_in[5] *17:15 47.3689 
+2 *17:15 *17:20 28.6611 
+3 *17:20 *145:A 30.0636 
+4 *17:20 *104:DIODE 23 
+*END
+
+*D_NET *18 0.00511711
+*CONN
+*P mgmt_gpio_in[6] I
+*I *105:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *146:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[6] 0.000501155
+2 *105:DIODE 0
+3 *146:A 0.000265759
+4 *18:16 0.000783496
+5 *18:12 0.00101889
+6 *18:12 mgmt_gpio_in_buf[14] 7.95287e-05
+7 *18:12 mgmt_gpio_in_buf[16] 0.000120904
+8 *18:12 mgmt_gpio_out_buf[6] 0.000543129
+9 *18:12 mgmt_gpio_out_buf[7] 0
+10 *18:12 *150:A 0.000137651
+11 *18:12 *21:14 0.000262907
+12 *18:12 *28:8 2.11157e-05
+13 *18:16 mgmt_gpio_in_buf[11] 0.000412833
+14 *18:16 *26:16 2.87935e-05
+15 *18:16 *31:15 0
+16 *18:16 *73:8 0.000131982
+17 *14:20 *146:A 1.24376e-05
+18 *14:20 *18:16 2.42041e-05
+19 *16:5 *18:16 0.000770215
+20 *17:15 *18:12 2.10797e-06
+*RES
+1 mgmt_gpio_in[6] *18:12 42.8221 
+2 *18:12 *18:16 27.2836 
+3 *18:16 *146:A 27.205 
+4 *18:16 *105:DIODE 23 
+*END
+
+*D_NET *19 0.00459544
+*CONN
+*P mgmt_gpio_in[7] I
+*I *106:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *147:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[7] 0.000993833
+2 *106:DIODE 0
+3 *147:A 0
+4 *19:21 0.00032912
+5 *19:10 0.00132295
+6 *19:10 mgmt_gpio_in_buf[17] 0.000590033
+7 *19:10 mgmt_gpio_out_buf[7] 0.000305622
+8 *19:10 mgmt_gpio_out_buf[8] 8.54996e-05
+9 *19:10 *20:10 2.10797e-06
+10 *19:10 *21:20 4.96207e-05
+11 *19:10 *28:8 0.000358584
+12 *19:21 mgmt_gpio_out_buf[2] 6.47651e-05
+13 *4:19 *19:10 0.000138718
+14 *12:41 *19:10 0.000271906
+15 *14:10 *19:21 0
+16 *17:15 *19:10 8.26807e-05
+*RES
+1 mgmt_gpio_in[7] *19:10 38.7386 
+2 *19:10 *147:A 23 
+3 *19:10 *19:21 35.3857 
+4 *19:21 *106:DIODE 23 
+*END
+
+*D_NET *20 0.00326956
+*CONN
+*P mgmt_gpio_in[8] I
+*I *108:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *149:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in[8] 0.00106042
+2 *108:DIODE 0
+3 *149:A 0.000253729
+4 *20:10 0.00131415
+5 *20:10 mgmt_gpio_out_buf[14] 2.3066e-05
+6 *20:10 mgmt_gpio_out_buf[8] 0.000285059
+7 *20:10 mgmt_gpio_out_buf[9] 0
+8 *20:10 *21:14 0
+9 *20:10 *26:16 0.000116635
+10 *20:10 *27:7 0.000117903
+11 *154:A *20:10 9.64943e-05
+12 *19:10 *20:10 2.10797e-06
+*RES
+1 mgmt_gpio_in[8] *20:10 30.9707 
+2 *20:10 *149:A 26.9771 
+3 *20:10 *108:DIODE 23 
+*END
+
+*D_NET *21 0.00428317
+*CONN
+*P mgmt_gpio_in[9] I
+*I *150:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *109:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_in[9] 0.000880257
+2 *150:A 0.000107461
+3 *109:DIODE 0
+4 *21:20 0.000174547
+5 *21:14 0.00116227
+6 *150:A *24:7 4.05745e-05
+7 *21:14 mgmt_gpio_out_buf[10] 0
+8 *21:14 mgmt_gpio_out_buf[9] 0.00055
+9 *21:14 *23:8 5.3304e-05
+10 *21:14 *24:7 0.000221811
+11 *21:20 *26:16 0.000131527
+12 *21:20 *29:12 5.81639e-05
+13 *4:8 *21:14 0.000358906
+14 *4:19 *21:14 9.41704e-05
+15 *18:12 *150:A 0.000137651
+16 *18:12 *21:14 0.000262907
+17 *19:10 *21:20 4.96207e-05
+18 *20:10 *21:14 0
+*RES
+1 mgmt_gpio_in[9] *21:14 35.6107 
+2 *21:14 *21:20 33.0036 
+3 *21:20 *109:DIODE 23 
+4 *21:14 *150:A 25.0507 
+*END
+
+*D_NET *22 0.00127841
+*CONN
+*P mgmt_gpio_in_buf[0] O
+*I *140:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[0] 0.000458486
+2 *140:X 0.000458486
+3 mgmt_gpio_in_buf[0] mgmt_gpio_in_buf[1] 0.000103316
+4 mgmt_gpio_in_buf[0] *43:23 0.000171728
+5 mgmt_gpio_in_buf[0] *52:8 0
+6 mgmt_gpio_in_buf[0] *53:10 8.63978e-05
+7 mgmt_gpio_in_buf[0] *54:14 0
+*RES
+1 *140:X mgmt_gpio_in_buf[0] 49.8015 
+*END
+
+*D_NET *23 0.00619031
+*CONN
+*P mgmt_gpio_in_buf[10] O
+*I *151:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[10] 0.00150542
+2 *151:X 0.000291772
+3 *23:8 0.00179719
+4 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[11] 0.00112988
+5 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[12] 6.77535e-05
+6 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[9] 0.000211427
+7 *23:8 mgmt_gpio_out_buf[6] 0.000616076
+8 *23:8 *24:7 5.3304e-05
+9 *23:8 *28:8 0.000130301
+10 *17:15 *23:8 0.000118375
+11 *17:20 *23:8 0.00021552
+12 *21:14 *23:8 5.3304e-05
+*RES
+1 *151:X *23:8 47.0418 
+2 *23:8 mgmt_gpio_in_buf[10] 11.6997 
+*END
+
+*D_NET *24 0.00727133
+*CONN
+*P mgmt_gpio_in_buf[11] O
+*I *152:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[11] 0.00128872
+2 *152:X 0.00103784
+3 *24:7 0.00232656
+4 mgmt_gpio_in_buf[11] mgmt_gpio_in_buf[12] 0.000328542
+5 mgmt_gpio_in_buf[11] *26:16 0.000172524
+6 mgmt_gpio_in_buf[11] *29:12 0
+7 mgmt_gpio_in_buf[11] *31:15 0
+8 mgmt_gpio_in_buf[11] *80:11 0
+9 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[11] 0.00112988
+10 *150:A *24:7 4.05745e-05
+11 *4:8 *24:7 0.000218166
+12 *4:19 *24:7 4.05745e-05
+13 *18:16 mgmt_gpio_in_buf[11] 0.000412833
+14 *21:14 *24:7 0.000221811
+15 *23:8 *24:7 5.3304e-05
+*RES
+1 *152:X *24:7 36.5057 
+2 *24:7 mgmt_gpio_in_buf[11] 33.8632 
+*END
+
+*D_NET *25 0.00554947
+*CONN
+*P mgmt_gpio_in_buf[12] O
+*I *153:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[12] 0.00166386
+2 *153:X 0.000467587
+3 *25:8 0.00213144
+4 mgmt_gpio_in_buf[12] mgmt_gpio_in_buf[13] 0.000294604
+5 mgmt_gpio_in_buf[12] mgmt_gpio_in_buf[14] 0
+6 *25:8 mgmt_gpio_out_buf[7] 0
+7 *25:8 *72:7 0.00030809
+8 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[12] 6.77535e-05
+9 mgmt_gpio_in_buf[11] mgmt_gpio_in_buf[12] 0.000328542
+10 *157:A *25:8 0.000215263
+11 *10:11 *25:8 5.12254e-05
+12 *17:15 *25:8 2.11066e-05
+*RES
+1 *153:X *25:8 47.9946 
+2 *25:8 mgmt_gpio_in_buf[12] 11.5915 
+*END
+
+*D_NET *26 0.00476046
+*CONN
+*P mgmt_gpio_in_buf[13] O
+*I *154:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[13] 0.00121678
+2 *154:X 0.000548143
+3 *26:16 0.00176493
+4 mgmt_gpio_in_buf[13] mgmt_gpio_in_buf[14] 0.000230257
+5 *26:16 mgmt_gpio_in_buf[16] 0.000127981
+6 *26:16 mgmt_gpio_out_buf[5] 1.95956e-05
+7 *26:16 *29:12 1.85378e-05
+8 *26:16 *80:11 7.04672e-05
+9 mgmt_gpio_in_buf[11] *26:16 0.000172524
+10 mgmt_gpio_in_buf[12] mgmt_gpio_in_buf[13] 0.000294604
+11 *16:5 *26:16 1.96907e-05
+12 *17:15 *26:16 0
+13 *18:16 *26:16 2.87935e-05
+14 *20:10 *26:16 0.000116635
+15 *21:20 *26:16 0.000131527
+*RES
+1 *154:X *26:16 49.4446 
+2 *26:16 mgmt_gpio_in_buf[13] 10.9717 
+*END
+
+*D_NET *27 0.00653006
+*CONN
+*P mgmt_gpio_in_buf[14] O
+*I *155:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[14] 0.00154264
+2 *155:X 0.000519112
+3 *27:7 0.00206175
+4 mgmt_gpio_in_buf[14] mgmt_gpio_in_buf[15] 0.00163805
+5 mgmt_gpio_in_buf[14] mgmt_gpio_out_buf[7] 0
+6 mgmt_gpio_in_buf[14] *28:8 6.07632e-05
+7 mgmt_gpio_in_buf[12] mgmt_gpio_in_buf[14] 0
+8 mgmt_gpio_in_buf[13] mgmt_gpio_in_buf[14] 0.000230257
+9 *154:A *27:7 0.000170212
+10 *7:10 *27:7 0.000109851
+11 *18:12 mgmt_gpio_in_buf[14] 7.95287e-05
+12 *20:10 *27:7 0.000117903
+*RES
+1 *155:X *27:7 48.6264 
+2 *27:7 mgmt_gpio_in_buf[14] 15.1217 
+*END
+
+*D_NET *28 0.00596631
+*CONN
+*P mgmt_gpio_in_buf[15] O
+*I *156:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[15] 0.00113449
+2 *156:X 0.000520094
+3 *28:8 0.00165458
+4 mgmt_gpio_in_buf[15] mgmt_gpio_in_buf[16] 0.000347531
+5 mgmt_gpio_in_buf[15] mgmt_gpio_in_buf[17] 0
+6 *28:8 mgmt_gpio_out_buf[6] 1.31913e-05
+7 *28:8 mgmt_gpio_out_buf[7] 0
+8 mgmt_gpio_in_buf[14] mgmt_gpio_in_buf[15] 0.00163805
+9 mgmt_gpio_in_buf[14] *28:8 6.07632e-05
+10 *17:15 *28:8 8.76184e-05
+11 *18:12 *28:8 2.11157e-05
+12 *19:10 *28:8 0.000358584
+13 *23:8 *28:8 0.000130301
+*RES
+1 *156:X *28:8 47.1246 
+2 *28:8 mgmt_gpio_in_buf[15] 11.4197 
+*END
+
+*D_NET *29 0.00474023
+*CONN
+*P mgmt_gpio_in_buf[16] O
+*I *157:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[16] 0.00120463
+2 *157:X 0.000375552
+3 *29:12 0.00158018
+4 mgmt_gpio_in_buf[16] mgmt_gpio_in_buf[17] 0.000228562
+5 *29:12 *31:15 3.7122e-06
+6 *29:12 *72:7 9.41704e-05
+7 *29:12 *80:11 0.000247886
+8 mgmt_gpio_in_buf[11] *29:12 0
+9 mgmt_gpio_in_buf[15] mgmt_gpio_in_buf[16] 0.000347531
+10 *16:5 mgmt_gpio_in_buf[16] 0.000125342
+11 *17:15 *29:12 0.000207079
+12 *18:12 mgmt_gpio_in_buf[16] 0.000120904
+13 *21:20 *29:12 5.81639e-05
+14 *26:16 mgmt_gpio_in_buf[16] 0.000127981
+15 *26:16 *29:12 1.85378e-05
+*RES
+1 *157:X *29:12 46.3479 
+2 *29:12 mgmt_gpio_in_buf[16] 44.8179 
+*END
+
+*D_NET *30 0.00722978
+*CONN
+*P mgmt_gpio_in_buf[17] O
+*I *158:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[17] 0.00217624
+2 *158:X 8.72893e-05
+3 *30:7 0.00226353
+4 mgmt_gpio_in_buf[17] mgmt_gpio_in_buf[18] 0.000644053
+5 mgmt_gpio_in_buf[17] mgmt_gpio_out_buf[7] 6.02277e-06
+6 mgmt_gpio_in_buf[17] mgmt_gpio_out_buf[8] 0.000971141
+7 *30:7 *73:14 7.72342e-05
+8 mgmt_gpio_in_buf[15] mgmt_gpio_in_buf[17] 0
+9 mgmt_gpio_in_buf[16] mgmt_gpio_in_buf[17] 0.000228562
+10 *12:41 mgmt_gpio_in_buf[17] 0.000185686
+11 *19:10 mgmt_gpio_in_buf[17] 0.000590033
+*RES
+1 *158:X *30:7 39.5743 
+2 *30:7 mgmt_gpio_in_buf[17] 25.7818 
+*END
+
+*D_NET *31 0.0110955
+*CONN
+*P mgmt_gpio_in_buf[18] O
+*I *160:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[18] 0.00126626
+2 *160:X 0.000377263
+3 *31:15 0.00251554
+4 *31:7 0.00162654
+5 mgmt_gpio_in_buf[18] mgmt_gpio_out_buf[4] 0.000984315
+6 *31:7 *93:DIODE 0.000304564
+7 *31:7 *164:A 0.000232409
+8 *31:7 *82:7 0.000101764
+9 *31:15 *43:23 0
+10 *31:15 *48:11 0.000605156
+11 *31:15 *49:16 0.000551872
+12 *31:15 *68:16 0
+13 *31:15 *70:6 0.000246748
+14 *31:15 *72:7 8.61484e-05
+15 *31:15 *73:8 0
+16 *31:15 *80:11 0.00118938
+17 mgmt_gpio_in_buf[11] *31:15 0
+18 mgmt_gpio_in_buf[17] mgmt_gpio_in_buf[18] 0.000644053
+19 *12:28 *31:7 0.000359813
+20 *14:24 *31:15 0
+21 *15:10 mgmt_gpio_in_buf[18] 0
+22 *18:16 *31:15 0
+23 *29:12 *31:15 3.7122e-06
+*RES
+1 *160:X *31:7 48.15 
+2 *31:7 *31:15 44.6421 
+3 *31:15 mgmt_gpio_in_buf[18] 38.6538 
+*END
+
+*D_NET *32 0.00135961
+*CONN
+*P mgmt_gpio_in_buf[1] O
+*I *141:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[1] 0.000500436
+2 *141:X 0.000500436
+3 mgmt_gpio_in_buf[1] mgmt_gpio_in_buf[2] 0.000255424
+4 mgmt_gpio_in_buf[1] *52:8 0
+5 mgmt_gpio_in_buf[1] *54:14 0
+6 mgmt_gpio_in_buf[0] mgmt_gpio_in_buf[1] 0.000103316
+*RES
+1 *141:X mgmt_gpio_in_buf[1] 49.3362 
+*END
+
+*D_NET *33 0.00117345
+*CONN
+*P mgmt_gpio_in_buf[2] O
+*I *142:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[2] 0.00037315
+2 *142:X 0.00037315
+3 mgmt_gpio_in_buf[2] mgmt_gpio_in_buf[3] 0.000171728
+4 mgmt_gpio_in_buf[2] *52:8 0
+5 mgmt_gpio_in_buf[2] *54:14 0
+6 mgmt_gpio_in_buf[1] mgmt_gpio_in_buf[2] 0.000255424
+*RES
+1 *142:X mgmt_gpio_in_buf[2] 48.0408 
+*END
+
+*D_NET *34 0.00102611
+*CONN
+*P mgmt_gpio_in_buf[3] O
+*I *143:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[3] 0.000358977
+2 *143:X 0.000358977
+3 mgmt_gpio_in_buf[3] mgmt_gpio_in_buf[4] 0.000125865
+4 mgmt_gpio_in_buf[3] *52:8 0
+5 mgmt_gpio_in_buf[3] *54:14 1.05658e-05
+6 mgmt_gpio_in_buf[2] mgmt_gpio_in_buf[3] 0.000171728
+*RES
+1 *143:X mgmt_gpio_in_buf[3] 47.3365 
+*END
+
+*D_NET *35 0.00133883
+*CONN
+*P mgmt_gpio_in_buf[4] O
+*I *144:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[4] 0.000331922
+2 *144:X 0.000139398
+3 *35:8 0.000471321
+4 mgmt_gpio_in_buf[4] mgmt_gpio_in_buf[5] 0.000164749
+5 *35:8 *52:8 0
+6 *35:8 *54:14 0.000105571
+7 mgmt_gpio_in_buf[3] mgmt_gpio_in_buf[4] 0.000125865
+*RES
+1 *144:X *35:8 49.1382 
+2 *35:8 mgmt_gpio_in_buf[4] 1.01547 
+*END
+
+*D_NET *36 0.00238947
+*CONN
+*P mgmt_gpio_in_buf[5] O
+*I *145:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[5] 0.000619153
+2 *145:X 0.000243082
+3 *36:8 0.000862234
+4 mgmt_gpio_in_buf[5] mgmt_gpio_in_buf[6] 0.000289812
+5 *36:8 *52:8 0.000210438
+6 *36:8 *54:14 0
+7 mgmt_gpio_in_buf[4] mgmt_gpio_in_buf[5] 0.000164749
+*RES
+1 *145:X *36:8 42.8368 
+2 *36:8 mgmt_gpio_in_buf[5] 9.68373 
+*END
+
+*D_NET *37 0.00240401
+*CONN
+*P mgmt_gpio_in_buf[6] O
+*I *146:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[6] 0.000407135
+2 *146:X 0.000293572
+3 *37:6 0.000700708
+4 mgmt_gpio_in_buf[6] mgmt_gpio_in_buf[7] 9.07677e-05
+5 mgmt_gpio_in_buf[6] mgmt_gpio_in_buf[9] 0
+6 *37:6 mgmt_gpio_in_buf[7] 0.000361794
+7 *37:6 *52:8 0
+8 *37:6 *54:14 9.66499e-05
+9 *37:6 *54:22 0.000163575
+10 mgmt_gpio_in_buf[5] mgmt_gpio_in_buf[6] 0.000289812
+*RES
+1 *146:X *37:6 45.7161 
+2 *37:6 mgmt_gpio_in_buf[6] 9.2544 
+*END
+
+*D_NET *38 0.00371431
+*CONN
+*P mgmt_gpio_in_buf[7] O
+*I *147:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[7] 0.00071545
+2 *147:X 4.93533e-05
+3 *38:7 0.000764803
+4 mgmt_gpio_in_buf[7] mgmt_gpio_in_buf[8] 0.000972049
+5 mgmt_gpio_in_buf[7] mgmt_gpio_in_buf[9] 0
+6 mgmt_gpio_in_buf[7] mgmt_gpio_out_buf[2] 0.000588723
+7 mgmt_gpio_in_buf[7] *54:14 0.00012758
+8 mgmt_gpio_in_buf[7] *54:22 2.15604e-05
+9 mgmt_gpio_in_buf[7] *77:13 1.60583e-05
+10 *38:7 *71:16 6.17437e-06
+11 mgmt_gpio_in_buf[6] mgmt_gpio_in_buf[7] 9.07677e-05
+12 *37:6 mgmt_gpio_in_buf[7] 0.000361794
+*RES
+1 *147:X *38:7 38.6214 
+2 *38:7 mgmt_gpio_in_buf[7] 22.6321 
+*END
+
+*D_NET *39 0.00444621
+*CONN
+*P mgmt_gpio_in_buf[8] O
+*I *149:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[8] 0.000828426
+2 *149:X 9.0895e-05
+3 *39:7 0.000919321
+4 mgmt_gpio_in_buf[8] mgmt_gpio_in_buf[9] 8.31573e-05
+5 mgmt_gpio_in_buf[8] mgmt_gpio_out_buf[1] 8.31601e-05
+6 mgmt_gpio_in_buf[8] mgmt_gpio_out_buf[2] 2.00296e-05
+7 mgmt_gpio_in_buf[8] *54:28 0.000110373
+8 mgmt_gpio_in_buf[8] *71:8 0.000365513
+9 mgmt_gpio_in_buf[8] *71:16 0.000371013
+10 mgmt_gpio_in_buf[8] *77:13 0.00025683
+11 mgmt_gpio_in_buf[7] mgmt_gpio_in_buf[8] 0.000972049
+12 *13:13 mgmt_gpio_in_buf[8] 0.00034544
+*RES
+1 *149:X *39:7 39.0979 
+2 *39:7 mgmt_gpio_in_buf[8] 26.0677 
+*END
+
+*D_NET *40 0.00443129
+*CONN
+*P mgmt_gpio_in_buf[9] O
+*I *150:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_in_buf[9] 0.000834818
+2 *150:X 0.000360892
+3 *40:6 0.00119571
+4 *40:6 mgmt_gpio_out_buf[3] 0.000872876
+5 mgmt_gpio_in_buf[10] mgmt_gpio_in_buf[9] 0.000211427
+6 mgmt_gpio_in_buf[6] mgmt_gpio_in_buf[9] 0
+7 mgmt_gpio_in_buf[7] mgmt_gpio_in_buf[9] 0
+8 mgmt_gpio_in_buf[8] mgmt_gpio_in_buf[9] 8.31573e-05
+9 *15:10 *40:6 0.000872414
+*RES
+1 *150:X *40:6 49.9418 
+2 *40:6 mgmt_gpio_in_buf[9] 10.1803 
+*END
+
+*D_NET *41 0.00552578
+*CONN
+*P mgmt_gpio_oeb[0] I
+*I *136:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *95:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_oeb[0] 0.00100185
+2 *136:A 0
+3 *95:DIODE 0.000593493
+4 *41:11 0.00159534
+5 *95:DIODE *42:15 0.000752983
+6 *95:DIODE *42:20 0.000527265
+7 *95:DIODE *45:8 0.000102389
+8 *95:DIODE *58:8 6.97004e-05
+9 *41:11 *107:DIODE 9.28372e-05
+10 *41:11 *42:15 0.00046237
+11 *41:11 *52:8 0.00022907
+12 *41:11 *53:10 0
+13 *3:28 *41:11 9.84794e-05
+*RES
+1 mgmt_gpio_oeb[0] *41:11 38.4373 
+2 *41:11 *95:DIODE 38.3907 
+3 *41:11 *136:A 23 
+*END
+
+*D_NET *42 0.00925579
+*CONN
+*P mgmt_gpio_oeb[1] I
+*I *138:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *97:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_oeb[1] 0.00119232
+2 *138:A 0
+3 *97:DIODE 0
+4 *42:20 0.00123766
+5 *42:15 0.00242998
+6 *42:15 *107:DIODE 9.41704e-05
+7 *42:15 *43:23 0.000309366
+8 *42:15 *48:11 0.000152606
+9 *42:15 *49:16 0.000149973
+10 *42:15 *58:8 0.000696615
+11 *42:20 mgmt_gpio_oeb_buf[2] 0
+12 *42:20 *43:31 7.22066e-05
+13 *42:20 *47:13 0
+14 *42:20 *58:8 0.000526963
+15 *42:20 *59:12 0
+16 *42:20 *60:7 0.000394541
+17 *42:20 *61:11 0.000256775
+18 *42:20 *62:5 0
+19 *42:20 *64:20 0
+20 *95:DIODE *42:15 0.000752983
+21 *95:DIODE *42:20 0.000527265
+22 *11:11 *42:20 0
+23 *41:11 *42:15 0.00046237
+*RES
+1 mgmt_gpio_oeb[1] *42:15 37.2036 
+2 *42:15 *42:20 43.1921 
+3 *42:20 *97:DIODE 38 
+4 *42:15 *138:A 23 
+*END
+
+*D_NET *43 0.00733797
+*CONN
+*P mgmt_gpio_oeb[2] I
+*I *139:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *98:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_oeb[2] 0.00229884
+2 *139:A 0
+3 *98:DIODE 0
+4 *43:31 0.000494141
+5 *43:23 0.00279298
+6 *43:23 *162:A 0.000134943
+7 *43:23 *49:16 0.000100543
+8 *43:23 *50:8 0
+9 *43:23 *74:6 5.36651e-05
+10 *43:23 *80:7 0.000137651
+11 *43:31 *121:DIODE 0.000123829
+12 *43:31 *162:A 0.000102602
+13 *43:31 *46:7 0.000188927
+14 *43:31 *59:12 0
+15 mgmt_gpio_in_buf[0] *43:23 0.000171728
+16 *103:DIODE *43:23 3.7122e-06
+17 *12:35 *43:23 7.93269e-05
+18 *14:24 *43:23 0.000273511
+19 *31:15 *43:23 0
+20 *42:15 *43:23 0.000309366
+21 *42:20 *43:31 7.22066e-05
+*RES
+1 mgmt_gpio_oeb[2] *43:23 47.6338 
+2 *43:23 *43:31 39.6943 
+3 *43:31 *98:DIODE 23 
+4 *43:23 *139:A 23 
+*END
+
+*D_NET *44 0.00591981
+*CONN
+*P mgmt_gpio_oeb_buf[0] O
+*I *136:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_oeb_buf[0] 0.00166036
+2 *136:X 0.000125578
+3 *44:8 0.00178594
+4 mgmt_gpio_oeb_buf[0] mgmt_gpio_out_buf[17] 0.000324087
+5 mgmt_gpio_oeb_buf[0] mgmt_gpio_out_buf[7] 0.000830683
+6 mgmt_gpio_oeb_buf[0] *64:8 0.00089702
+7 mgmt_gpio_oeb_buf[0] *65:16 0
+8 *44:8 *64:8 8.89109e-05
+9 *44:8 *65:16 0
+10 *11:11 mgmt_gpio_oeb_buf[0] 0.000207234
+*RES
+1 *136:X *44:8 41.0554 
+2 *44:8 mgmt_gpio_oeb_buf[0] 23.6048 
+*END
+
+*D_NET *45 0.00254924
+*CONN
+*P mgmt_gpio_oeb_buf[1] O
+*I *138:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_oeb_buf[1] 0.000893667
+2 *138:X 0.000153651
+3 *45:8 0.00104732
+4 mgmt_gpio_oeb_buf[1] mgmt_gpio_oeb_buf[2] 0
+5 mgmt_gpio_oeb_buf[1] mgmt_gpio_out_buf[18] 6.39339e-05
+6 *45:8 mgmt_gpio_oeb_buf[2] 0.000106677
+7 *45:8 *61:11 7.6431e-05
+8 *95:DIODE *45:8 0.000102389
+9 *12:11 mgmt_gpio_oeb_buf[1] 0.000105175
+*RES
+1 *138:X *45:8 42.2361 
+2 *45:8 mgmt_gpio_oeb_buf[1] 10.4117 
+*END
+
+*D_NET *46 0.00421585
+*CONN
+*P mgmt_gpio_oeb_buf[2] O
+*I *139:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_oeb_buf[2] 0.0012543
+2 *139:X 3.6025e-05
+3 *46:7 0.00129032
+4 mgmt_gpio_oeb_buf[2] *61:11 0
+5 mgmt_gpio_oeb_buf[2] *62:5 0.0009889
+6 mgmt_gpio_oeb_buf[2] *75:10 7.95974e-05
+7 *46:7 *162:A 0.000187104
+8 mgmt_gpio_oeb_buf[1] mgmt_gpio_oeb_buf[2] 0
+9 *12:11 mgmt_gpio_oeb_buf[2] 8.40031e-05
+10 *42:20 mgmt_gpio_oeb_buf[2] 0
+11 *43:31 *46:7 0.000188927
+12 *45:8 mgmt_gpio_oeb_buf[2] 0.000106677
+*RES
+1 *139:X *46:7 40.0507 
+2 *46:7 mgmt_gpio_oeb_buf[2] 23.568 
+*END
+
+*D_NET *47 0.00352529
+*CONN
+*P mgmt_gpio_out[0] I
+*I *126:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *85:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[0] 0.000805423
+2 *126:A 0
+3 *85:DIODE 0
+4 *47:13 0.000603048
+5 *47:8 0.00140847
+6 *47:8 *57:7 0
+7 *47:8 *57:8 0.000143071
+8 *47:13 *59:12 0.000565276
+9 *42:20 *47:13 0
+*RES
+1 mgmt_gpio_out[0] *47:8 33.2079 
+2 *47:8 *47:13 43.1743 
+3 *47:13 *85:DIODE 23 
+4 *47:8 *126:A 23 
+*END
+
+*D_NET *48 0.00508831
+*CONN
+*P mgmt_gpio_out[10] I
+*I *86:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *127:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[10] 0.000774673
+2 *86:DIODE 0.000159022
+3 *127:A 0
+4 *48:11 0.000933695
+5 *86:DIODE *68:21 0.000219101
+6 *48:11 mgmt_gpio_out_buf[6] 0.000139657
+7 *48:11 mgmt_gpio_out_buf[7] 0
+8 *48:11 *49:16 0.000155396
+9 *48:11 *58:14 0.000713263
+10 *48:11 *65:16 0.000380541
+11 *48:11 *80:11 0.000212514
+12 *3:17 *48:11 0.000323822
+13 *12:35 *48:11 0
+14 *17:20 *48:11 0.000318862
+15 *31:15 *48:11 0.000605156
+16 *42:15 *48:11 0.000152606
+*RES
+1 mgmt_gpio_out[10] *48:11 41.0171 
+2 *48:11 *127:A 23 
+3 *48:11 *86:DIODE 25.5271 
+*END
+
+*D_NET *49 0.0040869
+*CONN
+*P mgmt_gpio_out[11] I
+*I *87:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *128:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[11] 0.000947819
+2 *87:DIODE 7.81791e-05
+3 *128:A 0
+4 *49:21 8.48506e-05
+5 *49:16 0.00111085
+6 *87:DIODE *57:14 4.91616e-05
+7 *49:16 *50:8 0
+8 *49:16 *57:14 2.64616e-05
+9 *49:16 *65:16 0
+10 *49:16 *74:6 0.000246748
+11 *49:21 mgmt_gpio_out_buf[4] 0.000305509
+12 *49:21 *57:14 6.25829e-05
+13 *103:DIODE *49:16 1.0119e-05
+14 *103:DIODE *49:21 0.000169674
+15 *14:24 *49:21 3.71611e-05
+16 *31:15 *49:16 0.000551872
+17 *42:15 *49:16 0.000149973
+18 *43:23 *49:16 0.000100543
+19 *48:11 *49:16 0.000155396
+*RES
+1 mgmt_gpio_out[11] *49:16 36.0043 
+2 *49:16 *49:21 34.0186 
+3 *49:21 *128:A 23 
+4 *49:16 *87:DIODE 24.0979 
+*END
+
+*D_NET *50 0.00602847
+*CONN
+*P mgmt_gpio_out[12] I
+*I *129:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *88:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[12] 0.000899029
+2 *129:A 0
+3 *88:DIODE 0
+4 *50:16 0.000801941
+5 *50:8 0.00170097
+6 *50:8 mgmt_gpio_out_buf[4] 0.000238194
+7 *50:8 *51:12 0
+8 *50:8 *56:10 0.000167516
+9 *50:8 *57:14 0.000111852
+10 *50:8 *58:14 9.64943e-05
+11 *50:8 *66:9 0.000781799
+12 *50:8 *77:7 9.17998e-05
+13 *50:16 *125:DIODE 6.20207e-05
+14 *50:16 *56:10 5.25011e-05
+15 *50:16 *56:26 0.000228043
+16 *50:16 *66:9 0.000175903
+17 *50:16 *74:12 0.000310687
+18 *12:28 *50:16 0.000238714
+19 *14:24 *50:8 7.10099e-05
+20 *43:23 *50:8 0
+21 *49:16 *50:8 0
+*RES
+1 mgmt_gpio_out[12] *50:8 35.9421 
+2 *50:8 *50:16 43.2364 
+3 *50:16 *88:DIODE 23 
+4 *50:8 *129:A 23 
+*END
+
+*D_NET *51 0.00396771
+*CONN
+*P mgmt_gpio_out[13] I
+*I *89:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *130:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[13] 0.0010702
+2 *89:DIODE 0
+3 *130:A 0
+4 *51:19 0.00019522
+5 *51:12 0.00126541
+6 *51:12 mgmt_gpio_out_buf[4] 0
+7 *51:12 *52:8 0
+8 *51:12 *78:7 0.000187084
+9 *51:19 mgmt_gpio_out_buf[4] 0.00030457
+10 *51:19 *78:7 5.54141e-05
+11 *102:DIODE *51:12 0.000188325
+12 *3:28 *51:12 7.87053e-05
+13 *13:28 *51:12 0.000108349
+14 *15:17 *51:12 0.000514429
+15 *50:8 *51:12 0
+*RES
+1 mgmt_gpio_out[13] *51:12 37.0814 
+2 *51:12 *51:19 34.64 
+3 *51:19 *130:A 23 
+4 *51:12 *89:DIODE 23 
+*END
+
+*D_NET *52 0.0053359
+*CONN
+*P mgmt_gpio_out[14] I
+*I *131:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *90:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[14] 0.00114347
+2 *131:A 0
+3 *90:DIODE 8.26162e-05
+4 *52:8 0.00122609
+5 *90:DIODE *54:28 0.000145521
+6 *52:8 mgmt_gpio_out_buf[2] 0
+7 *52:8 mgmt_gpio_out_buf[3] 0.000697328
+8 *52:8 *53:10 0
+9 *52:8 *54:14 0
+10 *52:8 *54:22 0
+11 *52:8 *54:28 6.08617e-05
+12 mgmt_gpio_in_buf[0] *52:8 0
+13 mgmt_gpio_in_buf[1] *52:8 0
+14 mgmt_gpio_in_buf[2] *52:8 0
+15 mgmt_gpio_in_buf[3] *52:8 0
+16 *100:DIODE *90:DIODE 0.000231039
+17 *3:28 *52:8 0.00117826
+18 *13:28 *52:8 4.38808e-05
+19 *14:10 *90:DIODE 2.02872e-05
+20 *14:10 *52:8 6.70361e-05
+21 *35:8 *52:8 0
+22 *36:8 *52:8 0.000210438
+23 *37:6 *52:8 0
+24 *41:11 *52:8 0.00022907
+25 *51:12 *52:8 0
+*RES
+1 mgmt_gpio_out[14] *52:8 45.3464 
+2 *52:8 *90:DIODE 26.0036 
+3 *52:8 *131:A 23 
+*END
+
+*D_NET *53 0.00713767
+*CONN
+*P mgmt_gpio_out[15] I
+*I *132:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *91:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[15] 0.0006493
+2 *132:A 0
+3 *91:DIODE 0.000342434
+4 *53:14 0.00154915
+5 *53:10 0.00185602
+6 *91:DIODE *72:7 9.41584e-05
+7 *53:10 *54:14 0
+8 *53:10 *55:8 0
+9 *53:14 mgmt_gpio_out_buf[0] 0.00071577
+10 *53:14 mgmt_gpio_out_buf[1] 0
+11 *53:14 *54:14 0
+12 *53:14 *55:8 0.000224986
+13 *53:14 *56:7 0
+14 *53:14 *77:13 0
+15 mgmt_gpio_in_buf[0] *53:10 8.63978e-05
+16 *3:9 *53:14 0.000976185
+17 *13:19 *91:DIODE 0.000479804
+18 *13:19 *53:14 0.000163466
+19 *41:11 *53:10 0
+20 *52:8 *53:10 0
+*RES
+1 mgmt_gpio_out[15] *53:10 39.5079 
+2 *53:10 *53:14 46.3407 
+3 *53:14 *91:DIODE 30.2914 
+4 *53:14 *132:A 23 
+*END
+
+*D_NET *54 0.00716661
+*CONN
+*P mgmt_gpio_out[16] I
+*I *133:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *92:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[16] 0.0012572
+2 *133:A 0
+3 *92:DIODE 0
+4 *54:28 0.000749856
+5 *54:22 0.00117157
+6 *54:14 0.00167892
+7 *54:14 *55:8 0
+8 *54:14 *77:13 0.000782154
+9 *54:22 mgmt_gpio_out_buf[2] 6.26687e-05
+10 *54:22 *77:13 6.70361e-05
+11 *54:28 mgmt_gpio_out_buf[1] 0.000106814
+12 *54:28 *71:8 4.03039e-05
+13 *54:28 *73:14 0.000100061
+14 mgmt_gpio_in_buf[0] *54:14 0
+15 mgmt_gpio_in_buf[1] *54:14 0
+16 mgmt_gpio_in_buf[2] *54:14 0
+17 mgmt_gpio_in_buf[3] *54:14 1.05658e-05
+18 mgmt_gpio_in_buf[7] *54:14 0.00012758
+19 mgmt_gpio_in_buf[7] *54:22 2.15604e-05
+20 mgmt_gpio_in_buf[8] *54:28 0.000110373
+21 *90:DIODE *54:28 0.000145521
+22 *100:DIODE *54:28 4.50767e-05
+23 *101:DIODE *54:28 0.000262694
+24 *35:8 *54:14 0.000105571
+25 *36:8 *54:14 0
+26 *37:6 *54:14 9.66499e-05
+27 *37:6 *54:22 0.000163575
+28 *52:8 *54:14 0
+29 *52:8 *54:22 0
+30 *52:8 *54:28 6.08617e-05
+31 *53:10 *54:14 0
+32 *53:14 *54:14 0
+*RES
+1 mgmt_gpio_out[16] *54:14 40.1471 
+2 *54:14 *54:22 36.815 
+3 *54:22 *54:28 43.1329 
+4 *54:28 *92:DIODE 23 
+5 *54:14 *133:A 23 
+*END
+
+*D_NET *55 0.007078
+*CONN
+*P mgmt_gpio_out[17] I
+*I *134:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *93:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[17] 0.00130209
+2 *134:A 2.30556e-05
+3 *93:DIODE 0.00165028
+4 *55:8 0.00297543
+5 *93:DIODE *164:A 0.000232409
+6 *93:DIODE *82:7 0.000100069
+7 *55:8 *56:7 0
+8 *12:11 *93:DIODE 7.82513e-05
+9 *12:28 *93:DIODE 0.000131865
+10 *13:28 *55:8 5.50049e-05
+11 *31:7 *93:DIODE 0.000304564
+12 *53:10 *55:8 0
+13 *53:14 *55:8 0.000224986
+14 *54:14 *55:8 0
+*RES
+1 mgmt_gpio_out[17] *55:8 33.5186 
+2 *55:8 *93:DIODE 44.5843 
+3 *55:8 *134:A 23.4971 
+*END
+
+*D_NET *56 0.0105695
+*CONN
+*P mgmt_gpio_out[18] I
+*I *94:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *135:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[18] 0.000535284
+2 *94:DIODE 0.000252391
+3 *135:A 0.000133733
+4 *56:32 0.000474796
+5 *56:26 0.000684879
+6 *56:10 0.0017659
+7 *56:7 0.00170498
+8 *94:DIODE *68:21 0.000139347
+9 *94:DIODE *69:9 5.3304e-05
+10 *135:A *161:A 3.22465e-05
+11 *135:A *63:25 0.00019654
+12 *56:10 *57:8 0.00116186
+13 *56:10 *57:25 0.000135037
+14 *56:10 *58:14 4.96207e-05
+15 *56:10 *66:9 0.000166804
+16 *56:10 *77:7 0.000994676
+17 *56:26 mgmt_gpio_out_buf[8] 5.72853e-05
+18 *56:26 *125:DIODE 0.000227473
+19 *56:26 *63:25 0.000419468
+20 *56:26 *69:9 0.000345286
+21 *56:26 *74:12 0.000112019
+22 *56:32 mgmt_gpio_out_buf[8] 0.000292588
+23 *56:32 *64:8 1.34914e-05
+24 *56:32 *83:7 2.64616e-05
+25 *12:28 *135:A 0
+26 *12:28 *56:26 0
+27 *12:41 *56:32 0.000145926
+28 *50:8 *56:10 0.000167516
+29 *50:16 *56:10 5.25011e-05
+30 *50:16 *56:26 0.000228043
+31 *53:14 *56:7 0
+32 *55:8 *56:7 0
+*RES
+1 mgmt_gpio_out[18] *56:7 26.165 
+2 *56:7 *56:10 42.7779 
+3 *56:10 *135:A 41.2314 
+4 *56:10 *56:26 42.6771 
+5 *56:26 *56:32 35.1164 
+6 *56:32 *94:DIODE 41.48 
+*END
+
+*D_NET *57 0.00813393
+*CONN
+*P mgmt_gpio_out[1] I
+*I *96:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *137:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[1] 0.000494228
+2 *96:DIODE 0
+3 *137:A 0
+4 *57:25 0.000197464
+5 *57:14 0.000374244
+6 *57:8 0.00250052
+7 *57:7 0.00242304
+8 *57:7 *58:8 0
+9 *57:7 *59:12 0
+10 *57:8 *66:9 3.59344e-05
+11 *57:14 mgmt_gpio_out_buf[4] 4.03628e-05
+12 *57:25 mgmt_gpio_out_buf[4] 0.000109343
+13 *87:DIODE *57:14 4.91616e-05
+14 *103:DIODE *57:14 3.7122e-06
+15 *12:11 *57:7 0
+16 *14:24 *57:14 0.00026506
+17 *47:8 *57:7 0
+18 *47:8 *57:8 0.000143071
+19 *49:16 *57:14 2.64616e-05
+20 *49:21 *57:14 6.25829e-05
+21 *50:8 *57:14 0.000111852
+22 *56:10 *57:8 0.00116186
+23 *56:10 *57:25 0.000135037
+*RES
+1 mgmt_gpio_out[1] *57:7 25.8129 
+2 *57:7 *57:8 25.8721 
+3 *57:8 *57:14 37.6229 
+4 *57:14 *137:A 23 
+5 *57:8 *57:25 33.1279 
+6 *57:25 *96:DIODE 23 
+*END
+
+*D_NET *58 0.0069437
+*CONN
+*P mgmt_gpio_out[2] I
+*I *107:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *148:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[2] 0.00143242
+2 *107:DIODE 0.000212657
+3 *148:A 0
+4 *58:14 0.000305637
+5 *58:8 0.00195072
+6 *58:8 *59:12 0
+7 *58:14 *65:16 0.000702602
+8 *95:DIODE *58:8 6.97004e-05
+9 *41:11 *107:DIODE 9.28372e-05
+10 *42:15 *107:DIODE 9.41704e-05
+11 *42:15 *58:8 0.000696615
+12 *42:20 *58:8 0.000526963
+13 *48:11 *58:14 0.000713263
+14 *50:8 *58:14 9.64943e-05
+15 *56:10 *58:14 4.96207e-05
+16 *57:7 *58:8 0
+*RES
+1 mgmt_gpio_out[2] *58:8 36.0871 
+2 *58:8 *58:14 40.7507 
+3 *58:14 *148:A 23 
+4 *58:8 *107:DIODE 26.0036 
+*END
+
+*D_NET *59 0.0048117
+*CONN
+*P mgmt_gpio_out[3] I
+*I *159:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *118:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[3] 0.00106215
+2 *159:A 0.00081415
+3 *118:DIODE 0
+4 *59:12 0.0018763
+5 *159:A *165:A 0.000102827
+6 *159:A *64:8 0.000265611
+7 *59:12 *60:7 0
+8 *12:11 *59:12 0.000125375
+9 *42:20 *59:12 0
+10 *43:31 *59:12 0
+11 *47:13 *59:12 0.000565276
+12 *57:7 *59:12 0
+13 *58:8 *59:12 0
+*RES
+1 mgmt_gpio_out[3] *59:12 36.605 
+2 *59:12 *118:DIODE 23 
+3 *59:12 *159:A 34.1236 
+*END
+
+*D_NET *60 0.00299192
+*CONN
+*P mgmt_gpio_out[4] I
+*I *161:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *120:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[4] 0.000383581
+2 *161:A 0.000789866
+3 *120:DIODE 9.13536e-05
+4 *60:7 0.0012648
+5 *161:A *74:12 1.56662e-06
+6 *161:A *75:10 3.39646e-05
+7 *60:7 *61:11 0
+8 *135:A *161:A 3.22465e-05
+9 *42:20 *60:7 0.000394541
+10 *59:12 *60:7 0
+*RES
+1 mgmt_gpio_out[4] *60:7 22.9957 
+2 *60:7 *120:DIODE 24.0979 
+3 *60:7 *161:A 32.6943 
+*END
+
+*D_NET *61 0.00384036
+*CONN
+*P mgmt_gpio_out[5] I
+*I *162:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *121:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[5] 0.000675287
+2 *162:A 0.0005654
+3 *121:DIODE 0.000210676
+4 *61:11 0.00145136
+5 *61:11 *62:5 0
+6 *61:11 *75:10 5.59432e-05
+7 mgmt_gpio_oeb_buf[2] *61:11 0
+8 *42:20 *61:11 0.000256775
+9 *43:23 *162:A 0.000134943
+10 *43:31 *121:DIODE 0.000123829
+11 *43:31 *162:A 0.000102602
+12 *45:8 *61:11 7.6431e-05
+13 *46:7 *162:A 0.000187104
+14 *60:7 *61:11 0
+*RES
+1 mgmt_gpio_out[5] *61:11 29.3964 
+2 *61:11 *121:DIODE 26.0036 
+3 *61:11 *162:A 30.7886 
+*END
+
+*D_NET *62 0.0050326
+*CONN
+*P mgmt_gpio_out[6] I
+*I *163:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *122:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[6] 0.000586258
+2 *163:A 0.000192064
+3 *122:DIODE 0
+4 *62:5 0.000778323
+5 *163:A *63:25 8.94487e-05
+6 *62:5 *63:13 0.000491518
+7 *62:5 *63:25 0.0011448
+8 mgmt_gpio_oeb_buf[2] *62:5 0.0009889
+9 *99:DIODE *163:A 0.000139586
+10 *11:11 *163:A 8.02348e-05
+11 *11:11 *62:5 0.000541467
+12 *42:20 *62:5 0
+13 *61:11 *62:5 0
+*RES
+1 mgmt_gpio_out[6] *62:5 22.0814 
+2 *62:5 *122:DIODE 38 
+3 *62:5 *163:A 42.205 
+*END
+
+*D_NET *63 0.00582214
+*CONN
+*P mgmt_gpio_out[7] I
+*I *123:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *164:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[7] 0.000387897
+2 *123:DIODE 0
+3 *164:A 3.90115e-05
+4 *63:25 0.000670791
+5 *63:13 0.0010977
+6 *63:13 *64:8 0
+7 *63:25 mgmt_gpio_out_buf[9] 0.000553258
+8 *63:25 *69:9 0.000202602
+9 *93:DIODE *164:A 0.000232409
+10 *135:A *63:25 0.00019654
+11 *163:A *63:25 8.94487e-05
+12 *11:11 *63:25 6.42902e-05
+13 *12:28 *63:25 0
+14 *31:7 *164:A 0.000232409
+15 *56:26 *63:25 0.000419468
+16 *62:5 *63:13 0.000491518
+17 *62:5 *63:25 0.0011448
+*RES
+1 mgmt_gpio_out[7] *63:13 10.4814 
+2 *63:13 *164:A 40.5271 
+3 *63:13 *63:25 35.5071 
+4 *63:25 *123:DIODE 23 
+*END
+
+*D_NET *64 0.00537254
+*CONN
+*P mgmt_gpio_out[8] I
+*I *124:DIODE I *D sky130_fd_sc_hd__diode_2
+*I *165:A I *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out[8] 0.000995869
+2 *124:DIODE 0
+3 *165:A 7.84948e-05
+4 *64:20 0.000185747
+5 *64:8 0.00126011
+6 *64:8 mgmt_gpio_out_buf[7] 1.35518e-05
+7 *64:8 *65:16 0
+8 *64:8 *74:12 0.000755
+9 *64:8 *83:7 0.000270671
+10 mgmt_gpio_oeb_buf[0] *64:8 0.00089702
+11 *99:DIODE *64:20 0.000100061
+12 *159:A *165:A 0.000102827
+13 *159:A *64:8 0.000265611
+14 *11:11 *64:20 7.22066e-05
+15 *12:28 *64:8 0.000131092
+16 *12:41 *64:8 0.000141879
+17 *42:20 *64:20 0
+18 *44:8 *64:8 8.89109e-05
+19 *56:32 *64:8 1.34914e-05
+20 *63:13 *64:8 0
+*RES
+1 mgmt_gpio_out[8] *64:8 41.3071 
+2 *64:8 *165:A 25.0507 
+3 *64:8 *64:20 33.3557 
+4 *64:20 *124:DIODE 23 
+*END
+
+*D_NET *65 0.00440503
+*CONN
+*P mgmt_gpio_out[9] I
+*I *166:A I *D sky130_fd_sc_hd__clkbuf_8
+*I *125:DIODE I *D sky130_fd_sc_hd__diode_2
+*CAP
+1 mgmt_gpio_out[9] 0.000983329
+2 *166:A 0
+3 *125:DIODE 0.000425282
+4 *65:16 0.00140861
+5 *125:DIODE *84:7 0.000187069
+6 *65:16 mgmt_gpio_out_buf[7] 0
+7 mgmt_gpio_oeb_buf[0] *65:16 0
+8 *12:35 *125:DIODE 2.81066e-05
+9 *44:8 *65:16 0
+10 *48:11 *65:16 0.000380541
+11 *49:16 *65:16 0
+12 *50:16 *125:DIODE 6.20207e-05
+13 *56:26 *125:DIODE 0.000227473
+14 *58:14 *65:16 0.000702602
+15 *64:8 *65:16 0
+*RES
+1 mgmt_gpio_out[9] *65:16 37.8479 
+2 *65:16 *125:DIODE 31.1407 
+3 *65:16 *166:A 23 
+*END
+
+*D_NET *66 0.00947009
+*CONN
+*P mgmt_gpio_out_buf[0] O
+*I *126:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[0] 0.00116606
+2 *126:X 2.34823e-05
+3 *66:9 0.00347016
+4 *66:5 0.00232758
+5 *66:9 *77:7 0.000274336
+6 *3:9 mgmt_gpio_out_buf[0] 0.000332269
+7 *50:8 *66:9 0.000781799
+8 *50:16 *66:9 0.000175903
+9 *53:14 mgmt_gpio_out_buf[0] 0.00071577
+10 *56:10 *66:9 0.000166804
+11 *57:8 *66:9 3.59344e-05
+*RES
+1 *126:X *66:5 23.4971 
+2 *66:5 *66:9 46.5893 
+3 *66:9 mgmt_gpio_out_buf[0] 33.0393 
+*END
+
+*D_NET *67 0.00388829
+*CONN
+*P mgmt_gpio_out_buf[10] O
+*I *127:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[10] 0.000981477
+2 *127:X 0.000179752
+3 *67:7 0.00116123
+4 mgmt_gpio_out_buf[10] mgmt_gpio_out_buf[11] 0
+5 mgmt_gpio_out_buf[10] mgmt_gpio_out_buf[9] 0
+6 mgmt_gpio_out_buf[10] *73:14 0
+7 *67:7 *68:21 0.000707029
+8 *67:7 *70:9 0.000382286
+9 *4:8 mgmt_gpio_out_buf[10] 0.000476517
+10 *10:11 mgmt_gpio_out_buf[10] 0
+11 *11:11 mgmt_gpio_out_buf[10] 0
+12 *21:14 mgmt_gpio_out_buf[10] 0
+*RES
+1 *127:X *67:7 45.7679 
+2 *67:7 mgmt_gpio_out_buf[10] 19.8029 
+*END
+
+*D_NET *68 0.00742562
+*CONN
+*P mgmt_gpio_out_buf[11] O
+*I *128:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[11] 0.000918918
+2 *128:X 0.000549268
+3 *68:21 0.00154735
+4 *68:16 0.0011777
+5 mgmt_gpio_out_buf[11] mgmt_gpio_out_buf[12] 0
+6 *68:16 *70:6 4.22294e-05
+7 *68:16 *73:8 0.000167113
+8 *68:21 *69:9 0.000575943
+9 *68:21 *70:9 0.000251573
+10 mgmt_gpio_out_buf[10] mgmt_gpio_out_buf[11] 0
+11 *86:DIODE *68:21 0.000219101
+12 *94:DIODE *68:21 0.000139347
+13 *152:A mgmt_gpio_out_buf[11] 8.89816e-05
+14 *3:17 *68:16 0.000100543
+15 *4:8 mgmt_gpio_out_buf[11] 0.000171435
+16 *5:7 mgmt_gpio_out_buf[11] 0.000493655
+17 *8:10 mgmt_gpio_out_buf[11] 0
+18 *9:11 mgmt_gpio_out_buf[11] 0
+19 *11:11 mgmt_gpio_out_buf[11] 0
+20 *14:24 *68:16 0.000275432
+21 *31:15 *68:16 0
+22 *67:7 *68:21 0.000707029
+*RES
+1 *128:X *68:16 49.8279 
+2 *68:16 *68:21 47.2964 
+3 *68:21 mgmt_gpio_out_buf[11] 18.9121 
+*END
+
+*D_NET *69 0.00694182
+*CONN
+*P mgmt_gpio_out_buf[12] O
+*I *129:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[12] 0.000794132
+2 *129:X 0
+3 *69:9 0.00184818
+4 *69:5 0.00105405
+5 mgmt_gpio_out_buf[12] mgmt_gpio_out_buf[13] 0
+6 *69:9 mgmt_gpio_out_buf[9] 0.000572527
+7 *69:9 *70:9 8.97711e-05
+8 mgmt_gpio_out_buf[11] mgmt_gpio_out_buf[12] 0
+9 *94:DIODE *69:9 5.3304e-05
+10 *112:DIODE mgmt_gpio_out_buf[12] 0.000139647
+11 *155:A mgmt_gpio_out_buf[12] 0
+12 *5:7 mgmt_gpio_out_buf[12] 0
+13 *6:5 mgmt_gpio_out_buf[12] 0.000999992
+14 *7:10 mgmt_gpio_out_buf[12] 0
+15 *8:10 mgmt_gpio_out_buf[12] 0.000166573
+16 *9:11 mgmt_gpio_out_buf[12] 9.98109e-05
+17 *56:26 *69:9 0.000345286
+18 *63:25 *69:9 0.000202602
+19 *68:21 *69:9 0.000575943
+*RES
+1 *129:X *69:5 38 
+2 *69:5 *69:9 38.3243 
+3 *69:9 mgmt_gpio_out_buf[12] 35.3621 
+*END
+
+*D_NET *70 0.0065148
+*CONN
+*P mgmt_gpio_out_buf[13] O
+*I *130:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[13] 0.000741122
+2 *130:X 0.0001218
+3 *70:9 0.00229761
+4 *70:6 0.00167829
+5 *70:6 *73:8 0
+6 mgmt_gpio_out_buf[12] mgmt_gpio_out_buf[13] 0
+7 *112:DIODE mgmt_gpio_out_buf[13] 4.83778e-05
+8 *6:5 mgmt_gpio_out_buf[13] 0.000324017
+9 *7:10 mgmt_gpio_out_buf[13] 0.000290983
+10 *31:15 *70:6 0.000246748
+11 *67:7 *70:9 0.000382286
+12 *68:16 *70:6 4.22294e-05
+13 *68:21 *70:9 0.000251573
+14 *69:9 *70:9 8.97711e-05
+*RES
+1 *130:X *70:6 41.3143 
+2 *70:6 *70:9 36.5843 
+3 *70:9 mgmt_gpio_out_buf[13] 32.8557 
+*END
+
+*D_NET *71 0.00828779
+*CONN
+*P mgmt_gpio_out_buf[14] O
+*I *131:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[14] 0.00105431
+2 *131:X 0.000278949
+3 *71:19 0.00254209
+4 *71:16 0.00182503
+5 *71:8 0.000616197
+6 mgmt_gpio_out_buf[14] mgmt_gpio_out_buf[15] 0
+7 mgmt_gpio_out_buf[14] mgmt_gpio_out_buf[9] 3.91465e-05
+8 *71:8 mgmt_gpio_out_buf[1] 0.000369252
+9 *71:16 mgmt_gpio_out_buf[2] 0.000550973
+10 mgmt_gpio_in_buf[8] *71:8 0.000365513
+11 mgmt_gpio_in_buf[8] *71:16 0.000371013
+12 *155:A mgmt_gpio_out_buf[14] 1.47988e-05
+13 *8:5 mgmt_gpio_out_buf[14] 8.78798e-05
+14 *13:13 *71:16 0.000103089
+15 *20:10 mgmt_gpio_out_buf[14] 2.3066e-05
+16 *38:7 *71:16 6.17437e-06
+17 *54:28 *71:8 4.03039e-05
+*RES
+1 *131:X *71:8 44.6493 
+2 *71:8 *71:16 39.4871 
+3 *71:16 *71:19 35.6314 
+4 *71:19 mgmt_gpio_out_buf[14] 26.6723 
+*END
+
+*D_NET *72 0.00555266
+*CONN
+*P mgmt_gpio_out_buf[15] O
+*I *132:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[15] 0.00123545
+2 *132:X 0.00106218
+3 *72:7 0.00229763
+4 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[16] 0
+5 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[8] 0
+6 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[9] 0.00021096
+7 mgmt_gpio_out_buf[14] mgmt_gpio_out_buf[15] 0
+8 *91:DIODE *72:7 9.41584e-05
+9 *155:A mgmt_gpio_out_buf[15] 3.67573e-06
+10 *8:5 mgmt_gpio_out_buf[15] 8.14568e-05
+11 *9:11 mgmt_gpio_out_buf[15] 7.87398e-05
+12 *25:8 *72:7 0.00030809
+13 *29:12 *72:7 9.41704e-05
+14 *31:15 *72:7 8.61484e-05
+*RES
+1 *132:X *72:7 40.3171 
+2 *72:7 mgmt_gpio_out_buf[15] 28.713 
+*END
+
+*D_NET *73 0.00564472
+*CONN
+*P mgmt_gpio_out_buf[16] O
+*I *133:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[16] 0.000770091
+2 *133:X 0.00055758
+3 *73:14 0.00149461
+4 *73:8 0.0012821
+5 mgmt_gpio_out_buf[10] *73:14 0
+6 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[16] 0
+7 *100:DIODE *73:14 0.000328304
+8 *101:DIODE *73:14 0.000132547
+9 *9:11 mgmt_gpio_out_buf[16] 8.40031e-05
+10 *10:11 mgmt_gpio_out_buf[16] 0.000173923
+11 *10:11 *73:14 4.82774e-05
+12 *11:11 *73:14 6.17437e-06
+13 *14:24 *73:8 0.000141888
+14 *15:10 *73:8 9.5877e-05
+15 *16:5 *73:8 5.2949e-05
+16 *18:16 *73:8 0.000131982
+17 *30:7 *73:14 7.72342e-05
+18 *31:15 *73:8 0
+19 *54:28 *73:14 0.000100061
+20 *68:16 *73:8 0.000167113
+21 *70:6 *73:8 0
+*RES
+1 *133:X *73:8 48.4607 
+2 *73:8 *73:14 44.1582 
+3 *73:14 mgmt_gpio_out_buf[16] 10.2176 
+*END
+
+*D_NET *74 0.007267
+*CONN
+*P mgmt_gpio_out_buf[17] O
+*I *134:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[17] 0.00137113
+2 *134:X 0.000117007
+3 *74:12 0.00242635
+4 *74:6 0.00117222
+5 *74:12 mgmt_gpio_out_buf[8] 2.11157e-05
+6 *74:12 *79:7 0.000107611
+7 mgmt_gpio_oeb_buf[0] mgmt_gpio_out_buf[17] 0.000324087
+8 *161:A *74:12 1.56662e-06
+9 *10:11 mgmt_gpio_out_buf[17] 8.0091e-05
+10 *12:28 *74:12 0.000150411
+11 *12:41 *74:12 1.72928e-05
+12 *43:23 *74:6 5.36651e-05
+13 *49:16 *74:6 0.000246748
+14 *50:16 *74:12 0.000310687
+15 *56:26 *74:12 0.000112019
+16 *64:8 *74:12 0.000755
+*RES
+1 *134:X *74:6 41.3143 
+2 *74:6 *74:12 47.7004 
+3 *74:12 mgmt_gpio_out_buf[17] 11.4421 
+*END
+
+*D_NET *75 0.00236591
+*CONN
+*P mgmt_gpio_out_buf[18] O
+*I *135:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[18] 0.000837295
+2 *135:X 0.000148873
+3 *75:10 0.000986168
+4 mgmt_gpio_oeb_buf[1] mgmt_gpio_out_buf[18] 6.39339e-05
+5 mgmt_gpio_oeb_buf[2] *75:10 7.95974e-05
+6 *161:A *75:10 3.39646e-05
+7 *11:11 mgmt_gpio_out_buf[18] 0.000160137
+8 *61:11 *75:10 5.59432e-05
+*RES
+1 *135:X *75:10 49.5318 
+2 *75:10 mgmt_gpio_out_buf[18] 2.04587 
+*END
+
+*D_NET *76 0.00517156
+*CONN
+*P mgmt_gpio_out_buf[1] O
+*I *137:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[1] 0.00121396
+2 *137:X 0.000146555
+3 *76:7 0.00136051
+4 mgmt_gpio_out_buf[1] *77:13 0.00084186
+5 mgmt_gpio_in_buf[8] mgmt_gpio_out_buf[1] 8.31601e-05
+6 *3:9 mgmt_gpio_out_buf[1] 0
+7 *13:13 mgmt_gpio_out_buf[1] 0.00104945
+8 *53:14 mgmt_gpio_out_buf[1] 0
+9 *54:28 mgmt_gpio_out_buf[1] 0.000106814
+10 *71:8 mgmt_gpio_out_buf[1] 0.000369252
+*RES
+1 *137:X *76:7 40.0507 
+2 *76:7 mgmt_gpio_out_buf[1] 29.8286 
+*END
+
+*D_NET *77 0.00819209
+*CONN
+*P mgmt_gpio_out_buf[2] O
+*I *148:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[2] 0.000851137
+2 *148:X 0.000353255
+3 *77:13 0.00140975
+4 *77:7 0.000911867
+5 mgmt_gpio_out_buf[2] mgmt_gpio_out_buf[3] 0
+6 mgmt_gpio_in_buf[7] mgmt_gpio_out_buf[2] 0.000588723
+7 mgmt_gpio_in_buf[7] *77:13 1.60583e-05
+8 mgmt_gpio_in_buf[8] mgmt_gpio_out_buf[2] 2.00296e-05
+9 mgmt_gpio_in_buf[8] *77:13 0.00025683
+10 mgmt_gpio_out_buf[1] *77:13 0.00084186
+11 *13:13 mgmt_gpio_out_buf[2] 5.41706e-05
+12 *14:10 mgmt_gpio_out_buf[2] 0
+13 *19:21 mgmt_gpio_out_buf[2] 6.47651e-05
+14 *50:8 *77:7 9.17998e-05
+15 *52:8 mgmt_gpio_out_buf[2] 0
+16 *53:14 *77:13 0
+17 *54:14 *77:13 0.000782154
+18 *54:22 mgmt_gpio_out_buf[2] 6.26687e-05
+19 *54:22 *77:13 6.70361e-05
+20 *56:10 *77:7 0.000994676
+21 *66:9 *77:7 0.000274336
+22 *71:16 mgmt_gpio_out_buf[2] 0.000550973
+*RES
+1 *148:X *77:7 49.1029 
+2 *77:7 *77:13 46.1571 
+3 *77:13 mgmt_gpio_out_buf[2] 19.6579 
+*END
+
+*D_NET *78 0.00659048
+*CONN
+*P mgmt_gpio_out_buf[3] O
+*I *159:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[3] 0.00070633
+2 *159:X 0.000544094
+3 *78:7 0.00125042
+4 mgmt_gpio_out_buf[2] mgmt_gpio_out_buf[3] 0
+5 *145:A *78:7 0.000525608
+6 *13:28 mgmt_gpio_out_buf[3] 0.000260853
+7 *14:10 mgmt_gpio_out_buf[3] 0.00111578
+8 *15:10 mgmt_gpio_out_buf[3] 0.000309917
+9 *17:20 *78:7 6.47751e-05
+10 *40:6 mgmt_gpio_out_buf[3] 0.000872876
+11 *51:12 *78:7 0.000187084
+12 *51:19 *78:7 5.54141e-05
+13 *52:8 mgmt_gpio_out_buf[3] 0.000697328
+*RES
+1 *159:X *78:7 48.15 
+2 *78:7 mgmt_gpio_out_buf[3] 25.52 
+*END
+
+*D_NET *79 0.0078648
+*CONN
+*P mgmt_gpio_out_buf[4] O
+*I *161:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[4] 0.00128174
+2 *161:X 0.00034231
+3 *79:7 0.00162405
+4 mgmt_gpio_out_buf[4] mgmt_gpio_out_buf[5] 0
+5 mgmt_gpio_in_buf[18] mgmt_gpio_out_buf[4] 0.000984315
+6 *102:DIODE *79:7 0.000116564
+7 *103:DIODE mgmt_gpio_out_buf[4] 1.22803e-05
+8 *13:19 mgmt_gpio_out_buf[4] 0
+9 *13:28 mgmt_gpio_out_buf[4] 0
+10 *14:13 mgmt_gpio_out_buf[4] 0.000123041
+11 *14:20 mgmt_gpio_out_buf[4] 0.000192077
+12 *14:24 *79:7 0.000139982
+13 *15:10 mgmt_gpio_out_buf[4] 0
+14 *15:17 mgmt_gpio_out_buf[4] 0
+15 *16:5 mgmt_gpio_out_buf[4] 0.00194284
+16 *49:21 mgmt_gpio_out_buf[4] 0.000305509
+17 *50:8 mgmt_gpio_out_buf[4] 0.000238194
+18 *51:12 mgmt_gpio_out_buf[4] 0
+19 *51:19 mgmt_gpio_out_buf[4] 0.00030457
+20 *57:14 mgmt_gpio_out_buf[4] 4.03628e-05
+21 *57:25 mgmt_gpio_out_buf[4] 0.000109343
+22 *74:12 *79:7 0.000107611
+*RES
+1 *161:X *79:7 44.3386 
+2 *79:7 mgmt_gpio_out_buf[4] 37.3271 
+*END
+
+*D_NET *80 0.00616333
+*CONN
+*P mgmt_gpio_out_buf[5] O
+*I *162:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[5] 0.000281622
+2 *162:X 8.32623e-05
+3 *80:11 0.00108562
+4 *80:7 0.000887264
+5 *80:11 mgmt_gpio_out_buf[6] 0.00113588
+6 mgmt_gpio_in_buf[11] *80:11 0
+7 mgmt_gpio_out_buf[4] mgmt_gpio_out_buf[5] 0
+8 *3:17 *80:11 0.00032159
+9 *16:5 mgmt_gpio_out_buf[5] 0
+10 *17:15 mgmt_gpio_out_buf[5] 0.000208689
+11 *17:15 *80:11 0.000281912
+12 *26:16 mgmt_gpio_out_buf[5] 1.95956e-05
+13 *26:16 *80:11 7.04672e-05
+14 *29:12 *80:11 0.000247886
+15 *31:15 *80:11 0.00118938
+16 *43:23 *80:7 0.000137651
+17 *48:11 *80:11 0.000212514
+*RES
+1 *162:X *80:7 39.5743 
+2 *80:7 *80:11 41.0171 
+3 *80:11 mgmt_gpio_out_buf[5] 21.6286 
+*END
+
+*D_NET *81 0.00435465
+*CONN
+*P mgmt_gpio_out_buf[6] O
+*I *163:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[6] 0.000609879
+2 *163:X 0.000156719
+3 *81:7 0.000766598
+4 *99:DIODE *81:7 7.45414e-05
+5 *17:15 mgmt_gpio_out_buf[6] 0.000202041
+6 *17:20 mgmt_gpio_out_buf[6] 9.6946e-05
+7 *18:12 mgmt_gpio_out_buf[6] 0.000543129
+8 *23:8 mgmt_gpio_out_buf[6] 0.000616076
+9 *28:8 mgmt_gpio_out_buf[6] 1.31913e-05
+10 *48:11 mgmt_gpio_out_buf[6] 0.000139657
+11 *80:11 mgmt_gpio_out_buf[6] 0.00113588
+*RES
+1 *163:X *81:7 40.5271 
+2 *81:7 mgmt_gpio_out_buf[6] 21.025 
+*END
+
+*D_NET *82 0.00613484
+*CONN
+*P mgmt_gpio_out_buf[7] O
+*I *164:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[7] 0.00159281
+2 *164:X 1.75476e-05
+3 *82:7 0.00161035
+4 mgmt_gpio_in_buf[14] mgmt_gpio_out_buf[7] 0
+5 mgmt_gpio_in_buf[17] mgmt_gpio_out_buf[7] 6.02277e-06
+6 mgmt_gpio_oeb_buf[0] mgmt_gpio_out_buf[7] 0.000830683
+7 *93:DIODE *82:7 0.000100069
+8 *4:19 mgmt_gpio_out_buf[7] 0.000138718
+9 *12:35 mgmt_gpio_out_buf[7] 0.000219882
+10 *12:41 mgmt_gpio_out_buf[7] 0.00119782
+11 *17:15 mgmt_gpio_out_buf[7] 0
+12 *17:20 mgmt_gpio_out_buf[7] 0
+13 *18:12 mgmt_gpio_out_buf[7] 0
+14 *19:10 mgmt_gpio_out_buf[7] 0.000305622
+15 *25:8 mgmt_gpio_out_buf[7] 0
+16 *28:8 mgmt_gpio_out_buf[7] 0
+17 *31:7 *82:7 0.000101764
+18 *48:11 mgmt_gpio_out_buf[7] 0
+19 *64:8 mgmt_gpio_out_buf[7] 1.35518e-05
+20 *65:16 mgmt_gpio_out_buf[7] 0
+*RES
+1 *164:X *82:7 39.0979 
+2 *82:7 mgmt_gpio_out_buf[7] 39.0257 
+*END
+
+*D_NET *83 0.00439843
+*CONN
+*P mgmt_gpio_out_buf[8] O
+*I *165:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[8] 0.00102055
+2 *165:X 0.000131996
+3 *83:7 0.00115255
+4 mgmt_gpio_out_buf[8] mgmt_gpio_out_buf[9] 0
+5 mgmt_gpio_in_buf[17] mgmt_gpio_out_buf[8] 0.000971141
+6 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[8] 0
+7 *12:41 mgmt_gpio_out_buf[8] 8.3507e-05
+8 *19:10 mgmt_gpio_out_buf[8] 8.54996e-05
+9 *20:10 mgmt_gpio_out_buf[8] 0.000285059
+10 *56:26 mgmt_gpio_out_buf[8] 5.72853e-05
+11 *56:32 mgmt_gpio_out_buf[8] 0.000292588
+12 *56:32 *83:7 2.64616e-05
+13 *64:8 *83:7 0.000270671
+14 *74:12 mgmt_gpio_out_buf[8] 2.11157e-05
+*RES
+1 *165:X *83:7 41.0036 
+2 *83:7 mgmt_gpio_out_buf[8] 24.1943 
+*END
+
+*D_NET *84 0.00471173
+*CONN
+*P mgmt_gpio_out_buf[9] O
+*I *166:X O *D sky130_fd_sc_hd__clkbuf_8
+*CAP
+1 mgmt_gpio_out_buf[9] 0.00111599
+2 *166:X 8.80723e-05
+3 *84:7 0.00120406
+4 mgmt_gpio_out_buf[10] mgmt_gpio_out_buf[9] 0
+5 mgmt_gpio_out_buf[14] mgmt_gpio_out_buf[9] 3.91465e-05
+6 mgmt_gpio_out_buf[15] mgmt_gpio_out_buf[9] 0.00021096
+7 mgmt_gpio_out_buf[8] mgmt_gpio_out_buf[9] 0
+8 *125:DIODE *84:7 0.000187069
+9 *10:11 mgmt_gpio_out_buf[9] 0.000185284
+10 *11:11 mgmt_gpio_out_buf[9] 5.35872e-06
+11 *20:10 mgmt_gpio_out_buf[9] 0
+12 *21:14 mgmt_gpio_out_buf[9] 0.00055
+13 *63:25 mgmt_gpio_out_buf[9] 0.000553258
+14 *69:9 mgmt_gpio_out_buf[9] 0.000572527
+*RES
+1 *166:X *84:7 40.0507 
+2 *84:7 mgmt_gpio_out_buf[9] 27.0114 
+*END

@@ -1,0 +1,73 @@
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 0 unannotated nets.
+Found 0 partially unannotated nets.
+parastic_annotation_check
+check_slew
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+check_slew_end
+tns_report
+
+===========================================================================
+ report_tns
+============================================================================
+tns 0.00
+tns_report_end
+wns_report
+
+===========================================================================
+ report_wns
+============================================================================
+wns 0.00
+wns_report_end
+worst_slack
+
+===========================================================================
+ report_worst_slack -max (Setup)
+============================================================================
+worst slack 4.32
+
+===========================================================================
+ report_worst_slack -min (Hold)
+============================================================================
+worst slack 3.10
+worst_slack_end
+power_report
+
+===========================================================================
+ report_power
+============================================================================
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Combinational          2.31e-05   2.77e-05   6.19e-10   5.09e-05 100.0%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  2.31e-05   2.77e-05   6.19e-10   5.09e-05 100.0%
+                          45.5%      54.5%       0.0%
+power_report_end
+area_report
+
+===========================================================================
+ report_design_area
+============================================================================
+Design area 687 u^2 52% utilization.
+area_report_end
+Setting global connections for newly added cells...
+[WARNING] Did not save OpenROAD database!
+Writing SDF to /home/hosni/caravel_sky130/caravel/openlane/mprj_io_buffer/runs/23_01_31_02_55/results/routing/mca/process_corner_nom/mprj_io_buffer.sdf...
+Writing timing model to /home/hosni/caravel_sky130/caravel/openlane/mprj_io_buffer/runs/23_01_31_02_55/results/routing/mca/process_corner_nom/mprj_io_buffer.lib...
+
