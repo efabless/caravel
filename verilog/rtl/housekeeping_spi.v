@@ -13,7 +13,7 @@
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
 
-//`default_nettype none
+`default_nettype none
 
 //-----------------------------------------------------------
 // SPI controller for Caravel
@@ -111,7 +111,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     reg  [7:0]  ldata;   
     reg		pre_pass_thru_mgmt;
     reg		pre_pass_thru_user;
-
+    wire    csb_reset;
     assign hk_spi_csb = CSB;
     assign hk_spi_sck = SCK;
     assign hk_spi_sdi = SDI;
@@ -129,7 +129,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     reg [2:0] byte_cnt;
     reg cmd_rd, cmd_wr, cmd_pt, cmd_pt_usr;
     reg [2:0] cmd_bytes;
-    always @(count) begin
+    always @(*) begin
         case(state)  
             `COMMAND : begin
                 if(count == 3'd7) begin
@@ -173,7 +173,6 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     always @(posedge SCK or posedge csb_reset) begin
         if (csb_reset == 1'b1) begin
             state  <= `COMMAND;
-            nstate <= 3'b000;           //        
         end                
         else 
             state <= nstate;
@@ -193,20 +192,20 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
             count  <= 3'b000;  
         end 
         else if (state != `USERPASS && state != `MGMTPASS) begin
-            count <= count + 1;    
+            count <= count + 3'h1;    
         end                 
     end 
     
     // Getting command from SDI and storing it in a register 
     always @(posedge SCK or posedge csb_reset) begin
         if (csb_reset == 1'b1) begin 
-            cmd_wr <= 0;
-            cmd_rd <= 0;
-            cmd_bytes <= 0;
-            pre_pass_thru_mgmt <= 0; 
-            pre_pass_thru_user <= 0;  
-            pass_thru_mgmt_delay <= 0; 
-            pass_thru_user_delay <= 0;
+            cmd_wr <= 1'b0;
+            cmd_rd <= 1'b0;
+            cmd_bytes <= 3'b0;
+            pre_pass_thru_mgmt <= 1'b0; 
+            pre_pass_thru_user <= 1'b0;  
+            pass_thru_mgmt_delay <= 1'b0; 
+            pass_thru_user_delay <= 1'b0;
         end    
         else begin 
             if(state == `COMMAND) begin 
@@ -244,7 +243,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         if (csb_reset == 1'b1)
             predata <= 7'b0000000;      //
         else 
-        if(state == `DATA) predata <= {predata[6:0], SDI};
+        if(state == `DATA) predata <= {predata[5:0], SDI};
     end 
 
     // Getting bytes count from SDI and decremnting it. 
@@ -336,8 +335,6 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     always @(posedge SCK or posedge csb_reset) begin 
         if(csb_reset == 1'b1) begin 
             pass_thru_mgmt <= 1'b0;
-            pass_thru_mgmt_delay <= 1'b0;
-            pre_pass_thru_mgmt <= 1'b0;
         end 
         else 
             if(state == `MGMTPASS)
@@ -347,12 +344,10 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     always @(posedge SCK or posedge csb_reset) begin 
         if (csb_reset == 1'b1) begin 
             pass_thru_user <= 1'b0;
-            pass_thru_user_delay <= 1'b0;
-            pre_pass_thru_user <= 1'b0;
         end 
         else 
             if(state == `USERPASS)
-                pass_thru_user = 1;
+                pass_thru_user = 1'b1;
     end    
 
     /*always @(posedge SCK) begin  ////
