@@ -1427,6 +1427,7 @@ module caravel_core (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
-
+(* keep *) empty_macro empty_macro_0 ();
+(* keep *) empty_macro empty_macro_1 ();
 endmodule
 // `default_nettype wire
