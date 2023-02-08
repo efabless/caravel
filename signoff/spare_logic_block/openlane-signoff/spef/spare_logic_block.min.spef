@@ -1,0 +1,1184 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "spare_logic_block"
+*DATE "11:11:11 Fri 11 11, 1111"
+*VENDOR "OpenRCX"
+*PROGRAM "Parallel Extraction"
+*VERSION "1.0"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*1 spare_xfq[0]
+*2 spare_xfq[1]
+*3 spare_xfqn[0]
+*4 spare_xfqn[1]
+*5 spare_xi[0]
+*6 spare_xi[1]
+*7 spare_xi[2]
+*8 spare_xi[3]
+*9 spare_xib
+*10 spare_xmx[0]
+*11 spare_xmx[1]
+*12 spare_xna[0]
+*13 spare_xna[1]
+*14 spare_xno[0]
+*15 spare_xno[1]
+*16 spare_xz[0]
+*17 spare_xz[10]
+*18 spare_xz[11]
+*19 spare_xz[12]
+*20 spare_xz[13]
+*21 spare_xz[14]
+*22 spare_xz[15]
+*23 spare_xz[16]
+*24 spare_xz[17]
+*25 spare_xz[18]
+*26 spare_xz[19]
+*27 spare_xz[1]
+*28 spare_xz[20]
+*29 spare_xz[21]
+*30 spare_xz[22]
+*31 spare_xz[23]
+*32 spare_xz[24]
+*33 spare_xz[25]
+*34 spare_xz[26]
+*35 spare_xz[2]
+*36 spare_xz[3]
+*37 spare_xz[4]
+*38 spare_xz[5]
+*39 spare_xz[6]
+*40 spare_xz[7]
+*41 spare_xz[8]
+*42 spare_xz[9]
+*45 spare_logic1\[0\]
+*46 spare_logic1\[10\]
+*47 spare_logic1\[11\]
+*48 spare_logic1\[12\]
+*49 spare_logic1\[13\]
+*50 spare_logic1\[14\]
+*51 spare_logic1\[15\]
+*52 spare_logic1\[16\]
+*53 spare_logic1\[17\]
+*54 spare_logic1\[18\]
+*55 spare_logic1\[19\]
+*56 spare_logic1\[1\]
+*57 spare_logic1\[20\]
+*58 spare_logic1\[21\]
+*59 spare_logic1\[22\]
+*60 spare_logic1\[23\]
+*61 spare_logic1\[24\]
+*62 spare_logic1\[25\]
+*63 spare_logic1\[26\]
+*64 spare_logic1\[2\]
+*65 spare_logic1\[3\]
+*66 spare_logic1\[4\]
+*67 spare_logic1\[5\]
+*68 spare_logic1\[6\]
+*69 spare_logic1\[7\]
+*70 spare_logic1\[8\]
+*71 spare_logic1\[9\]
+*72 FILLER_0_20
+*73 FILLER_0_24
+*74 FILLER_0_29
+*75 FILLER_0_3
+*76 FILLER_0_34
+*77 FILLER_0_42
+*78 FILLER_0_48
+*79 FILLER_0_57
+*80 FILLER_0_68
+*81 FILLER_0_8
+*82 FILLER_10_14
+*83 FILLER_10_25
+*84 FILLER_10_29
+*85 FILLER_10_3
+*86 FILLER_10_41
+*87 FILLER_10_49
+*88 FILLER_10_53
+*89 FILLER_10_60
+*90 FILLER_10_67
+*91 FILLER_11_14
+*92 FILLER_11_26
+*93 FILLER_11_29
+*94 FILLER_11_3
+*95 FILLER_11_41
+*96 FILLER_11_53
+*97 FILLER_11_57
+*98 FILLER_11_68
+*99 FILLER_1_3
+*100 FILLER_1_38
+*101 FILLER_1_46
+*102 FILLER_1_53
+*103 FILLER_1_57
+*104 FILLER_1_62
+*105 FILLER_1_8
+*106 FILLER_2_12
+*107 FILLER_2_19
+*108 FILLER_2_27
+*109 FILLER_2_29
+*110 FILLER_2_3
+*111 FILLER_2_41
+*112 FILLER_2_47
+*113 FILLER_2_54
+*114 FILLER_2_62
+*115 FILLER_2_68
+*116 FILLER_3_3
+*117 FILLER_3_35
+*118 FILLER_3_47
+*119 FILLER_3_55
+*120 FILLER_3_57
+*121 FILLER_3_68
+*122 FILLER_4_20
+*123 FILLER_4_29
+*124 FILLER_4_3
+*125 FILLER_4_41
+*126 FILLER_4_53
+*127 FILLER_4_57
+*128 FILLER_4_61
+*129 FILLER_4_68
+*130 FILLER_4_8
+*131 FILLER_5_14
+*132 FILLER_5_21
+*133 FILLER_5_3
+*134 FILLER_5_33
+*135 FILLER_5_45
+*136 FILLER_5_53
+*137 FILLER_5_57
+*138 FILLER_5_68
+*139 FILLER_6_10
+*140 FILLER_6_17
+*141 FILLER_6_25
+*142 FILLER_6_29
+*143 FILLER_6_3
+*144 FILLER_6_41
+*145 FILLER_6_53
+*146 FILLER_6_57
+*147 FILLER_6_61
+*148 FILLER_6_68
+*149 FILLER_7_15
+*150 FILLER_7_27
+*151 FILLER_7_3
+*152 FILLER_7_39
+*153 FILLER_7_51
+*154 FILLER_7_55
+*155 FILLER_7_57
+*156 FILLER_7_62
+*157 FILLER_8_20
+*158 FILLER_8_29
+*159 FILLER_8_3
+*160 FILLER_8_41
+*161 FILLER_8_53
+*162 FILLER_8_68
+*163 FILLER_8_8
+*164 FILLER_9_10
+*165 FILLER_9_17
+*166 FILLER_9_24
+*167 FILLER_9_3
+*168 FILLER_9_36
+*169 FILLER_9_48
+*170 FILLER_9_57
+*171 FILLER_9_68
+*172 PHY_0
+*173 PHY_1
+*174 PHY_10
+*175 PHY_11
+*176 PHY_12
+*177 PHY_13
+*178 PHY_14
+*179 PHY_15
+*180 PHY_16
+*181 PHY_17
+*182 PHY_18
+*183 PHY_19
+*184 PHY_2
+*185 PHY_20
+*186 PHY_21
+*187 PHY_22
+*188 PHY_23
+*189 PHY_3
+*190 PHY_4
+*191 PHY_5
+*192 PHY_6
+*193 PHY_7
+*194 PHY_8
+*195 PHY_9
+*196 TAP_24
+*197 TAP_25
+*198 TAP_26
+*199 TAP_27
+*200 TAP_28
+*201 TAP_29
+*202 TAP_30
+*203 TAP_31
+*204 TAP_32
+*205 TAP_33
+*206 TAP_34
+*207 TAP_35
+*208 TAP_36
+*209 TAP_37
+*210 spare_logic_biginv
+*211 spare_logic_const\[0\]
+*212 spare_logic_const\[10\]
+*213 spare_logic_const\[11\]
+*214 spare_logic_const\[12\]
+*215 spare_logic_const\[13\]
+*216 spare_logic_const\[14\]
+*217 spare_logic_const\[15\]
+*218 spare_logic_const\[16\]
+*219 spare_logic_const\[17\]
+*220 spare_logic_const\[18\]
+*221 spare_logic_const\[19\]
+*222 spare_logic_const\[1\]
+*223 spare_logic_const\[20\]
+*224 spare_logic_const\[21\]
+*225 spare_logic_const\[22\]
+*226 spare_logic_const\[23\]
+*227 spare_logic_const\[24\]
+*228 spare_logic_const\[25\]
+*229 spare_logic_const\[26\]
+*230 spare_logic_const\[2\]
+*231 spare_logic_const\[3\]
+*232 spare_logic_const\[4\]
+*233 spare_logic_const\[5\]
+*234 spare_logic_const\[6\]
+*235 spare_logic_const\[7\]
+*236 spare_logic_const\[8\]
+*237 spare_logic_const\[9\]
+*238 spare_logic_flop\[0\]
+*239 spare_logic_flop\[1\]
+*240 spare_logic_inv\[0\]
+*241 spare_logic_inv\[1\]
+*242 spare_logic_inv\[2\]
+*243 spare_logic_inv\[3\]
+*244 spare_logic_mux\[0\]
+*245 spare_logic_mux\[1\]
+*246 spare_logic_nand\[0\]
+*247 spare_logic_nand\[1\]
+*248 spare_logic_nor\[0\]
+*249 spare_logic_nor\[1\]
+
+*PORTS
+spare_xfq[0] O
+spare_xfq[1] O
+spare_xfqn[0] O
+spare_xfqn[1] O
+spare_xi[0] O
+spare_xi[1] O
+spare_xi[2] O
+spare_xi[3] O
+spare_xib O
+spare_xmx[0] O
+spare_xmx[1] O
+spare_xna[0] O
+spare_xna[1] O
+spare_xno[0] O
+spare_xno[1] O
+spare_xz[0] O
+spare_xz[10] O
+spare_xz[11] O
+spare_xz[12] O
+spare_xz[13] O
+spare_xz[14] O
+spare_xz[15] O
+spare_xz[16] O
+spare_xz[17] O
+spare_xz[18] O
+spare_xz[19] O
+spare_xz[1] O
+spare_xz[20] O
+spare_xz[21] O
+spare_xz[22] O
+spare_xz[23] O
+spare_xz[24] O
+spare_xz[25] O
+spare_xz[26] O
+spare_xz[2] O
+spare_xz[3] O
+spare_xz[4] O
+spare_xz[5] O
+spare_xz[6] O
+spare_xz[7] O
+spare_xz[8] O
+spare_xz[9] O
+
+*D_NET *1 0.00287258
+*CONN
+*P spare_xfq[0] O
+*I *238:Q O *D sky130_fd_sc_hd__dfbbp_1
+*CAP
+1 spare_xfq[0] 0.00131847
+2 *238:Q 0.00131847
+3 spare_xfq[0] spare_xfqn[1] 0.000114376
+4 spare_xfq[0] spare_xmx[1] 0
+5 spare_xfq[0] spare_xz[16] 6.04303e-05
+6 spare_xfq[0] spare_xz[21] 4.24562e-05
+7 spare_xfq[0] spare_xz[7] 0
+8 spare_xfq[0] *238:RESET_B 1.83847e-05
+*RES
+1 *238:Q spare_xfq[0] 10.6586 
+*END
+
+*D_NET *2 0.00190542
+*CONN
+*P spare_xfq[1] O
+*I *239:Q O *D sky130_fd_sc_hd__dfbbp_1
+*CAP
+1 spare_xfq[1] 0.00089183
+2 *239:Q 0.00089183
+3 spare_xfq[1] spare_xna[1] 0
+4 spare_xfq[1] spare_xz[6] 0
+5 spare_xfq[1] *240:A 0
+6 spare_xfq[1] *247:B 1.7386e-05
+7 spare_xfq[1] *39:5 0.00010437
+*RES
+1 *239:Q spare_xfq[1] 14.7 
+*END
+
+*D_NET *3 0.00304135
+*CONN
+*P spare_xfqn[0] O
+*I *238:Q_N O *D sky130_fd_sc_hd__dfbbp_1
+*CAP
+1 spare_xfqn[0] 0.000984301
+2 *238:Q_N 0.000984301
+3 spare_xfqn[0] spare_xfqn[1] 0.000655814
+4 spare_xfqn[0] spare_xmx[1] 0
+5 spare_xfqn[0] spare_xna[0] 5.05716e-06
+6 spare_xfqn[0] spare_xz[10] 0.000270551
+7 spare_xfqn[0] *238:RESET_B 0.000141323
+*RES
+1 *238:Q_N spare_xfqn[0] 24.825 
+*END
+
+*D_NET *4 0.00501631
+*CONN
+*P spare_xfqn[1] O
+*I *239:Q_N O *D sky130_fd_sc_hd__dfbbp_1
+*CAP
+1 spare_xfqn[1] 0.00199402
+2 *239:Q_N 0.00199402
+3 spare_xfqn[1] spare_xib 6.39119e-05
+4 spare_xfqn[1] spare_xmx[1] 0
+5 spare_xfqn[1] spare_xna[0] 6.32125e-05
+6 spare_xfqn[1] spare_xno[1] 8.57535e-05
+7 spare_xfqn[1] spare_xz[0] 5.05066e-06
+8 spare_xfqn[1] spare_xz[21] 4.01535e-05
+9 spare_xfq[0] spare_xfqn[1] 0.000114376
+10 spare_xfqn[0] spare_xfqn[1] 0.000655814
+*RES
+1 *239:Q_N spare_xfqn[1] 24.6634 
+*END
+
+*D_NET *5 0.000928056
+*CONN
+*P spare_xi[0] O
+*I *240:Y O *D sky130_fd_sc_hd__inv_2
+*CAP
+1 spare_xi[0] 0.000464028
+2 *240:Y 0.000464028
+3 spare_xi[0] spare_xi[1] 0
+*RES
+1 *240:Y spare_xi[0] 9.9 
+*END
+
+*D_NET *6 0.00224804
+*CONN
+*P spare_xi[1] O
+*I *241:Y O *D sky130_fd_sc_hd__inv_2
+*CAP
+1 spare_xi[1] 0.00085159
+2 *241:Y 0.00085159
+3 spare_xi[1] spare_xna[1] 0
+4 spare_xi[1] spare_xz[1] 0.000544865
+5 spare_xi[1] *241:A 0
+6 spare_xi[0] spare_xi[1] 0
+*RES
+1 *241:Y spare_xi[1] 17.392 
+*END
+
+*D_NET *7 0.00098331
+*CONN
+*P spare_xi[2] O
+*I *242:Y O *D sky130_fd_sc_hd__inv_2
+*CAP
+1 spare_xi[2] 0.000395875
+2 *242:Y 0.000395875
+3 spare_xi[2] spare_xna[0] 0
+4 spare_xi[2] spare_xz[11] 0.000109199
+5 spare_xi[2] spare_xz[17] 8.23602e-05
+6 spare_xi[2] *244:A0 0
+7 spare_xi[2] *244:S 0
+*RES
+1 *242:Y spare_xi[2] 8.37177 
+*END
+
+*D_NET *8 0.00496639
+*CONN
+*P spare_xi[3] O
+*I *243:Y O *D sky130_fd_sc_hd__inv_2
+*CAP
+1 spare_xi[3] 0.00227089
+2 *243:Y 0.00227089
+3 spare_xi[3] spare_xna[0] 0.000230961
+4 spare_xi[3] spare_xz[18] 0
+5 spare_xi[3] *246:A 1.77665e-05
+6 spare_xi[3] *246:B 3.45679e-05
+7 spare_xi[3] *35:7 0.000141323
+*RES
+1 *243:Y spare_xi[3] 32.625 
+*END
+
+*D_NET *9 0.00106487
+*CONN
+*P spare_xib O
+*I *210:Y O *D sky130_fd_sc_hd__inv_8
+*CAP
+1 spare_xib 0.0003811
+2 *210:Y 0.0003811
+3 spare_xib spare_xz[14] 0
+4 spare_xib spare_xz[18] 0.000238758
+5 spare_xib spare_xz[8] 0
+6 spare_xfqn[1] spare_xib 6.39119e-05
+*RES
+1 *210:Y spare_xib 7.5133 
+*END
+
+*D_NET *10 0.00140427
+*CONN
+*P spare_xmx[0] O
+*I *244:X O *D sky130_fd_sc_hd__mux2_2
+*CAP
+1 spare_xmx[0] 0.000535387
+2 *244:X 0.000535387
+3 spare_xmx[0] spare_xz[11] 0
+4 spare_xmx[0] spare_xz[2] 6.01819e-05
+5 spare_xmx[0] *244:A0 0.000273316
+*RES
+1 *244:X spare_xmx[0] 13.8 
+*END
+
+*D_NET *11 0.00406336
+*CONN
+*P spare_xmx[1] O
+*I *245:X O *D sky130_fd_sc_hd__mux2_2
+*CAP
+1 spare_xmx[1] 0.00133063
+2 *245:X 0.00133063
+3 spare_xmx[1] spare_xno[0] 0.00114825
+4 spare_xmx[1] spare_xz[0] 0.000117568
+5 spare_xmx[1] spare_xz[6] 0
+6 spare_xmx[1] *238:RESET_B 3.17241e-05
+7 spare_xmx[1] *247:B 0
+8 spare_xmx[1] *33:8 0.000104566
+9 spare_xfq[0] spare_xmx[1] 0
+10 spare_xfqn[0] spare_xmx[1] 0
+11 spare_xfqn[1] spare_xmx[1] 0
+*RES
+1 *245:X spare_xmx[1] 27.12 
+*END
+
+*D_NET *12 0.00355423
+*CONN
+*P spare_xna[0] O
+*I *246:Y O *D sky130_fd_sc_hd__nand2_2
+*CAP
+1 spare_xna[0] 0.00158632
+2 *246:Y 0.00158632
+3 spare_xna[0] spare_xz[13] 8.23602e-05
+4 spare_xna[0] spare_xz[2] 0
+5 spare_xfqn[0] spare_xna[0] 5.05716e-06
+6 spare_xfqn[1] spare_xna[0] 6.32125e-05
+7 spare_xi[2] spare_xna[0] 0
+8 spare_xi[3] spare_xna[0] 0.000230961
+*RES
+1 *246:Y spare_xna[0] 10.4994 
+*END
+
+*D_NET *13 0.00178478
+*CONN
+*P spare_xna[1] O
+*I *247:Y O *D sky130_fd_sc_hd__nand2_2
+*CAP
+1 spare_xna[1] 0.000721998
+2 *247:Y 0.000721998
+3 spare_xna[1] spare_xz[20] 0.000116158
+4 spare_xna[1] spare_xz[21] 7.45436e-05
+5 spare_xna[1] spare_xz[6] 0.000150083
+6 spare_xfq[1] spare_xna[1] 0
+7 spare_xi[1] spare_xna[1] 0
+*RES
+1 *247:Y spare_xna[1] 7.42557 
+*END
+
+*D_NET *14 0.00553409
+*CONN
+*P spare_xno[0] O
+*I *248:Y O *D sky130_fd_sc_hd__nor2_2
+*CAP
+1 spare_xno[0] 0.00183335
+2 *248:Y 0.00183335
+3 spare_xno[0] spare_xz[0] 0.000581636
+4 spare_xno[0] spare_xz[15] 0
+5 spare_xno[0] spare_xz[16] 0
+6 spare_xno[0] spare_xz[19] 2.87778e-05
+7 spare_xno[0] spare_xz[22] 0
+8 spare_xno[0] *238:D 0
+9 spare_xno[0] *239:CLK 0
+10 spare_xno[0] *245:A1 2.30292e-05
+11 spare_xno[0] *245:S 8.57024e-05
+12 spare_xmx[1] spare_xno[0] 0.00114825
+*RES
+1 *248:Y spare_xno[0] 40.68 
+*END
+
+*D_NET *15 0.000663778
+*CONN
+*P spare_xno[1] O
+*I *249:Y O *D sky130_fd_sc_hd__nor2_2
+*CAP
+1 spare_xno[1] 0.000279364
+2 *249:Y 0.000279364
+3 spare_xno[1] spare_xz[12] 0
+4 spare_xno[1] spare_xz[18] 1.92979e-05
+5 spare_xfqn[1] spare_xno[1] 8.57535e-05
+*RES
+1 *249:Y spare_xno[1] 4.9633 
+*END
+
+*D_NET *16 0.00578072
+*CONN
+*P spare_xz[0] O
+*I *240:A I *D sky130_fd_sc_hd__inv_2
+*I *211:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[0] 0.00150828
+2 *240:A 0.000771937
+3 *211:LO 0
+4 *16:4 0.00228022
+5 spare_xz[0] spare_xz[12] 4.18273e-05
+6 spare_xz[0] spare_xz[15] 0.000160658
+7 spare_xz[0] spare_xz[20] 0
+8 spare_xz[0] spare_xz[7] 0.000189098
+9 *240:A spare_xz[15] 4.82863e-05
+10 *240:A spare_xz[1] 0
+11 *240:A *241:A 7.35849e-05
+12 *240:A *42:6 2.56752e-06
+13 spare_xfq[1] *240:A 0
+14 spare_xfqn[1] spare_xz[0] 5.05066e-06
+15 spare_xmx[1] spare_xz[0] 0.000117568
+16 spare_xno[0] spare_xz[0] 0.000581636
+*RES
+1 *211:LO *16:4 1.6 
+2 *16:4 spare_xz[0] 19.9015 
+3 *16:4 *240:A 17.255 
+*END
+
+*D_NET *17 0.00276487
+*CONN
+*P spare_xz[10] O
+*I *249:A I *D sky130_fd_sc_hd__nor2_2
+*I *212:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[10] 0.00105658
+2 *249:A 0.000140236
+3 *212:LO 0
+4 *17:4 0.00119682
+5 spare_xz[10] spare_xz[20] 0
+6 spare_xz[10] spare_xz[8] 0
+7 spare_xz[10] *38:8 8.69583e-05
+8 *249:A *249:B 1.37328e-05
+9 spare_xfqn[0] spare_xz[10] 0.000270551
+*RES
+1 *212:LO *17:4 1.6 
+2 *17:4 *249:A 3.79 
+3 *17:4 spare_xz[10] 21.47 
+*END
+
+*D_NET *18 0.00266714
+*CONN
+*P spare_xz[11] O
+*I *248:B I *D sky130_fd_sc_hd__nor2_2
+*I *213:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[11] 0.000968282
+2 *248:B 0.000140034
+3 *213:LO 8.25412e-05
+4 *18:5 0.00119086
+5 spare_xz[11] spare_xz[13] 3.38891e-05
+6 spare_xz[11] spare_xz[3] 0
+7 spare_xz[11] *244:S 0
+8 spare_xz[11] *24:7 4.77757e-05
+9 *248:B spare_xz[15] 0
+10 *248:B spare_xz[9] 4.37173e-06
+11 *248:B *42:6 3.60024e-06
+12 *18:5 *24:7 8.65905e-05
+13 spare_xi[2] spare_xz[11] 0.000109199
+14 spare_xmx[0] spare_xz[11] 0
+*RES
+1 *213:LO *18:5 3.085 
+2 *18:5 *248:B 8 
+3 *18:5 spare_xz[11] 18.05 
+*END
+
+*D_NET *19 0.00158359
+*CONN
+*P spare_xz[12] O
+*I *249:B I *D sky130_fd_sc_hd__nor2_2
+*I *214:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[12] 0.000451511
+2 *249:B 0.00014629
+3 *214:LO 0
+4 *19:5 0.000597801
+5 spare_xz[12] spare_xz[14] 0
+6 spare_xz[12] spare_xz[18] 0.000198663
+7 *249:B spare_xz[14] 0
+8 *249:B spare_xz[18] 0.000133763
+9 spare_xno[1] spare_xz[12] 0
+10 spare_xz[0] spare_xz[12] 4.18273e-05
+11 *249:A *249:B 1.37328e-05
+*RES
+1 *214:LO *19:5 3.6 
+2 *19:5 spare_xz[12] 3.65157 
+3 *19:5 *249:B 6.66 
+*END
+
+*D_NET *20 0.00196515
+*CONN
+*P spare_xz[13] O
+*I *244:A0 I *D sky130_fd_sc_hd__mux2_2
+*I *215:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[13] 0.000273399
+2 *244:A0 0.000290643
+3 *215:LO 0
+4 *20:4 0.000564042
+5 spare_xz[13] spare_xz[2] 7.9903e-05
+6 *244:A0 spare_xz[20] 0
+7 *244:A0 spare_xz[2] 0.000184821
+8 *244:A0 *242:A 0.000182773
+9 spare_xi[2] *244:A0 0
+10 spare_xmx[0] *244:A0 0.000273316
+11 spare_xna[0] spare_xz[13] 8.23602e-05
+12 spare_xz[11] spare_xz[13] 3.38891e-05
+*RES
+1 *215:LO *20:4 1.6 
+2 *20:4 *244:A0 12.965 
+3 *20:4 spare_xz[13] 5.58677 
+*END
+
+*D_NET *21 0.00197957
+*CONN
+*P spare_xz[14] O
+*I *245:A0 I *D sky130_fd_sc_hd__mux2_2
+*I *216:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[14] 0.00070007
+2 *245:A0 0.000152886
+3 *216:LO 0
+4 *21:5 0.000852957
+5 spare_xz[14] spare_xz[18] 0
+6 spare_xz[14] spare_xz[4] 0.00015988
+7 spare_xz[14] *210:A 0.000113773
+8 spare_xz[14] *246:B 0
+9 *245:A0 spare_xz[18] 0
+10 *245:A0 *245:S 0
+11 *245:A0 *246:B 0
+12 spare_xib spare_xz[14] 0
+13 spare_xz[12] spare_xz[14] 0
+14 *249:B spare_xz[14] 0
+*RES
+1 *216:LO *21:5 3.6 
+2 *21:5 *245:A0 6 
+3 *21:5 spare_xz[14] 12.93 
+*END
+
+*D_NET *22 0.00604737
+*CONN
+*P spare_xz[15] O
+*I *244:A1 I *D sky130_fd_sc_hd__mux2_2
+*I *217:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[15] 0.00263176
+2 *244:A1 0.0001583
+3 *217:LO 0
+4 *22:5 0.00279006
+5 spare_xz[15] spare_xz[20] 0
+6 spare_xz[15] spare_xz[22] 0
+7 spare_xz[15] spare_xz[7] 0.000102021
+8 spare_xz[15] *239:CLK 0
+9 spare_xz[15] *244:S 2.87867e-05
+10 spare_xz[15] *42:6 0
+11 *244:A1 spare_xz[20] 0
+12 *244:A1 *244:S 0.000127486
+13 spare_xno[0] spare_xz[15] 0
+14 spare_xz[0] spare_xz[15] 0.000160658
+15 *240:A spare_xz[15] 4.82863e-05
+16 *248:B spare_xz[15] 0
+*RES
+1 *217:LO *22:5 3.6 
+2 *22:5 spare_xz[15] 44.695 
+3 *22:5 *244:A1 6.54 
+*END
+
+*D_NET *23 0.00246217
+*CONN
+*P spare_xz[16] O
+*I *245:A1 I *D sky130_fd_sc_hd__mux2_2
+*I *218:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[16] 0.000630803
+2 *245:A1 0.000205734
+3 *218:LO 0
+4 *23:5 0.000836537
+5 spare_xz[16] spare_xz[19] 0.000199243
+6 spare_xz[16] *238:CLK 0
+7 spare_xz[16] *238:D 0.000429564
+8 *245:A1 *245:S 7.68283e-05
+9 spare_xfq[0] spare_xz[16] 6.04303e-05
+10 spare_xno[0] spare_xz[16] 0
+11 spare_xno[0] *245:A1 2.30292e-05
+*RES
+1 *218:LO *23:5 3.6 
+2 *23:5 spare_xz[16] 9.0133 
+3 *23:5 *245:A1 7.05 
+*END
+
+*D_NET *24 0.00184007
+*CONN
+*P spare_xz[17] O
+*I *244:S I *D sky130_fd_sc_hd__mux2_2
+*I *219:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[17] 0.00040138
+2 *244:S 0.000201945
+3 *219:LO 8.40577e-05
+4 *24:7 0.000687382
+5 spare_xz[17] spare_xz[9] 9.23099e-05
+6 *244:S spare_xz[20] 0
+7 spare_xi[2] spare_xz[17] 8.23602e-05
+8 spare_xi[2] *244:S 0
+9 spare_xz[11] *244:S 0
+10 spare_xz[11] *24:7 4.77757e-05
+11 spare_xz[15] *244:S 2.87867e-05
+12 *244:A1 *244:S 0.000127486
+13 *18:5 *24:7 8.65905e-05
+*RES
+1 *219:LO *24:7 4.74 
+2 *24:7 *244:S 7.56 
+3 *24:7 spare_xz[17] 1.4804 
+*END
+
+*D_NET *25 0.0034187
+*CONN
+*P spare_xz[18] O
+*I *245:S I *D sky130_fd_sc_hd__mux2_2
+*I *220:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[18] 0.000893916
+2 *245:S 0.000173299
+3 *220:LO 0.000265629
+4 *25:7 0.00133284
+5 spare_xz[18] spare_xz[4] 0
+6 spare_xi[3] spare_xz[18] 0
+7 spare_xib spare_xz[18] 0.000238758
+8 spare_xno[0] *245:S 8.57024e-05
+9 spare_xno[1] spare_xz[18] 1.92979e-05
+10 spare_xz[12] spare_xz[18] 0.000198663
+11 spare_xz[14] spare_xz[18] 0
+12 *245:A0 spare_xz[18] 0
+13 *245:A0 *245:S 0
+14 *245:A1 *245:S 7.68283e-05
+15 *249:B spare_xz[18] 0.000133763
+*RES
+1 *220:LO *25:7 7.155 
+2 *25:7 *245:S 6.795 
+3 *25:7 spare_xz[18] 17.73 
+*END
+
+*D_NET *26 0.00239056
+*CONN
+*P spare_xz[19] O
+*I *238:D I *D sky130_fd_sc_hd__dfbbp_1
+*I *221:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[19] 0.000399071
+2 *238:D 0.000415116
+3 *221:LO 3.98087e-05
+4 *26:7 0.000853995
+5 *26:7 *239:CLK 2.49909e-05
+6 spare_xno[0] spare_xz[19] 2.87778e-05
+7 spare_xno[0] *238:D 0
+8 spare_xz[16] spare_xz[19] 0.000199243
+9 spare_xz[16] *238:D 0.000429564
+*RES
+1 *221:LO *26:7 4.05 
+2 *26:7 spare_xz[19] 4.87503 
+3 *26:7 *238:D 11.76 
+*END
+
+*D_NET *27 0.00166657
+*CONN
+*P spare_xz[1] O
+*I *241:A I *D sky130_fd_sc_hd__inv_2
+*I *222:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[1] 0.000400766
+2 *241:A 0.000123295
+3 *222:LO 0
+4 *27:4 0.000524061
+5 spare_xi[1] spare_xz[1] 0.000544865
+6 spare_xi[1] *241:A 0
+7 *240:A spare_xz[1] 0
+8 *240:A *241:A 7.35849e-05
+*RES
+1 *222:LO *27:4 1.6 
+2 *27:4 *241:A 8 
+3 *27:4 spare_xz[1] 10.13 
+*END
+
+*D_NET *28 0.00621756
+*CONN
+*P spare_xz[20] O
+*I *239:D I *D sky130_fd_sc_hd__dfbbp_1
+*I *223:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[20] 0.00148766
+2 *239:D 0.000966827
+3 *223:LO 0
+4 *28:4 0.00245449
+5 spare_xz[20] spare_xz[2] 0
+6 spare_xz[20] spare_xz[6] 1.1561e-05
+7 spare_xz[20] spare_xz[8] 0.000914149
+8 spare_xz[20] *242:A 0
+9 spare_xz[20] *247:B 7.98471e-05
+10 *239:D spare_xz[23] 6.55328e-05
+11 *239:D *239:SET_B 4.49498e-05
+12 *239:D *32:7 4.8854e-05
+13 *239:D *34:7 2.75229e-05
+14 spare_xna[1] spare_xz[20] 0.000116158
+15 spare_xz[0] spare_xz[20] 0
+16 spare_xz[10] spare_xz[20] 0
+17 spare_xz[15] spare_xz[20] 0
+18 *244:A0 spare_xz[20] 0
+19 *244:A1 spare_xz[20] 0
+20 *244:S spare_xz[20] 0
+*RES
+1 *223:LO *28:4 1.6 
+2 *28:4 *239:D 17.195 
+3 *28:4 spare_xz[20] 30.935 
+*END
+
+*D_NET *29 0.00420756
+*CONN
+*P spare_xz[21] O
+*I *238:CLK I *D sky130_fd_sc_hd__dfbbp_1
+*I *224:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[21] 0.00171721
+2 *238:CLK 0.000114843
+3 *224:LO 0
+4 *29:4 0.00183206
+5 spare_xz[21] spare_xz[25] 0.000386299
+6 *238:CLK *238:SET_B 0
+7 spare_xfq[0] spare_xz[21] 4.24562e-05
+8 spare_xfqn[1] spare_xz[21] 4.01535e-05
+9 spare_xna[1] spare_xz[21] 7.45436e-05
+10 spare_xz[16] *238:CLK 0
+*RES
+1 *224:LO *29:4 1.6 
+2 *29:4 *238:CLK 7.49 
+3 *29:4 spare_xz[21] 14.5776 
+*END
+
+*D_NET *30 0.00171425
+*CONN
+*P spare_xz[22] O
+*I *239:CLK I *D sky130_fd_sc_hd__dfbbp_1
+*I *225:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[22] 0.000140608
+2 *239:CLK 0.000474166
+3 *225:LO 0.000229856
+4 *30:7 0.00084463
+5 spare_xno[0] spare_xz[22] 0
+6 spare_xno[0] *239:CLK 0
+7 spare_xz[15] spare_xz[22] 0
+8 spare_xz[15] *239:CLK 0
+9 *26:7 *239:CLK 2.49909e-05
+*RES
+1 *225:LO *30:7 7.155 
+2 *30:7 spare_xz[22] 2.475 
+3 *30:7 *239:CLK 11.46 
+*END
+
+*D_NET *31 0.0011802
+*CONN
+*P spare_xz[23] O
+*I *238:SET_B I *D sky130_fd_sc_hd__dfbbp_1
+*I *226:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[23] 0.00036177
+2 *238:SET_B 0.000195565
+3 *226:LO 0
+4 *31:5 0.000557335
+5 spare_xz[23] spare_xz[24] 0
+6 spare_xz[23] *239:SET_B 0
+7 *238:CLK *238:SET_B 0
+8 *239:D spare_xz[23] 6.55328e-05
+*RES
+1 *226:LO *31:5 3.6 
+2 *31:5 spare_xz[23] 6.3 
+3 *31:5 *238:SET_B 5.0525 
+*END
+
+*D_NET *32 0.000836667
+*CONN
+*P spare_xz[24] O
+*I *239:SET_B I *D sky130_fd_sc_hd__dfbbp_1
+*I *227:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[24] 0.000195781
+2 *239:SET_B 0.000132252
+3 *227:LO 4.33986e-05
+4 *32:7 0.000371431
+5 spare_xz[24] spare_xz[26] 0
+6 *239:SET_B *239:RESET_B 0
+7 spare_xz[23] spare_xz[24] 0
+8 spare_xz[23] *239:SET_B 0
+9 *239:D *239:SET_B 4.49498e-05
+10 *239:D *32:7 4.8854e-05
+*RES
+1 *227:LO *32:7 4.395 
+2 *32:7 spare_xz[24] 3.375 
+3 *32:7 *239:SET_B 4.4 
+*END
+
+*D_NET *33 0.00336637
+*CONN
+*P spare_xz[25] O
+*I *238:RESET_B I *D sky130_fd_sc_hd__dfbbp_1
+*I *228:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[25] 0.000934883
+2 *238:RESET_B 0.000306316
+3 *228:LO 0.000100838
+4 *33:8 0.00134204
+5 spare_xz[25] spare_xz[9] 0
+6 *238:RESET_B spare_xz[8] 0
+7 *33:8 spare_xz[8] 0
+8 spare_xfq[0] *238:RESET_B 1.83847e-05
+9 spare_xfqn[0] *238:RESET_B 0.000141323
+10 spare_xmx[1] *238:RESET_B 3.17241e-05
+11 spare_xmx[1] *33:8 0.000104566
+12 spare_xz[21] spare_xz[25] 0.000386299
+*RES
+1 *228:LO *33:8 5.3025 
+2 *33:8 spare_xz[25] 2.7496 
+3 *33:8 *238:RESET_B 9.0225 
+*END
+
+*D_NET *34 0.000762356
+*CONN
+*P spare_xz[26] O
+*I *239:RESET_B I *D sky130_fd_sc_hd__dfbbp_1
+*I *229:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[26] 0.00015252
+2 *239:RESET_B 0.00019168
+3 *229:LO 2.32169e-05
+4 *34:7 0.000367416
+5 spare_xz[24] spare_xz[26] 0
+6 *239:D *34:7 2.75229e-05
+7 *239:SET_B *239:RESET_B 0
+*RES
+1 *229:LO *34:7 4.05 
+2 *34:7 spare_xz[26] 2.475 
+3 *34:7 *239:RESET_B 6.54 
+*END
+
+*D_NET *35 0.00276227
+*CONN
+*P spare_xz[2] O
+*I *242:A I *D sky130_fd_sc_hd__inv_2
+*I *230:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[2] 0.000660641
+2 *242:A 0.000203959
+3 *230:LO 0.000148736
+4 *35:7 0.00101334
+5 *35:7 *243:A 8.65905e-05
+6 spare_xi[3] *35:7 0.000141323
+7 spare_xmx[0] spare_xz[2] 6.01819e-05
+8 spare_xna[0] spare_xz[2] 0
+9 spare_xz[13] spare_xz[2] 7.9903e-05
+10 spare_xz[20] spare_xz[2] 0
+11 spare_xz[20] *242:A 0
+12 *244:A0 spare_xz[2] 0.000184821
+13 *244:A0 *242:A 0.000182773
+*RES
+1 *230:LO *35:7 6.81 
+2 *35:7 *242:A 7.23 
+3 *35:7 spare_xz[2] 6.87117 
+*END
+
+*D_NET *36 0.00168171
+*CONN
+*P spare_xz[3] O
+*I *243:A I *D sky130_fd_sc_hd__inv_2
+*I *231:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[3] 0.000680525
+2 *243:A 0.000117037
+3 *231:LO 0
+4 *36:4 0.000797562
+5 spare_xz[11] spare_xz[3] 0
+6 *35:7 *243:A 8.65905e-05
+*RES
+1 *231:LO *36:4 1.6 
+2 *36:4 *243:A 3.43 
+3 *36:4 spare_xz[3] 12.815 
+*END
+
+*D_NET *37 0.00100602
+*CONN
+*P spare_xz[4] O
+*I *210:A I *D sky130_fd_sc_hd__inv_8
+*I *232:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[4] 0.000243546
+2 *210:A 0.000111426
+3 *232:LO 0
+4 *37:5 0.000354971
+5 spare_xz[4] spare_xz[5] 0
+6 spare_xz[4] spare_xz[8] 2.24252e-05
+7 *210:A spare_xz[5] 0
+8 *210:A *246:B 0
+9 spare_xz[14] spare_xz[4] 0.00015988
+10 spare_xz[14] *210:A 0.000113773
+11 spare_xz[18] spare_xz[4] 0
+*RES
+1 *232:LO *37:5 3.6 
+2 *37:5 *210:A 6 
+3 *37:5 spare_xz[4] 6.405 
+*END
+
+*D_NET *38 0.00128543
+*CONN
+*P spare_xz[5] O
+*I *246:A I *D sky130_fd_sc_hd__nand2_2
+*I *233:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[5] 0.000404046
+2 *246:A 2.79751e-05
+3 *233:LO 0.000124648
+4 *38:8 0.000556669
+5 spare_xz[5] spare_xz[8] 0
+6 *38:8 *246:B 6.73665e-05
+7 spare_xi[3] *246:A 1.77665e-05
+8 spare_xz[10] *38:8 8.69583e-05
+9 spare_xz[4] spare_xz[5] 0
+10 *210:A spare_xz[5] 0
+*RES
+1 *233:LO *38:8 6.285 
+2 *38:8 *246:A 4.05 
+3 *38:8 spare_xz[5] 6.435 
+*END
+
+*D_NET *39 0.00107163
+*CONN
+*P spare_xz[6] O
+*I *247:A I *D sky130_fd_sc_hd__nand2_2
+*I *234:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[6] 0.000242813
+2 *247:A 0
+3 *234:LO 0.000159994
+4 *39:5 0.000402807
+5 spare_xfq[1] spare_xz[6] 0
+6 spare_xfq[1] *39:5 0.00010437
+7 spare_xmx[1] spare_xz[6] 0
+8 spare_xna[1] spare_xz[6] 0.000150083
+9 spare_xz[20] spare_xz[6] 1.1561e-05
+*RES
+1 *234:LO *39:5 4.465 
+2 *39:5 spare_xz[6] 6.515 
+3 *39:5 *247:A 1.6 
+*END
+
+*D_NET *40 0.00321443
+*CONN
+*P spare_xz[7] O
+*I *246:B I *D sky130_fd_sc_hd__nand2_2
+*I *235:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[7] 0.000730011
+2 *246:B 0.000680678
+3 *235:LO 0
+4 *40:5 0.00141069
+5 spare_xfq[0] spare_xz[7] 0
+6 spare_xi[3] *246:B 3.45679e-05
+7 spare_xz[0] spare_xz[7] 0.000189098
+8 spare_xz[14] *246:B 0
+9 spare_xz[15] spare_xz[7] 0.000102021
+10 *210:A *246:B 0
+11 *245:A0 *246:B 0
+12 *38:8 *246:B 6.73665e-05
+*RES
+1 *235:LO *40:5 3.6 
+2 *40:5 spare_xz[7] 3.65077 
+3 *40:5 *246:B 15.21 
+*END
+
+*D_NET *41 0.00616508
+*CONN
+*P spare_xz[8] O
+*I *247:B I *D sky130_fd_sc_hd__nand2_2
+*I *236:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[8] 0.00235113
+2 *247:B 0.000170171
+3 *236:LO 4.43379e-05
+4 *41:7 0.00256563
+5 spare_xfq[1] *247:B 1.7386e-05
+6 spare_xib spare_xz[8] 0
+7 spare_xmx[1] *247:B 0
+8 spare_xz[10] spare_xz[8] 0
+9 spare_xz[20] spare_xz[8] 0.000914149
+10 spare_xz[20] *247:B 7.98471e-05
+11 spare_xz[4] spare_xz[8] 2.24252e-05
+12 spare_xz[5] spare_xz[8] 0
+13 *238:RESET_B spare_xz[8] 0
+14 *33:8 spare_xz[8] 0
+*RES
+1 *236:LO *41:7 4.05 
+2 *41:7 *247:B 6.81 
+3 *41:7 spare_xz[8] 40.544 
+*END
+
+*D_NET *42 0.000841435
+*CONN
+*P spare_xz[9] O
+*I *248:A I *D sky130_fd_sc_hd__nor2_2
+*I *237:LO O *D sky130_fd_sc_hd__conb_1
+*CAP
+1 spare_xz[9] 0.000266009
+2 *248:A 0
+3 *237:LO 0.000103284
+4 *42:6 0.000369293
+5 spare_xz[15] *42:6 0
+6 spare_xz[17] spare_xz[9] 9.23099e-05
+7 spare_xz[25] spare_xz[9] 0
+8 *240:A *42:6 2.56752e-06
+9 *248:B spare_xz[9] 4.37173e-06
+10 *248:B *42:6 3.60024e-06
+*RES
+1 *237:LO *42:6 5.235 
+2 *42:6 *248:A 3.6 
+3 *42:6 spare_xz[9] 1.42157 
+*END

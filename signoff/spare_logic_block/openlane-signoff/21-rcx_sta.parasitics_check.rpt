@@ -1,0 +1,100 @@
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 27 unannotated nets.
+ spare_logic1\[0\]
+ spare_logic1\[10\]
+ spare_logic1\[11\]
+ spare_logic1\[12\]
+ spare_logic1\[13\]
+ spare_logic1\[14\]
+ spare_logic1\[15\]
+ spare_logic1\[16\]
+ spare_logic1\[17\]
+ spare_logic1\[18\]
+ spare_logic1\[19\]
+ spare_logic1\[1\]
+ spare_logic1\[20\]
+ spare_logic1\[21\]
+ spare_logic1\[22\]
+ spare_logic1\[23\]
+ spare_logic1\[24\]
+ spare_logic1\[25\]
+ spare_logic1\[26\]
+ spare_logic1\[2\]
+ spare_logic1\[3\]
+ spare_logic1\[4\]
+ spare_logic1\[5\]
+ spare_logic1\[6\]
+ spare_logic1\[7\]
+ spare_logic1\[8\]
+ spare_logic1\[9\]
+Found 0 partially unannotated nets.
+parastic_annotation_check
+check_slew
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+check_slew_end
+tns_report
+
+===========================================================================
+ report_tns
+============================================================================
+tns 0.00
+tns_report_end
+wns_report
+
+===========================================================================
+ report_wns
+============================================================================
+wns 0.00
+wns_report_end
+worst_slack
+
+===========================================================================
+ report_worst_slack -max (Setup)
+============================================================================
+worst slack INF
+
+===========================================================================
+ report_worst_slack -min (Hold)
+============================================================================
+worst slack INF
+worst_slack_end
+power_report
+
+===========================================================================
+ report_power
+============================================================================
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             1.23e-14   2.16e-14   2.71e-11   2.71e-11   6.9%
+Combinational          0.00e+00   0.00e+00   3.64e-10   3.64e-10  93.1%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  1.23e-14   2.16e-14   3.91e-10   3.91e-10 100.0%
+                           0.0%       0.0%     100.0%
+power_report_end
+area_report
+
+===========================================================================
+ report_design_area
+============================================================================
+Design area 258 u^2 24% utilization.
+area_report_end
+Setting global connections for newly added cells...
+[WARNING] Did not save OpenROAD database!
+Writing SDF to /home/hosni/caravel_sky130/caravel/openlane/spare_logic_block/runs/23_01_31_02_56/results/routing/mca/process_corner_nom/spare_logic_block.sdf...
+Writing timing model to /home/hosni/caravel_sky130/caravel/openlane/spare_logic_block/runs/23_01_31_02_56/results/routing/mca/process_corner_nom/spare_logic_block.lib...
+
