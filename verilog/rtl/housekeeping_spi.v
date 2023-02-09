@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // SPDX-License-Identifier: Apache-2.0
-​
-//`default_nettype none
-​
+
+`default_nettype none
+
 //-----------------------------------------------------------
 // SPI controller for Caravel
 //-----------------------------------------------------------
@@ -27,7 +27,7 @@
 //------------------------------------------------
 // This file is distributed free and open source
 //------------------------------------------------
-​
+
 // SCK ---   Clock input
 // SDI ---   Data  input
 // SDO ---   Data  output
@@ -37,13 +37,13 @@
 // addr  --- Decoded address to upstream circuits
 // rdstb --- Read strobe, tells upstream circuit that data will be latched.
 // wrstb --- Write strobe, tells upstream circuit to latch odata.
-​
+
 // Data format (general purpose):
 // 8 bit format
 // 1st byte:   Command word (see below)
 // 2nd byte:   Address word (register 0 to 255)
 // 3rd byte:   Data word    (value 0 to 255)
-​
+
 // Command format:
 // 00000000  No operation
 // 10000000  Write until CSB raised
@@ -52,12 +52,12 @@
 // 11000100  Pass-through read/write to management area flash SPI until CSB raised
 // 11000010  Pass-through read/write to user area flash SPI until CSB raised
 // wrnnn000  Read/write as above, for nnn = 1 to 7 bytes, then terminate
-​
+
 // Lower three bits are reserved for future use.
 // All serial bytes are read and written msb first.
-​
+
 // Fixed control and status registers
-​
+
 // Address 0 is reserved and contains flags for SPI mode.  This is
 // currently undefined and is always value 0.
 // Address 1 is reserved and contains manufacturer ID low 8 bits.
@@ -65,19 +65,19 @@
 // Address 3 is reserved and contains product ID (8 bits).
 // Addresses 4 to 7 are reserved and contain the mask ID (32 bits).
 // Addresses 8 to 255 are available for general purpose use.
-​
+
 `define COMMAND  3'b000
 `define ADDRESS  3'b001
 `define DATA     3'b010
 `define USERPASS 3'b100
 `define MGMTPASS 3'b101
-​
+
 module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
 	sdoenb, idata, odata, oaddr, rdstb, wrstb,
 	pass_thru_mgmt, pass_thru_mgmt_delay,
 	pass_thru_user, pass_thru_user_delay,
 	pass_thru_mgmt_reset, pass_thru_user_reset);
-​
+
     input reset;
     input SCK;
     input SDI;
@@ -95,12 +95,12 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     output reg pass_thru_user_delay;
     output wire pass_thru_mgmt_reset;
     output wire pass_thru_user_reset;
-​
+
     wire hk_spi_csb;
     wire hk_spi_sck;
     wire hk_spi_sdi;
     wire rst;
-​
+
     reg  [7:0]  addr;
     reg  [2:0]  state;
     reg  [2:0]  count;
@@ -111,25 +111,25 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
     reg  [7:0]  ldata;   
     reg		pre_pass_thru_mgmt;
     reg		pre_pass_thru_user;
-​
+    wire    csb_reset;
     assign hk_spi_csb = CSB;
     assign hk_spi_sck = SCK;
     assign hk_spi_sdi = SDI;
     assign rst = reset;
-​
+
     assign  odata = {predata, SDI};
     assign  oaddr = (state == `ADDRESS) ? {addr[6:0], SDI} : addr;
     assign SDO = ldata[7];
     assign csb_reset = CSB | reset;
     assign pass_thru_mgmt_reset = pass_thru_mgmt_delay | pre_pass_thru_mgmt;
     assign pass_thru_user_reset = pass_thru_user_delay | pre_pass_thru_user;
-​
-​
+
+
     reg [2:0] nstate;
     reg [2:0] byte_cnt;
     reg cmd_rd, cmd_wr, cmd_pt, cmd_pt_usr;
     reg [2:0] cmd_bytes;
-    always @(count) begin
+    always @(*) begin
         case(state)  
             `COMMAND : begin
                 if(count == 3'd7) begin
@@ -168,24 +168,23 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
             end 
         endcase
     end 
-​
+
     
     always @(posedge SCK or posedge csb_reset) begin
         if (csb_reset == 1'b1) begin
             state  <= `COMMAND;
-            nstate <= 3'b000;           //        
         end                
         else 
             state <= nstate;
     end
-​
-​
+
+
     /*always @(posedge csb_reset)begin
         if (csb_reset == 1'b1) begin
             count  <= 3'b000;  
         end   
     end */
-​
+
     //wire [2:0] next_count = count +1;
     // incrementing bits counter at every positive edge of SCK 
     always @(posedge SCK or posedge csb_reset)    begin           //
@@ -193,20 +192,20 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
             count  <= 3'b000;  
         end 
         else if (state != `USERPASS && state != `MGMTPASS) begin
-            count <= count + 1;    
+            count <= count + 3'h1;    
         end                 
     end 
     
     // Getting command from SDI and storing it in a register 
     always @(posedge SCK or posedge csb_reset) begin
         if (csb_reset == 1'b1) begin 
-            cmd_wr <= 0;
-            cmd_rd <= 0;
-            cmd_bytes <= 0;
-            pre_pass_thru_mgmt <= 0; 
-            pre_pass_thru_user <= 0;  
-            pass_thru_mgmt_delay <= 0; 
-            pass_thru_user_delay <= 0;
+            cmd_wr <= 1'b0;
+            cmd_rd <= 1'b0;
+            cmd_bytes <= 3'b0;
+            pre_pass_thru_mgmt <= 1'b0; 
+            pre_pass_thru_user <= 1'b0;  
+            pass_thru_mgmt_delay <= 1'b0; 
+            pass_thru_user_delay <= 1'b0;
         end    
         else begin 
             if(state == `COMMAND) begin 
@@ -224,7 +223,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
             end 
         end 
     end 
-​
+
     // Getting address from SDI and storing it in a register and incrementing it. 
     always @(posedge SCK or posedge csb_reset) begin 
         if (csb_reset == 1'b1)
@@ -244,9 +243,9 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         if (csb_reset == 1'b1)
             predata <= 7'b0000000;      //
         else 
-        if(state == `DATA) predata <= {predata[6:0], SDI};
+        if(state == `DATA) predata <= {predata[5:0], SDI};
     end 
-​
+
     // Getting bytes count from SDI and decremnting it. 
     always @(posedge SCK or posedge csb_reset) begin 
         if (csb_reset == 1'b1)
@@ -262,7 +261,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
             end
         end 
     end 
-​
+
     
     // Storing read data from hk in a reg and shifting it out on SDO 
     always @(negedge SCK or posedge csb_reset) begin ////
@@ -278,7 +277,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         end                             
     end 
    
-​
+
     // read strobe 
     always @(posedge SCK or posedge csb_reset) begin  ////
         if (csb_reset == 1'b1) 
@@ -291,7 +290,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
                     rdstb <= 1'b0; 
         end 
     end 
-​
+
     // write strobe 
     always @(negedge SCK or posedge csb_reset) begin ////
         
@@ -307,7 +306,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
                 end 
                 else 
                 wrstb <= 1'b0;  
-​
+
             end else begin
                 wrstb <= 1'b0;  
             end
@@ -332,35 +331,31 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
                 sdoenb <= 1'b1;
                 end 
     end 
-​
+
     always @(posedge SCK or posedge csb_reset) begin 
         if(csb_reset == 1'b1) begin 
             pass_thru_mgmt <= 1'b0;
-            pass_thru_mgmt_delay <= 1'b0;
-            pre_pass_thru_mgmt <= 1'b0;
         end 
         else 
             if(state == `MGMTPASS)
                 pass_thru_mgmt = 1'b1;
     end 
-​
+    
     always @(posedge SCK or posedge csb_reset) begin 
         if (csb_reset == 1'b1) begin 
             pass_thru_user <= 1'b0;
-            pass_thru_user_delay <= 1'b0;
-            pre_pass_thru_user <= 1'b0;
         end 
         else 
             if(state == `USERPASS)
-                pass_thru_user = 1;
-    end     
-​
+                pass_thru_user = 1'b1;
+    end    
+
     /*always @(posedge SCK) begin  ////
         if (state ==`ADDRESS)
             oaddr<= {addr[6:0], SDI};
         else 
             oaddr = addr;
     end */
-​
+
 endmodule // housekeeping_spi
 `default_nettype wire
