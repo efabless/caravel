@@ -338,7 +338,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         end 
         else 
             if(state == `MGMTPASS)
-                pass_thru_mgmt = 1'b1;
+                pass_thru_mgmt <= 1'b1;
     end 
     
     always @(posedge SCK or posedge csb_reset) begin 
@@ -347,7 +347,7 @@ module housekeeping_spi(reset, SCK, SDI, CSB, SDO,
         end 
         else 
             if(state == `USERPASS)
-                pass_thru_user = 1'b1;
+                pass_thru_user <= 1'b1;
     end    
 
     /*always @(posedge SCK) begin  ////
