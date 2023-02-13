@@ -4,7 +4,6 @@
 
 ## MASTER CLOCKS
 create_clock -name clk -period 50 [get_ports {clock_core}] 
-create_clock -name debug_clk -period 100 [get_pins {housekeeping/debug_clk}]
 
 create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock}]
 create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]
@@ -12,21 +11,18 @@ create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_lo
 
 set_clock_uncertainty 0.1 [get_clocks {clk}] 
 set_clock_uncertainty 0.1 [get_clocks {hk_serial_clk hk_serial_load}]
-set_clock_uncertainty 0.1 [get_clocks {debug_clk}] 
 
 set_clock_groups \
    -name clock_group \
    -logically_exclusive \
    -group [get_clocks {clk}]\
    -group [get_clocks {hk_serial_clk}]\
-   -group [get_clocks {hk_serial_load}]\
-   -group [get_clocks {debug_clk}] 
+   -group [get_clocks {hk_serial_load}]
 
 
 set_propagated_clock [get_clocks {clk}]
 set_propagated_clock [get_clocks {hk_serial_clk}]
 set_propagated_clock [get_clocks {hk_serial_load}]
-set_propagated_clock [get_clocks {debug_clk}]
 
 ## INPUT/OUTPUT DELAYS
 # set input_delay_value 10

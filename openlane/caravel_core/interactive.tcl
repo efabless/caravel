@@ -6,9 +6,9 @@ prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overw
 set save_path $::env(CARAVEL_ROOT)
 
 ################   Synthesis   ################
-run_synthesis
-# set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
-# set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
+# run_synthesis
+set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
+set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
 
 ################   Floorplan   ################
 init_floorplan
@@ -34,9 +34,30 @@ run_power_grid_generation
 # save_final_views
 # save_views -save_path .. -tag $::env(OPENLANE_RUN_TAG)
 ################   placement   ################
+set ::env(PL_TARGET_DENSITY) 0.24
+set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 70
+set ::env(PL_RESIZER_CAP_SLEW_MARGIN) 70
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
+set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 2
 run_placement
 
 ################   CTS   ################
+# run_cts
+
+################ Global Routing Optmization  ################
+# run_resizer_timing_routing
+
+################ Place and route on optmized netlist ################
+set ::env(PL_TARGET_DENSITY) 0.28
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
+set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 50
+set ::env(PL_RESIZER_CAP_SLEW_MARGIN) 50
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.05
+set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 1
+
+# run_placement_incr
+run_placement
 run_cts
 
 # adding hk_serial_clock and hk_serial_load as clocks after CTS by changing

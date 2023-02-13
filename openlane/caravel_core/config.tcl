@@ -23,6 +23,7 @@ set ::env(VERILOG_FILES) "\
                         $::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/user_defines.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/caravel_core.v \
+                        $::env(CARAVEL_ROOT)/verilog/rtl/mgmt_protect.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/digital_pll.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/clock_div.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/caravel_clocking.v \
@@ -49,7 +50,7 @@ set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/synth_configuration/drc_excl
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 # set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 set ::env(SYNTH_BUFFERING) 0
-set ::env(SYNTH_EXTRA_MAPPING_FILE) $::env(DESIGN_DIR)/synth_configuration/yosys_mapping.v
+set ::env(SYNTH_EXTRA_MAPPING_FILE) "$::env(DESIGN_DIR)/synth_configuration/yosys_mapping.v"
 set ::env(SYNTH_MAX_FANOUT) 18
 set ::env(SYNTH_CAP_LOAD) 52
 set ::env(SYNTH_CLOCK_TRANSITION) 0.5
@@ -94,11 +95,11 @@ set ::env(FP_PDN_MACRO_HOOKS) {
     mprj vdda2 vssa2 vdda2 vssa2,\
     soc.RAM256 vccd vssd VPWR VGND,\
     soc.core.RAM0 vccd vssd vccd1 vssd1,\
-    mgmt_buffers vccd1 vssd1 vccd1 vssd1,\
-    mgmt_buffers vccd2 vssd2 vccd2 vssd2,\
-    mgmt_buffers vccd vssd vccd vssd,\
-    mgmt_buffers vdda1 vssa1 vdda1 vssa1,\
-    mgmt_buffers vdda2 vssa2 vdda2 vssa2,\
+    mgmt_buffers.mprj_logic_high_inst vccd1 vssd1 vccd1 vssd1,\
+    mgmt_buffers.mprj2_logic_high_inst vccd2 vssd2 vccd2 vssd2,\
+    mgmt_buffers.powergood_check vccd vssd vccd vssd,\
+    mgmt_buffers.powergood_check vdda1 vssa1 vdda1 vssa1,\
+    mgmt_buffers.powergood_check vdda2 vssa2 vdda2 vssa2,\
     gpio_control_bidir_1\\\\\\[0\\\\\\].gpio_logic_high vccd1 vssd1 vccd1 vssd1,\
     gpio_control_bidir_1\\\\\\[1\\\\\\].gpio_logic_high vccd1 vssd1 vccd1 vssd1,\
     gpio_control_in_1a\\\\\\[0\\\\\\].gpio_logic_high vccd1 vssd1 vccd1 vssd1,\
@@ -169,7 +170,7 @@ set ::env(CTS_SINK_CLUSTERING_MAX_DIAMETER) 30
 
 ##PLACEMENT
 set ::env(PL_ROUTABILITY_DRIVEN) 1
-set ::env(PL_TIME_DRIVEN) 0
+set ::env(PL_TIME_DRIVEN) 1
 set ::env(PL_TARGET_DENSITY) 0.24
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
@@ -221,7 +222,9 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
     $::env(CARAVEL_ROOT)/verilog/gl/spare_logic_block.v \
     $::env(CARAVEL_ROOT)/verilog/gl/mprj_io_buffer.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/gpio_defaults_block.v \
-    $::env(CARAVEL_ROOT)/verilog/gl/mgmt_protect.v \
+    $::env(CARAVEL_ROOT)/verilog/rtl/mprj_logic_high.v \
+	$::env(CARAVEL_ROOT)/verilog/rtl/mprj2_logic_high.v \
+	$::env(CARAVEL_ROOT)/verilog/rtl/mgmt_protect_hv.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/gpio_logic_high.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/empty_macro.v \
     $::env(MCW_ROOT)/verilog/gl/RAM256.v \
@@ -236,7 +239,9 @@ set ::env(EXTRA_LEFS) "\
     $::env(CARAVEL_ROOT)/lef/spare_logic_block.lef \
     $::env(CARAVEL_ROOT)/lef/mprj_io_buffer.lef \
     $::env(CARAVEL_ROOT)/lef/gpio_defaults_block.lef \
-    $::env(CARAVEL_ROOT)/lef/mgmt_protect.lef \
+    $::env(CARAVEL_ROOT)/lef/mprj_logic_high.lef \
+    $::env(CARAVEL_ROOT)/lef/mprj2_logic_high.lef \
+    $::env(CARAVEL_ROOT)/lef/mgmt_protect_hv.lef \
     $::env(CARAVEL_ROOT)/lef/gpio_logic_high.lef \
     $::env(CARAVEL_ROOT)/lef/empty_macro.lef \
     $::env(MCW_ROOT)/lef/RAM256.lef \
@@ -251,7 +256,9 @@ set ::env(EXTRA_GDS_FILES) "\
     $::env(CARAVEL_ROOT)/gds/spare_logic_block.gds \
     $::env(CARAVEL_ROOT)/gds/mprj_io_buffer.gds \
     $::env(CARAVEL_ROOT)/gds/gpio_defaults_block.gds \
-    $::env(CARAVEL_ROOT)/gds/mgmt_protect.gds \
+    $::env(CARAVEL_ROOT)/gds/mprj_logic_high.gds \
+    $::env(CARAVEL_ROOT)/gds/mprj2_logic_high.gds \
+    $::env(CARAVEL_ROOT)/gds/mgmt_protect_hv.gds \
     $::env(CARAVEL_ROOT)/gds/gpio_logic_high.gds \
     $::env(CARAVEL_ROOT)/gds/empty_macro.gds \
     $::env(MCW_ROOT)/gds/RAM256.gds \
@@ -260,12 +267,12 @@ set ::env(EXTRA_GDS_FILES) "\
 
 set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/housekeeping.lib \
-    $::env(CARAVEL_ROOT)/lib/mgmt_protect.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_defaults_block.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_logic_high.lib \
     $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
-    $::env(MCW_ROOT)/signoff/RAM256/primetime-signoff/lib/nom/RAM256.tt.lib \
-    $::env(MCW_ROOT)/signoff/RAM128/primetime-signoff/lib/nom/RAM128.tt.lib \
+    $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
+    $::env(MCW_ROOT)/lib/RAM256.lib \
+    $::env(MCW_ROOT)/lib/RAM128.lib \
 "
 
 set ::env(STA_WRITE_LIB) 0

@@ -58,7 +58,7 @@ add_pdn_stripe \
     -offset 3.3 \
     -spacing 1 \
     -number_of_straps 1 \
-    -nets "vccd vssd vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
+    -nets "vccd vssd vccd1 vssd1 vssa2 vdda2 vssa1 vdda1 vssd2 vccd2" \
     -starts_with POWER -extend_to_boundary
 add_pdn_stripe \
     -grid stdcell_grid \
@@ -68,7 +68,7 @@ add_pdn_stripe \
     -offset 3085.56 \
     -spacing 1 \
     -number_of_straps 1 \
-    -nets "vssa2 vdda2 vssa1 vdda1 vssd2 vccd2 vssd1 vccd1 vssd vccd" \
+    -nets "vccd2 vssd2 vdda1 vssa1 vdda2 vssa2 vssd1 vccd1 vssd vccd" \
     -starts_with POWER -extend_to_boundary
 add_pdn_stripe \
     -grid stdcell_grid \
@@ -78,7 +78,7 @@ add_pdn_stripe \
     -offset 5 \
     -spacing 1.6 \
     -number_of_straps 1 \
-    -nets "vccd vssd vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
+    -nets "vccd vssd vccd1 vssd1 vssa2 vdda2 vssa1 vdda1 vssd2 vccd2" \
     -starts_with POWER -extend_to_boundary
 add_pdn_stripe \
     -grid stdcell_grid \
@@ -88,7 +88,7 @@ add_pdn_stripe \
     -offset 4629.28 \
     -spacing 1.6 \
     -number_of_straps 1 \
-    -nets "vssa2 vdda2 vssa1 vdda1 vssd2 vccd2 vssd1 vccd1 vssd vccd" \
+    -nets "vccd2 vssd2 vdda1 vssa1 vdda2 vssa2 vssd1 vccd1 vssd vccd" \
     -starts_with POWER -extend_to_boundary
 
 add_pdn_stripe \
@@ -158,36 +158,36 @@ add_pdn_stripe \
         -nets "vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
         -starts_with POWER
     #Metal4
-    # add_pdn_stripe \
-    #     -grid stdcell_grid \
-    #     -layer met4 \
-    #     -width 4.8 \
-    #     -pitch 50 \
-    #     -offset 843 \
-    #     -spacing 3.2 \
-    #     -number_of_straps 2 \
-    #     -nets "vccd2 vssd2" \
-    #     -starts_with POWER
-    # add_pdn_stripe \
-    #     -grid stdcell_grid \
-    #     -layer met4 \
-    #     -width 4.8 \
-    #     -pitch 100 \
-    #     -offset 1268 \
-    #     -spacing 3.2 \
-    #     -number_of_straps 3 \
-    #     -nets "vccd1 vssd1" \
-    #     -starts_with POWER
-    # add_pdn_stripe \
-    #     -grid stdcell_grid \
-    #     -layer met4 \
-    #     -width 4.8 \
-    #     -pitch 40 \
-    #     -offset 1836 \
-    #     -spacing 3.2 \
-    #     -number_of_straps 2 \
-    #     -nets "vdda1 vssa1 vdda2 vssa2" \
-    #     -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 4.8 \
+        -pitch 50 \
+        -offset 843 \
+        -spacing 3.2 \
+        -number_of_straps 2 \
+        -nets "vccd2 vssd2" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 4.8 \
+        -pitch 100 \
+        -offset 1268 \
+        -spacing 3.2 \
+        -number_of_straps 3 \
+        -nets "vccd1 vssd1" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 4.8 \
+        -pitch 40 \
+        -offset 1836 \
+        -spacing 3.2 \
+        -number_of_straps 2 \
+        -nets "vdda1 vssa1 vdda2 vssa2" \
+        -starts_with POWER
 
 ####  uppder gpio_high macros stripes  ####
     #Metal4
@@ -199,6 +199,16 @@ add_pdn_stripe \
         -offset 249.12 \
         -spacing 2.2 \
         -number_of_straps 9 \
+        -nets "vssd1 vccd1" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 1.6 \
+        -pitch 300 \
+        -offset 949.12 \
+        -spacing 2.2 \
+        -number_of_straps 1 \
         -nets "vssd1 vccd1" \
         -starts_with POWER
     #Metal5
