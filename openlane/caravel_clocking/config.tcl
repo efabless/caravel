@@ -15,7 +15,7 @@
 
 
 set ::env(DESIGN_NAME) caravel_clocking
-set ::env(DESIGN_IS_CORE) 1
+set ::env(DESIGN_IS_CORE) 0
 
 set ::env(VERILOG_FILES) "\
 	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
@@ -44,7 +44,7 @@ set ::env(NO_SYNTH_CELL_LIST) $::env(DESIGN_DIR)/no_synth.list
 set ::env(FP_SIZING) absolute
 set ::env(DIE_AREA) "0 0 100 100"
 
-set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/caravel_clocking.def
+# set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/template/caravel_clocking.def
 
 set ::env(FP_TAPCELL_DIST) 6
 
@@ -67,16 +67,17 @@ set ::env(FP_PDN_VOFFSET) 7.63
 # vertical 21.29 15.61
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.62
+set ::env(PL_TARGET_DENSITY) 0.63
 
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
-set ::env(GRT_RESIZER_HOLD_SLACK_MARGIN) 0.25
+# set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.25
 
 ## Routing
 set ::env(GRT_ADJUSTMENT) 0
 
-set ::env(GRT_RESIZER_TIMING_OPTIMIZATIONS) 1
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 
 ## Diode Insertion
 set ::env(DIODE_INSERTION_STRATEGY) 4
