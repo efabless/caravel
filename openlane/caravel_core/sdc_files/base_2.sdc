@@ -3,7 +3,8 @@
 ### Date: 3/12/2022
 
 ## MASTER CLOCKS
-create_clock -name clk -period 25 [get_ports {clock_core}] 
+# create_clock -name clk -period 25 [get_ports {clock_core}] 
+create_clock -name clk -period 25 [get_pins {clock_ctrl/core_clk}] 
 
 create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock}]
 create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]

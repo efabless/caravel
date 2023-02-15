@@ -223,6 +223,29 @@ add_pdn_stripe \
         -nets "vssd1 vccd1" \
         -starts_with POWER
 
+####  vssio and vddio stripes  ####
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met5 \
+        -width 8 \
+        -pitch 23 \
+        -offset 140 \
+        -spacing 2 \
+        -number_of_straps 2 \
+        -nets "vddio vssio" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 4.8 \
+        -pitch 386 \
+        -offset 647 \
+        -spacing 2 \
+        -number_of_straps 2 \
+        -nets "vddio vssio" \
+        -starts_with POWER
+
+
 add_pdn_connect \
     -grid stdcell_grid \
     -layers "$::env(FP_PDN_LOWER_LAYER) $::env(FP_PDN_UPPER_LAYER)"

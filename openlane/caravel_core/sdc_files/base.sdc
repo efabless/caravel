@@ -3,7 +3,7 @@
 ### Date: 28/10/2022
 
 ## MASTER CLOCKS
-create_clock -name clk -period 25 [get_pins {_20669_/X}] 
+create_clock -name clk -period 25 [get_pins {clock_ctrl/core_clk}] 
 # create_clock -name clk -period 25 [get_ports {clock_core}] 
 
 set_clock_uncertainty 0.5 [get_clocks {clk}] 

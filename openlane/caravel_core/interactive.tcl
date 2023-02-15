@@ -6,9 +6,9 @@ prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overw
 set save_path $::env(CARAVEL_ROOT)
 
 ################   Synthesis   ################
-# run_synthesis
-set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
-set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
+run_synthesis
+# set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
+# set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
 
 ################   Floorplan   ################
 init_floorplan
@@ -17,14 +17,18 @@ apply_def_template
 # Placing the macros in the core area and marking them fixed
 file copy -force $::env(MACRO_PLACEMENT_CFG_1) $::env(placement_tmpfiles)/macro_placement.cfg
 manual_macro_placement -f
+file copy -force $::env(MACRO_PLACEMENT_CFG_2) $::env(placement_tmpfiles)/macro_placement.cfg
+manual_macro_placement
 
 # Tap/Decap insertion
 tap_decap_or
 
-# Adding met4 and met5 obstructions to prevent power stripes over the user_project_wrapper
+# Adding met4 and met5 obstructions to prevent power stripes over the user_project_wrapper and obs for vssio and vddio
 set ::env(GRT_OBS) "\
     met4 80 989 3080 4596.3, \
-    met5 76 1000 3087 4585 \
+    met5 76.6 1000 3086.5 4585, \
+    met5 631 144 650 167, \
+    met4 1040 189 1052 190 \
 "
 add_route_obs
 
@@ -67,14 +71,21 @@ run_resizer_timing
 
 ################   Routing   ################
 # Adding met5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
+run_resizer_timing_routing
 set ::env(GRT_OBS) "\
     met5 90 130 890 680, \
     met5 1800 140 2280 590, \
     met5 2570 210 2950 761 \
 "
 add_route_obs
+global_routing
+ins_fill_cells
+file copy -force $::env(MACRO_PLACEMENT_CFG_3) $::env(placement_tmpfiles)/macro_placement.cfg
+manual_macro_placement -f
+detailed_routing
+check_wire_lengths
 
-run_routing
+# run_routing
 
 ################   RCX sta    ################
 run_parasitics_sta
@@ -86,11 +97,11 @@ run_antenna_check
 run_magic
 
 ################   LVS    ################
-# run_magic_spice_export;
-# run_lvs;
+run_magic_spice_export;
+run_lvs;
 
 ###############   DRC    ################
-# run_magic_drc
+run_magic_drc
 
 ################   Saving views and reports    ################
 save_final_views

@@ -26,7 +26,6 @@ set ::env(VERILOG_FILES) "\
                         $::env(CARAVEL_ROOT)/verilog/rtl/mgmt_protect.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/digital_pll.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/clock_div.v \
-                        $::env(CARAVEL_ROOT)/verilog/rtl/caravel_clocking.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/gpio_control_block.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/user_id_programming.v \
                         $::env(MCW_ROOT)/verilog/rtl/mgmt_core_wrapper.v \
@@ -38,7 +37,7 @@ set ::env(VERILOG_FILES) "\
                     
 set ::env(RUN_KLAYOUT) 0
 
-# clock
+# clock constraints
 set ::env(CLOCK_PORT) "clock_core"
 set ::env(CLOCK_NET) "caravel_clk"
 set ::env(CLOCK_PERIOD) 25
@@ -65,7 +64,7 @@ set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/floorplan_configuration/pin_order
 set ::env(FP_DEF_TEMPLATE) $::env(DESIGN_DIR)/floorplan_configuration/io.def
 
 set ::env(FP_PDN_VERTICAL_HALO) "8"
-set ::env(FP_PDN_HORIZONTAL_HALO) "3"
+set ::env(FP_PDN_HORIZONTAL_HALO) "1"
 
 set ::env(FP_IO_MIN_DISTANCE) 5
 
@@ -84,8 +83,8 @@ set ::env(FP_PDN_CHECK_NODES) 0
 set ::env(FP_PDN_CORE_RING) 1
 set ::env(FP_PDN_SKIPTRIM) 0
 
-set ::env(VDD_NETS) "vccd vccd1 vccd2 vdda1 vdda2"
-set ::env(GND_NETS) "vssd vssd1 vssd2 vssa1 vssa2"
+set ::env(VDD_NETS) "vccd vccd1 vccd2 vdda1 vdda2 vddio"
+set ::env(GND_NETS) "vssd vssd1 vssd2 vssa1 vssa2 vssio"
 
 set ::env(FP_PDN_MACRO_HOOKS) {
     housekeeping vccd vssd VPWR VGND,\
@@ -141,7 +140,12 @@ set ::env(FP_PDN_MACRO_HOOKS) {
     spare_logic\\\\\\[0\\\\\\] vccd vssd vccd vssd,\
     spare_logic\\\\\\[1\\\\\\] vccd vssd vccd vssd,\
     spare_logic\\\\\\[2\\\\\\] vccd vssd vccd vssd,\
-    spare_logic\\\\\\[3\\\\\\] vccd vssd vccd vssd\
+    spare_logic\\\\\\[3\\\\\\] vccd vssd vccd vssd,\
+    clock_ctrl vccd vssd VPWR VGND,\
+    por vddio vssio vdd3v3 vss3v3,\
+    por vccd vssd vdd1v8 vss1v8,\
+    rstb_level vddio vssio VPWR VGND,\
+    rstb_level vccd vssd LVPWR LVGND\
 }
 
 set ::env(FP_PDN_CORE_RING_VWIDTH) 10
@@ -203,7 +207,7 @@ set ::env(GLB_RESIZER_CAP_SLEW_MARGIN) 20
 set ::env(GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT) 50
 
 ## Antenna
-set ::env(DIODE_INSERTION_STRATEGY) 6
+set ::env(DIODE_INSERTION_STRATEGY) 3
 set ::env(GRT_ANT_ITERS) 15
 set ::env(GRT_MAX_DIODE_INS_ITERS) 40
 set ::env(DIODE_PADDING) 0
@@ -227,6 +231,8 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/mgmt_protect_hv.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/gpio_logic_high.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/empty_macro.v \
+    $::env(CARAVEL_ROOT)/verilog/gl/caravel_clocking.v \
+    $::env(CARAVEL_ROOT)/verilog/rtl/manual_power_connections.v \
     $::env(MCW_ROOT)/verilog/gl/RAM256.v \
     $::env(MCW_ROOT)/verilog/gl/RAM128.v \
 "
@@ -244,6 +250,8 @@ set ::env(EXTRA_LEFS) "\
     $::env(CARAVEL_ROOT)/lef/mgmt_protect_hv.lef \
     $::env(CARAVEL_ROOT)/lef/gpio_logic_high.lef \
     $::env(CARAVEL_ROOT)/lef/empty_macro.lef \
+    $::env(CARAVEL_ROOT)/lef/caravel_clocking.lef \
+    $::env(CARAVEL_ROOT)/lef/manual_power_connections.lef \
     $::env(MCW_ROOT)/lef/RAM256.lef \
     $::env(MCW_ROOT)/lef/RAM128.lef \
 "
@@ -261,6 +269,8 @@ set ::env(EXTRA_GDS_FILES) "\
     $::env(CARAVEL_ROOT)/gds/mgmt_protect_hv.gds \
     $::env(CARAVEL_ROOT)/gds/gpio_logic_high.gds \
     $::env(CARAVEL_ROOT)/gds/empty_macro.gds \
+    $::env(CARAVEL_ROOT)/gds/caravel_clocking.gds \
+    $::env(CARAVEL_ROOT)/gds/manual_power_connections.gds \
     $::env(MCW_ROOT)/gds/RAM256.gds \
     $::env(MCW_ROOT)/gds/RAM128.gds \
 "
@@ -271,6 +281,7 @@ set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/gpio_logic_high.lib \
     $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
     $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
+    $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
     $::env(MCW_ROOT)/lib/RAM256.lib \
     $::env(MCW_ROOT)/lib/RAM128.lib \
 "
@@ -283,6 +294,6 @@ set ::env(QUIT_ON_LVS_ERROR) 0
 set ::env(QUIT_ON_MAGIC_DRC) 0
 
 set ::env(MAGIC_DEF_LABELS) 0
-set ::env(MAGIC_EXT_USE_GDS) 0
+set ::env(MAGIC_EXT_USE_GDS) 1
 
 set ::env(RSZ_DONT_TOUCH_RX) "rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core"
