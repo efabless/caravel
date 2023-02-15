@@ -79,6 +79,10 @@ MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper
 # Build tasks such as make ship, make generate_fill, make set_user_id, make final run in the foreground (1) or background (0)
 FOREGROUND ?= 1
 
+# Ensure commands which are piped through tee return the correct exit code
+# to make
+SHELL=/bin/bash -o pipefail
+
 # PDK setup configs
 THREADS ?= $(shell nproc)
 STD_CELL_LIBRARY ?= sky130_fd_sc_hd
