@@ -32,7 +32,8 @@ set ::env(VERILOG_FILES) "\
                         $::env(MCW_ROOT)/verilog/rtl/mgmt_core.v \
                         $::env(MCW_ROOT)/verilog/rtl/ibex_all.v \
                         $::env(MCW_ROOT)/verilog/rtl/picorv32.v \
-                        $::env(MCW_ROOT)/verilog/rtl/VexRiscv_MinDebugCache.v
+                        $::env(MCW_ROOT)/verilog/rtl/VexRiscv_MinDebugCache.v \
+                        $::env(MCW_ROOT)/verilog/rtl/RAM256.v \
 "
                     
 set ::env(RUN_KLAYOUT) 0
@@ -92,7 +93,8 @@ set ::env(FP_PDN_MACRO_HOOKS) {
     mprj vccd2 vssd2 vccd2 vssd2,\
     mprj vdda1 vssa1 vdda1 vssa1,\
     mprj vdda2 vssa2 vdda2 vssa2,\
-    soc.RAM256 vccd vssd VPWR VGND,\
+    soc.core.RAM256.BANK128\\\\\\[0\\\\\\].RAM128 vccd vssd VPWR VGND,\
+    soc.core.RAM256.BANK128\\\\\\[1\\\\\\].RAM128 vccd vssd VPWR VGND,\
     soc.core.RAM0 vccd vssd vccd1 vssd1,\
     mgmt_buffers.mprj_logic_high_inst vccd1 vssd1 vccd1 vssd1,\
     mgmt_buffers.mprj2_logic_high_inst vccd2 vssd2 vccd2 vssd2,\
@@ -171,6 +173,7 @@ set ::env(CTS_REPORT_TIMING) 0
 set ::env(CTS_TOLERANCE) 10
 set ::env(CTS_SINK_CLUSTERING_SIZE) 12
 set ::env(CTS_SINK_CLUSTERING_MAX_DIAMETER) 30
+set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4}
 
 ##PLACEMENT
 set ::env(PL_ROUTABILITY_DRIVEN) 1
@@ -233,7 +236,6 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
     $::env(CARAVEL_ROOT)/verilog/rtl/empty_macro.v \
     $::env(CARAVEL_ROOT)/verilog/gl/caravel_clocking.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/manual_power_connections.v \
-    $::env(MCW_ROOT)/verilog/gl/RAM256.v \
     $::env(MCW_ROOT)/verilog/gl/RAM128.v \
 "
 
@@ -252,7 +254,6 @@ set ::env(EXTRA_LEFS) "\
     $::env(CARAVEL_ROOT)/lef/empty_macro.lef \
     $::env(CARAVEL_ROOT)/lef/caravel_clocking.lef \
     $::env(CARAVEL_ROOT)/lef/manual_power_connections.lef \
-    $::env(MCW_ROOT)/lef/RAM256.lef \
     $::env(MCW_ROOT)/lef/RAM128.lef \
 "
 
@@ -271,7 +272,6 @@ set ::env(EXTRA_GDS_FILES) "\
     $::env(CARAVEL_ROOT)/gds/empty_macro.gds \
     $::env(CARAVEL_ROOT)/gds/caravel_clocking.gds \
     $::env(CARAVEL_ROOT)/gds/manual_power_connections.gds \
-    $::env(MCW_ROOT)/gds/RAM256.gds \
     $::env(MCW_ROOT)/gds/RAM128.gds \
 "
 
@@ -282,7 +282,6 @@ set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
     $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
     $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
-    $::env(MCW_ROOT)/lib/RAM256.lib \
     $::env(MCW_ROOT)/lib/RAM128.lib \
 "
 

@@ -4,7 +4,7 @@
 
 ## MASTER CLOCKS
 # create_clock -name clk -period 50 [get_ports {clock_core}] 
-create_clock -name clk -period 30 [get_pins {clock_ctrl/core_clk}] 
+create_clock -name clk -period 25 [get_pins {clock_ctrl/core_clk}] 
 
 create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock}]
 create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]
@@ -67,5 +67,5 @@ set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]
 
 ## MAX transition/cap
-# set_max_trans 2 [current_design]
+set_max_trans 1.5 [current_design]
 # set_max_cap 0.8 [current_design]

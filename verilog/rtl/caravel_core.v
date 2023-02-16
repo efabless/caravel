@@ -1429,5 +1429,6 @@ module caravel_core (
     );
 (* keep *) empty_macro empty_macro_0 ();
 (* keep *) empty_macro empty_macro_1 ();
+(* keep *) manual_power_connections manual_power_connections ();
 endmodule
 // `default_nettype wire

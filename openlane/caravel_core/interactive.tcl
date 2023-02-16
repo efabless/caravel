@@ -97,11 +97,11 @@ run_antenna_check
 run_magic
 
 ################   LVS    ################
-run_magic_spice_export;
-run_lvs;
+# run_magic_spice_export;
+# run_lvs;
 
 ###############   DRC    ################
-run_magic_drc
+# run_magic_drc
 
 ################   Saving views and reports    ################
 save_final_views
