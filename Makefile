@@ -46,6 +46,8 @@ MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
 MPW_TAG ?= mpw-8c
 
+PYTHON_BIN ?= python3
+
 # PDK switch varient
 export PDK?=sky130A
 
@@ -1227,15 +1229,19 @@ endif
 
 .PHONY: pdk-with-volare
 pdk-with-volare: check-python install-volare 
-	@volare enable ${OPEN_PDKS_COMMIT}
+	./venv/bin/volare enable ${OPEN_PDKS_COMMIT}
 
 check-python:
 ifeq ($(shell which python3),)
 $(error Please install python 3.6+)
 endif
 
+.PHONY: install-volare
 install-volare:
-	python3 -m pip install --upgrade volare
+	rm -rf ./venv
+	$(PYTHON_BIN) -m venv ./venv
+	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir pip
+	./venv/bin/$(PYTHON_BIN) -m pip install --upgrade --no-cache-dir volare
 
 
 ###########################################################################
