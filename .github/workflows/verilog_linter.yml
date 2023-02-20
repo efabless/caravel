@@ -54,11 +54,18 @@ jobs:
 
       - name: setup verilator
         run: |
+          sudo apt-get install git perl python3 make autoconf g++ flex bison ccache
+          sudo apt-get install libgoogle-perftools-dev numactl perl-doc
+          sudo apt-get install libfl2  
+          sudo apt-get install libfl-dev  
+          sudo apt-get install zlibc zlib1g zlib1g-dev
           git clone https://github.com/verilator/verilator.git
           cd verilator
           git checkout v5.006
-          ./ci/ci-install.bash
-          ./ci/ci-script.bash
+          autoconf
+          ./configure
+          make -j2
+          sudo make install
 
   lint:
     runs-on: ubuntu-latest
