@@ -57,10 +57,8 @@ jobs:
           git clone https://github.com/verilator/verilator.git
           cd verilator
           git checkout v5.006
-          autoconf
-          ./configure
-          make -j2
-          sudo make install
+          ./ci/ci-install.bash
+          ./ci/ci-script.bash
 
   lint:
     runs-on: ubuntu-latest
