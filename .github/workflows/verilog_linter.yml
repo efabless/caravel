@@ -1,0 +1,98 @@
+# SPDX-FileCopyrightText: 2020 Efabless Corporation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# SPDX-License-Identifier: Apache-2.0
+
+# This is a workflow to automatically update caravel-lite whenever caravel master is updated.
+name: Run verilog linter using verilator
+
+# Controls when the action will run. 
+on:
+  # Runs on Every Push
+  push:
+  workflow_dispatch:
+
+jobs:
+  pdk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Export PDK ROOT
+        run: echo "PDK_ROOT=/home/runner/work/pdk" >> $GITHUB_ENV
+
+      - name: Install dependencies
+        run: |
+          sudo mkdir -p ${{ env.PDK_ROOT }}
+          sudo chown -R $USER:$USER ${{ env.PDK_ROOT }}
+          make pdk-with-volare
+
+      - name: Tarball PDK
+        run: |
+          tar -cf /tmp/pdk.tar -C $PDK_ROOT .
+
+      - name: Upload PDK Tarball
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdk-tarball
+          path: /tmp/pdk.tar
+
+  verilator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+
+      - name: clone verilator
+        run: |
+        git clone https://github.com/verilator/verilator
+        git checkout v5.006
+
+      - name: setup verilator
+        run: |
+        cd verilator
+        autoconf
+        ./configure
+        make -j2
+        sudo make install
+
+  lint:
+    runs-on: ubuntu-latest
+    needs: [pdk, verilator]
+    steps:
+      - uses: actions/checkout@v2
+    
+      - name: Export PDK ROOT
+          run: echo "PDK_ROOT=/home/runner/work/pdk" >> $GITHUB_ENV
+
+      - name: Export PDK PATH
+        run: echo "PDKPATH=/home/runner/work/pdk/sky130A" >> $GITHUB_ENV
+
+      - name: Export PDK
+        run: echo "PDK=sky130A" >> $GITHUB_ENV
+      
+      - name: Download PDK Tarball
+        uses: actions/download-artifact@v2
+        with:
+          name: pdk-tarball
+          path: /tmp
+
+      - name: Unpack PDK Tarball
+        run: |
+          sudo mkdir -p ${{ env.PDK_ROOT }}
+          sudo chown -R $USER:$USER ${{ env.PDK_ROOT }}
+          tar -xf /tmp/pdk.tar -C $PDK_ROOT .
+
+      - name: lint housekeeping
+        run: verilator --lint-only -Wall -I $PDKPATH/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v -I /home/runner/work/caravel/verilog/rtl/defines.v -I $PDKPATH/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v -I /home/runner/work/caravel/verilog/rtl/housekeeping_spi.v /home/runner/work/caravel/verilog/rtl/housekeeping.v
+
