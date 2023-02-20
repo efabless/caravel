@@ -52,10 +52,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-
       - name: clone verilator
         run: |
-        git clone https://github.com/verilator/verilator
+        git clone https://github.com/verilator/verilator.git
         git checkout v5.006
 
       - name: setup verilator
