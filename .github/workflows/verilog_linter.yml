@@ -54,16 +54,16 @@ jobs:
 
       - name: clone verilator
         run: |
-        git clone https://github.com/verilator/verilator.git
-        git checkout v5.006
+          git clone https://github.com/verilator/verilator.git
+          git checkout v5.006
 
       - name: setup verilator
         run: |
-        cd verilator
-        autoconf
-        ./configure
-        make -j2
-        sudo make install
+          cd verilator
+          autoconf
+          ./configure
+          make -j2
+          sudo make install
 
   lint:
     runs-on: ubuntu-latest
