@@ -89,7 +89,7 @@ jobs:
           sudo chown -R $USER:$USER ${{ env.PDK_ROOT }}
           tar -xf /tmp/pdk.tar -C $PDK_ROOT .
 
-      - name: lint housekeeping
+      - name: lint all rtls
         run: |
           ls /home/runner/work/caravel/caravel
           cd /home/runner/work/caravel/caravel/.github
