@@ -91,9 +91,9 @@ jobs:
 
       - name: lint housekeeping
         run: |
-          ls /home/runner/work/caravel
-          cd /home/runner/work/caravel/.github
-          python scripts/verilator_parser.py -i /home/runner/work/caravel
+          ls /home/runner/work/caravel/caravel
+          cd /home/runner/work/caravel/caravel/.github
+          python scripts/verilator_parser.py -i /home/runner/work/caravel/caravel
 
       - name: upload failure logs
         if: failure()
@@ -101,5 +101,5 @@ jobs:
         with:
           name: error
           path: |
-            /home/runner/work/caravel/.github/logs/*
+            /home/runner/work/caravel/caravel/.github/logs/*
 
