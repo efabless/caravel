@@ -90,7 +90,10 @@ jobs:
           tar -xf /tmp/pdk.tar -C $PDK_ROOT .
 
       - name: lint housekeeping
-        run: cd ${GITHUB_WORKSPACE}/ && python3 ${GITHUB_WORKSPACE}/.github/scripts/verilator_parser.py
+        run: |
+          ls /home/runner/work/caravel
+          cd /home/runner/work/caravel/.github
+          python scripts/verilator_parser.py -i /home/runner/work/caravel
 
       - name: upload failure logs
         if: failure()
@@ -98,5 +101,5 @@ jobs:
         with:
           name: error
           path: |
-            ${GITHUB_WORKSPACE}/.github/logs/*
+            /home/runner/work/caravel/.github/logs/*
 

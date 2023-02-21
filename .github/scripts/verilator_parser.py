@@ -1,6 +1,7 @@
 import os
 import subprocess
 import glob
+import argparse
 
 
 def parse_rtl(verilog):
@@ -18,11 +19,19 @@ def parse_rtl(verilog):
 
 
 if __name__ == "__main__":
-    verilog_files = glob.glob("/home/runner/work/caravel/verilog/rtl/*.v")
+    parser = argparse.ArgumentParser(description="verilator processor")
+    parser.add_argument(
+        "-i",
+        "--input",
+        help="input files to run LVS on them. Takes two input files",
+        required=True,
+    )
+    args = parser.parse_args()
+    input_dir = args.input
+    verilog_files = glob.glob(f"{input_dir}/verilog/rtl/*.v")
     flag = False
     os.mkdir('./logs')
     for file in verilog_files:
-        # if "caravel.v" in file:
         if "defines" not in file:
             print(f"running verilator on {file}")
             modules = parse_rtl(file)
@@ -38,12 +47,12 @@ if __name__ == "__main__":
                 "-I",
                 f"{os.getenv('PDK_ROOT')}/{os.getenv('PDK')}/libs.ref/sky130_fd_sc_hd/verilog/primitives.v",
                 "-I",
-                "/home/runner/work/caravel/verilog/rtl/defines.v",
+                f"{input_dir}/verilog/rtl/defines.v",
                 includes,
                 file
             ]
             std_out = subprocess.Popen(
-                    verilator_cmd, stderr=subprocess.STDOUT, stdout=subprocess.PIPE, cwd="/home/runner/work/caravel/verilog/rtl"
+                    verilator_cmd, stderr=subprocess.STDOUT, stdout=subprocess.PIPE, cwd=f"{input_dir}/verilog/rtl"
                 )
             with open(f"logs/{os.path.splitext(os.path.basename(file))[0]}.log", "w") as f:
                 while True:
