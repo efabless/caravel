@@ -90,5 +90,13 @@ jobs:
           tar -xf /tmp/pdk.tar -C $PDK_ROOT .
 
       - name: lint housekeeping
-        run: verilator --lint-only -Wall -I $PDKPATH/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v -I /home/runner/work/caravel/verilog/rtl/defines.v -I $PDKPATH/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v -I /home/runner/work/caravel/verilog/rtl/housekeeping_spi.v /home/runner/work/caravel/verilog/rtl/housekeeping.v
+        run: cd ${GITHUB_WORKSPACE}/ && python3 ${GITHUB_WORKSPACE}/.github/scripts/verilator_parser.py
+
+      - name: upload failure logs
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: error
+          path: |
+            ${GITHUB_WORKSPACE}/.github/logs/*
 
