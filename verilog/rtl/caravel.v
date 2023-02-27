@@ -285,8 +285,8 @@ module caravel (
 `ifdef USE_POWER_PINS
       .vddio(vddio_core),  // Common 3.3V padframe/ESD power
       .vssio(vssio_core),  // Common padframe/ESD ground
-      .vdda (vdda_core),   // Management 3.3V power
-      .vssa (vssa_core),   // Common analog ground
+//    .vdda (vdda_core),   // Management 3.3V power
+//    .vssa (vssa_core),   // Common analog ground
       .vccd (vccd_core),   // Management/Common 1.8V power
       .vssd (vssd_core),   // Common digital ground
       .vdda1(vdda1_core),  // User area 1 3.3V power
@@ -346,6 +346,12 @@ module caravel (
       // (all but the lowest-numbered 7 pads)
       .mprj_analog_io(user_analog_io)
   );
+
+copyright_block copyright_block();
+caravel_logo caravel_logo();
+caravel_motto caravel_motto();
+open_source open_source();
+user_id_textblock user_id_textblock();
 
 endmodule
 // `default_nettype wire
