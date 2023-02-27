@@ -116,8 +116,8 @@ set_timing_derate -early [expr {1-$::env(SYNTH_TIMING_DERATE)}]
 set_timing_derate -late [expr {1+$::env(SYNTH_TIMING_DERATE)}]
 
 ## CLOCK UNCERTAINITY
-set wb_clk_uncer 0.2
-set sck_clk_uncer 0.2
+set wb_clk_uncer 0.28
+set sck_clk_uncer 0.28
 
 puts "\[INFO\]: Setting WB clock uncertainity to: $wb_clk_uncer"
 puts "\[INFO\]: Setting SCK clock uncertainity to: $sck_clk_uncer"
@@ -143,7 +143,7 @@ puts "\[INFO\]: Setting maximum fanout to: $::env(SYNTH_MAX_FANOUT)"
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## MAX Transition
-set_max_trans 0.75 [current_design]
+set_max_trans 0.74 [current_design]
 
 set_max_transition 0.4 [get_clocks {wb_clk_i}] -clock_path
 set_max_transition 0.4 [get_clocks {user_clock}] -clock_path
