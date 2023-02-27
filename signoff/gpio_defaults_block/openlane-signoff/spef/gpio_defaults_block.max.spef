@@ -112,173 +112,187 @@ gpio_defaults[7] O
 gpio_defaults[8] O
 gpio_defaults[9] O
 
-*D_NET *3 0.00132652
+*D_NET *3 0.00145601
 *CONN
 *P gpio_defaults[0] O
 *I *72:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[0] 0.000439999
-2 *72:LO 0.000439999
-3 gpio_defaults[0] gpio_defaults[1] 0.000374302
-4 gpio_defaults[0] gpio_defaults[8] 6.39808e-05
-5 gpio_defaults[0] gpio_defaults[9] 8.23597e-06
+1 gpio_defaults[0] 0.000485632
+2 *72:LO 0.000485632
+3 gpio_defaults[0] gpio_defaults[1] 6.56481e-05
+4 gpio_defaults[0] gpio_defaults[8] 6.97747e-05
+5 gpio_defaults[0] gpio_defaults[9] 8.22421e-06
+6 gpio_defaults[0] *7:14 0.000341103
 *RES
-1 *72:LO gpio_defaults[0] 24.1214 
+1 *72:LO gpio_defaults[0] 49.9729 
 *END
 
-*D_NET *4 0.00168556
+*D_NET *4 0.0019023
 *CONN
 *P gpio_defaults[10] O
 *I *73:HI O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[10] 0.000789412
-2 *73:HI 0.000789412
-3 gpio_defaults[10] gpio_defaults[9] 0.000106739
+1 gpio_defaults[10] 0.000191961
+2 *73:HI 0.000708002
+3 *4:8 0.000899964
+4 gpio_defaults[10] gpio_defaults[9] 0.000102374
 *RES
-1 *73:HI gpio_defaults[10] 25.3393 
+1 *73:HI *4:8 46.7104 
+2 *4:8 gpio_defaults[10] 8.7392 
 *END
 
-*D_NET *5 0.00214491
+*D_NET *5 0.00234287
 *CONN
 *P gpio_defaults[11] O
 *I *74:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[11] 0.000896545
-2 *74:LO 0.000896545
-3 gpio_defaults[11] gpio_defaults[12] 0.000230482
-4 gpio_defaults[11] gpio_defaults[2] 9.3479e-05
-5 gpio_defaults[11] gpio_defaults[5] 2.78576e-05
+1 gpio_defaults[11] 0.000421163
+2 *74:LO 0.000569641
+3 *5:7 0.000990803
+4 gpio_defaults[11] gpio_defaults[12] 0
+5 gpio_defaults[11] gpio_defaults[2] 0.000103718
+6 *5:7 gpio_defaults[12] 0.000228909
+7 *5:7 gpio_defaults[5] 2.86398e-05
 *RES
-1 *74:LO gpio_defaults[11] 29.0679 
+1 *74:LO *5:7 47.6736 
+2 *5:7 gpio_defaults[11] 8.03714 
 *END
 
-*D_NET *6 0.0013025
+*D_NET *6 0.00139679
 *CONN
 *P gpio_defaults[12] O
 *I *75:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[12] 0.000522349
-2 *75:LO 0.000522349
-3 gpio_defaults[12] gpio_defaults[3] 8.22793e-06
-4 gpio_defaults[12] gpio_defaults[4] 1.90936e-05
-5 gpio_defaults[11] gpio_defaults[12] 0.000230482
+1 gpio_defaults[12] 0.000569558
+2 *75:LO 0.000569558
+3 gpio_defaults[12] gpio_defaults[3] 8.21456e-06
+4 gpio_defaults[12] *10:8 2.05503e-05
+5 gpio_defaults[11] gpio_defaults[12] 0
+6 *5:7 gpio_defaults[12] 0.000228909
 *RES
-1 *75:LO gpio_defaults[12] 22.6036 
+1 *75:LO gpio_defaults[12] 48.2121 
 *END
 
-*D_NET *7 0.00162191
+*D_NET *7 0.00178365
 *CONN
 *P gpio_defaults[1] O
 *I *76:HI O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[1] 0.000623807
-2 *76:HI 0.000623807
-3 gpio_defaults[0] gpio_defaults[1] 0.000374302
+1 gpio_defaults[1] 0.000109849
+2 *76:HI 0.0005786
+3 *7:14 0.000688449
+4 gpio_defaults[0] gpio_defaults[1] 6.56481e-05
+5 gpio_defaults[0] *7:14 0.000341103
 *RES
-1 *76:HI gpio_defaults[1] 26.7821 
+1 *76:HI *7:14 49.7761 
+2 *7:14 gpio_defaults[1] 3.28321 
 *END
 
-*D_NET *8 0.000894465
+*D_NET *8 0.000996446
 *CONN
 *P gpio_defaults[2] O
 *I *77:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[2] 0.000326553
-2 *77:LO 0.000326553
-3 gpio_defaults[2] gpio_defaults[3] 0.000147881
-4 gpio_defaults[11] gpio_defaults[2] 9.3479e-05
+1 gpio_defaults[2] 0.00037389
+2 *77:LO 0.00037389
+3 gpio_defaults[2] gpio_defaults[3] 0.000144949
+4 gpio_defaults[11] gpio_defaults[2] 0.000103718
 *RES
-1 *77:LO gpio_defaults[2] 20.375 
+1 *77:LO gpio_defaults[2] 49.691 
 *END
 
-*D_NET *9 0.00098307
+*D_NET *9 0.0010657
 *CONN
 *P gpio_defaults[3] O
 *I *78:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[3] 0.000288265
-2 *78:LO 0.000288265
-3 gpio_defaults[3] gpio_defaults[4] 0.000250431
-4 gpio_defaults[12] gpio_defaults[3] 8.22793e-06
-5 gpio_defaults[2] gpio_defaults[3] 0.000147881
+1 gpio_defaults[3] 0.000333765
+2 *78:LO 0.000333765
+3 gpio_defaults[3] gpio_defaults[4] 0.000174461
+4 gpio_defaults[3] *10:8 7.05498e-05
+5 gpio_defaults[12] gpio_defaults[3] 8.21456e-06
+6 gpio_defaults[2] gpio_defaults[3] 0.000144949
 *RES
-1 *78:LO gpio_defaults[3] 20.2294 
+1 *78:LO gpio_defaults[3] 49.5202 
 *END
 
-*D_NET *10 0.00165019
+*D_NET *10 0.00173219
 *CONN
 *P gpio_defaults[4] O
 *I *79:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[4] 0.000690334
-2 *79:LO 0.000690334
-3 gpio_defaults[12] gpio_defaults[4] 1.90936e-05
-4 gpio_defaults[3] gpio_defaults[4] 0.000250431
+1 gpio_defaults[4] 0.000285296
+2 *79:LO 0.000448018
+3 *10:8 0.000733314
+4 gpio_defaults[12] *10:8 2.05503e-05
+5 gpio_defaults[3] gpio_defaults[4] 0.000174461
+6 gpio_defaults[3] *10:8 7.05498e-05
 *RES
-1 *79:LO gpio_defaults[4] 23.1764 
+1 *79:LO *10:8 44.1832 
+2 *10:8 gpio_defaults[4] 8.75787 
 *END
 
-*D_NET *11 0.00102271
+*D_NET *11 0.00113356
 *CONN
 *P gpio_defaults[5] O
 *I *80:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[5] 0.000402342
-2 *80:LO 0.000402342
-3 gpio_defaults[5] gpio_defaults[6] 0.000190165
-4 gpio_defaults[11] gpio_defaults[5] 2.78576e-05
+1 gpio_defaults[5] 0.00046113
+2 *80:LO 0.00046113
+3 gpio_defaults[5] gpio_defaults[6] 0.000182664
+4 *5:7 gpio_defaults[5] 2.86398e-05
 *RES
-1 *80:LO gpio_defaults[5] 20.4079 
+1 *80:LO gpio_defaults[5] 49.7274 
 *END
 
-*D_NET *12 0.000763271
+*D_NET *12 0.000817045
 *CONN
 *P gpio_defaults[6] O
 *I *81:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[6] 0.000191471
-2 *81:LO 0.000191471
-3 gpio_defaults[6] gpio_defaults[7] 0.000190165
-4 gpio_defaults[5] gpio_defaults[6] 0.000190165
+1 gpio_defaults[6] 0.000225859
+2 *81:LO 0.000225859
+3 gpio_defaults[6] gpio_defaults[7] 0.000182664
+4 gpio_defaults[5] gpio_defaults[6] 0.000182664
 *RES
-1 *81:LO gpio_defaults[6] 18.5865 
+1 *81:LO gpio_defaults[6] 47.6145 
 *END
 
-*D_NET *13 0.000959504
+*D_NET *13 0.00102803
 *CONN
 *P gpio_defaults[7] O
 *I *82:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[7] 0.000384669
-2 *82:LO 0.000384669
-3 gpio_defaults[6] gpio_defaults[7] 0.000190165
+1 gpio_defaults[7] 0.000422684
+2 *82:LO 0.000422684
+3 gpio_defaults[6] gpio_defaults[7] 0.000182664
 *RES
-1 *82:LO gpio_defaults[7] 20.6401 
+1 *82:LO gpio_defaults[7] 49.9966 
 *END
 
-*D_NET *14 0.00120869
+*D_NET *14 0.00130875
 *CONN
 *P gpio_defaults[8] O
 *I *83:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[8] 0.000477682
-2 *83:LO 0.000477682
-3 gpio_defaults[8] gpio_defaults[9] 0.000189351
-4 gpio_defaults[0] gpio_defaults[8] 6.39808e-05
+1 gpio_defaults[8] 0.000528509
+2 *83:LO 0.000528509
+3 gpio_defaults[8] gpio_defaults[9] 0.000181959
+4 gpio_defaults[0] gpio_defaults[8] 6.97747e-05
 *RES
-1 *83:LO gpio_defaults[8] 20.4979 
+1 *83:LO gpio_defaults[8] 49.8339 
 *END
 
-*D_NET *15 0.000792497
+*D_NET *15 0.000864321
 *CONN
 *P gpio_defaults[9] O
 *I *84:LO O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_defaults[9] 0.000244086
-2 *84:LO 0.000244086
-3 gpio_defaults[0] gpio_defaults[9] 8.23597e-06
-4 gpio_defaults[10] gpio_defaults[9] 0.000106739
-5 gpio_defaults[8] gpio_defaults[9] 0.000189351
+1 gpio_defaults[9] 0.000285882
+2 *84:LO 0.000285882
+3 gpio_defaults[0] gpio_defaults[9] 8.22421e-06
+4 gpio_defaults[10] gpio_defaults[9] 0.000102374
+5 gpio_defaults[8] gpio_defaults[9] 0.000181959
 *RES
-1 *84:LO gpio_defaults[9] 18.9972 
+1 *84:LO gpio_defaults[9] 48.0909 
 *END
