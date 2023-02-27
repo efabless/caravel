@@ -15,7 +15,7 @@
 
 # This is an analog design. It will be designed by hand.
 # This is a placeholder to get things going.
-set script_dir [file dirname [file normalize [info script]]]
+set script_dir $::env(DESIGN_DIR)
 
 set ::env(DESIGN_NAME) spare_logic_block
 
@@ -25,6 +25,7 @@ set ::env(VERILOG_FILES_BLACKBOX) $script_dir/../../verilog/stubs/sky130_fd_sc_h
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_TREE_SYNTH) 0
+set ::env(DESIGN_IS_CORE) 0
 
 ## Synthesis
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1

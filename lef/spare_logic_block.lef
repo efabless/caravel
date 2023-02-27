@@ -344,16 +344,8 @@ MACRO spare_logic_block
     END
   END spare_xz[9]
   PIN vccd
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE POWER ;
-    PORT
-      LAYER met5 ;
-        RECT 5.520 6.400 39.100 8.000 ;
-    END
-    PORT
-      LAYER met5 ;
-        RECT 5.520 26.400 39.100 28.000 ;
-    END
     PORT
       LAYER met4 ;
         RECT 5.720 5.200 7.320 38.320 ;
@@ -364,12 +356,8 @@ MACRO spare_logic_block
     END
   END vccd
   PIN vssd
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE GROUND ;
-    PORT
-      LAYER met5 ;
-        RECT 5.520 16.400 39.100 18.000 ;
-    END
     PORT
       LAYER met4 ;
         RECT 15.720 5.200 17.320 38.320 ;
@@ -381,9 +369,9 @@ MACRO spare_logic_block
   END vssd
   OBS
       LAYER li1 ;
-        RECT 5.520 0.425 39.875 41.055 ;
+        RECT 5.520 5.355 39.100 38.165 ;
       LAYER met1 ;
-        RECT 0.070 0.380 42.250 41.100 ;
+        RECT 0.070 5.200 42.250 38.320 ;
       LAYER met2 ;
         RECT 0.650 40.720 3.030 44.725 ;
         RECT 3.870 40.720 9.470 44.725 ;

@@ -1,0 +1,292 @@
+library (spare_logic_block) {
+  comment                        : "";
+  delay_model                    : table_lookup;
+  simulation                     : false;
+  capacitive_load_unit (1,pF);
+  leakage_power_unit             : 1pW;
+  current_unit                   : "1A";
+  pulling_resistance_unit        : "1kohm";
+  time_unit                      : "1ns";
+  voltage_unit                   : "1v";
+  library_features(report_delay_calculation);
+
+  input_threshold_pct_rise : 50;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  output_threshold_pct_fall : 50;
+  slew_lower_threshold_pct_rise : 20;
+  slew_lower_threshold_pct_fall : 20;
+  slew_upper_threshold_pct_rise : 80;
+  slew_upper_threshold_pct_fall : 80;
+  slew_derate_from_library : 1.0;
+
+
+  nom_process                    : 1.0;
+  nom_temperature                : 25.0;
+  nom_voltage                    : 1.80;
+
+  type ("spare_xfq") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 2;
+    bit_from : 1;
+    bit_to : 0;
+  }
+  type ("spare_xfqn") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 2;
+    bit_from : 1;
+    bit_to : 0;
+  }
+  type ("spare_xi") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 4;
+    bit_from : 3;
+    bit_to : 0;
+  }
+  type ("spare_xmx") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 2;
+    bit_from : 1;
+    bit_to : 0;
+  }
+  type ("spare_xna") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 2;
+    bit_from : 1;
+    bit_to : 0;
+  }
+  type ("spare_xno") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 2;
+    bit_from : 1;
+    bit_to : 0;
+  }
+  type ("spare_xz") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 27;
+    bit_from : 26;
+    bit_to : 0;
+  }
+
+  cell ("spare_logic_block") {
+    pin("spare_xib") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("vccd") {
+      direction : input;
+      capacitance : 0.0000;
+    }
+    pin("vssd") {
+      direction : input;
+      capacitance : 0.0000;
+    }
+    bus("spare_xfq") {
+      bus_type : spare_xfq;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xfq[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xfq[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xfqn") {
+      bus_type : spare_xfqn;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xfqn[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xfqn[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xi") {
+      bus_type : spare_xi;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xi[3]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xi[2]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xi[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xi[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xmx") {
+      bus_type : spare_xmx;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xmx[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xmx[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xna") {
+      bus_type : spare_xna;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xna[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xna[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xno") {
+      bus_type : spare_xno;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xno[1]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    pin("spare_xno[0]") {
+      direction : output;
+      capacitance : 0.0334;
+    }
+    }
+    bus("spare_xz") {
+      bus_type : spare_xz;
+      direction : output;
+      capacitance : 0.0000;
+    pin("spare_xz[26]") {
+      direction : output;
+      capacitance : 0.0351;
+    }
+    pin("spare_xz[25]") {
+      direction : output;
+      capacitance : 0.0351;
+    }
+    pin("spare_xz[24]") {
+      direction : output;
+      capacitance : 0.0369;
+    }
+    pin("spare_xz[23]") {
+      direction : output;
+      capacitance : 0.0369;
+    }
+    pin("spare_xz[22]") {
+      direction : output;
+      capacitance : 0.0353;
+    }
+    pin("spare_xz[21]") {
+      direction : output;
+      capacitance : 0.0353;
+    }
+    pin("spare_xz[20]") {
+      direction : output;
+      capacitance : 0.0351;
+    }
+    pin("spare_xz[19]") {
+      direction : output;
+      capacitance : 0.0351;
+    }
+    pin("spare_xz[18]") {
+      direction : output;
+      capacitance : 0.0368;
+    }
+    pin("spare_xz[17]") {
+      direction : output;
+      capacitance : 0.0368;
+    }
+    pin("spare_xz[16]") {
+      direction : output;
+      capacitance : 0.0352;
+    }
+    pin("spare_xz[15]") {
+      direction : output;
+      capacitance : 0.0352;
+    }
+    pin("spare_xz[14]") {
+      direction : output;
+      capacitance : 0.0354;
+    }
+    pin("spare_xz[13]") {
+      direction : output;
+      capacitance : 0.0354;
+    }
+    pin("spare_xz[12]") {
+      direction : output;
+      capacitance : 0.0381;
+    }
+    pin("spare_xz[11]") {
+      direction : output;
+      capacitance : 0.0381;
+    }
+    pin("spare_xz[10]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[9]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[8]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[7]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[6]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[5]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[4]") {
+      direction : output;
+      capacitance : 0.0519;
+    }
+    pin("spare_xz[3]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[2]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[1]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    pin("spare_xz[0]") {
+      direction : output;
+      capacitance : 0.0380;
+    }
+    }
+  }
+
+}
