@@ -1,5 +1,13 @@
 
 ===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 0 unannotated nets.
+Found 0 partially unannotated nets.
+parastic_annotation_check
+check_slew
+
+===========================================================================
  report_check_types -max_slew -max_cap -max_fanout -violators
 ============================================================================
 max slew
@@ -63,3 +71,88 @@ max slew violation count 39
 max fanout violation count 6
 max cap violation count 0
 ============================================================================
+check_slew_end
+tns_report
+
+===========================================================================
+ report_tns
+============================================================================
+tns 0.00
+tns_report_end
+wns_report
+
+===========================================================================
+ report_wns
+============================================================================
+wns 0.00
+wns_report_end
+worst_slack
+
+===========================================================================
+ report_worst_slack -max (Setup)
+============================================================================
+worst slack 1.23
+
+===========================================================================
+ report_worst_slack -min (Hold)
+============================================================================
+worst slack 0.28
+worst_slack_end
+clock_skew
+
+===========================================================================
+ report_clock_skew
+============================================================================
+Clock core_clk
+No launch/capture paths found.
+
+Clock ext_clk
+Latency      CRPR       Skew
+_416_/CLK ^
+   3.19
+_415_/CLK ^
+   2.76     -0.27       0.15
+
+Clock pll_clk
+Latency      CRPR       Skew
+_443_/CLK ^
+   3.20
+_422_/CLK ^
+   0.77     -0.06       2.37
+
+Clock pll_clk90
+Latency      CRPR       Skew
+_469_/CLK ^
+   3.15
+_459_/CLK ^
+   0.75     -0.06       2.34
+
+clock_skew_end
+power_report
+
+===========================================================================
+ report_power
+============================================================================
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             3.77e-04   3.74e-05   6.04e-10   4.15e-04  27.7%
+Combinational          5.95e-04   4.86e-04   2.22e-09   1.08e-03  72.3%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  9.72e-04   5.24e-04   2.82e-09   1.50e-03 100.0%
+                          65.0%      35.0%       0.0%
+power_report_end
+area_report
+
+===========================================================================
+ report_design_area
+============================================================================
+Design area 4357 u^2 52% utilization.
+area_report_end
+Setting global connections for newly added cells...
+[WARNING] Did not save OpenROAD database!
+Writing SDF to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_02_27_06_16/results/routing/mca/process_corner_nom/caravel_clocking.sdf...
+Writing timing model to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_02_27_06_16/results/routing/mca/process_corner_nom/caravel_clocking.lib...
+
