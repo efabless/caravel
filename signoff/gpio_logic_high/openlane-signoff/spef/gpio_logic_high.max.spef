@@ -96,13 +96,15 @@
 *PORTS
 gpio_logic1 O
 
-*D_NET *1 0.00249556
+*D_NET *1 0.00283928
 *CONN
 *P gpio_logic1 O
 *I *78:HI O *D sky130_fd_sc_hd__conb_1
 *CAP
-1 gpio_logic1 0.00124778
-2 *78:HI 0.00124778
+1 gpio_logic1 0.00110045
+2 *78:HI 0.000319186
+3 *1:7 0.00141964
 *RES
-1 *78:HI gpio_logic1 31.8 
+1 *78:HI *1:7 42.4329 
+2 *1:7 gpio_logic1 16.4471 
 *END
