@@ -59,7 +59,7 @@ add_pdn_stripe \
     -spacing 1 \
     -number_of_straps 1 \
     -nets "vccd vssd vccd1 vssd1 vssa2 vdda2 vssa1 vdda1 vssd2 vccd2" \
-    -starts_with POWER -extend_to_boundary
+    -starts_with POWER
 add_pdn_stripe \
     -grid stdcell_grid \
     -layer met4 \
@@ -69,7 +69,7 @@ add_pdn_stripe \
     -spacing 1 \
     -number_of_straps 1 \
     -nets "vccd2 vssd2 vdda1 vssa1 vdda2 vssa2 vssd1 vccd1 vssd vccd" \
-    -starts_with POWER -extend_to_boundary
+    -starts_with POWER
 add_pdn_stripe \
     -grid stdcell_grid \
     -layer met5 \
@@ -79,17 +79,17 @@ add_pdn_stripe \
     -spacing 1.6 \
     -number_of_straps 1 \
     -nets "vccd vssd vccd1 vssd1 vssa2 vdda2 vssa1 vdda1 vssd2 vccd2" \
-    -starts_with POWER -extend_to_boundary
+    -starts_with POWER
 add_pdn_stripe \
     -grid stdcell_grid \
     -layer met5 \
-    -width 10 \
-    -pitch 120 \
-    -offset 4629.28 \
+    -width 13 \
+    -pitch 146 \
+    -offset 4599.28 \
     -spacing 1.6 \
     -number_of_straps 1 \
     -nets "vccd2 vssd2 vdda1 vssa1 vdda2 vssa2 vssd1 vccd1 vssd vccd" \
-    -starts_with POWER -extend_to_boundary
+    -starts_with POWER
 
 add_pdn_stripe \
     -grid stdcell_grid \
@@ -117,10 +117,10 @@ add_pdn_stripe \
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met4 \
-        -width 3.2 \
+        -width 6.4 \
         -pitch 100 \
         -offset 117 \
-        -spacing 6.4 \
+        -spacing 1.2 \
         -nets "vccd vssd" \
         -starts_with POWER
 
@@ -128,20 +128,30 @@ add_pdn_stripe \
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
-        -width 3.2 \
+        -width 6.4 \
         -pitch 120 \
         -offset 181 \
-        -spacing 6.4 \
+        -spacing 2.4 \
         -nets "vccd vssd" \
         -starts_with POWER
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
-        -width 4.8 \
+        -width 14.4 \
         -pitch 120 \
         -offset 239 \
-        -spacing 6.4 \
-        -number_of_straps 4 \
+        -spacing 2.4 \
+        -number_of_straps 5 \
+        -nets "vccd vssd" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met5 \
+        -width 14.4 \
+        -pitch 120 \
+        -offset 949.32 \
+        -spacing 2.4 \
+        -number_of_straps 1 \
         -nets "vccd vssd" \
         -starts_with POWER
 
@@ -194,42 +204,52 @@ add_pdn_stripe \
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met4 \
-        -width 1.6 \
+        -width 6.4 \
         -pitch 300 \
         -offset 249.12 \
-        -spacing 2.2 \
-        -number_of_straps 9 \
+        -spacing 1.2 \
+        -number_of_straps 8 \
         -nets "vssd1 vccd1" \
         -starts_with POWER
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met4 \
-        -width 1.6 \
+        -width 6.4 \
+        -pitch 300 \
+        -offset 2749.12 \
+        -spacing 1.2 \
+        -number_of_straps 1 \
+        -nets "vssd1 vccd1" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 6.4 \
         -pitch 300 \
         -offset 949.12 \
-        -spacing 2.2 \
+        -spacing 1.2 \
         -number_of_straps 1 \
         -nets "vssd1 vccd1" \
         -starts_with POWER
     #Metal5
-    add_pdn_stripe \
-        -grid stdcell_grid \
-        -layer met5 \
-        -width 3.2 \
-        -pitch 300 \
-        -offset 4594.76 \
-        -spacing 2.24 \
-        -number_of_straps 1 \
-        -nets "vssd1 vccd1" \
-        -starts_with POWER
+    # add_pdn_stripe \
+    #     -grid stdcell_grid \
+    #     -layer met5 \
+    #     -width 3.2 \
+    #     -pitch 300 \
+    #     -offset 4594.76 \
+    #     -spacing 2.24 \
+    #     -number_of_straps 1 \
+    #     -nets "vssd1 vccd1" \
+    #     -starts_with POWER
 
 ####  vssio and vddio stripes  ####
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
-        -width 8 \
-        -pitch 23 \
-        -offset 140 \
+        -width 5 \
+        -pitch 14 \
+        -offset 137 \
         -spacing 2 \
         -number_of_straps 2 \
         -nets "vddio vssio" \
