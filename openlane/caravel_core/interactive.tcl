@@ -6,9 +6,9 @@ prep -ignore_mismatches -design $SCRIPT_DIR -tag $::env(OPENLANE_RUN_TAG) -overw
 set save_path $::env(CARAVEL_ROOT)
 
 ################   Synthesis   ################
-# run_synthesis
-set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
-set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
+run_synthesis
+# set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
+# set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
 
 ################   Floorplan   ################
 init_floorplan
@@ -44,7 +44,9 @@ set ::env(GRT_OBS) "\
     met5 3093 2301 3165 2391, \
     met5 3093 3871 3165 3961, \
     met5 3093 4315 3165 4405, \
-    met4 2667 4603 2741 4767 \
+    met4 2667 4603 2741 4767, \
+    met4 855 0.000 885 168, \
+    met4 965 0.000 985 173 \
 "
 add_route_obs
 
@@ -68,6 +70,7 @@ run_cts
 run_resizer_timing_routing
 
 ################ Place and route on optmized netlist ################
+##   Placement   ##
 set ::env(PL_TARGET_DENSITY) 0.28
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
@@ -85,9 +88,9 @@ run_cts
 set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base_2.sdc
 run_resizer_timing
 
-################   Routing   ################
+##   Routing   ##
 run_resizer_timing_routing
-# ins_diode_cells_4
+ins_diode_cells_4
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
 set ::env(GRT_OBS) "\
     met5 90 175.0 496.18 612.92, \

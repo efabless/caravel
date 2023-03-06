@@ -196,9 +196,9 @@ set ::env(GRT_ALLOW_CONGESTION) 1
 
 set ::env(GRT_ADJUSTMENT) 0.22
 ##                                li1 ,met1,met2,met3,met4,met5
-# set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
-set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
-set ::env(GRT_OVERFLOW_ITERS) 50
+set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
+# set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
+set ::env(GRT_OVERFLOW_ITERS) 60
 
 set ::env(GRT_ESTIMATE_PARASITICS) 1
 
@@ -212,7 +212,7 @@ set ::env(GLB_RESIZER_CAP_SLEW_MARGIN) 40
 ## Antenna
 set ::env(DIODE_INSERTION_STRATEGY) 6
 set ::env(GRT_ANT_ITERS) 12
-set ::env(GRT_MAX_DIODE_INS_ITERS) 15
+set ::env(GRT_MAX_DIODE_INS_ITERS) 4
 set ::env(DIODE_PADDING) 0
 
 ## MACROS

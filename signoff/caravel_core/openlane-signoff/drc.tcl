@@ -1,13 +1,3 @@
-box 206.360um 812.250um 206.450um 812.390um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 811.960um 206.590um 812.075um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 811.935um 206.590um 811.960um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 811.960um 206.590um 812.120um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 811.935um 206.590um 811.960um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 812.220um 206.590um 812.250um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.500um 812.120um 206.590um 812.220um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.360um 812.220um 206.450um 812.390um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.360um 812.120um 206.450um 812.220um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
-box 206.360um 812.075um 206.450um 812.120um; feedback add "Metal2 spacing < 0.14um (met2.2)" medium
 box 691.165um 32.580um 691.450um 32.935um; feedback add "MV diffusion to LV nwell spacing < 0.825um (hvi.5 + nsd/psd.5)" medium
 box 691.165um 32.580um 691.450um 32.935um; feedback add "MV diffusion to LV nwell spacing < 0.825um (hvi.5 + nsd/psd.5)" medium
 box 691.165um 31.160um 691.450um 32.935um; feedback add "MV diffusion to LV nwell spacing < 0.825um (hvi.5 + nsd/psd.5)" medium
