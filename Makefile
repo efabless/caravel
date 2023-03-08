@@ -118,7 +118,6 @@ __ship:
 	@sleep 1
 #### Runs from the CARAVEL_ROOT mag directory 
 	@echo "\
-		cd $(CARAVEL_ROOT)/mag; \
 		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
 		drc off; \
 		crashbackups stop; \
