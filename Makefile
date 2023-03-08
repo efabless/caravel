@@ -132,8 +132,7 @@ __ship:
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
-		load $(CARAVEL_ROOT)/mag/caravel_core; \
-		load $(CARAVEL_ROOT)/mag/caravel -dereference; \
+		load $(UPRJ_ROOT)/mag/caravel -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
