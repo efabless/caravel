@@ -370,7 +370,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravel top gate-level verilog:')
-    with open(caravel_path + '/verilog/gl/caravel.v', 'r') as ifile:
+    with open(caravel_path + '/verilog/gl/caravel_core.v', 'r') as ifile:
         vlines = ifile.read().splitlines()
         outlines = []
         for vline in vlines:
@@ -395,7 +395,7 @@ if __name__ == '__main__':
                 outlines.append(vline)
 
     if not testmode:
-        with open(glpath + '/caravel.v', 'w') as ofile:
+        with open(glpath + '/caravel_core.v', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
