@@ -43,7 +43,7 @@ set_input_transition -min $min_in_tran [all_inputs]
 set_input_transition -max $max_in_tran [all_inputs]
 
 # derates
-set derate 0.09
+set derate 0.12
 puts "\[INFO\]: Setting derate factor to: [expr $derate * 100] %"
 set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]

@@ -22,16 +22,20 @@ max fanout
 Pin                                   Limit Fanout  Slack
 ---------------------------------------------------------
 fanout389/X                              20     24     -4 (VIOLATED)
+fanout373/X                              20     23     -3 (VIOLATED)
 fanout406/X                              20     23     -3 (VIOLATED)
-fanout437/X                              20     22     -2 (VIOLATED)
-fanout356/X                              20     21        (VIOLATED)
-fanout379/X                              20     21        (VIOLATED)
+fanout437/X                              20     23     -3 (VIOLATED)
+fanout356/X                              20     22     -2 (VIOLATED)
+fanout379/X                              20     22     -2 (VIOLATED)
+fanout376/X                              20     21        (VIOLATED)
 fanout382/X                              20     21        (VIOLATED)
+fanout393/X                              20     21        (VIOLATED)
+fanout472/X                              20     21        (VIOLATED)
 
 
 ===========================================================================
 max slew violation count 0
-max fanout violation count 6
+max fanout violation count 10
 max cap violation count 0
 ============================================================================
 check_slew_end
@@ -69,12 +73,12 @@ power_report
 Group                  Internal  Switching    Leakage      Total
                           Power      Power      Power      Power (Watts)
 ----------------------------------------------------------------
-Sequential             1.32e-03   1.38e-04   8.30e-09   1.46e-03  32.7%
-Combinational          1.38e-03   1.62e-03   6.31e-08   3.01e-03  67.3%
+Sequential             1.32e-03   1.39e-04   8.30e-09   1.46e-03  32.7%
+Combinational          1.38e-03   1.62e-03   6.30e-08   3.00e-03  67.3%
 Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
 Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
 ----------------------------------------------------------------
-Total                  2.71e-03   1.76e-03   7.14e-08   4.47e-03 100.0%
+Total                  2.70e-03   1.76e-03   7.13e-08   4.46e-03 100.0%
                           60.6%      39.4%       0.0%
 power_report_end
 area_report
@@ -82,11 +86,11 @@ area_report
 ===========================================================================
  report_design_area
 ============================================================================
-Design area 97213 u^2 46% utilization.
+Design area 97357 u^2 46% utilization.
 area_report_end
 Setting global connections for newly added cells...
 [WARNING] Did not save OpenROAD database!
-Writing SDF to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/housekeeping/runs/23_02_27_06_04/results/routing/mca/process_corner_nom/housekeeping.sdf...
-Writing timing model to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/housekeeping/runs/23_02_27_06_04/results/routing/mca/process_corner_nom/housekeeping.lib...
+Writing SDF to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/housekeeping/runs/23_03_06_04_04/results/routing/mca/process_corner_nom/housekeeping.sdf...
+Writing timing model to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/housekeeping/runs/23_03_06_04_04/results/routing/mca/process_corner_nom/housekeeping.lib...
 [WARNING STA-0810] clock wbbd_sck pin _7203_/Q is inside model block.
 
