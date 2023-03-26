@@ -10,50 +10,6 @@ check_slew
 ===========================================================================
  report_check_types -max_slew -max_cap -max_fanout -violators
 ============================================================================
-max slew
-
-Pin                                    Limit    Slew   Slack
-------------------------------------------------------------
-clkbuf_0_pll_clk/A                      0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_clkbuf_0_pll_clk_A/DIODE        0.75    5.00   -4.25 (VIOLATED)
-clkbuf_0_pll_clk90/A                    0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_clkbuf_0_pll_clk90_A/DIODE      0.75    5.00   -4.25 (VIOLATED)
-clkbuf_0_ext_clk/A                      0.75    5.00   -4.25 (VIOLATED)
-input6/A                                0.75    5.00   -4.25 (VIOLATED)
-input8/A                                0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input10_A/DIODE                 0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input8_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-input10/A                               0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input6_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_clkbuf_0_ext_clk_A/DIODE        0.75    5.00   -4.25 (VIOLATED)
-input2/A                                0.75    5.00   -4.25 (VIOLATED)
-input7/A                                0.75    5.00   -4.25 (VIOLATED)
-input9/A                                0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input7_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input9_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-input1/A                                0.75    5.00   -4.25 (VIOLATED)
-input3/A                                0.75    5.00   -4.25 (VIOLATED)
-input4/A                                0.75    5.00   -4.25 (VIOLATED)
-input5/A                                0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input4_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input1_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input5_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input3_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ANTENNA_input2_A/DIODE                  0.75    5.00   -4.25 (VIOLATED)
-ext_clk                                 0.75    5.00   -4.25 (VIOLATED)
-ext_clk_sel                             0.75    5.00   -4.25 (VIOLATED)
-ext_reset                               0.75    5.00   -4.25 (VIOLATED)
-pll_clk                                 0.75    5.00   -4.25 (VIOLATED)
-pll_clk90                               0.75    5.00   -4.25 (VIOLATED)
-porb                                    0.75    5.00   -4.25 (VIOLATED)
-resetb                                  0.75    5.00   -4.25 (VIOLATED)
-sel2[0]                                 0.75    5.00   -4.25 (VIOLATED)
-sel2[1]                                 0.75    5.00   -4.25 (VIOLATED)
-sel2[2]                                 0.75    5.00   -4.25 (VIOLATED)
-sel[0]                                  0.75    5.00   -4.25 (VIOLATED)
-sel[1]                                  0.75    5.00   -4.25 (VIOLATED)
-sel[2]                                  0.75    5.00   -4.25 (VIOLATED)
-
 max fanout
 
 Pin                                   Limit Fanout  Slack
@@ -67,7 +23,7 @@ clkbuf_1_1__f_pll_clk/X                  12     14     -2 (VIOLATED)
 
 
 ===========================================================================
-max slew violation count 39
+max slew violation count 0
 max fanout violation count 6
 max cap violation count 0
 ============================================================================
@@ -91,7 +47,7 @@ worst_slack
 ===========================================================================
  report_worst_slack -max (Setup)
 ============================================================================
-worst slack 1.23
+worst slack 0.46
 
 ===========================================================================
  report_worst_slack -min (Hold)
@@ -109,23 +65,23 @@ No launch/capture paths found.
 Clock ext_clk
 Latency      CRPR       Skew
 _416_/CLK ^
-   3.19
+   1.87
 _415_/CLK ^
-   2.76     -0.27       0.15
+   1.56     -0.15       0.15
 
 Clock pll_clk
 Latency      CRPR       Skew
 _443_/CLK ^
-   3.20
+   1.88
 _422_/CLK ^
-   0.77     -0.06       2.37
+   0.34     -0.02       1.51
 
 Clock pll_clk90
 Latency      CRPR       Skew
 _469_/CLK ^
-   3.15
+   1.83
 _459_/CLK ^
-   0.75     -0.06       2.34
+   0.33     -0.02       1.48
 
 clock_skew_end
 power_report
@@ -136,13 +92,13 @@ power_report
 Group                  Internal  Switching    Leakage      Total
                           Power      Power      Power      Power (Watts)
 ----------------------------------------------------------------
-Sequential             3.77e-04   3.74e-05   6.04e-10   4.15e-04  27.7%
-Combinational          5.95e-04   4.86e-04   2.22e-09   1.08e-03  72.3%
+Sequential             3.77e-04   3.74e-05   6.04e-10   4.15e-04  28.1%
+Combinational          5.75e-04   4.86e-04   2.22e-09   1.06e-03  71.9%
 Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
 Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
 ----------------------------------------------------------------
-Total                  9.72e-04   5.24e-04   2.82e-09   1.50e-03 100.0%
-                          65.0%      35.0%       0.0%
+Total                  9.52e-04   5.24e-04   2.82e-09   1.48e-03 100.0%
+                          64.5%      35.5%       0.0%
 power_report_end
 area_report
 
@@ -153,6 +109,6 @@ Design area 4357 u^2 52% utilization.
 area_report_end
 Setting global connections for newly added cells...
 [WARNING] Did not save OpenROAD database!
-Writing SDF to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_02_27_06_16/results/routing/mca/process_corner_nom/caravel_clocking.sdf...
-Writing timing model to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_02_27_06_16/results/routing/mca/process_corner_nom/caravel_clocking.lib...
+Writing SDF to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_03_06_03_51/results/routing/mca/process_corner_nom/caravel_clocking.sdf...
+Writing timing model to /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_03_06_03_51/results/routing/mca/process_corner_nom/caravel_clocking.lib...
 

@@ -60,5 +60,5 @@ set_max_transition 0.5 [all_clocks] -clock_path
 #set clk_indx [lsearch [all_inputs] $clk_input]
 #set all_inputs_wo_clk [lreplace [all_inputs] $clk_indx $clk_indx ""]
 
-set_input_transition 5.0 [all_inputs]
+set_input_transition 0.3 [all_inputs]
 set_max_transition 0.75 [current_design]
