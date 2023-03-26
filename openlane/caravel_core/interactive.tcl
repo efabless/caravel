@@ -56,28 +56,20 @@ run_power_grid_generation
 # save_final_views
 # save_views -save_path .. -tag $::env(OPENLANE_RUN_TAG)
 ################   placement   ################
-set ::env(PL_TARGET_DENSITY) 0.195
-set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 70
-set ::env(PL_RESIZER_CAP_SLEW_MARGIN) 70
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
-set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 2
+set ::env(PL_TARGET_DENSITY) 0.22
 run_placement
 
 ################   CTS   ################
 run_cts
+run_resizer_timing
 
 ################ Global Routing Optmization  ################
+run_resizer_design_routing
 run_resizer_timing_routing
 
 ################ Place and route on optmized netlist ################
 ##   Placement   ##
-set ::env(PL_TARGET_DENSITY) 0.28
-set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
-set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 50
-set ::env(PL_RESIZER_CAP_SLEW_MARGIN) 50
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.05
-set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 1
+set ::env(PL_TARGET_DENSITY) 0.27
 
 # run_placement_incr
 run_placement
@@ -89,7 +81,19 @@ set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base_2.sdc
 run_resizer_timing
 
 ##   Routing   ##
+run_resizer_design_routing
 run_resizer_timing_routing
+
+## NEW ##
+set ::env(PL_TARGET_DENSITY) 0.30
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
+set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+run_placement
+run_cts 
+##
+
 ins_diode_cells_4
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
 set ::env(GRT_OBS) "\
@@ -109,8 +113,6 @@ file copy -force $::env(MACRO_PLACEMENT_CFG_3) $::env(placement_tmpfiles)/macro_
 manual_macro_placement -f
 detailed_routing
 check_wire_lengths
-
-# run_routing
 
 ################   RCX sta    ################
 run_parasitics_sta

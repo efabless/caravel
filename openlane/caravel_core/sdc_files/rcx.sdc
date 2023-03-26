@@ -47,8 +47,8 @@ set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 set_false_path -from [get_ports {rstb_h}]
 
 # add loads for output ports (pads)
-set min_cap 1
-set max_cap 1.49
+set min_cap 0.5
+set max_cap 1.0
 puts "\[INFO\]: Cap load range: $min_cap : $max_cap"
 # set_load 10 [all_outputs]
 set_load -min $min_cap [all_outputs] 

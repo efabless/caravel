@@ -10,7 +10,7 @@ create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock
 create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]
 # hk_serial_clk period is x2 core clock
 
-set_clock_uncertainty 0.52 [get_clocks {clk}] 
+set_clock_uncertainty 0.55 [get_clocks {clk}] 
 set_clock_uncertainty 1 [get_clocks {hk_serial_clk hk_serial_load}]
 
 set_clock_groups \
@@ -30,12 +30,12 @@ set input_delay_value 4
 set output_delay_value 20
 puts "\[INFO\]: Setting output delay to: $output_delay_value"
 puts "\[INFO\]: Setting input delay to: $input_delay_value"
-set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
+# set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
 set_input_delay 0  -clock [get_clocks {clk}] [get_ports {clock_core}]
 set_input_delay 1  -clock [get_clocks {clk}] [get_ports {flash_io0_di}]
 set_input_delay 1  -clock [get_clocks {clk}] [get_ports {flash_io1_di}]
 
-set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
+# set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
 
 ## MAX FANOUT
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
