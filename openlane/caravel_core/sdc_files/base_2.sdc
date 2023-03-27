@@ -44,21 +44,21 @@ set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 set_false_path -from [get_ports {rstb_h}]
 
 # add loads for output ports (pads)
-set min_cap 5
-set max_cap 10
+set min_cap 0.5
+set max_cap 1.0
 puts "\[INFO\]: Cap load range: $min_cap : $max_cap"
 # set_load 10 [all_outputs]
 set_load -min $min_cap [all_outputs] 
 set_load -max $max_cap [all_outputs] 
 
 set min_in_tran 1
-set max_in_tran 4.5
+set max_in_tran 1.49
 puts "\[INFO\]: Input transition range: $min_in_tran : $max_in_tran"
 set_input_transition -min $min_in_tran [all_inputs] 
 set_input_transition -max $max_in_tran [all_inputs]
 
 # derates
-set derate 0.12
+set derate 0.15
 puts "\[INFO\]: Setting derate factor to: [expr $derate * 100] %"
 set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]
@@ -66,5 +66,3 @@ set_timing_derate -late [expr 1+$derate]
 ## MAX transition/cap
 set_max_trans 0.9 [current_design]
 # set_max_cap 0.5 [current_design]
-
-# group_path -weight 100 -through [get_pins mprj/la_data_out[0]] -name mprj_floating

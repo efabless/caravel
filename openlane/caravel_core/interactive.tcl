@@ -67,11 +67,8 @@ run_resizer_timing
 run_resizer_design_routing
 run_resizer_timing_routing
 
-################ Place and route on optmized netlist ################
-##   Placement   ##
+##   Placement again  ##
 set ::env(PL_TARGET_DENSITY) 0.27
-
-# run_placement_incr
 run_placement
 run_cts
 
@@ -80,19 +77,18 @@ run_cts
 set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base_2.sdc
 run_resizer_timing
 
-##   Routing   ##
+##  Routing Optmization  ##
 run_resizer_design_routing
 run_resizer_timing_routing
 
-## NEW ##
-set ::env(PL_TARGET_DENSITY) 0.30
+################ Place and route on the optmized netlist ################
+set ::env(PL_TARGET_DENSITY) 0.29
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 run_placement
 run_cts 
-##
 
 ins_diode_cells_4
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
@@ -118,7 +114,7 @@ check_wire_lengths
 run_parasitics_sta
 
 ################   IR drop    ################
-run_irdrop_report
+# run_irdrop_report
 
 ################   Antenna check    ################
 run_antenna_check

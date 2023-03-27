@@ -51,7 +51,7 @@ set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 # set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_EXTRA_MAPPING_FILE) "$::env(DESIGN_DIR)/synth_configuration/yosys_mapping.v"
-set ::env(SYNTH_MAX_FANOUT) 18
+set ::env(SYNTH_MAX_FANOUT) 16
 set ::env(SYNTH_CAP_LOAD) 52
 set ::env(SYNTH_CLOCK_TRANSITION) 0.6
 set ::env(SYNTH_CLOCK_UNCERTAINTY) 0.25
@@ -283,13 +283,13 @@ set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
     $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
     $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
-    $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/tt/RAM128.nom.lib \
+    $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib \
 "
 
 set ::env(STA_WRITE_LIB) 0
 
 ## For faster development
-set ::env(QUIT_ON_TR_DRC) 0
+set ::env(QUIT_ON_TR_DRC) 1
 set ::env(QUIT_ON_LVS_ERROR) 0
 set ::env(QUIT_ON_MAGIC_DRC) 0
 
