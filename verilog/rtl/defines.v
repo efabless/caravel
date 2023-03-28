@@ -22,6 +22,7 @@
 `define MPRJ_IO_PADS_1 19	/* number of user GPIO pads on user1 side */
 `define MPRJ_IO_PADS_2 19	/* number of user GPIO pads on user2 side */
 `define MPRJ_IO_PADS (`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2)
+`define OPENFRAME_IO_PADS 44	/* add 6 pads to total for openframe */
 
 `define MPRJ_PWR_PADS_1 2	/* vdda1, vccd1 enable/disable control */
 `define MPRJ_PWR_PADS_2 2	/* vdda2, vccd2 enable/disable control */
