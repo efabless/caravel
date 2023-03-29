@@ -59,6 +59,14 @@
 /* Bon voyage!							*/
 /*--------------------------------------------------------------*/
 
+/*--------------------------------------------------------------*/
+/* NOTE:  This file can be checked for syntax directly using:	*/
+/*								*/
+/* iverilog -I ${PDK_ROOT}/${PDK} -DSIM -DFUNCTIONAL \		*/
+/* openframe_netlists.v __openframe_project_wrapper.v \		*/
+/* -s caravel_openframe						*/
+/*--------------------------------------------------------------*/
+
 module caravel_openframe (
 
     // All top-level I/O are package-facing pins
@@ -132,8 +140,8 @@ module caravel_openframe (
     wire [31:0] mask_rev;
 
     chip_io_openframe #(
-		.USER_PROJECT_ID(`USER_PROJECT_ID)
-	padframe (
+		.USER_PROJECT_ID(USER_PROJECT_ID)
+	) padframe (
 	
 	// Pad side power connections
 	`ifndef TOP_ROUTING
@@ -159,7 +167,7 @@ module caravel_openframe (
 	`endif
 
 	// Pad side signals
-	.resetb(resetb),
+	.resetb_pad(resetb),
 	.gpio(gpio),
 
 	// Core side power connections
@@ -181,7 +189,7 @@ module caravel_openframe (
 	// Core side signals
 	.porb_h(porb_h),
 	.porb_l(porb_l),
-	.por(por_l),
+	.por_l(por_l),
 	.resetb_h(rstb_h),
 	.resetb_l(rstb_l),
 	.mask_rev(mask_rev),
@@ -229,7 +237,7 @@ module caravel_openframe (
 
 	.porb_h(porb_h),
 	.porb_l(porb_l),
-	.por(por_l),
+	.por_l(por_l),
 	.resetb_h(rstb_h),
 	.resetb_l(rstb_l),
 	.mask_rev(mask_rev),

@@ -51,8 +51,8 @@ module openframe_project_wrapper (
     input	 porb_h,	// power-on reset, sense inverted, 3.3V domain
     input	 porb_l,	// power-on reset, sense inverted, 1.8V domain
     input	 por_l,		// power-on reset, noninverted, 1.8V domain
-    input	 rstb_h,	// master reset, sense inverted, 3.3V domain
-    input	 rstb_l,	// master reset, sense inverted, 1.8V domain
+    input	 resetb_h,	// master reset, sense inverted, 3.3V domain
+    input	 resetb_l,	// master reset, sense inverted, 1.8V domain
     input [31:0] mask_rev,	// 32-bit user ID, 1.8V domain
 
     /* GPIOs.  There are 44 GPIOs (19 left, 19 right, 6 bottom). */
@@ -78,7 +78,9 @@ module openframe_project_wrapper (
     output [`OPENFRAME_IO_PADS-1:0] gpio_analog_en,
     output [`OPENFRAME_IO_PADS-1:0] gpio_analog_sel,
     output [`OPENFRAME_IO_PADS-1:0] gpio_analog_pol,
-    output [`OPENFRAME_IO_PADS-1:0] gpio_dm,
+    output [`OPENFRAME_IO_PADS-1:0] gpio_dm2,
+    output [`OPENFRAME_IO_PADS-1:0] gpio_dm1,
+    output [`OPENFRAME_IO_PADS-1:0] gpio_dm0,
 
     /* These signals correct directly to the pad.  Pads using analog I/O
      * connections should keep the digital input and output buffers turned
@@ -118,8 +120,8 @@ module openframe_project_wrapper (
 	    .porb_h(porb_h),
 	    .porb_l(porb_l),
 	    .por_l(por_l),
-	    .rstb_h(rstb_h),
-	    .rstb_l(rstb_l),
+	    .resetb_h(resetb_h),
+	    .resetb_l(resetb_l),
 	    .mask_rev(mask_rev),
 	    .gpio_in(gpio_in),
 	    .gpio_in_h(gpio_in_h),
@@ -133,7 +135,9 @@ module openframe_project_wrapper (
 	    .gpio_analog_en(gpio_analog_en),
 	    .gpio_analog_sel(gpio_analog_sel),
 	    .gpio_analog_pol(gpio_analog_pol),
-	    .gpio_dm(gpio_dm),
+	    .gpio_dm2(gpio_dm2),
+	    .gpio_dm1(gpio_dm1),
+	    .gpio_dm0(gpio_dm0),
 	    .analog_io(analog_io),
 	    .analog_noesd_io(analog_noesd_io),
 	    .gpio_loopback_one(gpio_loopback_one),
@@ -141,4 +145,4 @@ module openframe_project_wrapper (
 	);
 `endif
 
-endmodule	// user_analog_project_wrapper
+endmodule	// openframe_project_wrapper

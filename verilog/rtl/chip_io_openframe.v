@@ -23,9 +23,9 @@
  */
 
 // `default_nettype none
-module #(
+module chip_io_openframe #(
 	parameter USER_PROJECT_ID = 32'h00000000
-) chip_io_openframe(
+) (
 	// Package Pins
 	inout  vddio_pad,		// Common padframe/ESD supply
 	inout  vddio_pad2,
@@ -261,7 +261,7 @@ module #(
 	// Constant values in 1.8V domain to drive constant signals on GPIO pads
 	// These are exported to the user project for direct loopback if needed.
 
-	constant_block constant_value_inst [`OPENFRAME_IO_PADS:0] (
+	constant_block constant_value_inst [`OPENFRAME_IO_PADS-1:0] (
 		.vccd(vccd),
 		.vssd(vssd),
 		.one(gpio_loopback_one),
@@ -415,7 +415,7 @@ module #(
 
 	/* Openframe pads (right side, power domain 1) */
 
-	sky130_ef_io__gpiov2_pad_wrapped  area1_gpio_pad [`MPRJ_IO_PADS_1:0] (
+	sky130_ef_io__gpiov2_pad_wrapped  area1_gpio_pad [`MPRJ_IO_PADS_1 - 1:0] (
 		`USER1_ABUTMENT_PINS
 `ifndef	TOP_ROUTING
 		.PAD(gpio[`MPRJ_IO_PADS_1 - 1:0]),
@@ -448,7 +448,7 @@ module #(
 
 	/* Openframe pads (left side, power domain 2) */
 
-	sky130_ef_io__gpiov2_pad_wrapped area2_gpio_pad [`MPRJ_IO_PADS_2:0] (
+	sky130_ef_io__gpiov2_pad_wrapped area2_gpio_pad [`MPRJ_IO_PADS_2 - 1:0] (
 		`USER2_ABUTMENT_PINS
 `ifndef	TOP_ROUTING
 		.PAD(gpio[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
@@ -473,7 +473,7 @@ module #(
 		.PAD_A_NOESD_H(analog_noesd_io[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
 		.PAD_A_ESD_0_H(analog_io[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
 		.PAD_A_ESD_1_H(),
-		.IN(pgio_in[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
+		.IN(gpio_in[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
 		.IN_H(gpio_in_h[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
 		.TIE_HI_ESD(loop1_gpio[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
 		.TIE_LO_ESD(loop0_gpio[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1])
@@ -515,5 +515,3 @@ module #(
 endmodule
 // `default_nettype wire
 
-endmodule
-// `default_nettype wire
