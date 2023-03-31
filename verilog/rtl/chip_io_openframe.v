@@ -302,7 +302,7 @@ module chip_io_openframe #(
    		.INP_SEL_H(xres_vss_loop),	  // 1 = use filt_in_h else filter the pad input
    		.FILT_IN_H(xres_vss_loop),	  // Alternate input for glitch filter
    		.PULLUP_H(xres_vss_loop),	  // Pullup connection for alternate filter input
-		.ENABLE_VDDIO(xres_one)
+		.ENABLE_VDDIO(xres_loopback_one)
     	);
 
 	// Buffer the reset pad output to generate a signal in the 1.8V domain

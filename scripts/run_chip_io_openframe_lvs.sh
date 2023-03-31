@@ -52,6 +52,7 @@ readnet spice ../xschem/simple_por.spice \$circuit2
 puts stdout "Reading all gate-level verilog submodules:"
 readnet verilog local_defs.v \$circuit2
 readnet verilog ../verilog/rtl/defines.v \$circuit2
+readnet verilog ../verilog/rtl/pads.v \$circuit2
 
 # NOTE:  __openframe_project_wrapper.v is empty.
 readnet verilog ../verilog/rtl/__openframe_project_wrapper.v \$circuit2
