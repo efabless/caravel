@@ -376,7 +376,7 @@ set_load -max $max_cap [get_ports {flash_csb flash_clk flash_io0}]
 set flash_in_delay 4
 set flash_out_delay 4
 puts "\[INFO\]: Flash interface delay: input $flash_in_delay output $flash_out_delay"
-# set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_csb}]
+set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_csb}]
 set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_clk}]
 set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_io0}]
 set_input_delay $flash_in_delay -clock [get_clocks {clk}] -add_delay [get_ports {flash_io1}]
