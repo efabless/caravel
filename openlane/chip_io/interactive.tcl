@@ -18,45 +18,61 @@ set script_dir [file dirname [file normalize [info script]]]
 set save_path $script_dir/../..
 
 # FOR LVS AND CREATING PORT LABELS
-set ::env(USE_GPIO_ROUTING_LEF) 0
-prep -design $script_dir -tag chip_io_lvs -overwrite
-
-set ::env(SYNTH_DEFINES) ""
-verilog_elaborate
+#set ::env(USE_GPIO_ROUTING_LEF) 0
+#prep -design $script_dir -tag chip_io_lvs -overwrite
+#
+#set ::env(SYNTH_DEFINES) ""
+#verilog_elaborate
 #init_floorplan
 #file copy -force $::env(CURRENT_DEF) $::env(TMP_DIR)/lvs.def
-save_views -pnl_path $::env(CURRENT_NETLIST) -save_path $::env(CARAVEL_ROOT) 
-exit
+#save_views -pnl_path $::env(CURRENT_NETLIST) -save_path $::env(CARAVEL_ROOT) 
 
 # ACTUAL CHIP INTEGRATION
-set ::env(USE_GPIO_ROUTING_LEF) 1
-prep -design $script_dir -tag chip_io -overwrite
-
-#file copy $script_dir/runs/chip_io_lvs/tmp/merged_unpadded.lef $::env(TMP_DIR)/lvs.lef
-#file copy $script_dir/runs/chip_io_lvs/tmp/lvs.def $::env(TMP_DIR)/lvs.def
-file copy $script_dir/runs/chip_io_lvs/tmp/lvs.v $::env(TMP_DIR)/lvs.v
-
+prep -design $script_dir -tag chip_io -overwrite -verbose 1
 set ::env(SYNTH_DEFINES) "TOP_ROUTING"
 verilog_elaborate
 
 init_floorplan
+padframe_gen_batch 
+exit
 
+set lefs_argument ""
+foreach lef "$::env(TECH_LEF) $::env(GPIO_PADS_LEF) $::env(EXTRA_LEFS)" {
+    set lefs_argument "$lefs_argument --input-lef $lef"
+}
 puts_info "Generating pad frame"
-exec python3 $::env(SCRIPTS_DIR)/padringer.py\
+try_catch openroad -python -exit $::env(SCRIPTS_DIR)/odbpy/padringer.py\
 	--def-netlist $::env(CURRENT_DEF)\
-	--design $::env(DESIGN_NAME)\
-	--lefs $::env(TECH_LEF) {*}$::env(GPIO_PADS_LEF)\
-	-cfg $script_dir/padframe.cfg\
+    {*}$lefs_argument \
+    --odb-lef $::env(MERGED_LEF) \
+	-c $script_dir/padframe.cfg\
 	--working-dir $::env(TMP_DIR)\
-	-o $::env(RESULTS_DIR)/floorplan/padframe.def |& tee $::env(TERMINAL_OUTPUT) $::env(LOG_DIR)/padringer.log
+	--output $::env(RESULTS_DIR)/floorplan/padframe.odb \
+	--output-def $::env(RESULTS_DIR)/floorplan/padframe.def \
+    $::env(DESIGN_NAME)\
+    |& tee $::env(TERMINAL_OUTPUT) $::env(LOGS_DIR)/padringer.log
 
 puts_info "Generated pad frame"
 
+set_odb $::env(RESULTS_DIR)/floorplan/padframe.odb
 set_def $::env(RESULTS_DIR)/floorplan/padframe.def
 
+add_macro_placement {padframe.constant_value_inst\[0\] 3000 1000 N}
+add_macro_placement {padframe.constant_value_inst\[1\] 3100 1000 N}
+add_macro_placement {padframe.constant_value_inst\[2\] 3200 1000 N}
+add_macro_placement {padframe.constant_value_inst\[3\] 3300 1000 N}
+add_macro_placement {padframe.constant_value_inst\[4\] 3300 1000 N}
+add_macro_placement {padframe.constant_value_inst\[5\] 3400 1000 N}
+add_macro_placement {padframe.constant_value_inst\[6\] 3500 1000 N}
+manual_macro_placement f
+
+remove_pins -input $::env(CURRENT_ODB)
+remove_nets -empty -input $::env(CURRENT_ODB)
+run_magic
+exit
+tap_decap_or
+
 # modify to a different file
-remove_pins -input $::env(CURRENT_DEF)
-remove_empty_nets -input $::env(CURRENT_DEF)
 
 set core_obs "
 	met1 225 235 3365 4950, \
@@ -79,9 +95,9 @@ set gpio_m3_pins_east "met3 3370.840 600.050 3387.01 4731.99"
 
 #set vssa_m2_east  "met2 3387.67500 2128.50000 3388.00500 2152.50000"
 
-set ::env(GLB_RT_OBS) "$core_obs"
+set ::env(GRT_OBS) "$core_obs"
 
-set ::env(GLB_RT_OBS) "\
+set ::env(GRT_OBS) "\
 	$core_obs, \ 
 	$gpio_m3_pins_north, \
 	$gpio_m3_pins_west_0, \
@@ -90,25 +106,18 @@ set ::env(GLB_RT_OBS) "\
 	$gpio_m3_pins_east
 "
 
-try_catch python3 $::env(SCRIPTS_DIR)/add_def_obstructions.py \
-	--input-def $::env(CURRENT_DEF) \
-	--lef $::env(MERGED_LEF) \
-	--obstructions $::env(GLB_RT_OBS) \
-	--output [file rootname $::env(CURRENT_DEF)].obs.def |& tee $::env(TERMINAL_OUTPUT) $::env(LOG_DIR)/obs.log
+apply_route_obs
+#
+#global_routing
+#detailed_routing
 
-set_def [file rootname $::env(CURRENT_DEF)].obs.def
-
-li1_hack_start
-global_routing
-detailed_routing
-li1_hack_end
-
-label_macro_pins\
-	-lef $::env(TMP_DIR)/lvs.lef\
-	-netlist_def $::env(TMP_DIR)/lvs.def\
-	-pad_pin_name "PAD"
-
+#label_macro_pins\
+#	-lef $::env(TMP_DIR)/lvs.lef\
+#	-netlist_def $::env(TMP_DIR)/lvs.def\
+#	-pad_pin_name "PAD"
+#
 run_magic
+exit
 
 # run_magic_drc
 
