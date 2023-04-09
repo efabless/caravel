@@ -51,7 +51,7 @@ set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 # set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_EXTRA_MAPPING_FILE) "$::env(DESIGN_DIR)/synth_configuration/yosys_mapping.v"
-set ::env(SYNTH_MAX_FANOUT) 18
+set ::env(SYNTH_MAX_FANOUT) 16
 set ::env(SYNTH_CAP_LOAD) 52
 set ::env(SYNTH_CLOCK_TRANSITION) 0.6
 set ::env(SYNTH_CLOCK_UNCERTAINTY) 0.25
@@ -178,8 +178,9 @@ set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbu
 set ::env(CTS_CLK_MAX_WIRE_LENGTH) 1000
 
 ##PLACEMENT
-set ::env(PL_ROUTABILITY_DRIVEN) 1
+set ::env(PL_ROUTABILITY_DRIVEN) 0
 set ::env(PL_TIME_DRIVEN) 1
+set ::env(PL_WIRELENGTH_COEF) 0.01
 set ::env(PL_TARGET_DENSITY) 0.24
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
@@ -189,16 +190,16 @@ set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 0
 set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.1
 set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 1000
 set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 50
-set ::env(PL_RESIZER_CAP_SLEW_MARGIN) 50
+set ::env(PL_RESIZER_MAX_CAP_MARGIN) 50
 
 ##ROUTING
 set ::env(GRT_ALLOW_CONGESTION) 1
 
-set ::env(GRT_ADJUSTMENT) 0.22
+set ::env(GRT_ADJUSTMENT) 0.06
 ##                                li1 ,met1,met2,met3,met4,met5
-set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
+# set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
-set ::env(GRT_OVERFLOW_ITERS) 60
+# set ::env(GRT_OVERFLOW_ITERS) 60
 
 set ::env(GRT_ESTIMATE_PARASITICS) 1
 
@@ -206,8 +207,8 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
 set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 1
 set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 600
-set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 40
-set ::env(GLB_RESIZER_CAP_SLEW_MARGIN) 40
+set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
+set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 20
 
 ## Antenna
 set ::env(DIODE_INSERTION_STRATEGY) 6
@@ -282,13 +283,13 @@ set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
     $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
     $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
-    $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/tt/RAM128.nom.lib \
+    $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib \
 "
 
 set ::env(STA_WRITE_LIB) 0
 
 ## For faster development
-set ::env(QUIT_ON_TR_DRC) 0
+set ::env(QUIT_ON_TR_DRC) 1
 set ::env(QUIT_ON_LVS_ERROR) 0
 set ::env(QUIT_ON_MAGIC_DRC) 0
 

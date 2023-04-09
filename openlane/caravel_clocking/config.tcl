@@ -90,3 +90,4 @@ set ::env(CTS_MAX_CAP) 0.25
 
 #set ::env(DRC_EXCLUDE_CELL_LIST) $::env(DESIGN_DIR)/drc_exclude.list
 set ::env(SYNTH_MAX_FANOUT) 12
+set ::env(FP_PDN_IRDROP) 0

@@ -6,7 +6,7 @@ MACRO simple_por
   CLASS BLOCK ;
   FOREIGN simple_por ;
   ORIGIN 0.000 0.000 ;
-  SIZE 56.720 BY 41.690 ;
+  SIZE 63.720 BY 41.690 ;
   PIN vdd3v3
     DIRECTION INOUT ;
     USE POWER ;
@@ -34,6 +34,7 @@ MACRO simple_por
   PIN porb_h
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met3 ;
         RECT 54.545 33.825 56.710 34.170 ;
@@ -42,6 +43,7 @@ MACRO simple_por
   PIN por_l
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met3 ;
         RECT 53.960 37.455 56.720 37.755 ;
@@ -50,6 +52,7 @@ MACRO simple_por
   PIN porb_l
     DIRECTION OUTPUT ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met3 ;
         RECT 51.855 39.280 56.715 39.580 ;

@@ -128,13 +128,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : falling_edge;
 	cell_rise(template_1) {
-          values("-12.65693,-12.65505,-12.64862,-12.62899,-12.57076,-12.36894,-11.60840");
+          values("-13.28561,-13.28373,-13.27730,-13.25767,-13.19945,-12.99762,-12.23708");
 	}
 	rise_transition(template_1) {
           values("0.02433,0.02582,0.03117,0.05049,0.12302,0.40939,1.50434");
 	}
 	cell_fall(template_2) {
-          values("-9.49592,-9.49421,-9.48834,-9.47179,-9.42848,-9.30132,-8.83987");
+          values("-10.81571,-10.81400,-10.80813,-10.79159,-10.74828,-10.62111,-10.15966");
 	}
 	fall_transition(template_2) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -144,13 +144,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : rising_edge;
 	cell_rise(template_3) {
-          values("1.66958,1.67146,1.67789,1.69752,1.75574,1.95756,2.71811");
+          values("1.19763,1.19950,1.20594,1.22557,1.28379,1.48561,2.24616");
 	}
 	rise_transition(template_3) {
           values("0.02433,0.02582,0.03117,0.05049,0.12302,0.40939,1.50434");
 	}
 	cell_fall(template_4) {
-          values("-0.25337,-0.25166,-0.24580,-0.22925,-0.18594,-0.05877,0.40268");
+          values("-0.11202,-0.11031,-0.10444,-0.08790,-0.04459,0.08258,0.54403");
 	}
 	fall_transition(template_4) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -160,7 +160,7 @@ library (caravel_clocking) {
         related_pin : "core_clk";
         timing_type : rising_edge;
 	cell_rise(template_5) {
-          values("1.66958,1.67146,1.67789,1.69752,1.75574,1.95756,2.71811");
+          values("1.19763,1.19950,1.20594,1.22557,1.28379,1.48561,2.24616");
 	}
 	rise_transition(template_5) {
           values("0.02433,0.02582,0.03117,0.05049,0.12302,0.40939,1.50434");
@@ -182,7 +182,7 @@ library (caravel_clocking) {
           values("0.02433,0.02582,0.03117,0.05049,0.12302,0.40939,1.50434");
 	}
 	cell_fall(template_8) {
-          values("3.00408,3.00579,3.01166,3.02821,3.07152,3.19868,3.66013");
+          values("1.68429,1.68600,1.69187,1.70841,1.75172,1.87889,2.34034");
 	}
 	fall_transition(template_8) {
           values("0.02326,0.02436,0.02827,0.04095,0.08430,0.25146,0.91403");
@@ -200,20 +200,20 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.28218");
+          values("0.02150");
 	}
 	fall_constraint(scalar) {
-          values("-0.59260");
+          values("0.00319");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("-0.07605");
+          values("0.11637");
 	}
 	fall_constraint(scalar) {
-          values("0.84809");
+          values("0.09388");
 	}
       }
     }
@@ -224,76 +224,76 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.10620");
+          values("-0.27921");
 	}
 	fall_constraint(scalar) {
-          values("-0.18442");
+          values("0.10560");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.73781");
+          values("1.06807");
 	}
 	fall_constraint(scalar) {
-          values("1.54262");
+          values("1.12612");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : hold_falling;
 	fall_constraint(scalar) {
-          values("1.91637");
+          values("1.36428");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : setup_falling;
 	fall_constraint(scalar) {
-          values("-1.02007");
+          values("-0.67456");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : hold_falling;
 	fall_constraint(scalar) {
-          values("0.57400");
+          values("0.01574");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_falling;
 	fall_constraint(scalar) {
-          values("0.35827");
+          values("0.70940");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	fall_constraint(scalar) {
-          values("0.41928");
+          values("0.71263");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	fall_constraint(scalar) {
-          values("1.19807");
+          values("0.77865");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_falling;
 	fall_constraint(scalar) {
-          values("0.58678");
+          values("0.03221");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_falling;
 	fall_constraint(scalar) {
-          values("0.36288");
+          values("0.71067");
 	}
       }
     }
@@ -312,76 +312,76 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.54249");
+          values("0.15779");
 	}
 	fall_constraint(scalar) {
-          values("-0.58893");
+          values("-0.29391");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.73919");
+          values("1.06844");
 	}
 	fall_constraint(scalar) {
-          values("1.48796");
+          values("1.06704");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("2.64328");
+          values("1.41647");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-1.82350");
+          values("-0.73224");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.30091");
+          values("0.06792");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-0.44515");
+          values("0.65172");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("1.14619");
+          values("0.76482");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.39464");
+          values("0.72097");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.31369");
+          values("0.08440");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-0.44055");
+          values("0.65299");
 	}
       }
     }
@@ -392,76 +392,76 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("0.60332");
+          values("0.22336");
 	}
 	fall_constraint(scalar) {
-          values("-0.52227");
+          values("-0.24088");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.67195");
+          values("0.99597");
 	}
 	fall_constraint(scalar) {
-          values("1.43958");
+          values("1.03383");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("2.70412");
+          values("1.48204");
 	}
       }
       timing() {
         related_pin : "ext_clk";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-1.89073");
+          values("-0.80471");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.36174");
+          values("0.13349");
 	}
       }
       timing() {
         related_pin : "pll_clk";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-0.51239");
+          values("0.57924");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("1.20702");
+          values("0.83039");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("0.32741");
+          values("0.64850");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : hold_falling;
 	rise_constraint(scalar) {
-          values("1.37452");
+          values("0.14997");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_falling;
 	rise_constraint(scalar) {
-          values("-0.50778");
+          values("0.58052");
 	}
       }
     }
@@ -472,13 +472,13 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : falling_edge;
 	cell_rise(template_9) {
-          values("3.58333,3.58567,3.59521,3.62979,3.76986,4.40924,7.36192");
+          values("2.26354,2.26587,2.27541,2.30999,2.45006,3.08944,6.04212");
 	}
 	rise_transition(template_9) {
           values("0.01893,0.02095,0.02999,0.07071,0.26573,1.18103,5.38149");
 	}
 	cell_fall(template_10) {
-          values("3.81081,3.81280,3.82044,3.84366,3.91241,4.18393,5.43130");
+          values("2.49102,2.49300,2.50064,2.52386,2.59262,2.86413,4.11151");
 	}
 	fall_transition(template_10) {
           values("0.01882,0.02007,0.02507,0.04325,0.11874,0.48520,2.21294");
@@ -492,13 +492,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk";
         timing_type : rising_edge;
 	cell_rise(template_11) {
-          values("2.08655,2.08842,2.09485,2.11435,2.17251,2.37452,3.14074");
+          values("1.60877,1.61064,1.61707,1.63657,1.69473,1.89674,2.66296");
 	}
 	rise_transition(template_11) {
           values("0.02438,0.02586,0.03120,0.05053,0.12314,0.40898,1.50597");
 	}
 	cell_fall(template_12) {
-          values("2.42745,2.42913,2.43511,2.45171,2.49489,2.62210,3.08364");
+          values("1.94967,1.95135,1.95733,1.97393,2.01711,2.14432,2.60586");
 	}
 	fall_transition(template_12) {
           values("0.02337,0.02442,0.02828,0.04104,0.08437,0.25147,0.91312");
@@ -514,7 +514,7 @@ library (caravel_clocking) {
           values("0.02438,0.02586,0.03120,0.05053,0.12314,0.40898,1.50597");
 	}
 	cell_fall(template_14) {
-          values("2.84601,2.84769,2.85368,2.87027,2.91346,3.04066,3.50221");
+          values("1.52622,1.52790,1.53388,1.55047,1.59366,1.72086,2.18241");
 	}
 	fall_transition(template_14) {
           values("0.02337,0.02442,0.02828,0.04104,0.08437,0.25147,0.91312");
@@ -524,7 +524,7 @@ library (caravel_clocking) {
         related_pin : "ext_clk";
         timing_type : rising_edge;
 	cell_rise(template_15) {
-          values("1.52701,1.52888,1.53531,1.55481,1.61297,1.81498,2.58121");
+          values("1.05506,1.05693,1.06336,1.08286,1.14102,1.34303,2.10926");
 	}
 	rise_transition(template_15) {
           values("0.02438,0.02586,0.03120,0.05053,0.12314,0.40898,1.50597");
@@ -540,13 +540,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : rising_edge;
 	cell_rise(template_17) {
-          values("2.48076,2.48263,2.48906,2.50857,2.56673,2.76873,3.53496");
+          values("2.00640,2.00827,2.01470,2.03420,2.09236,2.29437,3.06060");
 	}
 	rise_transition(template_17) {
           values("0.02438,0.02586,0.03120,0.05053,0.12314,0.40898,1.50597");
 	}
 	cell_fall(template_18) {
-          values("2.50841,2.51009,2.51608,2.53267,2.57585,2.70306,3.16461");
+          values("2.03397,2.03565,2.04164,2.05823,2.10142,2.22862,2.69017");
 	}
 	fall_transition(template_18) {
           values("0.02337,0.02442,0.02828,0.04104,0.08437,0.25147,0.91312");
@@ -556,13 +556,13 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : falling_edge;
 	cell_rise(template_19) {
-          values("3.45375,3.45562,3.46205,3.48155,3.53971,3.74172,4.50795");
+          values("2.13142,2.13329,2.13972,2.15922,2.21739,2.41939,3.18562");
 	}
 	rise_transition(template_19) {
           values("0.02438,0.02586,0.03120,0.05053,0.12314,0.40898,1.50597");
 	}
 	cell_fall(template_20) {
-          values("3.45911,3.46079,3.46678,3.48337,3.52656,3.65376,4.11531");
+          values("2.13679,2.13847,2.14445,2.16104,2.20423,2.33143,2.79298");
 	}
 	fall_transition(template_20) {
           values("0.02337,0.02442,0.02828,0.04104,0.08437,0.25147,0.91312");
@@ -605,20 +605,20 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("1.20144");
+          values("0.82195");
 	}
 	fall_constraint(scalar) {
-          values("0.50413");
+          values("0.77211");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("-0.95303");
+          values("-0.62868");
 	}
 	fall_constraint(scalar) {
-          values("-0.14135");
+          values("-0.53148");
 	}
       }
     }
@@ -629,20 +629,20 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("1.20528");
+          values("0.82476");
 	}
 	fall_constraint(scalar) {
-          values("0.54970");
+          values("0.80673");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("-0.96304");
+          values("-0.63716");
 	}
 	fall_constraint(scalar) {
-          values("-0.19973");
+          values("-0.57965");
 	}
       }
     }
@@ -653,20 +653,20 @@ library (caravel_clocking) {
         related_pin : "pll_clk90";
         timing_type : hold_rising;
 	rise_constraint(scalar) {
-          values("1.19475");
+          values("0.81600");
 	}
 	fall_constraint(scalar) {
-          values("0.49636");
+          values("0.76783");
 	}
       }
       timing() {
         related_pin : "pll_clk90";
         timing_type : setup_rising;
 	rise_constraint(scalar) {
-          values("-0.94572");
+          values("-0.62218");
 	}
 	fall_constraint(scalar) {
-          values("-0.13286");
+          values("-0.52686");
 	}
       }
     }

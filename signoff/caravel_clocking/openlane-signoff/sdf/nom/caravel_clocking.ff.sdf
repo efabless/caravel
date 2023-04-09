@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "caravel_clocking")
- (DATE "Mon Feb 27 14:17:48 2023")
+ (DATE "Mon Mar  6 11:52:17 2023")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.3.2")
@@ -899,7 +899,7 @@
   (DELAY
    (ABSOLUTE
     (IOPATH A0 X (0.096:0.096:0.096) (0.155:0.155:0.155))
-    (IOPATH A1 X (0.091:0.091:0.091) (0.159:0.159:0.159))
+    (IOPATH A1 X (0.090:0.090:0.090) (0.159:0.159:0.159))
     (IOPATH S X (0.140:0.140:0.141) (0.200:0.200:0.200))
     (IOPATH S X (0.102:0.102:0.102) (0.193:0.194:0.194))
    )
@@ -910,7 +910,7 @@
   (INSTANCE _207_)
   (DELAY
    (ABSOLUTE
-    (IOPATH A0 X (0.103:0.103:0.103) (0.167:0.167:0.167))
+    (IOPATH A0 X (0.102:0.102:0.102) (0.167:0.167:0.167))
     (IOPATH A1 X (0.107:0.107:0.107) (0.176:0.176:0.176))
     (IOPATH S X (0.162:0.162:0.162) (0.216:0.216:0.216))
     (IOPATH S X (0.119:0.119:0.119) (0.212:0.212:0.212))
@@ -1456,7 +1456,7 @@
   (INSTANCE _255_)
   (DELAY
    (ABSOLUTE
-    (IOPATH A Y (0.063:0.063:0.063) (0.037:0.037:0.037))
+    (IOPATH A Y (0.044:0.044:0.044) (0.037:0.037:0.037))
    )
   )
  )
@@ -1492,7 +1492,7 @@
   (INSTANCE _410__5)
   (DELAY
    (ABSOLUTE
-    (IOPATH A Y (0.028:0.028:0.028) (0.011:0.011:0.011))
+    (IOPATH A Y (0.027:0.027:0.027) (0.011:0.011:0.011))
    )
   )
  )
@@ -2410,9 +2410,9 @@
   (INSTANCE _344_)
   (DELAY
    (ABSOLUTE
-    (IOPATH A_N X (0.165:0.165:0.165) (0.121:0.121:0.121))
-    (IOPATH B X (0.116:0.116:0.116) (0.142:0.142:0.142))
-    (IOPATH C X (0.112:0.112:0.112) (0.146:0.146:0.146))
+    (IOPATH A_N X (0.143:0.143:0.143) (0.120:0.120:0.120))
+    (IOPATH B X (0.112:0.112:0.112) (0.116:0.116:0.116))
+    (IOPATH C X (0.104:0.104:0.104) (0.117:0.117:0.117))
    )
   )
  )
@@ -2755,10 +2755,10 @@
   (INSTANCE _375_)
   (DELAY
    (ABSOLUTE
-    (IOPATH A_N X (0.197:0.197:0.197) (0.142:0.142:0.142))
+    (IOPATH A_N X (0.172:0.172:0.172) (0.141:0.141:0.141))
     (IOPATH B_N X (0.160:0.160:0.160) (0.134:0.134:0.134))
-    (IOPATH C X (0.134:0.134:0.134) (0.162:0.162:0.162))
-    (IOPATH D X (0.136:0.136:0.136) (0.176:0.176:0.176))
+    (IOPATH C X (0.123:0.123:0.123) (0.133:0.133:0.133))
+    (IOPATH D X (0.132:0.132:0.132) (0.149:0.149:0.149))
    )
   )
  )
@@ -3133,7 +3133,7 @@
   (INSTANCE clkbuf_0_ext_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.016:-0.016:-0.016) (1.156:1.156:1.156))
+    (IOPATH A X (0.130:0.130:0.130) (0.202:0.202:0.202))
    )
   )
  )
@@ -3232,17 +3232,17 @@
   (INSTANCE _417_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.232:0.232:0.232) (0.248:0.248:0.248))
+    (IOPATH CLK Q (0.231:0.231:0.231) (0.247:0.247:0.247))
     (IOPATH RESET_B Q () (0.000:0.000:0.000))
    )
   )
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.225:0.225:0.225))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.129:-0.129:-0.129))
-    (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
-    (HOLD (negedge D) (posedge CLK) (-0.034:-0.034:-0.034))
-    (SETUP (posedge D) (posedge CLK) (0.034:0.034:0.034))
-    (SETUP (negedge D) (posedge CLK) (0.075:0.075:0.075))
+    (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
+    (HOLD (negedge D) (posedge CLK) (-0.033:-0.033:-0.033))
+    (SETUP (posedge D) (posedge CLK) (0.033:0.033:0.033))
+    (SETUP (negedge D) (posedge CLK) (0.073:0.073:0.073))
   )
  )
  (CELL
@@ -3250,7 +3250,7 @@
   (INSTANCE _418_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.244:0.244:0.244) (0.256:0.256:0.256))
+    (IOPATH CLK Q (0.243:0.243:0.243) (0.256:0.256:0.256))
     (IOPATH RESET_B Q () (0.000:0.000:0.000))
    )
   )
@@ -3268,7 +3268,7 @@
   (INSTANCE _419_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.357:0.357:0.357) (0.250:0.250:0.250))
+    (IOPATH CLK Q (0.356:0.356:0.356) (0.250:0.250:0.250))
     (IOPATH SET_B Q (0.000:0.000:0.000))
    )
   )
@@ -3276,7 +3276,7 @@
     (REMOVAL (posedge SET_B) (posedge CLK) (0.104:0.104:0.104))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.090:-0.090:-0.090))
     (HOLD (posedge D) (posedge CLK) (-0.021:-0.022:-0.024))
-    (HOLD (negedge D) (posedge CLK) (-0.010:-0.012:-0.014))
+    (HOLD (negedge D) (posedge CLK) (-0.010:-0.012:-0.015))
     (SETUP (posedge D) (posedge CLK) (0.034:0.035:0.037))
     (SETUP (negedge D) (posedge CLK) (0.042:0.044:0.046))
   )
@@ -3293,7 +3293,7 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.225:0.225:0.225))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.129:-0.129:-0.129))
-    (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
+    (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
     (HOLD (negedge D) (posedge CLK) (-0.032:-0.032:-0.032))
     (SETUP (posedge D) (posedge CLK) (0.033:0.033:0.033))
     (SETUP (negedge D) (posedge CLK) (0.072:0.072:0.072))
@@ -3319,7 +3319,7 @@
   (INSTANCE _422_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.203:0.203:0.203) (0.198:0.198:0.198))
+    (IOPATH CLK Q (0.203:0.203:0.203) (0.197:0.197:0.197))
    )
   )
   (TIMINGCHECK
@@ -3334,7 +3334,7 @@
   (INSTANCE _423_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.205:0.205:0.205) (0.199:0.199:0.199))
+    (IOPATH CLK Q (0.205:0.205:0.205) (0.198:0.198:0.198))
    )
   )
   (TIMINGCHECK
@@ -3357,7 +3357,7 @@
     (REMOVAL (posedge SET_B) (posedge CLK) (0.104:0.104:0.104))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.090:-0.090:-0.090))
     (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
-    (HOLD (negedge D) (posedge CLK) (-0.010:-0.010:-0.011))
+    (HOLD (negedge D) (posedge CLK) (-0.010:-0.011:-0.011))
     (SETUP (posedge D) (posedge CLK) (0.032:0.032:0.033))
     (SETUP (negedge D) (posedge CLK) (0.041:0.042:0.043))
   )
@@ -3375,9 +3375,9 @@
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.225:0.225:0.225))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.129:-0.129:-0.129))
     (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
-    (HOLD (negedge D) (posedge CLK) (-0.028:-0.028:-0.029))
+    (HOLD (negedge D) (posedge CLK) (-0.028:-0.029:-0.029))
     (SETUP (posedge D) (posedge CLK) (0.033:0.033:0.033))
-    (SETUP (negedge D) (posedge CLK) (0.068:0.068:0.069))
+    (SETUP (negedge D) (posedge CLK) (0.068:0.069:0.069))
   )
  )
  (CELL
@@ -3395,7 +3395,7 @@
     (HOLD (posedge D) (negedge CLK_N) (0.056:0.055:0.054))
     (HOLD (negedge D) (negedge CLK_N) (-0.023:-0.025:-0.027))
     (SETUP (posedge D) (negedge CLK_N) (-0.029:-0.027:-0.025))
-    (SETUP (negedge D) (negedge CLK_N) (0.075:0.078:0.080))
+    (SETUP (negedge D) (negedge CLK_N) (0.076:0.078:0.080))
   )
  )
  (CELL
@@ -3428,10 +3428,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (negedge CLK_N) (0.308:0.308:0.308))
     (RECOVERY (posedge RESET_B) (negedge CLK_N) (-0.179:-0.179:-0.179))
-    (HOLD (posedge D) (negedge CLK_N) (0.056:0.055:0.054))
+    (HOLD (posedge D) (negedge CLK_N) (0.055:0.054:0.053))
     (HOLD (negedge D) (negedge CLK_N) (-0.023:-0.025:-0.027))
     (SETUP (posedge D) (negedge CLK_N) (-0.028:-0.026:-0.024))
-    (SETUP (negedge D) (negedge CLK_N) (0.075:0.078:0.081))
+    (SETUP (negedge D) (negedge CLK_N) (0.076:0.078:0.081))
   )
  )
  (CELL
@@ -3467,7 +3467,7 @@
     (HOLD (posedge D) (negedge CLK_N) (0.057:0.057:0.057))
     (HOLD (negedge D) (negedge CLK_N) (-0.027:-0.027:-0.027))
     (SETUP (posedge D) (negedge CLK_N) (-0.031:-0.031:-0.031))
-    (SETUP (negedge D) (negedge CLK_N) (0.080:0.080:0.081))
+    (SETUP (negedge D) (negedge CLK_N) (0.080:0.081:0.081))
   )
  )
  (CELL
@@ -3501,8 +3501,8 @@
     (REMOVAL (posedge RESET_B) (negedge CLK_N) (0.301:0.301:0.301))
     (RECOVERY (posedge RESET_B) (negedge CLK_N) (-0.185:-0.185:-0.185))
     (HOLD (posedge D) (negedge CLK_N) (0.057:0.057:0.057))
-    (HOLD (negedge D) (negedge CLK_N) (-0.028:-0.028:-0.028))
-    (SETUP (posedge D) (negedge CLK_N) (-0.031:-0.031:-0.031))
+    (HOLD (negedge D) (negedge CLK_N) (-0.028:-0.028:-0.029))
+    (SETUP (posedge D) (negedge CLK_N) (-0.031:-0.030:-0.030))
     (SETUP (negedge D) (negedge CLK_N) (0.082:0.082:0.082))
   )
  )
@@ -3516,7 +3516,7 @@
    )
   )
   (TIMINGCHECK
-    (REMOVAL (posedge RESET_B) (posedge CLK) (0.234:0.234:0.234))
+    (REMOVAL (posedge RESET_B) (posedge CLK) (0.233:0.233:0.233))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.095:-0.095:-0.095))
     (HOLD (posedge D) (posedge CLK) (-0.021:-0.022:-0.023))
     (HOLD (negedge D) (posedge CLK) (-0.024:-0.026:-0.028))
@@ -3583,7 +3583,7 @@
   (INSTANCE _437_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.263:0.263:0.263) (0.281:0.281:0.281))
+    (IOPATH CLK Q (0.263:0.263:0.263) (0.280:0.280:0.280))
     (IOPATH RESET_B Q () (0.000:0.000:0.000))
    )
   )
@@ -3593,7 +3593,7 @@
     (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
     (HOLD (negedge D) (posedge CLK) (-0.029:-0.029:-0.029))
     (SETUP (posedge D) (posedge CLK) (0.035:0.035:0.035))
-    (SETUP (negedge D) (posedge CLK) (0.073:0.073:0.074))
+    (SETUP (negedge D) (posedge CLK) (0.073:0.074:0.074))
   )
  )
  (CELL
@@ -3601,7 +3601,7 @@
   (INSTANCE _438_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.234:0.234:0.234) (0.248:0.248:0.248))
+    (IOPATH CLK Q (0.234:0.234:0.234) (0.247:0.247:0.247))
     (IOPATH RESET_B Q () (0.000:0.000:0.000))
    )
   )
@@ -3609,7 +3609,7 @@
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.225:0.225:0.225))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.129:-0.129:-0.129))
     (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
-    (HOLD (negedge D) (posedge CLK) (-0.028:-0.031:-0.033))
+    (HOLD (negedge D) (posedge CLK) (-0.029:-0.031:-0.033))
     (SETUP (posedge D) (posedge CLK) (0.034:0.034:0.034))
     (SETUP (negedge D) (posedge CLK) (0.069:0.071:0.074))
   )
@@ -3626,10 +3626,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.226:0.226:0.226))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.132:-0.132:-0.132))
-    (HOLD (posedge D) (posedge CLK) (-0.027:-0.027:-0.027))
-    (HOLD (negedge D) (posedge CLK) (-0.056:-0.056:-0.056))
-    (SETUP (posedge D) (posedge CLK) (0.042:0.042:0.042))
-    (SETUP (negedge D) (posedge CLK) (0.099:0.099:0.099))
+    (HOLD (posedge D) (posedge CLK) (-0.023:-0.023:-0.023))
+    (HOLD (negedge D) (posedge CLK) (-0.033:-0.033:-0.033))
+    (SETUP (posedge D) (posedge CLK) (0.037:0.037:0.037))
+    (SETUP (negedge D) (posedge CLK) (0.074:0.074:0.074))
   )
  )
  (CELL
@@ -3644,10 +3644,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge SET_B) (posedge CLK) (0.106:0.106:0.106))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.092:-0.092:-0.092))
-    (HOLD (posedge D) (posedge CLK) (-0.028:-0.028:-0.028))
-    (HOLD (negedge D) (posedge CLK) (-0.035:-0.035:-0.035))
-    (SETUP (posedge D) (posedge CLK) (0.041:0.041:0.041))
-    (SETUP (negedge D) (posedge CLK) (0.069:0.069:0.069))
+    (HOLD (posedge D) (posedge CLK) (-0.024:-0.024:-0.024))
+    (HOLD (negedge D) (posedge CLK) (-0.015:-0.015:-0.015))
+    (SETUP (posedge D) (posedge CLK) (0.037:0.037:0.037))
+    (SETUP (negedge D) (posedge CLK) (0.047:0.047:0.047))
   )
  )
  (CELL
@@ -3662,10 +3662,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.226:0.226:0.226))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.132:-0.132:-0.132))
-    (HOLD (posedge D) (posedge CLK) (-0.027:-0.027:-0.027))
-    (HOLD (negedge D) (posedge CLK) (-0.056:-0.056:-0.056))
-    (SETUP (posedge D) (posedge CLK) (0.042:0.042:0.042))
-    (SETUP (negedge D) (posedge CLK) (0.098:0.098:0.098))
+    (HOLD (posedge D) (posedge CLK) (-0.022:-0.022:-0.022))
+    (HOLD (negedge D) (posedge CLK) (-0.032:-0.032:-0.032))
+    (SETUP (posedge D) (posedge CLK) (0.037:0.037:0.037))
+    (SETUP (negedge D) (posedge CLK) (0.073:0.073:0.073))
   )
  )
  (CELL
@@ -3727,14 +3727,14 @@
   (INSTANCE _445_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.215:0.215:0.215) (0.204:0.204:0.204))
+    (IOPATH CLK Q (0.214:0.214:0.214) (0.204:0.204:0.204))
    )
   )
   (TIMINGCHECK
     (HOLD (posedge D) (posedge CLK) (-0.016:-0.016:-0.016))
-    (HOLD (negedge D) (posedge CLK) (-0.032:-0.034:-0.035))
+    (HOLD (negedge D) (posedge CLK) (-0.032:-0.034:-0.036))
     (SETUP (posedge D) (posedge CLK) (0.028:0.028:0.028))
-    (SETUP (negedge D) (posedge CLK) (0.062:0.064:0.065))
+    (SETUP (negedge D) (posedge CLK) (0.062:0.064:0.066))
   )
  )
  (CELL
@@ -3742,7 +3742,7 @@
   (INSTANCE _446_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.190:0.190:0.190) (0.188:0.188:0.188))
+    (IOPATH CLK Q (0.189:0.189:0.189) (0.188:0.188:0.188))
    )
   )
   (TIMINGCHECK
@@ -3757,7 +3757,7 @@
   (INSTANCE _447_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.201:0.201:0.201) (0.195:0.195:0.195))
+    (IOPATH CLK Q (0.201:0.201:0.201) (0.194:0.194:0.194))
    )
   )
   (TIMINGCHECK
@@ -3792,10 +3792,10 @@
    )
   )
   (TIMINGCHECK
-    (REMOVAL (posedge SET_B) (posedge CLK) (0.103:0.103:0.103))
+    (REMOVAL (posedge SET_B) (posedge CLK) (0.102:0.102:0.102))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.088:-0.088:-0.088))
     (HOLD (posedge D) (posedge CLK) (-0.021:-0.021:-0.021))
-    (HOLD (negedge D) (posedge CLK) (-0.012:-0.012:-0.013))
+    (HOLD (negedge D) (posedge CLK) (-0.012:-0.013:-0.013))
     (SETUP (posedge D) (posedge CLK) (0.033:0.034:0.034))
     (SETUP (negedge D) (posedge CLK) (0.043:0.044:0.045))
   )
@@ -3830,9 +3830,9 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (negedge CLK_N) (0.301:0.301:0.301))
     (RECOVERY (posedge RESET_B) (negedge CLK_N) (-0.184:-0.184:-0.184))
-    (HOLD (posedge D) (negedge CLK_N) (0.055:0.053:0.052))
+    (HOLD (posedge D) (negedge CLK_N) (0.054:0.053:0.052))
     (HOLD (negedge D) (negedge CLK_N) (-0.025:-0.028:-0.031))
-    (SETUP (posedge D) (negedge CLK_N) (-0.026:-0.024:-0.021))
+    (SETUP (posedge D) (negedge CLK_N) (-0.026:-0.023:-0.021))
     (SETUP (negedge D) (negedge CLK_N) (0.078:0.081:0.085))
   )
  )
@@ -3868,7 +3868,7 @@
     (RECOVERY (posedge RESET_B) (negedge CLK_N) (-0.184:-0.184:-0.184))
     (HOLD (posedge D) (negedge CLK_N) (0.056:0.055:0.054))
     (HOLD (negedge D) (negedge CLK_N) (-0.022:-0.025:-0.028))
-    (SETUP (posedge D) (negedge CLK_N) (-0.029:-0.027:-0.025))
+    (SETUP (posedge D) (negedge CLK_N) (-0.029:-0.026:-0.024))
     (SETUP (negedge D) (negedge CLK_N) (0.075:0.078:0.081))
   )
  )
@@ -3905,7 +3905,7 @@
     (HOLD (posedge D) (negedge CLK_N) (0.057:0.057:0.057))
     (HOLD (negedge D) (negedge CLK_N) (-0.027:-0.027:-0.028))
     (SETUP (posedge D) (negedge CLK_N) (-0.031:-0.031:-0.031))
-    (SETUP (negedge D) (negedge CLK_N) (0.080:0.081:0.081))
+    (SETUP (negedge D) (negedge CLK_N) (0.081:0.081:0.081))
   )
  )
  (CELL
@@ -3931,7 +3931,7 @@
   (INSTANCE _457_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK_N Q (0.295:0.295:0.295) (0.241:0.241:0.241))
+    (IOPATH CLK_N Q (0.294:0.294:0.294) (0.241:0.241:0.241))
     (IOPATH RESET_B Q () (0.000:0.000:0.000))
    )
   )
@@ -3955,7 +3955,7 @@
   )
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.225:0.225:0.225))
-    (RECOVERY (posedge RESET_B) (posedge CLK) (-0.102:-0.102:-0.102))
+    (RECOVERY (posedge RESET_B) (posedge CLK) (-0.101:-0.101:-0.101))
     (HOLD (posedge D) (posedge CLK) (-0.020:-0.022:-0.023))
     (HOLD (negedge D) (posedge CLK) (-0.026:-0.027:-0.028))
     (SETUP (posedge D) (posedge CLK) (0.038:0.040:0.042))
@@ -3967,17 +3967,17 @@
   (INSTANCE _459_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.361:0.361:0.361) (0.254:0.254:0.254))
+    (IOPATH CLK Q (0.361:0.361:0.361) (0.253:0.253:0.253))
     (IOPATH SET_B Q (0.000:0.000:0.000))
    )
   )
   (TIMINGCHECK
-    (REMOVAL (posedge SET_B) (posedge CLK) (0.104:0.104:0.104))
+    (REMOVAL (posedge SET_B) (posedge CLK) (0.103:0.103:0.103))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.087:-0.087:-0.087))
     (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
     (HOLD (negedge D) (posedge CLK) (-0.006:-0.008:-0.011))
     (SETUP (posedge D) (posedge CLK) (0.033:0.033:0.033))
-    (SETUP (negedge D) (posedge CLK) (0.043:0.046:0.049))
+    (SETUP (negedge D) (posedge CLK) (0.044:0.046:0.049))
   )
  )
  (CELL
@@ -3995,7 +3995,7 @@
     (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
     (HOLD (negedge D) (posedge CLK) (-0.027:-0.030:-0.033))
     (SETUP (posedge D) (posedge CLK) (0.034:0.034:0.034))
-    (SETUP (negedge D) (posedge CLK) (0.067:0.070:0.073))
+    (SETUP (negedge D) (posedge CLK) (0.067:0.070:0.074))
   )
  )
  (CELL
@@ -4003,15 +4003,15 @@
   (INSTANCE _461_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.349:0.349:0.349) (0.246:0.246:0.246))
+    (IOPATH CLK Q (0.348:0.348:0.348) (0.245:0.245:0.245))
     (IOPATH SET_B Q (0.000:0.000:0.000))
    )
   )
   (TIMINGCHECK
     (REMOVAL (posedge SET_B) (posedge CLK) (0.105:0.105:0.105))
-    (RECOVERY (posedge SET_B) (posedge CLK) (-0.091:-0.091:-0.091))
+    (RECOVERY (posedge SET_B) (posedge CLK) (-0.090:-0.090:-0.090))
     (HOLD (posedge D) (posedge CLK) (-0.022:-0.023:-0.025))
-    (HOLD (negedge D) (posedge CLK) (-0.011:-0.013:-0.015))
+    (HOLD (negedge D) (posedge CLK) (-0.011:-0.013:-0.016))
     (SETUP (posedge D) (posedge CLK) (0.035:0.036:0.038))
     (SETUP (negedge D) (posedge CLK) (0.043:0.045:0.047))
   )
@@ -4021,17 +4021,17 @@
   (INSTANCE _462_)
   (DELAY
    (ABSOLUTE
-    (IOPATH CLK Q (0.374:0.374:0.374) (0.260:0.260:0.260))
+    (IOPATH CLK Q (0.374:0.374:0.374) (0.259:0.259:0.259))
     (IOPATH SET_B Q (0.000:0.000:0.000))
    )
   )
   (TIMINGCHECK
-    (REMOVAL (posedge SET_B) (posedge CLK) (0.104:0.104:0.104))
+    (REMOVAL (posedge SET_B) (posedge CLK) (0.103:0.103:0.103))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.087:-0.087:-0.087))
     (HOLD (posedge D) (posedge CLK) (-0.019:-0.019:-0.019))
     (HOLD (negedge D) (posedge CLK) (-0.011:-0.011:-0.012))
     (SETUP (posedge D) (posedge CLK) (0.033:0.033:0.033))
-    (SETUP (negedge D) (posedge CLK) (0.049:0.050:0.050))
+    (SETUP (negedge D) (posedge CLK) (0.050:0.050:0.050))
   )
  )
  (CELL
@@ -4047,7 +4047,7 @@
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.222:0.222:0.222))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.112:-0.112:-0.112))
     (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
-    (HOLD (negedge D) (posedge CLK) (-0.031:-0.031:-0.032))
+    (HOLD (negedge D) (posedge CLK) (-0.031:-0.032:-0.032))
     (SETUP (posedge D) (posedge CLK) (0.036:0.036:0.036))
     (SETUP (negedge D) (posedge CLK) (0.076:0.076:0.076))
   )
@@ -4064,7 +4064,7 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.222:0.222:0.222))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.128:-0.128:-0.128))
-    (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.020))
+    (HOLD (posedge D) (posedge CLK) (-0.020:-0.020:-0.021))
     (HOLD (negedge D) (posedge CLK) (-0.029:-0.032:-0.034))
     (SETUP (posedge D) (posedge CLK) (0.034:0.035:0.035))
     (SETUP (negedge D) (posedge CLK) (0.069:0.072:0.074))
@@ -4082,10 +4082,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.227:0.227:0.227))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.121:-0.121:-0.121))
-    (HOLD (posedge D) (posedge CLK) (-0.027:-0.027:-0.027))
-    (HOLD (negedge D) (posedge CLK) (-0.056:-0.056:-0.056))
-    (SETUP (posedge D) (posedge CLK) (0.043:0.043:0.043))
-    (SETUP (negedge D) (posedge CLK) (0.099:0.099:0.099))
+    (HOLD (posedge D) (posedge CLK) (-0.022:-0.022:-0.022))
+    (HOLD (negedge D) (posedge CLK) (-0.034:-0.034:-0.034))
+    (SETUP (posedge D) (posedge CLK) (0.036:0.036:0.036))
+    (SETUP (negedge D) (posedge CLK) (0.074:0.074:0.074))
   )
  )
  (CELL
@@ -4100,10 +4100,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge SET_B) (posedge CLK) (0.101:0.101:0.101))
     (RECOVERY (posedge SET_B) (posedge CLK) (-0.087:-0.087:-0.087))
-    (HOLD (posedge D) (posedge CLK) (-0.028:-0.028:-0.028))
-    (HOLD (negedge D) (posedge CLK) (-0.033:-0.033:-0.033))
-    (SETUP (posedge D) (posedge CLK) (0.042:0.042:0.042))
-    (SETUP (negedge D) (posedge CLK) (0.067:0.067:0.067))
+    (HOLD (posedge D) (posedge CLK) (-0.021:-0.021:-0.021))
+    (HOLD (negedge D) (posedge CLK) (-0.014:-0.014:-0.014))
+    (SETUP (posedge D) (posedge CLK) (0.034:0.034:0.034))
+    (SETUP (negedge D) (posedge CLK) (0.046:0.046:0.046))
   )
  )
  (CELL
@@ -4118,10 +4118,10 @@
   (TIMINGCHECK
     (REMOVAL (posedge RESET_B) (posedge CLK) (0.222:0.222:0.222))
     (RECOVERY (posedge RESET_B) (posedge CLK) (-0.124:-0.124:-0.124))
-    (HOLD (posedge D) (posedge CLK) (-0.027:-0.027:-0.027))
-    (HOLD (negedge D) (posedge CLK) (-0.056:-0.056:-0.056))
-    (SETUP (posedge D) (posedge CLK) (0.043:0.043:0.043))
-    (SETUP (negedge D) (posedge CLK) (0.098:0.098:0.098))
+    (HOLD (posedge D) (posedge CLK) (-0.021:-0.021:-0.021))
+    (HOLD (negedge D) (posedge CLK) (-0.033:-0.033:-0.033))
+    (SETUP (posedge D) (posedge CLK) (0.036:0.036:0.036))
+    (SETUP (negedge D) (posedge CLK) (0.073:0.073:0.073))
   )
  )
  (CELL
@@ -4192,7 +4192,7 @@
   (INSTANCE input1)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.090:-0.090:-0.090) (1.058:1.058:1.058))
+    (IOPATH A X (0.164:0.164:0.164) (0.214:0.214:0.214))
    )
   )
  )
@@ -4201,7 +4201,7 @@
   (INSTANCE input2)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.247:-0.247:-0.247) (0.951:0.951:0.951))
+    (IOPATH A X (0.122:0.122:0.122) (0.166:0.166:0.166))
    )
   )
  )
@@ -4210,7 +4210,7 @@
   (INSTANCE input3)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.245:-0.245:-0.245) (0.952:0.952:0.952))
+    (IOPATH A X (0.123:0.123:0.123) (0.167:0.167:0.167))
    )
   )
  )
@@ -4219,7 +4219,7 @@
   (INSTANCE input4)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.295:-0.295:-0.295) (0.912:0.912:0.912))
+    (IOPATH A X (0.084:0.084:0.084) (0.146:0.146:0.146))
    )
   )
  )
@@ -4228,7 +4228,7 @@
   (INSTANCE input5)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.313:-0.313:-0.313) (0.898:0.898:0.898))
+    (IOPATH A X (0.073:0.073:0.073) (0.140:0.140:0.140))
    )
   )
  )
@@ -4237,7 +4237,7 @@
   (INSTANCE input6)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.322:-0.322:-0.322) (0.888:0.888:0.888))
+    (IOPATH A X (0.068:0.068:0.068) (0.136:0.136:0.136))
    )
   )
  )
@@ -4246,7 +4246,7 @@
   (INSTANCE input7)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.318:-0.318:-0.318) (0.894:0.894:0.894))
+    (IOPATH A X (0.070:0.070:0.070) (0.138:0.138:0.138))
    )
   )
  )
@@ -4255,7 +4255,7 @@
   (INSTANCE input8)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.277:-0.277:-0.277) (0.928:0.928:0.928))
+    (IOPATH A X (0.093:0.093:0.093) (0.152:0.152:0.152))
    )
   )
  )
@@ -4264,7 +4264,7 @@
   (INSTANCE input9)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.270:-0.270:-0.270) (0.934:0.934:0.934))
+    (IOPATH A X (0.099:0.099:0.099) (0.155:0.155:0.155))
    )
   )
  )
@@ -4273,7 +4273,7 @@
   (INSTANCE input10)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.286:-0.286:-0.286) (0.921:0.921:0.921))
+    (IOPATH A X (0.089:0.089:0.089) (0.150:0.150:0.150))
    )
   )
  )
@@ -4462,7 +4462,7 @@
   (INSTANCE fanout31)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.154:0.154:0.155) (0.122:0.123:0.123))
+    (IOPATH A X (0.154:0.154:0.154) (0.122:0.123:0.123))
    )
   )
  )
@@ -4471,7 +4471,7 @@
   (INSTANCE clkbuf_1_0__f_ext_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.098:0.098:0.098) (0.130:0.130:0.130))
+    (IOPATH A X (0.075:0.075:0.075) (0.089:0.089:0.089))
    )
   )
  )
@@ -4480,7 +4480,7 @@
   (INSTANCE clkbuf_1_1__f_ext_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.096:0.096:0.096) (0.128:0.128:0.128))
+    (IOPATH A X (0.073:0.073:0.073) (0.087:0.087:0.087))
    )
   )
  )
@@ -4543,7 +4543,7 @@
   (INSTANCE clkbuf_0_pll_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.010:-0.010:-0.010) (1.161:1.161:1.161))
+    (IOPATH A X (0.132:0.132:0.132) (0.205:0.205:0.205))
    )
   )
  )
@@ -4552,7 +4552,7 @@
   (INSTANCE clkbuf_1_0__f_pll_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.128:0.128:0.128) (0.153:0.153:0.153))
+    (IOPATH A X (0.104:0.104:0.104) (0.112:0.112:0.112))
    )
   )
  )
@@ -4561,7 +4561,7 @@
   (INSTANCE clkbuf_1_1__f_pll_clk)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.129:0.129:0.129) (0.153:0.153:0.153))
+    (IOPATH A X (0.105:0.105:0.105) (0.112:0.112:0.112))
    )
   )
  )
@@ -4597,7 +4597,7 @@
   (INSTANCE clkbuf_0_pll_clk90)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (-0.014:-0.014:-0.014) (1.158:1.158:1.158))
+    (IOPATH A X (0.131:0.131:0.131) (0.203:0.203:0.203))
    )
   )
  )
@@ -4606,7 +4606,7 @@
   (INSTANCE clkbuf_1_0__f_pll_clk90)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.118:0.118:0.118) (0.146:0.146:0.146))
+    (IOPATH A X (0.095:0.095:0.095) (0.105:0.105:0.105))
    )
   )
  )
@@ -4615,7 +4615,7 @@
   (INSTANCE clkbuf_1_1__f_pll_clk90)
   (DELAY
    (ABSOLUTE
-    (IOPATH A X (0.129:0.129:0.129) (0.153:0.153:0.153))
+    (IOPATH A X (0.105:0.105:0.105) (0.112:0.112:0.112))
    )
   )
  )
