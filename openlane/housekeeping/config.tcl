@@ -92,10 +92,13 @@ set ::env(GLB_RESIZER_MAX_CAP_MARGIN) "30"
 set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 0.2
 
 ## Diode Insertion
-set ::env(DIODE_INSERTION_STRATEGY) 3
-set ::env(GRT_ANT_ITERS) 10
-set ::env(GRT_MAX_DIODE_INS_ITERS) 10
-# set ::env(USE_ARC_ANTENNA_CHECK) 0
+set ::env(GRT_REPAIR_ANTENNAS) 1
+set ::env(RUN_HEURISTIC_DIODE_INSERTION) 1
+set ::env(HEURISTIC_ANTENNA_THRESHOLD) 180
+set ::env(DIODE_ON_PORTS) "both"
+set ::env(GRT_ANT_ITERS) 12
+set ::env(GRT_MAX_DIODE_INS_ITERS) 4
+set ::env(DIODE_PADDING) 0
 
 ## clock buffering
 # set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4}
