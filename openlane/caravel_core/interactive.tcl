@@ -90,7 +90,7 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 run_placement
 run_cts 
 
-ins_diode_cells_4
+heuristic_diode_insertion
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
 set ::env(GRT_OBS) "\
     met5 90 175.0 496.18 612.92, \

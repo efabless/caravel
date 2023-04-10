@@ -51,11 +51,12 @@ set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 # set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_EXTRA_MAPPING_FILE) "$::env(DESIGN_DIR)/synth_configuration/yosys_mapping.v"
-set ::env(SYNTH_MAX_FANOUT) 16
+set ::env(SYNTH_MAX_FANOUT) 12
 set ::env(SYNTH_CAP_LOAD) 52
 set ::env(SYNTH_CLOCK_TRANSITION) 0.6
 set ::env(SYNTH_CLOCK_UNCERTAINTY) 0.25
-# set ::env(SYNTH_MAX_TRAN) 0.75
+set ::env(SYNTH_MAX_TRAN) 0.50
+set ::env(QUIT_ON_SYNTH_CHECKS) 0
 
 ## Floorplan
 set ::env(FP_SIZING) absolute
@@ -74,7 +75,7 @@ set ::env(FP_IO_VEXTEND) 2
 set ::env(FP_IO_HEXTEND) 2
 
 set ::env(FP_TAPCELL_DIST) 10
-
+set ::env(PL_MACRO_HALO) "-1 -3"
 # set ::env(CELL_PAD) 0
 
 ## PDN 
@@ -207,11 +208,15 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
 set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 1
 set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 600
-set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 20
-set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 20
+set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 30
+set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 30
 
 ## Antenna
-set ::env(DIODE_INSERTION_STRATEGY) 6
+set ::env(GRT_REPAIR_ANTENNAS) 1
+set ::env(RUN_HEURISTIC_DIODE_INSERTION) 1
+set ::env(HEURISTIC_ANTENNA_THRESHOLD) 80
+set ::env(DIODE_ON_PORTS) "none"
+set ::env(GRT_ANT_MARGIN) 15
 set ::env(GRT_ANT_ITERS) 12
 set ::env(GRT_MAX_DIODE_INS_ITERS) 4
 set ::env(DIODE_PADDING) 0
