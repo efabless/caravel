@@ -32,7 +32,7 @@
 #
 # This script parses the user_defines.v file to determine the state
 # of each GPIO.  Then it creates as many new layouts as needed to
-# represent all unique states, modifies the caravel.mag layout
+# represent all unique states, modifies the caravel_core.mag layout
 # to replace the default layouts with the new ones as needed, and
 # generates GDS files for each of the layouts.
 #
@@ -187,7 +187,7 @@ if __name__ == '__main__':
     lly_one  = []
     urx_one  = []
     ury_one  = []
-    
+
     zero_string = []
     one_string = []
 
@@ -321,7 +321,7 @@ if __name__ == '__main__':
 
     # Create a backup of the caravan and caravel layouts
     # if not testmode:
-    #     shutil.copy(magpath + '/caravel.mag', magpath + '/caravel.mag.bak')
+    #     shutil.copy(magpath + '/caravel_core.mag', magpath + '/caravel_core.mag.bak')
     #     shutil.copy(magpath + '/caravan.mag', magpath + '/caravan.mag.bak')
 
     idx1rex = re.compile('gpio_defaults_block_([0-9]+)..([0-9]+)')
@@ -329,7 +329,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravel layout:')
-    with open(caravel_path + '/mag/caravel.mag', 'r') as ifile:
+    with open(caravel_path + '/mag/caravel_core.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
@@ -359,7 +359,7 @@ if __name__ == '__main__':
                 outlines.append(magline)
 
     if not testmode:
-        with open(magpath + '/caravel.mag', 'w') as ofile:
+        with open(magpath + '/caravel_core.mag', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
