@@ -50,9 +50,9 @@ set ::env(DPL_CELL_PADDING) {0}
 set ::env(DRC_EXCLUDE_CELL_LIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/synth_configuration/drc_exclude.cells}
 set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/drc_exclude.cells}
 set ::env(DRT_OPT_ITERS) {64}
-set ::env(EXTRA_GDS_FILES) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/user_project_wrapper_empty.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/housekeeping.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/simple_por.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/xres_buf.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/spare_logic_block.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj_io_buffer.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/gpio_defaults_block.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj2_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mgmt_protect_hv.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/gpio_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/empty_macro.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/caravel_clocking.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/manual_power_connections.gds  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/gds/RAM128.gds  }
-set ::env(EXTRA_LEFS) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/user_project_wrapper_empty.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/housekeeping.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/simple_por.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/xres_buf.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/spare_logic_block.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj_io_buffer.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/gpio_defaults_block.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj2_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mgmt_protect_hv.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/gpio_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/empty_macro.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/caravel_clocking.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/manual_power_connections.lef  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/lef/RAM128.lef  }
-set ::env(EXTRA_LIBS) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/housekeeping.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/gpio_defaults_block.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/gpio_logic_high.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/mprj_io_buffer.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/user_project_wrapper.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/caravel_clocking.lib  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib  }
+set ::env(EXTRA_GDS_FILES) { /home/hosni/caravel-redesign-2/caravel/gds/user_project_wrapper_empty.gds  /home/hosni/caravel-redesign-2/caravel/gds/housekeeping.gds  /home/hosni/caravel-redesign-2/caravel/gds/simple_por.gds  /home/hosni/caravel-redesign-2/caravel/gds/xres_buf.gds  /home/hosni/caravel-redesign-2/caravel/gds/spare_logic_block.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj_io_buffer.gds  /home/hosni/caravel-redesign-2/caravel/gds/gpio_defaults_block.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj2_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/mgmt_protect_hv.gds  /home/hosni/caravel-redesign-2/caravel/gds/gpio_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/empty_macro.gds  /home/hosni/caravel-redesign-2/caravel/gds/caravel_clocking.gds  /home/hosni/caravel-redesign-2/caravel/gds/manual_power_connections.gds  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/gds/RAM128.gds  }
+set ::env(EXTRA_LEFS) { /home/hosni/caravel-redesign-2/caravel/lef/user_project_wrapper_empty.lef  /home/hosni/caravel-redesign-2/caravel/lef/housekeeping.lef  /home/hosni/caravel-redesign-2/caravel/lef/simple_por.lef  /home/hosni/caravel-redesign-2/caravel/lef/xres_buf.lef  /home/hosni/caravel-redesign-2/caravel/lef/spare_logic_block.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj_io_buffer.lef  /home/hosni/caravel-redesign-2/caravel/lef/gpio_defaults_block.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj2_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/mgmt_protect_hv.lef  /home/hosni/caravel-redesign-2/caravel/lef/gpio_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/empty_macro.lef  /home/hosni/caravel-redesign-2/caravel/lef/caravel_clocking.lef  /home/hosni/caravel-redesign-2/caravel/lef/manual_power_connections.lef  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/lef/RAM128.lef  }
+set ::env(EXTRA_LIBS) { /home/hosni/caravel-redesign-2/caravel/lib/housekeeping.lib  /home/hosni/caravel-redesign-2/caravel/lib/gpio_defaults_block.lib  /home/hosni/caravel-redesign-2/caravel/lib/gpio_logic_high.lib  /home/hosni/caravel-redesign-2/caravel/lib/mprj_io_buffer.lib  /home/hosni/caravel-redesign-2/caravel/lib/user_project_wrapper.lib  /home/hosni/caravel-redesign-2/caravel/lib/caravel_clocking.lib  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib  }
 set ::env(FAKEDIODE_CELL) {sky130_ef_sc_hd__fakediode_2}
 set ::env(FILL_CELL) {sky130_fd_sc_hd__fill*}
 set ::env(FP_ASPECT_RATIO) {1}
@@ -111,7 +111,7 @@ set ::env(FULL_ADDER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_ma
 set ::env(GDS_FILES) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GDS_FILES_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GENERATE_FINAL_SUMMARY_REPORT) {1}
-set ::env(GLB_CFG_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/config.tcl}
+set ::env(GLB_CFG_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/config.tcl}
 set ::env(GLB_OPTIMIZE_MIRRORING) {1}
 set ::env(GLB_RESIZER_ALLOW_SETUP_VIOS) {0}
 set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) {1}
@@ -136,7 +136,7 @@ set ::env(GPL_CELL_PADDING) {0}
 set ::env(GRT_ADJUSTMENT) {0.06}
 set ::env(GRT_ALLOW_CONGESTION) {1}
 set ::env(GRT_ANT_ITERS) {12}
-set ::env(GRT_ANT_MARGIN) {15}
+set ::env(GRT_ANT_MARGIN) {12}
 set ::env(GRT_ESTIMATE_PARASITICS) {1}
 set ::env(GRT_LAYER_ADJUSTMENTS) {0.99,0,0,0,0,0}
 set ::env(GRT_MACRO_EXTENSION) {0}
@@ -162,7 +162,7 @@ set ::env(LIB_SLOWEST) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_h
 set ::env(LIB_SLOWEST_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
 set ::env(LIB_SYNTH) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
 set ::env(LIB_TYPICAL) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LOGS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs}
+set ::env(LOGS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs}
 set ::env(LVS_CONNECT_BY_LABEL) {0}
 set ::env(LVS_INSERT_POWER_PINS) {1}
 set ::env(MACRO_BLOCKAGES_LAYER) {li1 met1 met2 met3 met4}
@@ -247,8 +247,8 @@ set ::env(RCX_RULES) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.
 set ::env(RCX_RULES_MAX) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
 set ::env(RCX_RULES_MIN) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
 set ::env(RCX_SDC_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/sdc_files/rcx.sdc}
-set ::env(REPORTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports}
-set ::env(RESULTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results}
+set ::env(REPORTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports}
+set ::env(RESULTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results}
 set ::env(RE_BUFFER_CELL) {sky130_fd_sc_hd__buf_4}
 set ::env(RIGHT_MARGIN_MULT) {12}
 set ::env(RIPPLE_CARRY_ADDER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
@@ -259,7 +259,7 @@ set ::env(RSZ_USE_OLD_REMOVER) {0}
 set ::env(RT_MAX_LAYER) {met5}
 set ::env(RT_MIN_LAYER) {met1}
 set ::env(RUN_CVC) {1}
-set ::env(RUN_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36}
+set ::env(RUN_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23}
 set ::env(RUN_DRT) {1}
 set ::env(RUN_FILL_INSERTION) {1}
 set ::env(RUN_HEURISTIC_DIODE_INSERTION) {1}
@@ -271,11 +271,11 @@ set ::env(RUN_LVS) {1}
 set ::env(RUN_MAGIC) {1}
 set ::env(RUN_MAGIC_DRC) {1}
 set ::env(RUN_SPEF_EXTRACTION) {1}
-set ::env(RUN_TAG) {23_04_09_16_36}
+set ::env(RUN_TAG) {23_04_11_05_23}
 set ::env(RUN_TAP_DECAP_INSERTION) {1}
 set ::env(SCLPATH) {/pdk/sky130A/sky130_fd_sc_hd}
 set ::env(SPEF_EXTRACTOR) {openrcx}
-set ::env(START_TIME) {2023.04.09_23.36.44}
+set ::env(START_TIME) {2023.04.11_12.23.53}
 set ::env(STA_REPORT_POWER) {1}
 set ::env(STA_WRITE_LIB) {0}
 set ::env(STD_CELL_GROUND_PINS) {VGND VNB}
@@ -316,7 +316,7 @@ set ::env(TECH_LEF_MAX) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd
 set ::env(TECH_LEF_MIN) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef}
 set ::env(TECH_LEF_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}
 set ::env(TERMINAL_OUTPUT) {/dev/null}
-set ::env(TMP_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp}
+set ::env(TMP_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp}
 set ::env(TOP_MARGIN_MULT) {4}
 set ::env(TRACKS_INFO_FILE) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
 set ::env(TRISTATE_BUFFER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
@@ -325,47 +325,47 @@ set ::env(USE_GPIO_PADS) {0}
 set ::env(VDD_NETS) {vccd vccd1 vccd2 vdda1 vdda2 vddio}
 set ::env(VDD_PIN) {VPWR}
 set ::env(VDD_PIN_VOLTAGE) {1.80}
-set ::env(VERILOG_FILES) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/user_defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/caravel_core.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mgmt_protect.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/digital_pll.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/clock_div.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_control_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/user_id_programming.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core_wrapper.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/ibex_all.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/picorv32.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/VexRiscv_MinDebugCache.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/RAM256.v  }
-set ::env(VERILOG_FILES_BLACKBOX) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/__user_project_wrapper.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/housekeeping.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/simple_por.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/xres_buf.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/spare_logic_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/mprj_io_buffer.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_defaults_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mprj_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mprj2_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mgmt_protect_hv.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/empty_macro.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/caravel_clocking.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/manual_power_connections.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/gl/RAM128.v  }
+set ::env(VERILOG_FILES) { /home/hosni/caravel-redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/user_defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/caravel_core.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mgmt_protect.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/digital_pll.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/clock_div.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_control_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/user_id_programming.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core_wrapper.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/ibex_all.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/picorv32.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/VexRiscv_MinDebugCache.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/RAM256.v  }
+set ::env(VERILOG_FILES_BLACKBOX) { /home/hosni/caravel-redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/__user_project_wrapper.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/housekeeping.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/simple_por.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/xres_buf.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/spare_logic_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/mprj_io_buffer.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_defaults_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mprj_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mprj2_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mgmt_protect_hv.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/empty_macro.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/caravel_clocking.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/manual_power_connections.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/gl/RAM128.v  }
 set ::env(VSRC_LOC) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/floorplan_configuration/Vsrc.loc}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
-set ::env(cts_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/cts}
-set ::env(cts_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/cts}
-set ::env(cts_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/cts}
-set ::env(cts_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/cts}
-set ::env(floorplan_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/floorplan}
-set ::env(floorplan_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/floorplan}
-set ::env(floorplan_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/floorplan}
-set ::env(floorplan_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/floorplan}
-set ::env(placement_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/placement}
-set ::env(placement_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/placement}
-set ::env(placement_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/placement}
-set ::env(placement_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/placement}
-set ::env(routing_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/routing}
-set ::env(routing_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/routing}
-set ::env(routing_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing}
-set ::env(routing_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing}
-set ::env(signoff_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/signoff}
-set ::env(signoff_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/signoff}
-set ::env(signoff_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/signoff}
-set ::env(signoff_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/signoff}
-set ::env(synthesis_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/synthesis}
-set ::env(synthesis_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/synthesis}
-set ::env(synthesis_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/synthesis}
-set ::env(synthesis_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis}
+set ::env(cts_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/cts}
+set ::env(cts_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/cts}
+set ::env(cts_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/cts}
+set ::env(cts_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/cts}
+set ::env(floorplan_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/floorplan}
+set ::env(floorplan_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/floorplan}
+set ::env(floorplan_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/floorplan}
+set ::env(floorplan_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/floorplan}
+set ::env(placement_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/placement}
+set ::env(placement_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/placement}
+set ::env(placement_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/placement}
+set ::env(placement_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/placement}
+set ::env(routing_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/routing}
+set ::env(routing_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/routing}
+set ::env(routing_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing}
+set ::env(routing_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing}
+set ::env(signoff_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/signoff}
+set ::env(signoff_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/signoff}
+set ::env(signoff_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/signoff}
+set ::env(signoff_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/signoff}
+set ::env(synthesis_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/synthesis}
+set ::env(synthesis_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/synthesis}
+set ::env(synthesis_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/synthesis}
+set ::env(synthesis_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis}
 set ::env(CURRENT_INDEX) 45
-set ::env(CURRENT_DEF) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.def
-set ::env(CURRENT_GUIDE) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing/30-global.guide
-set ::env(CURRENT_NETLIST) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.nl.v
+set ::env(CURRENT_DEF) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.def
+set ::env(CURRENT_GUIDE) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing/30-global.guide
+set ::env(CURRENT_NETLIST) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.nl.v
 set ::env(CURRENT_POWERED_NETLIST) {0}
-set ::env(CURRENT_ODB) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.odb
+set ::env(CURRENT_ODB) /home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.odb
 set ::env(PDK_ROOT) {/pdk}
-set ::env(ANTENNA_VIOLATOR_LIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/signoff/43-antenna_violators.rpt}
+set ::env(ANTENNA_VIOLATOR_LIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/signoff/43-antenna_violators.rpt}
 set ::env(BASE_SDC_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/sdc_files/base.sdc}
 set ::env(BASIC_PREP_COMPLETE) {1}
 set ::env(BOTTOM_MARGIN_MULT) {4}
-set ::env(CARAVEL_ROOT) {/home/hosni/caravel_sky130/caravel_redesign-2/caravel}
+set ::env(CARAVEL_ROOT) {/home/hosni/caravel-redesign-2/caravel}
 set ::env(CARRY_SELECT_ADDER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/csa_map.v}
 set ::env(CELLS_LEF) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
 set ::env(CELLS_LEF_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /pdk/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef}
@@ -398,17 +398,17 @@ set ::env(CTS_SQR_RES) {0.125}
 set ::env(CTS_TARGET_SKEW) {200}
 set ::env(CTS_TECH_DIR) {N/A}
 set ::env(CTS_TOLERANCE) {100}
-set ::env(CURRENT_DEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.def}
-set ::env(CURRENT_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing}
-set ::env(CURRENT_GDS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/signoff/caravel_core.gds}
-set ::env(CURRENT_GUIDE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing/30-global.guide}
+set ::env(CURRENT_DEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.def}
+set ::env(CURRENT_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing}
+set ::env(CURRENT_GDS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/signoff/caravel_core.gds}
+set ::env(CURRENT_GUIDE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing/30-global.guide}
 set ::env(CURRENT_INDEX) {45}
-set ::env(CURRENT_NETLIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.nl.v}
-set ::env(CURRENT_ODB) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.odb}
-set ::env(CURRENT_POWERED_NETLIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/caravel_core.pnl.v}
-set ::env(CURRENT_SDC) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/cts/caravel_core.sdc}
-set ::env(CURRENT_SDF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/mca/process_corner_nom/caravel_core.sdf}
-set ::env(CURRENT_SPEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/mca/process_corner_nom/caravel_core.spef}
+set ::env(CURRENT_NETLIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.nl.v}
+set ::env(CURRENT_ODB) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.odb}
+set ::env(CURRENT_POWERED_NETLIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/caravel_core.pnl.v}
+set ::env(CURRENT_SDC) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/cts/caravel_core.sdc}
+set ::env(CURRENT_SDF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/mca/process_corner_nom/caravel_core.sdf}
+set ::env(CURRENT_SPEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/mca/process_corner_nom/caravel_core.spef}
 set ::env(CVC_SCRIPTS_DIR) {/pdk/sky130A/libs.tech/openlane/cvc}
 set ::env(DATA_WIRE_RC_LAYER) {met2}
 set ::env(DECAP_CELL) {sky130_ef_sc_hd__decap_12 sky130_fd_sc_hd__decap_8 sky130_fd_sc_hd__decap_6 sky130_fd_sc_hd__decap_4 sky130_fd_sc_hd__decap_3}
@@ -430,9 +430,9 @@ set ::env(DRC_EXCLUDE_CELL_LIST) {/home/hosni/caravel-redesign-2/caravel/openlan
 set ::env(DRC_EXCLUDE_CELL_LIST_OPT) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/drc_exclude.cells}
 set ::env(DRT_OPT_ITERS) {64}
 set ::env(EXIT_ON_ERROR) {1}
-set ::env(EXTRA_GDS_FILES) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/user_project_wrapper_empty.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/housekeeping.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/simple_por.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/xres_buf.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/spare_logic_block.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj_io_buffer.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/gpio_defaults_block.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mprj2_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/mgmt_protect_hv.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/gpio_logic_high.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/empty_macro.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/caravel_clocking.gds  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/gds/manual_power_connections.gds  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/gds/RAM128.gds  }
-set ::env(EXTRA_LEFS) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/user_project_wrapper_empty.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/housekeeping.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/simple_por.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/xres_buf.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/spare_logic_block.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj_io_buffer.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/gpio_defaults_block.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mprj2_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/mgmt_protect_hv.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/gpio_logic_high.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/empty_macro.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/caravel_clocking.lef  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lef/manual_power_connections.lef  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/lef/RAM128.lef  }
-set ::env(EXTRA_LIBS) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/housekeeping.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/gpio_defaults_block.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/gpio_logic_high.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/mprj_io_buffer.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/user_project_wrapper.lib  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/lib/caravel_clocking.lib  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib  }
+set ::env(EXTRA_GDS_FILES) { /home/hosni/caravel-redesign-2/caravel/gds/user_project_wrapper_empty.gds  /home/hosni/caravel-redesign-2/caravel/gds/housekeeping.gds  /home/hosni/caravel-redesign-2/caravel/gds/simple_por.gds  /home/hosni/caravel-redesign-2/caravel/gds/xres_buf.gds  /home/hosni/caravel-redesign-2/caravel/gds/spare_logic_block.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj_io_buffer.gds  /home/hosni/caravel-redesign-2/caravel/gds/gpio_defaults_block.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/mprj2_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/mgmt_protect_hv.gds  /home/hosni/caravel-redesign-2/caravel/gds/gpio_logic_high.gds  /home/hosni/caravel-redesign-2/caravel/gds/empty_macro.gds  /home/hosni/caravel-redesign-2/caravel/gds/caravel_clocking.gds  /home/hosni/caravel-redesign-2/caravel/gds/manual_power_connections.gds  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/gds/RAM128.gds  }
+set ::env(EXTRA_LEFS) { /home/hosni/caravel-redesign-2/caravel/lef/user_project_wrapper_empty.lef  /home/hosni/caravel-redesign-2/caravel/lef/housekeeping.lef  /home/hosni/caravel-redesign-2/caravel/lef/simple_por.lef  /home/hosni/caravel-redesign-2/caravel/lef/xres_buf.lef  /home/hosni/caravel-redesign-2/caravel/lef/spare_logic_block.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj_io_buffer.lef  /home/hosni/caravel-redesign-2/caravel/lef/gpio_defaults_block.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/mprj2_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/mgmt_protect_hv.lef  /home/hosni/caravel-redesign-2/caravel/lef/gpio_logic_high.lef  /home/hosni/caravel-redesign-2/caravel/lef/empty_macro.lef  /home/hosni/caravel-redesign-2/caravel/lef/caravel_clocking.lef  /home/hosni/caravel-redesign-2/caravel/lef/manual_power_connections.lef  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/lef/RAM128.lef  }
+set ::env(EXTRA_LIBS) { /home/hosni/caravel-redesign-2/caravel/lib/housekeeping.lib  /home/hosni/caravel-redesign-2/caravel/lib/gpio_defaults_block.lib  /home/hosni/caravel-redesign-2/caravel/lib/gpio_logic_high.lib  /home/hosni/caravel-redesign-2/caravel/lib/mprj_io_buffer.lib  /home/hosni/caravel-redesign-2/caravel/lib/user_project_wrapper.lib  /home/hosni/caravel-redesign-2/caravel/lib/caravel_clocking.lib  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib  }
 set ::env(FAKEDIODE_CELL) {sky130_ef_sc_hd__fakediode_2}
 set ::env(FILL_CELL) {sky130_fd_sc_hd__fill*}
 set ::env(FP_ASPECT_RATIO) {1}
@@ -491,7 +491,7 @@ set ::env(FULL_ADDER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/fa_ma
 set ::env(GDS_FILES) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GDS_FILES_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/gds/sky130_fd_sc_hd.gds}
 set ::env(GENERATE_FINAL_SUMMARY_REPORT) {1}
-set ::env(GLB_CFG_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/config.tcl}
+set ::env(GLB_CFG_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/config.tcl}
 set ::env(GLB_OPTIMIZE_MIRRORING) {1}
 set ::env(GLB_RESIZER_ALLOW_SETUP_VIOS) {0}
 set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) {0}
@@ -517,7 +517,7 @@ set ::env(GPL_CELL_PADDING) {0}
 set ::env(GRT_ADJUSTMENT) {0.06}
 set ::env(GRT_ALLOW_CONGESTION) {1}
 set ::env(GRT_ANT_ITERS) {12}
-set ::env(GRT_ANT_MARGIN) {15}
+set ::env(GRT_ANT_MARGIN) {12}
 set ::env(GRT_ESTIMATE_PARASITICS) {1}
 set ::env(GRT_LAYER_ADJUSTMENTS) {0.99,0,0,0,0,0}
 set ::env(GRT_MACRO_EXTENSION) {0}
@@ -528,7 +528,7 @@ set ::env(GRT_REPAIR_ANTENNAS) {1}
 set ::env(HEURISTIC_ANTENNA_INSERTION_MODE) {source}
 set ::env(HEURISTIC_ANTENNA_THRESHOLD) {80}
 set ::env(HOME) {/}
-set ::env(HOSTNAME) {d9fc1fe2f084}
+set ::env(HOSTNAME) {064ec17dd657}
 set ::env(IO_PCT) {0.2}
 set ::env(KLAYOUT_DEF_LAYER_MAP) {/pdk/sky130A/libs.tech/klayout/tech/sky130A.map}
 set ::env(KLAYOUT_DRC_KLAYOUT_GDS) {0}
@@ -540,23 +540,23 @@ set ::env(KLAYOUT_XOR_IGNORE_LAYERS) {81/14}
 set ::env(KLAYOUT_XOR_THREADS) {1}
 set ::env(KLAYOUT_XOR_XML) {1}
 set ::env(LANG) {en_US.UTF-8}
-set ::env(LAST_TIMING_REPORT_TAG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/signoff/42-rcx_sta}
+set ::env(LAST_TIMING_REPORT_TAG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/signoff/42-rcx_sta}
 set ::env(LC_ALL) {en_US.UTF-8}
 set ::env(LC_CTYPE) {en_US.UTF-8}
 set ::env(LD_LIBRARY_PATH) {/build//lib:/build//lib/Linux-x86_64:}
 set ::env(LEC_ENABLE) {0}
 set ::env(LEFT_MARGIN_MULT) {12}
-set ::env(LIB_CTS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/cts/cts.lib}
+set ::env(LIB_CTS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/cts/cts.lib}
 set ::env(LIB_FASTEST) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}
 set ::env(LIB_SLOWEST) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
 set ::env(LIB_SLOWEST_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}
-set ::env(LIB_SYNTH) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis/trimmed.lib}
+set ::env(LIB_SYNTH) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis/trimmed.lib}
 set ::env(LIB_SYNTH_COMPLETE) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LIB_SYNTH_COMPLETE_NO_PG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib}
-set ::env(LIB_SYNTH_MERGED) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis/merged.lib}
-set ::env(LIB_SYNTH_NO_PG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis/1-trimmed.no_pg.lib}
+set ::env(LIB_SYNTH_COMPLETE_NO_PG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis/1-sky130_fd_sc_hd__tt_025C_1v80.no_pg.lib}
+set ::env(LIB_SYNTH_MERGED) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis/merged.lib}
+set ::env(LIB_SYNTH_NO_PG) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis/1-trimmed.no_pg.lib}
 set ::env(LIB_TYPICAL) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}
-set ::env(LOGS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs}
+set ::env(LOGS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs}
 set ::env(LVS_CONNECT_BY_LABEL) {0}
 set ::env(LVS_INSERT_POWER_PINS) {1}
 set ::env(MACRO_BLOCKAGES_LAYER) {li1 met1 met2 met3 met4}
@@ -569,7 +569,7 @@ set ::env(MAGIC_DEF_NO_BLOCKAGES) {1}
 set ::env(MAGIC_DISABLE_HIER_GDS) {1}
 set ::env(MAGIC_DRC_USE_GDS) {1}
 set ::env(MAGIC_EXT_USE_GDS) {1}
-set ::env(MAGIC_GDS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/signoff/caravel_core.magic.gds}
+set ::env(MAGIC_GDS) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/signoff/caravel_core.magic.gds}
 set ::env(MAGIC_GDS_ALLOW_ABSTRACT) {0}
 set ::env(MAGIC_GDS_POLYGON_SUBCELLS) {0}
 set ::env(MAGIC_GENERATE_GDS) {1}
@@ -585,17 +585,17 @@ set ::env(MAGTYPE) {maglef}
 set ::env(MANPATH) {/build//share/man:}
 set ::env(MAX_METAL_LAYER) {6}
 set ::env(MCW_ROOT) {/home/hosni/caravel_sky130/caravel_mgmt_soc_litex}
-set ::env(MC_SDF_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/mca/sdf}
-set ::env(MC_SPEF_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing/mca/spef}
-set ::env(MERGED_LEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/merged.nom.lef}
-set ::env(MERGED_LEF_MAX) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/merged.max.lef}
-set ::env(MERGED_LEF_MIN) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/merged.min.lef}
+set ::env(MC_SDF_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/mca/sdf}
+set ::env(MC_SPEF_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing/mca/spef}
+set ::env(MERGED_LEF) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/merged.nom.lef}
+set ::env(MERGED_LEF_MAX) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/merged.max.lef}
+set ::env(MERGED_LEF_MIN) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/merged.min.lef}
 set ::env(MISMATCHES_OK) {1}
 set ::env(NETGEN_SETUP_FILE) {/pdk/sky130A/libs.tech/netgen/sky130A_setup.tcl}
 set ::env(NO_SYNTH_CELL_LIST) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/synth_configuration/no_synth.cells}
 set ::env(OPENLANE_MOUNTED_SCRIPTS_VERSION) {d70884942e62945c564c7c5c23daea9d7ae58cce}
 set ::env(OPENLANE_ROOT) {/openlane}
-set ::env(OPENLANE_RUN_TAG) {23_04_09_16_36}
+set ::env(OPENLANE_RUN_TAG) {23_04_11_05_23}
 set ::env(OPENLANE_VERBOSE) {0}
 set ::env(OPENLANE_VERSION) {05fac72e4dcbaab8d56151495e1c77f29db1e576}
 set ::env(OPENROAD) {/build/}
@@ -664,20 +664,20 @@ set ::env(RCX_RULES) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.nom.
 set ::env(RCX_RULES_MAX) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.max.calibre}
 set ::env(RCX_RULES_MIN) {/pdk/sky130A/libs.tech/openlane/rules.openrcx.sky130A.min.calibre}
 set ::env(RCX_SDC_FILE) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/sdc_files/rcx.sdc}
-set ::env(REPORTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports}
-set ::env(RESULTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results}
+set ::env(REPORTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports}
+set ::env(RESULTS_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results}
 set ::env(RE_BUFFER_CELL) {sky130_fd_sc_hd__buf_4}
 set ::env(RIGHT_MARGIN_MULT) {12}
 set ::env(RIPPLE_CARRY_ADDER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/rca_map.v}
 set ::env(ROOT_CLK_BUFFER) {sky130_fd_sc_hd__clkbuf_16}
 set ::env(ROUTING_CORES) {36}
 set ::env(RSZ_DONT_TOUCH_RX) {analog_io|rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core}
-set ::env(RSZ_LIB) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis/resizer_sky130_fd_sc_hd__tt_025C_1v80.lib}
+set ::env(RSZ_LIB) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis/resizer_sky130_fd_sc_hd__tt_025C_1v80.lib}
 set ::env(RSZ_USE_OLD_REMOVER) {0}
 set ::env(RT_MAX_LAYER) {met5}
 set ::env(RT_MIN_LAYER) {met1}
 set ::env(RUN_CVC) {1}
-set ::env(RUN_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36}
+set ::env(RUN_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23}
 set ::env(RUN_DRT) {1}
 set ::env(RUN_FILL_INSERTION) {1}
 set ::env(RUN_HEURISTIC_DIODE_INSERTION) {1}
@@ -690,13 +690,13 @@ set ::env(RUN_MAGIC) {1}
 set ::env(RUN_MAGIC_DRC) {1}
 set ::env(RUN_SPEF_EXTRACTION) {1}
 set ::env(RUN_STANDALONE) {1}
-set ::env(RUN_TAG) {23_04_09_16_36}
+set ::env(RUN_TAG) {23_04_11_05_23}
 set ::env(RUN_TAP_DECAP_INSERTION) {1}
 set ::env(SCLPATH) {/pdk/sky130A/sky130_fd_sc_hd}
 set ::env(SCRIPTS_DIR) {/openlane/scripts}
 set ::env(SHLVL) {1}
 set ::env(SPEF_EXTRACTOR) {openrcx}
-set ::env(START_TIME) {2023.04.09_23.36.44}
+set ::env(START_TIME) {2023.04.11_12.23.53}
 set ::env(STA_PRE_CTS) {0}
 set ::env(STA_REPORT_POWER) {1}
 set ::env(STA_WRITE_LIB) {0}
@@ -742,10 +742,10 @@ set ::env(TECH_LEF_OPT) {/pdk/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd
 set ::env(TECH_METAL_LAYERS) {li1 met1 met2 met3 met4 met5}
 set ::env(TERM) {xterm}
 set ::env(TERMINAL_OUTPUT) {/dev/null}
-set ::env(TMP_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp}
+set ::env(TMP_DIR) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp}
 set ::env(TOP_MARGIN_MULT) {4}
 set ::env(TRACKS_INFO_FILE) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info}
-set ::env(TRACKS_INFO_FILE_PROCESSED) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing/config.tracks}
+set ::env(TRACKS_INFO_FILE_PROCESSED) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing/config.tracks}
 set ::env(TRISTATE_BUFFER_MAP) {/pdk/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v}
 set ::env(USE_ARC_ANTENNA_CHECK) {1}
 set ::env(USE_GPIO_PADS) {0}
@@ -754,38 +754,38 @@ set ::env(VDD_NET) {vccd}
 set ::env(VDD_NETS) {vccd vccd1 vccd2 vdda1 vdda2 vddio}
 set ::env(VDD_PIN) {vccd}
 set ::env(VDD_PIN_VOLTAGE) {1.80}
-set ::env(VERILOG_FILES) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/user_defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/caravel_core.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mgmt_protect.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/digital_pll.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/clock_div.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_control_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/user_id_programming.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core_wrapper.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/ibex_all.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/picorv32.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/VexRiscv_MinDebugCache.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/RAM256.v  }
-set ::env(VERILOG_FILES_BLACKBOX) { /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/__user_project_wrapper.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/housekeeping.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/simple_por.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/xres_buf.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/spare_logic_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/mprj_io_buffer.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_defaults_block.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mprj_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mprj2_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/mgmt_protect_hv.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/gpio_logic_high.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/empty_macro.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/gl/caravel_clocking.v  /home/hosni/caravel_sky130/caravel_redesign-2/caravel/verilog/rtl/manual_power_connections.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/gl/RAM128.v  }
+set ::env(VERILOG_FILES) { /home/hosni/caravel-redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/user_defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/caravel_core.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mgmt_protect.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/digital_pll.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/clock_div.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_control_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/user_id_programming.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core_wrapper.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/mgmt_core.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/ibex_all.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/picorv32.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/VexRiscv_MinDebugCache.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/rtl/RAM256.v  }
+set ::env(VERILOG_FILES_BLACKBOX) { /home/hosni/caravel-redesign-2/caravel/verilog/rtl/defines.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/__user_project_wrapper.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/housekeeping.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/simple_por.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/xres_buf.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/spare_logic_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/mprj_io_buffer.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_defaults_block.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mprj_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mprj2_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/mgmt_protect_hv.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/gpio_logic_high.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/empty_macro.v  /home/hosni/caravel-redesign-2/caravel/verilog/gl/caravel_clocking.v  /home/hosni/caravel-redesign-2/caravel/verilog/rtl/manual_power_connections.v  /home/hosni/caravel_sky130/caravel_mgmt_soc_litex/verilog/gl/RAM128.v  }
 set ::env(VSRC_LOC) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/floorplan_configuration/Vsrc.loc}
 set ::env(WIRE_RC_LAYER) {met1}
 set ::env(YOSYS_REWRITE_VERILOG) {0}
 set ::env(_) {/openlane/flow.tcl}
-set ::env(cts_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/cts}
-set ::env(cts_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/cts}
-set ::env(cts_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/cts}
-set ::env(cts_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/cts}
-set ::env(drc_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/signoff/drc}
-set ::env(floorplan_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/floorplan}
-set ::env(floorplan_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/floorplan}
-set ::env(floorplan_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/floorplan}
-set ::env(floorplan_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/floorplan}
-set ::env(fp_report_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/floorplan/3-initial_fp}
-set ::env(placement_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/placement}
-set ::env(placement_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/placement}
-set ::env(placement_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/placement}
-set ::env(placement_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/placement}
-set ::env(routing_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/routing}
-set ::env(routing_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/routing}
-set ::env(routing_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/routing}
-set ::env(routing_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/routing}
-set ::env(signoff_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/signoff}
-set ::env(signoff_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/signoff}
-set ::env(signoff_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/signoff}
-set ::env(signoff_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/signoff}
-set ::env(synth_report_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/synthesis/1-synthesis}
-set ::env(synthesis_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/logs/synthesis}
-set ::env(synthesis_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/reports/synthesis}
-set ::env(synthesis_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/results/synthesis}
-set ::env(synthesis_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_09_16_36/tmp/synthesis}
-set ::env(timer_end) {1681088978}
-set ::env(timer_start) {1681083404}
+set ::env(cts_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/cts}
+set ::env(cts_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/cts}
+set ::env(cts_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/cts}
+set ::env(cts_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/cts}
+set ::env(drc_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/signoff/drc}
+set ::env(floorplan_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/floorplan}
+set ::env(floorplan_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/floorplan}
+set ::env(floorplan_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/floorplan}
+set ::env(floorplan_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/floorplan}
+set ::env(fp_report_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/floorplan/3-initial_fp}
+set ::env(placement_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/placement}
+set ::env(placement_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/placement}
+set ::env(placement_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/placement}
+set ::env(placement_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/placement}
+set ::env(routing_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/routing}
+set ::env(routing_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/routing}
+set ::env(routing_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/routing}
+set ::env(routing_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/routing}
+set ::env(signoff_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/signoff}
+set ::env(signoff_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/signoff}
+set ::env(signoff_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/signoff}
+set ::env(signoff_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/signoff}
+set ::env(synth_report_prefix) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/synthesis/1-synthesis}
+set ::env(synthesis_logs) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/logs/synthesis}
+set ::env(synthesis_reports) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/reports/synthesis}
+set ::env(synthesis_results) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/results/synthesis}
+set ::env(synthesis_tmpfiles) {/home/hosni/caravel-redesign-2/caravel/openlane/caravel_core/runs/23_04_11_05_23/tmp/synthesis}
+set ::env(timer_end) {1681221507}
+set ::env(timer_start) {1681215833}
