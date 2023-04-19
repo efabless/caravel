@@ -14,7 +14,7 @@ for filename in os.listdir(directory_path):
 
         # define the lines to search for and the lines to insert
         input_lines = ["PIN", "DIRECTION INPUT", "USE SIGNAL", "ANTENNAGATEAREA"]
-        input_insert = "    ANTENNAGATEAREA 0.196500 ;\n"
+        input_insert = "    ANTENNAGATEAREA 0.126000 ;\n"
 
         output_lines = ["PIN", "DIRECTION OUTPUT", "USE SIGNAL", "ANTENNADIFFAREA"]
         output_insert = "    ANTENNADIFFAREA 0.340600 ;\n"
@@ -26,11 +26,15 @@ for filename in os.listdir(directory_path):
                     if input_lines[2] in lines[i+2]:
                         if input_lines[3] not in lines[i+3]:
                             lines.insert(i+3, input_insert)
+                        else:
+                            lines[i+3] = input_insert
             if output_lines[0] in lines[i]:
                 if output_lines[1] in lines[i+1]:
                     if output_lines[2] in lines[i+2]:
                         if output_lines[3] not in lines[i+3]:
                             lines.insert(i+3, output_insert)
+                        else:
+                            lines[i+3] = output_insert
 
         # write the modified contents back to the file
         with open(os.path.join(directory_path, filename), "w") as f:

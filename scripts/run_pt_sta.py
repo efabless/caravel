@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # This script runs PrimeTime STA
-# Rev 1 
-# 6/10/2022
+
 
 import argparse
 import os
@@ -9,29 +8,31 @@ import os
 def run_sta_all (
     design: str,
     output_dir: str,
-    log_dir: str
+    log_dir: str,
+    root_dir: str,
 ):
     proc_corners = ["t", "s", "f"]
     rc_corners = ["nom", "max", "min"]
     for proc in proc_corners:
         for rc in rc_corners:
-            run_sta (design, proc, rc, output_dir, log_dir)
+            run_sta (design, proc, rc, output_dir, log_dir, root_dir)
 
 def run_sta (
     design: str,
     proc_corner: str,
     rc_corner: str,
     output_dir: str,
-    log_dir: str
+    log_dir: str,
+    root_dir: str,
 ):
     print (f"PrimeTime STA run for design: {design} at process corner {proc_corner} and RC corner {rc_corner}")
-    
+
     # Output directory structure 
     sub_dirs = ['reports', 'sdf', 'lib']
     for item in sub_dirs:
         path=os.path.join(output_dir,item)
         try:
-            os.makedirs(os.path.join(path,rc_corner))
+            os.makedirs(os.path.join(path,f"{proc_corner}{proc_corner}"))
         except FileExistsError:
         # directory already exists
             pass
@@ -41,11 +42,13 @@ def run_sta (
     check_env_vars()
     os.environ["PDK_ROOT"] = os.getenv('PDK_ROOT')
     os.environ["PDK"] = os.getenv('PDK')
-    os.environ["PT_LIB_ROOT"] = os.getenv('PT_LIB_ROOT')
+    if "sky130" in os.getenv('PDK'):
+        os.environ["PT_LIB_ROOT"] = os.getenv('PT_LIB_ROOT')
     os.environ["CARAVEL_ROOT"] = os.getenv('CARAVEL_ROOT')
     os.environ["UPRJ_ROOT"] = os.getenv('UPRJ_ROOT')
     os.environ["MCW_ROOT"] = os.getenv('MCW_ROOT')
     os.environ["OUT_DIR"] = output_dir
+    os.environ["ROOT"] = root_dir
     SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
     os.environ["DESIGN"] = design
     os.environ["PROC_CORNER"] = proc_corner
@@ -53,58 +56,73 @@ def run_sta (
 
     # PrimeTime command
     PT_tcl = f"{SCRIPT_DIR}/pt_sta.tcl"
-    pt_command = f"source /tools/bashrc_snps; pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log"
+    pt_command = f"pt_shell -f {PT_tcl} -output_log_file {log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log"
     os.system(pt_command)
+
+    log = open(f"{log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log", "a")
+
+    # Print missing spef
+    missing_spefs, spefs=find_missing_spefs(f"{log_dir}/{rc_corner}-parasitics.log")
+    if missing_spefs:
+        print("The following spefs are missing:")
+        log.write("The following spefs are missing:\n")
+        for spef in spefs:
+            print(spef)
+            log.write(f"{spef}\n")
+
     # Check if there are any violations
-    sta_pass=search_viol(f"{output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-    log = open(f"{log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log", "a")
+    sta_pass=search_viol(f"{output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-global.rpt", f"{log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log")
     if sta_pass == "pass":
         print (f"STA run Passed!")
         log.write(f"STA run Passed!")
+    elif sta_pass == "no link":
+        print (f"STA run Failed!")
+        log.write(f"STA run Failed!\n")
+        print(f"Linking failed. check log: {log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log")
+        log.write(f"Linking failed. check log: {log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log")
     else:
         if sta_pass == "max_tran_cap":
             print (f"STA run Passed!")
             log.write(f"STA run Passed!\n")
-            print (f"There are max_transition and max_capacitance violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-            log.write(f"There are max_transition and max_capacitance violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
+            print (f"There are max_transition and max_capacitance violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
+            log.write(f"There are max_transition and max_capacitance violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
         elif sta_pass == "max_tran":
             print (f"STA run Passed!")
             log.write(f"STA run Passed!\n")
-            print (f"There are max_transition violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-            log.write(f"There are max_transition violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
+            print (f"There are max_transition violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
+            log.write(f"There are max_transition violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
         elif sta_pass == "max_cap":
             print (f"STA run Passed!")
             log.write(f"STA run Passed!\n")
-            print (f"There are max_capacitance violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-            log.write(f"There are max_capacitance violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
+            print (f"There are max_capacitance violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
+            log.write(f"There are max_capacitance violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
+        elif sta_pass == "viol":
+                print(f"There are other violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
+                log.write(f"There are other violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-all_viol.rpt")
         else:  
             print (f"STA run Failed!")
             log.write(f"STA run Failed!\n")
             if sta_pass == "setup":
-                print(f"There are setup violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-                log.write(f"There are setup violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
+                print(f"There are setup violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-global.rpt")
+                log.write(f"There are setup violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-global.rpt")
             elif sta_pass == "hold":
-                print(f"There are hold violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-                log.write(f"There are hold violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-global.rpt")
-            elif sta_pass == "viol":
-                print(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
-                log.write(f"There are violations. check report: {output_dir}/reports/{rc_corner}/{design}.{proc_corner}{proc_corner}-all_viol.rpt")
+                print(f"There are hold violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-global.rpt")
+                log.write(f"There are hold violations. check report: {output_dir}/reports/{proc_corner}{proc_corner}/{design}.{rc_corner}-global.rpt")
             elif sta_pass == "no cons":
-                print(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
-            elif sta_pass == "spef":
-                print(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
-                log.write(f"Reading parasitics failed. check log: {log_dir}/{design}-{rc_corner}-parasitics.log")
-            else:
-                print(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
-                log.write(f"Linking failed. check log: {log_dir}/{design}-{rc_corner}-{proc_corner}-sta.log")
+                print(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log")
+                log.write(f"Reading constraints SDC failed. check log: {log_dir}/{design}-{proc_corner}-{rc_corner}-sta.log")
     log.close()
 
 # Check the required env variables
 def check_env_vars():
     pdk_root = os.getenv('PDK_ROOT')
     pdk = os.getenv('PDK')
-    pt_lib_root = os.getenv('PT_LIB_ROOT')
+    if "sky130" in os.getenv('PDK'):
+        pt_lib_root = os.getenv('PT_LIB_ROOT')
+        if pt_lib_root is None:
+            raise FileNotFoundError(
+            "Please export PT_LIB_ROOT to the PrimeTime liberties path"
+            )
     caravel_root = os.getenv('CARAVEL_ROOT')
     uprj_root = os.getenv('UPRJ_ROOT')
     mcw_root = os.getenv('MCW_ROOT')
@@ -115,10 +133,6 @@ def check_env_vars():
     if pdk is None:
         raise FileNotFoundError(
         "Please export PDK to either sky130A or sky130B"
-        )
-    if pt_lib_root is None:
-        raise FileNotFoundError(
-        "Please export PT_LIB_ROOT to the PrimeTime liberties path"
         )
     if caravel_root is None:
         raise FileNotFoundError(
@@ -135,23 +149,15 @@ def check_env_vars():
 
 # Analyze the STA all violators output report
 def search_viol(
-    report_path: str
+    report_path: str,
+    log_path: str
 ):
-    proc_corner = report_path[-12]
-    rc_corner = os.path.basename(os.path.dirname(report_path))
-    log_path = report_path.replace(f"/reports/{rc_corner}/", "/logs/")
-    log_path = log_path.replace(f".{proc_corner}{proc_corner}-global.rpt", f"-{rc_corner}-{proc_corner}-sta.log")
     with open(log_path, 'r') as report:
         data = report.read()
         if "Could not auto-link design" in data:
             return "no link"
         elif "Error: Errors reading SDC file:" in data:
             return "no cons"
-    log_path = log_path.replace(f"{proc_corner}-sta", f"parasitics")
-    with open(log_path, 'r') as report:
-        data = report.read()
-        if "Error: Cannot open file" in data:
-            return "spef"
     with open(report_path, 'r') as report:
         data = report.read()
         if "Hold violations" in data:
@@ -171,6 +177,24 @@ def search_viol(
             return "viol"
         else:
             return "pass"
+
+# Find missing spefs in parasitics annotation
+def find_missing_spefs(
+    log_path: str
+):
+    missing_spefs = 0
+    spefs = []
+    with open(log_path, 'r') as log:
+        data = log.read()
+        if "Error: Cannot open file" in data:
+            missing_spefs = 1
+            log.seek(0)
+            lines = log.readlines()
+            for line in lines:
+                if "Error: Cannot open file" in line:
+                    spef = line.split(".")[0].split("/")[-1]
+                    spefs.append(spef)
+    return missing_spefs, spefs
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -195,6 +219,12 @@ if __name__ == "__main__":
         required=True
     )
     parser.add_argument(
+        "-r",
+        "--root_dir",
+        help="design root directory",
+        required=True
+    )
+    parser.add_argument(
         "-rc",
         "--rc_corner",
         help="Specify the RC corner for the parasitics (Values are nom, max, or min) <default is nom>",
@@ -214,11 +244,30 @@ if __name__ == "__main__":
         help="Specify to run all the process corners and rc corners combinations for the design",
         action='store_true'
     )
+    parser.add_argument(
+        "-upw",
+        "--upw",
+        help="Specify to run with non-empty user project wrapper <default is false",
+        nargs="?",
+        default="0"
+    )
+    parser.add_argument(
+        "-rep",
+        "--reports",
+        help="Specify to generate reports only skipping generating liberties and sdf (for faster runtime)",
+        action='store_true'
+    )
 
     args = parser.parse_args()
 
     output = os.path.abspath(args.output_dir)
     log = os.path.abspath(args.logs_dir)
+    root = os.path.abspath(args.root_dir)
+    os.environ["UPW"] = args.upw
+    if args.reports: 
+        os.environ["REPORTS_ONLY"] = "1"
+    else: 
+        os.environ["REPORTS_ONLY"] = "0"
 
     try:
         os.makedirs(output)
@@ -241,6 +290,6 @@ if __name__ == "__main__":
             pass
 
     if args.all:
-        run_sta_all (args.design, output, log) 
+        run_sta_all (args.design, output, log, root) 
     else:
-        run_sta (args.design, args.proc_corner, args.rc_corner, output, log)
+        run_sta (args.design, args.proc_corner, args.rc_corner, output, log, root)
