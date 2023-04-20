@@ -150,9 +150,16 @@ module gpio_control_block #(
 
     /* Propagate the clock and reset signals so that they aren't wired	*/
     /* all over the chip, but are just wired between the blocks.	*/
-    assign serial_clock_out = serial_clock;
-    assign resetn_out = resetn;
-    assign serial_load_out = serial_load;
+    (* keep *) sky130_fd_sc_hd__clkbuf_8 BUF[2:0] (
+    `ifdef USE_POWER_PINS
+            .VPWR(vccd),
+            .VGND(vssd),
+            .VPB(vccd),
+            .VNB(vssd),
+    `endif
+        .A({serial_clock, resetn, serial_load}),
+        .X({serial_clock_out, resetn_out, serial_load_out})
+    );
 
     always @(posedge serial_clock or negedge resetn) begin
 	if (resetn == 1'b0) begin

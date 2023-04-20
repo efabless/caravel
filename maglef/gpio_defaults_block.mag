@@ -1,118 +1,90 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1636146660
-<< nwell >>
-rect -38 1893 6018 2214
-rect -38 805 6018 1371
+timestamp 1677507573
 << obsli1 >>
-rect 0 527 5980 2193
+rect 460 1071 3220 4369
 << obsm1 >>
-rect 0 496 5980 2224
+rect 460 1040 3220 4400
 << metal2 >>
-rect 202 0 258 400
-rect 662 0 718 400
-rect 1122 0 1178 400
-rect 1582 0 1638 400
-rect 2042 0 2098 400
-rect 2502 0 2558 400
-rect 2962 0 3018 400
-rect 3422 0 3478 400
-rect 3882 0 3938 400
-rect 4342 0 4398 400
-rect 4802 0 4858 400
-rect 5262 0 5318 400
-rect 5722 0 5778 400
+rect 754 5000 810 6200
+rect 1122 5000 1178 6200
+rect 800 1040 1080 4400
+rect 2680 1040 2960 4400
+rect 754 -600 810 600
+rect 1122 -600 1178 600
 << obsm2 >>
-rect 78 2200 322 2224
-rect 1478 2200 1722 2224
-rect 2878 2200 3122 2224
-rect 4278 2200 4522 2224
-rect 78 456 5776 2200
-rect 78 400 146 456
-rect 314 400 606 456
-rect 774 400 1066 456
-rect 1234 400 1526 456
-rect 1694 400 1986 456
-rect 2154 400 2446 456
-rect 2614 400 2906 456
-rect 3074 400 3366 456
-rect 3534 400 3826 456
-rect 3994 400 4286 456
-rect 4454 400 4746 456
-rect 4914 400 5206 456
-rect 5374 400 5666 456
+rect 572 4944 698 5114
+rect 866 4944 1066 5114
+rect 1234 4944 1544 5114
+rect 572 4456 1544 4944
+rect 572 984 744 4456
+rect 1136 984 1544 4456
+rect 572 656 1544 984
+rect 572 462 698 656
+rect 866 462 1066 656
+rect 1234 462 1544 656
+<< metal3 >>
+rect -600 4224 600 4344
+rect -600 3952 600 4072
+rect -600 3680 600 3800
+rect 412 3268 3268 3548
+rect -600 2864 600 2984
+rect -600 2592 600 2712
+rect -600 2320 600 2440
+rect 412 1788 3268 2068
+rect -600 1504 600 1624
+rect -600 1232 600 1352
+rect -600 960 600 1080
 << obsm3 >>
-rect 60 2200 340 2209
-rect 1460 2200 1740 2209
-rect 2860 2200 3140 2209
-rect 4260 2200 4540 2209
-rect 60 511 5240 2200
-<< metal4 >>
-rect 60 496 340 2224
-rect 760 496 1040 2224
-rect 1460 496 1740 2224
-rect 2160 496 2440 2224
-rect 2860 496 3140 2224
-rect 3560 496 3840 2224
-rect 4260 496 4540 2224
-rect 4960 496 5240 2224
-<< metal5 >>
-rect 0 1436 5980 1756
-rect 0 736 5980 1056
+rect 600 4424 1275 4453
+rect 680 3628 1275 4424
+rect 600 3064 1275 3188
+rect 680 2240 1275 3064
+rect 600 2148 1275 2240
+rect 600 1704 1275 1708
+rect 680 990 1275 1704
 << labels >>
-rlabel metal5 s 0 1436 5980 1756 6 VGND
-port 1 nsew ground input
-rlabel metal4 s 760 496 1040 2224 6 VGND
-port 1 nsew ground input
-rlabel metal4 s 2160 496 2440 2224 6 VGND
-port 1 nsew ground input
-rlabel metal4 s 3560 496 3840 2224 6 VGND
-port 1 nsew ground input
-rlabel metal4 s 4960 496 5240 2224 6 VGND
-port 1 nsew ground input
-rlabel metal5 s 0 736 5980 1056 6 VPWR
-port 2 nsew power input
-rlabel metal4 s 60 496 340 2224 6 VPWR
-port 2 nsew power input
-rlabel metal4 s 1460 496 1740 2224 6 VPWR
-port 2 nsew power input
-rlabel metal4 s 2860 496 3140 2224 6 VPWR
-port 2 nsew power input
-rlabel metal4 s 4260 496 4540 2224 6 VPWR
-port 2 nsew power input
-rlabel metal2 s 202 0 258 400 6 gpio_defaults[0]
+rlabel metal2 s 2680 1040 2960 4400 6 VGND
+port 1 nsew ground bidirectional
+rlabel metal3 s 412 3268 3268 3548 6 VGND
+port 1 nsew ground bidirectional
+rlabel metal2 s 800 1040 1080 4400 6 VPWR
+port 2 nsew power bidirectional
+rlabel metal3 s 412 1788 3268 2068 6 VPWR
+port 2 nsew power bidirectional
+rlabel metal2 s 754 5000 810 6200 6 gpio_defaults[0]
 port 3 nsew signal output
-rlabel metal2 s 4802 0 4858 400 6 gpio_defaults[10]
+rlabel metal3 s -600 4224 600 4344 4 gpio_defaults[10]
 port 4 nsew signal output
-rlabel metal2 s 5262 0 5318 400 6 gpio_defaults[11]
+rlabel metal2 s 754 -600 810 600 8 gpio_defaults[11]
 port 5 nsew signal output
-rlabel metal2 s 5722 0 5778 400 6 gpio_defaults[12]
+rlabel metal2 s 1122 -600 1178 600 8 gpio_defaults[12]
 port 6 nsew signal output
-rlabel metal2 s 662 0 718 400 6 gpio_defaults[1]
+rlabel metal2 s 1122 5000 1178 6200 6 gpio_defaults[1]
 port 7 nsew signal output
-rlabel metal2 s 1122 0 1178 400 6 gpio_defaults[2]
+rlabel metal3 s -600 960 600 1080 4 gpio_defaults[2]
 port 8 nsew signal output
-rlabel metal2 s 1582 0 1638 400 6 gpio_defaults[3]
+rlabel metal3 s -600 1232 600 1352 4 gpio_defaults[3]
 port 9 nsew signal output
-rlabel metal2 s 2042 0 2098 400 6 gpio_defaults[4]
+rlabel metal3 s -600 1504 600 1624 4 gpio_defaults[4]
 port 10 nsew signal output
-rlabel metal2 s 2502 0 2558 400 6 gpio_defaults[5]
+rlabel metal3 s -600 2320 600 2440 4 gpio_defaults[5]
 port 11 nsew signal output
-rlabel metal2 s 2962 0 3018 400 6 gpio_defaults[6]
+rlabel metal3 s -600 2592 600 2712 4 gpio_defaults[6]
 port 12 nsew signal output
-rlabel metal2 s 3422 0 3478 400 6 gpio_defaults[7]
+rlabel metal3 s -600 2864 600 2984 4 gpio_defaults[7]
 port 13 nsew signal output
-rlabel metal2 s 3882 0 3938 400 6 gpio_defaults[8]
+rlabel metal3 s -600 3680 600 3800 4 gpio_defaults[8]
 port 14 nsew signal output
-rlabel metal2 s 4342 0 4398 400 6 gpio_defaults[9]
+rlabel metal3 s -600 3952 600 4072 4 gpio_defaults[9]
 port 15 nsew signal output
 << properties >>
+string FIXED_BBOX 0 0 3400 5600
 string LEFclass BLOCK
-string FIXED_BBOX 0 0 6000 2200
 string LEFview TRUE
-string GDS_FILE ../gds/gpio_defaults_block.gds
-string GDS_END 48992
-string GDS_START 20598
+string GDS_END 41904
+string GDS_FILE /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/gpio_defaults_block/runs/23_02_27_06_19/results/signoff/gpio_defaults_block.magic.gds
+string GDS_START 16846
 << end >>
 

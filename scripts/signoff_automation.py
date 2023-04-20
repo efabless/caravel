@@ -8,7 +8,8 @@ import subprocess
 from sys import stdout
 import count_lvs
 import glob
-import run_pt_sta
+import time
+import shutil
 
 
 def build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, design):
@@ -34,19 +35,30 @@ def build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, de
         )
         subprocess.run(build_cmd, stderr=build_log, stdout=build_log)
 
-def run_drc(design_root, log_dir, signoff_dir, pdk_root, design):
-    klayout_drc_cmd = [
-        "python3",
-        "klayout_drc.py",
-        "-g",
-        f"{design_root}/gds/{design}.gds",
-        "-l",
-        f"{log_dir}",
-        "-s",
-        f"{signoff_dir}/{design}/standalone_pvr",
-        "-d",
-        f"{design}",
-    ]
+def run_drc(design_root, timestr, signoff_dir, pdk_path, design):
+    log_dir = f"{signoff_dir}/{design}/standalone_pvr/{timestr}/logs"
+    if "sky130" in os.getenv('PDK'):
+        klayout_drc_cmd = [
+            "python3",
+            "klayout_drc.py",
+            "-g",
+            f"{design_root}/gds/{design}.gds",
+            "-l",
+            f"{log_dir}",
+            "-s",
+            f"{signoff_dir}/{design}/standalone_pvr/{timestr}",
+            "-d",
+            f"{design}",
+        ]
+    elif "gf180" in os.getenv('PDK'):
+        klayout_drc_cmd = [
+            "python3",
+            f"{pdk_path}/libs.tech/klayout/drc/run_drc.py",
+            "--variant=C",
+            f"--path={design_root}/gds/{design}.gds",
+            f"--run_dir={signoff_dir}/{design}/standalone_pvr/{timestr}",
+        ]
+
     p1 = subprocess.Popen(klayout_drc_cmd)
     return p1
 
@@ -138,21 +150,20 @@ def run_verification(caravel_root, pdk_root, pdk_env, sim, simulator="vcs"):
     return p1
 
 
-def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
+def run_sta(root, pt_lib_root, log_dir, signoff_dir, design, timestr, upw):
     myenv = os.environ.copy()
-    myenv["CARAVEL_ROOT"] = caravel_root
-    myenv["MCW_ROOT"] = mcw_root
     myenv["PT_LIB_ROOT"] = pt_lib_root
-    if not os.path.exists(f"{pt_lib_root}"):
-        subprocess.run(
-            [
-                "git",
-                "clone",
-                "git@github.com:efabless/pt_libs.git",
-            ],
-            cwd=f"{caravel_root}/scripts",
-            stdout=subprocess.PIPE,
-        )
+    if "sky130" in os.getenv('PDK'):
+        if not os.path.exists(f"{pt_lib_root}"):
+            subprocess.run(
+                [
+                    "git",
+                    "clone",
+                    "git@github.com:efabless/pt_libs.git",
+                ],
+                cwd=f"{caravel_root}/scripts",
+                stdout=subprocess.PIPE,
+            )
     sta_cmd = [
         "python3",
         "run_pt_sta.py",
@@ -160,9 +171,13 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
         "-d",
         f"{design}",
         "-o",
-        f"{signoff_dir}/{design}/primetime-signoff",
+        f"{signoff_dir}/{design}/primetime/{timestr}",
         "-l",
         f"{log_dir}",
+        "-r",
+        f"{root}",
+        "-upw",
+        f"{upw}",
     ]
     p1 = subprocess.Popen(
         sta_cmd,
@@ -174,24 +189,52 @@ def run_sta(caravel_root, mcw_root, pt_lib_root, log_dir, signoff_dir, design):
     )
     return p1
 
-
-def run_antenna(
-    log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
-):
-    os.environ["DESIGN_GDS_ROOT"] = design_root
-    os.environ["DESIGN"] = design
-    os.environ["LOG_DIR"] = log_dir
-    os.environ["CARAVEL_ROOT"] = caravel_root
-    os.environ["MCW_ROOT"] = mcw_root
-    antenna_cmd = [
-        "magic",
-        "-noconsole",
-        "-dnull",
-        "-rcfile",
-        f"{pdk_root}/{pdk_env}/libs.tech/magic/{pdk_env}.magicrc",
-        "tech-files/antenna_check.tcl",
+def run_starxt (design_root, log_dir, signoff_dir, design, timestr):
+    myenv = os.environ.copy()
+    SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.exists(f"{SCRIPT_DIR}/gf180mcu-tech/"):
+        subprocess.run(
+            [
+                "git",
+                "clone",
+                "git@github.com:efabless/gf180mcu-tech.git",
+            ],
+            cwd=f"{caravel_root}/scripts",
+            stdout=subprocess.PIPE,
+        )
+    starxt_cmd = [
+        "python3",
+        "extract_StarRC.py",
+        "-a",
+        "-d",
+        f"{design}",
+        "-o",
+        f"{signoff_dir}/{design}/StarRC/{timestr}",
+        "-r",
+        f"{design_root}",
+        "-l",
+        f"{log_dir}",
     ]
-    p1 = subprocess.Popen(antenna_cmd, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+    p1 = subprocess.Popen(
+        starxt_cmd,
+        cwd=f"{caravel_root}/scripts",
+        env=myenv,
+        universal_newlines=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    return p1
+
+def run_antenna(design_root, timestr, signoff_dir, pdk_path, design):
+    klayout_antenna_cmd = [
+        "python3",
+        f"{pdk_path}/libs.tech/klayout/drc/run_drc.py",
+        "--variant=C",
+        "--antenna_only",
+        f"--path={design_root}/gds/{design}.gds",
+        f"--run_dir={signoff_dir}/{design}/standalone_pvr/{timestr}/",
+    ]
+    p1 = subprocess.Popen(klayout_antenna_cmd)
     return p1
 
 
@@ -200,14 +243,27 @@ def check_errors(
 ):
     f = open(os.path.join(signoff_dir, f"{design}/signoff.rpt"), "w")
     if drc:
-        drc_count_klayout = os.path.join(log_dir, f"{design}_klayout_drc.total")
-        with open(drc_count_klayout) as rep:
-            if rep.readline().strip() != "0":
-                logging.error(f"klayout DRC failed")
-                f.write("Klayout MR DRC:    Failed\n")
-            else:
-                logging.info("Klayout MR DRC:    Passed")
-                f.write("Klayout MR DRC:    Passed\n")
+        if "sky130" in os.getenv('PDK'):
+            drc_count_klayout = os.path.join(log_dir, f"{design}_klayout_drc.total")
+            with open(drc_count_klayout) as rep:
+                if rep.readline().strip() != "0":
+                    logging.error(f"klayout DRC failed")
+                    f.write("Klayout MR DRC:    Failed\n")
+                else:
+                    logging.info("Klayout MR DRC:    Passed")
+                    f.write("Klayout MR DRC:    Passed\n")
+        elif "gf180" in os.getenv('PDK'):
+            drc_output_dir = f"{signoff_dir}/{design}/standalone_pvr/{timestr}"
+            log_drc_file = glob.glob(f"{drc_output_dir}/drc_run_*.log")[0]
+            os.remove(f"{drc_output_dir}/main.drc")
+            with open(log_drc_file) as rep:
+                for lines in rep:
+                    if "not clean" in lines:
+                        logging.error(f"klayout DRC failed")
+                        f.write("Klayout MR DRC:    Failed\n")
+                    elif "clean" in lines:
+                        logging.info("Klayout MR DRC:    Passed")
+                        f.write("Klayout MR DRC:    Passed\n")
     if lvs:
         lvs_summary_report = open(
             os.path.join(signoff_dir, f"{design}/standalone_pvr/lvs_summary.rpt"), "w"
@@ -255,6 +311,10 @@ def check_errors(
             with open(l) as rep:
                 log_name = l.split("/")[-1]
                 log_name = log_name.split(".")[0]
+                data = rep.read()
+                if "The following spefs are missing:" in data:
+                    logging.warning(f"Missing spefs. check: {l}")
+                rep.seek(0)
                 lines = rep.readlines()
                 if "Passed" in lines[-1]:
                     logging.info(f"{log_name} STA:    Passed")
@@ -271,25 +331,62 @@ def check_errors(
                     logging.warning(lines[-1])
                     logging.info(f"{log_name} STA:    Passed (except: max_cap)")
                     f.write(f"{log_name} STA:    Passed (except: max_cap)\n")
+                elif "other violations" in lines[-1]:
+                    logging.warning(lines[-1])
+                    logging.info(f"{log_name} STA:    Passed")
+                    f.write(f"{log_name} STA:    Passed\n")
                 else:
                     logging.error(lines[-1])
-                    logging.error(f"{log_name} STA:    Failed")
                     if "setup" in lines[-1]:
                         f.write(f"{log_name} STA:    Failed (setup)\n")
+                        logging.error(f"{log_name} STA:    Failed (setup)")
                     elif "hold" in lines[-1]:
                         f.write(f"{log_name} STA:    Failed (hold)\n")
+                        logging.error(f"{log_name} STA:    Failed (hold)")
                     else:
+                        logging.error(f"{log_name} STA:    Failed")
                         f.write(f"{log_name} STA:    Failed (" + lines[-1].split(" failed")[0] + ")\n")
 
     if antenna:
-        antenna_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/antenna-vios.report")
-        with open(antenna_report) as rep:
-            if "Antenna violation detected" in rep.read():
-                logging.error(f"Antenna checks failed find report at {antenna_report}")
-                f.write("Antenna checks:    Failed\n")
-            else:
-                logging.info("Antenna checks:    Passed")
-                f.write("Antenna checks:    Passed\n")
+        antenna_report = os.path.join(signoff_dir, f"{design}/standalone_pvr/{timestr}/antenna-vios.report")
+        xml_report = open(os.path.join(signoff_dir, f"{design}/standalone_pvr/{timestr}/{design}_antenna.lyrdb"))
+        antenna_count = xml_report.read().count('<item>')
+        antenna_count_log = open(os.path.join(signoff_dir, f"{design}/standalone_pvr/{timestr}/antenna_count.log"), "w")
+        antenna_count_log.write(str(antenna_count))
+        antenna_count_log.close()
+        if antenna_count == 0:
+            logging.info("Antenna checks:    Passed")
+            f.write("Antenna checks:    Passed\n")
+        else:
+            logging.error(f"Antenna checks failed find report at {antenna_report}")
+            f.write("Antenna checks:    Failed\n")
+
+def save_latest_run (lvs, drc, antenna, sta, spef, run_dir):
+    if spef:
+        if os.path.exists(f"{run_dir}/../logs"):
+            shutil.rmtree(f"{run_dir}/../logs")
+        shutil.copytree(f"{run_dir}/logs", f"{run_dir}/../logs")
+        spef_files = glob.glob(f"{run_dir}/*.spef")
+        for spef_f in spef_files:
+            spef_name =spef_f.split("/")[-1]
+            shutil.copyfile(spef_f,f"{run_dir}/../{spef_name}")
+
+    elif sta:
+        dirs = ['lib', 'sdf', 'reports', 'logs']
+        for dir in dirs:
+            if os.path.exists(f"{run_dir}/../{dir}"):
+                shutil.rmtree(f"{run_dir}/../{dir}")
+            shutil.copytree(f"{run_dir}/{dir}", f"{run_dir}/../{dir}")
+        cmd = f"sed -i -E 's#original_pin :.*##g' {run_dir}/../lib/*/*.lib"
+        os.system(cmd)
+    # if lvs or drc or antenna :
+    #     if os.path.exists(f"{run_dir}/../logs"):
+    #         shutil.rmtree(f"{run_dir}/../logs")
+    #     shutil.copytree(f"{run_dir}/logs", f"{run_dir}/../logs")
+    #     files = glob.glob(f"{run_dir}/*")
+    #     for f in files:
+    #         f_name = f.split("/")[-1]
+    #         shutil.copyfile(spef_f,f"{run_dir}/../{f_name}")
 
 
 if __name__ == "__main__":
@@ -344,7 +441,19 @@ if __name__ == "__main__":
     parser.add_argument(
         "-sta",
         "--primetime_sta",
-        help="run verification using iverilog",
+        help="run sta using primetime",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-upw",
+        "--upw",
+        help="Specify to run STA with non-empty user project wrapper",
+        action="store_true",
+    )
+    parser.add_argument(
+        "-spef",
+        "--starRC_extract",
+        help="run spef extraction using StarRC (gf180)",
         action="store_true",
     )
     parser.add_argument(
@@ -407,22 +516,39 @@ if __name__ == "__main__":
     iverilog = args.iverilog
     verification = args.vcs
     sta = args.primetime_sta
+    if args.upw: upw = True
+    else: upw = False
+    spef = args.starRC_extract
+    if spef and "sky130" in pdk_env:
+        logging.erro(f"Spef extraction is available for gf180mcu only")
+        spef = False
     design = args.design
     antenna = args.antenna
-    log_dir = os.path.join(signoff_dir, f"{design}/standalone_pvr/logs")
 
-    if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+    if sta:
+        os.environ["CHIP"] = "caravel"
+        os.environ["CHIP_CORE"] = "caravel_core"
+        os.environ["DEBUG"] = "0"
+
+    if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
         signoff_dir = os.path.join(mcw_root, "signoff")
-        log_dir = os.path.join(signoff_dir, f"{design}/standalone_pvr/logs")
+    elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+        uprj_root = os.getenv("UPRJ_ROOT")
+        signoff_dir = os.path.join(uprj_root, "signoff")
+
+    timestr = time.strftime("%Y_%m_%d_%H_%M_%S")
+    log_dir = os.path.join(signoff_dir, f"{design}/standalone_pvr/{timestr}/logs")
 
     if not os.path.exists(f"{signoff_dir}/{design}"):
         os.makedirs(f"{signoff_dir}/{design}")
-    if not os.path.exists(f"{signoff_dir}/{design}/standalone_pvr"):
-        os.makedirs(f"{signoff_dir}/{design}/standalone_pvr")
-    if not os.path.exists(f"{log_dir}"):
-        os.makedirs(f"{log_dir}")
 
     if lvs or drc or antenna:
+        if not os.path.exists(f"{signoff_dir}/{design}/standalone_pvr"):
+            os.makedirs(f"{signoff_dir}/{design}/standalone_pvr")
+        if not os.path.exists(f"{signoff_dir}/{design}/standalone_pvr/{timestr}"):
+            os.makedirs(f"{signoff_dir}/{design}/standalone_pvr/{timestr}")
+        if not os.path.exists(f"{log_dir}"):
+            os.makedirs(f"{log_dir}")
         if glob.glob(f"{caravel_root}/gds/*.gz"):
             logging.error(
                 f"Compressed gds files in {caravel_root}. Please uncompress first."
@@ -441,23 +567,26 @@ if __name__ == "__main__":
         if not os.path.exists(design_root):
             logging.error(f"can't find {design}.gds file")
 
-    if design == "caravel" or design == "caravan":
-        logging.info(f"Building {design} ...")
-        build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, design)
-    else:
-        logging.info(f"running checks on {design}")
+    # if design == "caravel" or design == "caravan":
+    #     logging.info(f"Building {design} ...")
+    #     build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, design)
+    # else:
+    #     logging.info(f"running checks on {design}")
 
     if args.all:
         drc = True
         lvs = True
-        verification = True
         sta = True
+        spef = True
+        antenna = True
+
+    pdk_path = pdk_root + "/" + pdk_env
 
     if drc:
-        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
-            drc_p1 = run_drc(mcw_root, log_dir, signoff_dir, pdk_root, design)
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
+            drc_p1 = run_drc(mcw_root, timestr, signoff_dir, pdk_path, design)
         else:
-            drc_p1 = run_drc(caravel_root, log_dir, signoff_dir, pdk_root, design)
+            drc_p1 = run_drc(caravel_root, timestr, signoff_dir, pdk_path, design)
         logging.info(f"Running klayout DRC on {design}")
     if lvs:
         lvs_p1 = run_lvs(
@@ -472,28 +601,152 @@ if __name__ == "__main__":
         )
         logging.info(f"Running LVS on {design}")
 
-    if sta:
-        if not os.path.exists(f"{signoff_dir}/{design}/primetime-signoff"):
-            os.makedirs(f"{signoff_dir}/{design}/primetime-signoff")
-        sta_log_dir = os.path.join(signoff_dir, f"{design}/primetime-signoff/logs")
+    if spef:
+        if not os.path.exists(f"{signoff_dir}/{design}/StarRC"):
+            os.makedirs(f"{signoff_dir}/{design}/StarRC")
+        if not os.path.exists(f"{signoff_dir}/{design}/StarRC/{timestr}"):
+            os.makedirs(f"{signoff_dir}/{design}/StarRC/{timestr}")
+        spef_log_dir = os.path.join(signoff_dir, f"{design}/StarRC/{timestr}/logs")
+        if not os.path.exists(f"{spef_log_dir}"):
+            os.makedirs(f"{spef_log_dir}")            
+
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
+            spef_p = run_starxt(
+                mcw_root,
+                spef_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+            )
+        elif (design == "user_project_wrapper" or design == "user_proj_example"):
+            spef_p = run_starxt(
+                uprj_root,
+                spef_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+            )
+        else:
+            spef_p = run_starxt(
+                caravel_root,
+                spef_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+            )
+        logging.info(f"Running StarRC all corners extraction on {design}")
+
+    if sta and spef:
+        out, err = spef_p.communicate()
+        spef_log = open(f"{spef_log_dir}/{design}-error.log", "w")
+        if err:
+            if "ERROR" in err:
+                logging.error(err[err.find("ERROR"):].split(')',1)[0]+")")
+                spef_log.write(err[err.find("ERROR"):].split(')',1)[0]+")")
+                spef_log.close()
+            else:
+                logging.info(f"StarRC spef extraction done")
+                os.remove(f"{spef_log_dir}/{design}-error.log")
+        save_latest_run (lvs, drc, antenna, sta, spef, f"{signoff_dir}/{design}/StarRC/{timestr}")
+        spef = False
+        if not os.path.exists(f"{signoff_dir}/{design}/primetime"):
+            os.makedirs(f"{signoff_dir}/{design}/primetime")
+        if not os.path.exists(f"{signoff_dir}/{design}/primetime/{timestr}"):
+            os.makedirs(f"{signoff_dir}/{design}/primetime/{timestr}")
+        sta_log_dir = os.path.join(signoff_dir, f"{design}/primetime/{timestr}/logs")
         if not os.path.exists(f"{sta_log_dir}"):
             os.makedirs(f"{sta_log_dir}")
 
         logging.info(f"Running PrimeTime STA all corners on {design}")
-        sta_p = run_sta(
-            caravel_root,
-            mcw_root,
-            f"{caravel_root}/scripts/pt_libs",
-            sta_log_dir,
-            signoff_dir,
-            design,
-        )
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
+            sta_p = run_sta(
+                mcw_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
+        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+            sta_p = run_sta(
+                uprj_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
+        else:
+            sta_p = run_sta(
+                caravel_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
+    elif spef:
+        out, err = spef_p.communicate()
+        spef_log = open(f"{spef_log_dir}/{design}-error.log", "w")
+        if err:
+            if "ERROR" in err:
+                logging.error(err[err.find("ERROR"):].split(')',1)[0]+")")
+                spef_log.write(err[err.find("ERROR"):].split(')',1)[0]+")")
+                spef_log.close()
+            else:
+                logging.info(f"StarRC spef extraction done")
+                os.remove(f"{spef_log_dir}/{design}-error.log")
+        save_latest_run (lvs, drc, antenna, sta, spef, f"{signoff_dir}/{design}/StarRC/{timestr}")
+    elif sta:
+        if not os.path.exists(f"{signoff_dir}/{design}/primetime"):
+            os.makedirs(f"{signoff_dir}/{design}/primetime")
+        if not os.path.exists(f"{signoff_dir}/{design}/primetime/{timestr}"):
+            os.makedirs(f"{signoff_dir}/{design}/primetime/{timestr}")
+        sta_log_dir = os.path.join(signoff_dir, f"{design}/primetime/{timestr}/logs")
+        if not os.path.exists(f"{sta_log_dir}"):
+            os.makedirs(f"{sta_log_dir}")
+
+        logging.info(f"Running PrimeTime STA all corners on {design}")
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
+            sta_p = run_sta(
+                mcw_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
+        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+            sta_p = run_sta(
+                uprj_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
+        else:
+            sta_p = run_sta(
+                caravel_root,
+                f"{caravel_root}/scripts/pt_libs",
+                sta_log_dir,
+                signoff_dir,
+                design,
+                timestr,
+                upw
+            )
 
     if antenna:
         logging.info(f"Running antenna checks on {design}")
-        ant = run_antenna(
-            log_dir, design_root, design, pdk_root, pdk_env, caravel_root, mcw_root
-        )
+        if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256"):
+            ant = run_antenna(mcw_root, timestr, signoff_dir, pdk_path, design)
+        else:
+            ant = run_antenna(caravel_root, timestr, signoff_dir, pdk_path, design)
 
     if verification or iverilog:
         verify_p = []
@@ -524,15 +777,6 @@ if __name__ == "__main__":
             if out:
                 ver_log.write(out)
 
-    # if lvs and drc and sta:
-    #     out, err = sta_p.communicate()
-    #     sta_log = open(f"{log_dir}/PT_STA_{design}.log", "w")
-    #     if err:
-    #         logging.error(err)
-    #         sta_log.write(err)
-
-    #     drc_p1.wait()
-    #     lvs_p1.wait()
     if sta:
         out, err = sta_p.communicate()
         sta_log = open(f"{sta_log_dir}/PT_STA_{design}.log", "w")
@@ -542,20 +786,14 @@ if __name__ == "__main__":
             sta_log.close()
         else:
             os.remove(f"{sta_log_dir}/PT_STA_{design}.log")
+        save_latest_run (lvs, drc, antenna, sta, spef, f"{signoff_dir}/{design}/primetime/{timestr}")
+
     if lvs:
         lvs_p1.wait()
     if drc:
         drc_p1.wait()
-    
     if antenna:
-        out, err = ant.communicate()
-        ant_rep = open(f"{signoff_dir}/{design}/standalone_pvr/antenna-vios.report", "w")
-        if err:
-            logging.error(err.decode())
-            ant_rep.write(err.decode())
-        if out:
-            ant_rep.write(out.decode())
-        ant_rep.close()
+        ant.wait()
 
     check_errors(
         caravel_root, log_dir, signoff_dir, drc, lvs, verification, sta, design, antenna

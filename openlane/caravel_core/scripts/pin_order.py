@@ -1,0 +1,18 @@
+for i in range(0,38):
+    if i in range(7,36):
+      print(f"mprj_analog_io\[" + str(i-7) + "\]")                                                                                                                                                                                
+    print(f"mprj_io_in\[" + str(i) + "\]")
+    print(f"mprj_io_slow_sel\[" + str(i) + "\]")                                                                                                                                                                       
+    print(f"mprj_io_dm\[" + str(i*3+1) + "\]") 
+    print(f"mprj_io_analog_en\[" + str(i) + "\]") 
+    print(f"mprj_io_dm\[" + str(i*3+0) + "\]")
+    print(f"mprj_io_analog_pol\[" + str(i) + "\]") 
+    print(f"mprj_io_inp_dis\[" + str(i) + "\]") 
+    print(f"mprj_io_analog_sel\[" + str(i) + "\]") 
+    print(f"mprj_io_dm\[" + str(i*3+2) + "\]")
+    print(f"mprj_io_holdover\[" + str(i) + "\]") 
+    print(f"mprj_io_out\[" + str(i) + "\]") 
+    print(f"mprj_io_vtrip_sel\[" + str(i) + "\]")                                                                                                                                                                   
+    print(f"mprj_io_ib_mode_sel\[" + str(i) + "\]")                                                                                                                                                                    
+    print(f"mprj_io_oeb\[" + str(i) + "\]")                                                                                                                                                                       
+    print(f"mprj_io_one\[" + str(i) + "\]") 

@@ -1,47 +1,58 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1636105901
-<< nwell >>
-rect -38 2437 1418 2758
-rect -38 1349 1418 1915
-rect -38 261 1418 827
-<< pwell >>
-rect 29 -17 63 17
-rect 305 -17 339 17
-rect 672 -11 696 11
-rect 857 -17 891 17
-rect 1317 -17 1351 17
+timestamp 1677507609
 << obsli1 >>
-rect 0 -17 1380 2737
+rect 92 527 4232 3825
 << obsm1 >>
-rect 0 -48 1380 2768
+rect 92 496 4232 3856
+<< metal2 >>
+rect 132 496 452 3944
+rect 852 496 1172 3856
+rect 1652 496 1972 3944
+rect 2372 496 2692 3856
+rect 3172 496 3492 3944
+rect 3892 496 4212 3856
+rect 2134 0 2190 400
 << obsm2 >>
-rect 78 0 1062 2768
-rect 818 -48 1062 0
+rect 2136 456 2188 3534
 << metal3 >>
-rect 600 1640 1400 1760
-<< obsm3 >>
-rect 60 1840 1080 2753
-rect 60 1560 520 1840
-rect 60 0 1080 1560
-rect 800 -33 1080 0
-<< metal4 >>
-rect 60 -48 340 2768
-rect 800 -48 1080 2768
+rect 44 3624 4280 3944
+rect 44 2824 4280 3144
+rect 44 2104 4280 2424
+rect 44 1304 4280 1624
+rect 44 584 4280 904
 << labels >>
-rlabel metal3 s 600 1640 1400 1760 6 gpio_logic1
+rlabel metal2 s 2134 0 2190 400 6 gpio_logic1
 port 1 nsew signal output
-rlabel metal4 s 60 -48 340 2768 6 vccd1
-port 2 nsew power input
-rlabel metal4 s 800 -48 1080 2768 6 vssd1
-port 3 nsew ground input
+rlabel metal2 s 132 496 452 3944 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal2 s 1652 496 1972 3944 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal2 s 3172 496 3492 3944 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal3 s 44 584 4280 904 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal3 s 44 2104 4280 2424 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal3 s 44 3624 4280 3944 6 vccd1
+port 2 nsew power bidirectional
+rlabel metal2 s 852 496 1172 3856 6 vssd1
+port 3 nsew ground bidirectional
+rlabel metal2 s 2372 496 2692 3856 6 vssd1
+port 3 nsew ground bidirectional
+rlabel metal2 s 3892 496 4212 3856 6 vssd1
+port 3 nsew ground bidirectional
+rlabel metal3 s 44 1304 4280 1624 6 vssd1
+port 3 nsew ground bidirectional
+rlabel metal3 s 44 2824 4280 3144 6 vssd1
+port 3 nsew ground bidirectional
 << properties >>
+string FIXED_BBOX 0 0 4400 4400
 string LEFclass BLOCK
-string FIXED_BBOX 0 0 1400 3200
 string LEFview TRUE
-string GDS_FILE ../gds/gpio_logic_high.gds
-string GDS_END 27138
-string GDS_START 18568
+string GDS_END 51880
+string GDS_FILE /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/gpio_logic_high/runs/23_02_27_06_19/results/signoff/gpio_logic_high.magic.gds
+string GDS_START 20238
 << end >>
 

@@ -19,52 +19,64 @@ set ::env(DESIGN_NAME) gpio_defaults_block
 set ::env(DESIGN_IS_CORE) 1
 
 set ::env(VERILOG_FILES) "\
-	$script_dir/../../verilog/rtl/defines.v\
-	$script_dir/../../verilog/rtl/gpio_defaults_block.v"
+	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
+	$::env(DESIGN_DIR)/../../verilog/rtl/gpio_defaults_block.v"
 
 set ::env(CLOCK_PORT) ""
 set ::env(CLOCK_TREE_SYNTH) 0
 
 ## Synthesis
 set ::env(SYNTH_BUFFERING) 0
+set ::env(SYNTH_ELABORATE_ONLY) 1
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 set ::env(SYNTH_USE_PG_PINS_DEFINES) "USE_POWER_PINS"
 
 ## Floorplan
-set ::env(DIE_AREA) "0 0 30 11"
+set ::env(DIE_AREA) "0 0 17 28"
 set ::env(FP_SIZING) absolute
 
-set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
-set ::env(FP_IO_VLENGTH) "2"
-set ::env(FP_IO_HLENGTH) "2"
+set ::env(FP_PIN_ORDER_CFG) $::env(DESIGN_DIR)/pin_order.cfg
+set ::env(FP_IO_VLENGTH) 3
+set ::env(FP_IO_HLENGTH) 3
+set ::env(FP_IO_HEXTEND) 3
+set ::env(FP_IO_VEXTEND) 3
 
-set ::env(FP_HORIZONTAL_HALO) 0
-set ::env(FP_VERTICAL_HALO) 0
-
-set ::env(TOP_MARGIN_MULT) 0
-set ::env(BOTTOM_MARGIN_MULT) 1
-set ::env(LEFT_MARGIN_MULT) 0
-set ::env(RIGHT_MARGIN_MULT) 0
+set ::env(TOP_MARGIN_MULT) 2
+set ::env(BOTTOM_MARGIN_MULT) 2
+set ::env(LEFT_MARGIN_MULT) 5
+set ::env(RIGHT_MARGIN_MULT) 1
 
 set ::env(CELL_PAD) 0
+set ::env(FP_TAPCELL_DIST) 8
 
 ## PDN Configuration
 set ::env(FP_PDN_AUTO_ADJUST) 0
 set ::env(FP_PDN_VWIDTH) 1.4
-set ::env(FP_PDN_VOFFSET) 1
-set ::env(FP_PDN_HOFFSET) 2
-set ::env(FP_PDN_VPITCH) 7
-set ::env(FP_PDN_HPITCH) 7
+set ::env(FP_PDN_HWIDTH) 1.4
+set ::env(FP_PDN_VOFFSET) 2.4
+set ::env(FP_PDN_HOFFSET) 4.2
+set ::env(FP_PDN_VSPACING) 8
+set ::env(FP_PDN_HSPACING) 6
+set ::env(FP_PDN_VPITCH) 18.8
+set ::env(FP_PDN_HPITCH) 18.8
+set ::env(FP_PDN_LOWER_LAYER) met2
+set ::env(FP_PDN_UPPER_LAYER) met3
+set ::env(FP_PDN_SKIPTRIM) 1
 
 ## Placement
-set ::env(PL_TARGET_DENSITY) 0.92
+set ::env(PL_TARGET_DENSITY) 0.45
+set ::env(PL_ROUTABILITY_DRIVEN) 1
 
-set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESZIER_REPIAR_TIE_FANOUT) 0
+set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
 ## Routing
-set ::env(GLB_RT_MINLAYER) "2"
-set ::env(GLB_RT_MAXLAYER) "5"
+set ::env(GRT_MINLAYER) "met1"
+set ::env(GRT_MAXLAYER) "met3"
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+
+## LVS
+set ::env(MAGIC_EXT_USE_GDS) 1

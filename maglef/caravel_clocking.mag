@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1666097793
+timestamp 1678103541
 << obsli1 >>
 rect 184 527 18860 18513
 << obsm1 >>
@@ -15,7 +15,7 @@ rect 12806 19200 12862 20000
 rect 15658 19200 15714 20000
 rect 18510 19200 18566 20000
 << obsm2 >>
-rect 572 19144 1342 19258
+rect 848 19144 1342 19258
 rect 1510 19144 4194 19258
 rect 4362 19144 7046 19258
 rect 7214 19144 9898 19258
@@ -23,33 +23,36 @@ rect 10066 19144 12750 19258
 rect 12918 19144 15602 19258
 rect 15770 19144 18454 19258
 rect 18622 19144 19118 19258
-rect 572 507 19118 19144
+rect 848 507 19118 19144
 << metal3 >>
 rect 19200 18504 20000 18624
 rect 19200 16056 20000 16176
 rect 19200 13608 20000 13728
 rect 19200 11160 20000 11280
+rect 0 9936 800 10056
 rect 19200 8712 20000 8832
 rect 19200 6264 20000 6384
 rect 19200 3816 20000 3936
 rect 19200 1368 20000 1488
 << obsm3 >>
-rect 1552 18424 19120 18597
-rect 1552 16256 19200 18424
-rect 1552 15976 19120 16256
-rect 1552 13808 19200 15976
-rect 1552 13528 19120 13808
-rect 1552 11360 19200 13528
-rect 1552 11080 19120 11360
-rect 1552 8912 19200 11080
-rect 1552 8632 19120 8912
-rect 1552 6464 19200 8632
-rect 1552 6184 19120 6464
-rect 1552 4016 19200 6184
-rect 1552 3736 19120 4016
-rect 1552 1568 19200 3736
-rect 1552 1288 19120 1568
-rect 1552 511 19200 1288
+rect 800 18424 19120 18597
+rect 800 16256 19200 18424
+rect 800 15976 19120 16256
+rect 800 13808 19200 15976
+rect 800 13528 19120 13808
+rect 800 11360 19200 13528
+rect 800 11080 19120 11360
+rect 800 10136 19200 11080
+rect 880 9856 19200 10136
+rect 800 8912 19200 9856
+rect 800 8632 19120 8912
+rect 800 6464 19200 8632
+rect 800 6184 19120 6464
+rect 800 4016 19200 6184
+rect 800 3736 19120 4016
+rect 800 1568 19200 3736
+rect 800 1288 19120 1568
+rect 800 511 19200 1288
 << metal4 >>
 rect 1550 496 1870 18544
 rect 3100 496 3420 18544
@@ -63,17 +66,6 @@ rect 13950 496 14270 18544
 rect 15500 496 15820 18544
 rect 17050 496 17370 18544
 rect 18600 496 18920 18544
-<< metal5 >>
-rect 136 16740 18920 17060
-rect 136 15050 18908 15370
-rect 136 13360 18920 13680
-rect 136 11670 18908 11990
-rect 136 9980 18920 10300
-rect 136 8290 18908 8610
-rect 136 6600 18920 6920
-rect 136 4910 18908 5230
-rect 136 3220 18920 3540
-rect 136 1530 18908 1850
 << labels >>
 rlabel metal4 s 3100 496 3420 18544 6 VGND
 port 1 nsew ground bidirectional
@@ -87,16 +79,6 @@ rlabel metal4 s 15500 496 15820 18544 6 VGND
 port 1 nsew ground bidirectional
 rlabel metal4 s 18600 496 18920 18544 6 VGND
 port 1 nsew ground bidirectional
-rlabel metal5 s 136 3220 18920 3540 6 VGND
-port 1 nsew ground bidirectional
-rlabel metal5 s 136 6600 18920 6920 6 VGND
-port 1 nsew ground bidirectional
-rlabel metal5 s 136 9980 18920 10300 6 VGND
-port 1 nsew ground bidirectional
-rlabel metal5 s 136 13360 18920 13680 6 VGND
-port 1 nsew ground bidirectional
-rlabel metal5 s 136 16740 18920 17060 6 VGND
-port 1 nsew ground bidirectional
 rlabel metal4 s 1550 496 1870 18544 6 VPWR
 port 2 nsew power bidirectional
 rlabel metal4 s 4650 496 4970 18544 6 VPWR
@@ -108,16 +90,6 @@ port 2 nsew power bidirectional
 rlabel metal4 s 13950 496 14270 18544 6 VPWR
 port 2 nsew power bidirectional
 rlabel metal4 s 17050 496 17370 18544 6 VPWR
-port 2 nsew power bidirectional
-rlabel metal5 s 136 1530 18908 1850 6 VPWR
-port 2 nsew power bidirectional
-rlabel metal5 s 136 4910 18908 5230 6 VPWR
-port 2 nsew power bidirectional
-rlabel metal5 s 136 8290 18908 8610 6 VPWR
-port 2 nsew power bidirectional
-rlabel metal5 s 136 11670 18908 11990 6 VPWR
-port 2 nsew power bidirectional
-rlabel metal5 s 136 15050 18908 15370 6 VPWR
 port 2 nsew power bidirectional
 rlabel metal2 s 7102 19200 7158 20000 6 core_clk
 port 3 nsew signal output
@@ -131,30 +103,32 @@ rlabel metal2 s 15658 19200 15714 20000 6 pll_clk
 port 7 nsew signal input
 rlabel metal2 s 18510 19200 18566 20000 6 pll_clk90
 port 8 nsew signal input
-rlabel metal2 s 1398 19200 1454 20000 6 resetb
+rlabel metal3 s 0 9936 800 10056 6 porb
 port 9 nsew signal input
+rlabel metal2 s 1398 19200 1454 20000 6 resetb
+port 10 nsew signal input
 rlabel metal2 s 12806 19200 12862 20000 6 resetb_sync
-port 10 nsew signal output
+port 11 nsew signal output
 rlabel metal3 s 19200 11160 20000 11280 6 sel2[0]
-port 11 nsew signal input
-rlabel metal3 s 19200 13608 20000 13728 6 sel2[1]
 port 12 nsew signal input
-rlabel metal3 s 19200 16056 20000 16176 6 sel2[2]
+rlabel metal3 s 19200 13608 20000 13728 6 sel2[1]
 port 13 nsew signal input
-rlabel metal3 s 19200 3816 20000 3936 6 sel[0]
+rlabel metal3 s 19200 16056 20000 16176 6 sel2[2]
 port 14 nsew signal input
-rlabel metal3 s 19200 6264 20000 6384 6 sel[1]
+rlabel metal3 s 19200 3816 20000 3936 6 sel[0]
 port 15 nsew signal input
-rlabel metal3 s 19200 8712 20000 8832 6 sel[2]
+rlabel metal3 s 19200 6264 20000 6384 6 sel[1]
 port 16 nsew signal input
+rlabel metal3 s 19200 8712 20000 8832 6 sel[2]
+port 17 nsew signal input
 rlabel metal2 s 9954 19200 10010 20000 6 user_clk
-port 17 nsew signal output
+port 18 nsew signal output
 << properties >>
 string FIXED_BBOX 0 0 20000 20000
 string LEFclass BLOCK
 string LEFview TRUE
-string GDS_END 1393304
-string GDS_FILE ../gds/caravel_clocking.gds
-string GDS_START 410574
+string GDS_END 1487650
+string GDS_FILE /home/hosni/caravel_sky130/caravel_redesign-2/caravel/openlane/caravel_clocking/runs/23_03_06_03_51/results/signoff/caravel_clocking.magic.gds
+string GDS_START 459080
 << end >>
 

@@ -38,7 +38,7 @@
 #
 # gpio_defaults_block layout map:
 # Positions marked (in microns) for value = 0.  For value = 1, move
-# the via 0.69um to the left.  The given position is the lower left
+# the via 0.92um to the right.  The given position is the lower left
 # corner position of the via.  The via itself is 0.17um x 0.17um.
 # The values below are for the file gpio_defaults_block_1403.
 # Positions marked "Y" for "Programmed One?" are already moved to
@@ -48,19 +48,19 @@
 # Signal                Via position (um)
 # name		        X       Y
 #-------------------------------------------------------------------
-# gpio_defaults[0]   	 5.435  4.165
-# gpio_defaults[1]	 6.815  3.825
-# gpio_defaults[2]	 8.195  4.165
-# gpio_defaults[3]	 9.575  3.825
-# gpio_defaults[4]	10.955  3.825
-# gpio_defaults[5]	12.565  3.825
-# gpio_defaults[6]	14.865  3.825
-# gpio_defaults[7]   	17.165  3.825
-# gpio_defaults[8]   	19.465  3.825
-# gpio_defaults[9]   	21.765  3.825
-# gpio_defaults[10]  	24.755  3.825
-# gpio_defaults[11]	27.055  3.825
-# gpio_defaults[12]  	23.605  4.165
+# gpio_defaults[0]   	 7.505 17.425
+# gpio_defaults[1]	11.645 17.425
+# gpio_defaults[2]	 4.745  6.545
+# gpio_defaults[3]	 7.965  6.545
+# gpio_defaults[4]	11.645  6.545
+# gpio_defaults[5]	 5.205  9.605
+# gpio_defaults[6]	 5.205 11.985
+# gpio_defaults[7]   	 8.425 15.045
+# gpio_defaults[8]   	 7.965 20.485
+# gpio_defaults[9]   	 4.745 20.485
+# gpio_defaults[10]  	 5.205 15.045
+# gpio_defaults[11]	12.015  9.605
+# gpio_defaults[12]  	 8.885  9.605
 #-------------------------------------------------------------------
 
 import os
@@ -82,10 +82,10 @@ def usage():
 if __name__ == '__main__':
 
     # Coordinate pairs in microns for the zero position on each bit
-    via_pos = [[5.435, 4.165], [6.815, 3.825], [8.195, 4.165], [9.575, 3.825],
-	[10.955, 3.825], [12.565, 3.825], [14.865, 3.825], [17.165, 3.825],
-	[19.465, 3.825], [21.765, 3.825], [24.755, 3.825], [27.055, 3.825],
-	[23.605, 4.165]]
+    via_pos = [[7.505, 17.425], [11.645, 17.425], [4.745, 6.545], [7.965, 6.545],
+	[11.645, 6.545], [5.205, 9.605], [5.205, 11.985], [8.425, 15.045],
+	[7.965, 20.485], [4.745, 20.485], [5.205, 15.045], [12.015, 9.605],
+	[8.885, 9.605]]
 
     optionlist = []
     arguments = []
@@ -197,9 +197,9 @@ if __name__ == '__main__':
         urx_zero = llx_zero + 34
         ury_zero = lly_zero + 34
 
-        llx_one = llx_zero - 138
+        llx_one = llx_zero + 184
         lly_one = lly_zero
-        urx_one = urx_zero - 138
+        urx_one = urx_zero + 184
         ury_one = ury_zero
 
         zero_string.append('rect {:d} {:d} {:d} {:d}'.format(llx_zero, lly_zero, urx_zero, ury_zero))
@@ -328,8 +328,8 @@ if __name__ == '__main__':
     idx2rex = re.compile('gpio_defaults_block_([0-9]+)')
 
     if testmode:
-        print('Test only:  Caravel layout:')
-    with open(caravel_path + '/mag/caravel.mag', 'r') as ifile:
+        print('Test only:  Caravel core layout:')
+    with open(caravel_path + '/mag/caravel_core.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
@@ -359,18 +359,18 @@ if __name__ == '__main__':
                 outlines.append(magline)
 
     if not testmode:
-        with open(magpath + '/caravel.mag', 'w') as ofile:
+        with open(magpath + '/caravel_core.mag', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
-    # Do the same to the top gate-level verilog
+    # Do the same to the core gate-level verilog
 
     inst1rex = re.compile('[ \t]*(gpio_defaults_block_?[0-1]?[0-9A-Fa-f]*)[ \t]+.?gpio_defaults_block_([0-9]+).([0-9]+)')
     inst2rex = re.compile('[ \t]*(gpio_defaults_block_?[0-1]?[0-9A-Fa-f]*)[ \t]+gpio_defaults_block_([0-9]+)')
 
     if testmode:
         print('Test only:  Caravel top gate-level verilog:')
-    with open(caravel_path + '/verilog/gl/caravel.v', 'r') as ifile:
+    with open(caravel_path + '/verilog/gl/caravel_core.v', 'r') as ifile:
         vlines = ifile.read().splitlines()
         outlines = []
         for vline in vlines:
@@ -395,9 +395,13 @@ if __name__ == '__main__':
                 outlines.append(vline)
 
     if not testmode:
-        with open(glpath + '/caravel.v', 'w') as ofile:
+        with open(glpath + '/caravel_core.v', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
+
+    # IMPORTANT NOTE:
+    # This needs to be changed to caravan_core, but the cell does not yet
+    # exist.
 
     if testmode:
         print('Test only:  Caravan layout:')
