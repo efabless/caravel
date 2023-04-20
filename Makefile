@@ -122,9 +122,10 @@ __ship:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
+		addpath alpha; \
 		addpath $(CARAVEL_ROOT)/mag; \
-		addpath $(UPRJ_ROOT)/mag; \
 		addpath $(MCW_ROOT)/mag; \
+		addpath $(UPRJ_ROOT)/mag; \
 		load user_project_wrapper; \
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
@@ -132,7 +133,8 @@ __ship:
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
-		load $(UPRJ_ROOT)/mag/caravel -dereference; \
+		load $(UPRJ_ROOT)/mag/caravel_core -dereference; \
+		load $(CARAVEL_ROOT_ROOT)/mag/caravel -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
