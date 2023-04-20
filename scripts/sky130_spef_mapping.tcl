@@ -112,6 +112,8 @@ if {$design == "user_project_wrapper"} {
     set spef_mapping(mgmt_buffers.powergood_check)             $::env(CARAVEL_ROOT)/signoff/mgmt_protect_hv/openlane-signoff/spef/mgmt_protect_hv.${rc_corner}.spef
     set spef_mapping(mgmt_buffers.mprj_logic_high_inst)        $::env(CARAVEL_ROOT)/signoff/mprj_logic_high/openlane-signoff/spef/mprj_logic_high.${rc_corner}.spef
     set spef_mapping(mgmt_buffers.mprj2_logic_high_inst)       $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
+    
+    set spef_mapping(user_id_value)                            $::env(CARAVEL_ROOT)/signoff/user_id_programming/openlane-signoff/spef/user_id_programming.${rc_corner}.spef
 } elseif {$design == $::env(CHIP)} {
     if {$::env(UPW)} {
         # user_project_wrapper spefs
@@ -233,5 +235,6 @@ if {$design == "user_project_wrapper"} {
     set spef_mapping(chip_core/mgmt_buffers.powergood_check)             $::env(CARAVEL_ROOT)/signoff/mgmt_protect_hv/openlane-signoff/spef/mgmt_protect_hv.${rc_corner}.spef
     set spef_mapping(chip_core/mgmt_buffers.mprj_logic_high_inst)        $::env(CARAVEL_ROOT)/signoff/mprj_logic_high/openlane-signoff/spef/mprj_logic_high.${rc_corner}.spef
     set spef_mapping(chip_core/mgmt_buffers.mprj2_logic_high_inst)       $::env(CARAVEL_ROOT)/signoff/mprj2_logic_high/openlane-signoff/spef/mprj2_logic_high.${rc_corner}.spef
+    set spef_mapping(chip_core/user_id_value)                            $::env(CARAVEL_ROOT)/signoff/user_id_programming/openlane-signoff/spef/user_id_programming.${rc_corner}.spef
 }
 puts "\[INFO\]: Spef mapping done"
