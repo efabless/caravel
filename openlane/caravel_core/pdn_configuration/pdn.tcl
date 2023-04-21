@@ -242,6 +242,17 @@ add_pdn_stripe \
     #     -number_of_straps 1 \
     #     -nets "vssd1 vccd1" \
     #     -starts_with POWER
+#### user_id_programming
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 1.6 \
+        -pitch 120 \
+        -offset 2959.055 \
+        -spacing 20.78 \
+        -number_of_straps 1 \
+        -nets "vccd vssd" \
+        -starts_with POWER
 
 ####  vssio and vddio stripes  ####
     add_pdn_stripe \

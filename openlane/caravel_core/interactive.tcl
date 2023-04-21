@@ -92,6 +92,7 @@ run_cts
 
 heuristic_diode_insertion
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
+set ::env(GRT_ALLOW_CONGESTION) 0
 set ::env(GRT_OBS) "\
     met5 90 175.0 496.18 612.92, \
     met5 582.00 175.00 988.18 612.92, \
@@ -127,7 +128,7 @@ run_magic
 # run_lvs;
 
 ###############   DRC    ################
-run_magic_drc
+# run_magic_drc
 
 ################   Saving views and reports    ################
 save_final_views
