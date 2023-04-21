@@ -59,13 +59,14 @@
 # gpio_defaults[8]   	 7.965 20.485
 # gpio_defaults[9]   	 4.745 20.485
 # gpio_defaults[10]  	 5.205 15.045
-# gpio_defaults[11]	12.015  9.605
+# gpio_defaults[11]	12.105  9.605
 # gpio_defaults[12]  	 8.885  9.605
 #-------------------------------------------------------------------
 
 import os
 import sys
 import re
+import subprocess
 
 def usage():
     print('Usage:')
@@ -84,7 +85,7 @@ if __name__ == '__main__':
     # Coordinate pairs in microns for the zero position on each bit
     via_pos = [[7.505, 17.425], [11.645, 17.425], [4.745, 6.545], [7.965, 6.545],
 	[11.645, 6.545], [5.205, 9.605], [5.205, 11.985], [8.425, 15.045],
-	[7.965, 20.485], [4.745, 20.485], [5.205, 15.045], [12.015, 9.605],
+	[7.965, 20.485], [4.745, 20.485], [5.205, 15.045], [12.105, 9.605],
 	[8.885, 9.605]]
 
     optionlist = []
@@ -329,6 +330,15 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravel core layout:')
+
+    # Check for compressed layout
+    is_compressed = False
+    if not os.path.isfile(caravel_path + '/mag/caravel_core.mag'):
+        if os.path.isfile(caravel_path + '/mag/caravel_core.mag.gz'):
+            is_compressed = True
+            print('Uncompressing caravel_core.mag')
+            subprocess.run(['gunzip', caravel_path + '/mag/caravel_core.mag.gz'])
+
     with open(caravel_path + '/mag/caravel_core.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
@@ -362,6 +372,11 @@ if __name__ == '__main__':
         with open(magpath + '/caravel_core.mag', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
+
+    if is_compressed:
+        print('Compressing caravel_core.mag')
+        subprocess.run(['gzip', '-n', '--best', caravel_path +
+		'/mag/caravel_core.mag'])
 
     # Do the same to the core gate-level verilog
 
