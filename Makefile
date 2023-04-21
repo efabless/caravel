@@ -122,7 +122,6 @@ __ship:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
-		addpath alpha; \
 		addpath $(CARAVEL_ROOT)/mag; \
 		addpath $(MCW_ROOT)/mag; \
 		addpath $(UPRJ_ROOT)/mag; \
