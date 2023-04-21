@@ -122,7 +122,6 @@ __ship:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
-		addpath $(CARAVEL_ROOT)/mag; \
 		addpath $(MCW_ROOT)/mag; \
 		addpath $(UPRJ_ROOT)/mag; \
 		load user_project_wrapper; \
@@ -133,7 +132,7 @@ __ship:
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
 		load $(UPRJ_ROOT)/mag/caravel_core -dereference; \
-		load $(CARAVEL_ROOT)/mag/caravel -dereference; \
+		load caravel -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
