@@ -180,7 +180,7 @@ if __name__ == '__main__':
             idrex = re.compile("parameter USER_PROJECT_ID = 32'h([0-9A-F]+);")
 
             # Check if USER_PROJECT_ID has a non-zero value in caravel.v
-            rtl_top_path = user_project_path + '/verilog/rtl/caravel.v'
+            rtl_top_path = user_project_path + '/verilog/rtl/caravel_core.v'
             if os.path.isfile(rtl_top_path):
                 with open(rtl_top_path, 'r') as ifile:
                     vlines = ifile.read().splitlines()
@@ -307,7 +307,7 @@ if __name__ == '__main__':
     print('Step 2:  Add user project ID parameter to source verilog.')
 
     changed = False
-    with open(vpath + '/rtl/caravel.v', 'r') as ifile:
+    with open(vpath + '/rtl/caravel_core.v', 'r') as ifile:
         vlines = ifile.read().splitlines()
         outlines = []
         for line in vlines:
@@ -319,12 +319,12 @@ if __name__ == '__main__':
             outlines.append(oline)
 
     if changed:
-        with open(vpath + '/rtl/caravel.v', 'w') as ofile:
+        with open(vpath + '/rtl/caravel_core.v', 'w') as ofile:
             for line in outlines:
                 print(line, file=ofile)
             print('Done!')
     else:
-        print('Error:  No substitutions done on verilog/rtl/caravel.v.')
+        print('Error:  No substitutions done on verilog/rtl/caravel_core.v.')
         print('Ending process.')
         sys.exit(1)
 
