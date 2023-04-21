@@ -179,7 +179,7 @@ if __name__ == '__main__':
         # it's gigabytes anyway, so we don't want to deal with any
         # actual data.  So it's just a placeholder.
 
-        print('load ' + project_with_id + '_fill_pattern -quiet', file=ofile)
+        print('load ' + project_with_id + '_fill_pattern -silent', file=ofile)
         print('snap internal', file=ofile)
         print('box values {*}$bbox', file=ofile)
         print('paint comment', file=ofile)
@@ -188,7 +188,7 @@ if __name__ == '__main__':
         print('property FIXED_BBOX "$bbox"', file=ofile)
 
         # Create a new project top level and place the fill cell.
-        print('load ' + project_with_id + ' -quiet', file=ofile)
+        print('load ' + project_with_id + ' -silent', file=ofile)
         print('box values 0 0 0 0', file=ofile)	
         print('box position 6um 6um', file=ofile)	
         print('getcell ' + project + ' child 0 0', file=ofile)
@@ -230,7 +230,7 @@ if __name__ == '__main__':
         for line in mproc.stdout.splitlines():
             print(line)
     if mproc.stderr:
-        # NOTE:  Until there is a "load -quiet" option in magic, loading
+        # NOTE:  Until there is a "load -silent" option in magic, loading
         # a new cell generates an error.  This code ignores the error.
         newlines = []
         for line in mproc.stderr.splitlines():
