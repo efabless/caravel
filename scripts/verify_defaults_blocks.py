@@ -17,6 +17,7 @@
 import os
 import re
 import sys
+import gzip
 import subprocess
 
 bits_list = ["0000", "0001", "0002", "0004", "0008", "0010", "0020", "0040",
@@ -39,24 +40,35 @@ expected_results = [
 # IMPORTANT NOTE:  This script is invasive and changes files and does not change
 # them back.  Run this only in a git branch which can be removed afterward.
 
+if not os.path.isdir('verilog/rtl'):
+    print('***ERROR: This script must be run from the caravel top level directory.')
+    sys.exit(1)
+
 with open('verilog/rtl/user_defines.v', 'w') as ofile:
-     print('`default_nettype none', file=ofile)
-     print('`ifndef __USER_DEFINES_H', file=ofile)
-     print('`define __USER_DEFINES_H', file=ofile)
-     i = 5
-     for bits in bits_list:
-         print("`define USER_CONFIG_GPIO_" + str(i) + "_INIT  13'h" + bits, file=ofile)
-         i = i + 1
-     print('`endif // __USER_DEFINES_H', file=ofile)
+    print('`default_nettype none', file=ofile)
+    print('`ifndef __USER_DEFINES_H', file=ofile)
+    print('`define __USER_DEFINES_H', file=ofile)
+    i = 5
+    for bits in bits_list:
+        print("`define USER_CONFIG_GPIO_" + str(i) + "_INIT  13'h" + bits, file=ofile)
+        i = i + 1
+    print('`endif // __USER_DEFINES_H', file=ofile)
 
 subprocess.run('scripts/gen_gpio_defaults.py')
+
+# Create the list of bits in order with channel number.
+ordered_bits_list = ["1803", "1803", "0403", "0801", "0403"]
+ordered_bits_list.extend(bits_list)
 
 # Add the defaults for channels 0 to 5 to the list.
 bits_list.extend(["0403", "0801", "1803"])
 
 os.chdir('mag')
+print('Generating netlists from gpio_defaults layouts')
 for bits in bits_list:
-    if not os.path.isfile('gpio_defaults_block_' + bits + '.spice'):
+    if not os.path.isfile('gpio_defaults_block_' + bits + '.mag'):
+        print('***ERROR:  There is no layout file for gpio_defaults_block_' + bits + '!')
+    elif not os.path.isfile('gpio_defaults_block_' + bits + '.spice'):
         with open('gpio_verify.tcl', 'w') as ofile:
             print('load gpio_defaults_block_' + bits, file=ofile)
             print('extract do local', file=ofile)
@@ -73,30 +85,64 @@ for bits in bits_list:
 conbrex = re.compile('^Xgpio_default_value.*\[([0-9]+).*\]')
 
 i = 0
+print('Checking each generated layout netlist:')
 for bits in bits_list:
     # Read SPICE file and verify
     bits_verify = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-    with open('gpio_defaults_block_' + bits + '.spice', 'r') as ifile:
-        spicelines = ifile.read().splitlines()
-        for line in spicelines:
-            cmatch = conbrex.match(line)
-            if cmatch:
-                bitnum = int(cmatch.group(1))
-                tokens = line.split()
-                if 'gpio_defaults' in tokens[5] and 'gpio_default_value' in tokens[6]:
-                    bits_verify[bitnum] = '1'
-                elif 'gpio_defaults' in tokens[6] and 'gpio_default_value' in tokens[5]:
-                    bits_verify[bitnum] = '0'
-                else:
-                    print('Bad line in netlist: ' + line)
-        # Put zero bit at end
-        bits_verify.reverse() 
-        verify_string = ''.join(bits_verify)
-        print('Layout for default ' + bits + ' has configuration ' + verify_string)
-        if verify_string != expected_results[i]:
-            print('***ERROR:  Expected bit string ' + expected_results[i] + ' but got ' + verify_string + '!')
-    i = i + 1
+    if not os.path.isfile('gpio_defaults_block_' + bits + '.spice'):
+        print('***ERROR:  No netlist generated for gpio_defaults_block_' + bits + '!')
+    else:
+        with open('gpio_defaults_block_' + bits + '.spice', 'r') as ifile:
+            spicelines = ifile.read().splitlines()
+            for line in spicelines:
+                cmatch = conbrex.match(line)
+                if cmatch:
+                    bitnum = int(cmatch.group(1))
+                    tokens = line.split()
+                    if 'gpio_defaults' in tokens[5] and 'gpio_default_value' in tokens[6]:
+                        bits_verify[bitnum] = '1'
+                    elif 'gpio_defaults' in tokens[6] and 'gpio_default_value' in tokens[5]:
+                        bits_verify[bitnum] = '0'
+                    else:
+                        print('Bad line in netlist: ' + line)
+            # Put zero bit at end
+            bits_verify.reverse() 
+            verify_string = ''.join(bits_verify)
+            print('Layout for default ' + bits + ' has configuration ' + verify_string)
+            if verify_string != expected_results[i]:
+                print('***ERROR:  Expected bit string ' + expected_results[i] + ' but got ' + verify_string + '!')
+        i = i + 1
         
+blrex = re.compile('^use gpio_defaults_block_([0-9a-zA-Z]+).*gpio_defaults_block_([0-9]+)$')
+found = 0
+
+print('Checking modified caravel_core layout:')
+if os.path.isfile('caravel_core.mag.gz'):
+    with gzip.open('caravel_core.mag.gz', 'r') as ifile:
+        for line in ifile.readlines():
+            bmatch = blrex.match(line.decode('ascii'))
+            if bmatch:
+                found = found + 1
+                index = int(bmatch.group(2))
+                value = bmatch.group(1)
+                if value != ordered_bits_list[index]:
+                    print('***ERROR:  Expected bit string ' + ordered_bits_list[index] + ' but got ' + value + ' for defaults block index ' + str(index) + '!')
+            
+elif os.path.isfile('caravel_core.mag'):
+    with open('caravel_core.mag', 'r') as ifile:
+        for line in ifile.readlines():
+            bmatch = blrex.match(line.decode('ascii'))
+            if bmatch:
+                found = found + 1
+                index = int(bmatch.group(2))
+                value = bmatch.group(1)
+                if value != ordered_bits_list[index]:
+                    print('***ERROR:  Expected bit string ' + ordered_bits_list[index] + ' but got ' + value + ' for defaults block index ' + str(index) + '!')
+else:
+    print('***ERROR:  There is no caravel_core.mag(.gz) file.  Did you run the script from the project top level?')
+    
+if found != 38:
+    print('***ERROR:  Found ' + str(found) + ' defaults blocks in caravel_core, not the expected 38!')
     
 # Remove all .ext and .spice files
 for bits in bits_list:
