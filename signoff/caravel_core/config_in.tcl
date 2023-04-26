@@ -27,7 +27,6 @@ set ::env(VERILOG_FILES) "\
                         $::env(CARAVEL_ROOT)/verilog/rtl/digital_pll.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/clock_div.v \
                         $::env(CARAVEL_ROOT)/verilog/rtl/gpio_control_block.v \
-                        $::env(CARAVEL_ROOT)/verilog/rtl/user_id_programming.v \
                         $::env(MCW_ROOT)/verilog/rtl/mgmt_core_wrapper.v \
                         $::env(MCW_ROOT)/verilog/rtl/mgmt_core.v \
                         $::env(MCW_ROOT)/verilog/rtl/ibex_all.v \
@@ -92,6 +91,7 @@ set ::env(VDD_NETS) "vccd vccd1 vccd2 vdda1 vdda2 vddio"
 set ::env(GND_NETS) "vssd vssd1 vssd2 vssa1 vssa2 vssio"
 
 set ::env(FP_PDN_MACRO_HOOKS) {
+    user_id_value vccd vssd VPWR VGND,\
     housekeeping vccd vssd VPWR VGND,\
     mprj vccd1 vssd1 vccd1 vssd1,\
     mprj vccd2 vssd2 vccd2 vssd2,\
@@ -196,7 +196,7 @@ set ::env(PL_RESIZER_MAX_CAP_MARGIN) 50
 ##ROUTING
 set ::env(GRT_ALLOW_CONGESTION) 1
 
-set ::env(GRT_ADJUSTMENT) 0.06
+set ::env(GRT_ADJUSTMENT) 0.10
 ##                                li1 ,met1,met2,met3,met4,met5
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
@@ -216,7 +216,7 @@ set ::env(GRT_REPAIR_ANTENNAS) 1
 set ::env(RUN_HEURISTIC_DIODE_INSERTION) 1
 set ::env(HEURISTIC_ANTENNA_THRESHOLD) 80
 set ::env(DIODE_ON_PORTS) "none"
-set ::env(GRT_ANT_MARGIN) 15
+set ::env(GRT_ANT_MARGIN) 10
 set ::env(GRT_ANT_ITERS) 12
 set ::env(GRT_MAX_DIODE_INS_ITERS) 4
 set ::env(DIODE_PADDING) 0
@@ -228,6 +228,7 @@ set ::env(MACRO_PLACEMENT_CFG_3) [glob $::env(DESIGN_DIR)/floorplan_configuratio
 
 set ::env(VERILOG_FILES_BLACKBOX) "\
     $::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
+    $::env(CARAVEL_ROOT)/verilog/rtl/user_id_programming.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/__user_project_wrapper.v \
     $::env(CARAVEL_ROOT)/verilog/gl/housekeeping.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/simple_por.v \
@@ -246,6 +247,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 "
 
 set ::env(EXTRA_LEFS) "\
+    $::env(CARAVEL_ROOT)/lef/user_id_programming.lef \
     $::env(CARAVEL_ROOT)/lef/user_project_wrapper_empty.lef \
     $::env(CARAVEL_ROOT)/lef/housekeeping.lef \
     $::env(CARAVEL_ROOT)/lef/simple_por.lef \
@@ -264,6 +266,7 @@ set ::env(EXTRA_LEFS) "\
 "
 
 set ::env(EXTRA_GDS_FILES) "\
+    $::env(CARAVEL_ROOT)/gds/user_id_programming.gds \
     $::env(CARAVEL_ROOT)/gds/user_project_wrapper_empty.gds \
     $::env(CARAVEL_ROOT)/gds/housekeeping.gds \
     $::env(CARAVEL_ROOT)/gds/simple_por.gds \
