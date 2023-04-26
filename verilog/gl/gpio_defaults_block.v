@@ -274,8 +274,8 @@ module gpio_defaults_block (VPWR,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
- assign gpio_defaults[10] = \gpio_defaults_high[10] ;
- assign gpio_defaults[1] = \gpio_defaults_high[1] ;
+ assign gpio_defaults[10] = \gpio_defaults_low[10] ;
+ assign gpio_defaults[1] = \gpio_defaults_low[1] ;
  assign gpio_defaults[0] = \gpio_defaults_low[0] ;
  assign gpio_defaults[11] = \gpio_defaults_low[11] ;
  assign gpio_defaults[12] = \gpio_defaults_low[12] ;
