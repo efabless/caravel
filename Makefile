@@ -44,7 +44,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-9a
+MPW_TAG ?= mpw-9b
 
 PYTHON_BIN ?= python3
 
@@ -122,9 +122,8 @@ __ship:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
-		addpath $(CARAVEL_ROOT)/mag; \
-		addpath $(UPRJ_ROOT)/mag; \
 		addpath $(MCW_ROOT)/mag; \
+		addpath $(UPRJ_ROOT)/mag; \
 		load user_project_wrapper; \
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/user_project_wrapper.gds; \
@@ -132,7 +131,8 @@ __ship:
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
-		load $(UPRJ_ROOT)/mag/caravel -dereference; \
+		load $(UPRJ_ROOT)/mag/caravel_core -dereference; \
+		load caravel -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
@@ -1144,7 +1144,7 @@ __set_user_id:
 	# sed -r "s/^(\s*project_id\s*:\s*).*/\1${USER_ID}/" -i info.yaml
 	cp $(CARAVEL_ROOT)/mag/user_id_programming.mag ./mag/user_id_programming.mag
 	cp $(CARAVEL_ROOT)/mag/user_id_textblock.mag ./mag/user_id_textblock.mag
-	cp $(CARAVEL_ROOT)/verilog/rtl/caravel.v ./verilog/rtl/caravel.v
+	cp $(CARAVEL_ROOT)/verilog/rtl/caravel_core.v ./verilog/rtl/caravel_core.v
 	cp $(CARAVEL_ROOT)/verilog/gl/user_id_programming.v ./verilog/gl/user_id_programming.v
 	python3 $(CARAVEL_ROOT)/scripts/set_user_id.py $(USER_ID) $(shell pwd) 2>&1 | tee ./signoff/build/set_user_id.out
 
