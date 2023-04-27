@@ -1,0 +1,61 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravel_clocking
+Version: T-2022.03-SP3
+Date   : Sun Mar 26 04:31:30 2023
+****************************************
+
+
+   max_delay/setup ('pll_clk' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _432_/D                                                 -2.4271  (VIOLATED)
+   _430_/D                                                 -2.4100  (VIOLATED)
+   _431_/D                                                 -2.1267  (VIOLATED)
+   _428_/D                                                 -1.4608  (VIOLATED)
+   _426_/D                                                 -1.3031  (VIOLATED)
+   _427_/D                                                 -1.0601  (VIOLATED)
+   _429_/D                                                 -0.8349  (VIOLATED)
+
+   max_delay/setup ('pll_clk90' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _457_/D                                                 -2.4162  (VIOLATED)
+   _455_/D                                                 -2.3626  (VIOLATED)
+   _456_/D                                                 -2.0692  (VIOLATED)
+   _453_/D                                                 -1.3823  (VIOLATED)
+   _451_/D                                                 -1.3245  (VIOLATED)
+   _454_/D                                                 -1.1095  (VIOLATED)
+   _452_/D                                                 -0.7293  (VIOLATED)
+
+
+   min_delay/hold ('clock_gating_default' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _307_/A1                                                -2.7414  (VIOLATED)
+   _311_/A1                                                -2.7343  (VIOLATED)
+   _311_/A3                                                -2.6558  (VIOLATED)
+   _307_/A3                                                -2.6332  (VIOLATED)
+   _308_/A_N                                               -2.1452  (VIOLATED)
+   _304_/A_N                                               -2.0942  (VIOLATED)
+
+
+
+   clock_gating_hold
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _307_/A1                                                -2.7414  (VIOLATED)
+   _311_/A1                                                -2.7343  (VIOLATED)
+   _311_/A3                                                -2.6558  (VIOLATED)
+   _307_/A3                                                -2.6332  (VIOLATED)
+   _308_/A_N                                               -2.1452  (VIOLATED)
+   _304_/A_N                                               -2.0942  (VIOLATED)
+
+
+1

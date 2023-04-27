@@ -1,0 +1,37 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravel_clocking
+Version: T-2022.03-SP3
+Date   : Sun Mar 26 04:32:21 2023
+****************************************
+
+
+
+   min_delay/hold ('clock_gating_default' group)
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _307_/A1                                                -3.1384  (VIOLATED)
+   _311_/A1                                                -3.1341  (VIOLATED)
+   _311_/A3                                                -3.1310  (VIOLATED)
+   _307_/A3                                                -3.1226  (VIOLATED)
+   _308_/A_N                                               -2.9707  (VIOLATED)
+   _304_/A_N                                               -2.9557  (VIOLATED)
+
+
+
+   clock_gating_hold
+
+   Endpoint                                                  Slack
+   -----------------------------------------------------------------
+   _307_/A1                                                -3.1384  (VIOLATED)
+   _311_/A1                                                -3.1341  (VIOLATED)
+   _311_/A3                                                -3.1310  (VIOLATED)
+   _307_/A3                                                -3.1226  (VIOLATED)
+   _308_/A_N                                               -2.9707  (VIOLATED)
+   _304_/A_N                                               -2.9557  (VIOLATED)
+
+
+1

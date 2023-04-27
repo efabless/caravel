@@ -1,0 +1,200 @@
+****************************************
+Report : analysis_coverage
+	-status_details {untested}
+	-sort_by slack
+Design : caravel_clocking
+Version: T-2022.03-SP3
+Date   : Sun Mar 26 04:32:40 2023
+****************************************
+
+Type of Check         Total              Met         Violated         Untested
+--------------------------------------------------------------------------------
+setup                    59        51 ( 86%)         0 (  0%)         8 ( 14%)
+hold                     59        51 ( 86%)         0 (  0%)         8 ( 14%)
+recovery                 53         0 (  0%)         0 (  0%)        53 (100%)
+removal                  53         0 (  0%)         0 (  0%)        53 (100%)
+min_pulse_width         170       120 ( 71%)         0 (  0%)        50 ( 29%)
+clock_gating_setup        8         8 (100%)         0 (  0%)         0 (  0%)
+clock_gating_hold         8         2 ( 25%)         6 ( 75%)         0 (  0%)
+out_setup                 1         1 (100%)         0 (  0%)         0 (  0%)
+out_hold                  1         1 (100%)         0 (  0%)         0 (  0%)
+--------------------------------------------------------------------------------
+All Checks              412       234 ( 57%)         6 (  1%)       172 ( 42%)
+
+
+Constrained                  Related             Check
+Pin                          Pin       Clock     Type         Slack  Reason
+--------------------------------------------------------------------------------
+_470_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_470_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_470_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_416_/D                      CLK(rise) -         hold      untested  constant_disabled
+_416_/D                      CLK(rise) -         setup     untested  constant_disabled
+_416_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_416_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_416_/SET_B(rise)            CLK(rise) ext_clk   recovery  untested  no_startpoint_clock
+_416_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_416_/SET_B(rise)            CLK(rise) ext_clk   removal   untested  no_startpoint_clock
+_418_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_418_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_418_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_465_/D                      CLK(rise) pll_clk90 hold      untested  false_paths
+_465_/D                      CLK(rise) pll_clk90 setup     untested  false_paths
+_465_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_465_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_465_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_415_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_415_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_415_/SET_B(rise)            CLK(rise) ext_clk   recovery  untested  no_startpoint_clock
+_415_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_415_/SET_B(rise)            CLK(rise) ext_clk   removal   untested  no_startpoint_clock
+_414_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_414_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_414_/SET_B(rise)            CLK(rise) ext_clk   recovery  untested  no_startpoint_clock
+_414_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_414_/SET_B(rise)            CLK(rise) ext_clk   removal   untested  no_startpoint_clock
+_427_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_427_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_427_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_461_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_461_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_461_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_466_/D                      CLK(rise) pll_clk90 hold      untested  false_paths
+_466_/D                      CLK(rise) pll_clk90 setup     untested  false_paths
+_466_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_466_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_466_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_444_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_444_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_444_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_468_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_468_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_468_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_429_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_429_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_429_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_469_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_469_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_469_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_452_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_452_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_452_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_443_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_443_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_443_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_454_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_454_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_454_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_467_/D                      CLK(rise) pll_clk90 hold      untested  false_paths
+_467_/D                      CLK(rise) pll_clk90 setup     untested  false_paths
+_467_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_467_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_467_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_426_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_426_/RESET_B(rise)          CLK_N(fall) pll_clk recovery  untested  no_startpoint_clock
+_426_/RESET_B(rise)          CLK_N(fall) pll_clk removal   untested  no_startpoint_clock
+_437_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_437_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_437_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_435_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_435_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_435_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_462_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_462_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_462_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_463_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_463_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_463_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_464_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_464_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_464_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_438_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_438_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_438_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_420_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_420_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_420_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_439_/D                      CLK(rise) pll_clk   hold      untested  false_paths
+_439_/D                      CLK(rise) pll_clk   setup     untested  false_paths
+_439_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_439_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_439_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_456_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_456_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_456_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_419_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_419_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_419_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_440_/D                      CLK(rise) pll_clk   hold      untested  false_paths
+_440_/D                      CLK(rise) pll_clk   setup     untested  false_paths
+_440_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_440_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_440_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_424_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_424_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_424_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_451_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_451_/RESET_B(rise)          CLK_N(fall) pll_clk90 recovery untested no_startpoint_clock
+_451_/RESET_B(rise)          CLK_N(fall) pll_clk90 removal untested  no_startpoint_clock
+_450_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_450_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_450_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_455_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_455_/RESET_B(rise)          CLK_N(fall) pll_clk90 recovery untested no_startpoint_clock
+_455_/RESET_B(rise)          CLK_N(fall) pll_clk90 removal untested  no_startpoint_clock
+_457_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_457_/RESET_B(rise)          CLK_N(fall) pll_clk90 recovery untested no_startpoint_clock
+_457_/RESET_B(rise)          CLK_N(fall) pll_clk90 removal untested  no_startpoint_clock
+_430_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_430_/RESET_B(rise)          CLK_N(fall) pll_clk recovery  untested  no_startpoint_clock
+_430_/RESET_B(rise)          CLK_N(fall) pll_clk removal   untested  no_startpoint_clock
+_417_/D                      CLK(rise) pll_clk   hold      untested  false_paths
+_417_/D                      CLK(rise) pll_clk   setup     untested  false_paths
+_417_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_417_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_417_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_436_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_436_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_436_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_441_/D                      CLK(rise) pll_clk   hold      untested  false_paths
+_441_/D                      CLK(rise) pll_clk   setup     untested  false_paths
+_441_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_441_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_441_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_425_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_425_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_425_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_442_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_442_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_442_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_449_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_449_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_449_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_431_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_431_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_431_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_432_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_432_/RESET_B(rise)          CLK_N(fall) pll_clk recovery  untested  no_startpoint_clock
+_432_/RESET_B(rise)          CLK_N(fall) pll_clk removal   untested  no_startpoint_clock
+_434_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_434_/SET_B(rise)            CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_434_/SET_B(rise)            CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+_459_/SET_B(low)             -         -         min_pulse_width untested no_clock
+_459_/SET_B(rise)            CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_459_/SET_B(rise)            CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_453_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_453_/RESET_B(rise)          CLK_N(fall) pll_clk90 recovery untested no_startpoint_clock
+_453_/RESET_B(rise)          CLK_N(fall) pll_clk90 removal untested  no_startpoint_clock
+_458_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_458_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_458_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_460_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_460_/RESET_B(rise)          CLK(rise) pll_clk90 recovery  untested  no_startpoint_clock
+_460_/RESET_B(rise)          CLK(rise) pll_clk90 removal   untested  no_startpoint_clock
+_428_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_428_/RESET_B(rise)          CLK_N(fall) pll_clk recovery  untested  no_startpoint_clock
+_428_/RESET_B(rise)          CLK_N(fall) pll_clk removal   untested  no_startpoint_clock
+_433_/RESET_B(low)           -         -         min_pulse_width untested no_clock
+_433_/RESET_B(rise)          CLK(rise) pll_clk   recovery  untested  no_startpoint_clock
+_433_/RESET_B(rise)          CLK(rise) pll_clk   removal   untested  no_startpoint_clock
+1

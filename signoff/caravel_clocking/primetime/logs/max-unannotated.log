@@ -1,0 +1,27 @@
+****************************************
+Report : annotated_parasitics
+	-check
+	-internal_nets
+	-boundary_nets
+	-list_not_annotated
+	-max_nets 5000
+Design : caravel_clocking
+Version: T-2022.03-SP3
+Date   : Sun Mar 26 04:32:21 2023
+****************************************
+
+                    |         |         |         |   RC    | Coupled |   Not   |
+Net Type            |  Total  | Lumped  |  RC pi  | network | network |Annotated|
+--------------------+---------+---------+---------+---------+---------+---------+
+Internal nets       |         |         |         |         |         |         |
+  - Pin to pin nets |     323 |       0 |       0 |      10 |     313 |       0 |
+  - Driverless nets |       0 |       0 |       0 |       0 |       0 |       0 |
+  - Loadless nets   |       0 |       0 |       0 |       0 |       0 |       0 |
+--------------------+---------+---------+---------+---------+---------+---------+
+Boundary/port nets  |         |         |         |         |         |         |
+  - Pin to pin nets |      16 |       0 |       0 |       1 |      15 |       0 |
+  - Driverless nets |       0 |       0 |       0 |       0 |       0 |       0 |
+  - Loadless nets   |       0 |       0 |       0 |       0 |       0 |       0 |
+--------------------+---------+---------+---------+---------+---------+---------+
+                    |     339 |       0 |       0 |      11 |     328 |       0 |
+

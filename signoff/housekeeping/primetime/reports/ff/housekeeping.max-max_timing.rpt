@@ -1,0 +1,341 @@
+Warning: Derate summary report may not match the output of report_timing without timing derates applied. (UITE-447)
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-input_pins
+	-nets
+	-slack_lesser_than 20.0000
+	-max_paths 1000
+	-unique_pins
+	-transition_time
+	-capacitance
+	-crosstalk_delta
+	-derate
+	-sort_by slack
+	-include_hierarchical_pins
+Design : housekeeping
+Version: T-2022.03-SP3
+Date   : Mon Apr 17 12:20:47 2023
+****************************************
+
+
+  Startpoint: wb_clk_i (clock source 'wb_clk_i')
+  Endpoint: mgmt_gpio_out[14]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                                Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ----------------------------------------------------------------------------------------------------------------------------
+  clock wb_clk_i (fall edge)                                                                             12.5000    12.5000
+  clock source latency                                                                                    0.0000    12.5000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &  12.5000 f
+  wb_clk_i (net)                                         2   0.0838 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0087   1.0375   0.0000   0.0066 &  12.5066 f
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.1242   1.0375            0.1574 &  12.6640 f
+  clknet_0_wb_clk_i (net)                               16   0.2230 
+  clkbuf_3_7__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.1328   1.0375   0.0000   0.0329 &  12.6970 f
+  clkbuf_3_7__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0753   1.0375            0.1802 &  12.8771 f
+  clknet_3_7__leaf_wb_clk_i (net)                       36   0.1148 
+  _3950_/A1 (sky130_fd_sc_hd__mux2_1)                                 0.0000   0.0818   1.0375   0.0000   0.0229 &  12.9000 f
+  _3950_/X (sky130_fd_sc_hd__mux2_1)                                           0.0898   1.0375            0.2319 &  13.1319 f
+  mgmt_gpio_out_14_prebuff (net)                         1   0.0175 
+  mgmt_gpio_14_buff_inst/A (sky130_fd_sc_hd__clkbuf_8)                0.0111   0.0899   1.0375   0.0109   0.0126 &  13.1445 f
+  mgmt_gpio_14_buff_inst/X (sky130_fd_sc_hd__clkbuf_8)                         0.1642   1.0375            0.2288 &  13.3733 f
+  mgmt_gpio_out[14] (net)                                1   0.2115 
+  mgmt_gpio_out[14] (out)                                             0.0000   0.1658   1.0375   0.0000   0.0113 &  13.3846 f
+  data arrival time                                                                                                 13.3846
+
+  clock wb_clk_i (rise edge)                                                                             25.0000    25.0000
+  clock reconvergence pessimism                                                                           0.0000    25.0000
+  clock uncertainty                                                                                      -0.1000    24.9000
+  output external delay                                                                                  -1.0000    23.9000
+  data required time                                                                                                23.9000
+  ----------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                23.9000
+  data arrival time                                                                                                -13.3846
+  ----------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                       10.5154
+
+  Derate Summary Report
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                            0.0000 
+  total derate : arrival time                                                                            -0.0320 
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                    0.0320 
+
+  slack (with derating applied) (MET)                                                                    10.5154 
+  clock reconvergence pessimism (due to derating)                                                         0.0000 
+  --------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                         10.5474 
+
+
+
+  Startpoint: user_clock (clock source 'user_clock')
+  Endpoint: mgmt_gpio_out[15]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                               Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ---------------------------------------------------------------------------------------------------------------------------
+  clock user_clock (fall edge)                                                                          12.5000    12.5000
+  clock source latency                                                                                   0.0000    12.5000
+  user_clock (in)                                                             0.0000                     0.0000 &  12.5000 f
+  user_clock (net)                                     28   0.1605 
+  _3949_/A1 (sky130_fd_sc_hd__mux2_1)                                0.0000   0.0261   1.0375   0.0000   0.0178 &  12.5178 f
+  _3949_/X (sky130_fd_sc_hd__mux2_1)                                          0.0877   1.0375            0.2105 &  12.7282 f
+  mgmt_gpio_out_15_prebuff (net)                        1   0.0167 
+  mgmt_gpio_15_buff_inst/A (sky130_fd_sc_hd__clkbuf_8)               0.0074   0.0877   1.0375   0.0069   0.0083 &  12.7366 f
+  mgmt_gpio_15_buff_inst/X (sky130_fd_sc_hd__clkbuf_8)                        0.1660   1.0375            0.2278 &  12.9644 f
+  mgmt_gpio_out[15] (net)                               1   0.2125 
+  mgmt_gpio_out[15] (out)                                            0.0000   0.1671   1.0375   0.0000   0.0121 &  12.9764 f
+  data arrival time                                                                                                12.9764
+
+  clock wb_clk_i (rise edge)                                                                            25.0000    25.0000
+  clock reconvergence pessimism                                                                          0.0000    25.0000
+  clock uncertainty                                                                                     -0.1000    24.9000
+  output external delay                                                                                 -1.0000    23.9000
+  data required time                                                                                               23.9000
+  ---------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                               23.9000
+  data arrival time                                                                                               -12.9764
+  ---------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                      10.9236
+
+  Derate Summary Report
+  -------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                           0.0000 
+  total derate : arrival time                                                                           -0.0172 
+  -------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                   0.0172 
+
+  slack (with derating applied) (MET)                                                                   10.9236 
+  clock reconvergence pessimism (due to derating)                                                        0.0000 
+  -------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                        10.9408 
+
+
+
+  Startpoint: _6768_ (rising edge-triggered flip-flop clocked by wb_clk_i)
+  Endpoint: _7194_ (rising edge-triggered flip-flop clocked by wb_clk_i)
+  Last common pin: clkbuf_0_wb_clk_i/X
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                                Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ----------------------------------------------------------------------------------------------------------------------------
+  clock wb_clk_i (rise edge)                                                                              0.0000     0.0000
+  clock source latency                                                                                    0.0000     0.0000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &   0.0000 r
+  wb_clk_i (net)                                         2   0.0848 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0090   1.0375   0.0000   0.0068 &   0.0068 r
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.2027   1.0375            0.1869 &   0.1937 r
+  clknet_0_wb_clk_i (net)                               16   0.2310 
+  clkbuf_3_6__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.2074   1.0375   0.0000   0.0299 &   0.2236 r
+  clkbuf_3_6__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0626   1.0375            0.1418 &   0.3654 r
+  clknet_3_6__leaf_wb_clk_i (net)                       13   0.0515 
+  _6768_/CLK (sky130_fd_sc_hd__dfrtp_1)                               0.0000   0.0631   1.0375   0.0000   0.0030 &   0.3683 r
+  _6768_/Q (sky130_fd_sc_hd__dfrtp_1)                                          0.0479   1.0375            0.2622 &   0.6305 f
+  wbbd_addr[6] (net)                                     1   0.0088 
+  hold1085/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0003   0.0479   1.0375   0.0003   0.0007 &   0.6313 f
+  hold1085/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0670   1.0375            0.3694 &   1.0006 f
+  net1564 (net)                                          2   0.0161 
+  _3257_/A1 (sky130_fd_sc_hd__mux2_1)                                 0.0027   0.0670   1.0375   0.0026   0.0035 &   1.0041 f
+  _3257_/X (sky130_fd_sc_hd__mux2_1)                                           0.0454   1.0375            0.1728 &   1.1769 f
+  _0857_ (net)                                           1   0.0044 
+  hold1086/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0454   1.0375   0.0000   0.0002 &   1.1771 f
+  hold1086/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0563   1.0375            0.3555 &   1.5326 f
+  net1565 (net)                                          2   0.0115 
+  hold54/A (sky130_fd_sc_hd__dlymetal6s2s_1)                          0.0000   0.0563   1.0375   0.0000   0.0006 &   1.5332 f
+  hold54/X (sky130_fd_sc_hd__dlymetal6s2s_1)                                   0.0349   1.0375            0.1055 &   1.6387 f
+  net533 (net)                                           1   0.0052 
+  hold1087/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0349   1.0375   0.0000   0.0002 &   1.6389 f
+  hold1087/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0577   1.0375            0.3529 &   1.9918 f
+  net1566 (net)                                          2   0.0121 
+  _3259_/B (sky130_fd_sc_hd__and2_2)                                  0.0013   0.0578   1.0375   0.0013   0.0018 &   1.9937 f
+  _3259_/X (sky130_fd_sc_hd__and2_2)                                           0.0340   1.0375            0.1383 &   2.1319 f
+  _0859_ (net)                                           1   0.0066 
+  hold1088/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0014   0.0340   1.0375   0.0014   0.0017 &   2.1336 f
+  hold1088/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0981   1.0375            0.3925 &   2.5260 f
+  net1567 (net)                                          2   0.0286 
+  _3284_/A (sky130_fd_sc_hd__nand2_8)                                 0.0046   0.0982   1.0375   0.0045   0.0070 &   2.5330 f
+  _3284_/Y (sky130_fd_sc_hd__nand2_8)                                          0.0514   1.0375            0.0788 &   2.6118 r
+  _0884_ (net)                                           2   0.0237 
+  hold1089/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0514   1.0375   0.0000   0.0010 &   2.6128 r
+  hold1089/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.1270   1.0375            0.4196 &   3.0324 r
+  net1568 (net)                                          2   0.0306 
+  max_cap354/A (sky130_fd_sc_hd__buf_12)                              0.0000   0.1271   1.0375   0.0000   0.0012 &   3.0337 r
+  max_cap354/X (sky130_fd_sc_hd__buf_12)                                       0.2104   1.0375            0.1955 &   3.2291 r
+  net354 (net)                                          13   0.2277 
+  _3330_/A (sky130_fd_sc_hd__nor2_4)                                  0.0000   0.2150   1.0375   0.0000   0.0292 &   3.2584 r
+  _3330_/Y (sky130_fd_sc_hd__nor2_4)                                           0.1024   1.0375            0.0902 &   3.3486 f
+  _0930_ (net)                                           4   0.0642 
+  max_cap348/A (sky130_fd_sc_hd__buf_12)                              0.0028   0.1029   1.0375   0.0028   0.0072 &   3.3557 f
+  max_cap348/X (sky130_fd_sc_hd__buf_12)                                       0.0715   1.0375            0.1358 &   3.4915 f
+  net348 (net)                                          30   0.1784 
+  _3380_/B1 (sky130_fd_sc_hd__a221o_4)                                0.0000   0.1394   1.0375   0.0000   0.0378 &   3.5293 f
+  _3380_/X (sky130_fd_sc_hd__a221o_4)                                          0.0994   1.0375            0.2824 &   3.8117 f
+  _0980_ (net)                                           2   0.0655 
+  _3383_/C (sky130_fd_sc_hd__nor4_1)                                  0.0064   0.1002   1.0375   0.0061   0.0134 &   3.8251 f
+  _3383_/Y (sky130_fd_sc_hd__nor4_1)                                           0.2480   1.0375            0.2461 &   4.0712 r
+  _0983_ (net)                                           1   0.0067 
+  _3384_/C_N (sky130_fd_sc_hd__nor3b_4)                               0.0516   0.2480   1.0375   0.0500   0.0522 &   4.1234 r
+  _3384_/Y (sky130_fd_sc_hd__nor3b_4)                                          0.5672   1.0375            0.4910 &   4.6144 r
+  _0984_ (net)                                           1   0.0697 
+  _3385_/B (sky130_fd_sc_hd__nand2_8)                                 0.1698   0.5673   1.0375   0.1534   0.1670 &   4.7814 r
+  _3385_/Y (sky130_fd_sc_hd__nand2_8)                                          0.2069   1.0375            0.1262 &   4.9076 f
+  _0985_ (net)                                          10   0.1253 
+  _6354_/A0 (sky130_fd_sc_hd__mux2_1)                                 0.0086   0.2097   1.0375   0.0086   0.0394 &   4.9470 f
+  _6354_/X (sky130_fd_sc_hd__mux2_1)                                           0.0628   1.0375            0.2465 &   5.1935 f
+  _0803_ (net)                                           1   0.0088 
+  _7194_/D (sky130_fd_sc_hd__dfxtp_1)                                 0.0048   0.0628   1.0375   0.0045   0.0051 &   5.1986 f
+  data arrival time                                                                                                  5.1986
+
+  clock wb_clk_i (rise edge)                                                                             25.0000    25.0000
+  clock source latency                                                                                    0.0000    25.0000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &  25.0000 r
+  wb_clk_i (net)                                         2   0.0848 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0090   0.9625   0.0000   0.0063 &  25.0063 r
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.2027   0.9625            0.1734 &  25.1797 r
+  clknet_0_wb_clk_i (net)                               16   0.2310 
+  clkbuf_3_5__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.2027   0.9625   0.0000   0.0270 &  25.2067 r
+  clkbuf_3_5__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0583   0.9625            0.1306 &  25.3374 r
+  clknet_3_5__leaf_wb_clk_i (net)                       14   0.0472 
+  _7194_/CLK (sky130_fd_sc_hd__dfxtp_1)                               0.0000   0.0587   0.9625   0.0000   0.0038 &  25.3411 r
+  clock reconvergence pessimism                                                                           0.0140    25.3551
+  clock uncertainty                                                                                      -0.1000    25.2551
+  library setup time                                                                    1.0000           -0.0784    25.1767
+  data required time                                                                                                25.1767
+  ----------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                25.1767
+  data arrival time                                                                                                 -5.1986
+  ----------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                       19.9781
+
+  Derate Summary Report
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                            0.0133 
+  total derate : arrival time                                                                            -0.1879 
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                    0.2012 
+
+  slack (with derating applied) (MET)                                                                    19.9781 
+  clock reconvergence pessimism (due to derating)                                                        -0.0140 
+  --------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                         20.1653 
+
+
+
+  Startpoint: _6768_ (rising edge-triggered flip-flop clocked by wb_clk_i)
+  Endpoint: _6547_ (rising edge-triggered flip-flop clocked by wb_clk_i)
+  Last common pin: clkbuf_0_wb_clk_i/X
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                                Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ----------------------------------------------------------------------------------------------------------------------------
+  clock wb_clk_i (rise edge)                                                                              0.0000     0.0000
+  clock source latency                                                                                    0.0000     0.0000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &   0.0000 r
+  wb_clk_i (net)                                         2   0.0848 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0090   1.0375   0.0000   0.0068 &   0.0068 r
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.2027   1.0375            0.1869 &   0.1937 r
+  clknet_0_wb_clk_i (net)                               16   0.2310 
+  clkbuf_3_6__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.2074   1.0375   0.0000   0.0299 &   0.2236 r
+  clkbuf_3_6__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0626   1.0375            0.1418 &   0.3654 r
+  clknet_3_6__leaf_wb_clk_i (net)                       13   0.0515 
+  _6768_/CLK (sky130_fd_sc_hd__dfrtp_1)                               0.0000   0.0631   1.0375   0.0000   0.0030 &   0.3683 r
+  _6768_/Q (sky130_fd_sc_hd__dfrtp_1)                                          0.0479   1.0375            0.2622 &   0.6305 f
+  wbbd_addr[6] (net)                                     1   0.0088 
+  hold1085/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0003   0.0479   1.0375   0.0003   0.0007 &   0.6313 f
+  hold1085/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0670   1.0375            0.3694 &   1.0006 f
+  net1564 (net)                                          2   0.0161 
+  _3257_/A1 (sky130_fd_sc_hd__mux2_1)                                 0.0027   0.0670   1.0375   0.0026   0.0035 &   1.0041 f
+  _3257_/X (sky130_fd_sc_hd__mux2_1)                                           0.0454   1.0375            0.1728 &   1.1769 f
+  _0857_ (net)                                           1   0.0044 
+  hold1086/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0454   1.0375   0.0000   0.0002 &   1.1771 f
+  hold1086/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0563   1.0375            0.3555 &   1.5326 f
+  net1565 (net)                                          2   0.0115 
+  hold54/A (sky130_fd_sc_hd__dlymetal6s2s_1)                          0.0000   0.0563   1.0375   0.0000   0.0006 &   1.5332 f
+  hold54/X (sky130_fd_sc_hd__dlymetal6s2s_1)                                   0.0349   1.0375            0.1055 &   1.6387 f
+  net533 (net)                                           1   0.0052 
+  hold1087/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0349   1.0375   0.0000   0.0002 &   1.6389 f
+  hold1087/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0577   1.0375            0.3529 &   1.9918 f
+  net1566 (net)                                          2   0.0121 
+  _3259_/B (sky130_fd_sc_hd__and2_2)                                  0.0013   0.0578   1.0375   0.0013   0.0018 &   1.9937 f
+  _3259_/X (sky130_fd_sc_hd__and2_2)                                           0.0340   1.0375            0.1383 &   2.1319 f
+  _0859_ (net)                                           1   0.0066 
+  hold1088/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0014   0.0340   1.0375   0.0014   0.0017 &   2.1336 f
+  hold1088/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.0981   1.0375            0.3925 &   2.5260 f
+  net1567 (net)                                          2   0.0286 
+  _3284_/A (sky130_fd_sc_hd__nand2_8)                                 0.0046   0.0982   1.0375   0.0045   0.0070 &   2.5330 f
+  _3284_/Y (sky130_fd_sc_hd__nand2_8)                                          0.0514   1.0375            0.0788 &   2.6118 r
+  _0884_ (net)                                           2   0.0237 
+  hold1089/A (sky130_fd_sc_hd__clkdlybuf4s50_2)                       0.0000   0.0514   1.0375   0.0000   0.0010 &   2.6128 r
+  hold1089/X (sky130_fd_sc_hd__clkdlybuf4s50_2)                                0.1270   1.0375            0.4196 &   3.0324 r
+  net1568 (net)                                          2   0.0306 
+  max_cap354/A (sky130_fd_sc_hd__buf_12)                              0.0000   0.1271   1.0375   0.0000   0.0012 &   3.0337 r
+  max_cap354/X (sky130_fd_sc_hd__buf_12)                                       0.2104   1.0375            0.1955 &   3.2291 r
+  net354 (net)                                          13   0.2277 
+  _3330_/A (sky130_fd_sc_hd__nor2_4)                                  0.0000   0.2150   1.0375   0.0000   0.0292 &   3.2584 r
+  _3330_/Y (sky130_fd_sc_hd__nor2_4)                                           0.1024   1.0375            0.0902 &   3.3486 f
+  _0930_ (net)                                           4   0.0642 
+  max_cap348/A (sky130_fd_sc_hd__buf_12)                              0.0028   0.1029   1.0375   0.0028   0.0072 &   3.3557 f
+  max_cap348/X (sky130_fd_sc_hd__buf_12)                                       0.0715   1.0375            0.1358 &   3.4915 f
+  net348 (net)                                          30   0.1784 
+  _3380_/B1 (sky130_fd_sc_hd__a221o_4)                                0.0000   0.1394   1.0375   0.0000   0.0378 &   3.5293 f
+  _3380_/X (sky130_fd_sc_hd__a221o_4)                                          0.0994   1.0375            0.2824 &   3.8117 f
+  _0980_ (net)                                           2   0.0655 
+  _3383_/C (sky130_fd_sc_hd__nor4_1)                                  0.0064   0.1002   1.0375   0.0061   0.0134 &   3.8251 f
+  _3383_/Y (sky130_fd_sc_hd__nor4_1)                                           0.2480   1.0375            0.2461 &   4.0712 r
+  _0983_ (net)                                           1   0.0067 
+  _3384_/C_N (sky130_fd_sc_hd__nor3b_4)                               0.0516   0.2480   1.0375   0.0500   0.0522 &   4.1234 r
+  _3384_/Y (sky130_fd_sc_hd__nor3b_4)                                          0.5672   1.0375            0.4910 &   4.6144 r
+  _0984_ (net)                                           1   0.0697 
+  _3385_/B (sky130_fd_sc_hd__nand2_8)                                 0.1698   0.5673   1.0375   0.1534   0.1670 &   4.7814 r
+  _3385_/Y (sky130_fd_sc_hd__nand2_8)                                          0.2069   1.0375            0.1262 &   4.9076 f
+  _0985_ (net)                                          10   0.1253 
+  _4091_/A0 (sky130_fd_sc_hd__mux2_1)                                 0.0086   0.2096   1.0375   0.0086   0.0397 &   4.9473 f
+  _4091_/X (sky130_fd_sc_hd__mux2_1)                                           0.0550   1.0375            0.2367 &   5.1839 f
+  _0173_ (net)                                           1   0.0067 
+  _6547_/D (sky130_fd_sc_hd__dfxtp_1)                                 0.0032   0.0550   1.0375   0.0032   0.0036 &   5.1876 f
+  data arrival time                                                                                                  5.1876
+
+  clock wb_clk_i (rise edge)                                                                             25.0000    25.0000
+  clock source latency                                                                                    0.0000    25.0000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &  25.0000 r
+  wb_clk_i (net)                                         2   0.0848 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0090   0.9625   0.0000   0.0063 &  25.0063 r
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.2027   0.9625            0.1734 &  25.1797 r
+  clknet_0_wb_clk_i (net)                               16   0.2310 
+  clkbuf_3_5__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.2027   0.9625   0.0000   0.0270 &  25.2067 r
+  clkbuf_3_5__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0583   0.9625            0.1306 &  25.3374 r
+  clknet_3_5__leaf_wb_clk_i (net)                       14   0.0472 
+  _6547_/CLK (sky130_fd_sc_hd__dfxtp_1)                               0.0000   0.0587   0.9625   0.0000   0.0039 &  25.3413 r
+  clock reconvergence pessimism                                                                           0.0140    25.3553
+  clock uncertainty                                                                                      -0.1000    25.2553
+  library setup time                                                                    1.0000           -0.0756    25.1797
+  data required time                                                                                                25.1797
+  ----------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                25.1797
+  data arrival time                                                                                                 -5.1876
+  ----------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                       19.9921
+
+  Derate Summary Report
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                            0.0133 
+  total derate : arrival time                                                                            -0.1875 
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                    0.2008 
+
+  slack (with derating applied) (MET)                                                                    19.9921 
+  clock reconvergence pessimism (due to derating)                                                        -0.0140 
+  --------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                         20.1789 
+
+
+
+1

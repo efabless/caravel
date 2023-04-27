@@ -1,0 +1,121 @@
+Warning: Derate summary report may not match the output of report_timing without timing derates applied. (UITE-447)
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-input_pins
+	-nets
+	-slack_lesser_than 20.0000
+	-max_paths 1000
+	-unique_pins
+	-transition_time
+	-capacitance
+	-crosstalk_delta
+	-derate
+	-sort_by slack
+	-include_hierarchical_pins
+Design : housekeeping
+Version: T-2022.03-SP3
+Date   : Mon Apr 17 12:21:14 2023
+****************************************
+
+
+  Startpoint: wb_clk_i (clock source 'wb_clk_i')
+  Endpoint: mgmt_gpio_out[14]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                                Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ----------------------------------------------------------------------------------------------------------------------------
+  clock wb_clk_i (fall edge)                                                                             12.5000    12.5000
+  clock source latency                                                                                    0.0000    12.5000
+  wb_clk_i (in)                                                                0.0000                     0.0000 &  12.5000 f
+  wb_clk_i (net)                                         2   0.0727 
+  clkbuf_0_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)                    0.0000   0.0044   1.0375   0.0000   0.0029 &  12.5029 f
+  clkbuf_0_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                             0.1062   1.0375            0.1535 &  12.6563 f
+  clknet_0_wb_clk_i (net)                               16   0.1931 
+  clkbuf_3_7__f_wb_clk_i/A (sky130_fd_sc_hd__clkbuf_16)               0.0000   0.1072   1.0375   0.0000   0.0131 &  12.6695 f
+  clkbuf_3_7__f_wb_clk_i/X (sky130_fd_sc_hd__clkbuf_16)                        0.0654   1.0375            0.1704 &  12.8399 f
+  clknet_3_7__leaf_wb_clk_i (net)                       36   0.1009 
+  _3950_/A1 (sky130_fd_sc_hd__mux2_1)                                 0.0000   0.0661   1.0375   0.0000   0.0079 &  12.8478 f
+  _3950_/X (sky130_fd_sc_hd__mux2_1)                                           0.0792   1.0375            0.2132 &  13.0610 f
+  mgmt_gpio_out_14_prebuff (net)                         1   0.0137 
+  mgmt_gpio_14_buff_inst/A (sky130_fd_sc_hd__clkbuf_8)                0.0116   0.0792   1.0375   0.0115   0.0123 &  13.0733 f
+  mgmt_gpio_14_buff_inst/X (sky130_fd_sc_hd__clkbuf_8)                         0.1540   1.0375            0.2313 &  13.3046 f
+  mgmt_gpio_out[14] (net)                                1   0.2112 
+  mgmt_gpio_out[14] (out)                                             0.0000   0.1541   1.0375   0.0000   0.0010 &  13.3056 f
+  data arrival time                                                                                                 13.3056
+
+  clock wb_clk_i (rise edge)                                                                             25.0000    25.0000
+  clock reconvergence pessimism                                                                           0.0000    25.0000
+  clock uncertainty                                                                                      -0.1000    24.9000
+  output external delay                                                                                  -1.0000    23.9000
+  data required time                                                                                                23.9000
+  ----------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                23.9000
+  data arrival time                                                                                                -13.3056
+  ----------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                       10.5944
+
+  Derate Summary Report
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                            0.0000 
+  total derate : arrival time                                                                            -0.0291 
+  --------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                    0.0291 
+
+  slack (with derating applied) (MET)                                                                    10.5944 
+  clock reconvergence pessimism (due to derating)                                                         0.0000 
+  --------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                         10.6236 
+
+
+
+  Startpoint: user_clock (clock source 'user_clock')
+  Endpoint: mgmt_gpio_out[15]
+               (output port clocked by wb_clk_i)
+  Path Group: wb_clk_i
+  Path Type: max
+
+  Point                                               Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  ---------------------------------------------------------------------------------------------------------------------------
+  clock user_clock (fall edge)                                                                          12.5000    12.5000
+  clock source latency                                                                                   0.0000    12.5000
+  user_clock (in)                                                             0.0000                     0.0000 &  12.5000 f
+  user_clock (net)                                     28   0.1438 
+  _3949_/A1 (sky130_fd_sc_hd__mux2_1)                                0.0000   0.0137   1.0375   0.0000   0.0089 &  12.5089 f
+  _3949_/X (sky130_fd_sc_hd__mux2_1)                                          0.0771   1.0375            0.1959 &  12.7048 f
+  mgmt_gpio_out_15_prebuff (net)                        1   0.0130 
+  mgmt_gpio_15_buff_inst/A (sky130_fd_sc_hd__clkbuf_8)               0.0074   0.0771   1.0375   0.0069   0.0075 &  12.7123 f
+  mgmt_gpio_15_buff_inst/X (sky130_fd_sc_hd__clkbuf_8)                        0.1544   1.0375            0.2307 &  12.9431 f
+  mgmt_gpio_out[15] (net)                               1   0.2120 
+  mgmt_gpio_out[15] (out)                                            0.0000   0.1544   1.0375   0.0000   0.0013 &  12.9443 f
+  data arrival time                                                                                                12.9443
+
+  clock wb_clk_i (rise edge)                                                                            25.0000    25.0000
+  clock reconvergence pessimism                                                                          0.0000    25.0000
+  clock uncertainty                                                                                     -0.1000    24.9000
+  output external delay                                                                                 -1.0000    23.9000
+  data required time                                                                                               23.9000
+  ---------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                               23.9000
+  data arrival time                                                                                               -12.9443
+  ---------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                      10.9557
+
+  Derate Summary Report
+  -------------------------------------------------------------------------------------------------------------------
+  total derate : required time                                                                           0.0000 
+  total derate : arrival time                                                                           -0.0161 
+  -------------------------------------------------------------------------------------------------------------------
+  total derate : slack                                                                                   0.0161 
+
+  slack (with derating applied) (MET)                                                                   10.9557 
+  clock reconvergence pessimism (due to derating)                                                        0.0000 
+  -------------------------------------------------------------------------------------------------------------------
+  slack (with no derating) (MET)                                                                        10.9717 
+
+
+
+1
