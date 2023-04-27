@@ -1,0 +1,35 @@
+****************************************
+Report : constraint
+	-all_violators
+	-path slack_only
+Design : caravel
+Version: T-2022.03-SP3
+Date   : Fri Apr 21 06:56:27 2023
+****************************************
+
+
+
+
+
+
+
+
+   max_capacitance
+
+                             Required        Actual
+   Pin                      Capacitance    Capacitance       Slack
+   -----------------------------------------------------------------
+   chip_core/soc.core.RAM128/Do0MUX.M[0].MUX[0]/X   0.1611   0.1628  -0.0017 (VIOLATED)
+
+
+   max_transition
+
+                             Required        Actual
+   Pin                      Transition     Transition        Slack
+   -----------------------------------------------------------------
+   chip_core/wire1513/A       1.5000         1.5642        -0.0642  (VIOLATED)
+   chip_core/ANTENNA_wire1513_A/DIODE   1.5000   1.5640    -0.0640  (VIOLATED)
+   chip_core/soc.core.RAM128/Do0MUX.M[0].MUX[0]/X   1.5064   1.5586  -0.0522 (VIOLATED)
+
+
+1

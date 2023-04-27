@@ -1,0 +1,25 @@
+# Reports in timing_reports.tar.gz
+1. caravel_core.max-clk-max_timing.rpt
+2. caravel_core.max-clk-min_timing.rpt
+3. caravel_core.max-hk_serial_clk-max_timing.rpt
+4. caravel_core.max-hk_serial_clk-min_timing.rpt
+5. caravel_core.max-hkspi_clk-max_timing.rpt
+6. caravel_core.max-hkspi_clk-min_timing.rpt
+7. caravel_core.max-max_timing.rpt
+8. caravel_core.max-min_timing.rpt
+9. caravel_core.min-clk-max_timing.rpt
+10. caravel_core.min-clk-min_timing.rpt
+11. caravel_core.min-hk_serial_clk-max_timing.rpt
+12. caravel_core.min-hk_serial_clk-min_timing.rpt
+13. caravel_core.min-hkspi_clk-max_timing.rpt
+14. caravel_core.min-hkspi_clk-min_timing.rpt
+15. caravel_core.min-max_timing.rpt
+16. caravel_core.min-min_timing.rpt
+17. caravel_core.nom-clk-max_timing.rpt
+18. caravel_core.nom-clk-min_timing.rpt
+19. caravel_core.nom-hk_serial_clk-max_timing.rpt
+20. caravel_core.nom-hk_serial_clk-min_timing.rpt
+21. caravel_core.nom-hkspi_clk-max_timing.rpt
+22. caravel_core.nom-hkspi_clk-min_timing.rpt
+23. caravel_core.nom-max_timing.rpt
+24. caravel_core.nom-min_timing.rpt
