@@ -396,13 +396,13 @@ module caravan (
 	.mprj_io_analog_sel(mprj_io_analog_sel),
 	.mprj_io_analog_pol(mprj_io_analog_pol),
 	.mprj_io_dm(mprj_io_dm),
-	.mprj_gpio_analog(user_gpio_analog),
-	.mprj_gpio_noesd(user_gpio_noesd),
-	.mprj_analog(user_analog),
-	.mprj_clamp_high(user_clamp_high),
-	.mprj_clamp_low(user_clamp_low)
+	.user_gpio_analog(user_gpio_analog),
+	.user_gpio_noesd(user_gpio_noesd),
+	.user_analog(user_analog),
+	.user_clamp_high(user_clamp_high),
+	.user_clamp_low(user_clamp_low),
 	// Loopbacks to constant value 1 in the 1.8V domain
-      .mprj_io_one(mprj_io_one),
+      .mprj_io_one(mprj_io_one)
     );
 
 copyright_block copyright_block();

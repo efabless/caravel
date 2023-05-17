@@ -281,7 +281,9 @@ module caravan_core (
     wire caravel_rstn;
 
 
-    assign mgmt_io_in_hk = mgmt_io_in;
+    assign mgmt_io_in_hk[13:0] = mgmt_io_in[13:0];
+    assign mgmt_io_in_hk[24:14] = {mprj_io_zero[5],mprj_io_zero[4], mprj_io_zero[4],mprj_io_zero[3], mprj_io_zero[3],mprj_io_zero[2], mprj_io_zero[2],mprj_io_zero[1], mprj_io_zero[1],mprj_io_zero[0], mprj_io_zero[0]};
+    assign mgmt_io_in_hk[37:25] = mgmt_io_in[37:25];
     assign mgmt_io_out = mgmt_io_out_hk;
     assign mgmt_io_oeb = mgmt_io_oeb_hk;
 
@@ -1379,6 +1381,6 @@ module caravan_core (
 (* keep *) empty_macro empty_macro_0 ();
 (* keep *) empty_macro empty_macro_1 ();
 (* keep *) caravan_power_routing caravan_power_routing();
-(* keep *) caravan_signal_routing caravan_signal_routing();
+// (* keep *) caravan_signal_routing caravan_signal_routing();
 endmodule
 // `default_nettype wire
