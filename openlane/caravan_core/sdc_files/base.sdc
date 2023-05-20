@@ -6,7 +6,7 @@
 create_clock -name clk -period 18 [get_pins {clock_ctrl/core_clk}] 
 # create_clock -name clk -period 25 [get_ports {clock_core}] 
 
-set_clock_uncertainty 0.5 [get_clocks {clk}] 
+set_clock_uncertainty 0.55 [get_clocks {clk}] 
 
 set_propagated_clock [get_clocks {clk}]
 
