@@ -125,8 +125,8 @@ module caravan_core (
     inout [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_analog,
 	inout [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd,
 	inout [`ANALOG_PADS-1:0] user_analog,
-	output [2:0] user_clamp_high,
-    output wire [2:0] user_clamp_low
+	inout [2:0] user_clamp_high,
+    inout wire [2:0] user_clamp_low
 );
 
     //------------------------------------------------------------
@@ -1378,9 +1378,22 @@ module caravan_core (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
-(* keep *) empty_macro empty_macro_0 ();
-(* keep *) empty_macro empty_macro_1 ();
-(* keep *) caravan_power_routing caravan_power_routing();
-// (* keep *) caravan_signal_routing caravan_signal_routing();
+
+`ifdef PnR
+	(* keep *) empty_macro empty_macro_0 ();
+	(* keep *) caravan_signal_routing caravan_signal_routing();
+	(* keep *) empty_macro_1 empty_macro_1 ();
+	(* keep *) empty_macro_1 empty_macro_2 ();
+	(* keep *) empty_macro_1 empty_macro_3 ();
+	(* keep *) empty_macro_1 empty_macro_4 ();
+	(* keep *) empty_macro_1 empty_macro_5 ();
+	(* keep *) empty_macro_1 empty_macro_6 ();
+	(* keep *) empty_macro_1 empty_macro_7 ();
+	(* keep *) empty_macro_1 empty_macro_8 ();
+	(* keep *) empty_macro_1 empty_macro_9 ();
+	(* keep *) empty_macro_1 empty_macro_10 ();
+	(* keep *) empty_macro_1 empty_macro_11 ();
+`endif
+
 endmodule
 // `default_nettype wire
