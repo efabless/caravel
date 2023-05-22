@@ -24,7 +24,8 @@
  *
  *-------------------------------------------------------------
  */
-
+ 
+/// sta-blackbox
 module user_analog_project_wrapper (
 `ifdef USE_POWER_PINS
     inout vdda1,	// User area 1 3.3V supply
