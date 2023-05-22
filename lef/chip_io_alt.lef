@@ -10,6 +10,7 @@ MACRO chip_io_alt
   PIN clock
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met5 ;
         RECT 938.200 32.990 1000.800 95.440 ;
@@ -18,6 +19,7 @@ MACRO chip_io_alt
   PIN clock_core
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 936.635 208.565 936.915 210.965 ;
@@ -26,6 +28,7 @@ MACRO chip_io_alt
   PIN por
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 970.215 208.565 970.495 210.965 ;
@@ -34,6 +37,7 @@ MACRO chip_io_alt
   PIN flash_clk
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met5 ;
         RECT 1755.200 32.990 1817.800 95.440 ;
@@ -42,6 +46,7 @@ MACRO chip_io_alt
   PIN flash_csb
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met5 ;
         RECT 1481.200 32.990 1543.800 95.440 ;
@@ -58,6 +63,7 @@ MACRO chip_io_alt
   PIN flash_io0_di_core
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 2027.635 208.565 2027.915 210.965 ;
@@ -66,6 +72,7 @@ MACRO chip_io_alt
   PIN flash_io0_do_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2082.835 208.565 2083.115 210.965 ;
@@ -74,6 +81,7 @@ MACRO chip_io_alt
   PIN flash_io0_ieb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 2046.150 211.680 2046.470 211.740 ;
@@ -105,6 +113,7 @@ MACRO chip_io_alt
   PIN flash_io0_oeb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 2055.350 212.310 2055.670 212.370 ;
@@ -137,6 +146,7 @@ MACRO chip_io_alt
   PIN flash_io1_di_core
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 2301.635 208.565 2301.915 210.965 ;
@@ -145,6 +155,7 @@ MACRO chip_io_alt
   PIN flash_io1_do_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2356.835 208.565 2357.115 210.965 ;
@@ -153,6 +164,7 @@ MACRO chip_io_alt
   PIN flash_io1_ieb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 2320.020 211.620 2320.340 211.680 ;
@@ -178,6 +190,7 @@ MACRO chip_io_alt
   PIN flash_io1_oeb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 2329.050 212.360 2329.370 212.420 ;
@@ -210,6 +223,7 @@ MACRO chip_io_alt
   PIN gpio_in_core
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 2575.635 208.565 2575.915 210.965 ;
@@ -218,6 +232,7 @@ MACRO chip_io_alt
   PIN gpio_inenb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2609.215 208.565 2609.495 210.965 ;
@@ -226,6 +241,7 @@ MACRO chip_io_alt
   PIN gpio_mode0_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2603.235 208.565 2603.515 210.965 ;
@@ -234,6 +250,7 @@ MACRO chip_io_alt
   PIN gpio_out_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2630.835 208.565 2631.115 210.965 ;
@@ -242,6 +259,7 @@ MACRO chip_io_alt
   PIN gpio_outenb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 2646.475 208.565 2646.755 210.965 ;
@@ -322,6 +340,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 529.015 3379.435 529.295 ;
@@ -330,6 +349,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 535.455 3379.435 535.735 ;
@@ -338,6 +358,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 550.635 3379.435 550.915 ;
@@ -346,6 +367,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 532.235 3379.435 532.515 ;
@@ -354,6 +376,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 523.035 3379.435 523.315 ;
@@ -362,6 +385,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 553.855 3379.435 554.135 ;
@@ -370,6 +394,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 557.075 3379.435 557.355 ;
@@ -378,6 +403,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 572.255 3379.435 572.535 ;
@@ -386,6 +412,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 538.215 3379.435 538.495 ;
@@ -394,6 +421,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 575.475 3379.435 575.755 ;
@@ -402,6 +430,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 559.835 3379.435 560.115 ;
@@ -410,6 +439,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 513.835 3379.435 514.115 ;
@@ -418,6 +448,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 569.035 3379.435 569.315 ;
@@ -426,6 +457,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 504.635 3379.435 504.915 ;
@@ -434,6 +466,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 578.235 3379.435 578.515 ;
@@ -466,6 +499,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3445.015 3379.435 3445.295 ;
@@ -474,6 +508,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3451.455 3379.435 3451.735 ;
@@ -482,6 +517,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3466.635 3379.435 3466.915 ;
@@ -490,6 +526,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[30]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3448.235 3379.435 3448.515 ;
@@ -498,6 +535,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[31]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3439.035 3379.435 3439.315 ;
@@ -506,6 +544,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[32]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3469.855 3379.435 3470.135 ;
@@ -514,6 +553,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3473.075 3379.435 3473.355 ;
@@ -522,6 +562,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3488.255 3379.435 3488.535 ;
@@ -530,6 +571,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3454.215 3379.435 3454.495 ;
@@ -538,6 +580,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3491.475 3379.435 3491.755 ;
@@ -546,6 +589,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3475.835 3379.435 3476.115 ;
@@ -554,6 +598,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3429.835 3379.435 3430.115 ;
@@ -562,6 +607,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3485.035 3379.435 3485.315 ;
@@ -570,6 +616,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[10]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3420.635 3379.435 3420.915 ;
@@ -578,6 +625,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[10]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3494.235 3379.435 3494.515 ;
@@ -610,6 +658,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3670.015 3379.435 3670.295 ;
@@ -618,6 +667,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3676.455 3379.435 3676.735 ;
@@ -626,6 +676,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3691.635 3379.435 3691.915 ;
@@ -634,6 +685,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[33]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3673.235 3379.435 3673.515 ;
@@ -642,6 +694,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[34]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3664.035 3379.435 3664.315 ;
@@ -650,6 +703,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[35]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3694.855 3379.435 3695.135 ;
@@ -658,6 +712,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3698.075 3379.435 3698.355 ;
@@ -666,6 +721,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3713.255 3379.435 3713.535 ;
@@ -674,6 +730,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3679.215 3379.435 3679.495 ;
@@ -682,6 +739,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3716.475 3379.435 3716.755 ;
@@ -690,6 +748,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3700.835 3379.435 3701.115 ;
@@ -698,6 +757,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3654.835 3379.435 3655.115 ;
@@ -706,6 +766,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3710.035 3379.435 3710.315 ;
@@ -714,6 +775,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[11]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3645.635 3379.435 3645.915 ;
@@ -722,6 +784,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[11]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3719.235 3379.435 3719.515 ;
@@ -754,6 +817,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3895.015 3379.435 3895.295 ;
@@ -762,6 +826,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3901.455 3379.435 3901.735 ;
@@ -770,6 +835,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3916.635 3379.435 3916.915 ;
@@ -778,6 +844,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[36]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3898.235 3379.435 3898.515 ;
@@ -786,6 +853,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[37]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3889.035 3379.435 3889.315 ;
@@ -794,6 +862,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[38]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3919.855 3379.435 3920.135 ;
@@ -802,6 +871,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3923.075 3379.435 3923.355 ;
@@ -810,6 +880,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3938.255 3379.435 3938.535 ;
@@ -818,6 +889,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3904.215 3379.435 3904.495 ;
@@ -826,6 +898,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3941.475 3379.435 3941.755 ;
@@ -834,6 +907,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3925.835 3379.435 3926.115 ;
@@ -842,6 +916,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3879.835 3379.435 3880.115 ;
@@ -850,6 +925,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3935.035 3379.435 3935.315 ;
@@ -858,6 +934,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[12]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3870.635 3379.435 3870.915 ;
@@ -866,6 +943,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[12]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3944.235 3379.435 3944.515 ;
@@ -898,6 +976,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4341.015 3379.435 4341.295 ;
@@ -906,6 +985,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4347.455 3379.435 4347.735 ;
@@ -914,6 +994,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4362.635 3379.435 4362.915 ;
@@ -922,6 +1003,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[39]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4344.235 3379.435 4344.515 ;
@@ -930,6 +1012,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[40]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4335.035 3379.435 4335.315 ;
@@ -938,6 +1021,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[41]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4365.855 3379.435 4366.135 ;
@@ -946,6 +1030,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4369.075 3379.435 4369.355 ;
@@ -954,6 +1039,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4384.255 3379.435 4384.535 ;
@@ -962,6 +1048,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4350.215 3379.435 4350.495 ;
@@ -970,6 +1057,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4387.475 3379.435 4387.755 ;
@@ -978,6 +1066,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4371.835 3379.435 4372.115 ;
@@ -986,6 +1075,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4325.835 3379.435 4326.115 ;
@@ -994,6 +1084,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4381.035 3379.435 4381.315 ;
@@ -1002,6 +1093,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[13]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4316.635 3379.435 4316.915 ;
@@ -1010,6 +1102,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[13]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 4390.235 3379.435 4390.515 ;
@@ -1026,6 +1119,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 755.015 3379.435 755.295 ;
@@ -1034,6 +1128,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 761.455 3379.435 761.735 ;
@@ -1042,6 +1137,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 776.635 3379.435 776.915 ;
@@ -1050,6 +1146,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 758.235 3379.435 758.515 ;
@@ -1058,6 +1155,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 749.035 3379.435 749.315 ;
@@ -1066,6 +1164,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 779.855 3379.435 780.135 ;
@@ -1074,6 +1173,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 783.075 3379.435 783.355 ;
@@ -1082,6 +1182,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 798.255 3379.435 798.535 ;
@@ -1090,6 +1191,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 764.215 3379.435 764.495 ;
@@ -1098,6 +1200,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 801.475 3379.435 801.755 ;
@@ -1106,6 +1209,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 785.835 3379.435 786.115 ;
@@ -1114,6 +1218,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 739.835 3379.435 740.115 ;
@@ -1122,6 +1227,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 795.035 3379.435 795.315 ;
@@ -1130,6 +1236,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 730.635 3379.435 730.915 ;
@@ -1138,6 +1245,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 804.235 3379.435 804.515 ;
@@ -1154,6 +1262,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 980.015 3379.435 980.295 ;
@@ -1162,6 +1271,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 986.455 3379.435 986.735 ;
@@ -1170,6 +1280,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1001.635 3379.435 1001.915 ;
@@ -1178,6 +1289,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 983.235 3379.435 983.515 ;
@@ -1186,6 +1298,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 974.035 3379.435 974.315 ;
@@ -1194,6 +1307,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1004.855 3379.435 1005.135 ;
@@ -1202,6 +1316,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1008.075 3379.435 1008.355 ;
@@ -1210,6 +1325,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1023.255 3379.435 1023.535 ;
@@ -1218,6 +1334,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 989.215 3379.435 989.495 ;
@@ -1226,6 +1343,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1026.475 3379.435 1026.755 ;
@@ -1234,6 +1352,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1010.835 3379.435 1011.115 ;
@@ -1242,6 +1361,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 964.835 3379.435 965.115 ;
@@ -1250,6 +1370,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1020.035 3379.435 1020.315 ;
@@ -1258,6 +1379,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 955.635 3379.435 955.915 ;
@@ -1266,6 +1388,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1029.235 3379.435 1029.515 ;
@@ -1282,6 +1405,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1206.015 3379.435 1206.295 ;
@@ -1290,6 +1414,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1212.455 3379.435 1212.735 ;
@@ -1298,6 +1423,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1227.635 3379.435 1227.915 ;
@@ -1306,6 +1432,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[10]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1200.035 3379.435 1200.315 ;
@@ -1314,6 +1441,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[11]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1230.855 3379.435 1231.135 ;
@@ -1322,6 +1450,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1209.235 3379.435 1209.515 ;
@@ -1330,6 +1459,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1234.075 3379.435 1234.355 ;
@@ -1338,6 +1468,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1249.255 3379.435 1249.535 ;
@@ -1346,6 +1477,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1215.215 3379.435 1215.495 ;
@@ -1354,6 +1486,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1252.475 3379.435 1252.755 ;
@@ -1362,6 +1495,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1236.835 3379.435 1237.115 ;
@@ -1370,6 +1504,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1190.835 3379.435 1191.115 ;
@@ -1378,6 +1513,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[3]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1246.035 3379.435 1246.315 ;
@@ -1386,6 +1522,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1181.635 3379.435 1181.915 ;
@@ -1394,6 +1531,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1255.235 3379.435 1255.515 ;
@@ -1410,6 +1548,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1431.015 3379.435 1431.295 ;
@@ -1418,6 +1557,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1437.455 3379.435 1437.735 ;
@@ -1426,6 +1566,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1452.635 3379.435 1452.915 ;
@@ -1434,6 +1575,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[12]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1434.235 3379.435 1434.515 ;
@@ -1442,6 +1584,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[13]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1425.035 3379.435 1425.315 ;
@@ -1450,6 +1593,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1455.855 3379.435 1456.135 ;
@@ -1458,6 +1602,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1459.075 3379.435 1459.355 ;
@@ -1466,6 +1611,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1474.255 3379.435 1474.535 ;
@@ -1474,6 +1620,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1440.215 3379.435 1440.495 ;
@@ -1482,6 +1629,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1477.475 3379.435 1477.755 ;
@@ -1490,6 +1638,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1461.835 3379.435 1462.115 ;
@@ -1498,6 +1647,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1415.835 3379.435 1416.115 ;
@@ -1506,6 +1656,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[4]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1471.035 3379.435 1471.315 ;
@@ -1514,6 +1665,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1406.635 3379.435 1406.915 ;
@@ -1522,6 +1674,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1480.235 3379.435 1480.515 ;
@@ -1538,6 +1691,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1656.015 3379.435 1656.295 ;
@@ -1546,6 +1700,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1662.455 3379.435 1662.735 ;
@@ -1554,6 +1709,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1677.635 3379.435 1677.915 ;
@@ -1562,6 +1718,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1659.235 3379.435 1659.515 ;
@@ -1570,6 +1727,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1650.035 3379.435 1650.315 ;
@@ -1578,6 +1736,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1680.855 3379.435 1681.135 ;
@@ -1586,6 +1745,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1684.075 3379.435 1684.355 ;
@@ -1594,6 +1754,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1699.255 3379.435 1699.535 ;
@@ -1602,6 +1763,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1665.215 3379.435 1665.495 ;
@@ -1610,6 +1772,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1702.475 3379.435 1702.755 ;
@@ -1618,6 +1781,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1686.835 3379.435 1687.115 ;
@@ -1626,6 +1790,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1640.835 3379.435 1641.115 ;
@@ -1634,6 +1799,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[5]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1696.035 3379.435 1696.315 ;
@@ -1642,6 +1808,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1631.635 3379.435 1631.915 ;
@@ -1650,6 +1817,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1705.235 3379.435 1705.515 ;
@@ -1666,6 +1834,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1882.015 3379.435 1882.295 ;
@@ -1674,6 +1843,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1888.455 3379.435 1888.735 ;
@@ -1682,6 +1852,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1903.635 3379.435 1903.915 ;
@@ -1690,6 +1861,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1885.235 3379.435 1885.515 ;
@@ -1698,6 +1870,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1876.035 3379.435 1876.315 ;
@@ -1706,6 +1879,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1906.855 3379.435 1907.135 ;
@@ -1714,6 +1888,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1910.075 3379.435 1910.355 ;
@@ -1722,6 +1897,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1925.255 3379.435 1925.535 ;
@@ -1730,6 +1906,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1891.215 3379.435 1891.495 ;
@@ -1738,6 +1915,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1928.475 3379.435 1928.755 ;
@@ -1746,6 +1924,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1912.835 3379.435 1913.115 ;
@@ -1754,6 +1933,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1866.835 3379.435 1867.115 ;
@@ -1762,6 +1942,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[6]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1922.035 3379.435 1922.315 ;
@@ -1770,6 +1951,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1857.635 3379.435 1857.915 ;
@@ -1778,6 +1960,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 1931.235 3379.435 1931.515 ;
@@ -1810,6 +1993,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2768.015 3379.435 2768.295 ;
@@ -1818,6 +2002,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2774.455 3379.435 2774.735 ;
@@ -1826,6 +2011,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2789.635 3379.435 2789.915 ;
@@ -1834,6 +2020,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2771.235 3379.435 2771.515 ;
@@ -1842,6 +2029,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2762.035 3379.435 2762.315 ;
@@ -1850,6 +2038,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2792.855 3379.435 2793.135 ;
@@ -1858,6 +2047,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2796.075 3379.435 2796.355 ;
@@ -1866,6 +2056,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2811.255 3379.435 2811.535 ;
@@ -1874,6 +2065,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2777.215 3379.435 2777.495 ;
@@ -1882,6 +2074,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2814.475 3379.435 2814.755 ;
@@ -1890,6 +2083,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2798.835 3379.435 2799.115 ;
@@ -1898,6 +2092,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2752.835 3379.435 2753.115 ;
@@ -1906,6 +2101,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[7]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2808.035 3379.435 2808.315 ;
@@ -1914,6 +2110,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2743.635 3379.435 2743.915 ;
@@ -1922,6 +2119,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2817.235 3379.435 2817.515 ;
@@ -1954,6 +2152,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2994.015 3379.435 2994.295 ;
@@ -1962,6 +2161,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3000.455 3379.435 3000.735 ;
@@ -1970,6 +2170,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3015.635 3379.435 3015.915 ;
@@ -1978,6 +2179,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2997.235 3379.435 2997.515 ;
@@ -1986,6 +2188,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2988.035 3379.435 2988.315 ;
@@ -1994,6 +2197,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3018.855 3379.435 3019.135 ;
@@ -2002,6 +2206,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3022.075 3379.435 3022.355 ;
@@ -2010,6 +2215,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3037.255 3379.435 3037.535 ;
@@ -2018,6 +2224,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3003.215 3379.435 3003.495 ;
@@ -2026,6 +2233,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3040.475 3379.435 3040.755 ;
@@ -2034,6 +2242,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3024.835 3379.435 3025.115 ;
@@ -2042,6 +2251,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2978.835 3379.435 2979.115 ;
@@ -2050,6 +2260,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[8]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3034.035 3379.435 3034.315 ;
@@ -2058,6 +2269,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[8]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 2969.635 3379.435 2969.915 ;
@@ -2066,6 +2278,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[8]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3043.235 3379.435 3043.515 ;
@@ -2098,6 +2311,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3219.015 3379.435 3219.295 ;
@@ -2106,6 +2320,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3225.455 3379.435 3225.735 ;
@@ -2114,6 +2329,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3240.635 3379.435 3240.915 ;
@@ -2122,6 +2338,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[27]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3222.235 3379.435 3222.515 ;
@@ -2130,6 +2347,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[28]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3213.035 3379.435 3213.315 ;
@@ -2138,6 +2356,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[29]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3243.855 3379.435 3244.135 ;
@@ -2146,6 +2365,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3247.075 3379.435 3247.355 ;
@@ -2154,6 +2374,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3262.255 3379.435 3262.535 ;
@@ -2162,6 +2383,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3228.215 3379.435 3228.495 ;
@@ -2170,6 +2392,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3265.475 3379.435 3265.755 ;
@@ -2178,6 +2401,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3249.835 3379.435 3250.115 ;
@@ -2186,6 +2410,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3203.835 3379.435 3204.115 ;
@@ -2194,6 +2419,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[9]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3259.035 3379.435 3259.315 ;
@@ -2202,6 +2428,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[9]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3194.635 3379.435 3194.915 ;
@@ -2210,6 +2437,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[9]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 3377.035 3268.235 3379.435 3268.515 ;
@@ -2242,6 +2470,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3972.705 210.965 3972.985 ;
@@ -2250,6 +2479,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3966.265 210.965 3966.545 ;
@@ -2258,6 +2488,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3951.085 210.965 3951.365 ;
@@ -2266,6 +2497,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[42]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3969.485 210.965 3969.765 ;
@@ -2274,6 +2506,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[43]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3978.685 210.965 3978.965 ;
@@ -2282,6 +2515,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[44]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3947.865 210.965 3948.145 ;
@@ -2290,6 +2524,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3944.645 210.965 3944.925 ;
@@ -2298,6 +2533,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3929.465 210.965 3929.745 ;
@@ -2306,6 +2542,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3963.505 210.965 3963.785 ;
@@ -2314,6 +2551,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3926.245 210.965 3926.525 ;
@@ -2322,6 +2560,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3941.885 210.965 3942.165 ;
@@ -2330,6 +2569,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3987.885 210.965 3988.165 ;
@@ -2338,6 +2578,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[14]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3932.685 210.965 3932.965 ;
@@ -2346,6 +2587,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[14]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3997.085 210.965 3997.365 ;
@@ -2354,6 +2596,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[14]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3923.485 210.965 3923.765 ;
@@ -2386,6 +2629,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1390.705 210.965 1390.985 ;
@@ -2394,6 +2638,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1384.265 210.965 1384.545 ;
@@ -2402,6 +2647,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1369.085 210.965 1369.365 ;
@@ -2410,6 +2656,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[72]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1387.485 210.965 1387.765 ;
@@ -2418,6 +2665,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[73]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1396.685 210.965 1396.965 ;
@@ -2426,6 +2674,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[74]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1365.865 210.965 1366.145 ;
@@ -2434,6 +2683,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1362.645 210.965 1362.925 ;
@@ -2442,6 +2692,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1347.465 210.965 1347.745 ;
@@ -2450,6 +2701,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1381.505 210.965 1381.785 ;
@@ -2458,6 +2710,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1344.245 210.965 1344.525 ;
@@ -2466,6 +2719,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1359.885 210.965 1360.165 ;
@@ -2474,6 +2728,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1405.885 210.965 1406.165 ;
@@ -2482,6 +2737,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[24]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1350.685 210.965 1350.965 ;
@@ -2490,6 +2746,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[24]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1415.085 210.965 1415.365 ;
@@ -2498,6 +2755,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[24]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1341.485 210.965 1341.765 ;
@@ -2514,6 +2772,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1174.705 210.965 1174.985 ;
@@ -2522,6 +2781,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1168.265 210.965 1168.545 ;
@@ -2530,6 +2790,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1153.085 210.965 1153.365 ;
@@ -2538,6 +2799,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[75]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1171.485 210.965 1171.765 ;
@@ -2546,6 +2808,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[76]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1180.685 210.965 1180.965 ;
@@ -2554,6 +2817,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[77]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1149.865 210.965 1150.145 ;
@@ -2562,6 +2826,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1146.645 210.965 1146.925 ;
@@ -2570,6 +2835,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1131.465 210.965 1131.745 ;
@@ -2578,6 +2844,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1165.505 210.965 1165.785 ;
@@ -2586,6 +2853,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1128.245 210.965 1128.525 ;
@@ -2594,6 +2862,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1143.885 210.965 1144.165 ;
@@ -2602,6 +2871,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1189.885 210.965 1190.165 ;
@@ -2610,6 +2880,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[25]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1134.685 210.965 1134.965 ;
@@ -2618,6 +2889,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[25]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1199.085 210.965 1199.365 ;
@@ -2626,6 +2898,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[25]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1125.485 210.965 1125.765 ;
@@ -2642,6 +2915,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 958.705 210.965 958.985 ;
@@ -2650,6 +2924,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 952.265 210.965 952.545 ;
@@ -2658,6 +2933,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 937.085 210.965 937.365 ;
@@ -2666,6 +2942,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[78]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 955.485 210.965 955.765 ;
@@ -2674,6 +2951,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[79]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 964.685 210.965 964.965 ;
@@ -2682,6 +2960,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[80]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 933.865 210.965 934.145 ;
@@ -2690,6 +2969,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 930.645 210.965 930.925 ;
@@ -2698,6 +2978,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 915.465 210.965 915.745 ;
@@ -2706,6 +2987,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 949.505 210.965 949.785 ;
@@ -2714,6 +2996,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 912.245 210.965 912.525 ;
@@ -2722,6 +3005,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 927.885 210.965 928.165 ;
@@ -2730,6 +3014,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 973.885 210.965 974.165 ;
@@ -2738,6 +3023,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[26]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 918.685 210.965 918.965 ;
@@ -2746,6 +3032,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[26]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 983.085 210.965 983.365 ;
@@ -2754,6 +3041,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[26]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 909.485 210.965 909.765 ;
@@ -2786,6 +3074,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3756.705 210.965 3756.985 ;
@@ -2794,6 +3083,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3750.265 210.965 3750.545 ;
@@ -2802,6 +3092,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3735.085 210.965 3735.365 ;
@@ -2810,6 +3101,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[45]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3753.485 210.965 3753.765 ;
@@ -2818,6 +3110,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[46]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3762.685 210.965 3762.965 ;
@@ -2826,6 +3119,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[47]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3731.865 210.965 3732.145 ;
@@ -2834,6 +3128,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3728.645 210.965 3728.925 ;
@@ -2842,6 +3137,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3713.465 210.965 3713.745 ;
@@ -2850,6 +3146,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3747.505 210.965 3747.785 ;
@@ -2858,6 +3155,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3710.245 210.965 3710.525 ;
@@ -2866,6 +3164,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3725.885 210.965 3726.165 ;
@@ -2874,6 +3173,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3771.885 210.965 3772.165 ;
@@ -2882,6 +3182,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[15]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3716.685 210.965 3716.965 ;
@@ -2890,6 +3191,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[15]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3781.085 210.965 3781.365 ;
@@ -2898,6 +3200,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[15]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3707.485 210.965 3707.765 ;
@@ -2930,6 +3233,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3540.705 210.965 3540.985 ;
@@ -2938,6 +3242,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3534.265 210.965 3534.545 ;
@@ -2946,6 +3251,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3519.085 210.965 3519.365 ;
@@ -2954,6 +3260,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[48]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3537.485 210.965 3537.765 ;
@@ -2962,6 +3269,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[49]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3546.685 210.965 3546.965 ;
@@ -2970,6 +3278,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[50]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3515.865 210.965 3516.145 ;
@@ -2978,6 +3287,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3512.645 210.965 3512.925 ;
@@ -2986,6 +3296,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3497.465 210.965 3497.745 ;
@@ -2994,6 +3305,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3531.505 210.965 3531.785 ;
@@ -3002,6 +3314,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3494.245 210.965 3494.525 ;
@@ -3010,6 +3323,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3509.885 210.965 3510.165 ;
@@ -3018,6 +3332,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3555.885 210.965 3556.165 ;
@@ -3026,6 +3341,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[16]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3500.685 210.965 3500.965 ;
@@ -3034,6 +3350,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[16]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3565.085 210.965 3565.365 ;
@@ -3042,6 +3359,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[16]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3491.485 210.965 3491.765 ;
@@ -3074,6 +3392,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3324.705 210.965 3324.985 ;
@@ -3082,6 +3401,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3318.265 210.965 3318.545 ;
@@ -3090,6 +3410,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3303.085 210.965 3303.365 ;
@@ -3098,6 +3419,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[51]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3321.485 210.965 3321.765 ;
@@ -3106,6 +3428,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[52]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3330.685 210.965 3330.965 ;
@@ -3114,6 +3437,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[53]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3299.865 210.965 3300.145 ;
@@ -3122,6 +3446,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3296.645 210.965 3296.925 ;
@@ -3130,6 +3455,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3281.465 210.965 3281.745 ;
@@ -3138,6 +3464,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3315.505 210.965 3315.785 ;
@@ -3146,6 +3473,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3278.245 210.965 3278.525 ;
@@ -3154,6 +3482,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3293.885 210.965 3294.165 ;
@@ -3162,6 +3491,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3339.885 210.965 3340.165 ;
@@ -3170,6 +3500,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[17]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3284.685 210.965 3284.965 ;
@@ -3178,6 +3509,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[17]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3349.085 210.965 3349.365 ;
@@ -3186,6 +3518,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[17]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3275.485 210.965 3275.765 ;
@@ -3218,6 +3551,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3108.705 210.965 3108.985 ;
@@ -3226,6 +3560,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3102.265 210.965 3102.545 ;
@@ -3234,6 +3569,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3087.085 210.965 3087.365 ;
@@ -3242,6 +3578,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[54]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3105.485 210.965 3105.765 ;
@@ -3250,6 +3587,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[55]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3114.685 210.965 3114.965 ;
@@ -3258,6 +3596,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[56]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3083.865 210.965 3084.145 ;
@@ -3266,6 +3605,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3080.645 210.965 3080.925 ;
@@ -3274,6 +3614,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3065.465 210.965 3065.745 ;
@@ -3282,6 +3623,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3099.505 210.965 3099.785 ;
@@ -3290,6 +3632,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3062.245 210.965 3062.525 ;
@@ -3298,6 +3641,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3077.885 210.965 3078.165 ;
@@ -3306,6 +3650,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3123.885 210.965 3124.165 ;
@@ -3314,6 +3659,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[18]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3068.685 210.965 3068.965 ;
@@ -3322,6 +3668,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[18]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3133.085 210.965 3133.365 ;
@@ -3330,6 +3677,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[18]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 3059.485 210.965 3059.765 ;
@@ -3362,6 +3710,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2892.705 210.965 2892.985 ;
@@ -3370,6 +3719,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2886.265 210.965 2886.545 ;
@@ -3378,6 +3728,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2871.085 210.965 2871.365 ;
@@ -3386,6 +3737,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[57]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2889.485 210.965 2889.765 ;
@@ -3394,6 +3746,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[58]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2898.685 210.965 2898.965 ;
@@ -3402,6 +3755,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[59]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2867.865 210.965 2868.145 ;
@@ -3410,6 +3764,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2864.645 210.965 2864.925 ;
@@ -3418,6 +3773,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2849.465 210.965 2849.745 ;
@@ -3426,6 +3782,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2883.505 210.965 2883.785 ;
@@ -3434,6 +3791,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2846.245 210.965 2846.525 ;
@@ -3442,6 +3800,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2861.885 210.965 2862.165 ;
@@ -3450,6 +3809,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2907.885 210.965 2908.165 ;
@@ -3458,6 +3818,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[19]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2852.685 210.965 2852.965 ;
@@ -3466,6 +3827,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[19]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2917.085 210.965 2917.365 ;
@@ -3474,6 +3836,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[19]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2843.485 210.965 2843.765 ;
@@ -3506,6 +3869,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2676.705 210.965 2676.985 ;
@@ -3514,6 +3878,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2670.265 210.965 2670.545 ;
@@ -3522,6 +3887,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2655.085 210.965 2655.365 ;
@@ -3530,6 +3896,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[60]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2673.485 210.965 2673.765 ;
@@ -3538,6 +3905,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[61]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2682.685 210.965 2682.965 ;
@@ -3546,6 +3914,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[62]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2651.865 210.965 2652.145 ;
@@ -3554,6 +3923,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2648.645 210.965 2648.925 ;
@@ -3562,6 +3932,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2633.465 210.965 2633.745 ;
@@ -3570,6 +3941,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2667.505 210.965 2667.785 ;
@@ -3578,6 +3950,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2630.245 210.965 2630.525 ;
@@ -3586,6 +3959,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2645.885 210.965 2646.165 ;
@@ -3594,6 +3968,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2691.885 210.965 2692.165 ;
@@ -3602,6 +3977,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[20]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2636.685 210.965 2636.965 ;
@@ -3610,6 +3986,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[20]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2701.085 210.965 2701.365 ;
@@ -3618,6 +3995,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[20]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2627.485 210.965 2627.765 ;
@@ -3650,6 +4028,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2038.705 210.965 2038.985 ;
@@ -3658,6 +4037,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2032.265 210.965 2032.545 ;
@@ -3666,6 +4046,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2017.085 210.965 2017.365 ;
@@ -3674,6 +4055,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[63]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2035.485 210.965 2035.765 ;
@@ -3682,6 +4064,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[64]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2044.685 210.965 2044.965 ;
@@ -3690,6 +4073,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[65]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2013.865 210.965 2014.145 ;
@@ -3698,6 +4082,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2010.645 210.965 2010.925 ;
@@ -3706,6 +4091,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1995.465 210.965 1995.745 ;
@@ -3714,6 +4100,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2029.505 210.965 2029.785 ;
@@ -3722,6 +4109,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1992.245 210.965 1992.525 ;
@@ -3730,6 +4118,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2007.885 210.965 2008.165 ;
@@ -3738,6 +4127,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2053.885 210.965 2054.165 ;
@@ -3746,6 +4136,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[21]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1998.685 210.965 1998.965 ;
@@ -3754,6 +4145,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[21]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 2063.085 210.965 2063.365 ;
@@ -3762,6 +4154,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[21]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1989.485 210.965 1989.765 ;
@@ -3794,6 +4187,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1822.705 210.965 1822.985 ;
@@ -3802,6 +4196,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1816.265 210.965 1816.545 ;
@@ -3810,6 +4205,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1801.085 210.965 1801.365 ;
@@ -3818,6 +4214,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[66]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1819.485 210.965 1819.765 ;
@@ -3826,6 +4223,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[67]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1828.685 210.965 1828.965 ;
@@ -3834,6 +4232,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[68]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1797.865 210.965 1798.145 ;
@@ -3842,6 +4241,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1794.645 210.965 1794.925 ;
@@ -3850,6 +4250,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1779.465 210.965 1779.745 ;
@@ -3858,6 +4259,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1813.505 210.965 1813.785 ;
@@ -3866,6 +4268,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1776.245 210.965 1776.525 ;
@@ -3874,6 +4277,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1791.885 210.965 1792.165 ;
@@ -3882,6 +4286,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1837.885 210.965 1838.165 ;
@@ -3890,6 +4295,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[22]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1782.685 210.965 1782.965 ;
@@ -3898,6 +4304,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[22]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1847.085 210.965 1847.365 ;
@@ -3906,6 +4313,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[22]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1773.485 210.965 1773.765 ;
@@ -3938,6 +4346,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_en[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1606.705 210.965 1606.985 ;
@@ -3946,6 +4355,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_pol[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1600.265 210.965 1600.545 ;
@@ -3954,6 +4364,7 @@ MACRO chip_io_alt
   PIN mprj_io_analog_sel[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1585.085 210.965 1585.365 ;
@@ -3962,6 +4373,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[69]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1603.485 210.965 1603.765 ;
@@ -3970,6 +4382,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[70]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1612.685 210.965 1612.965 ;
@@ -3978,6 +4391,7 @@ MACRO chip_io_alt
   PIN mprj_io_dm[71]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1581.865 210.965 1582.145 ;
@@ -3986,6 +4400,7 @@ MACRO chip_io_alt
   PIN mprj_io_holdover[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1578.645 210.965 1578.925 ;
@@ -3994,6 +4409,7 @@ MACRO chip_io_alt
   PIN mprj_io_ib_mode_sel[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1563.465 210.965 1563.745 ;
@@ -4002,6 +4418,7 @@ MACRO chip_io_alt
   PIN mprj_io_inp_dis[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1597.505 210.965 1597.785 ;
@@ -4010,6 +4427,7 @@ MACRO chip_io_alt
   PIN mprj_io_oeb[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1560.245 210.965 1560.525 ;
@@ -4018,6 +4436,7 @@ MACRO chip_io_alt
   PIN mprj_io_out[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1575.885 210.965 1576.165 ;
@@ -4026,6 +4445,7 @@ MACRO chip_io_alt
   PIN mprj_io_slow_sel[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1621.885 210.965 1622.165 ;
@@ -4034,6 +4454,7 @@ MACRO chip_io_alt
   PIN mprj_io_vtrip_sel[23]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1566.685 210.965 1566.965 ;
@@ -4042,6 +4463,7 @@ MACRO chip_io_alt
   PIN mprj_io_in[23]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1631.085 210.965 1631.365 ;
@@ -4050,6 +4472,7 @@ MACRO chip_io_alt
   PIN mprj_io_in_3v3[23]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 208.565 1557.485 210.965 1557.765 ;
@@ -4058,6 +4481,7 @@ MACRO chip_io_alt
   PIN resetb
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met5 ;
         RECT 683.565 35.715 720.750 91.545 ;
@@ -4066,6 +4490,7 @@ MACRO chip_io_alt
   PIN resetb_core_h
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
         RECT 708.335 199.670 709.065 200.000 ;
@@ -4154,6 +4579,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_high[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1974.390 4988.000 1998.290 5013.660 ;
@@ -4162,6 +4588,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_low[0]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1924.495 4988.000 1948.395 4990.055 ;
@@ -4363,6 +4790,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_high[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1465.390 4988.000 1489.290 5013.660 ;
@@ -4371,6 +4799,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_low[1]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1415.495 4988.000 1439.395 4990.055 ;
@@ -4395,6 +4824,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_high[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1202.390 4988.000 1226.290 5013.660 ;
@@ -4403,6 +4833,7 @@ MACRO chip_io_alt
   PIN mprj_clamp_low[2]
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1152.495 4988.000 1176.395 4990.055 ;
@@ -4515,6 +4946,7 @@ MACRO chip_io_alt
   PIN flash_csb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1534.835 208.565 1535.115 210.965 ;
@@ -4523,6 +4955,7 @@ MACRO chip_io_alt
   PIN flash_clk_oeb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1824.475 208.565 1824.755 210.965 ;
@@ -4531,6 +4964,7 @@ MACRO chip_io_alt
   PIN flash_clk_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1808.835 208.565 1809.115 210.965 ;
@@ -4539,6 +4973,7 @@ MACRO chip_io_alt
   PIN flash_csb_oeb_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met2 ;
         RECT 1550.475 208.565 1550.755 210.965 ;
@@ -4709,6 +5144,7 @@ MACRO chip_io_alt
   PIN porb_h
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 209.330 210.905 209.590 4002.520 ;
@@ -4982,6 +5418,7 @@ MACRO chip_io_alt
   PIN gpio_mode1_core
     DIRECTION INPUT ;
     USE SIGNAL ;
+    ANTENNAGATEAREA 0.126000 ;
     PORT
       LAYER met1 ;
         RECT 2594.010 211.680 2594.330 211.740 ;
