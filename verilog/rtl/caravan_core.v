@@ -649,7 +649,7 @@ module caravan_core (
 
     // Housekeeping interface
 
-    housekeeping housekeeping (
+    housekeeping_alt housekeeping_alt (
 	`ifdef USE_POWER_PINS
 		.VPWR(vccd),
 		.VGND(vssd),
