@@ -252,7 +252,7 @@ module housekeeping_alt #(
 
 
 // Output clock signals buffer wires
-wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff;
+wire mgmt_gpio_out_9_prebuff, mgmt_gpio_out_14_prebuff, mgmt_gpio_out_31_prebuff;
 wire mgmt_gpio_out_15_prebuff, pad_flash_clk_prebuff;
 wire mgmt_gpio_out_30_prebuff, pad_flash_31_prebuff;
 
