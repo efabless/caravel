@@ -33,7 +33,9 @@ set ::env(GRT_OBS) "\
     met5 0 4195 3165 4767, \
     met5 59.52 1183.09 3103.58 4703.09, \
     met5 1943 1153 1944 1155, \
-    met5 1815 1130 1816 1132 \
+    met5 1815 1130 1816 1132, \
+    met5 631 144 650 183, \
+    met4 1040 189 1052 190 \
 "
 add_route_obs
 
@@ -108,7 +110,7 @@ run_magic
 # run_lvs;
 
 ###############   DRC    ################
-# run_magic_drc
+run_magic_drc
 
 ################   Saving views and reports    ################
 save_final_views

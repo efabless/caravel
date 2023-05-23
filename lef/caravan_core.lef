@@ -1,0 +1,3500 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO caravan_core
+  CLASS BLOCK ;
+  FOREIGN caravan_core ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 3165.000 BY 4767.000 ;
+  PIN clock_core
+    ANTENNAGATEAREA 0.426000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met2 ;
+        RECT 725.135 -2.000 725.415 4.000 ;
+    END
+  END clock_core
+  PIN flash_clk_frame
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1597.335 -2.000 1597.615 4.000 ;
+    END
+  END flash_clk_frame
+  PIN flash_clk_oeb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1612.975 -2.000 1613.255 4.000 ;
+    END
+  END flash_clk_oeb
+  PIN flash_csb_frame
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1323.335 -2.000 1323.615 4.000 ;
+    END
+  END flash_csb_frame
+  PIN flash_csb_oeb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1338.975 -2.000 1339.255 4.000 ;
+    END
+  END flash_csb_oeb
+  PIN flash_io0_di
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met2 ;
+        RECT 1816.135 -2.000 1816.415 4.000 ;
+    END
+  END flash_io0_di
+  PIN flash_io0_do
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1871.335 -2.000 1871.615 4.000 ;
+    END
+  END flash_io0_do
+  PIN flash_io0_ieb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1849.715 -2.000 1849.995 4.000 ;
+    END
+  END flash_io0_ieb
+  PIN flash_io0_oeb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 1886.975 -2.000 1887.255 4.000 ;
+    END
+  END flash_io0_oeb
+  PIN flash_io1_di
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met2 ;
+        RECT 2090.135 -2.000 2090.415 4.000 ;
+    END
+  END flash_io1_di
+  PIN flash_io1_do
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2145.335 -2.000 2145.615 4.000 ;
+    END
+  END flash_io1_do
+  PIN flash_io1_ieb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2123.715 -2.000 2123.995 4.000 ;
+    END
+  END flash_io1_ieb
+  PIN flash_io1_oeb
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2160.975 -2.000 2161.255 4.000 ;
+    END
+  END flash_io1_oeb
+  PIN gpio_in_core
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met2 ;
+        RECT 2364.135 -2.000 2364.415 4.000 ;
+    END
+  END gpio_in_core
+  PIN gpio_inenb_core
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2397.715 -2.000 2397.995 4.000 ;
+    END
+  END gpio_inenb_core
+  PIN gpio_mode0_core
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2391.735 -2.000 2392.015 4.000 ;
+    END
+  END gpio_mode0_core
+  PIN gpio_mode1_core
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2413.355 -2.000 2413.635 4.000 ;
+    END
+  END gpio_mode1_core
+  PIN gpio_out_core
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2419.335 -2.000 2419.615 4.000 ;
+    END
+  END gpio_out_core
+  PIN gpio_outenb_core
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 2434.975 -2.000 2435.255 4.000 ;
+    END
+  END gpio_outenb_core
+  PIN mprj_io_analog_en[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 318.355 3167.185 318.955 ;
+    END
+  END mprj_io_analog_en[0]
+  PIN mprj_io_analog_en[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3234.355 3167.185 3234.955 ;
+    END
+  END mprj_io_analog_en[10]
+  PIN mprj_io_analog_en[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3459.355 3167.185 3459.955 ;
+    END
+  END mprj_io_analog_en[11]
+  PIN mprj_io_analog_en[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3684.355 3167.185 3684.955 ;
+    END
+  END mprj_io_analog_en[12]
+  PIN mprj_io_analog_en[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4130.355 3167.185 4130.955 ;
+    END
+  END mprj_io_analog_en[13]
+  PIN mprj_io_analog_en[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3762.045 4.000 3762.645 ;
+    END
+  END mprj_io_analog_en[14]
+  PIN mprj_io_analog_en[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3546.045 4.000 3546.645 ;
+    END
+  END mprj_io_analog_en[15]
+  PIN mprj_io_analog_en[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3330.045 4.000 3330.645 ;
+    END
+  END mprj_io_analog_en[16]
+  PIN mprj_io_analog_en[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3114.045 4.000 3114.645 ;
+    END
+  END mprj_io_analog_en[17]
+  PIN mprj_io_analog_en[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2898.045 4.000 2898.645 ;
+    END
+  END mprj_io_analog_en[18]
+  PIN mprj_io_analog_en[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2682.045 4.000 2682.645 ;
+    END
+  END mprj_io_analog_en[19]
+  PIN mprj_io_analog_en[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 544.355 3167.185 544.955 ;
+    END
+  END mprj_io_analog_en[1]
+  PIN mprj_io_analog_en[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2466.045 4.000 2466.645 ;
+    END
+  END mprj_io_analog_en[20]
+  PIN mprj_io_analog_en[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1828.045 4.000 1828.645 ;
+    END
+  END mprj_io_analog_en[21]
+  PIN mprj_io_analog_en[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1612.045 4.000 1612.645 ;
+    END
+  END mprj_io_analog_en[22]
+  PIN mprj_io_analog_en[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1396.045 4.000 1396.645 ;
+    END
+  END mprj_io_analog_en[23]
+  PIN mprj_io_analog_en[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1180.045 4.000 1180.645 ;
+    END
+  END mprj_io_analog_en[24]
+  PIN mprj_io_analog_en[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 964.045 4.000 964.645 ;
+    END
+  END mprj_io_analog_en[25]
+  PIN mprj_io_analog_en[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 748.045 4.000 748.645 ;
+    END
+  END mprj_io_analog_en[26]
+  PIN mprj_io_analog_en[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 769.355 3167.185 769.955 ;
+    END
+  END mprj_io_analog_en[2]
+  PIN mprj_io_analog_en[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 995.355 3167.185 995.955 ;
+    END
+  END mprj_io_analog_en[3]
+  PIN mprj_io_analog_en[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1220.355 3167.185 1220.955 ;
+    END
+  END mprj_io_analog_en[4]
+  PIN mprj_io_analog_en[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1445.355 3167.185 1445.955 ;
+    END
+  END mprj_io_analog_en[5]
+  PIN mprj_io_analog_en[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1671.355 3167.185 1671.955 ;
+    END
+  END mprj_io_analog_en[6]
+  PIN mprj_io_analog_en[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2557.355 3167.185 2557.955 ;
+    END
+  END mprj_io_analog_en[7]
+  PIN mprj_io_analog_en[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2783.355 3167.185 2783.955 ;
+    END
+  END mprj_io_analog_en[8]
+  PIN mprj_io_analog_en[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3008.355 3167.185 3008.955 ;
+    END
+  END mprj_io_analog_en[9]
+  PIN mprj_io_analog_pol[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 324.795 3167.185 325.395 ;
+    END
+  END mprj_io_analog_pol[0]
+  PIN mprj_io_analog_pol[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3240.795 3167.185 3241.395 ;
+    END
+  END mprj_io_analog_pol[10]
+  PIN mprj_io_analog_pol[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3465.795 3167.185 3466.395 ;
+    END
+  END mprj_io_analog_pol[11]
+  PIN mprj_io_analog_pol[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3690.795 3167.185 3691.395 ;
+    END
+  END mprj_io_analog_pol[12]
+  PIN mprj_io_analog_pol[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4136.795 3167.185 4137.395 ;
+    END
+  END mprj_io_analog_pol[13]
+  PIN mprj_io_analog_pol[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3755.605 4.000 3756.205 ;
+    END
+  END mprj_io_analog_pol[14]
+  PIN mprj_io_analog_pol[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3539.605 4.000 3540.205 ;
+    END
+  END mprj_io_analog_pol[15]
+  PIN mprj_io_analog_pol[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3323.605 4.000 3324.205 ;
+    END
+  END mprj_io_analog_pol[16]
+  PIN mprj_io_analog_pol[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3107.605 4.000 3108.205 ;
+    END
+  END mprj_io_analog_pol[17]
+  PIN mprj_io_analog_pol[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2891.605 4.000 2892.205 ;
+    END
+  END mprj_io_analog_pol[18]
+  PIN mprj_io_analog_pol[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2675.605 4.000 2676.205 ;
+    END
+  END mprj_io_analog_pol[19]
+  PIN mprj_io_analog_pol[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 550.795 3167.185 551.395 ;
+    END
+  END mprj_io_analog_pol[1]
+  PIN mprj_io_analog_pol[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2459.605 4.000 2460.205 ;
+    END
+  END mprj_io_analog_pol[20]
+  PIN mprj_io_analog_pol[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1821.605 4.000 1822.205 ;
+    END
+  END mprj_io_analog_pol[21]
+  PIN mprj_io_analog_pol[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1605.605 4.000 1606.205 ;
+    END
+  END mprj_io_analog_pol[22]
+  PIN mprj_io_analog_pol[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1389.605 4.000 1390.205 ;
+    END
+  END mprj_io_analog_pol[23]
+  PIN mprj_io_analog_pol[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1173.605 4.000 1174.205 ;
+    END
+  END mprj_io_analog_pol[24]
+  PIN mprj_io_analog_pol[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 957.605 4.000 958.205 ;
+    END
+  END mprj_io_analog_pol[25]
+  PIN mprj_io_analog_pol[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 741.605 4.000 742.205 ;
+    END
+  END mprj_io_analog_pol[26]
+  PIN mprj_io_analog_pol[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 775.795 3167.185 776.395 ;
+    END
+  END mprj_io_analog_pol[2]
+  PIN mprj_io_analog_pol[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1001.795 3167.185 1002.395 ;
+    END
+  END mprj_io_analog_pol[3]
+  PIN mprj_io_analog_pol[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1226.795 3167.185 1227.395 ;
+    END
+  END mprj_io_analog_pol[4]
+  PIN mprj_io_analog_pol[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1451.795 3167.185 1452.395 ;
+    END
+  END mprj_io_analog_pol[5]
+  PIN mprj_io_analog_pol[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1677.795 3167.185 1678.395 ;
+    END
+  END mprj_io_analog_pol[6]
+  PIN mprj_io_analog_pol[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2563.795 3167.185 2564.395 ;
+    END
+  END mprj_io_analog_pol[7]
+  PIN mprj_io_analog_pol[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2789.795 3167.185 2790.395 ;
+    END
+  END mprj_io_analog_pol[8]
+  PIN mprj_io_analog_pol[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3014.795 3167.185 3015.395 ;
+    END
+  END mprj_io_analog_pol[9]
+  PIN mprj_io_analog_sel[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 339.975 3167.185 340.575 ;
+    END
+  END mprj_io_analog_sel[0]
+  PIN mprj_io_analog_sel[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3255.975 3167.185 3256.575 ;
+    END
+  END mprj_io_analog_sel[10]
+  PIN mprj_io_analog_sel[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3480.975 3167.185 3481.575 ;
+    END
+  END mprj_io_analog_sel[11]
+  PIN mprj_io_analog_sel[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3705.975 3167.185 3706.575 ;
+    END
+  END mprj_io_analog_sel[12]
+  PIN mprj_io_analog_sel[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4151.975 3167.185 4152.575 ;
+    END
+  END mprj_io_analog_sel[13]
+  PIN mprj_io_analog_sel[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3740.425 4.000 3741.025 ;
+    END
+  END mprj_io_analog_sel[14]
+  PIN mprj_io_analog_sel[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3524.425 4.000 3525.025 ;
+    END
+  END mprj_io_analog_sel[15]
+  PIN mprj_io_analog_sel[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3308.425 4.000 3309.025 ;
+    END
+  END mprj_io_analog_sel[16]
+  PIN mprj_io_analog_sel[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3092.425 4.000 3093.025 ;
+    END
+  END mprj_io_analog_sel[17]
+  PIN mprj_io_analog_sel[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2876.425 4.000 2877.025 ;
+    END
+  END mprj_io_analog_sel[18]
+  PIN mprj_io_analog_sel[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2660.425 4.000 2661.025 ;
+    END
+  END mprj_io_analog_sel[19]
+  PIN mprj_io_analog_sel[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 565.975 3167.185 566.575 ;
+    END
+  END mprj_io_analog_sel[1]
+  PIN mprj_io_analog_sel[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2444.425 4.000 2445.025 ;
+    END
+  END mprj_io_analog_sel[20]
+  PIN mprj_io_analog_sel[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1806.425 4.000 1807.025 ;
+    END
+  END mprj_io_analog_sel[21]
+  PIN mprj_io_analog_sel[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1590.425 4.000 1591.025 ;
+    END
+  END mprj_io_analog_sel[22]
+  PIN mprj_io_analog_sel[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1374.425 4.000 1375.025 ;
+    END
+  END mprj_io_analog_sel[23]
+  PIN mprj_io_analog_sel[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1158.425 4.000 1159.025 ;
+    END
+  END mprj_io_analog_sel[24]
+  PIN mprj_io_analog_sel[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 942.425 4.000 943.025 ;
+    END
+  END mprj_io_analog_sel[25]
+  PIN mprj_io_analog_sel[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 726.425 4.000 727.025 ;
+    END
+  END mprj_io_analog_sel[26]
+  PIN mprj_io_analog_sel[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 790.975 3167.185 791.575 ;
+    END
+  END mprj_io_analog_sel[2]
+  PIN mprj_io_analog_sel[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1016.975 3167.185 1017.575 ;
+    END
+  END mprj_io_analog_sel[3]
+  PIN mprj_io_analog_sel[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1241.975 3167.185 1242.575 ;
+    END
+  END mprj_io_analog_sel[4]
+  PIN mprj_io_analog_sel[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1466.975 3167.185 1467.575 ;
+    END
+  END mprj_io_analog_sel[5]
+  PIN mprj_io_analog_sel[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1692.975 3167.185 1693.575 ;
+    END
+  END mprj_io_analog_sel[6]
+  PIN mprj_io_analog_sel[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2578.975 3167.185 2579.575 ;
+    END
+  END mprj_io_analog_sel[7]
+  PIN mprj_io_analog_sel[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2804.975 3167.185 2805.575 ;
+    END
+  END mprj_io_analog_sel[8]
+  PIN mprj_io_analog_sel[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3029.975 3167.185 3030.575 ;
+    END
+  END mprj_io_analog_sel[9]
+  PIN mprj_io_dm[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 321.575 3167.185 322.175 ;
+    END
+  END mprj_io_dm[0]
+  PIN mprj_io_dm[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 989.375 3167.185 989.975 ;
+    END
+  END mprj_io_dm[10]
+  PIN mprj_io_dm[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1020.195 3167.185 1020.795 ;
+    END
+  END mprj_io_dm[11]
+  PIN mprj_io_dm[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1223.575 3167.185 1224.175 ;
+    END
+  END mprj_io_dm[12]
+  PIN mprj_io_dm[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1214.375 3167.185 1214.975 ;
+    END
+  END mprj_io_dm[13]
+  PIN mprj_io_dm[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1245.195 3167.185 1245.795 ;
+    END
+  END mprj_io_dm[14]
+  PIN mprj_io_dm[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1448.575 3167.185 1449.175 ;
+    END
+  END mprj_io_dm[15]
+  PIN mprj_io_dm[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1439.375 3167.185 1439.975 ;
+    END
+  END mprj_io_dm[16]
+  PIN mprj_io_dm[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1470.195 3167.185 1470.795 ;
+    END
+  END mprj_io_dm[17]
+  PIN mprj_io_dm[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1674.575 3167.185 1675.175 ;
+    END
+  END mprj_io_dm[18]
+  PIN mprj_io_dm[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1665.375 3167.185 1665.975 ;
+    END
+  END mprj_io_dm[19]
+  PIN mprj_io_dm[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 312.375 3167.185 312.975 ;
+    END
+  END mprj_io_dm[1]
+  PIN mprj_io_dm[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1696.195 3167.185 1696.795 ;
+    END
+  END mprj_io_dm[20]
+  PIN mprj_io_dm[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2560.575 3167.185 2561.175 ;
+    END
+  END mprj_io_dm[21]
+  PIN mprj_io_dm[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2551.375 3167.185 2551.975 ;
+    END
+  END mprj_io_dm[22]
+  PIN mprj_io_dm[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2582.195 3167.185 2582.795 ;
+    END
+  END mprj_io_dm[23]
+  PIN mprj_io_dm[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2786.575 3167.185 2787.175 ;
+    END
+  END mprj_io_dm[24]
+  PIN mprj_io_dm[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2777.375 3167.185 2777.975 ;
+    END
+  END mprj_io_dm[25]
+  PIN mprj_io_dm[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2808.195 3167.185 2808.795 ;
+    END
+  END mprj_io_dm[26]
+  PIN mprj_io_dm[27]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3011.575 3167.185 3012.175 ;
+    END
+  END mprj_io_dm[27]
+  PIN mprj_io_dm[28]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3002.375 3167.185 3002.975 ;
+    END
+  END mprj_io_dm[28]
+  PIN mprj_io_dm[29]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3033.195 3167.185 3033.795 ;
+    END
+  END mprj_io_dm[29]
+  PIN mprj_io_dm[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 343.195 3167.185 343.795 ;
+    END
+  END mprj_io_dm[2]
+  PIN mprj_io_dm[30]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3237.575 3167.185 3238.175 ;
+    END
+  END mprj_io_dm[30]
+  PIN mprj_io_dm[31]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3228.375 3167.185 3228.975 ;
+    END
+  END mprj_io_dm[31]
+  PIN mprj_io_dm[32]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3259.195 3167.185 3259.795 ;
+    END
+  END mprj_io_dm[32]
+  PIN mprj_io_dm[33]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3462.575 3167.185 3463.175 ;
+    END
+  END mprj_io_dm[33]
+  PIN mprj_io_dm[34]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3453.375 3167.185 3453.975 ;
+    END
+  END mprj_io_dm[34]
+  PIN mprj_io_dm[35]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3484.195 3167.185 3484.795 ;
+    END
+  END mprj_io_dm[35]
+  PIN mprj_io_dm[36]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3687.575 3167.185 3688.175 ;
+    END
+  END mprj_io_dm[36]
+  PIN mprj_io_dm[37]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3678.375 3167.185 3678.975 ;
+    END
+  END mprj_io_dm[37]
+  PIN mprj_io_dm[38]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3709.195 3167.185 3709.795 ;
+    END
+  END mprj_io_dm[38]
+  PIN mprj_io_dm[39]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4133.575 3167.185 4134.175 ;
+    END
+  END mprj_io_dm[39]
+  PIN mprj_io_dm[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 547.575 3167.185 548.175 ;
+    END
+  END mprj_io_dm[3]
+  PIN mprj_io_dm[40]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4124.375 3167.185 4124.975 ;
+    END
+  END mprj_io_dm[40]
+  PIN mprj_io_dm[41]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4155.195 3167.185 4155.795 ;
+    END
+  END mprj_io_dm[41]
+  PIN mprj_io_dm[42]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3758.825 4.000 3759.425 ;
+    END
+  END mprj_io_dm[42]
+  PIN mprj_io_dm[43]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3768.025 4.000 3768.625 ;
+    END
+  END mprj_io_dm[43]
+  PIN mprj_io_dm[44]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3737.205 4.000 3737.805 ;
+    END
+  END mprj_io_dm[44]
+  PIN mprj_io_dm[45]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3542.825 4.000 3543.425 ;
+    END
+  END mprj_io_dm[45]
+  PIN mprj_io_dm[46]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3552.025 4.000 3552.625 ;
+    END
+  END mprj_io_dm[46]
+  PIN mprj_io_dm[47]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3521.205 4.000 3521.805 ;
+    END
+  END mprj_io_dm[47]
+  PIN mprj_io_dm[48]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3326.825 4.000 3327.425 ;
+    END
+  END mprj_io_dm[48]
+  PIN mprj_io_dm[49]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3336.025 4.000 3336.625 ;
+    END
+  END mprj_io_dm[49]
+  PIN mprj_io_dm[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 538.375 3167.185 538.975 ;
+    END
+  END mprj_io_dm[4]
+  PIN mprj_io_dm[50]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3305.205 4.000 3305.805 ;
+    END
+  END mprj_io_dm[50]
+  PIN mprj_io_dm[51]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3110.825 4.000 3111.425 ;
+    END
+  END mprj_io_dm[51]
+  PIN mprj_io_dm[52]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3120.025 4.000 3120.625 ;
+    END
+  END mprj_io_dm[52]
+  PIN mprj_io_dm[53]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3089.205 4.000 3089.805 ;
+    END
+  END mprj_io_dm[53]
+  PIN mprj_io_dm[54]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2894.825 4.000 2895.425 ;
+    END
+  END mprj_io_dm[54]
+  PIN mprj_io_dm[55]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2904.025 4.000 2904.625 ;
+    END
+  END mprj_io_dm[55]
+  PIN mprj_io_dm[56]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2873.205 4.000 2873.805 ;
+    END
+  END mprj_io_dm[56]
+  PIN mprj_io_dm[57]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2678.825 4.000 2679.425 ;
+    END
+  END mprj_io_dm[57]
+  PIN mprj_io_dm[58]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2688.025 4.000 2688.625 ;
+    END
+  END mprj_io_dm[58]
+  PIN mprj_io_dm[59]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2657.205 4.000 2657.805 ;
+    END
+  END mprj_io_dm[59]
+  PIN mprj_io_dm[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 569.195 3167.185 569.795 ;
+    END
+  END mprj_io_dm[5]
+  PIN mprj_io_dm[60]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2462.825 4.000 2463.425 ;
+    END
+  END mprj_io_dm[60]
+  PIN mprj_io_dm[61]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2472.025 4.000 2472.625 ;
+    END
+  END mprj_io_dm[61]
+  PIN mprj_io_dm[62]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2441.205 4.000 2441.805 ;
+    END
+  END mprj_io_dm[62]
+  PIN mprj_io_dm[63]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1824.825 4.000 1825.425 ;
+    END
+  END mprj_io_dm[63]
+  PIN mprj_io_dm[64]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1834.025 4.000 1834.625 ;
+    END
+  END mprj_io_dm[64]
+  PIN mprj_io_dm[65]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1803.205 4.000 1803.805 ;
+    END
+  END mprj_io_dm[65]
+  PIN mprj_io_dm[66]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1608.825 4.000 1609.425 ;
+    END
+  END mprj_io_dm[66]
+  PIN mprj_io_dm[67]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1618.025 4.000 1618.625 ;
+    END
+  END mprj_io_dm[67]
+  PIN mprj_io_dm[68]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1587.205 4.000 1587.805 ;
+    END
+  END mprj_io_dm[68]
+  PIN mprj_io_dm[69]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1392.825 4.000 1393.425 ;
+    END
+  END mprj_io_dm[69]
+  PIN mprj_io_dm[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 772.575 3167.185 773.175 ;
+    END
+  END mprj_io_dm[6]
+  PIN mprj_io_dm[70]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1402.025 4.000 1402.625 ;
+    END
+  END mprj_io_dm[70]
+  PIN mprj_io_dm[71]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1371.205 4.000 1371.805 ;
+    END
+  END mprj_io_dm[71]
+  PIN mprj_io_dm[72]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1176.825 4.000 1177.425 ;
+    END
+  END mprj_io_dm[72]
+  PIN mprj_io_dm[73]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1186.025 4.000 1186.625 ;
+    END
+  END mprj_io_dm[73]
+  PIN mprj_io_dm[74]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1155.205 4.000 1155.805 ;
+    END
+  END mprj_io_dm[74]
+  PIN mprj_io_dm[75]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 960.825 4.000 961.425 ;
+    END
+  END mprj_io_dm[75]
+  PIN mprj_io_dm[76]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 970.025 4.000 970.625 ;
+    END
+  END mprj_io_dm[76]
+  PIN mprj_io_dm[77]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 939.205 4.000 939.805 ;
+    END
+  END mprj_io_dm[77]
+  PIN mprj_io_dm[78]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 744.825 4.000 745.425 ;
+    END
+  END mprj_io_dm[78]
+  PIN mprj_io_dm[79]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 754.025 4.000 754.625 ;
+    END
+  END mprj_io_dm[79]
+  PIN mprj_io_dm[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 763.375 3167.185 763.975 ;
+    END
+  END mprj_io_dm[7]
+  PIN mprj_io_dm[80]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 723.205 4.000 723.805 ;
+    END
+  END mprj_io_dm[80]
+  PIN mprj_io_dm[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 794.195 3167.185 794.795 ;
+    END
+  END mprj_io_dm[8]
+  PIN mprj_io_dm[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 998.575 3167.185 999.175 ;
+    END
+  END mprj_io_dm[9]
+  PIN mprj_io_holdover[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 346.415 3167.185 347.015 ;
+    END
+  END mprj_io_holdover[0]
+  PIN mprj_io_holdover[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3262.415 3167.185 3263.015 ;
+    END
+  END mprj_io_holdover[10]
+  PIN mprj_io_holdover[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3487.415 3167.185 3488.015 ;
+    END
+  END mprj_io_holdover[11]
+  PIN mprj_io_holdover[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3712.415 3167.185 3713.015 ;
+    END
+  END mprj_io_holdover[12]
+  PIN mprj_io_holdover[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4158.415 3167.185 4159.015 ;
+    END
+  END mprj_io_holdover[13]
+  PIN mprj_io_holdover[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3733.985 4.000 3734.585 ;
+    END
+  END mprj_io_holdover[14]
+  PIN mprj_io_holdover[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3517.985 4.000 3518.585 ;
+    END
+  END mprj_io_holdover[15]
+  PIN mprj_io_holdover[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3301.985 4.000 3302.585 ;
+    END
+  END mprj_io_holdover[16]
+  PIN mprj_io_holdover[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3085.985 4.000 3086.585 ;
+    END
+  END mprj_io_holdover[17]
+  PIN mprj_io_holdover[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2869.985 4.000 2870.585 ;
+    END
+  END mprj_io_holdover[18]
+  PIN mprj_io_holdover[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2653.985 4.000 2654.585 ;
+    END
+  END mprj_io_holdover[19]
+  PIN mprj_io_holdover[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 572.415 3167.185 573.015 ;
+    END
+  END mprj_io_holdover[1]
+  PIN mprj_io_holdover[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2437.985 4.000 2438.585 ;
+    END
+  END mprj_io_holdover[20]
+  PIN mprj_io_holdover[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1799.985 4.000 1800.585 ;
+    END
+  END mprj_io_holdover[21]
+  PIN mprj_io_holdover[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1583.985 4.000 1584.585 ;
+    END
+  END mprj_io_holdover[22]
+  PIN mprj_io_holdover[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1367.985 4.000 1368.585 ;
+    END
+  END mprj_io_holdover[23]
+  PIN mprj_io_holdover[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1151.985 4.000 1152.585 ;
+    END
+  END mprj_io_holdover[24]
+  PIN mprj_io_holdover[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 935.985 4.000 936.585 ;
+    END
+  END mprj_io_holdover[25]
+  PIN mprj_io_holdover[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 719.985 4.000 720.585 ;
+    END
+  END mprj_io_holdover[26]
+  PIN mprj_io_holdover[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 797.415 3167.185 798.015 ;
+    END
+  END mprj_io_holdover[2]
+  PIN mprj_io_holdover[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1023.415 3167.185 1024.015 ;
+    END
+  END mprj_io_holdover[3]
+  PIN mprj_io_holdover[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1248.415 3167.185 1249.015 ;
+    END
+  END mprj_io_holdover[4]
+  PIN mprj_io_holdover[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1473.415 3167.185 1474.015 ;
+    END
+  END mprj_io_holdover[5]
+  PIN mprj_io_holdover[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1699.415 3167.185 1700.015 ;
+    END
+  END mprj_io_holdover[6]
+  PIN mprj_io_holdover[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2585.415 3167.185 2586.015 ;
+    END
+  END mprj_io_holdover[7]
+  PIN mprj_io_holdover[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2811.415 3167.185 2812.015 ;
+    END
+  END mprj_io_holdover[8]
+  PIN mprj_io_holdover[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3036.415 3167.185 3037.015 ;
+    END
+  END mprj_io_holdover[9]
+  PIN mprj_io_ib_mode_sel[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 361.595 3167.185 362.195 ;
+    END
+  END mprj_io_ib_mode_sel[0]
+  PIN mprj_io_ib_mode_sel[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3277.595 3167.185 3278.195 ;
+    END
+  END mprj_io_ib_mode_sel[10]
+  PIN mprj_io_ib_mode_sel[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3502.595 3167.185 3503.195 ;
+    END
+  END mprj_io_ib_mode_sel[11]
+  PIN mprj_io_ib_mode_sel[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3727.595 3167.185 3728.195 ;
+    END
+  END mprj_io_ib_mode_sel[12]
+  PIN mprj_io_ib_mode_sel[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4173.595 3167.185 4174.195 ;
+    END
+  END mprj_io_ib_mode_sel[13]
+  PIN mprj_io_ib_mode_sel[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3718.805 4.000 3719.405 ;
+    END
+  END mprj_io_ib_mode_sel[14]
+  PIN mprj_io_ib_mode_sel[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3502.805 4.000 3503.405 ;
+    END
+  END mprj_io_ib_mode_sel[15]
+  PIN mprj_io_ib_mode_sel[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3286.805 4.000 3287.405 ;
+    END
+  END mprj_io_ib_mode_sel[16]
+  PIN mprj_io_ib_mode_sel[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3070.805 4.000 3071.405 ;
+    END
+  END mprj_io_ib_mode_sel[17]
+  PIN mprj_io_ib_mode_sel[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2854.805 4.000 2855.405 ;
+    END
+  END mprj_io_ib_mode_sel[18]
+  PIN mprj_io_ib_mode_sel[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2638.805 4.000 2639.405 ;
+    END
+  END mprj_io_ib_mode_sel[19]
+  PIN mprj_io_ib_mode_sel[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 587.595 3167.185 588.195 ;
+    END
+  END mprj_io_ib_mode_sel[1]
+  PIN mprj_io_ib_mode_sel[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2422.805 4.000 2423.405 ;
+    END
+  END mprj_io_ib_mode_sel[20]
+  PIN mprj_io_ib_mode_sel[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1784.805 4.000 1785.405 ;
+    END
+  END mprj_io_ib_mode_sel[21]
+  PIN mprj_io_ib_mode_sel[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1568.805 4.000 1569.405 ;
+    END
+  END mprj_io_ib_mode_sel[22]
+  PIN mprj_io_ib_mode_sel[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1352.805 4.000 1353.405 ;
+    END
+  END mprj_io_ib_mode_sel[23]
+  PIN mprj_io_ib_mode_sel[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1136.805 4.000 1137.405 ;
+    END
+  END mprj_io_ib_mode_sel[24]
+  PIN mprj_io_ib_mode_sel[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 920.805 4.000 921.405 ;
+    END
+  END mprj_io_ib_mode_sel[25]
+  PIN mprj_io_ib_mode_sel[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 704.805 4.000 705.405 ;
+    END
+  END mprj_io_ib_mode_sel[26]
+  PIN mprj_io_ib_mode_sel[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 812.595 3167.185 813.195 ;
+    END
+  END mprj_io_ib_mode_sel[2]
+  PIN mprj_io_ib_mode_sel[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1038.595 3167.185 1039.195 ;
+    END
+  END mprj_io_ib_mode_sel[3]
+  PIN mprj_io_ib_mode_sel[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1263.595 3167.185 1264.195 ;
+    END
+  END mprj_io_ib_mode_sel[4]
+  PIN mprj_io_ib_mode_sel[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1488.595 3167.185 1489.195 ;
+    END
+  END mprj_io_ib_mode_sel[5]
+  PIN mprj_io_ib_mode_sel[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1714.595 3167.185 1715.195 ;
+    END
+  END mprj_io_ib_mode_sel[6]
+  PIN mprj_io_ib_mode_sel[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2600.595 3167.185 2601.195 ;
+    END
+  END mprj_io_ib_mode_sel[7]
+  PIN mprj_io_ib_mode_sel[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2826.595 3167.185 2827.195 ;
+    END
+  END mprj_io_ib_mode_sel[8]
+  PIN mprj_io_ib_mode_sel[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3051.595 3167.185 3052.195 ;
+    END
+  END mprj_io_ib_mode_sel[9]
+  PIN mprj_io_in[0]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 293.975 3167.185 294.575 ;
+    END
+  END mprj_io_in[0]
+  PIN mprj_io_in[10]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3209.975 3167.185 3210.575 ;
+    END
+  END mprj_io_in[10]
+  PIN mprj_io_in[11]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3434.975 3167.185 3435.575 ;
+    END
+  END mprj_io_in[11]
+  PIN mprj_io_in[12]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3659.975 3167.185 3660.575 ;
+    END
+  END mprj_io_in[12]
+  PIN mprj_io_in[13]
+    ANTENNAGATEAREA 0.426000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4105.975 3167.185 4106.575 ;
+    END
+  END mprj_io_in[13]
+  PIN mprj_io_in[14]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3786.425 4.000 3787.025 ;
+    END
+  END mprj_io_in[14]
+  PIN mprj_io_in[15]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3570.425 4.000 3571.025 ;
+    END
+  END mprj_io_in[15]
+  PIN mprj_io_in[16]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3354.425 4.000 3355.025 ;
+    END
+  END mprj_io_in[16]
+  PIN mprj_io_in[17]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3138.425 4.000 3139.025 ;
+    END
+  END mprj_io_in[17]
+  PIN mprj_io_in[18]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2922.425 4.000 2923.025 ;
+    END
+  END mprj_io_in[18]
+  PIN mprj_io_in[19]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2706.425 4.000 2707.025 ;
+    END
+  END mprj_io_in[19]
+  PIN mprj_io_in[1]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 519.975 3167.185 520.575 ;
+    END
+  END mprj_io_in[1]
+  PIN mprj_io_in[20]
+    ANTENNAGATEAREA 0.990000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2490.425 4.000 2491.025 ;
+    END
+  END mprj_io_in[20]
+  PIN mprj_io_in[21]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1852.425 4.000 1853.025 ;
+    END
+  END mprj_io_in[21]
+  PIN mprj_io_in[22]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1636.425 4.000 1637.025 ;
+    END
+  END mprj_io_in[22]
+  PIN mprj_io_in[23]
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1420.425 4.000 1421.025 ;
+    END
+  END mprj_io_in[23]
+  PIN mprj_io_in[24]
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1204.425 4.000 1205.025 ;
+    END
+  END mprj_io_in[24]
+  PIN mprj_io_in[25]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 988.425 4.000 989.025 ;
+    END
+  END mprj_io_in[25]
+  PIN mprj_io_in[26]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 772.425 4.000 773.025 ;
+    END
+  END mprj_io_in[26]
+  PIN mprj_io_in[2]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 744.975 3167.185 745.575 ;
+    END
+  END mprj_io_in[2]
+  PIN mprj_io_in[3]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 970.975 3167.185 971.575 ;
+    END
+  END mprj_io_in[3]
+  PIN mprj_io_in[4]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1195.975 3167.185 1196.575 ;
+    END
+  END mprj_io_in[4]
+  PIN mprj_io_in[5]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1420.975 3167.185 1421.575 ;
+    END
+  END mprj_io_in[5]
+  PIN mprj_io_in[6]
+    ANTENNAGATEAREA 0.213000 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1646.975 3167.185 1647.575 ;
+    END
+  END mprj_io_in[6]
+  PIN mprj_io_in[7]
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2532.975 3167.185 2533.575 ;
+    END
+  END mprj_io_in[7]
+  PIN mprj_io_in[8]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2758.975 3167.185 2759.575 ;
+    END
+  END mprj_io_in[8]
+  PIN mprj_io_in[9]
+    ANTENNAGATEAREA 0.247500 ;
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2983.975 3167.185 2984.575 ;
+    END
+  END mprj_io_in[9]
+  PIN mprj_io_in_3v3[0]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 367.575 3167.185 368.175 ;
+    END
+  END mprj_io_in_3v3[0]
+  PIN mprj_io_in_3v3[10]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3283.575 3167.185 3284.175 ;
+    END
+  END mprj_io_in_3v3[10]
+  PIN mprj_io_in_3v3[11]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3508.575 3167.185 3509.175 ;
+    END
+  END mprj_io_in_3v3[11]
+  PIN mprj_io_in_3v3[12]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3733.575 3167.185 3734.175 ;
+    END
+  END mprj_io_in_3v3[12]
+  PIN mprj_io_in_3v3[13]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4179.575 3167.185 4180.175 ;
+    END
+  END mprj_io_in_3v3[13]
+  PIN mprj_io_in_3v3[14]
+    PORT
+      LAYER met3 ;
+        RECT -2.000 3712.825 4.185 3713.425 ;
+    END
+  END mprj_io_in_3v3[14]
+  PIN mprj_io_in_3v3[15]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 3496.825 4.185 3497.425 ;
+    END
+  END mprj_io_in_3v3[15]
+  PIN mprj_io_in_3v3[16]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 3280.825 4.185 3281.425 ;
+    END
+  END mprj_io_in_3v3[16]
+  PIN mprj_io_in_3v3[17]
+    PORT
+      LAYER met3 ;
+        RECT -2.000 3064.825 4.185 3065.425 ;
+    END
+  END mprj_io_in_3v3[17]
+  PIN mprj_io_in_3v3[18]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 2848.825 4.185 2849.425 ;
+    END
+  END mprj_io_in_3v3[18]
+  PIN mprj_io_in_3v3[19]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 2632.825 4.185 2633.425 ;
+    END
+  END mprj_io_in_3v3[19]
+  PIN mprj_io_in_3v3[1]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 593.575 3167.185 594.175 ;
+    END
+  END mprj_io_in_3v3[1]
+  PIN mprj_io_in_3v3[20]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 2416.825 4.185 2417.425 ;
+    END
+  END mprj_io_in_3v3[20]
+  PIN mprj_io_in_3v3[21]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 1778.825 4.185 1779.425 ;
+    END
+  END mprj_io_in_3v3[21]
+  PIN mprj_io_in_3v3[22]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 1562.825 4.185 1563.425 ;
+    END
+  END mprj_io_in_3v3[22]
+  PIN mprj_io_in_3v3[23]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 1346.825 4.185 1347.425 ;
+    END
+  END mprj_io_in_3v3[23]
+  PIN mprj_io_in_3v3[24]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 1130.825 4.185 1131.425 ;
+    END
+  END mprj_io_in_3v3[24]
+  PIN mprj_io_in_3v3[25]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 914.825 4.185 915.425 ;
+    END
+  END mprj_io_in_3v3[25]
+  PIN mprj_io_in_3v3[26]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.000 698.825 4.185 699.425 ;
+    END
+  END mprj_io_in_3v3[26]
+  PIN mprj_io_in_3v3[2]
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 818.575 3167.185 819.175 ;
+    END
+  END mprj_io_in_3v3[2]
+  PIN mprj_io_in_3v3[3]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1044.575 3167.185 1045.175 ;
+    END
+  END mprj_io_in_3v3[3]
+  PIN mprj_io_in_3v3[4]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1269.575 3167.185 1270.175 ;
+    END
+  END mprj_io_in_3v3[4]
+  PIN mprj_io_in_3v3[5]
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1494.575 3167.185 1495.175 ;
+    END
+  END mprj_io_in_3v3[5]
+  PIN mprj_io_in_3v3[6]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1720.575 3167.185 1721.175 ;
+    END
+  END mprj_io_in_3v3[6]
+  PIN mprj_io_in_3v3[7]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2606.575 3167.185 2607.175 ;
+    END
+  END mprj_io_in_3v3[7]
+  PIN mprj_io_in_3v3[8]
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2832.575 3167.185 2833.175 ;
+    END
+  END mprj_io_in_3v3[8]
+  PIN mprj_io_in_3v3[9]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3057.575 3167.185 3058.175 ;
+    END
+  END mprj_io_in_3v3[9]
+  PIN mprj_io_inp_dis[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 327.555 3167.185 328.155 ;
+    END
+  END mprj_io_inp_dis[0]
+  PIN mprj_io_inp_dis[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3243.555 3167.185 3244.155 ;
+    END
+  END mprj_io_inp_dis[10]
+  PIN mprj_io_inp_dis[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3468.555 3167.185 3469.155 ;
+    END
+  END mprj_io_inp_dis[11]
+  PIN mprj_io_inp_dis[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3693.555 3167.185 3694.155 ;
+    END
+  END mprj_io_inp_dis[12]
+  PIN mprj_io_inp_dis[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4139.555 3167.185 4140.155 ;
+    END
+  END mprj_io_inp_dis[13]
+  PIN mprj_io_inp_dis[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3752.845 4.000 3753.445 ;
+    END
+  END mprj_io_inp_dis[14]
+  PIN mprj_io_inp_dis[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3536.845 4.000 3537.445 ;
+    END
+  END mprj_io_inp_dis[15]
+  PIN mprj_io_inp_dis[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3320.845 4.000 3321.445 ;
+    END
+  END mprj_io_inp_dis[16]
+  PIN mprj_io_inp_dis[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3104.845 4.000 3105.445 ;
+    END
+  END mprj_io_inp_dis[17]
+  PIN mprj_io_inp_dis[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2888.845 4.000 2889.445 ;
+    END
+  END mprj_io_inp_dis[18]
+  PIN mprj_io_inp_dis[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2672.845 4.000 2673.445 ;
+    END
+  END mprj_io_inp_dis[19]
+  PIN mprj_io_inp_dis[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 553.555 3167.185 554.155 ;
+    END
+  END mprj_io_inp_dis[1]
+  PIN mprj_io_inp_dis[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2456.845 4.000 2457.445 ;
+    END
+  END mprj_io_inp_dis[20]
+  PIN mprj_io_inp_dis[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1818.845 4.000 1819.445 ;
+    END
+  END mprj_io_inp_dis[21]
+  PIN mprj_io_inp_dis[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1602.845 4.000 1603.445 ;
+    END
+  END mprj_io_inp_dis[22]
+  PIN mprj_io_inp_dis[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1386.845 4.000 1387.445 ;
+    END
+  END mprj_io_inp_dis[23]
+  PIN mprj_io_inp_dis[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1170.845 4.000 1171.445 ;
+    END
+  END mprj_io_inp_dis[24]
+  PIN mprj_io_inp_dis[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 954.845 4.000 955.445 ;
+    END
+  END mprj_io_inp_dis[25]
+  PIN mprj_io_inp_dis[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 738.845 4.000 739.445 ;
+    END
+  END mprj_io_inp_dis[26]
+  PIN mprj_io_inp_dis[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 778.555 3167.185 779.155 ;
+    END
+  END mprj_io_inp_dis[2]
+  PIN mprj_io_inp_dis[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1004.555 3167.185 1005.155 ;
+    END
+  END mprj_io_inp_dis[3]
+  PIN mprj_io_inp_dis[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1229.555 3167.185 1230.155 ;
+    END
+  END mprj_io_inp_dis[4]
+  PIN mprj_io_inp_dis[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1454.555 3167.185 1455.155 ;
+    END
+  END mprj_io_inp_dis[5]
+  PIN mprj_io_inp_dis[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1680.555 3167.185 1681.155 ;
+    END
+  END mprj_io_inp_dis[6]
+  PIN mprj_io_inp_dis[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2566.555 3167.185 2567.155 ;
+    END
+  END mprj_io_inp_dis[7]
+  PIN mprj_io_inp_dis[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2792.555 3167.185 2793.155 ;
+    END
+  END mprj_io_inp_dis[8]
+  PIN mprj_io_inp_dis[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3017.555 3167.185 3018.155 ;
+    END
+  END mprj_io_inp_dis[9]
+  PIN mprj_io_oeb[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 364.815 3167.185 365.415 ;
+    END
+  END mprj_io_oeb[0]
+  PIN mprj_io_oeb[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3280.815 3167.185 3281.415 ;
+    END
+  END mprj_io_oeb[10]
+  PIN mprj_io_oeb[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3505.815 3167.185 3506.415 ;
+    END
+  END mprj_io_oeb[11]
+  PIN mprj_io_oeb[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3730.815 3167.185 3731.415 ;
+    END
+  END mprj_io_oeb[12]
+  PIN mprj_io_oeb[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4176.815 3167.185 4177.415 ;
+    END
+  END mprj_io_oeb[13]
+  PIN mprj_io_oeb[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3715.585 4.000 3716.185 ;
+    END
+  END mprj_io_oeb[14]
+  PIN mprj_io_oeb[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3499.585 4.000 3500.185 ;
+    END
+  END mprj_io_oeb[15]
+  PIN mprj_io_oeb[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3283.585 4.000 3284.185 ;
+    END
+  END mprj_io_oeb[16]
+  PIN mprj_io_oeb[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3067.585 4.000 3068.185 ;
+    END
+  END mprj_io_oeb[17]
+  PIN mprj_io_oeb[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2851.585 4.000 2852.185 ;
+    END
+  END mprj_io_oeb[18]
+  PIN mprj_io_oeb[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2635.585 4.000 2636.185 ;
+    END
+  END mprj_io_oeb[19]
+  PIN mprj_io_oeb[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 590.815 3167.185 591.415 ;
+    END
+  END mprj_io_oeb[1]
+  PIN mprj_io_oeb[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2419.585 4.000 2420.185 ;
+    END
+  END mprj_io_oeb[20]
+  PIN mprj_io_oeb[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1781.585 4.000 1782.185 ;
+    END
+  END mprj_io_oeb[21]
+  PIN mprj_io_oeb[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1565.585 4.000 1566.185 ;
+    END
+  END mprj_io_oeb[22]
+  PIN mprj_io_oeb[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1349.585 4.000 1350.185 ;
+    END
+  END mprj_io_oeb[23]
+  PIN mprj_io_oeb[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1133.585 4.000 1134.185 ;
+    END
+  END mprj_io_oeb[24]
+  PIN mprj_io_oeb[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 917.585 4.000 918.185 ;
+    END
+  END mprj_io_oeb[25]
+  PIN mprj_io_oeb[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 701.585 4.000 702.185 ;
+    END
+  END mprj_io_oeb[26]
+  PIN mprj_io_oeb[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 815.815 3167.185 816.415 ;
+    END
+  END mprj_io_oeb[2]
+  PIN mprj_io_oeb[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1041.815 3167.185 1042.415 ;
+    END
+  END mprj_io_oeb[3]
+  PIN mprj_io_oeb[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1266.815 3167.185 1267.415 ;
+    END
+  END mprj_io_oeb[4]
+  PIN mprj_io_oeb[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1491.815 3167.185 1492.415 ;
+    END
+  END mprj_io_oeb[5]
+  PIN mprj_io_oeb[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1717.815 3167.185 1718.415 ;
+    END
+  END mprj_io_oeb[6]
+  PIN mprj_io_oeb[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2603.815 3167.185 2604.415 ;
+    END
+  END mprj_io_oeb[7]
+  PIN mprj_io_oeb[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2829.815 3167.185 2830.415 ;
+    END
+  END mprj_io_oeb[8]
+  PIN mprj_io_oeb[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3054.815 3167.185 3055.415 ;
+    END
+  END mprj_io_oeb[9]
+  PIN mprj_io_one[0]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 299.955 3167.185 300.555 ;
+    END
+  END mprj_io_one[0]
+  PIN mprj_io_one[10]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3215.955 3167.185 3216.555 ;
+    END
+  END mprj_io_one[10]
+  PIN mprj_io_one[11]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3440.955 3167.185 3441.555 ;
+    END
+  END mprj_io_one[11]
+  PIN mprj_io_one[12]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3665.955 3167.185 3666.555 ;
+    END
+  END mprj_io_one[12]
+  PIN mprj_io_one[13]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4111.955 3167.185 4112.555 ;
+    END
+  END mprj_io_one[13]
+  PIN mprj_io_one[14]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3780.445 4.000 3781.045 ;
+    END
+  END mprj_io_one[14]
+  PIN mprj_io_one[15]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3564.445 4.000 3565.045 ;
+    END
+  END mprj_io_one[15]
+  PIN mprj_io_one[16]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3348.445 4.000 3349.045 ;
+    END
+  END mprj_io_one[16]
+  PIN mprj_io_one[17]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3132.445 4.000 3133.045 ;
+    END
+  END mprj_io_one[17]
+  PIN mprj_io_one[18]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2916.445 4.000 2917.045 ;
+    END
+  END mprj_io_one[18]
+  PIN mprj_io_one[19]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2700.445 4.000 2701.045 ;
+    END
+  END mprj_io_one[19]
+  PIN mprj_io_one[1]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 525.955 3167.185 526.555 ;
+    END
+  END mprj_io_one[1]
+  PIN mprj_io_one[20]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2484.445 4.000 2485.045 ;
+    END
+  END mprj_io_one[20]
+  PIN mprj_io_one[21]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1846.445 4.000 1847.045 ;
+    END
+  END mprj_io_one[21]
+  PIN mprj_io_one[22]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1630.445 4.000 1631.045 ;
+    END
+  END mprj_io_one[22]
+  PIN mprj_io_one[23]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1414.445 4.000 1415.045 ;
+    END
+  END mprj_io_one[23]
+  PIN mprj_io_one[24]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1198.445 4.000 1199.045 ;
+    END
+  END mprj_io_one[24]
+  PIN mprj_io_one[25]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 982.445 4.000 983.045 ;
+    END
+  END mprj_io_one[25]
+  PIN mprj_io_one[26]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 766.445 4.000 767.045 ;
+    END
+  END mprj_io_one[26]
+  PIN mprj_io_one[2]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 750.955 3167.185 751.555 ;
+    END
+  END mprj_io_one[2]
+  PIN mprj_io_one[3]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 976.955 3167.185 977.555 ;
+    END
+  END mprj_io_one[3]
+  PIN mprj_io_one[4]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1201.955 3167.185 1202.555 ;
+    END
+  END mprj_io_one[4]
+  PIN mprj_io_one[5]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1426.955 3167.185 1427.555 ;
+    END
+  END mprj_io_one[5]
+  PIN mprj_io_one[6]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1652.955 3167.185 1653.555 ;
+    END
+  END mprj_io_one[6]
+  PIN mprj_io_one[7]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2538.955 3167.185 2539.555 ;
+    END
+  END mprj_io_one[7]
+  PIN mprj_io_one[8]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2764.955 3167.185 2765.555 ;
+    END
+  END mprj_io_one[8]
+  PIN mprj_io_one[9]
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2989.955 3167.185 2990.555 ;
+    END
+  END mprj_io_one[9]
+  PIN mprj_io_out[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 349.175 3167.185 349.775 ;
+    END
+  END mprj_io_out[0]
+  PIN mprj_io_out[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3265.175 3167.185 3265.775 ;
+    END
+  END mprj_io_out[10]
+  PIN mprj_io_out[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3490.175 3167.185 3490.775 ;
+    END
+  END mprj_io_out[11]
+  PIN mprj_io_out[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3715.175 3167.185 3715.775 ;
+    END
+  END mprj_io_out[12]
+  PIN mprj_io_out[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4161.175 3167.185 4161.775 ;
+    END
+  END mprj_io_out[13]
+  PIN mprj_io_out[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3731.225 4.000 3731.825 ;
+    END
+  END mprj_io_out[14]
+  PIN mprj_io_out[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3515.225 4.000 3515.825 ;
+    END
+  END mprj_io_out[15]
+  PIN mprj_io_out[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3299.225 4.000 3299.825 ;
+    END
+  END mprj_io_out[16]
+  PIN mprj_io_out[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3083.225 4.000 3083.825 ;
+    END
+  END mprj_io_out[17]
+  PIN mprj_io_out[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2867.225 4.000 2867.825 ;
+    END
+  END mprj_io_out[18]
+  PIN mprj_io_out[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2651.225 4.000 2651.825 ;
+    END
+  END mprj_io_out[19]
+  PIN mprj_io_out[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 575.175 3167.185 575.775 ;
+    END
+  END mprj_io_out[1]
+  PIN mprj_io_out[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2435.225 4.000 2435.825 ;
+    END
+  END mprj_io_out[20]
+  PIN mprj_io_out[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1797.225 4.000 1797.825 ;
+    END
+  END mprj_io_out[21]
+  PIN mprj_io_out[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1581.225 4.000 1581.825 ;
+    END
+  END mprj_io_out[22]
+  PIN mprj_io_out[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1365.225 4.000 1365.825 ;
+    END
+  END mprj_io_out[23]
+  PIN mprj_io_out[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1149.225 4.000 1149.825 ;
+    END
+  END mprj_io_out[24]
+  PIN mprj_io_out[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 933.225 4.000 933.825 ;
+    END
+  END mprj_io_out[25]
+  PIN mprj_io_out[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 717.225 4.000 717.825 ;
+    END
+  END mprj_io_out[26]
+  PIN mprj_io_out[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 800.175 3167.185 800.775 ;
+    END
+  END mprj_io_out[2]
+  PIN mprj_io_out[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1026.175 3167.185 1026.775 ;
+    END
+  END mprj_io_out[3]
+  PIN mprj_io_out[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1251.175 3167.185 1251.775 ;
+    END
+  END mprj_io_out[4]
+  PIN mprj_io_out[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1476.175 3167.185 1476.775 ;
+    END
+  END mprj_io_out[5]
+  PIN mprj_io_out[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1702.175 3167.185 1702.775 ;
+    END
+  END mprj_io_out[6]
+  PIN mprj_io_out[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2588.175 3167.185 2588.775 ;
+    END
+  END mprj_io_out[7]
+  PIN mprj_io_out[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2814.175 3167.185 2814.775 ;
+    END
+  END mprj_io_out[8]
+  PIN mprj_io_out[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3039.175 3167.185 3039.775 ;
+    END
+  END mprj_io_out[9]
+  PIN mprj_io_slow_sel[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 303.175 3167.185 303.775 ;
+    END
+  END mprj_io_slow_sel[0]
+  PIN mprj_io_slow_sel[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3219.175 3167.185 3219.775 ;
+    END
+  END mprj_io_slow_sel[10]
+  PIN mprj_io_slow_sel[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3444.175 3167.185 3444.775 ;
+    END
+  END mprj_io_slow_sel[11]
+  PIN mprj_io_slow_sel[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3669.175 3167.185 3669.775 ;
+    END
+  END mprj_io_slow_sel[12]
+  PIN mprj_io_slow_sel[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4115.175 3167.185 4115.775 ;
+    END
+  END mprj_io_slow_sel[13]
+  PIN mprj_io_slow_sel[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3777.225 4.000 3777.825 ;
+    END
+  END mprj_io_slow_sel[14]
+  PIN mprj_io_slow_sel[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3561.225 4.000 3561.825 ;
+    END
+  END mprj_io_slow_sel[15]
+  PIN mprj_io_slow_sel[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3345.225 4.000 3345.825 ;
+    END
+  END mprj_io_slow_sel[16]
+  PIN mprj_io_slow_sel[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3129.225 4.000 3129.825 ;
+    END
+  END mprj_io_slow_sel[17]
+  PIN mprj_io_slow_sel[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2913.225 4.000 2913.825 ;
+    END
+  END mprj_io_slow_sel[18]
+  PIN mprj_io_slow_sel[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2697.225 4.000 2697.825 ;
+    END
+  END mprj_io_slow_sel[19]
+  PIN mprj_io_slow_sel[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 529.175 3167.185 529.775 ;
+    END
+  END mprj_io_slow_sel[1]
+  PIN mprj_io_slow_sel[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2481.225 4.000 2481.825 ;
+    END
+  END mprj_io_slow_sel[20]
+  PIN mprj_io_slow_sel[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1843.225 4.000 1843.825 ;
+    END
+  END mprj_io_slow_sel[21]
+  PIN mprj_io_slow_sel[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1627.225 4.000 1627.825 ;
+    END
+  END mprj_io_slow_sel[22]
+  PIN mprj_io_slow_sel[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1411.225 4.000 1411.825 ;
+    END
+  END mprj_io_slow_sel[23]
+  PIN mprj_io_slow_sel[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1195.225 4.000 1195.825 ;
+    END
+  END mprj_io_slow_sel[24]
+  PIN mprj_io_slow_sel[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 979.225 4.000 979.825 ;
+    END
+  END mprj_io_slow_sel[25]
+  PIN mprj_io_slow_sel[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 763.225 4.000 763.825 ;
+    END
+  END mprj_io_slow_sel[26]
+  PIN mprj_io_slow_sel[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 754.175 3167.185 754.775 ;
+    END
+  END mprj_io_slow_sel[2]
+  PIN mprj_io_slow_sel[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 980.175 3167.185 980.775 ;
+    END
+  END mprj_io_slow_sel[3]
+  PIN mprj_io_slow_sel[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1205.175 3167.185 1205.775 ;
+    END
+  END mprj_io_slow_sel[4]
+  PIN mprj_io_slow_sel[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1430.175 3167.185 1430.775 ;
+    END
+  END mprj_io_slow_sel[5]
+  PIN mprj_io_slow_sel[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1656.175 3167.185 1656.775 ;
+    END
+  END mprj_io_slow_sel[6]
+  PIN mprj_io_slow_sel[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2542.175 3167.185 2542.775 ;
+    END
+  END mprj_io_slow_sel[7]
+  PIN mprj_io_slow_sel[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2768.175 3167.185 2768.775 ;
+    END
+  END mprj_io_slow_sel[8]
+  PIN mprj_io_slow_sel[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2993.175 3167.185 2993.775 ;
+    END
+  END mprj_io_slow_sel[9]
+  PIN mprj_io_vtrip_sel[0]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 358.375 3167.185 358.975 ;
+    END
+  END mprj_io_vtrip_sel[0]
+  PIN mprj_io_vtrip_sel[10]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3274.375 3167.185 3274.975 ;
+    END
+  END mprj_io_vtrip_sel[10]
+  PIN mprj_io_vtrip_sel[11]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3499.375 3167.185 3499.975 ;
+    END
+  END mprj_io_vtrip_sel[11]
+  PIN mprj_io_vtrip_sel[12]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3724.375 3167.185 3724.975 ;
+    END
+  END mprj_io_vtrip_sel[12]
+  PIN mprj_io_vtrip_sel[13]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4170.375 3167.185 4170.975 ;
+    END
+  END mprj_io_vtrip_sel[13]
+  PIN mprj_io_vtrip_sel[14]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3722.025 4.000 3722.625 ;
+    END
+  END mprj_io_vtrip_sel[14]
+  PIN mprj_io_vtrip_sel[15]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3506.025 4.000 3506.625 ;
+    END
+  END mprj_io_vtrip_sel[15]
+  PIN mprj_io_vtrip_sel[16]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3290.025 4.000 3290.625 ;
+    END
+  END mprj_io_vtrip_sel[16]
+  PIN mprj_io_vtrip_sel[17]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3074.025 4.000 3074.625 ;
+    END
+  END mprj_io_vtrip_sel[17]
+  PIN mprj_io_vtrip_sel[18]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2858.025 4.000 2858.625 ;
+    END
+  END mprj_io_vtrip_sel[18]
+  PIN mprj_io_vtrip_sel[19]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2642.025 4.000 2642.625 ;
+    END
+  END mprj_io_vtrip_sel[19]
+  PIN mprj_io_vtrip_sel[1]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 584.375 3167.185 584.975 ;
+    END
+  END mprj_io_vtrip_sel[1]
+  PIN mprj_io_vtrip_sel[20]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2426.025 4.000 2426.625 ;
+    END
+  END mprj_io_vtrip_sel[20]
+  PIN mprj_io_vtrip_sel[21]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1788.025 4.000 1788.625 ;
+    END
+  END mprj_io_vtrip_sel[21]
+  PIN mprj_io_vtrip_sel[22]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1572.025 4.000 1572.625 ;
+    END
+  END mprj_io_vtrip_sel[22]
+  PIN mprj_io_vtrip_sel[23]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1356.025 4.000 1356.625 ;
+    END
+  END mprj_io_vtrip_sel[23]
+  PIN mprj_io_vtrip_sel[24]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1140.025 4.000 1140.625 ;
+    END
+  END mprj_io_vtrip_sel[24]
+  PIN mprj_io_vtrip_sel[25]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 924.025 4.000 924.625 ;
+    END
+  END mprj_io_vtrip_sel[25]
+  PIN mprj_io_vtrip_sel[26]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 708.025 4.000 708.625 ;
+    END
+  END mprj_io_vtrip_sel[26]
+  PIN mprj_io_vtrip_sel[2]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 809.375 3167.185 809.975 ;
+    END
+  END mprj_io_vtrip_sel[2]
+  PIN mprj_io_vtrip_sel[3]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1035.375 3167.185 1035.975 ;
+    END
+  END mprj_io_vtrip_sel[3]
+  PIN mprj_io_vtrip_sel[4]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1260.375 3167.185 1260.975 ;
+    END
+  END mprj_io_vtrip_sel[4]
+  PIN mprj_io_vtrip_sel[5]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1485.375 3167.185 1485.975 ;
+    END
+  END mprj_io_vtrip_sel[5]
+  PIN mprj_io_vtrip_sel[6]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 1711.375 3167.185 1711.975 ;
+    END
+  END mprj_io_vtrip_sel[6]
+  PIN mprj_io_vtrip_sel[7]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2597.375 3167.185 2597.975 ;
+    END
+  END mprj_io_vtrip_sel[7]
+  PIN mprj_io_vtrip_sel[8]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2823.375 3167.185 2823.975 ;
+    END
+  END mprj_io_vtrip_sel[8]
+  PIN mprj_io_vtrip_sel[9]
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3048.375 3167.185 3048.975 ;
+    END
+  END mprj_io_vtrip_sel[9]
+  PIN por_l
+    ANTENNADIFFAREA 3.180800 ;
+    PORT
+      LAYER met2 ;
+        RECT 758.715 -2.000 758.995 4.000 ;
+    END
+  END por_l
+  PIN porb_h
+    ANTENNADIFFAREA 2.520000 ;
+    PORT
+      LAYER met2 ;
+        RECT 1329.775 -2.000 1330.055 4.000 ;
+    END
+  END porb_h
+  PIN rstb_h
+    ANTENNAGATEAREA 0.420000 ;
+    ANTENNADIFFAREA 0.607200 ;
+    PORT
+      LAYER met2 ;
+        RECT 496.835 -10.525 497.115 4.000 ;
+    END
+  END rstb_h
+  PIN user_analog[0]
+    PORT
+      LAYER met3 ;
+        RECT 3164.500 4584.980 3165.500 4585.480 ;
+    END
+  END user_analog[0]
+  PIN user_analog[10]
+    PORT
+      LAYER met3 ;
+        RECT 105.820 4609.300 111.740 4615.220 ;
+    END
+  END user_analog[10]
+  PIN user_analog[1]
+    PORT
+      LAYER met3 ;
+        RECT 2966.500 4766.500 2967.000 4767.500 ;
+    END
+  END user_analog[1]
+  PIN user_analog[2]
+    PORT
+      LAYER met3 ;
+        RECT 2439.220 4707.030 2442.010 4709.820 ;
+    END
+  END user_analog[2]
+  PIN user_analog[3]
+    PORT
+      LAYER met3 ;
+        RECT 2194.500 4766.500 2195.000 4767.500 ;
+    END
+  END user_analog[3]
+  PIN user_analog[4]
+    PORT
+      LAYER met3 ;
+        RECT 1706.500 4766.500 1707.000 4767.500 ;
+    END
+  END user_analog[4]
+  PIN user_analog[5]
+    PORT
+      LAYER met3 ;
+        RECT 1287.500 4766.500 1288.000 4767.500 ;
+    END
+  END user_analog[5]
+  PIN user_analog[6]
+    PORT
+      LAYER met3 ;
+        RECT 1024.500 4766.500 1025.000 4767.500 ;
+    END
+  END user_analog[6]
+  PIN user_analog[7]
+    PORT
+      LAYER met3 ;
+        RECT 725.500 4766.500 726.000 4767.500 ;
+    END
+  END user_analog[7]
+  PIN user_analog[8]
+    PORT
+      LAYER met3 ;
+        RECT 468.500 4766.500 469.000 4767.500 ;
+    END
+  END user_analog[8]
+  PIN user_analog[9]
+    PORT
+      LAYER met3 ;
+        RECT 196.010 4707.090 199.220 4710.300 ;
+    END
+  END user_analog[9]
+  PIN user_clamp_high[0]
+    PORT
+      LAYER met3 ;
+        RECT 1749.010 4707.090 1750.390 4708.470 ;
+    END
+  END user_clamp_high[0]
+  PIN user_clamp_high[1]
+    PORT
+      LAYER met3 ;
+        RECT 1240.510 4707.090 1241.390 4707.970 ;
+    END
+  END user_clamp_high[1]
+  PIN user_clamp_high[2]
+    PORT
+      LAYER met3 ;
+        RECT 978.390 4708.840 980.260 4710.710 ;
+    END
+  END user_clamp_high[2]
+  PIN user_clamp_low[0]
+    PORT
+      LAYER met3 ;
+        RECT 1736.995 4707.090 1738.395 4708.490 ;
+    END
+  END user_clamp_low[0]
+  PIN user_clamp_low[1]
+    PORT
+      LAYER met3 ;
+        RECT 1228.395 4707.090 1229.395 4708.090 ;
+    END
+  END user_clamp_low[1]
+  PIN user_clamp_low[2]
+    PORT
+      LAYER met3 ;
+        RECT 966.395 4707.090 969.510 4710.205 ;
+    END
+  END user_clamp_low[2]
+  PIN user_gpio_analog[0]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2545.395 3167.185 2545.995 ;
+    END
+  END user_gpio_analog[0]
+  PIN user_gpio_analog[10]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3126.005 4.000 3126.605 ;
+    END
+  END user_gpio_analog[10]
+  PIN user_gpio_analog[11]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2910.005 4.000 2910.605 ;
+    END
+  END user_gpio_analog[11]
+  PIN user_gpio_analog[12]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2694.005 4.000 2694.605 ;
+    END
+  END user_gpio_analog[12]
+  PIN user_gpio_analog[13]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2478.005 4.000 2478.605 ;
+    END
+  END user_gpio_analog[13]
+  PIN user_gpio_analog[14]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1840.005 4.000 1840.605 ;
+    END
+  END user_gpio_analog[14]
+  PIN user_gpio_analog[15]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1624.005 4.000 1624.605 ;
+    END
+  END user_gpio_analog[15]
+  PIN user_gpio_analog[16]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1408.005 4.000 1408.605 ;
+    END
+  END user_gpio_analog[16]
+  PIN user_gpio_analog[17]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1192.005 4.000 1192.605 ;
+    END
+  END user_gpio_analog[17]
+  PIN user_gpio_analog[1]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2771.395 3167.185 2771.995 ;
+    END
+  END user_gpio_analog[1]
+  PIN user_gpio_analog[2]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2996.395 3167.185 2996.995 ;
+    END
+  END user_gpio_analog[2]
+  PIN user_gpio_analog[3]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3222.395 3167.185 3222.995 ;
+    END
+  END user_gpio_analog[3]
+  PIN user_gpio_analog[4]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3447.395 3167.185 3447.995 ;
+    END
+  END user_gpio_analog[4]
+  PIN user_gpio_analog[5]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 3672.395 3167.185 3672.995 ;
+    END
+  END user_gpio_analog[5]
+  PIN user_gpio_analog[6]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 4118.395 3167.185 4118.995 ;
+    END
+  END user_gpio_analog[6]
+  PIN user_gpio_analog[7]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3774.005 4.000 3774.605 ;
+    END
+  END user_gpio_analog[7]
+  PIN user_gpio_analog[8]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3558.005 4.000 3558.605 ;
+    END
+  END user_gpio_analog[8]
+  PIN user_gpio_analog[9]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3342.005 4.000 3342.605 ;
+    END
+  END user_gpio_analog[9]
+  PIN user_gpio_noesd[0]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2554.595 3167.185 2555.195 ;
+    END
+  END user_gpio_noesd[0]
+  PIN user_gpio_noesd[10]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 3116.805 4.000 3117.405 ;
+    END
+  END user_gpio_noesd[10]
+  PIN user_gpio_noesd[11]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2900.805 4.000 2901.405 ;
+    END
+  END user_gpio_noesd[11]
+  PIN user_gpio_noesd[12]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2684.805 4.000 2685.405 ;
+    END
+  END user_gpio_noesd[12]
+  PIN user_gpio_noesd[13]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 2468.805 4.000 2469.405 ;
+    END
+  END user_gpio_noesd[13]
+  PIN user_gpio_noesd[14]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1830.805 4.000 1831.405 ;
+    END
+  END user_gpio_noesd[14]
+  PIN user_gpio_noesd[15]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1614.805 4.000 1615.405 ;
+    END
+  END user_gpio_noesd[15]
+  PIN user_gpio_noesd[16]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1398.805 4.000 1399.405 ;
+    END
+  END user_gpio_noesd[16]
+  PIN user_gpio_noesd[17]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT -2.185 1182.805 4.000 1183.405 ;
+    END
+  END user_gpio_noesd[17]
+  PIN user_gpio_noesd[1]
+    ANTENNADIFFAREA 0.434700 ;
+    PORT
+      LAYER met3 ;
+        RECT 3161.000 2780.595 3167.185 2781.195 ;
+    END
+  END user_gpio_noesd[1]

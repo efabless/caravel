@@ -200,14 +200,14 @@ add_pdn_connect \
 if { $::env(FP_PDN_ENABLE_RAILS) == 1 } {
     add_pdn_stripe \
         -grid stdcell_grid \
-        -layer $::env(FP_PDN_RAIL_LAYER) \
+        -layer met1 \
         -width $::env(FP_PDN_RAIL_WIDTH) \
         -followpins \
         -starts_with POWER
 
     add_pdn_connect \
         -grid stdcell_grid \
-        -layers "$::env(FP_PDN_RAIL_LAYER) met4"
+        -layers "met1 met4"
 }
 
 define_pdn_grid \

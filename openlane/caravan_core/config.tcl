@@ -92,7 +92,7 @@ set ::env(GND_NETS) "vssd vssd1 vssd2 vssa1 vssa2 vssio"
 
 set ::env(FP_PDN_MACRO_HOOKS) {
     user_id_value vccd vssd VPWR VGND,\
-    housekeeping vccd vssd VPWR VGND,\
+    housekeeping_alt vccd vssd VPWR VGND,\
     mprj vccd1 vssd1 vccd1 vssd1,\
     mprj vccd2 vssd2 vccd2 vssd2,\
     mprj vdda1 vssa1 vdda1 vssa1,\
@@ -161,7 +161,7 @@ set ::env(FP_PDN_VOFFSET) 3.5
 
 ##CTS
 set ::env(RUN_CTS) 1
-set ::env(CTS_MAX_CAP) 0.3
+set ::env(CTS_MAX_CAP) 0.25
 set ::env(CTS_SINK_CLUSTERING_SIZE) 12
 set ::env(CTS_SINK_CLUSTERING_MAX_DIAMETER) 30
 set ::env(CTS_CLK_BUFFER_LIST) {sky130_fd_sc_hd__clkbuf_8 sky130_fd_sc_hd__clkbuf_4}
@@ -175,7 +175,7 @@ set ::env(PL_TARGET_DENSITY) 0.24
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.03
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.08
 set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 0
 set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.1
 set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 1000
@@ -185,7 +185,7 @@ set ::env(PL_RESIZER_MAX_CAP_MARGIN) 50
 ##ROUTING
 set ::env(GRT_ALLOW_CONGESTION) 1
 
-set ::env(GRT_ADJUSTMENT) 0.10
+set ::env(GRT_ADJUSTMENT) 0.12
 ##                                li1 ,met1,met2,met3,met4,met5
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
@@ -194,7 +194,7 @@ set ::env(GRT_ADJUSTMENT) 0.10
 set ::env(GRT_ESTIMATE_PARASITICS) 1
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.08
 set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 1
 set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 600
 set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 30
@@ -217,7 +217,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
     $::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/user_id_programming.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/__user_analog_project_wrapper.v \
-    $::env(CARAVEL_ROOT)/verilog/gl/housekeeping.v \
+    $::env(CARAVEL_ROOT)/verilog/gl/housekeeping_alt.v \
     $::env(CARAVEL_ROOT)/verilog/rtl/simple_por.v \
     $::env(CARAVEL_ROOT)/verilog/gl/xres_buf.v \
     $::env(CARAVEL_ROOT)/verilog/gl/spare_logic_block.v \
@@ -236,7 +236,7 @@ set ::env(VERILOG_FILES_BLACKBOX) "\
 set ::env(EXTRA_LEFS) "\
     $::env(CARAVEL_ROOT)/lef/user_id_programming.lef \
     $::env(CARAVEL_ROOT)/lef/user_analog_project_wrapper_empty.lef \
-    $::env(CARAVEL_ROOT)/lef/housekeeping.lef \
+    $::env(CARAVEL_ROOT)/lef/housekeeping_alt.lef \
     $::env(CARAVEL_ROOT)/lef/simple_por.lef \
     $::env(CARAVEL_ROOT)/lef/xres_buf.lef \
     $::env(CARAVEL_ROOT)/lef/spare_logic_block.lef \
@@ -255,7 +255,7 @@ set ::env(EXTRA_LEFS) "\
 set ::env(EXTRA_GDS_FILES) "\
     $::env(CARAVEL_ROOT)/gds/user_id_programming.gds \
     $::env(CARAVEL_ROOT)/gds/user_analog_project_wrapper_empty.gds \
-    $::env(CARAVEL_ROOT)/gds/housekeeping.gds \
+    $::env(CARAVEL_ROOT)/gds/housekeeping_alt.gds \
     $::env(CARAVEL_ROOT)/gds/simple_por.gds \
     $::env(CARAVEL_ROOT)/gds/xres_buf.gds \
     $::env(CARAVEL_ROOT)/gds/spare_logic_block.gds \
@@ -272,14 +272,26 @@ set ::env(EXTRA_GDS_FILES) "\
 "
 
 set ::env(EXTRA_LIBS) "\
-    $::env(CARAVEL_ROOT)/lib/housekeeping.lib \
+    $::env(CARAVEL_ROOT)/lib/housekeeping_alt.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_defaults_block.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_logic_high.lib \
-    $::env(CARAVEL_ROOT)/lib/mprj_io_buffer.lib \
-    $::env(CARAVEL_ROOT)/lib/user_project_wrapper.lib \
     $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
     $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib \
 "
+    # $::env(CARAVEL_ROOT)/lib/user_analog_project_wrapper.lib \
+
+set ::env(EXTRA_SPEFS) "RAM128 \
+    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.min.spef \
+    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.nom.spef \
+    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.max.spef \
+    housekeeping_alt \
+    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.min.spef \
+    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.nom.spef \
+    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.max.spef \
+    caravel_clocking \
+    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.min.spef \
+    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.nom.spef \
+    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.max.spef"
 
 set ::env(STA_WRITE_LIB) 0
 
@@ -291,4 +303,4 @@ set ::env(QUIT_ON_MAGIC_DRC) 0
 set ::env(MAGIC_DEF_LABELS) 0
 set ::env(MAGIC_EXT_USE_GDS) 1
 
-set ::env(RSZ_DONT_TOUCH_RX) "rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core|3v3|clamp"
+set ::env(RSZ_DONT_TOUCH_RX) "rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core|io_in_3v3|gpio_noesd|gpio_analog|io_analog\\\[.*\\\]|io_clamp_high|io_clamp_low"
