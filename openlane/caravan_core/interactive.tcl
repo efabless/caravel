@@ -45,7 +45,7 @@ run_power_grid_generation
 # save_final_views
 # save_views -save_path .. -tag $::env(OPENLANE_RUN_TAG)
 ################   placement   ################
-set ::env(PL_TARGET_DENSITY) 0.20
+set ::env(PL_TARGET_DENSITY) 0.19
 run_placement
 
 ################   CTS   ################
@@ -57,7 +57,7 @@ run_resizer_design_routing
 run_resizer_timing_routing
 
 ##   Placement again  ##
-set ::env(PL_TARGET_DENSITY) 0.25
+set ::env(PL_TARGET_DENSITY) 0.24
 run_placement
 run_cts
 
@@ -68,7 +68,7 @@ run_resizer_design_routing
 run_resizer_timing_routing
 
 ################ Place and route on the optmized netlist ################
-set ::env(PL_TARGET_DENSITY) 0.27
+set ::env(PL_TARGET_DENSITY) 0.26
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0

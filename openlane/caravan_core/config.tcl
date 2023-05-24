@@ -74,14 +74,15 @@ set ::env(FP_IO_VEXTEND) 2
 set ::env(FP_IO_HEXTEND) 2
 
 set ::env(FP_TAPCELL_DIST) 10
-set ::env(PL_MACRO_HALO) "-1 -3"
-# set ::env(CELL_PAD) 0
+set ::env(PL_MACRO_HALO) "1 1"
+set ::env(GPL_CELL_PADDING) 0
+set ::env(DPL_CELL_PADDING) 2
 
 ## PDN 
 set ::env(VSRC_LOC) $::env(DESIGN_DIR)/floorplan_configuration/Vsrc.loc
 
 set ::env(FP_PDN_ENABLE_MACROS_GRID) 1
-set ::env(FP_PDN_CFG) [glob $::env(DESIGN_DIR)/pdn_configuration/pdn.tcl]
+set ::env(PDN_CFG) [glob $::env(DESIGN_DIR)/pdn_configuration/pdn.tcl]
 set ::env(FP_PDN_CHECK_NODES) 0
 
 set ::env(FP_PDN_CORE_RING) 1
@@ -160,7 +161,7 @@ set ::env(FP_PDN_HOFFSET) 30.65
 set ::env(FP_PDN_VOFFSET) 3.5
 
 ##CTS
-set ::env(RUN_CTS) 1
+set ::env(CLOCK_TREE_SYNTH) 1
 set ::env(CTS_MAX_CAP) 0.25
 set ::env(CTS_SINK_CLUSTERING_SIZE) 12
 set ::env(CTS_SINK_CLUSTERING_MAX_DIAMETER) 30
@@ -185,7 +186,7 @@ set ::env(PL_RESIZER_MAX_CAP_MARGIN) 50
 ##ROUTING
 set ::env(GRT_ALLOW_CONGESTION) 1
 
-set ::env(GRT_ADJUSTMENT) 0.12
+set ::env(GRT_ADJUSTMENT) 0.08
 ##                                li1 ,met1,met2,met3,met4,met5
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.10,0.05,0.10,0.05,0.00"
 # set ::env(GRT_LAYER_ADJUSTMENTS) "0.99,0.20,0.10,0.20,0.05,0.00"
@@ -275,23 +276,23 @@ set ::env(EXTRA_LIBS) "\
     $::env(CARAVEL_ROOT)/lib/housekeeping_alt.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_defaults_block.lib \
     $::env(CARAVEL_ROOT)/lib/gpio_logic_high.lib \
+    $::env(CARAVEL_ROOT)/lib/user_analog_project_wrapper.lib \
     $::env(CARAVEL_ROOT)/lib/caravel_clocking.lib \
     $::env(MCW_ROOT)/signoff/RAM128/primetime/lib/ff/RAM128.nom.lib \
 "
-    # $::env(CARAVEL_ROOT)/lib/user_analog_project_wrapper.lib \
 
-set ::env(EXTRA_SPEFS) "RAM128 \
-    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.min.spef \
-    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.nom.spef \
-    $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.max.spef \
-    housekeeping_alt \
-    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.min.spef \
-    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.nom.spef \
-    $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.max.spef \
-    caravel_clocking \
-    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.min.spef \
-    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.nom.spef \
-    $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.max.spef"
+# set ::env(EXTRA_SPEFS) "RAM128 \
+#     $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.min.spef \
+#     $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.nom.spef \
+#     $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.max.spef \
+#     housekeeping_alt \
+#     $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.min.spef \
+#     $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.nom.spef \
+#     $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.max.spef \
+#     caravel_clocking \
+#     $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.min.spef \
+#     $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.nom.spef \
+#     $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.max.spef"
 
 set ::env(STA_WRITE_LIB) 0
 

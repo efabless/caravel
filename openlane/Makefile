@@ -14,9 +14,9 @@
 # SPDX-License-Identifier: Apache-2.0
 
 MAKEFLAGS+=--warn-undefined-variables
-
+export OPENLANE_TAG=ed194238ac359aca044c54fa8cbbbd12280e1a8c
 export OPENLANE_RUN_TAG ?= $(shell date '+%y_%m_%d_%H_%M')
-OPENLANE_TAG ?= 2023.05.17
+OPENLANE_TAG ?=ed194238ac359aca044c54fa8cbbbd12280e1a8c
 OPENLANE_IMAGE_NAME ?= efabless/openlane:$(OPENLANE_TAG)
 IT_SCRIPT ?= ./interactive.tcl
 designs = $(shell find * -maxdepth 0 -type d)

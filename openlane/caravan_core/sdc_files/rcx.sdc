@@ -6,8 +6,8 @@
 # create_clock -name clk -period 50 [get_ports {clock_core}] 
 create_clock -name clk -period 25 [get_pins {clock_ctrl/core_clk}] 
 
-create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping/serial_clock}]
-create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping/serial_load}]
+create_clock -name hk_serial_clk -period 50 [get_pins {housekeeping_alt/serial_clock}]
+create_clock -name hk_serial_load -period 1000 [get_pins {housekeeping_alt/serial_load}]
 # hk_serial_clk period is x2 core clock
 
 set_clock_uncertainty 0.1 [get_clocks {clk}] 
