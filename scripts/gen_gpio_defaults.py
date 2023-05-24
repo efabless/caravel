@@ -458,7 +458,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravan top gate-level verilog:')
-    with open(caravel_path + '/verilog/gl/caravan.v', 'r') as ifile:
+    with open(caravel_path + '/verilog/gl/caravan_core.v', 'r') as ifile:
         vlines = ifile.read().splitlines()
         outlines = []
         for vline in vlines:
@@ -483,7 +483,7 @@ if __name__ == '__main__':
                 outlines.append(vline)
 
     if not testmode:
-        with open(glpath + '/caravan.v', 'w') as ofile:
+        with open(glpath + '/caravan_core.v', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 
