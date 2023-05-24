@@ -138,12 +138,11 @@ set_clock_transition $wb_clk_tran [get_clocks {user_clock}]
 set_clock_transition $sck_clk_tran [get_clocks {sck}]
 
 ## FANOUT
-set ::env(SYNTH_MAX_FANOUT) 20
 puts "\[INFO\]: Setting maximum fanout to: $::env(SYNTH_MAX_FANOUT)"
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## MAX Transition
-set_max_trans 0.74 [current_design]
+set_max_trans 0.70 [current_design]
 
 set_max_transition 0.4 [get_clocks {wb_clk_i}] -clock_path
 set_max_transition 0.4 [get_clocks {user_clock}] -clock_path

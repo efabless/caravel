@@ -41,7 +41,7 @@ set ::env(NO_SYNTH_CELL_LIST) [glob $::env(DESIGN_DIR)/no_synth.list]
 set ::env(DRC_EXCLUDE_CELL_LIST) [glob $::env(DESIGN_DIR)/drc_exclude.list] 
 set ::env(SYNTH_STRATEGY) "DELAY 0"
 
-set ::env(SYNTH_MAX_FANOUT) 20
+set ::env(SYNTH_MAX_FANOUT) 14
 set ::env(SYNTH_BUFFERING) 0
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
