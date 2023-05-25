@@ -420,7 +420,7 @@ if __name__ == '__main__':
 
     if testmode:
         print('Test only:  Caravan layout:')
-    with open(caravel_path + '/mag/caravan.mag', 'r') as ifile:
+    with open(caravel_path + '/mag/caravan_core.mag', 'r') as ifile:
         maglines = ifile.read().splitlines()
         outlines = []
         for magline in maglines:
@@ -450,7 +450,7 @@ if __name__ == '__main__':
                 outlines.append(magline)
 
     if not testmode:
-        with open(magpath + '/caravan.mag', 'w') as ofile:
+        with open(magpath + '/caravan_core.mag', 'w') as ofile:
             for outline in outlines:
                 print(outline, file=ofile)
 

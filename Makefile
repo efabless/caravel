@@ -171,19 +171,16 @@ __truck:
 		drc off; \
 		crashbackups stop; \
 		addpath hexdigits; \
-		addpath $(CARAVEL_ROOT)/mag; \
+		addpath $(MCW_ROOT)/mag; \
 		addpath $(UPRJ_ROOT)/mag; \
 		load user_analog_project_wrapper; \
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/user_analog_project_wrapper.gds; \
 		property GDS_START 0; \
-		load mgmt_core_wrapper; \
-		property LEFview true; \
-		property GDS_FILE $(MCW_ROOT)/gds/mgmt_core_wrapper.gds; \
-		property GDS_START 0; \
 		load $(UPRJ_ROOT)/mag/user_id_programming; \
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
-		load ../maglef/simple_por; \
+		load $(CARAVEL_ROOT)/maglef/simple_por; \
+		load $(UPRJ_ROOT)/mag/caravan_core -dereference; \
 		load $(UPRJ_ROOT)/mag/caravan -dereference; \
 		select top cell; \
 		expand; \
