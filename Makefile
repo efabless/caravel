@@ -181,7 +181,7 @@ __truck:
 		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
 		load $(UPRJ_ROOT)/mag/caravan_core -dereference; \
-		load $(UPRJ_ROOT)/mag/caravan -dereference; \
+		load caravan -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
