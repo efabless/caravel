@@ -73,10 +73,10 @@ set ::env(FP_IO_MIN_DISTANCE) 5
 set ::env(FP_IO_VEXTEND) 2
 set ::env(FP_IO_HEXTEND) 2
 
-set ::env(FP_TAPCELL_DIST) 12
-set ::env(PL_MACRO_HALO) "3 3"
-set ::env(FP_TAP_HORIZONTAL_HALO) 3
-set ::env(FP_TAP_VERTICAL_HALO) 3
+set ::env(FP_TAPCELL_DIST) 10
+set ::env(PL_MACRO_HALO) "1 1"
+set ::env(FP_TAP_HORIZONTAL_HALO) 10
+set ::env(FP_TAP_VERTICAL_HALO) 10
 
 # set ::env(GPL_CELL_PADDING) 0
 # set ::env(DPL_CELL_PADDING) 2

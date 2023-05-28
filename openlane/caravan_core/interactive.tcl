@@ -63,18 +63,18 @@ run_cts
 
 run_resizer_timing
 
-# ##  Routing Optmization  ##
-# run_resizer_design_routing
-# run_resizer_timing_routing
+##  Routing Optmization  ##
+run_resizer_design_routing
+run_resizer_timing_routing
 
-# ################ Place and route on the optmized netlist ################
-# set ::env(PL_TARGET_DENSITY) 0.26
-# set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
-# set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
-# set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0
-# set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
-# run_placement
-# run_cts 
+################ Place and route on the optmized netlist ################
+set ::env(PL_TARGET_DENSITY) 0.26
+set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
+set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+run_placement
+run_cts
 
 # Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
 set ::env(GRT_OBS) "\
