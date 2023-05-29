@@ -35,6 +35,10 @@ add_macro_placement caravel_motto 1350 -35 N
 
 manual_macro_placement f
 
+# modify to a different file
+# remove_pins -input $::env(CURRENT_DEF)
+# remove_empty_nets -input $::env(CURRENT_DEF)
+
 label_macro_pins \
     -lef $::env(CARAVEL_ROOT)/lef/caravan.lef \
     -netlist_def $::env(CURRENT_DEF)
