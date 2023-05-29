@@ -5,7 +5,7 @@ openlane_folder = './'
 signoff_folder = '../signoff'
 
 # macro_folders = os.listdir(openlane_folder)
-macro_folders = ['housekeeping_alt']
+macro_folders = ['caravan_core']
 
 # iterate over each macro folder 
 for macro_folder in macro_folders:

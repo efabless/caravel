@@ -116,7 +116,7 @@ add_pdn_stripe \
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
-        -width 12.8 \
+        -width 14.4 \
         -pitch 120 \
         -offset 239 \
         -spacing 2.4 \

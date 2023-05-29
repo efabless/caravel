@@ -7,7 +7,7 @@ set save_path $::env(CARAVEL_ROOT)
 
 ################   Synthesis   ################
 run_synthesis
-# set_netlist $::env(DESIGN_DIR)/synth_configuration/caravel_core.v
+# set_netlist $::env(DESIGN_DIR)/synth_configuration/caravan_core.v
 # set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base.sdc
 
 ################   Floorplan   ################
@@ -31,6 +31,10 @@ set ::env(GRT_OBS) "\
     met3 0 4195 3165 4767, \
     met4 0 4195 3165 4767, \
     met5 0 4195 3165 4767, \
+    met4 990 0 1075 45, \
+    met5 0 128 22 205, \
+    met5 3123 2085 3165 2167, \
+    met5 0 1983 50 2071, \
     met5 59.52 1183.09 3103.58 4703.09, \
     met5 1943 1153 1944 1155, \
     met5 1815 1130 1816 1132, \
@@ -91,7 +95,7 @@ set ::env(GRT_OBS) "\
 # the sdc file to another one which they are defined as clocks in it. 
 set ::env(CURRENT_SDC) $::env(DESIGN_DIR)/sdc_files/base_2.sdc
 
-# set ::env(GRT_ALLOW_CONGESTION) 0
+set ::env(GRT_ALLOW_CONGESTION) 0
 run_routing
 ################   RCX sta    ################
 run_parasitics_sta
