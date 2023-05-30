@@ -35,6 +35,8 @@ set ::env(GRT_OBS) "\
     met5 0 128 22 205, \
     met5 3123 2085 3165 2167, \
     met5 0 1983 50 2071, \
+    met4 857 0 878 165, \
+    met4 965 0 980 172, \
     met5 59.52 1183.09 3103.58 4703.09, \
     met5 1943 1153 1944 1155, \
     met5 1815 1130 1816 1132, \
@@ -76,11 +78,11 @@ set ::env(PL_TARGET_DENSITY) 0.26
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(GLB_RESIZER_DESIGN_OPTIMIZATIONS) 0
-set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
 run_placement
 run_cts
 
-# Adding met4/5 routing obstructions over the the RAMs and housekeeping to prevent routing DRCs
+# Adding met4/5 routing obstructions over the the RAMs, housekeeping, and PoR to prevent routing DRCs
 set ::env(GRT_OBS) "\
     met5 90 175.0 496.18 612.92, \
     met5 582.00 175.00 988.18 612.92, \
@@ -89,7 +91,13 @@ set ::env(GRT_OBS) "\
     met4 90 175.0 496.18 612.92, \
     met4 582.00 175.00 988.18 612.92, \
     met4 1800 125.00 2206.18 562.92, \
-    met4 2650 190 3060.23 740.95 \
+    met4 2650 190 3060.23 740.95, \
+    met3 1040.21 137.49 1064.35 134.81, \
+    met3 1137.92 135.15 1116.81 131.81, \
+    met3 653.10 41.58 701.69 33.85, \
+    met4 1046 133 1133 143, \
+    met4 63.13 1219.47 86.32 1142.66, \
+    met4 3040.60 1220.06 3089.40 1118.88 \
 "
 # adding hk_serial_clock and hk_serial_load as clocks after CTS by changing
 # the sdc file to another one which they are defined as clocks in it. 

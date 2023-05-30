@@ -179,12 +179,12 @@ set ::env(PL_TARGET_DENSITY) 0.24
 
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 1
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.08
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.30
 set ::env(PL_RESIZER_ALLOW_SETUP_VIOS) 0
 set ::env(PL_RESIZER_SETUP_SLACK_MARGIN) 0.1
-set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 1000
-set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 50
-set ::env(PL_RESIZER_MAX_CAP_MARGIN) 50
+set ::env(PL_RESIZER_MAX_WIRE_LENGTH) 700
+set ::env(PL_RESIZER_MAX_SLEW_MARGIN) 30
+set ::env(PL_RESIZER_MAX_CAP_MARGIN) 30
 
 ##ROUTING
 set ::env(GRT_ALLOW_CONGESTION) 1
@@ -198,9 +198,9 @@ set ::env(GRT_ADJUSTMENT) 0.08
 set ::env(GRT_ESTIMATE_PARASITICS) 1
 
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 1
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.12
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.30
 set ::env(GLB_RESIZER_SETUP_SLACK_MARGIN) 1
-set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 600
+set ::env(GLB_RESIZER_MAX_WIRE_LENGTH) 1000
 set ::env(GLB_RESIZER_MAX_SLEW_MARGIN) 30
 set ::env(GLB_RESIZER_MAX_CAP_MARGIN) 30
 
@@ -307,4 +307,4 @@ set ::env(QUIT_ON_MAGIC_DRC) 0
 set ::env(MAGIC_DEF_LABELS) 0
 set ::env(MAGIC_EXT_USE_GDS) 1
 
-set ::env(RSZ_DONT_TOUCH_RX) "rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core|io_in_3v3|gpio_noesd|gpio_analog|io_analog\\\[.*\\\]|io_clamp_high|io_clamp_low"
+set ::env(RSZ_DONT_TOUCH_RX) "gpio_logic1|rstb_h|porb_h|serial_clock_out|serial_load_out|ringosc|mgmt_buffers.la_data_out_core|mprj_ack_i_user|mprj_dat_i_user|user_irq_core|io_in_3v3|gpio_noesd|gpio_analog|io_analog\\\[.*\\\]|io_clamp_high|io_clamp_low"
