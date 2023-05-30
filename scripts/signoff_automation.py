@@ -16,7 +16,7 @@ def build_caravel_caravan(caravel_root, mcw_root, pdk_root, log_dir, pdk_env, de
     os.environ["CARAVEL_ROOT"] = caravel_root
     os.environ["MCW_ROOT"] = mcw_root
     os.environ["PDK_ROOT"] = pdk_root
-    os.environ["PDK"] = pdk_env
+    os.environ["PDK"] = pdk_envg
     os.environ["DESIGN"] = design
 
     gpio_defaults_cmd = ["python3", f"scripts/gen_gpio_defaults.py"]
@@ -526,13 +526,15 @@ if __name__ == "__main__":
     antenna = args.antenna
 
     if sta:
-        os.environ["CHIP"] = "caravel"
-        os.environ["CHIP_CORE"] = "caravel_core"
+        if not os.getenv("CHIP"):
+            os.environ["CHIP"] = "caravel"
+        if not os.getenv("CHIP_CORE"):
+            os.environ["CHIP_CORE"] = "caravel_core"
         os.environ["DEBUG"] = "0"
 
     if (design == "mgmt_core_wrapper" or design == "RAM128" or design == "RAM256" or design == "gf180_ram_512x8_wrapper"):
         signoff_dir = os.path.join(mcw_root, "signoff")
-    elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+    elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project" or design == "user_analog_project_wrapper"):
         uprj_root = os.getenv("UPRJ_ROOT")
         signoff_dir = os.path.join(uprj_root, "signoff")
 
@@ -668,7 +670,7 @@ if __name__ == "__main__":
                 timestr,
                 upw
             )
-        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project" or design == "user_analog_project_wrapper"):
             sta_p = run_sta(
                 uprj_root,
                 f"{caravel_root}/scripts/pt_libs",
@@ -720,7 +722,7 @@ if __name__ == "__main__":
                 timestr,
                 upw
             )
-        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project"):
+        elif (design == "user_project_wrapper" or design == "user_proj_example" or design == "user_project" or design == "user_analog_project_wrapper"):
             sta_p = run_sta(
                 uprj_root,
                 f"{caravel_root}/scripts/pt_libs",

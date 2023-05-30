@@ -7,10 +7,13 @@ if {$design == "user_project_wrapper"} {
     if {$::env(UPW)} {
         # user_project_wrapper spefs
         # update the path to match the spefs path
-        set spef_mapping(mprj)                                 $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
-
+        if {$design == "caravan_core"} {
+            set spef_mapping(mprj)                             $::env(UPRJ_ROOT)/signoff/user_analog_project_wrapper/openlane-signoff/spef/user_analog_project_wrapper.${rc_corner}.spef
+        } else {
+            set spef_mapping(mprj)                             $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
+        }
         # add spefs of modules instantiated in user_project_wrapper/user_analog_project_wrapper here
-        set spef_mapping(mprj/mprj)                            $::env(UPRJ_ROOT)/signoff/user_proj_example/openlane-signoff/spef/user_proj_example.${rc_corner}.spef
+        # set spef_mapping(mprj/mprj)                            $::env(UPRJ_ROOT)/signoff/user_proj_example/openlane-signoff/spef/user_proj_example.${rc_corner}.spef
     }
 
     #caravel litex macros
@@ -19,7 +22,11 @@ if {$design == "user_project_wrapper"} {
     set spef_mapping(\soc.core.RAM128)                            $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
     
     set spef_mapping(clock_ctrl)                             $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.${rc_corner}.spef
-    set spef_mapping(housekeeping)                           $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
+    if {$design == "caravan_core"} {
+        set spef_mapping(housekeeping_alt)                       $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.${rc_corner}.spef
+    } else {
+        set spef_mapping(housekeeping)                           $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
+    }    
     set spef_mapping(gpio_buf)                               $::env(CARAVEL_ROOT)/signoff/mprj_io_buffer/openlane-signoff/spef/mprj_io_buffer.${rc_corner}.spef
 
     set spef_mapping(rstb_level)                             $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/spef/xres_buf.${rc_corner}.spef
@@ -118,13 +125,21 @@ if {$design == "user_project_wrapper"} {
     if {$::env(UPW)} {
         # user_project_wrapper spefs
         # update the path to match the spefs path
-        set spef_mapping(chip_core/mprj)                                 $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
+        if {$design == "caravan"} {
+            set spef_mapping(chip_core/mprj)                             $::env(UPRJ_ROOT)/signoff/user_analog_project_wrapper/openlane-signoff/spef/user_analog_project_wrapper.${rc_corner}.spef
+        } else {
+            set spef_mapping(chip_core/mprj)                                 $::env(UPRJ_ROOT)/signoff/user_project_wrapper/openlane-signoff/spef/user_project_wrapper.${rc_corner}.spef
+        }
 
         # add spefs of modules instantiated in user_project_wrapper/user_analog_project_wrapper here
-        set spef_mapping(chip_core/mprj/mprj)                            $::env(UPRJ_ROOT)/signoff/user_proj_example/openlane-signoff/spef/user_proj_example.${rc_corner}.spef
+        # set spef_mapping(chip_core/mprj/mprj)                            $::env(UPRJ_ROOT)/signoff/user_proj_example/openlane-signoff/spef/user_proj_example.${rc_corner}.spef
     }
 
-    set spef_mapping(padframe)                                          $::env(CARAVEL_ROOT)/signoff/chip_io/openlane-signoff/spef/chip_io.${rc_corner}.spef
+    if {$design == "caravan"} {
+        set spef_mapping(padframe)                                          $::env(CARAVEL_ROOT)/signoff/chip_io_alt/openlane-signoff/spef/chip_io_alt.${rc_corner}.spef
+    } else {
+        set spef_mapping(padframe)                                          $::env(CARAVEL_ROOT)/signoff/chip_io/openlane-signoff/spef/chip_io.${rc_corner}.spef
+    }
 
     set spef_mapping(padframe/\constant_value_inst[0])                  $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
     set spef_mapping(padframe/\constant_value_inst[1])                  $::env(CARAVEL_ROOT)/signoff/constant_block/openlane-signoff/spef/constant_block.${rc_corner}.spef
@@ -142,7 +157,11 @@ if {$design == "user_project_wrapper"} {
     set spef_mapping(chip_core/\soc.core.RAM128)                            $::env(MCW_ROOT)/signoff/RAM128/openlane-signoff/spef/RAM128.${rc_corner}.spef
     
     set spef_mapping(chip_core/clock_ctrl)                             $::env(CARAVEL_ROOT)/signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.${rc_corner}.spef
-    set spef_mapping(chip_core/housekeeping)                           $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
+    if {$design == "caravan"} {
+        set spef_mapping(chip_core/housekeeping_alt)                       $::env(CARAVEL_ROOT)/signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.${rc_corner}.spef
+    } else {
+        set spef_mapping(chip_core/housekeeping)                           $::env(CARAVEL_ROOT)/signoff/housekeeping/openlane-signoff/spef/housekeeping.${rc_corner}.spef
+    }
     set spef_mapping(chip_core/gpio_buf)                               $::env(CARAVEL_ROOT)/signoff/mprj_io_buffer/openlane-signoff/spef/mprj_io_buffer.${rc_corner}.spef
 
     set spef_mapping(chip_core/rstb_level)                             $::env(CARAVEL_ROOT)/signoff/xres_buf/openlane-signoff/spef/xres_buf.${rc_corner}.spef
