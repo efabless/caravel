@@ -58,7 +58,7 @@ add_pdn_stripe \
     -offset 3.3 \
     -spacing 1 \
     -number_of_straps 1 \
-    -nets "vssd vccd vccd1 vssd1 vssd2 vccd2 vccd vssd" \
+    -nets "vccd vssd vccd1 vssd1 vssd2 vccd2 vccd vssd" \
     -starts_with POWER
 add_pdn_stripe \
     -grid stdcell_grid \

@@ -53,9 +53,6 @@ box 1937.365um 914.240um 1937.630um 914.595um; feedback add "MV diffusion to LV 
 box 1937.365um 918.775um 1937.630um 919.525um; feedback add "MV diffusion to LV nwell spacing < 0.825um (hvi.5 + nsd/psd.5)" medium
 box 43.375um 2347.595um 43.635um 2348.465um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
 box 44.225um 2347.595um 44.485um 2348.465um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 45.675um 2347.625um 45.935um 2348.265um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 46.085um 2347.625um 46.355um 2348.265um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 46.505um 2347.625um 46.765um 2348.265um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 47.035um 2347.595um 47.295um 2348.015um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 47.445um 2347.595um 47.770um 2348.015um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
-box 47.920um 2347.595um 48.190um 2348.015um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
+box 44.755um 2347.595um 45.015um 2348.465um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
+box 46.065um 2347.595um 46.325um 2348.465um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
+box 47.975um 2347.625um 48.235um 2348.265um; feedback add "P-diff distance to N-tap must be < 15.0um (LU.3)" medium
