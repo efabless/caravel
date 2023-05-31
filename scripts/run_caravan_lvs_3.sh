@@ -1,28 +1,28 @@
 #!/bin/bash
 #
-# run_caravan_lvs_3.sh ---
+# run_caravel_lvs_3.sh ---
 #
-# Run LVS on caravan.  Read GDS using the recipe developed for open_pdks.
+# Run LVS on caravel.  Read GDS using the recipe developed for open_pdks.
 # Read I/O cells from vendor GDS first so that they get replaced.
 #
-echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
-echo ${PDK:=sky130A} > /dev/null
-echo ${CARAVEL_ROOT:=/home/tim/gits/caravel} > /dev/null
-echo ${LITEX_ROOT:=/home/tim/gits/caravel_mgmt_soc_litex} > /dev/null
+echo ${PDK_ROOT:=/usr/share/pdk} >/dev/null
+echo ${PDK:=$PDK} >/dev/null
+echo ${CARAVEL_ROOT:=/home/tim/gits/caravel} >/dev/null
+echo ${LITEX_ROOT:=/home/tim/gits/caravel_mgmt_soc_litex} >/dev/null
 
-echo "Running LVS on caravan."
-if [ $# -eq 0 ]; then
-   echo "No arguments---running LVS on existing spice if it exists."
-elif [ $1 == "extract" ]; then
-   echo "Forced new extraction."
-   rm -f $CARAVEL_ROOT/spi/lvs/caravan.spice
-else
-   echo "Ending without running LVS."
-   exit 0
-fi
+# echo "Running LVS on caravel."
+# if [ $# -eq 0 ]; then
+#     echo "No arguments---running LVS on existing spice if it exists."
+# elif [ $1 == "extract" ]; then
+#     echo "Forced new extraction."
+#     rm -f $CARAVEL_ROOT/spi/lvs/caravel.spice
+# else
+#     echo "Ending without running LVS."
+#     exit 0
+# fi
 
-if [ ! -f $CARAVEL_ROOT/spi/lvs/caravan.spice ]; then
-magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc << EOF
+# if [ ! -f $CARAVEL_ROOT/spi/lvs/caravel.spice ]; then
+magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc <<EOF
 drc off
 crashbackups stop
 
@@ -70,69 +70,75 @@ gds read $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/gds/sky130_ef_io.gds
 # Now assert that existing views must take precedence
 gds noduplicates true
 
+# gds ordering on
+
 # GDS is still written in legacy mode
 cif istyle sky130(legacy)
 
 # And read in the full chip (except for cells already read)
-gds read $CARAVEL_ROOT/gds/caravan-signoff.gds.gz
+gds read $CARAVEL_ROOT/gds/caravan.gds
 load caravan
 select top cell
 expand
 extract do local
 extract no all
+extract do aliases
 extract unique
 extract all
 ext2spice lvs
-ext2spice
+ext2spice -o $CARAVEL_ROOT/spi/lvs/caravan.spice caravan.ext
 EOF
-rm -f *.ext
-fi
+# rm *.ext
+# fi
 
-cat > netgenE.tcl << EOF
-puts stdout "Reading netlist caravan.spice"
+cat >netgenD.tcl <<EOF
 set circuit1 [readnet spice $CARAVEL_ROOT/spi/lvs/caravan.spice]
-puts stdout "Reading SPICE netlists of I/O"
-set circuit2 [readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_fd_io.spice]
+set circuit2 [readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/spice/sky130_sram_2kbyte_1rw1r_32x512_8.spice]
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/spice/sky130_sram_1kbyte_1rw1r_32x256_8.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/spice/sky130_sram_1kbyte_1rw1r_8x1024_8.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/spice/sram_1rw1r_32_256_8_sky130.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_ef_io.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_fd_io.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_ef_io__analog_pad.spice \$circuit2
-readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_4.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_8.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fill_12.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__fakediode_2.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/spice/sky130_fd_sc_hvl.spice \$circuit2
 readnet spice $CARAVEL_ROOT/xschem/simple_por.spice \$circuit2
-puts stdout "Reading all gate-level verilog submodules"
-readnet verilog $CARAVEL_ROOT/verilog/rtl/defines.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/constant_block.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/digital_pll.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_control_block.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_defaults_block.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_defaults_block_0403.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_defaults_block_0801.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_defaults_block_1803.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/xres_buf.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/empty_macro.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/empty_macro_1.v \$circuit2
+# readnet verilog $CARAVEL_ROOT/verilog/gl/manual_power_connections.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/spare_logic_block.v \$circuit2
+readnet verilog $MCW_ROOT/verilog/gl/RAM128.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_logic_high.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/gpio_signal_buffering_alt.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravel_clocking.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/mprj_logic_high.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/housekeeping_alt.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/mprj_io_buffer.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/mprj2_logic_high.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/mgmt_protect_hv.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/mgmt_protect.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/spare_logic_block.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/caravel_clocking.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/user_id_programming.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/xres_buf.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/buff_flash_clkrst.v \$circuit2
-readnet verilog $CARAVEL_ROOT/verilog/gl/housekeeping.v \$circuit2
+# readnet verilog $CARAVEL_ROOT/verilog/gl/chip_io_gpio_connects.v \$circuit2
 readnet verilog $CARAVEL_ROOT/verilog/gl/chip_io_alt.v \$circuit2
-puts stdout "Reading LiteX gate-level verilog submodules"
-readnet verilog $LITEX_ROOT/verilog/gl/RAM128.v \$circuit2
-readnet verilog $LITEX_ROOT/verilog/gl/RAM256.v \$circuit2
-readnet verilog $LITEX_ROOT/verilog/gl/mgmt_core_wrapper.v \$circuit2
-puts stdout "Reading top gate-level verilog module"
-readnet verilog $CARAVEL_ROOT/verilog/gl/caravan-signoff.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/open_source.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravan_signal_routing.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravan_core.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravel_motto.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/user_id_textblock.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/copyright_block.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravel_logo.v \$circuit2
+readnet verilog $CARAVEL_ROOT/verilog/gl/caravan.v \$circuit2
 
-# Cells in management core wrapper (layout) are prefixed with unique 2-letter prefix
+# Cells in management core wrapper (layout) are prefixed with RL_ or KF_
 set cells1 [cells list -all \$circuit1]
 set cells2 [cells list -all \$circuit2]
 foreach cell \$cells1 {
-    if {[regexp {.._(.+)} \$cell match cellname]} {
+    if {[regexp ".._(.+)" \$cell match cellname]} {
         if {([lsearch \$cells2 \$cell] < 0) && ([lsearch \$cells2 \$cellname] >= 0) && ([lsearch \$cells1 \$cellname] < 0)} {
             equate classes "\$circuit1 \$cell" "\$circuit2 \$cellname"
             puts stdout "Matching pins of \$cell in circuit 1 and \$cellname in circuit 2"
@@ -147,12 +153,17 @@ foreach cell \$cells1 {
 
 # Run LVS
 flatten class "\$circuit2 user_analog_project_wrapper"
+# flatten class "\$circuit2 manual_power_connections"
+flatten class "\$circuit2 caravan_signal_routing"
+# flatten class "\$circuit2 chip_io_gpio_connects"
+flatten class "\$circuit2 empty_macro"
+flatten class "\$circuit2 empty_macro_1"
 lvs "\$circuit1 caravan" "\$circuit2 caravan" $PDK_ROOT/$PDK/libs.tech/netgen/${PDK}_setup.tcl caravan_3_comp.out -json
 EOF
 
-export NETGEN_COLUMNS=90
+export NETGEN_COLUMNS=160
 export MAGIC_EXT_USE_GDS=1
-netgen -batch source netgenE.tcl 2>&1 | tee caravan_3_lvs.log
-rm netgenE.tcl
+netgen -batch source netgenD.tcl 2>&1 | tee caravan_3_lvs.log
+rm netgenD.tcl
 
 exit 0
