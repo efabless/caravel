@@ -2,10 +2,6 @@
 ### Rev 1
 ### Date: 25/5/2023
 
-### Caravel new Signoff SDC
-### Rev 1
-### Date: 12/2/2023
-
 # IO 4 mode is either SCK or GPIO (hkspi)
 set io_4_mode SCK
 
@@ -379,6 +375,8 @@ set flash_in_delay 4
 set flash_out_delay 4
 puts "\[INFO\]: Flash interface delay: input $flash_in_delay output $flash_out_delay"
 set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_csb}]
+set_multicycle_path -setup 2 -to [get_ports {flash_csb}]
+set_multicycle_path -hold 1 -to [get_ports {flash_csb}]
 set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_clk}]
 set_output_delay $flash_out_delay  -clock [get_clocks {clk}] -add_delay [get_ports {flash_io0}]
 set_input_delay $flash_in_delay -clock [get_clocks {clk}] -add_delay [get_ports {flash_io1}]
