@@ -32,7 +32,9 @@ if {\
     if {!($::env(UPW))} {
       if {$::env(DESIGN) == $::env(CHIP_CORE) || $::env(DESIGN) == $::env(CHIP)} {
         set verilogs [concat $verilogs "$::env(CARAVEL_ROOT)/verilog/gl/__user_project_wrapper.v"]
+        set verilogs [concat $verilogs "$::env(CARAVEL_ROOT)/verilog/gl/__user_analog_project_wrapper.v"]
         set verilog_exceptions [concat $verilog_exceptions "$::env(UPRJ_ROOT)/verilog/gl/user_project_wrapper.v"]
+        set verilog_exceptions [concat $verilog_exceptions "$::env(UPRJ_ROOT)/verilog/gl/user_analog_project_wrapper.v"]
       } 
     } 
 

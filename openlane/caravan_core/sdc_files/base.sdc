@@ -3,10 +3,10 @@
 ### Date: 28/10/2022
 
 ## MASTER CLOCKS
-create_clock -name clk -period 18 [get_pins {clock_ctrl/core_clk}] 
+create_clock -name clk -period 25 [get_pins {clock_ctrl/core_clk}] 
 # create_clock -name clk -period 25 [get_ports {clock_core}] 
 
-set_clock_uncertainty 0.5 [get_clocks {clk}] 
+set_clock_uncertainty 0.55 [get_clocks {clk}] 
 
 set_propagated_clock [get_clocks {clk}]
 
@@ -49,7 +49,7 @@ set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]
 
 ## MAX transition/cap
-set_max_trans 0.9 [current_design]
+set_max_trans 1.10 [current_design]
 # set_max_cap 0.5 [current_design]
 
 # group_path -weight 100 -through [get_pins mprj/la_data_out[0]] -name mprj_floating
