@@ -28,10 +28,10 @@ init_floorplan
 add_macro_placement padframe 0 0 N
 add_macro_placement chip_core 211.5 210.5 N
 add_macro_placement user_id_textblock 175 35 N
-add_macro_placement copyright_block 482 85 N
+add_macro_placement copyright_block_a 482 85 N
 add_macro_placement open_source 768 15 N
-add_macro_placement caravel_logo 1080 25.5 N
-add_macro_placement caravel_motto 1350 -35 N
+add_macro_placement caravan_logo 1010 25.5 N
+add_macro_placement caravan_motto -540 -7 N
 
 manual_macro_placement f
 

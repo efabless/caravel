@@ -405,9 +405,9 @@ module caravan (
       .mprj_io_one(mprj_io_one)
     );
 
-copyright_block copyright_block();
-caravel_logo caravel_logo();
-caravel_motto caravel_motto();
+copyright_block_a copyright_block_a();
+caravan_logo caravan_logo();
+caravan_motto caravan_motto();
 open_source open_source();
 user_id_textblock user_id_textblock();
 
