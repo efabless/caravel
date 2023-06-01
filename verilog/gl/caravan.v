@@ -725,9 +725,9 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
   inout vssio_2;
   wire vssio_2;
   wire vssio_core;
-  caravel_logo caravel_logo (
+  caravan_logo caravan_logo (
   );
-  caravel_motto caravel_motto (
+  caravan_motto caravan_motto (
   );
   caravan_core chip_core (
     .clock_core(clock_core),
@@ -784,7 +784,7 @@ module caravan(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd, vdda1, vd
     .vssd2(vssd2_core),
     .vssio(vssio_core)
   );
-  copyright_block copyright_block (
+  copyright_block_a copyright_block_a (
   );
   open_source open_source (
   );
