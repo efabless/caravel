@@ -15,7 +15,8 @@
 
 `default_nettype none
 `timescale 1 ns / 1 ps
-
+ 
+/// sta-blackbox
 module simple_por(
 `ifdef USE_POWER_PINS
     inout vdd3v3,
