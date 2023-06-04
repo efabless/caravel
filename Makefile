@@ -197,6 +197,52 @@ __truck:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
+
+.PHONY: ship_openframe
+ship_openframe: check-env uncompress uncompress-caravel
+ifeq ($(FOREGROUND),1)
+	@echo "Running make ship_openframe in the foreground..."
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __ship_openframe
+	@echo "Make ship_openframe completed." 2>&1 | tee -a ./signoff/build/make_ship_openframe.out
+else
+	@echo "Running make ship in the background..."
+	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __ship_openframe >/dev/null 2>&1 &
+	tail -f signoff/build/make_ship_openframe.out
+	@echo "Make ship_openframe completed."  2>&1 | tee -a ./signoff/build/make_ship_openframe.out
+endif
+
+__ship_openframe:
+	@echo "###############################################"
+	@echo "Generating Caravel GDS (sources are in the 'gds' directory)"
+	@sleep 1
+#### Runs from the CARAVEL_ROOT mag directory 
+	@echo "\
+		random seed `$(CARAVEL_ROOT)/scripts/set_user_id.py -report`; \
+		drc off; \
+		crashbackups stop; \
+		addpath hexdigits; \
+		addpath $(CARAVEL_ROOT)/mag; \
+		addpath $(UPRJ_ROOT)/mag; \
+		load openframe_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/user_analog_project_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load ../maglef/simple_por; \
+		load $(CARAVEL_ROOT)/mag/caravel_openframe -dereference; \
+		select top cell; \
+		expand; \
+		cif *hier write disable; \
+		cif *array write disable; \
+		gds write $(UPRJ_ROOT)/gds/chip_io_openframe.gds; \
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
+### Runs from CARAVEL_ROOT
+	@mkdir -p ./signoff/build
+	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship_openframe.out
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship_openframe.out
+###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
+
 .PHONY: clean
 clean:
 	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
