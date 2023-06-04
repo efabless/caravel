@@ -1,0 +1,47 @@
+1.  clknet_0_mgmt_gpio_in[3] (driver: <none>)
+2.  clknet_0_mgmt_gpio_in[2] (driver: <none>)
+3.  clknet_0_mgmt_gpio_in[1] (driver: <none>)
+4.  clknet_0_mgmt_gpio_in[0] (driver: <none>)
+5.  clknet_2_0__leaf_mgmt_gpio_in[3] (driver: <none>)
+6.  clknet_2_0__leaf_mgmt_gpio_in[2] (driver: <none>)
+7.  clknet_2_0__leaf_mgmt_gpio_in[1] (driver: <none>)
+8.  clknet_2_0__leaf_mgmt_gpio_in[0] (driver: <none>)
+9.  clknet_2_1__leaf_mgmt_gpio_in[3] (driver: <none>)
+10.  clknet_2_1__leaf_mgmt_gpio_in[2] (driver: <none>)
+11.  clknet_2_1__leaf_mgmt_gpio_in[1] (driver: <none>)
+12.  clknet_2_1__leaf_mgmt_gpio_in[0] (driver: <none>)
+13.  clknet_2_2__leaf_mgmt_gpio_in[3] (driver: <none>)
+14.  clknet_2_2__leaf_mgmt_gpio_in[2] (driver: <none>)
+15.  clknet_2_2__leaf_mgmt_gpio_in[1] (driver: <none>)
+16.  clknet_2_2__leaf_mgmt_gpio_in[0] (driver: <none>)
+17.  clknet_2_3__leaf_mgmt_gpio_in[3] (driver: <none>)
+18.  clknet_2_3__leaf_mgmt_gpio_in[2] (driver: <none>)
+19.  clknet_2_3__leaf_mgmt_gpio_in[1] (driver: <none>)
+20.  clknet_2_3__leaf_mgmt_gpio_in[0] (driver: <none>)
+****************************************
+Report : annotated_parasitics
+	-check
+	-internal_nets
+	-boundary_nets
+	-list_not_annotated
+	-max_nets 5000
+Design : housekeeping_alt
+Version: T-2022.03-SP3
+Date   : Thu Jun  1 06:58:35 2023
+****************************************
+
+                    |         |         |         |   RC    | Coupled |   Not   |
+Net Type            |  Total  | Lumped  |  RC pi  | network | network |Annotated|
+--------------------+---------+---------+---------+---------+---------+---------+
+Internal nets       |         |         |         |         |         |         |
+  - Pin to pin nets |    8379 |       0 |       0 |      13 |    8366 |       0 |
+  - Driverless nets |      20 |       0 |       0 |       0 |       0 |      20 |
+  - Loadless nets   |       0 |       0 |       0 |       0 |       0 |       0 |
+--------------------+---------+---------+---------+---------+---------+---------+
+Boundary/port nets  |         |         |         |         |         |         |
+  - Pin to pin nets |     352 |       0 |       0 |      44 |     308 |       0 |
+  - Driverless nets |       0 |       0 |       0 |       0 |       0 |       0 |
+  - Loadless nets   |       0 |       0 |       0 |       0 |       0 |       0 |
+--------------------+---------+---------+---------+---------+---------+---------+
+                    |    8751 |       0 |       0 |      57 |    8674 |      20 |
+
