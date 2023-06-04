@@ -1,0 +1,25 @@
+# Reports in timing_reports.tar.gz
+1. caravan.max-clk-max_timing.rpt
+2. caravan.max-clk-min_timing.rpt
+3. caravan.max-hk_serial_clk-max_timing.rpt
+4. caravan.max-hk_serial_clk-min_timing.rpt
+5. caravan.max-hkspi_clk-max_timing.rpt
+6. caravan.max-hkspi_clk-min_timing.rpt
+7. caravan.max-max_timing.rpt
+8. caravan.max-min_timing.rpt
+9. caravan.min-clk-max_timing.rpt
+10. caravan.min-clk-min_timing.rpt
+11. caravan.min-hk_serial_clk-max_timing.rpt
+12. caravan.min-hk_serial_clk-min_timing.rpt
+13. caravan.min-hkspi_clk-max_timing.rpt
+14. caravan.min-hkspi_clk-min_timing.rpt
+15. caravan.min-max_timing.rpt
+16. caravan.min-min_timing.rpt
+17. caravan.nom-clk-max_timing.rpt
+18. caravan.nom-clk-min_timing.rpt
+19. caravan.nom-hk_serial_clk-max_timing.rpt
+20. caravan.nom-hk_serial_clk-min_timing.rpt
+21. caravan.nom-hkspi_clk-max_timing.rpt
+22. caravan.nom-hkspi_clk-min_timing.rpt
+23. caravan.nom-max_timing.rpt
+24. caravan.nom-min_timing.rpt

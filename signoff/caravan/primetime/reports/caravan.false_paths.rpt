@@ -1,0 +1,44 @@
+****************************************
+Report : exceptions
+Design : caravan
+Version: T-2022.03-SP3
+Date   : Thu Jun  1 06:16:25 2023
+****************************************
+
+Reasons :   f  invalid start points
+            t  invalid end points
+            p  non-existent paths
+            o  overridden paths
+
+Legend :    i  ignore clock latency in path delay
+From                To                   Setup          Hold            Ignored
+--------------------------------------------------------------------------------
+
+*                   mprj_io[0]           FALSE          FALSE           
+*                   mprj_io[5]           FALSE          FALSE           
+*                   mprj_io[6]           FALSE          FALSE           
+*                   mprj_io[7]           FALSE          FALSE           
+*                   mprj_io[8]           FALSE          FALSE           
+*                   mprj_io[9]           FALSE          FALSE           
+*                   mprj_io[10]          FALSE          FALSE           
+*                   mprj_io[11]          FALSE          FALSE           
+*                   mprj_io[12]          FALSE          FALSE           
+*                   mprj_io[13]          FALSE          FALSE           
+*                   mprj_io[25]          FALSE          FALSE           
+*                   mprj_io[26]          FALSE          FALSE           
+*                   mprj_io[27]          FALSE          FALSE           
+*                   mprj_io[28]          FALSE          FALSE           
+*                   mprj_io[29]          FALSE          FALSE           
+*                   mprj_io[30]          FALSE          FALSE           
+*                   mprj_io[31]          FALSE          FALSE           o
+*                   mprj_io[32]          FALSE          FALSE           
+*                   mprj_io[33]          FALSE          FALSE           
+*                   mprj_io[34]          FALSE          FALSE           
+*                   mprj_io[35]          FALSE          FALSE           
+*                   mprj_io[36]          FALSE          FALSE           
+*                   mprj_io[37]          FALSE          FALSE           
+*                   flash_csb            cycles=2       cycles=1        o
+resetb              *                    FALSE          FALSE           
+gpio                *                    FALSE          FALSE           
+
+1
