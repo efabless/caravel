@@ -323,102 +323,6 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
   wire resetb_l;
   input resetb_pad;
   wire resetb_pad;
-  wire \user_id_value.mask_rev[0] ;
-  wire \user_id_value.mask_rev[10] ;
-  wire \user_id_value.mask_rev[11] ;
-  wire \user_id_value.mask_rev[12] ;
-  wire \user_id_value.mask_rev[13] ;
-  wire \user_id_value.mask_rev[14] ;
-  wire \user_id_value.mask_rev[15] ;
-  wire \user_id_value.mask_rev[16] ;
-  wire \user_id_value.mask_rev[17] ;
-  wire \user_id_value.mask_rev[18] ;
-  wire \user_id_value.mask_rev[19] ;
-  wire \user_id_value.mask_rev[1] ;
-  wire \user_id_value.mask_rev[20] ;
-  wire \user_id_value.mask_rev[21] ;
-  wire \user_id_value.mask_rev[22] ;
-  wire \user_id_value.mask_rev[23] ;
-  wire \user_id_value.mask_rev[24] ;
-  wire \user_id_value.mask_rev[25] ;
-  wire \user_id_value.mask_rev[26] ;
-  wire \user_id_value.mask_rev[27] ;
-  wire \user_id_value.mask_rev[28] ;
-  wire \user_id_value.mask_rev[29] ;
-  wire \user_id_value.mask_rev[2] ;
-  wire \user_id_value.mask_rev[30] ;
-  wire \user_id_value.mask_rev[31] ;
-  wire \user_id_value.mask_rev[3] ;
-  wire \user_id_value.mask_rev[4] ;
-  wire \user_id_value.mask_rev[5] ;
-  wire \user_id_value.mask_rev[6] ;
-  wire \user_id_value.mask_rev[7] ;
-  wire \user_id_value.mask_rev[8] ;
-  wire \user_id_value.mask_rev[9] ;
-  wire \user_id_value.user_proj_id_high[0] ;
-  wire \user_id_value.user_proj_id_high[10] ;
-  wire \user_id_value.user_proj_id_high[11] ;
-  wire \user_id_value.user_proj_id_high[12] ;
-  wire \user_id_value.user_proj_id_high[13] ;
-  wire \user_id_value.user_proj_id_high[14] ;
-  wire \user_id_value.user_proj_id_high[15] ;
-  wire \user_id_value.user_proj_id_high[16] ;
-  wire \user_id_value.user_proj_id_high[17] ;
-  wire \user_id_value.user_proj_id_high[18] ;
-  wire \user_id_value.user_proj_id_high[19] ;
-  wire \user_id_value.user_proj_id_high[1] ;
-  wire \user_id_value.user_proj_id_high[20] ;
-  wire \user_id_value.user_proj_id_high[21] ;
-  wire \user_id_value.user_proj_id_high[22] ;
-  wire \user_id_value.user_proj_id_high[23] ;
-  wire \user_id_value.user_proj_id_high[24] ;
-  wire \user_id_value.user_proj_id_high[25] ;
-  wire \user_id_value.user_proj_id_high[26] ;
-  wire \user_id_value.user_proj_id_high[27] ;
-  wire \user_id_value.user_proj_id_high[28] ;
-  wire \user_id_value.user_proj_id_high[29] ;
-  wire \user_id_value.user_proj_id_high[2] ;
-  wire \user_id_value.user_proj_id_high[30] ;
-  wire \user_id_value.user_proj_id_high[31] ;
-  wire \user_id_value.user_proj_id_high[3] ;
-  wire \user_id_value.user_proj_id_high[4] ;
-  wire \user_id_value.user_proj_id_high[5] ;
-  wire \user_id_value.user_proj_id_high[6] ;
-  wire \user_id_value.user_proj_id_high[7] ;
-  wire \user_id_value.user_proj_id_high[8] ;
-  wire \user_id_value.user_proj_id_high[9] ;
-  wire \user_id_value.user_proj_id_low[0] ;
-  wire \user_id_value.user_proj_id_low[10] ;
-  wire \user_id_value.user_proj_id_low[11] ;
-  wire \user_id_value.user_proj_id_low[12] ;
-  wire \user_id_value.user_proj_id_low[13] ;
-  wire \user_id_value.user_proj_id_low[14] ;
-  wire \user_id_value.user_proj_id_low[15] ;
-  wire \user_id_value.user_proj_id_low[16] ;
-  wire \user_id_value.user_proj_id_low[17] ;
-  wire \user_id_value.user_proj_id_low[18] ;
-  wire \user_id_value.user_proj_id_low[19] ;
-  wire \user_id_value.user_proj_id_low[1] ;
-  wire \user_id_value.user_proj_id_low[20] ;
-  wire \user_id_value.user_proj_id_low[21] ;
-  wire \user_id_value.user_proj_id_low[22] ;
-  wire \user_id_value.user_proj_id_low[23] ;
-  wire \user_id_value.user_proj_id_low[24] ;
-  wire \user_id_value.user_proj_id_low[25] ;
-  wire \user_id_value.user_proj_id_low[26] ;
-  wire \user_id_value.user_proj_id_low[27] ;
-  wire \user_id_value.user_proj_id_low[28] ;
-  wire \user_id_value.user_proj_id_low[29] ;
-  wire \user_id_value.user_proj_id_low[2] ;
-  wire \user_id_value.user_proj_id_low[30] ;
-  wire \user_id_value.user_proj_id_low[31] ;
-  wire \user_id_value.user_proj_id_low[3] ;
-  wire \user_id_value.user_proj_id_low[4] ;
-  wire \user_id_value.user_proj_id_low[5] ;
-  wire \user_id_value.user_proj_id_low[6] ;
-  wire \user_id_value.user_proj_id_low[7] ;
-  wire \user_id_value.user_proj_id_low[8] ;
-  wire \user_id_value.user_proj_id_low[9] ;
   inout vccd;
   wire vccd;
   inout vccd1;
@@ -2460,10 +2364,18 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
   simple_por por (
     .por_l(por_l),
     .porb_h(porb_h),
-    .porb_l(porb_l)
+    .porb_l(porb_l),
+    .vdd1v8(vccd),
+    .vdd3v3(vddio),
+    .vss1v8(vssd),
+    .vss3v3(vssio)
   );
   xres_buf rstb_level (
     .A(resetb_h),
+    .LVGND(vssd),
+    .LVPWR(vccd),
+    .VGND(vssio),
+    .VPWR(vddio),
     .X(resetb_l)
   );
   sky130_ef_io__corner_pad \user0_corner[0]  (
@@ -2800,138 +2712,11 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSSIO_Q(vssio_q),
     .VSWITCH(vddio)
   );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[0]  (
-    .HI(\user_id_value.user_proj_id_high[0] ),
-    .LO(\user_id_value.mask_rev[0] )
+  user_id_programming user_id_value (
+    .VGND(vssd),
+    .VPWR(vccd),
+    .mask_rev(mask_rev)
   );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[10]  (
-    .HI(\user_id_value.user_proj_id_high[10] ),
-    .LO(\user_id_value.mask_rev[10] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[11]  (
-    .HI(\user_id_value.user_proj_id_high[11] ),
-    .LO(\user_id_value.mask_rev[11] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[12]  (
-    .HI(\user_id_value.user_proj_id_high[12] ),
-    .LO(\user_id_value.mask_rev[12] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[13]  (
-    .HI(\user_id_value.user_proj_id_high[13] ),
-    .LO(\user_id_value.mask_rev[13] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[14]  (
-    .HI(\user_id_value.user_proj_id_high[14] ),
-    .LO(\user_id_value.mask_rev[14] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[15]  (
-    .HI(\user_id_value.user_proj_id_high[15] ),
-    .LO(\user_id_value.mask_rev[15] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[16]  (
-    .HI(\user_id_value.user_proj_id_high[16] ),
-    .LO(\user_id_value.mask_rev[16] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[17]  (
-    .HI(\user_id_value.user_proj_id_high[17] ),
-    .LO(\user_id_value.mask_rev[17] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[18]  (
-    .HI(\user_id_value.user_proj_id_high[18] ),
-    .LO(\user_id_value.mask_rev[18] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[19]  (
-    .HI(\user_id_value.user_proj_id_high[19] ),
-    .LO(\user_id_value.mask_rev[19] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[1]  (
-    .HI(\user_id_value.user_proj_id_high[1] ),
-    .LO(\user_id_value.mask_rev[1] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[20]  (
-    .HI(\user_id_value.user_proj_id_high[20] ),
-    .LO(\user_id_value.mask_rev[20] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[21]  (
-    .HI(\user_id_value.user_proj_id_high[21] ),
-    .LO(\user_id_value.mask_rev[21] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[22]  (
-    .HI(\user_id_value.user_proj_id_high[22] ),
-    .LO(\user_id_value.mask_rev[22] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[23]  (
-    .HI(\user_id_value.user_proj_id_high[23] ),
-    .LO(\user_id_value.mask_rev[23] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[24]  (
-    .HI(\user_id_value.user_proj_id_high[24] ),
-    .LO(\user_id_value.mask_rev[24] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[25]  (
-    .HI(\user_id_value.user_proj_id_high[25] ),
-    .LO(\user_id_value.mask_rev[25] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[26]  (
-    .HI(\user_id_value.user_proj_id_high[26] ),
-    .LO(\user_id_value.mask_rev[26] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[27]  (
-    .HI(\user_id_value.user_proj_id_high[27] ),
-    .LO(\user_id_value.mask_rev[27] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[28]  (
-    .HI(\user_id_value.user_proj_id_high[28] ),
-    .LO(\user_id_value.mask_rev[28] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[29]  (
-    .HI(\user_id_value.user_proj_id_high[29] ),
-    .LO(\user_id_value.mask_rev[29] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[2]  (
-    .HI(\user_id_value.user_proj_id_high[2] ),
-    .LO(\user_id_value.mask_rev[2] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[30]  (
-    .HI(\user_id_value.user_proj_id_high[30] ),
-    .LO(\user_id_value.mask_rev[30] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[31]  (
-    .HI(\user_id_value.user_proj_id_high[31] ),
-    .LO(\user_id_value.mask_rev[31] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[3]  (
-    .HI(\user_id_value.user_proj_id_high[3] ),
-    .LO(\user_id_value.mask_rev[3] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[4]  (
-    .HI(\user_id_value.user_proj_id_high[4] ),
-    .LO(\user_id_value.mask_rev[4] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[5]  (
-    .HI(\user_id_value.user_proj_id_high[5] ),
-    .LO(\user_id_value.mask_rev[5] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[6]  (
-    .HI(\user_id_value.user_proj_id_high[6] ),
-    .LO(\user_id_value.mask_rev[6] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[7]  (
-    .HI(\user_id_value.user_proj_id_high[7] ),
-    .LO(\user_id_value.mask_rev[7] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[8]  (
-    .HI(\user_id_value.user_proj_id_high[8] ),
-    .LO(\user_id_value.mask_rev[8] )
-  );
-  sky130_fd_sc_hd__conb_1 \user_id_value.mask_rev_value[9]  (
-    .HI(\user_id_value.user_proj_id_high[9] ),
-    .LO(\user_id_value.mask_rev[9] )
-  );
-  assign \gpio_dm_all[131]  = gpio_dm2[43];
-  assign \gpio_dm_all[130]  = gpio_dm1[43];
-  assign \gpio_dm_all[129]  = gpio_dm0[43];
-  assign \gpio_dm_all[128]  = gpio_dm2[42];
   assign \gpio_dm_all[127]  = gpio_dm1[42];
   assign \gpio_dm_all[126]  = gpio_dm0[42];
   assign \gpio_dm_all[125]  = gpio_dm2[41];
@@ -3104,37 +2889,8 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
   assign \gpio_enh[2]  = porb_h;
   assign \gpio_enh[1]  = porb_h;
   assign \gpio_enh[0]  = porb_h;
-  assign \user_id_value.user_proj_id_low[31]  = \user_id_value.mask_rev[31] ;
-  assign \user_id_value.user_proj_id_low[30]  = \user_id_value.mask_rev[30] ;
-  assign \user_id_value.user_proj_id_low[29]  = \user_id_value.mask_rev[29] ;
-  assign \user_id_value.user_proj_id_low[28]  = \user_id_value.mask_rev[28] ;
-  assign \user_id_value.user_proj_id_low[27]  = \user_id_value.mask_rev[27] ;
-  assign \user_id_value.user_proj_id_low[26]  = \user_id_value.mask_rev[26] ;
-  assign \user_id_value.user_proj_id_low[25]  = \user_id_value.mask_rev[25] ;
-  assign \user_id_value.user_proj_id_low[24]  = \user_id_value.mask_rev[24] ;
-  assign \user_id_value.user_proj_id_low[23]  = \user_id_value.mask_rev[23] ;
-  assign \user_id_value.user_proj_id_low[22]  = \user_id_value.mask_rev[22] ;
-  assign \user_id_value.user_proj_id_low[21]  = \user_id_value.mask_rev[21] ;
-  assign \user_id_value.user_proj_id_low[20]  = \user_id_value.mask_rev[20] ;
-  assign \user_id_value.user_proj_id_low[19]  = \user_id_value.mask_rev[19] ;
-  assign \user_id_value.user_proj_id_low[18]  = \user_id_value.mask_rev[18] ;
-  assign \user_id_value.user_proj_id_low[17]  = \user_id_value.mask_rev[17] ;
-  assign \user_id_value.user_proj_id_low[16]  = \user_id_value.mask_rev[16] ;
-  assign \user_id_value.user_proj_id_low[15]  = \user_id_value.mask_rev[15] ;
-  assign \user_id_value.user_proj_id_low[14]  = \user_id_value.mask_rev[14] ;
-  assign \user_id_value.user_proj_id_low[13]  = \user_id_value.mask_rev[13] ;
-  assign \user_id_value.user_proj_id_low[12]  = \user_id_value.mask_rev[12] ;
-  assign \user_id_value.user_proj_id_low[11]  = \user_id_value.mask_rev[11] ;
-  assign \user_id_value.user_proj_id_low[10]  = \user_id_value.mask_rev[10] ;
-  assign \user_id_value.user_proj_id_low[9]  = \user_id_value.mask_rev[9] ;
-  assign \user_id_value.user_proj_id_low[8]  = \user_id_value.mask_rev[8] ;
-  assign \user_id_value.user_proj_id_low[7]  = \user_id_value.mask_rev[7] ;
-  assign \user_id_value.user_proj_id_low[6]  = \user_id_value.mask_rev[6] ;
-  assign \user_id_value.user_proj_id_low[5]  = \user_id_value.mask_rev[5] ;
-  assign \user_id_value.user_proj_id_low[4]  = \user_id_value.mask_rev[4] ;
-  assign \user_id_value.user_proj_id_low[3]  = \user_id_value.mask_rev[3] ;
-  assign \user_id_value.user_proj_id_low[2]  = \user_id_value.mask_rev[2] ;
-  assign \user_id_value.user_proj_id_low[1]  = \user_id_value.mask_rev[1] ;
-  assign \user_id_value.user_proj_id_low[0]  = \user_id_value.mask_rev[0] ;
-  assign mask_rev = { \user_id_value.mask_rev[31] , \user_id_value.mask_rev[30] , \user_id_value.mask_rev[29] , \user_id_value.mask_rev[28] , \user_id_value.mask_rev[27] , \user_id_value.mask_rev[26] , \user_id_value.mask_rev[25] , \user_id_value.mask_rev[24] , \user_id_value.mask_rev[23] , \user_id_value.mask_rev[22] , \user_id_value.mask_rev[21] , \user_id_value.mask_rev[20] , \user_id_value.mask_rev[19] , \user_id_value.mask_rev[18] , \user_id_value.mask_rev[17] , \user_id_value.mask_rev[16] , \user_id_value.mask_rev[15] , \user_id_value.mask_rev[14] , \user_id_value.mask_rev[13] , \user_id_value.mask_rev[12] , \user_id_value.mask_rev[11] , \user_id_value.mask_rev[10] , \user_id_value.mask_rev[9] , \user_id_value.mask_rev[8] , \user_id_value.mask_rev[7] , \user_id_value.mask_rev[6] , \user_id_value.mask_rev[5] , \user_id_value.mask_rev[4] , \user_id_value.mask_rev[3] , \user_id_value.mask_rev[2] , \user_id_value.mask_rev[1] , \user_id_value.mask_rev[0]  };
+  assign \gpio_dm_all[131]  = gpio_dm2[43];
+  assign \gpio_dm_all[129]  = gpio_dm0[43];
+  assign \gpio_dm_all[130]  = gpio_dm1[43];
+  assign \gpio_dm_all[128]  = gpio_dm2[42];
 endmodule

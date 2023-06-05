@@ -1014,6 +1014,18 @@ module caravel_openframe(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd,
     .porb_h(porb_h),
     .porb_l(porb_l),
     .resetb_h(rstb_h),
-    .resetb_l(rstb_l)
+    .resetb_l(rstb_l),
+    .vccd(vccd_core),
+    .vccd1(vccd1_core),
+    .vccd2(vccd2_core),
+    .vdda(vdda_core),
+    .vdda1(vdda1_core),
+    .vdda2(vdda2_core),
+    .vssa(vssa_core),
+    .vssa1(vssa1_core),
+    .vssa2(vssa2_core),
+    .vssd(vssd_core),
+    .vssd1(vssd1_core),
+    .vssd2(vssd2_core)
   );
 endmodule

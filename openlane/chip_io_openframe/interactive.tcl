@@ -21,7 +21,7 @@ set save_path $script_dir/../..
 set ::env(USE_GPIO_ROUTING_LEF) 0
 prep -design $script_dir -tag chip_io_openframe -overwrite
 
-set ::env(SYNTH_DEFINES) ""
+set ::env(SYNTH_DEFINES) "USE_POWER_PINS"
 verilog_elaborate
 #init_floorplan
 #file copy -force $::env(CURRENT_DEF) $::env(TMP_DIR)/lvs.def

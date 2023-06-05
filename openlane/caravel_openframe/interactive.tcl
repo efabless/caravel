@@ -19,7 +19,7 @@ set save_path $script_dir/../..
 
 prep -design $script_dir -tag caravel_openframe -overwrite
 
-set ::env(SYNTH_DEFINES) ""
+set ::env(SYNTH_DEFINES) "USE_POWER_PINS"
 verilog_elaborate
 save_views -pnl_path $::env(CURRENT_NETLIST) -save_path $save_path
 exit

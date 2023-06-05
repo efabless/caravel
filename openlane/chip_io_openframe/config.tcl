@@ -21,11 +21,11 @@ set ::env(DESIGN_IS_PADFRAME) 1
 set ::env(VERILOG_FILES) "\
 	$::env(DESIGN_DIR)/../../verilog/rtl/pads.v\
 	$::env(DESIGN_DIR)/../../verilog/rtl/defines.v\
-	$::env(DESIGN_DIR)/../../verilog/rtl/user_id_programming.v\
 	$::env(DESIGN_DIR)/../../verilog/rtl/chip_io_openframe.v"
 
 set ::env(VERILOG_FILES_BLACKBOX) "
 	$::env(DESIGN_DIR)/../../verilog/rtl/simple_por.v\
+	$::env(DESIGN_DIR)/../../verilog/rtl/user_id_programming.v\
 	$::env(DESIGN_DIR)/../../verilog/rtl/xres_buf.v\
     $::env(DESIGN_DIR)/../../verilog/gl/constant_block.v
 "
