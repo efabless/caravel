@@ -194,7 +194,7 @@ __truck:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
-.PHONY: ship
+.PHONY: openframe
 openframe: check-env uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
 	@echo "Running make openframe in the foreground..."
@@ -202,7 +202,7 @@ ifeq ($(FOREGROUND),1)
 	@echo "Make openframe completed." 2>&1 | tee -a ./signoff/build/make_openframe.out
 else
 	@echo "Running make openframe in the background..."
-	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __ship >/dev/null 2>&1 &
+	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe >/dev/null 2>&1 &
 	tail -f signoff/build/make_openframe.out
 	@echo "Make openframe completed."  2>&1 | tee -a ./signoff/build/make_openframe.out
 endif
