@@ -222,7 +222,7 @@ __openframe:
 		property GDS_FILE $(UPRJ_ROOT)/gds/openframe_project_wrapper.gds; \
 		property GDS_START 0; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
-		load caravel -dereference; \
+		load caravel_openframe -dereference; \
 		select top cell; \
 		expand; \
 		cif *hier write disable; \
