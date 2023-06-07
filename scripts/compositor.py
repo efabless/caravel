@@ -147,9 +147,9 @@ if __name__ == '__main__':
         keepmode = True
 
     magpath = mag_dir_path
-    rcfile = magpath + '/.magicrc'
-    # pdk_root = os.getenv("PDK_ROOT")
-    # rcfile = pdk_root + '/sky130A/libs.tech/magic/sky130A.magicrc'
+    # rcfile = magpath + '/.magicrc'
+    pdk_root = os.getenv("PDK_ROOT")
+    rcfile = pdk_root + '/sky130A/libs.tech/magic/sky130A.magicrc'
 
     gdspath = gds_dir_path
 
