@@ -235,8 +235,7 @@ __openframe:
 		expand; \
 		cif *hier write disable; \
 		cif *array write disable; \
-		save caravel; \
-		gds write $(UPRJ_ROOT)/gds/caravel.gds; \
+		gds write $(UPRJ_ROOT)/gds/caravel_openframe.gds; \
 		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
@@ -1155,7 +1154,6 @@ __generate_fill:
 	@mkdir -p ./signoff/build
 	@cp -r $(CARAVEL_ROOT)/mag/.magicrc $(shell pwd)/mag
 	python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist 2>&1 | tee ./signoff/build/generate_fill.out
-	#python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist -keep 2>&1 | tee ./signoff/build/generate_fill.out
 	#python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -keep 2>&1 | tee ./signoff/build/generate_fill.out
 
 
@@ -1224,7 +1222,7 @@ update_caravel:
 .PHONY: install_mcw
 install_mcw:
 	if [ -d "$(MCW_ROOT)" ]; then \
-		echo "Deleting existing $(MCW_ROOT)" && \
+		echo "Deleting exisiting $(MCW_ROOT)" && \
 		rm -rf $(MCW_ROOT) && sleep 2;\
 	fi
 ifeq ($(SUBMODULE),1)
@@ -1301,7 +1299,7 @@ clean-pdk:
 .PHONY: skywater-pdk
 skywater-pdk:
 	if [ -d "$(PDK_ROOT)/skywater-pdk" ]; then\
-		echo "Deleting existing $(PDK_ROOT)/skywater-pdk" && \
+		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
 		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2;\
 	fi
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
@@ -1318,7 +1316,7 @@ skywater-pdk:
 .PHONY: open-pdks
 open-pdks:
 	if [ -d "$(PDK_ROOT)/open_pdks" ]; then \
-		echo "Deleting existing $(PDK_ROOT)/open_pdks" && \
+		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
 		rm -rf $(PDK_ROOT)/open_pdks && sleep 2; \
 	fi
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
@@ -1329,7 +1327,7 @@ open-pdks:
 .PHONY: sky130
 sky130:
 	if [ -d "$(PDK_ROOT)/$(PDK)" ]; then \
-		echo "Deleting existing $(PDK_ROOT)/$(PDK)" && \
+		echo "Deleting exisiting $(PDK_ROOT)/$(PDK)" && \
 		rm -rf $(PDK_ROOT)/$(PDK) && sleep 2;\
 	fi
 	docker run --rm\
