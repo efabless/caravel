@@ -1,0 +1,2594 @@
+
+VERSION 5.8 ;
+DIVIDERCHAR "/" ;
+BUSBITCHARS "[]" ;
+DESIGN caravan_core ;
+UNITS DISTANCE MICRONS 1000 ;
+DIEAREA ( 0 0 ) ( 3165000 4767000 ) ;
+PINS 621 ;
+    - clock_core + NET clock_core + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 725275 1000 ) N ;
+    - flash_clk_frame + NET flash_clk_frame + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1597475 1000 ) N ;
+    - flash_clk_oeb + NET flash_clk_oeb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1613115 1000 ) N ;
+    - flash_csb_frame + NET flash_csb_frame + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1323475 1000 ) N ;
+    - flash_csb_oeb + NET flash_csb_oeb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1339115 1000 ) N ;
+    - flash_io0_di + NET flash_io0_di + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1816275 1000 ) N ;
+    - flash_io0_do + NET flash_io0_do + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1871475 1000 ) N ;
+    - flash_io0_ieb + NET flash_io0_ieb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1849855 1000 ) N ;
+    - flash_io0_oeb + NET flash_io0_oeb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1887115 1000 ) N ;
+    - flash_io1_di + NET flash_io1_di + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2090275 1000 ) N ;
+    - flash_io1_do + NET flash_io1_do + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2145475 1000 ) N ;
+    - flash_io1_ieb + NET flash_io1_ieb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2123855 1000 ) N ;
+    - flash_io1_oeb + NET flash_io1_oeb + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2161115 1000 ) N ;
+    - gpio_in_core + NET gpio_in_core + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2364275 1000 ) N ;
+    - gpio_inenb_core + NET gpio_inenb_core + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2397855 1000 ) N ;
+    - gpio_mode0_core + NET gpio_mode0_core + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2391875 1000 ) N ;
+    - gpio_mode1_core + NET gpio_mode1_core + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2413495 1000 ) N ;
+    - gpio_out_core + NET gpio_out_core + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2419475 1000 ) N ;
+    - gpio_outenb_core + NET gpio_outenb_core + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 2435115 1000 ) N ;
+    - por_l + NET por_l + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 758855 1000 ) N ;
+    - porb_h + NET porb_h + DIRECTION OUTPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -3000 ) ( 140 3000 )
+        + PLACED ( 1329915 1000 ) N ;
+    - rstb_h + NET rstb_h + DIRECTION INPUT + USE SIGNAL
+      + PORT
+        + LAYER met2 ( -140 -11525 ) ( 140 3000 )
+        + PLACED ( 496975 1000 ) N ;
+
+    - user_analog[0] + NET user_analog[0] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -300 ) ( 1000 200 )
+        + PLACED ( 3164500 4585280 ) N ;
+    - user_analog[1] + NET user_analog[1] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 2966500 4767000 ) N ; 
+    - user_analog[2] + NET user_analog[2] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 2451500 4767000 ) N ; 
+    - user_analog[3] + NET user_analog[3] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 2194500 4767000 ) N ; 
+
+    - user_analog[4] + NET user_analog[4] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1706500 4767000 ) N ; 
+    - user_clamp_high[0] + NET user_clamp_high[0] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1756500 4767000 ) N ; 
+    - user_clamp_low[0] + NET user_clamp_low[0] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1743500 4767000 ) N ; 
+
+    - user_analog[5] + NET user_analog[5] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1287500 4767000 ) N ; 
+    - user_clamp_high[1] + NET user_clamp_high[1] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1247500 4767000 ) N ; 
+    - user_clamp_low[1] + NET user_clamp_low[1] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1234500 4767000 ) N ; 
+
+    - user_analog[6] + NET user_analog[6] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 1024500 4767000 ) N ; 
+    - user_clamp_high[2] + NET user_clamp_high[2] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 984500 4767000 ) N ; 
+    - user_clamp_low[2] + NET user_clamp_low[2] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 971500 4767000 ) N ;        
+
+    - user_analog[7] + NET user_analog[7] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 725500 4767000 ) N ; 
+    - user_analog[8] + NET user_analog[8] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 468500 4767000 ) N ; 
+    - user_analog[9] + NET user_analog[9] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( 0 -500 ) ( 500 500 )
+        + PLACED ( 211500 4767000 ) N ;       
+    - user_analog[10] + NET user_analog[10] + DIRECTION INOUT + USE SIGNAL
+      + PORT
+        + LAYER met3 ( -500 -300 ) ( 500 200 )
+        + PLACED ( 0 4599000 ) N ;    
+        
+        
+
+    - mprj_io_in[0] + NET mprj_io_in[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 294275 ) N ;
+
+    - mprj_io_one[0] + NET mprj_io_one[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 300255 ) N ;
+
+    - mprj_io_slow_sel[0] + NET mprj_io_slow_sel[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 303475 ) N ;
+
+    - mprj_io_dm[1] + NET mprj_io_dm[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 312675 ) N ;
+
+    - mprj_io_analog_en[0] + NET mprj_io_analog_en[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 318655 ) N ;
+
+    - mprj_io_dm[0] + NET mprj_io_dm[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 321875 ) N ;
+
+    - mprj_io_analog_pol[0] + NET mprj_io_analog_pol[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 325095 ) N ;
+
+    - mprj_io_inp_dis[0] + NET mprj_io_inp_dis[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 327855 ) N ;
+
+    - mprj_io_analog_sel[0] + NET mprj_io_analog_sel[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 340275 ) N ;
+
+    - mprj_io_dm[2] + NET mprj_io_dm[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 343495 ) N ;
+
+    - mprj_io_holdover[0] + NET mprj_io_holdover[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 346715 ) N ;
+
+    - mprj_io_out[0] + NET mprj_io_out[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 349475 ) N ;
+
+    - mprj_io_vtrip_sel[0] + NET mprj_io_vtrip_sel[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 358675 ) N ;
+
+    - mprj_io_ib_mode_sel[0] + NET mprj_io_ib_mode_sel[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 361895 ) N ;
+
+    - mprj_io_oeb[0] + NET mprj_io_oeb[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 365115 ) N ;
+
+    - mprj_io_in_3v3[0] + NET mprj_io_in_3v3[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 367875 ) N ;
+
+    - mprj_io_in[1] + NET mprj_io_in[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 520275 ) N ;
+
+    - mprj_io_one[1] + NET mprj_io_one[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 526255 ) N ;
+
+    - mprj_io_slow_sel[1] + NET mprj_io_slow_sel[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 529475 ) N ;
+
+    - mprj_io_dm[4] + NET mprj_io_dm[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 538675 ) N ;
+
+    - mprj_io_analog_en[1] + NET mprj_io_analog_en[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 544655 ) N ;
+
+    - mprj_io_dm[3] + NET mprj_io_dm[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 547875 ) N ;
+
+    - mprj_io_analog_pol[1] + NET mprj_io_analog_pol[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 551095 ) N ;
+
+    - mprj_io_inp_dis[1] + NET mprj_io_inp_dis[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 553855 ) N ;
+
+    - mprj_io_analog_sel[1] + NET mprj_io_analog_sel[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 566275 ) N ;
+
+    - mprj_io_dm[5] + NET mprj_io_dm[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 569495 ) N ;
+
+    - mprj_io_holdover[1] + NET mprj_io_holdover[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 572715 ) N ;
+
+    - mprj_io_out[1] + NET mprj_io_out[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 575475 ) N ;
+
+    - mprj_io_vtrip_sel[1] + NET mprj_io_vtrip_sel[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 584675 ) N ;
+
+    - mprj_io_ib_mode_sel[1] + NET mprj_io_ib_mode_sel[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 587895 ) N ;
+
+    - mprj_io_oeb[1] + NET mprj_io_oeb[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 591115 ) N ;
+
+    - mprj_io_in_3v3[1] + NET mprj_io_in_3v3[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 593875 ) N ;
+
+    - mprj_io_in[2] + NET mprj_io_in[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 745275 ) N ;
+
+    - mprj_io_one[2] + NET mprj_io_one[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 751255 ) N ;
+
+    - mprj_io_slow_sel[2] + NET mprj_io_slow_sel[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 754475 ) N ;
+
+    - mprj_io_dm[7] + NET mprj_io_dm[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 763675 ) N ;
+
+    - mprj_io_analog_en[2] + NET mprj_io_analog_en[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 769655 ) N ;
+
+    - mprj_io_dm[6] + NET mprj_io_dm[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 772875 ) N ;
+
+    - mprj_io_analog_pol[2] + NET mprj_io_analog_pol[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 776095 ) N ;
+
+    - mprj_io_inp_dis[2] + NET mprj_io_inp_dis[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 778855 ) N ;
+
+    - mprj_io_analog_sel[2] + NET mprj_io_analog_sel[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 791275 ) N ;
+
+    - mprj_io_dm[8] + NET mprj_io_dm[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 794495 ) N ;
+
+    - mprj_io_holdover[2] + NET mprj_io_holdover[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 797715 ) N ;
+
+    - mprj_io_out[2] + NET mprj_io_out[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 800475 ) N ;
+
+    - mprj_io_vtrip_sel[2] + NET mprj_io_vtrip_sel[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 809675 ) N ;
+
+    - mprj_io_ib_mode_sel[2] + NET mprj_io_ib_mode_sel[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 812895 ) N ;
+
+    - mprj_io_oeb[2] + NET mprj_io_oeb[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 816115 ) N ;
+
+    - mprj_io_in_3v3[2] + NET mprj_io_in_3v3[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 818875 ) N ;
+
+    - mprj_io_in[3] + NET mprj_io_in[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 971275 ) N ;
+
+    - mprj_io_one[3] + NET mprj_io_one[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 977255 ) N ;
+
+    - mprj_io_slow_sel[3] + NET mprj_io_slow_sel[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 980475 ) N ;
+
+    - mprj_io_dm[10] + NET mprj_io_dm[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 989675 ) N ;
+
+    - mprj_io_analog_en[3] + NET mprj_io_analog_en[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 995655 ) N ;
+
+    - mprj_io_dm[9] + NET mprj_io_dm[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 998875 ) N ;
+
+    - mprj_io_analog_pol[3] + NET mprj_io_analog_pol[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1002095 ) N ;
+
+    - mprj_io_inp_dis[3] + NET mprj_io_inp_dis[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1004855 ) N ;
+
+    - mprj_io_analog_sel[3] + NET mprj_io_analog_sel[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1017275 ) N ;
+
+    - mprj_io_dm[11] + NET mprj_io_dm[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1020495 ) N ;
+
+    - mprj_io_holdover[3] + NET mprj_io_holdover[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1023715 ) N ;
+
+    - mprj_io_out[3] + NET mprj_io_out[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1026475 ) N ;
+
+    - mprj_io_vtrip_sel[3] + NET mprj_io_vtrip_sel[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1035675 ) N ;
+
+    - mprj_io_ib_mode_sel[3] + NET mprj_io_ib_mode_sel[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1038895 ) N ;
+
+    - mprj_io_oeb[3] + NET mprj_io_oeb[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1042115 ) N ;
+
+    - mprj_io_in_3v3[3] + NET mprj_io_in_3v3[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1044875 ) N ;
+
+    - mprj_io_in[4] + NET mprj_io_in[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1196275 ) N ;
+
+    - mprj_io_one[4] + NET mprj_io_one[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1202255 ) N ;
+
+    - mprj_io_slow_sel[4] + NET mprj_io_slow_sel[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1205475 ) N ;
+
+    - mprj_io_dm[13] + NET mprj_io_dm[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1214675 ) N ;
+
+    - mprj_io_analog_en[4] + NET mprj_io_analog_en[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1220655 ) N ;
+
+    - mprj_io_dm[12] + NET mprj_io_dm[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1223875 ) N ;
+
+    - mprj_io_analog_pol[4] + NET mprj_io_analog_pol[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1227095 ) N ;
+
+    - mprj_io_inp_dis[4] + NET mprj_io_inp_dis[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1229855 ) N ;
+
+    - mprj_io_analog_sel[4] + NET mprj_io_analog_sel[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1242275 ) N ;
+
+    - mprj_io_dm[14] + NET mprj_io_dm[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1245495 ) N ;
+
+    - mprj_io_holdover[4] + NET mprj_io_holdover[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1248715 ) N ;
+
+    - mprj_io_out[4] + NET mprj_io_out[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1251475 ) N ;
+
+    - mprj_io_vtrip_sel[4] + NET mprj_io_vtrip_sel[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1260675 ) N ;
+
+    - mprj_io_ib_mode_sel[4] + NET mprj_io_ib_mode_sel[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1263895 ) N ;
+
+    - mprj_io_oeb[4] + NET mprj_io_oeb[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1267115 ) N ;
+
+    - mprj_io_in_3v3[4] + NET mprj_io_in_3v3[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1269875 ) N ;
+
+    - mprj_io_in[5] + NET mprj_io_in[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1421275 ) N ;
+
+    - mprj_io_one[5] + NET mprj_io_one[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1427255 ) N ;
+
+    - mprj_io_slow_sel[5] + NET mprj_io_slow_sel[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1430475 ) N ;
+
+    - mprj_io_dm[16] + NET mprj_io_dm[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1439675 ) N ;
+
+    - mprj_io_analog_en[5] + NET mprj_io_analog_en[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1445655 ) N ;
+
+    - mprj_io_dm[15] + NET mprj_io_dm[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1448875 ) N ;
+
+    - mprj_io_analog_pol[5] + NET mprj_io_analog_pol[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1452095 ) N ;
+
+    - mprj_io_inp_dis[5] + NET mprj_io_inp_dis[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1454855 ) N ;
+
+    - mprj_io_analog_sel[5] + NET mprj_io_analog_sel[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1467275 ) N ;
+
+    - mprj_io_dm[17] + NET mprj_io_dm[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1470495 ) N ;
+
+    - mprj_io_holdover[5] + NET mprj_io_holdover[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1473715 ) N ;
+
+    - mprj_io_out[5] + NET mprj_io_out[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1476475 ) N ;
+
+    - mprj_io_vtrip_sel[5] + NET mprj_io_vtrip_sel[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1485675 ) N ;
+
+    - mprj_io_ib_mode_sel[5] + NET mprj_io_ib_mode_sel[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1488895 ) N ;
+
+    - mprj_io_oeb[5] + NET mprj_io_oeb[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1492115 ) N ;
+
+    - mprj_io_in_3v3[5] + NET mprj_io_in_3v3[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1494875 ) N ;
+
+    - mprj_io_in[6] + NET mprj_io_in[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1647275 ) N ;
+
+    - mprj_io_one[6] + NET mprj_io_one[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1653255 ) N ;
+
+    - mprj_io_slow_sel[6] + NET mprj_io_slow_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1656475 ) N ;
+
+    - mprj_io_dm[19] + NET mprj_io_dm[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1665675 ) N ;
+
+    - mprj_io_analog_en[6] + NET mprj_io_analog_en[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1671655 ) N ;
+
+    - mprj_io_dm[18] + NET mprj_io_dm[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1674875 ) N ;
+
+    - mprj_io_analog_pol[6] + NET mprj_io_analog_pol[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1678095 ) N ;
+
+    - mprj_io_inp_dis[6] + NET mprj_io_inp_dis[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1680855 ) N ;
+
+    - mprj_io_analog_sel[6] + NET mprj_io_analog_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1693275 ) N ;
+
+    - mprj_io_dm[20] + NET mprj_io_dm[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1696495 ) N ;
+
+    - mprj_io_holdover[6] + NET mprj_io_holdover[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1699715 ) N ;
+
+    - mprj_io_out[6] + NET mprj_io_out[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1702475 ) N ;
+
+    - mprj_io_vtrip_sel[6] + NET mprj_io_vtrip_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1711675 ) N ;
+
+    - mprj_io_ib_mode_sel[6] + NET mprj_io_ib_mode_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1714895 ) N ;
+
+    - mprj_io_oeb[6] + NET mprj_io_oeb[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1718115 ) N ;
+
+    - mprj_io_in_3v3[6] + NET mprj_io_in_3v3[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1720875 ) N ;
+
+    - mprj_io_in[6] + NET mprj_io_in[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1647275 ) N ;
+
+    - mprj_io_one[6] + NET mprj_io_one[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1653255 ) N ;
+
+    - mprj_io_slow_sel[6] + NET mprj_io_slow_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1656475 ) N ;
+
+    - mprj_io_dm[19] + NET mprj_io_dm[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1665675 ) N ;
+
+    - mprj_io_analog_en[6] + NET mprj_io_analog_en[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1671655 ) N ;
+
+    - mprj_io_dm[18] + NET mprj_io_dm[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1674875 ) N ;
+
+    - mprj_io_analog_pol[6] + NET mprj_io_analog_pol[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1678095 ) N ;
+
+    - mprj_io_inp_dis[6] + NET mprj_io_inp_dis[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1680855 ) N ;
+
+    - mprj_io_analog_sel[6] + NET mprj_io_analog_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1693275 ) N ;
+
+    - mprj_io_dm[20] + NET mprj_io_dm[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1696495 ) N ;
+
+    - mprj_io_holdover[6] + NET mprj_io_holdover[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1699715 ) N ;
+
+    - mprj_io_out[6] + NET mprj_io_out[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1702475 ) N ;
+
+    - mprj_io_vtrip_sel[6] + NET mprj_io_vtrip_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1711675 ) N ;
+
+    - mprj_io_ib_mode_sel[6] + NET mprj_io_ib_mode_sel[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1714895 ) N ;
+
+    - mprj_io_oeb[6] + NET mprj_io_oeb[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1718115 ) N ;
+
+    - mprj_io_in_3v3[6] + NET mprj_io_in_3v3[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 1720875 ) N ;
+
+    - mprj_io_in[7] + NET mprj_io_in[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2533275 ) N ;
+
+    - mprj_io_one[7] + NET mprj_io_one[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2539255 ) N ;
+
+    - mprj_io_slow_sel[7] + NET mprj_io_slow_sel[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2542475 ) N ;
+
+    - user_gpio_analog[0] + NET user_gpio_analog[0] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2545695 ) N ;
+
+    - mprj_io_dm[22] + NET mprj_io_dm[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2551675 ) N ;
+
+        - user_gpio_noesd[0] + NET user_gpio_noesd[0] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 2554895 ) N ;
+
+    - mprj_io_analog_en[7] + NET mprj_io_analog_en[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2557655 ) N ;
+
+    - mprj_io_dm[21] + NET mprj_io_dm[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2560875 ) N ;
+
+    - mprj_io_analog_pol[7] + NET mprj_io_analog_pol[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2564095 ) N ;
+
+    - mprj_io_inp_dis[7] + NET mprj_io_inp_dis[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2566855 ) N ;
+
+    - mprj_io_analog_sel[7] + NET mprj_io_analog_sel[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2579275 ) N ;
+
+    - mprj_io_dm[23] + NET mprj_io_dm[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2582495 ) N ;
+
+    - mprj_io_holdover[7] + NET mprj_io_holdover[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2585715 ) N ;
+
+    - mprj_io_out[7] + NET mprj_io_out[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2588475 ) N ;
+
+    - mprj_io_vtrip_sel[7] + NET mprj_io_vtrip_sel[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2597675 ) N ;
+
+    - mprj_io_ib_mode_sel[7] + NET mprj_io_ib_mode_sel[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2600895 ) N ;
+
+    - mprj_io_oeb[7] + NET mprj_io_oeb[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2604115 ) N ;
+
+    - mprj_io_in_3v3[7] + NET mprj_io_in_3v3[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2606875 ) N ;
+
+    - mprj_io_in[8] + NET mprj_io_in[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2759275 ) N ;
+
+    - mprj_io_one[8] + NET mprj_io_one[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2765255 ) N ;
+
+    - mprj_io_slow_sel[8] + NET mprj_io_slow_sel[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2768475 ) N ;
+
+    - user_gpio_analog[1] + NET user_gpio_analog[1] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2771695 ) N ;
+
+    - mprj_io_dm[25] + NET mprj_io_dm[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2777675 ) N ;
+
+        - user_gpio_noesd[1] + NET user_gpio_noesd[1] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 2780895 ) N ;
+
+    - mprj_io_analog_en[8] + NET mprj_io_analog_en[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2783655 ) N ;
+
+    - mprj_io_dm[24] + NET mprj_io_dm[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2786875 ) N ;
+
+    - mprj_io_analog_pol[8] + NET mprj_io_analog_pol[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2790095 ) N ;
+
+    - mprj_io_inp_dis[8] + NET mprj_io_inp_dis[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2792855 ) N ;
+
+    - mprj_io_analog_sel[8] + NET mprj_io_analog_sel[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2805275 ) N ;
+
+    - mprj_io_dm[26] + NET mprj_io_dm[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2808495 ) N ;
+
+    - mprj_io_holdover[8] + NET mprj_io_holdover[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2811715 ) N ;
+
+    - mprj_io_out[8] + NET mprj_io_out[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2814475 ) N ;
+
+    - mprj_io_vtrip_sel[8] + NET mprj_io_vtrip_sel[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2823675 ) N ;
+
+    - mprj_io_ib_mode_sel[8] + NET mprj_io_ib_mode_sel[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2826895 ) N ;
+
+    - mprj_io_oeb[8] + NET mprj_io_oeb[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2830115 ) N ;
+
+    - mprj_io_in_3v3[8] + NET mprj_io_in_3v3[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2832875 ) N ;
+
+    - mprj_io_in[9] + NET mprj_io_in[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2984275 ) N ;
+
+    - mprj_io_one[9] + NET mprj_io_one[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2990255 ) N ;
+
+    - mprj_io_slow_sel[9] + NET mprj_io_slow_sel[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2993475 ) N ;
+
+    - user_gpio_analog[2] + NET user_gpio_analog[2] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 2996695 ) N ;
+
+    - mprj_io_dm[28] + NET mprj_io_dm[28] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3002675 ) N ;
+
+        - user_gpio_noesd[2] + NET user_gpio_noesd[2] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 3005895 ) N ;
+
+    - mprj_io_analog_en[9] + NET mprj_io_analog_en[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3008655 ) N ;
+
+    - mprj_io_dm[27] + NET mprj_io_dm[27] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3011875 ) N ;
+
+    - mprj_io_analog_pol[9] + NET mprj_io_analog_pol[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3015095 ) N ;
+
+    - mprj_io_inp_dis[9] + NET mprj_io_inp_dis[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3017855 ) N ;
+
+    - mprj_io_analog_sel[9] + NET mprj_io_analog_sel[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3030275 ) N ;
+
+    - mprj_io_dm[29] + NET mprj_io_dm[29] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3033495 ) N ;
+
+    - mprj_io_holdover[9] + NET mprj_io_holdover[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3036715 ) N ;
+
+    - mprj_io_out[9] + NET mprj_io_out[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3039475 ) N ;
+
+    - mprj_io_vtrip_sel[9] + NET mprj_io_vtrip_sel[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3048675 ) N ;
+
+    - mprj_io_ib_mode_sel[9] + NET mprj_io_ib_mode_sel[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3051895 ) N ;
+
+    - mprj_io_oeb[9] + NET mprj_io_oeb[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3055115 ) N ;
+
+    - mprj_io_in_3v3[9] + NET mprj_io_in_3v3[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3057875 ) N ;
+
+    - mprj_io_in[10] + NET mprj_io_in[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3210275 ) N ;
+
+    - mprj_io_one[10] + NET mprj_io_one[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3216255 ) N ;
+
+    - mprj_io_slow_sel[10] + NET mprj_io_slow_sel[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3219475 ) N ;
+
+    - user_gpio_analog[3] + NET user_gpio_analog[3] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3222695 ) N ;
+
+    - mprj_io_dm[31] + NET mprj_io_dm[31] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3228675 ) N ;
+
+        - user_gpio_noesd[3] + NET user_gpio_noesd[3] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 3231895 ) N ;
+
+    - mprj_io_analog_en[10] + NET mprj_io_analog_en[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3234655 ) N ;
+
+    - mprj_io_dm[30] + NET mprj_io_dm[30] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3237875 ) N ;
+
+    - mprj_io_analog_pol[10] + NET mprj_io_analog_pol[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3241095 ) N ;
+
+    - mprj_io_inp_dis[10] + NET mprj_io_inp_dis[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3243855 ) N ;
+
+    - mprj_io_analog_sel[10] + NET mprj_io_analog_sel[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3256275 ) N ;
+
+    - mprj_io_dm[32] + NET mprj_io_dm[32] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3259495 ) N ;
+
+    - mprj_io_holdover[10] + NET mprj_io_holdover[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3262715 ) N ;
+
+    - mprj_io_out[10] + NET mprj_io_out[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3265475 ) N ;
+
+    - mprj_io_vtrip_sel[10] + NET mprj_io_vtrip_sel[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3274675 ) N ;
+
+    - mprj_io_ib_mode_sel[10] + NET mprj_io_ib_mode_sel[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3277895 ) N ;
+
+    - mprj_io_oeb[10] + NET mprj_io_oeb[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3281115 ) N ;
+
+    - mprj_io_in_3v3[10] + NET mprj_io_in_3v3[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3283875 ) N ;
+
+    - mprj_io_in[11] + NET mprj_io_in[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3435275 ) N ;
+
+    - mprj_io_one[11] + NET mprj_io_one[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3441255 ) N ;
+
+    - mprj_io_slow_sel[11] + NET mprj_io_slow_sel[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3444475 ) N ;
+
+    - user_gpio_analog[4] + NET user_gpio_analog[4] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3447695 ) N ;
+
+    - mprj_io_dm[34] + NET mprj_io_dm[34] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3453675 ) N ;
+
+        - user_gpio_noesd[4] + NET user_gpio_noesd[4] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 3456895 ) N ;
+
+    - mprj_io_analog_en[11] + NET mprj_io_analog_en[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3459655 ) N ;
+
+    - mprj_io_dm[33] + NET mprj_io_dm[33] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3462875 ) N ;
+
+    - mprj_io_analog_pol[11] + NET mprj_io_analog_pol[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3466095 ) N ;
+
+    - mprj_io_inp_dis[11] + NET mprj_io_inp_dis[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3468855 ) N ;
+
+    - mprj_io_analog_sel[11] + NET mprj_io_analog_sel[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3481275 ) N ;
+
+    - mprj_io_dm[35] + NET mprj_io_dm[35] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3484495 ) N ;
+
+    - mprj_io_holdover[11] + NET mprj_io_holdover[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3487715 ) N ;
+
+    - mprj_io_out[11] + NET mprj_io_out[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3490475 ) N ;
+
+    - mprj_io_vtrip_sel[11] + NET mprj_io_vtrip_sel[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3499675 ) N ;
+
+    - mprj_io_ib_mode_sel[11] + NET mprj_io_ib_mode_sel[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3502895 ) N ;
+
+    - mprj_io_oeb[11] + NET mprj_io_oeb[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3506115 ) N ;
+
+    - mprj_io_in_3v3[11] + NET mprj_io_in_3v3[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3508875 ) N ;
+
+    - mprj_io_in[12] + NET mprj_io_in[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3660275 ) N ;
+
+    - mprj_io_one[12] + NET mprj_io_one[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3666255 ) N ;
+
+    - mprj_io_slow_sel[12] + NET mprj_io_slow_sel[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3669475 ) N ;
+
+    - user_gpio_analog[5] + NET user_gpio_analog[5] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3672695 ) N ;
+
+    - mprj_io_dm[37] + NET mprj_io_dm[37] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3678675 ) N ;
+
+        - user_gpio_noesd[5] + NET user_gpio_noesd[5] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 3681895 ) N ;
+
+    - mprj_io_analog_en[12] + NET mprj_io_analog_en[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3684655 ) N ;
+
+    - mprj_io_dm[36] + NET mprj_io_dm[36] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3687875 ) N ;
+
+    - mprj_io_analog_pol[12] + NET mprj_io_analog_pol[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3691095 ) N ;
+
+    - mprj_io_inp_dis[12] + NET mprj_io_inp_dis[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3693855 ) N ;
+
+    - mprj_io_analog_sel[12] + NET mprj_io_analog_sel[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3706275 ) N ;
+
+    - mprj_io_dm[38] + NET mprj_io_dm[38] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3709495 ) N ;
+
+    - mprj_io_holdover[12] + NET mprj_io_holdover[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3712715 ) N ;
+
+    - mprj_io_out[12] + NET mprj_io_out[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3715475 ) N ;
+
+    - mprj_io_vtrip_sel[12] + NET mprj_io_vtrip_sel[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3724675 ) N ;
+
+    - mprj_io_ib_mode_sel[12] + NET mprj_io_ib_mode_sel[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3727895 ) N ;
+
+    - mprj_io_oeb[12] + NET mprj_io_oeb[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3731115 ) N ;
+
+    - mprj_io_in_3v3[12] + NET mprj_io_in_3v3[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 3733875 ) N ;
+
+    - mprj_io_in[13] + NET mprj_io_in[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4106275 ) N ;
+
+    - mprj_io_one[13] + NET mprj_io_one[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4112255 ) N ;
+
+    - mprj_io_slow_sel[13] + NET mprj_io_slow_sel[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4115475 ) N ;
+
+    - user_gpio_analog[6] + NET user_gpio_analog[6] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4118695 ) N ;
+
+    - mprj_io_dm[40] + NET mprj_io_dm[40] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4124675 ) N ;
+
+        - user_gpio_noesd[6] + NET user_gpio_noesd[6] + DIRECTION INPUT + USE SIGNAL
+            + PORT
+            + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+            + PLACED ( 3164000 4127895 ) N ;
+
+    - mprj_io_analog_en[13] + NET mprj_io_analog_en[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4130655 ) N ;
+
+    - mprj_io_dm[39] + NET mprj_io_dm[39] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4133875 ) N ;
+
+    - mprj_io_analog_pol[13] + NET mprj_io_analog_pol[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4137095 ) N ;
+
+    - mprj_io_inp_dis[13] + NET mprj_io_inp_dis[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4139855 ) N ;
+
+    - mprj_io_analog_sel[13] + NET mprj_io_analog_sel[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4152275 ) N ;
+
+    - mprj_io_dm[41] + NET mprj_io_dm[41] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4155495 ) N ;
+
+    - mprj_io_holdover[13] + NET mprj_io_holdover[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4158715 ) N ;
+
+    - mprj_io_out[13] + NET mprj_io_out[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4161475 ) N ;
+
+    - mprj_io_vtrip_sel[13] + NET mprj_io_vtrip_sel[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4170675 ) N ;
+
+    - mprj_io_ib_mode_sel[13] + NET mprj_io_ib_mode_sel[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4173895 ) N ;
+
+    - mprj_io_oeb[13] + NET mprj_io_oeb[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4177115 ) N ;
+
+    - mprj_io_in_3v3[13] + NET mprj_io_in_3v3[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 3164000 4179875 ) N ;
+
+    - mprj_io_in[14] + NET mprj_io_in[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3786725 ) N ;
+
+    - mprj_io_one[14] + NET mprj_io_one[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3780745 ) N ;
+
+    - mprj_io_slow_sel[14] + NET mprj_io_slow_sel[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3777525 ) N ;
+
+    - user_gpio_analog[7] + NET user_gpio_analog[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3774305 ) N ;
+
+    - mprj_io_dm[43] + NET mprj_io_dm[43] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3768325 ) N ;
+
+    - user_gpio_noesd[7] + NET user_gpio_noesd[7] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3765105 ) N ;
+
+    - mprj_io_analog_en[14] + NET mprj_io_analog_en[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3762345 ) N ;
+
+    - mprj_io_dm[42] + NET mprj_io_dm[42] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3759125 ) N ;
+
+    - mprj_io_analog_pol[14] + NET mprj_io_analog_pol[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3755905 ) N ;
+
+    - mprj_io_inp_dis[14] + NET mprj_io_inp_dis[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3753145 ) N ;
+
+    - mprj_io_analog_sel[14] + NET mprj_io_analog_sel[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3740725 ) N ;
+
+    - mprj_io_dm[44] + NET mprj_io_dm[44] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3737505 ) N ;
+
+    - mprj_io_holdover[14] + NET mprj_io_holdover[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3734285 ) N ;
+
+    - mprj_io_out[14] + NET mprj_io_out[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3731525 ) N ;
+
+    - mprj_io_vtrip_sel[14] + NET mprj_io_vtrip_sel[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3722325 ) N ;
+
+    - mprj_io_ib_mode_sel[14] + NET mprj_io_ib_mode_sel[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3719105 ) N ;
+
+    - mprj_io_oeb[14] + NET mprj_io_oeb[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3715885 ) N ;
+
+    - mprj_io_in_3v3[14] + NET mprj_io_in_3v3[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 3713125 ) N ;
+
+    - mprj_io_in[15] + NET mprj_io_in[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3570725 ) N ;
+
+    - mprj_io_one[15] + NET mprj_io_one[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3564745 ) N ;
+
+    - mprj_io_slow_sel[15] + NET mprj_io_slow_sel[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3561525 ) N ;
+
+    - user_gpio_analog[8] + NET user_gpio_analog[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3558305 ) N ;
+
+    - mprj_io_dm[46] + NET mprj_io_dm[46] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3552325 ) N ;
+
+    - user_gpio_noesd[8] + NET user_gpio_noesd[8] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3549105 ) N ;
+
+    - mprj_io_analog_en[15] + NET mprj_io_analog_en[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3546345 ) N ;
+
+    - mprj_io_dm[45] + NET mprj_io_dm[45] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3543125 ) N ;
+
+    - mprj_io_analog_pol[15] + NET mprj_io_analog_pol[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3539905 ) N ;
+
+    - mprj_io_inp_dis[15] + NET mprj_io_inp_dis[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3537145 ) N ;
+
+    - mprj_io_analog_sel[15] + NET mprj_io_analog_sel[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3524725 ) N ;
+
+    - mprj_io_dm[47] + NET mprj_io_dm[47] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3521505 ) N ;
+
+    - mprj_io_holdover[15] + NET mprj_io_holdover[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3518285 ) N ;
+
+    - mprj_io_out[15] + NET mprj_io_out[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3515525 ) N ;
+
+    - mprj_io_vtrip_sel[15] + NET mprj_io_vtrip_sel[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3506325 ) N ;
+
+    - mprj_io_ib_mode_sel[15] + NET mprj_io_ib_mode_sel[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3503105 ) N ;
+
+    - mprj_io_oeb[15] + NET mprj_io_oeb[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3499885 ) N ;
+
+    - mprj_io_in_3v3[15] + NET mprj_io_in_3v3[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 3497125 ) N ;
+
+    - mprj_io_in[16] + NET mprj_io_in[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3354725 ) N ;
+
+    - mprj_io_one[16] + NET mprj_io_one[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3348745 ) N ;
+
+    - mprj_io_slow_sel[16] + NET mprj_io_slow_sel[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3345525 ) N ;
+
+    - user_gpio_analog[9] + NET user_gpio_analog[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3342305 ) N ;
+
+    - mprj_io_dm[49] + NET mprj_io_dm[49] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3336325 ) N ;
+
+    - user_gpio_noesd[9] + NET user_gpio_noesd[9] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3333105 ) N ;
+
+    - mprj_io_analog_en[16] + NET mprj_io_analog_en[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3330345 ) N ;
+
+    - mprj_io_dm[48] + NET mprj_io_dm[48] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3327125 ) N ;
+
+    - mprj_io_analog_pol[16] + NET mprj_io_analog_pol[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3323905 ) N ;
+
+    - mprj_io_inp_dis[16] + NET mprj_io_inp_dis[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3321145 ) N ;
+
+    - mprj_io_analog_sel[16] + NET mprj_io_analog_sel[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3308725 ) N ;
+
+    - mprj_io_dm[50] + NET mprj_io_dm[50] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3305505 ) N ;
+
+    - mprj_io_holdover[16] + NET mprj_io_holdover[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3302285 ) N ;
+
+    - mprj_io_out[16] + NET mprj_io_out[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3299525 ) N ;
+
+    - mprj_io_vtrip_sel[16] + NET mprj_io_vtrip_sel[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3290325 ) N ;
+
+    - mprj_io_ib_mode_sel[16] + NET mprj_io_ib_mode_sel[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3287105 ) N ;
+
+    - mprj_io_oeb[16] + NET mprj_io_oeb[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3283885 ) N ;
+
+    - mprj_io_in_3v3[16] + NET mprj_io_in_3v3[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 3281125 ) N ;
+
+    - mprj_io_in[17] + NET mprj_io_in[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3138725 ) N ;
+
+    - mprj_io_one[17] + NET mprj_io_one[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3132745 ) N ;
+
+    - mprj_io_slow_sel[17] + NET mprj_io_slow_sel[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3129525 ) N ;
+
+    - user_gpio_analog[10] + NET user_gpio_analog[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3126305 ) N ;
+
+    - mprj_io_dm[52] + NET mprj_io_dm[52] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3120325 ) N ;
+
+    - user_gpio_noesd[10] + NET user_gpio_noesd[10] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3117105 ) N ;
+
+    - mprj_io_analog_en[17] + NET mprj_io_analog_en[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3114345 ) N ;
+
+    - mprj_io_dm[51] + NET mprj_io_dm[51] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3111125 ) N ;
+
+    - mprj_io_analog_pol[17] + NET mprj_io_analog_pol[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3107905 ) N ;
+
+    - mprj_io_inp_dis[17] + NET mprj_io_inp_dis[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3105145 ) N ;
+
+    - mprj_io_analog_sel[17] + NET mprj_io_analog_sel[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3092725 ) N ;
+
+    - mprj_io_dm[53] + NET mprj_io_dm[53] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3089505 ) N ;
+
+    - mprj_io_holdover[17] + NET mprj_io_holdover[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3086285 ) N ;
+
+    - mprj_io_out[17] + NET mprj_io_out[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3083525 ) N ;
+
+    - mprj_io_vtrip_sel[17] + NET mprj_io_vtrip_sel[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3074325 ) N ;
+
+    - mprj_io_ib_mode_sel[17] + NET mprj_io_ib_mode_sel[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3071105 ) N ;
+
+    - mprj_io_oeb[17] + NET mprj_io_oeb[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 3067885 ) N ;
+
+    - mprj_io_in_3v3[17] + NET mprj_io_in_3v3[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 3065125 ) N ;
+
+    - mprj_io_in[18] + NET mprj_io_in[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2922725 ) N ;
+
+    - mprj_io_one[18] + NET mprj_io_one[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2916745 ) N ;
+
+    - mprj_io_slow_sel[18] + NET mprj_io_slow_sel[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2913525 ) N ;
+
+    - user_gpio_analog[11] + NET user_gpio_analog[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2910305 ) N ;
+
+    - mprj_io_dm[55] + NET mprj_io_dm[55] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2904325 ) N ;
+
+    - user_gpio_noesd[11] + NET user_gpio_noesd[11] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2901105 ) N ;
+
+    - mprj_io_analog_en[18] + NET mprj_io_analog_en[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2898345 ) N ;
+
+    - mprj_io_dm[54] + NET mprj_io_dm[54] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2895125 ) N ;
+
+    - mprj_io_analog_pol[18] + NET mprj_io_analog_pol[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2891905 ) N ;
+
+    - mprj_io_inp_dis[18] + NET mprj_io_inp_dis[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2889145 ) N ;
+
+    - mprj_io_analog_sel[18] + NET mprj_io_analog_sel[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2876725 ) N ;
+
+    - mprj_io_dm[56] + NET mprj_io_dm[56] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2873505 ) N ;
+
+    - mprj_io_holdover[18] + NET mprj_io_holdover[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2870285 ) N ;
+
+    - mprj_io_out[18] + NET mprj_io_out[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2867525 ) N ;
+
+    - mprj_io_vtrip_sel[18] + NET mprj_io_vtrip_sel[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2858325 ) N ;
+
+    - mprj_io_ib_mode_sel[18] + NET mprj_io_ib_mode_sel[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2855105 ) N ;
+
+    - mprj_io_oeb[18] + NET mprj_io_oeb[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2851885 ) N ;
+
+    - mprj_io_in_3v3[18] + NET mprj_io_in_3v3[18] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 2849125 ) N ;
+
+    - mprj_io_in[19] + NET mprj_io_in[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2706725 ) N ;
+
+    - mprj_io_one[19] + NET mprj_io_one[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2700745 ) N ;
+
+    - mprj_io_slow_sel[19] + NET mprj_io_slow_sel[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2697525 ) N ;
+
+    - user_gpio_analog[12] + NET user_gpio_analog[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2694305 ) N ;
+
+    - mprj_io_dm[58] + NET mprj_io_dm[58] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2688325 ) N ;
+
+    - user_gpio_noesd[12] + NET user_gpio_noesd[12] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2685105 ) N ;
+
+    - mprj_io_analog_en[19] + NET mprj_io_analog_en[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2682345 ) N ;
+
+    - mprj_io_dm[57] + NET mprj_io_dm[57] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2679125 ) N ;
+
+    - mprj_io_analog_pol[19] + NET mprj_io_analog_pol[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2675905 ) N ;
+
+    - mprj_io_inp_dis[19] + NET mprj_io_inp_dis[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2673145 ) N ;
+
+    - mprj_io_analog_sel[19] + NET mprj_io_analog_sel[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2660725 ) N ;
+
+    - mprj_io_dm[59] + NET mprj_io_dm[59] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2657505 ) N ;
+
+    - mprj_io_holdover[19] + NET mprj_io_holdover[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2654285 ) N ;
+
+    - mprj_io_out[19] + NET mprj_io_out[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2651525 ) N ;
+
+    - mprj_io_vtrip_sel[19] + NET mprj_io_vtrip_sel[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2642325 ) N ;
+
+    - mprj_io_ib_mode_sel[19] + NET mprj_io_ib_mode_sel[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2639105 ) N ;
+
+    - mprj_io_oeb[19] + NET mprj_io_oeb[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2635885 ) N ;
+
+    - mprj_io_in_3v3[19] + NET mprj_io_in_3v3[19] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 2633125 ) N ;
+
+    - mprj_io_in[20] + NET mprj_io_in[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2490725 ) N ;
+
+    - mprj_io_one[20] + NET mprj_io_one[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2484745 ) N ;
+
+    - mprj_io_slow_sel[20] + NET mprj_io_slow_sel[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2481525 ) N ;
+
+    - user_gpio_analog[13] + NET user_gpio_analog[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2478305 ) N ;
+
+    - mprj_io_dm[61] + NET mprj_io_dm[61] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2472325 ) N ;
+
+    - user_gpio_noesd[13] + NET user_gpio_noesd[13] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2469105 ) N ;
+
+    - mprj_io_analog_en[20] + NET mprj_io_analog_en[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2466345 ) N ;
+
+    - mprj_io_dm[60] + NET mprj_io_dm[60] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2463125 ) N ;
+
+    - mprj_io_analog_pol[20] + NET mprj_io_analog_pol[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2459905 ) N ;
+
+    - mprj_io_inp_dis[20] + NET mprj_io_inp_dis[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2457145 ) N ;
+
+    - mprj_io_analog_sel[20] + NET mprj_io_analog_sel[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2444725 ) N ;
+
+    - mprj_io_dm[62] + NET mprj_io_dm[62] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2441505 ) N ;
+
+    - mprj_io_holdover[20] + NET mprj_io_holdover[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2438285 ) N ;
+
+    - mprj_io_out[20] + NET mprj_io_out[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2435525 ) N ;
+
+    - mprj_io_vtrip_sel[20] + NET mprj_io_vtrip_sel[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2426325 ) N ;
+
+    - mprj_io_ib_mode_sel[20] + NET mprj_io_ib_mode_sel[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2423105 ) N ;
+
+    - mprj_io_oeb[20] + NET mprj_io_oeb[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 2419885 ) N ;
+
+    - mprj_io_in_3v3[20] + NET mprj_io_in_3v3[20] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 2417125 ) N ;
+
+    - mprj_io_in[21] + NET mprj_io_in[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1852725 ) N ;
+
+    - mprj_io_one[21] + NET mprj_io_one[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1846745 ) N ;
+
+    - mprj_io_slow_sel[21] + NET mprj_io_slow_sel[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1843525 ) N ;
+
+    - user_gpio_analog[14] + NET user_gpio_analog[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1840305 ) N ;
+
+    - mprj_io_dm[64] + NET mprj_io_dm[64] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1834325 ) N ;
+
+    - user_gpio_noesd[14] + NET user_gpio_noesd[14] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1831105 ) N ;
+
+    - mprj_io_analog_en[21] + NET mprj_io_analog_en[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1828345 ) N ;
+
+    - mprj_io_dm[63] + NET mprj_io_dm[63] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1825125 ) N ;
+
+    - mprj_io_analog_pol[21] + NET mprj_io_analog_pol[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1821905 ) N ;
+
+    - mprj_io_inp_dis[21] + NET mprj_io_inp_dis[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1819145 ) N ;
+
+    - mprj_io_analog_sel[21] + NET mprj_io_analog_sel[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1806725 ) N ;
+
+    - mprj_io_dm[65] + NET mprj_io_dm[65] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1803505 ) N ;
+
+    - mprj_io_holdover[21] + NET mprj_io_holdover[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1800285 ) N ;
+
+    - mprj_io_out[21] + NET mprj_io_out[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1797525 ) N ;
+
+    - mprj_io_vtrip_sel[21] + NET mprj_io_vtrip_sel[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1788325 ) N ;
+
+    - mprj_io_ib_mode_sel[21] + NET mprj_io_ib_mode_sel[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1785105 ) N ;
+
+    - mprj_io_oeb[21] + NET mprj_io_oeb[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1781885 ) N ;
+
+    - mprj_io_in_3v3[21] + NET mprj_io_in_3v3[21] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 1779125 ) N ;
+
+    - mprj_io_in[22] + NET mprj_io_in[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1636725 ) N ;
+
+    - mprj_io_one[22] + NET mprj_io_one[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1630745 ) N ;
+
+    - mprj_io_slow_sel[22] + NET mprj_io_slow_sel[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1627525 ) N ;
+
+    - user_gpio_analog[15] + NET user_gpio_analog[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1624305 ) N ;
+
+    - mprj_io_dm[67] + NET mprj_io_dm[67] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1618325 ) N ;
+
+    - user_gpio_noesd[15] + NET user_gpio_noesd[15] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1615105 ) N ;
+
+    - mprj_io_analog_en[22] + NET mprj_io_analog_en[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1612345 ) N ;
+
+    - mprj_io_dm[66] + NET mprj_io_dm[66] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1609125 ) N ;
+
+    - mprj_io_analog_pol[22] + NET mprj_io_analog_pol[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1605905 ) N ;
+
+    - mprj_io_inp_dis[22] + NET mprj_io_inp_dis[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1603145 ) N ;
+
+    - mprj_io_analog_sel[22] + NET mprj_io_analog_sel[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1590725 ) N ;
+
+    - mprj_io_dm[68] + NET mprj_io_dm[68] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1587505 ) N ;
+
+    - mprj_io_holdover[22] + NET mprj_io_holdover[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1584285 ) N ;
+
+    - mprj_io_out[22] + NET mprj_io_out[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1581525 ) N ;
+
+    - mprj_io_vtrip_sel[22] + NET mprj_io_vtrip_sel[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1572325 ) N ;
+
+    - mprj_io_ib_mode_sel[22] + NET mprj_io_ib_mode_sel[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1569105 ) N ;
+
+    - mprj_io_oeb[22] + NET mprj_io_oeb[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1565885 ) N ;
+
+    - mprj_io_in_3v3[22] + NET mprj_io_in_3v3[22] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 1563125 ) N ;
+
+    - mprj_io_in[23] + NET mprj_io_in[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1420725 ) N ;
+
+    - mprj_io_one[23] + NET mprj_io_one[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1414745 ) N ;
+
+    - mprj_io_slow_sel[23] + NET mprj_io_slow_sel[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1411525 ) N ;
+
+    - user_gpio_analog[16] + NET user_gpio_analog[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1408305 ) N ;
+
+    - mprj_io_dm[70] + NET mprj_io_dm[70] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1402325 ) N ;
+
+    - user_gpio_noesd[16] + NET user_gpio_noesd[16] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1399105 ) N ;
+
+    - mprj_io_analog_en[23] + NET mprj_io_analog_en[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1396345 ) N ;
+
+    - mprj_io_dm[69] + NET mprj_io_dm[69] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1393125 ) N ;
+
+    - mprj_io_analog_pol[23] + NET mprj_io_analog_pol[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1389905 ) N ;
+
+    - mprj_io_inp_dis[23] + NET mprj_io_inp_dis[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1387145 ) N ;
+
+    - mprj_io_analog_sel[23] + NET mprj_io_analog_sel[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1374725 ) N ;
+
+    - mprj_io_dm[71] + NET mprj_io_dm[71] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1371505 ) N ;
+
+    - mprj_io_holdover[23] + NET mprj_io_holdover[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1368285 ) N ;
+
+    - mprj_io_out[23] + NET mprj_io_out[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1365525 ) N ;
+
+    - mprj_io_vtrip_sel[23] + NET mprj_io_vtrip_sel[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1356325 ) N ;
+
+    - mprj_io_ib_mode_sel[23] + NET mprj_io_ib_mode_sel[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1353105 ) N ;
+
+    - mprj_io_oeb[23] + NET mprj_io_oeb[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1349885 ) N ;
+
+    - mprj_io_in_3v3[23] + NET mprj_io_in_3v3[23] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 1347125 ) N ;
+
+    - mprj_io_in[24] + NET mprj_io_in[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1204725 ) N ;
+
+    - mprj_io_one[24] + NET mprj_io_one[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1198745 ) N ;
+
+    - mprj_io_slow_sel[24] + NET mprj_io_slow_sel[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1195525 ) N ;
+
+    - user_gpio_analog[17] + NET user_gpio_analog[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1192305 ) N ;
+
+    - mprj_io_dm[73] + NET mprj_io_dm[73] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1186325 ) N ;
+
+    - user_gpio_noesd[17] + NET user_gpio_noesd[17] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1183105 ) N ;
+
+    - mprj_io_analog_en[24] + NET mprj_io_analog_en[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1180345 ) N ;
+
+    - mprj_io_dm[72] + NET mprj_io_dm[72] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1177125 ) N ;
+
+    - mprj_io_analog_pol[24] + NET mprj_io_analog_pol[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1173905 ) N ;
+
+    - mprj_io_inp_dis[24] + NET mprj_io_inp_dis[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1171145 ) N ;
+
+    - mprj_io_analog_sel[24] + NET mprj_io_analog_sel[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1158725 ) N ;
+
+    - mprj_io_dm[74] + NET mprj_io_dm[74] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1155505 ) N ;
+
+    - mprj_io_holdover[24] + NET mprj_io_holdover[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1152285 ) N ;
+
+    - mprj_io_out[24] + NET mprj_io_out[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1149525 ) N ;
+
+    - mprj_io_vtrip_sel[24] + NET mprj_io_vtrip_sel[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1140325 ) N ;
+
+    - mprj_io_ib_mode_sel[24] + NET mprj_io_ib_mode_sel[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1137105 ) N ;
+
+    - mprj_io_oeb[24] + NET mprj_io_oeb[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 1133885 ) N ;
+
+    - mprj_io_in_3v3[24] + NET mprj_io_in_3v3[24] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 1131125 ) N ;
+
+    - mprj_io_in[25] + NET mprj_io_in[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 988725 ) N ;
+
+    - mprj_io_one[25] + NET mprj_io_one[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 982745 ) N ;
+
+    - mprj_io_slow_sel[25] + NET mprj_io_slow_sel[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 979525 ) N ;
+
+    - mprj_io_dm[76] + NET mprj_io_dm[76] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 970325 ) N ;
+
+    - mprj_io_analog_en[25] + NET mprj_io_analog_en[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 964345 ) N ;
+
+    - mprj_io_dm[75] + NET mprj_io_dm[75] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 961125 ) N ;
+
+    - mprj_io_analog_pol[25] + NET mprj_io_analog_pol[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 957905 ) N ;
+
+    - mprj_io_inp_dis[25] + NET mprj_io_inp_dis[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 955145 ) N ;
+
+    - mprj_io_analog_sel[25] + NET mprj_io_analog_sel[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 942725 ) N ;
+
+    - mprj_io_dm[77] + NET mprj_io_dm[77] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 939505 ) N ;
+
+    - mprj_io_holdover[25] + NET mprj_io_holdover[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 936285 ) N ;
+
+    - mprj_io_out[25] + NET mprj_io_out[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 933525 ) N ;
+
+    - mprj_io_vtrip_sel[25] + NET mprj_io_vtrip_sel[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 924325 ) N ;
+
+    - mprj_io_ib_mode_sel[25] + NET mprj_io_ib_mode_sel[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 921105 ) N ;
+
+    - mprj_io_oeb[25] + NET mprj_io_oeb[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 917885 ) N ;
+
+    - mprj_io_in_3v3[25] + NET mprj_io_in_3v3[25] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 915125 ) N ;
+
+    - mprj_io_in[26] + NET mprj_io_in[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 772725 ) N ;
+
+    - mprj_io_one[26] + NET mprj_io_one[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 766745 ) N ;
+
+    - mprj_io_slow_sel[26] + NET mprj_io_slow_sel[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 763525 ) N ;
+
+    - mprj_io_dm[79] + NET mprj_io_dm[79] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 754325 ) N ;
+
+    - mprj_io_analog_en[26] + NET mprj_io_analog_en[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 748345 ) N ;
+
+    - mprj_io_dm[78] + NET mprj_io_dm[78] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 745125 ) N ;
+
+    - mprj_io_analog_pol[26] + NET mprj_io_analog_pol[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 741905 ) N ;
+
+    - mprj_io_inp_dis[26] + NET mprj_io_inp_dis[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 739145 ) N ;
+
+    - mprj_io_analog_sel[26] + NET mprj_io_analog_sel[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 726725 ) N ;
+
+    - mprj_io_dm[80] + NET mprj_io_dm[80] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 723505 ) N ;
+
+    - mprj_io_holdover[26] + NET mprj_io_holdover[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 720285 ) N ;
+
+    - mprj_io_out[26] + NET mprj_io_out[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 717525 ) N ;
+
+    - mprj_io_vtrip_sel[26] + NET mprj_io_vtrip_sel[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 708325 ) N ;
+
+    - mprj_io_ib_mode_sel[26] + NET mprj_io_ib_mode_sel[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 705105 ) N ;
+
+    - mprj_io_oeb[26] + NET mprj_io_oeb[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3185 -300 ) ( 3000 300 )
+        + PLACED ( 1000 701885 ) N ;
+
+    - mprj_io_in_3v3[26] + NET mprj_io_in_3v3[26] + DIRECTION INPUT + USE SIGNAL
+        + PORT
+        + LAYER met3 ( -3000 -300 ) ( 3185 300 )
+        + PLACED ( 1000 699125 ) N ;
+
+END PINS
+END DESIGN
