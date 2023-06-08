@@ -193,7 +193,7 @@ if __name__ == '__main__':
         print('cif ostyle wafflefill(tiled)', file=ofile)
     print('', file=ofile)
     # print('set fullbox [box values]', file=ofile)
-    print('set fullbox { 0 0 3588um 5188um }', file=ofile)
+    print('set fullbox { 0 0 717600 1037600 }', file=ofile)
     print('set xmax [lindex $fullbox 2]', file=ofile)
     print('set xmin [lindex $fullbox 0]', file=ofile)
     print('set fullwidth [expr {$xmax - $xmin}]', file=ofile)
