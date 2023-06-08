@@ -227,6 +227,8 @@ __openframe:
 		property LEFview true; \
 		property GDS_FILE $(UPRJ_ROOT)/gds/openframe_project_wrapper.gds; \
 		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
 		load $(CARAVEL_ROOT)/maglef/simple_por; \
 		load caravel_openframe -dereference; \
 		select top cell; \
