@@ -229,6 +229,7 @@ __openframe:
 		expand; \
 		cif *hier write disable; \
 		cif *array write disable; \
+		save caravel; \
 		gds write $(UPRJ_ROOT)/gds/caravel.gds; \
 		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 ### Runs from CARAVEL_ROOT
