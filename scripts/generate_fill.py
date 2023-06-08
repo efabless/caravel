@@ -187,6 +187,7 @@ if __name__ == '__main__':
     print('gds readonly true', file=ofile)
     print('gds rescale false', file=ofile)
     print('gds read ../gds/' + project, file=ofile)
+    print('load ' + project, file=ofile)
     print('select top cell', file=ofile)
     print('expand', file=ofile)
     if not distmode:
