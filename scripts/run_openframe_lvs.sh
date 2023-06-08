@@ -69,6 +69,10 @@ puts stdout "Done reading netlists."
 # abstract the user project wrapper in the layout and re-extract).
 flatten class "\$circuit2 openframe_project_wrapper"
 
+# Avoid treating the user ID parameter in the verilog netlist of the padframe as a property or
+# else a property mismatch occurs.
+property "\$circuit2 user_id_programming" delete USER_PROJECT_ID
+
 # Run LVS on the chip_io_openframe cells in layout and verilog.
 
 lvs "\$circuit1 caravel_openframe" "\$circuit2 caravel_openframe" \
