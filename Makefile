@@ -1154,8 +1154,8 @@ endif
 __generate_fill:
 	@mkdir -p ./signoff/build
 	@cp -r $(CARAVEL_ROOT)/mag/.magicrc $(shell pwd)/mag
-	#python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist 2>&1 | tee ./signoff/build/generate_fill.out
-	python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist -keep 2>&1 | tee ./signoff/build/generate_fill.out
+	python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist 2>&1 | tee ./signoff/build/generate_fill.out
+	#python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -dist -keep 2>&1 | tee ./signoff/build/generate_fill.out
 	#python3 $(CARAVEL_ROOT)/scripts/generate_fill.py $(USER_ID) $(PROJECT) $(shell pwd) -keep 2>&1 | tee ./signoff/build/generate_fill.out
 
 
