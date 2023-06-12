@@ -45,7 +45,7 @@
 
 	`define MGMT_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
-	.AMUXBUS_B(analog_b),\
+	.AMUXBUS_B(analog_b), `ifdef USE_POWER_PINS \
 	.VSSA(vssa),\
 	.VDDA(vdda),\
 	.VSWITCH(vddio),\
@@ -55,7 +55,7 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q),
+	.VSSIO_Q(vssio_q), `endif
 `else 
 	`define USER1_ABUTMENT_PINS 
 	`define USER2_ABUTMENT_PINS 
