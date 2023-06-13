@@ -262,8 +262,10 @@ module chip_io_openframe #(
 	// These are exported to the user project for direct loopback if needed.
 
 	constant_block constant_value_inst [`OPENFRAME_IO_PADS-1:0] (
-		.vccd(vccd),
-		.vssd(vssd),
+		`ifdef USE_POWER_PINS
+			.vccd(vccd),
+			.vssd(vssd),
+		`endif // USE_POWER_PINS
 		.one(gpio_loopback_one),
 		.zero(gpio_loopback_zero)
 	);
@@ -275,8 +277,10 @@ module chip_io_openframe #(
 	wire xres_loopback_zero;
 
 	constant_block constant_value_xres_inst (
-		.vccd(vccd),
-		.vssd(vssd),
+		`ifdef USE_POWER_PINS
+			.vccd(vccd),
+			.vssd(vssd),
+		`endif // USE_POWER_PINS
 		.one(xres_loopback_one),
 		.zero(xres_loopback_zero)	// (unused)
 	);

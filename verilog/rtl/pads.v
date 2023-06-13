@@ -17,7 +17,7 @@
 `ifndef TOP_ROUTING 
 	`define USER1_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
-	.AMUXBUS_B(analog_b),\
+	.AMUXBUS_B(analog_b),`ifdef USE_POWER_PINS\
 	.VSSA(vssa1),\
 	.VDDA(vdda1),\
 	.VSWITCH(vddio),\
@@ -27,11 +27,11 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q),
+	.VSSIO_Q(vssio_q),`endif
 
 	`define USER2_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
-	.AMUXBUS_B(analog_b),\
+	.AMUXBUS_B(analog_b),`ifdef USE_POWER_PINS\
 	.VSSA(vssa2),\
 	.VDDA(vdda2),\
 	.VSWITCH(vddio),\
@@ -41,7 +41,7 @@
 	.VCCD(vccd),\
 	.VSSIO(vssio),\
 	.VSSD(vssd),\
-	.VSSIO_Q(vssio_q),
+	.VSSIO_Q(vssio_q),`endif
 
 	`define MGMT_ABUTMENT_PINS \
 	.AMUXBUS_A(analog_a),\
