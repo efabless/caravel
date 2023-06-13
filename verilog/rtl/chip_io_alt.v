@@ -346,11 +346,11 @@ module chip_io_alt #(
 
 	constant_block constant_value_inst [6:0] (
 		`ifdef USE_POWER_PINS
-            .vccd(vccd),
-            .vssd(vssd),
+			.vccd(vccd),
+			.vssd(vssd),
 		`endif // USE_POWER_PINS
-            .one(vccd_const_one),
-            .zero(vssd_const_zero)
+		.one(vccd_const_one),
+		.zero(vssd_const_zero)
 	);
 
 	// Management clock input pad

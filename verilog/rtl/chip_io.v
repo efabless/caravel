@@ -277,8 +277,8 @@ module chip_io(
 
     constant_block constant_value_inst [6:0] (
 	`ifdef USE_POWER_PINS
-	.vccd(vccd),
-	.vssd(vssd),
+		.vccd(vccd),
+		.vssd(vssd),
 	`endif // USE_POWER_PINS
 	.one(vccd_const_one),
 	.zero(vssd_const_zero)
