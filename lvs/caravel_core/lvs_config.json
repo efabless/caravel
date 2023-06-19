@@ -1,0 +1,49 @@
+{
+    "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+    "INCLUDE_CONFIGS": [
+        "$UPRJ_ROOT/lvs/base_lvs_config.json"
+    ],
+    "TOP_SOURCE": "caravel_core",
+    "TOP_LAYOUT": "$TOP_SOURCE",
+    "EXTRACT_FLATGLOB": [
+        ""
+    ],
+    "EXTRACT_ABSTRACT": [
+        "user_project_wrapper"
+    ],
+    "LVS_FLATTEN": [
+        "user_project_wrapper"
+    ],
+    "LVS_NOFLATTEN": [
+        ""
+    ],
+    "LVS_IGNORE": [
+        ""
+    ],
+    "LVS_SPICE_FILES": [
+        "$UPRJ_ROOT/xschem/simple_por.spice",
+        "$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/spice/sky130_fd_sc_hvl.spice",
+        "$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice"
+    ],
+    "LVS_VERILOG_FILES": [
+        "$UPRJ_ROOT/mgmt_core_wrapper/verilog/gl/RAM128.v",
+        "$UPRJ_ROOT/verilog/gl/caravel_clocking.v",
+        "$UPRJ_ROOT/verilog/gl/empty_macro.v",
+        "$UPRJ_ROOT/verilog/gl/gpio_logic_high.v",
+        "$UPRJ_ROOT/verilog/gl/housekeeping.v",
+        "$UPRJ_ROOT/verilog/gl/manual_power_connections.v",
+        "$UPRJ_ROOT/verilog/gl/mgmt_protect_hv.v",
+        "$UPRJ_ROOT/verilog/gl/mprj2_logic_high.v",
+        "$UPRJ_ROOT/verilog/gl/mprj_io_buffer.v",
+        "$UPRJ_ROOT/verilog/gl/mprj_logic_high.v",
+        "$UPRJ_ROOT/verilog/gl/spare_logic_block.v",
+        "$UPRJ_ROOT/verilog/gl/xres_buf.v",
+        "$UPRJ_ROOT/verilog/gl/gpio_defaults_block_0403.v",
+        "$UPRJ_ROOT/verilog/gl/gpio_defaults_block_0801.v",
+        "$UPRJ_ROOT/verilog/gl/gpio_defaults_block_1803.v",
+        "$UPRJ_ROOT/verilog/gl/gpio_defaults_block.v",
+        "$UPRJ_ROOT/verilog/gl/user_id_programming.v",
+        "$UPRJ_ROOT/verilog/gl/$TOP_SOURCE.v"
+    ],
+    "LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds"
+}

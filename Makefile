@@ -48,6 +48,8 @@ MPW_TAG ?= mpw-9c
 
 PYTHON_BIN ?= python3
 
+PRECHECK_ROOT?=${HOME}/mpw_precheck
+
 # PDK switch varient
 export PDK?=sky130A
 
@@ -310,127 +312,22 @@ xor-analog-wrapper: uncompress uncompress-caravel
 	@cat signoff/user_analog_project_wrapper_xor/total.txt
 
 # LVS
-BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
+BLOCKS = $(shell cd lvs && find * -maxdepth 0 -type d)
 LVS_BLOCKS = $(foreach block, $(BLOCKS), lvs-$(block))
-$(LVS_BLOCKS): lvs-% : ./mag/%.mag ./verilog/gl/%.v
-	echo "Extracting $*"
-	mkdir -p ./mag/tmp
-	echo "addpath $(CARAVEL_ROOT)/mag/hexdigits;\
-		addpath $(CARAVEL_ROOT)/mag/primitives;\
-		addpath $(MCW_ROOT)/mag;\
-		addpath $(CARAVEL_ROOT)/subcells/simple_por/mag;\
-		addpath \$$PDKPATH/libs.ref/sky130_ml_xx_hd/mag;\
-		load $* -dereference;\
-		select top cell;\
-		foreach cell [cellname list children] {\
-			load \$$cell -dereference;\
-			property LEFview TRUE;\
-		};\
-		load $* -dereference;\
-		select top cell;\
-		extract no all;\
-		extract do local;\
-		extract unique;\
-		extract;\
-		ext2spice lvs;\
-		ext2spice $*.ext;\
-		feedback save extract_$*.log;\
-		exit;" > ./mag/extract_$*.tcl
-	cd mag && \
-		export MAGTYPE=maglef; \
-		magic -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc -noc -dnull extract_$*.tcl < /dev/null
-	mv ./mag/$*.spice ./spi/lvs
-	rm ./mag/*.ext
-	mv -f ./mag/extract_$*.tcl ./mag/tmp
-	mv -f ./mag/extract_$*.log ./mag/tmp
-	####
-	mkdir -p ./spi/lvs/tmp
-	sh $(CARAVEL_ROOT)/spi/lvs/run_lvs.sh ./spi/lvs/$*.spice ./verilog/gl/$*.v $*
-	@echo ""
-	python3 $(CARAVEL_ROOT)/scripts/count_lvs.py -f ./verilog/gl/$*.v_comp.json | tee ./spi/lvs/tmp/$*.lvs.summary.log
-	mv -f ./verilog/gl/*.out ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.json ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.log ./spi/lvs/tmp 2> /dev/null || true
-	@echo ""
-	@echo "LVS: ./spi/lvs/$*.spice vs. ./verilog/gl/$*.v"
-	@echo "Comparison result: ./spi/lvs/tmp/$*.v_comp.out"
-	@awk '/^NET mismatches/,0' ./spi/lvs/tmp/$*.v_comp.out
+$(LVS_BLOCKS): lvs-% : ./gds/%.gds ./verilog/gl/%.v check-precheck
+	@$(eval INPUT_DIRECTORY := $(shell pwd))
+	cd $(PRECHECK_ROOT) && \
+	docker run -v $(PRECHECK_ROOT):$(PRECHECK_ROOT) \
+	-v $(INPUT_DIRECTORY):$(INPUT_DIRECTORY) \
+	-v $(PDK_ROOT):$(PDK_ROOT) \
+	-u $(shell id -u $(USER)):$(shell id -g $(USER)) \
+	efabless/mpw_precheck:latest bash -c "cd $(PRECHECK_ROOT) ; python3 checks/lvs_check/lvs.py --pdk_path $(PDK_ROOT)/$(PDK) --design_directory $(INPUT_DIRECTORY) --output_directory $(INPUT_DIRECTORY)/lvs --design_name $* --config_file $(INPUT_DIRECTORY)/lvs/$*/lvs_config.json"
 
-
-LVS_GDS_BLOCKS = $(foreach block, $(BLOCKS), lvs-gds-$(block))
-$(LVS_GDS_BLOCKS): lvs-gds-% : ./gds/%.gds ./verilog/gl/%.v
-	echo "Extracting $*"
-	mkdir -p ./gds/tmp
-	echo "	gds flatglob \"*_example_*\";\
-		gds flatten true;\
-		gds read ./$*.gds;\
-		load $* -dereference;\
-		select top cell;\
-		extract no all;\
-		extract do local;\
-		extract unique;\
-		extract;\
-		ext2spice lvs;\
-		ext2spice $*.ext;\
-		feedback save extract_$*.log;\
-		exit;" > ./gds/extract_$*.tcl
-	cd gds && \
-		magic -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc -noc -dnull extract_$*.tcl < /dev/null
-	mv ./gds/$*.spice ./spi/lvs
-	rm ./gds/*.ext
-	mv -f ./gds/extract_$*.tcl ./gds/tmp
-	mv -f ./gds/extract_$*.log ./gds/tmp
-	####
-	mkdir -p ./spi/lvs/tmp
-	MAGIC_EXT_USE_GDS=1 sh $(CARAVEL_ROOT)/spi/lvs/run_lvs.sh ./spi/lvs/$*.spice ./verilog/gl/$*.v $*
-	@echo ""
-	python3 $(CARAVEL_ROOT)/scripts/count_lvs.py -f ./verilog/gl/$*.v_comp.json | tee ./spi/lvs/tmp/$*.lvs.summary.log
-	mv -f ./verilog/gl/*.out ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.json ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.log ./spi/lvs/tmp 2> /dev/null || true
-	@echo ""
-	@echo "LVS: ./spi/lvs/$*.spice vs. ./verilog/gl/$*.v"
-	@echo "Comparison result: ./spi/lvs/tmp/$*.v_comp.out"
-	@awk '/^NET mismatches/,0' ./spi/lvs/tmp/$*.v_comp.out
-
-
-# connect-by-label is enabled here!
-LVS_MAGLEF_BLOCKS = $(foreach block, $(BLOCKS), lvs-maglef-$(block))
-$(LVS_MAGLEF_BLOCKS): lvs-maglef-% : ./mag/%.mag ./verilog/gl/%.v
-	echo "Extracting $*"
-	mkdir -p ./maglef/tmp
-	echo "load $* -dereference;\
-		select top cell;\
-		foreach cell [cellname list children] {\
-			load \$$cell -dereference;\
-			property LEFview TRUE;\
-		};\
-		load $* -dereference;\
-		select top cell;\
-		extract no all;\
-		extract do local;\
-		extract;\
-		ext2spice lvs;\
-		ext2spice $*.ext;\
-		feedback save extract_$*.log;\
-		exit;" > ./mag/extract_$*.tcl
-	cd mag && export MAGTYPE=maglef; magic -noc -dnull extract_$*.tcl < /dev/null
-	mv ./mag/$*.spice ./spi/lvs
-	rm ./maglef/*.ext
-	mv -f ./mag/extract_$*.tcl ./maglef/tmp
-	mv -f ./mag/extract_$*.log ./maglef/tmp
-	####
-	mkdir -p ./spi/lvs/tmp
-	sh $(CARAVEL_ROOT)/spi/lvs/run_lvs.sh ./spi/lvs/$*.spice ./verilog/gl/$*.v $*
-	@echo ""
-	python3 $(CARAVEL_ROOT)/scripts/count_lvs.py -f ./verilog/gl/$*.v_comp.json | tee ./spi/lvs/tmp/$*.maglef.lvs.summary.log
-	mv -f ./verilog/gl/*.out ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.json ./spi/lvs/tmp 2> /dev/null || true
-	mv -f ./verilog/gl/*.log ./spi/lvs/tmp 2> /dev/null || true
-	@echo ""
-	@echo "LVS: ./spi/lvs/$*.spice vs. ./verilog/gl/$*.v"
-	@echo "Comparison result: ./spi/lvs/tmp/$*.v_comp.out"
-	@awk '/^NET mismatches/,0' ./spi/lvs/tmp/$*.v_comp.out
+check-precheck:
+	@if [ ! -d "$(PRECHECK_ROOT)" ]; then \
+		echo "Pre-check Root: "$(PRECHECK_ROOT)" doesn't exists, please export the correct path before running make. "; \
+		exit 1; \
+	fi
 
 # DRC
 BLOCKS = $(shell cd openlane && find * -maxdepth 0 -type d)
