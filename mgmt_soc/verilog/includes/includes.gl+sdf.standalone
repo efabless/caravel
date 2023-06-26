@@ -1,0 +1,27 @@
+// VIP
+$VERILOG_PATH/dv/vip/spiflash.v
+$VERILOG_PATH/dv/vip/tbuart.v
+$VERILOG_PATH/dv/vip/wb_rw_test.v
+
+// Mgmt Core Wrapper
+$VERILOG_PATH/rtl/defines.v
+$VERILOG_PATH/gl/mgmt_core.v
+$VERILOG_PATH/gl/DFFRAM.v
+$VERILOG_PATH/gl/mgmt_core_wrapper.v
+
+// STD CELLS - they need to be below the defines.v files 
+$VERILOG_PATH/cvc-pdk/sky130_ef_io.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_io.v
+$VERILOG_PATH/cvc-pdk/primitives_hd.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_sc_hd.v
+$VERILOG_PATH/cvc-pdk/primitives_hvl.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_sc_hvl.v
+$VERILOG_PATH/cvc-pdk/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v

@@ -1,0 +1,66 @@
+// VIP
+$VERILOG_PATH/dv/vip/spiflash.v
+$VERILOG_PATH/dv/vip/tbuart.v
+
+// Mgmt Core Wrapper
+$VERILOG_PATH/rtl/defines.v
+$VERILOG_PATH/gl/mgmt_core.v
+$VERILOG_PATH/gl/DFFRAM.v
+$VERILOG_PATH/gl/mgmt_core_wrapper.v
+
+// DFFRAM Behavioral Model
+//$VERILOG_PATH/dv/vip/DFFRAM.v
+
+// Caravel
+// These blocks need to stay in RTL
+$CARAVEL_PATH/rtl/pads.v		   
+$CARAVEL_PATH/rtl/defines.v				   
+$CARAVEL_PATH/rtl/user_defines.v		
+$CARAVEL_PATH/rtl/mprj_io.v
+$CARAVEL_PATH/rtl/simple_por.v  		
+
+// These blocks oly needed for RTL sims								
+$CARAVEL_PATH/rtl/digital_pll_controller.v 
+$CARAVEL_PATH/rtl/ring_osc2x13.v	   
+$CARAVEL_PATH/rtl/clock_div.v
+$CARAVEL_PATH/rtl/housekeeping_spi.v
+				     
+$CARAVEL_PATH/gl/chip_io.v			
+$CARAVEL_PATH/gl/mprj_logic_high.v		
+$CARAVEL_PATH/gl/mprj2_logic_high.v		
+$CARAVEL_PATH/gl/mgmt_protect.v 		
+$CARAVEL_PATH/gl/mgmt_protect_hv.v		
+$CARAVEL_PATH/gl/gpio_control_block.v		
+$CARAVEL_PATH/gl/gpio_defaults_block.v  	
+$CARAVEL_PATH/gl/gpio_logic_high.v		
+$CARAVEL_PATH/gl/xres_buf.v			
+$CARAVEL_PATH/gl/spare_logic_block.v		
+$CARAVEL_PATH/gl/housekeeping.v 		
+$CARAVEL_PATH/gl/caravel_clocking.v		
+$CARAVEL_PATH/gl/digital_pll.v  		
+// $CARAVEL_PATH/gl/__user_project_wrapper.v	
+$CARAVEL_PATH/gl/user_id_programming.v  	
+$CARAVEL_PATH/gl/caravel.v			
+
+// These blocks are manually designed	     
+$CARAVEL_PATH/gl/gpio_defaults_block_0403.v	
+$CARAVEL_PATH/gl/gpio_defaults_block_1803.v	
+
+
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+//$PDK_ROOT/$PDK/libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
+ 
+// STD CELLS - they need to be below the defines.v files 
+$VERILOG_PATH/cvc-pdk/sky130_ef_io.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_io.v
+$VERILOG_PATH/cvc-pdk/primitives_hd.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_sc_hd.v
+$VERILOG_PATH/cvc-pdk/primitives_hvl.v
+$VERILOG_PATH/cvc-pdk/sky130_fd_sc_hvl.v
+$VERILOG_PATH/cvc-pdk/sky130_sram_2kbyte_1rw1r_32x512_8.v

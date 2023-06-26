@@ -1,0 +1,90 @@
+## VIP
+-v $(VERILOG_PATH)/dv/vip/tbuart.v
+-v $(VERILOG_PATH)/dv/vip/spiflash.v
+-v $(VERILOG_PATH)/dv/vip/wb_rw_test.v
+
+## DFFRAM Behavioral Model
+-v $(VERILOG_PATH)/dv/vip/RAM256.v
+-v $(VERILOG_PATH)/dv/vip/RAM128.v
+
+## DFFRAM Full RTL
+#-v $(VERILOG_PATH)/rtl/DFFRAM.v
+#-v $(VERILOG_PATH)/rtl/DFFRAMBB.v
+
+# Mgmt Core Wrapper
+-v $(VERILOG_PATH)/rtl/defines.v
+-v $(VERILOG_PATH)/rtl/mgmt_core.v
+-v $(VERILOG_PATH)/rtl/mgmt_core_wrapper.v
+-v $(VERILOG_PATH)/rtl/VexRiscv_MinDebugCache.v
+
+# Caravel
+
+## These blocks need to stay in RTL
+-v $(CARAVEL_PATH)/rtl/pads.v			
+-v $(CARAVEL_PATH)/rtl/defines.v 		     		
+-v $(CARAVEL_PATH)/rtl/user_defines.v		     
+-v $(CARAVEL_PATH)/rtl/mprj_io.v
+-v $(CARAVEL_PATH)/rtl/simple_por.v		     
+
+## These blocks only needed for RTL sims							     
+-v $(CARAVEL_PATH)/rtl/digital_pll_controller.v 
+-v $(CARAVEL_PATH)/rtl/ring_osc2x13.v		
+-v $(CARAVEL_PATH)/rtl/clock_div.v
+-v $(CARAVEL_PATH)/rtl/housekeeping_spi.v
+
+-v $(CARAVEL_PATH)/rtl/chip_io_alt.v				     
+-v $(CARAVEL_PATH)/rtl/chip_io.v 		     
+-v $(CARAVEL_PATH)/rtl/mprj_logic_high.v 	     
+-v $(CARAVEL_PATH)/rtl/mprj2_logic_high.v	     
+-v $(CARAVEL_PATH)/rtl/mgmt_protect.v		     
+-v $(CARAVEL_PATH)/rtl/mgmt_protect_hv.v 	     
+-v $(CARAVEL_PATH)/rtl/gpio_control_block.v	     
+-v $(CARAVEL_PATH)/rtl/gpio_defaults_block.v	     
+-v $(CARAVEL_PATH)/rtl/gpio_logic_high.v 	     
+-v $(CARAVEL_PATH)/rtl/constant_block.v 	     
+-v $(CARAVEL_PATH)/rtl/xres_buf.v		     
+-v $(CARAVEL_PATH)/rtl/spare_logic_block.v	     
+-v $(CARAVEL_PATH)/rtl/housekeeping.v		     
+-v $(CARAVEL_PATH)/rtl/caravel_clocking.v	     
+-v $(CARAVEL_PATH)/rtl/digital_pll.v		     
+#-v $(CARAVEL_PATH)/rtl/__user_project_wrapper.v	     
+-v $(CARAVEL_PATH)/rtl/user_id_programming.v
+-v $(CARAVEL_PATH)/rtl/mprj_io_buffer.v		     
+-v $(CARAVEL_PATH)/rtl/buff_flash_clkrst.v		     
+-v $(CARAVEL_PATH)/rtl/gpio_signal_buffering.v	     
+-v $(CARAVEL_PATH)/rtl/caravel_core.v 	
+-v $(CARAVEL_PATH)/rtl/caravel.v 	
+-v $(CARAVEL_PATH)/rtl/gpio_signal_buffering_alt.v	     
+-v $(CARAVEL_PATH)/rtl/caravan.v 		     
+-v $(CARAVEL_PATH)/rtl/empty_macro.v 		     
+-v $(CARAVEL_PATH)/rtl/manual_power_connections.v 		     
+-v $(CARAVEL_PATH)/rtl/copyright_block.v 		     
+-v $(CARAVEL_PATH)/rtl/caravel_logo.v 		     
+-v $(CARAVEL_PATH)/rtl/caravel_motto.v 		     
+-v $(CARAVEL_PATH)/rtl/open_source.v 		     
+-v $(CARAVEL_PATH)/rtl/user_id_textblock.v 		     
+
+## These blocks are manually designed 		
+-v $(CARAVEL_PATH)/gl/gpio_defaults_block_0403.v     
+-v $(CARAVEL_PATH)/gl/gpio_defaults_block_1803.v     
+-v $(CARAVEL_PATH)/gl/gpio_defaults_block_0801.v
+
+# STD CELLS - they need to be below the defines.v files 
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+#-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
+
+## STD CELLS - they need to be below the defines.v files 
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_ef_io.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_io.v
+#-v $(VERILOG_PATH)/cvc-pdk/primitives_hd.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hd.v
+#-v $(VERILOG_PATH)/cvc-pdk/primitives_hvl.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hvl.v
+ -v $(VERILOG_PATH)/cvc-pdk/sky130_sram_2kbyte_1rw1r_32x512_8.v
+

@@ -1,0 +1,710 @@
+OSS_CVC_7.00b-x86_64-rhel6x of 07/07/14 (Linux-elf).
+Copyright (c) 1991-2014 Tachyon Design Automation Corp.
+  All Rights reserved.  Licensed software subject to prohibitions and
+  restrictions.  See OSS CVC artistic license included with release.
+Today is Thu Dec 16 06:23:30 2021.
+      ** CVC COMPILED VERILOG SIMULATOR HELP MESSAGE **
+ 
+  CVC is a compiled Verilog HDL simulator following the 2005 IEEE 1364
+  standard with some SystemVerilog features and some modifications to match
+  actual behavior of the de facto standard XL simulator.  Modeling in C/C++
+  and Verilog using PLI 1, PLI 2, and DPI interfaces is supported.  The PLI
+  implementation follows 2005 LRM.  See the release notes for latest 
+  problems and changes.
+ 
+  Usage:  cvc [intermixed options and Verilog source files].
+ 
+  Command line and -f command file options must be in lower case and must
+  begin with a - or +.  Each option requires a separate - or +.  Type
+  'cvc -?' or 'cvc -h' to generate this help message.  To enter the
+  Verilog statement interactive debugger assuming the +interp option
+  was select to use interpreted simulation: press interrupt (^c) or execute
+  $stop, then type :help' for interactive debugger help.
+ 
+  It is assumed that you already know Verilog and have access to a 1364 LRM
+  or other Verilog documentation.  CVC supports both PLI (Programming,
+  Language Interface) 1 tf_ and acc_ and PLI 2 vpi_ utility, design object,
+  and callback routines using +loadpli1= and +loadvpi= dynamic PLI load
+  options defined below.  To invoke the PLI from CVC, you may need to 
+  compile with the +acc+ access option or set PLI access levels using
+  an option control with with the -optconfigfile option. Both old PLI 1 and 
+  new PLI 2 libraries can be dynamically loaded during one run.  See 
+  examples in examples.vpi examples.tf and examples.acc release directories
+  for examples showing how to link and run PLI models. 
+ 
+  CVC supports the SystemVerilog Direct Programming Interface (DPI).  It
+  allows a simple interface between C/C++/SystemC and Verilog.  To invoke
+  and link a DPI library use the -sv_lib command.  See the release 
+  examples.dpi directory and run the tests to see how to code DPI Verilog
+  prototypes of DPI functions or tasks and how to link DPI code. The DPI
+  interface is documented in any System Verilog LRM Section 35 and Annex I.
+ 
+  CVC generally produces results matching other simulators even when other
+  simulators differ from 1364 standard up to differences in event order.
+  Compiled CVC produces identical results when used in interpreted (+interp
+  option) mode.  However, CVC does not change port direction because of net
+  connection direction (i.e. treat nets with wrong side of port drivers as
+  inouts) unless the +change_port_type option is selected.  It is suggested
+  that you change your designs so port type changing is not needed, but for
+  full compatibility with other simulators always run with +change_port_type
+  option.  CVC implements pulse (glitch) detection for gates as well as
+  paths.  This may cause some simulation result differences.  This more
+  stringent pulse analysis is consistent with CVC's intended use as
+  accurate gate level simulator.
+ 
+  Since all options are collected before processing, if any options are
+  duplicated, the rightmost (last) will be used.  All CVC options are
+  listed in this help message.  Any other option will be ignored by CVC
+  although it may be scanned and used by a user PLI routine.  All options
+  not listed in this help message will have warning 506 emitted for minus
+  options and inform 410 for plus options.
+ 
+  The CVC compiler only options are:
+ 
+   +interp  Turn on legacy slow interpreted mode (no assembly code
+         generation) instead of using CVC's default flow graph assembly
+         language output compiler.
+   -o [name of executable].  Rename executable.  To save a compiled 
+         executable to a name other than the default 'cvcsim'.  Executable 
+         will be given the user defined name.
+   +work Use result of OS pwd command for temporary work files.
+   +usedir=[parth to directory for temporary work files].  If both +work
+         and +usedir options are used, +work is selected with a warn.
+   -O    Optimize.  For many designs use of -O will increase simulation 
+         speed by up to 30% without much cost in compilation time.  
+         There are still some designs for which -O leads to unacceptably
+         long compilation time or object output file size.  Users must
+         decide whether this option is best on a per design basis.
+   -Ogate Optimize gate-level.  Subset of -O optimizations for gate level.
+          Use this option instead of -O for large gate-level designs.
+          This option increases simulation time of large gate-level designs.
+   +unroll_loops.  Unroll loops whose number of iterations can be 
+         determined at compile time or upon entry to the loop.  This option
+         makes the compiled executable larger, and may or may not make 
+         simulation faster. 
+   -pipe Compile using a faster but less portable mechanism.  This can 
+         speed compile time by up to 2X but may have problems
+         on different machine architectures/OSes.
+   +exe  Execute.  To compile and immediately execute. This option
+         compiles into the default 'cvcsim' and creates another
+         process to run it.
+   +large Large Model.  Use large compiled model (64-bit only). 
+         When compiling large designs (mostly gate-level) you may need 
+         to compile with this option.   Use the large model if you 
+         experience the following error during compilation: 
+ 
+            'relocation truncated to fit: R_X86_64_32S'
+ 
+   +realwarns Turn on real NaN warnings.  CVC does not check for real NaN  
+         calculations by default to increase simulation speed.  This option 
+         checks for and warnings about real calculations which produce NaN, 
+         such as real divide by zero, $ln(0), etc.
+ 
+   +acc+[level].  Set the PLI access level.  Some PLI implementations
+        need certain access levels which have an effect on CVC's 
+        performance.  The +acc+ option sets the PLI access for an entire
+        design, due to the overhead associated with it using the 
+        -optconfigfile to set specific module/net levels may lead to better
+        simulation peformance.  The levels can be in the range of 1 to 4:
+ 
+        +acc+1 or +acc
+         Enable all PLI capabilities except value change callbacks and
+         delay annotation.
+        +acc+2
+         All features above plus value change callbacks.
+        +acc+3
+         All features above plus module path delay.
+        +acc+4
+         All features above plus gate delay annotation.
+ 
+ -optconfigfile [file name].  Use an option control file to set options
+        at the module/instance/net level.  This is useful for setting
+        options which slow simulation: PLI and code coverage.  The option
+        control file takes the following format:
+ 
+        module {module_identifiers} {options};
+        instance {module_identifiers_and_hierarchical_names} {options}; 
+        tree (depth) {list_of_module_identifiers} {options};
+        //comments also allowed
+ 
+        Likewise elements can be excluded using the same structure with
+        the keywords: module_exclude/instance_exclude/tree_exclude.
+ 
+        All options and names can be passed a comma seperated list : 
+        {option1, option2} or {modname1, modname2}. For tree (depth) any
+        integer value can be passed for hierarchy depth, 0 for current
+        depth, or -1 for entire instance tree depth.
+ 
+        The following PLI options are supported:
+ 
+        acc_rw           - corresponds to +acc+1 level
+        acc_cbk          - corresponds to +acc+2 level
+        acc_ann_path_del - corresponds to +acc+3 level
+        acc_ann_gate_del - corresponds to +acc+4 level
+ 
+        The following code coverage options are supported:
+ 
+        cover_toggle  - turn on toggle coverage
+        cover_stmt    - turn on statement coverage
+        cover_event   - turn on event coverage
+ 
+        For example to turn on PLI callbacks just for the 'tb' module use
+        the control file line:
+ 
+        module {tb} {acc_cbk};
+ 
+        Or turn on toggle and statement coverage for one instance:
+ 
+        module {tb.i1} {cover_toggle, cover_stmt};
+ 
+        Or turn on toggle coverage for all hierarchy under module DUT 
+        except for variable i:
+ 
+        tree (-1) {DUT} {cover_toggle};
+        instance_exlcude {DUT.i} {cover_toggle};
+ 
+  Optimization options for both the compiler and the interpreter:
+ 
+   +nbaopt  Some Verilog coding styles always code inter-assignment
+         delays (usually 1) for non blocking assigns (NBAs) in RTL.  Such
+         delays slow down simulation and are not needed by modern synthesis
+         algorithms, but can make debugging easier.  Once your design is
+         debugged and you are sure there are no clock cycle problems, use
+         this option to significantly speed up simulation.
+   +mipdopt  Turn on a less accurate but faster module input port delay
+        (MIPD) scheduling algorithm.  MIPD delays will be too short.  This
+         option can speed up SDF back annotation accurate delay simulation
+         by 25% or more if you know your design's clocking is correct.
+         Beware that if your design has path delays that are not used
+         because total delays from gates are longer, this option will
+         produce incorrect results.  Simulation speed up often comes from
+         eliminating the need for same source path selection searching.
+ 
+  Options defined in the IEEE 1364 reference manual are supported and have
+  the following effect:
+ 
+   -f [file]  Read options and source file names from [file] until it is
+         exhausted at which point continue reading from command line.  May
+         be nested.
+   -l [file]  By default all output is written to stdout and to log file
+         verilog.log.  -l changes to log file [file].  System task
+         $log([file]) changes to log file [file] during simulation, $nolog
+         turns off log file output.  Added system task $flushlog calls OS
+         fflush on log file.  $reset does not reset log file.
+   -s    Stop just before starting simulation and enter interactive debugger.
+   -i [file]  Read interactive debugger commands from file [file] the first
+         time interactive mode is entered (usually with -s but possibly by
+         $stop or interrupt signal (^c)).  Nested -i [file] options are
+         chained not nested.
+   -c    Translate source and all referenced library models only.  Ends just
+         before loading the translated model into memory.
+   -w    Suppress all warning messages.  See +suppress_warns added option for
+         suppression of warnings and informs by message number.
+   -d    Dump source that is constructed from internal representation.  All
+         parameters are replaced by their constant value in the
+         reconstructed source output.  Debugger source listing lists lines
+         from source files instead of reconstructing source.
+   -d_gen_uline  Dump design from internal source representation.  For
+         debugging generates since output can then be rerun to test post
+         generated Verilog source. Illegal dots and [] in generated names
+         replaced by underscore so output may need to be edited for name
+         conflicts. XMRs with generate block components (into generate
+         blocks) will not be fixed and must be handed edited.
+   -d_gen_esc  Dump design reconstructed source same as -d_gen_uline except
+         names with dots or [] from generate will be escaped.  Use if
+         replacing with underlines causes syntax errors.
+   -q    Quiet mode.  Do not print normal progress messages.  Opposite
+         of -q is +verbose that prints even more progress messages than normal.
+         -q over-rides the other +verbose tracing options so do not use -q if any
+         of +verbose, +sdfverbose, +libverbose, +switchverbose or +dpiverbose are
+         selected ortherwise no verbose tracing will be in the log file.
+   +mindelays, +typdelays, +maxdelays  Choose either minimum, typical or
+         maximum value from any constant (min:typ:max) forms in source.
+         Selection is made during input scanning so min:typ:max forms
+         become constant numbers at translation time.
+   -t    Trace procedural statement execution.  Use -et to trace event
+         processing.  In other simulators, -t means both -t and -et.
+         $settrace,  $setevtrace, $cleartrace, $clearevtrace to control
+         tracing during simulation.
+   +libnocell  Ignore `celldefine directives in source and libraries.  This
+         should not be used if delay back annotation is used since it will
+         probably cause annotation to fail.
+   +notimingchecks  After checking for correct syntax, ignore timing checks.
+   -u    Ignored.  For all upper case, use an OS filter command to convert
+         source to all upper case.
+ 
+  Only default and +librescan library scanning order supported.  By default
+  all library files from -v [file] and all directories of library elements
+  from -y [directory] are scanned from first to last according to input option
+  order.  If unresolved names remain after completion of a pass, the list is
+  rescanned from the beginning.  If +librescan option is selected, unresolved
+  names are resolved one at a time in order they are first seen.  After a
+  name has been resolved, the next name in order is resolved by rescanning
+  from the beginning of library list.  Options to control order dependent
+  resolution and +libnamehide are not implemented.  Library options are:
+ 
+   -v [file]   Treat [file] as a library containing module and UDP
+         definitions.  File is sequentially searched for definitions that
+         resolve unresolved names.  Within a -v file, if a name if defined
+         before use, it is resolved before moving to next library element.
+   -y [directory]  Treat every file in [directory] as a -v library although
+         usually each file will only contain one definition.  File name in
+         directory along with +libext+ option used to find unresolved name.
+   +libext+  In -y directory files, name resolution uses file names.  If
+         no +libext+ option is present only files whose name exactly
+         matches an unresolved module or primitive will be read.  There can
+         be no extension.  Normally, each -y file will contain the
+         definition for exactly one element but if more elements are present
+         they will be used to resolve other unresolved elements.  Use
+         +libext+[extension with dot]+[extension with dot]+...  to cause
+         file name extensions to be removed before matching file names to
+         unresolved element names.  Only one +libext+ option may appear and
+         matching is in order when library extensions do not follow the
+         simple .[suffix name] convention.  If all files in -y directories
+         end with either .v or .V (a common case), use +libext+.v+.V+
+   +librescan  Rescan to beginning of library file and directory list after
+         every unresolved name is resolved.  At most one name resolved per
+         library pass.
+   +libverbose  Emit detailed trace messages giving resolution order and
+         reason a particular element was resolved at the particular place.
+   +show_canceled_e  Path and gate (1 bit continuous assignments implemented
+         as gates) outputs set to X when pulses occur that cause scheduled
+         but not matured events to be canceled because second input edge
+         occurs before output has changed (switched).  The output
+         remains at X until another input edge causes an output change
+         because it is unknown if a pulse (glitch) will cause output
+         switching.  Some other simulators use a less pessimistic algorithm
+         that assumes pulses never cause switching and schedule a change
+         from X back to original output value on trailing edge of pulse.  If
+         your model will not run, use the +warn_canceled_e instead of this
+         option and examine warnings.  CVC does not allow only some
+         paths and gates to use pulse X showing using specify section
+         directives because X showing does not slow down simulation.
+         Normally X from a pulse is shown on leading edge of glitch.  Use
+         +pulse_e_style_ondetect to cause X to be shown(driven) when pulse
+         detected from input change.  Option is standardized replacement for
+         previous +spikes option.
+   +noshow_canceled_e  Path and gate outputs not driven (shown) as X when
+         pulses occur (second input change earlier than selected delay).
+         This is the default (normally it is not needed).  It selects normal
+         Verilog inertial delay algorithm where the latest input change
+         causes the previously scheduled but unmatured event to be canceled.
+   +pulse_e_style_ondetect  If +show_canceled_e option selected, this option
+         causes output to be set to X (shown) when the pulse (glitch) is
+         detected.  If this option is not selected, output is set to X
+         (shown) when the pulse propagates to an output.  This option
+         selects a more pessimistic (starting earlier) X region.
+   +pulse_e_style_onevent  If +show_canceled_e option selected, this option
+         selects the default output setting to X (showing) option that sets
+         output to X when glitch propagates to output (leading edge is time
+         at which the event scheduled latest matures).  There is no reason
+         to use this option since it is default.  Control of X showing for
+         individual gates and paths is not supported.
+   +warn_canceled_e  Emit warning for every gate (including UDP) or path event
+         cancel (inertial cancel and reschedule).  This option may cause
+         voluminous output so the $suppress_warns and $allow_warns system
+         tasks can be used to select particular time periods when warnings
+         are emitted.  This option and +show_canceled_e are unrelated so both
+         error messages and x showing (injection) may be enabled.
+   +nowarn_canceled_e  Because this option is the default it is never needed
+         Last of all +warn_canceled_e and +nowarn_canceled_e is used.
+ 
+  The following two options for dynamically loading user PLI libraries are
+  not explicitly defined in IEEE 1364 reference manual but are supported:
+ 
+   +loadpli1=[.so library]:[boostrap routines]  Load [.so library] dynamic
+         library containing user PLI 1 model and execute each bootstrap
+         routine.  [bootstrap routines] is a comma separated list of C
+         routines.  List may be empty but : is still required.  No spaces
+         are allowed around the equal sign, the colon or commas separating
+         bootstrap C routine names.  All dynamic libraries defined by
+         +loadpli1= options are first loaded using OS dlopen mechanism and
+         then all bootstrap routines are executed before elaboration begins.
+         The OS specific dynamic library suffix (.so on Linux) may be
+         omitted.  If omitted and the [.so library] is not found in any
+         LD_LIBRARY_PATH directory, the dynamic library suffix is added and
+         the LD_LIBRARY_PATH directories are searched again.
+ 
+         Each [bootstrap routines] list routine must return a pointer to a
+         s_tfcell veriusertfs table that ends with zero value type field.
+         Multiple +loadpli1= options are allowed and just before elaboration
+         all [bootstrap routines] for every +loadpli1= option are executed.
+         Each s_tfcell returned table is added to one design wide master
+         s_tfcell table in option and routine in list order.  The master
+         table defines all PLI 1 system functions and tasks used during a
+         simulation run.  The [bootstrap routines] must not call any PLI
+         routines.  Any C file containing [bootstrap routines] list must
+         include both veriuser.h and cv_veriuser.h files.  Some OS shells
+         may require quoting and escaping option separators and file names
+         within the +loadpli1= option string.  Problem can be avoided by
+         coding +loadpli1= option in a -f command argument file. See release
+         examples.tf directory in tests_and_examples directory for example
+         PLI 1 programs and make files specific to your operating system.
+   +loadvpi=[.so library]:[boostrap routines]  Load [.so library] dynamic
+         library containing user PLI 2 vpi model and execute each bootstrap
+         routine.  [bootstrap routines] is a comma separated list of C/C++
+         routines.  List may be empty but : is still required.  No spaces
+         are allowed around the equal sign, the colon or commas separating
+         bootstrap C routine names.  All dynamic libraries defined by
+         +loadvpi= options are first loaded using OS dlopen mechanism and
+         then all bootstrap routines are executed before elaboration begins.
+         The OS specific dynamic library suffix (.so on Linux) may be
+         omitted.  If omitted and the [.so library] is not found in any
+         LD_LIBRARY_PATH directory, the dynamic library suffix is added and
+         the LD_LIBRARY_PATH directories are searched again.
+ 
+         Each [bootstrap routines] is saved on an ordered list and executed
+         in order before elaboration begins.  Normally [bootstrap routines]
+         will execute routines in vlog_startup_routines table, but any PLI 2
+         vpi routines callable before elaboration may be called including
+         vpi_register_systf and vpi_register_cb PLI 2 routines.  Some OS
+         shells may require quoting and escaping option separators and file
+         names within the +loadvpi= option string.  Problem can be avoided by
+         coding +loadvpi= option in a -f command argument file. See release
+         examples.vpi directory for example PLI 1 programs and make files
+         specific to your operating system.
+ 
+   +verbose  Print various simulation progress messages and design component
+         counts.  Memory sizes do not count memory used by udp tables.
+   +maxerrors [number]  Normally translation terminates after 32
+         errors.  Use this option to change the number. 0 means no limit.
+         Option applies to translation only, simulation is never stopped.
+   -e    Turn off printing of non fatal error messages.
+   -informs  Turn on printing of informatory messages.  Off by default.
+         Informs may be emitted during translation and during simulation.
+         Enable this option to determine if a plus option is misspelled and
+         to cause OS error message description strings to be printed.
+         Option will probably produce voluminous output unless
+         +suppress_warns+[+ separated list] option(s) also used.
+   -et   Turn on event tracing.  Option is similar to the -t (or $settrace)
+         option but -t only traces procedural execution.  To dynamically
+         control event tracing use $setevtrace and $clearevtrace system
+         tasks.  Option produces voluminous output. Use -t and -et to
+         duplicate other simulator -t tracing.
+   +tracefile [name]  Set the output file for any trace output (either
+         statement or event).  Use $settracefile system task to change
+         trace file during execution.  Name can be stdout and if no option
+         or $tracefile, defaults to stdout and log file.  $flushlog system
+         task flushes this file during simulation.
+   +printstats  Print tables of design contents.  Primitives, instances,
+         and wires that will use silicon area are tabulated.  More
+         detailed alternative to $showallinstances.
+   +printallstats  Option equivalent to +printstats but additionally prints
+         the declarative content of every module.
+   +suppress_warns+  Individual warning and informatory messages can be
+         suppressed (not errors) by including a + separated list. i.e.
+         +suppress_warns+403+502+507+564+.  All such options are combined.
+         The $suppress_warns([comma separated list]) and $allow_warns
+         system tasks can be used during simulation for the same effect.
+   +remove_gate_0delays  Change all gates with #0 or #(0, 0, 0) delay to no
+         delay (1 bit continuous assigns implemented as gates).  Option can
+         significantly speed up simulation but in very rare situation cause
+         simulation to fail (#0 delays used to mask races).  If you see a
+         large simulation speed up from option, you can probably speed up
+         simulation even more by recoding most common cells as udps.  Option
+         needed because some simulators only allow delay annotation if gate
+         has a delay coded in source.
+   +nokeepcommands  Do not save interactive commands to history list.  By
+         default,  Interactive commands are saved to history list.  The
+         $keepcommands; and $nokeepcommands; system tasks enable and disable
+         saving of of history during simulation.  Option should be used when
+         interactive input comes from $input or from shell pipe to stdin.
+   +define+[symbol] or +define+[symbol]=[string]   Define back quote macro
+         symbol [symbol] with an empty text string (first form) for use with
+         `ifdef and `ifndef macro facility.  [symbol] does not include back
+         quote.  Second form defines symbol with value [string].  [String]
+         must not contain white space but can contain anything else including
+         surrounding quotes.  Escaped surrounding quotes are converted to
+         normal quotes while non escaped will probably be removed
+         by your shell.  The $scan$plusargs system task is an alternative
+         for setting preprocessor values into variables.
+   +incdir+[path]+[path]+...+  Define paths that are searched for `include
+         files when `include file not found in current directory.  Only
+         `include files that are non absolute paths (not staring with '/'
+         or '.' or '..' or '~') are searched for using +incdir paths.
+         Paths that do not end with '/' have a '/' path separator appended
+         to end.  For file included in different directory, files included
+         from it are still searched for in original (not include file)
+         directory.  Multiple +incdir+ options may be specified.  Paths
+         directories are searched in order of +incdir+ options.
+   +sdf_log_file [file]  File is used for SDF annotation instead of default
+         writing of SDF messages and errors to Verilog log file.
+   +sdf_annotate [file] or +sdf_annotate [file]+[scope reference]  File must
+         be in IEEE P1497 standard delay file format.  File is read and used
+         to set delay and specify values.  +mindelays, +typdelays or
+         +maxdelays setting used to select rtriple value.  Multiple
+         +sdf_annotate options (and files) allowed.  If +[scope reference]
+         provided, SDF path references relative to scope.  Otherwise, SDF
+         paths rooted (context is entire design).  Annotation files processed
+         in option order.  Alternatively, $sdf_annotate system task can be
+         used to annotate delays.  See systsks.1 man page for documentation.
+         Large designs that require large SDF files load somewhat faster if
+         command line option instead of system task is used.
+   +sdf_during_sim  Option added to support new flow graph compiler.  This
+         option should not be used unless your $sdf_annotate system tasks
+         require variable arguments or need to run after time 0.  Such
+         $sdf_annotate calls result in syntax errors if new compiler is
+         used.
+   +sdfverbose  Emit trace messages giving new delay value for every delay
+         changed during +sdf_annotate delay annotation.  Option can generate
+         voluminous output.
+   +ignore_sdf_iopath_edges  Normally when SDF (IOPATHs are matched to
+         Verilog specify paths for annotating delays, if the SDF (IOPATH
+         has a (POSEDGE or (NEGEDGE keyword, only specify paths with the
+         same edge will match.  This option causes matching to ignore SDF
+         edges.   If this option is selected, (IOPATHs with edges match
+         specify paths with or without edges.  Option is needed to agree
+         with some simulators annotations.
+   +sdf_noerrors  Do not emit SDF annotation error messages.  SDF errors do
+         not stop simulation but cause SDF object delay setting to be skipped
+         so +maxerrors error limit does not apply.  Use this option to turn
+         off printing of SDF error messages.
+   +sdf_nowarns  Do not emit warning messages during SDF annotation.  SDF
+         warnings and informs can also be suppressed by message number
+         using +suppress_warns+ option.
+   +switchverbose  Emit trace and size messages for inout and tran gate
+         switch channels elaboration. Use this option to print progress
+         messages when simulating models with very large switch channels.
+   +change_port_type  Some designs require ports that are not declared as
+         inout but are connected as inouts and require bidirectional signal
+         flow for correct simulation have their port type changes to inout.
+         Use this option to cause port direction to be changed to inout for
+         input ports with loconn drivers and for output ports with highconn
+         drivers.  WARNING: Use of this option may be required to match
+         results of other simulators that use port collapsing algorithm.
+   +sched_always_first  Change so all always blocks are scheduled (usually
+         event control armed) before any initial blocks are scheduled.
+         This change makes sure that all time 0 non symthesizable usually
+         test bench initial block assignments will trigger always blocks.
+         If this option is not selected, some always blocks may not triggger
+         until the next signal (usually clock) change.  It is an option
+         because some bug reports say that scheduling always blocks first
+         causes extra time 0 edges.
+   +nospecify  Simulation run with specify section ignored.  This option
+         causes specify section to be read and parsed but it is discarded
+         before simulation.  +nospecify of course implies +notimingchecks.
+   +nointeractive  Option turns off interactive environment, interrupt signal
+         (^c) causes immediate termination.  $stop causes a warning to be
+         printed without stopping.  Suppress warning 560 to silently ignore
+         stops.  If machine code simulation option +compiled_sim is selected,
+          this option is automatically turned on.
+   +snapshot  If +nointeractive option is selected, if interrupt signal
+         (^c) is generated, this option causes a port mortem activity
+         snapshot to be printed before program termination.  Debugger
+         :where and $snapshot system task produces same output without
+         ending simulation.
+   +2state  Two state execution.  This optimization may increase compiled
+         simulation performance by simulating in 2-state mode.  All
+         variables are initialized to 0 and simulated using only 0/1 values,
+         x/z values will be converted to 0.  Simulating in 2-state mode
+         may increase performance up to 50% without having to change the 
+         design itself.
+   +2state_no_wires  Two state execution.  Same as +2state except wires
+         remain initialized and simulated using 4-state values.  This 
+         allows existing designs that depend on 4-state wire values to 
+         simulate as expected and initialize from the x/z state.
+   +random    Turn on random initialization.  Will initialize variables to
+              4-state random values (0/1/X/Z) for 4-state variables and
+              1/0 for 2-state variables.  These can be used to find startup
+              state initialization bugs.  Also used along with +2state
+              option to trigger initialization setup.
+   +random_2state    Initialize all variables (inlcuding 4-state) to
+              have no X/Z values only 2-state 1/0 values.
+   +random=[seed] Turn on random initialization with seed value.  Seed must
+              be an integer value.  The random seed can be used to alter
+              random initialization values across simulations.
+   +random_2state=[seed]  Same as +random, but only initialize all values
+              to 2-state 0/1 using the seed to alter intialized values.
+   +dumpvars  Dumpvars.  VCD dumpvars for all variables in a design.
+   +fstvars   FST dumping.  FST (GTKWave format) value dumping for all
+              variables in a design.
+   +fstvars_repack  FST dumping.  Do FST value dumping for all variables in
+              a design repacking on simulation finish.  Results in smaller
+              file but takes a bit longer to repack FST file.
+   +fst+parallel=on  Turn on parallel FST dumping.  This can result in
+              50% less simulation time when used on multi-core systems.
+              We strongly recommend using parallel mode then dumping FST.
+              Alternatively can be turned on by setting the CVC_FST_PARALLEL
+              environment variable.
+   +fst+parallel2=on  Turn on parallel FST dumping - mode 2.  Same as
+              +fst+parallel plus uses an additional thread (core) and memory
+              to further increase FST dumping performance.  This mode
+              will use up to 3 simultaneous cores so should only be ran on
+              systems with at least 4 cores (quad-core).  Alternatively
+              can be turned on by setting the CVC_FST_PARALLEL2 environment
+              variable.
+   +dump2fst  Convert all $dump* [VCD] system calls to $fst* [FST] format.
+   +dump_arrays Any array form allowed in a $dumpvars statement: entire
+              arrays or selects of one array cell.  The various instance
+              and all forms for $dumpvars arguments will dump all arrays
+              in the instances (or subtree).  This may result in large dump
+              files for large arrays which will slow down simulation.
+   +dump_array_cells - Only allow dumping of specific array elements in a
+              $dumpvars statement.  Each element must be passed as an
+              argument to $dumpvars.  This allows dumping of just the 
+              desired array elements - not the entire array.
+ 
+ 
+  The following options are used for built in toggle coverage:
+ 
+   -toggle  Turn on toggle coverage for an entire design and create a 
+            coverage report to a file named 'cvc.toggle' by default.
+            If option is used, -optconfig with the cover_toggle statement
+            can only be used with exclude commands to exclude nets from
+            toggle coverage.
+ 
+            There are 4 new system task for finer grained control of toggle
+            recording probably for use with -optconfigfile toggle coverage
+            reporting option for only a few nets.  Place the system tasks in
+            your test bench.  System tasks are: $toggle_state_reset that
+            marks all nets for which toggle reporting is on to untoggled.
+            Plus $toggle_record_off_set_old_val_x to turn off toggle
+            recording and set all old values to X so 2 toggles are needed
+            before a net is set to toggled, and $toggle_record_off that
+            just turns off toggle recording but leaves the old value
+            unchanged so next change will set the net to toggled.
+   -toggle_file [file name]  Turn on toggle coverage and print report
+            to a specific file.
+   -mark_driven_const_wires_toggled  New option that marks all wire bits
+            driven either directly by one constant driver or through a
+            chain of constant drivers.  All bit driven by constants are
+            changed to toggled just before reports are generated or
+            the .tgldat file is written.  New -driven_const_report_concise
+            prints a per instance and per bit report of driven by constants
+            wires that have toggle coverage turned on (i.e. not turned off
+            by a -optconfigfile statement). If a section of a design or
+            nets are excluded from toggle coverage they can never be
+            seen as driven to a constant even if they really are.
+   -write_toggle_data  Write .tgldat file of records toggle rooted paths
+            from one run.  New simplified ascii format to replace old .tvcd
+            output file.  Use the -init_toggle_from file [file name] option
+            to read one or more .tgldat written at the end of previous
+            -toggle record runs.  Unless the -write_toggle_data_file is
+            used to change the file name it defaults to 'verilog.tgldat'
+            Change needed because Verilog design must be read in order to
+            generate toggle concise uncovered report.  To generate a report
+            from a previously crated .tgldat file, use the -c compile only
+            option.
+   -write_toggle_data_file [file name]  Changes name of output recorded
+            toggle data file from default 'verilog.tgldat' to [file name].
+            Option also selects -write_toggle_data to write output recorded
+            .tgldat file.
+   -set_toggled_from_file [file name]  Reads [file name] which must be in
+            .tgldat ascii toggle 0->1 and 1->0 format and marks bits as
+            toggled if value is 1 in list before simulation begins.
+            Multipile -set_toggled_from_file option are allowed.  Toggled
+            bits from each file cumulatively set pre simulation toggled
+            state. This option in conjunction with the -s and -i and +interp
+            options replace old tvcdmerge and tvcdreport programs.  Release
+            coverage/src directory contains programs to check .tgldat files
+            and to convert from old .tvcd format to new .tgldat format.
+           .tgldat files can be concatenated by simply using OS cat command.
+ 
+  For setting toggle coverage for a specific module/instance/net use the
+  -optconfigfile option with 'cover_toggle' statement properites.
+ 
+  The following options are used to select the style of the coverage report:
+ 
+   -untoggled_report_concise  New option that only prints untoggled bits
+            in as concise a form as possible with minimal coverage
+            statistics.  If this option is selected these older toggle
+            report options are ignored.  For toggle coverage use this option
+            because the older toggle reporting will be removed in the
+            future.  Notice that toggling needs to be turned on with the
+            -toggle option or with +optconfigfile cover_toggle statement.
+   -driven_const_report_concise  Output a report per instance and per bit
+            of wires directly driven by one constant driver or through a
+            a chain of wires driven by one constant driver.  Report will
+            not be written unless the -mark_driven_const_wires_toggled
+            option is slected.  Option causes older toggle report options
+            to be ignored.
+   -ti      Display toggle coverage information per instance.
+   -tu      Display uncovered nets - those without 100%% coverage.
+   -tc      Display covered nets - those getting 100%% coverage.
+   -tb      Display toggle coverage vectors per bit.
+ 
+  The following options are used for statement coverage reporting:
+ 
+   -stmt_coverage  Turn on statement coverage for an entire design and
+            create a report to a file named 'cvc.stmts' by default.
+   -stmt_coverage_file [file name]  Turn on statement coverage and
+            print to a specific file.
+   -stmt_tasks  Include task/function statements for coverage.
+ 
+  For setting statement coverage for a specific module use the
+  -optconfigfile option with 'cover_stmt'.
+ 
+  The following options are used for @ event coverage reporting:
+ 
+   -event_coverage  Turn on @ event coverage for an entire design and
+            create a report to a file named 'cvc.events' by default.
+   -event_coverage_file [file name]  Turn on event coverage and
+            print to a specific file.
+ 
+  For setting event coverage for a specific module use the -optconfigfile
+  option with 'cover_event'.
+ 
+  The following options are used for X-propagation:
+ 
+   +xprop   Turn on X-propagation.  This turns on advanced CVC
+            X-propagation feature which helps locate and resolve possible
+            bugs due to Xs in the design.
+   +xprop2  Turn on X-propagation style 2.  This turns on advanced CVC
+            X-propagation which helps locate and remove Xs all together 
+            from the design.
+   +xtrace  Turn on X-propagation tracing for all conditions which
+            trigger X-propagation.  All tracing is placed into a 
+            text file with default name 'cvc.xprop'.
+   +xtrace_suppress  Suppress X-propagation tracing until later turned on
+            at a specific simulation time using the $xtraceon system call.
+            Using +xtrace_suppress along with $xtraceon to turn on 
+            X-propagation tracing for a certain simulation time block.
+   +xtracemax=[number]  Set the maximum number of trace statements to 
+              record.  This is used along with +xtrace to avoid 
+              creating large 'cvc.xprop' files during simulation.  If not
+              used the default 1000 statements will be written. Set
+              +tracemax=0 to turn the limit off.
+   +xprop_eval Turn on much more pessimistic algorithsm for RTL binary 
+               and unary reducing  |, & type operators.
+   +xprop_exclude Dump a file called 'cvc.xprop.exlcuded' which reports
+                  all statements which are not included in X-propagation
+                  giving the reason why for each statement.
+   +no_xedges   Do not include always @(x) X edge detection for X-propagation.
+   +no_vector_xedges Do not include always @(x) X edge detection for 
+                  variables greater than one bit (only scalars).
+   +only_pos_neg_xedges  Only include always @(posedge/negedge).  Regular
+                  @(var) without posedge/negedge will not be included
+                  in X-propagation X detection.
+ 
+  For setting xprop settings for specific modules use the -optconfigfile
+  option with 'xprop'/'xprop2'/'xprop_eval'.
+ 
+ For a complete explanation of X-propagation see 'cvc_propagation.pdf' in 
+ the release directory.
+ 
+  The following options are for use with SystemVerilog features:
+ 
+   -sv  Parse source files for SystemVerilog using SystemVerilog keywords.
+        For currently supported SystemVerilog feaures see the docs/
+        directory from the top level of the release directory.
+   -sverilog  Same as -sv.
+   -sv_lib [.so library]  Load a dynamic DPI library.  Link in the 
+        precompiled library of DPI user defined functions.  CVC will assume
+        SystemVerliog parsing (-sv) if supplied a library with -sv_lib.
+        Since most Verilog simulations use relative paths from the sim
+        directory cvc runs in, if [.so library] for finding dpi_ import
+        c procs name does not start with slash for rooted path or './' for
+        relative, the './' is prepended to the .so library name.  See the
+        release examples.dpi directory for examples that use this option.
+        If you have problems loading dpi_ import .so libraries, use the
+        +dpiverbose option to find out why a library was not found.
+   +dpiverbose  Emit tracing messages for each +import foreign dpi_ c proc
+        showing which library is is linked from.  Also turns on -sv_lib
+        consistency checking.
+   +write_dpi_hdrs  For designs that use the DPI interface, use this option
+        to have CVC write an example C language header file (dpi_hdrs.h)
+        containing prototypes DPI import and export prototypes.  Option
+        is useful for determining SystemVerilog types from import and
+        export declarations.
+ 
+**Special help mode successfully completed.

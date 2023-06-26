@@ -1,0 +1,37 @@
+## VIP
+-v $(VERILOG_PATH)/dv/vip/tbuart.v
+-v $(VERILOG_PATH)/dv/vip/spiflash.v
+-v $(VERILOG_PATH)/dv/vip/wb_rw_test.v
+
+## DESIGN
+-v $(VERILOG_PATH)/rtl/defines.v
+-v $(VERILOG_PATH)/gl/mgmt_core.v
+-v $(VERILOG_PATH)/gl/mgmt_core_wrapper.v
+
+#-v $(VERILOG_PATH)/rtl/VexRiscv_MinDebugCache.v
+
+## DFFRAM Full GL
+-v $(VERILOG_PATH)/gl/DFFRAM.v
+
+## DFFRAM Behavioral Model
+#-v $(VERILOG_PATH)/dv/vip/DFFRAM.v
+
+###########################################################
+# STD CELLS - they need to be below the defines.v files 
+###########################################################
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+ -v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+#-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
+## STD CELLS - they need to be below the defines.v files 
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_ef_io.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_io.v
+#-v $(VERILOG_PATH)/cvc-pdk/primitives_hd.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hd.v
+#-v $(VERILOG_PATH)/cvc-pdk/primitives_hvl.v
+#-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hvl.v
+ -v $(VERILOG_PATH)/cvc-pdk/sky130_sram_2kbyte_1rw1r_32x512_8.v

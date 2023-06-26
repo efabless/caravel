@@ -1,0 +1,887 @@
+****************************************
+Report : timing
+	-path_type full_clock_expanded
+	-delay_type max
+	-input_pins
+	-nets
+	-nworst 10
+	-slack_lesser_than 10.0000
+	-max_paths 10000
+	-unique_pins
+	-transition_time
+	-capacitance
+	-crosstalk_delta
+	-derate
+	-sort_by slack
+	-include_hierarchical_pins
+Design : RAM256
+Version: T-2022.03-SP3
+Date   : Thu Nov 10 07:10:34 2022
+****************************************
+
+
+  Startpoint: EN0 (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 r
+  EN0 (in)                                                                                                                              0.0000                     0.0000 &   1.0000 r
+  EN0 (net)                                                                                                       4   0.0795 
+  DEC0.AND1/B (sky130_fd_sc_hd__and2_2)                                                                                        0.0000   0.0178   1.0000   0.0000   0.0116 &   1.0116 r
+  DEC0.AND1/X (sky130_fd_sc_hd__and2_2)                                                                                                 0.0262   1.0000            0.0758 &   1.0874 r
+  BANK128[1].RAM128.EN0 (net)                                                                                     1   0.0030 
+  BANK128[1].RAM128.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                  0.0000   0.0262   1.0000   0.0000   0.0000 &   1.0874 r
+  BANK128[1].RAM128.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                           0.1827   1.0000            0.1642 &   1.2516 r
+  BANK128[1].RAM128.DEC0.EN (net)                                                                                 8   0.0417 
+  BANK128[1].RAM128.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                                   0.0091   0.1828   1.0000   0.0085   0.0127 &   1.2644 r
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.5733 &   1.8377 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9503 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2440 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2958 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4336 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4396 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5804 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5960 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.9151 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0326 &   2.9477 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0367   1.0000            0.0929 &   3.0407 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.WE0_WIRE (net)                               1   0.0021 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0367   1.0000   0.0000   0.0000 &   3.0407 r
+  data arrival time                                                                                                                                                           3.0407
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0021 &  13.0902 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0480   1.0000            0.0662 &  13.1563 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK_B (net)                                  1   0.0045 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0480   1.0000   0.0000   0.0000 &  13.1563 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1563
+  clock uncertainty                                                                                                                                               -0.1000    13.0563
+  clock gating setup time                                                                                                                        1.0000           -0.0625    12.9938
+  data required time                                                                                                                                                         12.9938
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9938
+  data arrival time                                                                                                                                                          -3.0407
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9532
+
+
+  Startpoint: EN0 (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 r
+  EN0 (in)                                                                                                                              0.0000                     0.0000 &   1.0000 r
+  EN0 (net)                                                                                                       4   0.0795 
+  DEC0.AND1/B (sky130_fd_sc_hd__and2_2)                                                                                        0.0000   0.0178   1.0000   0.0000   0.0116 &   1.0116 r
+  DEC0.AND1/X (sky130_fd_sc_hd__and2_2)                                                                                                 0.0262   1.0000            0.0758 &   1.0874 r
+  BANK128[1].RAM128.EN0 (net)                                                                                     1   0.0030 
+  BANK128[1].RAM128.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                  0.0000   0.0262   1.0000   0.0000   0.0000 &   1.0874 r
+  BANK128[1].RAM128.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                           0.1827   1.0000            0.1642 &   1.2516 r
+  BANK128[1].RAM128.DEC0.EN (net)                                                                                 8   0.0417 
+  BANK128[1].RAM128.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                                   0.0091   0.1828   1.0000   0.0085   0.0127 &   1.2644 r
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.5733 &   1.8377 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9503 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2440 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2958 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4336 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4396 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5804 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5960 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.9151 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0330 &   2.9481 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0385   1.0000            0.0949 &   3.0429 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.WE0_WIRE (net)                               1   0.0024 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0385   1.0000   0.0000   0.0000 &   3.0429 r
+  data arrival time                                                                                                                                                           3.0429
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0019 &  13.0904 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0509   1.0000            0.0690 &  13.1594 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0509   1.0000  -0.0000   0.0000 &  13.1594 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1594
+  clock uncertainty                                                                                                                                               -0.1000    13.0594
+  clock gating setup time                                                                                                                        1.0000           -0.0628    12.9966
+  data required time                                                                                                                                                         12.9966
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9966
+  data arrival time                                                                                                                                                          -3.0429
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9537
+
+
+  Startpoint: EN0 (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 r
+  EN0 (in)                                                                                                                              0.0000                     0.0000 &   1.0000 r
+  EN0 (net)                                                                                                       4   0.0795 
+  DEC0.AND1/B (sky130_fd_sc_hd__and2_2)                                                                                        0.0000   0.0178   1.0000   0.0000   0.0116 &   1.0116 r
+  DEC0.AND1/X (sky130_fd_sc_hd__and2_2)                                                                                                 0.0262   1.0000            0.0758 &   1.0874 r
+  BANK128[1].RAM128.EN0 (net)                                                                                     1   0.0030 
+  BANK128[1].RAM128.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                  0.0000   0.0262   1.0000   0.0000   0.0000 &   1.0874 r
+  BANK128[1].RAM128.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                           0.1827   1.0000            0.1642 &   1.2516 r
+  BANK128[1].RAM128.DEC0.EN (net)                                                                                 8   0.0417 
+  BANK128[1].RAM128.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                                   0.0091   0.1828   1.0000   0.0085   0.0127 &   1.2644 r
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.5733 &   1.8377 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9503 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2440 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2958 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4336 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4396 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5804 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5960 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.9151 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0304 &   2.9454 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0357   1.0000            0.0919 &   3.0373 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.WE0_WIRE (net)                               1   0.0019 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0357   1.0000   0.0000   0.0000 &   3.0373 r
+  data arrival time                                                                                                                                                           3.0373
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0029 &  13.0893 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0486   1.0000            0.0667 &  13.1560 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CLK_B (net)                                  1   0.0047 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0486   1.0000   0.0000   0.0000 &  13.1561 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1561
+  clock uncertainty                                                                                                                                               -0.1000    13.0561
+  clock gating setup time                                                                                                                        1.0000           -0.0624    12.9937
+  data required time                                                                                                                                                         12.9937
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9937
+  data arrival time                                                                                                                                                          -3.0373
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9564
+
+
+  Startpoint: EN0 (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 r
+  EN0 (in)                                                                                                                              0.0000                     0.0000 &   1.0000 r
+  EN0 (net)                                                                                                       4   0.0795 
+  DEC0.AND1/B (sky130_fd_sc_hd__and2_2)                                                                                        0.0000   0.0178   1.0000   0.0000   0.0116 &   1.0116 r
+  DEC0.AND1/X (sky130_fd_sc_hd__and2_2)                                                                                                 0.0262   1.0000            0.0758 &   1.0874 r
+  BANK128[1].RAM128.EN0 (net)                                                                                     1   0.0030 
+  BANK128[1].RAM128.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                  0.0000   0.0262   1.0000   0.0000   0.0000 &   1.0874 r
+  BANK128[1].RAM128.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                           0.1827   1.0000            0.1642 &   1.2516 r
+  BANK128[1].RAM128.DEC0.EN (net)                                                                                 8   0.0417 
+  BANK128[1].RAM128.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                                   0.0091   0.1828   1.0000   0.0085   0.0127 &   1.2644 r
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.5733 &   1.8377 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9503 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0674 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2440 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2958 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4336 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4396 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5804 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5960 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.9151 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0296 &   2.9447 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0376   1.0000            0.0939 &   3.0386 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.WE0_WIRE (net)                               1   0.0023 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0376   1.0000   0.0000   0.0000 &   3.0386 r
+  data arrival time                                                                                                                                                           3.0386
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0032 &  13.0890 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0508   1.0000            0.0690 &  13.1580 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0508   1.0000  -0.0000   0.0000 &  13.1580 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1580
+  clock uncertainty                                                                                                                                               -0.1000    13.0580
+  clock gating setup time                                                                                                                        1.0000           -0.0627    12.9953
+  data required time                                                                                                                                                         12.9953
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9953
+  data arrival time                                                                                                                                                          -3.0386
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9568
+
+
+  Startpoint: A0[6] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[6] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[6] (net)                                                                                                     4   0.0901 
+  BANK128[1].RAM128.A0BUF[6].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0005   0.0213   1.0000   0.0004   0.0144 &   1.0144 f
+  BANK128[1].RAM128.A0BUF[6].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1829   1.0000            0.1843 &   1.1988 f
+  BANK128[1].RAM128.A0BUF[6].X (net)                                                                             16   0.0693 
+  BANK128[1].RAM128.DEC0.AND0/B (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1835   1.0000   0.0042   0.0128 &   1.2115 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6020 &   1.8135 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9261 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0431 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0432 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2198 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2716 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4094 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4154 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5562 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5718 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8908 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0326 &   2.9235 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0367   1.0000            0.0929 &   3.0164 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.WE0_WIRE (net)                               1   0.0021 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0367   1.0000   0.0000   0.0000 &   3.0164 r
+  data arrival time                                                                                                                                                           3.0164
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0021 &  13.0902 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0480   1.0000            0.0662 &  13.1563 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK_B (net)                                  1   0.0045 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0480   1.0000   0.0000   0.0000 &  13.1563 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1563
+  clock uncertainty                                                                                                                                               -0.1000    13.0563
+  clock gating setup time                                                                                                                        1.0000           -0.0625    12.9938
+  data required time                                                                                                                                                         12.9938
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9938
+  data arrival time                                                                                                                                                          -3.0164
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9774
+
+
+  Startpoint: A0[6] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[6] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[6] (net)                                                                                                     4   0.0901 
+  BANK128[1].RAM128.A0BUF[6].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0005   0.0213   1.0000   0.0004   0.0144 &   1.0144 f
+  BANK128[1].RAM128.A0BUF[6].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1829   1.0000            0.1843 &   1.1988 f
+  BANK128[1].RAM128.A0BUF[6].X (net)                                                                             16   0.0693 
+  BANK128[1].RAM128.DEC0.AND0/B (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1835   1.0000   0.0042   0.0128 &   1.2115 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6020 &   1.8135 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9261 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0431 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0432 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2198 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2716 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4094 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4154 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5562 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5718 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8908 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0330 &   2.9238 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0385   1.0000            0.0949 &   3.0187 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.WE0_WIRE (net)                               1   0.0024 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0385   1.0000   0.0000   0.0000 &   3.0187 r
+  data arrival time                                                                                                                                                           3.0187
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0019 &  13.0904 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0509   1.0000            0.0690 &  13.1594 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0509   1.0000  -0.0000   0.0000 &  13.1594 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1594
+  clock uncertainty                                                                                                                                               -0.1000    13.0594
+  clock gating setup time                                                                                                                        1.0000           -0.0628    12.9966
+  data required time                                                                                                                                                         12.9966
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9966
+  data arrival time                                                                                                                                                          -3.0187
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9779
+
+
+  Startpoint: A0[6] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[6] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[6] (net)                                                                                                     4   0.0901 
+  BANK128[1].RAM128.A0BUF[6].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0005   0.0213   1.0000   0.0004   0.0144 &   1.0144 f
+  BANK128[1].RAM128.A0BUF[6].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1829   1.0000            0.1843 &   1.1988 f
+  BANK128[1].RAM128.A0BUF[6].X (net)                                                                             16   0.0693 
+  BANK128[1].RAM128.DEC0.AND0/B (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1835   1.0000   0.0042   0.0128 &   1.2115 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6020 &   1.8135 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9261 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0431 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0432 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2198 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2716 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4094 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4154 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5562 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5718 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8908 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0304 &   2.9212 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0357   1.0000            0.0919 &   3.0131 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.WE0_WIRE (net)                               1   0.0019 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0357   1.0000   0.0000   0.0000 &   3.0131 r
+  data arrival time                                                                                                                                                           3.0131
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0029 &  13.0893 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0486   1.0000            0.0667 &  13.1560 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CLK_B (net)                                  1   0.0047 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0486   1.0000   0.0000   0.0000 &  13.1561 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1561
+  clock uncertainty                                                                                                                                               -0.1000    13.0561
+  clock gating setup time                                                                                                                        1.0000           -0.0624    12.9937
+  data required time                                                                                                                                                         12.9937
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9937
+  data arrival time                                                                                                                                                          -3.0131
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9806
+
+
+  Startpoint: A0[6] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[6] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[6] (net)                                                                                                     4   0.0901 
+  BANK128[1].RAM128.A0BUF[6].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0005   0.0213   1.0000   0.0004   0.0144 &   1.0144 f
+  BANK128[1].RAM128.A0BUF[6].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1829   1.0000            0.1843 &   1.1988 f
+  BANK128[1].RAM128.A0BUF[6].X (net)                                                                             16   0.0693 
+  BANK128[1].RAM128.DEC0.AND0/B (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1835   1.0000   0.0042   0.0128 &   1.2115 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6020 &   1.8135 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9261 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0431 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0432 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2198 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2716 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.4094 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.4154 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5562 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5718 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8908 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0296 &   2.9205 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0376   1.0000            0.0939 &   3.0143 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.WE0_WIRE (net)                               1   0.0023 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0376   1.0000   0.0000   0.0000 &   3.0144 r
+  data arrival time                                                                                                                                                           3.0144
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0032 &  13.0890 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0508   1.0000            0.0690 &  13.1580 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0508   1.0000  -0.0000   0.0000 &  13.1580 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1580
+  clock uncertainty                                                                                                                                               -0.1000    13.0580
+  clock gating setup time                                                                                                                        1.0000           -0.0627    12.9953
+  data required time                                                                                                                                                         12.9953
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9953
+  data arrival time                                                                                                                                                          -3.0144
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9810
+
+
+  Startpoint: A0[5] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[5] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[5] (net)                                                                                                     4   0.0977 
+  BANK128[1].RAM128.A0BUF[5].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0003   0.0053   1.0000   0.0003   0.0041 &   1.0041 f
+  BANK128[1].RAM128.A0BUF[5].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1694   1.0000            0.1708 &   1.1749 f
+  BANK128[1].RAM128.A0BUF[5].X (net)                                                                             16   0.0638 
+  BANK128[1].RAM128.DEC0.AND0/A (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1698   1.0000   0.0042   0.0111 &   1.1860 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6097 &   1.7957 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9083 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2020 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2538 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.3916 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.3976 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5384 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5540 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8731 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0326 &   2.9057 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0367   1.0000            0.0929 &   2.9987 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.WE0_WIRE (net)                               1   0.0021 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0367   1.0000   0.0000   0.0000 &   2.9987 r
+  data arrival time                                                                                                                                                           2.9987
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0021 &  13.0902 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0480   1.0000            0.0662 &  13.1563 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK_B (net)                                  1   0.0045 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0480   1.0000   0.0000   0.0000 &  13.1563 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1563
+  clock uncertainty                                                                                                                                               -0.1000    13.0563
+  clock gating setup time                                                                                                                        1.0000           -0.0625    12.9938
+  data required time                                                                                                                                                         12.9938
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9938
+  data arrival time                                                                                                                                                          -2.9987
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9952
+
+
+  Startpoint: A0[5] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[5] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[5] (net)                                                                                                     4   0.0977 
+  BANK128[1].RAM128.A0BUF[5].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0003   0.0053   1.0000   0.0003   0.0041 &   1.0041 f
+  BANK128[1].RAM128.A0BUF[5].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1694   1.0000            0.1708 &   1.1749 f
+  BANK128[1].RAM128.A0BUF[5].X (net)                                                                             16   0.0638 
+  BANK128[1].RAM128.DEC0.AND0/A (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1698   1.0000   0.0042   0.0111 &   1.1860 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6097 &   1.7957 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9083 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2020 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2538 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.3916 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.3976 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5384 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5540 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8731 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0294   0.3758   1.0000   0.0276   0.0330 &   2.9061 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0385   1.0000            0.0949 &   3.0009 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.WE0_WIRE (net)                               1   0.0024 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0385   1.0000   0.0000   0.0000 &   3.0009 r
+  data arrival time                                                                                                                                                           3.0009
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0019 &  13.0904 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0509   1.0000            0.0690 &  13.1594 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[2].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0509   1.0000  -0.0000   0.0000 &  13.1594 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1594
+  clock uncertainty                                                                                                                                               -0.1000    13.0594
+  clock gating setup time                                                                                                                        1.0000           -0.0628    12.9966
+  data required time                                                                                                                                                         12.9966
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9966
+  data arrival time                                                                                                                                                          -3.0009
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9957
+
+
+  Startpoint: A0[5] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[5] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[5] (net)                                                                                                     4   0.0977 
+  BANK128[1].RAM128.A0BUF[5].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0003   0.0053   1.0000   0.0003   0.0041 &   1.0041 f
+  BANK128[1].RAM128.A0BUF[5].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1694   1.0000            0.1708 &   1.1749 f
+  BANK128[1].RAM128.A0BUF[5].X (net)                                                                             16   0.0638 
+  BANK128[1].RAM128.DEC0.AND0/A (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1698   1.0000   0.0042   0.0111 &   1.1860 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6097 &   1.7957 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9083 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2020 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2538 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.3916 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.3976 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5384 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5540 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8731 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0304 &   2.9034 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0357   1.0000            0.0919 &   2.9953 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.WE0_WIRE (net)                               1   0.0019 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0357   1.0000   0.0000   0.0000 &   2.9953 r
+  data arrival time                                                                                                                                                           2.9953
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0029 &  13.0893 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0486   1.0000            0.0667 &  13.1560 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.CLK_B (net)                                  1   0.0047 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[3].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0486   1.0000   0.0000   0.0000 &  13.1561 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1561
+  clock uncertainty                                                                                                                                               -0.1000    13.0561
+  clock gating setup time                                                                                                                        1.0000           -0.0624    12.9937
+  data required time                                                                                                                                                         12.9937
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9937
+  data arrival time                                                                                                                                                          -2.9953
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9984
+
+
+  Startpoint: A0[5] (input port clocked by CLK)
+  Endpoint: BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG
+               (rising clock gating-check end-point clocked by CLK')
+  Path Group: **clock_gating_default**
+  Path Type: max
+
+  Point                                                                                                         Fanout   Cap    DTrans   Trans    Derate   Delta     Incr       Path
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock CLK (rise edge)                                                                                                                                            0.0000     0.0000
+  clock network delay (propagated)                                                                                                                                 0.0000     0.0000
+  input external delay                                                                                                                                             1.0000     1.0000 f
+  A0[5] (in)                                                                                                                            0.0000                     0.0000 &   1.0000 f
+  A0[5] (net)                                                                                                     4   0.0977 
+  BANK128[1].RAM128.A0BUF[5].cell/A (sky130_fd_sc_hd__clkbuf_2)                                                                0.0003   0.0053   1.0000   0.0003   0.0041 &   1.0041 f
+  BANK128[1].RAM128.A0BUF[5].cell/X (sky130_fd_sc_hd__clkbuf_2)                                                                         0.1694   1.0000            0.1708 &   1.1749 f
+  BANK128[1].RAM128.A0BUF[5].X (net)                                                                             16   0.0638 
+  BANK128[1].RAM128.DEC0.AND0/A (sky130_fd_sc_hd__nor3b_2)                                                                     0.0042   0.1698   1.0000   0.0042   0.0111 &   1.1860 f
+  BANK128[1].RAM128.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                                              0.7163   1.0000            0.6097 &   1.7957 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0 (net)                                                                     10   0.0607 
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                                   0.1241   0.7156   1.0000   0.1108   0.1126 &   1.9083 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.EN0BUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                                            0.0591   1.0000            0.1170 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.EN (net)                                                                  4   0.0090 
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/C_N (sky130_fd_sc_hd__nor3b_2)                                                    0.0000   0.0591   1.0000   0.0000   0.0000 &   2.0254 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.DEC0.AND0/Y (sky130_fd_sc_hd__nor3b_2)                                                               0.1884   1.0000            0.1766 &   2.2020 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN (net)                                                    1   0.0126 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/A (sky130_fd_sc_hd__clkbuf_2)                                      0.0539   0.1884   1.0000   0.0515   0.0518 &   2.2538 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.ENBUF/X (sky130_fd_sc_hd__clkbuf_2)                                               0.0948   1.0000            0.1377 &   2.3916 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.EN_buf (net)                                                8   0.0209 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/D_N (sky130_fd_sc_hd__nor4b_2)                                      0.0052   0.0948   1.0000   0.0049   0.0060 &   2.3976 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.DEC0.AND0/Y (sky130_fd_sc_hd__nor4b_2)                                                 0.1506   1.0000            0.1408 &   2.5384 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0 (net)                                             1   0.0042 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/A (sky130_fd_sc_hd__clkbuf_2)                               0.0158   0.1506   1.0000   0.0155   0.0156 &   2.5540 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.SEL0BUF/X (sky130_fd_sc_hd__clkbuf_2)                                        0.3757   1.0000            0.3191 &   2.8731 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.SEL0 (net)                                  16   0.0883 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/A (sky130_fd_sc_hd__and2_1)                         0.0293   0.3758   1.0000   0.0276   0.0296 &   2.9027 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CGAND/X (sky130_fd_sc_hd__and2_1)                                  0.0376   1.0000            0.0939 &   2.9966 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.WE0_WIRE (net)                               1   0.0023 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/GATE (sky130_fd_sc_hd__dlclkp_1)               0.0000   0.0376   1.0000   0.0000   0.0000 &   2.9966 r
+  data arrival time                                                                                                                                                           2.9966
+
+  clock CLK' (rise edge)                                                                                                                                          12.5000    12.5000
+  clock source latency                                                                                                                                             0.0000    12.5000
+  CLK (in)                                                                                                                              0.0000                     0.0000 &  12.5000 f
+  CLK (net)                                                                                                       4   0.0695 
+  BANK128[1].RAM128.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                                  0.0000   0.0032   1.0000   0.0000   0.0017 &  12.5017 f
+  BANK128[1].RAM128.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                                           0.0675   1.0000            0.1184 &  12.6201 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLK (net)                                                                      8   0.0405 
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_4)                                                   0.0000   0.0677   1.0000   0.0000   0.0031 &  12.6232 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_4)                                                            0.0933   1.0000            0.1658 &  12.7889 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.CLKBUF.X (net)                                                                10   0.0611 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/A (sky130_fd_sc_hd__clkbuf_2)                                     0.0000   0.0939   1.0000   0.0000   0.0062 &  12.7952 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.cell/X (sky130_fd_sc_hd__clkbuf_2)                                              0.0582   1.0000            0.1264 &  12.9216 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.CLKBUF.X (net)                                                   8   0.0201 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/A (sky130_fd_sc_hd__clkbuf_4)                                0.0000   0.0582   1.0000   0.0000   0.0007 &  12.9222 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.CLKBUF/X (sky130_fd_sc_hd__clkbuf_4)                                         0.0994   1.0000            0.1700 &  13.0922 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[0].B.CLK (net)                                    8   0.0683 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/A (sky130_fd_sc_hd__inv_1)                -0.0025   0.0994   1.0000  -0.0036  -0.0032 &  13.0890 f
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CLKINV/Y (sky130_fd_sc_hd__inv_1)                          0.0508   1.0000            0.0690 &  13.1580 r
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.CLK_B (net)                                  1   0.0051 
+  BANK128[1].RAM128.BLOCK[0].RAM32.SLICE[0].RAM8.WORD[0].W.BYTE[1].B.genblk1.CG/CLK (sky130_fd_sc_hd__dlclkp_1)                0.0000   0.0508   1.0000  -0.0000   0.0000 &  13.1580 r
+  clock reconvergence pessimism                                                                                                                                    0.0000    13.1580
+  clock uncertainty                                                                                                                                               -0.1000    13.0580
+  clock gating setup time                                                                                                                        1.0000           -0.0627    12.9953
+  data required time                                                                                                                                                         12.9953
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                                         12.9953
+  data arrival time                                                                                                                                                          -2.9966
+  -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                                                 9.9988
+
+
+1

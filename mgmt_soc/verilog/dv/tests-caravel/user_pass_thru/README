@@ -1,0 +1,14 @@
+------------------------------------
+user_pass_thru test bench
+------------------------------------
+
+This test bench exercises the pass-thru mode to the GPIO pins
+that are reserved for use by a user project for connecting to
+an SPI flash.  The pass-thru mode allows the SPI flash to be
+programmed using the housekeeping SPI.
+
+The testbench is essentially the same as the pass_thru test
+bench, but using the pins specified for the secondary SPI
+flash.  Note that the testbench does not define a controller
+on the user side to access the SPI flash (which would be a
+useful thing to add to the testbench).
