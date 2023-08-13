@@ -84,8 +84,8 @@ module caravel_openframe (
 		inout vssd,		// Common digital ground
 	`endif // USE_VCCD_POWER_DOMAIN
 	`ifdef USE_VDDA1_POWER_DOMAIN
-    inout vdda1,	// User area 1 3.3V power
-    inout vssa1,	// User area 1 analog ground
+	    inout vdda1,	// User area 1 3.3V power
+	    inout vssa1,	// User area 1 analog ground
 	`endif // USE_VDDA1_POWER_DOMAIN
     inout vdda1_2,	// User area 1 3.3V power
     inout vssa1_2,	// User area 1 analog ground
@@ -94,8 +94,8 @@ module caravel_openframe (
 		inout vssa2,	// User area 2 analog ground
 	`endif // USE_VDDA2_POWER_DOMAIN
 	`ifdef USE_VCCD1_POWER_DOMAIN
-    inout vccd1,	// User area 1 1.8V power
-    inout vssd1,	// User area 1 digital ground
+	    inout vccd1,	// User area 1 1.8V power
+	    inout vssd1,	// User area 1 digital ground
 	`endif // USE_VCCD1_POWER_DOMAIN
 	`ifdef USE_VCCD2_POWER_DOMAIN
 		inout vccd2,	// User area 2 1.8V power
