@@ -1179,7 +1179,7 @@ update_caravel:
 .PHONY: install_mcw
 install_mcw:
 	if [ -d "$(MCW_ROOT)" ]; then \
-		echo "Deleting exisiting $(MCW_ROOT)" && \
+		echo "Deleting existing $(MCW_ROOT)" && \
 		rm -rf $(MCW_ROOT) && sleep 2;\
 	fi
 ifeq ($(SUBMODULE),1)
@@ -1256,7 +1256,7 @@ clean-pdk:
 .PHONY: skywater-pdk
 skywater-pdk:
 	if [ -d "$(PDK_ROOT)/skywater-pdk" ]; then\
-		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
+		echo "Deleting existing $(PDK_ROOT)/skywater-pdk" && \
 		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2;\
 	fi
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
@@ -1273,7 +1273,7 @@ skywater-pdk:
 .PHONY: open-pdks
 open-pdks:
 	if [ -d "$(PDK_ROOT)/open_pdks" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
+		echo "Deleting existing $(PDK_ROOT)/open_pdks" && \
 		rm -rf $(PDK_ROOT)/open_pdks && sleep 2; \
 	fi
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
@@ -1284,7 +1284,7 @@ open-pdks:
 .PHONY: sky130
 sky130:
 	if [ -d "$(PDK_ROOT)/$(PDK)" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/$(PDK)" && \
+		echo "Deleting existing $(PDK_ROOT)/$(PDK)" && \
 		rm -rf $(PDK_ROOT)/$(PDK) && sleep 2;\
 	fi
 	docker run --rm\
