@@ -75,32 +75,21 @@ module caravel_openframe (
     inout vddio_2,	// Common 3.3V padframe/ESD power
     inout vssio,	// Common padframe/ESD ground
     inout vssio_2,	// Common padframe/ESD ground
-	`ifdef USE_VDDA_POWER_DOMAIN
-		inout vdda,		// Management 3.3V power
-		inout vssa,		// Common analog ground
-	`endif // USE_VDDA_POWER_DOMAIN
-	`ifdef USE_VCCD_POWER_DOMAIN
-		inout vccd,		// Management/Common 1.8V power
-		inout vssd,		// Common digital ground
-	`endif // USE_VCCD_POWER_DOMAIN
-	`ifdef USE_VDDA1_POWER_DOMAIN
-	    inout vdda1,	// User area 1 3.3V power
-	    inout vssa1,	// User area 1 analog ground
-	`endif // USE_VDDA1_POWER_DOMAIN
+    inout vdda,		// Management 3.3V power
+    inout vssa,		// Common analog ground
+    inout vccd,		// Management/Common 1.8V power
+    inout vssd,		// Common digital ground
+    inout vdda1,	// User area 1 3.3V power
     inout vdda1_2,	// User area 1 3.3V power
+    inout vdda2,	// User area 2 3.3V power
+    inout vssa1,	// User area 1 analog ground
     inout vssa1_2,	// User area 1 analog ground
-	`ifdef USE_VDDA2_POWER_DOMAIN
-		inout vdda2,	// User area 2 3.3V power
-		inout vssa2,	// User area 2 analog ground
-	`endif // USE_VDDA2_POWER_DOMAIN
-	`ifdef USE_VCCD1_POWER_DOMAIN
-	    inout vccd1,	// User area 1 1.8V power
-	    inout vssd1,	// User area 1 digital ground
-	`endif // USE_VCCD1_POWER_DOMAIN
-	`ifdef USE_VCCD2_POWER_DOMAIN
-		inout vccd2,	// User area 2 1.8V power
-		inout vssd2,	// User area 2 digital ground
-	`endif // USE_VCCD2_POWER_DOMAIN
+    inout vssa2,	// User area 2 analog ground
+    inout vccd1,	// User area 1 1.8V power
+    inout vccd2,	// User area 2 1.8V power
+    inout vssd1,	// User area 1 digital ground
+    inout vssd2,	// User area 2 digital ground
+
     inout [`OPENFRAME_IO_PADS-1:0] gpio,
     input resetb	// Reset input (sense inverted)
 );
@@ -110,31 +99,6 @@ module caravel_openframe (
     //------------------------------------------------------------
     parameter USER_PROJECT_ID = 32'h00000000;
 
-	// Connect power pins which are not provided by the openframe interface 
-	`ifndef USE_VDDA_POWER_DOMAIN
-		supply1 vdda;
-		supply0 vssa;
-	`endif // USE_VDDA_POWER_DOMAIN
-	`ifndef USE_VCCD_POWER_DOMAIN
-		supply1 vccd;
-		supply0 vssd;
-	`endif // USE_VCCD_POWER_DOMAIN
-	`ifndef USE_VDDA1_POWER_DOMAIN
-		supply1 vdda1;
-		supply0 vssa1;
-	`endif // USE_VDDA1_POWER_DOMAIN
-	`ifndef USE_VDDA2_POWER_DOMAIN
-		supply1 vdda2;
-		supply0 vssa2;
-	`endif // USE_VDDA2_POWER_DOMAIN
-	`ifndef USE_VCCD1_POWER_DOMAIN
-		supply1 vccd1;
-		supply0 vssd1;
-	`endif // USE_VCCD1_POWER_DOMAIN
-	`ifndef USE_VCCD2_POWER_DOMAIN
-		supply1 vccd2;
-		supply0 vssd2;
-	`endif // USE_VCCD2_POWER_DOMAIN
     // Project Control (pad-facing)
     wire [`OPENFRAME_IO_PADS-1:0] gpio_inp_dis;
     wire [`OPENFRAME_IO_PADS-1:0] gpio_oeb;
