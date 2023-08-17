@@ -123,10 +123,10 @@ module caravan_core (
     // User project direct access to gpio pad connections for analog
     // (all but the lowest-numbered 7 pads)
     inout [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_analog,
-	inout [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd,
-	inout [`ANALOG_PADS-1:0] user_analog,
-	inout [2:0] user_clamp_high,
-    inout wire [2:0] user_clamp_low
+    inout [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd,
+    inout [`ANALOG_PADS-1:0] user_analog,
+    inout [2:0] user_clamp_high,
+    inout [2:0] user_clamp_low
 );
 
     //------------------------------------------------------------
