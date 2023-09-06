@@ -31,12 +31,18 @@ SPLIT_FILES := $(shell find . -type f -name "*.$(ARCHIVE_EXT).00.split")
 SPLIT_FILES_SOURCES := $(basename $(basename $(basename $(SPLIT_FILES))))
 
 # Needed to uncompress the existing archives
-ARCHIVES := $(shell find . -type f -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -name "*.$(ARCHIVE_EXT)")
+ARCHIVES := $(shell find . -type f -not -path "*/signoff/*" -name "*.$(ARCHIVE_EXT)")
 ARCHIVE_SOURCES := $(basename $(ARCHIVES))
 
 # Needed to compress and split files/archives that are too large
 LARGE_FILES := $(shell find ./gds -type f -name "*.gds")
-LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
+LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M \
+	-not -path "*/signoff/*" \
+	-not -path "*/.git/*" \
+	-not -path "./gds/*" \
+	-not -path "./tapeout/outputs/oas/*" \
+	-not -path "*/openlane/*" \
+	-not -name "*.$(ARCHIVE_EXT)")
 LARGE_FILES_GZ := $(addsuffix .$(ARCHIVE_EXT), $(LARGE_FILES))
 LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
@@ -56,12 +62,12 @@ MCW_LITE?=1
 
 ifeq ($(MCW),LITEX_VEXRISCV)
 	MCW_NAME := mcw-litex-vexriscv
-	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
-	MCW_TAG := $(MPW_TAG)
+	MCW_REPO ?= https://github.com/efabless/caravel_mgmt_soc_litex
+	MCW_TAG ?= $(MPW_TAG)
 else
 	MCW_NAME := mcw-pico
-	MCW_REPO := https://github.com/efabless/caravel_pico
-	MCW_TAG := $(MPW_TAG)
+	MCW_REPO ?= https://github.com/efabless/caravel_pico
+	MCW_TAG ?= $(MPW_TAG)
 endif
 
 # Install caravel as submodule, (1): submodule, (0): clone
@@ -1173,7 +1179,7 @@ update_caravel:
 .PHONY: install_mcw
 install_mcw:
 	if [ -d "$(MCW_ROOT)" ]; then \
-		echo "Deleting exisiting $(MCW_ROOT)" && \
+		echo "Deleting existing $(MCW_ROOT)" && \
 		rm -rf $(MCW_ROOT) && sleep 2;\
 	fi
 ifeq ($(SUBMODULE),1)
@@ -1250,7 +1256,7 @@ clean-pdk:
 .PHONY: skywater-pdk
 skywater-pdk:
 	if [ -d "$(PDK_ROOT)/skywater-pdk" ]; then\
-		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
+		echo "Deleting existing $(PDK_ROOT)/skywater-pdk" && \
 		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2;\
 	fi
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
@@ -1267,7 +1273,7 @@ skywater-pdk:
 .PHONY: open-pdks
 open-pdks:
 	if [ -d "$(PDK_ROOT)/open_pdks" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
+		echo "Deleting existing $(PDK_ROOT)/open_pdks" && \
 		rm -rf $(PDK_ROOT)/open_pdks && sleep 2; \
 	fi
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
@@ -1278,7 +1284,7 @@ open-pdks:
 .PHONY: sky130
 sky130:
 	if [ -d "$(PDK_ROOT)/$(PDK)" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/$(PDK)" && \
+		echo "Deleting existing $(PDK_ROOT)/$(PDK)" && \
 		rm -rf $(PDK_ROOT)/$(PDK) && sleep 2;\
 	fi
 	docker run --rm\

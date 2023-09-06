@@ -97,11 +97,16 @@
 	`include "buff_flash_clkrst.v"
 	`include "RAM128.v"
 	`include "RAM256.v"
-	`include "VexRiscv_MinDebug.v"
+	`include "VexRiscv_MinDebugCache.v"
 	`include "mgmt_core.v"
 	`include "caravan.v"
     `endif
 
     `include "simple_por.v"
-
+	`include "caravan_core.v" 
+	`include "caravan_logo.v"
+	`include "caravan_motto.v" 
+	`include "copyright_block_a.v"
+	`include "open_source.v" 
+	`include "user_id_textblock.v"
 `endif
