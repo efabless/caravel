@@ -236,12 +236,10 @@ __openframe:
 		cif *hier write disable; \
 		cif *array write disable; \
 		gds write $(UPRJ_ROOT)/gds/caravel_openframe.gds; \
-		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl
 ### Runs from CARAVEL_ROOT
 	@mkdir -p ./signoff/build
-	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
-	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
-###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_openframe.out
 
 .PHONY: clean
 clean:
