@@ -200,6 +200,47 @@ __truck:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
 
+.PHONY: openframe
+openframe: check-env uncompress uncompress-caravel
+ifeq ($(FOREGROUND),1)
+	@echo "Running make openframe in the foreground..."
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe
+	@echo "Make openframe completed." 2>&1 | tee -a ./signoff/build/make_openframe.out
+else
+	@echo "Running make openframe in the background..."
+	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe >/dev/null 2>&1 &
+	tail -f signoff/build/make_openframe.out
+	@echo "Make openframe completed."  2>&1 | tee -a ./signoff/build/make_openframe.out
+endif
+
+__openframe:
+	@echo "###############################################"
+	@echo "Generating Caravel GDS (sources are in the 'gds' directory)"
+	@sleep 1
+#### Runs from the CARAVEL_ROOT mag directory
+	@echo "\
+		drc off; \
+		crashbackups stop; \
+		addpath hexdigits; \
+		addpath $(UPRJ_ROOT)/mag; \
+		load openframe_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/openframe_project_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load $(CARAVEL_ROOT)/maglef/simple_por; \
+		load caravel_openframe -dereference; \
+		select top cell; \
+		expand; \
+		cif *hier write disable; \
+		cif *array write disable; \
+		gds write $(UPRJ_ROOT)/gds/caravel_openframe.gds; \
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl
+### Runs from CARAVEL_ROOT
+	@mkdir -p ./signoff/build
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_openframe.out
+
 .PHONY: clean
 clean:
 	cd $(CARAVEL_ROOT)/verilog/dv/caravel/mgmt_soc/ && \
