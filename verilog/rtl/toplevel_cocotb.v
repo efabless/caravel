@@ -1,31 +1,6 @@
 `timescale 1 ns / 1 ps
 `include "includes.v" // in case of RTL coverage is needed and it doesn't work correctly without include files by this way
-`ifdef VCS
-`ifdef sky130
-`ifndef ENABLE_SDF
-	`include "libs.ref/sky130_fd_io/verilog/sky130_fd_io.v"
-	`include "libs.ref/sky130_fd_io/verilog/sky130_ef_io.v"
-	`include "libs.ref/sky130_fd_sc_hd/verilog/primitives.v"
-	`include "libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
-	`include "libs.ref/sky130_fd_sc_hvl/verilog/primitives.v"
-	`include "libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v"
-`else
-	`include "cvc-pdk/sky130_ef_io.v"
-	`include "cvc-pdk/sky130_fd_io.v"
-	`include "cvc-pdk/primitives_hd.v"
-	`include "cvc-pdk/sky130_fd_sc_hd.v"
-	`include "cvc-pdk/primitives_hvl.v"
-	`include "cvc-pdk/sky130_fd_sc_hvl.v"
-`endif // ~ ENABLE_SDF
-`elsif gf180  // sky180
-	`include "libs.ref/gf180mcu_fd_io/verilog/gf180mcu_fd_io.v"
-	// `include "libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilog/GF018hv5v_mcu_sc7_udp.v"
-	`include "libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilog/primitives.v"
-	`include "libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilog/gf180mcu_fd_sc_mcu7t5v0.v"
-	// `include "libs.ref/gf180mcu_sc7_hv/verilog/GF018hv5v_mcu_sc7.v"
-	`include "libs.ref/gf180mcu_fd_ip_sram/verilog/gf180mcu_fd_ip_sram__sram512x8m8wm1.v"
-`endif //sky180
-`endif //VCS
+
 
 module caravel_top ;
 
@@ -39,10 +14,12 @@ initial begin
 		`else
 				$vcdplusfile("waves.vpd");
 		`endif
+		// $vcdplusmemorydump();
 		$vcdpluson();
 	`else 
 		$dumpfile ({"waves.vcd"});
 		$dumpvars (0, caravel_top);
+		
 	`endif
 end
 `endif // WAVE_GEN
@@ -216,7 +193,9 @@ caravel uut (
 
 `endif // ! openframe
 
-
+`ifdef USE_USER_VIP
+	`USER_VIP	
+`endif // USE_USER_VIP
 
 	// make speical variables for the mprj input to assign the input without writing to the output gpios
 	// cocotb limitation  #2587: iverilog deal with array as 1 object not multiple of objects so can't write to only 1 element
