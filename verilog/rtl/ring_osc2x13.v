@@ -171,11 +171,11 @@ module ring_osc2x13(reset, trim, clockp);
     // Delay per trim is 0.02385
     // Run "hiclock" at 2x this rate, then use positive and negative
     // edges to derive the 0 and 90 degree phase clocks.
-
+    `ifndef VERILATOR
     always #delay begin
 	hiclock <= (hiclock === 1'b0);
     end
-
+    `endif
     always @(trim) begin
     	// Implement trim as a variable delay, one delay per trim bit
 	delay = 1.168 + 0.012 * $itor(bcount);
