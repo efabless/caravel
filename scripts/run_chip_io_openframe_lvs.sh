@@ -2,7 +2,7 @@
 #
 # Run LVS on the Openframe padframe layout and verilog.
 # If the layout netlist does not exist, then generate it from the
-# extracted .mag layout of the caravel_openframe top level.  The
+# extracted .mag layout of the chip_io_openframe top level.  The
 # LVS script for netgen will read both top level netlists and then
 # compare the padframe cell.
 #
@@ -11,11 +11,11 @@
 echo ${PDK_ROOT:=/usr/share/pdk} > /dev/null
 echo ${PDK:=sky130A} > /dev/null
 
-if [ ! -f caravel_openframe.spice ]; then
+if [ ! -f chip_io_openframe.spice ]; then
 magic -dnull -noconsole -rcfile $PDK_ROOT/$PDK/libs.tech/magic/$PDK.magicrc << EOF
 drc off
 crashbackups stop
-load caravel_openframe
+load chip_io_openframe
 select top cell
 expand
 extract do local
@@ -40,11 +40,11 @@ cat > netgen.tcl << EOF
 # Load top level netlists
 
 puts stdout "Reading layout netlist:"
-set circuit1 [readnet spice caravel_openframe.spice]
+set circuit1 [readnet spice chip_io_openframe.spice]
 puts stdout "Reading verilog and schematic netlists:"
 puts stdout "Reading SPICE netlists of I/O:"
 set circuit2 [readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_fd_io.spice]
-readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_ef_io.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/cdl/sky130_ef_io.cdl \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/spice/sky130_fd_sc_hvl.spice \$circuit2
@@ -61,8 +61,8 @@ readnet verilog ../verilog/gl/constant_block.v \$circuit2
 readnet verilog ../verilog/gl/xres_buf.v \$circuit2
 
 # ALSO NOTE:  Top-level modules are in the RTL directory but are purely gate level.
-readnet verilog ../verilog/rtl/chip_io_openframe.v \$circuit2
-readnet verilog ../verilog/rtl/caravel_openframe.v \$circuit2
+# readnet verilog ../verilog/rtl/chip_io_openframe.v \$circuit2
+readnet verilog ../verilog/gl/chip_io_openframe.v \$circuit2
 puts stdout "Done reading netlists."
 
 # Run LVS on the chip_io_openframe cells in layout and verilog.
