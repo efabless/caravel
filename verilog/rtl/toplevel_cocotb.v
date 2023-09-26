@@ -92,7 +92,6 @@ end
 	`endif //OPENFRAME
     reg clock_tb;    	// CMOS core clock input; not a crystal
     wire resetb_tb;	// Reset input (sense inverted)
-
     // Note that only two flash data pins are dedicated to the
     // management SoC wrapper.  The management SoC exports the
     // quad SPI mode status to make use of the top two mprj_io
@@ -208,18 +207,21 @@ caravel uut (
     );
 	// do anything to the unused wires so cocotb can read them when iverilog is used
 	// apparently iverilog can't read the unused wires and that causes an error in python 
-	assign gpio_tb = 0; 
+	`ifndef VERILATOR
+	// assign gpio_tb = 0; 
 	assign vddio_2_tb = 0; 
 	assign vssio_2_tb = 0; 
 	assign vdda1_2_tb = 0; 
 	assign vssa1_2_tb = 0; 
-
+	`endif // ! VERILATOR
 `endif // ! openframe
 
 
 
 	// make speical variables for the mprj input to assign the input without writing to the output gpios
 	// cocotb limitation  #2587: iverilog deal with array as 1 object not multiple of objects so can't write to only 1 element
+	wire gpio;
+	wire gpio_en;
 	wire gpio0;
 	wire gpio0_en;	
 	wire gpio1;
@@ -312,6 +314,7 @@ caravel uut (
 	`endif // OPENFRAME
 	
 
+	assign gpio_tb = (gpio_en) ? gpio : 1'bz;
 	assign mprj_io_tb[0] = (gpio0_en) ? gpio0 : 1'bz;
 	assign mprj_io_tb[1] = (gpio1_en) ? gpio1 : 1'bz;
 	assign mprj_io_tb[2] = (gpio2_en) ? gpio2 : 1'bz;

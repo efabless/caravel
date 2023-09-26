@@ -41,18 +41,14 @@ output IN;
 output IN_H;
 output TIE_HI_ESD, TIE_LO_ESD;
 
-// Logic to control the PAD based on INP_DIS
-// always @* begin
-//     if (INP_DIS) begin
-//         PAD <= OUT;
-//     end else begin
-//         PAD <= 1'bz; // Tri-state the PAD
-//     end
-// end
+// V-erilator support only 2-state so it can't support pullup or pulldown as it Z and x doesn't exists
+wire is_pullup = (DM == 3'b010) & ~INP_DIS & ~OE_N & `ifndef VERILATOR (PAD === 1'bz) `else 0 `endif;
+wire is_pulldown = (DM == 3'b011) & ~INP_DIS & ~OE_N & `ifndef VERILATOR (PAD === 1'bz) `else 0 `endif;
+wire is_pull_dm =  (DM == 3'b010) | (DM == 3'b011);
 
 // Assign PAD value to IN when INP_DIS is not active
-assign IN = (INP_DIS == 1'b0) ? PAD : 1'b0;
-assign PAD = (~OE_N) ? OUT : 1'bz;
+assign IN = (is_pullup) ? 1'b1 : (is_pulldown) ? 1'b0 : (~INP_DIS) ? PAD : 1'b0;
+assign PAD = (~OE_N & ~is_pull_dm ) ? OUT : 1'bz;
 endmodule
 
 

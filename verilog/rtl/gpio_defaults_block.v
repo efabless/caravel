@@ -39,7 +39,7 @@ module gpio_defaults_block #(
     wire [12:0] gpio_defaults_low;
 
     // For the mask revision input, use an array of digital constant logic cells
-
+    `ifndef VERILATOR 
     sky130_fd_sc_hd__conb_1 gpio_default_value [12:0] (
 `ifdef USE_POWER_PINS
             .VPWR(VPWR),
@@ -58,6 +58,8 @@ module gpio_defaults_block #(
 			gpio_defaults_high[i] : gpio_defaults_low[i];
 	end
     endgenerate
-
+    `else // !VERILATOR
+        assign gpio_defaults = GPIO_CONFIG_INIT; // defaults doesn't map correctly in verilator because it wait for power
+    `endif
 endmodule
 `default_nettype wire
