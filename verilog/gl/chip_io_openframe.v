@@ -393,7 +393,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
   wire xres_loopback_zero;
   wire xres_vss_loop;
   wire xresloop;
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[0]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[0]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[38]),
@@ -431,7 +431,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[38])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[1]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[1]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[39]),
@@ -469,7 +469,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[39])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[2]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[2]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[40]),
@@ -507,7 +507,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[40])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[3]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[3]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[41]),
@@ -545,7 +545,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[41])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[4]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[4]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[42]),
@@ -583,7 +583,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[42])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area0_gpio_pad[5]  (
+  sky130_ef_io__gpiov2_pad \area0_gpio_pad[5]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[43]),
@@ -621,7 +621,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[43])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[0]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[0]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[0]),
@@ -659,7 +659,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[0])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[10]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[10]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[10]),
@@ -697,7 +697,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[10])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[11]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[11]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[11]),
@@ -735,7 +735,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[11])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[12]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[12]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[12]),
@@ -773,7 +773,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[12])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[13]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[13]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[13]),
@@ -811,7 +811,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[13])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[14]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[14]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[14]),
@@ -849,7 +849,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[14])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[15]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[15]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[15]),
@@ -887,7 +887,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[15])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[16]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[16]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[16]),
@@ -925,7 +925,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[16])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[17]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[17]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[17]),
@@ -963,7 +963,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[17])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[18]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[18]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[18]),
@@ -1001,7 +1001,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[18])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[1]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[1]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[1]),
@@ -1039,7 +1039,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[1])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[2]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[2]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[2]),
@@ -1077,7 +1077,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[2])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[3]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[3]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[3]),
@@ -1115,7 +1115,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[3])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[4]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[4]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[4]),
@@ -1153,7 +1153,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[4])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[5]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[5]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[5]),
@@ -1191,7 +1191,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[5])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[6]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[6]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[6]),
@@ -1229,7 +1229,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[6])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[7]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[7]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[7]),
@@ -1267,7 +1267,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[7])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[8]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[8]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[8]),
@@ -1305,7 +1305,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[8])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area1_gpio_pad[9]  (
+  sky130_ef_io__gpiov2_pad \area1_gpio_pad[9]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[9]),
@@ -1343,7 +1343,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[9])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[0]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[0]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[19]),
@@ -1381,7 +1381,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[19])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[10]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[10]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[29]),
@@ -1419,7 +1419,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[29])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[11]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[11]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[30]),
@@ -1457,7 +1457,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[30])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[12]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[12]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[31]),
@@ -1495,7 +1495,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[31])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[13]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[13]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[32]),
@@ -1533,7 +1533,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[32])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[14]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[14]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[33]),
@@ -1571,7 +1571,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[33])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[15]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[15]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[34]),
@@ -1609,7 +1609,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[34])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[16]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[16]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[35]),
@@ -1647,7 +1647,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[35])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[17]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[17]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[36]),
@@ -1685,7 +1685,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[36])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[18]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[18]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[37]),
@@ -1723,7 +1723,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[37])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[1]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[1]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[20]),
@@ -1761,7 +1761,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[20])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[2]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[2]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[21]),
@@ -1799,7 +1799,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[21])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[3]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[3]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[22]),
@@ -1837,7 +1837,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[22])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[4]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[4]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[23]),
@@ -1875,7 +1875,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[23])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[5]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[5]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[24]),
@@ -1913,7 +1913,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[24])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[6]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[6]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[25]),
@@ -1951,7 +1951,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[25])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[7]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[7]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[26]),
@@ -1989,7 +1989,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[26])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[8]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[8]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[27]),
@@ -2027,7 +2027,7 @@ module chip_io_openframe(vddio_pad, vddio_pad2, vssio_pad, vssio_pad2, vccd_pad,
     .VSWITCH(vddio),
     .VTRIP_SEL(gpio_vtrip_sel[27])
   );
-  sky130_ef_io__gpiov2_pad_wrapped \area2_gpio_pad[9]  (
+  sky130_ef_io__gpiov2_pad \area2_gpio_pad[9]  (
     .AMUXBUS_A(analog_a),
     .AMUXBUS_B(analog_b),
     .ANALOG_EN(gpio_analog_en[28]),
