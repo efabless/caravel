@@ -13,7 +13,7 @@ END VIAS
 COMPONENTS 0 ;
 END COMPONENTS
 
-PINS 914 ;
+PINS 917 ;
    - gpio_vtrip_sel[43] + NET gpio_vtrip_sel[43]
      + PORT
         + LAYER met2 ( -140 -1140 ) ( 140 1140 )        + PLACED ( 2429490 -860 ) N ;
@@ -2756,6 +2756,15 @@ PINS 914 ;
    - gpio_loopback_zero[15] + NET gpio_loopback_zero[15]
      + PORT
         + LAYER met2 ( -150 -1140 ) ( 150 1140 )        + PLACED ( 2881640 4767490 ) N ;
+   - vccd1 + NET vccd1
+     + PORT
+        + LAYER met3 ( -1150 -12000 ) ( 1150 12000 )        + PLACED ( 3167480 4389810 ) N ;
+   - vssd1 + NET vssd1
+     + PORT
+        + LAYER met3 ( -1150 -11655 ) ( 1150 11655 )        + PLACED ( 3167480 4364705 ) N ;
+   - vccd1 + NET vccd1
+     + PORT
+        + LAYER met3 ( -1150 -11975 ) ( 1150 11975 )        + PLACED ( 3167480 4339585 ) N ;
 END PINS
 
 END DESIGN
