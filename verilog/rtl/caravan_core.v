@@ -180,28 +180,28 @@ module caravan_core (
      */
 
     // One-bit GPIO dedicated to management SoC (outside of user control)
-    wire gpio_out_core;
-    wire gpio_in_core;
-    wire gpio_mode0_core;
-    wire gpio_mode1_core;
-    wire gpio_outenb_core;
-    wire gpio_inenb_core;
+    // wire gpio_out_core;
+    // wire gpio_in_core;
+    // wire gpio_mode0_core;
+    // wire gpio_mode1_core;
+    // wire gpio_outenb_core;
+    // wire gpio_inenb_core;
 
     // 27 GPIO pads with full controls
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_inp_dis;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_oeb;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_ib_mode_sel;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_vtrip_sel;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_slow_sel;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_holdover;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_en;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_sel;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_pol;
-    wire [(`MPRJ_IO_PADS-`ANALOG_PADS)*3-1:0] mprj_io_dm;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_one;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_inp_dis;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_oeb;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_ib_mode_sel;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_vtrip_sel;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_slow_sel;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_holdover;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_en;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_sel;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_analog_pol;
+    // wire [(`MPRJ_IO_PADS-`ANALOG_PADS)*3-1:0] mprj_io_dm;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_in_3v3;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_out;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] mprj_io_one;
     wire [7:0] mprj_io_zero;
 
     // User Project Control (user-facing)
@@ -212,15 +212,15 @@ module caravan_core (
     wire [`MPRJ_IO_PADS-`ANALOG_PADS-1:0] user_io_in_3v3;
 
     // 18 direct connections to GPIO for low-frequency, low-voltage analog
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_analog;
-    wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_analog;
+    // wire [`MPRJ_IO_PADS-`ANALOG_PADS-10:0] user_gpio_noesd;
 
     // 3 power supply ESD clamps for user applications
-    wire [2:0] user_clamp_high;
-    wire [2:0] user_clamp_low;
+    // wire [2:0] user_clamp_high;
+    // wire [2:0] user_clamp_low;
 
     // 11 core connections to the analog pads
-    wire [`ANALOG_PADS-1:0] user_analog;
+    // wire [`ANALOG_PADS-1:0] user_analog;
 
     /* Padframe control signals */
     wire [`MPRJ_IO_PADS_1-`ANALOG_PADS_1-1:0] gpio_serial_link_1;
