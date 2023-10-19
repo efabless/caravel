@@ -1026,6 +1026,8 @@ module caravel_openframe(vddio, vddio_2, vssio, vssio_2, vdda, vssa, vccd, vssd,
     .vssa2(vssa2_core),
     .vssd(vssd_core),
     .vssd1(vssd1_core),
-    .vssd2(vssd2_core)
+    .vssd2(vssd2_core),
+    .vddio(vddio_core),
+    .vssio(vssio_core)
   );
 endmodule
