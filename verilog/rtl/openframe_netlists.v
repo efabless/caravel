@@ -45,11 +45,11 @@
     `endif 
 
     `ifdef GL
-	`include "gl/user_id_programming.v"
-	`include "gl/chip_io_openframe.v"
+	`include "user_id_programming.v"
+	`include "chip_io_openframe.v"
 	`include "gl/constant_block.v"
 	`include "gl/xres_buf.v"
-	`include "gl/caravel_openframe.v"
+	`include "caravel_openframe.v"
     `else
 	`include "user_id_programming.v"
 	`include "chip_io_openframe.v"
