@@ -31,12 +31,18 @@ SPLIT_FILES := $(shell find . -type f -name "*.$(ARCHIVE_EXT).00.split")
 SPLIT_FILES_SOURCES := $(basename $(basename $(basename $(SPLIT_FILES))))
 
 # Needed to uncompress the existing archives
-ARCHIVES := $(shell find . -type f -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -name "*.$(ARCHIVE_EXT)")
+ARCHIVES := $(shell find . -type f -not -path "*/signoff/*" -name "*.$(ARCHIVE_EXT)")
 ARCHIVE_SOURCES := $(basename $(ARCHIVES))
 
 # Needed to compress and split files/archives that are too large
 LARGE_FILES := $(shell find ./gds -type f -name "*.gds")
-LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M -not -path "./signoff/*" -not -path "./mgmt_core_wrapper/signoff/*" -not -path "./.git/*" -not -path "./*/.git/*" -not -path "./gds/*" -not -path "./tapeout/outputs/oas/*" -not -path "./openlane/*")
+LARGE_FILES += $(shell find . -type f -size +$(FILE_SIZE_LIMIT_MB)M \
+	-not -path "*/signoff/*" \
+	-not -path "*/.git/*" \
+	-not -path "./gds/*" \
+	-not -path "./tapeout/outputs/oas/*" \
+	-not -path "*/openlane/*" \
+	-not -name "*.$(ARCHIVE_EXT)")
 LARGE_FILES_GZ := $(addsuffix .$(ARCHIVE_EXT), $(LARGE_FILES))
 LARGE_FILES_GZ_SPLIT := $(addsuffix .$(ARCHIVE_EXT).00.split, $(LARGE_FILES))
 # consider splitting existing archives
@@ -44,7 +50,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-9c
+MPW_TAG ?= mpw-9e
 
 PYTHON_BIN ?= python3
 
@@ -56,12 +62,12 @@ MCW_LITE?=1
 
 ifeq ($(MCW),LITEX_VEXRISCV)
 	MCW_NAME := mcw-litex-vexriscv
-	MCW_REPO := https://github.com/efabless/caravel_mgmt_soc_litex
-	MCW_TAG := $(MPW_TAG)
+	MCW_REPO ?= https://github.com/efabless/caravel_mgmt_soc_litex
+	MCW_TAG ?= $(MPW_TAG)
 else
 	MCW_NAME := mcw-pico
-	MCW_REPO := https://github.com/efabless/caravel_pico
-	MCW_TAG := $(MPW_TAG)
+	MCW_REPO ?= https://github.com/efabless/caravel_pico
+	MCW_TAG ?= $(MPW_TAG)
 endif
 
 # Install caravel as submodule, (1): submodule, (0): clone
@@ -193,6 +199,47 @@ __truck:
 	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
+
+.PHONY: openframe
+openframe: check-env uncompress uncompress-caravel
+ifeq ($(FOREGROUND),1)
+	@echo "Running make openframe in the foreground..."
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe
+	@echo "Make openframe completed." 2>&1 | tee -a ./signoff/build/make_openframe.out
+else
+	@echo "Running make openframe in the background..."
+	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe >/dev/null 2>&1 &
+	tail -f signoff/build/make_openframe.out
+	@echo "Make openframe completed."  2>&1 | tee -a ./signoff/build/make_openframe.out
+endif
+
+__openframe:
+	@echo "###############################################"
+	@echo "Generating Caravel GDS (sources are in the 'gds' directory)"
+	@sleep 1
+#### Runs from the CARAVEL_ROOT mag directory
+	@echo "\
+		drc off; \
+		crashbackups stop; \
+		addpath hexdigits; \
+		addpath $(UPRJ_ROOT)/mag; \
+		load openframe_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/openframe_project_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load $(CARAVEL_ROOT)/maglef/simple_por; \
+		load caravel_openframe -dereference; \
+		select top cell; \
+		expand; \
+		cif *hier write disable; \
+		cif *array write disable; \
+		gds write $(UPRJ_ROOT)/gds/caravel_openframe.gds; \
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl
+### Runs from CARAVEL_ROOT
+	@mkdir -p ./signoff/build
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_openframe.out
 
 .PHONY: clean
 clean:
@@ -1173,7 +1220,7 @@ update_caravel:
 .PHONY: install_mcw
 install_mcw:
 	if [ -d "$(MCW_ROOT)" ]; then \
-		echo "Deleting exisiting $(MCW_ROOT)" && \
+		echo "Deleting existing $(MCW_ROOT)" && \
 		rm -rf $(MCW_ROOT) && sleep 2;\
 	fi
 ifeq ($(SUBMODULE),1)
@@ -1250,7 +1297,7 @@ clean-pdk:
 .PHONY: skywater-pdk
 skywater-pdk:
 	if [ -d "$(PDK_ROOT)/skywater-pdk" ]; then\
-		echo "Deleting exisiting $(PDK_ROOT)/skywater-pdk" && \
+		echo "Deleting existing $(PDK_ROOT)/skywater-pdk" && \
 		rm -rf $(PDK_ROOT)/skywater-pdk && sleep 2;\
 	fi
 	git clone https://github.com/google/skywater-pdk.git $(PDK_ROOT)/skywater-pdk
@@ -1267,7 +1314,7 @@ skywater-pdk:
 .PHONY: open-pdks
 open-pdks:
 	if [ -d "$(PDK_ROOT)/open_pdks" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/open_pdks" && \
+		echo "Deleting existing $(PDK_ROOT)/open_pdks" && \
 		rm -rf $(PDK_ROOT)/open_pdks && sleep 2; \
 	fi
 	git clone git://opencircuitdesign.com/open_pdks $(PDK_ROOT)/open_pdks
@@ -1278,7 +1325,7 @@ open-pdks:
 .PHONY: sky130
 sky130:
 	if [ -d "$(PDK_ROOT)/$(PDK)" ]; then \
-		echo "Deleting exisiting $(PDK_ROOT)/$(PDK)" && \
+		echo "Deleting existing $(PDK_ROOT)/$(PDK)" && \
 		rm -rf $(PDK_ROOT)/$(PDK) && sleep 2;\
 	fi
 	docker run --rm\
