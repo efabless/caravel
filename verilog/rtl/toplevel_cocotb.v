@@ -153,7 +153,6 @@ caravel uut (
 	);
 	`endif // CPU_TYPE_ARM
 `else // ! openframe
-	assign mprj_io_tb[38] = clock_tb;
 	caravel_openframe uut (
 		.vddio	  (vddio_tb),
 		.vssio	  (vssio_tb),
@@ -172,25 +171,6 @@ caravel uut (
 		.gpio     (mprj_io_tb),
 		.resetb	  (resetb_tb)
 	);
-
-    spiflash #(
-        .FILENAME(FILENAME)
-    ) spiflash (
-        .csb(mprj_io_tb[39]),
-        .clk(mprj_io_tb[40]),
-        .io0(mprj_io_tb[41]),
-        .io1(mprj_io_tb[42]),
-        .io2(mprj_io_tb[36]),
-        .io3(mprj_io_tb[37])
-    );
-	// do anything to the unused wires so cocotb can read them when iverilog is used
-	// apparently iverilog can't read the unused wires and that causes an error in python 
-	assign gpio_tb = 0; 
-	assign vddio_2_tb = 0; 
-	assign vssio_2_tb = 0; 
-	assign vdda1_2_tb = 0; 
-	assign vssa1_2_tb = 0; 
-
 `endif // ! openframe
 
 `ifdef USE_USER_VIP
