@@ -153,6 +153,8 @@ caravel uut (
 	);
 	`endif // CPU_TYPE_ARM
 `else // ! openframe
+	wire dummy_wire_clk; // iverilog ignores clock_tb if it's not assigned 
+	assign dummy_wire_clk = clock_tb;
 	caravel_openframe uut (
 		.vddio	  (vddio_tb),
 		.vssio	  (vssio_tb),
@@ -171,6 +173,14 @@ caravel uut (
 		.gpio     (mprj_io_tb),
 		.resetb	  (resetb_tb)
 	);
+
+    
+	assign gpio_tb = 0; 
+	assign vddio_2_tb = 0; 
+	assign vssio_2_tb = 0; 
+	assign vdda1_2_tb = 0; 
+	assign vssa1_2_tb = 0; 
+
 `endif // ! openframe
 
 `ifdef USE_USER_VIP
