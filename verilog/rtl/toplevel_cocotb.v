@@ -23,25 +23,7 @@ initial begin
 	`endif
 end
 `endif // WAVE_GEN
-	`ifdef ENABLE_SDF
-	`ifdef VCS
-		initial begin
-			`ifndef CARAVAN
-			`ifdef ARM
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/swift_caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`else
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif //ARM
-			`else // CARAVAN
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravan.", `CORNER,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravan_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif
 
-			`ifdef USER_SDF_ENABLE
-				$sdf_annotate({`USER_PROJECT_ROOT,"/signoff/user_project_wrapper/primetime/sdf/",`SDF_POSTFIX,"/user_project_wrapper.", `CORNER,".sdf"}, uut.chip_core.mprj,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/user_prog_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif // USER_SDF_ENABLE
-		end
-	`endif // VCS
-	`endif // ENABLE_SDF
 	wire vddio_tb;	// Common 3.3V padframe/ESD power
     wire vddio_2_tb;	// Common 3.3V padframe/ESD power
     wire vssio_tb;	// Common padframe/ESD ground
@@ -186,7 +168,26 @@ caravel uut (
 `ifdef USE_USER_VIP
 	`USER_VIP	
 `endif // USE_USER_VIP
-
+`ifndef DISABLE_SDF
+	`ifdef ENABLE_SDF
+	`ifdef VCS
+		initial begin
+			`ifndef CARAVAN
+			`ifdef ARM
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/swift_caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`else
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif //ARM
+			`else // CARAVAN
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravan.", `CORNER,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravan_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif
+			`ifdef USER_SDF_ENABLE
+				$sdf_annotate({`USER_PROJECT_ROOT,"/signoff/user_project_wrapper/primetime/sdf/",`SDF_POSTFIX,"/user_project_wrapper.", `CORNER,".sdf"}, uut.chip_core.mprj,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/user_prog_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif // USER_SDF_ENABLE
+		end
+	`endif // VCS
+	`endif // ENABLE_SDF
+`endif // DISABLE_SDF
 	// make speical variables for the mprj input to assign the input without writing to the output gpios
 	// cocotb limitation  #2587: iverilog deal with array as 1 object not multiple of objects so can't write to only 1 element
 	wire gpio0;
