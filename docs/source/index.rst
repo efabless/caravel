@@ -37,12 +37,15 @@ Efabless Caravel "harness" SoC
    :hidden:
    :maxdepth: 1
 
+   
    getting-started
    tool-versioning
    quick-start
    caravel-with-openlane
+   caravel_vs_caravan
    pinout
    gpio
+   gpio_configuration
    housekeeping-spi
    qspi-flash
    external-clock
@@ -51,8 +54,14 @@ Efabless Caravel "harness" SoC
    counter-timers
    irq
    sram
+   management_protect
    programming
    memory-mapped-io-summary
+   memory_map
+   clamp_list
+   digital_locked_loop
+   power_control
+   mgmt_soc
    supplementary-figures
    maximum-ratings
    references
