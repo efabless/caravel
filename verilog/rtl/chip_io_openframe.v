@@ -262,8 +262,10 @@ module chip_io_openframe #(
 	// These are exported to the user project for direct loopback if needed.
 
 	constant_block constant_value_inst [`OPENFRAME_IO_PADS-1:0] (
-		.vccd(vccd),
-		.vssd(vssd),
+		`ifdef USE_POWER_PINS
+			.vccd(vccd),
+			.vssd(vssd),
+		`endif // USE_POWER_PINS
 		.one(gpio_loopback_one),
 		.zero(gpio_loopback_zero)
 	);
@@ -275,8 +277,10 @@ module chip_io_openframe #(
 	wire xres_loopback_zero;
 
 	constant_block constant_value_xres_inst (
-		.vccd(vccd),
-		.vssd(vssd),
+		`ifdef USE_POWER_PINS
+			.vccd(vccd),
+			.vssd(vssd),
+		`endif // USE_POWER_PINS
 		.one(xres_loopback_one),
 		.zero(xres_loopback_zero)	// (unused)
 	);
@@ -415,7 +419,7 @@ module chip_io_openframe #(
 
 	/* Openframe pads (right side, power domain 1) */
 
-	sky130_ef_io__gpiov2_pad_wrapped  area1_gpio_pad [`MPRJ_IO_PADS_1 - 1:0] (
+	sky130_ef_io__gpiov2_pad  area1_gpio_pad [`MPRJ_IO_PADS_1 - 1:0] (
 		`USER1_ABUTMENT_PINS
 `ifndef	TOP_ROUTING
 		.PAD(gpio[`MPRJ_IO_PADS_1 - 1:0]),
@@ -448,7 +452,7 @@ module chip_io_openframe #(
 
 	/* Openframe pads (left side, power domain 2) */
 
-	sky130_ef_io__gpiov2_pad_wrapped area2_gpio_pad [`MPRJ_IO_PADS_2 - 1:0] (
+	sky130_ef_io__gpiov2_pad area2_gpio_pad [`MPRJ_IO_PADS_2 - 1:0] (
 		`USER2_ABUTMENT_PINS
 `ifndef	TOP_ROUTING
 		.PAD(gpio[`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2 - 1:`MPRJ_IO_PADS_1]),
@@ -481,7 +485,7 @@ module chip_io_openframe #(
 
 	/* Openframe pads (bottom side, power domain 0) */
 
-	sky130_ef_io__gpiov2_pad_wrapped  area0_gpio_pad [`OPENFRAME_IO_PADS - (`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2) - 1:0] (
+	sky130_ef_io__gpiov2_pad  area0_gpio_pad [`OPENFRAME_IO_PADS - (`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2) - 1:0] (
 		`MGMT_ABUTMENT_PINS
 `ifndef	TOP_ROUTING
 		.PAD(gpio[`OPENFRAME_IO_PADS - 1:`MPRJ_IO_PADS_1 + `MPRJ_IO_PADS_2]),

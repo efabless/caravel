@@ -50,7 +50,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= mpw-9c
+MPW_TAG ?= mpw-9f
 
 PYTHON_BIN ?= python3
 
@@ -98,7 +98,7 @@ SPECIAL_VOLTAGE_LIBRARY ?= sky130_fd_sc_hvl
 IO_LIBRARY ?= sky130_fd_io
 PRIMITIVES_LIBRARY ?= sky130_fd_pr
 SKYWATER_COMMIT ?= f70d8ca46961ff92719d8870a18a076370b85f6c
-OPEN_PDKS_COMMIT ?= 0059588eebfc704681dc2368bd1d33d96281d10f
+OPEN_PDKS_COMMIT ?= 12df12e2e74145e31c5a13de02f9a1e176b56e67
 # = 1.0.303
 PDK_MAGIC_COMMIT ?= 085131b090cb511d785baf52a10cf6df8a657d44
 # = 8.3.294
@@ -199,6 +199,47 @@ __truck:
 	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
+
+.PHONY: openframe
+openframe: check-env uncompress uncompress-caravel
+ifeq ($(FOREGROUND),1)
+	@echo "Running make openframe in the foreground..."
+	$(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe
+	@echo "Make openframe completed." 2>&1 | tee -a ./signoff/build/make_openframe.out
+else
+	@echo "Running make openframe in the background..."
+	nohup $(MAKE) -f $(CARAVEL_ROOT)/Makefile __openframe >/dev/null 2>&1 &
+	tail -f signoff/build/make_openframe.out
+	@echo "Make openframe completed."  2>&1 | tee -a ./signoff/build/make_openframe.out
+endif
+
+__openframe:
+	@echo "###############################################"
+	@echo "Generating Caravel GDS (sources are in the 'gds' directory)"
+	@sleep 1
+#### Runs from the CARAVEL_ROOT mag directory
+	@echo "\
+		drc off; \
+		crashbackups stop; \
+		addpath hexdigits; \
+		addpath $(UPRJ_ROOT)/mag; \
+		load openframe_project_wrapper; \
+		property LEFview true; \
+		property GDS_FILE $(UPRJ_ROOT)/gds/openframe_project_wrapper.gds; \
+		property GDS_START 0; \
+		load $(UPRJ_ROOT)/mag/user_id_programming; \
+		load $(UPRJ_ROOT)/mag/user_id_textblock; \
+		load $(CARAVEL_ROOT)/maglef/simple_por; \
+		load caravel_openframe -dereference; \
+		select top cell; \
+		expand; \
+		cif *hier write disable; \
+		cif *array write disable; \
+		gds write $(UPRJ_ROOT)/gds/caravel_openframe.gds; \
+		quit -noprompt;" > $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl
+### Runs from CARAVEL_ROOT
+	@mkdir -p ./signoff/build
+	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel_openframe.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_openframe.out
 
 .PHONY: clean
 clean:

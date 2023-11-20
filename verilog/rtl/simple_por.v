@@ -44,12 +44,19 @@ module simple_por(
     // down.  Note that this is sped way up for verilog simulation;  the
     // actual circuit is set to a 15ms delay.
 
-    always @(posedge vdd3v3) begin
+    `ifdef USE_POWER_PINS
+        always @(posedge vdd3v3) begin
+    `else
+        initial begin
+    `endif
 	#500 inode <= 1'b1;
     end
-    always @(negedge vdd3v3) begin
-	#500 inode <= 1'b0;
-    end
+
+    `ifdef USE_POWER_PINS
+        always @(negedge vdd3v3) begin
+        #500 inode <= 1'b0;
+        end
+    `endif
 
     // Instantiate two shmitt trigger buffers in series
 

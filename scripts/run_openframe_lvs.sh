@@ -44,7 +44,7 @@ set circuit1 [readnet spice caravel_openframe.spice]
 puts stdout "Reading verilog and schematic netlists:"
 puts stdout "Reading SPICE netlists of I/O:"
 set circuit2 [readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_fd_io.spice]
-readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/sky130_ef_io.spice \$circuit2
+readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_io/cdl/sky130_ef_io.cdl \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_fd_sc_hd.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/spice/sky130_ef_sc_hd__decap_12.spice \$circuit2
 readnet spice $PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/spice/sky130_fd_sc_hvl.spice \$circuit2
