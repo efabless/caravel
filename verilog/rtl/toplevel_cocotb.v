@@ -23,25 +23,7 @@ initial begin
 	`endif
 end
 `endif // WAVE_GEN
-	`ifdef ENABLE_SDF
-	`ifdef VCS
-		initial begin
-			`ifndef CARAVAN
-			`ifdef ARM
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/swift_caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`else
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif //ARM
-			`else // CARAVAN
-				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravan.", `CORNER,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravan_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif
 
-			`ifdef USER_SDF_ENABLE
-				$sdf_annotate({`USER_PROJECT_ROOT,"/signoff/user_project_wrapper/primetime/sdf/",`SDF_POSTFIX,"/user_project_wrapper.", `CORNER,".sdf"}, uut.chip_core.mprj,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/user_prog_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
-			`endif // USER_SDF_ENABLE
-		end
-	`endif // VCS
-	`endif // ENABLE_SDF
 	wire vddio_tb;	// Common 3.3V padframe/ESD power
     wire vddio_2_tb;	// Common 3.3V padframe/ESD power
     wire vssio_tb;	// Common padframe/ESD ground
@@ -152,7 +134,8 @@ caravel uut (
 	);
 	`endif // CPU_TYPE_ARM
 `else // ! openframe
-	assign mprj_io_tb[38] = clock_tb;
+	wire dummy_wire_clk; // iverilog ignores clock_tb if it's not assigned 
+	assign dummy_wire_clk = clock_tb;
 	caravel_openframe uut (
 		.vddio	  (vddio_tb),
 		.vssio	  (vssio_tb),
@@ -171,21 +154,9 @@ caravel uut (
 		.gpio     (mprj_io_tb),
 		.resetb	  (resetb_tb)
 	);
-
-    spiflash #(
-        .FILENAME(FILENAME)
-    ) spiflash (
-        .csb(mprj_io_tb[39]),
-        .clk(mprj_io_tb[40]),
-        .io0(mprj_io_tb[41]),
-        .io1(mprj_io_tb[42]),
-        .io2(mprj_io_tb[36]),
-        .io3(mprj_io_tb[37])
-    );
-	// do anything to the unused wires so cocotb can read them when iverilog is used
-	// apparently iverilog can't read the unused wires and that causes an error in python 
+   
 	`ifndef VERILATOR
-	// assign gpio_tb = 0; 
+	assign gpio_tb = 0; 
 	assign vddio_2_tb = 0; 
 	assign vssio_2_tb = 0; 
 	assign vdda1_2_tb = 0; 
@@ -196,7 +167,26 @@ caravel uut (
 `ifdef USE_USER_VIP
 	`USER_VIP	
 `endif // USE_USER_VIP
-
+`ifndef DISABLE_SDF
+	`ifdef ENABLE_SDF
+	`ifdef VCS
+		initial begin
+			`ifndef CARAVAN
+			`ifdef ARM
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/swift_caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`else
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravel.",`CORNER ,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravel_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif //ARM
+			`else // CARAVAN
+				$sdf_annotate({`SDF_PATH,"/",`SDF_POSTFIX,"/caravan.", `CORNER,".sdf"}, uut,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/caravan_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif
+			`ifdef USER_SDF_ENABLE
+				$sdf_annotate({`USER_PROJECT_ROOT,"/signoff/user_project_wrapper/primetime/sdf/",`SDF_POSTFIX,"/user_project_wrapper.", `CORNER,".sdf"}, uut.chip_core.mprj,,{`RUN_PATH,"/sim/",`TAG,"/",`FTESTNAME,"/user_prog_sdf.log"},`ifdef MAX_SDF "MAXIMUM" `else "MINIMUM" `endif ); 
+			`endif // USER_SDF_ENABLE
+		end
+	`endif // VCS
+	`endif // ENABLE_SDF
+`endif // DISABLE_SDF
 	// make speical variables for the mprj input to assign the input without writing to the output gpios
 	// cocotb limitation  #2587: iverilog deal with array as 1 object not multiple of objects so can't write to only 1 element
 	wire gpio;
