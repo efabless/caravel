@@ -170,7 +170,7 @@ if __name__ == '__main__':
 
             try:
                 user_id_int = int('0x' + user_id_value, 0)
-                user_id_bits = '{0:032b}'.format(user_id_int)
+                user_id_bits = '{0:032b}'.format(user_id_int)[::-1]
             except:
                 print('Error:  Cannot parse user ID "' + user_id_value + '" as an 8-digit hex number.')
                 sys.exit(1)
