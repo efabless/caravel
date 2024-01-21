@@ -47,7 +47,7 @@ set_voltage_domain -name CORE -power $::env(VDD_NET) -ground $::env(GND_NET) \
         -name stdcell_grid \
         -starts_with POWER \
         -voltage_domain CORE \
-        -pins "$::env(FP_PDN_LOWER_LAYER) $::env(FP_PDN_UPPER_LAYER)"
+        -pins "met4 met5"
 
 ####  core ring   ####
 add_pdn_stripe \
@@ -73,7 +73,7 @@ add_pdn_stripe \
 add_pdn_stripe \
     -grid stdcell_grid \
     -layer met5 \
-    -width 10 \
+    -width 8 \
     -pitch 120 \
     -offset 5 \
     -spacing 1.6 \
@@ -83,9 +83,9 @@ add_pdn_stripe \
 add_pdn_stripe \
     -grid stdcell_grid \
     -layer met5 \
-    -width 13 \
+    -width 10 \
     -pitch 146 \
-    -offset 4599.28 \
+    -offset 4629.28 \
     -spacing 1.6 \
     -number_of_straps 1 \
     -nets "vccd2 vssd2 vdda1 vssa1 vdda2 vssa2 vssd1 vccd1 vssd vccd" \
@@ -129,21 +129,21 @@ add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
         -width 6.4 \
-        -pitch 120 \
-        -offset 181 \
+        -pitch 100 \
+        -offset 200 \
         -spacing 2.4 \
         -nets "vccd vssd" \
         -starts_with POWER
-    add_pdn_stripe \
-        -grid stdcell_grid \
-        -layer met5 \
-        -width 14.4 \
-        -pitch 120 \
-        -offset 239 \
-        -spacing 2.4 \
-        -number_of_straps 5 \
-        -nets "vccd vssd" \
-        -starts_with POWER
+    # add_pdn_stripe \
+    #     -grid stdcell_grid \
+    #     -layer met5 \
+    #     -width 14.4 \
+    #     -pitch 120 \
+    #     -offset 239 \
+    #     -spacing 2.4 \
+    #     -number_of_straps 5 \
+    #     -nets "vccd vssd" \
+    #     -starts_with POWER
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
@@ -162,7 +162,7 @@ add_pdn_stripe \
         -layer met5 \
         -width 4.8 \
         -pitch 120 \
-        -offset 807 \
+        -offset 827 \
         -spacing 3.2 \
         -number_of_straps 1 \
         -nets "vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
@@ -231,17 +231,7 @@ add_pdn_stripe \
         -number_of_straps 1 \
         -nets "vssd1 vccd1" \
         -starts_with POWER
-    #Metal5
-    # add_pdn_stripe \
-    #     -grid stdcell_grid \
-    #     -layer met5 \
-    #     -width 3.2 \
-    #     -pitch 300 \
-    #     -offset 4594.76 \
-    #     -spacing 2.24 \
-    #     -number_of_straps 1 \
-    #     -nets "vssd1 vccd1" \
-    #     -starts_with POWER
+
 #### user_id_programming
     add_pdn_stripe \
         -grid stdcell_grid \
@@ -279,20 +269,20 @@ add_pdn_stripe \
 
 add_pdn_connect \
     -grid stdcell_grid \
-    -layers "$::env(FP_PDN_LOWER_LAYER) $::env(FP_PDN_UPPER_LAYER)"
+    -layers "met4 met5"
 
 # Adds the standard cell rails if enabled.
 if { $::env(FP_PDN_ENABLE_RAILS) == 1 } {
     add_pdn_stripe \
         -grid stdcell_grid \
-        -layer $::env(FP_PDN_RAILS_LAYER) \
+        -layer met1 \
         -width $::env(FP_PDN_RAIL_WIDTH) \
         -followpins \
         -starts_with POWER
 
     add_pdn_connect \
         -grid stdcell_grid \
-        -layers "$::env(FP_PDN_RAILS_LAYER) $::env(FP_PDN_LOWER_LAYER)"
+        -layers "met1 met4"
 }
 
 define_pdn_grid \
@@ -300,7 +290,7 @@ define_pdn_grid \
     -default \
     -name macro \
     -starts_with POWER \
-    -halo "$::env(FP_PDN_HORIZONTAL_HALO) $::env(FP_PDN_VERTICAL_HALO)"
+    -halo "5 5"
 
 add_pdn_connect \
     -grid macro \
