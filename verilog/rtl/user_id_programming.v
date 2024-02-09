@@ -19,6 +19,7 @@
 // chip top level.  This value is passed to the block as
 // a parameter
 
+/// sta-blackbox
 module user_id_programming #(
     parameter USER_PROJECT_ID = 32'h0
 ) (
@@ -28,7 +29,6 @@ module user_id_programming #(
 `endif
     output [31:0] mask_rev
 );
-    wire [31:0] mask_rev;
     wire [31:0] user_proj_id_high;
     wire [31:0] user_proj_id_low;
 

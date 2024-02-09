@@ -6,192 +6,157 @@ MACRO gpio_defaults_block
   CLASS BLOCK ;
   FOREIGN gpio_defaults_block ;
   ORIGIN 0.000 0.000 ;
-  SIZE 30.000 BY 11.000 ;
+  SIZE 17.000 BY 28.000 ;
   PIN VGND
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE GROUND ;
     PORT
-      LAYER met5 ;
-        RECT 0.000 7.180 29.900 8.780 ;
+      LAYER met2 ;
+        RECT 13.400 5.200 14.800 22.000 ;
     END
     PORT
-      LAYER met4 ;
-        RECT 3.800 2.480 5.200 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 10.800 2.480 12.200 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 17.800 2.480 19.200 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 24.800 2.480 26.200 11.120 ;
+      LAYER met3 ;
+        RECT 2.060 16.340 16.340 17.740 ;
     END
   END VGND
   PIN VPWR
-    DIRECTION INPUT ;
+    DIRECTION INOUT ;
     USE POWER ;
     PORT
-      LAYER met5 ;
-        RECT 0.000 3.680 29.900 5.280 ;
+      LAYER met2 ;
+        RECT 4.000 5.200 5.400 22.000 ;
     END
     PORT
-      LAYER met4 ;
-        RECT 0.300 2.480 1.700 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 7.300 2.480 8.700 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 14.300 2.480 15.700 11.120 ;
-    END
-    PORT
-      LAYER met4 ;
-        RECT 21.300 2.480 22.700 11.120 ;
+      LAYER met3 ;
+        RECT 2.060 8.940 16.340 10.340 ;
     END
   END VPWR
   PIN gpio_defaults[0]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
-        RECT 1.010 0.000 1.290 2.000 ;
+        RECT 3.770 25.000 4.050 31.000 ;
     END
   END gpio_defaults[0]
   PIN gpio_defaults[10]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 24.010 0.000 24.290 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 21.120 3.000 21.720 ;
     END
   END gpio_defaults[10]
   PIN gpio_defaults[11]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
-        RECT 26.310 0.000 26.590 2.000 ;
+        RECT 3.770 -3.000 4.050 3.000 ;
     END
   END gpio_defaults[11]
   PIN gpio_defaults[12]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
-        RECT 28.610 0.000 28.890 2.000 ;
+        RECT 5.610 -3.000 5.890 3.000 ;
     END
   END gpio_defaults[12]
   PIN gpio_defaults[1]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
       LAYER met2 ;
-        RECT 3.310 0.000 3.590 2.000 ;
+        RECT 5.610 25.000 5.890 31.000 ;
     END
   END gpio_defaults[1]
   PIN gpio_defaults[2]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 5.610 0.000 5.890 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 4.800 3.000 5.400 ;
     END
   END gpio_defaults[2]
   PIN gpio_defaults[3]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 7.910 0.000 8.190 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 6.160 3.000 6.760 ;
     END
   END gpio_defaults[3]
   PIN gpio_defaults[4]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 10.210 0.000 10.490 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 7.520 3.000 8.120 ;
     END
   END gpio_defaults[4]
   PIN gpio_defaults[5]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 12.510 0.000 12.790 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 11.600 3.000 12.200 ;
     END
   END gpio_defaults[5]
   PIN gpio_defaults[6]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 14.810 0.000 15.090 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 12.960 3.000 13.560 ;
     END
   END gpio_defaults[6]
   PIN gpio_defaults[7]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 17.110 0.000 17.390 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 14.320 3.000 14.920 ;
     END
   END gpio_defaults[7]
   PIN gpio_defaults[8]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 19.410 0.000 19.690 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 18.400 3.000 19.000 ;
     END
   END gpio_defaults[8]
   PIN gpio_defaults[9]
     DIRECTION OUTPUT TRISTATE ;
     USE SIGNAL ;
+    ANTENNADIFFAREA 0.340600 ;
     PORT
-      LAYER met2 ;
-        RECT 21.710 0.000 21.990 2.000 ;
+      LAYER met3 ;
+        RECT -3.000 19.760 3.000 20.360 ;
     END
   END gpio_defaults[9]
   OBS
-      LAYER nwell ;
-        RECT -0.190 9.465 30.090 11.070 ;
-        RECT -0.190 4.025 30.090 6.855 ;
       LAYER li1 ;
-        RECT 0.000 2.635 29.900 10.965 ;
+        RECT 0.000 0.000 17.000 28.000 ;
       LAYER met1 ;
-        RECT 0.000 2.480 29.900 11.120 ;
+        RECT 0.000 0.000 17.000 28.000 ;
       LAYER met2 ;
-        RECT 0.390 11.000 1.610 11.120 ;
-        RECT 7.390 11.000 8.610 11.120 ;
-        RECT 14.390 11.000 15.610 11.120 ;
-        RECT 21.390 11.000 22.610 11.120 ;
-        RECT 0.390 2.280 28.880 11.000 ;
-        RECT 0.390 2.000 0.730 2.280 ;
-        RECT 1.570 2.000 3.030 2.280 ;
-        RECT 3.870 2.000 5.330 2.280 ;
-        RECT 6.170 2.000 7.630 2.280 ;
-        RECT 8.470 2.000 9.930 2.280 ;
-        RECT 10.770 2.000 12.230 2.280 ;
-        RECT 13.070 2.000 14.530 2.280 ;
-        RECT 15.370 2.000 16.830 2.280 ;
-        RECT 17.670 2.000 19.130 2.280 ;
-        RECT 19.970 2.000 21.430 2.280 ;
-        RECT 22.270 2.000 23.730 2.280 ;
-        RECT 24.570 2.000 26.030 2.280 ;
-        RECT 26.870 2.000 28.330 2.280 ;
+        RECT 0.000 0.000 17.000 28.000 ;
       LAYER met3 ;
-        RECT 0.300 11.000 1.700 11.045 ;
-        RECT 7.300 11.000 8.700 11.045 ;
-        RECT 14.300 11.000 15.700 11.045 ;
-        RECT 21.300 11.000 22.700 11.045 ;
-        RECT 0.300 2.555 26.200 11.000 ;
+        RECT 0.000 0.000 17.000 28.000 ;
   END
 END gpio_defaults_block
 END LIBRARY

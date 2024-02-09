@@ -35,6 +35,9 @@
 
 `define ANALOG_PADS (`ANALOG_PADS_1 + `ANALOG_PADS_2)
 
+// Number of GPIO pads defined in the caravel openframe layout
+`define OPENFRAME_IO_PADS 44
+
 // Size of soc_mem_synth
 
 // Type and size of soc_mem

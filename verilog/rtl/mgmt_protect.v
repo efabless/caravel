@@ -28,6 +28,14 @@
 /* For the sake of placement/routing, one conb (logic 1) cell is used	*/
 /* for every buffer.							*/
 /*----------------------------------------------------------------------*/
+/* 10/3/2022:  Removed tri-state buffers in favor of AND gates;  i.e.,	*/
+/* if the user project is powered down, then the outputs are grounded	*/
+/* rather than tristated.  Other explicitly-referenced gates removed	*/
+/* with the assumption that all outputs will be buffered as needed by	*/
+/* the synthesis tools.  Therefore the only restrictions needed on the	*/
+/* synthesis tools is the list of input signals that must not be	*/
+/* buffered because they are allowed to be floating.			*/
+/*----------------------------------------------------------------------*/
 
 module mgmt_protect (
 `ifdef USE_POWER_PINS
@@ -99,10 +107,6 @@ module mgmt_protect (
 	wire mprj_vdd_logic1;
 	wire mprj2_vdd_logic1;
 
-	wire user1_vcc_powergood;
-	wire user2_vcc_powergood;
-	wire user1_vdd_powergood;
-	wire user2_vdd_powergood;
 
 	wire [127:0] la_data_in_mprj_bar;
 	wire [2:0] user_irq_bar;
@@ -154,17 +158,7 @@ module mgmt_protect (
 	// data input to the management core to be a solid logic 0 when
 	// the user project is powered down.
 
-	sky130_fd_sc_hd__and2_1 user_to_mprj_in_ena_buf [127:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.X(la_data_in_enable),
-		.A(la_iena_mprj),
-		.B(mprj_logic1[457:330])
-	);
+	assign la_data_in_enable = la_iena_mprj & mprj_logic1[457:330];
 
 	sky130_fd_sc_hd__nand2_4 user_to_mprj_in_gates [127:0] (
 `ifdef USE_POWER_PINS
@@ -174,34 +168,15 @@ module mgmt_protect (
                 .VNB(vssd),
 `endif
 		.Y(la_data_in_mprj_bar),
-		.A(la_data_out_core),
+		.A(la_data_out_core),		// may be floating
 		.B(la_data_in_enable)
 	);
 
-	sky130_fd_sc_hd__inv_8 user_to_mprj_in_buffers [127:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.Y(la_data_in_mprj),
-		.A(la_data_in_mprj_bar)
-	);
+	assign la_data_in_mprj = ~la_data_in_mprj_bar;
 
 	// Protection, similar to the above, for the three user IRQ lines
 
-	sky130_fd_sc_hd__and2_1 user_irq_ena_buf [2:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.X(user_irq_enable),
-		.A(user_irq_ena),
-		.B(mprj_logic1[460:458])
-	);
+	assign user_irq_enable = user_irq_ena & mprj_logic1[460:458];
 
 	sky130_fd_sc_hd__nand2_4 user_irq_gates [2:0] (
 `ifdef USE_POWER_PINS
@@ -211,35 +186,16 @@ module mgmt_protect (
                 .VNB(vssd),
 `endif
 		.Y(user_irq_bar),
-		.A(user_irq_core),
+		.A(user_irq_core),		// may be floating
 		.B(user_irq_enable)
 	);
 
-	sky130_fd_sc_hd__inv_8 user_irq_buffers [2:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.Y(user_irq),
-		.A(user_irq_bar)
-	);
+	assign user_irq = ~user_irq_bar;
 
 	// Protection, similar to the above, for the return
 	// signals from user area to managment on the wishbone bus
 
-	sky130_fd_sc_hd__and2_1 user_to_mprj_wb_ena_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.X(wb_in_enable),
-		.A(mprj_iena_wb),
-		.B(mprj_logic1[462])
-	);
+	assign wb_in_enable = mprj_iena_wb & mprj_logic1[462];
 
 	sky130_fd_sc_hd__nand2_4 user_wb_dat_gates [31:0] (
 `ifdef USE_POWER_PINS
@@ -249,20 +205,11 @@ module mgmt_protect (
                 .VNB(vssd),
 `endif
 		.Y(mprj_dat_i_core_bar),
-		.A(mprj_dat_i_user),
+		.A(mprj_dat_i_user),		// may be floating
 		.B(wb_in_enable)
 	);
 
-	sky130_fd_sc_hd__inv_8 user_wb_dat_buffers [31:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.Y(mprj_dat_i_core),
-		.A(mprj_dat_i_core_bar)
-	);
+	assign mprj_dat_i_core = ~mprj_dat_i_core_bar;
 
 	sky130_fd_sc_hd__nand2_4 user_wb_ack_gate (
 `ifdef USE_POWER_PINS
@@ -272,223 +219,45 @@ module mgmt_protect (
                 .VNB(vssd),
 `endif
 		.Y(mprj_ack_i_core_bar),
-		.A(mprj_ack_i_user),
+		.A(mprj_ack_i_user),		// may be floating
 		.B(wb_in_enable)
 	);
 
-	sky130_fd_sc_hd__inv_8 user_wb_ack_buffer (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.Y(mprj_ack_i_core),
-		.A(mprj_ack_i_core_bar)
-	);
+	assign mprj_ack_i_core = ~mprj_ack_i_core_bar;
 
 	// The remaining circuitry guards against the management
 	// SoC dumping current into the user project area when
 	// the user project area is powered down.
 	
-        sky130_fd_sc_hd__einvp_8 mprj_rstn_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(user_reset),
-                .A(caravel_rstn),
-                .TE(mprj_logic1[0])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_clk_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(user_clock),
-                .A(~caravel_clk),
-                .TE(mprj_logic1[1])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_clk2_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(user_clock2),
-                .A(~caravel_clk2),
-                .TE(mprj_logic1[2])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_cyc_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_cyc_o_user),
-                .A(~mprj_cyc_o_core),
-                .TE(mprj_logic1[3])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_stb_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_stb_o_user),
-                .A(~mprj_stb_o_core),
-                .TE(mprj_logic1[4])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_we_buf (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_we_o_user),
-                .A(~mprj_we_o_core),
-                .TE(mprj_logic1[5])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_sel_buf [3:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_sel_o_user),
-                .A(~mprj_sel_o_core),
-                .TE(mprj_logic1[9:6])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_adr_buf [31:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_adr_o_user),
-                .A(~mprj_adr_o_core),
-                .TE(mprj_logic1[41:10])
-        );
-
-        sky130_fd_sc_hd__einvp_8 mprj_dat_buf [31:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(mprj_dat_o_user),
-                .A(~mprj_dat_o_core),
-                .TE(mprj_logic1[73:42])
-        );
-
-	/* Create signal to tristate the outputs to the user project */
-
-        sky130_fd_sc_hd__and2b_1 la_buf_enable [127:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .X(la_data_out_enable),
-		.A_N(la_oenb_mprj),
-                .B(mprj_logic1[201:74])
-        );
+	assign user_reset      = (~caravel_rstn) & mprj_logic1[0];
+	assign user_clock      = caravel_clk     & mprj_logic1[1];
+	assign user_clock2     = caravel_clk2    & mprj_logic1[2];
+	assign mprj_cyc_o_user = mprj_cyc_o_core & mprj_logic1[3];
+	assign mprj_stb_o_user = mprj_stb_o_core & mprj_logic1[4];
+	assign mprj_we_o_user  = mprj_we_o_core  & mprj_logic1[5];
+	assign mprj_sel_o_user = mprj_sel_o_core & mprj_logic1[9:6];
+	assign mprj_adr_o_user = mprj_adr_o_core & mprj_logic1[41:10];
+	assign mprj_dat_o_user = mprj_dat_o_core & mprj_logic1[73:42];
 
 	/* Project data out from the managment side to the user project	*/
 	/* area when the user project is powered down.			*/
 
-        sky130_fd_sc_hd__einvp_8 la_buf [127:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .Z(la_data_in_core),
-                .A(~la_data_out_mprj),
-                .TE(la_data_out_enable)
-        );
+	assign la_data_out_enable = (~la_oenb_mprj) & mprj_logic1[201:74];
+	assign la_data_in_core = la_data_out_mprj & la_data_out_enable;
 
 	/* Project data out enable (bar) from the managment side to the	*/
 	/* user project	area when the user project is powered down.	*/
 
-	sky130_fd_sc_hd__einvp_8 user_to_mprj_oen_buffers [127:0] (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-		.Z(la_oenb_core),
-		.A(~la_oenb_mprj),
-                .TE(mprj_logic1[329:202])
-	);
+	assign la_oenb_core = la_oenb_mprj & mprj_logic1[329:202];
 
 	/* The conb cell output is a resistive connection directly to	*/
 	/* the power supply, so when returning the user1_powergood	*/
 	/* signal, make sure that it is buffered properly.		*/
 
-        sky130_fd_sc_hd__buf_8 mprj_pwrgood (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .A(mprj_logic1[461]),
-                .X(user1_vcc_powergood)
-	);
+	assign user1_vcc_powergood = mprj_logic1[461];
+	assign user2_vcc_powergood = mprj2_logic1;
+	assign user1_vdd_powergood = mprj_vdd_logic1;
+	assign user2_vdd_powergood = mprj2_vdd_logic1;
 
-        sky130_fd_sc_hd__buf_8 mprj2_pwrgood (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .A(mprj2_logic1),
-                .X(user2_vcc_powergood)
-	);
-
-        sky130_fd_sc_hd__buf_8 mprj_vdd_pwrgood (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .A(mprj_vdd_logic1),
-                .X(user1_vdd_powergood)
-	);
-
-        sky130_fd_sc_hd__buf_8 mprj2_vdd_pwrgood (
-`ifdef USE_POWER_PINS
-                .VPWR(vccd),
-                .VGND(vssd),
-                .VPB(vccd),
-                .VNB(vssd),
-`endif
-                .A(mprj2_vdd_logic1),
-                .X(user2_vdd_powergood)
-	);
 endmodule
 `default_nettype wire

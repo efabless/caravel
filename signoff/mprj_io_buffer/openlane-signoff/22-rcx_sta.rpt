@@ -1,0 +1,40 @@
+
+===========================================================================
+report_checks -unconstrained
+============================================================================
+Startpoint: mgmt_gpio_out[2] (input port clocked by __VIRTUAL_CLK__)
+Endpoint: mgmt_gpio_out_buf[2] (output port clocked by __VIRTUAL_CLK__)
+Path Group: __VIRTUAL_CLK__
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock __VIRTUAL_CLK__ (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          1.60    1.60 ^ input external delay
+                  0.06    0.05    1.65 ^ mgmt_gpio_out[2] (in)
+     2    0.01                           mgmt_gpio_out[2] (net)
+                  0.06    0.00    1.65 ^ BUF[2]/A (sky130_fd_sc_hd__clkbuf_8)
+                  0.08    0.17    1.82 ^ BUF[2]/X (sky130_fd_sc_hd__clkbuf_8)
+     1    0.03                           mgmt_gpio_out_buf[2] (net)
+                  0.08    0.00    1.82 ^ mgmt_gpio_out_buf[2] (out)
+                                  1.82   data arrival time
+
+                  0.00    8.00    8.00   clock __VIRTUAL_CLK__ (rise edge)
+                          0.00    8.00   clock network delay (ideal)
+                         -0.25    7.75   clock uncertainty
+                          0.00    7.75   clock reconvergence pessimism
+                         -1.60    6.15   output external delay
+                                  6.15   data required time
+-----------------------------------------------------------------------------
+                                  6.15   data required time
+                                 -1.82   data arrival time
+-----------------------------------------------------------------------------
+                                  4.33   slack (MET)
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+No paths found.

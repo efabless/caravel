@@ -20,6 +20,7 @@
 // level.  This value is passed as a set of parameters (formerly
 // part of gpio_control_block.v).
 
+/// sta-blackbox
 module gpio_defaults_block #(
     // Parameterized initial startup state of the pad.  The default
     // parameters if unspecified is for the pad to be a user input
@@ -34,7 +35,6 @@ module gpio_defaults_block #(
 `endif
     output [12:0] gpio_defaults
 );
-    wire [12:0] gpio_defaults;
     wire [12:0] gpio_defaults_high;
     wire [12:0] gpio_defaults_low;
 

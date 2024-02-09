@@ -153,9 +153,10 @@ if __name__ == '__main__':
         distmode = True
 
     magpath = user_project_path + '/mag'
-    rcfile = magpath + '/.magicrc'
-    # pdk_root = os.getenv("PDK_ROOT")
-    # rcfile = pdk_root + '/sky130A/libs.tech/magic/sky130A.magicrc'
+    # rcfile = magpath + '/.magicrc'
+    pdk_root = os.getenv("PDK_ROOT")
+    pdk = os.getenv("PDK")
+    rcfile = pdk_root + '/' + pdk + '/libs.tech/magic/' + pdk + '.magicrc'
 
     if not os.path.isfile(rcfile):
         rcfile = None
@@ -187,12 +188,14 @@ if __name__ == '__main__':
     print('gds readonly true', file=ofile)
     print('gds rescale false', file=ofile)
     print('gds read ../gds/' + project, file=ofile)
+    print('load ' + project, file=ofile)
     print('select top cell', file=ofile)
     print('expand', file=ofile)
     if not distmode:
         print('cif ostyle wafflefill(tiled)', file=ofile)
     print('', file=ofile)
-    print('set fullbox [box values]', file=ofile)
+    # print('set fullbox [box values]', file=ofile)
+    print('set fullbox { 0 0 717600 1037600 }', file=ofile)
     print('set xmax [lindex $fullbox 2]', file=ofile)
     print('set xmin [lindex $fullbox 0]', file=ofile)
     print('set fullwidth [expr {$xmax - $xmin}]', file=ofile)
