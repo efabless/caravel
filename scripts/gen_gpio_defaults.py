@@ -213,9 +213,9 @@ if __name__ == '__main__':
     cellsused = [None] * 38
 
     # Remove pre-existing versions of mag and verilog files because they may be out-of-date.
-    for old_mag_file in glob.glob(magpath + '/gpio_defaults_block*.mag'):
+    for old_mag_file in glob.glob(magpath + '/gpio_defaults_block_*.mag'):
         os.remove(old_mag_file)
-    for old_verilog_file in glob.glob(glpath + '/gpio_defaults_block*.v'):
+    for old_verilog_file in glob.glob(glpath + '/gpio_defaults_block_*.v'):
         os.remove(old_verilog_file)
 
     for i in range(0, 38):
