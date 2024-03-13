@@ -986,7 +986,7 @@ module caravel_core (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_27_INIT)
+	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_OUTPUT)
     ) gpio_defaults_block_27 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
@@ -996,7 +996,7 @@ module caravel_core (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_28_INIT)
+	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
     ) gpio_defaults_block_28 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
@@ -1006,7 +1006,7 @@ module caravel_core (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_29_INIT)
+	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
     ) gpio_defaults_block_29 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
@@ -1016,7 +1016,7 @@ module caravel_core (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_30_INIT)
+	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
     ) gpio_defaults_block_30 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
@@ -1026,7 +1026,7 @@ module caravel_core (
     );
 
     gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_31_INIT)
+	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
     ) gpio_defaults_block_31 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
