@@ -1324,7 +1324,7 @@ module caravel_core (
 
     /* Section 2 GPIOs (GPIO 19 to 26) */
 
-    gpio_control_block gpio_control_in_2 [7:0] (
+    gpio_control_block gpio_control_in_2_1 [7:0] (
 `ifdef USE_POWER_PINS
     .vccd(vccd),
     .vssd(vssd),
@@ -1377,7 +1377,7 @@ module caravel_core (
 
     /* Section 2 GPIOs (GPIO 27 to 31) DFT jtag */
 
-    gpio_control_block_mgmt gpio_control_in_2 [12:8] (
+    gpio_control_block_mgmt gpio_control_in_2_2 [4:0] (
 `ifdef USE_POWER_PINS
     .vccd(vccd),
     .vssd(vssd),
@@ -1429,7 +1429,7 @@ module caravel_core (
     );
     /* Section 2 GPIOs (GPIO 32 to 34) */
 
-    gpio_control_block_mgmt gpio_control_in_2 [15:13] (
+    gpio_control_block_mgmt gpio_control_in_2_3 [2:0] (
 `ifdef USE_POWER_PINS
     .vccd(vccd),
     .vssd(vssd),
