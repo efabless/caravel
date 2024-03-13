@@ -260,6 +260,9 @@ module caravel_core (
     wire	mprj_vdd_pwrgood;
     wire	mprj2_vdd_pwrgood;
 
+	//
+	wire sc_tdo;
+
 `ifdef USE_SRAM_RO_INTERFACE
     // SRAM read-only access from housekeeping
     wire 	hkspi_sram_clk;
@@ -280,6 +283,14 @@ module caravel_core (
 	// Clock and reset
 	.core_clk(caravel_clk),
 	.core_rstn(caravel_rstn),
+
+	// Scan chain tap ports
+	.tck(mgmt_io_in[31]),
+	.tms(mgmt_io_in[30]),
+	.tdi(mgmt_io_in[29]),
+	.trst(mgmt_io_in[28]),
+	.tdo(sc_tdo),
+	.tdo_paden_o(),
 
 	// GPIO (1 pin)
 	.gpio_out_pad(gpio_out_core),
@@ -536,7 +547,7 @@ module caravel_core (
 
     // DCO/Digital Locked Loop
 
-    digital_pll pll (
+    digital_locked_loop pll (
     `ifdef USE_POWER_PINS
 		.VPWR(vccd),
 		.VGND(vssd),
@@ -565,7 +576,7 @@ module caravel_core (
 
     // Housekeeping interface
 
-    housekeeping housekeeping (
+    housekeeping_alt housekeeping (
     `ifdef USE_POWER_PINS
 		.VPWR(vccd),
 		.VGND(vssd),
@@ -686,9 +697,10 @@ module caravel_core (
       .mgmt_gpio_out(mgmt_gpio_out),
       .mgmt_gpio_out_buf(mgmt_gpio_out_buf)
   );
-
-  assign mgmt_gpio_in  = mgmt_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS_1)];
-  assign mgmt_gpio_out = mgmt_io_out_hk[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS_1)];
+  assign mgmt_gpio_in  = {mgmt_io_in[37:32], 4'd0, mgmt_io_in[27:19]}; // disconnected 4 GPIOs inputs for the scan chain tap ports (tck, tms, tdi, trst)
+//   assign mgmt_gpio_in  = mgmt_io_in[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS_1)];
+  assign mgmt_gpio_out = {mgmt_io_out_hk[37:28], sc_tdo, mgmt_io_out_hk[26:19]}; // connected sc_tdo at GPIO 27
+//   assign mgmt_gpio_out = mgmt_io_out_hk[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS_1)];
   assign mgmt_gpio_oeb = mgmt_io_oeb_hk[(`MPRJ_IO_PADS-1):(`MPRJ_IO_PADS-3)];
   
   assign mgmt_io_in_hk = {mgmt_gpio_in_buf, mgmt_io_in[(`MPRJ_IO_PADS_1-1):0]};
@@ -1427,8 +1439,9 @@ module caravel_core (
 		.spare_xfq(spare_xfq_nc),
 		.spare_xfqn(spare_xfqn_nc)
     );
-(* keep *) empty_macro empty_macro_0 ();
-(* keep *) empty_macro empty_macro_1 ();
-(* keep *) manual_power_connections manual_power_connections ();
+	
+(* keep *) mprj_vias mprj_vias ();
+(* keep *) padframe_power_connections padframe_power_connections ();
+
 endmodule
 // `default_nettype wire
