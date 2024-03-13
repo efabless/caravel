@@ -22,7 +22,7 @@
 `include "ring_osc2x13.v"
 `endif
 
-module digital_pll(
+module digital_locked_loop(
 `ifdef USE_POWER_PINS
     VPWR,
     VGND,
