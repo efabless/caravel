@@ -257,15 +257,15 @@ module gpio_control_block_mgmt #(
     /* going to the user project.					*/
     assign user_gpio_in = pad_gpio_in & gpio_logic1;
 
-    (* keep *)
-    sky130_fd_sc_hd__macro_sparecell spare_cell (
-`ifdef USE_POWER_PINS
-            .VPWR(vccd),
-            .VGND(vssd),
-            .VPB(vccd),
-            .VNB(vssd)
-`endif
-    );
+//     (* keep *)
+//     sky130_fd_sc_hd__macro_sparecell spare_cell (
+// `ifdef USE_POWER_PINS
+//             .VPWR(vccd),
+//             .VGND(vssd),
+//             .VPB(vccd),
+//             .VNB(vssd)
+// `endif
+//     );
 
     // buffering const one and zero outputs
     wire	one_unbuf;
