@@ -43,11 +43,11 @@ foreach vdd $::env(VDD_NETS) gnd $::env(GND_NETS) {
 set_voltage_domain -name CORE -power $::env(VDD_NET) -ground $::env(GND_NET) \
     -secondary_power $secondary
 
-    define_pdn_grid \
-        -name stdcell_grid \
-        -starts_with POWER \
-        -voltage_domain CORE \
-        -pins "met4 met5"
+define_pdn_grid \
+    -name stdcell_grid \
+    -starts_with POWER \
+    -voltage_domain CORE \
+    -pins "met3 met4 met5"
 
 ####  core ring   ####
 add_pdn_stripe \
@@ -130,7 +130,7 @@ add_pdn_stripe \
         -layer met5 \
         -width 6.4 \
         -pitch 100 \
-        -offset 200 \
+        -offset 205 \
         -spacing 2.4 \
         -nets "vccd vssd" \
         -starts_with POWER
@@ -162,7 +162,7 @@ add_pdn_stripe \
         -layer met5 \
         -width 4.8 \
         -pitch 120 \
-        -offset 827 \
+        -offset 844.3 \
         -spacing 3.2 \
         -number_of_straps 1 \
         -nets "vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
@@ -248,9 +248,9 @@ add_pdn_stripe \
     add_pdn_stripe \
         -grid stdcell_grid \
         -layer met5 \
-        -width 5 \
-        -pitch 14 \
-        -offset 137 \
+        -width 6 \
+        -pitch 34 \
+        -offset 110.5 \
         -spacing 2 \
         -number_of_straps 2 \
         -nets "vddio vssio" \
@@ -260,16 +260,41 @@ add_pdn_stripe \
         -layer met4 \
         -width 4.8 \
         -pitch 386 \
-        -offset 647 \
+        -offset 2641 \
+        -spacing 2 \
+        -number_of_straps 2 \
+        -nets "vddio vssio" \
+        -starts_with POWER
+    add_pdn_stripe \
+        -grid stdcell_grid \
+        -layer met4 \
+        -width 4.8 \
+        -pitch 386 \
+        -offset 665 \
         -spacing 2 \
         -number_of_straps 2 \
         -nets "vddio vssio" \
         -starts_with POWER
 
+## mprj connections
+add_pdn_stripe \
+    -grid stdcell_grid \
+    -layer met3 \
+    -width 2.4 \
+    -pitch 100 \
+    -offset 1200 \
+    -spacing 2 \
+    -number_of_straps 34 \
+    -nets "vccd1 vssd1 vccd2 vssd2 vssa1 vdda1 vdda2 vssa2" \
+    -starts_with POWER
 
 add_pdn_connect \
     -grid stdcell_grid \
     -layers "met4 met5"
+
+add_pdn_connect \
+    -grid stdcell_grid \
+    -layers "met3 met4"
 
 # Adds the standard cell rails if enabled.
 if { $::env(FP_PDN_ENABLE_RAILS) == 1 } {
@@ -290,7 +315,7 @@ define_pdn_grid \
     -default \
     -name macro \
     -starts_with POWER \
-    -halo "5 5"
+    -halo "1 0.8"
 
 add_pdn_connect \
     -grid macro \

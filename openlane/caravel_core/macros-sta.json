@@ -1,0 +1,761 @@
+{
+	"//": "MACROS",
+	"MACROS": {
+		"mgmt_core_wrapper": {
+			"gds": [
+				"dir::/../../../caravel_mgmt_soc_litex/gds/mgmt_core_wrapper.gds.gz"
+			],
+			"lef": [
+				"dir::/../../../caravel_mgmt_soc_litex/lef/mgmt_core_wrapper.lef"
+			],
+			"instances": {
+				"soc": {
+					"location": [85, 109.6],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../../caravel_mgmt_soc_litex/verilog/gl/mgmt_core_wrapper.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/spef/multicorner/mgmt_core_wrapper.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/spef/multicorner/mgmt_core_wrapper.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/spef/multicorner/mgmt_core_wrapper.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../../caravel_mgmt_soc_litex/lib/mgmt_core_wrapper.lib"
+				]
+			}
+		},
+		"DFFRAM128x32": {
+			"gds": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/gds/DFFRAM128x32.gds.gz"
+			],
+			"lef": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/lef/DFFRAM128x32.lef"
+			],
+			"instances": {
+				"soc/__dut__.__uuf__.core_RAM128": {
+					"location": [50, 50],
+					"orientation": "FS"
+				}
+			},
+			"nl": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/hdl/gl/DFFRAM128x32.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.max.spef"
+				]
+			}
+		},
+		"DFFRAM256x32": {
+			"gds": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/gds/DFFRAM256x32.gds.gz"
+			],
+			"lef": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/lef/DFFRAM256x32.lef"
+			],
+			"instances": {
+				"soc/__dut__.__uuf__.core_RAM256": {
+					"location": [50, 50],
+					"orientation": "FS"
+				}
+			},
+			"nl": [
+				"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/hdl/gl/DFFRAM256x32.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../../caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.max.spef"
+				]
+			}
+		},
+		"user_id_programming": {
+			"gds": [
+				"dir::/../../gds/user_id_programming.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/user_id_programming.lef"
+			],
+			"instances": {
+				"user_id_value": {
+					"location": [2962.655, 108],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/rtl/user_id_programming.v"
+			]
+		},
+		"user_project_wrapper": {
+			"gds": [
+				"dir::/../../gds/user_project_wrapper_empty.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/user_project_wrapper_empty.lef"
+			],
+			"instances": {
+				"mprj": {
+					"location": [121.74, 1072],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/rtl/defines.v",
+				"dir::/../../verilog/rtl/__user_project_wrapper.v"
+			],
+			"lib": {
+				"*": [
+					"dir::/../../lib/user_project_wrapper.lib"
+				]
+			}
+		},
+		"housekeeping_alt": {
+			"gds": [
+				"dir::/../../gds/housekeeping_alt.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/housekeeping_alt.lef"
+			],
+			"instances": {
+				"housekeeping": {
+					"location": [2665, 257.52],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/housekeeping_alt.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../signoff/housekeeping_alt/openlane-signoff/spef/housekeeping_alt.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../lib/housekeeping_alt.lib"
+				]
+			}
+		},
+		"simple_por": {
+			"gds": [
+				"dir::/../../gds/simple_por.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/simple_por.lef"
+			],
+			"instances": {
+				"por": {
+					"location": [2663, 111],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/rtl/simple_por.v"
+			]
+		},
+		"xres_buf": {
+			"gds": [
+				"dir::/../../gds/xres_buf.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/xres_buf.lef"
+			],
+			"instances": {
+				"rstb_level": {
+					"location": [683.62, 26],
+					"orientation": "S"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/rtl/xres_buf.v"
+			]
+		},
+		"spare_logic_block": {
+			"gds": [
+				"dir::/../../gds/spare_logic_block.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/spare_logic_block.lef"
+			],
+			"instances": {
+				"spare_logic\\[0\\]": {
+					"location": [454, 900],
+					"orientation": "N"
+				},
+				"spare_logic\\[1\\]": {
+					"location": [2720, 900],
+					"orientation": "N"
+				},
+				"spare_logic\\[2\\]": {
+					"location": [2366, 902.48],
+					"orientation": "N"
+				},
+				"spare_logic\\[3\\]": {
+					"location": [2800, 900],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/spare_logic_block.v"
+			]
+		},
+		"mprj_io_buffer": {
+			"gds": [
+				"dir::/../../gds/mprj_io_buffer.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/mprj_io_buffer.lef"
+			],
+			"instances": {
+				"gpio_buf": {
+					"location": [80, 940],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/mprj_io_buffer.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../signoff/mprj_io_buffer/openlane-signoff/spef/mprj_io_buffer.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../signoff/mprj_io_buffer/openlane-signoff/spef/mprj_io_buffer.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../signoff/mprj_io_buffer/openlane-signoff/spef/mprj_io_buffer.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../lib/mprj_io_buffer.lib"
+				]
+			}
+		},
+		"gpio_defaults_block": {
+			"gds": [
+				"dir::/../../gds/gpio_defaults_block.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/gpio_defaults_block.lef"
+			],
+			"instances": {
+				"gpio_defaults_block_0": {
+					"location": [3137, 230],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_1": {
+					"location": [3137, 460],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_2": {
+					"location": [3137, 680],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_3": {
+					"location": [3137, 910],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_4": {
+					"location": [3137, 1130],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_5": {
+					"location": [3137, 1375],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_6": {
+					"location": [3137, 1575],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_7": {
+					"location": [3137, 2475],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_8": {
+					"location": [3137, 2675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_9": {
+					"location": [3137, 2875],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_10": {
+					"location": [3137, 3175],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_11": {
+					"location": [3137, 3375],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_12": {
+					"location": [3137, 3575],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_13": {
+					"location": [3137, 3975],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_14": {
+					"location": [3137, 4475],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_15": {
+					"location": [2922.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_16": {
+					"location": [2622.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_17": {
+					"location": [2322.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_18": {
+					"location": [2022.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_19": {
+					"location": [1722.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_20": {
+					"location": [1422.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_21": {
+					"location": [1122.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_22": {
+					"location": [822.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_23": {
+					"location": [522.66, 4675],
+					"orientation": "N"
+				},
+				"gpio_defaults_block_24": {
+					"location": [10, 4475],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_25": {
+					"location": [10, 3675],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_26": {
+					"location": [10, 3476],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_27": {
+					"location": [10, 3175],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_28": {
+					"location": [10, 2975],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_29": {
+					"location": [10, 2777],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_30": {
+					"location": [10, 2575],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_31": {
+					"location": [10, 2375],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_32": {
+					"location": [10, 1750],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_33": {
+					"location": [10, 1550],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_34": {
+					"location": [10, 1275],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_35": {
+					"location": [10, 1090],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_36": {
+					"location": [10, 870],
+					"orientation": "FN"
+				},
+				"gpio_defaults_block_37": {
+					"location": [10, 660],
+					"orientation": "FN"
+				}
+
+			},
+			"nl": [
+				"dir::/../../verilog/rtl/gpio_defaults_block.v"
+			]
+		},
+		"gpio_logic_high": {
+			"gds": [
+				"dir::/../../gds/gpio_logic_high.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/gpio_logic_high.lef"
+			],
+			"instances": {
+				"gpio_control_bidir_1\\[0\\].gpio_logic_high": {
+					"location": [3128.9, 200],
+					"orientation": "N"
+				},
+				"gpio_control_bidir_1\\[1\\].gpio_logic_high": {
+					"location": [3128.9, 430],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[0\\].gpio_logic_high": {
+					"location": [3128.9, 650],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[1\\].gpio_logic_high": {
+					"location": [3128.9, 880],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[2\\].gpio_logic_high": {
+					"location": [3128.9, 1100],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[3\\].gpio_logic_high": {
+					"location": [3128.9, 1345],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[4\\].gpio_logic_high": {
+					"location": [3128.9, 1545],
+					"orientation": "N"
+				},
+				"gpio_control_in_1a\\[5\\].gpio_logic_high": {
+					"location": [3128.9, 2445],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[0\\].gpio_logic_high": {
+					"location": [3128.9, 2645],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[1\\].gpio_logic_high": {
+					"location": [3128.9, 2845],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[2\\].gpio_logic_high": {
+					"location": [3128.9, 3145],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[3\\].gpio_logic_high": {
+					"location": [3128.9, 3345],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[4\\].gpio_logic_high": {
+					"location": [3128.9, 3545],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[5\\].gpio_logic_high": {
+					"location": [3128.9, 3945],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[6\\].gpio_logic_high": {
+					"location": [3128.9, 4445],
+					"orientation": "N"
+				},
+				"gpio_control_in_1\\[7\\].gpio_logic_high": {
+					"location": [2755, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_1\\[8\\].gpio_logic_high": {
+					"location": [2355, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_1\\[9\\].gpio_logic_high": {
+					"location": [2055, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_1\\[10\\].gpio_logic_high": {
+					"location": [1755, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[0\\].gpio_logic_high": {
+					"location": [1455, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[1\\].gpio_logic_high": {
+					"location": [1155, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[2\\].gpio_logic_high": {
+					"location": [955, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[3\\].gpio_logic_high": {
+					"location": [555, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[4\\].gpio_logic_high": {
+					"location": [255, 4675],
+					"orientation": "FN"
+				},
+				"gpio_control_in_2\\[5\\].gpio_logic_high": {
+					"location": [11, 4445],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[6\\].gpio_logic_high": {
+					"location": [11, 3645],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[7\\].gpio_logic_high": {
+					"location": [11, 3446],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[8\\].gpio_logic_high": {
+					"location": [11, 3145],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[9\\].gpio_logic_high": {
+					"location": [11, 2945],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[10\\].gpio_logic_high": {
+					"location": [11, 2747],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[11\\].gpio_logic_high": {
+					"location": [11, 2545],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[12\\].gpio_logic_high": {
+					"location": [11, 2345],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[13\\].gpio_logic_high": {
+					"location": [11, 1680],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[14\\].gpio_logic_high": {
+					"location": [11, 1484],
+					"orientation": "N"
+				},
+				"gpio_control_in_2\\[15\\].gpio_logic_high": {
+					"location": [11, 1245],
+					"orientation": "N"
+				},
+				"gpio_control_bidir_2\\[0\\].gpio_logic_high": {
+					"location": [11, 1060],
+					"orientation": "N"
+				},
+				"gpio_control_bidir_2\\[1\\].gpio_logic_high": {
+					"location": [11, 840],
+					"orientation": "N"
+				},
+				"gpio_control_bidir_2\\[2\\].gpio_logic_high": {
+					"location": [11, 630],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/gpio_logic_high.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../signoff/gpio_logic_high/openlane-signoff/spef/gpio_logic_high.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../lib/gpio_logic_high.lib"
+				]
+			}
+		},
+		"mprj_logic_high": {
+			"gds": [
+				"dir::/../../gds/mprj_logic_high.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/mprj_logic_high.lef"
+			],
+			"instances": {
+				"mgmt_buffers.mprj_logic_high_inst": {
+					"location": [1190.94, 930],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/mprj_logic_high.v"
+			]
+		},
+		"mprj2_logic_high": {
+			"gds": [
+				"dir::/../../gds/mprj2_logic_high.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/mprj2_logic_high.lef"
+			],
+			"instances": {
+				"mgmt_buffers.mprj2_logic_high_inst": {
+					"location": [823, 930],
+					"orientation": "FN"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/mprj2_logic_high.v"
+			]
+		},
+		"mgmt_protect_hv": {
+			"gds": [
+				"dir::/../../gds/mgmt_protect_hv.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/mgmt_protect_hv.lef"
+			],
+			"instances": {
+				"mgmt_buffers.powergood_check": {
+					"location": [1794, 930],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/mgmt_protect_hv.v"
+			]
+		},
+		"caravel_clocking": {
+			"gds": [
+				"dir::/../../gds/caravel_clocking.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/caravel_clocking.lef"
+			],
+			"instances": {
+				"clock_ctrl": {
+					"location": [2747, 9.40],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/caravel_clocking.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../signoff/caravel_clocking/openlane-signoff/spef/caravel_clocking.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../lib/caravel_clocking.lib"
+				]
+			}
+		},
+		"digital_locked_loop": {
+			"gds": [
+				"dir::/../../gds/digital_locked_loop.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/digital_locked_loop.lef"
+			],
+			"instances": {
+				"pll": {
+					"location": [2800, 145],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/digital_locked_loop.v"
+			],
+			"spef": {
+				"min_*": [
+					"dir::/../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.min.spef"
+				],
+				"nom_*": [
+					"dir::/../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.nom.spef"
+				],
+				"max_*": [
+					"dir::/../../signoff/digital_locked_loop/openlane-signoff/spef/digital_locked_loop.max.spef"
+				]
+			},
+			"lib": {
+				"*": [
+					"dir::/../../lib/digital_locked_loop.lib"
+				]
+			}
+		},
+		"mprj_vias": {
+			"gds": [
+				"dir::/../../gds/mprj_vias.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/mprj_vias.lef"
+			],
+			"instances": {
+				"mprj_vias": {
+					"location": [121.74, 1072],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/mprj_vias.v"
+			]
+		},
+		"manual_power_connections": {
+			"gds": [
+				"dir::/../../gds/manual_power_connections.gds.gz"
+			],
+			"lef": [
+				"dir::/../../lef/manual_power_connections.lef"
+			],
+			"instances": {
+				"manual_power_connections": {
+					"location": [0, 0],
+					"orientation": "N"
+				}
+			},
+			"nl": [
+				"dir::/../../verilog/gl/manual_power_connections.v"
+			]
+		}
+	}
+}

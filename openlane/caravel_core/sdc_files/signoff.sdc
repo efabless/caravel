@@ -26,25 +26,34 @@ set_propagated_clock [get_clocks {hk_serial_clk}]
 set_propagated_clock [get_clocks {hk_serial_load}]
 
 ## INPUT/OUTPUT DELAYS
-# set input_delay_value 10
-# set output_delay_value 10
-# puts "\[INFO\]: Setting output delay to: $output_delay_value"
-# puts "\[INFO\]: Setting input delay to: $input_delay_value"
-# set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
-# set_input_delay 0  -clock [get_clocks {clk}] [get_ports {mprj_io_in[35]}]
-# set_input_delay 0  -clock [get_clocks {clk}] [get_ports {clock_core}]
-# set_input_delay 1  -clock [get_clocks {clk}] [get_ports {flash_io0_di}]
-# set_input_delay 1  -clock [get_clocks {clk}] [get_ports {flash_io1_di}]
-# set_input_delay -8 -clock [get_clocks {debug_clk}] [get_ports {mgmt_io_in[0]}]
-# 
-# set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
-# set_output_delay 21 -clock [get_clocks {debug_clk}] [get_ports {mgmt_io_out[0]}]
+set input_delay_value 4
+set output_delay_value 4
+puts "\[INFO\]: Setting output delay to: $output_delay_value"
+puts "\[INFO\]: Setting input delay to: $input_delay_value"
+set_input_delay $input_delay_value  -clock [get_clocks {clk}] -add_delay [all_inputs]
+set_input_delay 0  -clock [get_clocks {clk}] [get_ports {mprj_io_in[35]}]
+set_input_delay 0  -clock [get_clocks {clk}] [get_ports {clock_core}]
+set_input_delay 2.5 -clock [get_clocks {clk}] [get_ports {flash_io0_di}]
+set_input_delay 2.5 -clock [get_clocks {clk}] [get_ports {flash_io1_di}]
+set_input_delay -2 -clock [get_clocks {debug_clk}] [get_ports {mgmt_io_in[0]}]
+
+set_output_delay $output_delay_value  -clock [get_clocks {clk}] -add_delay [all_outputs]
+set_output_delay 21 -clock [get_clocks {debug_clk}] [get_ports {mgmt_io_out[0]}]
 
 ## MAX FANOUT
 set_max_fanout $::env(SYNTH_MAX_FANOUT) [current_design]
 
 ## FALSE PATHS (ASYNCHRONOUS INPUTS)
 set_false_path -from [get_ports {rstb_h}]
+
+## MULTI CYCLE PATHS
+# Multicycle paths
+set_multicycle_path -setup 2 -through [get_pins {mprj/wbs_ack_o}]
+set_multicycle_path -hold 1  -through [get_pins {mprj/wbs_ack_o}]
+set_multicycle_path -setup 2 -through [get_pins {mprj/wbs_cyc_i}]
+set_multicycle_path -hold 1  -through [get_pins {mprj/wbs_cyc_i}]
+set_multicycle_path -setup 2 -through [get_pins {mprj/wbs_stb_i}]
+set_multicycle_path -hold 1  -through [get_pins {mprj/wbs_stb_i}]
 
 # add loads for output ports (pads)
 set min_cap 0.5
@@ -54,14 +63,14 @@ puts "\[INFO\]: Cap load range: $min_cap : $max_cap"
 set_load -min $min_cap [all_outputs] 
 set_load -max $max_cap [all_outputs] 
 
-set min_in_tran 1
-set max_in_tran 1.49
+set min_in_tran 0.6
+set max_in_tran 1.2
 puts "\[INFO\]: Input transition range: $min_in_tran : $max_in_tran"
 set_input_transition -min $min_in_tran [all_inputs] 
 set_input_transition -max $max_in_tran [all_inputs]
 
 # derates
-set derate 0.0375
+set derate 0.05
 puts "\[INFO\]: Setting derate factor to: [expr $derate * 100] %"
 set_timing_derate -early [expr 1-$derate]
 set_timing_derate -late [expr 1+$derate]
