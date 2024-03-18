@@ -1441,7 +1441,7 @@ module caravel_core (
     );
 	
 (* keep *) mprj_vias mprj_vias ();
-(* keep *) padframe_power_connections padframe_power_connections ();
+(* keep *) manual_power_connections manual_power_connections ();
 
 endmodule
 // `default_nettype wire
