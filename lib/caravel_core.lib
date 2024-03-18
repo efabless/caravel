@@ -1,0 +1,2907 @@
+library (caravel_core) {
+  comment                        : "";
+  delay_model                    : table_lookup;
+  simulation                     : false;
+  capacitive_load_unit (1,pF);
+  leakage_power_unit             : 1pW;
+  current_unit                   : "1A";
+  pulling_resistance_unit        : "1kohm";
+  time_unit                      : "1ns";
+  voltage_unit                   : "1v";
+  library_features(report_delay_calculation);
+
+  input_threshold_pct_rise : 50;
+  input_threshold_pct_fall : 50;
+  output_threshold_pct_rise : 50;
+  output_threshold_pct_fall : 50;
+  slew_lower_threshold_pct_rise : 20;
+  slew_lower_threshold_pct_fall : 20;
+  slew_upper_threshold_pct_rise : 80;
+  slew_upper_threshold_pct_fall : 80;
+  slew_derate_from_library : 1.0;
+
+
+  nom_process                    : 1.0;
+  nom_temperature                : 25.0;
+  nom_voltage                    : 1.80;
+
+  lu_table_template(template_1) {
+    variable_1 : total_output_net_capacitance;
+    index_1 ("0.00050,  0.00191,  0.00726,  0.02767,  0.10546,  0.40192,  1.53169");
+  }
+  type ("mprj_analog_io") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 29;
+    bit_from : 28;
+    bit_to : 0;
+  }
+  type ("mprj_io_analog_en") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_analog_pol") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_analog_sel") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_dm") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 114;
+    bit_from : 113;
+    bit_to : 0;
+  }
+  type ("mprj_io_holdover") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_ib_mode_sel") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_in") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_inp_dis") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_oeb") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_one") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_out") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_slow_sel") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+  type ("mprj_io_vtrip_sel") {
+    base_type : array;
+    data_type : bit;
+    bit_width : 38;
+    bit_from : 37;
+    bit_to : 0;
+  }
+
+  cell ("caravel_core") {
+    interface_timing : true;
+    pin("clock_core") {
+      direction : input;
+      capacitance : 0.0879;
+    }
+    pin("flash_clk_frame") {
+      direction : output;
+      capacitance : 0.0624;
+      timing() {
+        related_pin : "mprj_io_in[4]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("1.73467,1.73656,1.74304,1.76256,1.82076,2.02297,2.79280");
+	}
+	rise_transition(template_1) {
+          values("0.02508,0.02656,0.03178,0.05101,0.12332,0.40848,1.50622");
+	}
+	cell_fall(template_1) {
+          values("2.08422,2.08590,2.09189,2.10849,2.15167,2.27887,2.74042");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02442,0.02828,0.04104,0.08437,0.25147,0.91313");
+	}
+      }
+    }
+    pin("flash_clk_oeb") {
+      direction : output;
+      capacitance : 0.0832;
+    }
+    pin("flash_csb_frame") {
+      direction : output;
+      capacitance : 0.0707;
+      timing() {
+        related_pin : "mprj_io_in[3]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("1.64831,1.65026,1.65694,1.67681,1.73534,1.93768,2.70473");
+	}
+	rise_transition(template_1) {
+          values("0.02703,0.02847,0.03351,0.05243,0.12385,0.40872,1.50708");
+	}
+	cell_fall(template_1) {
+          values("1.81088,1.81255,1.81838,1.83496,1.87812,2.00536,2.46705");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02439,0.02832,0.04111,0.08442,0.25148,0.91245");
+	}
+      }
+    }
+    pin("flash_csb_oeb") {
+      direction : output;
+      capacitance : 0.0551;
+    }
+    pin("flash_io0_di") {
+      direction : input;
+      capacitance : 0.0840;
+    }
+    pin("flash_io0_do") {
+      direction : output;
+      capacitance : 0.0721;
+      timing() {
+        related_pin : "mprj_io_in[2]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("1.29290,1.29482,1.30140,1.32108,1.37944,1.58171,2.35022");
+	}
+	rise_transition(template_1) {
+          values("0.02600,0.02746,0.03260,0.05168,0.12357,0.40859,1.50663");
+	}
+	cell_fall(template_1) {
+          values("1.52683,1.52849,1.53427,1.55085,1.59401,1.72126,2.18300");
+	}
+	fall_transition(template_1) {
+          values("0.02338,0.02438,0.02833,0.04114,0.08444,0.25148,0.91222");
+	}
+      }
+    }
+    pin("flash_io0_ieb") {
+      direction : output;
+      capacitance : 0.0601;
+    }
+    pin("flash_io0_oeb") {
+      direction : output;
+      capacitance : 0.0823;
+    }
+    pin("flash_io1_di") {
+      direction : input;
+      capacitance : 0.0814;
+    }
+    pin("flash_io1_do") {
+      direction : output;
+      capacitance : 0.0689;
+    }
+    pin("flash_io1_ieb") {
+      direction : output;
+      capacitance : 0.0701;
+    }
+    pin("flash_io1_oeb") {
+      direction : output;
+      capacitance : 0.0561;
+    }
+    pin("gpio_in_core") {
+      direction : input;
+      capacitance : 0.0538;
+    }
+    pin("gpio_inenb_core") {
+      direction : output;
+      capacitance : 0.0379;
+    }
+    pin("gpio_mode0_core") {
+      direction : output;
+      capacitance : 0.0285;
+    }
+    pin("gpio_mode1_core") {
+      direction : output;
+      capacitance : 0.0147;
+    }
+    pin("gpio_out_core") {
+      direction : output;
+      capacitance : 0.0123;
+    }
+    pin("gpio_outenb_core") {
+      direction : output;
+      capacitance : 0.0070;
+    }
+    pin("por_l") {
+      direction : output;
+      capacitance : 0.1018;
+    }
+    pin("porb_h") {
+      direction : output;
+      capacitance : 0.2122;
+    }
+    pin("rstb_h") {
+      direction : input;
+      capacitance : 0.0247;
+    }
+    bus("mprj_analog_io") {
+      bus_type : mprj_analog_io;
+      direction : inout;
+      capacitance : 0.0000;
+    pin("mprj_analog_io[28]") {
+      direction : inout;
+      capacitance : 0.0727;
+    }
+    pin("mprj_analog_io[27]") {
+      direction : inout;
+      capacitance : 0.0787;
+    }
+    pin("mprj_analog_io[26]") {
+      direction : inout;
+      capacitance : 0.1106;
+    }
+    pin("mprj_analog_io[25]") {
+      direction : inout;
+      capacitance : 0.0913;
+    }
+    pin("mprj_analog_io[24]") {
+      direction : inout;
+      capacitance : 0.0581;
+    }
+    pin("mprj_analog_io[23]") {
+      direction : inout;
+      capacitance : 0.0537;
+    }
+    pin("mprj_analog_io[22]") {
+      direction : inout;
+      capacitance : 0.0632;
+    }
+    pin("mprj_analog_io[21]") {
+      direction : inout;
+      capacitance : 0.0745;
+    }
+    pin("mprj_analog_io[20]") {
+      direction : inout;
+      capacitance : 0.0700;
+    }
+    pin("mprj_analog_io[19]") {
+      direction : inout;
+      capacitance : 0.0770;
+    }
+    pin("mprj_analog_io[18]") {
+      direction : inout;
+      capacitance : 0.0713;
+    }
+    pin("mprj_analog_io[17]") {
+      direction : inout;
+      capacitance : 0.0253;
+    }
+    pin("mprj_analog_io[16]") {
+      direction : inout;
+      capacitance : 0.0503;
+    }
+    pin("mprj_analog_io[15]") {
+      direction : inout;
+      capacitance : 0.0491;
+    }
+    pin("mprj_analog_io[14]") {
+      direction : inout;
+      capacitance : 0.0583;
+    }
+    pin("mprj_analog_io[13]") {
+      direction : inout;
+      capacitance : 0.0798;
+    }
+    pin("mprj_analog_io[12]") {
+      direction : inout;
+      capacitance : 0.0763;
+    }
+    pin("mprj_analog_io[11]") {
+      direction : inout;
+      capacitance : 0.0526;
+    }
+    pin("mprj_analog_io[10]") {
+      direction : inout;
+      capacitance : 0.0388;
+    }
+    pin("mprj_analog_io[9]") {
+      direction : inout;
+      capacitance : 0.0398;
+    }
+    pin("mprj_analog_io[8]") {
+      direction : inout;
+      capacitance : 0.0215;
+    }
+    pin("mprj_analog_io[7]") {
+      direction : inout;
+      capacitance : 0.0417;
+    }
+    pin("mprj_analog_io[6]") {
+      direction : inout;
+      capacitance : 0.0191;
+    }
+    pin("mprj_analog_io[5]") {
+      direction : inout;
+      capacitance : 0.0419;
+    }
+    pin("mprj_analog_io[4]") {
+      direction : inout;
+      capacitance : 0.0311;
+    }
+    pin("mprj_analog_io[3]") {
+      direction : inout;
+      capacitance : 0.0310;
+    }
+    pin("mprj_analog_io[2]") {
+      direction : inout;
+      capacitance : 0.0301;
+    }
+    pin("mprj_analog_io[1]") {
+      direction : inout;
+      capacitance : 0.0188;
+    }
+    pin("mprj_analog_io[0]") {
+      direction : inout;
+      capacitance : 0.0238;
+    }
+    }
+    bus("mprj_io_analog_en") {
+      bus_type : mprj_io_analog_en;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_analog_en[37]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_analog_en[36]") {
+      direction : output;
+      capacitance : 0.0011;
+    }
+    pin("mprj_io_analog_en[35]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_analog_en[34]") {
+      direction : output;
+      capacitance : 0.0099;
+    }
+    pin("mprj_io_analog_en[33]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_analog_en[32]") {
+      direction : output;
+      capacitance : 0.0069;
+    }
+    pin("mprj_io_analog_en[31]") {
+      direction : output;
+      capacitance : 0.0059;
+    }
+    pin("mprj_io_analog_en[30]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_analog_en[29]") {
+      direction : output;
+      capacitance : 0.0040;
+    }
+    pin("mprj_io_analog_en[28]") {
+      direction : output;
+      capacitance : 0.0073;
+    }
+    pin("mprj_io_analog_en[27]") {
+      direction : output;
+      capacitance : 0.0057;
+    }
+    pin("mprj_io_analog_en[26]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_analog_en[25]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_analog_en[24]") {
+      direction : output;
+      capacitance : 0.0048;
+    }
+    pin("mprj_io_analog_en[23]") {
+      direction : output;
+      capacitance : 0.0101;
+    }
+    pin("mprj_io_analog_en[22]") {
+      direction : output;
+      capacitance : 0.0108;
+    }
+    pin("mprj_io_analog_en[21]") {
+      direction : output;
+      capacitance : 0.0164;
+    }
+    pin("mprj_io_analog_en[20]") {
+      direction : output;
+      capacitance : 0.0153;
+    }
+    pin("mprj_io_analog_en[19]") {
+      direction : output;
+      capacitance : 0.0190;
+    }
+    pin("mprj_io_analog_en[18]") {
+      direction : output;
+      capacitance : 0.0106;
+    }
+    pin("mprj_io_analog_en[17]") {
+      direction : output;
+      capacitance : 0.0050;
+    }
+    pin("mprj_io_analog_en[16]") {
+      direction : output;
+      capacitance : 0.0049;
+    }
+    pin("mprj_io_analog_en[15]") {
+      direction : output;
+      capacitance : 0.0031;
+    }
+    pin("mprj_io_analog_en[14]") {
+      direction : output;
+      capacitance : 0.0063;
+    }
+    pin("mprj_io_analog_en[13]") {
+      direction : output;
+      capacitance : 0.0074;
+    }
+    pin("mprj_io_analog_en[12]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_analog_en[11]") {
+      direction : output;
+      capacitance : 0.0010;
+    }
+    pin("mprj_io_analog_en[10]") {
+      direction : output;
+      capacitance : 0.0055;
+    }
+    pin("mprj_io_analog_en[9]") {
+      direction : output;
+      capacitance : 0.0082;
+    }
+    pin("mprj_io_analog_en[8]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_analog_en[7]") {
+      direction : output;
+      capacitance : 0.0027;
+    }
+    pin("mprj_io_analog_en[6]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_analog_en[5]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_analog_en[4]") {
+      direction : output;
+      capacitance : 0.0073;
+    }
+    pin("mprj_io_analog_en[3]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("mprj_io_analog_en[2]") {
+      direction : output;
+      capacitance : 0.0055;
+    }
+    pin("mprj_io_analog_en[1]") {
+      direction : output;
+      capacitance : 0.0027;
+    }
+    pin("mprj_io_analog_en[0]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    }
+    bus("mprj_io_analog_pol") {
+      bus_type : mprj_io_analog_pol;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_analog_pol[37]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_analog_pol[36]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_analog_pol[35]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_analog_pol[34]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("mprj_io_analog_pol[33]") {
+      direction : output;
+      capacitance : 0.0100;
+    }
+    pin("mprj_io_analog_pol[32]") {
+      direction : output;
+      capacitance : 0.0071;
+    }
+    pin("mprj_io_analog_pol[31]") {
+      direction : output;
+      capacitance : 0.0051;
+    }
+    pin("mprj_io_analog_pol[30]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_analog_pol[29]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_analog_pol[28]") {
+      direction : output;
+      capacitance : 0.0037;
+    }
+    pin("mprj_io_analog_pol[27]") {
+      direction : output;
+      capacitance : 0.0070;
+    }
+    pin("mprj_io_analog_pol[26]") {
+      direction : output;
+      capacitance : 0.0068;
+    }
+    pin("mprj_io_analog_pol[25]") {
+      direction : output;
+      capacitance : 0.0053;
+    }
+    pin("mprj_io_analog_pol[24]") {
+      direction : output;
+      capacitance : 0.0049;
+    }
+    pin("mprj_io_analog_pol[23]") {
+      direction : output;
+      capacitance : 0.0107;
+    }
+    pin("mprj_io_analog_pol[22]") {
+      direction : output;
+      capacitance : 0.0130;
+    }
+    pin("mprj_io_analog_pol[21]") {
+      direction : output;
+      capacitance : 0.0171;
+    }
+    pin("mprj_io_analog_pol[20]") {
+      direction : output;
+      capacitance : 0.0131;
+    }
+    pin("mprj_io_analog_pol[19]") {
+      direction : output;
+      capacitance : 0.0188;
+    }
+    pin("mprj_io_analog_pol[18]") {
+      direction : output;
+      capacitance : 0.0132;
+    }
+    pin("mprj_io_analog_pol[17]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_analog_pol[16]") {
+      direction : output;
+      capacitance : 0.0089;
+    }
+    pin("mprj_io_analog_pol[15]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_analog_pol[14]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_analog_pol[13]") {
+      direction : output;
+      capacitance : 0.0086;
+    }
+    pin("mprj_io_analog_pol[12]") {
+      direction : output;
+      capacitance : 0.0025;
+    }
+    pin("mprj_io_analog_pol[11]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    pin("mprj_io_analog_pol[10]") {
+      direction : output;
+      capacitance : 0.0091;
+    }
+    pin("mprj_io_analog_pol[9]") {
+      direction : output;
+      capacitance : 0.0056;
+    }
+    pin("mprj_io_analog_pol[8]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_analog_pol[7]") {
+      direction : output;
+      capacitance : 0.0009;
+    }
+    pin("mprj_io_analog_pol[6]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_analog_pol[5]") {
+      direction : output;
+      capacitance : 0.0055;
+    }
+    pin("mprj_io_analog_pol[4]") {
+      direction : output;
+      capacitance : 0.0086;
+    }
+    pin("mprj_io_analog_pol[3]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_analog_pol[2]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_analog_pol[1]") {
+      direction : output;
+      capacitance : 0.0089;
+    }
+    pin("mprj_io_analog_pol[0]") {
+      direction : output;
+      capacitance : 0.0036;
+    }
+    }
+    bus("mprj_io_analog_sel") {
+      bus_type : mprj_io_analog_sel;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_analog_sel[37]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_analog_sel[36]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_analog_sel[35]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_analog_sel[34]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("mprj_io_analog_sel[33]") {
+      direction : output;
+      capacitance : 0.0053;
+    }
+    pin("mprj_io_analog_sel[32]") {
+      direction : output;
+      capacitance : 0.0112;
+    }
+    pin("mprj_io_analog_sel[31]") {
+      direction : output;
+      capacitance : 0.0066;
+    }
+    pin("mprj_io_analog_sel[30]") {
+      direction : output;
+      capacitance : 0.0044;
+    }
+    pin("mprj_io_analog_sel[29]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_analog_sel[28]") {
+      direction : output;
+      capacitance : 0.0037;
+    }
+    pin("mprj_io_analog_sel[27]") {
+      direction : output;
+      capacitance : 0.0053;
+    }
+    pin("mprj_io_analog_sel[26]") {
+      direction : output;
+      capacitance : 0.0081;
+    }
+    pin("mprj_io_analog_sel[25]") {
+      direction : output;
+      capacitance : 0.0054;
+    }
+    pin("mprj_io_analog_sel[24]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_analog_sel[23]") {
+      direction : output;
+      capacitance : 0.0111;
+    }
+    pin("mprj_io_analog_sel[22]") {
+      direction : output;
+      capacitance : 0.0152;
+    }
+    pin("mprj_io_analog_sel[21]") {
+      direction : output;
+      capacitance : 0.0133;
+    }
+    pin("mprj_io_analog_sel[20]") {
+      direction : output;
+      capacitance : 0.0156;
+    }
+    pin("mprj_io_analog_sel[19]") {
+      direction : output;
+      capacitance : 0.0199;
+    }
+    pin("mprj_io_analog_sel[18]") {
+      direction : output;
+      capacitance : 0.0122;
+    }
+    pin("mprj_io_analog_sel[17]") {
+      direction : output;
+      capacitance : 0.0056;
+    }
+    pin("mprj_io_analog_sel[16]") {
+      direction : output;
+      capacitance : 0.0075;
+    }
+    pin("mprj_io_analog_sel[15]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_analog_sel[14]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_analog_sel[13]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_analog_sel[12]") {
+      direction : output;
+      capacitance : 0.0021;
+    }
+    pin("mprj_io_analog_sel[11]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_analog_sel[10]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_analog_sel[9]") {
+      direction : output;
+      capacitance : 0.0039;
+    }
+    pin("mprj_io_analog_sel[8]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_analog_sel[7]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("mprj_io_analog_sel[6]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_analog_sel[5]") {
+      direction : output;
+      capacitance : 0.0071;
+    }
+    pin("mprj_io_analog_sel[4]") {
+      direction : output;
+      capacitance : 0.0061;
+    }
+    pin("mprj_io_analog_sel[3]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_analog_sel[2]") {
+      direction : output;
+      capacitance : 0.0063;
+    }
+    pin("mprj_io_analog_sel[1]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_analog_sel[0]") {
+      direction : output;
+      capacitance : 0.0023;
+    }
+    }
+    bus("mprj_io_dm") {
+      bus_type : mprj_io_dm;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_dm[113]") {
+      direction : output;
+      capacitance : 0.0103;
+    }
+    pin("mprj_io_dm[112]") {
+      direction : output;
+      capacitance : 0.0056;
+    }
+    pin("mprj_io_dm[111]") {
+      direction : output;
+      capacitance : 0.0097;
+    }
+    pin("mprj_io_dm[110]") {
+      direction : output;
+      capacitance : 0.0065;
+    }
+    pin("mprj_io_dm[109]") {
+      direction : output;
+      capacitance : 0.0036;
+    }
+    pin("mprj_io_dm[108]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_dm[107]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_dm[106]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_dm[105]") {
+      direction : output;
+      capacitance : 0.0023;
+    }
+    pin("mprj_io_dm[104]") {
+      direction : output;
+      capacitance : 0.0048;
+    }
+    pin("mprj_io_dm[103]") {
+      direction : output;
+      capacitance : 0.0076;
+    }
+    pin("mprj_io_dm[102]") {
+      direction : output;
+      capacitance : 0.0091;
+    }
+    pin("mprj_io_dm[101]") {
+      direction : output;
+      capacitance : 0.0102;
+    }
+    pin("mprj_io_dm[100]") {
+      direction : output;
+      capacitance : 0.0115;
+    }
+    pin("mprj_io_dm[99]") {
+      direction : output;
+      capacitance : 0.0214;
+    }
+    pin("mprj_io_dm[98]") {
+      direction : output;
+      capacitance : 0.0050;
+    }
+    pin("mprj_io_dm[97]") {
+      direction : output;
+      capacitance : 0.0114;
+    }
+    pin("mprj_io_dm[96]") {
+      direction : output;
+      capacitance : 0.0140;
+    }
+    pin("mprj_io_dm[95]") {
+      direction : output;
+      capacitance : 0.0181;
+    }
+    pin("mprj_io_dm[94]") {
+      direction : output;
+      capacitance : 0.0204;
+    }
+    pin("mprj_io_dm[93]") {
+      direction : output;
+      capacitance : 0.0183;
+    }
+    pin("mprj_io_dm[92]") {
+      direction : output;
+      capacitance : 0.0152;
+    }
+    pin("mprj_io_dm[91]") {
+      direction : output;
+      capacitance : 0.0192;
+    }
+    pin("mprj_io_dm[90]") {
+      direction : output;
+      capacitance : 0.0209;
+    }
+    pin("mprj_io_dm[89]") {
+      direction : output;
+      capacitance : 0.0160;
+    }
+    pin("mprj_io_dm[88]") {
+      direction : output;
+      capacitance : 0.0090;
+    }
+    pin("mprj_io_dm[87]") {
+      direction : output;
+      capacitance : 0.0199;
+    }
+    pin("mprj_io_dm[86]") {
+      direction : output;
+      capacitance : 0.0196;
+    }
+    pin("mprj_io_dm[85]") {
+      direction : output;
+      capacitance : 0.0123;
+    }
+    pin("mprj_io_dm[84]") {
+      direction : output;
+      capacitance : 0.0185;
+    }
+    pin("mprj_io_dm[83]") {
+      direction : output;
+      capacitance : 0.0104;
+    }
+    pin("mprj_io_dm[82]") {
+      direction : output;
+      capacitance : 0.0135;
+    }
+    pin("mprj_io_dm[81]") {
+      direction : output;
+      capacitance : 0.0135;
+    }
+    pin("mprj_io_dm[80]") {
+      direction : output;
+      capacitance : 0.0135;
+    }
+    pin("mprj_io_dm[79]") {
+      direction : output;
+      capacitance : 0.0176;
+    }
+    pin("mprj_io_dm[78]") {
+      direction : output;
+      capacitance : 0.0281;
+    }
+    pin("mprj_io_dm[77]") {
+      direction : output;
+      capacitance : 0.0164;
+    }
+    pin("mprj_io_dm[76]") {
+      direction : output;
+      capacitance : 0.0171;
+    }
+    pin("mprj_io_dm[75]") {
+      direction : output;
+      capacitance : 0.0192;
+    }
+    pin("mprj_io_dm[74]") {
+      direction : output;
+      capacitance : 0.0216;
+    }
+    pin("mprj_io_dm[73]") {
+      direction : output;
+      capacitance : 0.0212;
+    }
+    pin("mprj_io_dm[72]") {
+      direction : output;
+      capacitance : 0.0300;
+    }
+    pin("mprj_io_dm[71]") {
+      direction : output;
+      capacitance : 0.0194;
+    }
+    pin("mprj_io_dm[70]") {
+      direction : output;
+      capacitance : 0.0160;
+    }
+    pin("mprj_io_dm[69]") {
+      direction : output;
+      capacitance : 0.0182;
+    }
+    pin("mprj_io_dm[68]") {
+      direction : output;
+      capacitance : 0.0219;
+    }
+    pin("mprj_io_dm[67]") {
+      direction : output;
+      capacitance : 0.0189;
+    }
+    pin("mprj_io_dm[66]") {
+      direction : output;
+      capacitance : 0.0154;
+    }
+    pin("mprj_io_dm[65]") {
+      direction : output;
+      capacitance : 0.0153;
+    }
+    pin("mprj_io_dm[64]") {
+      direction : output;
+      capacitance : 0.0139;
+    }
+    pin("mprj_io_dm[63]") {
+      direction : output;
+      capacitance : 0.0172;
+    }
+    pin("mprj_io_dm[62]") {
+      direction : output;
+      capacitance : 0.0150;
+    }
+    pin("mprj_io_dm[61]") {
+      direction : output;
+      capacitance : 0.0150;
+    }
+    pin("mprj_io_dm[60]") {
+      direction : output;
+      capacitance : 0.0116;
+    }
+    pin("mprj_io_dm[59]") {
+      direction : output;
+      capacitance : 0.0167;
+    }
+    pin("mprj_io_dm[58]") {
+      direction : output;
+      capacitance : 0.0115;
+    }
+    pin("mprj_io_dm[57]") {
+      direction : output;
+      capacitance : 0.0114;
+    }
+    pin("mprj_io_dm[56]") {
+      direction : output;
+      capacitance : 0.0277;
+    }
+    pin("mprj_io_dm[55]") {
+      direction : output;
+      capacitance : 0.0201;
+    }
+    pin("mprj_io_dm[54]") {
+      direction : output;
+      capacitance : 0.0185;
+    }
+    pin("mprj_io_dm[53]") {
+      direction : output;
+      capacitance : 0.0129;
+    }
+    pin("mprj_io_dm[52]") {
+      direction : output;
+      capacitance : 0.0097;
+    }
+    pin("mprj_io_dm[51]") {
+      direction : output;
+      capacitance : 0.0095;
+    }
+    pin("mprj_io_dm[50]") {
+      direction : output;
+      capacitance : 0.0199;
+    }
+    pin("mprj_io_dm[49]") {
+      direction : output;
+      capacitance : 0.0159;
+    }
+    pin("mprj_io_dm[48]") {
+      direction : output;
+      capacitance : 0.0173;
+    }
+    pin("mprj_io_dm[47]") {
+      direction : output;
+      capacitance : 0.0102;
+    }
+    pin("mprj_io_dm[46]") {
+      direction : output;
+      capacitance : 0.0104;
+    }
+    pin("mprj_io_dm[45]") {
+      direction : output;
+      capacitance : 0.0169;
+    }
+    pin("mprj_io_dm[44]") {
+      direction : output;
+      capacitance : 0.0221;
+    }
+    pin("mprj_io_dm[43]") {
+      direction : output;
+      capacitance : 0.0235;
+    }
+    pin("mprj_io_dm[42]") {
+      direction : output;
+      capacitance : 0.0315;
+    }
+    pin("mprj_io_dm[41]") {
+      direction : output;
+      capacitance : 0.0190;
+    }
+    pin("mprj_io_dm[40]") {
+      direction : output;
+      capacitance : 0.0150;
+    }
+    pin("mprj_io_dm[39]") {
+      direction : output;
+      capacitance : 0.0249;
+    }
+    pin("mprj_io_dm[38]") {
+      direction : output;
+      capacitance : 0.0224;
+    }
+    pin("mprj_io_dm[37]") {
+      direction : output;
+      capacitance : 0.0171;
+    }
+    pin("mprj_io_dm[36]") {
+      direction : output;
+      capacitance : 0.0200;
+    }
+    pin("mprj_io_dm[35]") {
+      direction : output;
+      capacitance : 0.0160;
+    }
+    pin("mprj_io_dm[34]") {
+      direction : output;
+      capacitance : 0.0170;
+    }
+    pin("mprj_io_dm[33]") {
+      direction : output;
+      capacitance : 0.0195;
+    }
+    pin("mprj_io_dm[32]") {
+      direction : output;
+      capacitance : 0.0194;
+    }
+    pin("mprj_io_dm[31]") {
+      direction : output;
+      capacitance : 0.0185;
+    }
+    pin("mprj_io_dm[30]") {
+      direction : output;
+      capacitance : 0.0206;
+    }
+    pin("mprj_io_dm[29]") {
+      direction : output;
+      capacitance : 0.0155;
+    }
+    pin("mprj_io_dm[28]") {
+      direction : output;
+      capacitance : 0.0082;
+    }
+    pin("mprj_io_dm[27]") {
+      direction : output;
+      capacitance : 0.0197;
+    }
+    pin("mprj_io_dm[26]") {
+      direction : output;
+      capacitance : 0.0115;
+    }
+    pin("mprj_io_dm[25]") {
+      direction : output;
+      capacitance : 0.0169;
+    }
+    pin("mprj_io_dm[24]") {
+      direction : output;
+      capacitance : 0.0232;
+    }
+    pin("mprj_io_dm[23]") {
+      direction : output;
+      capacitance : 0.0156;
+    }
+    pin("mprj_io_dm[22]") {
+      direction : output;
+      capacitance : 0.0227;
+    }
+    pin("mprj_io_dm[21]") {
+      direction : output;
+      capacitance : 0.0219;
+    }
+    pin("mprj_io_dm[20]") {
+      direction : output;
+      capacitance : 0.0071;
+    }
+    pin("mprj_io_dm[19]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_dm[18]") {
+      direction : output;
+      capacitance : 0.0150;
+    }
+    pin("mprj_io_dm[17]") {
+      direction : output;
+      capacitance : 0.0139;
+    }
+    pin("mprj_io_dm[16]") {
+      direction : output;
+      capacitance : 0.0150;
+    }
+    pin("mprj_io_dm[15]") {
+      direction : output;
+      capacitance : 0.0180;
+    }
+    pin("mprj_io_dm[14]") {
+      direction : output;
+      capacitance : 0.0107;
+    }
+    pin("mprj_io_dm[13]") {
+      direction : output;
+      capacitance : 0.0078;
+    }
+    pin("mprj_io_dm[12]") {
+      direction : output;
+      capacitance : 0.0100;
+    }
+    pin("mprj_io_dm[11]") {
+      direction : output;
+      capacitance : 0.0075;
+    }
+    pin("mprj_io_dm[10]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_dm[9]") {
+      direction : output;
+      capacitance : 0.0062;
+    }
+    pin("mprj_io_dm[8]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_dm[7]") {
+      direction : output;
+      capacitance : 0.0023;
+    }
+    pin("mprj_io_dm[6]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_dm[5]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_dm[4]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("mprj_io_dm[3]") {
+      direction : output;
+      capacitance : 0.0021;
+    }
+    pin("mprj_io_dm[2]") {
+      direction : output;
+      capacitance : 0.0027;
+    }
+    pin("mprj_io_dm[1]") {
+      direction : output;
+      capacitance : 0.0051;
+    }
+    pin("mprj_io_dm[0]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    }
+    bus("mprj_io_holdover") {
+      bus_type : mprj_io_holdover;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_holdover[37]") {
+      direction : output;
+      capacitance : 0.0083;
+    }
+    pin("mprj_io_holdover[36]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_holdover[35]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_holdover[34]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_holdover[33]") {
+      direction : output;
+      capacitance : 0.0031;
+    }
+    pin("mprj_io_holdover[32]") {
+      direction : output;
+      capacitance : 0.0031;
+    }
+    pin("mprj_io_holdover[31]") {
+      direction : output;
+      capacitance : 0.0057;
+    }
+    pin("mprj_io_holdover[30]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_holdover[29]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_holdover[28]") {
+      direction : output;
+      capacitance : 0.0040;
+    }
+    pin("mprj_io_holdover[27]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_holdover[26]") {
+      direction : output;
+      capacitance : 0.0086;
+    }
+    pin("mprj_io_holdover[25]") {
+      direction : output;
+      capacitance : 0.0050;
+    }
+    pin("mprj_io_holdover[24]") {
+      direction : output;
+      capacitance : 0.0049;
+    }
+    pin("mprj_io_holdover[23]") {
+      direction : output;
+      capacitance : 0.0113;
+    }
+    pin("mprj_io_holdover[22]") {
+      direction : output;
+      capacitance : 0.0171;
+    }
+    pin("mprj_io_holdover[21]") {
+      direction : output;
+      capacitance : 0.0155;
+    }
+    pin("mprj_io_holdover[20]") {
+      direction : output;
+      capacitance : 0.0181;
+    }
+    pin("mprj_io_holdover[19]") {
+      direction : output;
+      capacitance : 0.0179;
+    }
+    pin("mprj_io_holdover[18]") {
+      direction : output;
+      capacitance : 0.0121;
+    }
+    pin("mprj_io_holdover[17]") {
+      direction : output;
+      capacitance : 0.0060;
+    }
+    pin("mprj_io_holdover[16]") {
+      direction : output;
+      capacitance : 0.0085;
+    }
+    pin("mprj_io_holdover[15]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_holdover[14]") {
+      direction : output;
+      capacitance : 0.0093;
+    }
+    pin("mprj_io_holdover[13]") {
+      direction : output;
+      capacitance : 0.0025;
+    }
+    pin("mprj_io_holdover[12]") {
+      direction : output;
+      capacitance : 0.0049;
+    }
+    pin("mprj_io_holdover[11]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_holdover[10]") {
+      direction : output;
+      capacitance : 0.0040;
+    }
+    pin("mprj_io_holdover[9]") {
+      direction : output;
+      capacitance : 0.0068;
+    }
+    pin("mprj_io_holdover[8]") {
+      direction : output;
+      capacitance : 0.0119;
+    }
+    pin("mprj_io_holdover[7]") {
+      direction : output;
+      capacitance : 0.0048;
+    }
+    pin("mprj_io_holdover[6]") {
+      direction : output;
+      capacitance : 0.0012;
+    }
+    pin("mprj_io_holdover[5]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_holdover[4]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_holdover[3]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_holdover[2]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_holdover[1]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_holdover[0]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    }
+    bus("mprj_io_ib_mode_sel") {
+      bus_type : mprj_io_ib_mode_sel;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_ib_mode_sel[37]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_ib_mode_sel[36]") {
+      direction : output;
+      capacitance : 0.0032;
+    }
+    pin("mprj_io_ib_mode_sel[35]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_ib_mode_sel[34]") {
+      direction : output;
+      capacitance : 0.0031;
+    }
+    pin("mprj_io_ib_mode_sel[33]") {
+      direction : output;
+      capacitance : 0.0153;
+    }
+    pin("mprj_io_ib_mode_sel[32]") {
+      direction : output;
+      capacitance : 0.0089;
+    }
+    pin("mprj_io_ib_mode_sel[31]") {
+      direction : output;
+      capacitance : 0.0083;
+    }
+    pin("mprj_io_ib_mode_sel[30]") {
+      direction : output;
+      capacitance : 0.0064;
+    }
+    pin("mprj_io_ib_mode_sel[29]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_ib_mode_sel[28]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_ib_mode_sel[27]") {
+      direction : output;
+      capacitance : 0.0025;
+    }
+    pin("mprj_io_ib_mode_sel[26]") {
+      direction : output;
+      capacitance : 0.0101;
+    }
+    pin("mprj_io_ib_mode_sel[25]") {
+      direction : output;
+      capacitance : 0.0078;
+    }
+    pin("mprj_io_ib_mode_sel[24]") {
+      direction : output;
+      capacitance : 0.0045;
+    }
+    pin("mprj_io_ib_mode_sel[23]") {
+      direction : output;
+      capacitance : 0.0094;
+    }
+    pin("mprj_io_ib_mode_sel[22]") {
+      direction : output;
+      capacitance : 0.0121;
+    }
+    pin("mprj_io_ib_mode_sel[21]") {
+      direction : output;
+      capacitance : 0.0168;
+    }
+    pin("mprj_io_ib_mode_sel[20]") {
+      direction : output;
+      capacitance : 0.0162;
+    }
+    pin("mprj_io_ib_mode_sel[19]") {
+      direction : output;
+      capacitance : 0.0186;
+    }
+    pin("mprj_io_ib_mode_sel[18]") {
+      direction : output;
+      capacitance : 0.0138;
+    }
+    pin("mprj_io_ib_mode_sel[17]") {
+      direction : output;
+      capacitance : 0.0069;
+    }
+    pin("mprj_io_ib_mode_sel[16]") {
+      direction : output;
+      capacitance : 0.0083;
+    }
+    pin("mprj_io_ib_mode_sel[15]") {
+      direction : output;
+      capacitance : 0.0033;
+    }
+    pin("mprj_io_ib_mode_sel[14]") {
+      direction : output;
+      capacitance : 0.0082;
+    }
+    pin("mprj_io_ib_mode_sel[13]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_ib_mode_sel[12]") {
+      direction : output;
+      capacitance : 0.0041;
+    }
+    pin("mprj_io_ib_mode_sel[11]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_ib_mode_sel[10]") {
+      direction : output;
+      capacitance : 0.0025;
+    }
+    pin("mprj_io_ib_mode_sel[9]") {
+      direction : output;
+      capacitance : 0.0021;
+    }
+    pin("mprj_io_ib_mode_sel[8]") {
+      direction : output;
+      capacitance : 0.0062;
+    }
+    pin("mprj_io_ib_mode_sel[7]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_ib_mode_sel[6]") {
+      direction : output;
+      capacitance : 0.0100;
+    }
+    pin("mprj_io_ib_mode_sel[5]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_ib_mode_sel[4]") {
+      direction : output;
+      capacitance : 0.0022;
+    }
+    pin("mprj_io_ib_mode_sel[3]") {
+      direction : output;
+      capacitance : 0.0022;
+    }
+    pin("mprj_io_ib_mode_sel[2]") {
+      direction : output;
+      capacitance : 0.0023;
+    }
+    pin("mprj_io_ib_mode_sel[1]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_ib_mode_sel[0]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    }
+    bus("mprj_io_in") {
+      bus_type : mprj_io_in;
+      direction : input;
+      capacitance : 0.0000;
+    pin("mprj_io_in[37]") {
+      direction : input;
+      capacitance : 0.0196;
+    }
+    pin("mprj_io_in[36]") {
+      direction : input;
+      capacitance : 0.0098;
+    }
+    pin("mprj_io_in[35]") {
+      direction : input;
+      capacitance : 0.0138;
+    }
+    pin("mprj_io_in[34]") {
+      direction : input;
+      capacitance : 0.0277;
+    }
+    pin("mprj_io_in[33]") {
+      direction : input;
+      capacitance : 0.0308;
+    }
+    pin("mprj_io_in[32]") {
+      direction : input;
+      capacitance : 0.0360;
+    }
+    pin("mprj_io_in[31]") {
+      direction : input;
+      capacitance : 0.0562;
+    }
+    pin("mprj_io_in[30]") {
+      direction : input;
+      capacitance : 0.0454;
+    }
+    pin("mprj_io_in[29]") {
+      direction : input;
+      capacitance : 0.0332;
+    }
+    pin("mprj_io_in[28]") {
+      direction : input;
+      capacitance : 0.0495;
+    }
+    pin("mprj_io_in[27]") {
+      direction : input;
+      capacitance : 0.0434;
+    }
+    pin("mprj_io_in[26]") {
+      direction : input;
+      capacitance : 0.0559;
+    }
+    pin("mprj_io_in[25]") {
+      direction : input;
+      capacitance : 0.0515;
+    }
+    pin("mprj_io_in[24]") {
+      direction : input;
+      capacitance : 0.0463;
+    }
+    pin("mprj_io_in[23]") {
+      direction : input;
+      capacitance : 0.0175;
+    }
+    pin("mprj_io_in[22]") {
+      direction : input;
+      capacitance : 0.0232;
+    }
+    pin("mprj_io_in[21]") {
+      direction : input;
+      capacitance : 0.0446;
+    }
+    pin("mprj_io_in[20]") {
+      direction : input;
+      capacitance : 0.0201;
+    }
+    pin("mprj_io_in[19]") {
+      direction : input;
+      capacitance : 0.0291;
+    }
+    pin("mprj_io_in[18]") {
+      direction : input;
+      capacitance : 0.0341;
+    }
+    pin("mprj_io_in[17]") {
+      direction : input;
+      capacitance : 0.0293;
+    }
+    pin("mprj_io_in[16]") {
+      direction : input;
+      capacitance : 0.0280;
+    }
+    pin("mprj_io_in[15]") {
+      direction : input;
+      capacitance : 0.0292;
+    }
+    pin("mprj_io_in[14]") {
+      direction : input;
+      capacitance : 0.0459;
+    }
+    pin("mprj_io_in[13]") {
+      direction : input;
+      capacitance : 0.0324;
+    }
+    pin("mprj_io_in[12]") {
+      direction : input;
+      capacitance : 0.0557;
+    }
+    pin("mprj_io_in[11]") {
+      direction : input;
+      capacitance : 0.0498;
+    }
+    pin("mprj_io_in[10]") {
+      direction : input;
+      capacitance : 0.0466;
+    }
+    pin("mprj_io_in[9]") {
+      direction : input;
+      capacitance : 0.0453;
+    }
+    pin("mprj_io_in[8]") {
+      direction : input;
+      capacitance : 0.0564;
+    }
+    pin("mprj_io_in[7]") {
+      direction : input;
+      capacitance : 0.0520;
+    }
+    pin("mprj_io_in[6]") {
+      direction : input;
+      capacitance : 0.0254;
+    }
+    pin("mprj_io_in[5]") {
+      direction : input;
+      capacitance : 0.0361;
+    }
+    pin("mprj_io_in[4]") {
+      direction : input;
+      capacitance : 0.0356;
+    }
+    pin("mprj_io_in[3]") {
+      direction : input;
+      capacitance : 0.0260;
+    }
+    pin("mprj_io_in[2]") {
+      direction : input;
+      capacitance : 0.0207;
+    }
+    pin("mprj_io_in[1]") {
+      direction : input;
+      capacitance : 0.0119;
+    }
+    pin("mprj_io_in[0]") {
+      direction : input;
+      capacitance : 0.0189;
+    }
+    }
+    bus("mprj_io_inp_dis") {
+      bus_type : mprj_io_inp_dis;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_inp_dis[37]") {
+      direction : output;
+      capacitance : 0.0056;
+    }
+    pin("mprj_io_inp_dis[36]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_inp_dis[35]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_inp_dis[34]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_inp_dis[33]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_inp_dis[32]") {
+      direction : output;
+      capacitance : 0.0056;
+    }
+    pin("mprj_io_inp_dis[31]") {
+      direction : output;
+      capacitance : 0.0036;
+    }
+    pin("mprj_io_inp_dis[30]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_inp_dis[29]") {
+      direction : output;
+      capacitance : 0.0037;
+    }
+    pin("mprj_io_inp_dis[28]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_inp_dis[27]") {
+      direction : output;
+      capacitance : 0.0070;
+    }
+    pin("mprj_io_inp_dis[26]") {
+      direction : output;
+      capacitance : 0.0060;
+    }
+    pin("mprj_io_inp_dis[25]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_inp_dis[24]") {
+      direction : output;
+      capacitance : 0.0091;
+    }
+    pin("mprj_io_inp_dis[23]") {
+      direction : output;
+      capacitance : 0.0097;
+    }
+    pin("mprj_io_inp_dis[22]") {
+      direction : output;
+      capacitance : 0.0119;
+    }
+    pin("mprj_io_inp_dis[21]") {
+      direction : output;
+      capacitance : 0.0142;
+    }
+    pin("mprj_io_inp_dis[20]") {
+      direction : output;
+      capacitance : 0.0161;
+    }
+    pin("mprj_io_inp_dis[19]") {
+      direction : output;
+      capacitance : 0.0169;
+    }
+    pin("mprj_io_inp_dis[18]") {
+      direction : output;
+      capacitance : 0.0126;
+    }
+    pin("mprj_io_inp_dis[17]") {
+      direction : output;
+      capacitance : 0.0045;
+    }
+    pin("mprj_io_inp_dis[16]") {
+      direction : output;
+      capacitance : 0.0076;
+    }
+    pin("mprj_io_inp_dis[15]") {
+      direction : output;
+      capacitance : 0.0033;
+    }
+    pin("mprj_io_inp_dis[14]") {
+      direction : output;
+      capacitance : 0.0081;
+    }
+    pin("mprj_io_inp_dis[13]") {
+      direction : output;
+      capacitance : 0.0092;
+    }
+    pin("mprj_io_inp_dis[12]") {
+      direction : output;
+      capacitance : 0.0033;
+    }
+    pin("mprj_io_inp_dis[11]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_inp_dis[10]") {
+      direction : output;
+      capacitance : 0.0031;
+    }
+    pin("mprj_io_inp_dis[9]") {
+      direction : output;
+      capacitance : 0.0082;
+    }
+    pin("mprj_io_inp_dis[8]") {
+      direction : output;
+      capacitance : 0.0050;
+    }
+    pin("mprj_io_inp_dis[7]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_inp_dis[6]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_inp_dis[5]") {
+      direction : output;
+      capacitance : 0.0034;
+    }
+    pin("mprj_io_inp_dis[4]") {
+      direction : output;
+      capacitance : 0.0034;
+    }
+    pin("mprj_io_inp_dis[3]") {
+      direction : output;
+      capacitance : 0.0009;
+    }
+    pin("mprj_io_inp_dis[2]") {
+      direction : output;
+      capacitance : 0.0009;
+    }
+    pin("mprj_io_inp_dis[1]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_inp_dis[0]") {
+      direction : output;
+      capacitance : 0.0022;
+    }
+    }
+    bus("mprj_io_oeb") {
+      bus_type : mprj_io_oeb;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_oeb[37]") {
+      direction : output;
+      capacitance : 0.0187;
+    }
+    pin("mprj_io_oeb[36]") {
+      direction : output;
+      capacitance : 0.0112;
+    }
+    pin("mprj_io_oeb[35]") {
+      direction : output;
+      capacitance : 0.0130;
+    }
+    pin("mprj_io_oeb[34]") {
+      direction : output;
+      capacitance : 0.0166;
+    }
+    pin("mprj_io_oeb[33]") {
+      direction : output;
+      capacitance : 0.0159;
+    }
+    pin("mprj_io_oeb[32]") {
+      direction : output;
+      capacitance : 0.0171;
+    }
+    pin("mprj_io_oeb[31]") {
+      direction : output;
+      capacitance : 0.0074;
+    }
+    pin("mprj_io_oeb[30]") {
+      direction : output;
+      capacitance : 0.0072;
+    }
+    pin("mprj_io_oeb[29]") {
+      direction : output;
+      capacitance : 0.0106;
+    }
+    pin("mprj_io_oeb[28]") {
+      direction : output;
+      capacitance : 0.0096;
+    }
+    pin("mprj_io_oeb[27]") {
+      direction : output;
+      capacitance : 0.0129;
+    }
+    pin("mprj_io_oeb[26]") {
+      direction : output;
+      capacitance : 0.0114;
+    }
+    pin("mprj_io_oeb[25]") {
+      direction : output;
+      capacitance : 0.0143;
+    }
+    pin("mprj_io_oeb[24]") {
+      direction : output;
+      capacitance : 0.0045;
+    }
+    pin("mprj_io_oeb[23]") {
+      direction : output;
+      capacitance : 0.0073;
+    }
+    pin("mprj_io_oeb[22]") {
+      direction : output;
+      capacitance : 0.0091;
+    }
+    pin("mprj_io_oeb[21]") {
+      direction : output;
+      capacitance : 0.0083;
+    }
+    pin("mprj_io_oeb[20]") {
+      direction : output;
+      capacitance : 0.0161;
+    }
+    pin("mprj_io_oeb[19]") {
+      direction : output;
+      capacitance : 0.0104;
+    }
+    pin("mprj_io_oeb[18]") {
+      direction : output;
+      capacitance : 0.0087;
+    }
+    pin("mprj_io_oeb[17]") {
+      direction : output;
+      capacitance : 0.0047;
+    }
+    pin("mprj_io_oeb[16]") {
+      direction : output;
+      capacitance : 0.0085;
+    }
+    pin("mprj_io_oeb[15]") {
+      direction : output;
+      capacitance : 0.0071;
+    }
+    pin("mprj_io_oeb[14]") {
+      direction : output;
+      capacitance : 0.0101;
+    }
+    pin("mprj_io_oeb[13]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_oeb[12]") {
+      direction : output;
+      capacitance : 0.0066;
+    }
+    pin("mprj_io_oeb[11]") {
+      direction : output;
+      capacitance : 0.0053;
+    }
+    pin("mprj_io_oeb[10]") {
+      direction : output;
+      capacitance : 0.0043;
+    }
+    pin("mprj_io_oeb[9]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_oeb[8]") {
+      direction : output;
+      capacitance : 0.0089;
+    }
+    pin("mprj_io_oeb[7]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_oeb[6]") {
+      direction : output;
+      capacitance : 0.0196;
+    }
+    pin("mprj_io_oeb[5]") {
+      direction : output;
+      capacitance : 0.0152;
+    }
+    pin("mprj_io_oeb[4]") {
+      direction : output;
+      capacitance : 0.0155;
+    }
+    pin("mprj_io_oeb[3]") {
+      direction : output;
+      capacitance : 0.0211;
+    }
+    pin("mprj_io_oeb[2]") {
+      direction : output;
+      capacitance : 0.0186;
+    }
+    pin("mprj_io_oeb[1]") {
+      direction : output;
+      capacitance : 0.0122;
+      timing() {
+        related_pin : "mprj_io_in[3]";
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("2.54901,2.55092,2.55745,2.57705,2.63534,2.83758,3.60671");
+	}
+	rise_transition(template_1) {
+          values("0.02557,0.02703,0.03221,0.05137,0.12345,0.40854,1.50644");
+	}
+	cell_fall(template_1) {
+          values("2.70588,2.70754,2.71335,2.72993,2.77309,2.90034,3.36205");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02438,0.02832,0.04113,0.08443,0.25148,0.91235");
+	}
+      }
+    }
+    pin("mprj_io_oeb[0]") {
+      direction : output;
+      capacitance : 0.0142;
+    }
+    }
+    bus("mprj_io_one") {
+      bus_type : mprj_io_one;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_one[37]") {
+      direction : output;
+      capacitance : 0.0024;
+    }
+    pin("mprj_io_one[36]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_one[35]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    pin("mprj_io_one[34]") {
+      direction : output;
+      capacitance : 0.0067;
+    }
+    pin("mprj_io_one[33]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_one[32]") {
+      direction : output;
+      capacitance : 0.0047;
+    }
+    pin("mprj_io_one[31]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_one[30]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_one[29]") {
+      direction : output;
+      capacitance : 0.0034;
+    }
+    pin("mprj_io_one[28]") {
+      direction : output;
+      capacitance : 0.0095;
+    }
+    pin("mprj_io_one[27]") {
+      direction : output;
+      capacitance : 0.0050;
+    }
+    pin("mprj_io_one[26]") {
+      direction : output;
+      capacitance : 0.0022;
+    }
+    pin("mprj_io_one[25]") {
+      direction : output;
+      capacitance : 0.0044;
+    }
+    pin("mprj_io_one[24]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    pin("mprj_io_one[23]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_one[22]") {
+      direction : output;
+      capacitance : 0.0023;
+    }
+    pin("mprj_io_one[21]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_one[20]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_one[19]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_one[18]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_one[17]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_one[16]") {
+      direction : output;
+      capacitance : 0.0025;
+    }
+    pin("mprj_io_one[15]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_one[14]") {
+      direction : output;
+      capacitance : 0.0013;
+    }
+    pin("mprj_io_one[13]") {
+      direction : output;
+      capacitance : 0.0035;
+    }
+    pin("mprj_io_one[12]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_one[11]") {
+      direction : output;
+      capacitance : 0.0048;
+    }
+    pin("mprj_io_one[10]") {
+      direction : output;
+      capacitance : 0.0101;
+    }
+    pin("mprj_io_one[9]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_one[8]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_one[7]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_one[6]") {
+      direction : output;
+      capacitance : 0.0019;
+    }
+    pin("mprj_io_one[5]") {
+      direction : output;
+      capacitance : 0.0044;
+    }
+    pin("mprj_io_one[4]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_one[3]") {
+      direction : output;
+      capacitance : 0.0016;
+    }
+    pin("mprj_io_one[2]") {
+      direction : output;
+      capacitance : 0.0018;
+    }
+    pin("mprj_io_one[1]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_one[0]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    }
+    bus("mprj_io_out") {
+      bus_type : mprj_io_out;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_out[37]") {
+      direction : output;
+      capacitance : 0.0156;
+    }
+    pin("mprj_io_out[36]") {
+      direction : output;
+      capacitance : 0.0112;
+    }
+    pin("mprj_io_out[35]") {
+      direction : output;
+      capacitance : 0.0100;
+    }
+    pin("mprj_io_out[34]") {
+      direction : output;
+      capacitance : 0.0161;
+    }
+    pin("mprj_io_out[33]") {
+      direction : output;
+      capacitance : 0.0139;
+    }
+    pin("mprj_io_out[32]") {
+      direction : output;
+      capacitance : 0.0161;
+    }
+    pin("mprj_io_out[31]") {
+      direction : output;
+      capacitance : 0.0155;
+      timing() {
+        related_pin : "clock_core";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("4.80328,4.80515,4.81158,4.83108,4.88923,5.09125,5.85783");
+	}
+	rise_transition(template_1) {
+          values("0.02439,0.02587,0.03120,0.05053,0.12314,0.40894,1.50596");
+	}
+	cell_fall(template_1) {
+          values("5.89045,5.89214,5.89824,5.91484,5.95804,6.08522,6.54666");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02444,0.02825,0.04098,0.08433,0.25147,0.91360");
+	}
+      }
+    }
+    pin("mprj_io_out[30]") {
+      direction : output;
+      capacitance : 0.0043;
+    }
+    pin("mprj_io_out[29]") {
+      direction : output;
+      capacitance : 0.0034;
+    }
+    pin("mprj_io_out[28]") {
+      direction : output;
+      capacitance : 0.0058;
+    }
+    pin("mprj_io_out[27]") {
+      direction : output;
+      capacitance : 0.0052;
+    }
+    pin("mprj_io_out[26]") {
+      direction : output;
+      capacitance : 0.0093;
+    }
+    pin("mprj_io_out[25]") {
+      direction : output;
+      capacitance : 0.0101;
+    }
+    pin("mprj_io_out[24]") {
+      direction : output;
+      capacitance : 0.0165;
+    }
+    pin("mprj_io_out[23]") {
+      direction : output;
+      capacitance : 0.0099;
+    }
+    pin("mprj_io_out[22]") {
+      direction : output;
+      capacitance : 0.0104;
+    }
+    pin("mprj_io_out[21]") {
+      direction : output;
+      capacitance : 0.0070;
+    }
+    pin("mprj_io_out[20]") {
+      direction : output;
+      capacitance : 0.0100;
+    }
+    pin("mprj_io_out[19]") {
+      direction : output;
+      capacitance : 0.0088;
+    }
+    pin("mprj_io_out[18]") {
+      direction : output;
+      capacitance : 0.0130;
+    }
+    pin("mprj_io_out[17]") {
+      direction : output;
+      capacitance : 0.0074;
+    }
+    pin("mprj_io_out[16]") {
+      direction : output;
+      capacitance : 0.0153;
+    }
+    pin("mprj_io_out[15]") {
+      direction : output;
+      capacitance : 0.0145;
+      timing() {
+        related_pin : "clock_core";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("4.61294,4.61481,4.62124,4.64075,4.69891,4.90091,5.66687");
+	}
+	rise_transition(template_1) {
+          values("0.02438,0.02586,0.03120,0.05052,0.12314,0.40902,1.50597");
+	}
+	cell_fall(template_1) {
+          values("5.82718,5.82887,5.83499,5.85159,5.89479,6.02197,6.48339");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02445,0.02825,0.04097,0.08432,0.25147,0.91369");
+	}
+      }
+    }
+    pin("mprj_io_out[14]") {
+      direction : output;
+      capacitance : 0.0107;
+    }
+    pin("mprj_io_out[13]") {
+      direction : output;
+      capacitance : 0.0119;
+    }
+    pin("mprj_io_out[12]") {
+      direction : output;
+      capacitance : 0.0075;
+    }
+    pin("mprj_io_out[11]") {
+      direction : output;
+      capacitance : 0.0077;
+    }
+    pin("mprj_io_out[10]") {
+      direction : output;
+      capacitance : 0.0048;
+      timing() {
+        related_pin : "mprj_io_in[2]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("2.53609,2.53796,2.54438,2.56381,2.62193,2.82405,3.59354");
+	}
+	rise_transition(template_1) {
+          values("0.02443,0.02592,0.03122,0.05055,0.12315,0.40856,1.50595");
+	}
+	cell_fall(template_1) {
+          values("3.23679,3.23847,3.24448,3.26107,3.30426,3.43146,3.89299");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02442,0.02828,0.04103,0.08436,0.25147,0.91321");
+	}
+      }
+    }
+    pin("mprj_io_out[9]") {
+      direction : output;
+      capacitance : 0.0110;
+      timing() {
+        related_pin : "mprj_io_in[4]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("2.90103,2.90290,2.90933,2.92881,2.98696,3.18900,3.95608");
+	}
+	rise_transition(template_1) {
+          values("0.02440,0.02588,0.03120,0.05053,0.12314,0.40887,1.50596");
+	}
+	cell_fall(template_1) {
+          values("3.65731,3.65900,3.66508,3.68168,3.72488,3.85206,4.31352");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02444,0.02826,0.04099,0.08433,0.25147,0.91353");
+	}
+      }
+    }
+    pin("mprj_io_out[8]") {
+      direction : output;
+      capacitance : 0.0104;
+      timing() {
+        related_pin : "mprj_io_in[3]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("2.60326,2.60513,2.61155,2.63097,2.68908,2.89121,3.66117");
+	}
+	rise_transition(template_1) {
+          values("0.02444,0.02592,0.03122,0.05055,0.12315,0.40850,1.50595");
+	}
+	cell_fall(template_1) {
+          values("3.26424,3.26592,3.27191,3.28850,3.33169,3.45889,3.92043");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02442,0.02828,0.04103,0.08437,0.25147,0.91314");
+	}
+      }
+    }
+    pin("mprj_io_out[7]") {
+      direction : output;
+      capacitance : 0.0066;
+    }
+    pin("mprj_io_out[6]") {
+      direction : output;
+      capacitance : 0.0110;
+      timing() {
+        related_pin : "mprj_io_in[0]";
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("4.69381,4.69568,4.70211,4.72163,4.77980,4.98178,5.74721");
+	}
+	rise_transition(template_1) {
+          values("0.02437,0.02585,0.03119,0.05052,0.12314,0.40909,1.50597");
+	}
+	cell_fall(template_1) {
+          values("5.11379,5.11548,5.12162,5.13822,5.18142,5.30859,5.77000");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02445,0.02824,0.04096,0.08431,0.25147,0.91376");
+	}
+      }
+    }
+    pin("mprj_io_out[5]") {
+      direction : output;
+      capacitance : 0.0155;
+    }
+    pin("mprj_io_out[4]") {
+      direction : output;
+      capacitance : 0.0080;
+    }
+    pin("mprj_io_out[3]") {
+      direction : output;
+      capacitance : 0.0112;
+    }
+    pin("mprj_io_out[2]") {
+      direction : output;
+      capacitance : 0.0201;
+    }
+    pin("mprj_io_out[1]") {
+      direction : output;
+      capacitance : 0.0164;
+      timing() {
+        related_pin : "flash_io1_di";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("2.11333,2.11521,2.12167,2.14114,2.19931,2.40150,3.17167");
+	}
+	rise_transition(template_1) {
+          values("0.02484,0.02632,0.03158,0.05084,0.12326,0.40845,1.50612");
+	}
+	cell_fall(template_1) {
+          values("2.79891,2.80058,2.80649,2.82308,2.86626,2.99348,3.45509");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02441,0.02830,0.04107,0.08439,0.25148,0.91280");
+	}
+      }
+      timing() {
+        related_pin : "mprj_io_in[11]";
+        timing_sense : positive_unate;
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("3.08408,3.08596,3.09242,3.11189,3.17006,3.37224,4.14241");
+	}
+	rise_transition(template_1) {
+          values("0.02484,0.02632,0.03158,0.05084,0.12326,0.40845,1.50612");
+	}
+	cell_fall(template_1) {
+          values("3.86058,3.86225,3.86816,3.88475,3.92792,4.05514,4.51676");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02441,0.02830,0.04107,0.08439,0.25148,0.91280");
+	}
+      }
+      timing() {
+        related_pin : "mprj_io_in[3]";
+        timing_type : combinational;
+	cell_rise(template_1) {
+          values("3.20683,3.20871,3.21517,3.23464,3.29281,3.49500,4.26517");
+	}
+	rise_transition(template_1) {
+          values("0.02484,0.02632,0.03158,0.05084,0.12326,0.40845,1.50612");
+	}
+	cell_fall(template_1) {
+          values("4.04413,4.04581,4.05172,4.06830,4.11148,4.23870,4.70032");
+	}
+	fall_transition(template_1) {
+          values("0.02337,0.02441,0.02830,0.04107,0.08439,0.25148,0.91280");
+	}
+      }
+    }
+    pin("mprj_io_out[0]") {
+      direction : output;
+      capacitance : 0.0170;
+    }
+    }
+    bus("mprj_io_slow_sel") {
+      bus_type : mprj_io_slow_sel;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_slow_sel[37]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_slow_sel[36]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_slow_sel[35]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_slow_sel[34]") {
+      direction : output;
+      capacitance : 0.0085;
+    }
+    pin("mprj_io_slow_sel[33]") {
+      direction : output;
+      capacitance : 0.0084;
+    }
+    pin("mprj_io_slow_sel[32]") {
+      direction : output;
+      capacitance : 0.0081;
+    }
+    pin("mprj_io_slow_sel[31]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_slow_sel[30]") {
+      direction : output;
+      capacitance : 0.0028;
+    }
+    pin("mprj_io_slow_sel[29]") {
+      direction : output;
+      capacitance : 0.0048;
+    }
+    pin("mprj_io_slow_sel[28]") {
+      direction : output;
+      capacitance : 0.0074;
+    }
+    pin("mprj_io_slow_sel[27]") {
+      direction : output;
+      capacitance : 0.0053;
+    }
+    pin("mprj_io_slow_sel[26]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    pin("mprj_io_slow_sel[25]") {
+      direction : output;
+      capacitance : 0.0051;
+    }
+    pin("mprj_io_slow_sel[24]") {
+      direction : output;
+      capacitance : 0.0062;
+    }
+    pin("mprj_io_slow_sel[23]") {
+      direction : output;
+      capacitance : 0.0111;
+    }
+    pin("mprj_io_slow_sel[22]") {
+      direction : output;
+      capacitance : 0.0099;
+    }
+    pin("mprj_io_slow_sel[21]") {
+      direction : output;
+      capacitance : 0.0126;
+    }
+    pin("mprj_io_slow_sel[20]") {
+      direction : output;
+      capacitance : 0.0180;
+    }
+    pin("mprj_io_slow_sel[19]") {
+      direction : output;
+      capacitance : 0.0140;
+    }
+    pin("mprj_io_slow_sel[18]") {
+      direction : output;
+      capacitance : 0.0116;
+    }
+    pin("mprj_io_slow_sel[17]") {
+      direction : output;
+      capacitance : 0.0055;
+    }
+    pin("mprj_io_slow_sel[16]") {
+      direction : output;
+      capacitance : 0.0059;
+    }
+    pin("mprj_io_slow_sel[15]") {
+      direction : output;
+      capacitance : 0.0049;
+    }
+    pin("mprj_io_slow_sel[14]") {
+      direction : output;
+      capacitance : 0.0027;
+    }
+    pin("mprj_io_slow_sel[13]") {
+      direction : output;
+      capacitance : 0.0063;
+    }
+    pin("mprj_io_slow_sel[12]") {
+      direction : output;
+      capacitance : 0.0026;
+    }
+    pin("mprj_io_slow_sel[11]") {
+      direction : output;
+      capacitance : 0.0017;
+    }
+    pin("mprj_io_slow_sel[10]") {
+      direction : output;
+      capacitance : 0.0088;
+    }
+    pin("mprj_io_slow_sel[9]") {
+      direction : output;
+      capacitance : 0.0094;
+    }
+    pin("mprj_io_slow_sel[8]") {
+      direction : output;
+      capacitance : 0.0015;
+    }
+    pin("mprj_io_slow_sel[7]") {
+      direction : output;
+      capacitance : 0.0040;
+    }
+    pin("mprj_io_slow_sel[6]") {
+      direction : output;
+      capacitance : 0.0021;
+    }
+    pin("mprj_io_slow_sel[5]") {
+      direction : output;
+      capacitance : 0.0080;
+    }
+    pin("mprj_io_slow_sel[4]") {
+      direction : output;
+      capacitance : 0.0034;
+    }
+    pin("mprj_io_slow_sel[3]") {
+      direction : output;
+      capacitance : 0.0090;
+    }
+    pin("mprj_io_slow_sel[2]") {
+      direction : output;
+      capacitance : 0.0036;
+    }
+    pin("mprj_io_slow_sel[1]") {
+      direction : output;
+      capacitance : 0.0027;
+    }
+    pin("mprj_io_slow_sel[0]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    }
+    bus("mprj_io_vtrip_sel") {
+      bus_type : mprj_io_vtrip_sel;
+      direction : output;
+      capacitance : 0.0000;
+    pin("mprj_io_vtrip_sel[37]") {
+      direction : output;
+      capacitance : 0.0047;
+    }
+    pin("mprj_io_vtrip_sel[36]") {
+      direction : output;
+      capacitance : 0.0022;
+    }
+    pin("mprj_io_vtrip_sel[35]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_vtrip_sel[34]") {
+      direction : output;
+      capacitance : 0.0144;
+    }
+    pin("mprj_io_vtrip_sel[33]") {
+      direction : output;
+      capacitance : 0.0073;
+    }
+    pin("mprj_io_vtrip_sel[32]") {
+      direction : output;
+      capacitance : 0.0117;
+    }
+    pin("mprj_io_vtrip_sel[31]") {
+      direction : output;
+      capacitance : 0.0067;
+    }
+    pin("mprj_io_vtrip_sel[30]") {
+      direction : output;
+      capacitance : 0.0125;
+    }
+    pin("mprj_io_vtrip_sel[29]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_vtrip_sel[28]") {
+      direction : output;
+      capacitance : 0.0029;
+    }
+    pin("mprj_io_vtrip_sel[27]") {
+      direction : output;
+      capacitance : 0.0043;
+    }
+    pin("mprj_io_vtrip_sel[26]") {
+      direction : output;
+      capacitance : 0.0088;
+    }
+    pin("mprj_io_vtrip_sel[25]") {
+      direction : output;
+      capacitance : 0.0121;
+    }
+    pin("mprj_io_vtrip_sel[24]") {
+      direction : output;
+      capacitance : 0.0042;
+    }
+    pin("mprj_io_vtrip_sel[23]") {
+      direction : output;
+      capacitance : 0.0113;
+    }
+    pin("mprj_io_vtrip_sel[22]") {
+      direction : output;
+      capacitance : 0.0136;
+    }
+    pin("mprj_io_vtrip_sel[21]") {
+      direction : output;
+      capacitance : 0.0136;
+    }
+    pin("mprj_io_vtrip_sel[20]") {
+      direction : output;
+      capacitance : 0.0132;
+    }
+    pin("mprj_io_vtrip_sel[19]") {
+      direction : output;
+      capacitance : 0.0149;
+    }
+    pin("mprj_io_vtrip_sel[18]") {
+      direction : output;
+      capacitance : 0.0156;
+    }
+    pin("mprj_io_vtrip_sel[17]") {
+      direction : output;
+      capacitance : 0.0076;
+    }
+    pin("mprj_io_vtrip_sel[16]") {
+      direction : output;
+      capacitance : 0.0085;
+    }
+    pin("mprj_io_vtrip_sel[15]") {
+      direction : output;
+      capacitance : 0.0046;
+    }
+    pin("mprj_io_vtrip_sel[14]") {
+      direction : output;
+      capacitance : 0.0105;
+    }
+    pin("mprj_io_vtrip_sel[13]") {
+      direction : output;
+      capacitance : 0.0135;
+    }
+    pin("mprj_io_vtrip_sel[12]") {
+      direction : output;
+      capacitance : 0.0116;
+    }
+    pin("mprj_io_vtrip_sel[11]") {
+      direction : output;
+      capacitance : 0.0080;
+    }
+    pin("mprj_io_vtrip_sel[10]") {
+      direction : output;
+      capacitance : 0.0030;
+    }
+    pin("mprj_io_vtrip_sel[9]") {
+      direction : output;
+      capacitance : 0.0128;
+    }
+    pin("mprj_io_vtrip_sel[8]") {
+      direction : output;
+      capacitance : 0.0097;
+    }
+    pin("mprj_io_vtrip_sel[7]") {
+      direction : output;
+      capacitance : 0.0065;
+    }
+    pin("mprj_io_vtrip_sel[6]") {
+      direction : output;
+      capacitance : 0.0054;
+    }
+    pin("mprj_io_vtrip_sel[5]") {
+      direction : output;
+      capacitance : 0.0071;
+    }
+    pin("mprj_io_vtrip_sel[4]") {
+      direction : output;
+      capacitance : 0.0011;
+    }
+    pin("mprj_io_vtrip_sel[3]") {
+      direction : output;
+      capacitance : 0.0062;
+    }
+    pin("mprj_io_vtrip_sel[2]") {
+      direction : output;
+      capacitance : 0.0014;
+    }
+    pin("mprj_io_vtrip_sel[1]") {
+      direction : output;
+      capacitance : 0.0020;
+    }
+    pin("mprj_io_vtrip_sel[0]") {
+      direction : output;
+      capacitance : 0.0038;
+    }
+    }
+  }
+
+}
