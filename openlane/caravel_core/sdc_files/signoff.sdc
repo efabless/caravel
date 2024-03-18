@@ -56,8 +56,8 @@ set_multicycle_path -setup 2 -through [get_pins {mprj/wbs_stb_i}]
 set_multicycle_path -hold 1  -through [get_pins {mprj/wbs_stb_i}]
 
 # add loads for output ports (pads)
-set min_cap 0.5
-set max_cap 1.0
+set min_cap 0.1
+set max_cap 0.5
 puts "\[INFO\]: Cap load range: $min_cap : $max_cap"
 # set_load 10 [all_outputs]
 set_load -min $min_cap [all_outputs] 

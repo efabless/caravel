@@ -163,7 +163,7 @@ add_pdn_stripe \
         -width 4.8 \
         -pitch 120 \
         -offset 844.3 \
-        -spacing 3.2 \
+        -spacing 2 \
         -number_of_straps 1 \
         -nets "vccd1 vssd1 vccd2 vssd2 vdda1 vssa1 vdda2 vssa2" \
         -starts_with POWER
@@ -262,19 +262,19 @@ add_pdn_stripe \
         -pitch 386 \
         -offset 2641 \
         -spacing 2 \
-        -number_of_straps 2 \
+        -number_of_straps 1 \
         -nets "vddio vssio" \
         -starts_with POWER
-    add_pdn_stripe \
-        -grid stdcell_grid \
-        -layer met4 \
-        -width 4.8 \
-        -pitch 386 \
-        -offset 665 \
-        -spacing 2 \
-        -number_of_straps 2 \
-        -nets "vddio vssio" \
-        -starts_with POWER
+    # add_pdn_stripe \
+    #     -grid stdcell_grid \
+    #     -layer met4 \
+    #     -width 4.8 \
+    #     -pitch 386 \
+    #     -offset 665 \
+    #     -spacing 2 \
+    #     -number_of_straps 1 \
+    #     -nets "vddio vssio" \
+    #     -starts_with POWER
 
 ## mprj connections
 add_pdn_stripe \
