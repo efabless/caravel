@@ -1,0 +1,1464 @@
+
+===========================================================================
+report_checks -path_delay max (Setup)
+============================================================================
+======================= nom_ff_n40C_1v95 Corner ===================================
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_6_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.044198    0.054665    0.754696 v U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.005806                                       n153 (net)
+                      0.044199    0.000149    0.754845 v U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.080959    0.092523    0.847367 ^ U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003733                                       n137 (net)
+                      0.080959    0.000120    0.847488 ^ U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.039008    0.042007    0.889494 v U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.002921                                       n141 (net)
+                      0.039008    0.000089    0.889584 v U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.082995    0.092335    0.981919 ^ U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003910                                       n147 (net)
+                      0.082995    0.000128    0.982047 ^ U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.046745    0.051188    1.033235 v U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005051                                       n148 (net)
+                      0.046746    0.000162    1.033397 v U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.078488    0.086988    1.120384 ^ U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.016863                                       n165 (net)
+                      0.078496    0.000648    1.121033 ^ U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.069241    0.078442    1.199475 v U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.044853                                       n202 (net)
+                      0.069260    0.001002    1.200477 v U267/B (sky130_fd_sc_hd__nor2_1)
+                      0.161079    0.155192    1.355669 ^ U267/Y (sky130_fd_sc_hd__nor2_1)
+     2    0.011924                                       n183 (net)
+                      0.161080    0.000270    1.355939 ^ U269/A2 (sky130_fd_sc_hd__o21ai_2)
+                      0.054236    0.060160    1.416098 v U269/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.012664                                       n192 (net)
+                      0.054240    0.000419    1.416517 v U273/A2 (sky130_fd_sc_hd__a21oi_2)
+                      0.130888    0.153980    1.570497 ^ U273/Y (sky130_fd_sc_hd__a21oi_2)
+     3    0.012794                                       n211 (net)
+                      0.130889    0.000313    1.570809 ^ U307/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.046220    0.058010    1.628820 v U307/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.005846                                       n213 (net)
+                      0.046222    0.000200    1.629019 v U308/B (sky130_fd_sc_hd__xnor2_1)
+                      0.107101    0.115457    1.744476 ^ U308/Y (sky130_fd_sc_hd__xnor2_1)
+     1    0.004650                                       n215 (net)
+                      0.107101    0.000153    1.744629 ^ U309/A (sky130_fd_sc_hd__nand2_1)
+                      0.039494    0.038893    1.783522 v U309/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003724                                       n216 (net)
+                      0.039495    0.000120    1.783643 v U310/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.072219    0.051917    1.835560 ^ U310/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002904                                       n72 (net)
+                      0.072219    0.000065    1.835625 ^ dll_control_tval_reg_6_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              1.835625   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244643    0.028275    4.698275 ^ dll_control_tval_reg_6_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.598275   clock uncertainty
+                                  0.000000    4.598275   clock reconvergence pessimism
+                                 -0.033242    4.565033   library setup time
+                                              4.565033   data required time
+---------------------------------------------------------------------------------------------
+                                              4.565033   data required time
+                                             -1.835625   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.729408   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_5_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.044198    0.054665    0.754696 v U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.005806                                       n153 (net)
+                      0.044199    0.000149    0.754845 v U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.080959    0.092523    0.847367 ^ U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003733                                       n137 (net)
+                      0.080959    0.000120    0.847488 ^ U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.039008    0.042007    0.889494 v U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.002921                                       n141 (net)
+                      0.039008    0.000089    0.889584 v U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.082995    0.092335    0.981919 ^ U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003910                                       n147 (net)
+                      0.082995    0.000128    0.982047 ^ U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.046745    0.051188    1.033235 v U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005051                                       n148 (net)
+                      0.046746    0.000162    1.033397 v U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.078488    0.086988    1.120384 ^ U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.016863                                       n165 (net)
+                      0.078496    0.000648    1.121033 ^ U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.069241    0.078442    1.199475 v U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.044853                                       n202 (net)
+                      0.069260    0.001002    1.200477 v U267/B (sky130_fd_sc_hd__nor2_1)
+                      0.161079    0.155192    1.355669 ^ U267/Y (sky130_fd_sc_hd__nor2_1)
+     2    0.011924                                       n183 (net)
+                      0.161080    0.000270    1.355939 ^ U269/A2 (sky130_fd_sc_hd__o21ai_2)
+                      0.054236    0.060160    1.416098 v U269/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.012664                                       n192 (net)
+                      0.054240    0.000419    1.416517 v U273/A2 (sky130_fd_sc_hd__a21oi_2)
+                      0.130888    0.153980    1.570497 ^ U273/Y (sky130_fd_sc_hd__a21oi_2)
+     3    0.012794                                       n211 (net)
+                      0.130889    0.000357    1.570853 ^ U275/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.054007    0.055087    1.625941 v U275/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.005292                                       n176 (net)
+                      0.054008    0.000170    1.626111 v U276/B (sky130_fd_sc_hd__xnor2_1)
+                      0.111474    0.121886    1.747997 ^ U276/Y (sky130_fd_sc_hd__xnor2_1)
+     1    0.004970                                       n178 (net)
+                      0.111474    0.000151    1.748148 ^ U277/A (sky130_fd_sc_hd__nand2_1)
+                      0.036293    0.034336    1.782484 v U277/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002965                                       n179 (net)
+                      0.036293    0.000069    1.782553 v U278/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.069695    0.049029    1.831582 ^ U278/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002682                                       n66 (net)
+                      0.069695    0.000081    1.831663 ^ dll_control_tval_reg_5_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              1.831663   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244626    0.028236    4.698236 ^ dll_control_tval_reg_5_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.598236   clock uncertainty
+                                  0.000000    4.598236   clock reconvergence pessimism
+                                 -0.033018    4.565218   library setup time
+                                              4.565218   data required time
+---------------------------------------------------------------------------------------------
+                                              4.565218   data required time
+                                             -1.831663   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.733555   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_4_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.044198    0.054665    0.754696 v U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.005806                                       n153 (net)
+                      0.044199    0.000149    0.754845 v U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.080959    0.092523    0.847367 ^ U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003733                                       n137 (net)
+                      0.080959    0.000120    0.847488 ^ U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.039008    0.042007    0.889494 v U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.002921                                       n141 (net)
+                      0.039008    0.000089    0.889584 v U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.082995    0.092335    0.981919 ^ U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003910                                       n147 (net)
+                      0.082995    0.000128    0.982047 ^ U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.046745    0.051188    1.033235 v U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005051                                       n148 (net)
+                      0.046746    0.000162    1.033397 v U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.078488    0.086988    1.120384 ^ U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.016863                                       n165 (net)
+                      0.078496    0.000648    1.121033 ^ U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.069241    0.078442    1.199475 v U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.044853                                       n202 (net)
+                      0.069260    0.001002    1.200477 v U267/B (sky130_fd_sc_hd__nor2_1)
+                      0.161079    0.155192    1.355669 ^ U267/Y (sky130_fd_sc_hd__nor2_1)
+     2    0.011924                                       n183 (net)
+                      0.161080    0.000270    1.355939 ^ U269/A2 (sky130_fd_sc_hd__o21ai_2)
+                      0.054236    0.060160    1.416098 v U269/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.012664                                       n192 (net)
+                      0.054240    0.000419    1.416517 v U273/A2 (sky130_fd_sc_hd__a21oi_2)
+                      0.130888    0.153980    1.570497 ^ U273/Y (sky130_fd_sc_hd__a21oi_2)
+     3    0.012794                                       n211 (net)
+                      0.130890    0.000443    1.570940 ^ U297/B (sky130_fd_sc_hd__xor2_1)
+                      0.128620    0.136539    1.707478 ^ U297/X (sky130_fd_sc_hd__xor2_1)
+     1    0.006623                                       n199 (net)
+                      0.128621    0.000222    1.707701 ^ U298/A (sky130_fd_sc_hd__nand2_1)
+                      0.037096    0.033543    1.741243 v U298/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002774                                       n200 (net)
+                      0.037096    0.000061    1.741304 v U299/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.069781    0.049419    1.790723 ^ U299/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002690                                       n67 (net)
+                      0.069781    0.000082    1.790805 ^ dll_control_tval_reg_4_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              1.790805   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244555    0.028074    4.698073 ^ dll_control_tval_reg_4_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.598073   clock uncertainty
+                                  0.000000    4.598073   clock reconvergence pessimism
+                                 -0.033028    4.565045   library setup time
+                                              4.565045   data required time
+---------------------------------------------------------------------------------------------
+                                              4.565045   data required time
+                                             -1.790805   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.774240   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_3_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.131721    0.098087    0.798118 ^ U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.006426                                       n153 (net)
+                      0.131721    0.000165    0.798283 ^ U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.037691    0.045994    0.844278 v U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003574                                       n137 (net)
+                      0.037691    0.000114    0.844392 v U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.082079    0.090704    0.935096 ^ U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.003241                                       n141 (net)
+                      0.082079    0.000100    0.935196 ^ U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.043583    0.043394    0.978589 v U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003751                                       n147 (net)
+                      0.043583    0.000122    0.978711 v U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.111684    0.116625    1.095337 ^ U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005473                                       n148 (net)
+                      0.111684    0.000176    1.095513 ^ U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.055279    0.069235    1.164747 v U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.015492                                       n165 (net)
+                      0.055288    0.000588    1.165336 v U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.073821    0.082563    1.247899 ^ U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.047549                                       n202 (net)
+                      0.073842    0.001066    1.248965 ^ U267/B (sky130_fd_sc_hd__nor2_1)
+                      0.048011    0.052874    1.301839 v U267/Y (sky130_fd_sc_hd__nor2_1)
+     2    0.010964                                       n183 (net)
+                      0.048012    0.000244    1.302082 v U269/A2 (sky130_fd_sc_hd__o21ai_2)
+                      0.135482    0.136309    1.438391 ^ U269/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.013480                                       n192 (net)
+                      0.135483    0.000310    1.438702 ^ U290/A (sky130_fd_sc_hd__inv_2)
+                      0.036380    0.029105    1.467806 v U290/Y (sky130_fd_sc_hd__inv_2)
+     2    0.008081                                       n222 (net)
+                      0.036380    0.000149    1.467955 v U313/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.114254    0.116758    1.584714 ^ U313/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.006533                                       n224 (net)
+                      0.114255    0.000236    1.584949 ^ U314/B (sky130_fd_sc_hd__xnor2_1)
+                      0.103863    0.089603    1.674552 ^ U314/Y (sky130_fd_sc_hd__xnor2_1)
+     1    0.004393                                       n226 (net)
+                      0.103863    0.000118    1.674670 ^ U315/A (sky130_fd_sc_hd__nand2_1)
+                      0.036196    0.033714    1.708384 v U315/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002941                                       n227 (net)
+                      0.036196    0.000068    1.708451 v U316/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.067229    0.047480    1.755931 ^ U316/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002466                                       n68 (net)
+                      0.067229    0.000073    1.756004 ^ dll_control_tval_reg_3_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              1.756004   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244612    0.028204    4.698204 ^ dll_control_tval_reg_3_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.598204   clock uncertainty
+                                  0.000000    4.598204   clock reconvergence pessimism
+                                 -0.032799    4.565404   library setup time
+                                              4.565404   data required time
+---------------------------------------------------------------------------------------------
+                                              4.565404   data required time
+                                             -1.756004   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.809400   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_1_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.131721    0.098087    0.798118 ^ U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.006426                                       n153 (net)
+                      0.131721    0.000165    0.798283 ^ U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.037691    0.045994    0.844278 v U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003574                                       n137 (net)
+                      0.037691    0.000114    0.844392 v U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.082079    0.090704    0.935096 ^ U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.003241                                       n141 (net)
+                      0.082079    0.000100    0.935196 ^ U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.043583    0.043394    0.978589 v U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003751                                       n147 (net)
+                      0.043583    0.000122    0.978711 v U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.111684    0.116625    1.095337 ^ U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005473                                       n148 (net)
+                      0.111684    0.000176    1.095513 ^ U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.055279    0.069235    1.164747 v U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.015492                                       n165 (net)
+                      0.055288    0.000588    1.165336 v U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.073821    0.082563    1.247899 ^ U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.047549                                       n202 (net)
+                      0.073826    0.000526    1.248425 ^ U244/A (sky130_fd_sc_hd__nand2_1)
+                      0.031895    0.036772    1.285197 v U244/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003882                                       n170 (net)
+                      0.031896    0.000135    1.285332 v U256/A (sky130_fd_sc_hd__nand2_1)
+                      0.047627    0.051453    1.336785 ^ U256/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.005227                                       n172 (net)
+                      0.047628    0.000208    1.336993 ^ U258/A (sky130_fd_sc_hd__nand3_1)
+                      0.094004    0.071359    1.408352 v U258/Y (sky130_fd_sc_hd__nand3_1)
+     3    0.010694                                       n182 (net)
+                      0.094005    0.000256    1.408608 v U107/A (sky130_fd_sc_hd__inv_2)
+                      0.141982    0.148826    1.557434 ^ U107/Y (sky130_fd_sc_hd__inv_2)
+    12    0.040639                                       n229 (net)
+                      0.142008    0.001669    1.559103 ^ U285/B (sky130_fd_sc_hd__nand2_1)
+                      0.041516    0.047555    1.606658 v U285/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.004318                                       n189 (net)
+                      0.041517    0.000149    1.606807 v U286/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.079163    0.056954    1.663760 ^ U286/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003508                                       n70 (net)
+                      0.079163    0.000110    1.663870 ^ dll_control_tval_reg_1_/D (sky130_fd_sc_hd__dfrtp_2)
+                                              1.663870   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244406    0.027728    4.697728 ^ dll_control_tval_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                                 -0.100000    4.597728   clock uncertainty
+                                  0.000000    4.597728   clock reconvergence pessimism
+                                 -0.032738    4.564990   library setup time
+                                              4.564990   data required time
+---------------------------------------------------------------------------------------------
+                                              4.564990   data required time
+                                             -1.663870   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.901120   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_2_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.044198    0.054665    0.754696 v U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.005806                                       n153 (net)
+                      0.044199    0.000149    0.754845 v U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.080959    0.092523    0.847367 ^ U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003733                                       n137 (net)
+                      0.080959    0.000120    0.847488 ^ U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.039008    0.042007    0.889494 v U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.002921                                       n141 (net)
+                      0.039008    0.000089    0.889584 v U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.082995    0.092335    0.981919 ^ U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003910                                       n147 (net)
+                      0.082995    0.000128    0.982047 ^ U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.046745    0.051188    1.033235 v U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005051                                       n148 (net)
+                      0.046746    0.000162    1.033397 v U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.078488    0.086988    1.120384 ^ U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.016863                                       n165 (net)
+                      0.078496    0.000648    1.121033 ^ U138/A (sky130_fd_sc_hd__clkinv_4)
+                      0.069241    0.078442    1.199475 v U138/Y (sky130_fd_sc_hd__clkinv_4)
+    13    0.044853                                       n202 (net)
+                      0.069260    0.001002    1.200477 v U267/B (sky130_fd_sc_hd__nor2_1)
+                      0.161079    0.155192    1.355669 ^ U267/Y (sky130_fd_sc_hd__nor2_1)
+     2    0.011924                                       n183 (net)
+                      0.161080    0.000270    1.355939 ^ U269/A2 (sky130_fd_sc_hd__o21ai_2)
+                      0.054236    0.060160    1.416098 v U269/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.012664                                       n192 (net)
+                      0.054238    0.000289    1.416388 v U290/A (sky130_fd_sc_hd__inv_2)
+                      0.037244    0.053850    1.470237 ^ U290/Y (sky130_fd_sc_hd__inv_2)
+     2    0.008742                                       n222 (net)
+                      0.037247    0.000244    1.470481 ^ U291/B (sky130_fd_sc_hd__xor2_1)
+                      0.082478    0.096381    1.566862 ^ U291/X (sky130_fd_sc_hd__xor2_1)
+     1    0.002982                                       n194 (net)
+                      0.082478    0.000067    1.566929 ^ U292/A (sky130_fd_sc_hd__nand2_1)
+                      0.036394    0.032672    1.599601 v U292/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002990                                       n195 (net)
+                      0.036394    0.000070    1.599672 v U293/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.067805    0.047917    1.647589 ^ U293/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002516                                       n69 (net)
+                      0.067805    0.000073    1.647662 ^ dll_control_tval_reg_2_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              1.647662   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244664    0.028322    4.698322 ^ dll_control_tval_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.598322   clock uncertainty
+                                  0.000000    4.598322   clock reconvergence pessimism
+                                 -0.032848    4.565474   library setup time
+                                              4.565474   data required time
+---------------------------------------------------------------------------------------------
+                                              4.565474   data required time
+                                             -1.647662   data arrival time
+---------------------------------------------------------------------------------------------
+                                              2.917811   slack (MET)
+
+
+Startpoint: dll_control_count0_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_tval_reg_0_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.029045    0.029045 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                      0.060316    0.334682    0.363727 v dll_control_count0_reg_1_/Q (sky130_fd_sc_hd__dfrtp_2)
+     5    0.022281                                       dll_control_count0[1] (net)
+                      0.060325    0.000637    0.364364 v U229/CIN (sky130_fd_sc_hd__fa_1)
+                      0.078678    0.335487    0.699850 ^ U229/SUM (sky130_fd_sc_hd__fa_1)
+     2    0.009262                                       n129 (net)
+                      0.078679    0.000180    0.700031 ^ U226/B (sky130_fd_sc_hd__xnor2_1)
+                      0.131721    0.098087    0.798118 ^ U226/Y (sky130_fd_sc_hd__xnor2_1)
+     2    0.006426                                       n153 (net)
+                      0.131721    0.000165    0.798283 ^ U228/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.037691    0.045994    0.844278 v U228/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003574                                       n137 (net)
+                      0.037691    0.000114    0.844392 v U233/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.082079    0.090704    0.935096 ^ U233/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.003241                                       n141 (net)
+                      0.082079    0.000100    0.935196 ^ U235/A2 (sky130_fd_sc_hd__o21ai_1)
+                      0.043583    0.043394    0.978589 v U235/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003751                                       n147 (net)
+                      0.043583    0.000122    0.978711 v U240/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.111684    0.116625    1.095337 ^ U240/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.005473                                       n148 (net)
+                      0.111684    0.000176    1.095513 ^ U241/B (sky130_fd_sc_hd__nand2b_2)
+                      0.055279    0.069235    1.164747 v U241/Y (sky130_fd_sc_hd__nand2b_2)
+     2    0.015492                                       n165 (net)
+                      0.055283    0.000410    1.165157 v U254/A (sky130_fd_sc_hd__and2_1)
+                      0.025258    0.096760    1.261917 v U254/X (sky130_fd_sc_hd__and2_1)
+     1    0.002811                                       n166 (net)
+                      0.025258    0.000061    1.261979 v U255/B1 (sky130_fd_sc_hd__o31ai_1)
+                      0.134897    0.042236    1.304215 ^ U255/Y (sky130_fd_sc_hd__o31ai_1)
+     1    0.003067                                       n169 (net)
+                      0.134897    0.000096    1.304311 ^ U256/B (sky130_fd_sc_hd__nand2_1)
+                      0.043361    0.051424    1.355734 v U256/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.005125                                       n172 (net)
+                      0.043362    0.000203    1.355937 v U258/A (sky130_fd_sc_hd__nand3_1)
+                      0.105793    0.096205    1.452142 ^ U258/Y (sky130_fd_sc_hd__nand3_1)
+     3    0.011509                                       n182 (net)
+                      0.105794    0.000156    1.452298 ^ U279/A (sky130_fd_sc_hd__nand2_1)
+                      0.036475    0.037302    1.489600 v U279/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003491                                       n181 (net)
+                      0.036475    0.000115    1.489716 v U280/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.072403    0.049098    1.538813 ^ U280/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002682                                       n71 (net)
+                      0.072403    0.000083    1.538896 ^ dll_control_tval_reg_0_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              1.538896   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244573    0.028114    4.698114 ^ dll_control_tval_reg_0_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.598114   clock uncertainty
+                                  0.000000    4.598114   clock reconvergence pessimism
+                                 -0.029947    4.568168   library setup time
+                                              4.568168   data required time
+---------------------------------------------------------------------------------------------
+                                              4.568168   data required time
+                                             -1.538896   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.029272   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count0_reg_2_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137274    0.004773    0.748642 ^ U145/B (sky130_fd_sc_hd__nor2_1)
+                      0.065686    0.072527    0.821169 v U145/Y (sky130_fd_sc_hd__nor2_1)
+     5    0.013895                                       n111 (net)
+                      0.065689    0.000381    0.821550 v U146/A (sky130_fd_sc_hd__nand2_1)
+                      0.062672    0.075728    0.897278 ^ U146/Y (sky130_fd_sc_hd__nand2_1)
+     3    0.007275                                       n243 (net)
+                      0.062672    0.000116    0.897394 ^ U192/A2_N (sky130_fd_sc_hd__a2bb2o_1)
+                      0.033089    0.124723    1.022117 v U192/X (sky130_fd_sc_hd__a2bb2o_1)
+     1    0.002216                                       n108 (net)
+                      0.033089    0.000068    1.022185 v U193/B2 (sky130_fd_sc_hd__a2bb2o_1)
+                      0.034074    0.148146    1.170331 v U193/X (sky130_fd_sc_hd__a2bb2o_1)
+     1    0.002518                                       n62 (net)
+                      0.034074    0.000075    1.170407 v dll_control_count0_reg_2_/D (sky130_fd_sc_hd__dfrtp_2)
+                                              1.170407   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243969    0.026690    4.696690 ^ dll_control_count0_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                                 -0.100000    4.596690   clock uncertainty
+                                  0.000000    4.596690   clock reconvergence pessimism
+                                 -0.054001    4.542689   library setup time
+                                              4.542689   data required time
+---------------------------------------------------------------------------------------------
+                                              4.542689   data required time
+                                             -1.170407   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.372283   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count0_reg_1_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137274    0.004773    0.748642 ^ U145/B (sky130_fd_sc_hd__nor2_1)
+                      0.065686    0.072527    0.821169 v U145/Y (sky130_fd_sc_hd__nor2_1)
+     5    0.013895                                       n111 (net)
+                      0.065689    0.000381    0.821550 v U146/A (sky130_fd_sc_hd__nand2_1)
+                      0.062672    0.075728    0.897278 ^ U146/Y (sky130_fd_sc_hd__nand2_1)
+     3    0.007275                                       n243 (net)
+                      0.062672    0.000159    0.897437 ^ U191/A2_N (sky130_fd_sc_hd__a2bb2o_1)
+                      0.035893    0.128691    1.026129 v U191/X (sky130_fd_sc_hd__a2bb2o_1)
+     1    0.002979                                       n63 (net)
+                      0.035893    0.000094    1.026223 v dll_control_count0_reg_1_/D (sky130_fd_sc_hd__dfrtp_2)
+                                              1.026223   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243801    0.026279    4.696279 ^ dll_control_count0_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                                 -0.100000    4.596279   clock uncertainty
+                                  0.000000    4.596279   clock reconvergence pessimism
+                                 -0.054661    4.541618   library setup time
+                                              4.541618   data required time
+---------------------------------------------------------------------------------------------
+                                              4.541618   data required time
+                                             -1.026223   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.515395   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count0_reg_3_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137274    0.004773    0.748642 ^ U145/B (sky130_fd_sc_hd__nor2_1)
+                      0.065686    0.072527    0.821169 v U145/Y (sky130_fd_sc_hd__nor2_1)
+     5    0.013895                                       n111 (net)
+                      0.065688    0.000287    0.821457 v U196/A1 (sky130_fd_sc_hd__a21oi_1)
+                      0.075539    0.096570    0.918027 ^ U196/Y (sky130_fd_sc_hd__a21oi_1)
+     1    0.002750                                       n61 (net)
+                      0.075539    0.000084    0.918111 ^ dll_control_count0_reg_3_/D (sky130_fd_sc_hd__dfrtp_2)
+                                              0.918111   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244067    0.026926    4.696927 ^ dll_control_count0_reg_3_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                                 -0.100000    4.596927   clock uncertainty
+                                  0.000000    4.596927   clock reconvergence pessimism
+                                 -0.032424    4.564502   library setup time
+                                              4.564502   data required time
+---------------------------------------------------------------------------------------------
+                                              4.564502   data required time
+                                             -0.918111   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.646392   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count0_reg_0_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.075613    0.151690    0.483635 v U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.021490                                       n242 (net)
+                      0.075631    0.001004    0.484639 v fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.065994    0.153474    0.638114 v fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.060760                                       net1 (net)
+                      0.066396    0.004477    0.642591 v U145/B (sky130_fd_sc_hd__nor2_1)
+                      0.192558    0.177945    0.820536 ^ U145/Y (sky130_fd_sc_hd__nor2_1)
+     5    0.014550                                       n111 (net)
+                      0.192559    0.000398    0.820934 ^ U146/A (sky130_fd_sc_hd__nand2_1)
+                      0.063910    0.058086    0.879020 v U146/Y (sky130_fd_sc_hd__nand2_1)
+     3    0.006843                                       n243 (net)
+                      0.063910    0.000171    0.879192 v dll_control_count0_reg_0_/D (sky130_fd_sc_hd__dfrtp_4)
+                                              0.879192   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243768    0.026199    4.696198 ^ dll_control_count0_reg_0_/CLK (sky130_fd_sc_hd__dfrtp_4)
+                                 -0.100000    4.596199   clock uncertainty
+                                  0.000000    4.596199   clock reconvergence pessimism
+                                 -0.063877    4.532321   library setup time
+                                              4.532321   data required time
+---------------------------------------------------------------------------------------------
+                                              4.532321   data required time
+                                             -0.879192   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.653130   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_prep_reg_1_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137190    0.003784    0.747653 ^ U182/A (sky130_fd_sc_hd__inv_2)
+                      0.036924    0.029524    0.777177 v U182/Y (sky130_fd_sc_hd__inv_2)
+     3    0.008256                                       n241 (net)
+                      0.036925    0.000190    0.777367 v U342/B1 (sky130_fd_sc_hd__a22o_1)
+                      0.028644    0.090996    0.868364 v U342/X (sky130_fd_sc_hd__a22o_1)
+     1    0.003488                                       n54 (net)
+                      0.028644    0.000090    0.868454 v dll_control_prep_reg_1_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.868454   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244751    0.028519    4.698520 ^ dll_control_prep_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.598519   clock uncertainty
+                                  0.000000    4.598519   clock reconvergence pessimism
+                                 -0.050784    4.547736   library setup time
+                                              4.547736   data required time
+---------------------------------------------------------------------------------------------
+                                              4.547736   data required time
+                                             -0.868454   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.679281   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count1_reg_4_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137657    0.007743    0.751612 ^ U201/A (sky130_fd_sc_hd__nand2_1)
+                      0.042380    0.039169    0.790781 v U201/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003600                                       n115 (net)
+                      0.042380    0.000121    0.790903 v U202/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.074419    0.054362    0.845265 ^ U202/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003084                                       n57 (net)
+                      0.074419    0.000095    0.845360 ^ dll_control_count1_reg_4_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.845360   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.239528    0.010828    4.680828 ^ dll_control_count1_reg_4_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.580828   clock uncertainty
+                                  0.000000    4.580828   clock reconvergence pessimism
+                                 -0.030303    4.550525   library setup time
+                                              4.550525   data required time
+---------------------------------------------------------------------------------------------
+                                              4.550525   data required time
+                                             -0.845360   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.705165   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count1_reg_3_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137611    0.007458    0.751327 ^ U204/A (sky130_fd_sc_hd__nand2_1)
+                      0.044400    0.042135    0.793462 v U204/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.004094                                       n117 (net)
+                      0.044401    0.000153    0.793615 v U205/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.074189    0.055066    0.848680 ^ U205/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003064                                       n58 (net)
+                      0.074189    0.000093    0.848773 ^ dll_control_count1_reg_3_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.848773   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.240251    0.014844    4.684844 ^ dll_control_count1_reg_3_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.584844   clock uncertainty
+                                  0.000000    4.584844   clock reconvergence pessimism
+                                 -0.030257    4.554587   library setup time
+                                              4.554587   data required time
+---------------------------------------------------------------------------------------------
+                                              4.554587   data required time
+                                             -0.848773   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.705814   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count1_reg_2_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137572    0.007201    0.751070 ^ U207/A (sky130_fd_sc_hd__nand2_1)
+                      0.039697    0.035394    0.786463 v U207/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003069                                       n119 (net)
+                      0.039697    0.000100    0.786563 v U208/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.078187    0.055539    0.842103 ^ U208/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003413                                       n59 (net)
+                      0.078187    0.000106    0.842209 ^ dll_control_count1_reg_2_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.842209   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.241121    0.018417    4.688417 ^ dll_control_count1_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.588418   clock uncertainty
+                                  0.000000    4.588418   clock reconvergence pessimism
+                                 -0.030566    4.557851   library setup time
+                                              4.557851   data required time
+---------------------------------------------------------------------------------------------
+                                              4.557851   data required time
+                                             -0.842209   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.715642   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count1_reg_0_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137452    0.006346    0.750215 ^ U213/A (sky130_fd_sc_hd__nand2_1)
+                      0.039339    0.034911    0.785126 v U213/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002999                                       n123 (net)
+                      0.039339    0.000070    0.785196 v U214/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.082679    0.058121    0.843317 ^ U214/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.003805                                       n60 (net)
+                      0.082679    0.000125    0.843442 ^ dll_control_count1_reg_0_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.843442   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243425    0.025336    4.695336 ^ dll_control_count1_reg_0_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.595336   clock uncertainty
+                                  0.000000    4.595336   clock reconvergence pessimism
+                                 -0.030864    4.564472   library setup time
+                                              4.564472   data required time
+---------------------------------------------------------------------------------------------
+                                              4.564472   data required time
+                                             -0.843442   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.721030   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_prep_reg_2_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137074    0.001498    0.745367 ^ U187/A (sky130_fd_sc_hd__nand2_1)
+                      0.038177    0.033251    0.778618 v U187/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002765                                       n104 (net)
+                      0.038178    0.000086    0.778704 v U188/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.086909    0.059850    0.838554 ^ U188/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.004118                                       n74 (net)
+                      0.086909    0.000106    0.838660 ^ dll_control_prep_reg_2_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.838660   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244721    0.028451    4.698451 ^ dll_control_prep_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.598451   clock uncertainty
+                                  0.000000    4.598451   clock reconvergence pessimism
+                                 -0.031177    4.567274   library setup time
+                                              4.567274   data required time
+---------------------------------------------------------------------------------------------
+                                              4.567274   data required time
+                                             -0.838660   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.728614   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count1_reg_1_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137379    0.005758    0.749627 ^ U210/A (sky130_fd_sc_hd__nand2_1)
+                      0.039640    0.035356    0.784983 v U210/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.003063                                       n121 (net)
+                      0.039640    0.000096    0.785078 v U211/B1 (sky130_fd_sc_hd__o21ai_1)
+                      0.070256    0.050718    0.835797 ^ U211/Y (sky130_fd_sc_hd__o21ai_1)
+     1    0.002722                                       n73 (net)
+                      0.070256    0.000060    0.835857 ^ dll_control_count1_reg_1_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.835857   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243706    0.026045    4.696045 ^ dll_control_count1_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.596045   clock uncertainty
+                                  0.000000    4.596045   clock reconvergence pessimism
+                                 -0.029795    4.566250   library setup time
+                                              4.566250   data required time
+---------------------------------------------------------------------------------------------
+                                              4.566250   data required time
+                                             -0.835857   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.730393   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_count0_reg_4_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137668    0.007813    0.751681 ^ U199/A (sky130_fd_sc_hd__nor2_1)
+                      0.036896    0.034214    0.785896 v U199/Y (sky130_fd_sc_hd__nor2_1)
+     1    0.002615                                       n65 (net)
+                      0.036896    0.000078    0.785974 v dll_control_count0_reg_4_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.785974   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.238917    0.004856    4.674856 ^ dll_control_count0_reg_4_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.574856   clock uncertainty
+                                  0.000000    4.574856   clock reconvergence pessimism
+                                 -0.054266    4.520590   library setup time
+                                              4.520590   data required time
+---------------------------------------------------------------------------------------------
+                                              4.520590   data required time
+                                             -0.785974   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.734617   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_2_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_prep_reg_0_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.031534    0.031534 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.049533    0.300099    0.331634 v dll_control_oscbuf_reg_2_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.009383                                       dll_control_oscbuf[2] (net)
+                      0.049535    0.000311    0.331945 v U144/A (sky130_fd_sc_hd__xor2_2)
+                      0.224487    0.227507    0.559452 ^ U144/X (sky130_fd_sc_hd__xor2_2)
+     4    0.022523                                       n242 (net)
+                      0.224494    0.001060    0.560512 ^ fanout1/A (sky130_fd_sc_hd__buf_4)
+                      0.137053    0.183357    0.743869 ^ fanout1/X (sky130_fd_sc_hd__buf_4)
+    16    0.064259                                       net1 (net)
+                      0.137190    0.003784    0.747653 ^ U182/A (sky130_fd_sc_hd__inv_2)
+                      0.036924    0.029524    0.777177 v U182/Y (sky130_fd_sc_hd__inv_2)
+     3    0.008256                                       n241 (net)
+                      0.036925    0.000182    0.777359 v U184/A (sky130_fd_sc_hd__nand2_1)
+                      0.030759    0.040184    0.817544 ^ U184/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.002561                                       n56 (net)
+                      0.030759    0.000077    0.817620 ^ dll_control_prep_reg_0_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.817620   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.243807    0.026293    4.696293 ^ dll_control_prep_reg_0_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.596293   clock uncertainty
+                                  0.000000    4.596293   clock reconvergence pessimism
+                                 -0.026427    4.569866   library setup time
+                                              4.569866   data required time
+---------------------------------------------------------------------------------------------
+                                              4.569866   data required time
+                                             -0.817620   data arrival time
+---------------------------------------------------------------------------------------------
+                                              3.752246   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_1_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_oscbuf_reg_2_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244723    0.031450    0.031450 ^ dll_control_oscbuf_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.058539    0.311607    0.343057 v dll_control_oscbuf_reg_1_/Q (sky130_fd_sc_hd__dfrtp_1)
+     2    0.012927                                       dll_control_oscbuf[1] (net)
+                      0.058542    0.000351    0.343409 v dll_control_oscbuf_reg_2_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.343409   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244756    0.028531    4.698532 ^ dll_control_oscbuf_reg_2_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.598531   clock uncertainty
+                                  0.000000    4.598531   clock reconvergence pessimism
+                                 -0.061364    4.537168   library setup time
+                                              4.537168   data required time
+---------------------------------------------------------------------------------------------
+                                              4.537168   data required time
+                                             -0.343409   data arrival time
+---------------------------------------------------------------------------------------------
+                                              4.193759   slack (MET)
+
+
+Startpoint: dll_control_oscbuf_reg_0_
+            (rising edge-triggered flip-flop clocked by dll_control_clock)
+Endpoint: dll_control_oscbuf_reg_1_
+          (rising edge-triggered flip-flop clocked by dll_control_clock)
+Path Group: dll_control_clock
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  0.000000    0.000000   clock dll_control_clock (rise edge)
+                                  0.000000    0.000000   clock source latency
+                      0.238774    0.000000    0.000000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244766    0.031559    0.031559 ^ dll_control_oscbuf_reg_0_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                      0.028421    0.274323    0.305881 v dll_control_oscbuf_reg_0_/Q (sky130_fd_sc_hd__dfrtp_1)
+     1    0.002964                                       dll_control_oscbuf[0] (net)
+                      0.028422    0.000089    0.305970 v dll_control_oscbuf_reg_1_/D (sky130_fd_sc_hd__dfrtp_1)
+                                              0.305970   data arrival time
+
+                                  4.670000    4.670000   clock dll_control_clock (rise edge)
+                                  0.000000    4.670000   clock source latency
+                      0.238774    0.000000    4.670000 ^ ringosc_ibufp01/Y (sky130_fd_sc_hd__clkinv_8)
+    24    0.282415                                       clockp[0] (net)
+                      0.244723    0.028455    4.698455 ^ dll_control_oscbuf_reg_1_/CLK (sky130_fd_sc_hd__dfrtp_1)
+                                 -0.100000    4.598455   clock uncertainty
+                                  0.000000    4.598455   clock reconvergence pessimism
+                                 -0.050708    4.547747   library setup time
+                                              4.547747   data required time
+---------------------------------------------------------------------------------------------
+                                              4.547747   data required time
+                                             -0.305970   data arrival time
+---------------------------------------------------------------------------------------------
+                                              4.241777   slack (MET)
+
+
+Startpoint: dco (input port clocked by VIRTUAL_CLK)
+Endpoint: clockp[1] (output port clocked by VIRTUAL_CLK)
+Path Group: VIRTUAL_CLK
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                      0.000000    0.000000    0.000000   clock VIRTUAL_CLK (rise edge)
+                                  0.000000    0.000000   clock network delay (ideal)
+                                  3.000000    3.000000 ^ input external delay
+                      0.091406    0.065939    3.065939 ^ dco (in)
+     6    0.025920                                       dco (net)
+                      0.091422    0.000000    3.065939 ^ U128/A (sky130_fd_sc_hd__nand2_1)
+                      0.041497    0.046302    3.112241 v U128/Y (sky130_fd_sc_hd__nand2_1)
+     2    0.005735                                       n81 (net)
+                      0.041498    0.000107    3.112347 v U123/A (sky130_fd_sc_hd__nand2_1)
+                      0.046276    0.054327    3.166674 ^ U123/Y (sky130_fd_sc_hd__nand2_1)
+     1    0.004981                                       n76 (net)
+                      0.046277    0.000174    3.166847 ^ ringosc_dstage_6__id_delayen1/TE (sky130_fd_sc_hd__einvp_2)
+                      0.098431    0.129333    3.296180 ^ ringosc_dstage_6__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.012689                                       ringosc_dstage_6__id_d1 (net)
+                      0.098432    0.000258    3.296438 ^ ringosc_dstage_6__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.029431    0.033358    3.329797 v ringosc_dstage_6__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004759                                       ringosc_dstage_6__id_d2 (net)
+                      0.029431    0.000109    3.329906 v ringosc_dstage_6__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.121898    0.107859    3.437765 ^ ringosc_dstage_6__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.015650                                       ringosc_d[7] (net)
+                      0.121898    0.000184    3.437948 ^ ringosc_dstage_7__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.138634    0.138976    3.576924 ^ ringosc_dstage_7__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.032664                                       ringosc_dstage_7__id_ts (net)
+                      0.138646    0.001112    3.578036 ^ ringosc_dstage_7__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.058842    0.083116    3.661151 ^ ringosc_dstage_7__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005932                                       ringosc_dstage_7__id_d0 (net)
+                      0.058843    0.000208    3.661359 ^ ringosc_dstage_7__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.035888    0.042699    3.704058 v ringosc_dstage_7__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011339                                       ringosc_dstage_7__id_d1 (net)
+                      0.035890    0.000271    3.704329 v ringosc_dstage_7__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.027652    0.025716    3.730045 ^ ringosc_dstage_7__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.005497                                       ringosc_dstage_7__id_d2 (net)
+                      0.027653    0.000129    3.730174 ^ ringosc_dstage_7__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.048112    0.049320    3.779494 v ringosc_dstage_7__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.018275                                       ringosc_d[8] (net)
+                      0.048114    0.000277    3.779770 v ringosc_dstage_8__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.076556    0.108494    3.888264 v ringosc_dstage_8__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.028132                                       ringosc_dstage_8__id_ts (net)
+                      0.076559    0.000371    3.888635 v ringosc_dstage_8__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.026850    0.084849    3.973484 v ringosc_dstage_8__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.004960                                       ringosc_dstage_8__id_d0 (net)
+                      0.026851    0.000162    3.973646 v ringosc_dstage_8__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.093926    0.085715    4.059361 ^ ringosc_dstage_8__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.012056                                       ringosc_dstage_8__id_d1 (net)
+                      0.093927    0.000243    4.059604 ^ ringosc_dstage_8__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.028203    0.032356    4.091960 v ringosc_dstage_8__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004515                                       ringosc_dstage_8__id_d2 (net)
+                      0.028204    0.000139    4.092099 v ringosc_dstage_8__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.130851    0.114207    4.206306 ^ ringosc_dstage_8__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016798                                       ringosc_d[9] (net)
+                      0.130852    0.000269    4.206576 ^ ringosc_dstage_9__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.157473    0.152391    4.358967 ^ ringosc_dstage_9__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.037326                                       ringosc_dstage_9__id_ts (net)
+                      0.157481    0.001020    4.359987 ^ ringosc_dstage_9__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.112964    0.122599    4.482586 ^ ringosc_dstage_9__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.012370                                       ringosc_dstage_9__id_d0 (net)
+                      0.112968    0.000572    4.483159 ^ ringosc_dstage_9__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.060166    0.066608    4.549767 v ringosc_dstage_9__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.017564                                       ringosc_dstage_9__id_d1 (net)
+                      0.060176    0.000668    4.550435 v ringosc_dstage_9__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.049293    0.041213    4.591648 ^ ringosc_dstage_9__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.010684                                       ringosc_dstage_9__id_d2 (net)
+                      0.049298    0.000456    4.592103 ^ ringosc_dstage_9__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.045904    0.052349    4.644452 v ringosc_dstage_9__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016793                                       ringosc_d[10] (net)
+                      0.045907    0.000349    4.644802 v ringosc_dstage_10__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.078630    0.110430    4.755231 v ringosc_dstage_10__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.029014                                       ringosc_dstage_10__id_ts (net)
+                      0.078636    0.000608    4.755840 v ringosc_dstage_10__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.036937    0.094758    4.850598 v ringosc_dstage_10__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.007739                                       ringosc_dstage_10__id_d0 (net)
+                      0.036941    0.000354    4.850952 v ringosc_dstage_10__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.102870    0.095892    4.946844 ^ ringosc_dstage_10__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.013210                                       ringosc_dstage_10__id_d1 (net)
+                      0.102871    0.000285    4.947129 ^ ringosc_dstage_10__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.033762    0.036730    4.983859 v ringosc_dstage_10__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.005610                                       ringosc_dstage_10__id_d2 (net)
+                      0.033763    0.000204    4.984063 v ringosc_dstage_10__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.123410    0.110404    5.094467 ^ ringosc_dstage_10__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.015839                                       ringosc_d[11] (net)
+                      0.123411    0.000280    5.094747 ^ ringosc_dstage_11__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.127498    0.131321    5.226068 ^ ringosc_dstage_11__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.029916                                       ringosc_dstage_11__id_ts (net)
+                      0.127503    0.000679    5.226747 ^ ringosc_dstage_11__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.054105    0.079736    5.306483 ^ ringosc_dstage_11__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005370                                       ringosc_dstage_11__id_d0 (net)
+                      0.054105    0.000175    5.306658 ^ ringosc_dstage_11__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.034755    0.042568    5.349226 v ringosc_dstage_11__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011516                                       ringosc_dstage_11__id_d1 (net)
+                      0.034757    0.000191    5.349417 v ringosc_dstage_11__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.031591    0.028565    5.377981 ^ ringosc_dstage_11__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.006446                                       ringosc_dstage_11__id_d2 (net)
+                      0.031593    0.000175    5.378156 ^ ringosc_dstage_11__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.068183    0.065388    5.443544 v ringosc_dstage_11__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     2    0.025833                                       ringosc_d[12] (net)
+                      0.068197    0.000876    5.444420 v ringosc_iss_delaybuf0/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.024609    0.079913    5.524332 v ringosc_iss_delaybuf0/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.004387                                       ringosc_iss_d0 (net)
+                      0.024610    0.000133    5.524465 v ringosc_iss_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.093067    0.084215    5.608680 ^ ringosc_iss_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011930                                       ringosc_iss_d1 (net)
+                      0.093068    0.000230    5.608910 ^ ringosc_iss_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.042375    0.056863    5.665772 v ringosc_iss_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004874                                       ringosc_iss_d2 (net)
+                      0.042376    0.000153    5.665926 v ringosc_iss_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.179563    0.155863    5.821788 ^ ringosc_iss_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     2    0.023003                                       ringosc_d[0] (net)
+                      0.307656    0.000293    5.822081 ^ ringosc_dstage_0__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.132278    0.182353    6.004435 ^ ringosc_dstage_0__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.030739                                       ringosc_dstage_0__id_ts (net)
+                      0.132283    0.000659    6.005094 ^ ringosc_dstage_0__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.059666    0.083822    6.088915 ^ ringosc_dstage_0__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.006036                                       ringosc_dstage_0__id_d0 (net)
+                      0.059667    0.000207    6.089122 ^ ringosc_dstage_0__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.042787    0.041826    6.130948 v ringosc_dstage_0__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.010970                                       ringosc_dstage_0__id_d1 (net)
+                      0.042788    0.000205    6.131153 v ringosc_dstage_0__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.030022    0.042982    6.174135 ^ ringosc_dstage_0__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.005412                                       ringosc_dstage_0__id_d2 (net)
+                      0.030023    0.000179    6.174314 ^ ringosc_dstage_0__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.048748    0.046199    6.220513 v ringosc_dstage_0__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016399                                       ringosc_d[1] (net)
+                      0.048750    0.000236    6.220749 v ringosc_dstage_1__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.077101    0.129306    6.350055 v ringosc_dstage_1__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.028260                                       ringosc_dstage_1__id_ts (net)
+                      0.077106    0.000568    6.350623 v ringosc_dstage_1__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.028762    0.086825    6.437448 v ringosc_dstage_1__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005497                                       ringosc_dstage_1__id_d0 (net)
+                      0.028764    0.000190    6.437638 v ringosc_dstage_1__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.089326    0.082328    6.519967 ^ ringosc_dstage_1__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011399                                       ringosc_dstage_1__id_d1 (net)
+                      0.089327    0.000142    6.520109 ^ ringosc_dstage_1__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.039363    0.053547    6.573656 v ringosc_dstage_1__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004334                                       ringosc_dstage_1__id_d2 (net)
+                      0.039363    0.000089    6.573745 v ringosc_dstage_1__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.126058    0.114238    6.687984 ^ ringosc_dstage_1__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016172                                       ringosc_d[2] (net)
+                      0.126059    0.000281    6.688265 ^ ringosc_dstage_2__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.132247    0.166717    6.854982 ^ ringosc_dstage_2__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.031009                                       ringosc_dstage_2__id_ts (net)
+                      0.132251    0.000635    6.855617 ^ ringosc_dstage_2__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.053038    0.078904    6.934521 ^ ringosc_dstage_2__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005237                                       ringosc_dstage_2__id_d0 (net)
+                      0.053039    0.000120    6.934640 ^ ringosc_dstage_2__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.052744    0.043270    6.977911 v ringosc_dstage_2__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011849                                       ringosc_dstage_2__id_d1 (net)
+                      0.052746    0.000241    6.978152 v ringosc_dstage_2__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.029530    0.045386    7.023538 ^ ringosc_dstage_2__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004829                                       ringosc_dstage_2__id_d2 (net)
+                      0.029531    0.000147    7.023684 ^ ringosc_dstage_2__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.047438    0.045535    7.069219 v ringosc_dstage_2__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016146                                       ringosc_d[3] (net)
+                      0.047441    0.000370    7.069589 v ringosc_dstage_3__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.074146    0.126549    7.196138 v ringosc_dstage_3__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.027078                                       ringosc_dstage_3__id_ts (net)
+                      0.074151    0.000555    7.196693 v ringosc_dstage_3__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.028727    0.085810    7.282503 v ringosc_dstage_3__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005512                                       ringosc_dstage_3__id_d0 (net)
+                      0.028728    0.000147    7.282650 v ringosc_dstage_3__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.101530    0.092214    7.374864 ^ ringosc_dstage_3__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.013040                                       ringosc_dstage_3__id_d1 (net)
+                      0.101531    0.000261    7.375125 ^ ringosc_dstage_3__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.047835    0.063010    7.438135 v ringosc_dstage_3__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.005763                                       ringosc_dstage_3__id_d2 (net)
+                      0.047836    0.000193    7.438328 v ringosc_dstage_3__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.117623    0.110646    7.548974 ^ ringosc_dstage_3__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.015089                                       ringosc_d[4] (net)
+                      0.117623    0.000166    7.549140 ^ ringosc_dstage_4__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.131119    0.164603    7.713743 ^ ringosc_dstage_4__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.030743                                       ringosc_dstage_4__id_ts (net)
+                      0.131125    0.000745    7.714488 ^ ringosc_dstage_4__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.056882    0.081763    7.796251 ^ ringosc_dstage_4__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.005702                                       ringosc_dstage_4__id_d0 (net)
+                      0.056883    0.000192    7.796443 ^ ringosc_dstage_4__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.039129    0.043850    7.840293 v ringosc_dstage_4__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.011862                                       ringosc_dstage_4__id_d1 (net)
+                      0.039132    0.000284    7.840577 v ringosc_dstage_4__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.027195    0.039599    7.880177 ^ ringosc_dstage_4__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004793                                       ringosc_dstage_4__id_d2 (net)
+                      0.027196    0.000099    7.880276 ^ ringosc_dstage_4__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.046835    0.044661    7.924937 v ringosc_dstage_4__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.016037                                       ringosc_d[5] (net)
+                      0.046838    0.000339    7.925277 v ringosc_dstage_5__id_delaybuf0/A (sky130_fd_sc_hd__clkbuf_2)
+                      0.076422    0.128112    8.053389 v ringosc_dstage_5__id_delaybuf0/X (sky130_fd_sc_hd__clkbuf_2)
+     3    0.028008                                       ringosc_dstage_5__id_ts (net)
+                      0.076428    0.000582    8.053970 v ringosc_dstage_5__id_delaybuf1/A (sky130_fd_sc_hd__clkbuf_1)
+                      0.025408    0.083475    8.137444 v ringosc_dstage_5__id_delaybuf1/X (sky130_fd_sc_hd__clkbuf_1)
+     1    0.004551                                       ringosc_dstage_5__id_d0 (net)
+                      0.025408    0.000097    8.137542 v ringosc_dstage_5__id_delayen1/A (sky130_fd_sc_hd__einvp_2)
+                      0.094067    0.085327    8.222869 ^ ringosc_dstage_5__id_delayen1/Z (sky130_fd_sc_hd__einvp_2)
+     1    0.012074                                       ringosc_dstage_5__id_d1 (net)
+                      0.094068    0.000309    8.223178 ^ ringosc_dstage_5__id_delayint0/A (sky130_fd_sc_hd__clkinv_1)
+                      0.042343    0.056760    8.279938 v ringosc_dstage_5__id_delayint0/Y (sky130_fd_sc_hd__clkinv_1)
+     1    0.004810                                       ringosc_dstage_5__id_d2 (net)
+                      0.042343    0.000156    8.280094 v ringosc_dstage_5__id_delayen0/A (sky130_fd_sc_hd__einvp_2)
+                      0.199313    0.170685    8.450779 ^ ringosc_dstage_5__id_delayen0/Z (sky130_fd_sc_hd__einvp_2)
+     2    0.025519                                       ringosc_d[6] (net)
+                      0.199316    0.000682    8.451461 ^ ringosc_ibufp10/A (sky130_fd_sc_hd__clkinv_2)
+                      0.082717    0.095218    8.546679 v ringosc_ibufp10/Y (sky130_fd_sc_hd__clkinv_2)
+     1    0.019041                                       ringosc_c[1] (net)
+                      0.082723    0.000587    8.547266 v ringosc_ibufp11/A (sky130_fd_sc_hd__clkinv_8)
+                      0.175560    0.161542    8.708808 ^ ringosc_ibufp11/Y (sky130_fd_sc_hd__clkinv_8)
+     1    0.205925                                       clockp[1] (net)
+                      0.176298    0.009736    8.718544 ^ clockp[1] (out)
+                                              8.718544   data arrival time
+
+                      0.000000   20.000000   20.000000   clock VIRTUAL_CLK (rise edge)
+                                  0.000000   20.000000   clock network delay (ideal)
+                                  0.000000   20.000000   clock reconvergence pessimism
+                                 -3.000000   17.000000   output external delay
+                                             17.000000   data required time
+---------------------------------------------------------------------------------------------
+                                             17.000000   data required time
+                                             -8.718544   data arrival time
+---------------------------------------------------------------------------------------------
+                                              8.281456   slack (MET)
+
+
+
