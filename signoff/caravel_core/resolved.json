@@ -197,80 +197,6 @@
             "sdf": {},
             "json_h": null
         },
-        "DFFRAM128x32": {
-            "gds": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/gds/DFFRAM128x32.gds.gz"
-            ],
-            "lef": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/lef/DFFRAM128x32.lef"
-            ],
-            "instances": {
-                "soc/__dut__.__uuf__.core_RAM128": {
-                    "location": [
-                        50,
-                        50
-                    ],
-                    "orientation": "FS"
-                }
-            },
-            "vh": [],
-            "nl": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/hdl/gl/DFFRAM128x32.v"
-            ],
-            "pnl": [],
-            "spef": {
-                "min_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.min.spef"
-                ],
-                "nom_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.nom.spef"
-                ],
-                "max_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM128x32.max.spef"
-                ]
-            },
-            "lib": {},
-            "spice": [],
-            "sdf": {},
-            "json_h": null
-        },
-        "DFFRAM256x32": {
-            "gds": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/gds/DFFRAM256x32.gds.gz"
-            ],
-            "lef": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/layout/lef/DFFRAM256x32.lef"
-            ],
-            "instances": {
-                "soc/__dut__.__uuf__.core_RAM256": {
-                    "location": [
-                        50,
-                        50
-                    ],
-                    "orientation": "FS"
-                }
-            },
-            "vh": [],
-            "nl": [
-                "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/hdl/gl/DFFRAM256x32.v"
-            ],
-            "pnl": [],
-            "spef": {
-                "min_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.min.spef"
-                ],
-                "nom_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.nom.spef"
-                ],
-                "max_*": [
-                    "/home/hosni/caravel-3/caravel_mgmt_soc_litex/dependencies/OL-DFFRAM/timing/spef/DFFRAM256x32.max.spef"
-                ]
-            },
-            "lib": {},
-            "spice": [],
-            "sdf": {},
-            "json_h": null
-        },
         "user_id_programming": {
             "gds": [
                 "/home/hosni/caravel-3/caravel/gds/user_id_programming.gds.gz"
@@ -1191,7 +1117,7 @@
             "instances": {
                 "clock_ctrl": {
                     "location": [
-                        2747,
+                        2772,
                         9.4
                     ],
                     "orientation": "N"
@@ -1679,7 +1605,8 @@
         "met5 3043 2082 3171.23 2167",
         "met5 3043 1859 3171.23 1945",
         "met4 992 -10 1071 122",
-        "met4 2648 4631 2747 4772.41"
+        "met4 2648 4631 2747 4772.41",
+        "met5 2722.055 118.380 3154.920 166.380"
     ],
     "FP_PDN_SKIPTRIM": true,
     "FP_PDN_CORE_RING": true,
@@ -2696,7 +2623,7 @@
     "KLAYOUT_PROPERTIES": "/home/hosni/.volare/volare/sky130/versions/bdc9412b3e468c102d01b7cf6337be06ec6e9c9a/sky130A/libs.tech/klayout/tech/sky130A.lyp",
     "KLAYOUT_DEF_LAYER_MAP": "/home/hosni/.volare/volare/sky130/versions/bdc9412b3e468c102d01b7cf6337be06ec6e9c9a/sky130A/libs.tech/klayout/tech/sky130A.map",
     "MAGIC_LEF_WRITE_USE_GDS": false,
-    "MAGIC_WRITE_FULL_LEF": false,
+    "MAGIC_WRITE_FULL_LEF": true,
     "MAGIC_WRITE_LEF_PINONLY": false,
     "KLAYOUT_XOR_THREADS": null,
     "KLAYOUT_XOR_IGNORE_LAYERS": [
