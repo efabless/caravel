@@ -102,8 +102,6 @@ module mgmt_protect (
 	wire [462:0] mprj_logic1;
 	wire	     mprj2_logic1;
 
-	wire mprj_vdd_logic1_h;
-	wire mprj2_vdd_logic1_h;
 	wire mprj_vdd_logic1;
 	wire mprj2_vdd_logic1;
 

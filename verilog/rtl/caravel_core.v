@@ -1,6 +1,6 @@
-//  `ifdef SIM
+ `ifdef SIM
  `default_nettype wire
-//  `endif
+ `endif
 // SPDX-FileCopyrightText: 2020 Efabless Corporation
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -262,6 +262,30 @@ module caravel_core (
 
 	//
 	wire sc_tdo;
+
+	//
+	wire qspi_enabled;
+	wire spi_enabled;
+	wire uart_enabled;
+	wire debug_mode;
+	wire ser_tx;
+	wire ser_rx;
+	wire spi_sdi;
+	wire spi_csb;
+	wire spi_sck;
+	wire spi_sdo;
+	wire spi_sdoenb;
+	wire debug_in;
+	wire debug_out;
+	wire debug_oeb;
+	wire trap;
+	wire porb_l;
+	wire ext_clk_sel;
+	wire pll_clk;
+	wire pll_clk90;
+	wire ext_reset;
+	wire spi_pll_ena;
+	wire spi_pll_dco_ena;
 
 `ifdef USE_SRAM_RO_INTERFACE
     // SRAM read-only access from housekeeping
@@ -712,9 +736,11 @@ module caravel_core (
 
     /* Fixed defaults for the first 5 GPIO pins */
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_defaults_block_0 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(13'h1803))
+`endif
+	gpio_defaults_block_0 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -722,9 +748,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[12:0])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h1803)
-    ) gpio_defaults_block_1 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(13'h1803))
+`endif
+	gpio_defaults_block_1 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -732,9 +760,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[25:13])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_defaults_block_2 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(13'h0403))
+`endif
+	gpio_defaults_block_2 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -743,9 +773,11 @@ module caravel_core (
     );
 
     // CSB pin is set as an internal pull-up
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h0801)
-    ) gpio_defaults_block_3 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(13'h0801))
+`endif
+	gpio_defaults_block_3 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -753,9 +785,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[51:39])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(13'h0403)
-    ) gpio_defaults_block_4 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(13'h0403))
+`endif
+	gpio_defaults_block_4 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -765,9 +799,11 @@ module caravel_core (
 
     /* Via-programmable defaults for the rest of the GPIO pins */
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_5_INIT)
-    ) gpio_defaults_block_5 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_5_INIT))
+`endif
+	gpio_defaults_block_5 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -775,9 +811,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[77:65])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_6_INIT)
-    ) gpio_defaults_block_6 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_6_INIT))
+`endif
+	gpio_defaults_block_6 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -785,9 +823,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[90:78])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_7_INIT)
-    ) gpio_defaults_block_7 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_7_INIT))
+`endif
+	gpio_defaults_block_7 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -795,9 +835,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[103:91])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_8_INIT)
-    ) gpio_defaults_block_8 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_8_INIT))
+`endif
+	gpio_defaults_block_8 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -805,9 +847,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[116:104])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_9_INIT)
-    ) gpio_defaults_block_9 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_9_INIT))
+`endif
+	gpio_defaults_block_9 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -815,9 +859,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[129:117])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_10_INIT)
-    ) gpio_defaults_block_10 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_10_INIT))
+`endif
+	gpio_defaults_block_10 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -825,9 +871,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[142:130])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_11_INIT)
-    ) gpio_defaults_block_11 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_11_INIT))
+`endif
+	gpio_defaults_block_11 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -835,9 +883,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[155:143])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_12_INIT)
-    ) gpio_defaults_block_12 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_12_INIT))
+`endif
+	gpio_defaults_block_12 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -845,9 +895,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[168:156])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_13_INIT)
-    ) gpio_defaults_block_13 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_13_INIT))
+`endif
+	gpio_defaults_block_13 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -855,9 +907,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[181:169])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_14_INIT)
-    ) gpio_defaults_block_14 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_14_INIT))
+`endif
+	gpio_defaults_block_14 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -865,9 +919,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[194:182])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_15_INIT)
-    ) gpio_defaults_block_15 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_15_INIT))
+`endif
+	gpio_defaults_block_15 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -875,9 +931,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[207:195])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_16_INIT)
-    ) gpio_defaults_block_16 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_16_INIT))
+`endif
+	gpio_defaults_block_16 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -885,9 +943,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[220:208])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_17_INIT)
-    ) gpio_defaults_block_17 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_17_INIT))
+`endif
+	gpio_defaults_block_17 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -895,9 +955,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[233:221])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_18_INIT)
-    ) gpio_defaults_block_18 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_18_INIT))
+`endif
+	gpio_defaults_block_18 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -905,9 +967,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[246:234])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_19_INIT)
-    ) gpio_defaults_block_19 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_19_INIT))
+`endif
+	gpio_defaults_block_19 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -915,9 +979,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[259:247])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_20_INIT)
-    ) gpio_defaults_block_20 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_20_INIT))
+`endif
+	gpio_defaults_block_20 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -925,9 +991,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[272:260])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_21_INIT)
-    ) gpio_defaults_block_21 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_21_INIT))
+`endif
+	gpio_defaults_block_21 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -935,9 +1003,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[285:273])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_22_INIT)
-    ) gpio_defaults_block_22 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_22_INIT))
+`endif
+	gpio_defaults_block_22 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -945,9 +1015,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[298:286])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_23_INIT)
-    ) gpio_defaults_block_23 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_23_INIT))
+`endif
+	gpio_defaults_block_23 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -955,9 +1027,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[311:299])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_24_INIT)
-    ) gpio_defaults_block_24 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_24_INIT))
+`endif
+	gpio_defaults_block_24 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -965,9 +1039,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[324:312])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_25_INIT)
-    ) gpio_defaults_block_25 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_25_INIT))
+`endif
+	gpio_defaults_block_25 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -975,9 +1051,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[337:325])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_26_INIT)
-    ) gpio_defaults_block_26 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_26_INIT))
+`endif
+	gpio_defaults_block_26 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -985,9 +1063,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[350:338])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_OUTPUT)
-    ) gpio_defaults_block_27 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_OUTPUT))
+`endif
+	gpio_defaults_block_27 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -995,9 +1075,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[363:351])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
-    ) gpio_defaults_block_28 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN))
+`endif
+	gpio_defaults_block_28 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1005,9 +1087,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[376:364])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
-    ) gpio_defaults_block_29 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN))
+`endif
+	gpio_defaults_block_29 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1015,9 +1099,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[389:377])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
-    ) gpio_defaults_block_30 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN))
+`endif
+	gpio_defaults_block_30 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1025,9 +1111,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[402:390])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN)
-    ) gpio_defaults_block_31 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`GPIO_MODE_MGMT_STD_INPUT_PULLDOWN))
+`endif
+	gpio_defaults_block_31 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1035,9 +1123,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[415:403])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_32_INIT)
-    ) gpio_defaults_block_32 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_32_INIT))
+`endif
+	gpio_defaults_block_32 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1045,9 +1135,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[428:416])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_33_INIT)
-    ) gpio_defaults_block_33 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_33_INIT))
+`endif
+	gpio_defaults_block_33 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1055,9 +1147,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[441:429])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_34_INIT)
-    ) gpio_defaults_block_34 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_34_INIT))
+`endif
+	gpio_defaults_block_34 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1065,9 +1159,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[454:442])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_35_INIT)
-    ) gpio_defaults_block_35 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_35_INIT))
+`endif
+	gpio_defaults_block_35 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1075,9 +1171,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[467:455])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_36_INIT)
-    ) gpio_defaults_block_36 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_36_INIT))
+`endif
+	gpio_defaults_block_36 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1085,9 +1183,11 @@ module caravel_core (
 	.gpio_defaults(gpio_defaults[480:468])
     );
 
-    gpio_defaults_block #(
-	.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_37_INIT)
-    ) gpio_defaults_block_37 (
+    gpio_defaults_block
+`ifndef __pnr__
+    #(.GPIO_CONFIG_INIT(`USER_CONFIG_GPIO_37_INIT))
+`endif
+	gpio_defaults_block_37 (
     	`ifdef USE_POWER_PINS
 	    .VPWR(vccd),
 	    .VGND(vssd),
@@ -1375,9 +1475,11 @@ module caravel_core (
     	.pad_gpio_in(mprj_io_in[(`MPRJ_IO_PADS-4):(`MPRJ_IO_PADS_1)])
     );
 
-    user_id_programming #(
-	.USER_PROJECT_ID(USER_PROJECT_ID)
-    ) user_id_value (
+    user_id_programming
+`ifndef __pnr__
+	#(.USER_PROJECT_ID(USER_PROJECT_ID))
+`endif
+	user_id_value (
 	`ifdef USE_POWER_PINS
 		.VPWR(vccd),
 		.VGND(vssd),
