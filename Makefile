@@ -151,6 +151,12 @@ __ship:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
+# Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
+.PHONY: ship-lvs
+ship-lvs: 
+	$LVS_ROOT/run_be_checks $LVS_ROOT/tech/sky130A/lvs_config.caravel_core-upw.json caravel_core caravel_core $(UPRJ_ROOT)/gds/caravel.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$LVS_ROOT/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
+
 truck: check-env uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
 	@echo "Running make truck in the foreground..."
@@ -199,6 +205,12 @@ __truck:
 	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
+
+# Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
+.PHONY: truck-lvs
+truck-lvs: 
+	$LVS_ROOT/run_be_checks $LVS_ROOT/tech/sky130A/lvs_config.caravan_core-upw.json caravan_core caravan_core $(UPRJ_ROOT)/gds/caravan.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$LVS_ROOT/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
 
 .PHONY: openframe
 openframe: check-env uncompress uncompress-caravel
