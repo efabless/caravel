@@ -154,8 +154,10 @@ __ship:
 # Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
 .PHONY: ship-lvs
 ship-lvs: 
-	$LVS_ROOT/run_be_checks $LVS_ROOT/tech/sky130A/lvs_config.caravel_core-upw.json caravel_core caravel_core $(UPRJ_ROOT)/gds/caravel.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
-	$LVS_ROOT/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
+	mkdir -p $(UPRJ_ROOT)/signoff/build
+	LAYOUT=$$(/foss/tools/sak/klayout/gdsAllcells.rb $(UPRJ_ROOT)/gds/caravel.gds | grep caravel_core) ;\
+	$(LVS_ROOT)/run_be_checks $(LVS_ROOT)/tech/$(PDK)/lvs_config.caravel_core-upw.json caravel_core $LAYOUT $(UPRJ_ROOT)/gds/caravel.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$(LVS_ROOT)/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
 
 truck: check-env uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
@@ -209,8 +211,10 @@ __truck:
 # Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
 .PHONY: truck-lvs
 truck-lvs: 
-	$LVS_ROOT/run_be_checks $LVS_ROOT/tech/sky130A/lvs_config.caravan_core-upw.json caravan_core caravan_core $(UPRJ_ROOT)/gds/caravan.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
-	$LVS_ROOT/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
+	mkdir -p $(UPRJ_ROOT)/signoff/build
+	LAYOUT=$$(/foss/tools/sak/klayout/gdsAllcells.rb $(UPRJ_ROOT)/gds/caravan.gds | grep caravan_core) ;\
+	$(LVS_ROOT)/run_be_checks $(LVS_ROOT)/tech/$(PDK)/lvs_config.caravan_core-upw.json caravan_core $LAYOUT $(UPRJ_ROOT)/gds/caravan.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$(LVS_ROOT)/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
 
 .PHONY: openframe
 openframe: check-env uncompress uncompress-caravel
