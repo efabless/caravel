@@ -1,0 +1,194 @@
+#! /bin/bash
+#   run_be_checks: Runs scheck, full_lvs and for digital designs cvc-rv.
+
+#   Copyright 2022 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+# Overview:
+#  1. Run hierarchy check
+#  2. Run soft connection check
+#  3. Run full lvs
+#  4. Run cvc for digital designs
+#
+#  All variable specified in LVS configuration file
+
+# Usage
+# run_be_checks [--nooeb] LVS_config_file [top_netlist [top_layout [layout_file]]] 		: extract, then check
+# run_be_checks --noextract [--nooeb] LVS_config_file [top_netlist [top_layout [layout_file]]]	: use previous extraction results to compare
+
+export EXTRACT_LAYOUT=yes
+SKIP_OEB=no
+while [[ "$1" == "--"* ]]; do
+	if [[ "$1" == "--noextract" ]]; then
+		export EXTRACT_LAYOUT=no
+		shift
+	elif [[ "$1" == "--nooeb" ]]; then
+		SKIP_OEB=yes
+		shift
+	else
+		echo "ERROR: unrecognized option $1"
+		exit 2
+	fi
+done
+
+if [[ $# -gt 4 ]]; then
+	echo $0 $*
+	echo "usage: run_be_checks [--noextract] [lvs_config_file [netlist_top [layout_top [layout_file]]]]"
+	exit 1
+fi
+
+# Check for LVS_ROOT
+if [[ -z "$LVS_ROOT" ]]; then
+	echo "LVS_ROOT not set."
+	exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "ERROR: LVS environment problem."
+	exit 1
+fi
+
+# Command line values override config file values
+export TOP_SOURCE=${2:-$TOP_SOURCE}
+export TOP_LAYOUT=${3:-$TOP_LAYOUT}
+export LAYOUT_FILE=${4:-$LAYOUT_FILE}
+
+echo "
+TOP SOURCE: $TOP_SOURCE"
+echo "SOURCE FILE(S): $(echo $LVS_SPICE_FILES_TO_FIX $LVS_SPICE_FILES $LVS_VERILOG_FILES | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "TOP LAYOUT: $TOP_LAYOUT"
+echo "LAYOUT FILE: $LAYOUT_FILE"
+echo "EXTRACT_FLATGLOB: $(echo $EXTRACT_FLATGLOB | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "EXTRACT_ABSTRACT: $(echo $EXTRACT_ABSTRACT | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_FLATTEN: $(echo $LVS_FLATTEN | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_NOFLATTEN: $(echo $LVS_NOFLATTEN | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_IGNORE: $(echo $LVS_IGNORE | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+
+if [[ ! -f $LAYOUT_FILE ]]; then
+	echo "
+ERROR: missing layout file $LAYOUT_FILE"
+	exit 2
+fi
+
+: "${WORK_ROOT:=$(pwd)/$TOP_SOURCE}"
+: "${LOG_ROOT:=$WORK_ROOT}"
+: "${SIGNOFF_ROOT:=$WORK_ROOT}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+mkdir -p $LOG_ROOT $SIGNOFF_ROOT $WORK_ROOT
+rm -f $LOG_ROOT/{soft,lvs,cvc}.log $SIGNOFF_ROOT/{soft,lvs,cvc}.report $SIGNOFF_ROOT/hier.csv
+if [[ $SKIP_OEB == no ]]; then
+	rm -f $LOG_ROOT/cvc.oeb.log $SIGNOFF_ROOT/cvc.oeb.report
+fi
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	rm -f $LOG_ROOT/{ext,nowell.ext}.log
+fi
+
+start_time=$SECONDS
+
+$LVS_ROOT/run_hier_check $TOP_SOURCE "$(echo $LVS_VERILOG_FILES | sed 's/#[^ ]*//g')" $TOP_LAYOUT $LAYOUT_FILE "${PDK%?}_([^/_]*_)*_"
+hier_status=$?
+
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	$LVS_ROOT/run_scheck
+	scheck_status=$?
+else
+	$LVS_ROOT/run_scheck --noextract
+	scheck_status=$?
+fi
+
+$LVS_ROOT/run_full_lvs --noextract
+lvs_status=$?
+
+if [[ -f $LVS_ROOT/tech/$PDK/cvc.power.$TOP_SOURCE || -f ${CONFIG_FILE%/*}/cvc.power.$TOP_SOURCE ]]; then
+	if [[ -f ${CONFIG_FILE%/*}/cvc.power.$TOP_SOURCE ]]; then
+		cp ${CONFIG_FILE%/*}/cvc.power.$TOP_SOURCE $WORK_ROOT/cvc.power.$TOP_LAYOUT
+	fi
+	$LVS_ROOT/run_cvc --noextract
+	cvc_status=$?
+fi
+
+if [[ $TOP_SOURCE == *user_*project_wrapper && $SKIP_OEB == no ]]; then
+	$LVS_ROOT/run_oeb_check --noextract
+	oeb_status=$?
+fi
+
+echo "
+Soft check result:"
+tail -n 20 $LOG_ROOT/soft.log | awk '/Final result/,/Logging/' | grep -v ^Logging
+if [[ $scheck_status -ne 0 ]]; then
+	echo "Soft check problem: check the following files
+$LOG_ROOT/ext.log
+$LOG_ROOT/nowell.ext.log
+$LOG_ROOT/soft.log
+$SIGNOFF_ROOT/soft.report"
+fi
+
+echo "
+LVS result:"
+tail -n 20 $LOG_ROOT/lvs.log | awk '/Final result/,/^END/' | grep -v ^Logging | grep -v "^END"
+if [[ $lvs_status -ne 0 ]]; then
+	echo "LVS problem: check the following files
+$LOG_ROOT/ext.log
+$LOG_ROOT/lvs.log
+$SIGNOFF_ROOT/lvs.report"
+fi
+
+if [[ -f $LOG_ROOT/cvc.log ]]; then
+	echo "
+CVC result:"
+	grep 'CVC: Total:' $LOG_ROOT/cvc.log
+fi
+
+if [[ $TOP_SOURCE == *user_*project_wrapper && $SKIP_OEB == no ]]; then
+	oeb_errors=$(grep -c ERROR $SIGNOFF_ROOT/cvc.oeb.report)
+	oeb_warnings=$(grep -c Warning $SIGNOFF_ROOT/cvc.oeb.report)
+	echo "
+OEB check result: ERRORS: $oeb_errors  Warnings: $oeb_warnings"
+fi
+
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "\nRuntime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds
+
+# If any of the checks had an error, set return code.
+# NOTE: ignores hierarchy check errors
+# NOTE: cvc_status and oeb_status ignored if not run
+if [[ $scheck_status -eq 0 && $lvs_status -eq 0 && ${cvc_status:=0} -eq 0 && ${oeb_status:=0} -eq 0 ]]; then
+	echo "
+No errors detected"
+	exit 0
+
+elif [[ $scheck_status -eq 0 && $lvs_status -eq 0 && ${cvc_status:=0} -eq 4 && ${oeb_status:=0} -eq 0 ]]; then
+	echo "
+WARNING: possible errors CVC $cvc_status"
+	exit 4
+
+elif [[ $SKIP_OEB == no ]]; then
+	echo "
+WARNING: possible errors SOFT $scheck_status LVS $lvs_status CVC $cvc_status OEB $oeb_status"
+	exit 1
+else
+	echo "
+WARNING: possible errors SOFT $scheck_status LVS $lvs_status CVC $cvc_status"
+	exit 1
+fi

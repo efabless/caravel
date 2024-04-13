@@ -1,0 +1,146 @@
+#! /usr/bin/env bash
+
+# Script to run a simplifed setup for CVC
+
+# Uses lvs_config to optionally extract a spice netlist
+# Requires a netlist $WORK_ROOT/ext/$DESIGN_NAME.gds.spice
+# Converts this netlist to $WORK_ROOT/ext/$DESIGN_NAME.cdl.gz
+
+#   Copyright 2023 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#  Set LVS parameters in lvs_config file or use environment
+
+# Use cases
+# run_cvc [--noextract] [lvs_config_file [top_layout [layout_file]]]
+
+if [[ $1 == "--noextract" ]]; then
+	export EXTRACT_LAYOUT=no
+	shift
+else
+	export EXTRACT_LAYOUT=yes
+fi
+
+usage="usage: run_cvc [--noextract] [lvs_config_file [top_layout [layout_file]]]]"
+if [[ $# -gt 3 ]]; then
+	echo $usage
+	exit 1
+fi
+
+# Check for LVS_ROOT
+if [[ -z "$LVS_ROOT" ]]; then
+	echo "LVS_ROOT not set."
+	exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then  # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "ERROR: LVS environment problem."
+	exit 1
+fi
+export TOP_LAYOUT=${2:-$TOP_LAYOUT}
+export LAYOUT_FILE=${3:-$LAYOUT_FILE}
+
+export DESIGN_NAME=$TOP_LAYOUT
+
+echo "DESIGN NAME: $DESIGN_NAME"
+
+echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/$DESIGN_NAME}"
+echo "LOG_ROOT    : ${LOG_ROOT:=$(pwd)/$DESIGN_NAME}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$(pwd)/$DESIGN_NAME}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+mkdir -p $LOG_ROOT $SIGNOFF_ROOT $WORK_ROOT
+
+rm -f $LOG_ROOT/cvc.log $SIGNOFF_ROOT/cvc.error.gz
+rm -f $WORK_ROOT/cvc.log $WORK_ROOT/cvc.error.gz
+
+export RESULTS_DIR=$WORK_ROOT/ext
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	env RUN_DIR=$RESULTS_DIR CIFIN_STYLE= EXTRACT_STYLE= LOG_FILE=ext.log $LVS_ROOT/run_extract
+	ext_status=$?
+fi
+
+echo " "
+echo "Running CVC..."
+
+# Create cdl file from extracted spice file if it doesn't exist
+if [[ ! -f $RESULTS_DIR/$DESIGN_NAME.cdl.gz || $RESULTS_DIR/$DESIGN_NAME.gds.spice -nt $RESULTS_DIR/$DESIGN_NAME.cdl.gz ]]; then
+	if [[ ! -f $RESULTS_DIR/$DESIGN_NAME.gds.spice ]]; then
+		echo "Could not create cdl file from $RESULTS_DIR/$DESIGN_NAME.gds.spice"
+		exit 2
+	else
+		echo "Creating $RESULTS_DIR/$DESIGN_NAME.cdl"
+		$LVS_ROOT/tech/$PDK/spi2cdl $RESULTS_DIR/$DESIGN_NAME.gds.spice |
+			gzip -c >$RESULTS_DIR/$DESIGN_NAME.cdl.gz
+	fi
+fi
+
+# Copy default power file to work area if it doesn't exist
+shopt -u nocasematch
+BASE_NAME=${DESIGN_NAME//[A-Z0-9][A-Z0-9]_}  # remove leading 2 byte prefices
+if [[ ! -f $WORK_ROOT/cvc.power.$DESIGN_NAME ]]; then
+	if [[ -f $LVS_ROOT/tech/$PDK/cvc.power.$BASE_NAME ]]; then
+		cp $LVS_ROOT/tech/$PDK/cvc.power.$BASE_NAME $WORK_ROOT/cvc.power.$DESIGN_NAME
+	else
+		echo "
+ERROR: Could not find $WORK_ROOT/cvc.power.$DESIGN_NAME"
+		exit 2
+	fi
+fi
+
+# Copy default configuration file
+if [[ ! -f $WORK_ROOT/cvcrc ]]; then
+	if [[ -f $LVS_ROOT/tech/$PDK/cvcrc ]]; then
+		cp $LVS_ROOT/tech/$PDK/cvcrc $WORK_ROOT/.
+	else
+		echo "
+ERROR: Could not file $WORK_ROOT/cvcrc"
+		exit 2
+	fi
+fi
+
+start_time=$SECONDS
+cvc_rv $WORK_ROOT/cvcrc
+cvc_status=$?
+
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "Runtime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds >>$WORK_ROOT/cvc.log
+
+if [[ $WORK_ROOT != $LOG_ROOT ]]; then
+	cp $WORK_ROOT/cvc.log $LOG_ROOT/.
+fi
+if [[ $WORK_ROOT != $SIGNOFF_ROOT ]]; then
+	cp $WORK_ROOT/cvc.error.gz $SIGNOFF_ROOT/.
+fi
+
+if [[ $cvc_status -eq 0 && $(grep -c '^CVC: End:' $WORK_ROOT/cvc.log) -ne 1 ]]; then
+	# CVC finished abnormally
+	exit 3
+
+elif [[ $cvc_status -eq 0 && $(awk '/^CVC: Total:/ {print $NF}' $WORK_ROOT/cvc.log) -gt 0 ]]; then
+	# CVC finished normally, but detected errors
+	exit 4
+
+else
+	exit $cvc_status
+fi

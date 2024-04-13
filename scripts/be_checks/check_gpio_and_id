@@ -1,0 +1,198 @@
+#! /usr/bin/env bash
+
+# check that default gpio configurations and id match expected values
+
+# After LVS at the caravel_core/caravan_core level, run verilog on the gate level netlist
+# to get the actual defaults for each gpio pad and the user id.
+# Compare these results to the original user specification.
+# Returns a non-zero return code is there is a mismatch or error.
+
+#   Copyright 2024 D. Mitch Bailey  efabless dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+# Return codes
+# 1: Missing environment variables: *_ROOT or PDK
+# 2: Missing files
+# 3: Mismatch between expected and actual
+
+# Use cases
+# Print only mismatches:        check_gpio_and_id 
+# Print matches and mismatches: check_gpio_and_id --verbose
+
+usage="usage: check_gpio_and_id [--verbose]"
+if [[ $# -gt 1 ]]; then
+	echo $usage
+	exit 1
+fi
+if [[ $# -eq 1 && $1 != "--verbose" ]]; then
+	echo $usage
+	exit 1
+fi
+
+# Check for *_ROOT directories
+if [[ -z "$LVS_ROOT" || -z "$PDK_ROOT" || -z "$CARAVEL_ROOT" || -z "$MCW_ROOT" || -z "$PRECHECK_RESULT_ROOT" || -z "$TAPEOUT_ROOT" ]]; then
+	echo "Missing at least one of LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, PRECHECK_RESULT_ROOT, TAPEOUT_ROOT."
+	exit 1
+fi
+
+# Check for PDK
+if [[ -z "$PDK" ]]; then
+	echo "PDK not set."
+	exit 1
+fi
+
+# 1. convert caravel_core/caravan_core verilog
+if [[ -f $TAPEOUT_ROOT/outputs/verilog/gl/caravel_core.v ]]; then
+	if [[ ! -f $LVS_ROOT/tech/$PDK/caravel_gpio_test.v ]]; then
+		echo "Could not find caravel_gpio_test.v in \$LVS_ROOT/tech/\$PDK($LVS_ROOT/tech/$PDK)"
+		exit 2
+	fi
+	if [[ ! -f $LVS_ROOT/tech/$PDK/caravel_core.v.sed ]]; then
+		echo "Could not find caravel_core.v.sed in \$LVS_ROOT/tech/\$PDK($LVS_ROOT/tech/$PDK)"
+		exit 2
+	fi
+	echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/work/caravel_core}"
+	mkdir -p $WORK_ROOT
+	sed -f $LVS_ROOT/tech/$PDK/caravel_core.v.sed $TAPEOUT_ROOT/outputs/verilog/gl/caravel_core.v > $WORK_ROOT/caravel_core.v
+	cat > $WORK_ROOT/verilog.includes <<-EOF
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+		$CARAVEL_ROOT/verilog/rtl/defines.v
+		$CARAVEL_ROOT/verilog/gl/caravel_clocking.v
+		$CARAVEL_ROOT/verilog/gl/caravel_logo.v
+		$CARAVEL_ROOT/verilog/gl/caravel_motto.v
+		$CARAVEL_ROOT/verilog/gl/constant_block.v
+		$CARAVEL_ROOT/verilog/gl/copyright_block.v
+		$CARAVEL_ROOT/verilog/gl/empty_macro.v
+		$CARAVEL_ROOT/verilog/gl/gpio_defaults_block.v
+		$CARAVEL_ROOT/verilog/gl/gpio_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/housekeeping.v
+		$CARAVEL_ROOT/verilog/gl/manual_power_connections.v
+		$CARAVEL_ROOT/verilog/gl/mgmt_protect.v
+		$CARAVEL_ROOT/verilog/gl/mgmt_protect_hv.v
+		$CARAVEL_ROOT/verilog/gl/mprj2_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/mprj_io_buffer.v
+		$CARAVEL_ROOT/verilog/gl/mprj_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/open_source.v
+		$CARAVEL_ROOT/verilog/gl/spare_logic_block.v
+		$CARAVEL_ROOT/verilog/gl/user_id_textblock.v
+		$CARAVEL_ROOT/verilog/gl/xres_buf.v
+		$CARAVEL_ROOT/verilog/rtl/simple_por.v
+		$MCW_ROOT/verilog/gl/RAM128.v
+		$LVS_ROOT/tech/$PDK/user_project_wrapper_dummy.v
+		$LVS_ROOT/tech/$PDK/caravel_gpio_test.v
+		$WORK_ROOT/caravel_core.v
+EOF
+
+elif [[ -f $TAPEOUT_ROOT/outputs/verilog/gl/caravan_core.v ]]; then
+	if [[ ! -f $LVS_ROOT/tech/$PDK/caravan_gpio_test.v ]]; then
+		echo "Could not find caravan_gpio_test.v in \$LVS_ROOT/tech/\$PDK($LVS_ROOT/tech/$PDK)"
+		exit 2
+	fi
+	if [[ ! -f $LVS_ROOT/tech/$PDK/caravan_core.v.sed ]]; then
+		echo "Could not find caravan_core.v.sed in \$LVS_ROOT/tech/\$PDK($LVS_ROOT/tech/$PDK)"
+		exit 2
+	fi
+	echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/work/caravan_core}"
+	mkdir -p $WORK_ROOT
+	sed -f $LVS_ROOT/tech/$PDK/caravan_core.v.sed $TAPEOUT_ROOT/outputs/verilog/gl/caravan_core.v > $WORK_ROOT/caravan_core.v
+	cat > $WORK_ROOT/verilog.includes <<-EOF
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+		$PDK_ROOT/$PDK/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+		$CARAVEL_ROOT/verilog/rtl/defines.v
+		$CARAVEL_ROOT/verilog/gl/caravan_signal_routing.v
+		$CARAVEL_ROOT/verilog/gl/caravel_clocking.v
+		$CARAVEL_ROOT/verilog/gl/caravel_logo.v
+		$CARAVEL_ROOT/verilog/gl/caravel_motto.v
+		$CARAVEL_ROOT/verilog/gl/constant_block.v
+		$CARAVEL_ROOT/verilog/gl/copyright_block.v
+		$CARAVEL_ROOT/verilog/gl/empty_macro.v
+		$CARAVEL_ROOT/verilog/gl/empty_macro_1.v
+		$CARAVEL_ROOT/verilog/gl/gpio_defaults_block.v
+		$CARAVEL_ROOT/verilog/gl/gpio_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/housekeeping_alt.v
+		$CARAVEL_ROOT/verilog/gl/manual_power_connections.v
+		$CARAVEL_ROOT/verilog/gl/mgmt_protect.v
+		$CARAVEL_ROOT/verilog/gl/mgmt_protect_hv.v
+		$CARAVEL_ROOT/verilog/gl/mprj2_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/mprj_io_buffer.v
+		$CARAVEL_ROOT/verilog/gl/mprj_logic_high.v
+		$CARAVEL_ROOT/verilog/gl/open_source.v
+		$CARAVEL_ROOT/verilog/gl/spare_logic_block.v
+		$CARAVEL_ROOT/verilog/gl/user_id_textblock.v
+		$CARAVEL_ROOT/verilog/gl/xres_buf.v
+		$CARAVEL_ROOT/verilog/rtl/simple_por.v
+		$MCW_ROOT/verilog/gl/RAM128.v
+		$LVS_ROOT/tech/$PDK/user_analog_project_wrapper_dummy.v
+		$LVS_ROOT/tech/$PDK/caravan_gpio_test.v
+		$WORK_ROOT/caravan_core.v
+EOF
+
+else
+	echo "Could not find caravel_core.v or caravan_core.v in $TAPEOUT_ROOT/outputs/verilog"
+	exit 2
+fi
+
+echo "LOG_ROOT    : ${LOG_ROOT:=$WORK_ROOT}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$WORK_ROOT}"
+
+echo "Compiling verilog..."
+iverilog \
+		-o $WORK_ROOT/gpio_test \
+		-s gpio_test \
+		-gno-specify \
+		-c $WORK_ROOT/verilog.includes \
+		-DUSE_POWER_PINS \
+		$TAPEOUT_ROOT/outputs/verilog/gl/gpio_defaults_block*.v \
+		$TAPEOUT_ROOT/outputs/verilog/gl/user_id_programming.v 2>&1 |
+	grep -v ': warning:'
+
+# 2. Create expected result
+if [[ ! -f $LVS_ROOT/tech/$PDK/expected_gpio ]]; then
+	echo "Could not find expected_gpio in \$LVS_ROOT/tech/\$PDK($LVS_ROOT/tech/$PDK)"
+	exit 2
+fi
+cp $LVS_ROOT/tech/$PDK/expected_gpio $WORK_ROOT/expected
+if [[ ! -f $PRECHECK_RESULT_ROOT/outputs/reports/gpio_defines.report ]]; then
+	echo "Could not find precheck defaults file $PRECHECK_RESULT_ROOT/outputs/reports/gpio_defines.report"
+	exit 2
+fi
+sed "s/[0-9]*'h//" $PRECHECK_RESULT_ROOT/outputs/reports/gpio_defines.report >> $WORK_ROOT/expected
+if [[ ! -f $TAPEOUT_ROOT/logs/set_user_id.log ]]; then
+	echo "Could not find set user id log $TAPEOUT_ROOT/logs/set_user_id.log"
+	exit 2
+fi
+grep 'Setting Project Chip ID' $TAPEOUT_ROOT/logs/set_user_id.log >> $WORK_ROOT/expected
+
+# 3. Run verilog
+echo "Running verilog..."
+vvp -n -l$WORK_ROOT/actual $WORK_ROOT/gpio_test > /dev/null
+
+# 4. Compare
+diff -w -y --suppress-common-lines $WORK_ROOT/expected $WORK_ROOT/actual > $WORK_ROOT/gpio_check.log
+if [[ $1 == "--verbose" ]]; then
+	diff -w -y $WORK_ROOT/expected $WORK_ROOT/actual 
+fi
+
+if [[ $( cat $WORK_ROOT/gpio_check.log | wc -l ) -ne 1 ]]; then
+	echo " "
+	cat $WORK_ROOT/gpio_check.log
+	exit 3
+else
+	exit 0
+fi

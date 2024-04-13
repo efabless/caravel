@@ -1,0 +1,38 @@
+{
+	"INCLUDE_CONFIGS": [
+		"$LVS_ROOT/tech/$PDK/lvs_config.chip_io.json",
+		"$LVS_ROOT/tech/$PDK/lvs_config.caravel_core.json"
+	],
+	"TOP_SOURCE": "caravel",
+	"TOP_LAYOUT": "$TOP_SOURCE",
+	"EXTRACT_FLATGLOB": [
+		""
+	],
+	"EXTRACT_ABSTRACT": [
+		""
+	],
+	"EXTRACT_CREATE_SUBCUT": [
+		"*user_project_wrapper"
+	],
+	"LVS_FLATTEN": [
+		""
+	],
+	"LVS_NOFLATTEN": [
+		""
+	],
+	"LVS_IGNORE": [
+		""
+	],
+	"LVS_SPICE_FILES": [
+		""
+	],
+	"LVS_VERILOG_FILES": [
+		"$CARAVEL_ROOT/verilog/gl/caravel_logo.v",
+		"$CARAVEL_ROOT/verilog/gl/caravel_motto.v",
+		"$CARAVEL_ROOT/verilog/gl/copyright_block.v",
+		"$CARAVEL_ROOT/verilog/gl/open_source.v",
+		"$CARAVEL_ROOT/verilog/gl/user_id_textblock.v",
+		"$CARAVEL_ROOT/verilog/gl/caravel.v"
+	],
+	"LAYOUT_FILE": "$UPRJ_ROOT/gds/caravel.gds"
+}
