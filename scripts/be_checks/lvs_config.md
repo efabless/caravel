@@ -6,6 +6,7 @@ Required variables:
 - **TOP_SOURCE** : Top source cell name.
 - **TOP_LAYOUT** : Top layout cell name.
 - **LAYOUT_FILE** : Layout gds data file. 
+- **LVS_SPICE_FILES_TO_FIX** : A list of spice files that work with mag extraction but need to be modified for gds extraction.
 - **LVS_SPICE_FILES** : A list of spice files.
 - **LVS_VERILOG_FILES** : A list of verilog files. Note: files with child modules should be listed before parent modules. Not needed for purely analog designs.
 

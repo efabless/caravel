@@ -71,7 +71,7 @@ if [[ $(echo $SOURCE_FILES | wc -w) -gt 0 ]]; then
 
 	sed '/^[ 	]*module[ 	].*[^ 	](/s/(/ (/' $(echo $SOURCE_FILES) |
 		awk -v top=$TOP_SOURCE '
-			$1 ~ /^\/\*/ {
+			$1 ~ /^\/\*/ { # skip block comments
 				while ( ! /\*\// ) {
 					getline;
 				}
@@ -80,16 +80,17 @@ if [[ $(echo $SOURCE_FILES | wc -w) -gt 0 ]]; then
 				if ( $2 in modules ) {
 					print "Duplicate module definition", $2 > "'$WORK_ROOT/hier.log'";
 				}
+				modules[$2] = 1;
 				if ( ! ( $2 in cells ) ) {
 					cells[$2] = 1;
 				}
 				module = $2;
 				next;
 			}
-			$1 ~ /^\/\// {
+			$1 ~ /^[ 	]*\/\// { # skip single line comments
 				next;
 			}
-			/ \(/ && ! /^[ 		]*\/\*/ {
+			/ \(/ && $1 !~ /^\./ {
 				key = module "/" $1;
 				if ( ! ( $1 in cells ) ) {
 					cells[$1] = 1;

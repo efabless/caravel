@@ -280,7 +280,7 @@ foreach cell { $ABSTRACT_CELLS } { ;# Set abstract cells and delete all their su
 			}
 		}
 		lef nocheck vssd1 vssd2 vccd1 vccd2 vssa1 vssa2 vdda1 vdda2
-		lef write \$cell -hide 10um -pinonly 10um
+		lef write \$cell -hide -pinonly
 	}
 }
 set current_time [orig_clock seconds]
