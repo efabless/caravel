@@ -174,7 +174,7 @@ See the :doc:`SPI controller description <spi>` for details.
         The enable should be applied prior to turning off the PLL bypass to allow the PLL time to stabilize before using it to drive the CPU clock.
     * - PLL DCO enable
       - ``0x08`` `bit 1`
-      - The PLL can be run in DCO mode, in which the feedback loop to the driving clock is removed, and the system operates in free-running mode, driven by the ring oscillator which can be tuned between approximately 90 to 200MHz by setting the trim bits (:ref:`check PLL trim <housekeeping_reg_pll_trim>`)
+      - The PLL can be run in DCO mode, in which the feedback loop to the driving clock is removed, and the system operates in free-running mode, driven by the ring oscillator which can be tuned between approximately 55 to 105MHz (@1.8V) by setting the trim bits (:ref:`check PLL trim <housekeeping_reg_pll_trim>`)
     * - PLL bypass
       - ``0x09`` `bit 0`
       - When enabled, the PLL bypass switches the clock source of the CPU from the PLL output to the external CMOS clock (pin ``C9``).
@@ -197,8 +197,8 @@ See the :doc:`SPI controller description <spi>` for details.
       - ``0x0D`` `(all bits)` to ``0x10`` `(lower two bits)`
       - The 26-bit trim value can adjust the DCO frequency over a factor of about two from the slowest (trim value ``0x3ffffff``) to the fastest (trim value ``0x0``).
         Default value is ``0x3ffefff`` (slow trim, ``-1``).
-        Note that this is a thermometer-code trim, where each bit provides an additional (approximately) 250ps delay (on top of a fixed delay of 4.67ns).
-        The fastest output frequency is approximately 215MHz while the slowest output frequency is approximately 90MHz.
+        Note that this is a thermometer-code trim, where each bit provides an additional (approximately) 333ps delay (on top of a fixed delay of 9.52ns).
+        The fastest output frequency is approximately 105MHz (@1.8V) while the slowest output frequency is approximately 55MHz (@1.8V).
     * - PLL output divider
       - ``0x11`` `bits 2-0`
       - The PLL output can be divided down by an integer divider to provide the core clock frequency.
@@ -211,6 +211,6 @@ See the :doc:`SPI controller description <spi>` for details.
     * - PLL feedback divider
       - ``0x12`` `bits 4-0`
       - The PLL operates by comparing the input clock (pin ``C9``) rate to the rate of the PLL clock divided by the feedback divider value (when running in PLL mode, not DCO mode).
-        The feedback divider must be set such that the external clock rate multiplied by the feedback divider value falls between 90 and 214 MHz (preferably centered on this range, or approximately 150 MHz).
-        For example, when using an 8 MHz external clock, the divider should be set to 19 (``19 * 8 = 152``).
-        The DCO range and the number of bits of the feedback divider implies that the external clock should be no slower than around 4 to 5 MHz.
+        The feedback divider must be set such that the external clock rate multiplied by the feedback divider value falls between 55 and 105MHz (@1.8V) (preferably centered on this range: 80MHz @1.8V).
+        For example, when using an 8 MHz external clock, the divider should be set to 10 (``10 * 8 = 80``).
+        The DCO range and the number of bits of the feedback divider implies that the external clock should be no slower than around 2MHz.
