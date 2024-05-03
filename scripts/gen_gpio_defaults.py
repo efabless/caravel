@@ -152,8 +152,10 @@ if __name__ == '__main__':
 
     if os.path.isfile(user_defines_path):
         with open(user_defines_path, 'r') as ifile:
-            infolines = ifile.read().splitlines()
-            for line in infolines:
+            raw_data = ifile.read()
+            comment_pattern = r'//.*|/\*[\s\S]*?\*/'
+            data_without_comments = re.sub(comment_pattern, '', raw_data)
+            for line in data_without_comments.splitlines():
                 tokens = line.split()
                 if len(tokens) >= 3:
                     if tokens[0] == '`define':
