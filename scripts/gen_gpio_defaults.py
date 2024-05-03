@@ -152,8 +152,10 @@ if __name__ == '__main__':
 
     if os.path.isfile(user_defines_path):
         with open(user_defines_path, 'r') as ifile:
-            infolines = ifile.read().splitlines()
-            for line in infolines:
+            raw_data = ifile.read()
+            comment_pattern = r'//.*|/\*[\s\S]*?\*/'
+            data_without_comments = re.sub(comment_pattern, '', raw_data)
+            for line in data_without_comments.splitlines():
                 tokens = line.split()
                 if len(tokens) >= 3:
                     if tokens[0] == '`define':
@@ -219,14 +221,24 @@ if __name__ == '__main__':
             print('No configuration specified for GPIO ' + str(i) + '; skipping.')
             continue
 
+        valid_value = r"^13'h[0-9a-fA-F]{4}$"
+        value_match = re.match(valid_value, config_value)
+        if not value_match:
+            print('Error:  Default value ' + config_value + ' is not a 4-digit hex number; skipping')
+            continue
+
         try:
             default_str = config_value[-4:]
             binval = '{:013b}'.format(int(default_str, 16))
+            if len(binval) > 13:
+                print('Error:  Default value ' + config_value + ' is not a 4-digit hex number; skipping')
+                continue
+
         except:
             print('Error:  Default value ' + config_value + ' is not a 4-digit hex number; skipping')
             continue
 
-        cell_name = 'gpio_defaults_block_' + default_str
+        cell_name = 'gpio_defaults_block_' + default_str.lower()
         mag_file = magpath + '/' + cell_name + '.mag'
         cellsused[i] = cell_name
 
