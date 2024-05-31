@@ -1,0 +1,65 @@
+{
+	"STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+	"INCLUDE_CONFIGS": [
+		"$LVS_ROOT/tech/$PDK/lvs_config.base.json"
+	],
+	"TOP_SOURCE": "chip_io",
+	"TOP_LAYOUT": "$TOP_SOURCE",
+	"EXTRACT_FLATGLOB": [
+		"*sky130_fd_pr__*example*",
+		"*sky130_ef_io__com*",
+		"*sky130_ef_io__connect*",
+		"*sky130_ef_io__corner*",
+		"*sky130_ef_io__gpiov2_pad",
+		"*sky130_ef_io__*_overlay",
+		"*sky130_fd_io__amux*",
+		"*sky130_fd_io__amx_inv1",
+		"*sky130_fd_io__com*",
+		"*sky130_fd_io__corner*",
+		"*sky130_fd_io__esd*",
+		"*sky130_fd_io__feas*",
+		"*sky130_fd_io__gpio*",
+		"*sky130_fd_io__gnd2gnd*",
+		"*sky130_fd_io__hvc*",
+		"*sky130_fd_io__hvsbt*",
+		"*sky130_fd_io__inv*",
+		"*sky130_fd_io__nand*",
+		"*sky130_fd_io__nfet_con*",
+		"*sky130_fd_io__nor*",
+		"*sky130_fd_io__overlay*",
+		"*sky130_fd_io__pad_esd",
+		"*sky130_fd_io__pfet_con*",
+		"*sky130_fd_io__res250*",
+		"*sky130_fd_io__res75*",
+		"*sky130_fd_io__signal*",
+		"*sky130_fd_io__sio*",
+		"*sky130_fd_io__simple_pad_*",
+		"*sky130_fd_io__tap*",
+		"*sky130_fd_io__tk_tie*",
+		"*sky130_fd_io__top_gpio*",
+		"*sky130_fd_io__top_ground*",
+		"*sky130_fd_io__top_power*",
+		"*sky130_fd_io__xor*",
+		"*sky130_fd_io__xres*"
+	],
+	"EXTRACT_ABSTRACT": [
+		""
+	],
+	"LVS_FLATTEN": [
+		""
+	],
+	"LVS_NOFLATTEN": [
+		""
+	],
+	"LVS_IGNORE": [
+		""
+	],
+	"LVS_SPICE_FILES": [
+		"$PDK_ROOT/$PDK/libs.ref/sky130_fd_io/spice/*.spice"
+	],
+	"LVS_VERILOG_FILES": [
+		"$CARAVEL_ROOT/verilog/gl/constant_block.v",
+		"$CARAVEL_ROOT/verilog/gl/chip_io.v"
+	],
+	"LAYOUT_FILE": "$UPRJ_ROOT/gds/caravel.gds"
+}
