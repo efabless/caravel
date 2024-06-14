@@ -33,7 +33,7 @@ management SoC core, and an approximately 3000um x 3600um open project area for 
       Caravel floorplan
 
 This documentation focuses on the IO, protection and housekeeping blocks. 
-The management core SoC has its own [documentation here](https://caravel-mgmt-soc-litex.readthedocs.io/en/latest/)
+The management core SoC has its own `documentation here <https://caravel-mgmt-soc-litex.readthedocs.io/en/latest/>`_.
 
 The Caravel Github repository can be found here: https://github.com/efabless/caravel/
 
