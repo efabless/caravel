@@ -104,6 +104,7 @@ OPEN_PDKS_COMMIT ?= 12df12e2e74145e31c5a13de02f9a1e176b56e67
 PDK_MAGIC_COMMIT ?= 085131b090cb511d785baf52a10cf6df8a657d44
 # = 8.3.294
 LVS_ROOT = $(CARAVEL_ROOT)/scripts/be_checks
+export LVS_ROOT
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
