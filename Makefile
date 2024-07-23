@@ -80,6 +80,7 @@ CARAVEL_ROOT ?= $(shell pwd)
 
 # User project root
 UPRJ_ROOT ?= $(shell pwd)
+PRECHECK_RESULT_ROOT ?= $(shell pwd)/mpw_precheck
 
 # MANAGEMENT AREA ROOT
 MGMT_AREA_ROOT ?= $(shell pwd)/mgmt_core_wrapper 
@@ -102,6 +103,8 @@ OPEN_PDKS_COMMIT ?= 12df12e2e74145e31c5a13de02f9a1e176b56e67
 # = 1.0.303
 PDK_MAGIC_COMMIT ?= 085131b090cb511d785baf52a10cf6df8a657d44
 # = 8.3.294
+LVS_ROOT = $(CARAVEL_ROOT)/scripts/be_checks
+export LVS_ROOT
 
 .DEFAULT_GOAL := ship
 # We need portable GDS_FILE pointers...
@@ -151,6 +154,36 @@ __ship:
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_ship.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravel.tcl
 
+# Check LVS setup
+.PHONY: check-lvs-setup
+check-lvs-setup:
+	@if [ -z "$(LVS_ROOT)" ]; then echo "Please set LVS_ROOT"; exit 1; fi
+	@if [ -z "$(PDK_ROOT)" ]; then echo "Please set PDK_ROOT"; exit 1; fi
+	@if [ -z "$(CARAVEL_ROOT)" ]; then echo "Please set CARAVEL_ROOT"; exit 1; fi
+	@if [ -z "$(MCW_ROOT)" ]; then echo "Please set MCW_ROOT"; exit 1; fi
+	@if [ -z "$(UPRJ_ROOT)" ]; then echo "Please set UPRJ_ROOT"; exit 1; fi
+	@if [ -z "$(TAPEOUT_ROOT)" ]; then echo "Please set TAPEOUT_ROOT"; exit 1; fi
+	@if [ -z "$(PRECHECK_RESULT_ROOT)" ]; then echo "Please set PRECHECK_RESULT_ROOT"; exit 1; fi
+	@echo -e "\n\
+LVS setup\n\
+LVS_ROOT: $(LVS_ROOT)\n\
+PDK_ROOT: $(PDK_ROOT)\n\
+CARAVEL_ROOT: $(CARAVEL_ROOT)\n\
+MCW_ROOT: $(MCW_ROOT)\n\
+UPRJ_ROOT: $(UPRJ_ROOT)\n\
+TAPEOUT_ROOT: $(TAPEOUT_ROOT)\n\
+PRECHECK_RESULT_ROOT: $(PRECHECK_RESULT_ROOT)\n\
+WORK_ROOT: $(WORK_ROOT)\n\
+"
+
+# Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
+.PHONY: ship-lvs
+ship-lvs: check-lvs-setup
+	mkdir -p $(UPRJ_ROOT)/signoff/build
+	$(eval LAYOUT := $(shell /foss/tools/sak/klayout/gdsAllcells.rb $(UPRJ_ROOT)/gds/caravel.gds | grep caravel_core))
+	$(LVS_ROOT)/run_be_checks $(LVS_ROOT)/tech/$(PDK)/lvs_config.caravel_core-upw.json caravel_core $(LAYOUT) $(UPRJ_ROOT)/gds/caravel.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$(LVS_ROOT)/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
+
 truck: check-env uncompress uncompress-caravel
 ifeq ($(FOREGROUND),1)
 	@echo "Running make truck in the foreground..."
@@ -199,6 +232,14 @@ __truck:
 	#@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ${PDK_ROOT}/$(PDK)/libs.tech/magic/$(PDK).magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 	@cd $(CARAVEL_ROOT)/mag && PDKPATH=${PDK_ROOT}/$(PDK) MAGTYPE=mag magic -noc -dnull -rcfile ./.magicrc $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl 2>&1 | tee $(UPRJ_ROOT)/signoff/build/make_truck.out
 ###	@rm $(UPRJ_ROOT)/mag/mag2gds_caravan.tcl
+
+# Requires LVS_ROOT, PDK_ROOT, CARAVEL_ROOT, MCW_ROOT, UPRJ_ROOT, TAPEOUT_ROOT, PRECHECK_RESULT_ROOT
+.PHONY: truck-lvs
+truck-lvs: check-lvs-setup
+	mkdir -p $(UPRJ_ROOT)/signoff/build
+	$(eval LAYOUT := $(shell /foss/tools/sak/klayout/gdsAllcells.rb $(UPRJ_ROOT)/gds/caravan.gds | grep caravan_core))
+	$(LVS_ROOT)/run_be_checks $(LVS_ROOT)/tech/$(PDK)/lvs_config.caravan_core-upw.json caravan_core $(LAYOUT) $(UPRJ_ROOT)/gds/caravan.gds > $(UPRJ_ROOT)/signoff/build/extra_be_check.log 2>&1
+	$(LVS_ROOT)/check_gpio_and_id > $(UPRJ_ROOT)/signoff/build/gpio_check.log 2>&1
 
 .PHONY: openframe
 openframe: check-env uncompress uncompress-caravel

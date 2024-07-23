@@ -1,0 +1,617 @@
+#! /usr/bin/env bash
+
+# check that the oeb pin is low/high based on io_in and io_out connections
+
+# Uses lvs_config to optionally extract a spice netlist
+# Requires a netlist $WORK_ROOT/ext/$DESIGN_NAME.gds.spice
+# Converts this netlist to $WORK_ROOT/ext/$DESIGN_NAME.cdl.gz
+
+#   Copyright 2023 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+# Parameters are read from $WORK_ROOT/cvcrc.oeb which is copied from the default in $LVS_ROOT if non-existent.
+
+# Return codes
+# 1: LVS_ROOT not set
+# 2: Missing file
+# 3: Unrecognized block name
+# 4: CVC execution error
+# 5: OEB related error
+# 6: OEB related warning
+
+# Use cases
+# run_oeb_check [--noextract] [lvs_config_file [top_layout [layout_file]]]
+
+if [[ $1 == "--noextract" ]]; then
+	export EXTRACT_LAYOUT=no
+	shift
+else
+	export EXTRACT_LAYOUT=yes
+fi
+
+usage="usage: run_oeb_check [--noextract] [lvs_config_file [top_layout [layout_file]]]]"
+if [[ $# -gt 3 ]]; then
+	echo $usage
+	exit 1
+fi
+
+# Check for LVS_ROOT
+if [[ -z "$LVS_ROOT" ]]; then
+	echo "LVS_ROOT not set."
+	exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then  # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "ERROR: LVS environment problem."
+	exit 1
+fi
+export TOP_LAYOUT=${2:-$TOP_LAYOUT}
+export LAYOUT_FILE=${3:-$LAYOUT_FILE}
+
+export DESIGN_NAME=$TOP_LAYOUT
+
+echo "DESIGN NAME: $DESIGN_NAME"
+
+echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/$DESIGN_NAME}"
+echo "LOG_ROOT    : ${LOG_ROOT:=$(pwd)/$DESIGN_NAME}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$(pwd)/$DESIGN_NAME}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+mkdir -p $LOG_ROOT $SIGNOFF_ROOT $WORK_ROOT
+export RESULTS_DIR=$WORK_ROOT/ext
+
+rm -f $WORK_ROOT/cvc.oeb* $LOG_ROOT/cvc.oeb* $SIGNOFF_ROOT/cvc.oeb*
+
+export RESULTS_DIR=$WORK_ROOT/ext
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	env RUN_DIR=$RESULTS_DIR CIFIN_STYLE= EXTRACT_STYLE= LOG_FILE=ext.log $LVS_ROOT/run_extract
+	ext_status=$?
+fi
+
+echo " "
+echo "Running CVC for oeb check..."
+
+# Create cdl file from extracted spice file if it doesn't exist
+if [[ ! -f $RESULTS_DIR/$DESIGN_NAME.cdl.gz || $RESULTS_DIR/$DESIGN_NAME.gds.spice -nt $RESULTS_DIR/$DESIGN_NAME.cdl.gz ]]; then
+	if [[ ! -f $RESULTS_DIR/$DESIGN_NAME.gds.spice ]]; then
+		echo "Could not create cdl file from $RESULTS_DIR/$DESIGN_NAME.gds.spice"
+		exit 2
+	else
+		echo "Creating $RESULTS_DIR/$DESIGN_NAME.cdl"
+		$LVS_ROOT/tech/$PDK/spi2cdl $RESULTS_DIR/$DESIGN_NAME.gds.spice |
+			gzip -c >$RESULTS_DIR/$DESIGN_NAME.cdl.gz
+	fi
+fi
+
+# Copy default power file to work area if it doesn't exist
+shopt -u nocasematch
+BASE_NAME=${DESIGN_NAME//[A-Z0-9][A-Z0-9]_}  # remove leading 2 byte prefices
+if [[ ! -f $WORK_ROOT/cvc.power.$DESIGN_NAME ]]; then
+	if [[ -f $LVS_ROOT/tech/$PDK/cvc.power.$BASE_NAME ]]; then
+		cp $LVS_ROOT/tech/$PDK/cvc.power.$BASE_NAME $WORK_ROOT/cvc.power.$DESIGN_NAME
+	else
+		echo "
+ERROR: Could not find $WORK_ROOT/cvc.power.$DESIGN_NAME"
+		exit 2
+	fi
+fi
+
+if [[ ! -f $WORK_ROOT/cvcrc.oeb ]]; then
+	if [[ ! -f $WORK_ROOT/cvcrc ]]; then
+		if [[ -f $LVS_ROOT/tech/$PDK/cvcrc ]]; then
+			cp $LVS_ROOT/tech/$PDK/cvcrc $WORK_ROOT/cvcrc
+		else
+			echo "
+ERROR: Could not create $WORK_ROOT/cvcrc.oeb"
+			exit 2
+		fi
+	fi
+	sed 's/cvc.log/cvc.oeb.log/' $WORK_ROOT/cvcrc >$WORK_ROOT/cvcrc.oeb
+fi
+
+if [[ $DESIGN_NAME == *user_analog_project_wrapper ]]; then
+	cat >$WORK_ROOT/cvc.oeb.script <<-cvcin
+		c 6
+		gn io_in[0]
+		gn io_in[1]
+		gn io_in[2]
+		gn io_in[3]
+		gn io_in[4]
+		gn io_in[5]
+		gn io_in[6]
+		gn io_in[7]
+		gn io_in[8]
+		gn io_in[9]
+		gn io_in[10]
+		gn io_in[11]
+		gn io_in[12]
+		gn io_in[13]
+		gn io_in[14]
+		gn io_in[15]
+		gn io_in[16]
+		gn io_in[17]
+		gn io_in[18]
+		gn io_in[19]
+		gn io_in[20]
+		gn io_in[21]
+		gn io_in[22]
+		gn io_in[23]
+		gn io_in[24]
+		gn io_in[25]
+		gn io_in[26]
+		gn io_in_3v3[0]
+		gn io_in_3v3[1]
+		gn io_in_3v3[2]
+		gn io_in_3v3[3]
+		gn io_in_3v3[4]
+		gn io_in_3v3[5]
+		gn io_in_3v3[6]
+		gn io_in_3v3[7]
+		gn io_in_3v3[8]
+		gn io_in_3v3[9]
+		gn io_in_3v3[10]
+		gn io_in_3v3[11]
+		gn io_in_3v3[12]
+		gn io_in_3v3[13]
+		gn io_in_3v3[14]
+		gn io_in_3v3[15]
+		gn io_in_3v3[16]
+		gn io_in_3v3[17]
+		gn io_in_3v3[18]
+		gn io_in_3v3[19]
+		gn io_in_3v3[20]
+		gn io_in_3v3[21]
+		gn io_in_3v3[22]
+		gn io_in_3v3[23]
+		gn io_in_3v3[24]
+		gn io_in_3v3[25]
+		gn io_in_3v3[26]
+		gn io_out[0]
+		gn io_out[1]
+		gn io_out[2]
+		gn io_out[3]
+		gn io_out[4]
+		gn io_out[5]
+		gn io_out[6]
+		gn io_out[7]
+		gn io_out[8]
+		gn io_out[9]
+		gn io_out[10]
+		gn io_out[11]
+		gn io_out[12]
+		gn io_out[13]
+		gn io_out[14]
+		gn io_out[15]
+		gn io_out[16]
+		gn io_out[17]
+		gn io_out[18]
+		gn io_out[19]
+		gn io_out[20]
+		gn io_out[21]
+		gn io_out[22]
+		gn io_out[23]
+		gn io_out[24]
+		gn io_out[25]
+		gn io_out[26]
+		gn io_oeb[0]
+		gn io_oeb[1]
+		gn io_oeb[2]
+		gn io_oeb[3]
+		gn io_oeb[4]
+		gn io_oeb[5]
+		gn io_oeb[6]
+		gn io_oeb[7]
+		gn io_oeb[8]
+		gn io_oeb[9]
+		gn io_oeb[10]
+		gn io_oeb[11]
+		gn io_oeb[12]
+		gn io_oeb[13]
+		gn io_oeb[14]
+		gn io_oeb[15]
+		gn io_oeb[16]
+		gn io_oeb[17]
+		gn io_oeb[18]
+		gn io_oeb[19]
+		gn io_oeb[20]
+		gn io_oeb[21]
+		gn io_oeb[22]
+		gn io_oeb[23]
+		gn io_oeb[24]
+		gn io_oeb[25]
+		gn io_oeb[26]
+		gn gpio_analog[0]
+		gn gpio_analog[1]
+		gn gpio_analog[2]
+		gn gpio_analog[3]
+		gn gpio_analog[4]
+		gn gpio_analog[5]
+		gn gpio_analog[6]
+		gn gpio_analog[7]
+		gn gpio_analog[8]
+		gn gpio_analog[9]
+		gn gpio_analog[10]
+		gn gpio_analog[11]
+		gn gpio_analog[12]
+		gn gpio_analog[13]
+		gn gpio_analog[14]
+		gn gpio_analog[15]
+		gn gpio_analog[16]
+		gn gpio_analog[17]
+		gn gpio_noesd[0]
+		gn gpio_noesd[1]
+		gn gpio_noesd[2]
+		gn gpio_noesd[3]
+		gn gpio_noesd[4]
+		gn gpio_noesd[5]
+		gn gpio_noesd[6]
+		gn gpio_noesd[7]
+		gn gpio_noesd[8]
+		gn gpio_noesd[9]
+		gn gpio_noesd[10]
+		gn gpio_noesd[11]
+		gn gpio_noesd[12]
+		gn gpio_noesd[13]
+		gn gpio_noesd[14]
+		gn gpio_noesd[15]
+		gn gpio_noesd[16]
+		gn gpio_noesd[17]
+		q
+	cvcin
+elif [[ $DESIGN_NAME == *user_project_wrapper ]]; then
+	cat >$WORK_ROOT/cvc.oeb.script <<-cvcin
+		c 6
+		gn io_in[0]
+		gn io_in[1]
+		gn io_in[2]
+		gn io_in[3]
+		gn io_in[4]
+		gn io_in[5]
+		gn io_in[6]
+		gn io_in[7]
+		gn io_in[8]
+		gn io_in[9]
+		gn io_in[10]
+		gn io_in[11]
+		gn io_in[12]
+		gn io_in[13]
+		gn io_in[14]
+		gn io_in[15]
+		gn io_in[16]
+		gn io_in[17]
+		gn io_in[18]
+		gn io_in[19]
+		gn io_in[20]
+		gn io_in[21]
+		gn io_in[22]
+		gn io_in[23]
+		gn io_in[24]
+		gn io_in[25]
+		gn io_in[26]
+		gn io_in[27]
+		gn io_in[28]
+		gn io_in[29]
+		gn io_in[30]
+		gn io_in[31]
+		gn io_in[32]
+		gn io_in[33]
+		gn io_in[34]
+		gn io_in[35]
+		gn io_in[36]
+		gn io_in[37]
+		gn io_out[0]
+		gn io_out[1]
+		gn io_out[2]
+		gn io_out[3]
+		gn io_out[4]
+		gn io_out[5]
+		gn io_out[6]
+		gn io_out[7]
+		gn io_out[8]
+		gn io_out[9]
+		gn io_out[10]
+		gn io_out[11]
+		gn io_out[12]
+		gn io_out[13]
+		gn io_out[14]
+		gn io_out[15]
+		gn io_out[16]
+		gn io_out[17]
+		gn io_out[18]
+		gn io_out[19]
+		gn io_out[20]
+		gn io_out[21]
+		gn io_out[22]
+		gn io_out[23]
+		gn io_out[24]
+		gn io_out[25]
+		gn io_out[26]
+		gn io_out[27]
+		gn io_out[28]
+		gn io_out[29]
+		gn io_out[30]
+		gn io_out[31]
+		gn io_out[32]
+		gn io_out[33]
+		gn io_out[34]
+		gn io_out[35]
+		gn io_out[36]
+		gn io_out[37]
+		gn io_oeb[0]
+		gn io_oeb[1]
+		gn io_oeb[2]
+		gn io_oeb[3]
+		gn io_oeb[4]
+		gn io_oeb[5]
+		gn io_oeb[6]
+		gn io_oeb[7]
+		gn io_oeb[8]
+		gn io_oeb[9]
+		gn io_oeb[10]
+		gn io_oeb[11]
+		gn io_oeb[12]
+		gn io_oeb[13]
+		gn io_oeb[14]
+		gn io_oeb[15]
+		gn io_oeb[16]
+		gn io_oeb[17]
+		gn io_oeb[18]
+		gn io_oeb[19]
+		gn io_oeb[20]
+		gn io_oeb[21]
+		gn io_oeb[22]
+		gn io_oeb[23]
+		gn io_oeb[24]
+		gn io_oeb[25]
+		gn io_oeb[26]
+		gn io_oeb[27]
+		gn io_oeb[28]
+		gn io_oeb[29]
+		gn io_oeb[30]
+		gn io_oeb[31]
+		gn io_oeb[32]
+		gn io_oeb[33]
+		gn io_oeb[34]
+		gn io_oeb[35]
+		gn io_oeb[36]
+		gn io_oeb[37]
+		gn io_in[0]
+		gn io_in[1]
+		gn io_in[2]
+		gn io_in[3]
+		gn io_in[4]
+		gn io_in[5]
+		gn io_in[6]
+		gn io_in[7]
+		gn io_in[8]
+		gn io_in[9]
+		gn io_in[10]
+		gn io_in[11]
+		gn io_in[12]
+		gn io_in[13]
+		gn io_in[14]
+		gn io_in[15]
+		gn io_in[16]
+		gn io_in[17]
+		gn io_in[18]
+		gn io_in[19]
+		gn io_in[20]
+		gn io_in[21]
+		gn io_in[22]
+		gn io_in[23]
+		gn io_in[24]
+		gn io_in[25]
+		gn io_in[26]
+		gn io_in[27]
+		gn io_in[28]
+		gn io_in[29]
+		gn io_in[30]
+		gn io_in[31]
+		gn io_in[32]
+		gn io_in[33]
+		gn io_in[34]
+		gn io_in[35]
+		gn io_in[36]
+		gn io_in[37]
+		gn analog_io[0]
+		gn analog_io[1]
+		gn analog_io[2]
+		gn analog_io[3]
+		gn analog_io[4]
+		gn analog_io[5]
+		gn analog_io[6]
+		gn analog_io[7]
+		gn analog_io[8]
+		gn analog_io[9]
+		gn analog_io[10]
+		gn analog_io[11]
+		gn analog_io[12]
+		gn analog_io[13]
+		gn analog_io[14]
+		gn analog_io[15]
+		gn analog_io[16]
+		gn analog_io[17]
+		gn analog_io[18]
+		gn analog_io[19]
+		gn analog_io[20]
+		gn analog_io[21]
+		gn analog_io[22]
+		gn analog_io[23]
+		gn analog_io[24]
+		gn analog_io[25]
+		gn analog_io[26]
+		gn analog_io[27]
+		gn analog_io[28]
+		q
+	cvcin
+else
+	echo "ERROR: unrecognized top block $DESIGN_NAME"
+	exit 3
+fi
+
+start_time=$SECONDS
+cvc_rv -i $WORK_ROOT/cvcrc.oeb <$WORK_ROOT/cvc.oeb.script
+
+cvc_status=$?
+
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "Runtime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds >>$WORK_ROOT/cvc.oeb.log
+
+if [[ $WORK_ROOT != $LOG_ROOT ]]; then
+	cp $WORK_ROOT/cvc.oeb.log $LOG_ROOT/.
+fi
+
+awk '
+	/^> gn io_in/ {
+		net = gensub(/.*\[([0-9]*)\]/, "\\1", 1);
+		getline;
+		getline;
+		in_connections[net] += $3 + $5 + $7;
+	}
+	/^> gn analog_io/ {
+		net = gensub(/.*\[([0-9]*)\]/, "\\1", 1);
+		getline;
+		getline;
+		analog_connections[net+7] += $3 + $5 + $7;
+	}
+	/^> gn gpio_analog/ || /^> gn gpio_noesd/ {
+		net = gensub(/.*\[([0-9]*)\]/, "\\1", 1);
+		getline;
+		getline;
+		analog_connections[net+7] += $3 + $5 + $7;
+	}
+	/^> gn io_out/ {
+		net = gensub(/.*\[([0-9]*)\]/, "\\1", 1);
+		getline;
+		getline;
+		out_connections[net] = $3 + $5 + $7;
+		# 2 blank lines mark the end of a segment
+		while ( NF > 0 ) {
+			if ( /^Min path/ ) {
+				while ( NF > 0 ) {
+					out_min[net] = $1;
+					getline;
+				}
+			} else if ( /^Sim path/ ) {
+				while ( NF > 0 ) {
+					out_sim[net] = $1;
+					getline;
+				}
+			} else if ( /^Max path/ ) {
+				while ( NF > 0 ) {
+					out_max[net] = $1;
+					getline;
+				}
+			} else {
+				while ( NF > 0 ) {
+					getline;
+				}
+			}
+			getline;
+		}
+		if ( out_min[net] == out_sim[net] && out_sim[net] == out_max[net] ) {
+			fixed[net] = out_sim[net];
+		}
+	}
+	/^> gn io_oeb/ {
+		net = gensub(/.*\[([0-9]*)\]/, "\\1", 1);
+		getline;
+		getline;
+		oeb_connections[net] = $3 + $5 + $7;
+		# 2 blank lines mark the end of a segment
+		while ( NF > 0 ) {
+			if ( /^Min path/ ) {
+				while ( NF > 0 ) {
+					oeb_min[net] = $1;
+					getline;
+				}
+			} else if ( /^Sim path/ ) {
+				while ( NF > 0 ) {
+					oeb_sim[net] = $1;
+					getline;
+				}
+			} else if ( /^Max path/ ) {
+				while ( NF > 0 ) {
+					oeb_max[net] = $1;
+					getline;
+				}
+			} else {
+				while ( NF > 0 ) {
+					getline;
+				}
+			}
+			getline;
+		}
+	}
+	END {
+		#print "oeb connections:", length(oeb_connections);
+		print " gpio |   in   |   out  | analog |  oeb min/sim/max  | Message";
+		     #"  xx  | xxxxxx | xxxxxx | xxxxxx | vxxx*/vxxx*/vxxx* |
+		for ( i in oeb_connections ) {
+			printf "  %2d  | %6s | %6s | %6s | %5s/%5s/%5s | ", \
+				i, (in_connections[i] == 0) ? "" : sprintf("%6d", in_connections[i]), \
+				(out_connections[i] == 0) ? "" :
+					(i in fixed) ? fixed[i] : sprintf("%6d", out_connections[i]), \
+				(analog_connections[i] == 0) ? "" : sprintf("%6d", analog_connections[i]), \
+				oeb_min[i], oeb_sim[i], oeb_max[i];
+			if ( analog_connections[i] > 0 ) {
+				if ( in_connections[i] > 0 || (out_connections[i] > 0 && ! (i in fixed)) ) {  # both digital and analog
+					printf "Warning: both analog and digital connections";
+				} else if ( ! ( oeb_sim[i] ~ /vccd/ || oeb_sim[i] ~ /vdd/ ) ) {  # analog signals should disable output
+					printf "Warning: oeb expected high for analog";
+				}
+			} else if ( in_connections[i] > 0 && out_connections[i] == 0 ) {
+				if ( ! ( oeb_sim[i] ~ /vccd/ || oeb_sim[i] ~ /vdd/ ) ) {  # input only signals should never enable output
+					printf "Warning: oeb expected high for input only";
+				}
+			} else if ( out_connections[i] > 0 && ! (i in fixed) ) {
+				if ( oeb_min[i] !~ /vss/ ) {  # output signals must be enable-able
+					printf "ERROR: oeb must have possible low for output";
+				} else if ( in_connections[i] > 0 && oeb_sim[i] ~ /vss/ ) {  # input is always driven by user output in user mode
+					printf "Warning: output always drives input. sky130: OK for pull up/down.";
+				}
+			}
+			printf "\n";
+		}
+	}' $LOG_ROOT/cvc.oeb.log |
+	tee $WORK_ROOT/cvc.oeb.report
+
+if [[ $WORK_ROOT != $SIGNOFF_ROOT ]]; then
+	cp $WORK_ROOT/cvc.oeb.report $SIGNOFF_ROOT/cvc.oeb.report
+fi
+
+if [[ $cvc_status -eq 0 && $(grep -c '^CVC: End:' $LOG_ROOT/cvc.oeb.log) -ne 1 ]]; then
+	# CVC finished abnormally
+	exit 4
+
+elif [[ $cvc_status -eq 0 && $(grep -c ERROR $SIGNOFF_ROOT/cvc.oeb.report) -gt 0 ]]; then
+	# CVC finished normally, but detected errors
+	exit 5
+
+elif [[ $cvc_status -eq 0 && $(grep -c Warning $SIGNOFF_ROOT/cvc.oeb.report) -gt 0 ]]; then
+	# CVC finished normally, but detected warings
+	exit 6
+
+else
+	exit $cvc_status
+fi
