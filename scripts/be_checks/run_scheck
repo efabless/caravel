@@ -1,0 +1,206 @@
+#! /bin/bash
+#   run_scheck: Detect well only connections in GDS file.
+
+#   Copyright 2022 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+# Overview:
+#  1. Extract gds_file with well connectivity.
+#  2. Remove well connections and disconnected nets.
+#  3. Extract gds_file without well connectivity.
+#  4. Remove disconnected nets.
+#  5. Compare
+#
+
+
+# Use cases
+# run_scheck [--noextract] [lvs_config_file [top_block [gds_file]]]
+
+if [[ $1 == "--noextract" ]]; then
+	export EXTRACT_LAYOUT=no
+	shift
+else
+	export EXTRACT_LAYOUT=yes
+fi
+
+if [[ $# -gt 3 ]]; then
+	echo "usage: run_scheck [--noextract] [lvs_config_file [top_block [gds_file]]]"
+	exit 1
+fi
+
+echo " "
+echo "Running soft connection check on layout..."
+
+# Check for PDK_ROOT and PDK
+if [[ -z "$PDK_ROOT" || -z "$PDK" ]]; then
+	echo "PDK_ROOT and/or PDK not set."
+	exit 1
+fi
+
+# Check for LVS_ROOT
+if [[ -z "$LVS_ROOT" ]]; then
+	echo "LVS_ROOT not set."
+	exit 1
+fi
+
+if cmp -s $PDK_ROOT/$PDK/libs.tech/magic/$PDK.tech $LVS_ROOT/tech/$PDK/$PDK.tech; then
+	awk 'NF > 1 && /version/' $LVS_ROOT/tech/$PDK/$PDK.tech
+else
+	echo "WARNING: Tech files do not match:"
+	grep version $PDK_ROOT/$PDK/libs.tech/magic/$PDK.tech $LVS_ROOT/tech/$PDK/$PDK.tech |
+		awk 'NF > 2 && ! /^ *#/'
+	echo "Results may be incorrect. Contact efabless to update the soft connection rules."
+	#exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then  # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "ERROR: LVS environment problem."
+	exit 1
+fi
+
+export TOP=${2:-$TOP_LAYOUT}
+export LAYOUT_FILE=${3:-$LAYOUT_FILE}
+if [[ $EXTRACT_LAYOUT == no ]]; then
+	export LAYOUT_FILE=
+fi
+
+echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/$TOP}"
+echo "LOG_ROOT    : ${LOG_ROOT:=$WORK_ROOT}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$WORK_ROOT}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+echo "TOP: $TOP"
+echo "LAYOUT: $LAYOUT_FILE"
+echo "EXTRACT_FLATGLOB: $(echo $EXTRACT_FLATGLOB | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "EXTRACT_ABSTRACT: $(echo $EXTRACT_ABSTRACT | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+
+mkdir -p $LOG_ROOT
+mkdir -p $WORK_ROOT
+mkdir -p $SIGNOFF_ROOT
+
+rm -f $LOG_ROOT/soft.log $SIGNOFF_ROOT/soft.report
+echo $EXTRACT_FLATGLOB |
+	sed 's/  */\n/g' >$WORK_ROOT/flatglob
+echo $EXTRACT_ABSTRACT |
+	sed 's/  */\n/g' >$WORK_ROOT/abstract
+if [[ -f $WORK_ROOT/layout.cells ]]; then
+	sed -e 's/\*/.*/g' -e 's/^/^/' -e 's/$/$/' $WORK_ROOT/abstract |
+		grep -f - $WORK_ROOT/layout.cells >$WORK_ROOT/abstract.glob
+else
+	cp $WORK_ROOT/abstract $WORK_ROOT/abstract.glob
+fi
+
+# Add any cells that should be flattened before extraction to 'flatten'. globbing allowed.
+export FLATGLOB_CELLS="$(cat $WORK_ROOT/flatglob 2>/dev/null | grep -v '^#')"
+# Add any empty cells that should be extracted as black-boxes to 'abstract'.
+export ABSTRACT_CELLS="$(cat $WORK_ROOT/abstract.glob 2>/dev/null | grep -v '^#')"
+
+# Verify that netgen is executable.
+if ! which netgen >&/dev/null; then
+	echo "Error: Could not execute netgen."
+	exit 1
+fi
+
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	rm -f $LOG_ROOT/ext.log
+	# Extract gds_file.
+
+	export EXT_DIR=$WORK_ROOT/ext
+	echo "Extracting layout with well in background process. See $WORK_ROOT/ext.log."
+	(
+		#  1. Extract gds_file with well connectivity
+		env CIFIN_STYLE="" EXTRACT_STYLE="" LOG_FILE=ext.log $LVS_ROOT/run_extract >$WORK_ROOT/ext.out 2>&1
+		#  2. Remove well connections and disconnected nets.
+		sed -f $LVS_ROOT/tech/$PDK/remove_well.sed $EXT_DIR/$TOP.gds.spice |
+			awk -f $LVS_ROOT/scripts/remove_disconnect.awk - >$EXT_DIR/$TOP.gds.nowell.spice
+	) &
+
+	export EXT_DIR=$WORK_ROOT/nowell.ext
+	echo "Extracting layout without well in background process. See $WORK_ROOT/nowell.ext.log."
+	(
+		#  3. Extract gds_file without well connectivity
+		env CIFIN_STYLE="nowell" EXTRACT_STYLE="nowell" LOG_FILE=nowell.ext.log $LVS_ROOT/run_extract >$WORK_ROOT/nowell.ext.out 2>&1
+		#  4. Remove disconnected nets.
+		awk -f $LVS_ROOT/scripts/remove_disconnect.awk $EXT_DIR/$TOP.gds.spice >$EXT_DIR/$TOP.gds.nowell.spice
+	) &
+
+	wait
+
+	if [[ $(cat $LOG_ROOT/ext.log $LOG_ROOT/nowell.ext.log | grep -c 'exttospice finished' ) -ne 2 ]]; then
+		echo "Extraction error: see $LOG_ROOT/ext.log
+and/or $LOG_ROOT/nowell.ext.log"
+		exit 2
+	fi
+else
+	# No gds_file so LVS only. Check for existing valid extraction results.
+	if [[ ! -f $WORK_ROOT/ext/$TOP.gds.nowell.spice ]]; then
+		echo "Error: missing $WORK_ROOT/ext/$TOP.gds.nowell.spice"
+		echo "Specify gds_file to create"
+		echo "usage: run_scheck top_block [gds_file]"
+		exit 2
+	fi
+	if [[ ! -f $WORK_ROOT/nowell.ext/$TOP.gds.nowell.spice ]]; then
+		echo "Error: missing $WORK_ROOT/nowell.ext/$TOP.gds.nowell.spice"
+		echo "Specify gds_file to create"
+		echo "usage: run_scheck top_block [gds_file]"
+		exit 2
+	fi
+	if [[ $(grep -c 'exttospice finished.' $LOG_ROOT/ext.log) -ne 1 ]]; then
+		echo "
+Error: extraction did not complete successfully. See
+$LOG_ROOT/ext.log"
+		exit 4
+	fi
+	if [[ $(grep -c 'exttospice finished.' $LOG_ROOT/nowell.ext.log) -ne 1 ]]; then
+		echo "
+Error: extraction did not complete successfully. See
+$LOG_ROOT/nowell.ext.log"
+		exit 4
+	fi
+fi
+
+#  5. Compare
+rm -f $LOG_ROOT/soft.log
+date "+BEGIN: %c" >$WORK_ROOT/soft.log
+start_time=$SECONDS
+: "${NETGEN_COLUMNS:=80}"
+export NETGEN_COLUMNS
+netgen -batch source $LVS_ROOT/tech/soft.lvs.script |
+	tee -a $WORK_ROOT/soft.log 2>&1
+scheck_status=${PIPESTATUS[0]}
+if [[ $scheck_status -ne 0 || $(tail $WORK_ROOT/soft.report | grep -c 'Circuits match uniquely\.') -ne 1 ]]; then
+	echo "scheck status $scheck_status"
+	scheck_status=3
+fi
+
+date "+END: %c" >>$WORK_ROOT/soft.log
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "Runtime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds >>$WORK_ROOT/soft.log
+if [[ $WORK_ROOT != $LOG_ROOT ]]; then
+	cp $WORK_ROOT/soft.log $LOG_ROOT/.
+fi
+if [[ $WORK_ROOT != $SIGNOFF_ROOT ]]; then
+	cp $WORK_ROOT/soft.report $SIGNOFF_ROOT/.
+fi
+
+exit $scheck_status
