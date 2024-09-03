@@ -155461,7 +155461,7 @@ module housekeeping (VGND,
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
-  sky130_ef_sc_hd__fill_8 fill4[604:0] (.VGND(VGND),
+  sky130_ef_sc_hd__fill_8 fill8[604:0] (.VGND(VGND),
     .VNB(VGND),
     .VPB(VPWR),
     .VPWR(VPWR));
