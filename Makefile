@@ -50,7 +50,7 @@ LARGE_FILES_GZ_SPLIT += $(addsuffix .00.split, $(ARCHIVES))
 
 MCW_ROOT?=$(PWD)/mgmt_core_wrapper
 MCW ?=LITEX_VEXRISCV
-MPW_TAG ?= 2024.09.03-1
+MPW_TAG ?= 2024.09.12-1
 
 PYTHON_BIN ?= python3
 
