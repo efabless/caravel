@@ -1,0 +1,328 @@
+#! /bin/bash
+#   run_full_lvs: extract (if necessary) and run lvs with netgen
+
+#   Copyright 2022 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#  Set LVS parameters in lvs_config file
+
+# Use cases
+# run_full_lvs [--noextract] lvs_config_file [top_source [top_layout]]
+
+if [[ $1 == "--noextract" ]]; then
+	export EXTRACT_LAYOUT=no
+	shift
+else
+	export EXTRACT_LAYOUT=yes
+fi
+
+usage="usage: run_full_lvs [--noextract] [lvs_config_file [top_source [top_layout [layout_file]]]]"
+if [[ $# -gt 4 ]]; then
+	echo $usage
+	exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then  # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "ERROR: LVS environment problem."
+	exit 1
+fi
+export TOP_SOURCE=${2:-$TOP_SOURCE}
+export TOP_LAYOUT=${3:-$TOP_LAYOUT}
+export LAYOUT_FILE=${4:-$LAYOUT_FILE}
+
+#if [[ $EXTRACT_LAYOUT == no ]]; then
+#	export LAYOUT_FILE=
+#fi
+
+echo " "
+echo "Running LVS..."
+
+echo "TOP SOURCE: $TOP_SOURCE"
+echo "SOURCE FILE(S): $(echo $LVS_SPICE_FILES_TO_FIX $LVS_SPICE_FILES $LVS_VERILOG_FILES | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "TOP LAYOUT: $TOP_LAYOUT"
+echo "LAYOUT FILE: $LAYOUT_FILE"
+echo "EXTRACT_FLATGLOB: $(echo $EXTRACT_FLATGLOB | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "EXTRACT_ABSTRACT: $(echo $EXTRACT_ABSTRACT | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_FLATTEN: $(echo $LVS_FLATTEN | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_NOFLATTEN: $(echo $LVS_NOFLATTEN | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "LVS_IGNORE: $(echo $LVS_IGNORE | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+
+echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/$TOP_SOURCE}"
+echo "LOG_ROOT    : ${LOG_ROOT:=$WORK_ROOT}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$WORK_ROOT}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+mkdir -p $LOG_ROOT
+mkdir -p $SIGNOFF_ROOT
+mkdir -p $WORK_ROOT
+
+# Check for PDK_ROOT and PDK
+if [[ -z "$PDK_ROOT" || -z "$PDK" ]]; then
+	echo "PDK_ROOT and/or PDK not set."
+	exit 1
+fi
+
+if [[ ! -f $WORK_ROOT/layout.cells || ! -f $WORK_ROOT/verilog.cells ]]; then
+	$LVS_ROOT/run_hier_check $TOP_SOURCE "$(echo $LVS_VERILOG_FILES | sed 's/#[^ ]*//g')" $TOP_LAYOUT $LAYOUT_FILE "${PDK%?}_([^/_]*_)*_"
+fi
+
+# Extraction is now a separate program.
+rm -f $LOG_ROOT/lvs.log $SIGNOFF_ROOT/lvs.report
+export EXT_DIR=$WORK_ROOT/ext
+if [[ $EXTRACT_LAYOUT == yes ]]; then
+	env CIFIN_STYLE= EXTRACT_STYLE= $LVS_ROOT/run_extract
+	extract_status=$?
+else
+	if [[ ! -f $EXT_DIR/$TOP_LAYOUT.gds.spice ]]; then
+		echo "Error: missing $EXT_DIR/$TOP_LAYOUT.gds.spice"
+		echo "Specify gds_file to create"
+		echo $usage
+		exit 2
+	fi
+	echo "Reusing $EXT_DIR/$TOP_LAYOUT.gds.spice."
+fi
+
+# Check that extraction completed successfully
+if [[ ${extract_status:=0} -ne 0 || $(grep -c 'exttospice finished.' $LOG_ROOT/ext.log) -ne 1 ]]; then
+	echo "
+Error: extraction did not complete successfully"
+	exit 4
+fi
+
+# create work flatten file based on actual cells used (pseudo globbing)
+echo $LVS_FLATTEN |
+	sed 's/  */\n/g' >$WORK_ROOT/flatten
+if [[ -f $WORK_ROOT/layout.cells && -f $WORK_ROOT/verilog.cells ]]; then
+	# Do pseudo globbing against layout and verilog. "*" expansion only.
+	sed -e 's/\*/.*/g' $WORK_ROOT/flatten |
+		grep -hx -f - $WORK_ROOT/layout.cells $WORK_ROOT/verilog.cells |
+		cat - $WORK_ROOT/flatten |
+		sed 's/^\*//' |
+		awk 'NF > 0' |
+		sort -u >$WORK_ROOT/flatten.glob
+else
+	cp $WORK_ROOT/flatten $WORK_ROOT/flatten.glob
+fi
+
+# create work noflatten file based on actual cells used (pseudo globbing)
+echo $LVS_NOFLATTEN |
+	sed 's/  */\n/g' >$WORK_ROOT/noflatten
+if [[ -f $WORK_ROOT/layout.cells && -f $WORK_ROOT/verilog.cells ]]; then
+	# Do pseudo globbing against layout and verilog. "*" expansion only.
+	sed -e 's/\*/.*/g' $WORK_ROOT/noflatten |
+		grep -hx -f - $WORK_ROOT/layout.cells $WORK_ROOT/verilog.cells |
+		cat - $WORK_ROOT/noflatten |
+		sed 's/^\*//' |
+		awk 'NF > 0' |
+		sort -u >$WORK_ROOT/noflatten.glob
+else
+	cp $WORK_ROOT/noflatten $WORK_ROOT/noflatten.glob
+fi
+
+# create work ignore file based on actual cells used (pseudo globbing)
+echo $LVS_IGNORE |
+	sed 's/  */\n/g' >$WORK_ROOT/ignore
+if [[ -f $WORK_ROOT/layout.cells && -f $WORK_ROOT/verilog.cells ]]; then
+	# Do pseudo globbing against layout and verilog. "*" expansion only.
+	sed -e 's/\*/.*/g' $WORK_ROOT/ignore |
+		grep -hx -f - $WORK_ROOT/layout.cells $WORK_ROOT/verilog.cells |
+		cat - $WORK_ROOT/ignore |
+		sed 's/^\*//' |
+		awk 'NF > 0' |
+		sort -u >$WORK_ROOT/ignore.glob
+else
+	cp $WORK_ROOT/ignore $WORK_ROOT/ignore.glob
+fi
+
+# Verify that netgen is executable.
+if ! which netgen >&/dev/null; then
+	echo "Error: Could not execute netgen."
+	exit 1
+fi
+
+#  5. Compare
+# Create lists of source files. Allow globbing.
+# Files in LVS_SPICE_FILES_TO_FIX are modified with a pdk specific program to local versions.
+
+rm -rf $WORK_ROOT/spice_fix
+mkdir -p $WORK_ROOT/spice_fix
+cat /dev/null > $WORK_ROOT/spice_files
+SPICE_FIX_LIST=$(echo $LVS_SPICE_FILES_TO_FIX | sed 's/  */\n/g' | awk 'NF > 0 && ! /^#/')
+if [[ $SPICE_FIX_LIST ]]; then
+	cp $SPICE_FIX_LIST $WORK_ROOT/spice_fix/.
+	$LVS_ROOT/tech/$PDK/fix_spice $WORK_ROOT/spice_fix/*.spice
+	ls --sort=none $WORK_ROOT/spice_fix/* |
+		grep -v '.org$' >$WORK_ROOT/spice_files
+fi
+
+SPICE_LIST=$(echo $LVS_SPICE_FILES | sed 's/  */\n/g' | awk 'NF > 0 && ! /^#/')
+if [[ $SPICE_LIST ]]; then
+	ls --sort=none $SPICE_LIST >>$WORK_ROOT/spice_files
+fi
+
+cat /dev/null > $WORK_ROOT/verilog_files
+VERILOG_LIST=$(echo $LVS_VERILOG_FILES | sed 's/  */\n/g' | awk 'NF > 0 && ! /^#/')
+if [[ $VERILOG_LIST ]]; then
+	ls --sort=none $VERILOG_LIST >>$WORK_ROOT/verilog_files
+fi
+
+cp $LVS_ROOT/tech/$PDK/${PDK}_setup.tcl $WORK_ROOT/${PDK}_setup.tcl
+
+while read cell; do
+	cat >>$WORK_ROOT/${PDK}_setup.tcl <<-flatten
+		if { [lsearch \$cells1 {$cell}] >= 0 } {
+			#puts stdout "Flattening $cell in layout"
+			flatten class {-circuit1 $cell}
+		}
+		if { [lsearch \$cells2 {$cell}] >= 0 } {
+			#puts stdout "Flattening $cell in source"
+			flatten class {-circuit2 $cell}
+		}
+	flatten
+done <$WORK_ROOT/flatten.glob
+
+while read cell; do
+	cat >>$WORK_ROOT/${PDK}_setup.tcl <<-ignore
+		if { [lsearch \$cells1 {$cell}] >= 0 } {
+			puts stdout {Ignoring $cell in layout}
+			ignore class {-circuit1 $cell}
+		}
+		if { [lsearch \$cells2 {$cell}] >= 0 } {
+			puts stdout {Ignoring $cell in source}
+			ignore class {-circuit2 $cell}
+		}
+	ignore
+done <$WORK_ROOT/ignore.glob
+
+cat >$WORK_ROOT/lvs.script <<-script
+	puts "Reading layout $WORK_ROOT/ext/$TOP_LAYOUT.gds.spice..."
+	set layout [readnet spice $WORK_ROOT/ext/$TOP_LAYOUT.gds.spice]
+	set source [readnet spice /dev/null]
+script
+
+while read spice_file; do
+	cat >>$WORK_ROOT/lvs.script <<-spice
+		puts "Reading source $spice_file..."
+		readnet spice $spice_file \$source
+	spice
+done <$WORK_ROOT/spice_files
+while read verilog_file; do
+	cat >>$WORK_ROOT/lvs.script <<-verilog
+		puts "Reading source $verilog_file..."
+		readnet verilog $verilog_file \$source
+	verilog
+done <$WORK_ROOT/verilog_files
+
+cat >>$WORK_ROOT/lvs.script <<-lvs
+	lvs "\$layout $TOP_LAYOUT" "\$source $TOP_SOURCE" $WORK_ROOT/${PDK}_setup.tcl $WORK_ROOT/lvs.report -blackbox -json -noflatten=$WORK_ROOT/noflatten.glob
+lvs
+
+date "+BEGIN: %c" >$WORK_ROOT/lvs.log
+start_time=$SECONDS
+
+echo " "
+: "${NETGEN_COLUMNS:=80}"
+export NETGEN_COLUMNS
+netgen -batch source $WORK_ROOT/lvs.script 2>&1 |
+	tee -a $WORK_ROOT/lvs.log
+netgen_status=${PIPESTATUS[0]}
+
+# Check for circuits that were compared as black boxes.
+awk '
+/Circuit 1 .* will not flatten/ {print $4, "is a black box in the layout"}
+/Circuit 2 .* will not flatten/ {print $4, "is a black box in the source"}
+' $WORK_ROOT/lvs.report >$WORK_ROOT/lvs.unflattened
+awk -f $LVS_ROOT/tech/$PDK/known_abstract_filter.awk $WORK_ROOT/lvs.log |
+	grep -w -v $WORK_DIR/abstract.glob |
+	awk '
+/Matching pins/ {print $4, "is a black box in the layout and source"}
+/contains no devices/ {print $2, "contains no devices"}
+' - >>$WORK_ROOT/lvs.unflattened
+if [[ -s $WORK_ROOT/lvs.unflattened ]]; then
+	if grep -q -w -v -f $WORK_ROOT/abstract.glob $WORK_ROOT/lvs.unflattened; then
+		echo "Warning: device level LVS may be incomplete due to these unflattened cell(s): " |
+			tee -a $WORK_ROOT/lvs.report |
+			tee -a $WORK_ROOT/lvs.log
+		# Only set an error for unabstracted mismatches
+		lvs_warning=1
+	else
+		echo "Notice: LVS completed with these abstracted cells: " |
+			tee -a $WORK_ROOT/lvs.report |
+			tee -a $WORK_ROOT/lvs.log
+	fi
+	cat $WORK_ROOT/lvs.unflattened |
+		tee -a $WORK_ROOT/lvs.report |
+		tee -a $WORK_ROOT/lvs.log
+fi
+
+if [[ -s $WORK_ROOT/ignore.glob ]]; then
+	echo "Warning: device level LVS may be incomplete because $(cat $WORK_ROOT/ignore.glob | wc -l) cell(s) was/were ignored: see $WORK_ROOT/ignore.glob" |
+		tee -a $WORK_ROOT/lvs.report |
+		tee -a $WORK_ROOT/lvs.log
+	lvs_warning=1
+fi
+
+date "+END: %c" >>$WORK_ROOT/lvs.log
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "Runtime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds >>$WORK_ROOT/lvs.log
+if [[ $WORK_ROOT != $LOG_ROOT ]]; then
+	cp $WORK_ROOT/lvs.log $LOG_ROOT/.
+fi
+if [[ $WORK_ROOT != $SIGNOFF_ROOT ]]; then
+	cp $WORK_ROOT/lvs.report $WORK_ROOT/lvs.unflattened $SIGNOFF_ROOT/.
+fi
+
+# Set exit code
+if [[ $netgen_status -ne 0 ]]; then
+	echo "
+Error: netgen ended abnormally."
+
+# Missing 'Final result' line.
+elif [[ $(grep -c 'Final result:' $SIGNOFF_ROOT/lvs.report) -ne 1 ]]; then
+	netgen_status=4
+	echo "
+Error: netgen did not complete."
+
+# Did not uniquely match.
+elif [[ $(grep -c 'Final result: Circuits match uniquely\.' $SIGNOFF_ROOT/lvs.report) -ne 1 ]]; then
+	netgen_status=4
+	echo "
+Error: LVS mismatch."
+
+# Property errors
+elif [[ $(grep -c 'The following cells had property errors:' $SIGNOFF_ROOT/lvs.report) -gt 0 ]]; then
+	netgen_status=6
+	echo "
+Error: Property mismatch."
+
+# Uniquely matched, but cells were black-boxed or ignored.
+elif [[ ${lvs_warning:=0} -ne 0 ]]; then
+	netgen_status=5
+	echo "
+Warning: possible lvs discrepancy"
+
+else
+	netgen_status=0
+fi
+
+exit $netgen_status

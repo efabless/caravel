@@ -1,0 +1,42 @@
+#! /bin/bash
+
+awk '
+/^X.*pr__diode.*=/ {
+        print "D" $0;
+        next;
+}
+/^X.*__special_[^ _]*fet.*=/ || /^X.*pr__.fet.*=/ || /^X.*pr__esd_.fet.*=/ || /^X.*[np]fet_[0-9]*v[0-9].*=/ {
+        print "M" $0;
+        next;
+}
+/^X.*pr__pnp_.*=/ || /^X.*pr__pnp_[^ ]* *$/ {
+        print "Q" $0;
+        next;
+}
+/^X.*pr__cap_mim_.*=/ || /^X.*mim_2p0fF.*=/ || /^X.*cap_mim_2f0_m4m5/ {
+        print "C" $0;
+        next;
+}
+/^X.*pr__cap_var.*=/ {
+	bulk = $4;
+	$4 = "";
+        print "C" $0, "$SUB=" bulk;
+        next;
+}
+/^X.*pr__res_.*=/ || /^X.*ppolyf_u_1k_6p0/ {
+	bulk = $4;
+	$4 = "";
+        print "R" $0, "$SUB=" bulk;
+        next;
+}
+/^X.*sky130_fd_pr.*_reram_cell.*=/ {
+        print "R" $0;
+        next;
+}
+/^R/ && NF == 4 && $4 == "0.000000" {
+	$4 = "short " $4;
+}
+ {
+        print $0;
+}' $1
+

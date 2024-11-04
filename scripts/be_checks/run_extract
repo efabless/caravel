@@ -1,0 +1,452 @@
+#! /bin/bash
+#   run_extract: extract with magic
+
+#   Copyright 2023 D. Mitch Bailey  cvc at shuharisystem dot com
+
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#  Set LVS parameters in lvs_config file
+
+# Use cases
+# run_extract [lvs_config_file [top_layout [layout_file]]]
+
+usage="usage: run_extract [lvs_config_file [top_layout [layout_file]]]"
+if [[ $# -gt 3 ]]; then
+	echo $usage
+	exit 1
+fi
+
+CONFIG_FILE=$1
+DESIGN_NAME=${2:+"-d $2"}
+
+if [[ $# -ne 0 ]]; then  # if config file not specified, skip and use current environment
+	source <($LVS_ROOT/set_lvs_env.py -c $CONFIG_FILE $DESIGN_NAME)
+fi
+if [[ ! -v EXTRACT_FLATGLOB ]]; then
+	echo "Error: LVS environment problem."
+	exit 1
+fi
+export TOP_LAYOUT=${2:-$TOP_LAYOUT}
+export LAYOUT_FILE=${3:-$LAYOUT_FILE}
+
+echo " "
+echo "Running extract..."
+
+echo "TOP LAYOUT: $TOP_LAYOUT"
+echo "LAYOUT FILE: $LAYOUT_FILE"
+echo "EXTRACT_FLATGLOB: $(echo $EXTRACT_FLATGLOB | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+echo "EXTRACT_ABSTRACT: $(echo $EXTRACT_ABSTRACT | sed -e 's/#[^ ]*//g' -e 's/ /\n /g')"
+
+echo "WORK_ROOT   : ${WORK_ROOT:=$(pwd)/$TOP_SOURCE}"
+echo "LOG_ROOT    : ${LOG_ROOT:=$WORK_ROOT}"
+echo "SIGNOFF_ROOT: ${SIGNOFF_ROOT:=$WORK_ROOT}"
+export LOG_ROOT SIGNOFF_ROOT WORK_ROOT
+
+mkdir -p $LOG_ROOT
+mkdir -p $SIGNOFF_ROOT
+mkdir -p $WORK_ROOT
+
+# Check for PDK_ROOT and PDK
+if [[ -z "$PDK_ROOT" || -z "$PDK" ]]; then
+	echo "PDK_ROOT and/or PDK not set."
+	exit 1
+fi
+
+echo "LOG FILE: $LOG_ROOT/${LOG_FILE:=ext.log}"
+rm -f $LOG_ROOT/$LOG_FILE $WORK_ROOT/$LOG_FILE
+
+if cmp -s $PDK_ROOT/$PDK/libs.tech/magic/$PDK.tech $LVS_ROOT/tech/$PDK/$PDK.tech; then
+	awk 'NF > 1 && /version/' $LVS_ROOT/tech/$PDK/$PDK.tech
+else
+	echo "Tech files do not match:"
+	grep version $PDK_ROOT/$PDK/libs.tech/magic/$PDK.tech $LVS_ROOT/tech/$PDK/$PDK.tech |
+		awk 'NF > 2 && ! /^ *#/'
+	echo "Results may be incorrect. Contact efabless to update the soft connection rules."
+	#exit 1
+fi
+
+if [[ ! -f $WORK_ROOT/layout.cells ]]; then
+	$LVS_ROOT/run_hier_check "" "" $TOP_LAYOUT $LAYOUT_FILE "${PDK%?}_([^/_]*_)*_"
+fi
+
+#  Create extraction result directories. No error if they already exist.
+echo "Extracting to ${EXT_DIR:=$WORK_ROOT/ext}"
+rm -rf $EXT_DIR
+mkdir -p $EXT_DIR
+
+# create work abstract file based on actual cells used (psuedo globbing)
+# Will work with wildcards directly, but use psuedo globbing to check later.
+echo $EXTRACT_FLATGLOB |
+	sed 's/  */\n/g' >$EXT_DIR/flatglob
+if [[ -f $WORK_ROOT/layout.cells ]]; then
+	sed -e 's/\*/.*/g' -e 's/^/^/' -e 's/$/$/' $EXT_DIR/flatglob |
+		grep -f - $WORK_ROOT/layout.cells >$EXT_DIR/flatglob.glob
+else
+	cp $EXT_DIR/flatglob $EXT_DIR/flatglob.glob
+fi
+
+# create work abstract file based on actual cells used (psuedo globbing)
+echo $EXTRACT_ABSTRACT |
+	sed 's/  */\n/g' >$EXT_DIR/abstract
+if [[ -f $WORK_ROOT/layout.cells ]]; then
+	sed -e 's/\*/.*/g' -e 's/^/^/' -e 's/$/$/' $EXT_DIR/abstract |
+		grep -f - $WORK_ROOT/layout.cells >$EXT_DIR/abstract.glob
+else
+	cp $EXT_DIR/abstract $EXT_DIR/abstract.glob
+fi
+
+# create work subcut file based on actual cells used (psuedo globbing)
+echo $EXTRACT_CREATE_SUBCUT |
+	sed 's/  */\n/g' >$EXT_DIR/subcut
+if [[ -f $WORK_ROOT/layout.cells ]]; then
+	sed -e 's/\*/.*/g' -e 's/^/^/' -e 's/$/$/' $EXT_DIR/subcut |
+		grep -f - $WORK_ROOT/layout.cells >$EXT_DIR/subcut.glob
+else
+	cp $EXT_DIR/abstract $EXT_DIR/subcut.glob
+fi
+
+# Add any cells that should be flattened before extraction to 'flatten'.
+export FLATGLOB_CELLS="$(cat $EXT_DIR/flatglob.glob 2>/dev/null | grep -v '^#')"
+# Add any empty cells that should be extracted as black-boxes to 'abstract'.
+export ABSTRACT_CELLS="$(cat $EXT_DIR/abstract.glob 2>/dev/null | grep -v '^#')"
+# Add any cells that should be have a subcut layer added.
+export SUBCUT_CELLS="$(cat $EXT_DIR/subcut.glob 2>/dev/null | grep -v '^#')"
+
+# Verify that magic is executable.
+if ! which magic >&/dev/null; then
+	echo "Error: Could not execute magic."
+	exit 1
+fi
+
+if [[ ! -f $LAYOUT_FILE ]]; then
+	echo "Error: File not found: $LAYOUT_FILE"
+	exit 2
+fi
+
+#  1. Extract gds_file
+date "+BEGIN: %c" >$WORK_ROOT/$LOG_FILE
+start_time=$SECONDS
+
+echo " "
+if [[ -z "$EXTRACT_TYPE" && $TOP_LAYOUT == *analog* ]]; then
+	EXTRACT_TYPE=analog
+fi
+if [[ $EXTRACT_TYPE == analog ]]; then
+	echo "Extracting as analog. Top ports connected by name." >>$WORK_ROOT/$LOG_FILE
+	export EXT_TYPE=analog
+	EXT_MESSAGE="connected by name (analog)"
+	EXT_TEXT="unique notopports"
+else
+	echo "Extracting as digital. Top ports unique." >>$WORK_ROOT/$LOG_FILE
+	export EXT_TYPE=digital
+	EXT_MESSAGE="unique (digital)"
+	EXT_TEXT="unique"
+fi
+
+# create gds abstraction script
+cat > $EXT_DIR/abstract.tcl <<EOF
+# magic commands to abstract cells.
+# well connectivity is detemined by CIFIN_STYLE and EXTRACT_STYLE.
+# output directory set by environment variable EXT_DIR
+
+puts "Abstracting"
+drc off
+crashbackups stop
+gds drccheck off
+undo disable
+if {[string first sky130 $PDK] >= 0} {
+	cif istyle sky130($CIFIN_STYLE)
+
+} elseif {[string first gf180mcu $PDK] >= 0} {
+	cif istyle import($CIFIN_STYLE)
+
+} else {
+	puts "ERROR: Unknown PDK - $PDK"
+	exit 1
+}
+
+set last_time [orig_clock seconds]
+puts "Abstracting $LAYOUT_FILE"
+gds read $LAYOUT_FILE
+cd $EXT_DIR
+set current_time [orig_clock seconds]
+puts "\nTIME: read GDS: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format  %H:%M:%S] \n"
+set last_time \$current_time
+
+# Create subcut gds
+foreach cell { $SUBCUT_CELLS } {
+	# Adds an isosub/subcut layer to the cell.
+	# 1. For each cell, create a new cell with an isosub/subcut layer = boundary - ( dnwell | isosub ).
+	load \$cell
+	select top cell
+	set cellboundary [view bbox] ;# Save the boundary.
+	expand
+	puts stdout "Creating subcut for \$cell ..."
+	set subcut_cell_name \${cell}_subcut
+	flatten -nolabels \$subcut_cell_name ;# Flatten into a cell with a new name.
+	load \$subcut_cell_name
+	property FIXED_BBOX \$cellboundary ;# Reset the boundary after flattening.
+	cif ostyle subcutout
+	gds write \$subcut_cell_name ;# Write just the subcut layer.
+}
+set current_time [orig_clock seconds]
+puts "\nTIME: create subcut: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+# Create abstract cells
+foreach cell { $ABSTRACT_CELLS } { ;# Set abstract cells and delete all their subcell instances.
+	load \$cell
+	property LEFview true
+	puts "Abstracting \$cell"
+	set instance_list [cellname list childinst \$cell]
+	set instance_count [llength \$instance_list]
+	select top cell
+	select visible
+	set port_list [lindex [what -list] 1]
+	puts "instance count:\$instance_count port count:[llength \$port_list]"
+	if { \$instance_count > 0 || [llength \$port_list] > 10 } {
+		# When an abstract cell has child, all the children are extracted.
+		# To avoid this, delete the child instances.
+		# If there are many instances this can take hours.
+		# Split the layout up into a grid and delete by grid.
+		select top cell
+		set cell_bbox [box values]
+		puts "Full size \$cell_bbox"
+		set cell_left [lindex \$cell_bbox 0]
+		set cell_bottom [lindex \$cell_bbox 1]
+		set cell_right [lindex \$cell_bbox 2]
+		set cell_top [lindex \$cell_bbox 3]
+		set cell_height [box height]
+		set cell_width [box width]
+		see no *
+		set window_size 100
+		set current_time [orig_clock seconds]
+		set start_time \$current_time
+		# Coordinates returned from box are in internal units.
+		# Without qualifiers, arguments to box are in lambda units. Force internal units with i suffix.
+		# Search for a region where the subcells can be deleted in under 12 seconds. Region is increased 4x each loop.
+		while { [expr \$current_time - \$start_time] < 3 && \$window_size < \$cell_height && \$window_size < \$cell_width } {
+			set start_time \$current_time
+			incr window_size \$window_size
+			box size \${window_size}i \${window_size}i
+			select visible
+			select less area * ;# unselect text
+			delete
+			set current_time [orig_clock seconds]
+		}
+		set step_estimate [expr \$cell_height / \$window_size * \$cell_width / \$window_size]
+		puts "Setting deletion window size to \$window_size. Estimate \$step_estimate steps."
+		set step_count 0
+		for {set box_left \$cell_left} {\$box_left < \$cell_right} {incr box_left \$window_size} {
+			for {set box_bottom \$cell_bottom} {\$box_bottom < \$cell_top} {incr box_bottom \$window_size} {
+				incr step_count
+				box position \${box_left}i \${box_bottom}i
+				select visible
+				select less area * ;# unselect text
+				puts "Step \$step_count/\$step_estimate: deleting [llength [lindex [what -list] 2]] objects at [box values]"
+				delete
+			}
+		}
+		# Delete instances that may have been missed.
+		select top cell
+		select visible
+		select less area *
+		puts "Deleting [llength [lindex [what -list] 2]] final objects"
+		delete
+
+		# Delete non-port layers. Shorted ports can cause problems in parent hierarchy.
+		# Deleting non-port layers should eliminate the shorts.
+		see *
+		select visible
+		set select_list [what -list]
+		see no *
+		foreach layer [lindex \$select_list 0] {
+			select area \$layer ;# select ports
+			if { [llength [lindex [what -list] 1]] == 0 } {	
+				see \$layer
+				select visible \$layer
+				puts "Deleting \$layer"
+				delete
+			}
+		}
+		lef nocheck vssd1 vssd2 vccd1 vccd2 vssa1 vssa2 vdda1 vdda2
+		lef write \$cell -hide -pinonly
+	}
+}
+set current_time [orig_clock seconds]
+puts "\nTIME: create abstract: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+EOF
+
+# Create abstract and subcut cells
+magic -dnull -noc -rcfile $LVS_ROOT/tech/magicrc $EXT_DIR/abstract.tcl </dev/null 2>&1 |
+	tee -a $WORK_ROOT/$LOG_FILE
+abstract_status=${PIPESTATUS[0]}
+
+# create gds extraction script
+cat > $EXT_DIR/extract.tcl <<EOF
+# magic commands to extract netlist.
+# well connectivity is detemined by CIFIN_STYLE and EXTRACT_STYLE.
+# output directory set by environment variable EXT_DIR
+
+puts "Extracting with top ports $EXT_MESSAGE"
+drc off
+crashbackups stop
+gds drccheck off
+undo disable
+if {[string first sky130 $PDK] >= 0} {
+	cif istyle sky130($CIFIN_STYLE)
+
+} elseif {[string first gf180mcu $PDK] >= 0} {
+	cif istyle import($CIFIN_STYLE)
+
+} else {
+	puts "ERROR: Unknown PDK - $PDK"
+	exit 1
+}
+
+set last_time [orig_clock seconds]
+foreach cell { $ABSTRACT_CELLS } { ;# Load abstract cells
+	if { [file exists $EXT_DIR/\$cell.lef] } {
+		puts "Using abstracted \$cell"
+		lef read $EXT_DIR/\$cell.lef
+	}
+}
+
+foreach cell { $FLATGLOB_CELLS } {
+	gds flatglob \$cell
+}
+# list cells to be flattened
+puts "Flattening [string map {" " "\n"} [gds flatglob]]"
+gds flatten yes ;# Flattens cells with few layers
+gds noduplicates yes ;# keep abstract views
+puts "\nExtracting $LAYOUT_FILE"
+gds read $LAYOUT_FILE
+cd $EXT_DIR
+set current_time [orig_clock seconds]
+puts "\nTIME: read GDS: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+set flatglob_error 0
+foreach cell { $FLATGLOB_CELLS } { ;# Check for unflattened flatglob cells.
+	if { [llength [cellname list children \$cell]] > 0 } {
+		set flatglob_error 1
+		puts "Could not flatten \$cell because it contains these subcells:"
+		foreach subcell [cellname list children \$cell] {
+			puts "  \$subcell"
+		}
+	}	
+}
+if { \$flatglob_error } { ;# Quit if there are unflattened flatglob cells.
+	exit 1
+}
+
+gds flatten no ;# subcut cells will have few shapes, so don't flatten them when reading their gds later.
+
+foreach cell { $SUBCUT_CELLS } {
+	# Adds an isosub/subcut layer to the cell.
+	# 2. Add this new cell to the original cell.
+	# 3. Flatten the new cell instance in the original cell.
+	set subcut_cell_name \${cell}_subcut
+	gds read \$subcut_cell_name ;# Read the subcut only cell.
+	load \$cell
+	select top cell
+	getcell \$subcut_cell_name child 0 0 parent 0 0 ;# Place the subcut cell at the origin.
+	puts "Flattening [instance list self] in \$cell"
+	flatten -doinplace [instance list self] ;# flatten subcut cell to place subcut layer.
+}
+set current_time [orig_clock seconds]
+puts "\nTIME: add subcut: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+foreach cell { $ABSTRACT_CELLS } { ;# Set abstract cells
+	load \$cell
+	property LEFview true
+	puts "Abstracting \$cell"
+}
+set current_time [orig_clock seconds]
+puts "\nTIME: set abstract: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+load $TOP_LAYOUT
+select top cell
+expand
+extract no all ;# clear all flags
+extract do aliases
+extract do local
+extract $EXT_TEXT
+extract style ngspice($EXTRACT_STYLE)
+extract
+set current_time [orig_clock seconds]
+puts "\nTIME: extract: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+ext2spice lvs
+ext2spice merge conservative ;# reduce parallel devices
+ext2spice short resistor ;# keep both ports but connect them with a 0 ohm resistor
+ext2spice -o $TOP_LAYOUT.gds.spice $TOP_LAYOUT.ext
+set current_time [orig_clock seconds]
+puts "\nTIME: netlist: [orig_clock format [expr {\$current_time - \$last_time}] -gmt true -format %H:%M:%S] \n"
+set last_time \$current_time
+
+feedback save $TOP_LAYOUT-ext2gds.spice.feedback.txt
+EOF
+
+magic -dnull -noc -rcfile $LVS_ROOT/tech/magicrc $EXT_DIR/extract.tcl </dev/null 2>&1 |
+	tee -a $WORK_ROOT/$LOG_FILE
+ext_status=${PIPESTATUS[0]}
+
+date "+END: %c" >>$WORK_ROOT/$LOG_FILE
+runtime=$((SECONDS - start_time))
+hours=$((runtime / 3600))
+minutes=$(((runtime % 3600) / 60))
+seconds=$(((runtime % 3600) % 60))
+printf "Runtime: %d:%02d:%02d (hh:mm:ss)\n" $hours $minutes $seconds >>$WORK_ROOT/$LOG_FILE
+if [[ $WORK_ROOT != $LOG_ROOT ]]; then
+	cp $WORK_ROOT/$LOG_FILE $LOG_ROOT/$LOG_FILE
+fi
+
+# Create extracted hierarchy
+echo "Creating layout hierarchy in $EXT_DIR/$TOP_LAYOUT.hier..."
+awk -f $LVS_ROOT/scripts/ext.hier.awk -v TOP=$TOP_LAYOUT $EXT_DIR/*.ext >$EXT_DIR/$TOP_LAYOUT.hier
+
+# Compress large ext files
+find $EXT_DIR -name '*.ext' -size +1M -exec gzip {} \;
+
+if [[ $(grep -c 'direction reversal in path' $LOG_ROOT/$LOG_FILE) -ne 0 ]]; then
+	echo "
+Error: invalid path reversal. See $LOG_ROOT/$LOG_FILE"
+	magic_status=1
+fi
+
+grep 'layer=' $LOG_ROOT/$LOG_FILE |
+	awk '/, layer=/ {print gensub(/.*, layer=/, "layer=", 1)}' |
+	sort -u |
+	comm -23 - $LVS_ROOT/tech/$PDK/known.undefined.layer >$EXT_DIR/unknown.layers
+if [[ $(cat $EXT_DIR/unknown.layers | wc -w) -ne 0 ]]; then
+	echo "
+Error: invalid layers. See $LOG_ROOT/$LOG_FILE"
+	cat $EXT_DIR/unknown.layers
+	magic_status=1
+fi
+
+# Check that extraction completed successfully
+if [[ $abstract_status -ne 0 || \
+		$ext_status -ne 0 || \
+		${magic_status:=0} -ne 0 || \
+		$(grep -c 'exttospice finished.' $LOG_ROOT/$LOG_FILE) -ne 1 ]]; then
+	echo "
+Error: extraction did not complete successfully"
+	exit 4
+fi
+
